@@ -1,92 +1,137 @@
-// src/components/ui/Card/index.js
-import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import styles from "./style";
+import React, { useContext } from 'react';
+import { View, Text } from 'react-native';
+import { ThemeContext } from '@/src/contexts/ThemeContext';
+import styles from './style';
 
 /**
- * Composant Card réutilisable avec différentes variantes et options
+ * Composant Badge réutilisable pour afficher des étiquettes, états ou niveaux
+ * 
+ * @param {Object} props - Propriétés du composant
+ * @param {string} props.label - Texte à afficher dans le badge
+ * @param {string} props.color - Couleur du badge (si non fournie, utilise la couleur primaire du thème)
+ * @param {string} props.variant - Variante du badge ('filled', 'outlined', 'subtle', 'dot')
+ * @param {string} props.size - Taille du badge ('small', 'medium', 'large')
+ * @param {Object} props.style - Styles additionnels pour le conteneur du badge
+ * @param {Object} props.textStyle - Styles additionnels pour le texte du badge
+ * @param {string} props.testID - ID pour les tests
  */
-const Card = ({
-  children,
-  title,
-  subtitle,
-  headerRight,
-  headerIcon,
-  headerIconColor = "#5E60CE",
-  onPress,
-  footer,
-  footerStyle,
+const Badge = ({
+  label,
+  color,
+  variant = 'filled',
+  size = 'medium',
   style,
-  contentStyle,
-  withShadow = true,
-  bordered = false,
-  elevated = true,
-  padding = true,
-  margin = true,
-  backgroundColor = "white",
-  borderRadius = 10,
+  textStyle,
   testID,
 }) => {
-  // Déterminer si la carte est cliquable
-  const isClickable = !!onPress;
-
-  // Composant wrapper (TouchableOpacity ou View)
-  const WrapperComponent = isClickable ? TouchableOpacity : View;
-
-  // Props additionnelles pour le wrapper si cliquable
-  const wrapperProps = isClickable ? { activeOpacity: 0.7, onPress } : {};
-
-  // Déterminer si un header doit être affiché
-  const showHeader = title || subtitle || headerRight || headerIcon;
+  // Récupération du contexte de thème
+  const themeContext = useContext(ThemeContext);
+  const colors = themeContext?.colors || { primary: '#5E60CE' };
+  
+  // Utilise la couleur fournie ou la couleur primaire du thème
+  const badgeColor = color || colors.primary;
+  
+  // Styles pour les différentes variantes
+  const variantStyles = {
+    filled: {
+      backgroundColor: badgeColor,
+      borderWidth: 0,
+    },
+    outlined: {
+      backgroundColor: 'transparent',
+      borderWidth: 1,
+      borderColor: badgeColor,
+    },
+    subtle: {
+      backgroundColor: `${badgeColor}15`, // 15% d'opacité
+      borderWidth: 0,
+    },
+    dot: {
+      backgroundColor: 'transparent',
+      borderWidth: 0,
+      paddingLeft: 16, // Espace pour le point
+    },
+  };
+  
+  // Styles pour les différentes tailles
+  const sizeStyles = {
+    small: {
+      height: 20,
+      paddingHorizontal: 6,
+      borderRadius: 6,
+    },
+    medium: {
+      height: 24,
+      paddingHorizontal: 8,
+      borderRadius: 8,
+    },
+    large: {
+      height: 28,
+      paddingHorizontal: 10,
+      borderRadius: 10,
+    },
+  };
+  
+  // Styles pour le texte selon la variante et la taille
+  const textVariantStyles = {
+    filled: {
+      color: 'white',
+    },
+    outlined: {
+      color: badgeColor,
+    },
+    subtle: {
+      color: badgeColor,
+    },
+    dot: {
+      color: badgeColor,
+    },
+  };
+  
+  const textSizeStyles = {
+    small: {
+      fontSize: 10,
+    },
+    medium: {
+      fontSize: 12,
+    },
+    large: {
+      fontSize: 14,
+    },
+  };
 
   return (
-    <WrapperComponent
+    <View
       style={[
         styles.container,
-        withShadow && styles.shadow,
-        bordered && styles.bordered,
-        elevated && styles.elevated,
-        margin && styles.margin,
-        { backgroundColor, borderRadius },
+        variantStyles[variant] || variantStyles.filled,
+        sizeStyles[size] || sizeStyles.medium,
         style,
       ]}
       testID={testID}
-      {...wrapperProps}
     >
-      {/* Header (optionnel) */}
-      {showHeader && (
-        <View style={styles.header}>
-          <View style={styles.headerLeft}>
-            {headerIcon && (
-              <Ionicons
-                name={headerIcon}
-                size={20}
-                color={headerIconColor}
-                style={styles.headerIcon}
-              />
-            )}
-            <View style={styles.headerTextContainer}>
-              {title && <Text style={styles.title}>{title}</Text>}
-              {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
-            </View>
-          </View>
-
-          {headerRight && <View style={styles.headerRight}>{headerRight}</View>}
-        </View>
+      {variant === 'dot' && (
+        <View 
+          style={[
+            styles.dot, 
+            { backgroundColor: badgeColor }
+          ]} 
+        />
       )}
-
-      {/* Contenu de la carte */}
-      <View
-        style={[styles.content, padding && styles.contentPadding, contentStyle]}
+      <Text
+        style={[
+          styles.label,
+          textVariantStyles[variant] || textVariantStyles.filled,
+          textSizeStyles[size] || textSizeStyles.medium,
+          textStyle,
+        ]}
+        numberOfLines={1}
+        ellipsizeMode="tail"
       >
-        {children}
-      </View>
-
-      {/* Footer (optionnel) */}
-      {footer && <View style={[styles.footer, footerStyle]}>{footer}</View>}
-    </WrapperComponent>
+        {label}
+      </Text>
+    </View>
   );
 };
 
-export default Card;
+export default Badge;
