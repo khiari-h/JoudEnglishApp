@@ -1,34 +1,36 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Utilisation d'icônes simples d'Expo
+import { Tabs } from "expo-router";
+import React from "react";
+import { Ionicons } from "@expo/vector-icons"; // Icônes d'Expo
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#000', // Utilisation d'une couleur de base
+        tabBarActiveTintColor: "#000",
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#fff', // Exemple de couleur pour la barre de tab
+          backgroundColor: "#fff",
           borderTopWidth: 0,
         },
-      }}>
+      }}
+    >
+      {/* Onglet Dashboard */}
       <Tabs.Screen
-        name="index"
+        name="dashboard" // Correspond au fichier src/screens/dashboard.js
         options={{
-          title: 'Home',
+          title: "Dashboard",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" color={color} size={size} /> // Icône d'Expo simple
+            <Ionicons name="home-outline" color={color} size={size} />
           ),
         }}
       />
+      {/* Onglet Home */}
       <Tabs.Screen
-        name="explore"
+        name="index" // Correspond au fichier src/screens/index.js
         options={{
-          title: 'Explore',
+          title: "Home",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search-outline" color={color} size={size} /> // Icône d'Expo simple
+            <Ionicons name="home-outline" color={color} size={size} />
           ),
         }}
       />

@@ -1,42 +1,36 @@
-import React, { useContext, useEffect } from 'react';
-import { View, ScrollView, StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect } from "react";
+import { View, ScrollView, StatusBar } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Contextes
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { ProgressContext } from '../../contexts/ProgressContext';
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { ProgressContext } from "../../contexts/ProgressContext";
 
 // Composants Dashboard
-import DashboardHeader from './components/DashboardHeader';
-import LastActivitySection from './components/LastActivitySection';
-import DailyChallengeSection from './components/DailyChallengeSection';
-import LearningPathSection from './components/LearningPathSection';
-import LanguageTipsCarousel from './components/LanguageTipsCarousel';
-import LevelProgressModal from './components/LevelProgressModal';
+import DashboardHeader from "./components/DashboardHeader";
+import LastActivitySection from "./components/LastActivitySection";
+import DailyChallengeSection from "./components/DailyChallengeSection";
+import LearningPathSection from "./components/LearningPathSection";
+import LanguageTipsCarousel from "./components/LanguageTipsCarousel";
+import LevelProgressModal from "./components/LevelProgressModal";
 
 // Hooks personnalisés
-import { useStaggeredAnimation } from '../../hooks/useAnimation';
+import { useStaggeredAnimation } from "../../hooks/useAnimation";
 
 // Constantes et utilitaires
-import { LANGUAGE_LEVELS, EXERCISE_TYPES } from '../../utils/constants';
-import { formatRelativeTime } from '../../utils/formatters';
+import { LANGUAGE_LEVELS, EXERCISE_TYPES } from "../../utils/constants";
+import { formatRelativeTime } from "../../utils/formatters";
 
 // Styles
-import styles from './styles';
+import styles from "./style";
 
 const Dashboard = ({ route }) => {
   const navigation = useNavigation();
   const { colors } = useContext(ThemeContext);
-  const { 
-    progress, 
-    updateStreak 
-  } = useContext(ProgressContext);
-  
+  const { progress, updateStreak } = useContext(ProgressContext);
+
   // Paramètres du profil
-  const { 
-    name = "User", 
-    streak = 0 
-  } = route?.params || {};
+  const { name = "User", streak = 0 } = route?.params || {};
 
   // Animation des sections
   const animationStyles = useStaggeredAnimation(5);
@@ -60,7 +54,7 @@ const Dashboard = ({ route }) => {
     const { type, level, timestamp } = progress.lastActivity;
     const exerciseInfo = EXERCISE_TYPES[type] || {};
     const levelInfo = LANGUAGE_LEVELS[level] || {};
-    
+
     return {
       title: exerciseInfo.title || type,
       topic: `${levelInfo.title} (${level})`,
@@ -103,15 +97,16 @@ const Dashboard = ({ route }) => {
     {
       id: "1",
       title: "Practice Makes Perfect",
-      description: "Speaking out loud helps improve pronunciation and builds confidence.",
+      description:
+        "Speaking out loud helps improve pronunciation and builds confidence.",
       icon: "bulb-outline",
     },
     // Autres astuces...
   ];
 
   // Niveaux d'apprentissage
-  const getAllLearningLevels = () => 
-    Object.keys(LANGUAGE_LEVELS).map(levelKey => {
+  const getAllLearningLevels = () =>
+    Object.keys(LANGUAGE_LEVELS).map((levelKey) => {
       const levelInfo = LANGUAGE_LEVELS[levelKey];
       return {
         id: levelKey.toLowerCase(),
@@ -133,7 +128,7 @@ const Dashboard = ({ route }) => {
   };
 
   const handleLevelSelect = (level) => {
-    navigation.navigate('ExerciseSelection', { level });
+    navigation.navigate("ExerciseSelection", { level });
   };
 
   return (
@@ -141,18 +136,15 @@ const Dashboard = ({ route }) => {
       <StatusBar barStyle="light-content" />
 
       {/* En-tête du Dashboard */}
-      <DashboardHeader 
-        name={name} 
-        streak={streak} 
-      />
+      <DashboardHeader name={name} streak={streak} />
 
-      <ScrollView 
+      <ScrollView
         style={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
       >
         {/* Dernière activité */}
         <View style={[styles.sectionSpacing, animationStyles[0]]}>
-          <LastActivitySection 
+          <LastActivitySection
             lastActivity={getLastActivity()}
             onPress={navigateToLastActivity}
           />
@@ -160,16 +152,18 @@ const Dashboard = ({ route }) => {
 
         {/* Défi quotidien */}
         <View style={[styles.sectionSpacing, animationStyles[1]]}>
-          <DailyChallengeSection 
+          <DailyChallengeSection
             challenge={todaysChallenge}
-            onStartChallenge={() => {/* Logique de démarrage du défi */}}
+            onStartChallenge={() => {
+              /* Logique de démarrage du défi */
+            }}
           />
         </View>
 
         {/* Parcours d'apprentissage */}
         <View style={[styles.sectionSpacing, animationStyles[2]]}>
-          <LearningPathSection 
-            onSelectLevel={() => navigation.navigate('LevelSelection')}
+          <LearningPathSection
+            onSelectLevel={() => navigation.navigate("LevelSelection")}
             onViewProgress={() => setShowLevelProgress(true)}
           />
         </View>
@@ -184,7 +178,7 @@ const Dashboard = ({ route }) => {
       </ScrollView>
 
       {/* Modal de progression des niveaux */}
-      <LevelProgressModal 
+      <LevelProgressModal
         visible={showLevelProgress}
         levels={getAllLearningLevels()}
         onClose={() => setShowLevelProgress(false)}
