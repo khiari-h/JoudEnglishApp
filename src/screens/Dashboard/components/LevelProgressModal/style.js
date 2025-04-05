@@ -1,10 +1,13 @@
-// src/components/Dashboard/components/LevelProgressModal/style.js
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    paddingBottom: 24,
+    flex: 1,
+    paddingBottom: 16,
+  },
+  scrollViewContent: {
+    paddingHorizontal: 16,
+    paddingBottom: 16,
   },
   levelsList: {
     marginBottom: 20,
@@ -41,6 +44,7 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     marginTop: 8,
+    marginHorizontal: 16,
   },
 });
 

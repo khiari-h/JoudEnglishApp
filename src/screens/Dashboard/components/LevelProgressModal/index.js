@@ -1,6 +1,5 @@
-// src/components/Dashboard/components/LevelProgressModal/index.js
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import Modal from "@/src/components/ui/Modal";
 import Card from "@/src/components/ui/Card";
 import ProgressBar from "@/src/components/ui/ProgressBar";
@@ -27,50 +26,61 @@ const LevelProgressModal = ({ visible, levels = [], onClose, onSelectLevel }) =>
       title="My Language Level Progress"
       position="bottom"
       scrollable
-      animationType="custom"
+      animationType="slide"
+      fullWidth
       maxHeight="80%"
     >
       <View style={styles.container}>
-        {hasLevels ? (
-          <View style={styles.levelsList}>
-            {levels.map((level) => (
-              <Card
-                key={level.id}
-                title={level.title}
-                style={styles.levelCard}
-                onPress={() => {
-                  onClose();
-                  onSelectLevel && onSelectLevel(level.id.toUpperCase());
-                }}
-              >
-                <View style={styles.levelContent}>
-                  <ProgressBar
-                    progress={level.progress}
-                    fillColor={level.color}
-                    height={6}
-                    showPercentage
-                    backgroundColor="#F3F4F6"
-                  />
-                  
-                  <View style={styles.badgeContainer}>
-                    <View
-                      style={[
-                        styles.levelBadge,
-                        { backgroundColor: level.color }
-                      ]}
-                    >
-                      <Text style={styles.levelBadgeText}>
-                        {level.id.toUpperCase()}
-                      </Text>
+        <ScrollView 
+          showsVerticalScrollIndicator={false} 
+          contentContainerStyle={styles.scrollViewContent}
+        >
+          {hasLevels ? (
+            <View style={styles.levelsList}>
+              {levels.map((level) => (
+                <Card
+                  key={level.id}
+                  title={level.title}
+                  style={[
+                    styles.levelCard, 
+                    { borderLeftColor: level.color }
+                  ]}
+                  onPress={() => {
+                    onClose();
+                    onSelectLevel && onSelectLevel(level.id.toUpperCase());
+                  }}
+                >
+                  <View style={styles.levelContent}>
+                    <View style={{ flex: 1, marginRight: 12 }}>
+                      <ProgressBar
+                        progress={level.progress}
+                        fillColor={level.color}
+                        height={6}
+                        showPercentage
+                        backgroundColor="#F3F4F6"
+                      />
+                    </View>
+                    
+                    <View style={styles.badgeContainer}>
+                      <View
+                        style={[
+                          styles.levelBadge,
+                          { backgroundColor: level.color }
+                        ]}
+                      >
+                        <Text style={styles.levelBadgeText}>
+                          {level.id.toUpperCase()}
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-              </Card>
-            ))}
-          </View>
-        ) : (
-          <Text style={styles.emptyText}>No level progress data available</Text>
-        )}
+                </Card>
+              ))}
+            </View>
+          ) : (
+            <Text style={styles.emptyText}>No level progress data available</Text>
+          )}
+        </ScrollView>
 
         <Button
           title="Close"
