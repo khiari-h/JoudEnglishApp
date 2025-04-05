@@ -1,38 +1,33 @@
-import React, { useContext } from 'react';
-import { View, Text } from 'react-native';
-import Section from '../../components/layout/Section';
-import Card from '../../components/ui/Card';
-import Button from '../../components/ui/Button';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import styles from './styles';
+import React, { useContext } from "react";
+import { View, Text } from "react-native";
+import Section from "@/src/components/layout/Section";
+import Card from "@/src/components/ui/Card";
+import Button from "@/src/components/ui/Button";
+import { ThemeContext } from "@/src/contexts/ThemeContext";
 
-const LearningPathSection = ({ 
-  onSelectLevel, 
-  onViewProgress 
-}) => {
-  const { colors } = useContext(ThemeContext);
+const LearningPathSection = ({ onSelectLevel, onViewProgress }) => {
+  // Récupération sécurisée du contexte
+  const themeContext = useContext(ThemeContext);
+
+  // Utilisation de valeurs par défaut si le contexte est undefined
+  const colors = themeContext?.colors || {
+    primary: "#5E60CE", // Couleur par défaut
+    background: "#FFFFFF",
+  };
 
   return (
     <Section
       title="Learning Path"
       actionText="Select Level"
       onActionPress={onSelectLevel}
-      style={styles.sectionContainer}
     >
-      <Card
-        style={[styles.learningPathCard, { backgroundColor: colors.primary }]}
-        contentStyle={styles.learningPathContent}
-      >
-        <View style={styles.learningPathTextContainer}>
-          <Text style={styles.learningPathTitle}>
-            Start Your English Journey
-          </Text>
-          <Text style={styles.learningPathSubtitle}>
-            Choose a level from beginner to advanced
-          </Text>
+      <Card style={{ backgroundColor: colors.primary }}>
+        <View>
+          <Text>Start Your English Journey</Text>
+          <Text>Choose a level from beginner to advanced</Text>
         </View>
-        <View style={styles.learningPathIconContainer}>
-          <Text style={styles.learningPathIcon}>🌐</Text>
+        <View>
+          <Text>🌐</Text>
         </View>
       </Card>
 
@@ -41,7 +36,6 @@ const LearningPathSection = ({
         variant="outlined"
         color="primary"
         fullWidth
-        style={styles.viewProgressButton}
         onPress={onViewProgress}
       />
     </Section>

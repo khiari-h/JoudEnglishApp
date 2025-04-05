@@ -1,13 +1,19 @@
-import React, { useContext } from 'react';
-import { View, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import Header from '../../components/layout/Header';
-import JoudLogo from './JoudLogo';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import styles from './styles';
+import React, { useContext } from "react";
+import { View, Text } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import Header from "../../../../components/layout/Header";
+import JoudLogo from "../JoudLogo";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
 
 const DashboardHeader = ({ name, streak }) => {
-  const { colors } = useContext(ThemeContext);
+  // Récupération sécurisée du contexte
+  const themeContext = useContext(ThemeContext);
+
+  // Utilisation de valeurs par défaut si le contexte est undefined
+  const colors = themeContext?.colors || {
+    primary: "#5E60CE", // Couleur par défaut
+    background: "#FFFFFF",
+  };
 
   return (
     <Header
@@ -15,16 +21,16 @@ const DashboardHeader = ({ name, streak }) => {
       showBackButton={false}
       backgroundColor={colors.primary}
       rightComponent={
-        <View style={styles.headerTop}>
+        <View>
           <JoudLogo />
         </View>
       }
     >
-      <View style={styles.welcomeContainer}>
-        <Text style={styles.welcomeText}>Welcome back, {name}!</Text>
-        <View style={styles.streakContainer}>
+      <View>
+        <Text>Welcome back, {name}!</Text>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Ionicons name="flame" size={24} color="#FFB830" />
-          <Text style={styles.streakText}>{streak} day streak!</Text>
+          <Text>{streak} day streak!</Text>
         </View>
       </View>
     </Header>

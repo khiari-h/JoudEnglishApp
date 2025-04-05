@@ -1,27 +1,36 @@
-import React, { useState, useContext } from 'react';
-import { View, Text, FlatList, Animated } from 'react-native';
-import Section from '../../components/layout/Section';
-import Card from '../../components/ui/Card';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import styles from './styles';
+import React, { useState, useContext } from "react";
+import { View, Text, FlatList, Animated } from "react-native";
+import Section from "@/src/components/layout/Section";
+import Card from "@/src/components/ui/Card";
+import { ThemeContext } from "@/src/contexts/ThemeContext";
 
 const LanguageTipsCarousel = ({ tips }) => {
-  const { colors } = useContext(ThemeContext);
+  // Récupération sécurisée du contexte
+  const themeContext = useContext(ThemeContext);
+
+  // Utilisation de valeurs par défaut si le contexte est undefined
+  const colors = themeContext?.colors || {
+    primary: "#5E60CE", // Couleur par défaut
+    background: "#FFFFFF",
+  };
+
   const [activeTipIndex, setActiveTipIndex] = useState(0);
   const scrollX = React.useRef(new Animated.Value(0)).current;
 
   const renderDotIndicators = () => {
     return (
-      <View style={styles.dotIndicatorContainer}>
+      <View style={{ flexDirection: "row", justifyContent: "center" }}>
         {tips.map((_, index) => (
           <View
             key={index}
-            style={[
-              styles.dot,
-              {
-                backgroundColor: index === activeTipIndex ? colors.primary : "#D1D5DB",
-              },
-            ]}
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: 4,
+              marginHorizontal: 4,
+              backgroundColor:
+                index === activeTipIndex ? colors.primary : "#D1D5DB",
+            }}
           />
         ))}
       </View>
@@ -29,10 +38,7 @@ const LanguageTipsCarousel = ({ tips }) => {
   };
 
   return (
-    <Section 
-      title="Language Tips" 
-      style={styles.sectionContainer}
-    >
+    <Section title="Language Tips">
       <FlatList
         data={tips}
         horizontal
@@ -44,23 +50,19 @@ const LanguageTipsCarousel = ({ tips }) => {
           { useNativeDriver: false }
         )}
         onMomentumScrollEnd={(event) => {
-          const index = Math.round(
-            event.nativeEvent.contentOffset.x / (styles.tipCardContainer.width || 300)
-          );
+          const index = Math.round(event.nativeEvent.contentOffset.x / 300);
           setActiveTipIndex(index);
         }}
-        snapToInterval={styles.tipCardContainer.width || 300}
+        snapToInterval={300}
         decelerationRate="fast"
-        contentContainerStyle={styles.tipsContainer}
         renderItem={({ item }) => (
-          <View style={styles.tipCardContainer}>
+          <View>
             <Card
               title={item.title}
               headerIcon={item.icon}
               headerIconColor={colors.primary}
-              style={styles.tipCard}
             >
-              <Text style={styles.tipDescription}>{item.description}</Text>
+              <Text>{item.description}</Text>
             </Card>
           </View>
         )}

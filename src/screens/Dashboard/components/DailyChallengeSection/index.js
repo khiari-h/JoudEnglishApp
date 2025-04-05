@@ -1,32 +1,31 @@
-import React, { useContext } from 'react';
-import { View, Text } from 'react-native';
-import Section from '../../components/layout/Section';
-import Card from '../../components/ui/Card';
-import Button from '../../components/ui/Button';
-import ProgressBar from '../../components/ui/ProgressBar';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import styles from './styles';
+import React, { useContext } from "react";
+import { View, Text } from "react-native";
+import Section from "@/src/components/layout/Section";
+import Card from "@/src/components/ui/Card";
+import Button from "@/src/components/ui/Button";
+import ProgressBar from "@/src/components/ui/ProgressBar";
+import { ThemeContext } from "@/src/contexts/ThemeContext";
 
-const DailyChallengeSection = ({ 
-  challenge, 
-  onStartChallenge 
-}) => {
-  const { colors } = useContext(ThemeContext);
+const DailyChallengeSection = ({ challenge, onStartChallenge }) => {
+  // Récupération sécurisée du contexte
+  const themeContext = useContext(ThemeContext);
+
+  // Utilisation de valeurs par défaut si le contexte est undefined
+  const colors = themeContext?.colors || {
+    primary: "#5E60CE", // Couleur par défaut
+    background: "#FFFFFF",
+  };
 
   return (
     <Section
       title="Today's Challenge"
       actionText="Tomorrow's Challenge →"
       onActionPress={() => {}}
-      style={styles.sectionContainer}
     >
       <Card
         title={challenge.title}
         subtitle={challenge.description}
-        style={[
-          styles.dailyChallengeCard,
-          { borderLeftColor: challenge.color, borderLeftWidth: 4 },
-        ]}
+        style={{ borderLeftColor: challenge.color, borderLeftWidth: 4 }}
         headerIcon={challenge.icon}
         headerIconColor={challenge.color}
         footer={
@@ -35,18 +34,16 @@ const DailyChallengeSection = ({
             color={challenge.color}
             variant="filled"
             fullWidth
-            style={styles.startChallengeButton}
             onPress={onStartChallenge}
           />
         }
-        contentStyle={styles.challengeContent}
       >
-        <View style={styles.progressContainer}>
-          <Text style={styles.progressText}>
+        <View>
+          <Text>
             {challenge.progress}/{challenge.total}
           </Text>
-          <ProgressBar 
-            progress={(challenge.progress / challenge.total) * 100} 
+          <ProgressBar
+            progress={(challenge.progress / challenge.total) * 100}
             fillColor={challenge.color}
             height={8}
           />

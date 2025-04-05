@@ -1,18 +1,22 @@
-import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import Modal from '../../components/ui/Modal';
-import Card from '../../components/ui/Card';
-import ProgressBar from '../../components/ui/ProgressBar';
-import Badge from '../../components/ui/Badge';
-import Button from '../../components/ui/Button';
-import styles from './styles';
+import React, { useContext } from "react";
+import { View, ScrollView } from "react-native";
+import Modal from "@/src/components/ui/Modal";
+import Card from "@/src/components/ui/Card";
+import ProgressBar from "@/src/components/ui/ProgressBar";
+import Badge from "@/src/components/ui/Badge";
+import Button from "@/src/components/ui/Button";
+import { ThemeContext } from "@/src/contexts/ThemeContext";
 
-const LevelProgressModal = ({ 
-  visible, 
-  levels, 
-  onClose, 
-  onSelectLevel 
-}) => {
+const LevelProgressModal = ({ visible, levels, onClose, onSelectLevel }) => {
+  // Récupération sécurisée du contexte
+  const themeContext = useContext(ThemeContext);
+
+  // Utilisation de valeurs par défaut si le contexte est undefined
+  const colors = themeContext?.colors || {
+    primary: "#5E60CE", // Couleur par défaut
+    background: "#FFFFFF",
+  };
+
   return (
     <Modal
       visible={visible}
@@ -21,19 +25,17 @@ const LevelProgressModal = ({
       position="bottom"
       scrollable
     >
-      <ScrollView style={styles.levelsScrollView}>
+      <ScrollView>
         {levels.map((level) => (
           <Card
             key={level.id}
             title={level.title}
-            style={styles.levelCard}
             onPress={() => {
               onClose();
               onSelectLevel(level.id.toUpperCase());
             }}
-            contentStyle={styles.levelCardContent}
           >
-            <View style={styles.levelProgressContainer}>
+            <View>
               <ProgressBar
                 progress={level.progress}
                 fillColor={level.color}
@@ -44,10 +46,7 @@ const LevelProgressModal = ({
             <Badge
               label={level.id.toUpperCase()}
               color="primary"
-              style={[
-                styles.levelBadge,
-                { backgroundColor: level.color },
-              ]}
+              style={{ backgroundColor: level.color }}
             />
           </Card>
         ))}
@@ -59,7 +58,6 @@ const LevelProgressModal = ({
         color="primary"
         fullWidth
         onPress={onClose}
-        style={styles.closeModalButton}
       />
     </Modal>
   );

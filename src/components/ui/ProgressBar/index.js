@@ -1,7 +1,7 @@
 // src/components/ui/ProgressBar/index.js
-import React, { useEffect, useRef } from 'react';
-import { View, Text, Animated } from 'react-native';
-import styles from './styles';
+import React, { useEffect, useRef } from "react";
+import { View, Text, Animated } from "react-native";
+import styles from "./style";
 
 /**
  * Composant ProgressBar pour afficher une barre de progression
@@ -13,23 +13,23 @@ const ProgressBar = ({
   showValue = false,
   total = 100,
   height = 8,
-  backgroundColor = '#E5E7EB',
-  fillColor = '#5E60CE',
+  backgroundColor = "#E5E7EB",
+  fillColor = "#5E60CE",
   borderRadius = 4,
   animated = true,
   animationDuration = 500,
   label,
-  labelPosition = 'top', // 'top', 'left', 'right', 'none'
+  labelPosition = "top", // 'top', 'left', 'right', 'none'
   style,
   valueFormatter = (value, total) => `${value}/${total}`,
   percentageFormatter = (percentage) => `${Math.round(percentage)}%`,
 }) => {
   // Calculer le pourcentage validé
   const validProgress = Math.min(Math.max(progress, 0), 100);
-  
+
   // Animation de la barre de progression
   const progressAnim = useRef(new Animated.Value(0)).current;
-  
+
   // Effet pour animer la barre de progression
   useEffect(() => {
     if (animated) {
@@ -42,48 +42,44 @@ const ProgressBar = ({
       progressAnim.setValue(validProgress);
     }
   }, [validProgress, animated, animationDuration]);
-  
+
   // Largeur animée de la barre de remplissage
   const width = progressAnim.interpolate({
     inputRange: [0, 100],
-    outputRange: ['0%', '100%'],
+    outputRange: ["0%", "100%"],
   });
-  
+
   // Composants label, valeur et pourcentage
   const renderLabel = () => {
     if (!label) return null;
-    
-    return (
-      <Text style={styles.label}>{label}</Text>
-    );
+
+    return <Text style={styles.label}>{label}</Text>;
   };
-  
+
   const renderValue = () => {
     if (!showValue) return null;
-    
+
     const calculatedValue = Math.round((validProgress / 100) * total);
-    
+
     return (
-      <Text style={styles.value}>
-        {valueFormatter(calculatedValue, total)}
-      </Text>
+      <Text style={styles.value}>{valueFormatter(calculatedValue, total)}</Text>
     );
   };
-  
+
   const renderPercentage = () => {
     if (!showPercentage) return null;
-    
+
     return (
       <Text style={styles.percentage}>
         {percentageFormatter(validProgress)}
       </Text>
     );
   };
-  
+
   // Déterminer le contenu au-dessus/à côté de la barre de progression
   const renderTopContent = () => {
-    if (labelPosition !== 'top') return null;
-    
+    if (labelPosition !== "top") return null;
+
     return (
       <View style={styles.topContentContainer}>
         {renderLabel()}
@@ -94,16 +90,16 @@ const ProgressBar = ({
       </View>
     );
   };
-  
+
   // Déterminer le contenu à gauche/droite de la barre de progression
   const renderSideContent = () => {
-    if (labelPosition !== 'left' && labelPosition !== 'right') {
+    if (labelPosition !== "left" && labelPosition !== "right") {
       return {
         left: null,
         right: null,
       };
     }
-    
+
     const labelComponent = renderLabel();
     const valueComponent = (
       <View style={styles.inlineValuesContainer}>
@@ -111,8 +107,8 @@ const ProgressBar = ({
         {renderPercentage()}
       </View>
     );
-    
-    if (labelPosition === 'left') {
+
+    if (labelPosition === "left") {
       return {
         left: labelComponent,
         right: valueComponent,
@@ -124,27 +120,28 @@ const ProgressBar = ({
       };
     }
   };
-  
+
   const { left, right } = renderSideContent();
-  
+
   return (
     <View style={[styles.container, style]}>
       {/* Contenu au-dessus (si labelPosition est 'top') */}
       {renderTopContent()}
-      
+
       <View style={styles.barContainer}>
         {/* Contenu à gauche (si labelPosition est 'left' ou 'right') */}
         {left}
-        
+
         {/* Barre de progression */}
-        <View 
+        <View
           style={[
-            styles.progressBarContainer, 
+            styles.progressBarContainer,
             { height, backgroundColor, borderRadius },
-            (labelPosition === 'left' || labelPosition === 'right') && styles.flex1,
+            (labelPosition === "left" || labelPosition === "right") &&
+              styles.flex1,
           ]}
         >
-          <Animated.View 
+          <Animated.View
             style={[
               styles.progressFill,
               {
@@ -155,7 +152,7 @@ const ProgressBar = ({
             ]}
           />
         </View>
-        
+
         {/* Contenu à droite (si labelPosition est 'left' ou 'right') */}
         {right}
       </View>

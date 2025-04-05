@@ -1,19 +1,19 @@
 // src/components/ui/Modal/index.js
-import React from 'react';
-import { 
-  Modal as RNModal, 
-  View, 
-  Text, 
-  TouchableOpacity, 
+import React from "react";
+import {
+  Modal as RNModal,
+  View,
+  Text,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   Animated,
   Dimensions,
   ScrollView,
   KeyboardAvoidingView,
-  Platform
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import styles from './styles';
+  Platform,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import styles from "./style";
 
 /**
  * Composant Modal personnalisé avec plusieurs variantes et animations
@@ -24,8 +24,8 @@ const Modal = ({
   title,
   children,
   footer,
-  position = 'center', // 'center', 'bottom', 'top'
-  animationType = 'fade', // 'none', 'slide', 'fade', 'custom'
+  position = "center", // 'center', 'bottom', 'top'
+  animationType = "fade", // 'none', 'slide', 'fade', 'custom'
   closeOnBackdropPress = true,
   showCloseButton = true,
   width,
@@ -33,7 +33,7 @@ const Modal = ({
   maxHeight,
   fullScreen = false,
   transparent = true,
-  backdropColor = 'rgba(0, 0, 0, 0.5)',
+  backdropColor = "rgba(0, 0, 0, 0.5)",
   backdropOpacity = 0.5,
   contentContainerStyle,
   headerStyle,
@@ -45,10 +45,10 @@ const Modal = ({
 }) => {
   // Animation personnalisée
   const [animation] = React.useState(new Animated.Value(0));
-  
+
   // Exécuter l'animation personnalisée lorsque visible change
   React.useEffect(() => {
-    if (animationType === 'custom' && customAnimation) {
+    if (animationType === "custom" && customAnimation) {
       Animated.timing(animation, {
         toValue: visible ? 1 : 0,
         duration: 300,
@@ -56,56 +56,56 @@ const Modal = ({
       }).start();
     }
   }, [visible, animationType, customAnimation]);
-  
+
   // Gérer le clic sur l'arrière-plan
   const handleBackdropPress = () => {
     if (closeOnBackdropPress && onClose) {
       onClose();
     }
   };
-  
+
   // Calcul de la largeur de la modal
   const getModalWidth = () => {
-    if (fullScreen) return '100%';
+    if (fullScreen) return "100%";
     if (width) return width;
-    
-    const screenWidth = Dimensions.get('window').width;
+
+    const screenWidth = Dimensions.get("window").width;
     switch (position) {
-      case 'bottom':
-      case 'top':
-        return '100%';
-      case 'center':
+      case "bottom":
+      case "top":
+        return "100%";
+      case "center":
       default:
         return Math.min(screenWidth - 48, 480);
     }
   };
-  
+
   // Calcul de la hauteur de la modal
   const getModalHeight = () => {
-    if (fullScreen) return '100%';
+    if (fullScreen) return "100%";
     if (height) return height;
-    return 'auto';
+    return "auto";
   };
-  
+
   // Position de la modal
   const getPositionStyle = () => {
     switch (position) {
-      case 'bottom':
+      case "bottom":
         return styles.bottomPosition;
-      case 'top':
+      case "top":
         return styles.topPosition;
-      case 'center':
+      case "center":
       default:
         return styles.centerPosition;
     }
   };
-  
+
   // Style d'animation personnalisée
   const getCustomAnimationStyle = () => {
-    if (animationType !== 'custom' || !customAnimation) return {};
-    
+    if (animationType !== "custom" || !customAnimation) return {};
+
     switch (position) {
-      case 'bottom':
+      case "bottom":
         return {
           transform: [
             {
@@ -116,7 +116,7 @@ const Modal = ({
             },
           ],
         };
-      case 'top':
+      case "top":
         return {
           transform: [
             {
@@ -127,7 +127,7 @@ const Modal = ({
             },
           ],
         };
-      case 'center':
+      case "center":
       default:
         return {
           opacity: animation,
@@ -142,7 +142,7 @@ const Modal = ({
         };
     }
   };
-  
+
   // Construction du contenu de la modal
   const renderModalContent = () => {
     const modalContent = (
@@ -155,7 +155,7 @@ const Modal = ({
             height: getModalHeight(),
             maxHeight: maxHeight,
           },
-          animationType === 'custom' && getCustomAnimationStyle(),
+          animationType === "custom" && getCustomAnimationStyle(),
           contentContainerStyle,
         ]}
       >
@@ -174,10 +174,10 @@ const Modal = ({
             )}
           </View>
         )}
-        
+
         {/* Corps */}
         {scrollable ? (
-          <ScrollView 
+          <ScrollView
             style={[styles.scrollableBody, bodyStyle]}
             contentContainerStyle={styles.scrollableContent}
             showsVerticalScrollIndicator={true}
@@ -185,24 +185,18 @@ const Modal = ({
             {children}
           </ScrollView>
         ) : (
-          <View style={[styles.body, bodyStyle]}>
-            {children}
-          </View>
+          <View style={[styles.body, bodyStyle]}>{children}</View>
         )}
-        
+
         {/* Pied de page */}
-        {footer && (
-          <View style={[styles.footer, footerStyle]}>
-            {footer}
-          </View>
-        )}
+        {footer && <View style={[styles.footer, footerStyle]}>{footer}</View>}
       </Animated.View>
     );
-    
+
     // Envelopper dans KeyboardAvoidingView si nécessaire
     return avoidKeyboard ? (
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardAvoidingView}
       >
         {modalContent}
@@ -211,25 +205,20 @@ const Modal = ({
       modalContent
     );
   };
-  
+
   return (
     <RNModal
       visible={visible}
       transparent={transparent}
       onRequestClose={onClose}
-      animationType={animationType === 'custom' ? 'none' : animationType}
+      animationType={animationType === "custom" ? "none" : animationType}
     >
-      <View
-        style={[
-          styles.modalContainer,
-          { backgroundColor: backdropColor },
-        ]}
-      >
+      <View style={[styles.modalContainer, { backgroundColor: backdropColor }]}>
         {/* Touche de l'arrière-plan pour fermer */}
         <TouchableWithoutFeedback onPress={handleBackdropPress}>
           <View style={styles.backdrop} />
         </TouchableWithoutFeedback>
-        
+
         {/* Contenu de la modal */}
         {renderModalContent()}
       </View>
@@ -238,4 +227,3 @@ const Modal = ({
 };
 
 export default Modal;
-

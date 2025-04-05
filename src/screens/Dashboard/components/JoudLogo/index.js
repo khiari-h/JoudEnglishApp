@@ -1,6 +1,5 @@
-import React from 'react';
-import { View, Text, Animated } from 'react-native';
-import styles from './styles';
+import React from "react";
+import { View, Text, Animated } from "react-native";
 
 const JoudLogo = () => {
   const scaleAnim = React.useRef(new Animated.Value(1)).current;
@@ -27,13 +26,11 @@ const JoudLogo = () => {
   }, []);
 
   return (
-    <View style={styles.logoContainer}>
-      <Animated.View
-        style={[styles.logoBackground, { transform: [{ scale: scaleAnim }] }]}
-      >
-        <Text style={styles.logoText}>JOUD</Text>
+    <View>
+      <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
+        <Text>JOUD</Text>
       </Animated.View>
-      <Text style={styles.logoTagline}>English Made Easy</Text>
+      <Text>English Made Easy</Text>
     </View>
   );
 };

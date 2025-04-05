@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, ScrollView, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Contextes
-import { ThemeContext } from "../../contexts/ThemeContext";
-import { ProgressContext } from "../../contexts/ProgressContext";
+import { ThemeContext } from "@/src/contexts/ThemeContext";
+import { ProgressContext } from "@/src/contexts/ProgressContext";
 
 // Composants Dashboard
 import DashboardHeader from "./components/DashboardHeader";
@@ -15,19 +15,29 @@ import LanguageTipsCarousel from "./components/LanguageTipsCarousel";
 import LevelProgressModal from "./components/LevelProgressModal";
 
 // Hooks personnalisés
-import { useStaggeredAnimation } from "../../hooks/useAnimation";
+import { useStaggeredAnimation } from "@/src/hooks/useAnimation";
 
 // Constantes et utilitaires
-import { LANGUAGE_LEVELS, EXERCISE_TYPES } from "../../utils/constants";
-import { formatRelativeTime } from "../../utils/formatters";
-
-// Styles
-import styles from "./style";
+import { LANGUAGE_LEVELS, EXERCISE_TYPES } from "@/src/utils/constants";
+import { formatRelativeTime } from "@/src/utils/formatters";
 
 const Dashboard = ({ route }) => {
   const navigation = useNavigation();
-  const { colors } = useContext(ThemeContext);
-  const { progress, updateStreak } = useContext(ProgressContext);
+
+  // Récupération sécurisée des contextes
+  const themeContext = useContext(ThemeContext);
+  const progressContext = useContext(ProgressContext);
+
+  // Valeurs par défaut sécurisées
+  const colors = themeContext?.colors || {
+    background: "#FFFFFF",
+    primary: "#000000",
+  };
+  const progress = progressContext?.progress || {};
+  const updateStreak = progressContext?.updateStreak || (() => {});
+
+  // États
+  const [showLevelProgress, setShowLevelProgress] = useState(false);
 
   // Paramètres du profil
   const { name = "User", streak = 0 } = route?.params || {};
@@ -38,7 +48,7 @@ const Dashboard = ({ route }) => {
   // Mettre à jour le streak
   useEffect(() => {
     updateStreak();
-  }, []);
+  }, [updateStreak]);
 
   // Dernière activité de l'utilisateur
   const getLastActivity = () => {
@@ -85,7 +95,6 @@ const Dashboard = ({ route }) => {
       total: 5,
       color: "#5390D9",
     },
-    // Autres défis...
   ];
 
   // Sélection du défi du jour
@@ -101,7 +110,6 @@ const Dashboard = ({ route }) => {
         "Speaking out loud helps improve pronunciation and builds confidence.",
       icon: "bulb-outline",
     },
-    // Autres astuces...
   ];
 
   // Niveaux d'apprentissage
@@ -116,9 +124,6 @@ const Dashboard = ({ route }) => {
       };
     });
 
-  // États pour la modal de progression
-  const [showLevelProgress, setShowLevelProgress] = React.useState(false);
-
   // Gestionnaires de navigation
   const navigateToLastActivity = () => {
     const lastActivity = getLastActivity();
@@ -132,26 +137,20 @@ const Dashboard = ({ route }) => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar barStyle="light-content" />
 
-      {/* En-tête du Dashboard */}
       <DashboardHeader name={name} streak={streak} />
 
-      <ScrollView
-        style={styles.scrollContainer}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Dernière activité */}
-        <View style={[styles.sectionSpacing, animationStyles[0]]}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={animationStyles[0]}>
           <LastActivitySection
             lastActivity={getLastActivity()}
             onPress={navigateToLastActivity}
           />
         </View>
 
-        {/* Défi quotidien */}
-        <View style={[styles.sectionSpacing, animationStyles[1]]}>
+        <View style={animationStyles[1]}>
           <DailyChallengeSection
             challenge={todaysChallenge}
             onStartChallenge={() => {
@@ -160,24 +159,20 @@ const Dashboard = ({ route }) => {
           />
         </View>
 
-        {/* Parcours d'apprentissage */}
-        <View style={[styles.sectionSpacing, animationStyles[2]]}>
+        <View style={animationStyles[2]}>
           <LearningPathSection
             onSelectLevel={() => navigation.navigate("LevelSelection")}
             onViewProgress={() => setShowLevelProgress(true)}
           />
         </View>
 
-        {/* Astuces linguistiques */}
-        <View style={[styles.sectionSpacing, animationStyles[3]]}>
+        <View style={animationStyles[3]}>
           <LanguageTipsCarousel tips={languageTips} />
         </View>
 
-        {/* Espace en bas */}
-        <View style={styles.bottomPadding} />
+        <View style={{ height: 20 }} />
       </ScrollView>
 
-      {/* Modal de progression des niveaux */}
       <LevelProgressModal
         visible={showLevelProgress}
         levels={getAllLearningLevels()}

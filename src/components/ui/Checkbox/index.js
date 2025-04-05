@@ -1,14 +1,8 @@
 // src/components/ui/Checkbox/index.js
-import React, { useState, useEffect } from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
-  Animated, 
-  Easing 
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import styles from './styles';
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, Animated, Easing } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import styles from "./style";
 
 /**
  * Composant Checkbox pour les cases à cocher
@@ -18,24 +12,24 @@ const Checkbox = ({
   checked = false,
   onChange,
   label,
-  
+
   // Apparence
-  size = 'medium', // 'small', 'medium', 'large'
-  color = 'primary', // 'primary', 'secondary', 'success', 'warning', 'danger', 'info'
-  variant = 'default', // 'default', 'outlined', 'filled'
-  shape = 'rounded', // 'rounded', 'square', 'circle'
-  
+  size = "medium", // 'small', 'medium', 'large'
+  color = "primary", // 'primary', 'secondary', 'success', 'warning', 'danger', 'info'
+  variant = "default", // 'default', 'outlined', 'filled'
+  shape = "rounded", // 'rounded', 'square', 'circle'
+
   // Options
   indeterminate = false,
   disabled = false,
   error = false,
   required = false,
-  
+
   // Style
   style,
   labelStyle,
   iconColor,
-  
+
   // Props additionnelles
   testID,
   accessibilityLabel,
@@ -44,15 +38,15 @@ const Checkbox = ({
 }) => {
   // État local pour gérer la case cochée
   const [isChecked, setIsChecked] = useState(checked);
-  
+
   // Animation pour le check
   const scaleAnim = React.useRef(new Animated.Value(0)).current;
-  
+
   // Mise à jour de l'état lorsque la prop checked change
   useEffect(() => {
     setIsChecked(checked);
   }, [checked]);
-  
+
   // Animation lorsque l'état change
   useEffect(() => {
     Animated.timing(scaleAnim, {
@@ -62,50 +56,50 @@ const Checkbox = ({
       useNativeDriver: true,
     }).start();
   }, [isChecked, indeterminate]);
-  
+
   // Définition des couleurs pour chaque type
   const colors = {
-    primary: '#5E60CE',
-    secondary: '#6B7280',
-    success: '#10B981',
-    warning: '#F59E0B',
-    danger: '#EF4444',
-    info: '#3B82F6',
+    primary: "#5E60CE",
+    secondary: "#6B7280",
+    success: "#10B981",
+    warning: "#F59E0B",
+    danger: "#EF4444",
+    info: "#3B82F6",
   };
-  
+
   // Couleur de base
   const baseColor = error ? colors.danger : colors[color] || colors.primary;
-  
+
   // Gérer le changement d'état
   const handlePress = () => {
     if (disabled) return;
-    
+
     const newValue = !isChecked;
     setIsChecked(newValue);
-    
+
     if (onChange) {
       onChange(newValue);
     }
   };
-  
+
   // Déterminer les styles de taille
   const getSizeStyles = () => {
     switch (size) {
-      case 'small':
+      case "small":
         return {
           container: styles.smallContainer,
           box: styles.smallBox,
           icon: 12,
           label: styles.smallLabel,
         };
-      case 'large':
+      case "large":
         return {
           container: styles.largeContainer,
           box: styles.largeBox,
           icon: 20,
           label: styles.largeLabel,
         };
-      case 'medium':
+      case "medium":
       default:
         return {
           container: styles.mediumContainer,
@@ -115,71 +109,71 @@ const Checkbox = ({
         };
     }
   };
-  
+
   // Déterminer les styles de variante
   const getVariantStyles = () => {
     switch (variant) {
-      case 'outlined':
+      case "outlined":
         return {
           container: {},
           box: {
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
             borderWidth: 2,
-            borderColor: disabled ? '#D1D5DB' : baseColor,
+            borderColor: disabled ? "#D1D5DB" : baseColor,
           },
         };
-      case 'filled':
+      case "filled":
         return {
           container: {},
           box: {
-            backgroundColor: disabled ? '#E5E7EB' : '#F3F4F6',
+            backgroundColor: disabled ? "#E5E7EB" : "#F3F4F6",
             borderWidth: 0,
           },
         };
-      case 'default':
+      case "default":
       default:
         return {
           container: {},
           box: {
-            backgroundColor: 'white',
+            backgroundColor: "white",
             borderWidth: 2,
-            borderColor: disabled ? '#D1D5DB' : baseColor,
+            borderColor: disabled ? "#D1D5DB" : baseColor,
           },
         };
     }
   };
-  
+
   // Déterminer les styles de forme
   const getShapeStyles = () => {
     switch (shape) {
-      case 'circle':
+      case "circle":
         return {
           borderRadius: 50,
         };
-      case 'square':
+      case "square":
         return {
           borderRadius: 0,
         };
-      case 'rounded':
+      case "rounded":
       default:
         return {
           borderRadius: 4,
         };
     }
   };
-  
+
   const sizeStyles = getSizeStyles();
   const variantStyles = getVariantStyles();
   const shapeStyles = getShapeStyles();
-  
+
   // Icône à afficher en fonction de l'état
   const getIcon = () => {
     if (indeterminate) {
-      return 'remove';
+      return "remove";
     }
-    return 'checkmark';
+    return "checkmark";
   };
-  
+
   return (
     <TouchableOpacity
       style={[
@@ -203,7 +197,7 @@ const Checkbox = ({
           variantStyles.box,
           shapeStyles,
           (isChecked || indeterminate) && {
-            backgroundColor: disabled ? '#D1D5DB' : baseColor,
+            backgroundColor: disabled ? "#D1D5DB" : baseColor,
           },
         ]}
       >
@@ -219,15 +213,15 @@ const Checkbox = ({
           <Ionicons
             name={getIcon()}
             size={sizeStyles.icon}
-            color={iconColor || 'white'}
+            color={iconColor || "white"}
           />
         </Animated.View>
       </View>
-      
+
       {(label || children) && (
         <View style={styles.labelContainer}>
           {label && (
-            <Text 
+            <Text
               style={[
                 styles.label,
                 sizeStyles.label,
