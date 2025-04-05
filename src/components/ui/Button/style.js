@@ -1,5 +1,5 @@
-// src/components/ui/Button/styles.js
-import { StyleSheet } from 'react-native';
+// src/components/ui/Button/style.js
+import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
+    overflow: 'hidden', // Important pour les effets ripple sur Android
   },
   fullWidth: {
     width: '100%',
@@ -16,16 +17,19 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 6,
+    minHeight: 36,
   },
   mediumButton: {
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 8,
+    minHeight: 44,
   },
   largeButton: {
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 10,
+    minHeight: 52,
   },
   // Styles de texte
   text: {
@@ -41,6 +45,10 @@ const styles = StyleSheet.create({
   largeText: {
     fontSize: 18,
   },
+  uppercase: {
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
   // Container pour le contenu
   contentContainer: {
     flexDirection: 'row',
@@ -52,6 +60,24 @@ const styles = StyleSheet.create({
   },
   rightIconContainer: {
     marginLeft: 8,
+  },
+  // Ombre pour les boutons avec élévation
+  withElevation: {
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+  },
+  // Style pour boutons à coins plus arrondis (pill style)
+  rounded: {
+    borderRadius: 50, // Grand rayon pour obtenir un effet "pill"
   },
 });
 

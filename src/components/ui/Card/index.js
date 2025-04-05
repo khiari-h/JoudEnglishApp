@@ -1,11 +1,12 @@
 // src/components/ui/Card/index.js
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { ThemeContext } from "@/src/contexts/ThemeContext";
 import styles from "./style";
 
 /**
- * Composant Card réutilisable avec différentes variantes et options
+ * Composant Card réutilisable avec design amélioré et options supplémentaires
  */
 const Card = ({
   children,
@@ -13,21 +14,36 @@ const Card = ({
   subtitle,
   headerRight,
   headerIcon,
-  headerIconColor = "#5E60CE",
+  headerIconColor,
+  headerIconBackground = true,
   onPress,
   footer,
   footerStyle,
   style,
+  titleStyle,
+  subtitleStyle,
   contentStyle,
   withShadow = true,
   bordered = false,
+  withSideBorder = false,
   elevated = true,
   padding = true,
   margin = true,
+  badge,
+  badgeStyle,
+  badgeTextStyle,
+  isActive = false,
   backgroundColor = "white",
-  borderRadius = 10,
+  borderRadius = 12,
   testID,
 }) => {
+  // Récupération du contexte de thème
+  const themeContext = useContext(ThemeContext);
+  const colors = themeContext?.colors || { primary: "#5E60CE" };
+  
+  // Couleur de l'icône (utilise celle fournie en prop ou la couleur principale du thème)
+  const iconColor = headerIconColor || colors.primary;
+  
   // Déterminer si la carte est cliquable
   const isClickable = !!onPress;
 
@@ -46,29 +62,50 @@ const Card = ({
         styles.container,
         withShadow && styles.shadow,
         bordered && styles.bordered,
+        withSideBorder && [styles.withSideBorder, { borderLeftColor: iconColor }],
         elevated && styles.elevated,
         margin && styles.margin,
+        isActive && [styles.activeCard, { borderColor: iconColor }],
         { backgroundColor, borderRadius },
         style,
       ]}
       testID={testID}
       {...wrapperProps}
     >
+      {/* Badge optionnel */}
+      {badge && (
+        <View style={[styles.cardBadge, { backgroundColor: `${iconColor}15` }, badgeStyle]}>
+          <Text style={[styles.badgeText, { color: iconColor }, badgeTextStyle]}>
+            {badge}
+          </Text>
+        </View>
+      )}
+      
       {/* Header (optionnel) */}
       {showHeader && (
         <View style={styles.header}>
           <View style={styles.headerLeft}>
             {headerIcon && (
-              <Ionicons
-                name={headerIcon}
-                size={20}
-                color={headerIconColor}
-                style={styles.headerIcon}
-              />
+              headerIconBackground ? (
+                <View style={[styles.headerIconContainer, { backgroundColor: `${iconColor}15` }]}>
+                  <Ionicons
+                    name={headerIcon}
+                    size={20}
+                    color={iconColor}
+                  />
+                </View>
+              ) : (
+                <Ionicons
+                  name={headerIcon}
+                  size={20}
+                  color={iconColor}
+                  style={styles.headerIcon}
+                />
+              )
             )}
             <View style={styles.headerTextContainer}>
-              {title && <Text style={styles.title}>{title}</Text>}
-              {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+              {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
+              {subtitle && <Text style={[styles.subtitle, subtitleStyle]}>{subtitle}</Text>}
             </View>
           </View>
 

@@ -1,16 +1,16 @@
 // src/components/ui/Button/index.js
 import React from "react";
-import { TouchableOpacity, Text, ActivityIndicator, View } from "react-native";
+import { Pressable, Text, ActivityIndicator, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
 
 /**
- * Composant Button réutilisable avec différentes variantes et états
+ * Composant Button modernisé utilisant Pressable avec feedback visuel amélioré
  */
 const Button = ({
   title,
   onPress,
-  variant = "filled", // 'filled', 'outlined', 'text', 'icon'
+  variant = "filled", // 'filled', 'outlined', 'text', 'icon', 'tonal'
   size = "medium", // 'small', 'medium', 'large'
   color = "primary", // 'primary', 'secondary', 'success', 'warning', 'danger', 'info'
   fullWidth = false,
@@ -21,8 +21,10 @@ const Button = ({
   iconOnly,
   style,
   textStyle,
-  activeOpacity = 0.7,
   onLongPress,
+  elevation = true, // Ajoute un effet d'élévation sur les boutons filled
+  uppercase = false, // Option pour mettre le texte en majuscules
+  rounded = false, // Option pour des coins plus arrondis
   ...props
 }) => {
   // Définition des couleurs pour chaque type
@@ -52,29 +54,50 @@ const Button = ({
             color: disabled ? "#9CA3AF" : baseColor,
           },
           icon: disabled ? "#9CA3AF" : baseColor,
+          pressed: {
+            backgroundColor: `${baseColor}10`, // 10% d'opacité lors de la pression
+          },
         };
       case "text":
         return {
           button: {
             backgroundColor: "transparent",
             borderWidth: 0,
-            paddingHorizontal: 8,
+            paddingHorizontal: 12,
           },
           text: {
             color: disabled ? "#9CA3AF" : baseColor,
           },
           icon: disabled ? "#9CA3AF" : baseColor,
+          pressed: {
+            backgroundColor: `${baseColor}10`,
+          },
         };
-      case "icon":
+      case "tonal": // Nouvelle variante tonale
         return {
           button: {
-            backgroundColor: disabled ? "#F3F4F6" : `${baseColor}10`,
+            backgroundColor: disabled ? "#F3F4F6" : `${baseColor}15`,
             borderWidth: 0,
-            borderRadius: 24,
-            paddingVertical: 0,
-            paddingHorizontal: 0,
-            width: iconSize,
-            height: iconSize,
+          },
+          text: {
+            color: disabled ? "#9CA3AF" : baseColor,
+          },
+          icon: disabled ? "#9CA3AF" : baseColor,
+          pressed: {
+            backgroundColor: `${baseColor}25`,
+          },
+        };
+      case "icon":
+        const iconSizeValue = sizeStyles?.iconSize || 24;
+        return {
+          button: {
+            backgroundColor: disabled ? "#F3F4F6" : "transparent",
+            borderWidth: 0,
+            borderRadius: iconSizeValue + 16,
+            paddingVertical: 8,
+            paddingHorizontal: 8,
+            minWidth: iconSizeValue + 16,
+            minHeight: iconSizeValue + 16,
             justifyContent: "center",
             alignItems: "center",
           },
@@ -82,6 +105,9 @@ const Button = ({
             color: disabled ? "#9CA3AF" : baseColor,
           },
           icon: disabled ? "#9CA3AF" : baseColor,
+          pressed: {
+            backgroundColor: `${baseColor}10`,
+          },
         };
       case "filled":
       default:
@@ -94,6 +120,9 @@ const Button = ({
             color: "white",
           },
           icon: "white",
+          pressed: {
+            backgroundColor: disabled ? "#E5E7EB" : `${baseColor}DD`, // Légèrement plus foncé quand pressé
+          },
         };
     }
   };
@@ -126,24 +155,40 @@ const Button = ({
     }
   };
 
-  const variantStyles = getVariantStyles();
   const sizeStyles = getSizeStyles();
+  const variantStyles = getVariantStyles();
   const iconSize = sizeStyles.iconSize;
+
+  // Styles d'élévation
+  const elevationStyle = 
+    elevation && variant === "filled" && !disabled 
+      ? styles.withElevation 
+      : {};
+
+  // Styles de coins arrondis
+  const radiusStyle = rounded ? styles.rounded : {};
 
   // Rendu du bouton
   return (
-    <TouchableOpacity
-      style={[
+    <Pressable
+      style={({ pressed }) => [
         styles.button,
         sizeStyles.button,
         variantStyles.button,
         fullWidth && styles.fullWidth,
+        pressed && variantStyles.pressed,
+        elevationStyle,
+        radiusStyle,
         style,
       ]}
       onPress={onPress}
       onLongPress={onLongPress}
-      activeOpacity={activeOpacity}
       disabled={disabled || loading}
+      android_ripple={
+        variant !== "text" && variant !== "outlined"
+          ? { color: `${baseColor}30`, borderless: false }
+          : null
+      }
       {...props}
     >
       {loading ? (
@@ -164,7 +209,6 @@ const Button = ({
               />
             </View>
           )}
-
           {/* Icône pour le bouton icône */}
           {iconOnly && (
             <Ionicons
@@ -173,7 +217,6 @@ const Button = ({
               color={variantStyles.icon}
             />
           )}
-
           {/* Texte du bouton (sauf si bouton icône uniquement) */}
           {!iconOnly && title && (
             <Text
@@ -181,13 +224,14 @@ const Button = ({
                 styles.text,
                 sizeStyles.text,
                 variantStyles.text,
+                uppercase && styles.uppercase,
                 textStyle,
               ]}
+              numberOfLines={1}
             >
               {title}
             </Text>
           )}
-
           {/* Icône droite (si présente) */}
           {rightIcon && !iconOnly && (
             <View style={styles.rightIconContainer}>
@@ -200,7 +244,7 @@ const Button = ({
           )}
         </View>
       )}
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
