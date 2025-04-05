@@ -1,4 +1,3 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -13,21 +12,19 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync(); // Masque l'écran de démarrage une fois les polices chargées
     }
   }, [loaded]);
 
   if (!loaded) {
-    return null;
+    return null; // Attends que les polices soient chargées avant de rendre le contenu
   }
 
   return (
-    <ThemeProvider value={DarkTheme}> {/* Utilisation d'un thème sombre statique */}
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="+not-found" />
       <StatusBar style="auto" />
-    </ThemeProvider>
+    </Stack>
   );
 }
