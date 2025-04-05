@@ -9,17 +9,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingBottom: 16,
   },
-  levelsList: {
-    marginBottom: 20,
-  },
   levelCard: {
     marginBottom: 12,
-    borderLeftWidth: 4,
+    borderRadius: 10,
   },
   levelContent: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingVertical: 8,
   },
   badgeContainer: {
     marginLeft: 12,
@@ -35,12 +33,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 12,
-  },
-  emptyText: {
-    textAlign: 'center',
-    color: '#6B7280',
-    marginVertical: 20,
-    fontSize: 16,
   },
   closeButton: {
     marginTop: 8,
