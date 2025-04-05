@@ -1,10 +1,11 @@
-// src/components/layout/Section/index.js
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { ThemeContext } from "@/src/contexts/ThemeContext";
 import styles from "./style";
 
 /**
- * Composant Section pour diviser le contenu en sections avec titre et action optionnelle
+ * Composant Section modernisé pour diviser le contenu en sections
  */
 const Section = ({
   children,
@@ -12,35 +13,84 @@ const Section = ({
   subtitle,
   action,
   actionText,
+  actionIcon,
   onActionPress,
   style,
   titleStyle,
   subtitleStyle,
   actionTextStyle,
   withSeparator = false,
+  themeColor,
   withMargin = true,
 }) => {
+  // Récupération du contexte de thème
+  const themeContext = useContext(ThemeContext);
+  const colors = themeContext?.colors || { primary: "#5E60CE" };
+
+  // Couleur principale (utilise la couleur passée en prop ou celle du thème)
+  const primaryColor = themeColor || colors.primary;
+
   return (
-    <View style={[styles.container, withMargin && styles.withMargin, style]}>
-      {/* En-tête de section avec titre et action optionnelle */}
-      {(title || action) && (
+    <View style={[styles.container, withMargin && { marginBottom: 24 }, style]}>
+      {/* En-tête de section repensé */}
+      {(title || action || actionText) && (
         <View style={styles.header}>
-          <View style={styles.titleContainer}>
-            {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
+          {title && (
+            <View style={styles.titleContainer}>
+              {/* Indicateur visuel vertical */}
+              <View
+                style={[
+                  styles.titleIndicator,
+                  { backgroundColor: primaryColor },
+                ]}
+              />
 
-            {subtitle && (
-              <Text style={[styles.subtitle, subtitleStyle]}>{subtitle}</Text>
-            )}
-          </View>
+              <View>
+                <Text style={[styles.title, titleStyle]}>
+                  {title.toUpperCase()}
+                </Text>
 
+                {subtitle && (
+                  <Text style={[styles.subtitle, subtitleStyle]}>
+                    {subtitle}
+                  </Text>
+                )}
+              </View>
+            </View>
+          )}
+
+          {/* Bouton d'action (personnalisable avec une icône) */}
           {(action || actionText) && (
-            <TouchableOpacity onPress={onActionPress}>
+            <TouchableOpacity
+              onPress={onActionPress}
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
               {action ? (
                 action
               ) : (
-                <Text style={[styles.actionText, actionTextStyle]}>
-                  {actionText}
-                </Text>
+                <>
+                  <Text
+                    style={[
+                      styles.actionText,
+                      {
+                        color: primaryColor,
+                        backgroundColor: `${primaryColor}10`,
+                      },
+                      actionTextStyle,
+                    ]}
+                  >
+                    {actionText}
+                  </Text>
+
+                  {actionIcon && (
+                    <Ionicons
+                      name={actionIcon}
+                      size={14}
+                      color={primaryColor}
+                      style={{ marginLeft: 4 }}
+                    />
+                  )}
+                </>
               )}
             </TouchableOpacity>
           )}
