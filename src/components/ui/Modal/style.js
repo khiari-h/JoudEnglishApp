@@ -1,4 +1,3 @@
-// src/components/ui/Modal/styles.js
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -6,7 +5,7 @@ const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end', // Changement principal ici
     alignItems: 'center',
   },
   backdrop: {
@@ -15,20 +14,22 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Ajout d'un fond semi-transparent
   },
   contentContainer: {
     backgroundColor: 'white',
     borderRadius: 12,
     overflow: 'hidden',
+    width: SCREEN_WIDTH, // Utilisation de la largeur totale de l'écran
     ...Platform.select({
       ios: {
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 0, height: -2 }, // Ombre vers le haut
         shadowOpacity: 0.25,
         shadowRadius: 4,
       },
       android: {
-        elevation: 5,
+        elevation: 10, // Élévation plus prononcée
       },
     }),
   },
@@ -42,22 +43,24 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
+    width: SCREEN_WIDTH, // Largeur totale de l'écran
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    paddingBottom: Platform.OS === 'ios' ? 34 : 16, // Safe area for iOS
+    paddingBottom: Platform.OS === 'ios' ? 34 : 16, // Safe area pour iOS
   },
   topPosition: {
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
+    width: SCREEN_WIDTH, // Largeur totale de l'écran
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
-    borderBottomLeftRadius: 12,
-    borderBottomRightRadius: 12,
-    paddingTop: Platform.OS === 'ios' ? 44 : 16, // Safe area for iOS
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    paddingTop: Platform.OS === 'ios' ? 44 : 16, // Safe area pour iOS
   },
   header: {
     flexDirection: 'row',
@@ -93,7 +96,7 @@ const styles = StyleSheet.create({
   },
   keyboardAvoidingView: {
     width: '100%',
-    justifyContent: 'center',
+    justifyContent: 'flex-end', // Changement pour aligner en bas
     alignItems: 'center',
   },
 });
