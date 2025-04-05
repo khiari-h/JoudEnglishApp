@@ -16,7 +16,7 @@ export default function TabLayout() {
     >
       {/* Onglet Dashboard */}
       <Tabs.Screen
-        name="dashboard" // Correspond au fichier src/screens/dashboard.js
+        name="dashboard"
         options={{
           title: "Dashboard",
           tabBarIcon: ({ color, size }) => (
@@ -24,9 +24,21 @@ export default function TabLayout() {
           ),
         }}
       />
+      
+      {/* Onglet Level Selection */}
+      <Tabs.Screen
+        name="levelSelection"
+        options={{
+          title: "Level Selection",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="book-outline" color={color} size={size} />
+          ),
+        }}
+      />
+      
       {/* Onglet Home */}
       <Tabs.Screen
-        name="index" // Correspond au fichier src/screens/index.js
+        name="index"
         options={{
           title: "Home",
           tabBarIcon: ({ color, size }) => (

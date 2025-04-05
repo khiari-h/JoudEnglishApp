@@ -1,13 +1,15 @@
-// src/components/sections/LearningPathSection/index.js
 import React, { useContext } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import Section from "@/src/components/layout/Section";
 import Button from "@/src/components/ui/Button";
 import { ThemeContext } from "@/src/contexts/ThemeContext";
 import styles from "./style";
 
-const LearningPathSection = ({ onSelectLevel, onViewProgress }) => {
+const LearningPathSection = ({ onViewProgress }) => {
+  const navigation = useNavigation();
+
   // Récupération sécurisée du contexte
   const themeContext = useContext(ThemeContext);
 
@@ -27,21 +29,22 @@ const LearningPathSection = ({ onSelectLevel, onViewProgress }) => {
     { id: "C2", label: "C2", color: "#F43F5E" },
   ];
 
-  // Fonction pour gérer le clic sur un niveau
-  const handleLevelPress = (levelId) => {
-    onSelectLevel && onSelectLevel(levelId);
-  };
-
   return (
     <Section
       title="Learning Path"
       actionText="Select Level"
-      onActionPress={() => onSelectLevel && onSelectLevel("all")}
+      onActionPress={() => navigation.navigate('LevelSelection')}
     >
       {/* Carte principale avec dégradé */}
-      <TouchableOpacity
-        style={styles.mainCard}
-        onPress={() => onSelectLevel && onSelectLevel("A1")}
+      <Pressable
+        style={({ pressed }) => [
+          styles.mainCard,
+          { 
+            opacity: pressed ? 0.7 : 1,
+            transform: [{ scale: pressed ? 0.98 : 1 }]
+          }
+        ]}
+        onPress={() => navigation.navigate('LevelSelection')}
       >
         <LinearGradient
           colors={[colors.primary, "#7764E4"]}
@@ -62,15 +65,21 @@ const LearningPathSection = ({ onSelectLevel, onViewProgress }) => {
             <Text style={styles.emoji}>🌐</Text>
           </View>
         </View>
-      </TouchableOpacity>
+      </Pressable>
 
       {/* Niveaux CECRL */}
       <View style={styles.levelsContainer}>
         {levels.map((level) => (
-          <TouchableOpacity
+          <Pressable
             key={level.id}
-            style={styles.levelItem}
-            onPress={() => handleLevelPress(level.id)}
+            style={({ pressed }) => [
+              styles.levelItem,
+              { 
+                opacity: pressed ? 0.7 : 1,
+                transform: [{ scale: pressed ? 0.95 : 1 }]
+              }
+            ]}
+            onPress={() => navigation.navigate('LevelSelection')}
           >
             <View 
               style={[
@@ -80,7 +89,7 @@ const LearningPathSection = ({ onSelectLevel, onViewProgress }) => {
             >
               <Text style={styles.levelText}>{level.label}</Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
         ))}
       </View>
 

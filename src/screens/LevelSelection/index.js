@@ -22,7 +22,7 @@ import Header from '../../components/layout/Header';
 import { LANGUAGE_LEVELS } from '../../utils/constants';
 import styles from './styles';
 
-const LevelSelection = () => {
+const LevelSelection = ({ route }) => {
   const navigation = useNavigation();
   const { colors } = useContext(ThemeContext);
   const { progress, isLoading } = useContext(ProgressContext);
