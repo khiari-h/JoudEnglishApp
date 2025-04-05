@@ -29,7 +29,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="levelSelection"
         options={{
-          title: "Level Selection",
+          title: "LevelSelection",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="book-outline" color={color} size={size} />
           ),

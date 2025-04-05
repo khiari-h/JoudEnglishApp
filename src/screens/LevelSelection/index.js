@@ -1,5 +1,3 @@
-
-// src/screens/LevelSelection/index.js
 import React, { useContext } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -20,12 +18,31 @@ import Header from '../../components/layout/Header';
 
 // Constantes et Helpers
 import { LANGUAGE_LEVELS } from '../../utils/constants';
-import styles from './styles';
+import styles from './style';
+
+// Valeurs par défaut pour les contextes
+const DEFAULT_THEME = {
+  colors: {
+    background: '#F9FAFB',
+    primary: '#5E60CE',
+    text: '#1F2937',
+  }
+};
+
+const DEFAULT_PROGRESS = {
+  levels: {},
+  isLoading: false,
+};
 
 const LevelSelection = ({ route }) => {
   const navigation = useNavigation();
-  const { colors } = useContext(ThemeContext);
-  const { progress, isLoading } = useContext(ProgressContext);
+  
+  // Récupération sécurisée des contextes
+  const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
+  const progressContext = useContext(ProgressContext) || DEFAULT_PROGRESS;
+
+  const { colors } = themeContext;
+  const { progress, isLoading } = progressContext;
 
   // Construire le tableau des niveaux avec la progression
   const levels = Object.keys(LANGUAGE_LEVELS).map(levelKey => {
@@ -35,7 +52,7 @@ const LevelSelection = ({ route }) => {
       name: levelKey,
       title: levelInfo.title,
       description: levelInfo.description,
-      progress: progress?.levels[levelKey]?.completed || 0,
+      progress: progress?.levels?.[levelKey]?.completed || 0,
       color: levelInfo.color,
       icon: levelInfo.icon,
     };

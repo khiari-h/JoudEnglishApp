@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { View, Text, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from 'expo-router';
 import { LinearGradient } from "expo-linear-gradient";
 import Section from "@/src/components/layout/Section";
 import Button from "@/src/components/ui/Button";
@@ -8,7 +8,7 @@ import { ThemeContext } from "@/src/contexts/ThemeContext";
 import styles from "./style";
 
 const LearningPathSection = ({ onViewProgress }) => {
-  const navigation = useNavigation();
+  const router = useRouter();
 
   // Récupération sécurisée du contexte
   const themeContext = useContext(ThemeContext);
@@ -33,7 +33,7 @@ const LearningPathSection = ({ onViewProgress }) => {
     <Section
       title="Learning Path"
       actionText="Select Level"
-      onActionPress={() => navigation.navigate('LevelSelection')}
+      onActionPress={() => router.push('/levelSelection')}
     >
       {/* Carte principale avec dégradé */}
       <Pressable
@@ -44,7 +44,7 @@ const LearningPathSection = ({ onViewProgress }) => {
             transform: [{ scale: pressed ? 0.98 : 1 }]
           }
         ]}
-        onPress={() => navigation.navigate('LevelSelection')}
+        onPress={() => router.push('/levelSelection')}
       >
         <LinearGradient
           colors={[colors.primary, "#7764E4"]}
@@ -79,7 +79,7 @@ const LearningPathSection = ({ onViewProgress }) => {
                 transform: [{ scale: pressed ? 0.95 : 1 }]
               }
             ]}
-            onPress={() => navigation.navigate('LevelSelection')}
+            onPress={() => router.push('/levelSelection')}
           >
             <View 
               style={[
