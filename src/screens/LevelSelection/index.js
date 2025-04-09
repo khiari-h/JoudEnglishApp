@@ -1,35 +1,36 @@
-import React, { useContext } from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useContext } from "react";
+import { View, Text, ScrollView } from "react-native";
+// Remplacer useNavigation par router d'Expo Router
+import { router } from "expo-router";
 
 // Importation des routes
-import ROUTES from '../../navigation/routes';
+import { ROUTES } from "../../navigation/routes";
 
 // Contextes
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { ProgressContext } from '../../contexts/ProgressContext';
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { ProgressContext } from "../../contexts/ProgressContext";
 
 // Composants UI
-import Card from '../../components/ui/Card';
-import Button from '../../components/ui/Button';
-import ProgressBar from '../../components/ui/ProgressBar';
-import Badge from '../../components/ui/Badge';
+import Card from "../../components/ui/Card";
+import Button from "../../components/ui/Button";
+import ProgressBar from "../../components/ui/ProgressBar";
+import Badge from "../../components/ui/Badge";
 
 // Composants Layout
-import Container from '../../components/layout/Container';
-import Header from '../../components/layout/Header';
+import Container from "../../components/layout/Container";
+import Header from "../../components/layout/Header";
 
 // Constantes et Helpers
-import { LANGUAGE_LEVELS } from '../../utils/constants';
-import styles from './style';
+import { LANGUAGE_LEVELS } from "../../utils/constants";
+import styles from "./style";
 
 // Valeurs par défaut pour les contextes
 const DEFAULT_THEME = {
   colors: {
-    background: '#F9FAFB',
-    primary: '#5E60CE',
-    text: '#1F2937',
-  }
+    background: "#F9FAFB",
+    primary: "#5E60CE",
+    text: "#1F2937",
+  },
 };
 
 const DEFAULT_PROGRESS = {
@@ -38,8 +39,9 @@ const DEFAULT_PROGRESS = {
 };
 
 const LevelSelection = () => {
-  const navigation = useNavigation();
-  
+  // Enlever useNavigation
+  // const navigation = useNavigation();
+
   // Récupération sécurisée des contextes
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const progressContext = useContext(ProgressContext) || DEFAULT_PROGRESS;
@@ -48,7 +50,7 @@ const LevelSelection = () => {
   const { progress, isLoading } = progressContext;
 
   // Construire le tableau des niveaux avec la progression
-  const levels = Object.keys(LANGUAGE_LEVELS).map(levelKey => {
+  const levels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => {
     const levelInfo = LANGUAGE_LEVELS[levelKey];
     return {
       id: levelKey,
@@ -63,7 +65,13 @@ const LevelSelection = () => {
 
   // Naviguer vers la sélection d'exercice avec le niveau sélectionné
   const handleLevelSelect = (level) => {
-    navigation.navigate(ROUTES.EXERCISE_SELECTION, { level: level.id });
+    console.log("Navigating to level:", level.id);
+
+    // Remplacer navigation.navigate par router.push
+    router.push({
+      pathname: "/(tabs)/exerciseSelection",
+      params: { level: level.id },
+    });
   };
 
   return (
@@ -73,15 +81,9 @@ const LevelSelection = () => {
       statusBarStyle="dark-content"
       backgroundColor={colors.background}
     >
-      <Header 
-        title="Language Levels" 
-        showBackButton 
-      />
-      
-      <ScrollView 
-        style={styles.container} 
-        showsVerticalScrollIndicator={false}
-      >
+      <Header title="Language Levels" showBackButton />
+
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Text style={styles.headerSubtitle}>
             Choose any level to start your learning journey
@@ -94,7 +96,7 @@ const LevelSelection = () => {
               key={level.id}
               style={[
                 styles.levelCard,
-                { borderLeftColor: level.color, borderLeftWidth: 5 }
+                { borderLeftColor: level.color, borderLeftWidth: 5 },
               ]}
               onPress={() => handleLevelSelect(level)}
             >
@@ -119,7 +121,9 @@ const LevelSelection = () => {
                     <Text style={styles.levelTitle}>{level.title}</Text>
                   </View>
 
-                  <Text style={styles.levelDescription}>{level.description}</Text>
+                  <Text style={styles.levelDescription}>
+                    {level.description}
+                  </Text>
 
                   {level.progress > 0 && (
                     <View style={styles.progressContainer}>

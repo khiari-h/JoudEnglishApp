@@ -1,56 +1,41 @@
-// VocabularyExercise/index.js
-import React, { useEffect } from "react";
-import { View, Text, Animated, Alert } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useMemo } from "react";
+import { View, Text, ScrollView, Alert } from "react-native";
+// Remplacer useNavigation par router d'Expo Router
+import { router } from "expo-router";
 
-// Layout components
-import { Container } from "../../../components/Container";
+// Hooks personnalisés
+import useVocabularyProgress from "./hooks/useVocabularyProgress";
+import useExerciseState from "../../../hooks/useExerciseState"; // À créer si nécessaire
 
-// Common exercise components
-import { ExerciseHeader } from "../../../components/exercise-common/ExerciseHeader";
-import { CategorySelector } from "../../../components/exercise-common/CategorySelector";
-import { NavigationButtons } from "../../../components/NavigationButtons";
-import { WordCard } from "../../../components/WordCard";
+// Composants
+import VocabularyHeader from "./VocabularyHeader";
+import VocabularyNavigation from "./VocabularyNavigation";
+import VocabularyWordCard from "./VocabularyWordCard";
+import VocabularyCategorySelector from "./VocabularyCategorySelector";
 
-// Custom hooks
-import { useAnimation } from "../../../hooks/useAnimation";
-import { useExerciseState } from "../../../hooks/useExerciseState";
-import { useVocabularyProgress } from "../../../hooks/useVocabularyProgress";
-import { useTheme } from "../../../hooks/useTheme";
-
-// Components to be created
-import { LearningTipCard } from "./LearningTipCard";
-import { CardIndicatorsList } from "./CardIndicatorsList";
-
-// Import styles
-import { styles } from "./style";
-
-// Import vocabulary data helper
+// Utilitaires
 import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 
 const VocabularyExercise = ({ route }) => {
-  const { level } = route.params || { level: 'A1' };
-  const navigation = useNavigation();
-  
-  // Custom hooks
-  const { getLevelColor } = useTheme();
-  const levelColor = getLevelColor(level);
-  
-  const { fadeAnim, slideAnim, tipFadeAnim, animateTransition } = useAnimation();
-  
-  // Utilisation du hook de progression spécifique au vocabulaire
+  const { level } = route.params;
+  // const navigation = useNavigation();
+
+  // Données de vocabulaire pour ce niveau
+  const vocabularyData = useMemo(() => getVocabularyData(level), [level]);
+
+  // Hooks de gestion d'état
   const {
     completedWords,
     lastPosition,
     loaded,
     markWordAsCompleted,
     saveLastPosition,
-    isWordCompleted,
     calculateCategoryProgress,
     calculateTotalProgress,
-    initializeProgress
+    initializeProgress,
+    resetProgress,
   } = useVocabularyProgress(level);
-  
+
   const {
     selectedCategoryIndex,
     setSelectedCategoryIndex,
@@ -58,203 +43,117 @@ const VocabularyExercise = ({ route }) => {
     setCurrentWordIndex,
     showTranslation,
     setShowTranslation,
-    showTip,
-    setShowTip
-  } = useExerciseState();
+  } = useExerciseState(level);
 
-  // Récupération des données de vocabulaire
-  const vocabularyData = getVocabularyData(level);
-  const categories = vocabularyData.exercises;
-  const currentCategory = categories[selectedCategoryIndex];
-  const currentWord = currentCategory?.words[currentWordIndex];
-  const totalWords = currentCategory?.words.length || 0;
-  
-  // Initialiser la progression et restaurer la dernière position
+  // Initialisation et restauration de la progression
   useEffect(() => {
-    // Initialiser le suivi de progression
     initializeProgress(vocabularyData);
-    
-    // Restaurer la dernière position quand les données sont chargées
+
+    // Restaurer la dernière position si disponible
     if (loaded && lastPosition) {
-      // Vérifier que les indices sont valides
-      if (lastPosition.categoryIndex < categories.length) {
-        setSelectedCategoryIndex(lastPosition.categoryIndex);
-        
-        const category = categories[lastPosition.categoryIndex];
-        if (category && lastPosition.wordIndex < category.words.length) {
-          setCurrentWordIndex(lastPosition.wordIndex);
-        }
-      }
+      setSelectedCategoryIndex(lastPosition.categoryIndex);
+      setCurrentWordIndex(lastPosition.wordIndex);
     }
   }, [loaded, vocabularyData]);
-  
-  // Sauvegarder la position actuelle quand elle change
-  useEffect(() => {
-    if (loaded) {
-      saveLastPosition(selectedCategoryIndex, currentWordIndex);
-    }
-  }, [selectedCategoryIndex, currentWordIndex, loaded, saveLastPosition]);
-  
-  // Animation lors du changement de mot
-  useEffect(() => {
-    animateTransition();
-  }, [currentWordIndex, selectedCategoryIndex, animateTransition]);
 
-  // Handlers
-  const dismissTip = () => setShowTip(false);
-  
-  const toggleTranslation = () => setShowTranslation(!showTranslation);
-  
-  const handleCategoryChange = (index) => {
-    if (index !== selectedCategoryIndex) {
-      setSelectedCategoryIndex(index);
-      setCurrentWordIndex(0);
-      setShowTranslation(false);
+  // Sauvegarde de la progression
+  useEffect(() => {
+    saveLastPosition(selectedCategoryIndex, currentWordIndex);
+  }, [selectedCategoryIndex, currentWordIndex]);
+
+  // AJOUTER CETTE FONCTION: Récupérer le mot actuel
+  const getCurrentWord = () => {
+    try {
+      const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
+      return currentCategory.words[currentWordIndex] || {};
+    } catch (error) {
+      console.error("Error getting current word:", error);
+      return {}; // Retourner un objet vide en cas d'erreur
     }
   };
-  
-  const handlePrevious = () => {
-    if (currentWordIndex > 0) {
-      setCurrentWordIndex(currentWordIndex - 1);
-      setShowTranslation(false);
+
+  // AJOUTER CETTE FONCTION: Vérifier si c'est le dernier mot
+  const isLastWordInExercise = () => {
+    try {
+      const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
+      return currentWordIndex === currentCategory.words.length - 1;
+    } catch (error) {
+      console.error("Error checking if last word:", error);
+      return false;
     }
   };
-  
+
+  // Logique de navigation entre mots/catégories
   const handleNext = () => {
-    // Marquer le mot actuel comme complété
+    const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
+
+    // Marquer le mot comme complété
     markWordAsCompleted(selectedCategoryIndex, currentWordIndex);
-    setShowTranslation(false);
-    
+
+    // Logique de progression dans les mots/catégories
     if (currentWordIndex < currentCategory.words.length - 1) {
-      // Passer au mot suivant dans la même catégorie
+      // Mot suivant dans la même catégorie
       setCurrentWordIndex(currentWordIndex + 1);
     } else {
-      // Fin de la catégorie - chercher la prochaine catégorie non complétée
-      const nextCategoryIndex = findNextCategory();
-      
+      // Fin de catégorie, trouver la prochaine
+      const nextCategoryIndex = findNextUncompletedCategory();
+
       if (nextCategoryIndex === -1) {
-        // Tout est complété
-        Alert.alert("Félicitations", "Tous les exercices de vocabulaire sont terminés !");
-        navigation.goBack();
-      } else {
-        // Demander à passer à la catégorie suivante
+        // Tous les exercices terminés
         Alert.alert(
-          "Catégorie terminée",
-          `Passer à la catégorie ${categories[nextCategoryIndex].title}?`,
-          [
-            { text: "Non", style: "cancel", onPress: () => setCurrentWordIndex(0) },
-            { text: "Oui", onPress: () => {
-              setSelectedCategoryIndex(nextCategoryIndex);
-              setCurrentWordIndex(0);
-            }}
-          ]
+          "Félicitations",
+          "Vous avez terminé tous les exercices de vocabulaire !"
         );
+        // Utiliser router.back() au lieu de navigation.goBack()
+        router.back();
+      } else {
+        setSelectedCategoryIndex(nextCategoryIndex);
+        setCurrentWordIndex(0);
       }
     }
   };
-  
-  // Helper pour trouver la prochaine catégorie non complétée
-  const findNextCategory = () => {
-    for (let i = 0; i < categories.length; i++) {
-      const nextIndex = (selectedCategoryIndex + i + 1) % categories.length;
-      const categoryWords = categories[nextIndex].words;
-      const completedCount = completedWords[nextIndex]?.length || 0;
-      
-      if (completedCount < categoryWords.length) {
+
+  const findNextUncompletedCategory = () => {
+    const totalCategories = vocabularyData.exercises.length;
+    for (let i = 1; i <= totalCategories; i++) {
+      const nextIndex = (selectedCategoryIndex + i) % totalCategories;
+      const category = vocabularyData.exercises[nextIndex];
+      const completedInCategory = completedWords[nextIndex]?.length || 0;
+
+      if (completedInCategory < category.words.length) {
         return nextIndex;
       }
     }
     return -1; // Tout est complété
   };
-  
-  // Calculer la progression pour la catégorie actuelle
-  const progress = calculateCategoryProgress(selectedCategoryIndex, totalWords);
-  
-  // Calculer la progression globale pour l'en-tête
-  const totalProgress = calculateTotalProgress(categories);
 
+  // Rendu principal
   return (
-    <Container style={[styles.container, { backgroundColor: `${levelColor}05` }]}>
-      <ExerciseHeader
-        title="Vocabulary"
+    <View>
+      <VocabularyHeader
         level={level}
-        onBackPress={() => navigation.goBack()}
-        progress={totalProgress}
-        currentExercise={(completedWords[selectedCategoryIndex]?.length || 0)}
-        totalExercises={totalWords}
-        levelColor={levelColor}
+        progress={calculateTotalProgress(vocabularyData.exercises)}
       />
 
-      <CategorySelector
-        categories={categories.map(cat => cat.title)}
+      <VocabularyCategorySelector
+        categories={vocabularyData.exercises.map((cat) => cat.title)}
         selectedIndex={selectedCategoryIndex}
-        onSelectCategory={handleCategoryChange}
-        levelColor={levelColor}
+        onSelectCategory={setSelectedCategoryIndex}
       />
 
-      {showTip && (
-        <LearningTipCard
-          tipText="Pour une meilleure mémorisation, essayez de visualiser chaque mot ou recherchez des images en ligne pour créer des associations mentales."
-          onDismiss={dismissTip}
-          fadeAnim={tipFadeAnim}
-        />
-      )}
-
-      <View style={styles.progressContainer}>
-        <View style={styles.progressBarContainer}>
-          <View 
-            style={[
-              styles.progressFill, 
-              { width: `${progress}%`, backgroundColor: levelColor }
-            ]} 
-          />
-        </View>
-        <Text style={styles.progressText}>
-          {completedWords[selectedCategoryIndex]?.length || 0}/{totalWords}
-        </Text>
-      </View>
-
-      {currentWord && (
-        <Animated.View
-          style={[
-            styles.cardContainer,
-            {
-              opacity: fadeAnim,
-              transform: [{ translateY: slideAnim }],
-            },
-          ]}
-        >
-          <WordCard
-            word={currentWord.word}
-            translation={currentWord.translation}
-            definition={currentWord.definition}
-            example={currentWord.example}
-            showTranslation={showTranslation}
-            onToggleTranslation={toggleTranslation}
-            levelColor={levelColor}
-          />
-        </Animated.View>
-      )}
-
-      <CardIndicatorsList
-        totalWords={totalWords}
-        currentIndex={currentWordIndex}
-        completedIndices={completedWords[selectedCategoryIndex] || []}
-        onSelectIndex={(index) => {
-          setCurrentWordIndex(index);
-          setShowTranslation(false);
-        }}
-        levelColor={levelColor}
+      <VocabularyWordCard
+        word={getCurrentWord()}
+        showTranslation={showTranslation}
+        onToggleTranslation={() => setShowTranslation(!showTranslation)}
       />
 
-      <NavigationButtons
-        onPrevious={handlePrevious}
+      <VocabularyNavigation
         onNext={handleNext}
+        onPrevious={() => setCurrentWordIndex(currentWordIndex - 1)}
         canGoPrevious={currentWordIndex > 0}
-        isLast={currentWordIndex === totalWords - 1}
-        levelColor={levelColor}
+        isLast={isLastWordInExercise()}
       />
-    </Container>
+    </View>
   );
 };
 

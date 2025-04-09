@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, ScrollView, StatusBar } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+// Remplacer useNavigation par router d'Expo Router
+import { router } from "expo-router";
 
 // Contextes
 import { ThemeContext } from "@/src/contexts/ThemeContext";
@@ -22,8 +23,6 @@ import { LANGUAGE_LEVELS, EXERCISE_TYPES } from "@/src/utils/constants";
 import { formatRelativeTime } from "@/src/utils/formatters";
 
 const Dashboard = ({ route }) => {
-  const navigation = useNavigation();
-
   // Récupération sécurisée des contextes
   const themeContext = useContext(ThemeContext);
   const progressContext = useContext(ProgressContext);
@@ -124,16 +123,30 @@ const Dashboard = ({ route }) => {
       };
     });
 
-  // Gestionnaires de navigation
+  // Gestionnaires de navigation - MISE À JOUR AVEC EXPO ROUTER
   const navigateToLastActivity = () => {
     const lastActivity = getLastActivity();
     if (lastActivity.route && lastActivity.level) {
-      navigation.navigate(lastActivity.route, { level: lastActivity.level });
+      // Convertir le nom de route en chemin Expo Router
+      const routePath = convertRouteToPath(lastActivity.route);
+      router.push({
+        pathname: routePath,
+        params: { level: lastActivity.level },
+      });
     }
   };
 
+  // Fonction pour convertir les noms de routes en chemins Expo Router
+  const convertRouteToPath = (routeName) => {
+    // Exemple: "VocabularyExercise" -> "/(tabs)/vocabularyExercise"
+    return `/(tabs)/${routeName.charAt(0).toLowerCase() + routeName.slice(1)}`;
+  };
+
   const handleLevelSelect = (level) => {
-    navigation.navigate("ExerciseSelection", { level });
+    router.push({
+      pathname: "/(tabs)/exerciseSelection",
+      params: { level },
+    });
   };
 
   return (
@@ -161,7 +174,7 @@ const Dashboard = ({ route }) => {
 
         <View style={animationStyles[2]}>
           <LearningPathSection
-            onSelectLevel={() => navigation.navigate("LevelSelection")}
+            onSelectLevel={() => router.push("/(tabs)/levelSelection")}
             onViewProgress={() => setShowLevelProgress(true)}
           />
         </View>

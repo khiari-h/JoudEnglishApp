@@ -1,8 +1,8 @@
 // VocabularyExercise/VocabularyWordCard/index.js
-import React from 'react';
-import { View, Text, Pressable } from 'react-native';
-import Card from '../../ui/Card';
-import styles from './styles';
+import React from "react";
+import { View, Text, Pressable } from "react-native";
+import Card from "../../../../components/ui/Card";
+import styles from "./style";
 
 /**
  * Carte de mot pour l'exercice de vocabulaire
@@ -15,7 +15,7 @@ const VocabularyWordCard = ({
   example,
   showTranslation,
   onToggleTranslation,
-  levelColor = '#5E60CE'
+  levelColor = "#5E60CE",
 }) => {
   // Contenu personnalisé pour le header (pour avoir un fond coloré)
   const customHeader = (
@@ -33,7 +33,7 @@ const VocabularyWordCard = ({
     >
       {/* Header personnalisé pour le mot */}
       {customHeader}
-      
+
       {/* Section de traduction avec toggle */}
       <Pressable
         style={styles.translationToggleContainer}
@@ -55,10 +55,7 @@ const VocabularyWordCard = ({
             ]}
           >
             <Text
-              style={[
-                styles.translationPlaceholderText,
-                { color: levelColor },
-              ]}
+              style={[styles.translationPlaceholderText, { color: levelColor }]}
             >
               Tap to reveal translation
             </Text>
@@ -69,9 +66,7 @@ const VocabularyWordCard = ({
       {/* Section définition */}
       <View style={styles.contentSection}>
         <View style={styles.sectionHeader}>
-          <View
-            style={[styles.sectionDot, { backgroundColor: levelColor }]}
-          />
+          <View style={[styles.sectionDot, { backgroundColor: levelColor }]} />
           <Text style={styles.sectionTitle}>Definition</Text>
         </View>
         <Text style={styles.sectionText}>{definition}</Text>
@@ -80,9 +75,7 @@ const VocabularyWordCard = ({
       {/* Section exemple */}
       <View style={styles.contentSection}>
         <View style={styles.sectionHeader}>
-          <View
-            style={[styles.sectionDot, { backgroundColor: levelColor }]}
-          />
+          <View style={[styles.sectionDot, { backgroundColor: levelColor }]} />
           <Text style={styles.sectionTitle}>Example</Text>
         </View>
         <Text style={styles.sectionText}>

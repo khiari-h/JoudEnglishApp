@@ -1,7 +1,9 @@
 import { useRoute } from "@react-navigation/native";
-import ExerciceSelection from "@/src/screens/ExerciseSelection";
+import ExerciseSelection from "@/src/screens/ExerciseSelection";
 
-export default function ExerciceSelectionScreen() {
+export default function ExerciseSelectionScreen() {
   const route = useRoute();
-  return <ExerciceSelection route={route} />;
+  console.log("Route in ExerciseSelectionScreen:", route);
+
+  return <ExerciseSelection route={route} />;
 }

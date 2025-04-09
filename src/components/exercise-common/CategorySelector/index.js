@@ -1,7 +1,7 @@
 // src/components/exercise-common/CategorySelector/index.js
-import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import styles from './styles';
+import React from "react";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import styles from "./style";
 
 /**
  * Sélecteur de catégories horizontal pour filtrer les exercices par sujet
@@ -10,7 +10,7 @@ const CategorySelector = ({
   categories = [],
   selectedCategory,
   onSelectCategory,
-  primaryColor = '#5E60CE',
+  primaryColor = "#5E60CE",
 }) => {
   return (
     <View style={styles.container}>
@@ -23,40 +23,46 @@ const CategorySelector = ({
         <TouchableOpacity
           style={[
             styles.categoryItem,
-            selectedCategory === null && { 
+            selectedCategory === null && {
               backgroundColor: `${primaryColor}15`,
-              borderColor: primaryColor 
-            }
+              borderColor: primaryColor,
+            },
           ]}
           onPress={() => onSelectCategory(null)}
         >
-          <Text 
+          <Text
             style={[
               styles.categoryText,
-              selectedCategory === null && { color: primaryColor, fontWeight: '600' }
+              selectedCategory === null && {
+                color: primaryColor,
+                fontWeight: "600",
+              },
             ]}
           >
             Tous
           </Text>
         </TouchableOpacity>
-        
+
         {/* Autres catégories */}
         {categories.map((category) => (
           <TouchableOpacity
             key={category.id}
             style={[
               styles.categoryItem,
-              selectedCategory === category.id && { 
+              selectedCategory === category.id && {
                 backgroundColor: `${primaryColor}15`,
-                borderColor: primaryColor 
-              }
+                borderColor: primaryColor,
+              },
             ]}
             onPress={() => onSelectCategory(category.id)}
           >
-            <Text 
+            <Text
               style={[
                 styles.categoryText,
-                selectedCategory === category.id && { color: primaryColor, fontWeight: '600' }
+                selectedCategory === category.id && {
+                  color: primaryColor,
+                  fontWeight: "600",
+                },
               ]}
             >
               {category.name}

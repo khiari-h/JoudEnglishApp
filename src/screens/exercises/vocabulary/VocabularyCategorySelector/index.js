@@ -1,24 +1,24 @@
 // VocabularyExercise/VocabularyCategorySelector.js
-import React from 'react';
-import CategorySelector from '../exercise-common/CategorySelector';
+import React from "react";
+import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 
 /**
  * Adaptateur pour le sélecteur de catégories de vocabulaire
  * Réutilise le composant générique CategorySelector
  */
-const VocabularyCategorySelector = ({ 
-  categories = [], 
-  selectedIndex = 0, 
+const VocabularyCategorySelector = ({
+  categories = [],
+  selectedIndex = 0,
   onSelectCategory,
-  levelColor 
+  levelColor,
 }) => {
   // Transformation du format des catégories pour correspondre au composant générique
   const formattedCategories = categories.map((categoryTitle, index) => ({
     id: index,
-    name: categoryTitle
+    name: categoryTitle,
   }));
 
-  // Fonction de callback adaptée - notre composant utilise des indices, 
+  // Fonction de callback adaptée - notre composant utilise des indices,
   // le composant générique utilise des IDs
   const handleCategorySelect = (categoryId) => {
     // Si l'option "Tous" est sélectionnée (null), nous sélectionnons la première catégorie
@@ -32,7 +32,7 @@ const VocabularyCategorySelector = ({
   return (
     <CategorySelector
       categories={formattedCategories}
-      selectedCategory={selectedIndex} 
+      selectedCategory={selectedIndex}
       onSelectCategory={handleCategorySelect}
       primaryColor={levelColor}
     />

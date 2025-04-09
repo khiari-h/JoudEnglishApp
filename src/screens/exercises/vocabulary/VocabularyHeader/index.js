@@ -1,21 +1,17 @@
-// VocabularyExercise/VocabularyHeader.js
-import React from 'react';
-import ExerciseHeader from '../exercise-common/ExerciseHeader';
+import React from "react";
+import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+import styles from "./style"; // Importer les styles
 
-/**
- * Header pour l'exercice de vocabulaire
- * Utilise le composant générique ExerciseHeader
- */
 const VocabularyHeader = ({
   level,
   onBackPress,
   progress = 0,
   completedWords = 0,
   totalWords = 0,
-  levelColor
+  levelColor,
 }) => {
   return (
-    <ExerciseHeader 
+    <ExerciseHeader
       title="Vocabulary"
       level={level}
       progress={progress}
@@ -24,6 +20,7 @@ const VocabularyHeader = ({
       onClose={onBackPress}
       showProgress={true}
       levelColor={levelColor}
+      // Vous pouvez utiliser styles ici si nécessaire
     />
   );
 };

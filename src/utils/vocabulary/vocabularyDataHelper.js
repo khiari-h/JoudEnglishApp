@@ -1,8 +1,7 @@
 // utils/vocabularyDataHelper.js
 
 // Import des données de vocabulaire par niveau
-import vocabularyA1Data from "../data/vocabulary/vocabularyA1";
-
+import vocabularyA1Data from "../../data/vocabulary/vocabularyA1";
 
 /**
  * Récupère les données de vocabulaire en fonction du niveau
@@ -12,7 +11,6 @@ import vocabularyA1Data from "../data/vocabulary/vocabularyA1";
 export const getVocabularyData = (level) => {
   const dataMap = {
     A1: vocabularyA1Data,
-
   };
   return dataMap[level] || vocabularyA1Data;
 };
