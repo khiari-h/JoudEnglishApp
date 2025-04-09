@@ -7,6 +7,8 @@ import ROUTES from './routes';
 
 // Écrans
 import Dashboard from '../screens/Dashboard';
+import LevelSelection from '../screens/LevelSelection';
+import ExerciseSelection from '../screens/ExerciseSelection';
 
 // Configuration du navigateur
 const Stack = createStackNavigator();
@@ -24,7 +26,14 @@ const AppNavigator = () => {
           name={ROUTES.DASHBOARD} 
           component={Dashboard} 
         />
-        {/* D'autres écrans seront ajoutés progressivement */}
+        <Stack.Screen 
+          name={ROUTES.LEVEL_SELECTION} 
+          component={LevelSelection} 
+        />
+        <Stack.Screen 
+          name={ROUTES.EXERCISE_SELECTION} 
+          component={ExerciseSelection} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

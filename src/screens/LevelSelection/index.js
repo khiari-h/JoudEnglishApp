@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+// Importation des routes
+import ROUTES from '../../navigation/routes';
+
 // Contextes
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { ProgressContext } from '../../contexts/ProgressContext';
@@ -34,7 +37,7 @@ const DEFAULT_PROGRESS = {
   isLoading: false,
 };
 
-const LevelSelection = ({ route }) => {
+const LevelSelection = () => {
   const navigation = useNavigation();
   
   // Récupération sécurisée des contextes
@@ -60,7 +63,7 @@ const LevelSelection = ({ route }) => {
 
   // Naviguer vers la sélection d'exercice avec le niveau sélectionné
   const handleLevelSelect = (level) => {
-    navigation.navigate('ExerciseSelection', { level: level.id });
+    navigation.navigate(ROUTES.EXERCISE_SELECTION, { level: level.id });
   };
 
   return (

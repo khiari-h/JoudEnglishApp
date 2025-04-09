@@ -1,4 +1,5 @@
 export default {
-    DASHBOARD: 'Dashboard',
-    // Autres routes seront ajoutées progressivement
-  };
+  DASHBOARD: 'Dashboard',
+  LEVEL_SELECTION: 'LevelSelection',
+  EXERCISE_SELECTION: 'ExerciseSelection'
+};
