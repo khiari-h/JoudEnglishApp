@@ -4,19 +4,19 @@ import { View, Text, Animated, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Layout components
-import { Container } from "../layout/Container";
+import { Container } from "../../../components/Container";
 
 // Common exercise components
-import { ExerciseHeader } from "../exercise-common/ExerciseHeader";
-import { CategorySelector } from "../exercise-common/CategorySelector";
-import { NavigationButtons } from "../exercise-common/NavigationButtons";
-import { WordCard } from "../exercise-common/WordCard";
+import { ExerciseHeader } from "../../../components/exercise-common/ExerciseHeader";
+import { CategorySelector } from "../../../components/exercise-common/CategorySelector";
+import { NavigationButtons } from "../../../components/NavigationButtons";
+import { WordCard } from "../../../components/WordCard";
 
 // Custom hooks
-import { useAnimation } from "../../hooks/useAnimation";
-import { useExerciseState } from "../../hooks/useExerciseState";
-import { useProgress } from "../../hooks/useProgress";
-import { useTheme } from "../../hooks/useTheme";
+import { useAnimation } from "../../../hooks/useAnimation";
+import { useExerciseState } from "../../../hooks/useExerciseState";
+import { useVocabularyProgress } from "../../../hooks/useVocabularyProgress";
+import { useTheme } from "../../../hooks/useTheme";
 
 // Components to be created
 import { LearningTipCard } from "./LearningTipCard";
@@ -26,7 +26,7 @@ import { CardIndicatorsList } from "./CardIndicatorsList";
 import { styles } from "./style";
 
 // Import vocabulary data helper
-import { getVocabularyData } from "../../utils/vocabularyDataHelper";
+import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params || { level: 'A1' };
@@ -38,12 +38,18 @@ const VocabularyExercise = ({ route }) => {
   
   const { fadeAnim, slideAnim, tipFadeAnim, animateTransition } = useAnimation();
   
-  const { 
-    completedWords, 
-    markWordAsCompleted, 
-    calculateProgress,
-    initializeProgress 
-  } = useProgress();
+  // Utilisation du hook de progression spécifique au vocabulaire
+  const {
+    completedWords,
+    lastPosition,
+    loaded,
+    markWordAsCompleted,
+    saveLastPosition,
+    isWordCompleted,
+    calculateCategoryProgress,
+    calculateTotalProgress,
+    initializeProgress
+  } = useVocabularyProgress(level);
   
   const {
     selectedCategoryIndex,
@@ -63,11 +69,36 @@ const VocabularyExercise = ({ route }) => {
   const currentWord = currentCategory?.words[currentWordIndex];
   const totalWords = currentCategory?.words.length || 0;
   
-  // Animation et initialisation
+  // Initialiser la progression et restaurer la dernière position
+  useEffect(() => {
+    // Initialiser le suivi de progression
+    initializeProgress(vocabularyData);
+    
+    // Restaurer la dernière position quand les données sont chargées
+    if (loaded && lastPosition) {
+      // Vérifier que les indices sont valides
+      if (lastPosition.categoryIndex < categories.length) {
+        setSelectedCategoryIndex(lastPosition.categoryIndex);
+        
+        const category = categories[lastPosition.categoryIndex];
+        if (category && lastPosition.wordIndex < category.words.length) {
+          setCurrentWordIndex(lastPosition.wordIndex);
+        }
+      }
+    }
+  }, [loaded, vocabularyData]);
+  
+  // Sauvegarder la position actuelle quand elle change
+  useEffect(() => {
+    if (loaded) {
+      saveLastPosition(selectedCategoryIndex, currentWordIndex);
+    }
+  }, [selectedCategoryIndex, currentWordIndex, loaded, saveLastPosition]);
+  
+  // Animation lors du changement de mot
   useEffect(() => {
     animateTransition();
-    initializeProgress(vocabularyData);
-  }, [currentWordIndex, selectedCategoryIndex]);
+  }, [currentWordIndex, selectedCategoryIndex, animateTransition]);
 
   // Handlers
   const dismissTip = () => setShowTip(false);
@@ -90,14 +121,15 @@ const VocabularyExercise = ({ route }) => {
   };
   
   const handleNext = () => {
-    // Marquer comme complété
+    // Marquer le mot actuel comme complété
     markWordAsCompleted(selectedCategoryIndex, currentWordIndex);
     setShowTranslation(false);
     
     if (currentWordIndex < currentCategory.words.length - 1) {
+      // Passer au mot suivant dans la même catégorie
       setCurrentWordIndex(currentWordIndex + 1);
     } else {
-      // Gestion de la fin d'une catégorie
+      // Fin de la catégorie - chercher la prochaine catégorie non complétée
       const nextCategoryIndex = findNextCategory();
       
       if (nextCategoryIndex === -1) {
@@ -125,15 +157,21 @@ const VocabularyExercise = ({ route }) => {
   const findNextCategory = () => {
     for (let i = 0; i < categories.length; i++) {
       const nextIndex = (selectedCategoryIndex + i + 1) % categories.length;
-      if ((completedWords[nextIndex]?.length || 0) < categories[nextIndex].words.length) {
+      const categoryWords = categories[nextIndex].words;
+      const completedCount = completedWords[nextIndex]?.length || 0;
+      
+      if (completedCount < categoryWords.length) {
         return nextIndex;
       }
     }
     return -1; // Tout est complété
   };
   
-  // Calculer progression
-  const progress = calculateProgress(selectedCategoryIndex, totalWords);
+  // Calculer la progression pour la catégorie actuelle
+  const progress = calculateCategoryProgress(selectedCategoryIndex, totalWords);
+  
+  // Calculer la progression globale pour l'en-tête
+  const totalProgress = calculateTotalProgress(categories);
 
   return (
     <Container style={[styles.container, { backgroundColor: `${levelColor}05` }]}>
@@ -141,6 +179,10 @@ const VocabularyExercise = ({ route }) => {
         title="Vocabulary"
         level={level}
         onBackPress={() => navigation.goBack()}
+        progress={totalProgress}
+        currentExercise={(completedWords[selectedCategoryIndex]?.length || 0)}
+        totalExercises={totalWords}
+        levelColor={levelColor}
       />
 
       <CategorySelector
