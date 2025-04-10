@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo } from "react";
 import { View, Text, ScrollView, Alert } from "react-native";
-// Remplacer useNavigation par router d'Expo Router
-import { router } from "expo-router";
+// Utiliser Expo Router à la place de React Navigation
+import { router } from 'expo-router';
 
 // Hooks personnalisés
 import useVocabularyProgress from "./hooks/useVocabularyProgress";
-import useExerciseState from "../../../hooks/useExerciseState"; // À créer si nécessaire
+import useExerciseState from "../../../hooks/useExerciseState";
 
 // Composants
 import VocabularyHeader from "./VocabularyHeader";
@@ -15,10 +15,10 @@ import VocabularyCategorySelector from "./VocabularyCategorySelector";
 
 // Utilitaires
 import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
+import { LANGUAGE_LEVELS } from "../../../utils/constants";
 
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
-  // const navigation = useNavigation();
 
   // Données de vocabulaire pour ce niveau
   const vocabularyData = useMemo(() => getVocabularyData(level), [level]);
@@ -61,22 +61,57 @@ const VocabularyExercise = ({ route }) => {
     saveLastPosition(selectedCategoryIndex, currentWordIndex);
   }, [selectedCategoryIndex, currentWordIndex]);
 
-  // AJOUTER CETTE FONCTION: Récupérer le mot actuel
+  // Fonction pour récupérer le mot actuel
   const getCurrentWord = () => {
     try {
-      const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
-      return currentCategory.words[currentWordIndex] || {};
+      // Vérifier si les indices sont valides
+      if (
+        vocabularyData?.exercises &&
+        selectedCategoryIndex >= 0 &&
+        selectedCategoryIndex < vocabularyData.exercises.length
+      ) {
+        const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
+        
+        if (
+          currentCategory?.words &&
+          currentWordIndex >= 0 &&
+          currentWordIndex < currentCategory.words.length
+        ) {
+          return currentCategory.words[currentWordIndex];
+        }
+      }
+      
+      // Retourner un objet vide mais avec la structure attendue
+      return {
+        term: "",
+        translation: "",
+        definition: "",
+        example: ""
+      };
     } catch (error) {
       console.error("Error getting current word:", error);
-      return {}; // Retourner un objet vide en cas d'erreur
+      return {
+        term: "",
+        translation: "",
+        definition: "",
+        example: ""
+      };
     }
   };
 
-  // AJOUTER CETTE FONCTION: Vérifier si c'est le dernier mot
+  // Vérifier si c'est le dernier mot de l'exercice
   const isLastWordInExercise = () => {
     try {
-      const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
-      return currentWordIndex === currentCategory.words.length - 1;
+      if (
+        vocabularyData?.exercises &&
+        selectedCategoryIndex >= 0 &&
+        selectedCategoryIndex < vocabularyData.exercises.length
+      ) {
+        const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
+        return currentCategory?.words && 
+               currentWordIndex === currentCategory.words.length - 1;
+      }
+      return false;
     } catch (error) {
       console.error("Error checking if last word:", error);
       return false;
@@ -85,31 +120,39 @@ const VocabularyExercise = ({ route }) => {
 
   // Logique de navigation entre mots/catégories
   const handleNext = () => {
-    const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
+    try {
+      const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
 
-    // Marquer le mot comme complété
-    markWordAsCompleted(selectedCategoryIndex, currentWordIndex);
+      // Marquer le mot comme complété
+      markWordAsCompleted(selectedCategoryIndex, currentWordIndex);
 
-    // Logique de progression dans les mots/catégories
-    if (currentWordIndex < currentCategory.words.length - 1) {
-      // Mot suivant dans la même catégorie
-      setCurrentWordIndex(currentWordIndex + 1);
-    } else {
-      // Fin de catégorie, trouver la prochaine
-      const nextCategoryIndex = findNextUncompletedCategory();
-
-      if (nextCategoryIndex === -1) {
-        // Tous les exercices terminés
-        Alert.alert(
-          "Félicitations",
-          "Vous avez terminé tous les exercices de vocabulaire !"
-        );
-        // Utiliser router.back() au lieu de navigation.goBack()
-        router.back();
+      // Logique de progression dans les mots/catégories
+      if (currentWordIndex < currentCategory.words.length - 1) {
+        // Mot suivant dans la même catégorie
+        setCurrentWordIndex(currentWordIndex + 1);
       } else {
-        setSelectedCategoryIndex(nextCategoryIndex);
-        setCurrentWordIndex(0);
+        // Fin de catégorie, trouver la prochaine
+        const nextCategoryIndex = findNextUncompletedCategory();
+
+        if (nextCategoryIndex === -1) {
+          // Tous les exercices terminés
+          Alert.alert(
+            "Félicitations",
+            "Vous avez terminé tous les exercices de vocabulaire !"
+          );
+          // Utiliser router.back() au lieu de navigation.goBack()
+          router.back();
+        } else {
+          setSelectedCategoryIndex(nextCategoryIndex);
+          setCurrentWordIndex(0);
+        }
       }
+    } catch (error) {
+      console.error("Error in handleNext:", error);
+      Alert.alert(
+        "Erreur",
+        "Une erreur s'est produite. Veuillez réessayer."
+      );
     }
   };
 
@@ -127,6 +170,12 @@ const VocabularyExercise = ({ route }) => {
     return -1; // Tout est complété
   };
 
+  // Récupérer le mot actuel
+  const currentWord = getCurrentWord();
+
+  // Obtenir la couleur du niveau
+  const levelColor = LANGUAGE_LEVELS[level]?.color || "#5E60CE";
+
   // Rendu principal
   return (
     <View>
@@ -136,15 +185,20 @@ const VocabularyExercise = ({ route }) => {
       />
 
       <VocabularyCategorySelector
-        categories={vocabularyData.exercises.map((cat) => cat.title)}
+        categories={vocabularyData.exercises?.map((cat) => cat.title) || []}
         selectedIndex={selectedCategoryIndex}
         onSelectCategory={setSelectedCategoryIndex}
       />
 
+      {/* Passer les propriétés individuellement au lieu de l'objet entier */}
       <VocabularyWordCard
-        word={getCurrentWord()}
+        word={currentWord.term || ""}
+        translation={currentWord.translation || ""}
+        definition={currentWord.definition || ""}
+        example={currentWord.example || ""}
         showTranslation={showTranslation}
         onToggleTranslation={() => setShowTranslation(!showTranslation)}
+        levelColor={levelColor}
       />
 
       <VocabularyNavigation
