@@ -1,11 +1,12 @@
+// VocabularyExercise/index.js
 import React, { useEffect, useMemo } from "react";
-import { View, Text, ScrollView, Alert } from "react-native";
+import { View, Alert } from "react-native";
 // Utiliser Expo Router à la place de React Navigation
 import { router } from 'expo-router';
 
 // Hooks personnalisés
 import useVocabularyProgress from "./hooks/useVocabularyProgress";
-import useExerciseState from "../../../hooks/useExerciseState";
+import useVocabularyExerciseState from "./hooks/useVocabularyExerciseState"; // Notre nouveau hook
 
 // Composants
 import VocabularyHeader from "./VocabularyHeader";
@@ -36,6 +37,7 @@ const VocabularyExercise = ({ route }) => {
     resetProgress,
   } = useVocabularyProgress(level);
 
+  // Utiliser notre hook personnalisé pour la gestion de l'état de l'exercice
   const {
     selectedCategoryIndex,
     setSelectedCategoryIndex,
@@ -43,23 +45,48 @@ const VocabularyExercise = ({ route }) => {
     setCurrentWordIndex,
     showTranslation,
     setShowTranslation,
-  } = useExerciseState(level);
+    restoreState, // Nouvelle fonction sécurisée pour restaurer l'état
+  } = useVocabularyExerciseState(level);
 
-  // Initialisation et restauration de la progression
+  // Initialisation et restauration de la progression - RÉVISÉ pour éviter les boucles
   useEffect(() => {
+    if (!loaded || !vocabularyData) return;
+    
     initializeProgress(vocabularyData);
 
-    // Restaurer la dernière position si disponible
-    if (loaded && lastPosition) {
-      setSelectedCategoryIndex(lastPosition.categoryIndex);
-      setCurrentWordIndex(lastPosition.wordIndex);
+    // Restaurer la dernière position si disponible en utilisant la méthode sécurisée
+    if (lastPosition) {
+      // Utiliser restoreState au lieu des setters individuels
+      restoreState(lastPosition.categoryIndex, lastPosition.wordIndex);
     }
-  }, [loaded, vocabularyData]);
+  }, [loaded, vocabularyData, restoreState]);
 
-  // Sauvegarde de la progression
+  // Sauvegarde de la progression - RÉVISÉ pour éviter les boucles
+  // Utiliser une variable ref pour éviter les déclenchements inutiles
+  const savedPositionRef = useRef({ 
+    categoryIndex: selectedCategoryIndex, 
+    wordIndex: currentWordIndex 
+  });
+  
   useEffect(() => {
-    saveLastPosition(selectedCategoryIndex, currentWordIndex);
-  }, [selectedCategoryIndex, currentWordIndex]);
+    // Ne sauvegarder que si les indices ont changé et après un léger délai
+    if (
+      savedPositionRef.current.categoryIndex !== selectedCategoryIndex ||
+      savedPositionRef.current.wordIndex !== currentWordIndex
+    ) {
+      savedPositionRef.current = { 
+        categoryIndex: selectedCategoryIndex, 
+        wordIndex: currentWordIndex 
+      };
+      
+      // Utiliser un délai pour éviter des mises à jour trop fréquentes
+      const timeoutId = setTimeout(() => {
+        saveLastPosition(selectedCategoryIndex, currentWordIndex);
+      }, 300);
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [selectedCategoryIndex, currentWordIndex, saveLastPosition]);
 
   // Fonction pour récupérer le mot actuel
   const getCurrentWord = () => {
@@ -188,6 +215,7 @@ const VocabularyExercise = ({ route }) => {
         categories={vocabularyData.exercises?.map((cat) => cat.title) || []}
         selectedIndex={selectedCategoryIndex}
         onSelectCategory={setSelectedCategoryIndex}
+        levelColor={levelColor}
       />
 
       {/* Passer les propriétés individuellement au lieu de l'objet entier */}
@@ -203,9 +231,10 @@ const VocabularyExercise = ({ route }) => {
 
       <VocabularyNavigation
         onNext={handleNext}
-        onPrevious={() => setCurrentWordIndex(currentWordIndex - 1)}
+        onPrevious={() => setCurrentWordIndex(Math.max(0, currentWordIndex - 1))}
         canGoPrevious={currentWordIndex > 0}
         isLast={isLastWordInExercise()}
+        levelColor={levelColor}
       />
     </View>
   );
