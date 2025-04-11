@@ -1,14 +1,9 @@
 // VocabularyExercise/index.js
-import React, { useEffect, useMemo } from "react";
-import { View, Alert } from "react-native";
-// Utiliser Expo Router à la place de React Navigation
-import { router } from 'expo-router';
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import { View, Text, Alert, ActivityIndicator } from "react-native";
+import { router } from "expo-router";
 
-// Hooks personnalisés
-import useVocabularyProgress from "./hooks/useVocabularyProgress";
-import useVocabularyExerciseState from "./hooks/useVocabularyExerciseState"; // Notre nouveau hook
-
-// Composants
+// Composants UI
 import VocabularyHeader from "./VocabularyHeader";
 import VocabularyNavigation from "./VocabularyNavigation";
 import VocabularyWordCard from "./VocabularyWordCard";
@@ -18,13 +13,29 @@ import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 import { LANGUAGE_LEVELS } from "../../../utils/constants";
 
+// Hook optimisé
+import useVocabularyProgress from "./hooks/useVocabularyProgress";
+
+/**
+ * Exercice de vocabulaire - Version optimisée sans boucles infinies
+ */
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
-
-  // Données de vocabulaire pour ce niveau
+  
+  // États UI locaux
+  const [categoryIndex, setCategoryIndex] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [showTranslation, setShowTranslation] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  
+  // Flags de sécurité
+  const hasRestoredPosition = useRef(false);
+  const initialRender = useRef(true);
+  
+  // Données de vocabulaire
   const vocabularyData = useMemo(() => getVocabularyData(level), [level]);
-
-  // Hooks de gestion d'état
+  
+  // Hook de progression
   const {
     completedWords,
     lastPosition,
@@ -36,84 +47,73 @@ const VocabularyExercise = ({ route }) => {
     initializeProgress,
     resetProgress,
   } = useVocabularyProgress(level);
-
-  // Utiliser notre hook personnalisé pour la gestion de l'état de l'exercice
-  const {
-    selectedCategoryIndex,
-    setSelectedCategoryIndex,
-    currentWordIndex,
-    setCurrentWordIndex,
-    showTranslation,
-    setShowTranslation,
-    restoreState, // Nouvelle fonction sécurisée pour restaurer l'état
-  } = useVocabularyExerciseState(level);
-
-  // Initialisation et restauration de la progression - RÉVISÉ pour éviter les boucles
+  
+  // Initialisation et restauration - UNE SEULE FOIS
   useEffect(() => {
     if (!loaded || !vocabularyData) return;
     
+    // Initialiser la progression
     initializeProgress(vocabularyData);
-
-    // Restaurer la dernière position si disponible en utilisant la méthode sécurisée
-    if (lastPosition) {
-      // Utiliser restoreState au lieu des setters individuels
-      restoreState(lastPosition.categoryIndex, lastPosition.wordIndex);
+    
+    // Restaurer la position UNE SEULE FOIS
+    if (lastPosition && !hasRestoredPosition.current) {
+      console.log("Restauration de la position:", lastPosition);
+      setCategoryIndex(lastPosition.categoryIndex);
+      setWordIndex(lastPosition.wordIndex);
+      hasRestoredPosition.current = true;
     }
-  }, [loaded, vocabularyData, restoreState]);
-
-  // Sauvegarde de la progression - RÉVISÉ pour éviter les boucles
-  // Utiliser une variable ref pour éviter les déclenchements inutiles
-  const savedPositionRef = useRef({ 
-    categoryIndex: selectedCategoryIndex, 
-    wordIndex: currentWordIndex 
-  });
+    
+    // Marquer comme prêt après un court délai
+    const timer = setTimeout(() => {
+      setIsReady(true);
+      initialRender.current = false;
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [loaded, vocabularyData, lastPosition, initializeProgress]);
   
-  useEffect(() => {
-    // Ne sauvegarder que si les indices ont changé et après un léger délai
-    if (
-      savedPositionRef.current.categoryIndex !== selectedCategoryIndex ||
-      savedPositionRef.current.wordIndex !== currentWordIndex
-    ) {
-      savedPositionRef.current = { 
-        categoryIndex: selectedCategoryIndex, 
-        wordIndex: currentWordIndex 
-      };
-      
-      // Utiliser un délai pour éviter des mises à jour trop fréquentes
-      const timeoutId = setTimeout(() => {
-        saveLastPosition(selectedCategoryIndex, currentWordIndex);
-      }, 300);
-      
-      return () => clearTimeout(timeoutId);
-    }
-  }, [selectedCategoryIndex, currentWordIndex, saveLastPosition]);
-
-  // Fonction pour récupérer le mot actuel
+  // Fonction pour calculer le nombre total de mots
+  const calculateTotalWords = () => {
+    let total = 0;
+    vocabularyData?.exercises?.forEach(category => {
+      total += category.words?.length || 0;
+    });
+    return total;
+  };
+  
+  // Fonction pour calculer le nombre de mots complétés
+  const calculateCompletedWordsCount = () => {
+    let completed = 0;
+    Object.keys(completedWords).forEach(categoryId => {
+      completed += completedWords[categoryId]?.length || 0;
+    });
+    return completed;
+  };
+  
+  // Obtenir le mot actuel
   const getCurrentWord = () => {
     try {
-      // Vérifier si les indices sont valides
       if (
         vocabularyData?.exercises &&
-        selectedCategoryIndex >= 0 &&
-        selectedCategoryIndex < vocabularyData.exercises.length
+        categoryIndex >= 0 &&
+        categoryIndex < vocabularyData.exercises.length
       ) {
-        const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
+        const currentCategory = vocabularyData.exercises[categoryIndex];
         
         if (
           currentCategory?.words &&
-          currentWordIndex >= 0 &&
-          currentWordIndex < currentCategory.words.length
+          wordIndex >= 0 &&
+          wordIndex < currentCategory.words.length
         ) {
-          return currentCategory.words[currentWordIndex];
+          return currentCategory.words[wordIndex];
         }
       }
       
-      // Retourner un objet vide mais avec la structure attendue
       return {
         term: "",
         translation: "",
         definition: "",
-        example: ""
+        example: "",
       };
     } catch (error) {
       console.error("Error getting current word:", error);
@@ -121,22 +121,24 @@ const VocabularyExercise = ({ route }) => {
         term: "",
         translation: "",
         definition: "",
-        example: ""
+        example: "",
       };
     }
   };
-
-  // Vérifier si c'est le dernier mot de l'exercice
+  
+  // Vérifier si c'est le dernier mot
   const isLastWordInExercise = () => {
     try {
       if (
         vocabularyData?.exercises &&
-        selectedCategoryIndex >= 0 &&
-        selectedCategoryIndex < vocabularyData.exercises.length
+        categoryIndex >= 0 &&
+        categoryIndex < vocabularyData.exercises.length
       ) {
-        const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
-        return currentCategory?.words && 
-               currentWordIndex === currentCategory.words.length - 1;
+        const currentCategory = vocabularyData.exercises[categoryIndex];
+        return (
+          currentCategory?.words &&
+          wordIndex === currentCategory.words.length - 1
+        );
       }
       return false;
     } catch (error) {
@@ -144,19 +146,42 @@ const VocabularyExercise = ({ route }) => {
       return false;
     }
   };
+  
+  // Trouver la prochaine catégorie non complétée
+  const findNextUncompletedCategory = () => {
+    const totalCategories = vocabularyData?.exercises?.length || 0;
+    for (let i = 1; i <= totalCategories; i++) {
+      const nextIndex = (categoryIndex + i) % totalCategories;
+      const category = vocabularyData.exercises[nextIndex];
+      const completedInCategory = completedWords[nextIndex]?.length || 0;
 
-  // Logique de navigation entre mots/catégories
+      if (completedInCategory < (category.words?.length || 0)) {
+        return nextIndex;
+      }
+    }
+    return -1; // Tout est complété
+  };
+  
+  // Gérer le bouton suivant
   const handleNext = () => {
     try {
-      const currentCategory = vocabularyData.exercises[selectedCategoryIndex];
+      if (!vocabularyData?.exercises || !vocabularyData.exercises[categoryIndex]) {
+        return;
+      }
+      
+      const currentCategory = vocabularyData.exercises[categoryIndex];
 
       // Marquer le mot comme complété
-      markWordAsCompleted(selectedCategoryIndex, currentWordIndex);
+      markWordAsCompleted(categoryIndex, wordIndex);
 
       // Logique de progression dans les mots/catégories
-      if (currentWordIndex < currentCategory.words.length - 1) {
+      if (wordIndex < (currentCategory.words?.length || 0) - 1) {
         // Mot suivant dans la même catégorie
-        setCurrentWordIndex(currentWordIndex + 1);
+        const nextWordIndex = wordIndex + 1;
+        setWordIndex(nextWordIndex);
+        
+        // Sauvegarder manuellement la position
+        saveLastPosition(categoryIndex, nextWordIndex);
       } else {
         // Fin de catégorie, trouver la prochaine
         const nextCategoryIndex = findNextUncompletedCategory();
@@ -167,58 +192,111 @@ const VocabularyExercise = ({ route }) => {
             "Félicitations",
             "Vous avez terminé tous les exercices de vocabulaire !"
           );
-          // Utiliser router.back() au lieu de navigation.goBack()
           router.back();
         } else {
-          setSelectedCategoryIndex(nextCategoryIndex);
-          setCurrentWordIndex(0);
+          // Passer à la prochaine catégorie
+          setCategoryIndex(nextCategoryIndex);
+          setWordIndex(0);
+          
+          // Sauvegarder manuellement la position
+          saveLastPosition(nextCategoryIndex, 0);
         }
       }
+      
+      // Masquer la traduction pour le mot suivant
+      setShowTranslation(false);
     } catch (error) {
       console.error("Error in handleNext:", error);
-      Alert.alert(
-        "Erreur",
-        "Une erreur s'est produite. Veuillez réessayer."
-      );
+      Alert.alert("Erreur", "Une erreur s'est produite. Veuillez réessayer.");
     }
   };
-
-  const findNextUncompletedCategory = () => {
-    const totalCategories = vocabularyData.exercises.length;
-    for (let i = 1; i <= totalCategories; i++) {
-      const nextIndex = (selectedCategoryIndex + i) % totalCategories;
-      const category = vocabularyData.exercises[nextIndex];
-      const completedInCategory = completedWords[nextIndex]?.length || 0;
-
-      if (completedInCategory < category.words.length) {
-        return nextIndex;
-      }
+  
+  // Gérer le bouton précédent
+  const handlePrevious = () => {
+    if (wordIndex > 0) {
+      const prevWordIndex = wordIndex - 1;
+      setWordIndex(prevWordIndex);
+      setShowTranslation(false); // Masquer la traduction pour le mot précédent
+      
+      // Sauvegarder manuellement la position
+      saveLastPosition(categoryIndex, prevWordIndex);
     }
-    return -1; // Tout est complété
   };
-
-  // Récupérer le mot actuel
+  
+  // Gérer le changement de catégorie
+  const handleCategoryChange = (newIndex) => {
+    setCategoryIndex(newIndex);
+    setWordIndex(0);
+    setShowTranslation(false); // Masquer la traduction
+    
+    // Sauvegarder manuellement la position
+    saveLastPosition(newIndex, 0);
+  };
+  
+  // Réinitialiser la progression
+  const handleResetProgress = () => {
+    Alert.alert(
+      "Réinitialiser la progression",
+      "Êtes-vous sûr de vouloir réinitialiser votre progression pour ce niveau ?",
+      [
+        {
+          text: "Annuler",
+          style: "cancel"
+        },
+        {
+          text: "Réinitialiser",
+          style: "destructive",
+          onPress: () => {
+            resetProgress();
+            setCategoryIndex(0);
+            setWordIndex(0);
+            setShowTranslation(false);
+          }
+        }
+      ]
+    );
+  };
+  
+  // Obtenir le mot actuel
   const currentWord = getCurrentWord();
-
+  
   // Obtenir la couleur du niveau
   const levelColor = LANGUAGE_LEVELS[level]?.color || "#5E60CE";
-
+  
+  // Attendre que les données soient chargées
+  if (!loaded || !isReady) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color={levelColor} />
+        <Text style={{ marginTop: 10 }}>Chargement...</Text>
+      </View>
+    );
+  }
+  
+  // Calculer les statistiques
+  const totalProgress = calculateTotalProgress(vocabularyData?.exercises || []);
+  const completedWordsCount = calculateCompletedWordsCount();
+  const totalWordsCount = calculateTotalWords();
+  
   // Rendu principal
   return (
     <View>
       <VocabularyHeader
         level={level}
-        progress={calculateTotalProgress(vocabularyData.exercises)}
+        progress={totalProgress}
+        completedWords={completedWordsCount}
+        totalWords={totalWordsCount}
+        levelColor={levelColor}
+        onBackPress={() => router.back()}
       />
 
       <VocabularyCategorySelector
-        categories={vocabularyData.exercises?.map((cat) => cat.title) || []}
-        selectedIndex={selectedCategoryIndex}
-        onSelectCategory={setSelectedCategoryIndex}
+        categories={vocabularyData?.exercises?.map((cat) => cat.title) || []}
+        selectedIndex={categoryIndex}
+        onSelectCategory={handleCategoryChange}
         levelColor={levelColor}
       />
 
-      {/* Passer les propriétés individuellement au lieu de l'objet entier */}
       <VocabularyWordCard
         word={currentWord.term || ""}
         translation={currentWord.translation || ""}
@@ -231,8 +309,8 @@ const VocabularyExercise = ({ route }) => {
 
       <VocabularyNavigation
         onNext={handleNext}
-        onPrevious={() => setCurrentWordIndex(Math.max(0, currentWordIndex - 1))}
-        canGoPrevious={currentWordIndex > 0}
+        onPrevious={handlePrevious}
+        canGoPrevious={wordIndex > 0}
         isLast={isLastWordInExercise()}
         levelColor={levelColor}
       />
