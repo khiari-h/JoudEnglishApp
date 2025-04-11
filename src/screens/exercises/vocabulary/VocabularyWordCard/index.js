@@ -1,6 +1,7 @@
 // VocabularyExercise/VocabularyWordCard/index.js
 import React from "react";
 import { View, Text, Pressable } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import Card from "../../../../components/ui/Card";
 import styles from "./style";
 
@@ -45,7 +46,10 @@ const VocabularyWordCard = ({
             <Text style={[styles.translation, { color: levelColor }]}>
               {translation}
             </Text>
-            <Text style={styles.toggleHint}>(Tap to hide)</Text>
+            <View style={styles.toggleHintRow}>
+              <Ionicons name="eye-off-outline" size={14} color="#9ca3af" />
+              <Text style={styles.toggleHint}> Tap to hide</Text>
+            </View>
           </View>
         ) : (
           <View
@@ -54,6 +58,7 @@ const VocabularyWordCard = ({
               { borderColor: `${levelColor}30` },
             ]}
           >
+            <Ionicons name="eye-outline" size={18} color={levelColor} style={styles.eyeIcon} />
             <Text
               style={[styles.translationPlaceholderText, { color: levelColor }]}
             >

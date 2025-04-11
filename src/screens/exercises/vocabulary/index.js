@@ -1,5 +1,5 @@
 // VocabularyExercise/index.js
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo } from "react";
 import { View, Text, Alert, ActivityIndicator } from "react-native";
 import { router } from "expo-router";
 
@@ -13,24 +13,15 @@ import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 import { LANGUAGE_LEVELS } from "../../../utils/constants";
 
-// Hook optimisé
+// Hooks personnalisés
 import useVocabularyProgress from "./hooks/useVocabularyProgress";
+import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
 
 /**
- * Exercice de vocabulaire - Version optimisée sans boucles infinies
+ * Exercice de vocabulaire - Version modulaire sans boucles infinies
  */
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
-  
-  // États UI locaux
-  const [categoryIndex, setCategoryIndex] = useState(0);
-  const [wordIndex, setWordIndex] = useState(0);
-  const [showTranslation, setShowTranslation] = useState(false);
-  const [isReady, setIsReady] = useState(false);
-  
-  // Flags de sécurité
-  const hasRestoredPosition = useRef(false);
-  const initialRender = useRef(true);
   
   // Données de vocabulaire
   const vocabularyData = useMemo(() => getVocabularyData(level), [level]);
@@ -42,35 +33,36 @@ const VocabularyExercise = ({ route }) => {
     loaded,
     markWordAsCompleted,
     saveLastPosition,
-    calculateCategoryProgress,
     calculateTotalProgress,
     initializeProgress,
     resetProgress,
   } = useVocabularyProgress(level);
   
-  // Initialisation et restauration - UNE SEULE FOIS
+  // Hook d'état de l'exercice
+  const {
+    categoryIndex,
+    wordIndex,
+    showTranslation,
+    restoreState,
+    goToPreviousWord,
+    goToNextWord,
+    changeCategory,
+    toggleTranslation,
+    resetState
+  } = useVocabularyExerciseState(level);
+  
+  // Initialisation et restauration
   useEffect(() => {
     if (!loaded || !vocabularyData) return;
     
     // Initialiser la progression
     initializeProgress(vocabularyData);
     
-    // Restaurer la position UNE SEULE FOIS
-    if (lastPosition && !hasRestoredPosition.current) {
-      console.log("Restauration de la position:", lastPosition);
-      setCategoryIndex(lastPosition.categoryIndex);
-      setWordIndex(lastPosition.wordIndex);
-      hasRestoredPosition.current = true;
+    // Restaurer la position (la fonction restoreState s'assure que cela ne se produit qu'une fois)
+    if (lastPosition) {
+      restoreState(lastPosition.categoryIndex, lastPosition.wordIndex);
     }
-    
-    // Marquer comme prêt après un court délai
-    const timer = setTimeout(() => {
-      setIsReady(true);
-      initialRender.current = false;
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, [loaded, vocabularyData, lastPosition, initializeProgress]);
+  }, [loaded, vocabularyData, lastPosition, initializeProgress, restoreState]);
   
   // Fonction pour calculer le nombre total de mots
   const calculateTotalWords = () => {
@@ -177,11 +169,10 @@ const VocabularyExercise = ({ route }) => {
       // Logique de progression dans les mots/catégories
       if (wordIndex < (currentCategory.words?.length || 0) - 1) {
         // Mot suivant dans la même catégorie
-        const nextWordIndex = wordIndex + 1;
-        setWordIndex(nextWordIndex);
+        goToNextWord();
         
         // Sauvegarder manuellement la position
-        saveLastPosition(categoryIndex, nextWordIndex);
+        saveLastPosition(categoryIndex, wordIndex + 1);
       } else {
         // Fin de catégorie, trouver la prochaine
         const nextCategoryIndex = findNextUncompletedCategory();
@@ -195,16 +186,12 @@ const VocabularyExercise = ({ route }) => {
           router.back();
         } else {
           // Passer à la prochaine catégorie
-          setCategoryIndex(nextCategoryIndex);
-          setWordIndex(0);
+          changeCategory(nextCategoryIndex);
           
           // Sauvegarder manuellement la position
           saveLastPosition(nextCategoryIndex, 0);
         }
       }
-      
-      // Masquer la traduction pour le mot suivant
-      setShowTranslation(false);
     } catch (error) {
       console.error("Error in handleNext:", error);
       Alert.alert("Erreur", "Une erreur s'est produite. Veuillez réessayer.");
@@ -213,21 +200,15 @@ const VocabularyExercise = ({ route }) => {
   
   // Gérer le bouton précédent
   const handlePrevious = () => {
-    if (wordIndex > 0) {
-      const prevWordIndex = wordIndex - 1;
-      setWordIndex(prevWordIndex);
-      setShowTranslation(false); // Masquer la traduction pour le mot précédent
-      
+    if (goToPreviousWord()) {
       // Sauvegarder manuellement la position
-      saveLastPosition(categoryIndex, prevWordIndex);
+      saveLastPosition(categoryIndex, wordIndex - 1);
     }
   };
   
   // Gérer le changement de catégorie
   const handleCategoryChange = (newIndex) => {
-    setCategoryIndex(newIndex);
-    setWordIndex(0);
-    setShowTranslation(false); // Masquer la traduction
+    changeCategory(newIndex);
     
     // Sauvegarder manuellement la position
     saveLastPosition(newIndex, 0);
@@ -248,9 +229,7 @@ const VocabularyExercise = ({ route }) => {
           style: "destructive",
           onPress: () => {
             resetProgress();
-            setCategoryIndex(0);
-            setWordIndex(0);
-            setShowTranslation(false);
+            resetState();
           }
         }
       ]
@@ -264,7 +243,7 @@ const VocabularyExercise = ({ route }) => {
   const levelColor = LANGUAGE_LEVELS[level]?.color || "#5E60CE";
   
   // Attendre que les données soient chargées
-  if (!loaded || !isReady) {
+  if (!loaded) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color={levelColor} />
@@ -303,7 +282,7 @@ const VocabularyExercise = ({ route }) => {
         definition={currentWord.definition || ""}
         example={currentWord.example || ""}
         showTranslation={showTranslation}
-        onToggleTranslation={() => setShowTranslation(!showTranslation)}
+        onToggleTranslation={toggleTranslation}
         levelColor={levelColor}
       />
 

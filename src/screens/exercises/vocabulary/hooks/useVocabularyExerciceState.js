@@ -1,101 +1,89 @@
 // hooks/useVocabularyExerciseState.js
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
 /**
- * Hook personnalisé pour gérer l'état spécifique aux exercices de vocabulaire,
- * conçu pour éviter les boucles infinies.
+ * Hook personnalisé pour gérer l'état de l'exercice de vocabulaire
+ * Version optimisée pour éviter les boucles infinies
  * 
  * @param {string} level - Niveau de langue (A1, A2, B1, B2, C1, C2)
- * @param {Object} initialState - État initial optionnel
  */
-const useVocabularyExerciseState = (level, initialState = {}) => {
-  // Utiliser useRef pour suivre si nous sommes en train de restaurer l'état
-  // Cela nous aidera à éviter les boucles infinies
-  const isRestoringState = useRef(false);
-  
-  // États pour les catégories et les mots
-  const [selectedCategoryIndex, setSelectedCategoryIndexInternal] = useState(
-    initialState.categoryIndex || 0
-  );
-  const [currentWordIndex, setCurrentWordIndexInternal] = useState(
-    initialState.wordIndex || 0
-  );
+const useVocabularyExerciseState = (level) => {
+  // États de base pour la navigation dans l'exercice
+  const [categoryIndex, setCategoryIndex] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
-
-  // Wrappers sécurisés pour les setters d'état
-  // Ces wrappers évitent les mises à jour inutiles si la valeur est la même
-  const setSelectedCategoryIndex = useCallback((newIndex) => {
-    if (isRestoringState.current) return; // Éviter les mises à jour pendant la restauration
+  
+  // Flag pour éviter les restaurations multiples
+  const hasRestoredPosition = useRef(false);
+  
+  // Méthode sécurisée pour restaurer l'état
+  const restoreState = useCallback((newCategoryIndex, newWordIndex) => {
+    // Ne restaurer qu'une seule fois
+    if (hasRestoredPosition.current) return;
     
-    setSelectedCategoryIndexInternal(prevIndex => {
-      if (prevIndex === newIndex) return prevIndex; // Éviter les re-rendus si la valeur ne change pas
-      return newIndex;
-    });
+    // Mettre à jour les états
+    setCategoryIndex(newCategoryIndex);
+    setWordIndex(newWordIndex);
+    
+    // Marquer comme restauré
+    hasRestoredPosition.current = true;
   }, []);
-
-  const setCurrentWordIndex = useCallback((newIndex) => {
-    if (isRestoringState.current) return; // Éviter les mises à jour pendant la restauration
-    
-    setCurrentWordIndexInternal(prevIndex => {
-      if (prevIndex === newIndex) return prevIndex; // Éviter les re-rendus si la valeur ne change pas
-      return newIndex;
-    });
-  }, []);
-
-  // Fonction pour restaurer l'état de manière sécurisée
-  // Cette fonction utilise le flag isRestoringState pour éviter les boucles
-  const restoreState = useCallback((categoryIndex, wordIndex) => {
-    if (
-      categoryIndex === selectedCategoryIndex && 
-      wordIndex === currentWordIndex
-    ) {
-      return; // Éviter de restaurer si les valeurs sont identiques
+  
+  // Fonction pour naviguer vers le mot précédent
+  const goToPreviousWord = useCallback(() => {
+    if (wordIndex > 0) {
+      setWordIndex(wordIndex - 1);
+      setShowTranslation(false); // Masquer la traduction
+      return true;
     }
-
-    try {
-      isRestoringState.current = true; // Signaler que nous sommes en restauration
-      
-      // Mettre à jour les états directement pour éviter des déclenchements en cascade
-      setSelectedCategoryIndexInternal(categoryIndex);
-      setCurrentWordIndexInternal(wordIndex);
-      
-    } finally {
-      // Assurer que le flag est réinitialisé même en cas d'erreur
-      setTimeout(() => {
-        isRestoringState.current = false;
-      }, 0);
-    }
-  }, [selectedCategoryIndex, currentWordIndex]);
-
-  // Fonctions supplémentaires
-  const resetState = useCallback(() => {
-    setShowTranslation(false);
-    
-    // Utiliser restoreState au lieu des setters individuels pour éviter les boucles
-    restoreState(0, 0);
-  }, [restoreState]);
-
-  // Changer de catégorie tout en réinitialisant l'index du mot
+    return false;
+  }, [wordIndex]);
+  
+  // Fonction pour naviguer vers le mot suivant dans la même catégorie
+  const goToNextWord = useCallback(() => {
+    setWordIndex(wordIndex + 1);
+    setShowTranslation(false); // Masquer la traduction
+    return true;
+  }, [wordIndex]);
+  
+  // Fonction pour changer de catégorie
   const changeCategory = useCallback((newCategoryIndex) => {
+    setCategoryIndex(newCategoryIndex);
+    setWordIndex(0);
+    setShowTranslation(false); // Masquer la traduction
+  }, []);
+  
+  // Fonction pour basculer l'affichage de la traduction
+  const toggleTranslation = useCallback(() => {
+    setShowTranslation(prev => !prev);
+  }, []);
+  
+  // Réinitialiser l'état
+  const resetState = useCallback(() => {
+    setCategoryIndex(0);
+    setWordIndex(0);
     setShowTranslation(false);
-    
-    // Utiliser restoreState au lieu des setters individuels pour éviter les boucles
-    restoreState(newCategoryIndex, 0);
-  }, [restoreState]);
-
+  }, []);
+  
   return {
-    // État
-    selectedCategoryIndex,
-    setSelectedCategoryIndex,
-    currentWordIndex,
-    setCurrentWordIndex,
+    // États
+    categoryIndex,
+    wordIndex,
     showTranslation,
+    hasRestored: hasRestoredPosition.current,
+    
+    // Setters (pour les cas où nous avons besoin d'accès direct)
+    setCategoryIndex,
+    setWordIndex,
     setShowTranslation,
     
-    // Actions supplémentaires
-    resetState,
-    changeCategory,
+    // Actions
     restoreState,
+    goToPreviousWord,
+    goToNextWord,
+    changeCategory,
+    toggleTranslation,
+    resetState
   };
 };
 

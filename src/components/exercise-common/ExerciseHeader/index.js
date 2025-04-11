@@ -7,6 +7,7 @@ import styles from "./style";
 
 /**
  * En-tête standardisé pour tous les écrans d'exercices
+ * Utilise maintenant une flèche de retour au lieu d'une croix
  */
 const ExerciseHeader = ({
   title,
@@ -17,6 +18,7 @@ const ExerciseHeader = ({
   onClose,
   showProgress = true,
   levelColor = "#5E60CE",
+  backIcon = "arrow-back", // Nouvelle prop avec valeur par défaut "arrow-back"
 }) => {
   const navigation = useNavigation();
 
@@ -36,7 +38,7 @@ const ExerciseHeader = ({
           onPress={handleClose}
           hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         >
-          <Ionicons name="close" size={24} color="#6B7280" />
+          <Ionicons name={backIcon} size={24} color="#6B7280" />
         </TouchableOpacity>
 
         <Text style={styles.title}>{title}</Text>

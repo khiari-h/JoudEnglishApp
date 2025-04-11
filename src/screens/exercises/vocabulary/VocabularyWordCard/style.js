@@ -1,10 +1,11 @@
-// VocabularyExercise/VocabularyWordCard/styles.js
+// VocabularyExercise/VocabularyWordCard/style.js
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   card: {
     overflow: "hidden",
     marginBottom: 20,
+    marginHorizontal: 16, // Ajouter des marges horizontales
   },
   cardContent: {
     padding: 0, // Supprimer le padding pour avoir un contrôle total sur les sections internes
@@ -36,7 +37,12 @@ const styles = StyleSheet.create({
   translation: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 4,
+    marginBottom: 6,
+  },
+  toggleHintRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   toggleHint: {
     fontSize: 12,
@@ -44,11 +50,17 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
   },
   translationPlaceholder: {
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: 20,
     borderWidth: 1,
     borderRadius: 12,
     borderStyle: "dashed",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  eyeIcon: {
+    marginRight: 8,
   },
   translationPlaceholderText: {
     fontWeight: "600",
