@@ -18,7 +18,7 @@ import {
 } from "../../../utils/vocabulary/vocabularyStats";
 
 import useVocabularyProgress from "./hooks/useVocabularyProgress";
-import useVocabularyExerciseState from "./hooks/useVocabularyExerciseState"
+import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState"
 
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
