@@ -2,10 +2,10 @@ import React, { useMemo, useEffect } from "react";
 import { View, Text, Alert, ActivityIndicator, ScrollView } from "react-native";
 import { router } from "expo-router";
 
-import VocabularyHeader from "../VocabularyHeader";
-import VocabularyNavigation from "../VocabularyNavigation";
-import VocabularyWordCard from "../VocabularyWordCard";
-import VocabularyCategorySelector from "../VocabularyCategorySelector";
+import VocabularyHeader from "../vocabulary/VocabularyHeader";
+import VocabularyNavigation from "../vocabulary/VocabularyNavigation";
+import VocabularyWordCard from "../vocabulary/VocabularyWordCard";
+import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import VocabularyCardIndicators from "../VocabularyCardIndicators";
 import LearningTipCard from "../LearningTipCard";
 
@@ -17,8 +17,8 @@ import {
   calculateTotalProgress,
 } from "../../../utils/vocabulary/vocabularyStats";
 
-import useVocabularyProgress from "../hooks/useVocabularyProgress";
-import useVocabularyExerciseState from "../hooks/useVocabularyExerciseState";
+import useVocabularyProgress from "./hooks/useVocabularyProgress";
+import useVocabularyExerciseState from "./hooks/useVocabularyExerciseState";
 
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
