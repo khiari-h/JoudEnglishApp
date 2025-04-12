@@ -18,7 +18,7 @@ import {
 } from "../../../utils/vocabulary/vocabularyStats";
 
 import useVocabularyProgress from "./hooks/useVocabularyProgress";
-import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
+import useVocabularyExerciseState from "./hooks/useVocabularyExerciseState"
 
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
@@ -62,9 +62,7 @@ const VocabularyExercise = ({ route }) => {
 
   const isLastWordInExercise = () => {
     const category = vocabularyData?.exercises?.[categoryIndex];
-    return (
-      category && category.words && wordIndex === category.words.length - 1
-    );
+    return category && category.words && wordIndex === category.words.length - 1;
   };
 
   const findNextUncompletedCategory = () => {
