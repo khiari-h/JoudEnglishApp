@@ -1,13 +1,13 @@
 import React, { useMemo, useEffect } from "react";
-import { View, Text, Alert, ActivityIndicator } from "react-native";
+import { View, Text, Alert, ActivityIndicator, ScrollView } from "react-native";
 import { router } from "expo-router";
 
-import VocabularyHeader from "./VocabularyHeader";
-import VocabularyNavigation from "./VocabularyNavigation";
-import VocabularyWordCard from "./VocabularyWordCard";
-import VocabularyCategorySelector from "./VocabularyCategorySelector";
-import VocabularyCardIndicators from "./VocabularyCardIndicators";
-import LearningTipCard from "./LearningTipCard";
+import VocabularyHeader from "../VocabularyHeader";
+import VocabularyNavigation from "../VocabularyNavigation";
+import VocabularyWordCard from "../VocabularyWordCard";
+import VocabularyCategorySelector from "../VocabularyCategorySelector";
+import VocabularyCardIndicators from "../VocabularyCardIndicators";
+import LearningTipCard from "../LearningTipCard";
 
 import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 import { LANGUAGE_LEVELS } from "../../../utils/constants";
@@ -17,8 +17,8 @@ import {
   calculateTotalProgress,
 } from "../../../utils/vocabulary/vocabularyStats";
 
-import useVocabularyProgress from "./hooks/useVocabularyProgress";
-import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
+import useVocabularyProgress from "../hooks/useVocabularyProgress";
+import useVocabularyExerciseState from "../hooks/useVocabularyExerciseState";
 
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
@@ -147,7 +147,7 @@ const VocabularyExercise = ({ route }) => {
   const dotsCompleted = completedWords[categoryIndex] || [];
 
   return (
-    <View>
+    <ScrollView style={{ flex: 1 }}>
       <VocabularyHeader
         level={level}
         progress={totalProgress}
@@ -185,9 +185,10 @@ const VocabularyExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
+      {/* Utilisation du composant LearningTipCard amélioré */}
       <LearningTipCard
-        tipText="Utilise ce mot dans une phrase pour mieux le retenir !"
-        onDismiss={() => {}}
+        level={level}
+        levelColor={levelColor}
       />
 
       <VocabularyNavigation
@@ -197,7 +198,7 @@ const VocabularyExercise = ({ route }) => {
         isLast={isLastWordInExercise()}
         levelColor={levelColor}
       />
-    </View>
+    </ScrollView>
   );
 };
 
