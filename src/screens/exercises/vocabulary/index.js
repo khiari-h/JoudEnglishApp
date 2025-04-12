@@ -2,12 +2,12 @@ import React, { useMemo, useEffect } from "react";
 import { View, Text, Alert, ActivityIndicator, ScrollView } from "react-native";
 import { router } from "expo-router";
 
-import VocabularyHeader from "../vocabulary/VocabularyHeader";
-import VocabularyNavigation from "../vocabulary/VocabularyNavigation";
-import VocabularyWordCard from "../vocabulary/VocabularyWordCard";
+import VocabularyHeader from "./VocabularyHeader";
+import VocabularyNavigation from "./VocabularyNavigation";
+import VocabularyWordCard from "./VocabularyWordCard";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
-import VocabularyCardIndicators from "../VocabularyCardIndicators";
-import LearningTipCard from "../LearningTipCard";
+import VocabularyCardIndicators from "./VocabularyCardIndicators";
+import LearningTipCard from "./LearningTipCard";
 
 import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 import { LANGUAGE_LEVELS } from "../../../utils/constants";
