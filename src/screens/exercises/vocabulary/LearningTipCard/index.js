@@ -6,6 +6,8 @@ import styles from './style';
 
 /**
  * Carte de conseils d'apprentissage améliorée avec carousel et possibilité de masquer/afficher
+ * Animation subtile sur le texte uniquement, pas sur toute la carte
+ * 
  * @param {string} level - Niveau de langue actuel (A1, A2, B1, B2, C1, C2)
  * @param {string} levelColor - Couleur associée au niveau
  */
@@ -14,7 +16,7 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
   const [tipsVisible, setTipsVisible] = useState(true);
   // Index du conseil actuel dans le carousel
   const [currentTipIndex, setCurrentTipIndex] = useState(0);
-  // Animation pour les transitions
+  // Animation pour le texte uniquement
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const slideAnim = useRef(new Animated.Value(0)).current;
   
@@ -72,64 +74,70 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
     });
   };
 
-  // Passer au conseil suivant
+  // Passer au conseil suivant avec animation subtile
   const nextTip = () => {
-    Animated.sequence([
-      Animated.timing(slideAnim, {
-        toValue: -50,
-        duration: 150,
-        useNativeDriver: true
-      }),
+    // Animation sur le texte uniquement
+    Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 0,
-        duration: 150,
+        duration: 200,
+        useNativeDriver: true
+      }),
+      Animated.timing(slideAnim, {
+        toValue: -15,  // Mouvement léger vers la gauche
+        duration: 200,
         useNativeDriver: true
       })
     ]).start(() => {
       setCurrentTipIndex((prevIndex) => (prevIndex + 1) % VOCABULARY_TIPS.length);
-      slideAnim.setValue(50);
-      Animated.sequence([
+      slideAnim.setValue(15);  // Prépare le texte à entrer depuis la droite
+      
+      // Animation d'entrée du nouveau texte
+      Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 150,
+          duration: 200,
           useNativeDriver: true
         }),
         Animated.timing(slideAnim, {
-          toValue: 0,
-          duration: 150,
+          toValue: 0,  // Revient à sa position normale
+          duration: 200,
           useNativeDriver: true
         })
       ]).start();
     });
   };
 
-  // Passer au conseil précédent
+  // Passer au conseil précédent avec animation subtile
   const prevTip = () => {
-    Animated.sequence([
-      Animated.timing(slideAnim, {
-        toValue: 50,
-        duration: 150,
-        useNativeDriver: true
-      }),
+    // Animation sur le texte uniquement
+    Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 0,
-        duration: 150,
+        duration: 200,
+        useNativeDriver: true
+      }),
+      Animated.timing(slideAnim, {
+        toValue: 15,  // Mouvement léger vers la droite
+        duration: 200,
         useNativeDriver: true
       })
     ]).start(() => {
       setCurrentTipIndex((prevIndex) => 
         prevIndex === 0 ? VOCABULARY_TIPS.length - 1 : prevIndex - 1
       );
-      slideAnim.setValue(-50);
-      Animated.sequence([
+      slideAnim.setValue(-15);  // Prépare le texte à entrer depuis la gauche
+      
+      // Animation d'entrée du nouveau texte
+      Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 150,
+          duration: 200,
           useNativeDriver: true
         }),
         Animated.timing(slideAnim, {
-          toValue: 0,
-          duration: 150,
+          toValue: 0,  // Revient à sa position normale
+          duration: 200,
           useNativeDriver: true
         })
       ]).start();
@@ -150,20 +158,24 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
   }
 
   return (
-    <Animated.View 
-      style={[
-        styles.container, 
-        { 
-          opacity: fadeAnim,
-          transform: [{ translateX: slideAnim }]
-        }
-      ]}
-    >
+    <View style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.icon}>💡</Text>
         <View style={styles.textContainer}>
           <Text style={styles.title}>Conseil d'apprentissage</Text>
-          <Text style={styles.text}>{VOCABULARY_TIPS[currentTipIndex]}</Text>
+          
+          {/* Animation uniquement sur le texte du conseil */}
+          <Animated.Text 
+            style={[
+              styles.text,
+              {
+                opacity: fadeAnim,
+                transform: [{ translateX: slideAnim }]
+              }
+            ]}
+          >
+            {VOCABULARY_TIPS[currentTipIndex]}
+          </Animated.Text>
         </View>
       </View>
       
@@ -196,7 +208,7 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
       >
         <Ionicons name="eye-off-outline" size={16} color="#9CA3AF" />
       </TouchableOpacity>
-    </Animated.View>
+    </View>
   );
 };
 
