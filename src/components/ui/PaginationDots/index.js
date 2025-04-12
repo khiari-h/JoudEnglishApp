@@ -1,7 +1,7 @@
 // components/ui/PaginationDots/index.js
-import React from 'react';
-import { View, Pressable } from 'react-native';
-import styles from './styles';
+import React from "react";
+import { View, Pressable } from "react-native";
+import styles from "./style";
 
 /**
  * Composant générique d'indicateurs de pagination sous forme de points
@@ -15,8 +15,8 @@ const PaginationDots = ({
   containerStyle,
   dotSize = { active: 12, inactive: 8 },
   dotStyle,
-  activeColor = '#5E60CE',
-  inactiveColor = '#E5E7EB',
+  activeColor = "#5E60CE",
+  inactiveColor = "#E5E7EB",
   markedColor,
   spacing = 4,
   horizontal = true,
@@ -24,10 +24,10 @@ const PaginationDots = ({
 }) => {
   // Si la couleur des points marqués n'est pas spécifiée, utiliser une version plus claire de la couleur active
   const effectiveMarkedColor = markedColor || `${activeColor}50`;
-  
+
   // Limiter le nombre de points affichés si nécessaire
   const visibleTotal = maxVisible ? Math.min(total, maxVisible) : total;
-  
+
   // Générer les points
   const renderDots = () => {
     const dots = [];
@@ -35,18 +35,18 @@ const PaginationDots = ({
       // Déterminer si ce point est actif ou marqué
       const isActive = i === active;
       const isMarked = markedIndices?.includes(i);
-      
+
       // Déterminer la couleur du point
-      const dotColor = isActive 
-        ? activeColor 
-        : isMarked 
-          ? effectiveMarkedColor 
-          : inactiveColor;
-          
+      const dotColor = isActive
+        ? activeColor
+        : isMarked
+        ? effectiveMarkedColor
+        : inactiveColor;
+
       // Déterminer la taille du point
       const dotWidth = isActive ? dotSize.active : dotSize.inactive;
       const dotHeight = isActive ? dotSize.active : dotSize.inactive;
-      
+
       dots.push(
         <Pressable
           key={i}
@@ -70,11 +70,11 @@ const PaginationDots = ({
   };
 
   return (
-    <View 
+    <View
       style={[
-        styles.container, 
+        styles.container,
         horizontal ? styles.horizontal : styles.vertical,
-        containerStyle
+        containerStyle,
       ]}
     >
       {renderDots()}

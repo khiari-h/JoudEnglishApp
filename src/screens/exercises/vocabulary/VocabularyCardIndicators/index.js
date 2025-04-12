@@ -1,18 +1,18 @@
 // VocabularyExercise/VocabularyCardIndicators/index.js
-import React from 'react';
-import PaginationDots from '../../ui/PaginationDots';
-import styles from './styles';
+import React from "react";
+import PaginationDots from "../../../../components/ui/PaginationDots";
+import styles from "./style";
 
 /**
  * Indicateurs de progression pour les cartes de vocabulaire
  * Utilise le composant générique PaginationDots
  */
-const VocabularyCardIndicators = ({ 
+const VocabularyCardIndicators = ({
   totalWords = 0,
   currentIndex = 0,
   completedIndices = [],
   onSelectWord,
-  levelColor = '#5E60CE'
+  levelColor = "#5E60CE",
 }) => {
   return (
     <PaginationDots
