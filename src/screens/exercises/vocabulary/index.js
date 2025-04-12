@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { View, Text, Alert, ActivityIndicator } from "react-native";
 import { router } from "expo-router";
 
@@ -18,12 +18,14 @@ import {
 } from "../../../utils/vocabulary/vocabularyStats";
 
 import useVocabularyProgress from "./hooks/useVocabularyProgress";
-import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState"
+import useVocabularyExerciseState from "./hooks/useVocabularyExerciseState";
 
 const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
   const vocabularyData = useMemo(() => getVocabularyData(level), [level]);
+  const levelColor = LANGUAGE_LEVELS[level]?.color || "#5E60CE";
 
+  // Utiliser le hook pour gérer la progression
   const {
     completedWords,
     lastPosition,
@@ -33,6 +35,8 @@ const VocabularyExercise = ({ route }) => {
     initializeProgress,
   } = useVocabularyProgress(level);
 
+  // Initialiser le hook d'état avec des valeurs par défaut
+  // (il sera mis à jour une fois lastPosition chargé)
   const {
     categoryIndex,
     wordIndex,
@@ -42,15 +46,31 @@ const VocabularyExercise = ({ route }) => {
     goToNextWord,
     changeCategory,
     toggleTranslation,
-  } = useVocabularyExerciseState(level);
+  } = useVocabularyExerciseState(level, 0, 0);
 
+  // Restaurer l'état une fois les données chargées
   useEffect(() => {
-    if (!loaded || !vocabularyData) return;
-    initializeProgress(vocabularyData);
-    if (lastPosition) {
+    if (loaded && lastPosition) {
       restoreState(lastPosition.categoryIndex, lastPosition.wordIndex);
     }
-  }, [loaded, vocabularyData, lastPosition, initializeProgress, restoreState]);
+  }, [loaded, lastPosition, restoreState]);
+
+  // Initialiser la progression une fois les données chargées
+  useEffect(() => {
+    if (loaded && vocabularyData) {
+      initializeProgress(vocabularyData);
+    }
+  }, [loaded, vocabularyData, initializeProgress]);
+
+  // Affiche le spinner pendant le chargement des données
+  if (!loaded || !vocabularyData) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color={levelColor} />
+        <Text style={{ marginTop: 10 }}>Chargement...</Text>
+      </View>
+    );
+  }
 
   const getCurrentWord = () => {
     const category = vocabularyData?.exercises?.[categoryIndex];
@@ -81,7 +101,9 @@ const VocabularyExercise = ({ route }) => {
   const handleNext = () => {
     const category = vocabularyData.exercises[categoryIndex];
     if (!category) return;
+    
     markWordAsCompleted(categoryIndex, wordIndex);
+    
     if (wordIndex < category.words.length - 1) {
       goToNextWord();
       saveLastPosition(categoryIndex, wordIndex + 1);
@@ -112,17 +134,6 @@ const VocabularyExercise = ({ route }) => {
   };
 
   const currentWord = getCurrentWord();
-  const levelColor = LANGUAGE_LEVELS[level]?.color || "#5E60CE";
-
-  if (!loaded) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color={levelColor} />
-        <Text style={{ marginTop: 10 }}>Chargement...</Text>
-      </View>
-    );
-  }
-
   const totalWordsCount = calculateTotalWords(vocabularyData?.exercises);
   const completedWordsCount = calculateCompletedWordsCount(completedWords);
   const totalProgress = calculateTotalProgress(
@@ -130,7 +141,8 @@ const VocabularyExercise = ({ route }) => {
     completedWords
   );
 
-  const currentCategory = vocabularyData?.exercises?.[categoryIndex];
+  // Vérifications pour éviter les erreurs
+  const currentCategory = vocabularyData?.exercises?.[categoryIndex] || {};
   const dotsTotal = currentCategory?.words?.length || 0;
   const dotsCompleted = completedWords[categoryIndex] || [];
 
@@ -157,8 +169,8 @@ const VocabularyExercise = ({ route }) => {
         currentIndex={wordIndex}
         completedIndices={dotsCompleted}
         onSelectWord={(index) => {
-          saveLastPosition(categoryIndex, index);
           restoreState(categoryIndex, index);
+          saveLastPosition(categoryIndex, index);
         }}
         levelColor={levelColor}
       />

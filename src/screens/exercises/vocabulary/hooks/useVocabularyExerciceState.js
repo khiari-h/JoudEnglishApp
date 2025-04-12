@@ -1,56 +1,60 @@
-// hooks/useVocabularyExerciseState.js
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
 /**
  * Hook personnalisé pour gérer l'état de l'exercice de vocabulaire
  * Version optimisée pour éviter les boucles infinies
  * 
  * @param {string} level - Niveau de langue (A1, A2, B1, B2, C1, C2)
+ * @param {number} initialCategoryIndex - Index initial de la catégorie
+ * @param {number} initialWordIndex - Index initial du mot
  */
-const useVocabularyExerciseState = (level) => {
+const useVocabularyExerciseState = (level, initialCategoryIndex = 0, initialWordIndex = 0) => {
   // États de base pour la navigation dans l'exercice
-  const [categoryIndex, setCategoryIndex] = useState(0);
-  const [wordIndex, setWordIndex] = useState(0);
+  const [categoryIndex, setCategoryIndex] = useState(initialCategoryIndex);
+  const [wordIndex, setWordIndex] = useState(initialWordIndex);
   const [showTranslation, setShowTranslation] = useState(false);
   
-  // Flag pour éviter les restaurations multiples
-  const hasRestoredPosition = useRef(false);
+  // Flag pour suivre si l'initialisation a été effectuée
+  const isInitialized = useRef(false);
   
-  // Méthode sécurisée pour restaurer l'état
+  // Initialiser l'état au premier rendu avec les valeurs fournies
+  useEffect(() => {
+    if (!isInitialized.current) {
+      setCategoryIndex(initialCategoryIndex);
+      setWordIndex(initialWordIndex);
+      isInitialized.current = true;
+    }
+  }, [initialCategoryIndex, initialWordIndex]);
+  
+  // Méthode pour restaurer l'état à une position spécifique
   const restoreState = useCallback((newCategoryIndex, newWordIndex) => {
-    // Ne restaurer qu'une seule fois
-    if (hasRestoredPosition.current) return;
-    
-    // Mettre à jour les états
     setCategoryIndex(newCategoryIndex);
     setWordIndex(newWordIndex);
-    
-    // Marquer comme restauré
-    hasRestoredPosition.current = true;
+    setShowTranslation(false);
   }, []);
   
   // Fonction pour naviguer vers le mot précédent
   const goToPreviousWord = useCallback(() => {
     if (wordIndex > 0) {
-      setWordIndex(wordIndex - 1);
-      setShowTranslation(false); // Masquer la traduction
+      setWordIndex(prev => prev - 1);
+      setShowTranslation(false);
       return true;
     }
     return false;
   }, [wordIndex]);
   
-  // Fonction pour naviguer vers le mot suivant dans la même catégorie
+  // Fonction pour naviguer vers le mot suivant
   const goToNextWord = useCallback(() => {
-    setWordIndex(wordIndex + 1);
-    setShowTranslation(false); // Masquer la traduction
+    setWordIndex(prev => prev + 1);
+    setShowTranslation(false);
     return true;
-  }, [wordIndex]);
+  }, []);
   
   // Fonction pour changer de catégorie
   const changeCategory = useCallback((newCategoryIndex) => {
     setCategoryIndex(newCategoryIndex);
     setWordIndex(0);
-    setShowTranslation(false); // Masquer la traduction
+    setShowTranslation(false);
   }, []);
   
   // Fonction pour basculer l'affichage de la traduction
@@ -58,32 +62,15 @@ const useVocabularyExerciseState = (level) => {
     setShowTranslation(prev => !prev);
   }, []);
   
-  // Réinitialiser l'état
-  const resetState = useCallback(() => {
-    setCategoryIndex(0);
-    setWordIndex(0);
-    setShowTranslation(false);
-  }, []);
-  
   return {
-    // États
     categoryIndex,
     wordIndex,
     showTranslation,
-    hasRestored: hasRestoredPosition.current,
-    
-    // Setters (pour les cas où nous avons besoin d'accès direct)
-    setCategoryIndex,
-    setWordIndex,
-    setShowTranslation,
-    
-    // Actions
     restoreState,
     goToPreviousWord,
     goToNextWord,
     changeCategory,
-    toggleTranslation,
-    resetState
+    toggleTranslation
   };
 };
 
