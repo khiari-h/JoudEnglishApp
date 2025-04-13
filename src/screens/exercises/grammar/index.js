@@ -12,7 +12,7 @@ import GrammarFeedback from './GrammarFeedback';
 import GrammarNavigation from './GrammarNavigation';
 
 // Import des hooks personnalisés
-import useGrammarExerciseState from './hooks/useGrammarExerciseState';
+import useGrammarExerciseState from './hooks/useGrammarExerciceState';
 import useGrammarProgress from './hooks/useGrammarProgress';
 
 // Import des utilitaires
