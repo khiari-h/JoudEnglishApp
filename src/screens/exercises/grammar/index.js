@@ -23,9 +23,8 @@ import styles from './styles';
 /**
  * Écran principal pour les exercices de grammaire
  */
-const GrammarExercise = () => {
+const GrammarExercise = ({ route }) => {
   const navigation = useNavigation();
-  const route = useRoute();
   const { level } = route.params || { level: 'A1' };
 
   // Récupération des données avec les helpers
