@@ -3,13 +3,13 @@ import { SafeAreaView, ScrollView, View, Alert, ActivityIndicator, Text } from '
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 // Import des composants
-import GrammarHeader from '../GrammarHeader';
-import GrammarRuleSelector from '../GrammarRuleSelector';
-import GrammarProgressBar from '../GrammarProgressBar';
-import GrammarRuleContent from '../GrammarRuleContent';
-import GrammarExerciseRenderer from '../GrammarExerciseRenderer';
-import GrammarFeedback from '../GrammarFeedback';
-import GrammarNavigation from '../GrammarNavigation';
+import GrammarHeader from './GrammarHeader';
+import GrammarRuleSelector from './GrammarRuleSelector';
+import GrammarProgressBar from './GrammarProgressBar';
+import GrammarRuleContent from './GrammarRuleContent';
+import GrammarExerciseRenderer from './GrammarExerciseRenderer';
+import GrammarFeedback from './GrammarFeedback';
+import GrammarNavigation from './GrammarNavigation';
 
 // Import des hooks personnalisés
 import useGrammarExerciseState from '../hooks/useGrammarExerciseState';
