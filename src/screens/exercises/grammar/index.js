@@ -7,7 +7,7 @@ import GrammarHeader from './GrammarHeader';
 import GrammarRuleSelector from './GrammarRuleSelector';
 import GrammarProgressBar from './GrammarProgressBar';
 import GrammarRuleContent from './GrammarRuleContent';
-import GrammarExerciseRenderer from './GrammarExerciseRenderer';
+import GrammarExerciseRenderer from './GrammarExerciceRenderer';
 import GrammarFeedback from './GrammarFeedback';
 import GrammarNavigation from './GrammarNavigation';
 
