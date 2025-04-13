@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput } from 'react-native';
-import styles from './styles';
+import styles from './style';
 
 /**
  * Composant pour afficher différents types d'exercices de grammaire

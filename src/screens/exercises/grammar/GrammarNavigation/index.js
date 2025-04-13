@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import styles from './styles';
+import styles from './style';
 
 /**
  * Composant pour la navigation dans les exercices de grammaire

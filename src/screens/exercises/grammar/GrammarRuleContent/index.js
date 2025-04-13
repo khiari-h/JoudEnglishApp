@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import styles from './styles';
+import styles from './style';
 
 /**
  * Composant pour afficher le contenu d'une règle de grammaire

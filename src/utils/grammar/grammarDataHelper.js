@@ -1,7 +1,7 @@
 // utils/grammar/grammarDataHelper.js
 
 // Import des données de grammaire par niveau
-import grammarA1Data from "../../data/exercises/grammar/grammarA1";
+import grammarA1Data from "../../data/grammar/grammarA1";
 // Pour les futurs niveaux: import grammarA2Data from "../../data/exercises/grammar/grammarA2";
 
 /**
