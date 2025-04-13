@@ -12,13 +12,13 @@ import GrammarFeedback from './GrammarFeedback';
 import GrammarNavigation from './GrammarNavigation';
 
 // Import des hooks personnalisés
-import useGrammarExerciseState from '../hooks/useGrammarExerciseState';
-import useGrammarProgress from '../hooks/useGrammarProgress';
+import useGrammarExerciseState from './hooks/useGrammarExerciseState'
+import useGrammarProgress from './hooks/useGrammarProgress';
 
 // Import des utilitaires
 import { getGrammarData, getLevelColor } from '../../../utils/grammar/grammarDataHelper';
 
-import styles from './styles';
+import styles from './style';
 
 /**
  * Écran principal pour les exercices de grammaire
