@@ -1,0 +1,259 @@
+import React, { useMemo, useEffect } from 'react';
+import { SafeAreaView, ScrollView, View, Alert, ActivityIndicator, Text } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+
+// Import des composants
+import GrammarHeader from '../GrammarHeader';
+import GrammarRuleSelector from '../GrammarRuleSelector';
+import GrammarProgressBar from '../GrammarProgressBar';
+import GrammarRuleContent from '../GrammarRuleContent';
+import GrammarExerciseRenderer from '../GrammarExerciseRenderer';
+import GrammarFeedback from '../GrammarFeedback';
+import GrammarNavigation from '../GrammarNavigation';
+
+// Import des hooks personnalisés
+import useGrammarExerciseState from '../hooks/useGrammarExerciseState';
+import useGrammarProgress from '../hooks/useGrammarProgress';
+
+// Import des utilitaires
+import { getGrammarData, getLevelColor } from '../../../utils/grammar/grammarDataHelper';
+
+import styles from './styles';
+
+/**
+ * Écran principal pour les exercices de grammaire
+ */
+const GrammarExercise = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { level } = route.params || { level: 'A1' };
+
+  // Récupération des données avec les helpers
+  const levelColor = getLevelColor(level);
+  const grammarData = useMemo(() => getGrammarData(level), [level]);
+
+  // Utiliser les hooks personnalisés
+  const {
+    completedExercises,
+    lastPosition,
+    loaded,
+    saveLastPosition,
+    markExerciseAsCompleted,
+    initializeProgress,
+  } = useGrammarProgress(level);
+
+  const {
+    ruleIndex,
+    exerciseIndex,
+    selectedOption,
+    setSelectedOption,
+    inputText,
+    setInputText,
+    showFeedback,
+    setShowFeedback,
+    isCorrect,
+    attempts,
+    resetExerciseState,
+    goToPreviousExercise,
+    goToNextExercise,
+    changeRule,
+    checkAnswer
+  } = useGrammarExerciseState(level, 0, 0);
+
+  // Restaurer l'état une fois les données chargées
+  useEffect(() => {
+    if (loaded && lastPosition) {
+      changeRule(lastPosition.ruleIndex);
+      // Nous ne mettons pas à jour exerciseIndex ici car changeRule le réinitialise à 0
+      // Si nous voulons restaurer exerciseIndex, nous devons le faire après changeRule
+      if (lastPosition.exerciseIndex > 0) {
+        setTimeout(() => {
+          goToNextExercise(lastPosition.exerciseIndex);  // Nous utilisons une fonction spéciale qui permet de sauter plusieurs exercices
+        }, 0);
+      }
+    }
+  }, [loaded, lastPosition, changeRule, goToNextExercise]);
+
+  // Initialiser la progression une fois les données chargées
+  useEffect(() => {
+    if (loaded && grammarData) {
+      initializeProgress(grammarData);
+    }
+  }, [loaded, grammarData, initializeProgress]);
+  
+  // Affiche le spinner pendant le chargement des données
+  if (!loaded || !grammarData) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color={levelColor} />
+        <Text style={{ marginTop: 10 }}>Chargement...</Text>
+      </View>
+    );
+  }
+
+  // Récupérer la règle et l'exercice actuels
+  const currentRule = grammarData[ruleIndex];
+  const currentExercise = currentRule?.exercises?.[exerciseIndex];
+  
+  // Calculs pour la navigation et la progression
+  const isFirstExercise = exerciseIndex === 0;
+  const isLastExercise = exerciseIndex === (currentRule?.exercises?.length - 1);
+  const progress = ((exerciseIndex + (showFeedback && isCorrect ? 1 : 0)) / (currentRule?.exercises?.length || 1)) * 100;
+
+  // Gérer le changement de règle
+  const handleRuleChange = (index) => {
+    if (index !== ruleIndex) {
+      changeRule(index);
+      saveLastPosition(index, 0);
+    }
+  };
+
+  // Vérifier la réponse de l'utilisateur
+  const handleCheckAnswer = () => {
+    if (!currentExercise) return;
+    
+    let answer = '';
+    let correctAnswer = '';
+    let correct = false;
+    
+    if (currentExercise.type === 'fillInTheBlank' && currentExercise.options) {
+      answer = selectedOption !== null ? currentExercise.options[selectedOption] : '';
+      correctAnswer = typeof currentExercise.answer === 'number' 
+        ? currentExercise.options[currentExercise.answer]
+        : currentExercise.answer;
+      correct = answer === correctAnswer;
+    } else if (currentExercise.type === 'fillInTheBlank' || currentExercise.type === 'transformation') {
+      answer = inputText.trim().toLowerCase();
+      correctAnswer = currentExercise.answer.toLowerCase();
+      correct = answer === correctAnswer;
+    }
+    
+    const isAnswerCorrect = checkAnswer(answer, correctAnswer);
+    markExerciseAsCompleted(ruleIndex, exerciseIndex, isAnswerCorrect, answer);
+  };
+
+  // Passer à l'exercice suivant
+  const handleNextExercise = () => {
+    if (isLastExercise) {
+      if (ruleIndex < grammarData.length - 1) {
+        // Passer à la règle suivante
+        handleRuleChange(ruleIndex + 1);
+      } else {
+        // Toutes les règles sont terminées
+        Alert.alert(
+          "Félicitations",
+          "Vous avez terminé tous les exercices de grammaire !"
+        );
+        navigation.goBack();
+      }
+    } else {
+      goToNextExercise();
+      saveLastPosition(ruleIndex, exerciseIndex + 1);
+    }
+  };
+
+  // Revenir à l'exercice précédent
+  const handlePreviousExercise = () => {
+    if (goToPreviousExercise()) {
+      saveLastPosition(ruleIndex, exerciseIndex - 1);
+    }
+  };
+
+  // Réessayer l'exercice actuel
+  const handleRetryExercise = () => {
+    resetExerciseState();
+  };
+
+  // Passer l'exercice actuel
+  const handleSkipExercise = () => {
+    handleNextExercise();
+  };
+
+  // Vérifier si l'utilisateur peut valider sa réponse
+  const canCheckAnswer = () => {
+    if (!currentExercise) return false;
+    
+    if (currentExercise.type === 'fillInTheBlank' && currentExercise.options) {
+      return selectedOption !== null;
+    } else {
+      return inputText.trim() !== '';
+    }
+  };
+
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      {/* En-tête */}
+      <GrammarHeader
+        level={level}
+        onBackPress={() => navigation.goBack()}
+        progress={progress}
+        currentExercise={exerciseIndex + 1}
+        totalExercises={currentRule?.exercises?.length || 0}
+        levelColor={levelColor}
+      />
+      
+      {/* Sélecteur de règle */}
+      <GrammarRuleSelector
+        rules={grammarData}
+        selectedIndex={ruleIndex}
+        onSelectRule={handleRuleChange}
+        levelColor={levelColor}
+      />
+      
+      {/* Barre de progression */}
+      <GrammarProgressBar
+        progress={progress}
+        currentExercise={exerciseIndex + 1}
+        totalExercises={currentRule?.exercises?.length || 0}
+        levelColor={levelColor}
+      />
+      
+      <ScrollView 
+        style={[styles.scrollView, { backgroundColor: `${levelColor}05` }]} 
+        contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Contenu de la règle */}
+        <GrammarRuleContent rule={currentRule} />
+        
+        {/* Exercice actuel */}
+        <GrammarExerciseRenderer
+          exercise={currentExercise}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+          inputText={inputText}
+          setInputText={setInputText}
+          showFeedback={showFeedback}
+          isCorrect={isCorrect}
+        />
+        
+        {/* Feedback après réponse */}
+        <GrammarFeedback
+          isVisible={showFeedback}
+          isCorrect={isCorrect}
+          explanation={currentExercise?.explanation}
+          correctAnswer={currentExercise?.answer}
+          attempts={attempts}
+        />
+      </ScrollView>
+      
+      {/* Navigation */}
+      <GrammarNavigation
+        showFeedback={showFeedback}
+        isCorrect={isCorrect}
+        canCheckAnswer={canCheckAnswer()}
+        onCheckAnswer={handleCheckAnswer}
+        onPreviousExercise={handlePreviousExercise}
+        onNextExercise={handleNextExercise}
+        onRetryExercise={handleRetryExercise}
+        onSkipExercise={handleSkipExercise}
+        isFirstExercise={isFirstExercise}
+        isLastExercise={isLastExercise}
+        attempts={attempts}
+        levelColor={levelColor}
+      />
+    </SafeAreaView>
+  );
+};
+
+export default GrammarExercise;
