@@ -1,149 +1,162 @@
-import React, { useMemo, useEffect } from 'react';
-import { SafeAreaView, KeyboardAvoidingView, Platform, View } from 'react-native';
-
-// Composants communs
-import ExerciseHeader from '../../../components/exercise-common/ExerciseHeader';
-import CategorySelector from '../../../components/exercise-common/CategorySelector';
-import ProgressBar from '../../../components/ui/ProgressBar';
+import React, { useState, useCallback, useMemo, useEffect } from "react";
+import { SafeAreaView, KeyboardAvoidingView, Platform } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 // Composants spécifiques au chatbot
-import ChatbotMessageList from './ChatbotMessageList';
-import ChatbotSuggestions from './ChatbotSuggestions';
-import ChatbotInput from './ChatbotInput';
-import ChatbotScenarioDescription from './ChatbotScenarioDescription';
+import ChatbotHeader from "./ChatbotHeader";
+import ChatbotProgressBar from "./ChatbotProgressBar";
+import ChatbotMessageList from "./ChatbotMessageList";
+import ChatbotSuggestions from "./ChatbotSuggestions";
+import ChatbotInput from "./ChatbotInput";
+import ChatbotScenarioDescription from "./ChatbotScenarioDescription";
+import ChatbotConversationSelector from "./ChatbotConversationSelector";
 
-// Hooks personnalisés
-import useChatbotExerciseState from './hooks/useChatbotExerciceState';
-import useChatbotProgress from './hooks/useChatbotProgress';
+// Utilitaires et helpers
+import {
+  getChatbotData,
+  getLevelColor,
+} from "../../../utils/chatbot/chatbotDataHelper";
 
-// Helpers
-import { getChatbotData, getLevelColor } from '../../../utils/chatbot/chatbotDataHelper';
-
-import styles from './style';
+// Styles
+import styles from "./style";
 
 /**
- * Écran principal pour les exercices de chatbot
+ * Composant principal pour l'exercice de Chatbot Writing
  */
-const ChatbotExercise = ({ route }) => {
-  const { level } = route.params || { level: 'A1' };
-  
-  // Récupérer les données et la couleur du niveau
+const ChatbotExercise = () => {
+  // Hooks de navigation
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { level = "A1" } = route.params || {};
+
+  // Initialisation des données du chatbot
   const levelColor = getLevelColor(level);
   const chatbotData = useMemo(() => getChatbotData(level), [level]);
-  const allScenarios = useMemo(() => chatbotData.exercises || [], [chatbotData]);
-  
-  // Utiliser les hooks personnalisés
-  const {
-    completedScenarios,
-    lastPosition,
-    loaded,
-    saveLastPosition,
-    markScenarioAsCompleted,
-    saveConversationMessage,
-    initializeProgress,
-  } = useChatbotProgress(level);
-  
-  const {
-    conversation,
-    scenarioIndex,
-    currentStep,
-    isTyping,
-    message,
-    setMessage,
-    suggestions,
-    showHelp,
-    completionProgress,
-    startConversation,
-    sendMessage,
-    changeScenario,
-    toggleHelp,
-    useSuggestion,
-    currentScenario,
-  } = useChatbotExerciseState(level, allScenarios);
-  
-  // Restaurer la dernière position quand les données sont chargées
+  const allScenarios = useMemo(
+    () => chatbotData.exercises || [],
+    [chatbotData]
+  );
+
+  // États de l'exercice
+  const [scenarios, setScenarios] = useState(allScenarios);
+  const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
+  const [conversation, setConversation] = useState([]);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [message, setMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
+  const [showHelp, setShowHelp] = useState(false);
+
+  // Scénario courant
+  const currentScenario = scenarios[currentScenarioIndex] || {};
+
+  // Calcul de la progression
+  const completionProgress = useMemo(() => {
+    return currentScenario.steps
+      ? (currentStep + 1) / currentScenario.steps.length
+      : 0;
+  }, [currentStep, currentScenario]);
+
+  // Réinitialisation lors du changement de scénario
   useEffect(() => {
-    if (loaded && lastPosition) {
-      // Changer de scénario va déclencher une nouvelle conversation
-      changeScenario(lastPosition.scenarioIndex);
-    }
-  }, [loaded, lastPosition, changeScenario]);
-  
-  // Initialiser la progression
-  useEffect(() => {
-    if (loaded && chatbotData) {
-      initializeProgress(chatbotData);
-    }
-  }, [loaded, chatbotData, initializeProgress]);
-  
+    setConversation([]);
+    setSuggestions(currentScenario.steps?.[0]?.suggestions || []);
+    setCurrentStep(0);
+  }, [currentScenarioIndex, currentScenario]);
+
   // Gérer l'envoi d'un nouveau message
-  const handleSendMessage = () => {
-    if (message.trim() === '') return;
-    
-    // Sauvegarder le message
-    saveConversationMessage(scenarioIndex, {
+  const handleSendMessage = useCallback(() => {
+    if (message.trim() === "") return;
+
+    // Message de l'utilisateur
+    const userMessage = {
+      id: `user-${Date.now()}`,
       text: message,
-      sender: 'user',
+      sender: "user",
       timestamp: new Date().toISOString(),
-    });
-    
-    // Envoyer le message
-    sendMessage(message);
-    
-    // Si c'était le dernier message du scénario, marquer comme terminé
-    if (currentStep === allScenarios[scenarioIndex]?.steps?.length - 1) {
-      markScenarioAsCompleted(scenarioIndex, [...conversation, {
-        text: message,
-        sender: 'user',
-        timestamp: new Date().toISOString(),
-      }]);
-    }
-  };
-  
+    };
+
+    setConversation((prev) => [...prev, userMessage]);
+
+    // Réponse du bot
+    setIsTyping(true);
+
+    setTimeout(() => {
+      const botSteps = currentScenario.steps || [];
+      const nextStepIndex = currentStep + 1;
+
+      if (nextStepIndex < botSteps.length) {
+        const nextStep = botSteps[nextStepIndex];
+
+        const botMessage = {
+          id: `bot-${Date.now()}`,
+          text: nextStep.botMessage,
+          sender: "bot",
+          timestamp: new Date().toISOString(),
+        };
+
+        setConversation((prev) => [...prev, botMessage]);
+        setCurrentStep(nextStepIndex);
+
+        // Mettre à jour les suggestions
+        setSuggestions(nextStep.suggestions || []);
+      }
+
+      setIsTyping(false);
+      setMessage("");
+    }, 1000);
+  }, [message, currentScenario, currentStep]);
+
   // Gérer le changement de scénario
-  const handleScenarioChange = (index) => {
-    if (index !== scenarioIndex) {
-      changeScenario(index);
-      saveLastPosition(index, 0);
-    }
-  };
-  
+  const handleScenarioChange = useCallback(
+    (index) => {
+      if (index !== currentScenarioIndex) {
+        setCurrentScenarioIndex(index);
+      }
+    },
+    [currentScenarioIndex]
+  );
+
+  // Utiliser une suggestion
+  const handleUseSuggestion = useCallback((suggestion) => {
+    setMessage(suggestion);
+  }, []);
+
   // Obtenir le texte d'aide pour l'étape actuelle
-  const getCurrentHelp = () => {
-    if (!currentScenario || !currentScenario.steps || currentStep >= currentScenario.steps.length) {
-      return '';
-    }
-    return currentScenario.steps[currentStep].help || '';
-  };
-  
+  const getCurrentHelp = useCallback(() => {
+    return currentScenario.steps?.[currentStep]?.help || "";
+  }, [currentScenario, currentStep]);
+
+  // Basculer l'affichage de l'aide
+  const toggleHelp = useCallback(() => {
+    setShowHelp((prev) => !prev);
+  }, []);
+
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/* En-tête avec badge de niveau */}
-      <ExerciseHeader
-        title="Chatbot Writing"
+      {/* En-tête du chatbot */}
+      <ChatbotHeader
         level={level}
-        progress={completionProgress}
-        onClose={() => route.navigation.goBack()}
+        onBackPress={() => navigation.goBack()}
         levelColor={levelColor}
       />
-      
-      {/* Sélecteur de scénarios */}
-      <CategorySelector
-        categories={allScenarios.map(scenario => scenario.title) || []}
-        selectedIndex={scenarioIndex}
-        onSelectCategory={handleScenarioChange}
+
+      {/* Sélecteur de conversations */}
+      <ChatbotConversationSelector
+        scenarios={scenarios}
+        selectedIndex={currentScenarioIndex}
+        onSelectScenario={handleScenarioChange}
         levelColor={levelColor}
-        label="Scenarios:"
       />
-      
+
       {/* Barre de progression */}
-      <ProgressBar
+      <ChatbotProgressBar
         progress={completionProgress}
-        currentValue={currentStep + 1}
-        totalValue={currentScenario?.steps?.length || 0}
-        color={levelColor}
+        currentStep={currentStep + 1}
+        totalSteps={currentScenario.steps?.length || 0}
+        levelColor={levelColor}
       />
-      
+
       {/* Description du scénario et aide */}
       {currentScenario && (
         <ChatbotScenarioDescription
@@ -154,12 +167,12 @@ const ChatbotExercise = ({ route }) => {
           levelColor={levelColor}
         />
       )}
-      
+
       {/* Zone de chat */}
       <KeyboardAvoidingView
         style={styles.chatContainer}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
       >
         {/* Liste des messages */}
         <ChatbotMessageList
@@ -167,14 +180,14 @@ const ChatbotExercise = ({ route }) => {
           isTyping={isTyping}
           levelColor={levelColor}
         />
-        
+
         {/* Suggestions */}
         <ChatbotSuggestions
           suggestions={suggestions}
-          onPressSuggestion={useSuggestion}
+          onPressSuggestion={handleUseSuggestion}
           levelColor={levelColor}
         />
-        
+
         {/* Zone de saisie */}
         <ChatbotInput
           message={message}

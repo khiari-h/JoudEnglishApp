@@ -1,6 +1,5 @@
-// src/components/exercise-common/CategorySelector/index.js
 import React from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, ScrollView, TouchableOpacity, Text } from "react-native";
 import styles from "./style";
 
 /**
@@ -19,31 +18,7 @@ const CategorySelector = ({
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {/* Option "Tous" toujours présente */}
-        <TouchableOpacity
-          style={[
-            styles.categoryItem,
-            selectedCategory === null && {
-              backgroundColor: `${primaryColor}15`,
-              borderColor: primaryColor,
-            },
-          ]}
-          onPress={() => onSelectCategory(null)}
-        >
-          <Text
-            style={[
-              styles.categoryText,
-              selectedCategory === null && {
-                color: primaryColor,
-                fontWeight: "600",
-              },
-            ]}
-          >
-            Tous
-          </Text>
-        </TouchableOpacity>
-
-        {/* Autres catégories */}
+        {/* Uniquement les catégories spécifiques */}
         {categories.map((category) => (
           <TouchableOpacity
             key={category.id}

@@ -32,7 +32,7 @@ const VocabularyCategorySelector = ({
   return (
     <CategorySelector
       categories={formattedCategories}
-      selectedCategory={selectedIndex}
+      selectedCategory={selectedIndex === undefined ? 0 : selectedIndex}
       onSelectCategory={handleCategorySelect}
       primaryColor={levelColor}
     />

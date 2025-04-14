@@ -80,7 +80,7 @@ export const LANGUAGE_LEVELS = {
       title: 'Conversation',
       description: 'Pratiquez l\'écriture à travers des dialogues simulés',
       icon: '💬',
-      route: 'ChatbotExercice',
+      route: 'ChatbotExercise',
     },
     reading: {
       id: 'reading',
@@ -320,7 +320,7 @@ export const LANGUAGE_LEVELS = {
     EXERCISE_SELECTION: 'ExerciseSelection',
     VOCABULARY: 'VocabularyExercise',
     GRAMMAR: 'GrammarExercise',
-    CHATBOT: 'ChatbotWriting',
+    CHATBOT: 'ChatbotExercise',
     READING: 'ReadingExercise',
     ERROR_CORRECTION: 'ErrorCorrectionExercise',
     WORD_GAMES: 'WordGamesExercise',

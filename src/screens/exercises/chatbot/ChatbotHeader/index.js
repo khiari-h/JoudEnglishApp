@@ -2,12 +2,12 @@ import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
 /**
- * En-tête pour l'exercice de grammaire
+ * En-tête pour l'exercice de Chatbot Writing
  */
-const GrammarHeader = ({ level, onBackPress, levelColor }) => {
+const ChatbotHeader = ({ level, onBackPress, levelColor }) => {
   return (
     <ExerciseHeader
-      title="Grammar"
+      title="Chatbot Writing"
       level={level}
       onClose={onBackPress}
       showProgress={false}
@@ -17,4 +17,4 @@ const GrammarHeader = ({ level, onBackPress, levelColor }) => {
   );
 };
 
-export default GrammarHeader;
+export default ChatbotHeader;

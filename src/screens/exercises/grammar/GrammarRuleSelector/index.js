@@ -1,48 +1,33 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import styles from './style';
+import React from "react";
+import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 
 /**
- * Sélecteur de règles grammaticales
- * Affiche une liste horizontale de règles disponibles
- * 
+ * Sélecteur de règles grammaticales réutilisant le CategorySelector générique
+ *
  * @param {Array} rules - Liste des règles disponibles
  * @param {number} selectedIndex - Index de la règle sélectionnée
  * @param {function} onSelectRule - Fonction à appeler lors de la sélection d'une règle
  * @param {string} levelColor - Couleur du niveau actuel
  */
-const GrammarRuleSelector = ({ 
-  rules, 
-  selectedIndex, 
+const GrammarRuleSelector = ({
+  rules,
+  selectedIndex,
   onSelectRule,
-  levelColor = "#3b82f6" 
+  levelColor = "#3b82f6",
 }) => {
+  // Transformer les règles pour correspondre au format du CategorySelector
+  const formattedRules = rules.map((rule, index) => ({
+    id: index,
+    name: rule.title,
+  }));
+
   return (
-    <View style={styles.ruleSelector}>
-      <ScrollView 
-        horizontal 
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.rulesContainer}
-      >
-        {rules.map((rule, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[
-              styles.ruleButton,
-              selectedIndex === index && { borderColor: levelColor, borderWidth: 2 }
-            ]}
-            onPress={() => onSelectRule(index)}
-          >
-            <Text style={[
-              styles.ruleButtonText,
-              selectedIndex === index && { color: levelColor, fontWeight: '600' }
-            ]}>
-              {rule.title}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
+    <CategorySelector
+      categories={formattedRules}
+      selectedCategory={selectedIndex === undefined ? 0 : selectedIndex}
+      onSelectCategory={onSelectRule}
+      primaryColor={levelColor}
+    />
   );
 };
 
