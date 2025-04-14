@@ -13,7 +13,7 @@ import ExerciseSelection from "../screens/ExerciseSelection";
 // Écrans d'exercices
 import VocabularyExercise from "../screens/exercises/VocabularyExercise";
 import GrammarExercise from "../screens/exercises/GrammarExercise";
-import ChatbotExercise from "../screens/exercices/ChatbotExercise";
+import ChatbotExercise from "../screens/exercises/ChatbotExercise";
 
 // Configuration du navigateur
 const Stack = createStackNavigator();
