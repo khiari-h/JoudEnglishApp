@@ -13,6 +13,7 @@ import ExerciseSelection from "../screens/ExerciseSelection";
 // Écrans d'exercices
 import VocabularyExercise from "../screens/exercises/VocabularyExercise";
 import GrammarExercise from "../screens/exercises/GrammarExercise";
+import ChatbotExercise from "../screens/exercises/chatbot";
 
 // Configuration du navigateur
 const Stack = createStackNavigator();
@@ -44,6 +45,10 @@ const AppNavigator = () => {
         <Stack.Screen
           name={ROUTES.GRAMMAR_EXERCISE}
           component={GrammarExercise}
+        />
+        <Stack.Screen
+          name={ROUTES.CHATBOT_EXERCISE}
+          component={ChatbotExercise}
         />
       </Stack.Navigator>
     </NavigationContainer>
