@@ -1,7 +1,7 @@
 // utils/chatbot/chatbotDataHelper.js
 
 // Import des données de chatbot par niveau
-import chatbotA1Data from "../../data/exercises/chatbot/chatbotA1";
+import chatbotA1Data from "../../data/chatbot/chatbotA1";
 
 
 /**
