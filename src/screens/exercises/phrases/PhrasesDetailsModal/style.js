@@ -1,72 +1,58 @@
-import { StyleSheet, Dimensions } from 'react-native';
-
-const { height } = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+  // Styles pour le modal
+  modalCustomContainer: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    backgroundColor: '#fff',
   },
-  modalContent: {
-    backgroundColor: 'white',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    maxHeight: height * 0.8,
-    paddingHorizontal: 20,
-    paddingTop: 20,
-    paddingBottom: 30,
-    borderTopWidth: 4,
+  modalCustomBody: {
+    padding: 0,
   },
-  modalTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 20,
-    color: '#1e293b',
+  modalInnerContent: {
+    padding: 16,
+  },
+  modalFooter: {
+    padding: 12,
+    alignItems: 'center',
+    borderTopWidth: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  modalFooterText: {
+    fontSize: 14,
+    fontWeight: '500',
   },
   detailSection: {
-    marginBottom: 15,
-    backgroundColor: '#f8fafc',
-    padding: 12,
-    borderRadius: 10,
+    marginBottom: 16,
   },
   detailLabel: {
-    fontWeight: 'bold',
-    marginBottom: 5,
     fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 8,
   },
   detailText: {
-    color: '#475569',
     fontSize: 15,
     lineHeight: 22,
+    color: '#333',
   },
   exampleItem: {
-    marginBottom: 10,
-    paddingLeft: 10,
-    borderLeftWidth: 2,
-    borderLeftColor: '#e0e0e0',
+    backgroundColor: '#f8f8f8',
+    padding: 12,
+    borderRadius: 8,
+    marginTop: 8,
+    marginBottom: 8,
   },
   exampleText: {
     fontSize: 15,
-    color: '#0f172a',
-    fontStyle: 'italic',
+    fontWeight: '500',
     marginBottom: 4,
   },
   exampleTranslation: {
     fontSize: 14,
-    color: '#64748b',
+    fontStyle: 'italic',
+    color: '#555',
   },
-  closeButton: {
-    marginTop: 15,
-    paddingVertical: 12,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  closeButtonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  }
 });
 
 export default styles;

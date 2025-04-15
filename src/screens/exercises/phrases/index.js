@@ -1,50 +1,41 @@
-import React, { useMemo } from 'react';
-import { 
-  SafeAreaView, 
-  View, 
-  Text, 
-  ActivityIndicator 
-} from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import React, { useMemo } from "react";
+import { SafeAreaView, View, Text, ActivityIndicator } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Importation des composants spécifiques
-import PhrasesHeader from './PhrasesHeader';
-import PhrasesCategorySelector from './PhrasesCategorySelector';
-import PhrasesProgressBar from './PhrasesProgressBar';
-import PhrasePhraseCard from './PhrasePhraseCard';
-import PhrasesDetailsModal from './PhrasesDetailsModal';
-import PhrasesNavigation from './PhrasesNavigation';
+import PhrasesHeader from "./PhrasesHeader";
+import PhrasesCategorySelector from "./PhrasesCategorySelector";
+import PhrasesProgressBar from "./PhrasesProgressBar";
+import PhrasePhraseCard from "./PhrasePhraseCard";
+import PhrasesDetailsModal from "./PhrasesDetailsModal";
+import PhrasesNavigation from "./PhrasesNavigation";
 
 // Hooks personnalisés
-import usePhrasesExerciseState from './hooks/usePhrasesExerciseState';
-import usePhrasesProgress from './hooks/usePhrasesProgress';
+import usePhrasesExerciseState from "./hooks/usePhrasesExerciseState";
+import usePhrasesProgress from "./hooks/usePhrasesProgress";
 
 // Utilitaires
-import { 
-  getPhrasesData, 
-  getLevelColor 
-} from '../../../utils/phrases/phrasesDataHelper';
+import {
+  getPhrasesData,
+  getLevelColor,
+} from "../../../utils/phrases/phrasesDataHelper";
 
 // Styles
-import styles from './style';
+import styles from "./style";
 
 /**
  * Composant principal pour l'exercice de Phrases & Expressions
  */
 const PhrasesExercise = ({ route }) => {
   const navigation = useNavigation();
-  const route = useRoute();
-  const { level = 'A1' } = route.params || {};
+  const { level = "A1" } = route?.params || {};
 
   // Récupérer les données et la couleur du niveau
   const levelColor = getLevelColor(level);
   const phrasesData = useMemo(() => getPhrasesData(level), [level]);
 
   // Utiliser les hooks personnalisés
-  const {
-    loaded,
-    saveLastPosition,
-  } = usePhrasesProgress(level);
+  const { loaded, saveLastPosition } = usePhrasesProgress(level);
 
   const {
     categoryIndex,
@@ -59,15 +50,41 @@ const PhrasesExercise = ({ route }) => {
     closePhraseDetails,
     currentCategory,
     currentPhrases,
+    hasValidData,
   } = usePhrasesExerciseState(level, phrasesData);
 
+  // Effet pour sauvegarder la position actuelle
+  React.useEffect(() => {
+    if (loaded && hasValidData) {
+      saveLastPosition(categoryIndex, phraseIndex);
+    }
+  }, [categoryIndex, phraseIndex, loaded, hasValidData, saveLastPosition]);
+
   // Afficher un indicateur de chargement si les données ne sont pas encore prêtes
-  if (!loaded || !phrasesData) {
+  if (!loaded || !hasValidData) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color={levelColor} />
-        <Text style={styles.loadingText}>Chargement...</Text>
+        <Text style={styles.loadingText}>Chargement des phrases...</Text>
       </View>
+    );
+  }
+
+  // Si nous n'avons pas de phrases dans la catégorie actuelle
+  if (currentPhrases.length === 0) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <PhrasesHeader
+          level={level}
+          onBackPress={() => navigation.goBack()}
+          levelColor={levelColor}
+        />
+        <View style={styles.emptyStateContainer}>
+          <Text style={styles.emptyStateText}>
+            Aucune phrase disponible dans cette catégorie.
+          </Text>
+        </View>
+      </SafeAreaView>
     );
   }
 
@@ -79,15 +96,15 @@ const PhrasesExercise = ({ route }) => {
         onBackPress={() => navigation.goBack()}
         levelColor={levelColor}
       />
-      
+
       {/* Sélecteur de catégories */}
       <PhrasesCategorySelector
-        categories={phrasesData.categories}
+        categories={phrasesData?.categories || []}
         selectedIndex={categoryIndex}
         onSelectCategory={changeCategory}
         levelColor={levelColor}
       />
-      
+
       {/* Barre de progression */}
       <PhrasesProgressBar
         progress={completionProgress}
@@ -95,22 +112,28 @@ const PhrasesExercise = ({ route }) => {
         totalPhrases={currentPhrases.length}
         levelColor={levelColor}
       />
-      
+
       {/* Contenu de la phrase */}
       <View style={styles.contentContainer}>
         <View style={styles.categoryTitleContainer}>
           <Text style={styles.categoryTitle}>
-            {currentCategory.name}
+            {currentCategory?.name || "Catégorie"}
           </Text>
         </View>
 
-        <PhrasePhraseCard
-          phrase={currentPhrases[phraseIndex]}
-          onDetailsPress={openPhraseDetails}
-          levelColor={levelColor}
-        />
+        {currentPhrases[phraseIndex] ? (
+          <PhrasePhraseCard
+            phrase={currentPhrases[phraseIndex]}
+            onDetailsPress={openPhraseDetails}
+            levelColor={levelColor}
+          />
+        ) : (
+          <View style={styles.phrasePlaceholder}>
+            <Text>Phrase non disponible</Text>
+          </View>
+        )}
       </View>
-      
+
       {/* Navigation */}
       <PhrasesNavigation
         onPrevious={goToPreviousPhrase}
@@ -119,7 +142,7 @@ const PhrasesExercise = ({ route }) => {
         disableNext={phraseIndex === currentPhrases.length - 1}
         levelColor={levelColor}
       />
-      
+
       {/* Modal de détails */}
       <PhrasesDetailsModal
         phrase={selectedPhrase}

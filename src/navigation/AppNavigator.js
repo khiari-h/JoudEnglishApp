@@ -51,7 +51,7 @@ const AppNavigator = () => {
           name={ROUTES.CHATBOT_EXERCISE}
           component={ChatbotExercise}
         />
-          <Stack.Screen
+        <Stack.Screen
           name={ROUTES.CHATBOT_EXERCISE}
           component={PhrasesExercise}
         />

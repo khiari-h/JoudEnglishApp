@@ -14,10 +14,24 @@ const PhrasePhraseCard = ({
   onDetailsPress, 
   levelColor 
 }) => {
+  if (!phrase) {
+    return (
+      <View style={styles.phraseCard}>
+        <Text style={styles.loadingText}>Chargement de la phrase...</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.phraseCard}>
       <Text style={styles.phraseEnglish}>{phrase.english}</Text>
       <Text style={styles.phraseTranslation}>{phrase.translation}</Text>
+      
+      {phrase.context && (
+        <View style={styles.contextContainer}>
+          <Text style={styles.contextText}>{phrase.context}</Text>
+        </View>
+      )}
 
       <TouchableOpacity 
         style={[

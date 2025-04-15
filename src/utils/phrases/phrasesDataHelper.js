@@ -1,5 +1,5 @@
 // src/utils/phrases/phrasesDataHelper.js
-import phrasesA1Data from "../../data/exercises/phrases/phrasesA1";
+import phrasesA1Data from "../../data/phrases/phrasesA1";
 // Pour les futurs niveaux: import phrasesA2Data from "../../data/exercises/phrases/phrasesA2";
 
 /**
