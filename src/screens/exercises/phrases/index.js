@@ -31,7 +31,7 @@ import styles from './style';
 /**
  * Composant principal pour l'exercice de Phrases & Expressions
  */
-const PhrasesExercise = () => {
+const PhrasesExercise = ({ route }) => {
   const navigation = useNavigation();
   const route = useRoute();
   const { level = 'A1' } = route.params || {};

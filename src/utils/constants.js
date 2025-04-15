@@ -108,7 +108,7 @@ export const LANGUAGE_LEVELS = {
       title: 'Expressions',
       description: 'Apprenez des expressions utiles dans leur contexte',
       icon: '🗣️',
-      route: 'PhrasesExpressions',
+      route: 'PhrasesExercice',
     },
     spelling: {
       id: 'spelling',
@@ -324,7 +324,7 @@ export const LANGUAGE_LEVELS = {
     READING: 'ReadingExercise',
     ERROR_CORRECTION: 'ErrorCorrectionExercise',
     WORD_GAMES: 'WordGamesExercise',
-    PHRASES: 'PhrasesExpressions',
+    PHRASES: 'PhrasesExercice',
     SPELLING: 'SpellingPractice',
     EVALUATION: 'Evaluation',
   };
