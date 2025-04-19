@@ -1,134 +1,151 @@
-// src/components/screens/exercises/reading/hooks/useReadingProgress.js
+// src/screens/exercises/reading/hooks/useReadingProgress.js
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
- * Hook personnalisé pour gérer la progression dans les exercices de lecture
+ * Hook personnalisé pour gérer la progression globale des exercices de lecture
  * 
- * @param {string} level - Niveau de langue (A1, A2, B1, B2, C1, C2)
+ * @param {string} level - Niveau de langue (A1, A2, etc.)
  */
 const useReadingProgress = (level) => {
   // États pour suivre la progression
-  const [completedQuestions, setCompletedQuestions] = useState({});
+  const [completedExercises, setCompletedExercises] = useState({});
+  const [lastPosition, setLastPosition] = useState({ exerciseIndex: 0, questionIndex: 0 });
   const [loaded, setLoaded] = useState(false);
-  
+  const [initialized, setInitialized] = useState(false);
+
   // Clés pour AsyncStorage
-  const COMPLETED_QUESTIONS_KEY = `reading_completed_${level}`;
-  
+  const COMPLETED_EXERCISES_KEY = `reading_completed_${level}`;
+  const LAST_POSITION_KEY = `reading_position_${level}`;
+
   // Charger les données sauvegardées
   useEffect(() => {
     const loadSavedData = async () => {
       try {
-        const savedCompletedQuestionsJson = await AsyncStorage.getItem(COMPLETED_QUESTIONS_KEY);
-        const savedCompletedQuestions = savedCompletedQuestionsJson 
-          ? JSON.parse(savedCompletedQuestionsJson) 
+        // Récupérer les exercices complétés
+        const savedCompletedExercisesJson = await AsyncStorage.getItem(COMPLETED_EXERCISES_KEY);
+        const savedCompletedExercises = savedCompletedExercisesJson 
+          ? JSON.parse(savedCompletedExercisesJson) 
           : {};
         
-        setCompletedQuestions(savedCompletedQuestions);
+        // Récupérer la dernière position
+        const savedPositionJson = await AsyncStorage.getItem(LAST_POSITION_KEY);
+        const savedPosition = savedPositionJson 
+          ? JSON.parse(savedPositionJson) 
+          : { exerciseIndex: 0, questionIndex: 0 };
+        
+        setCompletedExercises(savedCompletedExercises);
+        setLastPosition(savedPosition);
         setLoaded(true);
       } catch (error) {
         console.error('Erreur lors du chargement des données de progression:', error);
-        setCompletedQuestions({});
+        setCompletedExercises({});
+        setLastPosition({ exerciseIndex: 0, questionIndex: 0 });
         setLoaded(true);
       }
     };
 
     loadSavedData();
-  }, [COMPLETED_QUESTIONS_KEY]);
-  
-  // Vérifier si une question est complétée
-  const isQuestionCompleted = useCallback((exerciseIndex, questionIndex) => {
-    return completedQuestions[exerciseIndex]?.includes(questionIndex) || false;
-  }, [completedQuestions]);
-  
-  // Marquer une question comme complétée
-  const markQuestionAsCompleted = useCallback(async (exerciseIndex, questionIndex) => {
+  }, [COMPLETED_EXERCISES_KEY, LAST_POSITION_KEY]);
+
+  // Sauvegarder la dernière position
+  const saveLastPosition = useCallback(async (exerciseIndex, questionIndex) => {
     try {
-      // Vérifier si la question est déjà complétée
-      if (isQuestionCompleted(exerciseIndex, questionIndex)) {
-        return;
+      const newPosition = { exerciseIndex, questionIndex };
+      setLastPosition(newPosition);
+      await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
+    } catch (error) {
+      console.error('Erreur lors de la sauvegarde de la position:', error);
+    }
+  }, [LAST_POSITION_KEY]);
+
+  // Marquer un exercice comme complété
+  const markExerciseAsCompleted = useCallback(async (exerciseIndex, completedQuestions) => {
+    try {
+      const updatedCompletedExercises = { ...completedExercises };
+      
+      if (!updatedCompletedExercises[exerciseIndex]) {
+        updatedCompletedExercises[exerciseIndex] = {
+          completedAt: new Date().toISOString(),
+          completedQuestions
+        };
+      } else {
+        updatedCompletedExercises[exerciseIndex] = {
+          ...updatedCompletedExercises[exerciseIndex],
+          completedAt: new Date().toISOString(),
+          completedQuestions
+        };
       }
       
-      // Mettre à jour l'état
-      const updatedCompletedQuestions = { ...completedQuestions };
+      setCompletedExercises(updatedCompletedExercises);
+      await AsyncStorage.setItem(COMPLETED_EXERCISES_KEY, JSON.stringify(updatedCompletedExercises));
+    } catch (error) {
+      console.error('Erreur lors du marquage de l\'exercice comme complété:', error);
+    }
+  }, [completedExercises, COMPLETED_EXERCISES_KEY]);
+
+  // Mettre à jour la progression d'un exercice
+  const updateExerciseProgress = useCallback(async (exerciseIndex, completedQuestions) => {
+    try {
+      const updatedCompletedExercises = { ...completedExercises };
       
-      if (!updatedCompletedQuestions[exerciseIndex]) {
-        updatedCompletedQuestions[exerciseIndex] = [];
+      if (!updatedCompletedExercises[exerciseIndex]) {
+        updatedCompletedExercises[exerciseIndex] = {
+          updatedAt: new Date().toISOString(),
+          completedQuestions
+        };
+      } else {
+        updatedCompletedExercises[exerciseIndex] = {
+          ...updatedCompletedExercises[exerciseIndex],
+          updatedAt: new Date().toISOString(),
+          completedQuestions
+        };
       }
       
-      updatedCompletedQuestions[exerciseIndex].push(questionIndex);
-      setCompletedQuestions(updatedCompletedQuestions);
-      
-      // Sauvegarder dans AsyncStorage
-      await AsyncStorage.setItem(
-        COMPLETED_QUESTIONS_KEY,
-        JSON.stringify(updatedCompletedQuestions)
-      );
+      setCompletedExercises(updatedCompletedExercises);
+      await AsyncStorage.setItem(COMPLETED_EXERCISES_KEY, JSON.stringify(updatedCompletedExercises));
     } catch (error) {
-      console.error('Erreur lors du marquage de la question comme complétée:', error);
+      console.error('Erreur lors de la mise à jour de la progression:', error);
     }
-  }, [completedQuestions, isQuestionCompleted, COMPLETED_QUESTIONS_KEY]);
-  
-  // Réinitialiser la progression d'un exercice
-  const resetExerciseProgress = useCallback(async (exerciseIndex) => {
-    try {
-      const updatedCompletedQuestions = { ...completedQuestions };
-      updatedCompletedQuestions[exerciseIndex] = [];
+  }, [completedExercises, COMPLETED_EXERCISES_KEY]);
+
+  // Initialiser la progression
+  const initializeProgress = useCallback((readingData) => {
+    if (!initialized && loaded && readingData) {
+      const exercises = readingData.exercises || [];
+      const newCompletedExercises = { ...completedExercises };
       
-      setCompletedQuestions(updatedCompletedQuestions);
+      // Vérifier si les données correspondent aux exercices disponibles
+      exercises.forEach((_, index) => {
+        // Initialiser uniquement les entrées manquantes
+        if (!newCompletedExercises[index]) {
+          newCompletedExercises[index] = null;
+        }
+      });
       
-      // Sauvegarder dans AsyncStorage
-      await AsyncStorage.setItem(
-        COMPLETED_QUESTIONS_KEY,
-        JSON.stringify(updatedCompletedQuestions)
-      );
-    } catch (error) {
-      console.error('Erreur lors de la réinitialisation de la progression:', error);
+      setCompletedExercises(newCompletedExercises);
+      setInitialized(true);
     }
-  }, [completedQuestions, COMPLETED_QUESTIONS_KEY]);
-  
+  }, [completedExercises, initialized, loaded]);
+
   // Calculer la progression globale
-  const calculateProgress = useCallback((exerciseIndex, totalQuestions) => {
-    const completed = completedQuestions[exerciseIndex]?.length || 0;
-    return totalQuestions > 0 ? (completed / totalQuestions) * 100 : 0;
-  }, [completedQuestions]);
-  
-  // Vérifier si tous les exercices sont complétés
-  const areAllQuestionsCompleted = useCallback((exercisesData) => {
-    if (!exercisesData || exercisesData.length === 0) {
-      return false;
-    }
+  const calculateOverallProgress = useCallback(() => {
+    const totalExercises = Object.keys(completedExercises).length;
+    if (totalExercises === 0) return 0;
     
-    return exercisesData.every((exercise, index) => {
-      const questionsCount = exercise.questions?.length || 0;
-      const completedCount = completedQuestions[index]?.length || 0;
-      return questionsCount > 0 && completedCount === questionsCount;
-    });
-  }, [completedQuestions]);
-  
-  // Initialiser les questions complétées pour de nouveaux exercices
-  const initializeCompletedQuestions = useCallback((exercisesData) => {
-    if (!exercisesData || exercisesData.length === 0 || Object.keys(completedQuestions).length > 0) {
-      return;
-    }
-    
-    const initialCompletedQuestions = {};
-    exercisesData.forEach((_, index) => {
-      initialCompletedQuestions[index] = [];
-    });
-    
-    setCompletedQuestions(initialCompletedQuestions);
-  }, [completedQuestions]);
-  
+    const completedCount = Object.values(completedExercises).filter(Boolean).length;
+    return (completedCount / totalExercises) * 100;
+  }, [completedExercises]);
+
   return {
-    completedQuestions,
+    completedExercises,
+    lastPosition,
     loaded,
-    isQuestionCompleted,
-    markQuestionAsCompleted,
-    resetExerciseProgress,
-    calculateProgress,
-    areAllQuestionsCompleted,
-    initializeCompletedQuestions,
+    saveLastPosition,
+    markExerciseAsCompleted,
+    updateExerciseProgress,
+    initializeProgress,
+    calculateOverallProgress
   };
 };
 
