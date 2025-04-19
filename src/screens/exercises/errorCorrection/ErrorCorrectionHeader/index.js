@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionHeader/index.js
 import React from "react";
 import { View } from "react-native";
-import ExerciseHeader from "../../../../exercise-common/ExerciseHeader";
+import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 import styles from "./style";
 
 /**

@@ -4,23 +4,26 @@ import { SafeAreaView, View } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 // Composants spécifiques à la correction d'erreurs
-import ErrorCorrectionHeader from "../ErrorCorrectionHeader";
-import ErrorCorrectionCategorySelector from "../ErrorCorrectionCategorySelector";
-import ErrorCorrectionModeSelector from "../ErrorCorrectionModeSelector";
-import ErrorCorrectionProgressBar from "../ErrorCorrectionProgressBar";
-import ErrorCorrectionNavigation from "../ErrorCorrectionNavigation";
+import ErrorCorrectionHeader from "./ErrorCorrectionHeader";
+import ErrorCorrectionCategorySelector from "./ErrorCorrectionCategorySelector";
+import ErrorCorrectionModeSelector from "./ErrorCorrectionModeSelector";
+import ErrorCorrectionProgressBar from "./ErrorCorrectionProgressBar";
+import ErrorCorrectionNavigation from "./ErrorCorrectionNavigation";
 
 // Composants de contenu pour les différents modes
-import FullCorrectionMode from "../modes/FullCorrectionMode";
-import IdentifyErrorsMode from "../modes/IdentifyErrorsMode";
-import MultipleChoiceMode from "../modes/MultipleChoiceMode";
-import ErrorCorrectionResultsCard from "../ErrorCorrectionResultsCard";
+import FullCorrectionMode from "./modes/FullCorrectionMode";
+import IdentifyErrorsMode from "./modes/IdentifyErrorsMode";
+import MultipleChoiceMode from "./modes/MultipleChoiceMode";
+import ErrorCorrectionResultsCard from "./ErrorCorrectionResultsCard";
 
 // Hook pour la gestion de l'état
-import useErrorCorrectionExerciseState from "../hooks/useErrorCorrectionExerciseState";
+import useErrorCorrectionExerciseState from "./hooks/useErrorCorrectionExerciseState";
 
 // Utilitaires et helpers
-import { getErrorsData, getLevelColor } from "../../../utils/errorCorrection/errorCorrectionHelper";
+import {
+  getErrorsData,
+  getLevelColor,
+} from "../../../utils/errorCorrection/errorCorrectionDataHelper";
 
 // Styles
 import styles from "./style";
@@ -37,10 +40,10 @@ const ErrorCorrectionExercise = () => {
   // Initialisation des données
   const levelColor = getLevelColor(level);
   const exercisesData = useMemo(() => getErrorsData(level), [level]);
-  
+
   // Vue active (browse, exercise, results)
   const [viewMode, setViewMode] = useState("browse");
-  
+
   // État des exercices via notre hook personnalisé
   const {
     selectedCategory,
@@ -226,8 +229,10 @@ const ErrorCorrectionExercise = () => {
           totalCount={exercises.length}
           disableNext={
             (correctionMode === "full" && userCorrection.trim() === "") ||
-            (correctionMode === "identify" && selectedErrorIndices.length === 0) ||
-            (correctionMode === "multiple_choice" && selectedChoiceIndex === null)
+            (correctionMode === "identify" &&
+              selectedErrorIndices.length === 0) ||
+            (correctionMode === "multiple_choice" &&
+              selectedChoiceIndex === null)
           }
           isLastExercise={currentExerciseIndex === exercises.length - 1}
           showFeedback={showFeedback}
