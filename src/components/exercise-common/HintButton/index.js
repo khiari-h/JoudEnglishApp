@@ -1,15 +1,15 @@
 // src/components/exercise-common/HintButton/index.js
-import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
-  Modal, 
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
   TouchableWithoutFeedback,
-  Animated
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import styles from './styles';
+  Animated,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import styles from "./style";
 
 /**
  * Bouton d'indice avec modal pour afficher des aides contextuelles
@@ -17,54 +17,54 @@ import styles from './styles';
  */
 const HintButton = ({
   hint,
-  hintTitle = 'Indice',
-  hintType = 'text', // 'text', 'example', 'rule'
+  hintTitle = "Indice",
+  hintType = "text", // 'text', 'example', 'rule'
   limitedHints = false,
   maxHints = 3,
-  primaryColor = '#5E60CE',
+  primaryColor = "#5E60CE",
   onUseHint = () => {},
 }) => {
   // États
   const [modalVisible, setModalVisible] = useState(false);
   const [hintsUsed, setHintsUsed] = useState(0);
   const [hintRevealed, setHintRevealed] = useState(false);
-  
+
   // Animation
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const translateY = React.useRef(new Animated.Value(20)).current;
-  
+
   // Vérifier si les indices sont épuisés
   const hintsExhausted = limitedHints && hintsUsed >= maxHints;
-  
+
   // Ouvrir la modal
   const openModal = () => {
     if (hintsExhausted) return;
-    
+
     setModalVisible(true);
-    
+
     // Réinitialiser les animations
     fadeAnim.setValue(0);
     translateY.setValue(20);
     setHintRevealed(false);
   };
-  
+
   // Fermer la modal
   const closeModal = () => {
     setModalVisible(false);
   };
-  
+
   // Révéler l'indice
   const revealHint = () => {
     if (hintRevealed) return;
-    
+
     // Incrémenter le compteur d'indices
     const newHintsUsed = hintsUsed + 1;
     setHintsUsed(newHintsUsed);
     setHintRevealed(true);
-    
+
     // Déclencher le callback
     onUseHint(newHintsUsed);
-    
+
     // Animer l'apparition
     Animated.parallel([
       Animated.timing(fadeAnim, {
@@ -79,20 +79,20 @@ const HintButton = ({
       }),
     ]).start();
   };
-  
+
   // Déterminer l'icône en fonction du type d'indice
   const getHintIcon = () => {
     switch (hintType) {
-      case 'example':
-        return 'bookmarks-outline';
-      case 'rule':
-        return 'school-outline';
-      case 'text':
+      case "example":
+        return "bookmarks-outline";
+      case "rule":
+        return "school-outline";
+      case "text":
       default:
-        return 'bulb-outline';
+        return "bulb-outline";
     }
   };
-  
+
   return (
     <View style={styles.container}>
       {/* Bouton d'indice */}
@@ -100,26 +100,28 @@ const HintButton = ({
         style={[
           styles.hintButton,
           { borderColor: primaryColor },
-          hintsExhausted && styles.disabledHintButton
+          hintsExhausted && styles.disabledHintButton,
         ]}
         onPress={openModal}
         disabled={hintsExhausted}
       >
-        <Ionicons 
-          name={getHintIcon()} 
-          size={18} 
-          color={hintsExhausted ? '#9CA3AF' : primaryColor} 
+        <Ionicons
+          name={getHintIcon()}
+          size={18}
+          color={hintsExhausted ? "#9CA3AF" : primaryColor}
         />
-        <Text 
+        <Text
           style={[
             styles.hintButtonText,
-            { color: hintsExhausted ? '#9CA3AF' : primaryColor }
+            { color: hintsExhausted ? "#9CA3AF" : primaryColor },
           ]}
         >
-          {limitedHints ? `Indice (${maxHints - hintsUsed}/${maxHints})` : 'Indice'}
+          {limitedHints
+            ? `Indice (${maxHints - hintsUsed}/${maxHints})`
+            : "Indice"}
         </Text>
       </TouchableOpacity>
-      
+
       {/* Modal pour afficher l'indice */}
       <Modal
         transparent={true}
@@ -134,15 +136,15 @@ const HintButton = ({
                 {/* En-tête de la modal */}
                 <View style={styles.modalHeader}>
                   <View style={styles.titleContainer}>
-                    <Ionicons 
-                      name={getHintIcon()} 
-                      size={20} 
+                    <Ionicons
+                      name={getHintIcon()}
+                      size={20}
                       color={primaryColor}
-                      style={styles.titleIcon} 
+                      style={styles.titleIcon}
                     />
                     <Text style={styles.modalTitle}>{hintTitle}</Text>
                   </View>
-                  
+
                   <TouchableOpacity
                     style={styles.closeButton}
                     onPress={closeModal}
@@ -150,18 +152,21 @@ const HintButton = ({
                     <Ionicons name="close" size={24} color="#6B7280" />
                   </TouchableOpacity>
                 </View>
-                
+
                 {/* Contenu de la modal */}
                 <View style={styles.modalBody}>
                   {!hintRevealed ? (
                     <View style={styles.revealContainer}>
                       <Text style={styles.revealText}>
-                        {limitedHints ? 
-                          `Vous avez utilisé ${hintsUsed} sur ${maxHints} indices disponibles.` : 
-                          'Besoin d\'un coup de pouce ?'}
+                        {limitedHints
+                          ? `Vous avez utilisé ${hintsUsed} sur ${maxHints} indices disponibles.`
+                          : "Besoin d'un coup de pouce ?"}
                       </Text>
                       <TouchableOpacity
-                        style={[styles.revealButton, { backgroundColor: primaryColor }]}
+                        style={[
+                          styles.revealButton,
+                          { backgroundColor: primaryColor },
+                        ]}
                         onPress={revealHint}
                       >
                         <Text style={styles.revealButtonText}>
@@ -170,13 +175,13 @@ const HintButton = ({
                       </TouchableOpacity>
                     </View>
                   ) : (
-                    <Animated.View 
+                    <Animated.View
                       style={[
                         styles.hintContentContainer,
-                        { 
+                        {
                           opacity: fadeAnim,
-                          transform: [{ translateY }]
-                        }
+                          transform: [{ translateY }],
+                        },
                       ]}
                     >
                       <Text style={styles.hintText}>{hint}</Text>
@@ -193,4 +198,3 @@ const HintButton = ({
 };
 
 export default HintButton;
-

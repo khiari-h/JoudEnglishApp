@@ -4,13 +4,13 @@ import { View, Text, ScrollView } from "react-native";
 import SpellingInput from "../SpellingInput";
 import SpellingHint from "../SpellingHint";
 import SpellingFeedback from "../SpellingFeedback";
-import SpellingCorrection from "../exercises/SpellingCorrection";
-import SpellingRule from "../exercises/SpellingRule";
+import SpellingCorrection from "../SpellingCorrection";
+import SpellingRule from "../SpellingRule";
 import styles from "./style";
 
 /**
  * Carte principale pour afficher un exercice d'orthographe
- * 
+ *
  * @param {Object} exercise - L'exercice actuel
  * @param {string} userInput - La réponse saisie par l'utilisateur
  * @param {boolean} showHint - Indique si l'indice doit être affiché
@@ -30,7 +30,7 @@ const SpellingCard = ({
   isCompleted,
   onChangeText,
   onToggleHint,
-  levelColor
+  levelColor,
 }) => {
   if (!exercise) return null;
 
@@ -58,19 +58,21 @@ const SpellingCard = ({
 
   return (
     <ScrollView style={styles.scrollView}>
-      <View style={[
-        styles.card, 
-        isCompleted && { borderLeftWidth: 4, borderLeftColor: "#10b981" }
-      ]}>
+      <View
+        style={[
+          styles.card,
+          isCompleted && { borderLeftWidth: 4, borderLeftColor: "#10b981" },
+        ]}
+      >
         {isCompleted && (
           <View style={styles.completedBadge}>
             <Text style={styles.completedText}>Completed</Text>
           </View>
         )}
-        
+
         {/* Contenu de l'exercice */}
         {renderExerciseContent()}
-        
+
         {/* Zone de saisie */}
         <SpellingInput
           value={userInput}
@@ -78,7 +80,7 @@ const SpellingCard = ({
           disabled={showFeedback}
           levelColor={levelColor}
         />
-        
+
         {/* Indice */}
         {exercise.hasHint && (
           <SpellingHint
@@ -88,7 +90,7 @@ const SpellingCard = ({
             levelColor={levelColor}
           />
         )}
-        
+
         {/* Feedback */}
         {showFeedback && (
           <SpellingFeedback

@@ -1,8 +1,7 @@
 // src/utils/assessment/assessmentDataHelper.js
 
 // Import des données d'évaluation par niveau
-import levelA1AssessmentData from "../../data/exercises/assessments/levelA1Assessments";
-
+import levelA1AssessmentData from "../../data/assessment/assessmentsA1";
 
 /**
  * Récupère les données d'évaluation en fonction du niveau
@@ -12,7 +11,6 @@ import levelA1AssessmentData from "../../data/exercises/assessments/levelA1Asses
 export const getAssessmentData = (level) => {
   const dataMap = {
     A1: levelA1AssessmentData,
-
   };
   return dataMap[level] || levelA1AssessmentData;
 };
@@ -55,7 +53,11 @@ export const getAssessmentSections = () => [
  * @param {Object} assessmentData - Données d'évaluation
  * @returns {boolean} Vrai si c'est la dernière question de la section
  */
-export const isLastQuestionInSection = (questionIndex, section, assessmentData) => {
+export const isLastQuestionInSection = (
+  questionIndex,
+  section,
+  assessmentData
+) => {
   if (!assessmentData || !assessmentData[section]) return false;
   return questionIndex === assessmentData[section].questions.length - 1;
 };

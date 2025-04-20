@@ -1,12 +1,12 @@
 // src/screens/exercises/wordGames/games/WordSearchGame/index.js
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import GameInstructions from "../../components/GameInstructions";
+import GameInstructions from "../GameInstructions";
 import styles from "./style";
 
 /**
  * Composant pour le jeu de recherche de mots
- * 
+ *
  * @param {Object} game - Données du jeu
  * @param {Array} selectedItems - Items sélectionnés par l'utilisateur
  * @param {Array} matchedItems - Mots trouvés
@@ -20,7 +20,7 @@ const WordSearchGame = ({
   matchedItems,
   showFeedback,
   levelColor,
-  onSelectItem
+  onSelectItem,
 }) => {
   return (
     <View style={styles.gameContainer}>

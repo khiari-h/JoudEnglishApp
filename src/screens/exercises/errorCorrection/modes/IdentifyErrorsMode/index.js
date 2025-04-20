@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/modes/IdentifyErrorsMode/index.js
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import Card from "../../../../../ui/Card";
+import Card from "../../../../../components/ui/Card";
 import styles from "./style";
 
 /**
@@ -29,12 +29,12 @@ const IdentifyErrorsMode = ({
       <Text style={styles.instructionText}>
         Toucher les mots qui contiennent des erreurs :
       </Text>
-      
+
       <View style={styles.wordsContainer}>
         {words.map((word, index) => {
           const isSelected = selectedErrorIndices.includes(index);
-          const isHighlighted = showFeedback && 
-            (exercise.errorPositions || []).includes(index);
+          const isHighlighted =
+            showFeedback && (exercise.errorPositions || []).includes(index);
 
           return (
             <TouchableOpacity
@@ -45,7 +45,10 @@ const IdentifyErrorsMode = ({
                 styles.word,
                 isSelected && [
                   styles.selectedWord,
-                  { backgroundColor: `${levelColor}20`, borderColor: levelColor },
+                  {
+                    backgroundColor: `${levelColor}20`,
+                    borderColor: levelColor,
+                  },
                 ],
                 showFeedback && isHighlighted && styles.highlightedWord,
               ]}

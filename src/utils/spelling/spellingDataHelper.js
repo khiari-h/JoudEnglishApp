@@ -1,8 +1,8 @@
 // src/utils/spelling/spellingDataHelper.js
 
 // Import des données d'orthographe par niveau et type
-import spellingCorrectionA1 from "../../data/exercises/spelling/spellingCorrectionA1";
-import spellingRulesA1 from "../../data/exercises/spelling/spellingRulesA1";
+import spellingCorrectionA1 from "../../data/spelling/spellingCorrectionA1";
+import spellingRulesA1 from "../../data/spelling/spellingRulesA1";
 
 /**
  * Récupère les données d'exercices d'orthographe en fonction du niveau et du type
@@ -15,7 +15,7 @@ export const getSpellingData = (level, type) => {
   const dataMap = {
     A1: {
       correction: spellingCorrectionA1,
-      rules: spellingRulesA1
+      rules: spellingRulesA1,
     },
     // Ajouter d'autres niveaux au besoin
   };

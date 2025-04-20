@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionCategorySelector/index.js
 import React from "react";
 import { View } from "react-native";
-import CategorySelector from "../../../../exercise-common/CategorySelector";
+import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 import styles from "./style";
 
 /**

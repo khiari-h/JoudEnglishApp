@@ -1,8 +1,8 @@
 // src/components/exercise-common/NavigationButtons/index.js
-import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import styles from './styles';
+import React from "react";
+import { View, TouchableOpacity, Text } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import styles from "./style";
 
 /**
  * Boutons de navigation pour passer d'un exercice à l'autre
@@ -17,21 +17,21 @@ const NavigationButtons = ({
   disablePrevious = false,
   disableNext = false,
   showSkip = true,
-  primaryColor = '#5E60CE',
+  primaryColor = "#5E60CE",
   buttonLabels = {
-    previous: 'Précédent',
-    next: 'Suivant',
-    skip: 'Passer',
-    finish: 'Terminer',
+    previous: "Précédent",
+    next: "Suivant",
+    skip: "Passer",
+    finish: "Terminer",
   },
-  variant = 'standard', // 'standard', 'compact', 'centered'
+  variant = "standard", // 'standard', 'compact', 'centered'
 }) => {
   // Déterminer si on est sur le dernier exercice
   const isLastItem = currentIndex === totalCount - 1;
-  
+
   // Label pour le bouton suivant (Suivant ou Terminer si dernier item)
   const nextButtonLabel = isLastItem ? buttonLabels.finish : buttonLabels.next;
-  
+
   // Rendu pour la version standard (boutons alignés)
   const renderStandard = () => (
     <View style={styles.standardContainer}>
@@ -46,37 +46,34 @@ const NavigationButtons = ({
           <Text style={styles.previousButtonText}>{buttonLabels.previous}</Text>
         </TouchableOpacity>
       )}
-      
+
       {/* Bouton passer (si activé) */}
       {showSkip && onSkip && !isLastItem && (
-        <TouchableOpacity 
-          style={styles.skipButton} 
-          onPress={onSkip}
-        >
+        <TouchableOpacity style={styles.skipButton} onPress={onSkip}>
           <Text style={styles.skipButtonText}>{buttonLabels.skip}</Text>
         </TouchableOpacity>
       )}
-      
+
       {/* Bouton suivant */}
       <TouchableOpacity
         style={[
           styles.nextButton,
           { backgroundColor: primaryColor },
-          disableNext && styles.disabledButton
+          disableNext && styles.disabledButton,
         ]}
         onPress={onNext}
         disabled={disableNext}
       >
         <Text style={styles.nextButtonText}>{nextButtonLabel}</Text>
-        <Ionicons 
-          name={isLastItem ? "checkmark" : "chevron-forward"} 
-          size={20} 
-          color="white" 
+        <Ionicons
+          name={isLastItem ? "checkmark" : "chevron-forward"}
+          size={20}
+          color="white"
         />
       </TouchableOpacity>
     </View>
   );
-  
+
   // Rendu pour la version compacte (juste des icônes)
   const renderCompact = () => (
     <View style={styles.compactContainer}>
@@ -85,50 +82,47 @@ const NavigationButtons = ({
         <TouchableOpacity
           style={[
             styles.compactButton,
-            currentIndex === 0 && styles.disabledCompactButton
+            currentIndex === 0 && styles.disabledCompactButton,
           ]}
           onPress={onPrevious}
           disabled={currentIndex === 0 || disablePrevious}
         >
           <Ionicons name="chevron-back" size={24} color="#6B7280" />
         </TouchableOpacity>
-        
+
         {/* Indicateur de progression */}
         <Text style={styles.progressIndicator}>
           {currentIndex + 1}/{totalCount}
         </Text>
-        
+
         {/* Bouton suivant */}
         <TouchableOpacity
           style={[
             styles.compactButton,
             { backgroundColor: primaryColor },
-            disableNext && styles.disabledCompactButton
+            disableNext && styles.disabledCompactButton,
           ]}
           onPress={onNext}
           disabled={disableNext}
         >
-          <Ionicons 
-            name={isLastItem ? "checkmark" : "chevron-forward"} 
-            size={24} 
-            color="white" 
+          <Ionicons
+            name={isLastItem ? "checkmark" : "chevron-forward"}
+            size={24}
+            color="white"
           />
         </TouchableOpacity>
       </View>
-      
+
       {/* Bouton passer */}
       {showSkip && onSkip && !isLastItem && (
-        <TouchableOpacity 
-          style={styles.compactSkipButton} 
-          onPress={onSkip}
-        >
+        <TouchableOpacity style={styles.compactSkipButton} onPress={onSkip}>
           <Text style={styles.compactSkipButtonText}>{buttonLabels.skip}</Text>
           <Ionicons name="play-skip-forward" size={16} color="#6B7280" />
         </TouchableOpacity>
       )}
     </View>
   );
-  
+
   // Rendu pour la version centrée (boutons alignés verticalement)
   const renderCentered = () => (
     <View style={styles.centeredContainer}>
@@ -137,19 +131,19 @@ const NavigationButtons = ({
         style={[
           styles.centeredNextButton,
           { backgroundColor: primaryColor },
-          disableNext && styles.disabledButton
+          disableNext && styles.disabledButton,
         ]}
         onPress={onNext}
         disabled={disableNext}
       >
         <Text style={styles.centeredNextButtonText}>{nextButtonLabel}</Text>
-        <Ionicons 
-          name={isLastItem ? "checkmark" : "chevron-forward"} 
-          size={20} 
-          color="white" 
+        <Ionicons
+          name={isLastItem ? "checkmark" : "chevron-forward"}
+          size={20}
+          color="white"
         />
       </TouchableOpacity>
-      
+
       {/* Bouton précédent (en dessous) */}
       {!disablePrevious && (
         <TouchableOpacity
@@ -162,26 +156,23 @@ const NavigationButtons = ({
           </Text>
         </TouchableOpacity>
       )}
-      
+
       {/* Bouton passer */}
       {showSkip && onSkip && !isLastItem && (
-        <TouchableOpacity 
-          style={styles.centeredSkipButton} 
-          onPress={onSkip}
-        >
+        <TouchableOpacity style={styles.centeredSkipButton} onPress={onSkip}>
           <Text style={styles.centeredSkipButtonText}>{buttonLabels.skip}</Text>
         </TouchableOpacity>
       )}
     </View>
   );
-  
+
   // Choisir le rendu en fonction de la variante
   switch (variant) {
-    case 'compact':
+    case "compact":
       return renderCompact();
-    case 'centered':
+    case "centered":
       return renderCentered();
-    case 'standard':
+    case "standard":
     default:
       return renderStandard();
   }

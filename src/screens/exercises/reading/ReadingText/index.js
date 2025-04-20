@@ -1,7 +1,7 @@
 // src/components/screens/exercises/reading/ReadingText/index.js
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import Card from "../../../../ui/Card";
+import Card from "../../../../components/ui/Card";
 import styles from "./style";
 
 /**
@@ -38,10 +38,7 @@ const ReadingText = ({
                 style={styles.wordContainer}
               >
                 <Text
-                  style={[
-                    styles.word,
-                    hasDefinition && styles.highlightedWord,
-                  ]}
+                  style={[styles.word, hasDefinition && styles.highlightedWord]}
                 >
                   {word}{" "}
                 </Text>

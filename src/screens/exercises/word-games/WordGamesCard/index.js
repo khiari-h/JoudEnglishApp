@@ -1,16 +1,16 @@
 // src/screens/exercises/wordGames/WordGamesCard/index.js
 import React from "react";
 import { View, Text, ScrollView, Animated } from "react-native";
-import AnagramGame from "../games/AnagramGame";
-import MatchingGame from "../games/MatchingGame";
-import WordSearchGame from "../games/WordSearchGame";
-import CategorizationGame from "../games/CategorizationGame";
-import FeedbackMessage from "../components/FeedbackMessage";
+import AnagramGame from "../AnagramGame";
+import MatchingGame from "../MatchingGame";
+import WordSearchGame from "../WordSearchGame";
+import CategorizationGame from "../CategorizationGame";
+import FeedbackMessage from "../FeedbackMessage";
 import styles from "./style";
 
 /**
  * Carte principale contenant le jeu actuel
- * 
+ *
  * @param {Object} currentGame - Jeu actuel à afficher
  * @param {Array} selectedItems - Items sélectionnés par l'utilisateur
  * @param {Array} matchedItems - Items correctement appariés
@@ -32,7 +32,7 @@ const WordGamesCard = ({
   levelColor,
   fadeAnim,
   bounceAnim,
-  onSelectItem
+  onSelectItem,
 }) => {
   // Rendu en fonction du type de jeu
   const renderGameByType = () => {

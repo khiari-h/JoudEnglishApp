@@ -5,16 +5,19 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 
 // Composants spécifiques aux jeux de mots
 import WordGamesHeader from "./WordGamesHeader";
-import WordGamesProgressBar from "./WordGamesProgressBar";
+import WordGamesProgressBar from "./WordGamesBarProgress";
 import WordGamesCard from "./WordGamesCard";
-import WordGamesActions from "./WordGamesActions";
+import WordGamesActions from "./WordGameActions";
 import WordGamesResults from "./WordGamesResults";
 
 // Hooks personnalisés
 import useWordGamesState from "./hooks/useWordGamesState";
 
 // Utilitaires et helpers
-import { getWordGamesData, getLevelColor } from "../../../utils/wordGames/wordGamesDataHelper.js";
+import {
+  getWordGamesData,
+  getLevelColor,
+} from "../../../utils/wordGames/wordGamesDataHelper";
 
 // Styles
 import styles from "./style";
@@ -23,9 +26,9 @@ import styles from "./style";
  * Composant principal pour les exercices de jeux de mots (Word Games)
  */
 const WordGamesExercise = ({ route }) => {
-    // Hooks de navigation
-    const navigation = useNavigation();
-    const { level = "A1" } = route.params || {};
+  // Hooks de navigation
+  const navigation = useNavigation();
+  const { level = "A1" } = route.params || {};
   // Initialisation des données et couleurs
   const levelColor = getLevelColor(level);
   const wordGamesData = getWordGamesData(level);
@@ -51,7 +54,7 @@ const WordGamesExercise = ({ route }) => {
     checkAnswer,
     handleNextGame,
     resetGames,
-    handleTimeUp
+    handleTimeUp,
   } = useWordGamesState(wordGamesData.games, level);
 
   // Si aucun jeu n'est chargé, afficher un écran de chargement
@@ -69,20 +72,17 @@ const WordGamesExercise = ({ route }) => {
   if (games.length === 0) {
     return (
       <SafeAreaView style={styles.safeArea}>
-        <WordGamesHeader 
-          level={level} 
-          levelColor={levelColor} 
-          onBackPress={() => navigation.goBack()} 
+        <WordGamesHeader
+          level={level}
+          levelColor={levelColor}
+          onBackPress={() => navigation.goBack()}
         />
         <View style={styles.emptyGamesContainer}>
           <Text style={styles.emptyGamesText}>
             Aucun jeu de mots disponible pour le niveau {level}.
           </Text>
           <TouchableOpacity
-            style={[
-              styles.emptyGamesButton,
-              { backgroundColor: levelColor },
-            ]}
+            style={[styles.emptyGamesButton, { backgroundColor: levelColor }]}
             onPress={() => navigation.goBack()}
           >
             <Text style={styles.emptyGamesButtonText}>Retour</Text>
@@ -96,12 +96,12 @@ const WordGamesExercise = ({ route }) => {
   if (showResults) {
     return (
       <SafeAreaView style={styles.safeArea}>
-        <WordGamesHeader 
-          level={level} 
-          levelColor={levelColor} 
-          onBackPress={() => navigation.goBack()} 
+        <WordGamesHeader
+          level={level}
+          levelColor={levelColor}
+          onBackPress={() => navigation.goBack()}
         />
-        <WordGamesResults 
+        <WordGamesResults
           games={games}
           gameResults={gameResults}
           score={score}
@@ -116,21 +116,21 @@ const WordGamesExercise = ({ route }) => {
   // Rendu principal
   return (
     <SafeAreaView style={styles.safeArea}>
-      <WordGamesHeader 
-        level={level} 
-        levelColor={levelColor} 
-        onBackPress={() => navigation.goBack()} 
+      <WordGamesHeader
+        level={level}
+        levelColor={levelColor}
+        onBackPress={() => navigation.goBack()}
       />
-      
-      <WordGamesProgressBar 
+
+      <WordGamesProgressBar
         currentIndex={currentGameIndex}
         totalGames={games.length}
         showFeedback={showFeedback}
         timeLeft={timeLeft}
         levelColor={levelColor}
       />
-      
-      <WordGamesCard 
+
+      <WordGamesCard
         currentGame={currentGame}
         selectedItems={selectedItems}
         matchedItems={matchedItems}
@@ -142,8 +142,8 @@ const WordGamesExercise = ({ route }) => {
         bounceAnim={bounceAnim}
         onSelectItem={handleSelectItem}
       />
-      
-      <WordGamesActions 
+
+      <WordGamesActions
         currentGame={currentGame}
         showFeedback={showFeedback}
         currentGameIndex={currentGameIndex}

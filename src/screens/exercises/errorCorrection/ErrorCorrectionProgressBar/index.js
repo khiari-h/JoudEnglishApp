@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionProgressBar/index.js
 import React from "react";
 import { View } from "react-native";
-import ProgressBar from "../../../../ui/ProgressBar";
+import ProgressBar from "../../../../components/ui/ProgressBar";
 import styles from "./style";
 
 /**
@@ -13,9 +13,9 @@ const ErrorCorrectionProgressBar = ({
   levelColor = "#5E60CE",
 }) => {
   // Calcul du pourcentage de progression
-  const progressPercentage = 
-    totalExercises > 0 
-      ? Math.round(((currentExerciseIndex + 1) / totalExercises) * 100) 
+  const progressPercentage =
+    totalExercises > 0
+      ? Math.round(((currentExerciseIndex + 1) / totalExercises) * 100)
       : 0;
 
   return (

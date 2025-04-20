@@ -25,7 +25,7 @@ import useReadingProgress from "./hooks/useReadingProgress";
 import {
   getReadingData,
   getLevelColor,
-} from "../../../utils/reading/readingHelper";
+} from "../../../utils/reading/readingDataHelper";
 import styles from "./style";
 
 /**

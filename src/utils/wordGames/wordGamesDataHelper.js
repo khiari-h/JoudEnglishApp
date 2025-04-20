@@ -1,8 +1,7 @@
 // src/utils/wordGames/wordGamesDataHelper.js
 
 // Import des données de jeux de mots par niveau
-import wordGamesA1Data from "../../data/exercises/wordGames/wordGamesA1";
-
+import wordGamesA1Data from "../../data/word-games/wordGamesA1";
 
 /**
  * Récupère les données des jeux de mots en fonction du niveau
@@ -12,7 +11,6 @@ import wordGamesA1Data from "../../data/exercises/wordGames/wordGamesA1";
 export const getWordGamesData = (level) => {
   const dataMap = {
     A1: wordGamesA1Data,
-
   };
   return dataMap[level] || wordGamesA1Data;
 };

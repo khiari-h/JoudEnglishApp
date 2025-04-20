@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/modes/MultipleChoiceMode/index.js
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import Card from "../../../../../ui/Card";
+import Card from "../../../../../components/ui/Card";
 import styles from "./style";
 
 /**
@@ -40,10 +40,12 @@ const MultipleChoiceMode = ({
                 styles.selectedChoiceOption,
                 { borderColor: levelColor },
               ],
-              showFeedback && index === exercise.correctChoiceIndex && 
+              showFeedback &&
+                index === exercise.correctChoiceIndex &&
                 styles.correctChoiceOption,
-              showFeedback && selectedChoiceIndex === index && 
-                selectedChoiceIndex !== exercise.correctChoiceIndex && 
+              showFeedback &&
+                selectedChoiceIndex === index &&
+                selectedChoiceIndex !== exercise.correctChoiceIndex &&
                 styles.incorrectChoiceOption,
             ]}
             onPress={() => onSelectChoice(index)}
@@ -53,10 +55,12 @@ const MultipleChoiceMode = ({
               style={[
                 styles.choiceOptionText,
                 selectedChoiceIndex === index && { color: levelColor },
-                showFeedback && index === exercise.correctChoiceIndex && 
+                showFeedback &&
+                  index === exercise.correctChoiceIndex &&
                   styles.correctChoiceOptionText,
-                showFeedback && selectedChoiceIndex === index && 
-                  selectedChoiceIndex !== exercise.correctChoiceIndex && 
+                showFeedback &&
+                  selectedChoiceIndex === index &&
+                  selectedChoiceIndex !== exercise.correctChoiceIndex &&
                   styles.incorrectChoiceOptionText,
               ]}
             >

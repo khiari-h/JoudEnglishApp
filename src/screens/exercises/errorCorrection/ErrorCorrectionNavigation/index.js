@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionNavigation/index.js
 import React from "react";
 import { View } from "react-native";
-import NavigationButtons from "../../../../exercise-common/NavigationButtons";
+import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";
 
 /**
@@ -23,9 +23,11 @@ const ErrorCorrectionNavigation = ({
   // ou si on est au dernier exercice, adapter les labels
   const buttonLabels = {
     previous: "Précédent",
-    next: showFeedback 
-        ? (isLastExercise ? "Voir les résultats" : "Exercice suivant") 
-        : "Vérifier",
+    next: showFeedback
+      ? isLastExercise
+        ? "Voir les résultats"
+        : "Exercice suivant"
+      : "Vérifier",
     skip: "Passer",
     finish: "Terminer",
   };

@@ -1,12 +1,12 @@
 // src/screens/exercises/wordGames/WordGamesProgressBar/index.js
 import React from "react";
 import { View, Text } from "react-native";
-import GameTimer from "../components/GameTimer";
+import GameTimer from "../GameTimer";
 import styles from "./style";
 
 /**
  * Barre de progression pour l'exercice de jeux de mots
- * 
+ *
  * @param {number} currentIndex - Index du jeu actuel
  * @param {number} totalGames - Nombre total de jeux
  * @param {boolean} showFeedback - Indique si le feedback est affiché (complété)
@@ -18,11 +18,12 @@ const WordGamesProgressBar = ({
   totalGames,
   showFeedback,
   timeLeft,
-  levelColor
+  levelColor,
 }) => {
   // Calculer la progression
-  const progressPercentage = ((currentIndex + (showFeedback ? 1 : 0)) / totalGames) * 100;
-  
+  const progressPercentage =
+    ((currentIndex + (showFeedback ? 1 : 0)) / totalGames) * 100;
+
   return (
     <View>
       <View style={styles.progressContainer}>
@@ -41,10 +42,8 @@ const WordGamesProgressBar = ({
           {currentIndex + 1}/{totalGames}
         </Text>
       </View>
-      
-      {timeLeft > 0 && (
-        <GameTimer timeLeft={timeLeft} />
-      )}
+
+      {timeLeft > 0 && <GameTimer timeLeft={timeLeft} />}
     </View>
   );
 };

@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionResultsCard/index.js
 import React from "react";
 import { View } from "react-native";
-import ResultsScreen from "../../../../exercise-common/ResultsScreen";
+import ResultsScreen from "../../../../components/exercise-common/ResultsScreen";
 import styles from "./style";
 
 /**
@@ -20,14 +20,18 @@ const ErrorCorrectionResultsCard = ({
   onExit,
 }) => {
   // Calculer le nombre de réponses correctes, incorrectes et passées
-  const correctAnswers = userAttempts.filter(attempt => attempt.isCorrect).length;
-  const incorrectAnswers = userAttempts.filter(attempt => !attempt.isCorrect && attempt.attempted).length;
+  const correctAnswers = userAttempts.filter(
+    (attempt) => attempt.isCorrect
+  ).length;
+  const incorrectAnswers = userAttempts.filter(
+    (attempt) => !attempt.isCorrect && attempt.attempted
+  ).length;
   const skippedAnswers = totalExercises - (correctAnswers + incorrectAnswers);
-  
+
   // Préparer les résultats détaillés pour chaque exercice
   const detailedResults = exercises.map((exercise, index) => {
     const attempt = userAttempts[index] || {};
-    
+
     return {
       question: exercise.text,
       userAnswer: attempt.correction || "Pas de réponse",
@@ -36,11 +40,11 @@ const ErrorCorrectionResultsCard = ({
       isSkipped: !attempt.attempted,
     };
   });
-  
+
   // Générer un feedback personnalisé en fonction du score
   const getFeedback = () => {
     const percentage = Math.round((correctAnswers / totalExercises) * 100);
-    
+
     if (percentage >= 80) {
       return "Excellent ! Vous avez très bien compris les différentes erreurs grammaticales et d'usage. Continuez sur cette voie !";
     } else if (percentage >= 60) {

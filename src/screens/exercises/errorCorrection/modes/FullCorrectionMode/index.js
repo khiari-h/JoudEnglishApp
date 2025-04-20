@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/modes/FullCorrectionMode/index.js
 import React from "react";
 import { View, Text, TextInput } from "react-native";
-import Card from "../../../../../ui/Card";
+import Card from "../../../../../components/ui/Card";
 import styles from "./style";
 
 /**
@@ -32,7 +32,8 @@ const FullCorrectionMode = ({
       <TextInput
         style={[
           styles.correctionInput,
-          showFeedback && (isCorrect ? styles.correctInput : styles.incorrectInput),
+          showFeedback &&
+            (isCorrect ? styles.correctInput : styles.incorrectInput),
         ]}
         value={userCorrection}
         onChangeText={onChangeUserCorrection}
