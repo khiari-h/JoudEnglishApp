@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import { View, Text, Alert, ActivityIndicator, ScrollView } from "react-native";
 import { router } from "expo-router";
 
@@ -7,6 +7,7 @@ import VocabularyNavigation from "./VocabularyNavigation";
 import VocabularyWordCard from "./VocabularyWordCard";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import VocabularyCardIndicators from "./VocabularyCardIndicators";
+import VocabularyProgress from "./VocabularyProgress"; // Nouveau composant
 import LearningTipCard from "./LearningTipCard";
 
 import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
@@ -24,6 +25,7 @@ const VocabularyExercise = ({ route }) => {
   const { level } = route.params;
   const vocabularyData = useMemo(() => getVocabularyData(level), [level]);
   const levelColor = LANGUAGE_LEVELS[level]?.color || "#5E60CE";
+  const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
   // Utiliser le hook pour gérer la progression
   const {
@@ -133,28 +135,40 @@ const VocabularyExercise = ({ route }) => {
     saveLastPosition(newIndex, 0);
   };
 
-  const currentWord = getCurrentWord();
-  const totalWordsCount = calculateTotalWords(vocabularyData?.exercises);
-  const completedWordsCount = calculateCompletedWordsCount(completedWords);
-  const totalProgress = calculateTotalProgress(
-    vocabularyData?.exercises,
-    completedWords
-  );
+  const handleToggleProgressDetails = () => {
+    setShowDetailedProgress(!showDetailedProgress);
+  };
 
+  const handleCategoryProgressPress = (index) => {
+    handleCategoryChange(index);
+  };
+
+  const currentWord = getCurrentWord();
+  
   // Vérifications pour éviter les erreurs
   const currentCategory = vocabularyData?.exercises?.[categoryIndex] || {};
   const dotsTotal = currentCategory?.words?.length || 0;
   const dotsCompleted = completedWords[categoryIndex] || [];
 
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1, backgroundColor: "#f8fafc" }}>
       <VocabularyHeader
         level={level}
-        progress={totalProgress}
-        completedWords={completedWordsCount}
-        totalWords={totalWordsCount}
+        progress={0} // Nous utilisons maintenant notre composant de progression dédié
+        completedWords={0} // Valeurs à 0 car progression gérée ailleurs
+        totalWords={0}     // Valeurs à 0 car progression gérée ailleurs
         levelColor={levelColor}
         onBackPress={() => router.back()}
+      />
+      
+      {/* Nouveau composant VocabularyProgress */}
+      <VocabularyProgress
+        vocabularyData={vocabularyData}
+        completedWords={completedWords}
+        levelColor={levelColor}
+        expanded={showDetailedProgress}
+        onToggleExpand={handleToggleProgressDetails}
+        onCategoryPress={handleCategoryProgressPress}
       />
 
       <VocabularyCategorySelector
@@ -185,7 +199,6 @@ const VocabularyExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Utilisation du composant LearningTipCard amélioré */}
       <LearningTipCard
         level={level}
         levelColor={levelColor}
