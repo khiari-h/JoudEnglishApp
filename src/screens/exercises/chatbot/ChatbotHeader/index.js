@@ -1,4 +1,4 @@
-// 1. ChatbotHeader (déjà utilise ExerciseHeader - à standardiser)
+// 1. ChatbotHeader (déjà uniformisé sans barre de progression)
 // src/components/screens/exercises/chatbot/ChatbotHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";

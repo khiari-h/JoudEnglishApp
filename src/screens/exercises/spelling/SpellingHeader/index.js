@@ -1,4 +1,4 @@
-// 6. SpellingHeader (à migrer vers ExerciseHeader)
+// 6. SpellingHeader (déjà uniformisé sans barre de progression)
 // src/screens/exercises/spelling/SpellingHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";

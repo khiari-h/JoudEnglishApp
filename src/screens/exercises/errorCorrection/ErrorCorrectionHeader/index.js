@@ -1,13 +1,10 @@
-// 2. ErrorCorrectionHeader (déjà utilise ExerciseHeader - à standardiser)
+// 2. ErrorCorrectionHeader (mise à jour pour retirer la barre de progression)
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
 const ErrorCorrectionHeader = ({
   level,
-  currentExerciseIndex,
-  totalExercises,
-  progress,
   onBackPress, // Renommé de onBack pour uniformité
   levelColor,
 }) => {
@@ -15,11 +12,8 @@ const ErrorCorrectionHeader = ({
     <ExerciseHeader
       title="Correction d'erreurs"
       level={level}
-      progress={progress}
-      totalExercises={totalExercises}
-      currentExercise={currentExerciseIndex + 1}
       onClose={onBackPress}
-      showProgress={totalExercises > 0}
+      showProgress={false} // Désormais sans barre de progression
       levelColor={levelColor}
       backIcon="arrow-back"
     />

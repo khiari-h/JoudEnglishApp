@@ -1,4 +1,4 @@
-// 8. WordGamesHeader (à migrer vers ExerciseHeader)
+// 8. WordGamesHeader (déjà uniformisé sans barre de progression)
 // src/screens/exercises/wordGames/WordGamesHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";

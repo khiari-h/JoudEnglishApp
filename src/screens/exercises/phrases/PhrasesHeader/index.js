@@ -1,4 +1,4 @@
-// 4. PhrasesHeader (déjà utilise ExerciseHeader - à standardiser)
+// 4. PhrasesHeader (déjà uniformisé sans barre de progression)
 // src/screens/exercises/phrases/PhrasesHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";

@@ -1,4 +1,5 @@
-// VocabularyHeader unifié sans barre de progression
+// 7. VocabularyHeader (mise à jour pour retirer la barre de progression)
+// src/components/screens/exercises/vocabulary/VocabularyHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
@@ -8,7 +9,7 @@ const VocabularyHeader = ({ level, onBackPress, levelColor }) => {
       title="Vocabulary"
       level={level}
       onClose={onBackPress}
-      showProgress={false} // Désactiver la barre de progression
+      showProgress={false} // Désormais sans barre de progression
       levelColor={levelColor}
       backIcon="arrow-back"
     />
@@ -16,3 +17,4 @@ const VocabularyHeader = ({ level, onBackPress, levelColor }) => {
 };
 
 export default VocabularyHeader;
+
