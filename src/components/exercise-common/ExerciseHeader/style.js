@@ -1,5 +1,4 @@
-
-// src/components/exercise-common/ExerciseHeader/styles.js
+// src/components/exercise-common/ExerciseHeader/style.js
 import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -15,7 +14,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 12,
   },
   closeButton: {
     width: 36,
@@ -44,31 +42,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 14,
-  },
-  progressContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  countContainer: {
-    marginRight: 10,
-  },
-  exerciseCount: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#4B5563',
-  },
-  progressBarContainer: {
-    flex: 1,
-  },
-  progressBar: {
-    height: 4,
-    backgroundColor: '#E5E7EB',
-    borderRadius: 2,
-    overflow: 'hidden',
-  },
-  progressFill: {
-    height: '100%',
-    borderRadius: 2,
   },
 });
 

@@ -13,7 +13,6 @@ const ErrorCorrectionHeader = ({
       title="Correction d'erreurs"
       level={level}
       onClose={onBackPress}
-      showProgress={false} // Désormais sans barre de progression
       levelColor={levelColor}
       backIcon="arrow-back"
     />

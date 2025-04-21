@@ -7,18 +7,14 @@ import styles from "./style";
 
 /**
  * En-tête standardisé pour tous les écrans d'exercices
- * Utilise maintenant une flèche de retour au lieu d'une croix
+ * Version simplifiée sans barre de progression
  */
 const ExerciseHeader = ({
   title,
   level,
-  progress,
-  totalExercises,
-  currentExercise,
   onClose,
-  showProgress = true,
   levelColor = "#5E60CE",
-  backIcon = "arrow-back", // Nouvelle prop avec valeur par défaut "arrow-back"
+  backIcon = "arrow-back",
 }) => {
   const navigation = useNavigation();
 
@@ -47,27 +43,6 @@ const ExerciseHeader = ({
           <Text style={styles.levelText}>{level}</Text>
         </View>
       </View>
-
-      {showProgress && (
-        <View style={styles.progressContainer}>
-          <View style={styles.countContainer}>
-            <Text style={styles.exerciseCount}>
-              {currentExercise}/{totalExercises}
-            </Text>
-          </View>
-
-          <View style={styles.progressBarContainer}>
-            <View style={styles.progressBar}>
-              <View
-                style={[
-                  styles.progressFill,
-                  { width: `${progress}%`, backgroundColor: levelColor },
-                ]}
-              />
-            </View>
-          </View>
-        </View>
-      )}
     </View>
   );
 };

@@ -9,7 +9,6 @@ const ChatbotHeader = ({ level, onBackPress, levelColor }) => {
       title="Chatbot Writing"
       level={level}
       onClose={onBackPress}
-      showProgress={false}
       levelColor={levelColor}
       backIcon="arrow-back"
     />

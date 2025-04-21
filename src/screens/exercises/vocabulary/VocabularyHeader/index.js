@@ -9,7 +9,6 @@ const VocabularyHeader = ({ level, onBackPress, levelColor }) => {
       title="Vocabulary"
       level={level}
       onClose={onBackPress}
-      showProgress={false} // Désormais sans barre de progression
       levelColor={levelColor}
       backIcon="arrow-back"
     />

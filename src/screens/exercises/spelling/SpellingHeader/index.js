@@ -21,7 +21,6 @@ const SpellingHeader = ({ level, exerciseType, levelColor, onBackPress }) => {
       title={getExerciseTitle(exerciseType)}
       level={level}
       onClose={onBackPress}
-      showProgress={false}
       levelColor={levelColor}
       backIcon="arrow-back"
     />

@@ -9,7 +9,6 @@ const PhrasesHeader = ({ level, onBackPress, levelColor }) => {
       title="Phrases & Expressions"
       level={level}
       onClose={onBackPress}
-      showProgress={false}
       levelColor={levelColor}
       backIcon="arrow-back"
     />

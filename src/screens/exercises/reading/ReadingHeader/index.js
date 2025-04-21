@@ -9,7 +9,6 @@ const ReadingHeader = ({ level, onBackPress, levelColor }) => {
       title="Reading"
       level={level}
       onClose={onBackPress}
-      showProgress={false}
       levelColor={levelColor}
       backIcon="arrow-back"
     />

@@ -9,7 +9,6 @@ const WordGamesHeader = ({ level, levelColor, onBackPress }) => {
       title="Word Games"
       level={level}
       onClose={onBackPress}
-      showProgress={false}
       levelColor={levelColor}
       backIcon="arrow-back"
     />

@@ -9,7 +9,6 @@ const GrammarHeader = ({ level, onBackPress, levelColor }) => {
       title="Grammar"
       level={level}
       onClose={onBackPress}
-      showProgress={false}
       levelColor={levelColor}
       backIcon="arrow-back"
     />
