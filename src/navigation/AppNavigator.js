@@ -11,15 +11,15 @@ import LevelSelection from "../screens/LevelSelection";
 import ExerciseSelection from "../screens/ExerciseSelection";
 
 // Écrans d'exercices - Imports corrigés pour correspondre aux noms des composants réels
-import VocabularyExercise from "../screens/exercises/VocabularyExercise";
-import GrammarExercise from "../screens/exercises/GrammarExercise";
+import VocabularyExercise from "../screens/exercises/vocabulary";
+import GrammarExercise from "../screens/exercises/grammar";
 import ChatbotExercise from "../screens/exercises/chatbot"; // Corrigé
-import PhrasesExercise from "../screens/exercises/PhrasesExercise";
+import PhrasesExercise from "../screens/exercises/phrases";
 import ReadingExercise from "../screens/exercises/reading"; // Corrigé
-import ErrorCorrectionExercise from "../screens/exercises/ErrorCorrectionExercise";
-import WordGamesExercise from "../screens/exercises/wordGames"; // Corrigé
+import ErrorCorrectionExercise from "../screens/exercises/errorCorrection";
+import WordGamesExercise from "../screens/exercises/word-games"; // Corrigé
 import SpellingExercise from "../screens/exercises/spelling"; // Corrigé
-import LevelAssessment from "../screens/exercises/LevelAssessment";
+import LevelAssessment from "../screens/exercises/level-assessment";
 
 // Configuration du navigateur
 const Stack = createStackNavigator();
