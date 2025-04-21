@@ -1,25 +1,35 @@
 // src/components/screens/exercises/grammar/GrammarExercise/index.js
-import React, { useMemo, useEffect } from 'react';
-import { SafeAreaView, ScrollView, View, Alert, ActivityIndicator, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useMemo, useEffect } from "react";
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  Alert,
+  ActivityIndicator,
+  Text,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Import des composants
-import GrammarHeader from '../GrammarHeader';
-import GrammarRuleSelector from '../GrammarRuleSelector';
-import GrammarProgress from '../GrammarProgress';
-import GrammarRuleContent from '../GrammarRuleContent';
-import GrammarExerciseRenderer from '../GrammarExerciceRenderer';
-import GrammarFeedback from '../GrammarFeedback';
-import GrammarNavigation from '../GrammarNavigation';
+import GrammarHeader from "./GrammarHeader";
+import GrammarRuleSelector from "./GrammarRuleSelector";
+import GrammarProgress from "./GrammarProgress";
+import GrammarRuleContent from "./GrammarRuleContent";
+import GrammarExerciseRenderer from "./GrammarExerciceRenderer";
+import GrammarFeedback from "./GrammarFeedback";
+import GrammarNavigation from "./GrammarNavigation";
 
 // Import des hooks personnalisés
-import useGrammarExerciseState from '../hooks/useGrammarExerciceState';
-import useGrammarProgress from '../hooks/useGrammarProgress';
+import useGrammarExerciseState from "./hooks/useGrammarExerciceState";
+import useGrammarProgress from "./hooks/useGrammarProgress";
 
 // Import des utilitaires
-import { getGrammarData, getLevelColor } from '../../../../utils/grammar/grammarDataHelper';
+import {
+  getGrammarData,
+  getLevelColor,
+} from "../../../utils/grammar/grammarDataHelper";
 
-import styles from './style';
+import styles from "./style";
 
 /**
  * Écran principal pour les exercices de grammaire
@@ -27,7 +37,7 @@ import styles from './style';
  */
 const GrammarExercise = ({ route }) => {
   const navigation = useNavigation();
-  const { level } = route.params || { level: 'A1' };
+  const { level } = route.params || { level: "A1" };
 
   // Récupération des données avec les helpers
   const levelColor = getLevelColor(level);
@@ -58,7 +68,7 @@ const GrammarExercise = ({ route }) => {
     goToPreviousExercise,
     goToNextExercise,
     changeRule,
-    checkAnswer
+    checkAnswer,
   } = useGrammarExerciseState(level, 0, 0);
 
   // Restaurer l'état une fois les données chargées
@@ -79,7 +89,7 @@ const GrammarExercise = ({ route }) => {
       initializeProgress(grammarData);
     }
   }, [loaded, grammarData, initializeProgress]);
-  
+
   // Affiche le spinner pendant le chargement des données
   if (!loaded || !grammarData) {
     return (
@@ -93,11 +103,14 @@ const GrammarExercise = ({ route }) => {
   // Récupérer la règle et l'exercice actuels
   const currentRule = grammarData[ruleIndex];
   const currentExercise = currentRule?.exercises?.[exerciseIndex];
-  
+
   // Calculs pour la navigation et la progression
   const isFirstExercise = exerciseIndex === 0;
-  const isLastExercise = exerciseIndex === (currentRule?.exercises?.length - 1);
-  const progress = ((exerciseIndex + (showFeedback && isCorrect ? 1 : 0)) / (currentRule?.exercises?.length || 1)) * 100;
+  const isLastExercise = exerciseIndex === currentRule?.exercises?.length - 1;
+  const progress =
+    ((exerciseIndex + (showFeedback && isCorrect ? 1 : 0)) /
+      (currentRule?.exercises?.length || 1)) *
+    100;
 
   // Gérer le changement de règle
   const handleRuleChange = (index) => {
@@ -110,20 +123,25 @@ const GrammarExercise = ({ route }) => {
   // Vérifier la réponse de l'utilisateur
   const handleCheckAnswer = () => {
     if (!currentExercise) return;
-    
-    let answer = '';
-    let correctAnswer = '';
-    
-    if (currentExercise.type === 'fillInTheBlank' && currentExercise.options) {
-      answer = selectedOption !== null ? currentExercise.options[selectedOption] : '';
-      correctAnswer = typeof currentExercise.answer === 'number' 
-        ? currentExercise.options[currentExercise.answer]
-        : currentExercise.answer;
-    } else if (currentExercise.type === 'fillInTheBlank' || currentExercise.type === 'transformation') {
+
+    let answer = "";
+    let correctAnswer = "";
+
+    if (currentExercise.type === "fillInTheBlank" && currentExercise.options) {
+      answer =
+        selectedOption !== null ? currentExercise.options[selectedOption] : "";
+      correctAnswer =
+        typeof currentExercise.answer === "number"
+          ? currentExercise.options[currentExercise.answer]
+          : currentExercise.answer;
+    } else if (
+      currentExercise.type === "fillInTheBlank" ||
+      currentExercise.type === "transformation"
+    ) {
       answer = inputText.trim().toLowerCase();
       correctAnswer = currentExercise.answer.toLowerCase();
     }
-    
+
     const isAnswerCorrect = checkAnswer(answer, correctAnswer);
     markExerciseAsCompleted(ruleIndex, exerciseIndex, isAnswerCorrect, answer);
   };
@@ -168,11 +186,11 @@ const GrammarExercise = ({ route }) => {
   // Vérifier si l'utilisateur peut valider sa réponse
   const canCheckAnswer = () => {
     if (!currentExercise) return false;
-    
-    if (currentExercise.type === 'fillInTheBlank' && currentExercise.options) {
+
+    if (currentExercise.type === "fillInTheBlank" && currentExercise.options) {
       return selectedOption !== null;
     } else {
-      return inputText.trim() !== '';
+      return inputText.trim() !== "";
     }
   };
 
@@ -184,7 +202,7 @@ const GrammarExercise = ({ route }) => {
         onBackPress={() => navigation.goBack()}
         levelColor={levelColor}
       />
-      
+
       {/* Sélecteur de règle */}
       <GrammarRuleSelector
         rules={grammarData}
@@ -192,7 +210,7 @@ const GrammarExercise = ({ route }) => {
         onSelectRule={handleRuleChange}
         levelColor={levelColor}
       />
-      
+
       {/* Barre de progression unifiée */}
       <GrammarProgress
         progress={progress}
@@ -201,15 +219,15 @@ const GrammarExercise = ({ route }) => {
         levelColor={levelColor}
         ruleTitle={currentRule?.title}
       />
-      
-      <ScrollView 
-        style={[styles.scrollView, { backgroundColor: `${levelColor}05` }]} 
+
+      <ScrollView
+        style={[styles.scrollView, { backgroundColor: `${levelColor}05` }]}
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
       >
         {/* Contenu de la règle */}
         <GrammarRuleContent rule={currentRule} />
-        
+
         {/* Exercice actuel */}
         <GrammarExerciseRenderer
           exercise={currentExercise}
@@ -220,7 +238,7 @@ const GrammarExercise = ({ route }) => {
           showFeedback={showFeedback}
           isCorrect={isCorrect}
         />
-        
+
         {/* Feedback après réponse */}
         <GrammarFeedback
           isVisible={showFeedback}
@@ -230,7 +248,7 @@ const GrammarExercise = ({ route }) => {
           attempts={attempts}
         />
       </ScrollView>
-      
+
       {/* Navigation unifiée */}
       <GrammarNavigation
         showFeedback={showFeedback}
