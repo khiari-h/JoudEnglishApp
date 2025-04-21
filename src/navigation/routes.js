@@ -10,7 +10,7 @@ export const ROUTES = {
   READING_EXERCISE: "ReadingExercise",
   ERROR_CORRECTION_EXERCISE: "ErrorCorrectionExercise",
   WORD_GAMES_EXERCISE: "WordGamesExercise",
-  PHRASES_EXERCISE: "PhrasesExercice",
-  SPELLING_EXERCISE: "SpellingPractice",
-  ASSESSMENT_EXERCISE: "Evaluation",
+  PHRASES_EXERCISE: "PhrasesExercise",
+  SPELLING_EXERCISE: "SpellingExercise",
+  ASSESSMENT_EXERCISE: "LevelAssessment",
 };

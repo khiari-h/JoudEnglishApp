@@ -1,7 +1,7 @@
 // src/components/screens/exercises/reading/ReadingExercise/index.js
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, View, Text, ScrollView } from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 // Components communs
 import ExerciseHeader from "../../../components/exercise-common/ExerciseHeader";
@@ -32,6 +32,9 @@ import styles from "./style";
  * Composant principal pour l'exercice de lecture
  */
 const ReadingExercise = ({ route }) => {
+  // État local pour les exercices
+  const [exercisesData, setExercisesData] = useState([]);
+
   // Hooks de navigation
   const navigation = useNavigation();
   const { level = "A1" } = route.params || {};
@@ -41,6 +44,7 @@ const ReadingExercise = ({ route }) => {
   const readingData = getReadingData(level);
 
   // Hooks d'état et de progression
+  // CORRECTION : Ordre des paramètres inversé pour correspondre à la définition du hook
   const {
     allExercises,
     selectedExerciseIndex,
@@ -48,60 +52,120 @@ const ReadingExercise = ({ route }) => {
     currentQuestionIndex,
     selectedAnswer,
     showFeedback,
-    isCorrect,
-    attempts,
     textExpanded,
     highlightedWord,
+    attempts,
     fadeAnim,
     slideAnim,
     scrollViewRef,
     textsScrollViewRef,
-    handleExerciseChange,
+    isCurrentQuestionCompleted,
+    handleTextChange,
     handleSelectAnswer,
-    checkAnswer,
-    retryQuestion,
-    goToNextQuestion,
-    goToPreviousQuestion,
+    handleSubmitAnswer: checkAnswer,
+    retryExercise: retryQuestion,
+    handleNextQuestion: goToNextQuestion,
+    handlePreviousQuestion: goToPreviousQuestion,
     toggleTextExpansion,
     handleWordPress,
     closeVocabularyPopup,
-    getCurrentQuestion,
-    setAllExercises,
-  } = useReadingExerciseState(level, []);
+    calculateProgress: calculateExerciseProgress,
+    setCurrentQuestionIndex,
+    setSelectedAnswer,
+    setShowFeedback,
+    setAttempts,
+  } = useReadingExerciseState(exercisesData, level); // Tableau d'exercices en premier, niveau en second
 
   const {
-    completedQuestions,
+    completedExercises,
+    lastPosition,
     loaded,
-    isQuestionCompleted,
-    markQuestionAsCompleted,
-    resetExerciseProgress,
-    calculateProgress,
-    areAllQuestionsCompleted,
-    initializeCompletedQuestions,
+    saveLastPosition,
+    markExerciseAsCompleted,
+    updateExerciseProgress,
+    initializeProgress,
+    calculateOverallProgress,
   } = useReadingProgress(level);
+
+  // Créer une structure de données completedQuestions compatible
+  const [completedQuestions, setCompletedQuestions] = useState({});
 
   // Initialiser les exercices au chargement
   useEffect(() => {
     if (readingData && readingData.exercises) {
-      setAllExercises(readingData.exercises);
-      initializeCompletedQuestions(readingData.exercises);
+      // Mettre à jour notre état local des exercices
+      setExercisesData(readingData.exercises);
+
+      // Initialiser la progression avec initializeProgress au lieu de initializeCompletedQuestions
+      initializeProgress(readingData);
+
+      // Initialiser notre structure de données completedQuestions
+      const initialCompletedQuestions = {};
+      readingData.exercises.forEach((_, index) => {
+        initialCompletedQuestions[index] = [];
+      });
+      setCompletedQuestions(initialCompletedQuestions);
     }
-  }, [readingData, setAllExercises, initializeCompletedQuestions]);
+  }, [readingData, initializeProgress]);
 
   // Obtenir la question courante
-  const currentQuestion = getCurrentQuestion;
+  const getCurrentQuestion =
+    currentExercise && currentExercise.questions
+      ? currentExercise.questions[currentQuestionIndex]
+      : null;
+
+  // Vérifier si la réponse est correcte
+  const isCorrect =
+    currentExercise && getCurrentQuestion && selectedAnswer !== null
+      ? selectedAnswer === getCurrentQuestion.correctAnswer
+      : false;
+
+  // Vérifier si une question est complétée
+  const isQuestionCompleted = (exerciseIndex, questionIndex) => {
+    return completedQuestions[exerciseIndex]?.includes(questionIndex);
+  };
+
+  // Marquer une question comme complétée
+  const markQuestionAsCompleted = (exerciseIndex, questionIndex) => {
+    const updatedCompletedQuestions = { ...completedQuestions };
+    if (!updatedCompletedQuestions[exerciseIndex]) {
+      updatedCompletedQuestions[exerciseIndex] = [];
+    }
+    if (!updatedCompletedQuestions[exerciseIndex].includes(questionIndex)) {
+      updatedCompletedQuestions[exerciseIndex].push(questionIndex);
+      setCompletedQuestions(updatedCompletedQuestions);
+
+      // Mettre également à jour avec le hook de progression
+      updateExerciseProgress(
+        exerciseIndex,
+        updatedCompletedQuestions[exerciseIndex]
+      );
+    }
+  };
 
   // Calculer la progression
-  const progress = currentExercise
-    ? calculateProgress(selectedExerciseIndex, currentExercise.questions.length)
-    : 0;
+  const calculateProgress = (exerciseIndex, totalQuestions) => {
+    if (!completedQuestions[exerciseIndex] || totalQuestions === 0) return 0;
+    return (completedQuestions[exerciseIndex].length / totalQuestions) * 100;
+  };
 
-  // Marquer une question comme complétée et passer à la suivante
+  // Vérifier si tous les exercices sont complétés
+  const areAllQuestionsCompleted = (exercises) => {
+    return exercises.every((exercise, index) => {
+      const questionsForExercise = completedQuestions[index] || [];
+      return questionsForExercise.length === exercise.questions.length;
+    });
+  };
+
+  // Gérer la navigation vers la question suivante
   const handleNextQuestion = () => {
     if (isCorrect) {
       markQuestionAsCompleted(selectedExerciseIndex, currentQuestionIndex);
     }
     goToNextQuestion();
+
+    // Mettre à jour la position actuelle
+    saveLastPosition(selectedExerciseIndex, currentQuestionIndex + 1);
 
     // Vérifier si tous les exercices sont complétés
     if (currentQuestionIndex === currentExercise?.questions.length - 1) {
@@ -123,9 +187,20 @@ const ReadingExercise = ({ route }) => {
       showFeedback ? handleNextQuestion() : handleCheckAnswer();
     } else if (action === "previous") {
       goToPreviousQuestion();
+      // Mettre à jour la position actuelle
+      saveLastPosition(
+        selectedExerciseIndex,
+        Math.max(0, currentQuestionIndex - 1)
+      );
     } else if (action === "retry") {
       retryQuestion();
     }
+  };
+
+  // Gérer le changement d'exercice
+  const handleExerciseChange = (index) => {
+    handleTextChange(index);
+    saveLastPosition(index, 0);
   };
 
   // Si les données ne sont pas encore chargées
@@ -162,7 +237,10 @@ const ReadingExercise = ({ route }) => {
       {/* Barre de progression */}
       <View style={styles.progressContainer}>
         <ProgressBar
-          progress={progress}
+          progress={calculateProgress(
+            selectedExerciseIndex,
+            currentExercise.questions.length
+          )}
           showPercentage={false}
           showValue={true}
           total={currentExercise.questions.length}
@@ -201,9 +279,9 @@ const ReadingExercise = ({ route }) => {
         />
 
         {/* Question */}
-        {currentQuestion && (
+        {getCurrentQuestion && (
           <ReadingQuestion
-            question={currentQuestion}
+            question={getCurrentQuestion}
             questionIndex={currentQuestionIndex}
             selectedAnswer={selectedAnswer}
             onSelectAnswer={handleSelectAnswer}
@@ -215,16 +293,16 @@ const ReadingExercise = ({ route }) => {
         )}
 
         {/* Feedback */}
-        {showFeedback && currentQuestion && (
+        {showFeedback && getCurrentQuestion && (
           <ExerciseFeedback
             type={isCorrect ? "success" : "error"}
             message={isCorrect ? "Correct!" : "Incorrect!"}
             explanation={
               isCorrect
-                ? currentQuestion.explanation
+                ? getCurrentQuestion.explanation
                 : attempts > 1
                 ? `The correct answer is: ${
-                    currentQuestion.options[currentQuestion.correctAnswer]
+                    getCurrentQuestion.options[getCurrentQuestion.correctAnswer]
                   }`
                 : "Try again!"
             }
@@ -244,6 +322,7 @@ const ReadingExercise = ({ route }) => {
             setAttempts(0);
             fadeAnim.setValue(0);
             slideAnim.setValue(50);
+            saveLastPosition(selectedExerciseIndex, index);
           }}
           levelColor={levelColor}
         />

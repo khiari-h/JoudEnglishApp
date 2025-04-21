@@ -10,16 +10,16 @@ import Dashboard from "../screens/Dashboard";
 import LevelSelection from "../screens/LevelSelection";
 import ExerciseSelection from "../screens/ExerciseSelection";
 
-// Écrans d'exercices
+// Écrans d'exercices - Imports corrigés pour correspondre aux noms des composants réels
 import VocabularyExercise from "../screens/exercises/VocabularyExercise";
 import GrammarExercise from "../screens/exercises/GrammarExercise";
-import ChatbotExerciseScreen from "../screens/exercises/ChatbotExerciseScreen";
+import ChatbotExercise from "../screens/exercises/chatbot"; // Corrigé
 import PhrasesExercise from "../screens/exercises/PhrasesExercise";
-import ReadingExerciseScreen from "../screens/exercises/ReadingExerciseScreen";
+import ReadingExercise from "../screens/exercises/reading"; // Corrigé
 import ErrorCorrectionExercise from "../screens/exercises/ErrorCorrectionExercise";
-import WordGamesExerciseScreen from "../screens/exercises/WordGamesExerciseScreen";
-import SpellingExerciseScreen from "../screens/exercises/SpellingExerciseScreen";
-import LevelAssessmentScreen from "../screens/exercises/LevelAssessmentScreen";
+import WordGamesExercise from "../screens/exercises/wordGames"; // Corrigé
+import SpellingExercise from "../screens/exercises/spelling"; // Corrigé
+import LevelAssessment from "../screens/exercises/LevelAssessment";
 
 // Configuration du navigateur
 const Stack = createStackNavigator();
@@ -44,7 +44,7 @@ const AppNavigator = () => {
           component={ExerciseSelection}
         />
 
-        {/* Routes des exercices */}
+        {/* Routes des exercices - Composants corrigés */}
         <Stack.Screen
           name={ROUTES.VOCABULARY_EXERCISE}
           component={VocabularyExercise}
@@ -55,7 +55,7 @@ const AppNavigator = () => {
         />
         <Stack.Screen
           name={ROUTES.CHATBOT_EXERCISE}
-          component={ChatbotExerciseScreen}
+          component={ChatbotExercise} // Corrigé
         />
         <Stack.Screen
           name={ROUTES.PHRASES_EXERCISE}
@@ -63,7 +63,7 @@ const AppNavigator = () => {
         />
         <Stack.Screen
           name={ROUTES.READING_EXERCISE}
-          component={ReadingExerciseScreen}
+          component={ReadingExercise} // Corrigé
         />
         <Stack.Screen
           name={ROUTES.ERROR_CORRECTION_EXERCISE}
@@ -71,15 +71,15 @@ const AppNavigator = () => {
         />
         <Stack.Screen
           name={ROUTES.WORD_GAMES_EXERCISE}
-          component={WordGamesExerciseScreen}
+          component={WordGamesExercise} // Corrigé
         />
         <Stack.Screen
           name={ROUTES.SPELLING_EXERCISE}
-          component={SpellingExerciseScreen}
+          component={SpellingExercise} // Corrigé
         />
         <Stack.Screen
           name={ROUTES.ASSESSMENT_EXERCISE}
-          component={LevelAssessmentScreen}
+          component={LevelAssessment} // Corrigé
         />
       </Stack.Navigator>
     </NavigationContainer>

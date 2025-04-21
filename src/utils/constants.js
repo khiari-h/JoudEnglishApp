@@ -115,14 +115,14 @@ export const EXERCISE_TYPES = {
     title: "Orthographe",
     description: "Travaillez sur l'orthographe et la ponctuation",
     icon: "🔤",
-    route: "SpellingPractice",
+    route: "SpellingExercise",
   },
   assessment: {
     id: "assessment",
     title: "Évaluation",
     description: "Testez votre niveau et vos progrès",
     icon: "🏆",
-    route: "Evaluation",
+    route: "LevelAssessment",
   },
 };
 
@@ -325,8 +325,8 @@ export const ROUTES = {
   ERROR_CORRECTION: "ErrorCorrectionExercise",
   WORD_GAMES: "WordGamesExercise",
   PHRASES: "PhrasesExercise",
-  SPELLING: "SpellingPractice",
-  EVALUATION: "Evaluation",
+  SPELLING: "SpellingExercise",
+  ASSESSMENT_EXERCISE: "LevelAssessment",
 };
 
 // Durées pour les animations (en ms)
