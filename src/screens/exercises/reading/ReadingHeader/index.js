@@ -1,26 +1,20 @@
+// 5. ReadingHeader (à migrer vers ExerciseHeader)
 // src/components/screens/exercises/reading/ReadingHeader/index.js
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import styles from "./style";
+import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-/**
- * En-tête pour l'écran d'exercice de lecture
- */
 const ReadingHeader = ({ level, onBackPress, levelColor }) => {
   return (
-    <View style={styles.headerContainer}>
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={onBackPress}
-      >
-        <Text style={styles.backButtonText}>←</Text>
-      </TouchableOpacity>
-      <View style={[styles.levelBadge, { backgroundColor: levelColor }]}>
-        <Text style={styles.levelBadgeText}>{level}</Text>
-      </View>
-      <Text style={styles.exerciseTitle}>Reading</Text>
-    </View>
+    <ExerciseHeader
+      title="Reading"
+      level={level}
+      onClose={onBackPress}
+      showProgress={false}
+      levelColor={levelColor}
+      backIcon="arrow-back"
+    />
   );
 };
 
 export default ReadingHeader;
+

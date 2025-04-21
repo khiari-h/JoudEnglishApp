@@ -1,9 +1,8 @@
+// 3. GrammarHeader (déjà utilise ExerciseHeader - à standardiser)
+// src/components/screens/exercises/grammar/GrammarHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-/**
- * En-tête pour l'exercice de grammaire
- */
 const GrammarHeader = ({ level, onBackPress, levelColor }) => {
   return (
     <ExerciseHeader

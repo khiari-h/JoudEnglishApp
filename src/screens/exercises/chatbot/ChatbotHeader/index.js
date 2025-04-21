@@ -1,9 +1,8 @@
+// 1. ChatbotHeader (déjà utilise ExerciseHeader - à standardiser)
+// src/components/screens/exercises/chatbot/ChatbotHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-/**
- * En-tête pour l'exercice de Chatbot Writing
- */
 const ChatbotHeader = ({ level, onBackPress, levelColor }) => {
   return (
     <ExerciseHeader
@@ -18,3 +17,4 @@ const ChatbotHeader = ({ level, onBackPress, levelColor }) => {
 };
 
 export default ChatbotHeader;
+
