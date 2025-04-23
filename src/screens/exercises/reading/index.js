@@ -4,18 +4,18 @@ import { SafeAreaView, View, Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Components communs
-import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
-import ProgressBar from "../../../../components/ui/ProgressBar";
-import ExerciseFeedback from "../../../../components/exercise-common/ExerciseFeedback";
-import InstructionBox from "../../../../components/exercise-common/InstructionBox";
-import ReadingNavigation from "../ReadingNavigation"; // Nouveau composant de navigation
+import ExerciseHeader from "../../../components/exercise-common/ExerciseHeader";
+import ProgressBar from "../../../components/ui/ProgressBar";
+import ExerciseFeedback from "../../../components/exercise-common/ExerciseFeedback";
+import InstructionBox from "../../../components/exercise-common/InstructionBox";
+import ReadingNavigation from "./ReadingNavigation";
 
 // Components spécifiques à la lecture
-import ReadingTextSelector from "../ReadingTextSelector";
-import ReadingText from "../ReadingText";
-import ReadingQuestion from "../ReadingQuestion";
-import QuestionIndicators from "../QuestionIndicators";
-import VocabularyPopup from "../VocabularyPopup";
+import ReadingTextSelector from "./ReadingTextSelector";
+import ReadingText from "./ReadingText";
+import ReadingQuestion from "./ReadingQuestion";
+import QuestionIndicators from "./QuestionIndicators";
+import VocabularyPopup from "./VocabularyPopup";
 
 // Hooks
 import useReadingExerciseState from "./hooks/useReadingExerciseState";
@@ -25,7 +25,7 @@ import useReadingProgress from "./hooks/useReadingProgress";
 import {
   getReadingData,
   getLevelColor,
-} from "../../../../utils/reading/readingDataHelper";
+} from "../../../utils/reading/readingDataHelper";
 import styles from "./style";
 
 /**
@@ -73,7 +73,7 @@ const ReadingExercise = ({ route }) => {
     setSelectedAnswer,
     setShowFeedback,
     setAttempts,
-  } = useReadingExerciseState(exercisesData, level); 
+  } = useReadingExerciseState(exercisesData, level);
 
   const {
     completedExercises,
