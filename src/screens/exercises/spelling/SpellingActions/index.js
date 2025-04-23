@@ -1,10 +1,12 @@
 // src/screens/exercises/spelling/SpellingActions/index.js
 import React from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import { View } from "react-native";
+import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";
 
 /**
  * Composant pour les boutons d'action de l'exercice d'orthographe
+ * Utilise le composant NavigationButtons pour la cohérence de l'interface
  * 
  * @param {boolean} showFeedback - Indique si le feedback est affiché
  * @param {boolean} isCorrect - Indique si la réponse est correcte
@@ -31,67 +33,91 @@ const SpellingActions = ({
   if (isCompleted && !showFeedback) {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: levelColor }]}
-          onPress={onNext}
-        >
-          <Text style={styles.buttonText}>
-            {isLastExercise ? "Complete" : "Next Exercise"}
-          </Text>
-        </TouchableOpacity>
+        <NavigationButtons
+          onNext={onNext}
+          currentIndex={isLastExercise ? 1 : 0} // Pour déterminer si c'est le dernier exercice
+          totalCount={2} // Valeur arbitraire pour forcer l'affichage du label approprié
+          disablePrevious={true}
+          showSkip={false}
+          primaryColor={levelColor}
+          buttonLabels={{
+            next: isLastExercise ? "Complete" : "Next Exercise",
+            previous: "",
+            skip: "",
+            finish: "Complete"
+          }}
+          variant="centered"
+        />
       </View>
     );
   }
 
-  // Affichage normal des boutons
-  return (
-    <View style={styles.container}>
-      {!showFeedback ? (
-        <TouchableOpacity
-          style={[
-            styles.button,
-            userInput.trim() === "" ? styles.disabledButton : { backgroundColor: levelColor },
-          ]}
-          onPress={onCheck}
-          disabled={userInput.trim() === ""}
-        >
-          <Text style={styles.buttonText}>Check Answer</Text>
-        </TouchableOpacity>
-      ) : isCorrect ? (
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: levelColor }]}
-          onPress={onNext}
-        >
-          <Text style={styles.buttonText}>
-            {isLastExercise ? "Complete" : "Next Exercise"}
-          </Text>
-        </TouchableOpacity>
-      ) : (
-        <View style={styles.buttonRow}>
-          <TouchableOpacity
-            style={[
-              styles.button,
-              styles.secondaryButton,
-              { borderColor: levelColor }
-            ]}
-            onPress={onRetry}
-          >
-            <Text style={[styles.buttonText, { color: levelColor }]}>
-              Try Again
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: levelColor }]}
-            onPress={onNext}
-          >
-            <Text style={styles.buttonText}>
-              {isLastExercise ? "Complete" : "Next Exercise"}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      )}
-    </View>
-  );
+  // Cas où l'utilisateur n'a pas encore validé sa réponse
+  if (!showFeedback) {
+    return (
+      <View style={styles.container}>
+        <NavigationButtons
+          onNext={onCheck}
+          disablePrevious={true}
+          disableNext={userInput.trim() === ""}
+          showSkip={false}
+          primaryColor={levelColor}
+          buttonLabels={{
+            next: "Check Answer",
+            previous: "",
+            skip: "",
+            finish: ""
+          }}
+          variant="centered"
+        />
+      </View>
+    );
+  } 
+  // Cas où la réponse est correcte
+  else if (isCorrect) {
+    return (
+      <View style={styles.container}>
+        <NavigationButtons
+          onNext={onNext}
+          disablePrevious={true}
+          showSkip={false}
+          primaryColor={levelColor}
+          currentIndex={isLastExercise ? 1 : 0}
+          totalCount={2}
+          buttonLabels={{
+            next: isLastExercise ? "Complete" : "Next Exercise",
+            previous: "",
+            skip: "",
+            finish: "Complete"
+          }}
+          variant="centered"
+        />
+      </View>
+    );
+  } 
+  // Cas où la réponse est incorrecte
+  else {
+    return (
+      <View style={styles.container}>
+        <NavigationButtons
+          onNext={onNext}
+          onPrevious={onRetry}
+          disablePrevious={false}
+          showSkip={false}
+          primaryColor={levelColor}
+          currentIndex={isLastExercise ? 1 : 0}
+          totalCount={2}
+          buttonLabels={{
+            next: isLastExercise ? "Complete" : "Next Exercise",
+            previous: "Try Again",
+            skip: "",
+            finish: "Complete"
+          }}
+          variant="standard"
+        />
+      </View>
+    );
+  }
 };
 
 export default SpellingActions;

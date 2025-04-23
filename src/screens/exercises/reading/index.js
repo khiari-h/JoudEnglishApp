@@ -4,18 +4,18 @@ import { SafeAreaView, View, Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Components communs
-import ExerciseHeader from "../../../components/exercise-common/ExerciseHeader";
-import ProgressBar from "../../../components/ui/ProgressBar";
-import ExerciseFeedback from "../../../components/exercise-common/ExerciseFeedback";
-import NavigationButtons from "../../../components/exercise-common/NavigationButtons";
-import InstructionBox from "../../../components/exercise-common/InstructionBox";
+import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+import ProgressBar from "../../../../components/ui/ProgressBar";
+import ExerciseFeedback from "../../../../components/exercise-common/ExerciseFeedback";
+import InstructionBox from "../../../../components/exercise-common/InstructionBox";
+import ReadingNavigation from "../ReadingNavigation"; // Nouveau composant de navigation
 
 // Components spécifiques à la lecture
-import ReadingTextSelector from "./ReadingTextSelector";
-import ReadingText from "./ReadingText";
-import ReadingQuestion from "./ReadingQuestion";
-import QuestionIndicators from "./QuestionIndicators";
-import VocabularyPopup from "./VocabularyPopup";
+import ReadingTextSelector from "../ReadingTextSelector";
+import ReadingText from "../ReadingText";
+import ReadingQuestion from "../ReadingQuestion";
+import QuestionIndicators from "../QuestionIndicators";
+import VocabularyPopup from "../VocabularyPopup";
 
 // Hooks
 import useReadingExerciseState from "./hooks/useReadingExerciseState";
@@ -25,7 +25,7 @@ import useReadingProgress from "./hooks/useReadingProgress";
 import {
   getReadingData,
   getLevelColor,
-} from "../../../utils/reading/readingDataHelper";
+} from "../../../../utils/reading/readingDataHelper";
 import styles from "./style";
 
 /**
@@ -44,7 +44,6 @@ const ReadingExercise = ({ route }) => {
   const readingData = getReadingData(level);
 
   // Hooks d'état et de progression
-  // CORRECTION : Ordre des paramètres inversé pour correspondre à la définition du hook
   const {
     allExercises,
     selectedExerciseIndex,
@@ -74,7 +73,7 @@ const ReadingExercise = ({ route }) => {
     setSelectedAnswer,
     setShowFeedback,
     setAttempts,
-  } = useReadingExerciseState(exercisesData, level); // Tableau d'exercices en premier, niveau en second
+  } = useReadingExerciseState(exercisesData, level); 
 
   const {
     completedExercises,
@@ -96,7 +95,7 @@ const ReadingExercise = ({ route }) => {
       // Mettre à jour notre état local des exercices
       setExercisesData(readingData.exercises);
 
-      // Initialiser la progression avec initializeProgress au lieu de initializeCompletedQuestions
+      // Initialiser la progression
       initializeProgress(readingData);
 
       // Initialiser notre structure de données completedQuestions
@@ -181,20 +180,14 @@ const ReadingExercise = ({ route }) => {
     checkAnswer();
   };
 
-  // Gérer la navigation
-  const handleNavigation = (action) => {
-    if (action === "next") {
-      showFeedback ? handleNextQuestion() : handleCheckAnswer();
-    } else if (action === "previous") {
-      goToPreviousQuestion();
-      // Mettre à jour la position actuelle
-      saveLastPosition(
-        selectedExerciseIndex,
-        Math.max(0, currentQuestionIndex - 1)
-      );
-    } else if (action === "retry") {
-      retryQuestion();
-    }
+  // Gérer la navigation précédente
+  const handlePreviousQuestion = () => {
+    goToPreviousQuestion();
+    // Mettre à jour la position actuelle
+    saveLastPosition(
+      selectedExerciseIndex,
+      Math.max(0, currentQuestionIndex - 1)
+    );
   };
 
   // Gérer le changement d'exercice
@@ -222,7 +215,6 @@ const ReadingExercise = ({ route }) => {
         level={level}
         onClose={() => navigation.goBack()}
         levelColor={levelColor}
-        showProgress={false}
       />
 
       {/* Sélecteur de textes */}
@@ -328,67 +320,19 @@ const ReadingExercise = ({ route }) => {
         />
       </ScrollView>
 
-      {/* Navigation */}
-      <View style={styles.navigationContainer}>
-        {!showFeedback ? (
-          <NavigationButtons
-            onNext={() => handleNavigation("next")}
-            onPrevious={() => handleNavigation("previous")}
-            currentIndex={currentQuestionIndex}
-            totalCount={currentExercise.questions.length}
-            disableNext={selectedAnswer === null}
-            disablePrevious={currentQuestionIndex === 0}
-            showSkip={false}
-            primaryColor={levelColor}
-            buttonLabels={{
-              previous: "Previous",
-              next: "Check Answer",
-              skip: "Skip",
-              finish: "Finish",
-            }}
-            variant="standard"
-          />
-        ) : isCorrect ? (
-          <NavigationButtons
-            onNext={() => handleNavigation("next")}
-            onPrevious={() => handleNavigation("previous")}
-            currentIndex={currentQuestionIndex}
-            totalCount={currentExercise.questions.length}
-            disablePrevious={currentQuestionIndex === 0}
-            primaryColor={levelColor}
-            buttonLabels={{
-              previous: "Previous",
-              next:
-                currentQuestionIndex < currentExercise.questions.length - 1
-                  ? "Next Question"
-                  : "Complete",
-              skip: "Skip",
-              finish: "Finish",
-            }}
-            variant="standard"
-          />
-        ) : (
-          <NavigationButtons
-            onNext={
-              attempts > 1
-                ? () => handleNavigation("next")
-                : () => handleNavigation("retry")
-            }
-            onPrevious={() => handleNavigation("previous")}
-            currentIndex={currentQuestionIndex}
-            totalCount={currentExercise.questions.length}
-            disablePrevious={currentQuestionIndex === 0}
-            primaryColor={levelColor}
-            buttonLabels={{
-              previous: "Previous",
-              next: attempts > 1 ? "Skip" : "Try Again",
-              skip: "Skip",
-              finish: "Finish",
-            }}
-            variant="standard"
-          />
-        )}
-      </View>
+      {/* Navigation avec le nouveau composant */}
+      <ReadingNavigation
+        showFeedback={showFeedback}
+        isCorrect={isCorrect}
+        selectedAnswer={selectedAnswer}
+        currentQuestionIndex={currentQuestionIndex}
+        totalQuestions={currentExercise.questions.length}
+        attempts={attempts}
+        levelColor={levelColor}
+        onNext={showFeedback ? handleNextQuestion : handleCheckAnswer}
+        onPrevious={handlePreviousQuestion}
+        onRetry={retryQuestion}
+      />
 
       {/* Popup de vocabulaire */}
       <VocabularyPopup
