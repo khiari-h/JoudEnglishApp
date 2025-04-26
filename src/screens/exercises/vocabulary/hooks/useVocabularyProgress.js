@@ -51,7 +51,11 @@ const useVocabularyProgress = (level) => {
   // Sauvegarder la dernière position
   const saveLastPosition = useCallback(async (categoryIndex, wordIndex) => {
     try {
-      const newPosition = { categoryIndex, wordIndex };
+      const newPosition = { 
+        categoryIndex, 
+        wordIndex,
+        timestamp: Date.now() // Ajout du timestamp pour tracer la dernière activité
+      };
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
     } catch (error) {

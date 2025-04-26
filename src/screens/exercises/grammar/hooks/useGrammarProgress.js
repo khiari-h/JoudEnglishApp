@@ -60,7 +60,11 @@ const useGrammarProgress = (level) => {
   // Sauvegarder la dernière position
   const saveLastPosition = useCallback(async (ruleIndex, exerciseIndex) => {
     try {
-      const newPosition = { ruleIndex, exerciseIndex };
+      const newPosition = { 
+        ruleIndex, 
+        exerciseIndex,
+        timestamp: Date.now() // Ajout du timestamp pour suivre la dernière activité
+      };
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
     } catch (error) {

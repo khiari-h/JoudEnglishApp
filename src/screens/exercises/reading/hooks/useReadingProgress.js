@@ -51,7 +51,11 @@ const useReadingProgress = (level) => {
   // Sauvegarder la dernière position
   const saveLastPosition = useCallback(async (exerciseIndex, questionIndex) => {
     try {
-      const newPosition = { exerciseIndex, questionIndex };
+      const newPosition = { 
+        exerciseIndex, 
+        questionIndex,
+        timestamp: Date.now() // Ajout du timestamp pour suivre la dernière activité
+      };
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
     } catch (error) {

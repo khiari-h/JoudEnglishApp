@@ -43,7 +43,11 @@ const useErrorCorrectionProgress = (level) => {
   // Sauvegarder la dernière position
   const saveLastPosition = useCallback(async (categoryIndex, exerciseIndex) => {
     try {
-      const newPosition = { categoryIndex, exerciseIndex };
+      const newPosition = { 
+        categoryIndex, 
+        exerciseIndex,
+        timestamp: Date.now()  // Ajout du timestamp pour suivre la dernière activité
+      };
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
     } catch (error) {

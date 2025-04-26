@@ -33,9 +33,18 @@ const useSpellingProgress = (level, exerciseType) => {
         
         // Récupérer la dernière position
         const savedPositionJson = await AsyncStorage.getItem(LAST_POSITION_KEY);
-        const savedPosition = savedPositionJson 
-          ? JSON.parse(savedPositionJson) 
-          : 0;
+        let savedPosition;
+        
+        try {
+          // Tenter de parser comme un objet (nouveau format)
+          const parsedPosition = JSON.parse(savedPositionJson);
+          savedPosition = typeof parsedPosition === 'object' && parsedPosition !== null 
+            ? parsedPosition.exerciseIndex 
+            : parsedPosition || 0;
+        } catch (e) {
+          // Fallback au cas où c'est juste un nombre (ancien format)
+          savedPosition = Number(savedPositionJson) || 0;
+        }
         
         // Récupérer les réponses de l'utilisateur
         const savedAnswersJson = await AsyncStorage.getItem(USER_ANSWERS_KEY);
@@ -63,11 +72,19 @@ const useSpellingProgress = (level, exerciseType) => {
   const saveLastPosition = useCallback(async (exerciseIndex) => {
     try {
       setLastPosition(exerciseIndex);
-      await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(exerciseIndex));
+      
+      // Stocker comme un objet avec timestamp au lieu d'un simple nombre
+      const positionData = {
+        exerciseIndex,
+        exerciseType,
+        timestamp: Date.now()
+      };
+      
+      await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(positionData));
     } catch (error) {
       console.error('Erreur lors de la sauvegarde de la position:', error);
     }
-  }, [LAST_POSITION_KEY]);
+  }, [LAST_POSITION_KEY, exerciseType]);
 
   // Marquer un exercice comme complété
   const markExerciseAsCompleted = useCallback(async (exerciseIndex, isCorrect, userAnswer, correctAnswer) => {
@@ -107,8 +124,8 @@ const useSpellingProgress = (level, exerciseType) => {
   }, [initialized, loaded]);
 
   // Calculer la progression globale
-  const calculateProgress = useCallback(() => {
-    if (completedExercises.length === 0) return 0;
+  const calculateProgress = useCallback((totalExercises) => {
+    if (completedExercises.length === 0 || totalExercises <= 0) return 0;
     return (completedExercises.length / totalExercises) * 100;
   }, [completedExercises]);
 

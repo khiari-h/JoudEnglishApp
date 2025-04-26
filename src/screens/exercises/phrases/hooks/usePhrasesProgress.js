@@ -43,7 +43,11 @@ const usePhrasesProgress = (level) => {
   // Sauvegarder la dernière position
   const saveLastPosition = useCallback(async (categoryIndex, phraseIndex) => {
     try {
-      const newPosition = { categoryIndex, phraseIndex };
+      const newPosition = { 
+        categoryIndex, 
+        phraseIndex,
+        timestamp: Date.now() // Ajout du timestamp pour suivre la dernière activité
+      };
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
     } catch (error) {

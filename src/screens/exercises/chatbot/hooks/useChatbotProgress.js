@@ -60,7 +60,12 @@ const useChatbotProgress = (level) => {
   // Sauvegarder la dernière position
   const saveLastPosition = useCallback(async (scenarioIndex, stepIndex) => {
     try {
-      const newPosition = { scenarioIndex, stepIndex };
+      // Ajout du timestamp pour suivre la dernière activité
+      const newPosition = { 
+        scenarioIndex, 
+        stepIndex,
+        timestamp: Date.now()
+      };
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
     } catch (error) {
