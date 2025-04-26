@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, ScrollView, StatusBar } from "react-native";
-// Remplacer useNavigation par router d'Expo Router
+import { View, ScrollView, StatusBar, RefreshControl } from "react-native";
 import { router } from "expo-router";
 
 // Contextes
@@ -17,10 +16,10 @@ import LevelProgressModal from "./components/LevelProgressModal";
 
 // Hooks personnalisés
 import { useStaggeredAnimation } from "@/src/hooks/useAnimation";
+import useLastActivity from "@/src/hooks/useLastActivity";
 
 // Constantes et utilitaires
 import { LANGUAGE_LEVELS, EXERCISE_TYPES } from "@/src/utils/constants";
-import { formatRelativeTime } from "@/src/utils/formatters";
 
 const Dashboard = ({ route }) => {
   // Récupération sécurisée des contextes
@@ -30,13 +29,18 @@ const Dashboard = ({ route }) => {
   // Valeurs par défaut sécurisées
   const colors = themeContext?.colors || {
     background: "#FFFFFF",
-    primary: "#000000",
+    primary: "#5E60CE", // Couleur par défaut
   };
   const progress = progressContext?.progress || {};
   const updateStreak = progressContext?.updateStreak || (() => {});
 
+  // Utilisation du hook useLastActivity
+  const { getLastActivity, isLoading, loadLastActivities } = useLastActivity();
+  const lastActivity = getLastActivity();
+
   // États
   const [showLevelProgress, setShowLevelProgress] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   // Paramètres du profil
   const { name = "User", streak = 0 } = route?.params || {};
@@ -49,29 +53,16 @@ const Dashboard = ({ route }) => {
     updateStreak();
   }, [updateStreak]);
 
-  // Dernière activité de l'utilisateur
-  const getLastActivity = () => {
-    if (!progress?.lastActivity?.type) {
-      return {
-        title: "Aucune activité récente",
-        topic: "Commencer à apprendre",
-        icon: "book-outline",
-        progress: 0,
-      };
-    }
+  // Recharger les données au focus de l'écran
+  useEffect(() => {
+    loadLastActivities();
+  }, []);
 
-    const { type, level, timestamp } = progress.lastActivity;
-    const exerciseInfo = EXERCISE_TYPES[type] || {};
-    const levelInfo = LANGUAGE_LEVELS[level] || {};
-
-    return {
-      title: exerciseInfo.title || type,
-      topic: `${levelInfo.title} (${level})`,
-      icon: exerciseInfo.icon,
-      progress: progress.exercises?.[type]?.[level]?.completed || 0,
-      route: exerciseInfo.route,
-      level,
-    };
+  // Fonction de rafraîchissement
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await loadLastActivities();
+    setRefreshing(false);
   };
 
   // Données des défis quotidiens
@@ -123,23 +114,66 @@ const Dashboard = ({ route }) => {
       };
     });
 
-  // Gestionnaires de navigation - MISE À JOUR AVEC EXPO ROUTER
-  const navigateToLastActivity = () => {
-    const lastActivity = getLastActivity();
-    if (lastActivity.route && lastActivity.level) {
-      // Convertir le nom de route en chemin Expo Router
-      const routePath = convertRouteToPath(lastActivity.route);
-      router.push({
-        pathname: routePath,
-        params: { level: lastActivity.level },
-      });
+  // Gérer la navigation vers la dernière activité
+  const handleLastActivityPress = (activity) => {
+    if (activity === "all") {
+      // Naviguer vers l'écran de toutes les activités
+      router.push("/(tabs)/activityHistory");
+      return;
     }
-  };
-
-  // Fonction pour convertir les noms de routes en chemins Expo Router
-  const convertRouteToPath = (routeName) => {
-    // Exemple: "VocabularyExercise" -> "/(tabs)/vocabularyExercise"
-    return `/(tabs)/${routeName.charAt(0).toLowerCase() + routeName.slice(1)}`;
+    
+    if (!lastActivity) return;
+    
+    // Naviguer vers l'exercice spécifique avec ses paramètres
+    const { type, level, position } = lastActivity;
+    let pathname;
+    let params = { level };
+    
+    switch (type) {
+      case "vocabulary":
+        pathname = "/(tabs)/vocabularyExercise";
+        params.initialCategoryIndex = position.categoryIndex;
+        params.initialWordIndex = position.wordIndex;
+        break;
+      case "grammar":
+        pathname = "/(tabs)/grammarExercise";
+        params.initialRuleIndex = position.ruleIndex;
+        params.initialExerciseIndex = position.exerciseIndex;
+        break;
+      case "reading":
+        pathname = "/(tabs)/readingExercise";
+        params.initialExerciseIndex = position.exerciseIndex;
+        params.initialQuestionIndex = position.questionIndex;
+        break;
+      case "error_correction":
+        pathname = "/(tabs)/errorCorrectionExercise";
+        params.initialCategoryIndex = position.categoryIndex;
+        params.initialExerciseIndex = position.exerciseIndex;
+        break;
+      case "chatbot":
+        pathname = "/(tabs)/chatbotExercise";
+        params.initialScenarioIndex = position.scenarioIndex;
+        params.initialStepIndex = position.stepIndex;
+        break;
+      case "phrases":
+        pathname = "/(tabs)/phrasesExercise";
+        params.initialCategoryIndex = position.categoryIndex;
+        params.initialPhraseIndex = position.phraseIndex;
+        break;
+      case "spelling":
+        pathname = "/(tabs)/spellingExercise";
+        params.exerciseType = position.exerciseType || "correction";
+        params.initialExerciseIndex = position.exerciseIndex;
+        break;
+      default:
+        pathname = "/(tabs)/levelSelection";
+        break;
+    }
+    
+    router.push({
+      pathname,
+      params
+    });
   };
 
   const handleLevelSelect = (level) => {
@@ -149,17 +183,39 @@ const Dashboard = ({ route }) => {
     });
   };
 
+  // Si aucune activité n'est trouvée, utiliser une valeur par défaut
+  const getDefaultActivity = () => {
+    return {
+      title: "Aucune activité récente",
+      topic: "Commencer à apprendre",
+      icon: "book-outline",
+      progress: 0,
+      timeElapsed: "Jamais"
+    };
+  };
+
+  const activityToDisplay = lastActivity || getDefaultActivity();
+
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar barStyle="light-content" />
 
       <DashboardHeader name={name} streak={streak} />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl 
+            refreshing={refreshing} 
+            onRefresh={onRefresh}
+            colors={[colors.primary]} 
+          />
+        }
+      >
         <View style={animationStyles[0]}>
           <LastActivitySection
-            lastActivity={getLastActivity()}
-            onPress={navigateToLastActivity}
+            lastActivity={activityToDisplay}
+            onPress={handleLastActivityPress}
           />
         </View>
 

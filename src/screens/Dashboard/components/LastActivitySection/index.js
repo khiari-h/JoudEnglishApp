@@ -1,3 +1,4 @@
+// src/components/dashboard/LastActivitySection/index.js
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -5,11 +6,16 @@ import Section from "@/src/components/layout/Section";
 import Card from "@/src/components/ui/Card";
 import ProgressBar from "@/src/components/ui/ProgressBar";
 import { ThemeContext } from "@/src/contexts/ThemeContext";
+import useLastActivity from "@/src/hooks/useLastActivity";
 import styles from "./style";
 
-const LastActivitySection = ({ lastActivity, onPress }) => {
+const LastActivitySection = ({ onPress }) => {
   // Récupération sécurisée du contexte
   const themeContext = useContext(ThemeContext);
+
+  // Utilisation du hook pour récupérer la dernière activité
+  const { getLastActivity, isLoading, formatProgressSubtitle } = useLastActivity();
+  const lastActivity = getLastActivity();
 
   // Utilisation de valeurs par défaut si le contexte est undefined
   const colors = themeContext?.colors || {
@@ -17,10 +23,15 @@ const LastActivitySection = ({ lastActivity, onPress }) => {
     background: "#FFFFFF",
   };
 
+  // Si aucune activité n'est trouvée ou si chargement en cours
+  if (isLoading || !lastActivity) {
+    return null;
+  }
+
   // Composant pour le bouton Reprendre
   const ResumeButton = () => (
     <TouchableOpacity
-      onPress={onPress}
+      onPress={() => onPress && onPress(lastActivity)}
       style={[styles.resumeButton, { backgroundColor: colors.primary }]}
     >
       <Ionicons name="play" size={14} color="white" style={styles.resumeIcon} />
@@ -38,7 +49,7 @@ const LastActivitySection = ({ lastActivity, onPress }) => {
         style={styles.timeIcon}
       />
       <Text style={styles.timeText}>
-        {lastActivity.timeElapsed || "Il y a 5 minutes"}
+        {lastActivity.timeElapsed}
       </Text>
     </View>
   );
@@ -51,10 +62,10 @@ const LastActivitySection = ({ lastActivity, onPress }) => {
       onActionPress={() => onPress && onPress("all")}
     >
       <Card
-        title={lastActivity.title || "Les bases de la grammaire"}
-        subtitle={lastActivity.topic || "Exercice 3 sur 5"}
-        onPress={onPress}
-        headerIcon={lastActivity.icon || "book-outline"}
+        title={lastActivity.title}
+        subtitle={formatProgressSubtitle(lastActivity)}
+        onPress={() => onPress && onPress(lastActivity)}
+        headerIcon={lastActivity.icon}
         headerIconColor={colors.primary}
         style={styles.cardContainer}
         footer={
@@ -62,7 +73,7 @@ const LastActivitySection = ({ lastActivity, onPress }) => {
             <View style={styles.progressContainer}>
               <TimeInfo />
               <ProgressBar
-                progress={lastActivity.progress || 60}
+                progress={lastActivity.progress}
                 height={5}
                 fillColor={colors.primary}
                 backgroundColor="#F3F4F6"
