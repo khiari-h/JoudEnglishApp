@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, ScrollView, StatusBar, RefreshControl } from "react-native";
 import { router } from "expo-router";
+import { useFocusEffect } from '@react-navigation/native';
 
 // Contextes
 import { ThemeContext } from "@/src/contexts/ThemeContext";
@@ -34,8 +35,14 @@ const Dashboard = ({ route }) => {
   const progress = progressContext?.progress || {};
   const updateStreak = progressContext?.updateStreak || (() => {});
 
-  // Utilisation du hook useLastActivity
-  const { getLastActivity, isLoading, loadLastActivities } = useLastActivity();
+  // Utilisation du hook useLastActivity - UNE SEULE INSTANCE
+  const { 
+    getLastActivity, 
+    isLoading, 
+    loadLastActivities, 
+    formatProgressSubtitle 
+  } = useLastActivity();
+  
   const lastActivity = getLastActivity();
 
   // États
@@ -53,10 +60,19 @@ const Dashboard = ({ route }) => {
     updateStreak();
   }, [updateStreak]);
 
-  // Recharger les données au focus de l'écran
+  // Recharger les données au montage initial
   useEffect(() => {
     loadLastActivities();
   }, []);
+
+  // Recharger les données à chaque fois que l'écran revient au focus
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log('Dashboard en focus, rechargement des activités');
+      loadLastActivities();
+      return () => {};
+    }, [loadLastActivities])
+  );
 
   // Fonction de rafraîchissement
   const onRefresh = async () => {
@@ -216,6 +232,8 @@ const Dashboard = ({ route }) => {
           <LastActivitySection
             lastActivity={activityToDisplay}
             onPress={handleLastActivityPress}
+            formatProgressSubtitle={formatProgressSubtitle}
+            isLoading={isLoading}
           />
         </View>
 

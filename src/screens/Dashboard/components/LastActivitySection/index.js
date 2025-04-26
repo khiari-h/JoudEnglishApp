@@ -1,4 +1,3 @@
-// src/components/dashboard/LastActivitySection/index.js
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -6,16 +5,20 @@ import Section from "@/src/components/layout/Section";
 import Card from "@/src/components/ui/Card";
 import ProgressBar from "@/src/components/ui/ProgressBar";
 import { ThemeContext } from "@/src/contexts/ThemeContext";
-import useLastActivity from "@/src/hooks/useLastActivity";
 import styles from "./style";
 
-const LastActivitySection = ({ onPress }) => {
+/**
+ * Composant pour afficher la dernière activité de l'utilisateur
+ * Version optimisée pour utiliser les données fournies par le parent au lieu d'un hook indépendant
+ * 
+ * @param {Object} lastActivity - L'objet contenant les données de la dernière activité
+ * @param {Function} onPress - Fonction appelée lorsque l'utilisateur clique sur l'activité
+ * @param {Function} formatProgressSubtitle - Fonction pour formater le sous-titre de l'activité
+ * @param {Boolean} isLoading - Indique si les données sont en cours de chargement
+ */
+const LastActivitySection = ({ lastActivity, onPress, formatProgressSubtitle, isLoading }) => {
   // Récupération sécurisée du contexte
   const themeContext = useContext(ThemeContext);
-
-  // Utilisation du hook pour récupérer la dernière activité
-  const { getLastActivity, isLoading, formatProgressSubtitle } = useLastActivity();
-  const lastActivity = getLastActivity();
 
   // Utilisation de valeurs par défaut si le contexte est undefined
   const colors = themeContext?.colors || {
@@ -63,7 +66,7 @@ const LastActivitySection = ({ onPress }) => {
     >
       <Card
         title={lastActivity.title}
-        subtitle={formatProgressSubtitle(lastActivity)}
+        subtitle={formatProgressSubtitle ? formatProgressSubtitle(lastActivity) : ''}
         onPress={() => onPress && onPress(lastActivity)}
         headerIcon={lastActivity.icon}
         headerIconColor={colors.primary}
