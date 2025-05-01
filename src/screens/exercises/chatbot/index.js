@@ -1,7 +1,7 @@
 // src/screens/exercises/chatbot/index.js
 import React, { useState, useCallback, useMemo, useEffect } from "react";
 import { SafeAreaView, KeyboardAvoidingView, Platform } from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute, useFocusEffect } from "@react-navigation/native";
 
 // Composants spécifiques au chatbot
 import ChatbotHeader from "./ChatbotHeader";
@@ -26,7 +26,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice de Chatbot Writing
- * Version améliorée avec suivi de progression
+ * Version optimisée avec enregistrement de progression à des moments stratégiques
  */
 const ChatbotExercise = () => {
   // Hooks de navigation
@@ -51,6 +51,7 @@ const ChatbotExercise = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
+  const [conversationChanged, setConversationChanged] = useState(false);
 
   // Utilisation du hook de progression
   const {
@@ -72,91 +73,97 @@ const ChatbotExercise = () => {
     if (progressLoaded && chatbotData) {
       console.log('[Chatbot] Initialisation de la progression');
       initializeProgress(chatbotData);
+      
+      // Enregistrer la sélection initiale du scénario
+      saveLastPosition(currentScenarioIndex, 0);
     }
-  }, [progressLoaded, chatbotData, initializeProgress]);
+  }, [progressLoaded, chatbotData, initializeProgress, currentScenarioIndex, saveLastPosition]);
 
-  // Restaurer la dernière position et l'historique de conversation
+  // Restaurer l'historique de conversation si disponible
   useEffect(() => {
-    if (progressLoaded && lastPosition) {
-      console.log('[Chatbot] Restauration depuis la position sauvegardée:', lastPosition);
+    if (progressLoaded && currentScenarioIndex !== undefined) {
+      // Récupérer le scénario correspondant
+      const scenario = scenarios[currentScenarioIndex];
+      if (!scenario) return;
       
-      // Restaurer l'index du scénario si différent
-      if (typeof lastPosition.scenarioIndex === 'number' && 
-          lastPosition.scenarioIndex !== currentScenarioIndex &&
-          lastPosition.scenarioIndex < scenarios.length) {
-        setCurrentScenarioIndex(lastPosition.scenarioIndex);
-      }
+      // Récupérer l'historique de conversation pour ce scénario
+      const scenarioHistory = conversationHistory[currentScenarioIndex];
+      let initialStep = 0;
       
-      // Restaurer l'étape si différente
-      if (typeof lastPosition.stepIndex === 'number' && 
-          lastPosition.stepIndex !== currentStep) {
-        setCurrentStep(lastPosition.stepIndex);
-      }
-      
-      // Restaurer l'historique de conversation si disponible
-      const scenarioHistory = conversationHistory[lastPosition.scenarioIndex];
-      if (scenarioHistory && scenarioHistory.conversation) {
-        console.log('[Chatbot] Restauration de la conversation');
+      // Vérifier si le scénario a déjà été commencé
+      if (scenarioHistory && scenarioHistory.conversation && scenarioHistory.conversation.length > 0) {
+        console.log('[Chatbot] Restauration de la conversation existante');
         setConversation(scenarioHistory.conversation);
-      }
-    }
-  }, [progressLoaded, lastPosition, conversationHistory, scenarios.length]);
-
-  // Sauvegarder la position lorsque le scénario ou l'étape change
-  useEffect(() => {
-    if (progressLoaded && (currentScenarioIndex !== undefined && currentStep !== undefined)) {
-      console.log(`[Chatbot] Sauvegarde de la position: scénario ${currentScenarioIndex}, étape ${currentStep}`);
-      saveLastPosition(currentScenarioIndex, currentStep);
-    }
-  }, [currentScenarioIndex, currentStep, progressLoaded, saveLastPosition]);
-
-  // Réinitialisation lors du changement de scénario
-  useEffect(() => {
-    // Vérifier si une conversation existe déjà dans l'historique
-    if (progressLoaded && conversationHistory[currentScenarioIndex]) {
-      const savedConversation = conversationHistory[currentScenarioIndex].conversation;
-      if (savedConversation && savedConversation.length > 0) {
-        console.log('[Chatbot] Restauration de la conversation pour le scénario', currentScenarioIndex);
-        setConversation(savedConversation);
         
-        // Déterminer l'étape actuelle en fonction de la longueur de la conversation
-        // (simplification - à adapter selon votre logique exacte)
-        const estimatedStep = Math.floor(savedConversation.length / 2);
-        if (estimatedStep > 0 && estimatedStep !== currentStep) {
-          setCurrentStep(estimatedStep);
-        }
+        // Calculer l'étape actuelle en fonction des messages du bot
+        const botMessages = scenarioHistory.conversation.filter(msg => msg.sender === "bot");
+        initialStep = Math.min(botMessages.length, scenario.steps.length - 1);
       } else {
-        resetConversation();
+        // Nouvelle conversation - initialiser avec le premier message du bot
+        if (scenario.steps && scenario.steps.length > 0) {
+          console.log('[Chatbot] Initialisation d\'une nouvelle conversation');
+          const initialBotMessage = {
+            id: `bot-initial-${Date.now()}`,
+            text: scenario.steps[0].botMessage,
+            sender: "bot",
+            timestamp: new Date().toISOString(),
+          };
+          
+          setConversation([initialBotMessage]);
+        }
       }
-    } else {
-      resetConversation();
+      
+      // Mettre à jour l'étape actuelle
+      setCurrentStep(initialStep);
+      
+      // Mettre à jour les suggestions
+      if (scenario.steps && scenario.steps[initialStep]) {
+        setSuggestions(scenario.steps[initialStep].suggestions || []);
+      }
+      
+      setConversationChanged(false);
     }
-  }, [currentScenarioIndex, currentScenario, progressLoaded, conversationHistory]);
+  }, [currentScenarioIndex, progressLoaded, conversationHistory, scenarios]);
 
-  // Réinitialiser la conversation
-  const resetConversation = () => {
-    console.log('[Chatbot] Réinitialisation de la conversation');
-    setConversation([]);
-    setCurrentStep(0);
-    
-    // Ajouter le premier message du bot si disponible
-    if (currentScenario.steps && currentScenario.steps.length > 0) {
-      const initialBotMessage = {
-        id: `bot-initial-${Date.now()}`,
-        text: currentScenario.steps[0].botMessage,
-        sender: "bot",
-        timestamp: new Date().toISOString(),
+  // Enregistrer la progression lorsque l'utilisateur quitte la page
+  useFocusEffect(
+    React.useCallback(() => {
+      // Fonction de nettoyage exécutée lorsque l'utilisateur quitte la page
+      return () => {
+        if (progressLoaded && conversationChanged) {
+          console.log('[Chatbot] Sauvegarde au départ de la page');
+          saveProgressState();
+        }
       };
-      
-      setConversation([initialBotMessage]);
-      setSuggestions(currentScenario.steps[0].suggestions || []);
-      
-      // Sauvegarder ce message initial
-      if (progressLoaded) {
-        saveConversationMessage(currentScenarioIndex, initialBotMessage);
-      }
+    }, [progressLoaded, conversationChanged])
+  );
+
+  // Fonction pour sauvegarder l'état complet de la progression
+  const saveProgressState = useCallback(() => {
+    if (!progressLoaded) return;
+    
+    // 1. Sauvegarder la position actuelle
+    saveLastPosition(currentScenarioIndex, currentStep);
+    
+    // 2. Sauvegarder l'historique de conversation
+    if (conversation.length > 0) {
+      // Sauvegarder la conversation complète d'un coup
+      const completeConversation = {
+        id: `conversation-${currentScenarioIndex}-${Date.now()}`,
+        conversation: conversation,
+        timestamp: Date.now()
+      };
+      saveConversationMessage(currentScenarioIndex, completeConversation);
     }
-  };
+    
+    // 3. Si le scénario est terminé, le marquer comme complété
+    const scenario = scenarios[currentScenarioIndex];
+    if (scenario && scenario.steps && currentStep >= scenario.steps.length - 1) {
+      markScenarioAsCompleted(currentScenarioIndex, conversation);
+    }
+    
+    setConversationChanged(false);
+  }, [progressLoaded, currentScenarioIndex, currentStep, conversation, scenarios, saveLastPosition, saveConversationMessage, markScenarioAsCompleted]);
 
   // Calcul de la progression
   const completionProgress = useMemo(() => {
@@ -177,12 +184,11 @@ const ChatbotExercise = () => {
       timestamp: new Date().toISOString(),
     };
 
-    setConversation((prev) => [...prev, userMessage]);
-    
-    // Sauvegarder le message de l'utilisateur
-    if (progressLoaded) {
-      saveConversationMessage(currentScenarioIndex, userMessage);
-    }
+    // Mise à jour locale de la conversation
+    const updatedConversation = [...conversation, userMessage];
+    setConversation(updatedConversation);
+    setConversationChanged(true);
+    setMessage("");
 
     // Réponse du bot
     setIsTyping(true);
@@ -201,37 +207,40 @@ const ChatbotExercise = () => {
           timestamp: new Date().toISOString(),
         };
 
-        setConversation((prev) => [...prev, botMessage]);
+        const conversationWithBot = [...updatedConversation, botMessage];
+        setConversation(conversationWithBot);
         setCurrentStep(nextStepIndex);
-
-        // Sauvegarder le message du bot
-        if (progressLoaded) {
-          saveConversationMessage(currentScenarioIndex, botMessage);
-          
-          // Si c'est le dernier message du bot dans ce scénario, marquer comme complété
-          if (nextStepIndex === botSteps.length - 1) {
-            const fullConversation = [...conversation, userMessage, botMessage];
-            markScenarioAsCompleted(currentScenarioIndex, fullConversation);
-          }
-        }
-
-        // Mettre à jour les suggestions
         setSuggestions(nextStep.suggestions || []);
+        
+        // Si c'est le dernier message du bot, sauvegarder immédiatement la progression
+        if (nextStepIndex === botSteps.length - 1) {
+          setTimeout(() => {
+            saveProgressState();
+          }, 500);
+        }
       }
 
       setIsTyping(false);
-      setMessage("");
     }, 1000);
-  }, [message, currentScenario, currentStep, conversation, progressLoaded, saveConversationMessage, markScenarioAsCompleted, currentScenarioIndex]);
+  }, [message, currentScenario, currentStep, conversation, saveProgressState]);
 
   // Gérer le changement de scénario
   const handleScenarioChange = useCallback(
     (index) => {
       if (index !== currentScenarioIndex) {
+        // Sauvegarder la progression du scénario actuel avant de changer
+        if (conversationChanged) {
+          saveProgressState();
+        }
+        
         setCurrentScenarioIndex(index);
+        setConversation([]);
+        setCurrentStep(0);
+        setSuggestions([]);
+        setConversationChanged(false);
       }
     },
-    [currentScenarioIndex]
+    [currentScenarioIndex, conversationChanged, saveProgressState]
   );
 
   // Utiliser une suggestion
@@ -254,7 +263,13 @@ const ChatbotExercise = () => {
       {/* En-tête du chatbot */}
       <ChatbotHeader
         level={level}
-        onBackPress={() => navigation.goBack()}
+        onBackPress={() => {
+          // Sauvegarder avant de quitter si nécessaire
+          if (conversationChanged) {
+            saveProgressState();
+          }
+          navigation.goBack();
+        }}
         levelColor={levelColor}
       />
 
