@@ -63,7 +63,9 @@ const GrammarExercise = ({ route }) => {
     showFeedback,
     setShowFeedback,
     isCorrect,
+    setIsCorrect,
     attempts,
+    setAttempts,
     resetExerciseState,
     goToPreviousExercise,
     goToNextExercise,
@@ -173,8 +175,10 @@ const GrammarExercise = ({ route }) => {
     }
   };
 
-  // Réessayer l'exercice actuel
+  // Réessayer l'exercice actuel - CORRECTION ICI
   const handleRetryExercise = () => {
+    // Utiliser la fonction resetExerciseState fournie par le hook
+    // Cette fonction va gérer correctement la réinitialisation de tous les états
     resetExerciseState();
   };
 
@@ -228,16 +232,20 @@ const GrammarExercise = ({ route }) => {
         {/* Contenu de la règle */}
         <GrammarRuleContent rule={currentRule} />
 
-        {/* Exercice actuel */}
-        <GrammarExerciseRenderer
-          exercise={currentExercise}
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-          inputText={inputText}
-          setInputText={setInputText}
-          showFeedback={showFeedback}
-          isCorrect={isCorrect}
-        />
+        {/* Exercice actuel - Ajout de key pour forcer le rafraîchissement */}
+        <View key={`exercise-container-${exerciseIndex}-${attempts}`}>
+          <GrammarExerciseRenderer
+            exercise={currentExercise}
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            inputText={inputText}
+            setInputText={setInputText}
+            showFeedback={showFeedback}
+            isCorrect={isCorrect}
+            exerciseIndex={exerciseIndex}
+            attempts={attempts}
+          />
+        </View>
 
         {/* Feedback après réponse */}
         <GrammarFeedback

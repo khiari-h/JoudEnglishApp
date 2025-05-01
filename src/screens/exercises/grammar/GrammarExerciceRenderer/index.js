@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, TextInput } from 'react-native';
-import styles from './style';
+import React from "react";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import styles from "./style";
 
 /**
  * Composant pour afficher différents types d'exercices de grammaire
@@ -13,45 +13,56 @@ const GrammarExerciseRenderer = ({
   setInputText,
   showFeedback,
   isCorrect,
+  exerciseIndex,
+  attempts,
 }) => {
   if (!exercise) return null;
-  
+
   // Render pour un exercice à choix multiples
   const renderMultipleChoiceExercise = () => (
     <View style={styles.exerciseContainer}>
       <Text style={styles.question}>{exercise.question}</Text>
-      
+
       {exercise.sentence && (
         <View style={styles.sentenceContainer}>
           <Text style={styles.sentence}>
-            {exercise.sentence.replace('___', '______')}
+            {exercise.sentence.replace("___", "______")}
           </Text>
         </View>
       )}
-      
+
       <View style={styles.optionsContainer}>
         {exercise.options.map((option, index) => {
-          const isCorrectOption = index === exercise.answer || option === exercise.answer;
+          const isCorrectOption =
+            index === exercise.answer || option === exercise.answer;
           const isSelectedOption = selectedOption === index;
-          
+
           return (
             <TouchableOpacity
-              key={index}
+              key={`option-${index}-${attempts}`}
               style={[
                 styles.optionButton,
                 isSelectedOption && styles.selectedOption,
                 showFeedback && isCorrectOption && styles.correctOption,
-                showFeedback && isSelectedOption && !isCorrectOption && styles.incorrectOption
+                showFeedback &&
+                  isSelectedOption &&
+                  !isCorrectOption &&
+                  styles.incorrectOption,
               ]}
               onPress={() => !showFeedback && setSelectedOption(index)}
               disabled={showFeedback && isCorrect}
             >
-              <Text style={[
-                styles.optionText,
-                isSelectedOption && styles.selectedOptionText,
-                showFeedback && isCorrectOption && styles.correctOptionText,
-                showFeedback && isSelectedOption && !isCorrectOption && styles.incorrectOptionText
-              ]}>
+              <Text
+                style={[
+                  styles.optionText,
+                  isSelectedOption && styles.selectedOptionText,
+                  showFeedback && isCorrectOption && styles.correctOptionText,
+                  showFeedback &&
+                    isSelectedOption &&
+                    !isCorrectOption &&
+                    styles.incorrectOptionText,
+                ]}
+              >
                 {option}
               </Text>
             </TouchableOpacity>
@@ -65,23 +76,27 @@ const GrammarExerciseRenderer = ({
   const renderFillBlankExercise = () => (
     <View style={styles.exerciseContainer}>
       <Text style={styles.question}>{exercise.question}</Text>
-      
+
       <View style={styles.sentenceContainer}>
         <Text style={styles.sentence}>
-          {exercise.sentence?.split('___')[0]}
+          {exercise.sentence?.split("___")[0]}
           <TextInput
+            key={`fill-blank-input-${exerciseIndex}-${attempts}`}
             style={[
               styles.textInput,
-              showFeedback && inputText.trim().toLowerCase() === exercise.answer.toLowerCase() 
-                ? styles.correctTextInput 
-                : showFeedback && !isCorrect ? styles.incorrectTextInput : null
+              showFeedback &&
+              inputText.trim().toLowerCase() === exercise.answer.toLowerCase()
+                ? styles.correctTextInput
+                : showFeedback && !isCorrect
+                ? styles.incorrectTextInput
+                : null,
             ]}
             value={inputText}
-            onChangeText={text => !showFeedback && setInputText(text)}
+            onChangeText={(text) => !showFeedback && setInputText(text)}
             placeholder="..."
             editable={!showFeedback || !isCorrect}
           />
-          {exercise.sentence?.split('___')[1]}
+          {exercise.sentence?.split("___")[1]}
         </Text>
       </View>
     </View>
@@ -91,23 +106,27 @@ const GrammarExerciseRenderer = ({
   const renderTransformationExercise = () => (
     <View style={styles.exerciseContainer}>
       <Text style={styles.question}>{exercise.question}</Text>
-      
+
       {exercise.sentence && (
         <View style={styles.sentenceContainer}>
           <Text style={styles.sentence}>{exercise.sentence}</Text>
         </View>
       )}
-      
+
       <View style={styles.transformationContainer}>
         <TextInput
+          key={`transformation-input-${exerciseIndex}-${attempts}`}
           style={[
             styles.transformationInput,
-            showFeedback && inputText.trim().toLowerCase() === exercise.answer.toLowerCase() 
-              ? styles.correctTextInput 
-              : showFeedback && !isCorrect ? styles.incorrectTextInput : null
+            showFeedback &&
+            inputText.trim().toLowerCase() === exercise.answer.toLowerCase()
+              ? styles.correctTextInput
+              : showFeedback && !isCorrect
+              ? styles.incorrectTextInput
+              : null,
           ]}
           value={inputText}
-          onChangeText={text => !showFeedback && setInputText(text)}
+          onChangeText={(text) => !showFeedback && setInputText(text)}
           placeholder="Your answer..."
           editable={!showFeedback || !isCorrect}
           multiline
@@ -115,16 +134,16 @@ const GrammarExerciseRenderer = ({
       </View>
     </View>
   );
-  
+
   // Déterminer quel type d'exercice afficher
-  if (exercise.type === 'fillInTheBlank' && exercise.options) {
+  if (exercise.type === "fillInTheBlank" && exercise.options) {
     return renderMultipleChoiceExercise();
-  } else if (exercise.type === 'fillInTheBlank') {
+  } else if (exercise.type === "fillInTheBlank") {
     return renderFillBlankExercise();
-  } else if (exercise.type === 'transformation') {
+  } else if (exercise.type === "transformation") {
     return renderTransformationExercise();
   }
-  
+
   return null;
 };
 
