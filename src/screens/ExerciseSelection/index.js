@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from "react";
 import { View, Text, ScrollView } from "react-native";
-// Remplacer useNavigation par router d'Expo Router
+import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 
 // Contextes
@@ -19,6 +19,8 @@ import Header from "@/src/components/layout/Header";
 
 // Constantes et Helpers
 import { EXERCISE_TYPES, LANGUAGE_LEVELS, ROUTES } from "@/src/utils/constants";
+
+// Styles
 import styles from "./style";
 
 // Valeurs par défaut pour les contextes
@@ -46,11 +48,17 @@ const ExerciseSelection = ({ route }) => {
   const { colors } = themeContext;
   const { progress } = progressContext;
 
-  // Récupérer la couleur du niveau
-  const levelColor = useMemo(() => {
-    const levelInfo = LANGUAGE_LEVELS[level];
-    return levelInfo?.color || colors.primary;
-  }, [level]);
+  // Récupérer les infos du niveau
+  const levelInfo = useMemo(() => {
+    return LANGUAGE_LEVELS[level] || {
+      color: colors.primary,
+      title: `Niveau ${level}`,
+      icon: "📚",
+    };
+  }, [level, colors.primary]);
+
+  // Couleur du niveau
+  const levelColor = levelInfo.color;
 
   // Préparer les exercices
   const exercises = useMemo(() => {
@@ -66,7 +74,7 @@ const ExerciseSelection = ({ route }) => {
     });
   }, [level, progress, levelColor]);
 
-  // Naviguer vers l'exercice sélectionné avec Expo Router
+  // Naviguer vers l'exercice sélectionné
   const handleExerciseSelect = (exercise) => {
     // Convertir le nom de la route en format de chemin pour Expo Router
     const routePath = convertRouteToPath(exercise.route);
@@ -86,77 +94,149 @@ const ExerciseSelection = ({ route }) => {
     return `/(tabs)/${routeName.charAt(0).toLowerCase() + routeName.slice(1)}`;
   };
 
+  // Calculer le nombre total d'exercices et le nombre complétés
+  const exerciseStats = useMemo(() => {
+    const total = exercises.length;
+    const completed = exercises.filter(ex => ex.progress > 80).length;
+    const inProgress = exercises.filter(ex => ex.progress > 0 && ex.progress <= 80).length;
+    
+    return { total, completed, inProgress };
+  }, [exercises]);
+
   return (
     <Container
       safeArea
-      statusBarColor={colors.background}
-      statusBarStyle="dark-content"
       backgroundColor={colors.background}
+      withScrollView={false}
+      statusBarColor={levelColor}
+      statusBarStyle="light-content"
     >
-      <Header title={`Niveau ${level} - Exercices`} showBackButton />
+      {/* Header compact avec dégradé */}
+      <View style={styles.headerContainer}>
+        <LinearGradient
+          colors={[levelColor, levelColor + 'DD']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.headerGradient}
+        >
+          <Header
+            title=""
+            showBackButton={true}
+            backgroundColor="transparent"
+            textColor="white"
+            withStatusBar={false}
+            withShadow={false}
+          />
+          
+          {/* Badge de niveau */}
+          <View style={styles.levelBadgeContainer}>
+            <View style={styles.levelBadge}>
+              <Text style={styles.levelBadgeText}>{level}</Text>
+            </View>
+            <Text style={styles.levelTitle}>{levelInfo.title}</Text>
+          </View>
+          
+          {/* Barre de statistiques */}
+          <View style={styles.statsContainer}>
+            <View style={styles.statBox}>
+              <Text style={styles.statValue}>{exerciseStats.total}</Text>
+              <Text style={styles.statLabel}>Total</Text>
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statBox}>
+              <Text style={styles.statValue}>{exerciseStats.completed}</Text>
+              <Text style={styles.statLabel}>Complétés</Text>
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statBox}>
+              <Text style={styles.statValue}>{exerciseStats.inProgress}</Text>
+              <Text style={styles.statLabel}>En cours</Text>
+            </View>
+          </View>
+        </LinearGradient>
+      </View>
 
-      <ScrollView
-        style={[styles.container, { backgroundColor: `${levelColor}05` }]}
+      <ScrollView 
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.header}>
-          <Text style={styles.headerSubtitle}>
-            Sélectionnez une activité pour améliorer vos compétences
-            linguistiques
-          </Text>
-        </View>
+        <Text style={styles.introText}>
+          Sélectionnez une activité pour améliorer vos compétences
+        </Text>
 
         <View style={styles.exercisesContainer}>
           {exercises.map((exercise) => (
             <Card
               key={exercise.id}
-              style={[
-                styles.exerciseCard,
-                { borderLeftColor: exercise.color, borderLeftWidth: 5 },
-              ]}
+              style={styles.exerciseCard}
+              withShadow={true}
+              bordered={false}
+              withSideBorder={true}
+              sideBorderColor={exercise.color}
               onPress={() => handleExerciseSelect(exercise)}
+              contentStyle={styles.cardContentStyle}
             >
-              <View style={styles.exerciseContent}>
-                <View
-                  style={[
-                    styles.iconContainer,
-                    { backgroundColor: `${exercise.color}15` },
-                  ]}
-                >
-                  <Text style={styles.exerciseIcon}>{exercise.icon}</Text>
-                </View>
-
-                <View style={styles.exerciseInfo}>
-                  <View style={styles.exerciseHeader}>
-                    <Text style={styles.exerciseTitle}>{exercise.title}</Text>
+              <View style={styles.exerciseHeader}>
+                <View style={styles.exerciseTitleContainer}>
+                  <View 
+                    style={[
+                      styles.iconContainer, 
+                      { backgroundColor: `${exercise.color}15` }
+                    ]}
+                  >
+                    <Text style={styles.exerciseIcon}>{exercise.icon}</Text>
                   </View>
-
-                  <Text style={styles.exerciseDescription}>
-                    {exercise.description}
-                  </Text>
-
-                  {exercise.progress > 0 ? (
-                    <View style={styles.progressContainer}>
-                      <ProgressBar
-                        progress={exercise.progress}
-                        fillColor={exercise.color}
-                        height={6}
-                        showPercentage
-                      />
-                    </View>
-                  ) : (
-                    <View style={styles.newBadgeWrapper}>
-                      <Badge
-                        label="Nouveau"
-                        color={exercise.color}
-                        variant="subtle"
-                        size="small"
-                      />
-                    </View>
-                  )}
+                  
+                  <View style={styles.exerciseInfo}>
+                    <Text style={styles.exerciseTitle}>{exercise.title}</Text>
+                    <Text style={styles.exerciseDescription}>
+                      {exercise.description}
+                    </Text>
+                  </View>
                 </View>
+                
+                {/* Badge d'état de l'exercice */}
+                {exercise.progress === 0 ? (
+                  <Badge
+                    label="Nouveau"
+                    color={exercise.color}
+                    variant="subtle"
+                    size="small"
+                    style={styles.exerciseBadge}
+                  />
+                ) : exercise.progress >= 80 ? (
+                  <Badge
+                    label="Complété"
+                    color="#10B981" // Vert
+                    variant="subtle"
+                    size="small"
+                    style={styles.exerciseBadge}
+                  />
+                ) : (
+                  <Badge
+                    label="En cours"
+                    color="#F59E0B" // Orange
+                    variant="subtle"
+                    size="small"
+                    style={styles.exerciseBadge}
+                  />
+                )}
               </View>
 
+              {exercise.progress > 0 && (
+                <ProgressBar
+                  progress={exercise.progress}
+                  fillColor={exercise.color}
+                  height={8}
+                  backgroundColor={`${exercise.color}15`}
+                  borderRadius={4}
+                  showPercentage
+                  percentageFormatter={(val) => `${Math.round(val)}%`}
+                  style={styles.progressBar}
+                />
+              )}
+              
               <Button
                 title="Commencer"
                 variant="filled"
@@ -164,6 +244,7 @@ const ExerciseSelection = ({ route }) => {
                 fullWidth
                 onPress={() => handleExerciseSelect(exercise)}
                 style={styles.startButton}
+                rightIcon="arrow-forward-outline"
               />
             </Card>
           ))}
