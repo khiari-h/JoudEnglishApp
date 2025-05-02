@@ -10,7 +10,6 @@ import { ProgressContext } from "@/src/contexts/ProgressContext";
 // Composants UI
 import Card from "@/src/components/ui/Card";
 import Button from "@/src/components/ui/Button";
-import ProgressBar from "@/src/components/ui/ProgressBar";
 
 // Composants Layout
 import Container from "@/src/components/layout/Container";
@@ -49,17 +48,19 @@ const ExerciseSelection = ({ route }) => {
 
   // Récupérer les infos du niveau
   const levelInfo = useMemo(() => {
-    return LANGUAGE_LEVELS[level] || {
-      color: colors.primary,
-      title: `Niveau ${level}`,
-      icon: "📚",
-    };
+    return (
+      LANGUAGE_LEVELS[level] || {
+        color: colors.primary,
+        title: `Niveau ${level}`,
+        icon: "📚",
+      }
+    );
   }, [level, colors.primary]);
 
   // Couleur du niveau
   const levelColor = levelInfo.color;
 
-  // Préparer les exercices avec leur propre couleur (pas celle du niveau)
+  // Préparer les exercices avec leur propre couleur si disponible
   const exercises = useMemo(() => {
     return Object.keys(EXERCISE_TYPES).map((exerciseKey) => {
       const exerciseInfo = EXERCISE_TYPES[exerciseKey];
@@ -98,11 +99,63 @@ const ExerciseSelection = ({ route }) => {
   // Calculer le nombre total d'exercices et le nombre complétés
   const exerciseStats = useMemo(() => {
     const total = exercises.length;
-    const completed = exercises.filter(ex => ex.progress > 80).length;
-    const inProgress = exercises.filter(ex => ex.progress > 0 && ex.progress <= 80).length;
-    
+    const completed = exercises.filter((ex) => ex.progress > 80).length;
+    const inProgress = exercises.filter(
+      (ex) => ex.progress > 0 && ex.progress <= 80
+    ).length;
+
     return { total, completed, inProgress };
   }, [exercises]);
+
+  // Rendu d'une carte d'exercice
+  const renderExerciseCard = (exercise) => {
+    return (
+      <Card
+        key={exercise.id}
+        style={styles.exerciseCard}
+        withShadow={true}
+        bordered={false}
+        withSideBorder={true}
+        sideBorderColor={exercise.color}
+        onPress={() => handleExerciseSelect(exercise)}
+        contentStyle={styles.cardContentStyle}
+        // Option de progression intégrée dans la carte
+        progress={exercise.progress}
+        progressColor={exercise.color}
+        showPercentage={exercise.progress > 0}
+      >
+        <View style={styles.exerciseHeader}>
+          <View style={styles.exerciseTitleContainer}>
+            <View
+              style={[
+                styles.iconContainer,
+                { backgroundColor: `${exercise.color}15` },
+              ]}
+            >
+              <Text style={styles.exerciseIcon}>{exercise.icon}</Text>
+            </View>
+
+            <View style={styles.exerciseInfo}>
+              <Text style={styles.exerciseTitle}>{exercise.title}</Text>
+              <Text style={styles.exerciseDescription}>
+                {exercise.description}
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        <Button
+          title="Commencer"
+          variant="filled"
+          color={exercise.color}
+          fullWidth
+          onPress={() => handleExerciseSelect(exercise)}
+          style={styles.startButton}
+          rightIcon="arrow-forward-outline"
+        />
+      </Card>
+    );
+  };
 
   return (
     <Container
@@ -115,7 +168,7 @@ const ExerciseSelection = ({ route }) => {
       {/* Header compact avec dégradé */}
       <View style={styles.headerContainer}>
         <LinearGradient
-          colors={[levelColor, levelColor + 'DD']}
+          colors={[levelColor, levelColor + "DD"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.headerGradient}
@@ -128,7 +181,7 @@ const ExerciseSelection = ({ route }) => {
             withStatusBar={false}
             withShadow={false}
           />
-          
+
           {/* Badge de niveau */}
           <View style={styles.levelBadgeContainer}>
             <View style={styles.levelBadge}>
@@ -136,7 +189,7 @@ const ExerciseSelection = ({ route }) => {
             </View>
             <Text style={styles.levelTitle}>{levelInfo.title}</Text>
           </View>
-          
+
           {/* Barre de statistiques */}
           <View style={styles.statsContainer}>
             <View style={styles.statBox}>
@@ -157,7 +210,7 @@ const ExerciseSelection = ({ route }) => {
         </LinearGradient>
       </View>
 
-      <ScrollView 
+      <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -167,62 +220,7 @@ const ExerciseSelection = ({ route }) => {
         </Text>
 
         <View style={styles.exercisesContainer}>
-          {exercises.map((exercise) => (
-            <Card
-              key={exercise.id}
-              style={styles.exerciseCard}
-              withShadow={true}
-              bordered={false}
-              withSideBorder={true}
-              sideBorderColor={exercise.color}
-              onPress={() => handleExerciseSelect(exercise)}
-              contentStyle={styles.cardContentStyle}
-            >
-              <View style={styles.exerciseHeader}>
-                <View style={styles.exerciseTitleContainer}>
-                  <View 
-                    style={[
-                      styles.iconContainer, 
-                      { backgroundColor: `${exercise.color}15` }
-                    ]}
-                  >
-                    <Text style={styles.exerciseIcon}>{exercise.icon}</Text>
-                  </View>
-                  
-                  <View style={styles.exerciseInfo}>
-                    <Text style={styles.exerciseTitle}>{exercise.title}</Text>
-                    <Text style={styles.exerciseDescription}>
-                      {exercise.description}
-                    </Text>
-                  </View>
-                </View>
-              </View>
-
-              {/* Barre de progression pour les exercices commencés */}
-              {exercise.progress > 0 && (
-                <ProgressBar
-                  progress={exercise.progress}
-                  fillColor={exercise.color}
-                  height={8}
-                  backgroundColor={`${exercise.color}15`}
-                  borderRadius={4}
-                  showPercentage
-                  percentageFormatter={(val) => `${Math.round(val)}%`}
-                  style={styles.progressBar}
-                />
-              )}
-              
-              <Button
-                title="Commencer"
-                variant="filled"
-                color={exercise.color}
-                fullWidth
-                onPress={() => handleExerciseSelect(exercise)}
-                style={styles.startButton}
-                rightIcon="arrow-forward-outline"
-              />
-            </Card>
-          ))}
+          {exercises.map(renderExerciseCard)}
         </View>
       </ScrollView>
     </Container>
