@@ -1,86 +1,150 @@
-import { StyleSheet, Platform, Dimensions } from 'react-native';
+import { StyleSheet, Platform, Dimensions, StatusBar } from 'react-native';
 
 const { width } = Dimensions.get('window');
+const STATUS_BAR_HEIGHT = StatusBar.currentHeight || 0;
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f8f9fa',
+  scrollViewContent: {
+    paddingBottom: 40,
   },
-  header: {
-    paddingTop: 20,
-    paddingBottom: 25,
-    paddingHorizontal: 20,
-  },
-  headerSubtitle: {
-    fontSize: 16,
-    color: "#6b7280",
-    textAlign: "center",
-    lineHeight: 22,
-  },
-  levelsContainer: {
-    paddingHorizontal: 20,
-    paddingBottom: 50,
-  },
-  levelCard: {
-    backgroundColor: "white",
-    borderRadius: 16,
+  
+  // Styles de l'en-tête avec dégradé
+  headerGradient: {
+    paddingTop: Platform.OS === 'ios' ? 30 : STATUS_BAR_HEIGHT + 20,
+    paddingBottom: 30,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
     marginBottom: 20,
-    overflow: "hidden",
     ...Platform.select({
       ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
+        shadowColor: "#6366F1",
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.3,
+        shadowRadius: 12,
       },
       android: {
-        elevation: 4,
+        elevation: 10,
       },
     }),
   },
-  levelContent: {
-    flexDirection: "row",
-    padding: 16,
-    alignItems: "center",
+  headerContent: {
+    paddingHorizontal: 24,
+    alignItems: 'center',
   },
-  iconContainer: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 16,
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 10,
+    textAlign: 'center',
   },
-  levelIcon: {
-    fontSize: 30,
+  headerSubtitle: {
+    fontSize: 16,
+    color: 'rgba(255, 255, 255, 0.9)',
+    textAlign: 'center',
+    marginHorizontal: 20,
   },
-  levelInfo: {
-    flex: 1,
+  
+  // Styles pour l'illustration
+  illustrationContainer: {
+    alignItems: 'center',
+    marginTop: -40,
+    marginBottom: 20,
   },
-  levelHeader: {
-    flexDirection: "row",
-    alignItems: "center",
+  illustrationPlaceholder: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 5,
+      },
+    }),
+  },
+  
+  // Styles pour la section d'introduction
+  introSection: {
+    paddingHorizontal: 24,
+    marginBottom: 30,
+  },
+  introTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#1F2937',
     marginBottom: 8,
   },
-  levelBadge: {
-    marginRight: 10,
+  introText: {
+    fontSize: 16,
+    color: '#6B7280',
+    lineHeight: 24,
   },
-  levelTitle: {
+  
+  // Styles pour la section des niveaux
+  sectionTitle: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#1f2937",
+    fontWeight: '600',
+    color: '#1F2937',
+    marginBottom: 16,
+    paddingHorizontal: 24,
+  },
+  levelsContainer: {
+    paddingHorizontal: 24,
+  },
+  
+  // Styles pour les cartes de niveau
+  levelCard: {
+    marginBottom: 20,
+  },
+  cardContent: {
+    padding: 5,
   },
   levelDescription: {
-    fontSize: 14,
-    color: "#6b7280",
-    marginBottom: 12,
-    lineHeight: 20,
+    fontSize: 15,
+    color: '#6B7280',
+    lineHeight: 22,
+    marginBottom: 16,
   },
-  progressContainer: {
-    marginTop: 10,
+  
+  // Styles pour les statistiques
+  statsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    backgroundColor: '#F9FAFB',
+    borderRadius: 12,
+    padding: 12,
   },
+  statItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  statIcon: {
+    marginRight: 6,
+  },
+  statText: {
+    fontSize: 13,
+    color: '#4B5563',
+  },
+  
+  // Styles pour la barre de progression
+  progressWrapper: {
+    marginBottom: 20,
+  },
+  progressBar: {
+    marginTop: 0,
+  },
+  
+  // Styles pour le bouton
   startButton: {
-    marginTop: 10,
+    marginTop: 5,
   },
 });
