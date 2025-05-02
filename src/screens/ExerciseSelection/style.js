@@ -8,7 +8,7 @@ export default StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 20,
     paddingBottom: 30,
-    paddingTop: 16,
+    paddingTop: 20,  // Augmenté légèrement pour plus d'espace
   },
   introText: {
     fontSize: 15,
@@ -25,6 +25,7 @@ export default StyleSheet.create({
   headerGradient: {
     borderBottomLeftRadius: 16,
     borderBottomRightRadius: 16,
+    paddingBottom: 12,
   },
   
   // Badge de niveau et titre
@@ -85,15 +86,18 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
   },
   
-  // Styles pour les cartes d'exercice
+  // Container pour les cartes d'exercice
   exercisesContainer: {
     marginBottom: 20,
   },
+  
+  // Styles pour les cartes d'exercice
   exerciseCard: {
     backgroundColor: "white",
     borderRadius: 12,
     marginBottom: 16,
     overflow: "hidden",
+    borderLeftWidth: 5,  // Bordure latérale pour rappeler le niveau
     ...Platform.select({
       ios: {
         shadowColor: "#000",
@@ -109,17 +113,23 @@ export default StyleSheet.create({
   cardContentStyle: {
     padding: 16,
   },
+  
+  // En-tête de la carte
   exerciseHeader: {
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "space-between",
     marginBottom: 12,
   },
+  
+  // Container pour icône et titre
   exerciseTitleContainer: {
     flexDirection: "row",
     alignItems: "flex-start",
     flex: 1,
   },
+  
+  // Icône de l'exercice
   iconContainer: {
     width: 44,
     height: 44,
@@ -131,9 +141,10 @@ export default StyleSheet.create({
   exerciseIcon: {
     fontSize: 22,
   },
+  
+  // Informations de l'exercice
   exerciseInfo: {
     flex: 1,
-    paddingRight: 8,
   },
   exerciseTitle: {
     fontSize: 16,
@@ -146,14 +157,14 @@ export default StyleSheet.create({
     color: "#6b7280",
     lineHeight: 20,
   },
-  exerciseBadge: {
-    marginLeft: 'auto',
-    alignSelf: 'flex-start',
-  },
+  
+  // Barre de progression
   progressBar: {
     marginVertical: 12,
   },
+  
+  // Bouton pour démarrer l'exercice
   startButton: {
-    marginTop: 4,
+    marginTop: 8,
   },
 });

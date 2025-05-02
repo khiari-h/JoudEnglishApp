@@ -11,7 +11,6 @@ import { ProgressContext } from "@/src/contexts/ProgressContext";
 import Card from "@/src/components/ui/Card";
 import Button from "@/src/components/ui/Button";
 import ProgressBar from "@/src/components/ui/ProgressBar";
-import Badge from "@/src/components/ui/Badge";
 
 // Composants Layout
 import Container from "@/src/components/layout/Container";
@@ -60,16 +59,18 @@ const ExerciseSelection = ({ route }) => {
   // Couleur du niveau
   const levelColor = levelInfo.color;
 
-  // Préparer les exercices
+  // Préparer les exercices avec leur propre couleur (pas celle du niveau)
   const exercises = useMemo(() => {
     return Object.keys(EXERCISE_TYPES).map((exerciseKey) => {
       const exerciseInfo = EXERCISE_TYPES[exerciseKey];
+      // Utiliser la couleur spécifique à l'exercice ou celle du niveau par défaut
+      const exerciseColor = exerciseInfo.color || levelColor;
 
       return {
         ...exerciseInfo,
         progress:
           progress?.exercises?.[`${level}_${exerciseKey}`]?.completed || 0,
-        color: levelColor,
+        color: exerciseColor,
       };
     });
   }, [level, progress, levelColor]);
@@ -195,35 +196,9 @@ const ExerciseSelection = ({ route }) => {
                     </Text>
                   </View>
                 </View>
-                
-                {/* Badge d'état de l'exercice */}
-                {exercise.progress === 0 ? (
-                  <Badge
-                    label="Nouveau"
-                    color={exercise.color}
-                    variant="subtle"
-                    size="small"
-                    style={styles.exerciseBadge}
-                  />
-                ) : exercise.progress >= 80 ? (
-                  <Badge
-                    label="Complété"
-                    color="#10B981" // Vert
-                    variant="subtle"
-                    size="small"
-                    style={styles.exerciseBadge}
-                  />
-                ) : (
-                  <Badge
-                    label="En cours"
-                    color="#F59E0B" // Orange
-                    variant="subtle"
-                    size="small"
-                    style={styles.exerciseBadge}
-                  />
-                )}
               </View>
 
+              {/* Barre de progression pour les exercices commencés */}
               {exercise.progress > 0 && (
                 <ProgressBar
                   progress={exercise.progress}
