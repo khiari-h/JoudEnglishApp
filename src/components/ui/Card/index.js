@@ -67,8 +67,8 @@ const Card = ({
   // Déterminer si un header doit être affiché
   const showHeader = title || subtitle || headerRight || headerIcon;
 
-  // Déterminer si une barre de progression doit être affichée
-  const showProgressBar = progress !== null && progress > 0;
+  // Déterminer si une barre de progression doit être affichée - Modifié pour l'afficher même à 0%
+  const showProgressBar = progress !== null;
 
   return (
     <WrapperComponent
@@ -146,7 +146,7 @@ const Card = ({
       >
         {children}
 
-        {/* Barre de progression (optionnelle) */}
+        {/* Barre de progression (optionnelle) - Affichée même à 0% */}
         {showProgressBar && (
           <ProgressBar
             progress={progress}

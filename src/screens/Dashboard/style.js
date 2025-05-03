@@ -1,33 +1,21 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import { COLORS } from '../../utils/constants';
+import { StyleSheet, Platform } from 'react-native';
 
-const { width } = Dimensions.get('window');
-
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: '#F9FAFB',
   },
-  scrollContainer: {
+  scrollView: {
     flex: 1,
   },
-  sectionSpacing: {
-    marginVertical: 10,
+  scrollContent: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
   },
-  fullWidthContainer: {
-    width: '100%',
-  },
-  tipCardContainer: {
-    width: width - 40,
-    paddingHorizontal: 4,
-  },
-  dotIndicator: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    marginHorizontal: 4,
-  },
-  bottomPadding: {
-    paddingBottom: 20,
+  bottomSpacer: {
+    height: 60, // Ajusté pour tenir compte de la navigation en bas
   },
 });
+
+export default styles;

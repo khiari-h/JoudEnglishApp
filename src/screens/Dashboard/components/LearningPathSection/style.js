@@ -1,76 +1,79 @@
-// src/components/sections/LearningPathSection/style.js
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  mainCard: {
-    borderRadius: 16,
-    overflow: 'hidden',
-    height: 120,
-    position: 'relative',
+  container: {
     marginBottom: 16,
   },
-  gradientBackground: {
-    position: 'absolute',
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#1F2937",
+    marginBottom: 12,
+    paddingHorizontal: 4,
+  },
+  card: {
+    borderRadius: 12,
+    backgroundColor: "white",
+    padding: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  levelsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 4,
+  },
+  levelButton: {
+    alignItems: "center",
+  },
+  levelCircle: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  futureLevelCircle: {
+    backgroundColor: "#F3F4F6",
+  },
+  currentLevelText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "white",
+  },
+  completedLevelText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "white",
+  },
+  futureLevelText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#9CA3AF",
+  },
+  progressLineContainer: {
+    height: 4,
+    marginVertical: 16,
+    position: "relative",
+  },
+  progressLineTrack: {
+    position: "absolute",
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
+    height: 4,
+    backgroundColor: "#F3F4F6",
+    borderRadius: 2,
   },
-  cardContent: {
-    padding: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    height: '100%',
-  },
-  textContainer: {
-    flex: 1,
-    marginRight: 16,
-  },
-  cardTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'white',
-    marginBottom: 8,
-  },
-  cardSubtitle: {
-    fontSize: 14,
-    color: 'rgba(255, 255, 255, 0.85)',
-    lineHeight: 20,
-  },
-  iconContainer: {
-    width: 60,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 30,
-  },
-  emoji: {
-    fontSize: 34,
-  },
-  levelsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 16,
-    flexWrap: 'wrap',
-  },
-  levelItem: {
-    alignItems: 'center',
-    marginBottom: 8,
-    width: '16%', // Six niveaux par ligne
-  },
-  levelCircle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  levelText: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: 'white',
+  progressLineFill: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: 4,
+    borderRadius: 2,
   },
   progressButton: {
     marginTop: 8,

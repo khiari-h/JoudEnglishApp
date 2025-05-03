@@ -7,20 +7,21 @@ import { useFocusEffect } from '@react-navigation/native';
 import { ThemeContext } from "@/src/contexts/ThemeContext";
 import { ProgressContext } from "@/src/contexts/ProgressContext";
 
-// Composants Dashboard
-import DashboardHeader from "./components/DashboardHeader";
-import LastActivitySection from "./components/LastActivitySection";
-import DailyChallengeSection from "./components/DailyChallengeSection";
-import LearningPathSection from "./components/LearningPathSection";
-import LanguageTipsCarousel from "./components/LanguageTipsCarousel";
+// Composants Dashboard révisés
+import CompactHeader from "./components/CompactHeader";
+import ContinueLearningSection from "./components/ContinueLearningSection";
+import DailyGoalSection from "./components/DailyGoalSection";
+import RecommendationsSection from "./components/RecommendationsSection";
+import LearningPathCompact from "./components/LearningPathCompact";
+import BottomNavigation from "./components/BottomNavigation";
 import LevelProgressModal from "./components/LevelProgressModal";
 
 // Hooks personnalisés
-import { useStaggeredAnimation } from "@/src/hooks/useAnimation";
 import useLastActivity from "@/src/hooks/useLastActivity";
 
 // Constantes et utilitaires
 import { LANGUAGE_LEVELS, EXERCISE_TYPES } from "@/src/utils/constants";
+import styles from "./style";
 
 const Dashboard = ({ route }) => {
   // Récupération sécurisée des contextes
@@ -29,18 +30,18 @@ const Dashboard = ({ route }) => {
 
   // Valeurs par défaut sécurisées
   const colors = themeContext?.colors || {
-    background: "#FFFFFF",
-    primary: "#5E60CE", // Couleur par défaut
+    background: "#F9FAFB",
+    primary: "#3B82F6", // Nouvelle couleur principale (bleu)
   };
   const progress = progressContext?.progress || {};
   const updateStreak = progressContext?.updateStreak || (() => {});
 
-  // Utilisation du hook useLastActivity - UNE SEULE INSTANCE
+  // Utilisation du hook useLastActivity
   const { 
     getLastActivity, 
-    isLoading, 
-    loadLastActivities, 
-    formatProgressSubtitle 
+    isLoading: isActivityLoading, 
+    loadLastActivities,
+    formatProgressSubtitle
   } = useLastActivity();
   
   const lastActivity = getLastActivity();
@@ -48,12 +49,15 @@ const Dashboard = ({ route }) => {
   // États
   const [showLevelProgress, setShowLevelProgress] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState('home');
 
   // Paramètres du profil
-  const { name = "User", streak = 0 } = route?.params || {};
+  const { name = "Utilisateur", streak = 0 } = route?.params || {};
 
-  // Animation des sections
-  const animationStyles = useStaggeredAnimation(5);
+  // Déterminer le niveau actuel
+  const currentLevel = progress?.currentLevel || "A1";
+  const levelColor = LANGUAGE_LEVELS[currentLevel]?.color || colors.primary;
+  const levelProgress = progress?.levels?.[currentLevel]?.completed || 0;
 
   // Mettre à jour le streak
   useEffect(() => {
@@ -81,67 +85,40 @@ const Dashboard = ({ route }) => {
     setRefreshing(false);
   };
 
-  // Données des défis quotidiens
-  const dailyChallenges = [
-    {
-      id: "1",
-      title: "Vocabulary Builder",
-      description: "Master 10 new words today",
-      icon: "book-outline",
-      progress: 4,
-      total: 10,
-      color: "#6930C3",
-    },
-    {
-      id: "2",
-      title: "Pronunciation Practice",
-      description: "Complete 5 speaking exercises",
-      icon: "mic-outline",
-      progress: 2,
-      total: 5,
-      color: "#5390D9",
-    },
-  ];
+  // Données de l'objectif quotidien
+  const dailyGoal = {
+    completed: 2,
+    total: 5
+  };
 
-  // Sélection du défi du jour
-  const todaysChallengeIndex = new Date().getDate() % dailyChallenges.length;
-  const todaysChallenge = dailyChallenges[todaysChallengeIndex];
+  // Exercices recommandés basés sur le niveau actuel
+  const recommendations = React.useMemo(() => {
+    return Object.keys(EXERCISE_TYPES)
+      .slice(0, 3) // Limiter à 3 recommandations pour la lisibilité
+      .map((key, index) => {
+        const exerciseInfo = EXERCISE_TYPES[key];
+        return {
+          id: index + 1,
+          title: exerciseInfo.title,
+          description: exerciseInfo.description,
+          type: key,
+          level: currentLevel,
+          icon: exerciseInfo.icon,
+        };
+      });
+  }, [currentLevel]);
 
-  // Astuces linguistiques
-  const languageTips = [
-    {
-      id: "1",
-      title: "Practice Makes Perfect",
-      description:
-        "Speaking out loud helps improve pronunciation and builds confidence.",
-      icon: "bulb-outline",
-    },
-  ];
-
-  // Niveaux d'apprentissage
-  const getAllLearningLevels = () =>
-    Object.keys(LANGUAGE_LEVELS).map((levelKey) => {
-      const levelInfo = LANGUAGE_LEVELS[levelKey];
-      return {
-        id: levelKey.toLowerCase(),
-        title: `${levelKey} - ${levelInfo.title}`,
-        color: levelInfo.color,
-        progress: progress?.levels?.[levelKey]?.completed || 0,
-      };
-    });
-
-  // Gérer la navigation vers la dernière activité
+  // Naviguer vers un exercice spécifique
   const handleLastActivityPress = (activity) => {
-    if (activity === "all") {
-      // Naviguer vers l'écran de toutes les activités
-      router.push("/(tabs)/activityHistory");
+    if (activity === "levelSelection") {
+      router.push("/(tabs)/levelSelection");
       return;
     }
     
-    if (!lastActivity) return;
+    if (!activity) return;
     
     // Naviguer vers l'exercice spécifique avec ses paramètres
-    const { type, level, position } = lastActivity;
+    const { type, level, position } = activity;
     let pathname;
     let params = { level };
     
@@ -192,6 +169,38 @@ const Dashboard = ({ route }) => {
     });
   };
 
+  // Naviguer vers un exercice recommandé
+  const handleRecommendedExercisePress = (exercise) => {
+    let pathname;
+    
+    switch (exercise.type) {
+      case "vocabulary":
+        pathname = "/(tabs)/vocabularyExercise";
+        break;
+      case "grammar":
+        pathname = "/(tabs)/grammarExercise";
+        break;
+      case "chatbot":
+        pathname = "/(tabs)/chatbotExercise";
+        break;
+      // Autres types d'exercices...
+      default:
+        pathname = "/(tabs)/levelSelection";
+    }
+    
+    router.push({
+      pathname,
+      params: { level: exercise.level }
+    });
+  };
+
+  // Niveaux CECRL pour le parcours d'apprentissage
+  const allLevels = Object.keys(LANGUAGE_LEVELS).map(levelKey => ({
+    id: levelKey,
+    color: LANGUAGE_LEVELS[levelKey].color
+  }));
+
+  // Gérer la navigation vers un niveau
   const handleLevelSelect = (level) => {
     router.push({
       pathname: "/(tabs)/exerciseSelection",
@@ -199,26 +208,40 @@ const Dashboard = ({ route }) => {
     });
   };
 
-  // Si aucune activité n'est trouvée, utiliser une valeur par défaut
-  const getDefaultActivity = () => {
-    return {
-      title: "Aucune activité récente",
-      topic: "Commencer à apprendre",
-      icon: "book-outline",
-      progress: 0,
-      timeElapsed: "Jamais"
-    };
+  // Gérer la navigation vers le profil
+  const handleProfilePress = () => {
+    router.push("/(tabs)/profile");
   };
 
-  const activityToDisplay = lastActivity || getDefaultActivity();
+  // Récupérer tous les niveaux avec leur progression
+  const getAllLearningLevels = () =>
+    Object.keys(LANGUAGE_LEVELS).map((levelKey) => {
+      const levelInfo = LANGUAGE_LEVELS[levelKey];
+      return {
+        id: levelKey.toLowerCase(),
+        title: `${levelKey} - ${levelInfo.title}`,
+        color: levelInfo.color,
+        progress: progress?.levels?.[levelKey]?.completed || 0,
+      };
+    });
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.background }}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StatusBar barStyle="light-content" />
 
-      <DashboardHeader name={name} streak={streak} />
+      {/* Header compact avec niveau actuel */}
+      <CompactHeader
+        level={currentLevel}
+        progress={levelProgress}
+        streak={streak}
+        levelColor={levelColor}
+        onProfilePress={handleProfilePress}
+      />
 
+      {/* Contenu principal scrollable */}
       <ScrollView 
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl 
@@ -228,38 +251,50 @@ const Dashboard = ({ route }) => {
           />
         }
       >
-        <View style={animationStyles[0]}>
-          <LastActivitySection
-            lastActivity={activityToDisplay}
-            onPress={handleLastActivityPress}
-            formatProgressSubtitle={formatProgressSubtitle}
-            isLoading={isLoading}
-          />
-        </View>
+        {/* Section pour continuer l'apprentissage */}
+        <ContinueLearningSection
+          lastActivity={lastActivity}
+          onPress={handleLastActivityPress}
+          accentColor={levelColor}
+          formatProgressSubtitle={formatProgressSubtitle}
+          isLoading={isActivityLoading}
+        />
 
-        <View style={animationStyles[1]}>
-          <DailyChallengeSection
-            challenge={todaysChallenge}
-            onStartChallenge={() => {
-              /* Logique de démarrage du défi */
-            }}
-          />
-        </View>
+        {/* Objectif quotidien */}
+        <DailyGoalSection
+          completed={dailyGoal.completed}
+          total={dailyGoal.total}
+          accentColor={levelColor}
+        />
 
-        <View style={animationStyles[2]}>
-          <LearningPathSection
-            onSelectLevel={() => router.push("/(tabs)/levelSelection")}
-            onViewProgress={() => setShowLevelProgress(true)}
-          />
-        </View>
+        {/* Exercices recommandés */}
+        <RecommendationsSection
+          recommendations={recommendations}
+          onSelectExercise={handleRecommendedExercisePress}
+          accentColor={levelColor}
+        />
 
-        <View style={animationStyles[3]}>
-          <LanguageTipsCarousel tips={languageTips} />
-        </View>
-
-        <View style={{ height: 20 }} />
+        {/* Parcours d'apprentissage compact */}
+        <LearningPathCompact
+          levels={allLevels}
+          currentLevel={currentLevel}
+          onSelectLevel={handleLevelSelect}
+          onViewProgress={() => setShowLevelProgress(true)}
+          primaryColor={levelColor}
+        />
+        
+        {/* Espace en bas pour éviter que le contenu soit caché par la navigation */}
+        <View style={styles.bottomSpacer} />
       </ScrollView>
 
+      {/* Navigation en bas */}
+      <BottomNavigation
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        accentColor={levelColor}
+      />
+
+      {/* Modal de progression des niveaux */}
       <LevelProgressModal
         visible={showLevelProgress}
         levels={getAllLearningLevels()}

@@ -67,10 +67,12 @@ const ExerciseSelection = ({ route }) => {
       // Utiliser la couleur spécifique à l'exercice ou celle du niveau par défaut
       const exerciseColor = exerciseInfo.color || levelColor;
 
+      // Récupérer la progression ou initialiser à 0 (mais pas null pour afficher la barre)
+      const exerciseProgress = progress?.exercises?.[`${level}_${exerciseKey}`]?.completed || 0;
+
       return {
         ...exerciseInfo,
-        progress:
-          progress?.exercises?.[`${level}_${exerciseKey}`]?.completed || 0,
+        progress: exerciseProgress,  // Toujours une valeur numérique (0 minimum)
         color: exerciseColor,
       };
     });
@@ -119,9 +121,10 @@ const ExerciseSelection = ({ route }) => {
         sideBorderColor={exercise.color}
         onPress={() => handleExerciseSelect(exercise)}
         contentStyle={styles.cardContentStyle}
-        // Option de progression intégrée dans la carte
+        // Option de progression intégrée dans la carte - affichée même à 0%
         progress={exercise.progress}
         progressColor={exercise.color}
+        // N'afficher le pourcentage que si la progression est > 0
         showPercentage={exercise.progress > 0}
       >
         <View style={styles.exerciseHeader}>
