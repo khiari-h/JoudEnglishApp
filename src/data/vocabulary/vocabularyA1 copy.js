@@ -1,5 +1,5 @@
 // src/data/exercises/vocabulary/vocabularyA1.js
-module.exports = {
+export default {
   exercises: [
     {
       id: "a1_voc_basic_greetings",

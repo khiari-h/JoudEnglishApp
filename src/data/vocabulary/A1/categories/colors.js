@@ -1,72 +1,90 @@
-export default {
-  id: "a1_voc_colors",
-  title: "Colors",
-  words: [
+module.exports = {
+  "id": "a1_voc_colors",
+  "title": "Colors",
+  "words": [
     {
-      word: "Red",
-      translation: "Rouge",
-      definition: "Couleur du sang ou des pommes rouges",
-      example: "The apple is red.",
+      "word": "Color",
+      "translation": "Couleur",
+      "definition": "Propriété visuelle d'un objet",
+      "example": "What's your favorite color?"
     },
     {
-      word: "Blue",
-      translation: "Bleu",
-      definition: "Couleur du ciel sans nuages",
-      example: "The sky is blue.",
+      "word": "Red",
+      "translation": "Rouge",
+      "definition": "Couleur du sang ou des tomates",
+      "example": "The fire truck is red."
     },
     {
-      word: "Yellow",
-      translation: "Jaune",
-      definition: "Couleur des bananes mûres",
-      example: "The sun is yellow.",
+      "word": "Blue",
+      "translation": "Bleu",
+      "definition": "Couleur du ciel ou de la mer",
+      "example": "The sky is blue today."
     },
     {
-      word: "Green",
-      translation: "Vert",
-      definition: "Couleur de l'herbe",
-      example: "The grass is green.",
+      "word": "Yellow",
+      "translation": "Jaune",
+      "definition": "Couleur du soleil ou des bananes",
+      "example": "She is wearing a yellow dress."
     },
     {
-      word: "Black",
-      translation: "Noir",
-      definition: "Couleur très sombre, opposée au blanc",
-      example: "The cat is black.",
+      "word": "Green",
+      "translation": "Vert",
+      "definition": "Couleur de l'herbe ou des feuilles",
+      "example": "The grass is green."
     },
     {
-      word: "White",
-      translation: "Blanc",
-      definition: "Couleur de la neige",
-      example: "The paper is white.",
+      "word": "Orange",
+      "translation": "Orange",
+      "definition": "Couleur entre le rouge et le jaune",
+      "example": "The orange sunset was beautiful."
     },
     {
-      word: "Orange",
-      translation: "Orange",
-      definition: "Couleur du fruit orange",
-      example: "Carrots are orange.",
+      "word": "Purple",
+      "translation": "Violet",
+      "definition": "Couleur entre le rouge et le bleu",
+      "example": "Lavender flowers are purple."
     },
     {
-      word: "Pink",
-      translation: "Rose",
-      definition: "Couleur claire entre le rouge et le blanc",
-      example: "She wears a pink dress.",
+      "word": "Pink",
+      "translation": "Rose",
+      "definition": "Couleur pâle rouge-blanc",
+      "example": "The baby's room is painted pink."
     },
     {
-      word: "Purple",
-      translation: "Violet",
-      definition: "Couleur entre le bleu et le rouge",
-      example: "I like purple flowers.",
+      "word": "Brown",
+      "translation": "Marron/Brun",
+      "definition": "Couleur de la terre ou du bois",
+      "example": "Chocolate is brown."
     },
     {
-      word: "Brown",
-      translation: "Marron",
-      definition: "Couleur du chocolat",
-      example: "The table is brown.",
+      "word": "Black",
+      "translation": "Noir",
+      "definition": "Couleur la plus foncée, absence de lumière",
+      "example": "The night sky is black."
     },
     {
-      word: "Grey",
-      translation: "Gris",
-      definition: "Couleur entre le noir et le blanc",
-      example: "The elephant is grey.",
+      "word": "White",
+      "translation": "Blanc",
+      "definition": "Couleur la plus claire, comme la neige",
+      "example": "The clouds are white."
     },
-  ],
+    {
+      "word": "Gray",
+      "translation": "Gris",
+      "definition": "Couleur entre le noir et le blanc",
+      "example": "Elephants are gray."
+    },
+    {
+      "word": "Light",
+      "translation": "Clair",
+      "definition": "Teinte pâle d'une couleur",
+      "example": "I prefer light blue to dark blue."
+    },
+    {
+      "word": "Dark",
+      "translation": "Foncé",
+      "definition": "Teinte profonde d'une couleur",
+      "example": "Dark green is the color of pine trees."
+    }
+  ]
 };
