@@ -1,19 +1,20 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter, usePathname } from "expo-router";
+import { useRouter } from "expo-router";
 import styles from "./style";
 
 /**
- * Composant de navigation en bas de l'écran
+ * Composant de navigation en bas de l'écran avec redirection
+ * adaptative pour le chatbot en fonction du niveau actuel
  */
 const BottomNavigation = ({
   activeTab = "home",
   onTabChange,
-  accentColor = "#3B82F6"
+  accentColor = "#3B82F6",
+  currentLevel = "A1" // Niveau actuel de l'utilisateur
 }) => {
   const router = useRouter();
-  const currentPath = usePathname();
 
   // Définition des onglets
   const tabs = [
@@ -36,7 +37,7 @@ const BottomNavigation = ({
       icon: "chatbubble-outline",
       activeIcon: "chatbubble",
       label: "Conversation",
-      route: "/(tabs)/chatbotExercise"
+      route: "/(tabs)/chatbotExercise" // La route de base, sans paramètres
     },
     {
       id: "profile",
@@ -47,12 +48,22 @@ const BottomNavigation = ({
     }
   ];
 
-  // Gérer le changement d'onglet
+  // Gérer le changement d'onglet avec redirection adaptée au niveau pour le chatbot
   const handleTabPress = (tab) => {
     if (onTabChange) {
       onTabChange(tab.id);
     }
-    router.push(tab.route);
+    
+    // Cas spécial pour l'onglet conversation - redirection adaptée au niveau
+    if (tab.id === 'chat') {
+      router.push({
+        pathname: "/(tabs)/chatbotExercise",
+        params: { level: currentLevel }  // Utilise le niveau actuel de l'utilisateur
+      });
+    } else {
+      // Navigation normale pour les autres onglets
+      router.push(tab.route);
+    }
   };
 
   return (

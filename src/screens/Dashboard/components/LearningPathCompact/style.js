@@ -4,12 +4,21 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 16,
   },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+    paddingHorizontal: 4,
+  },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "600",
     color: "#1F2937",
-    marginBottom: 12,
-    paddingHorizontal: 4,
+  },
+  actionText: {
+    fontSize: 14,
+    fontWeight: "500",
   },
   card: {
     borderRadius: 12,
@@ -20,6 +29,33 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 2,
+  },
+  activeInfoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  activeInfoLabel: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#6B7280",
+    marginRight: 8,
+  },
+  activeInfoBadge: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 16,
+  },
+  activeInfoText: {
+    fontSize: 12,
+    fontWeight: "700",
+    color: "white",
+  },
+  levelDescription: {
+    fontSize: 14,
+    color: "#4B5563",
+    marginBottom: 16,
+    lineHeight: 20,
   },
   levelsContainer: {
     flexDirection: "row",
@@ -39,7 +75,7 @@ const styles = StyleSheet.create({
   futureLevelCircle: {
     backgroundColor: "#F3F4F6",
   },
-  currentLevelText: {
+  activeLevelText: {
     fontSize: 14,
     fontWeight: "bold",
     color: "white",
@@ -75,7 +111,7 @@ const styles = StyleSheet.create({
     height: 4,
     borderRadius: 2,
   },
-  progressButton: {
+  exploreButton: {
     marginTop: 8,
   },
 });

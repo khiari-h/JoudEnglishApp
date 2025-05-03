@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, ScrollView, StatusBar, RefreshControl } from "react-native";
 import { router } from "expo-router";
 import { useFocusEffect } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Contextes
 import { ThemeContext } from "@/src/contexts/ThemeContext";
@@ -22,6 +23,9 @@ import useLastActivity from "@/src/hooks/useLastActivity";
 // Constantes et utilitaires
 import { LANGUAGE_LEVELS, EXERCISE_TYPES } from "@/src/utils/constants";
 import styles from "./style";
+
+// Clé pour stocker le niveau actif choisi par l'utilisateur
+const ACTIVE_LEVEL_KEY = 'user_active_level';
 
 const Dashboard = ({ route }) => {
   // Récupération sécurisée des contextes
@@ -50,14 +54,35 @@ const Dashboard = ({ route }) => {
   const [showLevelProgress, setShowLevelProgress] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
+  const [currentLevel, setCurrentLevel] = useState("A1"); // Niveau par défaut
 
   // Paramètres du profil
   const { name = "Utilisateur", streak = 0 } = route?.params || {};
 
-  // Déterminer le niveau actuel
-  const currentLevel = progress?.currentLevel || "A1";
-  const levelColor = LANGUAGE_LEVELS[currentLevel]?.color || colors.primary;
-  const levelProgress = progress?.levels?.[currentLevel]?.completed || 0;
+  // Récupérer le niveau actif de l'utilisateur au chargement
+  useEffect(() => {
+    const loadActiveLevel = async () => {
+      try {
+        // Essayer de charger le niveau actif depuis le stockage
+        const savedLevel = await AsyncStorage.getItem(ACTIVE_LEVEL_KEY);
+        
+        if (savedLevel) {
+          setCurrentLevel(savedLevel);
+        } else {
+          // Si pas de niveau sauvegardé, utiliser celui du contexte de progression
+          const contextLevel = progress?.currentLevel;
+          if (contextLevel && LANGUAGE_LEVELS[contextLevel]) {
+            setCurrentLevel(contextLevel);
+          }
+          // Sinon, on garde le niveau par défaut (A1)
+        }
+      } catch (error) {
+        console.error('Erreur lors du chargement du niveau actif:', error);
+      }
+    };
+
+    loadActiveLevel();
+  }, [progress?.currentLevel]);
 
   // Mettre à jour le streak
   useEffect(() => {
@@ -85,11 +110,33 @@ const Dashboard = ({ route }) => {
     setRefreshing(false);
   };
 
-  // Données de l'objectif quotidien
-  const dailyGoal = {
-    completed: 2,
-    total: 5
+  // Fonction pour changer le niveau actif
+  const handleChangeActiveLevel = async (newLevel) => {
+    if (LANGUAGE_LEVELS[newLevel]) {
+      setCurrentLevel(newLevel);
+      try {
+        await AsyncStorage.setItem(ACTIVE_LEVEL_KEY, newLevel);
+      } catch (error) {
+        console.error('Erreur lors de la sauvegarde du niveau actif:', error);
+      }
+    }
   };
+
+  // Calculer la couleur du niveau actuel
+  const levelColor = LANGUAGE_LEVELS[currentLevel]?.color || colors.primary;
+  const levelProgress = progress?.levels?.[currentLevel]?.completed || 0;
+
+  // Données de l'objectif quotidien
+  const dailyGoal = React.useMemo(() => {
+    // Ici, vous pourriez implémenter une logique qui récupère
+    // dynamiquement les objectifs quotidiens depuis AsyncStorage
+    // ou un autre système de persistance
+    
+    return {
+      completed: 2,
+      total: 5
+    };
+  }, []);
 
   // Exercices recommandés basés sur le niveau actuel
   const recommendations = React.useMemo(() => {
@@ -102,7 +149,7 @@ const Dashboard = ({ route }) => {
           title: exerciseInfo.title,
           description: exerciseInfo.description,
           type: key,
-          level: currentLevel,
+          level: currentLevel, // Utilise le niveau actif
           icon: exerciseInfo.icon,
         };
       });
@@ -197,11 +244,16 @@ const Dashboard = ({ route }) => {
   // Niveaux CECRL pour le parcours d'apprentissage
   const allLevels = Object.keys(LANGUAGE_LEVELS).map(levelKey => ({
     id: levelKey,
-    color: LANGUAGE_LEVELS[levelKey].color
+    color: LANGUAGE_LEVELS[levelKey].color,
+    isActive: levelKey === currentLevel // Indique le niveau actif
   }));
 
-  // Gérer la navigation vers un niveau
+  // Gérer la sélection d'un niveau
   const handleLevelSelect = (level) => {
+    // Mettre à jour le niveau actif
+    handleChangeActiveLevel(level);
+    
+    // Naviguer vers les exercices de ce niveau
     router.push({
       pathname: "/(tabs)/exerciseSelection",
       params: { level },
@@ -222,6 +274,7 @@ const Dashboard = ({ route }) => {
         title: `${levelKey} - ${levelInfo.title}`,
         color: levelInfo.color,
         progress: progress?.levels?.[levelKey]?.completed || 0,
+        isActive: levelKey === currentLevel // Indique le niveau actif
       };
     });
 
@@ -287,11 +340,12 @@ const Dashboard = ({ route }) => {
         <View style={styles.bottomSpacer} />
       </ScrollView>
 
-      {/* Navigation en bas */}
+      {/* Navigation en bas avec le niveau actuel */}
       <BottomNavigation
         activeTab={activeTab}
         onTabChange={setActiveTab}
         accentColor={levelColor}
+        currentLevel={currentLevel} // Passer le niveau actuel pour la redirection du chatbot
       />
 
       {/* Modal de progression des niveaux */}
@@ -299,7 +353,17 @@ const Dashboard = ({ route }) => {
         visible={showLevelProgress}
         levels={getAllLearningLevels()}
         onClose={() => setShowLevelProgress(false)}
-        onSelectLevel={handleLevelSelect}
+        onSelectLevel={(level) => {
+          // Mettre à jour le niveau actif et fermer la modal
+          handleChangeActiveLevel(level);
+          setShowLevelProgress(false);
+          
+          // Optionnel : naviguer vers les exercices de ce niveau
+          router.push({
+            pathname: "/(tabs)/exerciseSelection",
+            params: { level },
+          });
+        }}
       />
     </View>
   );
