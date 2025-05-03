@@ -1,0 +1,102 @@
+export default {
+    id: "a1_voc_countries_nationalities",
+    title: "Countries and Nationalities",
+    words: [
+      {
+        word: "Country",
+        translation: "Pays",
+        definition: "Nation avec ses propres frontières et gouvernement",
+        example: "France is a beautiful country.",
+      },
+      {
+        word: "Nationality",
+        translation: "Nationalité",
+        definition: "Appartenance à un pays",
+        example: "My nationality is Spanish.",
+      },
+      {
+        word: "France",
+        translation: "France",
+        definition: "Pays d'Europe de l'Ouest",
+        example: "Paris is the capital of France.",
+      },
+      {
+        word: "French",
+        translation: "Français(e)",
+        definition: "Personne venant de France ou langue parlée en France",
+        example: "She is French.",
+      },
+      {
+        word: "England",
+        translation: "Angleterre",
+        definition: "Pays faisant partie du Royaume-Uni",
+        example: "London is in England.",
+      },
+      {
+        word: "English",
+        translation: "Anglais(e)",
+        definition: "Personne venant d'Angleterre ou langue parlée en Angleterre",
+        example: "He is English.",
+      },
+      {
+        word: "Spain",
+        translation: "Espagne",
+        definition: "Pays du sud-ouest de l'Europe",
+        example: "Madrid is the capital of Spain.",
+      },
+      {
+        word: "Spanish",
+        translation: "Espagnol(e)",
+        definition: "Personne venant d'Espagne ou langue parlée en Espagne",
+        example: "They are Spanish.",
+      },
+      {
+        word: "Germany",
+        translation: "Allemagne",
+        definition: "Pays d'Europe centrale",
+        example: "Berlin is in Germany.",
+      },
+      {
+        word: "German",
+        translation: "Allemand(e)",
+        definition: "Personne venant d'Allemagne ou langue parlée en Allemagne",
+        example: "He speaks German.",
+      },
+      {
+        word: "Italy",
+        translation: "Italie",
+        definition: "Pays d'Europe du Sud",
+        example: "Rome is a city in Italy.",
+      },
+      {
+        word: "Italian",
+        translation: "Italien(ne)",
+        definition: "Personne venant d'Italie ou langue parlée en Italie",
+        example: "She is Italian.",
+      },
+      {
+        word: "Morocco",
+        translation: "Maroc",
+        definition: "Pays d'Afrique du Nord",
+        example: "Casablanca is in Morocco.",
+      },
+      {
+        word: "Moroccan",
+        translation: "Marocain(e)",
+        definition: "Personne venant du Maroc",
+        example: "He is Moroccan.",
+      },
+      {
+        word: "United States",
+        translation: "États-Unis",
+        definition: "Grand pays d'Amérique du Nord",
+        example: "New York is in the United States.",
+      },
+      {
+        word: "American",
+        translation: "Américain(e)",
+        definition: "Personne venant des États-Unis",
+        example: "They are American.",
+      },
+    ],
+  };
