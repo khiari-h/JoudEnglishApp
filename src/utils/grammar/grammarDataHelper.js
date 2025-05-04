@@ -1,12 +1,13 @@
 // utils/grammar/grammarDataHelper.js
 
 // Import des données de grammaire par niveau
-import grammarA1 from "../../data/grammar/grammarA1";
-import grammarA2 from "../../data/grammar/grammarA2";
-import grammarB1 from "../../data/grammar/grammarB1";
-import grammarB2 from "../../data/grammar/grammarB2";
-import grammarC1 from "../../data/grammar/grammarC1";
-import grammarC2 from "../../data/grammar/grammarC2";
+import grammarA1 from "../../data/grammar/A1";
+import grammarA2 from "../../data/grammar/A2";
+import grammarB1 from "../../data/grammar/B1";
+import grammarB2 from "../../data/grammar/B2";
+import grammarC1 from "../../data/grammar/C1";
+import grammarC2 from "../../data/grammar/C2";
+
 
 /**
  * Récupère les données de grammaire en fonction du niveau
