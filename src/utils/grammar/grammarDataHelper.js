@@ -1,9 +1,12 @@
 // utils/grammar/grammarDataHelper.js
 
 // Import des données de grammaire par niveau
-import grammarA1 from "../../data/grammar/grammarA1"; // Import depuis le dossier grammarA1 avec le fichier index.js
-// Pour les futurs niveaux: 
-// import grammarA2 from "../../data/grammar/grammarA2";
+import grammarA1 from "../../data/grammar/grammarA1";
+import grammarA2 from "../../data/grammar/grammarA2";
+import grammarB1 from "../../data/grammar/grammarB1";
+import grammarB2 from "../../data/grammar/grammarB2";
+import grammarC1 from "../../data/grammar/grammarC1";
+import grammarC2 from "../../data/grammar/grammarC2";
 
 /**
  * Récupère les données de grammaire en fonction du niveau
@@ -13,8 +16,13 @@ import grammarA1 from "../../data/grammar/grammarA1"; // Import depuis le dossie
 export const getGrammarData = (level) => {
   const dataMap = {
     A1: grammarA1,
-    // Futurs niveaux: A2: grammarA2, etc.
+    A2: grammarA2,
+    B1: grammarB1,
+    B2: grammarB2,
+    C1: grammarC1,
+    C2: grammarC2
   };
+  // Retourne A1 par défaut si le niveau n'est pas reconnu
   return dataMap[level] || grammarA1;
 };
 
@@ -33,4 +41,52 @@ export const getLevelColor = (level) => {
     C2: "#6366f1", // Indigo
   };
   return colors[level] || "#3b82f6"; // Bleu par défaut
+};
+
+/**
+ * Récupère le nombre total de règles de grammaire pour un niveau
+ * @param {string} level - Le niveau de langue
+ * @returns {number} Nombre total de règles
+ */
+export const getGrammarRulesCount = (level) => {
+  const data = getGrammarData(level);
+  return data ? data.length : 0;
+};
+
+/**
+ * Récupère le nombre total d'exercices pour un niveau
+ * @param {string} level - Le niveau de langue
+ * @returns {number} Nombre total d'exercices
+ */
+export const getTotalExercisesCount = (level) => {
+  const data = getGrammarData(level);
+  if (!data) return 0;
+  
+  return data.reduce((total, rule) => {
+    return total + (rule.exercises ? rule.exercises.length : 0);
+  }, 0);
+};
+
+/**
+ * Récupère les statistiques complètes pour un niveau
+ * @param {string} level - Le niveau de langue
+ * @returns {Object} Statistiques du niveau
+ */
+export const getLevelStats = (level) => {
+  const data = getGrammarData(level);
+  
+  if (!data) return {
+    rules: 0,
+    exercises: 0,
+    averageExercisesPerRule: 0
+  };
+  
+  const totalRules = data.length;
+  const totalExercises = getTotalExercisesCount(level);
+  
+  return {
+    rules: totalRules,
+    exercises: totalExercises,
+    averageExercisesPerRule: totalRules > 0 ? totalExercises / totalRules : 0
+  };
 };
