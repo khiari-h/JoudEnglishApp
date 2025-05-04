@@ -3,6 +3,7 @@
 // Import des données de vocabulaire par niveau
 import vocabularyA1Data from "../../data/vocabulary/A1";
 import vocabularyA2Data from "../../data/vocabulary/A2";
+import vocabularyB1Data from "../../data/vocabulary/B1";
 
 /**
  * Récupère les données de vocabulaire en fonction du niveau
@@ -26,6 +27,7 @@ export const getLevelColor = (level) => {
   const colors = {
     A1: "#3b82f6", // Bleu
     A2: "#16a34a", // Vert
+    A2: "#f97316", // Orange
   };
   return colors[level] || "#5E60CE"; // Couleur par défaut
 };

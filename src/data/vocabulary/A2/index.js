@@ -25,8 +25,9 @@ import a2_voc_negative_expressions from "./categories/a2_voc_negative_expression
 import a2_voc_phrasal_verbs from "./categories/a2_voc_phrasal_verbs.js";
 import a2_voc_places_town from "./categories/a2_voc_places_town.js";
 import a2_voc_quantities_measurements from "./categories/a2_voc_quantities_measurements.js";
-import a2_voc_sports_hobbies from "./categories/a2_voc_sports_hobbies.js";
+import a2_voc_relationships from "./categories/a2_voc_relationships.js";
 import a2_voc_spatial_relations from "./categories/a2_voc_spatial_relations.js";
+import a2_voc_sports_hobbies from "./categories/a2_voc_sports_hobbies.js";
 import a2_voc_technology_media from "./categories/a2_voc_technology_media.js";
 import a2_voc_time_expressions from "./categories/a2_voc_time_expressions.js";
 import a2_voc_travel_tourism from "./categories/a2_voc_travel_tourism.js";
@@ -61,11 +62,12 @@ export default {
     a2_voc_phrasal_verbs,
     a2_voc_places_town,
     a2_voc_quantities_measurements,
-    a2_voc_sports_hobbies,
+    a2_voc_relationships,
     a2_voc_spatial_relations,
+    a2_voc_sports_hobbies,
     a2_voc_technology_media,
     a2_voc_time_expressions,
     a2_voc_travel_tourism,
-    a2_voc_work_environment,
+    a2_voc_work_environment
   ],
 };

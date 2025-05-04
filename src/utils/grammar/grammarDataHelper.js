@@ -1,8 +1,9 @@
 // utils/grammar/grammarDataHelper.js
 
 // Import des données de grammaire par niveau
-import grammarA1Data from "../../data/grammar/grammarA1";
-// Pour les futurs niveaux: import grammarA2Data from "../../data/exercises/grammar/grammarA2";
+import grammarA1 from "../../data/grammar/grammarA1"; // Import depuis le dossier grammarA1 avec le fichier index.js
+// Pour les futurs niveaux: 
+// import grammarA2 from "../../data/grammar/grammarA2";
 
 /**
  * Récupère les données de grammaire en fonction du niveau
@@ -11,10 +12,10 @@ import grammarA1Data from "../../data/grammar/grammarA1";
  */
 export const getGrammarData = (level) => {
   const dataMap = {
-    A1: grammarA1Data,
-    // Futurs niveaux: A2: grammarA2Data, etc.
+    A1: grammarA1,
+    // Futurs niveaux: A2: grammarA2, etc.
   };
-  return dataMap[level] || grammarA1Data;
+  return dataMap[level] || grammarA1;
 };
 
 /**
