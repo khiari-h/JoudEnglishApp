@@ -1,7 +1,7 @@
 // utils/Conversation/ConversationDataHelper.js
 
 // Import des données de Conversation par niveau
-import ConversationA1 from "../../data/Conversation/A1";
+import ConversationA1 from "../../data/conversation/A1";
 
 // Note: Le composant attend une structure { exercises: [...] }
 // Nous devons adapter les données pour correspondre à ce format

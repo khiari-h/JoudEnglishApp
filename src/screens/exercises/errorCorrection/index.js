@@ -31,10 +31,10 @@ import styles from "./style";
 /**
  * Composant principal pour l'exercice de correction d'erreurs
  */
-const ErrorCorrectionExercise = () => {
+const ErrorCorrectionExercise = ({ route }) => {
   // Hooks de navigation
   const navigation = useNavigation();
-  const route = useRoute();
+  G;
   const { level = "A1" } = route.params || {};
 
   // Initialisation des données

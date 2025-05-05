@@ -4,7 +4,7 @@ import { View } from "react-native";
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 import styles from "./style";
 
-const ConversationConversationSelector = ({
+const ConversationSelector = ({
   scenarios,
   selectedIndex,
   onSelectScenario,
@@ -28,4 +28,4 @@ const ConversationConversationSelector = ({
   );
 };
 
-export default ConversationConversationSelector;
+export default ConversationSelector;

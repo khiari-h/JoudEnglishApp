@@ -14,7 +14,7 @@ import ConversationMessageList from "./ConversationMessageList";
 import ConversationSuggestions from "./ConversationSuggestions";
 import ConversationInput from "./ConversationInput";
 import ConversationScenarioDescription from "./ConversationScenarioDescription";
-import ConversationConversationSelector from "./ConversationConversationSelector";
+import ConversationSelector from "./ConversationSelector";
 
 // Hook de progression
 import useConversationProgress from "./hooks/useConversationProgress";
@@ -32,10 +32,9 @@ import styles from "./style";
  * Composant principal pour l'exercice de Conversation Writing
  * Version optimisée avec enregistrement de progression à des moments stratégiques
  */
-const ConversationExercise = () => {
+const ConversationExercise = ({ route }) => {
   // Hooks de navigation
   const navigation = useNavigation();
-  const route = useRoute();
   const {
     level = "A1",
     initialScenarioIndex = 0,
@@ -122,7 +121,9 @@ const ConversationExercise = () => {
       } else {
         // Nouvelle conversation - initialiser avec le premier message du bot
         if (scenario.steps && scenario.steps.length > 0) {
-          console.log("[Conversation] Initialisation d'une nouvelle conversation");
+          console.log(
+            "[Conversation] Initialisation d'une nouvelle conversation"
+          );
           const initialBotMessage = {
             id: `bot-initial-${Date.now()}`,
             text: scenario.steps[0].botMessage,
@@ -308,7 +309,7 @@ const ConversationExercise = () => {
       />
 
       {/* Sélecteur de conversations */}
-      <ConversationConversationSelector
+      <ConversationSelector
         scenarios={scenarios}
         selectedIndex={currentScenarioIndex}
         onSelectScenario={handleScenarioChange}
