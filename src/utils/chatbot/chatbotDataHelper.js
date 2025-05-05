@@ -1,8 +1,10 @@
 // utils/chatbot/chatbotDataHelper.js
 
 // Import des données de chatbot par niveau
-import chatbotA1Data from "../../data/chatbot/chatbotA1";
+import chatbotA1 from "../../data/chatbot/A1";  // Index.js sera automatiquement importé
 
+// Note: Le composant attend une structure { exercises: [...] }
+// Nous devons adapter les données pour correspondre à ce format
 
 /**
  * Récupère les données de scénarios de chatbot en fonction du niveau
@@ -11,10 +13,16 @@ import chatbotA1Data from "../../data/chatbot/chatbotA1";
  */
 export const getChatbotData = (level) => {
   const dataMap = {
-    A1: chatbotA1Data,
-
+    A1: {
+      exercises: chatbotA1  // chatbotA1 est déjà un tableau de scénarios
+    },
+    // Pour les futures niveaux :
+    // A2: { exercises: chatbotA2 },
+    // B1: { exercises: chatbotB1 },
+    // etc.
   };
-  return dataMap[level] || chatbotA1Data;
+  
+  return dataMap[level] || dataMap["A1"];
 };
 
 /**
@@ -32,4 +40,52 @@ export const getLevelColor = (level) => {
     C2: "#6366f1", // Indigo
   };
   return colors[level] || "#4361EE"; // Couleur par défaut
+};
+
+/**
+ * Récupère le nombre total de scénarios pour un niveau
+ * @param {string} level - Le niveau de langue
+ * @returns {number} Nombre total de scénarios
+ */
+export const getChatbotScenariosCount = (level) => {
+  const data = getChatbotData(level);
+  return data.exercises ? data.exercises.length : 0;
+};
+
+/**
+ * Récupère le nombre total d'étapes pour tous les scénarios d'un niveau
+ * @param {string} level - Le niveau de langue
+ * @returns {number} Nombre total d'étapes
+ */
+export const getTotalStepsCount = (level) => {
+  const data = getChatbotData(level);
+  if (!data.exercises) return 0;
+  
+  return data.exercises.reduce((total, scenario) => {
+    return total + (scenario.steps ? scenario.steps.length : 0);
+  }, 0);
+};
+
+/**
+ * Récupère les statistiques complètes pour un niveau
+ * @param {string} level - Le niveau de langue
+ * @returns {Object} Statistiques du niveau
+ */
+export const getChatbotLevelStats = (level) => {
+  const data = getChatbotData(level);
+  
+  if (!data.exercises) return {
+    scenarios: 0,
+    totalSteps: 0,
+    averageStepsPerScenario: 0
+  };
+  
+  const totalScenarios = data.exercises.length;
+  const totalSteps = getTotalStepsCount(level);
+  
+  return {
+    scenarios: totalScenarios,
+    totalSteps: totalSteps,
+    averageStepsPerScenario: totalScenarios > 0 ? totalSteps / totalScenarios : 0
+  };
 };
