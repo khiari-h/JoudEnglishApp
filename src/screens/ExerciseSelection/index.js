@@ -68,11 +68,12 @@ const ExerciseSelection = ({ route }) => {
       const exerciseColor = exerciseInfo.color || levelColor;
 
       // Récupérer la progression ou initialiser à 0 (mais pas null pour afficher la barre)
-      const exerciseProgress = progress?.exercises?.[`${level}_${exerciseKey}`]?.completed || 0;
+      const exerciseProgress =
+        progress?.exercises?.[`${level}_${exerciseKey}`]?.completed || 0;
 
       return {
         ...exerciseInfo,
-        progress: exerciseProgress,  // Toujours une valeur numérique (0 minimum)
+        progress: exerciseProgress, // Toujours une valeur numérique (0 minimum)
         color: exerciseColor,
       };
     });

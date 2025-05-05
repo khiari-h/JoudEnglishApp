@@ -13,12 +13,12 @@ import ExerciseSelection from "../screens/ExerciseSelection";
 // Écrans d'exercices - Imports corrigés pour correspondre aux noms des composants réels
 import VocabularyExercise from "../screens/exercises/vocabulary";
 import GrammarExercise from "../screens/exercises/grammar";
-import ChatbotExercise from "../screens/exercises/chatbot"; // Corrigé
+import ConversationsExercise from "../screens/exercises/conversations"; // Renommé de ChatbotExercise
 import PhrasesExercise from "../screens/exercises/phrases";
-import ReadingExercise from "../screens/exercises/reading"; // Corrigé
+import ReadingExercise from "../screens/exercises/reading";
 import ErrorCorrectionExercise from "../screens/exercises/errorCorrection";
-import WordGamesExercise from "../screens/exercises/word-games"; // Corrigé
-import SpellingExercise from "../screens/exercises/spelling"; // Corrigé
+import WordGamesExercise from "../screens/exercises/word-games";
+import SpellingExercise from "../screens/exercises/spelling";
 import LevelAssessment from "../screens/exercises/level-assessment";
 
 // Configuration du navigateur
@@ -54,8 +54,8 @@ const AppNavigator = () => {
           component={GrammarExercise}
         />
         <Stack.Screen
-          name={ROUTES.CHATBOT_EXERCISE}
-          component={ChatbotExercise} // Corrigé
+          name={ROUTES.CONVERSATIONS_EXERCISE}
+          component={ConversationsExercise} // Renommé de ChatbotExercise
         />
         <Stack.Screen
           name={ROUTES.PHRASES_EXERCISE}
@@ -63,7 +63,7 @@ const AppNavigator = () => {
         />
         <Stack.Screen
           name={ROUTES.READING_EXERCISE}
-          component={ReadingExercise} // Corrigé
+          component={ReadingExercise}
         />
         <Stack.Screen
           name={ROUTES.ERROR_CORRECTION_EXERCISE}
@@ -71,15 +71,15 @@ const AppNavigator = () => {
         />
         <Stack.Screen
           name={ROUTES.WORD_GAMES_EXERCISE}
-          component={WordGamesExercise} // Corrigé
+          component={WordGamesExercise}
         />
         <Stack.Screen
           name={ROUTES.SPELLING_EXERCISE}
-          component={SpellingExercise} // Corrigé
+          component={SpellingExercise}
         />
         <Stack.Screen
           name={ROUTES.ASSESSMENT_EXERCISE}
-          component={LevelAssessment} // Corrigé
+          component={LevelAssessment}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,7 +1,7 @@
 // utils/chatbot/chatbotDataHelper.js
 
 // Import des données de chatbot par niveau
-import chatbotA1 from "../../data/chatbot/A1";  // Index.js sera automatiquement importé
+import chatbotA1 from "../../data/chatbot/A1";
 
 // Note: Le composant attend une structure { exercises: [...] }
 // Nous devons adapter les données pour correspondre à ce format
@@ -14,14 +14,14 @@ import chatbotA1 from "../../data/chatbot/A1";  // Index.js sera automatiquement
 export const getChatbotData = (level) => {
   const dataMap = {
     A1: {
-      exercises: chatbotA1  // chatbotA1 est déjà un tableau de scénarios
+      exercises: chatbotA1, // chatbotA1 est déjà un tableau de scénarios
     },
     // Pour les futures niveaux :
     // A2: { exercises: chatbotA2 },
     // B1: { exercises: chatbotB1 },
     // etc.
   };
-  
+
   return dataMap[level] || dataMap["A1"];
 };
 
@@ -60,7 +60,7 @@ export const getChatbotScenariosCount = (level) => {
 export const getTotalStepsCount = (level) => {
   const data = getChatbotData(level);
   if (!data.exercises) return 0;
-  
+
   return data.exercises.reduce((total, scenario) => {
     return total + (scenario.steps ? scenario.steps.length : 0);
   }, 0);
@@ -73,19 +73,21 @@ export const getTotalStepsCount = (level) => {
  */
 export const getChatbotLevelStats = (level) => {
   const data = getChatbotData(level);
-  
-  if (!data.exercises) return {
-    scenarios: 0,
-    totalSteps: 0,
-    averageStepsPerScenario: 0
-  };
-  
+
+  if (!data.exercises)
+    return {
+      scenarios: 0,
+      totalSteps: 0,
+      averageStepsPerScenario: 0,
+    };
+
   const totalScenarios = data.exercises.length;
   const totalSteps = getTotalStepsCount(level);
-  
+
   return {
     scenarios: totalScenarios,
     totalSteps: totalSteps,
-    averageStepsPerScenario: totalScenarios > 0 ? totalSteps / totalScenarios : 0
+    averageStepsPerScenario:
+      totalScenarios > 0 ? totalSteps / totalScenarios : 0,
   };
 };

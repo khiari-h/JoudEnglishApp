@@ -75,12 +75,12 @@ export const EXERCISE_TYPES = {
     icon: "📝",
     route: "GrammarExercise",
   },
-  chatbot: {
-    id: "chatbot",
-    title: "Conversation",
-    description: "Pratiquez l'écriture à travers des dialogues simulés",
+  conversations: {
+    id: "conversations",
+    title: "Conversations",
+    description: "Pratiquez la conversation avec des scénarios guidés",
     icon: "💬",
-    route: "ChatbotExercise",
+    route: "ConversationsExercise",
   },
   reading: {
     id: "reading",
@@ -320,7 +320,7 @@ export const ROUTES = {
   EXERCISE_SELECTION: "ExerciseSelection",
   VOCABULARY: "VocabularyExercise",
   GRAMMAR: "GrammarExercise",
-  CHATBOT: "ChatbotExercise",
+  CONVERSATIONS: "ConversationsExercise",
   READING: "ReadingExercise",
   ERROR_CORRECTION: "ErrorCorrectionExercise",
   WORD_GAMES: "WordGamesExercise",
