@@ -1,13 +1,13 @@
 // grammarC1/index.js
 // Fichier principal qui combine les règles et exercices pour le niveau C1
 
-import grammarRulesC1 from './rules/grammarRulesC1.js';
-import grammarExercisesC1 from './exercises/grammarExercisesC1.js';
+import grammarRulesC1 from "./rules/grammarRulesC1.js";
+import grammarExercisesC1 from "./exercices/grammarExercicesC1.js";
 
 // Combine les règles de grammaire avec leurs exercices
-const grammarC1 = grammarRulesC1.map(rule => ({
+const grammarC1 = grammarRulesC1.map((rule) => ({
   ...rule,
-  exercises: grammarExercisesC1[rule.id] || []
+  exercises: grammarExercisesC1[rule.id] || [],
 }));
 
 // Exporte les trois structures pour plus de flexibilité
