@@ -10,7 +10,7 @@ import styles from './style';
  * @param {Function} onToggle - Fonction pour afficher/masquer le panneau
  * @param {string} levelColor - Couleur associée au niveau courant
  */
-const ChatbotHelpPanel = ({ helpText, isVisible, onToggle, levelColor }) => {
+const ConversationHelpPanel = ({ helpText, isVisible, onToggle, levelColor }) => {
   // Si le panneau n'est pas visible, afficher seulement le bouton
   if (!isVisible) {
     return (
@@ -45,4 +45,4 @@ const ChatbotHelpPanel = ({ helpText, isVisible, onToggle, levelColor }) => {
   );
 };
 
-export default ChatbotHelpPanel;
+export default ConversationHelpPanel;

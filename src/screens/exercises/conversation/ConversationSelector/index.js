@@ -1,10 +1,10 @@
-// src/screens/exercises/chatbot/ChatbotConversationSelector/index.js
+// src/screens/exercises/Conversation/ConversationConversationSelector/index.js
 import React from "react";
 import { View } from "react-native";
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 import styles from "./style";
 
-const ChatbotConversationSelector = ({
+const ConversationConversationSelector = ({
   scenarios,
   selectedIndex,
   onSelectScenario,
@@ -28,4 +28,4 @@ const ChatbotConversationSelector = ({
   );
 };
 
-export default ChatbotConversationSelector;
+export default ConversationConversationSelector;

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import ChatbotMessage from '../ChatbotMessage';
-import ChatbotTypingIndicator from '../ChatbotTypingIndicator';
+import ConversationMessage from '../ConversationMessage';
+import ConversationTypingIndicator from '../ConversationTypingIndicator';
 import styles from './style';
 
 /**
@@ -11,7 +11,7 @@ import styles from './style';
  * @param {boolean} isTyping - Indique si le bot est en train de taper
  * @param {string} levelColor - Couleur associée au niveau courant
  */
-const ChatbotMessageList = ({ messages, isTyping, levelColor }) => {
+const ConversationMessageList = ({ messages, isTyping, levelColor }) => {
   const scrollViewRef = useRef(null);
   
   // Faire défiler automatiquement vers le bas quand de nouveaux messages arrivent
@@ -32,7 +32,7 @@ const ChatbotMessageList = ({ messages, isTyping, levelColor }) => {
     >
       {/* Afficher tous les messages */}
       {messages.map((message) => (
-        <ChatbotMessage
+        <ConversationMessage
           key={message.id}
           message={message}
           levelColor={levelColor}
@@ -40,9 +40,9 @@ const ChatbotMessageList = ({ messages, isTyping, levelColor }) => {
       ))}
       
       {/* Afficher l'indicateur de frappe si nécessaire */}
-      {isTyping && <ChatbotTypingIndicator levelColor={levelColor} />}
+      {isTyping && <ConversationTypingIndicator levelColor={levelColor} />}
     </ScrollView>
   );
 };
 
-export default ChatbotMessageList;
+export default ConversationMessageList;

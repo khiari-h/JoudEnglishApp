@@ -3,14 +3,14 @@ import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import styles from './style';
 
 /**
- * Composant pour la saisie de messages dans le chatbot
+ * Composant pour la saisie de messages dans le Conversation
  * 
  * @param {string} message - Texte actuellement dans l'input
  * @param {Function} onChangeMessage - Fonction appelée quand le texte change
  * @param {Function} onSendMessage - Fonction appelée quand le message est envoyé
  * @param {string} levelColor - Couleur associée au niveau courant
  */
-const ChatbotInput = ({ message, onChangeMessage, onSendMessage, levelColor }) => {
+const ConversationInput = ({ message, onChangeMessage, onSendMessage, levelColor }) => {
   // Vérifier si le bouton d'envoi doit être activé
   const isButtonEnabled = message.trim() !== '';
   
@@ -47,4 +47,4 @@ const ChatbotInput = ({ message, onChangeMessage, onSendMessage, levelColor }) =
   );
 };
 
-export default ChatbotInput;
+export default ConversationInput;

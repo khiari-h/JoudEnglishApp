@@ -3,12 +3,12 @@ import { View, Text } from 'react-native';
 import styles from './style';
 
 /**
- * Composant pour afficher un message dans le chatbot
+ * Composant pour afficher un message dans le Conversation
  * 
  * @param {Object} message - Objet contenant les informations du message
  * @param {string} levelColor - Couleur associée au niveau courant
  */
-const ChatbotMessage = ({ message, levelColor }) => {
+const ConversationMessage = ({ message, levelColor }) => {
   const isBotMessage = message.sender === 'bot';
 
   return (
@@ -44,4 +44,4 @@ const ChatbotMessage = ({ message, levelColor }) => {
   );
 };
 
-export default ChatbotMessage;
+export default ConversationMessage;

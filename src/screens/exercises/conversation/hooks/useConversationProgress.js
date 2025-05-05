@@ -1,14 +1,14 @@
-// src/screens/exercises/chatbot/hooks/useChatbotProgress.js
+// src/screens/exercises/Conversation/hooks/useConversationProgress.js
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
- * Hook personnalisé pour gérer la progression dans les exercices de chatbot
+ * Hook personnalisé pour gérer la progression dans les exercices de Conversation
  * Version optimisée pour sauvegarder la progression à des moments stratégiques
  * 
  * @param {string} level - Niveau de langue (A1, A2, B1, B2, C1, C2)
  */
-const useChatbotProgress = (level) => {
+const useConversationProgress = (level) => {
   // États pour suivre la progression
   const [completedScenarios, setCompletedScenarios] = useState({});
   const [lastPosition, setLastPosition] = useState({ scenarioIndex: 0, stepIndex: 0 });
@@ -17,15 +17,15 @@ const useChatbotProgress = (level) => {
   const [initialized, setInitialized] = useState(false);
 
   // Clés pour AsyncStorage
-  const COMPLETED_SCENARIOS_KEY = `chatbot_completed_${level}`;
-  const LAST_POSITION_KEY = `chatbot_position_${level}`;
-  const CONVERSATION_HISTORY_KEY = `chatbot_history_${level}`;
+  const COMPLETED_SCENARIOS_KEY = `Conversation_completed_${level}`;
+  const LAST_POSITION_KEY = `Conversation_position_${level}`;
+  const CONVERSATION_HISTORY_KEY = `Conversation_history_${level}`;
 
   // Charger les données sauvegardées
   useEffect(() => {
     const loadSavedData = async () => {
       try {
-        console.log(`[ChatbotProgress] Chargement des données pour le niveau ${level}`);
+        console.log(`[ConversationProgress] Chargement des données pour le niveau ${level}`);
         
         // Récupérer les scénarios complétés
         const savedCompletedScenariosJson = await AsyncStorage.getItem(COMPLETED_SCENARIOS_KEY);
@@ -45,7 +45,7 @@ const useChatbotProgress = (level) => {
           ? JSON.parse(savedHistoryJson) 
           : {};
         
-        console.log(`[ChatbotProgress] Données chargées:`, { 
+        console.log(`[ConversationProgress] Données chargées:`, { 
           completedScenarios: Object.keys(savedCompletedScenarios).length,
           position: savedPosition,
           conversationHistory: Object.keys(savedHistory).length
@@ -56,7 +56,7 @@ const useChatbotProgress = (level) => {
         setConversationHistory(savedHistory);
         setLoaded(true);
       } catch (error) {
-        console.error('[ChatbotProgress] Erreur lors du chargement des données:', error);
+        console.error('[ConversationProgress] Erreur lors du chargement des données:', error);
         setCompletedScenarios({});
         setLastPosition({ scenarioIndex: 0, stepIndex: 0 });
         setConversationHistory({});
@@ -70,7 +70,7 @@ const useChatbotProgress = (level) => {
   // Sauvegarder la dernière position
   const saveLastPosition = useCallback(async (scenarioIndex, stepIndex) => {
     try {
-      console.log(`[ChatbotProgress] Sauvegarde de la position: scénario ${scenarioIndex}, étape ${stepIndex}`);
+      console.log(`[ConversationProgress] Sauvegarde de la position: scénario ${scenarioIndex}, étape ${stepIndex}`);
       
       // Ajout du timestamp pour suivre la dernière activité
       const newPosition = { 
@@ -81,10 +81,10 @@ const useChatbotProgress = (level) => {
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
       
-      console.log(`[ChatbotProgress] Position sauvegardée avec succès`);
+      console.log(`[ConversationProgress] Position sauvegardée avec succès`);
       return true;
     } catch (error) {
-      console.error('[ChatbotProgress] Erreur lors de la sauvegarde de la position:', error);
+      console.error('[ConversationProgress] Erreur lors de la sauvegarde de la position:', error);
       return false;
     }
   }, [LAST_POSITION_KEY]);
@@ -92,7 +92,7 @@ const useChatbotProgress = (level) => {
   // Marquer un scénario comme complété
   const markScenarioAsCompleted = useCallback(async (scenarioIndex, conversation) => {
     try {
-      console.log(`[ChatbotProgress] Marquage du scénario ${scenarioIndex} comme complété`);
+      console.log(`[ConversationProgress] Marquage du scénario ${scenarioIndex} comme complété`);
       
       // Mettre à jour les scénarios complétés
       const updatedCompletedScenarios = { ...completedScenarios };
@@ -106,12 +106,12 @@ const useChatbotProgress = (level) => {
         
         setCompletedScenarios(updatedCompletedScenarios);
         await AsyncStorage.setItem(COMPLETED_SCENARIOS_KEY, JSON.stringify(updatedCompletedScenarios));
-        console.log(`[ChatbotProgress] Scénario marqué comme complété`);
+        console.log(`[ConversationProgress] Scénario marqué comme complété`);
       }
       
       return true;
     } catch (error) {
-      console.error('[ChatbotProgress] Erreur lors du marquage du scénario:', error);
+      console.error('[ConversationProgress] Erreur lors du marquage du scénario:', error);
       return false;
     }
   }, [completedScenarios, COMPLETED_SCENARIOS_KEY]);
@@ -119,7 +119,7 @@ const useChatbotProgress = (level) => {
   // Sauvegarder une conversation complète
   const saveConversationMessage = useCallback(async (scenarioIndex, messageOrConversation) => {
     try {
-      console.log(`[ChatbotProgress] Sauvegarde de la conversation pour le scénario ${scenarioIndex}`);
+      console.log(`[ConversationProgress] Sauvegarde de la conversation pour le scénario ${scenarioIndex}`);
       
       const updatedHistory = { ...conversationHistory };
       
@@ -151,19 +151,19 @@ const useChatbotProgress = (level) => {
       setConversationHistory(updatedHistory);
       await AsyncStorage.setItem(CONVERSATION_HISTORY_KEY, JSON.stringify(updatedHistory));
       
-      console.log(`[ChatbotProgress] Conversation sauvegardée avec succès`);
+      console.log(`[ConversationProgress] Conversation sauvegardée avec succès`);
       return true;
     } catch (error) {
-      console.error('[ChatbotProgress] Erreur lors de la sauvegarde de la conversation:', error);
+      console.error('[ConversationProgress] Erreur lors de la sauvegarde de la conversation:', error);
       return false;
     }
   }, [conversationHistory, CONVERSATION_HISTORY_KEY]);
 
   // Initialiser la progression
-  const initializeProgress = useCallback((chatbotData) => {
-    if (!initialized && loaded && chatbotData) {
-      console.log(`[ChatbotProgress] Initialisation de la progression`);
-      const scenarios = chatbotData.exercises || [];
+  const initializeProgress = useCallback((ConversationData) => {
+    if (!initialized && loaded && ConversationData) {
+      console.log(`[ConversationProgress] Initialisation de la progression`);
+      const scenarios = ConversationData.exercises || [];
       const newCompletedScenarios = { ...completedScenarios };
       
       // Vérifier si les données correspondent aux scénarios disponibles
@@ -176,7 +176,7 @@ const useChatbotProgress = (level) => {
       
       setCompletedScenarios(newCompletedScenarios);
       setInitialized(true);
-      console.log(`[ChatbotProgress] Progression initialisée pour ${scenarios.length} scénarios`);
+      console.log(`[ConversationProgress] Progression initialisée pour ${scenarios.length} scénarios`);
     }
   }, [completedScenarios, initialized, loaded]);
 
@@ -188,14 +188,14 @@ const useChatbotProgress = (level) => {
     const completedCount = Object.values(completedScenarios).filter(Boolean).length;
     const progress = (completedCount / totalScenarios) * 100;
     
-    console.log(`[ChatbotProgress] Progression globale: ${progress.toFixed(1)}% (${completedCount}/${totalScenarios})`);
+    console.log(`[ConversationProgress] Progression globale: ${progress.toFixed(1)}% (${completedCount}/${totalScenarios})`);
     return progress;
   }, [completedScenarios]);
 
   // Réinitialiser une conversation spécifique
   const resetConversation = useCallback(async (scenarioIndex) => {
     try {
-      console.log(`[ChatbotProgress] Réinitialisation de la conversation ${scenarioIndex}`);
+      console.log(`[ConversationProgress] Réinitialisation de la conversation ${scenarioIndex}`);
       
       const updatedHistory = { ...conversationHistory };
       if (updatedHistory[scenarioIndex]) {
@@ -209,10 +209,10 @@ const useChatbotProgress = (level) => {
         saveLastPosition(scenarioIndex, 0);
       }
       
-      console.log(`[ChatbotProgress] Conversation réinitialisée`);
+      console.log(`[ConversationProgress] Conversation réinitialisée`);
       return true;
     } catch (error) {
-      console.error('[ChatbotProgress] Erreur lors de la réinitialisation:', error);
+      console.error('[ConversationProgress] Erreur lors de la réinitialisation:', error);
       return false;
     }
   }, [conversationHistory, lastPosition, CONVERSATION_HISTORY_KEY, saveLastPosition]);
@@ -220,7 +220,7 @@ const useChatbotProgress = (level) => {
   // Réinitialiser toutes les données
   const resetAllProgress = useCallback(async () => {
     try {
-      console.log(`[ChatbotProgress] Réinitialisation de toutes les données`);
+      console.log(`[ConversationProgress] Réinitialisation de toutes les données`);
       
       // Supprimer les données de l'AsyncStorage
       await AsyncStorage.multiRemove([
@@ -235,10 +235,10 @@ const useChatbotProgress = (level) => {
       setConversationHistory({});
       setInitialized(false);
       
-      console.log(`[ChatbotProgress] Toutes les données ont été réinitialisées`);
+      console.log(`[ConversationProgress] Toutes les données ont été réinitialisées`);
       return true;
     } catch (error) {
-      console.error('[ChatbotProgress] Erreur lors de la réinitialisation complète:', error);
+      console.error('[ConversationProgress] Erreur lors de la réinitialisation complète:', error);
       return false;
     }
   }, [COMPLETED_SCENARIOS_KEY, LAST_POSITION_KEY, CONVERSATION_HISTORY_KEY]);
@@ -258,4 +258,4 @@ const useChatbotProgress = (level) => {
   };
 };
 
-export default useChatbotProgress;
+export default useConversationProgress;

@@ -1,12 +1,12 @@
 // 1. ChatbotHeader (déjà uniformisé sans barre de progression)
-// src/components/screens/exercises/chatbot/ChatbotHeader/index.js
+// src/components/screens/exercises/conversation/ChatbotHeader/index.js
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
 const ChatbotHeader = ({ level, onBackPress, levelColor }) => {
   return (
     <ExerciseHeader
-      title="Chatbot Writing"
+      title="Conversation Writing"
       level={level}
       onClose={onBackPress}
       levelColor={levelColor}

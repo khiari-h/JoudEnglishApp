@@ -3,14 +3,14 @@ import { View, Text } from 'react-native';
 import styles from './style';
 
 /**
- * Barre de progression pour les exercices de Chatbot
+ * Barre de progression pour les exercices de Conversation
  * 
  * @param {number} progress - Pourcentage de progression (0-100)
  * @param {number} currentStep - Index de l'étape actuelle (commençant par 1)
  * @param {number} totalSteps - Nombre total d'étapes
  * @param {string} levelColor - Couleur du niveau actuel
  */
-const ChatbotProgressBar = ({
+const ConversationProgressBar = ({
   progress = 0,
   currentStep = 1,
   totalSteps = 0,
@@ -33,4 +33,4 @@ const ChatbotProgressBar = ({
   );
 };
 
-export default ChatbotProgressBar;
+export default ConversationProgressBar;

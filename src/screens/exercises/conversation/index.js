@@ -1,4 +1,4 @@
-// src/screens/exercises/chatbot/index.js
+// src/screens/exercises/conversation/index.js
 import React, { useState, useCallback, useMemo, useEffect } from "react";
 import { SafeAreaView, KeyboardAvoidingView, Platform } from "react-native";
 import {
@@ -7,32 +7,32 @@ import {
   useFocusEffect,
 } from "@react-navigation/native";
 
-// Composants spécifiques au chatbot
-import ChatbotHeader from "./ChatbotHeader";
-import ChatbotProgressBar from "./ChatbotProgressBar";
-import ChatbotMessageList from "./ChatbotMessageList";
-import ChatbotSuggestions from "./ChatbotSuggestions";
-import ChatbotInput from "./ChatbotInput";
-import ChatbotScenarioDescription from "./ChatbotScenarioDescription";
-import ChatbotConversationSelector from "./ChatbotConversationSelector";
+// Composants spécifiques au conversation
+import ConversationHeader from "./ConversationHeader";
+import ConversationProgressBar from "./ConversationProgressBar";
+import ConversationMessageList from "./ConversationMessageList";
+import ConversationSuggestions from "./ConversationSuggestions";
+import ConversationInput from "./ConversationInput";
+import ConversationScenarioDescription from "./ConversationScenarioDescription";
+import ConversationConversationSelector from "./ConversationConversationSelector";
 
 // Hook de progression
-import useChatbotProgress from "./hooks/useChatbotProgress";
+import useConversationProgress from "./hooks/useConversationProgress";
 
 // Utilitaires et helpers
 import {
-  getChatbotData,
+  getConversationData,
   getLevelColor,
-} from "../../../utils/chatbot/chatbotDataHelper";
+} from "../../../utils/conversation/conversationDataHelper";
 
 // Styles
 import styles from "./style";
 
 /**
- * Composant principal pour l'exercice de Chatbot Writing
+ * Composant principal pour l'exercice de Conversation Writing
  * Version optimisée avec enregistrement de progression à des moments stratégiques
  */
-const ChatbotExercise = () => {
+const ConversationExercise = () => {
   // Hooks de navigation
   const navigation = useNavigation();
   const route = useRoute();
@@ -42,12 +42,12 @@ const ChatbotExercise = () => {
     initialStepIndex = 0,
   } = route.params || {};
 
-  // Initialisation des données du chatbot
+  // Initialisation des données du conversation
   const levelColor = getLevelColor(level);
-  const chatbotData = useMemo(() => getChatbotData(level), [level]);
+  const conversationData = useMemo(() => getConversationData(level), [level]);
   const allScenarios = useMemo(
-    () => chatbotData.exercises || [],
-    [chatbotData]
+    () => conversationData.exercises || [],
+    [conversationData]
   );
 
   // États de l'exercice
@@ -72,23 +72,23 @@ const ChatbotExercise = () => {
     markScenarioAsCompleted,
     saveConversationMessage,
     initializeProgress,
-  } = useChatbotProgress(level);
+  } = useConversationProgress(level);
 
   // Scénario courant
   const currentScenario = scenarios[currentScenarioIndex] || {};
 
   // Initialiser les données de progression
   useEffect(() => {
-    if (progressLoaded && chatbotData) {
-      console.log("[Chatbot] Initialisation de la progression");
-      initializeProgress(chatbotData);
+    if (progressLoaded && conversationData) {
+      console.log("[Conversation] Initialisation de la progression");
+      initializeProgress(conversationData);
 
       // Enregistrer la sélection initiale du scénario
       saveLastPosition(currentScenarioIndex, 0);
     }
   }, [
     progressLoaded,
-    chatbotData,
+    conversationData,
     initializeProgress,
     currentScenarioIndex,
     saveLastPosition,
@@ -111,7 +111,7 @@ const ChatbotExercise = () => {
         scenarioHistory.conversation &&
         scenarioHistory.conversation.length > 0
       ) {
-        console.log("[Chatbot] Restauration de la conversation existante");
+        console.log("[Conversation] Restauration de la conversation existante");
         setConversation(scenarioHistory.conversation);
 
         // Calculer l'étape actuelle en fonction des messages du bot
@@ -122,7 +122,7 @@ const ChatbotExercise = () => {
       } else {
         // Nouvelle conversation - initialiser avec le premier message du bot
         if (scenario.steps && scenario.steps.length > 0) {
-          console.log("[Chatbot] Initialisation d'une nouvelle conversation");
+          console.log("[Conversation] Initialisation d'une nouvelle conversation");
           const initialBotMessage = {
             id: `bot-initial-${Date.now()}`,
             text: scenario.steps[0].botMessage,
@@ -152,7 +152,7 @@ const ChatbotExercise = () => {
       // Fonction de nettoyage exécutée lorsque l'utilisateur quitte la page
       return () => {
         if (progressLoaded && conversationChanged) {
-          console.log("[Chatbot] Sauvegarde au départ de la page");
+          console.log("[Conversation] Sauvegarde au départ de la page");
           saveProgressState();
         }
       };
@@ -294,8 +294,8 @@ const ChatbotExercise = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/* En-tête du chatbot */}
-      <ChatbotHeader
+      {/* En-tête du conversation */}
+      <ConversationHeader
         level={level}
         onBackPress={() => {
           // Sauvegarder avant de quitter si nécessaire
@@ -308,7 +308,7 @@ const ChatbotExercise = () => {
       />
 
       {/* Sélecteur de conversations */}
-      <ChatbotConversationSelector
+      <ConversationConversationSelector
         scenarios={scenarios}
         selectedIndex={currentScenarioIndex}
         onSelectScenario={handleScenarioChange}
@@ -316,7 +316,7 @@ const ChatbotExercise = () => {
       />
 
       {/* Barre de progression */}
-      <ChatbotProgressBar
+      <ConversationProgressBar
         progress={completionProgress}
         currentStep={currentStep + 1}
         totalSteps={currentScenario.steps?.length || 0}
@@ -325,7 +325,7 @@ const ChatbotExercise = () => {
 
       {/* Description du scénario et aide */}
       {currentScenario && (
-        <ChatbotScenarioDescription
+        <ConversationScenarioDescription
           description={currentScenario.description}
           helpText={getCurrentHelp()}
           showHelp={showHelp}
@@ -334,28 +334,28 @@ const ChatbotExercise = () => {
         />
       )}
 
-      {/* Zone de chat */}
+      {/* Zone de conversation */}
       <KeyboardAvoidingView
         style={styles.chatContainer}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
       >
         {/* Liste des messages */}
-        <ChatbotMessageList
+        <ConversationMessageList
           messages={conversation}
           isTyping={isTyping}
           levelColor={levelColor}
         />
 
         {/* Suggestions */}
-        <ChatbotSuggestions
+        <ConversationSuggestions
           suggestions={suggestions}
           onPressSuggestion={handleUseSuggestion}
           levelColor={levelColor}
         />
 
         {/* Zone de saisie */}
-        <ChatbotInput
+        <ConversationInput
           message={message}
           onChangeMessage={setMessage}
           onSendMessage={handleSendMessage}
@@ -366,4 +366,4 @@ const ChatbotExercise = () => {
   );
 };
 
-export default ChatbotExercise;
+export default ConversationExercise;

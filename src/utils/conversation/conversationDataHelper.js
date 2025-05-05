@@ -1,24 +1,24 @@
-// utils/chatbot/chatbotDataHelper.js
+// utils/Conversation/ConversationDataHelper.js
 
-// Import des données de chatbot par niveau
-import chatbotA1 from "../../data/chatbot/A1";
+// Import des données de Conversation par niveau
+import ConversationA1 from "../../data/Conversation/A1";
 
 // Note: Le composant attend une structure { exercises: [...] }
 // Nous devons adapter les données pour correspondre à ce format
 
 /**
- * Récupère les données de scénarios de chatbot en fonction du niveau
+ * Récupère les données de scénarios de Conversation en fonction du niveau
  * @param {string} level - Le niveau de langue (A1, A2, B1, B2, C1, C2)
- * @returns {Object} Les données de chatbot pour le niveau spécifié
+ * @returns {Object} Les données de Conversation pour le niveau spécifié
  */
-export const getChatbotData = (level) => {
+export const getConversationData = (level) => {
   const dataMap = {
     A1: {
-      exercises: chatbotA1, // chatbotA1 est déjà un tableau de scénarios
+      exercises: ConversationA1, // ConversationA1 est déjà un tableau de scénarios
     },
     // Pour les futures niveaux :
-    // A2: { exercises: chatbotA2 },
-    // B1: { exercises: chatbotB1 },
+    // A2: { exercises: ConversationA2 },
+    // B1: { exercises: ConversationB1 },
     // etc.
   };
 
@@ -47,8 +47,8 @@ export const getLevelColor = (level) => {
  * @param {string} level - Le niveau de langue
  * @returns {number} Nombre total de scénarios
  */
-export const getChatbotScenariosCount = (level) => {
-  const data = getChatbotData(level);
+export const getConversationScenariosCount = (level) => {
+  const data = getConversationData(level);
   return data.exercises ? data.exercises.length : 0;
 };
 
@@ -58,7 +58,7 @@ export const getChatbotScenariosCount = (level) => {
  * @returns {number} Nombre total d'étapes
  */
 export const getTotalStepsCount = (level) => {
-  const data = getChatbotData(level);
+  const data = getConversationData(level);
   if (!data.exercises) return 0;
 
   return data.exercises.reduce((total, scenario) => {
@@ -71,8 +71,8 @@ export const getTotalStepsCount = (level) => {
  * @param {string} level - Le niveau de langue
  * @returns {Object} Statistiques du niveau
  */
-export const getChatbotLevelStats = (level) => {
-  const data = getChatbotData(level);
+export const getConversationLevelStats = (level) => {
+  const data = getConversationData(level);
 
   if (!data.exercises)
     return {

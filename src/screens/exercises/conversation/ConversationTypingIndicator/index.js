@@ -7,7 +7,7 @@ import styles from './style';
  * 
  * @param {string} levelColor - Couleur associée au niveau courant
  */
-const ChatbotTypingIndicator = ({ levelColor }) => {
+const ConversationTypingIndicator = ({ levelColor }) => {
   // Animation pour faire pulser les points
   const typingAnimation = useRef(new Animated.Value(0)).current;
   
@@ -64,4 +64,4 @@ const ChatbotTypingIndicator = ({ levelColor }) => {
   );
 };
 
-export default ChatbotTypingIndicator;
+export default ConversationTypingIndicator;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import ChatbotHelpPanel from '../ChatbotHelpPanel';
+import ConversationHelpPanel from '../ConversationHelpPanel';
 import styles from './style';
 
 /**
@@ -12,7 +12,7 @@ import styles from './style';
  * @param {Function} toggleHelp - Fonction pour afficher/masquer l'aide
  * @param {string} levelColor - Couleur associée au niveau courant
  */
-const ChatbotScenarioDescription = ({ 
+const ConversationScenarioDescription = ({ 
   description, 
   helpText, 
   showHelp, 
@@ -27,7 +27,7 @@ const ChatbotScenarioDescription = ({
         </Text>
       </View>
       
-      <ChatbotHelpPanel
+      <ConversationHelpPanel
         helpText={helpText}
         isVisible={showHelp}
         onToggle={toggleHelp}
@@ -37,4 +37,4 @@ const ChatbotScenarioDescription = ({
   );
 };
 
-export default ChatbotScenarioDescription;
+export default ConversationScenarioDescription;

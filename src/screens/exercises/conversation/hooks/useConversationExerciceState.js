@@ -1,12 +1,12 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 
 /**
- * Hook personnalisé pour gérer l'état de l'exercice de chatbot
+ * Hook personnalisé pour gérer l'état de l'exercice de Conversation
  * 
  * @param {string} level - Niveau de langue (A1, A2, B1, B2, C1, C2)
  * @param {Array} scenarios - Liste des scénarios disponibles
  */
-const useChatbotExerciseState = (level, scenarios = []) => {
+const useConversationExerciseState = (level, scenarios = []) => {
   // États pour la conversation et la navigation
   const [conversation, setConversation] = useState([]);
   const [scenarioIndex, setScenarioIndex] = useState(0);
@@ -170,4 +170,4 @@ const useChatbotExerciseState = (level, scenarios = []) => {
   };
 };
 
-export default useChatbotExerciseState;
+export default useConversationExerciseState;

@@ -9,7 +9,7 @@ import styles from './style';
  * @param {Function} onPressSuggestion - Fonction à appeler quand une suggestion est choisie
  * @param {string} levelColor - Couleur associée au niveau courant
  */
-const ChatbotSuggestions = ({ suggestions, onPressSuggestion, levelColor }) => {
+const ConversationSuggestions = ({ suggestions, onPressSuggestion, levelColor }) => {
   // S'il n'y a pas de suggestions, ne rien afficher
   if (!suggestions || suggestions.length === 0) {
     return null;
@@ -37,4 +37,4 @@ const ChatbotSuggestions = ({ suggestions, onPressSuggestion, levelColor }) => {
   );
 };
 
-export default ChatbotSuggestions;
+export default ConversationSuggestions;
