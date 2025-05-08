@@ -2,6 +2,9 @@
 
 // Import des données de Conversation par niveau
 import ConversationA1 from "../../data/conversation/A1";
+import ConversationA2 from "../../data/conversation/A2";
+import ConversationB1 from "../../data/conversation/B1";
+import ConversationB2 from "../../data/conversation/B2";
 
 // Note: Le composant attend une structure { exercises: [...] }
 // Nous devons adapter les données pour correspondre à ce format
@@ -16,13 +19,21 @@ export const getConversationData = (level) => {
     A1: {
       exercises: ConversationA1, // ConversationA1 est déjà un tableau de scénarios
     },
+    A2: {
+      exercises: ConversationA2,
+    },
+    B1: {
+      exercises: ConversationB1,
+    },
+    B2: {
+      exercises: ConversationB2,
+    },
     // Pour les futures niveaux :
-    // A2: { exercises: ConversationA2 },
-    // B1: { exercises: ConversationB1 },
-    // etc.
+    // C1: { exercises: ConversationC1 },
+    // C2: { exercises: ConversationC2 },
   };
 
-  return dataMap[level] || dataMap["A1"];
+  return dataMap[level] || dataMap["A1"]; // Par défaut, retourne A1 si le niveau n'existe pas
 };
 
 /**
