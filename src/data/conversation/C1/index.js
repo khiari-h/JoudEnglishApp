@@ -4,7 +4,7 @@
 import corporateStrategy from "./scenarios/corporateStrategy.js";
 import culturalDiplomacy from "./scenarios/culturalDiplomacy.js";
 import medicalConsultation from "./scenarios/medicalConsultation.js";
-import philosophicalDebate from "./scenarios/philosophicalDebate.js";
+import programmingParadigmDebate from "./scenarios/programmingParadigmDebate.js"; // Remplacé philosophicalDebate
 import literaryAnalysis from "./scenarios/literaryAnalysis.js";
 import diplomaticNegotiation from "./scenarios/diplomaticNegotiation.js";
 import academicPresentation from "./scenarios/academicPresentation.js";
@@ -19,7 +19,7 @@ const chatbotC1 = [
   corporateStrategy,
   culturalDiplomacy,
   medicalConsultation,
-  philosophicalDebate,
+  programmingParadigmDebate, // Remplacé philosophicalDebate
   literaryAnalysis,
   diplomaticNegotiation,
   academicPresentation,
@@ -35,7 +35,7 @@ export {
   corporateStrategy,
   culturalDiplomacy,
   medicalConsultation,
-  philosophicalDebate,
+  programmingParadigmDebate, // Remplacé philosophicalDebate
   literaryAnalysis,
   diplomaticNegotiation,
   academicPresentation,
