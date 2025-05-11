@@ -5,6 +5,8 @@ import ConversationA1 from "../../data/conversation/A1";
 import ConversationA2 from "../../data/conversation/A2";
 import ConversationB1 from "../../data/conversation/B1";
 import ConversationB2 from "../../data/conversation/B2";
+import ConversationC1 from  "../../data/conversation/C1";
+import ConversationC2 from  "../../data/conversation/C2";
 
 // Note: Le composant attend une structure { exercises: [...] }
 // Nous devons adapter les données pour correspondre à ce format
