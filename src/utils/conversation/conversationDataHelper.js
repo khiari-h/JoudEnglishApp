@@ -30,9 +30,13 @@ export const getConversationData = (level) => {
     B2: {
       exercises: ConversationB2,
     },
-    // Pour les futures niveaux :
-    // C1: { exercises: ConversationC1 },
-    // C2: { exercises: ConversationC2 },
+     C1: {
+      exercises: ConversationC1,
+    },
+     C2: {
+      exercises: ConversationC2,
+    },
+
   };
 
   return dataMap[level] || dataMap["A1"]; // Par défaut, retourne A1 si le niveau n'existe pas
