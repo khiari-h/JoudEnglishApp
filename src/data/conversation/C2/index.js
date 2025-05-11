@@ -8,7 +8,7 @@ import judicialReasoning from "./scenarios/judicialReasoning.js";
 import neuroscientificTheories from "./scenarios/neuroscientificTheories.js";
 import economicPolicyAnalysis from "./scenarios/economicPolicyAnalysis.js";
 import literaryCriticism from "./scenarios/literaryCriticism.js";
-import philosophicalParadoxes from "./scenarios/philosophicalParadoxes.js";
+import silenceCommunication from "././scenarios/silenceCommunication.js";
 import quantumComputingExplanation from "./scenarios/quantumComputingExplanation.js";
 import diplomaticCrisisMediation from "./scenarios/diplomaticCrisisMediation.js";
 
@@ -21,7 +21,7 @@ const chatbotC2 = [
   neuroscientificTheories,
   economicPolicyAnalysis,
   literaryCriticism,
-  philosophicalParadoxes,
+  silenceCommunication,
   quantumComputingExplanation,
   diplomaticCrisisMediation,
 ];
@@ -35,7 +35,7 @@ export {
   neuroscientificTheories,
   economicPolicyAnalysis,
   literaryCriticism,
-  philosophicalParadoxes,
+  silenceCommunication,
   quantumComputingExplanation,
   diplomaticCrisisMediation,
   chatbotC2,
