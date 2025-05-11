@@ -59,7 +59,6 @@ export const LANGUAGE_LEVELS = {
 // Liste des niveaux de langue (pour les itérations)
 export const LEVELS = Object.keys(LANGUAGE_LEVELS);
 
-// Types d'exercices disponibles
 export const EXERCISE_TYPES = {
   vocabulary: {
     id: "vocabulary",
@@ -68,6 +67,13 @@ export const EXERCISE_TYPES = {
     icon: "📚",
     route: "VocabularyExercise",
   },
+  phrases: {
+    id: "phrases",
+    title: "Expressions",
+    description: "Apprenez des expressions utiles dans leur contexte",
+    icon: "🗣️",
+    route: "PhrasesExercise",
+  },
   grammar: {
     id: "grammar",
     title: "Grammaire",
@@ -75,12 +81,12 @@ export const EXERCISE_TYPES = {
     icon: "📝",
     route: "GrammarExercise",
   },
-  conversations: {
-    id: "conversations",
-    title: "Conversations",
-    description: "Pratiquez la conversation avec des scénarios guidés",
-    icon: "💬",
-    route: "ConversationsExercise",
+  spelling: {
+    id: "spelling",
+    title: "Orthographe",
+    description: "Travaillez sur l'orthographe et la ponctuation",
+    icon: "🔤",
+    route: "SpellingExercise",
   },
   reading: {
     id: "reading",
@@ -96,26 +102,19 @@ export const EXERCISE_TYPES = {
     icon: "✏️",
     route: "ErrorCorrectionExercise",
   },
+  conversations: {
+    id: "conversations",
+    title: "Conversations",
+    description: "Pratiquez la conversation avec des scénarios guidés",
+    icon: "💬",
+    route: "ConversationsExercise",
+  },
   wordGames: {
     id: "wordGames",
     title: "Jeux de mots",
     description: "Jeux amusants basés sur le vocabulaire et la grammaire",
     icon: "🎮",
     route: "WordGamesExercise",
-  },
-  phrases: {
-    id: "phrases",
-    title: "Expressions",
-    description: "Apprenez des expressions utiles dans leur contexte",
-    icon: "🗣️",
-    route: "PhrasesExercise",
-  },
-  spelling: {
-    id: "spelling",
-    title: "Orthographe",
-    description: "Travaillez sur l'orthographe et la ponctuation",
-    icon: "🔤",
-    route: "SpellingExercise",
   },
   assessment: {
     id: "assessment",
