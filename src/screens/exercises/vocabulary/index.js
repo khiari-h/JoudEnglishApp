@@ -6,8 +6,8 @@ import VocabularyHeader from "./VocabularyHeader";
 import VocabularyNavigation from "./VocabularyNavigation";
 import VocabularyWordCard from "./VocabularyWordCard";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
-import VocabularyCardIndicators from "./VocabularyCardIndicators";
-import VocabularyProgress from "./VocabularyProgress"; // Nouveau composant
+// Import retiré: VocabularyCardIndicators
+import VocabularyProgress from "./VocabularyProgress";
 import LearningTipCard from "./LearningTipCard";
 
 import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
@@ -144,24 +144,22 @@ const VocabularyExercise = ({ route }) => {
   };
 
   const currentWord = getCurrentWord();
-  
-  // Vérifications pour éviter les erreurs
   const currentCategory = vocabularyData?.exercises?.[categoryIndex] || {};
-  const dotsTotal = currentCategory?.words?.length || 0;
-  const dotsCompleted = completedWords[categoryIndex] || [];
+
+  // Affichage du compteur de mots pour remplacer les points
+  const wordCounter = `${wordIndex + 1} / ${currentCategory?.words?.length || 0}`;
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#f8fafc" }}>
       <VocabularyHeader
         level={level}
-        progress={0} // Nous utilisons maintenant notre composant de progression dédié
-        completedWords={0} // Valeurs à 0 car progression gérée ailleurs
-        totalWords={0}     // Valeurs à 0 car progression gérée ailleurs
+        progress={0}
+        completedWords={0}
+        totalWords={0}
         levelColor={levelColor}
         onBackPress={() => router.back()}
       />
       
-      {/* Nouveau composant VocabularyProgress */}
       <VocabularyProgress
         vocabularyData={vocabularyData}
         completedWords={completedWords}
@@ -178,16 +176,20 @@ const VocabularyExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      <VocabularyCardIndicators
-        totalWords={dotsTotal}
-        currentIndex={wordIndex}
-        completedIndices={dotsCompleted}
-        onSelectWord={(index) => {
-          restoreState(categoryIndex, index);
-          saveLastPosition(categoryIndex, index);
-        }}
-        levelColor={levelColor}
-      />
+      {/* Ajout d'un compteur de mots textuel pour remplacer les points */}
+      <View style={{ 
+        padding: 10, 
+        alignItems: 'center', 
+        marginVertical: 5 
+      }}>
+        <Text style={{ 
+          color: levelColor, 
+          fontWeight: 'bold',
+          fontSize: 16
+        }}>
+          {wordCounter}
+        </Text>
+      </View>
 
       <VocabularyWordCard
         word={currentWord.word || ""}
