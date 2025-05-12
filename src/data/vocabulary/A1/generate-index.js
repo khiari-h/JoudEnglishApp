@@ -1,45 +1,51 @@
 const fs = require("fs");
 const path = require("path");
 
+// Chemin vers le dossier des catégories
 const categoriesDir = path.join(__dirname, "categories");
+
+// Récupération des fichiers .js, triés par nom
 const files = fs
   .readdirSync(categoriesDir)
   .filter((f) => f.endsWith(".js"))
   .sort();
 
+// Création des lignes d'importation et du tableau des modules
 let imports = "";
 let names = [];
 
+// Traitement de chaque fichier
 files.forEach((file) => {
   const base = file.replace(".js", "");
 
-  // Extraction d'un identifiant valide à partir du nom de fichier
-  // Si le nom commence par des chiffres (01_identite), on prend la partie après le underscore
-  // sinon on utilise le nom tel quel
+  // Création d'un identifiant valide pour JavaScript (sans chiffres au début)
   let varName;
   if (/^\d/.test(base)) {
-    // Le fichier commence par un chiffre, on extrait la partie après le underscore
+    // Si le nom commence par un chiffre, on extrait la partie après le underscore
     const parts = base.split("_");
     if (parts.length > 1) {
       varName = parts.slice(1).join("_"); // Prend tout après le premier underscore
     } else {
-      // Si pas de underscore, on préfixe avec "module_"
-      varName = "module_" + base;
+      // Si pas d'underscore, on préfixe avec "cat_"
+      varName = "cat_" + base;
     }
   } else {
-    // Le fichier ne commence pas par un chiffre, on peut utiliser son nom directement
+    // Le nom ne commence pas par un chiffre, on peut l'utiliser tel quel
     varName = base;
   }
 
-  imports += `import ${varName} from "./categories/${base}.js";\n`;
+  // Important: Importer directement la propriété vocab du module
+  imports += `import { vocab as ${varName} } from "./categories/${base}.js";\n`;
   names.push(varName);
 });
 
+// Génération du contenu complet du fichier
 const content =
   imports +
   "\nexport default {\n  exercises: [\n    " +
   names.join(",\n    ") +
   "\n  ],\n};\n";
 
+// Écriture dans le fichier index.js
 fs.writeFileSync(path.join(__dirname, "index.js"), content, "utf8");
 console.log("index.js généré avec", files.length, "fichiers.");
