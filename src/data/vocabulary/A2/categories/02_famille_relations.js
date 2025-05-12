@@ -13,8 +13,6 @@ export const vocab = {
     { word: "family bond", translation: "lien familial", example: "Family bonds are often stronger than we realize." },
     { word: "foster parents", translation: "parents d'accueil", example: "The children lived with foster parents for two years." },
     { word: "adopted child", translation: "enfant adopté", example: "They adopted a child from overseas." },
-    { word: "godfather", translation: "parrain", example: "My godfather gave me this watch for my birthday." },
-    { word: "godmother", translation: "marraine", example: "My godmother visits me every Christmas." },
     { word: "guardian", translation: "tuteur", example: "After his parents died, his uncle became his legal guardian." },
     { word: "ancestor", translation: "ancêtre", example: "My ancestors came from Ireland." },
     { word: "descendant", translation: "descendant", example: "He is a descendant of the royal family." },
