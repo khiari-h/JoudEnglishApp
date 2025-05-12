@@ -74,14 +74,6 @@ const VocabularyWordCard = ({
         )}
       </View>
 
-      {/* Section définition */}
-      <View style={styles.contentSection}>
-        <View style={styles.sectionHeader}>
-          <View style={styles.sectionDot} />
-          <Text style={styles.sectionTitle}>Definition</Text>
-        </View>
-        <Text style={styles.sectionText}>{definition}</Text>
-      </View>
 
       {/* Section exemple */}
       <View style={styles.contentSection}>
