@@ -1,47 +1,37 @@
-import animals from "./categories1/animals.js";
-import basic_greetings from "./categories1/basic_greetings.js";
-import body from "./categories1/body.js";
-import clothes from "./categories1/clothes.js";
-import colors from "./categories1/colors.js";
-import communication from "./categories1/communication.js";
-import countries_nationalities from "./categories1/countries_nationalities.js";
-import daily_activities from "./categories1/daily_activities.js";
-import days_months_seasons from "./categories1/days_months_seasons.js";
-import directions_location from "./categories1/directions_location.js";
-import family from "./categories1/family.js";
-import feelings_emotions from "./categories1/feelings_emotions.js";
-import food_drink from "./categories1/food_drink.js";
-import house from "./categories1/house.js";
-import jobs from "./categories1/jobs.js";
-import numbers from "./categories1/numbers.js";
-import personal_info from "./categories1/personal_info.js";
-import school from "./categories1/school.js";
-import shopping from "./categories1/shopping.js";
-import transportation from "./categories1/transportation.js";
-import weather from "./categories1/weather.js";
+import 01_identite from "./categories/01_identite.js";
+import 02_famille from "./categories/02_famille.js";
+import 03_chiffres from "./categories/03_chiffres.js";
+import 04_temps from "./categories/04_temps.js";
+import 05_maison from "./categories/05_maison.js";
+import 06_nourriture from "./categories/06_nourriture.js";
+import 07_vetements from "./categories/07_vetements.js";
+import 08_activites from "./categories/08_activites.js";
+import 09_lieux from "./categories/09_lieux.js";
+import 10_transports from "./categories/10_transports.js";
+import 11_meteo from "./categories/11_meteo.js";
+import 12_achats from "./categories/12_achats.js";
+import 13_communication from "./categories/13_communication.js";
+import 14_loisirs from "./categories/14_loisirs.js";
+import 15_emotions from "./categories/15_emotions.js";
+import 16_animals from "./categories/16_animals.js";
 
 export default {
   exercises: [
-    animals,
-    basic_greetings,
-    body,
-    clothes,
-    colors,
-    communication,
-    countries_nationalities,
-    daily_activities,
-    days_months_seasons,
-    directions_location,
-    family,
-    feelings_emotions,
-    food_drink,
-    house,
-    jobs,
-    numbers,
-    personal_info,
-    school,
-    shopping,
-    transportation,
-    weather
+    01_identite,
+    02_famille,
+    03_chiffres,
+    04_temps,
+    05_maison,
+    06_nourriture,
+    07_vetements,
+    08_activites,
+    09_lieux,
+    10_transports,
+    11_meteo,
+    12_achats,
+    13_communication,
+    14_loisirs,
+    15_emotions,
+    16_animals
   ],
 };
