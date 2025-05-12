@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Nourriture & Boissons",
+  title: "Nourriture & Boissons",
   words: [
     // Fruits courants
     { word: "apple", translation: "pomme", example: "I eat an apple every day." },

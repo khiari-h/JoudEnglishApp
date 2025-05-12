@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Achats Simples",
+  title: "Achats Simples",
   words: [
     // Types de magasins
     { word: "shop", translation: "magasin", example: "I need to go to the shop." },

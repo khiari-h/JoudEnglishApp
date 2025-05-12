@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Communication Élémentaire",
+  title: "Communication Élémentaire",
   words: [
     // Salutations & politesse
     { word: "hello", translation: "bonjour", example: "Hello, how are you?" },

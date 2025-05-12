@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Vêtements & Apparence",
+  title: "Vêtements & Apparence",
   words: [
     // Vêtements quotidiens
     { word: "shirt", translation: "chemise", example: "He's wearing a blue shirt." },

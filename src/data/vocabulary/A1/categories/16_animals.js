@@ -1,5 +1,5 @@
 export const vocab = {
-  category: "Animaux domestiques",
+  title: "Animaux domestiques",
   words: [
     // Animaux domestiques
     { word: "pet", translation: "animal de compagnie", example: "Do you have any pets?" },

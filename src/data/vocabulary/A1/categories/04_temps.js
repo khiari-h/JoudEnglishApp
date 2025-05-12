@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Temps & Calendrier",
+  title: "Temps & Calendrier",
   words: [
     // Jours de la semaine
     { word: "Monday", translation: "lundi", example: "I have English class on Monday." },

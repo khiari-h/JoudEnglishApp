@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Famille & Relations humaines",
+  title: "Famille & Relations humaines",
   words: [
     // Famille nucléaire
     { word: "family", translation: "famille", example: "I love my family." },

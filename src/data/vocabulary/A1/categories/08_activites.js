@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Activités Quotidiennes",
+  title: "Activités Quotidiennes",
   words: [
     // Routines
     { word: "to wake up", translation: "se réveiller", example: "I wake up at 7 o'clock every morning." },

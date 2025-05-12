@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Météo & Climat Élémentaire",
+  title: "Météo & Climat Élémentaire",
   words: [
     // Conditions météorologiques basiques
     { word: "sunny", translation: "ensoleillé", example: "It's a sunny day today." },

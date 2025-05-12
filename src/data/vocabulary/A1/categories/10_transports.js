@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Transports Basiques",
+  title: "Transports Basiques",
   words: [
     // Moyens de transport
     { word: "car", translation: "voiture", example: "I go to work by car." },

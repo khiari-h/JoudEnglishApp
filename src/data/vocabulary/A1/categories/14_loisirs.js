@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Loisirs & Passe-temps Simples",
+  title: "Loisirs & Passe-temps Simples",
   words: [
     // Activités de loisirs basiques
     { word: "hobby", translation: "passe-temps/loisir", example: "Reading is my favorite hobby." },

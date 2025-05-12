@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Maison & Environnement Quotidien",
+  title: "Maison & Environnement Quotidien",
   words: [
     // Types de logement
     { word: "house", translation: "maison", example: "We live in a house with a garden." },

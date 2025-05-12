@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Chiffres & Quantités",
+  title: "Chiffres & Quantités",
   words: [
     // Nombres 0-100
     { word: "zero", translation: "zéro", example: "I have zero dollars." },

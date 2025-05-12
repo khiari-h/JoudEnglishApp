@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Identité & informations personnelles",
+  title: "Identité & informations personnelles",
   words: [
     // Informations d'identification
     { word: "name", translation: "nom", example: "My name is Sarah." },

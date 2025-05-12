@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Lieux & Environnements",
+  title: "Lieux & Environnements",
   words: [
     // Lieux dans la ville
     { word: "city", translation: "ville", example: "London is a big city." },

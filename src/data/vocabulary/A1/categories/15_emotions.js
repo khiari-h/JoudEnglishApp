@@ -1,5 +1,5 @@
 ﻿export const vocab = {
-  category: "Émotions & Sensations",
+  title: "Émotions & Sensations",
   words: [
     // Sentiments basiques
     { word: "happy", translation: "heureux/content", example: "I am happy to see you." },
