@@ -1,67 +1,35 @@
-import b1_voc_academic_formal from "./categories/b1_voc_academic_formal.js";
-import b1_voc_arts_culture from "./categories/b1_voc_arts_culture.js";
-import b1_voc_attitudes_traits from "./categories/b1_voc_attitudes_traits.js";
-import b1_voc_business_operations from "./categories/b1_voc_business_operations.js";
-import b1_voc_communication_conversation from "./categories/b1_voc_communication_conversation.js";
-import b1_voc_culture_society from "./categories/b1_voc_culture_society.js";
-import b1_voc_decision_making from "./categories/b1_voc_decision_making.js";
-import b1_voc_education_learning from "./categories/b1_voc_education_learning.js";
-import b1_voc_emotions_feelings from "./categories/b1_voc_emotions_feelings.js";
-import b1_voc_environment_sustainability from "./categories/b1_voc_environment_sustainability.js";
-import b1_voc_events_occasions from "./categories/b1_voc_events_occasions.js";
-import b1_voc_finance_economics from "./categories/b1_voc_finance_economics.js";
-import b1_voc_food_preparation from "./categories/b1_voc_food_preparation.js";
-import b1_voc_health_wellness from "./categories/b1_voc_health_wellness.js";
-import b1_voc_home_living from "./categories/b1_voc_home_living.js";
-import b1_voc_legal_contractual from "./categories/b1_voc_legal_contractual.js";
-import b1_voc_measurement_quantity from "./categories/b1_voc_measurement_quantity.js";
-import b1_voc_media_entertainment from "./categories/b1_voc_media_entertainment.js";
-import b1_voc_nature_outdoor from "./categories/b1_voc_nature_outdoor.js";
-import b1_voc_personal_development from "./categories/b1_voc_personal_development.js";
-import b1_voc_personality_character from "./categories/b1_voc_personality_character.js";
-import b1_voc_problem_solving from "./categories/b1_voc_problem_solving.js";
-import b1_voc_professional_skills from "./categories/b1_voc_professional_skills.js";
-import b1_voc_research_investigation from "./categories/b1_voc_research_investigation.js";
-import b1_voc_social_interactions from "./categories/b1_voc_social_interactions.js";
-import b1_voc_sports_activities from "./categories/b1_voc_sports_activities.js";
-import b1_voc_technology_innovation from "./categories/b1_voc_technology_innovation.js";
-import b1_voc_time_scheduling from "./categories/b1_voc_time_scheduling.js";
-import b1_voc_transportation_logistics from "./categories/b1_voc_transportation_logistics.js";
-import b1_voc_weather_climate from "./categories/b1_voc_weather_climate.js";
-import b1_voc_workplace_environment from "./categories/b1_voc_workplace_environment.js";
+import 01_expression from "./categories/01_expression.js";
+import 02_relations_interpersonnelles from "./categories/02_relations_interpersonnelles.js";
+import 03_monde_du_travail from "./categories/03_monde_du_travail.js";
+import 04_habitation_style_de_vie from "./categories/04_habitation_style_de_vie.js";
+import 05_voyages_decouvertes_culturelles from "./categories/05_voyages_decouvertes_culturelles.js";
+import 06_alimentation_gastronomie from "./categories/06_alimentation_gastronomie.js";
+import 07_sante_bien_etre from "./categories/07_sante_bien_etre.js";
+import 08_consommation_tendances from "./categories/08_consommation_tendances.js";
+import 09_education_formation_continue from "./categories/09_education_formation_continue.js";
+import 10_medias_information from "./categories/10_medias_information.js";
+import 11_technologie_innovations from "./categories/11_technologie_innovations.js";
+import 12_environnement_enjeux_ecologiques from "./categories/12_environnement_enjeux_ecologiques.js";
+import 13_culture_arts from "./categories/13_culture_arts.js";
+import 14_sports_activites_physiques from "./categories/14_sports_activites_physiques.js";
+import 15_societe_questions_sociales from "./categories/15_societe_questions_sociales.js";
 
 export default {
   exercises: [
-    b1_voc_academic_formal,
-    b1_voc_arts_culture,
-    b1_voc_attitudes_traits,
-    b1_voc_business_operations,
-    b1_voc_communication_conversation,
-    b1_voc_culture_society,
-    b1_voc_decision_making,
-    b1_voc_education_learning,
-    b1_voc_emotions_feelings,
-    b1_voc_environment_sustainability,
-    b1_voc_events_occasions,
-    b1_voc_finance_economics,
-    b1_voc_food_preparation,
-    b1_voc_health_wellness,
-    b1_voc_home_living,
-    b1_voc_legal_contractual,
-    b1_voc_measurement_quantity,
-    b1_voc_media_entertainment,
-    b1_voc_nature_outdoor,
-    b1_voc_personal_development,
-    b1_voc_personality_character,
-    b1_voc_problem_solving,
-    b1_voc_professional_skills,
-    b1_voc_research_investigation,
-    b1_voc_social_interactions,
-    b1_voc_sports_activities,
-    b1_voc_technology_innovation,
-    b1_voc_time_scheduling,
-    b1_voc_transportation_logistics,
-    b1_voc_weather_climate,
-    b1_voc_workplace_environment
+    01_expression,
+    02_relations_interpersonnelles,
+    03_monde_du_travail,
+    04_habitation_style_de_vie,
+    05_voyages_decouvertes_culturelles,
+    06_alimentation_gastronomie,
+    07_sante_bien_etre,
+    08_consommation_tendances,
+    09_education_formation_continue,
+    10_medias_information,
+    11_technologie_innovations,
+    12_environnement_enjeux_ecologiques,
+    13_culture_arts,
+    14_sports_activites_physiques,
+    15_societe_questions_sociales
   ],
 };
