@@ -4,6 +4,7 @@
 import vocabularyA1Data from "../../data/vocabulary/A1";
 import vocabularyA2Data from "../../data/vocabulary/A2";
 import vocabularyB1Data from "../../data/vocabulary/B1";
+import vocabularyB2Data from "../../data/vocabulary/B2";
 
 /**
  * Récupère les données de vocabulaire en fonction du niveau
@@ -15,6 +16,7 @@ export const getVocabularyData = (level) => {
     A1: vocabularyA1Data,
     A2: vocabularyA2Data,
     B1: vocabularyB1Data,
+    B2: vocabularyB2Data,
   };
   return dataMap[level] || vocabularyA1Data;
 };
@@ -29,6 +31,7 @@ export const getLevelColor = (level) => {
     A1: "#3b82f6", // Bleu
     A2: "#16a34a", // Vert
     B1: "#f97316", // Orange
+    B2: "#eab308", // Jaune doré
   };
   return colors[level] || "#5E60CE"; // Couleur par défaut
 };
