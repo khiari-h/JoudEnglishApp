@@ -14,6 +14,7 @@ export const getVocabularyData = (level) => {
   const dataMap = {
     A1: vocabularyA1Data,
     A2: vocabularyA2Data,
+    B1: vocabularyB1Data,
   };
   return dataMap[level] || vocabularyA1Data;
 };
@@ -27,7 +28,7 @@ export const getLevelColor = (level) => {
   const colors = {
     A1: "#3b82f6", // Bleu
     A2: "#16a34a", // Vert
-    A2: "#f97316", // Orange
+    B1: "#f97316", // Orange
   };
   return colors[level] || "#5E60CE"; // Couleur par défaut
 };
