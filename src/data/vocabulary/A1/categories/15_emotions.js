@@ -1,6 +1,11 @@
 ﻿export const vocab = {
   title: "Émotions & Sensations",
   words: [
+    { word: "pleased", translation: "content", example: "I'm pleased with your progress." },
+    { word: "embarrassed", translation: "gêné", example: "He was embarrassed when he fell in front of everyone." },
+    { word: "curious", translation: "curieux", example: "Children are curious about everything." },
+    { word: "amazed", translation: "étonné", example: "I was amazed by the magic trick." },
+    { word: "cheerful", translation: "joyeux", example: "She has a cheerful personality." },
     // Sentiments basiques
     { word: "happy", translation: "heureux/content", example: "I am happy to see you." },
     { word: "sad", translation: "triste", example: "She feels sad about the news." },

@@ -1,6 +1,9 @@
 ﻿export const vocab = {
   title: "Météo & Climat Élémentaire",
   words: [
+    { word: "misty", translation: "brumeux", example: "The valley was misty in the morning." },
+    { word: "clear", translation: "dégagé", example: "The sky is clear tonight, we can see the stars." },
+    { word: "sunshine", translation: "lumière du soleil", example: "We enjoyed the sunshine at the beach." },
     // Conditions météorologiques basiques
     { word: "sunny", translation: "ensoleillé", example: "It's a sunny day today." },
     { word: "cloudy", translation: "nuageux", example: "The sky is cloudy." },
