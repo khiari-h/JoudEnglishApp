@@ -534,7 +534,7 @@ async function showDuplicateExamples() {
 // Fonction pour calculer les statistiques des doublons
 async function calculateDuplicateStats() {
   console.log('Analyse des doublons en cours...');
-  const { globalIndex } = await createGlobalWordIndex();
+  const { globalIndex, allFileData } = await createGlobalWordIndex();
   
   // Compter les doublons par type
   const stats = {
@@ -545,7 +545,7 @@ async function calculateDuplicateStats() {
     totalDuplicateInstances: 0       // Nombre total d'instances de doublons à supprimer
   };
   
-  // Structure pour suivre les doublons par niveau
+  // Structure pour suivre les doublons par niveau et les fichiers
   const duplicatesByLevel = {};
   const levelCategories = {};
   
@@ -557,6 +557,13 @@ async function calculateDuplicateStats() {
       betweenFiles: 0     // Doublons entre fichiers
     };
     levelCategories[level] = new Set();
+  });
+  
+  // Compter d'abord tous les fichiers par niveau indépendamment des doublons
+  allFileData.forEach(fileData => {
+    if (fileData.level && levels.includes(fileData.level)) {
+      levelCategories[fileData.level].add(fileData.category);
+    }
   });
   
   // Analyser chaque mot et ses occurrences
@@ -580,8 +587,6 @@ async function calculateDuplicateStats() {
         const fileKey = `${occ.level}/${occ.category}`;
         if (!byFile[fileKey]) {
           byFile[fileKey] = 0;
-          // Ajouter la catégorie au niveau
-          levelCategories[occ.level].add(occ.category);
         }
         byFile[fileKey]++;
       });
