@@ -76,7 +76,7 @@ export const vocab = {
     { word: "anaphora", translation: "anaphore", example: "Anaphora creates rhythmic emphasis through repeated opening phrases." },
     
     { word: "motif", translation: "motif", example: "Water motifs recur throughout, symbolizing both destruction and renewal." },
-    
+    { word: "foreshadowing", translation: "préfiguration", example: "Subtle foreshadowing hints at the eventual betrayal by the trusted advisor." },
     
     // Analyse littéraire (25 mots)
     { word: "literary analysis", translation: "analyse littéraire", example: "Literary analysis examines how formal elements create meaning." },
@@ -170,7 +170,7 @@ export const vocab = {
     
     { word: "existentialism", translation: "existentialisme", example: "Existentialism examines individual freedom and the search for meaning." },
     { word: "absurdism", translation: "absurdisme", example: "Absurdism portrays humanity's search for meaning in an irrational universe." },
-    
+    { word: "magical realism", translation: "réalisme magique", example: "Magical realism incorporates fantastical elements into otherwise realistic settings." },
     { word: "transcendentalism", translation: "transcendantalisme", example: "Transcendentalism emphasized spiritual experience and self-reliance." },
     
     { word: "neoclassicism", translation: "néoclassicisme", example: "Neoclassicism draws inspiration from classical forms and restraint." },

@@ -221,5 +221,7 @@ export const vocab = {
     { word: "social ritual", translation: "rituel social", example: "Graduation ceremonies function as social rituals marking life transitions." },
     { word: "cultural resistance", translation: "résistance culturelle", example: "Music often serves as cultural resistance for marginalized communities." },
     
-    { word: "consumer culture", translation: "culture de consommation", example: "Advertising promotes consumer culture by associating products with identity and status." }]
+    { word: "consumer culture", translation: "culture de consommation", example: "Advertising promotes consumer culture by associating products with identity and status." },
+    { word: "cultural capital", translation: "capital culturel", example: "Educational systems often reward students who possess specific forms of cultural capital." }
+  ]
 };

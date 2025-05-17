@@ -185,7 +185,7 @@ export const vocab = {
     
     { word: "model transparency", translation: "transparence du modèle", example: "Model transparency enables understanding of how AI systems arrive at specific decisions or predictions." },
     { word: "black box problem", translation: "problème de la boîte noire", example: "The black box problem refers to AI systems producing outputs without explainable reasoning processes." },
-    
+    { word: "explainable AI", translation: "IA explicable", example: "Explainable AI techniques provide interpretable insights into model decision processes." },
     { word: "feature importance", translation: "importance des caractéristiques", example: "Feature importance analysis reveals which variables most significantly influence model predictions." },
     { word: "model interpretability", translation: "interprétabilité du modèle", example: "Model interpretability techniques help humans understand how AI systems reach specific conclusions." },
     

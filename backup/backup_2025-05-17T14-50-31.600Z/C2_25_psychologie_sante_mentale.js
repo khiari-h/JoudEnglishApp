@@ -90,7 +90,7 @@ export const vocab = {
     { word: "social-cognitive theory", translation: "théorie sociocognitive", example: "Social-cognitive theory examines how personal factors interact with environment and behavior." },
     
     
-    
+    { word: "self-concept", translation: "concept de soi", example: "Self-concept encompasses beliefs about one's own attributes and identity." },
     
     { word: "unconscious mind", translation: "inconscient", example: "Psychoanalytic approaches emphasize the unconscious mind's influence on personality." },
     { word: "defense mechanism", translation: "mécanisme de défense", example: "Defense mechanisms protect against anxiety and threatening impulses." },
@@ -218,7 +218,7 @@ export const vocab = {
     
     
     
-    
+    { word: "emotional intelligence", translation: "intelligence émotionnelle", example: "Emotional intelligence enables understanding and managing emotions effectively." },
     { word: "basic emotion", translation: "émotion de base", example: "Basic emotions like fear and joy appear consistently across cultures." },
     
     

@@ -218,7 +218,7 @@ export const vocab = {
     
     // Médecine personnalisée (25 mots)
     
-    
+    { word: "pharmacogenomics", translation: "pharmacogénomique", example: "Pharmacogenomics studies how genes affect medication response." },
     { word: "precision treatment", translation: "traitement de précision", example: "Precision treatment approaches target specific disease mechanisms." },
     
     { word: "genetic risk assessment", translation: "évaluation du risque génétique", example: "Genetic risk assessment predicts disease susceptibility based on DNA analysis." },

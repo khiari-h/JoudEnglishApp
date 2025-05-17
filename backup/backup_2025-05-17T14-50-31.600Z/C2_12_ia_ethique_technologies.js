@@ -247,7 +247,7 @@ export const vocab = {
     
     
     
-    
+    { word: "autonomous system", translation: "système autonome", example: "Autonomous systems operate independently without human supervision." },
     { word: "artificial superintelligence", translation: "superintelligence artificielle", example: "Artificial superintelligence would surpass human capabilities across all domains." },
     
     { word: "longtermism", translation: "longterminisme", example: "Longtermism prioritizes safeguarding humanity's long-term future." },

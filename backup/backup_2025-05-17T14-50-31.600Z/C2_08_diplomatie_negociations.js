@@ -244,7 +244,7 @@ export const vocab = {
     { word: "diplomatic rhetoric", translation: "rhétorique diplomatique", example: "Diplomatic rhetoric softened following productive talks." },
     
     // Protocole et cérémonie (25 mots)
-    
+    { word: "diplomatic protocol", translation: "protocole diplomatique", example: "Diplomatic protocol governs official interactions and ceremonies." },
     { word: "ceremonial function", translation: "fonction cérémonielle", example: "The ceremonial function marked the treaty signing." },
     { word: "order of precedence", translation: "ordre de préséance", example: "Order of precedence determines seating and speaking arrangements." },
     { word: "credentials ceremony", translation: "cérémonie de présentation des lettres de créance", example: "The credentials ceremony formally recognized the new ambassador." },
