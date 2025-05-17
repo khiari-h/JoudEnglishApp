@@ -93,7 +93,7 @@ export const vocab = {
     { word: "assessment", translation: "évaluation", example: "Regular assessments help track students' progress." },
     
     { word: "score", translation: "score/résultat", example: "What was your score on the math quiz?" },
-    
+    { word: "pass", translation: "réussir", example: "You need to get at least 60% to pass the exam." },
     { word: "fail", translation: "échouer", example: "If you don't study, you might fail the test." },
     { word: "oral exam", translation: "examen oral", example: "I have an oral exam in Spanish next week." },
     { word: "written exam", translation: "examen écrit", example: "The written exam is three hours long." },

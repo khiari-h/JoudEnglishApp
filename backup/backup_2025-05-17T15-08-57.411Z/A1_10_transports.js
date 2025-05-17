@@ -19,15 +19,15 @@
     { word: "helicopter", translation: "hélicoptère", example: "The president arrived by helicopter." },
     
     // Verbes de déplacement
-    
-    
-    
-    
-    
+    { word: "to walk", translation: "marcher", example: "I walk to school every day." },
+    { word: "to drive", translation: "conduire", example: "Do you know how to drive a car?" },
+    { word: "to travel", translation: "voyager", example: "We travel every summer." },
+    { word: "to go", translation: "aller", example: "I go to the cinema every weekend." },
+    { word: "to come", translation: "venir", example: "Please come to my house for dinner." },
     { word: "to fly", translation: "voler", example: "We fly to London next week." },
-    
-    
-    
+    { word: "to ride", translation: "faire du vélo/moto", example: "She rides her bike to work." },
+    { word: "to arrive", translation: "arriver", example: "The train arrives at 6 PM." },
+    { word: "to leave", translation: "partir", example: "We leave for Paris tomorrow." },
     { word: "to run", translation: "courir", example: "He runs to catch the bus." },
     { word: "to catch", translation: "attraper", example: "I need to catch the 8 o'clock train." },
     { word: "to miss", translation: "rater/manquer", example: "I missed the bus this morning." },
@@ -42,8 +42,8 @@
     { word: "parking", translation: "parking", example: "The parking is full, we need to find another one." },
     { word: "gas station", translation: "station-service", example: "We need to stop at the gas station." },
     { word: "highway", translation: "autoroute", example: "Take the highway to get there faster." },
-    
-    
+    { word: "road", translation: "route", example: "This road leads to the village." },
+    { word: "street", translation: "rue", example: "I live on Main Street." },
     { word: "way", translation: "chemin", example: "This is the way to the museum." },
     
     // Billets & tarifs simples
@@ -53,7 +53,7 @@
     { word: "fare", translation: "tarif", example: "What's the fare for a bus ticket?" },
     { word: "pass", translation: "abonnement", example: "I have a monthly bus pass." },
     { word: "timetable", translation: "horaire", example: "Let me check the timetable for the next train." },
-    
+    { word: "schedule", translation: "horaire/programme", example: "The bus schedule changes on weekends." },
     { word: "delay", translation: "retard", example: "The train has a 30-minute delay." },
     { word: "reservation", translation: "réservation", example: "I made a reservation for the 8 pm train." },
     { word: "to book", translation: "réserver", example: "I need to book my flight tickets." },
@@ -67,7 +67,7 @@
     // Autres termes de transport
     { word: "luggage", translation: "bagage", example: "Don't forget your luggage when you leave the train." },
     { word: "suitcase", translation: "valise", example: "My suitcase is too heavy to carry." },
-    
+    { word: "backpack", translation: "sac à dos", example: "I always travel with a backpack." },
     { word: "map", translation: "carte", example: "We need a map to find our way." }
   ]
 };

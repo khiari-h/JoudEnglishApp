@@ -36,7 +36,7 @@ export const vocab = {
     { word: "workshop", translation: "atelier", example: "The carpenter has a workshop downtown." },
     
     { word: "construction site", translation: "chantier", example: "He works on a construction site." },
-    
+    { word: "farm", translation: "ferme", example: "They work on a dairy farm." },
     { word: "headquarters", translation: "siège social", example: "The company's headquarters are in London." },
     { word: "branch", translation: "succursale", example: "The bank has branches in every major city." },
     

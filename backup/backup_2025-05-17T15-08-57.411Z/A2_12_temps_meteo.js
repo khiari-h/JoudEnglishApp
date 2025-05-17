@@ -40,7 +40,7 @@ export const vocab = {
     { word: "thunderstorm", translation: "orage", example: "A thunderstorm is forecast for this evening." },
     
     
-    
+    { word: "hail", translation: "grêle", example: "The hail damaged the car's paintwork." },
     { word: "sleet", translation: "neige fondue", example: "The rain turned to sleet as the temperature dropped." },
     { word: "blizzard", translation: "blizzard", example: "The blizzard closed all the roads." },
     { word: "frost", translation: "gelée", example: "There was a heavy frost last night." },

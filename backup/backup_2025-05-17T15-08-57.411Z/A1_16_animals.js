@@ -15,7 +15,7 @@ export const vocab = {
     { word: "goldfish", translation: "poisson rouge", example: "I have a goldfish in a bowl." },
     { word: "parrot", translation: "perroquet", example: "The parrot can say 'hello'." },
     { word: "mouse", translation: "souris", example: "My cat caught a mouse yesterday." },
-    
+    { word: "fish", translation: "poisson", example: "There are many fish in the sea." },
     { word: "animal", translation: "animal", example: "I love animals." },
     
     // Animaux de ferme
@@ -25,7 +25,7 @@ export const vocab = {
     { word: "pig", translation: "cochon", example: "The pig lives in the mud." },
     { word: "sheep", translation: "mouton", example: "The sheep has wool." },
     { word: "goat", translation: "chèvre", example: "The goat eats everything." },
-    
+    { word: "chicken", translation: "poulet", example: "The chicken lays eggs." },
     { word: "duck", translation: "canard", example: "The duck swims in the pond." },
     
     // Animaux sauvages communs
@@ -43,8 +43,8 @@ export const vocab = {
     { word: "aquarium", translation: "aquarium", example: "We have an aquarium with tropical fish." },
     { word: "collar", translation: "collier", example: "My dog has a blue collar." },
     { word: "leash", translation: "laisse", example: "Don't forget the dog's leash." },
-    
-    
+    { word: "to walk", translation: "promener", example: "I walk my dog every morning." },
+    { word: "to play", translation: "jouer", example: "Children play with the puppy." },
     { word: "bone", translation: "os", example: "The dog is chewing a bone." },
     { word: "fur", translation: "fourrure", example: "The cat has soft fur." },
     

@@ -46,7 +46,7 @@ export const vocab = {
     { word: "tangy", translation: "acidulé", example: "Lemon gives a tangy flavor to the dish." },
     { word: "bland", translation: "fade", example: "The soup was too bland; it needed more seasoning." },
     { word: "rich", translation: "riche (en goût)", example: "Chocolate cake is rich in flavor." },
-    
+    { word: "mild", translation: "doux", example: "This curry is quite mild, not spicy at all." },
     { word: "flavorful", translation: "savoureux", example: "Fresh herbs make the dish more flavorful." },
     { word: "aromatic", translation: "aromatique", example: "Cinnamon has a very aromatic smell." },
     { word: "creamy", translation: "crémeux", example: "I love the creamy texture of this sauce." },
@@ -55,7 +55,7 @@ export const vocab = {
     { word: "chewy", translation: "moelleux", example: "These caramels are quite chewy." },
     { word: "tender", translation: "tendre", example: "The meat was perfectly cooked, very tender." },
     { word: "juicy", translation: "juteux", example: "These oranges are really juicy." },
-    
+    { word: "dry", translation: "sec", example: "The cake was a bit dry." },
     { word: "moist", translation: "moelleux/humide", example: "This bread is still moist." },
     
     // Recettes simples

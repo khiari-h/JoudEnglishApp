@@ -51,15 +51,15 @@ export const vocab = {
     { word: "stressed", translation: "stressé", example: "I'm feeling stressed about the exam." },
     
     { word: "anxious", translation: "anxieux", example: "She's anxious about her interview." },
-    
+    { word: "calm", translation: "calme", example: "Try to stay calm in difficult situations." },
     { word: "frustrated", translation: "frustré", example: "I'm frustrated because I can't solve this problem." },
     { word: "motivated", translation: "motivé", example: "I'm feeling motivated to study today." },
     { word: "overwhelmed", translation: "dépassé", example: "She feels overwhelmed by her workload." },
-    
+    { word: "disappointed", translation: "déçu", example: "I'm disappointed with my test results." },
     { word: "satisfied", translation: "satisfait", example: "I'm satisfied with my progress." },
-    
+    { word: "proud", translation: "fier", example: "My parents are proud of me." },
     { word: "ashamed", translation: "honteux", example: "He felt ashamed of his behavior." },
-    
+    { word: "confused", translation: "confus", example: "I'm confused by these instructions." },
     
     // Goûts & préférences
     { word: "taste", translation: "goût", example: "Everyone has different tastes in music." },
@@ -71,7 +71,7 @@ export const vocab = {
     { word: "to be fond of", translation: "être amateur de", example: "She's fond of classical music." },
     { word: "to be keen on", translation: "être passionné par", example: "He's keen on sports." },
     { word: "to be interested in", translation: "être intéressé par", example: "I'm interested in learning languages." },
-    
+    { word: "to dislike", translation: "ne pas aimer", example: "I dislike waiting in long lines." },
     
     { word: "to can't stand", translation: "ne pas supporter", example: "I can't stand noisy places." },
     { word: "enthusiastic", translation: "enthousiaste", example: "She's enthusiastic about her new job." },

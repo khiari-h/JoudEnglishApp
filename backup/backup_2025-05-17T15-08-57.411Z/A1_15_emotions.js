@@ -22,15 +22,15 @@
     // État physique simple
     { word: "hungry", translation: "avoir faim", example: "I'm hungry, let's eat." },
     { word: "thirsty", translation: "avoir soif", example: "I'm thirsty, I need water." },
-    
-    
+    { word: "hot", translation: "avoir chaud", example: "It's summer and I'm hot." },
+    { word: "cold", translation: "avoir froid", example: "Please close the window, I'm cold." },
     { word: "sick", translation: "malade", example: "I'm sick, I can't go to work." },
     { word: "well", translation: "bien/en bonne santé", example: "I feel well today." },
     { word: "ill", translation: "malade", example: "She's been ill for three days." },
     { word: "pain", translation: "douleur", example: "I have a pain in my back." },
     { word: "headache", translation: "mal de tête", example: "I have a headache." },
     { word: "stomachache", translation: "mal au ventre", example: "He has a stomachache after lunch." },
-    
+    { word: "comfortable", translation: "confortable", example: "This chair is very comfortable." },
     { word: "uncomfortable", translation: "inconfortable", example: "These shoes are uncomfortable." },
     { word: "sleepy", translation: "somnolent", example: "I'm sleepy after lunch." },
     { word: "awake", translation: "éveillé", example: "I'm wide awake despite the late hour." },
