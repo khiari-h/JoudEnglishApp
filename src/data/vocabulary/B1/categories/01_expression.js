@@ -31,7 +31,7 @@ export const vocab = {
     { word: "volume", translation: "volume", example: "He lowered his volume to emphasize the serious point." },
     { word: "pace", translation: "rythme", example: "Speaking at a slower pace can help the audience understand complex ideas." },
     { word: "proxemics", translation: "proxémie", example: "Proxemics studies how people use physical space in communication." },
-    { word: "appearance", translation: "apparence", example: "Your appearance can affect how your message is received." },
+    
     { word: "kinesics", translation: "kinésique", example: "Kinesics is the study of body movements and gestures in communication." },
     { word: "paralanguage", translation: "paralangage", example: "Paralanguage includes vocal elements like tone, pitch, and volume." },
     { word: "haptics", translation: "haptique", example: "Haptics refers to communication through touch." },
@@ -39,19 +39,19 @@ export const vocab = {
     
     // Prise de parole en public
     { word: "public speaking", translation: "prise de parole en public", example: "Public speaking is one of the most common fears." },
-    { word: "audience", translation: "auditoire", example: "Know your audience before preparing your speech." },
+    
     { word: "podium", translation: "podium", example: "The speaker approached the podium nervously." },
     { word: "stage fright", translation: "trac", example: "Many people experience stage fright before speaking publicly." },
     { word: "keynote", translation: "discours principal", example: "She delivered the keynote at the conference." },
-    { word: "presentation", translation: "présentation", example: "His presentation included visual aids and handouts." },
+    
     { word: "speech", translation: "discours", example: "The speech lasted for thirty minutes." },
-    { word: "delivery", translation: "prestation", example: "Her delivery was confident and engaging." },
+    
     { word: "projection", translation: "projection", example: "Voice projection is essential when speaking to large groups." },
     { word: "articulation", translation: "articulation", example: "Clear articulation helps the audience understand your message." },
     { word: "prompt", translation: "aide-mémoire", example: "He used note cards as prompts during his speech." },
     { word: "impromptu", translation: "impromptu", example: "She gave an impressive impromptu speech without preparation." },
     { word: "teleprompter", translation: "téléprompteur", example: "The politician read his speech from a teleprompter." },
-    { word: "engagement", translation: "engagement", example: "Audience engagement is crucial for an effective presentation." },
+    
     { word: "moderator", translation: "modérateur", example: "The moderator introduced each speaker." },
     
     // Nuances d'expression
@@ -69,7 +69,7 @@ export const vocab = {
     { word: "understatement", translation: "litote", example: "Saying 'not bad' when something is excellent is an understatement." },
     { word: "sarcasm", translation: "sarcasme", example: "Her sarcasm wasn't appreciated by everyone." },
     { word: "irony", translation: "ironie", example: "The irony of the situation wasn't lost on anyone." },
-    { word: "tone", translation: "ton", example: "The tone of the email seemed angry." },
+    
     
     // Adaptation du discours
     { word: "register", translation: "registre", example: "You should use a formal register for academic writing." },
@@ -91,9 +91,9 @@ export const vocab = {
     // Techniques narratives
     { word: "narrative", translation: "récit", example: "Personal narratives can be powerful communication tools." },
     { word: "storytelling", translation: "narration", example: "Effective storytelling can make complex ideas memorable." },
-    { word: "anecdote", translation: "anecdote", example: "She began her speech with a humorous anecdote." },
+    
     { word: "plot", translation: "intrigue", example: "The plot of his story captivated the audience." },
-    { word: "character", translation: "personnage", example: "Develop relatable characters in your narratives." },
+    
     { word: "setting", translation: "cadre", example: "The setting of the story was a small village in France." },
     { word: "conflict", translation: "conflit", example: "Every compelling story has some form of conflict." },
     { word: "resolution", translation: "résolution", example: "The resolution of the story offered a satisfying conclusion." },
@@ -106,8 +106,8 @@ export const vocab = {
     { word: "hook", translation: "accroche", example: "Start with a strong hook to grab the audience's attention." },
     
     // Débat et argumentation
-    { word: "debate", translation: "débat", example: "The debate covered several controversial topics." },
-    { word: "argument", translation: "argument", example: "He presented a logical argument backed by evidence." },
+    
+    
     { word: "counterargument", translation: "contre-argument", example: "She anticipated his counterargument and addressed it preemptively." },
     { word: "rebuttal", translation: "réfutation", example: "His rebuttal effectively dismantled the opposing argument." },
     { word: "premise", translation: "prémisse", example: "The argument is based on a flawed premise." },

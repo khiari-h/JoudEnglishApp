@@ -19,15 +19,15 @@
     { word: "helicopter", translation: "hélicoptère", example: "The president arrived by helicopter." },
     
     // Verbes de déplacement
-    { word: "to go", translation: "aller", example: "I go to work every day." },
-    { word: "to come", translation: "venir", example: "She comes to visit us on Sundays." },
-    { word: "to travel", translation: "voyager", example: "I love to travel to new countries." },
-    { word: "to drive", translation: "conduire", example: "Do you know how to drive?" },
-    { word: "to ride", translation: "faire du vélo/monter", example: "I ride my bike every weekend." },
+    
+    
+    
+    
+    
     { word: "to fly", translation: "voler", example: "We fly to London next week." },
-    { word: "to leave", translation: "partir", example: "The train leaves at 5 pm." },
-    { word: "to arrive", translation: "arriver", example: "We arrive at the station at 7 pm." },
-    { word: "to walk", translation: "marcher", example: "I walk to the park every morning." },
+    
+    
+    
     { word: "to run", translation: "courir", example: "He runs to catch the bus." },
     { word: "to catch", translation: "attraper", example: "I need to catch the 8 o'clock train." },
     { word: "to miss", translation: "rater/manquer", example: "I missed the bus this morning." },
@@ -42,8 +42,8 @@
     { word: "parking", translation: "parking", example: "The parking is full, we need to find another one." },
     { word: "gas station", translation: "station-service", example: "We need to stop at the gas station." },
     { word: "highway", translation: "autoroute", example: "Take the highway to get there faster." },
-    { word: "road", translation: "route", example: "This road leads to the beach." },
-    { word: "street", translation: "rue", example: "I live on Main Street." },
+    
+    
     { word: "way", translation: "chemin", example: "This is the way to the museum." },
     
     // Billets & tarifs simples
@@ -51,9 +51,9 @@
     { word: "one-way ticket", translation: "aller simple", example: "I'd like a one-way ticket to New York." },
     { word: "round-trip ticket", translation: "aller-retour", example: "A round-trip ticket costs more than a one-way ticket." },
     { word: "fare", translation: "tarif", example: "What's the fare for a bus ticket?" },
-    { word: "price", translation: "prix", example: "The price of petrol is going up." },
+    
     { word: "timetable", translation: "horaire", example: "Let me check the timetable for the next train." },
-    { word: "schedule", translation: "emploi du temps", example: "The bus schedule changed this month." },
+    
     { word: "delay", translation: "retard", example: "The train has a 30-minute delay." },
     { word: "reservation", translation: "réservation", example: "I made a reservation for the 8 pm train." },
     { word: "to book", translation: "réserver", example: "I need to book my flight tickets." },

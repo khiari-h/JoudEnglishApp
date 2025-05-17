@@ -6,7 +6,7 @@ export const vocab = {
     { word: "curriculum", translation: "programme d'études", example: "The curriculum has been revised to include more technology skills." },
     { word: "educational background", translation: "formation", example: "His educational background includes studies in both science and arts." },
     { word: "track", translation: "filière", example: "Students must choose between the scientific and literary tracks." },
-    { word: "stream", translation: "filière", example: "She's in the science stream at her high school." },
+    
     { word: "academic progression", translation: "progression académique", example: "Academic progression from undergraduate to doctoral studies takes many years." },
     { word: "prerequisites", translation: "prérequis", example: "You need certain prerequisites to enroll in this course." },
     { word: "core subjects", translation: "matières principales", example: "Mathematics and science are core subjects in most school systems." },
@@ -38,7 +38,7 @@ export const vocab = {
     { word: "inquiry-based learning", translation: "apprentissage par investigation", example: "Science classes often use inquiry-based learning approaches." },
     { word: "peer learning", translation: "apprentissage par les pairs", example: "Peer learning occurs when students teach and learn from each other." },
     { word: "spaced repetition", translation: "répétition espacée", example: "Spaced repetition is an effective technique for memorization." },
-    { word: "critical thinking", translation: "pensée critique", example: "Universities emphasize critical thinking skills across disciplines." },
+    
     
     // Évaluations & certifications
     { word: "standardized test", translation: "test standardisé", example: "Many universities require standardized test scores for admission." },
@@ -52,7 +52,7 @@ export const vocab = {
     { word: "rubric", translation: "grille d'évaluation", example: "The teacher provided a rubric explaining how the essays would be graded." },
     { word: "accreditation", translation: "accréditation", example: "Make sure the program has proper accreditation before enrolling." },
     { word: "credentials", translation: "titres/diplômes", example: "His impressive credentials include a Master's degree and several certifications." },
-    { word: "degree", translation: "diplôme", example: "She earned her degree after four years of study." },
+    
     { word: "transcript", translation: "relevé de notes", example: "You'll need to submit your official transcript with your application." },
     { word: "proficiency test", translation: "test de compétence", example: "International students must pass an English proficiency test." },
     { word: "licensing exam", translation: "examen d'obtention de licence", example: "Medical students must pass a licensing exam to practice medicine." },
@@ -75,8 +75,8 @@ export const vocab = {
     { word: "academia", translation: "milieu universitaire", example: "Many Ph.D. graduates pursue careers in academia." },
     
     // Formation professionnelle
-    { word: "vocational training", translation: "formation professionnelle", example: "Vocational training prepares students for specific careers." },
-    { word: "apprenticeship", translation: "apprentissage", example: "He completed a three-year apprenticeship to become an electrician." },
+    
+    
     { word: "on-the-job training", translation: "formation en cours d'emploi", example: "The company provides on-the-job training for new employees." },
     { word: "professional development", translation: "développement professionnel", example: "Teachers engage in professional development throughout their careers." },
     { word: "skill-building", translation: "développement de compétences", example: "The workshop focuses on skill-building for customer service representatives." },
@@ -93,22 +93,22 @@ export const vocab = {
     { word: "study abroad", translation: "études à l'étranger", example: "She participated in a study abroad program in Spain." },
     { word: "exchange program", translation: "programme d'échange", example: "The exchange program allows students to spend a semester at a partner university." },
     { word: "international student", translation: "étudiant international", example: "International students bring diverse perspectives to the classroom." },
-    { word: "cultural immersion", translation: "immersion culturelle", example: "Cultural immersion is a valuable aspect of studying abroad." },
-    { word: "language barrier", translation: "barrière linguistique", example: "Many international students struggle with the language barrier initially." },
+    
+    
     { word: "cross-cultural learning", translation: "apprentissage interculturel", example: "Cross-cultural learning occurs when diverse students interact." },
-    { word: "global perspective", translation: "perspective mondiale", example: "International education helps develop a global perspective." },
+    
     { word: "foreign credential recognition", translation: "reconnaissance des titres étrangers", example: "Foreign credential recognition can be complicated when moving to a new country." },
     { word: "international baccalaureate", translation: "baccalauréat international", example: "The school offers the International Baccalaureate program." },
     { word: "overseas education", translation: "éducation à l'étranger", example: "Overseas education can be expensive but offers unique benefits." },
     { word: "visa requirements", translation: "conditions de visa", example: "Check the visa requirements before applying to foreign universities." },
     
     // Apprentissage tout au long de la vie
-    { word: "lifelong learning", translation: "apprentissage tout au long de la vie", example: "Lifelong learning is essential in today's rapidly changing world." },
-    { word: "continuing education", translation: "formation continue", example: "Many professionals take continuing education courses to stay current." },
+    
+    
     { word: "professional enrichment", translation: "enrichissement professionnel", example: "The workshop offers professional enrichment for teachers." },
     { word: "self-improvement", translation: "développement personnel", example: "Reading is an excellent tool for self-improvement." },
-    { word: "adult education", translation: "formation pour adultes", example: "Adult education programs often offer flexible scheduling options." },
-    { word: "personal growth", translation: "développement personnel", example: "Learning a new language contributes to personal growth." },
+    
+    
     { word: "knowledge acquisition", translation: "acquisition de connaissances", example: "The internet has revolutionized knowledge acquisition." },
     { word: "skill development", translation: "développement de compétences", example: "Continuous skill development is crucial in the modern workforce." },
     { word: "non-formal learning", translation: "apprentissage non formel", example: "Community workshops are examples of non-formal learning opportunities." },

@@ -4,53 +4,53 @@ export const vocab = {
     // Avancées scientifiques
     { word: "scientific breakthrough", translation: "percée scientifique", example: "The scientific breakthrough transformed our understanding of genetic inheritance." },
     { word: "cutting-edge research", translation: "recherche de pointe", example: "Cutting-edge research in quantum computing promises revolutionary applications." },
-    { word: "innovation", translation: "innovation", example: "Scientific innovation drives economic growth and addresses social challenges." },
-    { word: "discovery", translation: "découverte", example: "The discovery of antibiotics revolutionized medicine in the 20th century." },
+    
+    
     { word: "emerging technology", translation: "technologie émergente", example: "Emerging technologies like CRISPR are reshaping our biological capabilities." },
-    { word: "paradigm shift", translation: "changement de paradigme", example: "Einstein's theories created a paradigm shift in our understanding of physics." },
+    
     { word: "technological advancement", translation: "avancée technologique", example: "Technological advancements in renewable energy are accelerating the transition from fossil fuels." },
     { word: "scientific frontier", translation: "frontière scientifique", example: "Exploring the scientific frontier requires creativity and perseverance." },
-    { word: "application", translation: "application", example: "The practical application of this discovery could transform cancer treatment." },
+    
     { word: "theoretical framework", translation: "cadre théorique", example: "The theoretical framework helps explain experimental observations." },
     { word: "bioengineering", translation: "bio-ingénierie", example: "Bioengineering combines biology with engineering to solve complex problems." },
-    { word: "nanotechnology", translation: "nanotechnologie", example: "Nanotechnology operates at the atomic and molecular scale." },
+    
     { word: "quantum technology", translation: "technologie quantique", example: "Quantum technology harnesses quantum physics for computing and communication." },
     { word: "materials science", translation: "science des matériaux", example: "Materials science develops new substances with enhanced properties." },
     
     // Méthode scientifique
     { word: "scientific method", translation: "méthode scientifique", example: "The scientific method provides a systematic approach to investigating phenomena." },
-    { word: "hypothesis", translation: "hypothèse", example: "A good hypothesis makes testable predictions about natural phenomena." },
+    
     { word: "empirical evidence", translation: "preuve empirique", example: "Empirical evidence comes from observation and experimentation rather than theory." },
     { word: "experiment", translation: "expérience", example: "The experiment tested whether the treatment reduced symptoms." },
     { word: "observation", translation: "observation", example: "Careful observation revealed unexpected patterns in the data." },
     { word: "reproducibility", translation: "reproductibilité", example: "Reproducibility ensures that different scientists can verify each other's findings." },
-    { word: "peer review", translation: "évaluation par les pairs", example: "Peer review subjects research to scrutiny by qualified experts." },
-    { word: "control group", translation: "groupe témoin", example: "The control group received a placebo instead of the experimental treatment." },
-    { word: "variable", translation: "variable", example: "Researchers must identify and control variables that might affect results." },
-    { word: "data analysis", translation: "analyse de données", example: "Data analysis revealed significant patterns in the experimental results." },
+    
+    
+    
+    
     { word: "causation", translation: "causalité", example: "Establishing causation requires more than showing correlation." },
     { word: "replication", translation: "réplication", example: "Replication studies determine whether findings can be consistently reproduced." },
     { word: "methodology", translation: "méthodologie", example: "The methodology section describes exactly how the research was conducted." },
-    { word: "validity", translation: "validité", example: "Internal validity concerns whether experiments actually test what they claim to test." },
+    
     
     // Débats scientifiques
     { word: "scientific debate", translation: "débat scientifique", example: "Scientific debate drives progress by challenging and refining ideas." },
     { word: "controversy", translation: "controverse", example: "The controversy centered on competing interpretations of the experimental data." },
-    { word: "consensus", translation: "consensus", example: "Scientific consensus represents the collective judgment of experts in a field." },
+    
     { word: "skepticism", translation: "scepticisme", example: "Healthy skepticism is fundamental to the scientific process." },
     { word: "scientific uncertainty", translation: "incertitude scientifique", example: "Scientific uncertainty reflects limitations in current knowledge rather than failure." },
     { word: "competing theory", translation: "théorie concurrente", example: "Competing theories attempt to explain the same phenomenon differently." },
     { word: "falsifiability", translation: "falsifiabilité", example: "Falsifiability distinguishes scientific theories from non-scientific claims." },
     { word: "scientific revolution", translation: "révolution scientifique", example: "Scientific revolutions fundamentally transform our understanding of natural phenomena." },
-    { word: "risk assessment", translation: "évaluation des risques", example: "Risk assessment quantifies potential harms associated with technologies or activities." },
-    { word: "expert opinion", translation: "avis d'expert", example: "Expert opinion should be based on evidence rather than personal belief." },
+    
+    
     { word: "unintended consequence", translation: "conséquence imprévue", example: "Technological innovations often produce unintended consequences that require attention." },
     { word: "ethics in science", translation: "éthique scientifique", example: "Ethics in science addresses moral questions raised by research and applications." },
     
     // Transfert technologique
     { word: "technology transfer", translation: "transfert de technologie", example: "Technology transfer moves innovations from laboratories to commercial applications." },
     { word: "commercialization", translation: "commercialisation", example: "Commercialization transforms scientific discoveries into marketable products." },
-    { word: "intellectual property", translation: "propriété intellectuelle", example: "Patents protect intellectual property rights for new inventions." },
+    
     { word: "patent", translation: "brevet", example: "The company secured a patent for its innovative manufacturing process." },
     { word: "licensing", translation: "licence", example: "Licensing agreements allow others to use proprietary technology for a fee." },
     { word: "spinoff company", translation: "entreprise dérivée", example: "The spinoff company was created to develop technology from university research." },
@@ -59,12 +59,12 @@ export const vocab = {
     { word: "scale-up", translation: "mise à l'échelle", example: "Scale-up involves adapting laboratory processes for industrial production." },
     { word: "innovation ecosystem", translation: "écosystème d'innovation", example: "A healthy innovation ecosystem connects researchers, entrepreneurs, and investors." },
     { word: "technology incubator", translation: "incubateur technologique", example: "The technology incubator provides resources for startups to develop their innovations." },
-    { word: "venture capital", translation: "capital-risque", example: "Venture capital funds high-potential technology startups." },
+    
     
     // Interdisciplinarité
     { word: "interdisciplinary", translation: "interdisciplinaire", example: "Interdisciplinary research combines insights from multiple academic fields." },
-    { word: "collaboration", translation: "collaboration", example: "Effective collaboration brings diverse expertise to complex scientific challenges." },
-    { word: "cross-disciplinary", translation: "transdisciplinaire", example: "Cross-disciplinary approaches transcend traditional academic boundaries." },
+    
+    
     { word: "convergence", translation: "convergence", example: "The convergence of biology and engineering creates new biomedical technologies." },
     { word: "systems thinking", translation: "pensée systémique", example: "Systems thinking examines how components interact within complex wholes." },
     { word: "holistic approach", translation: "approche holistique", example: "A holistic approach considers problems in their full complexity rather than isolation." },
@@ -79,9 +79,9 @@ export const vocab = {
     { word: "public engagement", translation: "engagement public", example: "Public engagement helps citizens participate in scientific discussions." },
     { word: "science communication", translation: "communication scientifique", example: "Effective science communication makes complex concepts accessible to non-specialists." },
     { word: "science policy", translation: "politique scientifique", example: "Science policy determines funding priorities and regulatory frameworks." },
-    { word: "research ethics", translation: "éthique de la recherche", example: "Research ethics ensures studies protect participants and maintain integrity." },
+    
     { word: "responsible innovation", translation: "innovation responsable", example: "Responsible innovation considers societal implications of new technologies." },
-    { word: "public trust", translation: "confiance publique", example: "Public trust in science depends on transparency and ethical conduct." },
+    
     { word: "science literacy", translation: "culture scientifique", example: "Science literacy enables citizens to understand and evaluate scientific claims." },
     { word: "citizen science", translation: "science citoyenne", example: "Citizen science involves non-professionals in scientific research projects." },
     { word: "science advocacy", translation: "plaidoyer scientifique", example: "Science advocacy promotes evidence-based policies and scientific funding." },

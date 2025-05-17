@@ -2,56 +2,56 @@ export const vocab = {
   title: "Santé Globale & Enjeux Biomédicaux",
   words: [
     // Politiques sanitaires globales
-    { word: "global health governance", translation: "gouvernance mondiale de la santé", example: "Global health governance involves multiple organizations including the WHO and private foundations." },
-    { word: "health diplomacy", translation: "diplomatie sanitaire", example: "Health diplomacy uses international cooperation to address cross-border health challenges." },
+    
+    
     { word: "universal health coverage", translation: "couverture sanitaire universelle", example: "Universal health coverage aims to ensure all people have access to essential health services." },
-    { word: "health inequality", translation: "inégalité en matière de santé", example: "Economic disparities drive health inequality between and within countries." },
+    
     { word: "health system strengthening", translation: "renforcement des systèmes de santé", example: "Development programs prioritize health system strengthening over disease-specific interventions." },
     { word: "non-state actors", translation: "acteurs non étatiques", example: "Non-state actors including NGOs and corporations increasingly influence global health priorities." },
-    { word: "health security", translation: "sécurité sanitaire", example: "Pandemic preparedness represents a critical aspect of national health security." },
+    
     { word: "public health policy", translation: "politique de santé publique", example: "Public health policy balances population-level interventions with individual freedoms." },
     { word: "vertical program", translation: "programme vertical", example: "Vertical programs focus on specific diseases rather than comprehensive health services." },
-    { word: "health financing", translation: "financement de la santé", example: "Sustainable health financing remains a challenge for many developing nations." },
+    
     { word: "global health architecture", translation: "architecture de la santé mondiale", example: "The global health architecture includes international organizations, national governments, and private entities." },
-    { word: "health aid", translation: "aide sanitaire", example: "International health aid addresses disparities in resources between countries." },
-    { word: "health emergency", translation: "urgence sanitaire", example: "The organization coordinates responses to international health emergencies." },
-    { word: "health equity", translation: "équité en santé", example: "Health equity ensures fair opportunities for wellbeing regardless of social position." },
+    
+    
+    
     { word: "North-South divide", translation: "clivage Nord-Sud", example: "The North-South divide in health resources perpetuates global inequalities." },
     { word: "donor coordination", translation: "coordination des donateurs", example: "Effective donor coordination prevents duplication and maximizes impact." },
     { word: "sustainable health development", translation: "développement sanitaire durable", example: "The program promotes sustainable health development through local capacity building." },
-    { word: "health workforce", translation: "personnel de santé", example: "Many countries face critical shortages in their health workforce." },
-    { word: "capacity building", translation: "renforcement des capacités", example: "The initiative focuses on capacity building for national health systems." },
-    { word: "health regulation", translation: "réglementation sanitaire", example: "International health regulation establishes standards for disease reporting and control." },
+    
+    
+    
     { word: "disease surveillance", translation: "surveillance des maladies", example: "Effective disease surveillance requires standardized reporting systems." },
     { word: "strategic health planning", translation: "planification sanitaire stratégique", example: "Strategic health planning addresses both immediate needs and long-term goals." },
-    { word: "global health initiative", translation: "initiative de santé mondiale", example: "The global health initiative coordinates responses to neglected tropical diseases." },
+    
     { word: "health information system", translation: "système d'information sanitaire", example: "A robust health information system provides data for effective decision-making." },
     { word: "essential medicines", translation: "médicaments essentiels", example: "The WHO maintains a list of essential medicines that should be available in all health systems." },
-    { word: "primary healthcare", translation: "soins de santé primaires", example: "Primary healthcare provides the foundation for effective health systems." },
+    
     { word: "health resource allocation", translation: "allocation des ressources sanitaires", example: "Ethical frameworks guide health resource allocation during shortages." },
     
     // Bioéthique
     { word: "bioethical dilemma", translation: "dilemme bioéthique", example: "Emerging technologies create novel bioethical dilemmas requiring thoughtful analysis." },
-    { word: "informed consent", translation: "consentement éclairé", example: "Medical procedures require informed consent from patients or their representatives." },
-    { word: "research ethics", translation: "éthique de la recherche", example: "Research ethics governs studies involving human subjects or biological materials." },
-    { word: "clinical ethics", translation: "éthique clinique", example: "Hospitals establish clinical ethics committees to address challenging cases." },
-    { word: "ethical framework", translation: "cadre éthique", example: "New biotechnologies necessitate comprehensive ethical frameworks for governance." },
+    
+    
+    
+    
     { word: "autonomy principle", translation: "principe d'autonomie", example: "The autonomy principle respects individuals' right to make their own health decisions." },
-    { word: "beneficence", translation: "bienfaisance", example: "Medical ethics balances beneficence with respect for patient autonomy." },
-    { word: "non-maleficence", translation: "non-malfaisance", example: "The principle of non-maleficence requires avoiding harm to patients." },
+    
+    
     { word: "justice principle", translation: "principe de justice", example: "The justice principle promotes fair distribution of benefits and burdens." },
-    { word: "distributive justice", translation: "justice distributive", example: "Vaccine allocation raises questions of distributive justice during shortages." },
-    { word: "end-of-life care", translation: "soins de fin de vie", example: "End-of-life care decisions involve complex ethical considerations." },
+    
+    
     { word: "bioethics committee", translation: "comité de bioéthique", example: "The national bioethics committee provides guidance on emerging issues." },
     { word: "resource allocation ethics", translation: "éthique d'allocation des ressources", example: "Resource allocation ethics addresses fair distribution of limited healthcare." },
     { word: "medical confidentiality", translation: "confidentialité médicale", example: "Medical confidentiality protects patients' private health information." },
     { word: "research integrity", translation: "intégrité de la recherche", example: "Research integrity requires honest reporting of methods and results." },
     { word: "ethical review board", translation: "comité d'éthique", example: "Clinical trials require approval from an ethical review board." },
-    { word: "vulnerable population", translation: "population vulnérable", example: "Research involving vulnerable populations requires additional protections." },
+    
     { word: "bioethical principle", translation: "principe bioéthique", example: "Different cultural traditions may prioritize bioethical principles differently." },
-    { word: "medical ethics", translation: "éthique médicale", example: "Medical ethics addresses moral questions in healthcare practice." },
+    
     { word: "ethical guideline", translation: "directive éthique", example: "Professional associations develop ethical guidelines for practitioners." },
-    { word: "genetic privacy", translation: "confidentialité génétique", example: "Genetic privacy concerns intensify with advanced sequencing technologies." },
+    
     { word: "bioethical discourse", translation: "discours bioéthique", example: "Bioethical discourse addresses fundamental questions about human life and technology." },
     { word: "principlism", translation: "principisme", example: "Principlism applies core ethical principles to biomedical questions." },
     { word: "ethical implication", translation: "implication éthique", example: "The research examined ethical implications of artificial reproduction technologies." },
@@ -60,9 +60,9 @@ export const vocab = {
     { word: "moral deliberation", translation: "délibération morale", example: "Ethics committees engage in structured moral deliberation about difficult cases." },
     
     // Médecine personnalisée
-    { word: "precision medicine", translation: "médecine de précision", example: "Precision medicine tailors treatment based on individual genetic profiles." },
+    
     { word: "personalized therapy", translation: "thérapie personnalisée", example: "Personalized therapy optimizes treatment for each patient's unique characteristics." },
-    { word: "genomic medicine", translation: "médecine génomique", example: "Genomic medicine uses DNA sequencing to guide clinical decisions." },
+    
     { word: "targeted therapy", translation: "thérapie ciblée", example: "Targeted therapy addresses specific molecular pathways involved in disease." },
     { word: "pharmacogenomics", translation: "pharmacogénomique", example: "Pharmacogenomics studies how genes affect individual responses to medications." },
     { word: "genetic profiling", translation: "profilage génétique", example: "Genetic profiling identifies variants associated with disease risk or treatment response." },
@@ -91,13 +91,13 @@ export const vocab = {
     // Systèmes de santé innovants
     { word: "integrated care model", translation: "modèle de soins intégrés", example: "Integrated care models coordinate services across specialties and settings." },
     { word: "value-based healthcare", translation: "soins de santé fondés sur la valeur", example: "Value-based healthcare reimburses providers based on patient outcomes rather than volume." },
-    { word: "telehealth", translation: "télésanté", example: "Telehealth connects patients with providers through digital communication." },
-    { word: "health innovation", translation: "innovation en santé", example: "Health innovation addresses systemic challenges through novel approaches." },
+    
+    
     { word: "patient-centered care", translation: "soins centrés sur le patient", example: "Patient-centered care prioritizes individual needs and preferences." },
     { word: "healthcare delivery model", translation: "modèle de prestation de soins", example: "The healthcare delivery model determines how services reach populations." },
-    { word: "digital health", translation: "santé numérique", example: "Digital health technologies transform how patients access and experience care." },
-    { word: "preventive healthcare", translation: "soins préventifs", example: "Preventive healthcare addresses risk factors before disease development." },
-    { word: "health technology assessment", translation: "évaluation des technologies de la santé", example: "Health technology assessment examines clinical and economic impacts of innovations." },
+    
+    
+    
     { word: "coordinated care", translation: "soins coordonnés", example: "Coordinated care ensures seamless transitions between providers and settings." },
     { word: "accountable care organization", translation: "organisation de soins responsables", example: "Accountable care organizations coordinate provider groups for quality improvement." },
     { word: "healthcare quality indicator", translation: "indicateur de qualité des soins", example: "Healthcare quality indicators measure performance across dimensions of care." },
@@ -105,12 +105,12 @@ export const vocab = {
     { word: "payment model", translation: "modèle de paiement", example: "Alternative payment models align financial incentives with quality outcomes." },
     { word: "healthcare accessibility", translation: "accessibilité aux soins", example: "Geographic and financial barriers affect healthcare accessibility for vulnerable populations." },
     { word: "health information exchange", translation: "échange d'informations de santé", example: "Health information exchange facilitates sharing of patient data between providers." },
-    { word: "community health worker", translation: "agent de santé communautaire", example: "Community health workers extend care to underserved populations." },
+    
     { word: "medical home", translation: "centre médical principal", example: "The medical home model coordinates care through primary care providers." },
     { word: "population health management", translation: "gestion de la santé des populations", example: "Population health management addresses needs of specific patient groups." },
     { word: "healthcare innovation", translation: "innovation dans les soins de santé", example: "Healthcare innovation improves quality, efficiency, and patient experience." },
     { word: "virtual care", translation: "soins virtuels", example: "Virtual care platforms expanded rapidly during the pandemic." },
-    { word: "medical tourism", translation: "tourisme médical", example: "Medical tourism involves travel to access healthcare services in other countries." },
+    
     { word: "learning health system", translation: "système de santé apprenant", example: "Learning health systems continuously improve through data and evidence." },
     { word: "disruptive healthcare", translation: "soins de santé disruptifs", example: "Disruptive healthcare models challenge traditional delivery approaches." },
     { word: "healthcare ecosystem", translation: "écosystème de soins de santé", example: "The healthcare ecosystem includes providers, payers, suppliers, and patients." },
@@ -133,11 +133,11 @@ export const vocab = {
     { word: "health adaptation", translation: "adaptation sanitaire", example: "Health adaptation strategies prepare communities for climate change impacts." },
     { word: "vector-borne disease", translation: "maladie à transmission vectorielle", example: "Vector-borne diseases spread through mosquitoes and other carriers affected by climate." },
     { word: "health vulnerability", translation: "vulnérabilité sanitaire", example: "Health vulnerability assessment identifies populations at greatest risk from environmental threats." },
-    { word: "ecological footprint", translation: "empreinte écologique", example: "Healthcare systems can reduce their ecological footprint through sustainable practices." },
+    
     { word: "environmental pathogen", translation: "pathogène environnemental", example: "Environmental pathogens emerge or spread following ecological disruption." },
     { word: "health resilience", translation: "résilience sanitaire", example: "Communities need health resilience to withstand environmental challenges." },
     { word: "green healthcare", translation: "soins de santé écologiques", example: "Green healthcare initiatives reduce waste and energy consumption in medical facilities." },
-    { word: "environmental exposure", translation: "exposition environnementale", example: "Environmental exposure assessment measures pollutant contact in populations." },
+    
     { word: "ecotoxicology", translation: "écotoxicologie", example: "Ecotoxicology studies how pollutants affect organisms and ecosystems." },
     { word: "health forecasting", translation: "prévision sanitaire", example: "Climate-based health forecasting anticipates disease outbreaks and resource needs." },
     { word: "conservation medicine", translation: "médecine de conservation", example: "Conservation medicine connects ecosystem health with human wellbeing." },
@@ -148,24 +148,24 @@ export const vocab = {
     
     // Déterminants structurels
     { word: "social determinant of health", translation: "déterminant social de la santé", example: "Housing quality represents a critical social determinant of health affecting wellbeing." },
-    { word: "structural inequality", translation: "inégalité structurelle", example: "Structural inequality creates persistent health disparities between populations." },
-    { word: "health disparity", translation: "disparité de santé", example: "Research documented significant health disparities between demographic groups." },
-    { word: "socioeconomic gradient", translation: "gradient socioéconomique", example: "Health outcomes follow a socioeconomic gradient across populations." },
+    
+    
+    
     { word: "upstream factor", translation: "facteur en amont", example: "Effective interventions address upstream factors creating health challenges." },
-    { word: "social exclusion", translation: "exclusion sociale", example: "Social exclusion contributes to poorer health outcomes in marginalized communities." },
-    { word: "health equity", translation: "équité en santé", example: "Health equity initiatives address systemic barriers to wellbeing." },
+    
+    
     { word: "structural violence", translation: "violence structurelle", example: "Structural violence describes how social arrangements harm vulnerable populations." },
-    { word: "health literacy", translation: "littératie en santé", example: "Limited health literacy creates barriers to effective self-care and treatment adherence." },
+    
     { word: "systemic barrier", translation: "barrière systémique", example: "Systemic barriers prevent equitable access to healthcare services." },
-    { word: "food insecurity", translation: "insécurité alimentaire", example: "Food insecurity contributes to multiple adverse health outcomes." },
-    { word: "built environment", translation: "environnement bâti", example: "The built environment significantly impacts physical activity and health." },
-    { word: "economic inequality", translation: "inégalité économique", example: "Economic inequality correlates strongly with health outcome disparities." },
+    
+    
+    
     { word: "structural racism", translation: "racisme structurel", example: "Structural racism creates persistent health disparities between racial groups." },
-    { word: "social gradient", translation: "gradient social", example: "Health follows a social gradient with outcomes improving at each socioeconomic level." },
-    { word: "health-in-all-policies", translation: "santé dans toutes les politiques", example: "The health-in-all-policies approach considers wellbeing across government actions." },
-    { word: "social stratification", translation: "stratification sociale", example: "Social stratification creates differential exposure to health risks." },
+    
+    
+    
     { word: "institutional discrimination", translation: "discrimination institutionnelle", example: "Institutional discrimination affects healthcare access and treatment quality." },
-    { word: "environmental justice", translation: "justice environnementale", example: "Environmental justice addresses unequal exposure to health hazards." },
+    
     { word: "structural intervention", translation: "intervention structurelle", example: "Structural interventions address root causes rather than individual behaviors." },
     { word: "poverty-related disease", translation: "maladie liée à la pauvreté", example: "Poverty-related diseases reflect unequal distribution of resources and risks." },
     { word: "population vulnerability", translation: "vulnérabilité de la population", example: "Population vulnerability assessment identifies groups at greatest health risk." },
@@ -178,12 +178,12 @@ export const vocab = {
     // Gestion des crises sanitaires
     { word: "health crisis", translation: "crise sanitaire", example: "The health crisis required coordinated response across multiple sectors." },
     { word: "pandemic preparedness", translation: "préparation à la pandémie", example: "Pandemic preparedness involves developing systems and resources before outbreaks occur." },
-    { word: "emergency response", translation: "réponse d'urgence", example: "Effective emergency response requires clear coordination and communication." },
+    
     { word: "outbreak management", translation: "gestion des épidémies", example: "Outbreak management includes surveillance, containment, and treatment strategies." },
     { word: "public health emergency", translation: "urgence de santé publique", example: "The organization declared a public health emergency of international concern." },
-    { word: "contact tracing", translation: "traçage des contacts", example: "Contact tracing identifies individuals potentially exposed to infectious disease." },
+    
     { word: "epidemic control", translation: "contrôle des épidémies", example: "Epidemic control measures aim to reduce transmission and mortality." },
-    { word: "risk assessment", translation: "évaluation des risques", example: "Ongoing risk assessment guides resource allocation during outbreaks." },
+    
     { word: "surge capacity", translation: "capacité de pointe", example: "Hospitals increased surge capacity to accommodate additional patients." },
     { word: "quarantine measure", translation: "mesure de quarantaine", example: "Quarantine measures restrict movement of potentially exposed individuals." },
     { word: "emergency operations center", translation: "centre d'opérations d'urgence", example: "The emergency operations center coordinated multi-agency response efforts." },

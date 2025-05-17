@@ -39,7 +39,7 @@
     { word: "bag", translation: "sac", example: "She has a new bag." },
     { word: "backpack", translation: "sac à dos", example: "Students often carry a backpack." },
     { word: "jewelry", translation: "bijoux", example: "She wears beautiful jewelry." },
-    { word: "watch", translation: "montre", example: "What time is it on your watch?" },
+    
     { word: "sunglasses", translation: "lunettes de soleil", example: "I wear sunglasses when it's sunny." },
     
     // Couleurs fondamentales
@@ -52,10 +52,10 @@
     { word: "brown", translation: "marron", example: "He has brown eyes." },
     { word: "grey", translation: "gris", example: "The clouds are grey." },
     { word: "pink", translation: "rose", example: "My daughter loves pink clothes." },
-    { word: "orange", translation: "orange", example: "The sunset is orange." },
+    
     { word: "purple", translation: "violet", example: "She likes purple flowers." },
     { word: "color", translation: "couleur", example: "What's your favorite color?" },
-    { word: "light", translation: "clair", example: "I prefer light colors." },
+    
     { word: "dark", translation: "foncé", example: "This blue is too dark." },
     
     // Motifs simples

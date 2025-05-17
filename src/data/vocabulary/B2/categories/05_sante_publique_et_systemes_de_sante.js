@@ -3,14 +3,14 @@ export const vocab = {
   words: [
     // Politiques de santé
     { word: "health policy", translation: "politique de santé", example: "Health policy decisions impact the availability and affordability of medical care." },
-    { word: "public health", translation: "santé publique", example: "Public health focuses on protecting and improving health at the population level." },
+    
     { word: "healthcare reform", translation: "réforme des soins de santé", example: "Healthcare reform aims to address issues of access, quality, and cost." },
     { word: "universal healthcare", translation: "couverture sanitaire universelle", example: "Universal healthcare ensures all citizens have access to essential medical services." },
     { word: "single-payer system", translation: "système à payeur unique", example: "A single-payer system funds healthcare through taxes rather than private insurance." },
     { word: "health insurance mandate", translation: "obligation d'assurance maladie", example: "The health insurance mandate requires individuals to obtain coverage or pay a penalty." },
     { word: "means-tested program", translation: "programme sous condition de ressources", example: "Means-tested programs provide healthcare benefits based on income eligibility." },
     { word: "cost containment", translation: "maîtrise des coûts", example: "Cost containment strategies aim to reduce healthcare expenditures without sacrificing quality." },
-    { word: "preventive care", translation: "soins préventifs", example: "Preventive care focuses on avoiding illness rather than treating it after onset." },
+    
     { word: "health financing", translation: "financement de la santé", example: "Sustainable health financing ensures healthcare systems remain viable long-term." },
     { word: "health regulation", translation: "réglementation sanitaire", example: "Health regulation establishes standards for medical facilities and professionals." },
     { word: "health planning", translation: "planification sanitaire", example: "Health planning coordinates resources to meet population health needs." },
@@ -33,18 +33,18 @@ export const vocab = {
     { word: "pandemic", translation: "pandémie", example: "A pandemic spreads across multiple countries or continents." },
     { word: "endemic", translation: "endémique", example: "Malaria remains endemic in many tropical regions." },
     { word: "epidemic curve", translation: "courbe épidémique", example: "The epidemic curve shows how cases accumulate over time." },
-    { word: "surveillance", translation: "surveillance", example: "Disease surveillance systems monitor for unusual patterns of illness." },
+    
     { word: "contact tracing", translation: "recherche des contacts", example: "Contact tracing identifies people who may have been exposed to an infectious disease." },
     { word: "case-control study", translation: "étude cas-témoins", example: "The case-control study compared people with the disease to similar individuals without it." },
     { word: "cohort study", translation: "étude de cohorte", example: "The cohort study followed participants over time to observe health outcomes." },
     { word: "cross-sectional study", translation: "étude transversale", example: "A cross-sectional study collects data at a specific point in time." },
     { word: "randomized controlled trial", translation: "essai contrôlé randomisé", example: "Randomized controlled trials provide the strongest evidence for treatment effectiveness." },
-    { word: "risk factor", translation: "facteur de risque", example: "Smoking is a major risk factor for lung cancer and heart disease." },
+    
     { word: "relative risk", translation: "risque relatif", example: "The relative risk compares disease probability between exposed and unexposed groups." },
     { word: "attributable risk", translation: "risque attribuable", example: "Attributable risk estimates the proportion of disease due to a specific exposure." },
     { word: "confounding variable", translation: "variable confondante", example: "Age can be a confounding variable in studies of disease and occupation." },
-    { word: "bias", translation: "biais", example: "Selection bias occurs when study participants aren't representative of the target population." },
-    { word: "herd immunity", translation: "immunité collective", example: "Herd immunity occurs when a sufficient proportion of the population becomes immune." },
+    
+    
     { word: "vector", translation: "vecteur", example: "Mosquitoes are vectors for diseases like malaria and dengue fever." },
     { word: "pathogen", translation: "agent pathogène", example: "Bacteria, viruses, and parasites are common pathogens." },
     { word: "serological survey", translation: "enquête sérologique", example: "The serological survey tested blood samples for antibodies against the virus." },
@@ -52,12 +52,12 @@ export const vocab = {
     // Systèmes de santé comparés
     { word: "health system", translation: "système de santé", example: "A resilient health system can respond effectively to emergencies while maintaining essential services." },
     { word: "healthcare delivery", translation: "prestation de soins de santé", example: "Healthcare delivery models vary widely across countries." },
-    { word: "primary care", translation: "soins primaires", example: "Strong primary care systems improve health outcomes and reduce costs." },
+    
     { word: "secondary care", translation: "soins secondaires", example: "Secondary care includes specialist services usually accessed through referral." },
     { word: "tertiary care", translation: "soins tertiaires", example: "Tertiary care provides complex treatments in specialized facilities." },
     { word: "public healthcare", translation: "soins de santé publics", example: "Public healthcare is funded through government revenue and available to all citizens." },
     { word: "private healthcare", translation: "soins de santé privés", example: "Private healthcare services operate on a for-profit basis." },
-    { word: "health insurance", translation: "assurance maladie", example: "Health insurance protects individuals from high medical costs." },
+    
     { word: "social health insurance", translation: "assurance maladie sociale", example: "Social health insurance systems pool funds through income-based contributions." },
     { word: "out-of-pocket payment", translation: "paiement direct", example: "High out-of-pocket payments can create financial barriers to healthcare access." },
     { word: "gatekeeping", translation: "filtrage", example: "Gatekeeping requires patients to see a primary care provider before accessing specialists." },
@@ -82,11 +82,11 @@ export const vocab = {
     { word: "confidentiality", translation: "confidentialité", example: "Medical confidentiality protects patients' private health information." },
     { word: "end-of-life care", translation: "soins de fin de vie", example: "End-of-life care addresses physical, emotional, and spiritual needs of dying patients." },
     { word: "advance directive", translation: "directive anticipée", example: "An advance directive specifies a person's wishes for medical care if they cannot communicate." },
-    { word: "ethical dilemma", translation: "dilemme éthique", example: "Resource allocation during shortages presents difficult ethical dilemmas." },
+    
     { word: "research ethics", translation: "éthique de la recherche", example: "Research ethics protects the rights and welfare of study participants." },
     { word: "ethics committee", translation: "comité d'éthique", example: "The ethics committee reviews research proposals involving human subjects." },
     { word: "bioethics", translation: "bioéthique", example: "Bioethics addresses ethical issues arising from advances in medicine and biology." },
-    { word: "healthcare rationing", translation: "rationnement des soins de santé", example: "Healthcare rationing raises questions about fairness and resource allocation." },
+    
     { word: "paternalism", translation: "paternalisme", example: "Medical paternalism involves making decisions for patients without their input." },
     { word: "euthanasia", translation: "euthanasie", example: "Euthanasia remains controversial and legally prohibited in many countries." },
     { word: "assisted suicide", translation: "suicide assisté", example: "Assisted suicide allows terminally ill patients to end their lives with medical assistance." },
@@ -111,7 +111,7 @@ export const vocab = {
     { word: "cross-border health threat", translation: "menace sanitaire transfrontalière", example: "Cross-border health threats require coordinated international responses." },
     { word: "health equity", translation: "équité en santé", example: "Health equity aims to eliminate avoidable differences in health status." },
     { word: "Sustainable Development Goals", translation: "Objectifs de développement durable", example: "Health targets feature prominently in the Sustainable Development Goals." },
-    { word: "health security", translation: "sécurité sanitaire", example: "Health security protects populations from infectious disease threats." },
+    
     { word: "global health initiative", translation: "initiative mondiale de santé", example: "The global health initiative focuses on reducing maternal mortality." },
     
     // Innovations médicales
@@ -119,17 +119,17 @@ export const vocab = {
     { word: "telehealth", translation: "télésanté", example: "Telehealth allows remote consultation with healthcare providers." },
     { word: "precision medicine", translation: "médecine de précision", example: "Precision medicine tailors treatment to individual genetic profiles." },
     { word: "genetic testing", translation: "test génétique", example: "Genetic testing identifies disease risks based on DNA analysis." },
-    { word: "biotechnology", translation: "biotechnologie", example: "Biotechnology applications include vaccines, diagnostics, and therapies." },
+    
     { word: "regenerative medicine", translation: "médecine régénérative", example: "Regenerative medicine aims to repair or replace damaged tissues and organs." },
-    { word: "artificial intelligence", translation: "intelligence artificielle", example: "Artificial intelligence assists in medical imaging interpretation and diagnosis." },
+    
     { word: "robotic surgery", translation: "chirurgie robotique", example: "Robotic surgery enables minimally invasive procedures with greater precision." },
-    { word: "3D printing", translation: "impression 3D", example: "3D printing creates custom prosthetics and anatomical models for surgical planning." },
-    { word: "clinical trial", translation: "essai clinique", example: "Clinical trials test new treatments for safety and effectiveness." },
+    
+    
     { word: "digital health", translation: "santé numérique", example: "Digital health encompasses mobile health, telehealth, and health information technology." },
-    { word: "wearable technology", translation: "technologie portable", example: "Wearable technology monitors vital signs continuously outside clinical settings." },
+    
     { word: "personalized medicine", translation: "médecine personnalisée", example: "Personalized medicine tailors treatment to individual characteristics." },
     { word: "gene therapy", translation: "thérapie génique", example: "Gene therapy treats disease by modifying genetic material within cells." },
-    { word: "immunotherapy", translation: "immunothérapie", example: "Immunotherapy harnesses the immune system to fight cancer and other diseases." },
+    
     { word: "nanomedicine", translation: "nanomédecine", example: "Nanomedicine uses microscopic particles for targeted drug delivery." },
     { word: "health innovation", translation: "innovation en santé", example: "Health innovation includes new technologies, processes, and service models." },
     { word: "translational research", translation: "recherche translationnelle", example: "Translational research bridges laboratory discoveries and clinical applications." },
@@ -139,9 +139,9 @@ export const vocab = {
     // Santé communautaire
     { word: "community health", translation: "santé communautaire", example: "Community health programs address local health needs and priorities." },
     { word: "public health intervention", translation: "intervention de santé publique", example: "Public health interventions aim to prevent disease and promote health at population level." },
-    { word: "health education", translation: "éducation sanitaire", example: "Health education increases knowledge and skills for healthy behaviors." },
-    { word: "health promotion", translation: "promotion de la santé", example: "Health promotion empowers people to increase control over their health." },
-    { word: "community engagement", translation: "engagement communautaire", example: "Community engagement ensures health programs meet local needs and values." },
+    
+    
+    
     { word: "health literacy", translation: "littératie en santé", example: "Health literacy is the ability to obtain, understand, and use health information." },
     { word: "community diagnosis", translation: "diagnostic communautaire", example: "Community diagnosis identifies health issues affecting a specific population." },
     { word: "community-based care", translation: "soins communautaires", example: "Community-based care delivers services close to where people live." },
@@ -161,14 +161,14 @@ export const vocab = {
     // Déterminants sociaux de la santé
     { word: "social determinants of health", translation: "déterminants sociaux de la santé", example: "Social determinants of health include conditions where people live, work, and age." },
     { word: "health disparity", translation: "disparité de santé", example: "Health disparities are preventable differences in health outcomes between populations." },
-    { word: "health equity", translation: "équité en santé", example: "Health equity means everyone has a fair opportunity to attain their health potential." },
-    { word: "socioeconomic status", translation: "statut socioéconomique", example: "Socioeconomic status strongly predicts health outcomes across populations." },
-    { word: "poverty", translation: "pauvreté", example: "Poverty limits access to resources essential for good health." },
+    
+    
+    
     { word: "income inequality", translation: "inégalité de revenus", example: "Income inequality correlates with population health differences." },
     { word: "education level", translation: "niveau d'éducation", example: "Higher education levels generally predict better health outcomes." },
     { word: "housing condition", translation: "condition de logement", example: "Poor housing conditions contribute to respiratory and other health problems." },
-    { word: "food security", translation: "sécurité alimentaire", example: "Food security means reliable access to sufficient, nutritious food." },
-    { word: "health literacy", translation: "littératie en santé", example: "Limited health literacy creates barriers to effective healthcare utilization." },
+    
+    
     { word: "neighborhood environment", translation: "environnement du quartier", example: "The neighborhood environment influences physical activity and stress levels." },
     { word: "environmental exposure", translation: "exposition environnementale", example: "Environmental exposure to pollutants increases disease risk." },
     { word: "occupational hazard", translation: "risque professionnel", example: "Occupational hazards vary significantly across different industries." },

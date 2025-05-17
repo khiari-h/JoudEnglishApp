@@ -2,35 +2,35 @@ export const vocab = {
   title: "Communication Interculturelle",
   words: [
     // Principes fondamentaux (50 mots)
-    { word: "intercultural communication", translation: "communication interculturelle", example: "Effective intercultural communication requires awareness of cultural differences in interaction styles." },
-    { word: "cultural competence", translation: "compétence culturelle", example: "Developing cultural competence is essential for professionals working in global contexts." },
-    { word: "cultural intelligence", translation: "intelligence culturelle", example: "Cultural intelligence enables effective adaptation to diverse cultural environments." },
-    { word: "ethnocentrism", translation: "ethnocentrisme", example: "Ethnocentrism leads people to evaluate other cultures using their own cultural standards." },
+    
+    
+    
+    
     { word: "ethnorelativism", translation: "ethnorelativisme", example: "Ethnorelativism views cultural differences as neither superior nor inferior, but simply different." },
-    { word: "cultural relativism", translation: "relativisme culturel", example: "Cultural relativism advocates understanding practices within their cultural context." },
-    { word: "enculturation", translation: "enculturation", example: "Enculturation is the process by which individuals acquire their native cultural framework." },
-    { word: "acculturation", translation: "acculturation", example: "Immigrants experience acculturation as they adapt to their host society's norms." },
-    { word: "cultural adaptation", translation: "adaptation culturelle", example: "Cultural adaptation occurs in stages, from initial enthusiasm to integration." },
-    { word: "culture shock", translation: "choc culturel", example: "Culture shock manifests through disorientation when encountering unfamiliar cultural practices." },
+    
+    
+    
+    
+    
     { word: "reverse culture shock", translation: "choc culturel inverse", example: "Expatriates often experience reverse culture shock when returning to their home countries." },
-    { word: "cultural identity", translation: "identité culturelle", example: "Cultural identity encompasses one's sense of belonging to particular cultural groups." },
-    { word: "cultural diversity", translation: "diversité culturelle", example: "UNESCO promotes cultural diversity as humanity's common heritage." },
-    { word: "cultural sensitivity", translation: "sensibilité culturelle", example: "Cultural sensitivity involves awareness of cultural differences without judgment." },
+    
+    
+    
     { word: "cultural awareness", translation: "conscience culturelle", example: "Cultural awareness begins with recognizing one's own cultural conditioning." },
     { word: "cultural orientation", translation: "orientation culturelle", example: "Cultural orientation encompasses fundamental assumptions about human nature and relationships." },
-    { word: "cross-cultural adaptation", translation: "adaptation interculturelle", example: "Cross-cultural adaptation requires both affective and behavioral adjustments." },
-    { word: "cultural immersion", translation: "immersion culturelle", example: "Cultural immersion accelerates language acquisition and cultural understanding." },
-    { word: "cultural distance", translation: "distance culturelle", example: "Cultural distance measures the degree of difference between cultural systems." },
+    
+    
+    
     { word: "intercultural encounter", translation: "rencontre interculturelle", example: "Each intercultural encounter presents opportunities for learning and misunderstanding." },
     { word: "cultural mediator", translation: "médiateur culturel", example: "The translator served as a cultural mediator, explaining contextual implications." },
     { word: "cultural broker", translation: "intermédiaire culturel", example: "Bicultural individuals often function as cultural brokers between communities." },
     { word: "cultural frame of reference", translation: "cadre de référence culturel", example: "Each person interprets experiences through their cultural frame of reference." },
-    { word: "cultural code", translation: "code culturel", example: "Understanding implicit cultural codes is essential for effective communication." },
+    
     { word: "cultural script", translation: "script culturel", example: "Cultural scripts provide templates for appropriate behavior in specific situations." },
-    { word: "cultural schema", translation: "schéma culturel", example: "Cultural schemas organize knowledge about social situations and expectations." },
-    { word: "cultural lens", translation: "prisme culturel", example: "Everyone perceives the world through their cultural lens, shaping interpretation." },
-    { word: "cultural context", translation: "contexte culturel", example: "Communication must be interpreted within its cultural context to be understood accurately." },
-    { word: "cultural dimension", translation: "dimension culturelle", example: "Hofstede identified multiple cultural dimensions including power distance and uncertainty avoidance." },
+    
+    
+    
+    
     { word: "cultural baggage", translation: "bagage culturel", example: "Travelers bring cultural baggage—unconscious assumptions—to their intercultural experiences." },
     { word: "cultural blind spot", translation: "angle mort culturel", example: "Cultural blind spots prevent recognition of one's own cultural conditioning." },
     { word: "cultural communication style", translation: "style de communication culturel", example: "Cultural communication styles vary in directness, emotionality, and formality." },
@@ -42,20 +42,20 @@ export const vocab = {
     { word: "cultural determinism", translation: "déterminisme culturel", example: "Cultural determinism suggests behavior is primarily shaped by cultural conditioning." },
     { word: "cultural reductionism", translation: "réductionnisme culturel", example: "Cultural reductionism oversimplifies complex behaviors as merely cultural." },
     { word: "cultural essentialism", translation: "essentialisme culturel", example: "Cultural essentialism attributes fixed, inherent characteristics to cultural groups." },
-    { word: "cultural homogenization", translation: "homogénéisation culturelle", example: "Globalization may contribute to cultural homogenization through standardized products and media." },
+    
     { word: "cultural hybridity", translation: "hybridité culturelle", example: "Cultural hybridity emerges from the creative fusion of diverse cultural elements." },
-    { word: "cultural syncretism", translation: "syncrétisme culturel", example: "Religious cultural syncretism blends elements from different spiritual traditions." },
+    
     { word: "cultural translation", translation: "traduction culturelle", example: "Cultural translation adapts concepts from one cultural framework to another." },
     { word: "cultural accommodation", translation: "accommodation culturelle", example: "Cultural accommodation involves adapting one's behavior to another cultural context." },
-    { word: "cultural assimilation", translation: "assimilation culturelle", example: "Cultural assimilation occurs when minority groups adopt the dominant culture's patterns." },
-    { word: "cultural integration", translation: "intégration culturelle", example: "Cultural integration balances maintaining cultural identity with participating in broader society." },
+    
+    
     { word: "cultural marginalization", translation: "marginalisation culturelle", example: "Cultural marginalization occurs when groups are excluded from mainstream society." },
     { word: "cultural separation", translation: "séparation culturelle", example: "Cultural separation maintains strong boundaries between cultural communities." },
     { word: "cultural segregation", translation: "ségrégation culturelle", example: "Cultural segregation involves institutional separation of cultural groups." },
     
     // Dimensions interculturelles (50 mots)
-    { word: "high-context culture", translation: "culture à contexte fort", example: "In high-context cultures, communication relies heavily on implicit understanding and context." },
-    { word: "low-context culture", translation: "culture à contexte faible", example: "Low-context cultures favor explicit, detailed communication with minimal ambiguity." },
+    
+    
     { word: "individualism", translation: "individualisme", example: "Individualistic cultures prioritize personal goals over group objectives." },
     { word: "collectivism", translation: "collectivisme", example: "Collectivistic cultures emphasize group harmony and interdependence." },
     { word: "power distance", translation: "distance hiérarchique", example: "Power distance reflects acceptance of unequal power distribution in organizations and society." },
@@ -86,7 +86,7 @@ export const vocab = {
     { word: "hierarchical orientation", translation: "orientation hiérarchique", example: "Hierarchical orientation accepts status differences and formal protocols." },
     { word: "egalitarian orientation", translation: "orientation égalitaire", example: "Egalitarian orientation minimizes status differences and formal protocols." },
     { word: "expression", translation: "expression", example: "Expression-oriented cultures value eloquence and verbal adeptness." },
-    { word: "understatement", translation: "litote", example: "Understatement-oriented cultures value modesty and restraint in self-presentation." },
+    
     { word: "being culture", translation: "culture de l'être", example: "Being cultures emphasize quality of life and natural spontaneity." },
     { word: "doing culture", translation: "culture du faire", example: "Doing cultures emphasize achievement, action, and measurable accomplishments." },
     { word: "dignity culture", translation: "culture de la dignité", example: "Dignity cultures base self-worth on internal values independent of others' opinions." },
@@ -94,7 +94,7 @@ export const vocab = {
     { word: "face culture", translation: "culture de la face", example: "Face cultures emphasize maintaining reputation through harmonious relationships." },
     { word: "high emotional expressiveness", translation: "expressivité émotionnelle élevée", example: "Mediterranean cultures often demonstrate high emotional expressiveness in communication." },
     { word: "low emotional expressiveness", translation: "expressivité émotionnelle basse", example: "Nordic cultures typically demonstrate low emotional expressiveness in public settings." },
-    { word: "cultural divergence", translation: "divergence culturelle", example: "Cultural divergence occurs when globalization strengthens rather than diminishes cultural distinctions." },
+    
     { word: "cultural convergence", translation: "convergence culturelle", example: "Cultural convergence occurs when different cultures become more similar through contact." },
     { word: "cultural attribution", translation: "attribution culturelle", example: "Cultural attribution explains behavior through cultural rather than personal factors." },
     { word: "cultural stereotype", translation: "stéréotype culturel", example: "Cultural stereotypes oversimplify complex cultural patterns into rigid generalizations." },
@@ -102,14 +102,14 @@ export const vocab = {
     { word: "cultural fluency", translation: "aisance culturelle", example: "Cultural fluency enables seamless navigation across different cultural contexts." },
     { word: "cultural metacognition", translation: "métacognition culturelle", example: "Cultural metacognition involves conscious awareness of one's cultural assumptions." },
     { word: "cultural archetype", translation: "archétype culturel", example: "Cultural archetypes represent fundamental patterns recurring across societies." },
-    { word: "cultural transmission", translation: "transmission culturelle", example: "Cultural transmission occurs through both formal education and informal socialization." },
+    
     
     // Applications pratiques (50 mots)
-    { word: "cultural misunderstanding", translation: "malentendu culturel", example: "The negotiation failed due to cultural misunderstandings about decision-making processes." },
+    
     { word: "cultural miscommunication", translation: "mauvaise communication culturelle", example: "Cultural miscommunication often results from different assumptions about appropriate behavior." },
-    { word: "cross-cultural negotiation", translation: "négociation interculturelle", example: "Cross-cultural negotiation requires awareness of different approaches to conflict and agreement." },
+    
     { word: "intercultural relations", translation: "relations interculturelles", example: "The department of intercultural relations facilitates integration in multinational organizations." },
-    { word: "intercultural mediation", translation: "médiation interculturelle", example: "Intercultural mediation helps resolve conflicts arising from cultural differences." },
+    
     { word: "cultural briefing", translation: "briefing culturel", example: "Diplomats receive cultural briefing before foreign assignments to prevent diplomatic incidents." },
     { word: "cultural debriefing", translation: "débriefing culturel", example: "Cultural debriefing helps returnees process and integrate their international experiences." },
     { word: "cultural due diligence", translation: "diligence raisonnable culturelle", example: "Cultural due diligence assesses compatibility before international mergers." },
@@ -119,28 +119,28 @@ export const vocab = {
     { word: "cultural mentor", translation: "mentor culturel", example: "A cultural mentor helps newcomers navigate unfamiliar social and organizational norms." },
     { word: "cultural consultant", translation: "consultant culturel", example: "The cultural consultant advised on appropriate market entry strategies for the region." },
     { word: "cultural bridge", translation: "pont culturel", example: "Bicultural individuals often serve as cultural bridges between communities." },
-    { word: "cultural capital", translation: "capital culturel", example: "International experience provides valuable cultural capital in global organizations." },
+    
     { word: "cultural liability", translation: "passif culturel", example: "Ethnocentric attitudes become a cultural liability in international business." },
-    { word: "cultural barrier", translation: "barrière culturelle", example: "Language differences create an obvious cultural barrier requiring mediation." },
+    
     { word: "intercultural marriage", translation: "mariage interculturel", example: "Intercultural marriages navigate differences in family expectations and communication styles." },
     { word: "intercultural workplace", translation: "lieu de travail interculturel", example: "Intercultural workplaces benefit from diverse perspectives when properly managed." },
     { word: "intercultural education", translation: "éducation interculturelle", example: "Intercultural education prepares students for global citizenship and collaboration." },
     { word: "intercultural conflict", translation: "conflit interculturel", example: "Intercultural conflict often stems from different values and communication patterns." },
-    { word: "intercultural dialogue", translation: "dialogue interculturel", example: "Intercultural dialogue promotes mutual understanding across different worldviews." },
+    
     { word: "cross-cultural management", translation: "management interculturel", example: "Cross-cultural management adapts leadership practices to diverse cultural contexts." },
-    { word: "intercultural sensitivity", translation: "sensibilité interculturelle", example: "Developing intercultural sensitivity proceeds through predictable developmental stages." },
+    
     { word: "intercultural adjustment", translation: "ajustement interculturel", example: "Intercultural adjustment involves psychological and sociocultural adaptation processes." },
     { word: "cultural agility", translation: "agilité culturelle", example: "Cultural agility enables quick adaptation to unfamiliar cultural environments." },
-    { word: "cultural humility", translation: "humilité culturelle", example: "Cultural humility recognizes the limitations of one's cultural perspective." },
+    
     { word: "ethnocultural empathy", translation: "empathie ethnoculturelle", example: "Ethnocultural empathy involves understanding experiences from another cultural perspective." },
     { word: "cultural mindfulness", translation: "pleine conscience culturelle", example: "Cultural mindfulness involves aware attention to cultural dimensions of interaction." },
     { word: "cultural bias", translation: "biais culturel", example: "Cultural bias unconsciously influences perceptions and evaluations of other groups." },
     { word: "cultural prejudice", translation: "préjugé culturel", example: "Cultural prejudice involves negative pre-judgments about other cultural groups." },
     { word: "cultural self-awareness", translation: "conscience de soi culturelle", example: "Cultural self-awareness recognizes how one's own culture shapes perceptions." },
     { word: "intercultural ethics", translation: "éthique interculturelle", example: "Intercultural ethics navigates competing moral frameworks across cultural boundaries." },
-    { word: "cultural diplomacy", translation: "diplomatie culturelle", example: "Cultural diplomacy builds international relationships through cultural exchange." },
-    { word: "intercultural rhetoric", translation: "rhétorique interculturelle", example: "Intercultural rhetoric analyzes persuasive strategies across cultural traditions." },
-    { word: "intercultural pragmatics", translation: "pragmatique interculturelle", example: "Intercultural pragmatics studies how communicative intentions are interpreted across cultures." },
+    
+    
+    
     { word: "business across cultures", translation: "affaires interculturelles", example: "Business across cultures requires adapting strategies to local preferences." },
     { word: "global leadership", translation: "leadership mondial", example: "Global leadership combines strategic vision with intercultural adaptability." },
     { word: "cultural diversity management", translation: "gestion de la diversité culturelle", example: "Cultural diversity management transforms differences into organizational strengths." },
@@ -148,7 +148,7 @@ export const vocab = {
     { word: "intercultural client relations", translation: "relations clientèle interculturelles", example: "Intercultural client relations adapt service approaches to cultural expectations." },
     { word: "intercultural healthcare", translation: "soins de santé interculturels", example: "Intercultural healthcare respects diverse health beliefs and practices." },
     { word: "intercultural counseling", translation: "conseil interculturel", example: "Intercultural counseling adapts therapeutic approaches to cultural frameworks." },
-    { word: "cultural accommodation", translation: "accommodation culturelle", example: "Cultural accommodation adjusts policies to suit diverse cultural needs." },
+    
     { word: "cultural adaptation strategy", translation: "stratégie d'adaptation culturelle", example: "The cultural adaptation strategy modified the product for regional preferences." },
     { word: "cultural marketing", translation: "marketing culturel", example: "Cultural marketing tailors campaigns to cultural values and preferences." },
     { word: "cultural localization", translation: "localisation culturelle", example: "Cultural localization adapts products and services to specific cultural markets." },
@@ -161,11 +161,11 @@ export const vocab = {
     { word: "cultural intelligence development", translation: "développement de l'intelligence culturelle", example: "Cultural intelligence development requires cognitive, motivational, and behavioral training." },
     { word: "culture and technology", translation: "culture et technologie", example: "Culture and technology interact as digital tools reflect and reshape cultural patterns." },
     { word: "intercultural virtual teams", translation: "équipes virtuelles interculturelles", example: "Intercultural virtual teams face challenges of both distance and cultural differences." },
-    { word: "cosmopolitanism", translation: "cosmopolitisme", example: "Cosmopolitanism embraces global interconnection while respecting cultural differences." },
+    
     { word: "third culture individuals", translation: "individus de troisième culture", example: "Third culture individuals develop identities influenced by multiple cultural systems." },
     { word: "global mindset", translation: "état d'esprit global", example: "A global mindset combines openness to diversity with ability to recognize patterns." },
     { word: "geocentric orientation", translation: "orientation géocentrique", example: "Organizations with geocentric orientation integrate global and local perspectives." },
-    { word: "glocalization", translation: "glocalisation", example: "Glocalization adapts global products to local cultural preferences and needs." },
+    
     { word: "cultural globalisation", translation: "mondialisation culturelle", example: "Cultural globalisation creates complex flows of ideas, practices, and values." },
     { word: "transnationalism", translation: "transnationalisme", example: "Transnationalism involves maintaining connections across multiple national contexts." },
     { word: "diaspora communities", translation: "communautés diasporiques", example: "Diaspora communities maintain cultural identity while adapting to host environments." },
@@ -179,7 +179,7 @@ export const vocab = {
     { word: "intercultural knowledge management", translation: "gestion des connaissances interculturelles", example: "Intercultural knowledge management preserves diverse perspectives in organizations." },
     { word: "neuroscience of culture", translation: "neuroscience de la culture", example: "The neuroscience of culture examines how cultural contexts shape neural processing." },
     { word: "embodied cultural cognition", translation: "cognition culturelle incarnée", example: "Embodied cultural cognition explores how culture shapes bodily experiences." },
-    { word: "cultural sustainability", translation: "durabilité culturelle", example: "Cultural sustainability preserves diverse traditions alongside ecological concerns." },
+    
     { word: "heritage language maintenance", translation: "maintien de la langue d'origine", example: "Heritage language maintenance preserves cultural identity across generations." },
     { word: "intercultural urbanism", translation: "urbanisme interculturel", example: "Intercultural urbanism designs spaces that facilitate cross-cultural interaction." },
     { word: "superdiversity", translation: "superdiversité", example: "Superdiversity describes contexts with multiple dimensions of cultural difference." },
@@ -187,18 +187,18 @@ export const vocab = {
     { word: "transcultural identity", translation: "identité transculturelle", example: "Transcultural identity integrates elements from multiple cultural frameworks." },
     { word: "cultural transfusion", translation: "transfusion culturelle", example: "Cultural transfusion describes how practices acquire new meanings in new contexts." },
     { word: "cultural regeneration", translation: "régénération culturelle", example: "Cultural regeneration revitalizes traditions through contemporary adaptations." },
-    { word: "cultural resilience", translation: "résilience culturelle", example: "Cultural resilience maintains core identity despite challenging circumstances." },
-    { word: "cultural negotiation", translation: "négociation culturelle", example: "Cultural negotiation involves adapting to context while maintaining identity." },
+    
+    
     { word: "cultural intersectionality", translation: "intersectionnalité culturelle", example: "Cultural intersectionality examines overlapping cultural, gender, and class identities." },
     { word: "intercultural aesthetics", translation: "esthétique interculturelle", example: "Intercultural aesthetics studies artistic forms that transcend cultural boundaries." },
     { word: "cultural memory", translation: "mémoire culturelle", example: "Cultural memory preserves collective experiences through narratives and practices." },
-    { word: "cultural trauma", translation: "traumatisme culturel", example: "Cultural trauma affects collective identity through historical wounding experiences." },
+    
     { word: "intercultural historiography", translation: "historiographie interculturelle", example: "Intercultural historiography examines how cultures interpret shared historical events." },
     { word: "cultural reconciliation", translation: "réconciliation culturelle", example: "Cultural reconciliation heals historical conflicts between cultural groups." },
     { word: "intercultural justice", translation: "justice interculturelle", example: "Intercultural justice balances universal principles with cultural particularity." },
     { word: "decolonial approach", translation: "approche décoloniale", example: "Decolonial approaches to intercultural communication address power imbalances." },
     { word: "cultural sovereignty", translation: "souveraineté culturelle", example: "Cultural sovereignty asserts a group's right to maintain distinctive practices." },
-    { word: "cultural appropriation", translation: "appropriation culturelle", example: "Cultural appropriation controversies center on respect and power in cultural borrowing." },
+    
     { word: "cultural brokerage", translation: "courtage culturel", example: "Cultural brokerage facilitates understanding between disparate cultural groups." },
     { word: "cultural exchange program", translation: "programme d'échange culturel", example: "Cultural exchange programs facilitate immersive cross-cultural learning." },
     { word: "cultural democratization", translation: "démocratisation culturelle", example: "Cultural democratization expands access to cultural resources and voices." },

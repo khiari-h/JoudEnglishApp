@@ -8,17 +8,15 @@ export const vocab = {
     { word: "short story", translation: "nouvelle", example: "The short story reveals character through subtle, meaningful details." },
     { word: "drama", translation: "théâtre", example: "Contemporary drama often blurs boundaries between performer and audience." },
     { word: "memoir", translation: "mémoires", example: "The memoir recounts her experiences during the political upheaval." },
-    { word: "essay", translation: "essai", example: "His essays examine the relationship between technology and human connection." },
+    
     { word: "autobiography", translation: "autobiographie", example: "The autobiography provides insight into the author's creative process." },
     { word: "biography", translation: "biographie", example: "The critically acclaimed biography drew from previously unpublished letters." },
     { word: "historical fiction", translation: "fiction historique", example: "Historical fiction blends factual events with imagined characters and narratives." },
     { word: "science fiction", translation: "science-fiction", example: "Science fiction often explores the societal implications of technological advances." },
     { word: "fantasy", translation: "fantaisie", example: "Her fantasy novels create intricate alternative worlds with unique magical systems." },
-    { word: "magical realism", translation: "réalisme magique", example: "Magical realism incorporates fantastical elements into otherwise realistic settings." },
-    { word: "dystopian fiction", translation: "fiction dystopique", example: "Dystopian fiction examines the dangerous potential of current social trends." },
-    { word: "bildungsroman", translation: "roman d'apprentissage", example: "The bildungsroman traces the protagonist's psychological and moral development." },
-    { word: "epistolary novel", translation: "roman épistolaire", example: "The epistolary novel unfolds through a series of letters between characters." },
-    { word: "satire", translation: "satire", example: "The satire uses humor and exaggeration to critique political institutions." },
+    opment." },
+    
+    
     { word: "tragedy", translation: "tragédie", example: "Classical tragedy depicts the downfall of a noble protagonist through fatal flaws." },
     { word: "comedy", translation: "comédie", example: "Shakespearean comedy typically concludes with reconciliation and marriage." },
     { word: "tragicomedy", translation: "tragicomédie", example: "Tragicomedy blends elements of both tragic and comic forms." },
@@ -26,96 +24,94 @@ export const vocab = {
     { word: "mystery", translation: "roman policier", example: "The mystery gradually reveals clues leading to the unexpected resolution." },
     { word: "gothic fiction", translation: "fiction gothique", example: "Gothic fiction employs supernatural elements and gloomy, decaying settings." },
     { word: "romance novel", translation: "roman sentimental", example: "The contemporary romance novel explores complex relationships beyond stereotypical formulas." },
-    { word: "creative nonfiction", translation: "non-fiction créative", example: "Creative nonfiction employs literary techniques to present factual narratives." },
+    
     
     // Éléments narratifs (25 mots)
-    { word: "narrative", translation: "récit", example: "The narrative shifts between past and present throughout the novel." },
-    { word: "plot", translation: "intrigue", example: "The complex plot weaves together multiple character storylines." },
+    
+    
     { word: "character development", translation: "développement des personnages", example: "The character development reveals gradual psychological transformation." },
-    { word: "setting", translation: "cadre", example: "The dystopian setting reflects societal anxieties about surveillance technologies." },
-    { word: "point of view", translation: "point de vue", example: "The shifting point of view provides multiple perspectives on key events." },
-    { word: "narrative structure", translation: "structure narrative", example: "The non-linear narrative structure creates a sense of fragmented memory." },
-    { word: "conflict", translation: "conflit", example: "Internal conflict drives the protagonist's decision-making throughout the story." },
-    { word: "climax", translation: "apogée", example: "The climax brings the central tensions to their breaking point." },
-    { word: "resolution", translation: "dénouement", example: "The ambiguous resolution leaves readers to interpret the ultimate meaning." },
+    
+    
+    
+    
+    
+    
     { word: "exposition", translation: "exposition", example: "The opening exposition establishes the historical context efficiently." },
     { word: "falling action", translation: "action descendante", example: "The falling action reveals the consequences of the protagonist's choices." },
     { word: "rising action", translation: "action montante", example: "The rising action increases tension through escalating complications." },
-    { word: "foreshadowing", translation: "préfiguration", example: "Subtle foreshadowing hints at the eventual betrayal by the trusted advisor." },
-    { word: "flashback", translation: "analepse", example: "Flashbacks gradually reveal the traumatic event that shaped her character." },
-    { word: "protagonist", translation: "protagoniste", example: "The morally complex protagonist challenges readers' expectations and sympathies." },
+       { word: "protagonist", translation: "protagoniste", example: "The morally complex protagonist challenges readers' expectations and sympathies." },
     { word: "antagonist", translation: "antagoniste", example: "The antagonist's motivations become increasingly understandable as the story unfolds." },
     { word: "narrator", translation: "narrateur", example: "The unreliable narrator forces readers to question everything previously established." },
-    { word: "dialogue", translation: "dialogue", example: "Sharp dialogue reveals character while advancing the plot efficiently." },
+    
     { word: "scene", translation: "scène", example: "The pivotal scene transforms the relationship between the main characters." },
-    { word: "mood", translation: "ambiance", example: "The ominous mood intensifies through weather imagery and shadow motifs." },
-    { word: "tone", translation: "ton", example: "The ironic tone undercuts the seemingly straightforward narrative." },
-    { word: "pacing", translation: "rythme", example: "The deliberate pacing allows for deep character exploration between action sequences." },
-    { word: "suspense", translation: "suspense", example: "Suspense builds as the protagonist gradually discovers the conspiracy." },
+    
+    
+    
+    
     { word: "characterization", translation: "caractérisation", example: "Indirect characterization reveals personality through actions rather than description." },
     { word: "denouement", translation: "dénouement", example: "The denouement resolves remaining questions after the climactic confrontation." },
     
     // Figures de style (25 mots)
-    { word: "figurative language", translation: "langage figuré", example: "Figurative language creates vivid imagery throughout the poem." },
-    { word: "metaphor", translation: "métaphore", example: "The extended metaphor compares the city to a living organism." },
+    
+    
     { word: "simile", translation: "comparaison", example: "Her similes draw surprising connections between disparate elements." },
     { word: "personification", translation: "personnification", example: "Personification gives the ancient forest sentience and motivation." },
     { word: "alliteration", translation: "allitération", example: "Alliteration creates rhythmic emphasis in the dramatic monologue." },
-    { word: "hyperbole", translation: "hyperbole", example: "Hyperbole emphasizes the character's tendency toward dramatic exaggeration." },
-    { word: "imagery", translation: "imagerie", example: "Sensory imagery immerses readers in the protagonist's perceptions." },
-    { word: "symbolism", translation: "symbolisme", example: "The recurring symbolism of birds represents aspirations and freedom." },
-    { word: "irony", translation: "ironie", example: "Dramatic irony creates tension as readers understand what characters don't yet know." },
-    { word: "oxymoron", translation: "oxymore", example: "The oxymoron 'deafening silence' captures the aftermath of the revelation." },
+    
+    
+    
+    
+    
     { word: "paradox", translation: "paradoxe", example: "The central paradox of the novel explores how loss can lead to discovery." },
     { word: "allegory", translation: "allégorie", example: "The allegorical narrative represents abstract concepts through concrete characters." },
-    { word: "allusion", translation: "allusion", example: "Biblical allusions throughout the text create layers of meaning." },
+    
     { word: "assonance", translation: "assonance", example: "Assonance creates musical quality through repeated vowel sounds." },
     { word: "consonance", translation: "consonance", example: "Consonance provides sonic texture through repeated consonant sounds." },
     { word: "onomatopoeia", translation: "onomatopée", example: "Onomatopoeia mimics the sounds described in the violent scene." },
-    { word: "euphemism", translation: "euphémisme", example: "Euphemisms throughout the text reflect societal discomfort with mortality." },
-    { word: "understatement", translation: "litote", example: "Her characteristic understatement downplays the traumatic experience." },
+    
+    
     { word: "apostrophe", translation: "apostrophe", example: "The apostrophe directly addresses absent concepts or characters." },
     { word: "synecdoche", translation: "synecdoque", example: "Synecdoche uses 'the crown' to represent the entire monarchy." },
     { word: "metonymy", translation: "métonymie", example: "Metonymy substitutes 'the White House' for the executive branch." },
     { word: "anaphora", translation: "anaphore", example: "Anaphora creates rhythmic emphasis through repeated opening phrases." },
-    { word: "juxtaposition", translation: "juxtaposition", example: "Juxtaposition contrasts wealth and poverty in adjacent scenes." },
+    
     { word: "motif", translation: "motif", example: "Water motifs recur throughout, symbolizing both destruction and renewal." },
     { word: "foreshadowing", translation: "préfiguration", example: "Subtle foreshadowing hints at the eventual betrayal by the trusted advisor." },
     
     // Analyse littéraire (25 mots)
     { word: "literary analysis", translation: "analyse littéraire", example: "Literary analysis examines how formal elements create meaning." },
     { word: "close reading", translation: "lecture attentive", example: "Close reading reveals subtle patterns within the text." },
-    { word: "interpretation", translation: "interprétation", example: "Multiple interpretations emerge from the ambiguous conclusion." },
+    
     { word: "critical approach", translation: "approche critique", example: "A feminist critical approach illuminates power dynamics in the text." },
     { word: "textual evidence", translation: "preuve textuelle", example: "Textual evidence supports the analysis of the protagonist's motivation." },
     { word: "literary criticism", translation: "critique littéraire", example: "Literary criticism explores connections between text and cultural context." },
-    { word: "critical theory", translation: "théorie critique", example: "Critical theory provides frameworks for examining social implications." },
-    { word: "intertextuality", translation: "intertextualité", example: "Intertextuality reveals the novel's dialogue with earlier literary works." },
+    
+    
     { word: "deconstructive reading", translation: "lecture déconstructive", example: "A deconstructive reading identifies internal contradictions in the text." },
     { word: "canonical", translation: "canonique", example: "The once-overlooked novel has become a canonical text in American literature." },
     { word: "explication", translation: "explication", example: "The explication examines the poem's formal elements and thematic concerns." },
-    { word: "hermeneutics", translation: "herméneutique", example: "Hermeneutics explores the process of textual interpretation itself." },
-    { word: "subtext", translation: "sous-texte", example: "The political subtext becomes apparent through historical contextualization." },
+    
+    
     { word: "contextualization", translation: "contextualisation", example: "Contextualization situates the work within its cultural and historical moment." },
-    { word: "rhetorical analysis", translation: "analyse rhétorique", example: "Rhetorical analysis examines persuasive strategies within the essay." },
+    
     { word: "critical lens", translation: "perspective critique", example: "Applying a postcolonial critical lens reveals unexamined assumptions." },
     { word: "exegesis", translation: "exégèse", example: "The scholarly exegesis interprets obscure references in the ancient text." },
     { word: "literary heritage", translation: "héritage littéraire", example: "The novel engages with its literary heritage while innovating formally." },
     { word: "reader-response", translation: "réaction du lecteur", example: "Reader-response criticism explores how different audiences interpret the text." },
     { word: "structuralist analysis", translation: "analyse structuraliste", example: "Structuralist analysis identifies narrative and thematic patterns." },
     { word: "poststructuralism", translation: "poststructuralisme", example: "Poststructuralism questions stable meanings and binary oppositions." },
-    { word: "thematic analysis", translation: "analyse thématique", example: "Thematic analysis traces recurring concerns across the author's works." },
-    { word: "genre convention", translation: "convention de genre", example: "The novel subverts genre conventions while acknowledging their influence." },
+    
+    
     { word: "cultural criticism", translation: "critique culturelle", example: "Cultural criticism examines literature's relationship to broader social forces." },
     { word: "formalist criticism", translation: "critique formaliste", example: "Formalist criticism focuses on the work's internal features rather than context." },
     
     // Poésie et versification (25 mots)
-    { word: "poetry", translation: "poésie", example: "Contemporary poetry often challenges traditional forms and expectations." },
+    
     { word: "verse", translation: "vers", example: "Free verse abandons regular meter while maintaining poetic intensity." },
     { word: "stanza", translation: "strophe", example: "Each stanza develops a distinct aspect of the poem's central image." },
     { word: "rhyme scheme", translation: "schéma de rimes", example: "The sonnet follows an intricate rhyme scheme that reinforces its argument." },
     { word: "meter", translation: "mètre", example: "Iambic pentameter dominates English poetic tradition from Shakespeare onward." },
-    { word: "rhythm", translation: "rythme", example: "The poem's shifting rhythm reflects its emotional transformations." },
+    
     { word: "free verse", translation: "vers libre", example: "Free verse liberates poetry from formal metrical requirements." },
     { word: "scansion", translation: "scansion", example: "Scansion reveals the poem's subtle metrical variations." },
     { word: "caesura", translation: "césure", example: "The caesura creates a dramatic pause midline, emphasizing the turn in thought." },
@@ -138,57 +134,57 @@ export const vocab = {
     
     // Théorie littéraire (25 mots)
     { word: "literary theory", translation: "théorie littéraire", example: "Literary theory provides frameworks for understanding textual meaning." },
-    { word: "structuralism", translation: "structuralisme", example: "Structuralism examines how meaning emerges from relational systems." },
-    { word: "poststructuralism", translation: "poststructuralisme", example: "Poststructuralism challenges stable meanings and binary oppositions." },
-    { word: "deconstruction", translation: "déconstruction", example: "Deconstruction reveals internal contradictions within texts." },
-    { word: "feminist theory", translation: "théorie féministe", example: "Feminist theory examines gender representations and power dynamics." },
-    { word: "postcolonial theory", translation: "théorie postcoloniale", example: "Postcolonial theory addresses literature's relationship to imperial power." },
-    { word: "Marxist criticism", translation: "critique marxiste", example: "Marxist criticism analyzes class relations within literary works." },
+    
+    
+    
+    
+    
+    
     { word: "psychoanalytic theory", translation: "théorie psychanalytique", example: "Psychoanalytic theory explores unconscious dimensions of literary texts." },
     { word: "reader-response theory", translation: "théorie de la réception", example: "Reader-response theory examines how audiences create meaning." },
-    { word: "new historicism", translation: "nouvel historicisme", example: "New historicism situates texts within their historical power structures." },
-    { word: "cultural studies", translation: "études culturelles", example: "Cultural studies examines literature within broader cultural production." },
-    { word: "queer theory", translation: "théorie queer", example: "Queer theory challenges normative assumptions about sexuality and identity." },
-    { word: "postmodernism", translation: "postmodernisme", example: "Postmodernism questions grand narratives and embraces fragmentation." },
-    { word: "formalism", translation: "formalisme", example: "Formalism focuses on internal literary elements rather than context." },
-    { word: "discourse analysis", translation: "analyse du discours", example: "Discourse analysis examines patterns of language and power." },
-    { word: "semiotic analysis", translation: "analyse sémiotique", example: "Semiotic analysis studies how texts create meaning through sign systems." },
+    
+    
+    
+    
+    
+    
+    
     { word: "hermeneutic circle", translation: "cercle herméneutique", example: "The hermeneutic circle describes the interpretive process between parts and whole." },
-    { word: "narratology", translation: "narratologie", example: "Narratology examines structural elements of storytelling." },
-    { word: "ecocriticism", translation: "écocritique", example: "Ecocriticism explores literature's relationship to environmental concerns." },
-    { word: "reception theory", translation: "théorie de la réception", example: "Reception theory studies how texts are interpreted in different contexts." },
-    { word: "affect theory", translation: "théorie de l'affect", example: "Affect theory examines emotional dimensions of literary experience." },
+    
+    
+    
+    
     { word: "disability studies", translation: "études sur le handicap", example: "Disability studies analyzes representations of disability in literature." },
-    { word: "trauma theory", translation: "théorie du trauma", example: "Trauma theory explores how texts represent and respond to traumatic experiences." },
-    { word: "digital humanities", translation: "humanités numériques", example: "Digital humanities employs computational methods in literary analysis." },
+    
+    
     { word: "cognitive literary studies", translation: "études littéraires cognitives", example: "Cognitive literary studies applies insights from cognitive science to literature." },
     
     // Courants littéraires (25 mots)
     { word: "literary movement", translation: "mouvement littéraire", example: "The literary movement emerged in response to social upheaval." },
-    { word: "romanticism", translation: "romantisme", example: "Romanticism emphasized emotion, nature, and individual experience." },
-    { word: "realism", translation: "réalisme", example: "Realism depicts everyday life with objective detail and social analysis." },
+    
+    
     { word: "naturalism", translation: "naturalisme", example: "Naturalism portrays characters determined by heredity and environment." },
-    { word: "modernism", translation: "modernisme", example: "Modernism experimented with form to capture fragmented contemporary experience." },
-    { word: "postmodernism", translation: "postmodernisme", example: "Postmodernism employs irony, fragmentation, and metafictional techniques." },
-    { word: "symbolism", translation: "symbolisme", example: "Symbolism uses suggestive images rather than direct representation." },
-    { word: "surrealism", translation: "surréalisme", example: "Surrealism explores unconscious associations and dreamlike juxtapositions." },
+    
+    
+    
+    
     { word: "existentialism", translation: "existentialisme", example: "Existentialism examines individual freedom and the search for meaning." },
     { word: "absurdism", translation: "absurdisme", example: "Absurdism portrays humanity's search for meaning in an irrational universe." },
     { word: "magical realism", translation: "réalisme magique", example: "Magical realism incorporates fantastical elements into otherwise realistic settings." },
     { word: "transcendentalism", translation: "transcendantalisme", example: "Transcendentalism emphasized spiritual experience and self-reliance." },
-    { word: "avant-garde", translation: "avant-garde", example: "Avant-garde literature deliberately challenges artistic conventions." },
+    
     { word: "neoclassicism", translation: "néoclassicisme", example: "Neoclassicism draws inspiration from classical forms and restraint." },
     { word: "beat generation", translation: "génération beat", example: "The Beat Generation rejected conventional values through experimental prose." },
     { word: "Gothic literature", translation: "littérature gothique", example: "Gothic literature explores darkness, decay, and psychological horror." },
-    { word: "renaissance", translation: "renaissance", example: "The Renaissance revived classical learning and artistic innovation." },
+    
     { word: "enlightenment", translation: "siècle des lumières", example: "Enlightenment literature celebrated reason, science, and human progress." },
     { word: "Victorian literature", translation: "littérature victorienne", example: "Victorian literature often addressed social problems and moral questions." },
     { word: "harlem renaissance", translation: "renaissance de Harlem", example: "The Harlem Renaissance celebrated Black art, culture, and experience." },
     { word: "aestheticism", translation: "esthétisme", example: "Aestheticism advocated 'art for art's sake' rather than moral purpose." },
     { word: "imagism", translation: "imagisme", example: "Imagism created precise, clear images without superfluous language." },
     { word: "futurism", translation: "futurisme", example: "Futurism celebrated technology, speed, and industrial modernity." },
-    { word: "expressionism", translation: "expressionnisme", example: "Expressionism portrayed subjective emotional experiences rather than objective reality." },
-    { word: "post-colonialism", translation: "post-colonialisme", example: "Post-colonial literature examines the legacy of imperialism and colonization." },
+    
+    
     
     // Critique textuelle (25 mots)
     { word: "textual criticism", translation: "critique textuelle", example: "Textual criticism establishes authoritative versions of literary works." },
@@ -214,7 +210,7 @@ export const vocab = {
     { word: "archival research", translation: "recherche archivistique", example: "Archival research uncovered previously unknown drafts of the novel." },
     { word: "genetic criticism", translation: "critique génétique", example: "Genetic criticism studies the evolution of texts through successive drafts." },
     { word: "holograph manuscript", translation: "manuscrit holographe", example: "The holograph manuscript contains the author's handwritten revisions." },
-    { word: "provenance", translation: "provenance", example: "The manuscript's provenance traces its ownership through centuries." },
+    
     { word: "scholarly apparatus", translation: "appareil critique", example: "The scholarly apparatus provides contextual and interpretive information." },
     
     // Théâtre et dramaturgie (25 mots)
@@ -224,23 +220,23 @@ export const vocab = {
     { word: "dramaturgy", translation: "dramaturgie", example: "Dramaturgy involves both textual structure and staging considerations." },
     { word: "dramatic structure", translation: "structure dramatique", example: "Classical dramatic structure follows exposition, conflict, and resolution." },
     { word: "stage direction", translation: "indication scénique", example: "Detailed stage directions reveal the author's visual conception." },
-    { word: "dialogue", translation: "dialogue", example: "The dialogue carries both character development and thematic weight." },
+    
     { word: "monologue", translation: "monologue", example: "The revealing monologue exposes the character's hidden motivations." },
     { word: "soliloquy", translation: "soliloque", example: "Hamlet's famous soliloquy explores existential questions directly with the audience." },
     { word: "aside", translation: "aparté", example: "The aside reveals thoughts hidden from other characters on stage." },
     { word: "dramatic irony", translation: "ironie dramatique", example: "Dramatic irony occurs when audiences understand what characters don't yet realize." },
     { word: "act", translation: "acte", example: "The play's five-act structure follows classical dramatic principles." },
-    { word: "scene", translation: "scène", example: "Each scene advances the conflict while revealing character." },
+    
     { word: "theatrical convention", translation: "convention théâtrale", example: "Experimental productions challenge traditional theatrical conventions." },
     { word: "dramatic tension", translation: "tension dramatique", example: "Dramatic tension builds through escalating conflicts between characters." },
-    { word: "tragicomedy", translation: "tragicomédie", example: "Modern tragicomedy blends elements of both tragic and comic forms." },
-    { word: "denouement", translation: "dénouement", example: "The unexpected denouement subverts audience expectations." },
+    
+    
     { word: "theatrical space", translation: "espace théâtral", example: "The play reimagines theatrical space beyond traditional proscenium staging." },
     { word: "dramatic action", translation: "action dramatique", example: "Physical dramatic action reinforces thematic elements throughout." },
     { word: "theatrical production", translation: "production théâtrale", example: "Each theatrical production reinterprets the script in unique ways." },
     { word: "character motivation", translation: "motivation du personnage", example: "Complex character motivation drives the central conflict forward." },
     { word: "dramatic conflict", translation: "conflit dramatique", example: "Multiple levels of dramatic conflict operate simultaneously in the play." },
-    { word: "exposition", translation: "exposition", example: "The opening exposition establishes setting and character relationships." },
+    
     { word: "dramatic persona", translation: "persona dramatique", example: "Each character represents a distinctive dramatic persona within the ensemble." },
     { word: "stage presence", translation: "présence scénique", example: "The role demands exceptional stage presence from the performer." },
     
@@ -248,8 +244,8 @@ export const vocab = {
     { word: "literary production", translation: "production littéraire", example: "Literary production occurs within specific historical and economic contexts." },
     { word: "publishing industry", translation: "industrie de l'édition", example: "The publishing industry has undergone radical transformation in the digital era." },
     { word: "literary agent", translation: "agent littéraire", example: "Literary agents represent authors' interests in negotiations with publishers." },
-    { word: "editor", translation: "éditeur", example: "Influential editors shape literary works before publication." },
-    { word: "manuscript submission", translation: "soumission de manuscrit", example: "Publishers receive thousands of manuscript submissions annually." },
+    
+    
     { word: "literary marketplace", translation: "marché littéraire", example: "The literary marketplace influences which voices reach audiences." },
     { word: "book contract", translation: "contrat d'édition", example: "The book contract specified royalty rates and subsidiary rights." },
     { word: "advance", translation: "avance", example: "The substantial advance indicated the publisher's confidence in the book." },

@@ -2,9 +2,9 @@ export const vocab = {
   title: "Loisirs & Culture Élargie",
   words: [
     // Activités culturelles
-    { word: "exhibition", translation: "exposition", example: "We went to an exhibition of modern art." },
-    { word: "gallery", translation: "galerie", example: "The gallery showcases works by local artists." },
-    { word: "guided tour", translation: "visite guidée", example: "We took a guided tour of the castle." },
+    
+    
+    
     { word: "heritage site", translation: "site du patrimoine", example: "Stonehenge is a World Heritage site." },
     { word: "historical monument", translation: "monument historique", example: "The cathedral is a historical monument." },
     { word: "cultural center", translation: "centre culturel", example: "The cultural center offers various workshops." },
@@ -42,7 +42,7 @@ export const vocab = {
     // Activités créatives
     { word: "arts and crafts", translation: "travaux manuels", example: "The children enjoy arts and crafts activities." },
     { word: "pottery", translation: "poterie", example: "I'm taking a pottery class this summer." },
-    { word: "sculpture", translation: "sculpture", example: "He makes beautiful wooden sculptures." },
+    
     { word: "knitting", translation: "tricot", example: "Knitting is a relaxing hobby." },
     { word: "sewing", translation: "couture", example: "My grandmother taught me sewing." },
     { word: "embroidery", translation: "broderie", example: "Her embroidery work is very detailed." },
@@ -54,7 +54,7 @@ export const vocab = {
     { word: "digital art", translation: "art numérique", example: "Digital art is becoming increasingly popular." },
     { word: "craft fair", translation: "salon d'artisanat", example: "Local artists sell their work at the craft fair." },
     { word: "DIY project", translation: "projet bricolage", example: "We're working on a DIY project to renovate the kitchen." },
-    { word: "workshop", translation: "atelier", example: "I attended a jewelry-making workshop last weekend." },
+    
     { word: "artistic expression", translation: "expression artistique", example: "Dance is a form of artistic expression." },
     { word: "creativity", translation: "créativité", example: "These exercises help develop your creativity." },
     
@@ -69,7 +69,7 @@ export const vocab = {
     { word: "reality show", translation: "émission de téléréalité", example: "Reality shows are very popular nowadays." },
     { word: "talk show", translation: "talk-show", example: "She was a guest on a late-night talk show." },
     { word: "news bulletin", translation: "bulletin d'information", example: "I watch the news bulletin every evening." },
-    { word: "social media", translation: "réseaux sociaux", example: "Many young people spend hours on social media." },
+    
     { word: "online platform", translation: "plateforme en ligne", example: "The film premiered on an online platform." },
     { word: "digital content", translation: "contenu numérique", example: "The company produces digital content for various platforms." },
     { word: "entertainment industry", translation: "industrie du divertissement", example: "The entertainment industry generates billions in revenue." },
@@ -78,8 +78,8 @@ export const vocab = {
     { word: "critic", translation: "critique", example: "The movie received positive reviews from critics." },
     
     // Événements sociaux
-    { word: "festival", translation: "festival", example: "The music festival attracts thousands of visitors." },
-    { word: "concert", translation: "concert", example: "We have tickets for a rock concert next month." },
+    
+    
     { word: "live show", translation: "spectacle vivant", example: "The live show was spectacular." },
     { word: "art exhibition", translation: "exposition d'art", example: "The art exhibition showcases local talent." },
     { word: "cultural festival", translation: "festival culturel", example: "The cultural festival celebrates diversity." },
@@ -88,7 +88,7 @@ export const vocab = {
     { word: "community gathering", translation: "rassemblement communautaire", example: "The community gathering takes place every summer." },
     { word: "public holiday", translation: "jour férié", example: "Most businesses are closed on public holidays." },
     { word: "celebration", translation: "célébration", example: "The celebration lasted all night." },
-    { word: "anniversary", translation: "anniversaire", example: "They're planning a special event for their 10th anniversary." },
+    
     { word: "parade", translation: "défilé", example: "The parade goes through the city center." },
     { word: "street fair", translation: "fête de rue", example: "There will be a street fair in our neighborhood this weekend." },
     { word: "carnival", translation: "carnaval", example: "Rio de Janeiro is famous for its carnival." },
@@ -128,10 +128,6 @@ export const vocab = {
     { word: "day trip", translation: "excursion d'une journée", example: "From London, you can take a day trip to many interesting places." },
     { word: "package holiday", translation: "forfait vacances", example: "Package holidays are convenient but less flexible." },
     { word: "self-catering", translation: "location sans repas", example: "We prefer self-catering accommodation so we can cook our own meals." },
-    { word: "all-inclusive", translation: "tout compris", example: "They booked an all-inclusive resort in the Caribbean." },
-    { word: "travel itinerary", translation: "itinéraire de voyage", example: "Our travel itinerary includes three different countries." },
-    { word: "tourist attraction", translation: "attraction touristique", example: "The Eiffel Tower is a major tourist attraction." },
-    { word: "sightseeing", translation: "visite touristique", example: "We spent the day sightseeing in Paris." },
-    { word: "souvenir", translation: "souvenir", example: "I bought this souvenir in Morocco." }
-  ]
+    
+    { word: "travel itinerary", translation: "itinéraire de voyage", example: "Our travel itinerary includes three different countries." }]
 };

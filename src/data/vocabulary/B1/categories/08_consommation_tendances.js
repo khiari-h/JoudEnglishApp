@@ -48,7 +48,7 @@ export const vocab = {
     { word: "trademark", translation: "marque déposée", example: "The company filed for trademark protection for its new logo." },
     { word: "brand identity", translation: "identité de marque", example: "Consistent visual elements help establish brand identity." },
     { word: "logo", translation: "logo", example: "The company unveiled its new logo during the rebranding campaign." },
-    { word: "slogan", translation: "slogan", example: "The company's slogan appears in all their advertisements." },
+    
     { word: "premium product", translation: "produit haut de gamme", example: "They specialize in premium products for discerning customers." },
     { word: "generic brand", translation: "marque générique", example: "Generic brands are usually less expensive than name brands." },
     { word: "counterfeit goods", translation: "contrefaçon", example: "Authorities seized a shipment of counterfeit goods at the border." },
@@ -65,10 +65,10 @@ export const vocab = {
     { word: "planned obsolescence", translation: "obsolescence programmée", example: "Planned obsolescence encourages consumers to replace products frequently." },
     { word: "sharing economy", translation: "économie du partage", example: "Airbnb is part of the growing sharing economy." },
     { word: "second-hand market", translation: "marché d'occasion", example: "The second-hand market for clothing is growing rapidly." },
-    { word: "upcycling", translation: "surcyclage", example: "Upcycling transforms unwanted products into something of higher value." },
+    
     { word: "zero-waste lifestyle", translation: "mode de vie zéro déchet", example: "A zero-waste lifestyle aims to eliminate packaging and disposable items." },
     { word: "buy-nothing movement", translation: "mouvement d'achat zéro", example: "The buy-nothing movement encourages trading and repurposing instead of purchasing." },
-    { word: "fair trade", translation: "commerce équitable", example: "Fair trade ensures producers in developing countries receive fair compensation." },
+    
     { word: "locally sourced", translation: "d'origine locale", example: "The restaurant emphasizes locally sourced ingredients." },
     { word: "consumer activism", translation: "activisme consommateur", example: "Consumer activism can pressure companies to change harmful practices." },
     
@@ -77,7 +77,7 @@ export const vocab = {
     { word: "credit score", translation: "pointage de crédit", example: "A good credit score helps you qualify for better loan terms." },
     { word: "financial advisor", translation: "conseiller financier", example: "A financial advisor can help you plan for retirement." },
     { word: "investment portfolio", translation: "portefeuille d'investissement", example: "A diversified investment portfolio reduces risk." },
-    { word: "interest rate", translation: "taux d'intérêt", example: "Higher interest rates make borrowing more expensive." },
+    
     { word: "installment plan", translation: "plan de paiement échelonné", example: "The store offers an installment plan for large purchases." },
     { word: "overdraft protection", translation: "protection de découvert", example: "Overdraft protection prevents declined transactions when your account is empty." },
     { word: "insurance coverage", translation: "couverture d'assurance", example: "Check your insurance coverage before traveling abroad." },
@@ -92,15 +92,15 @@ export const vocab = {
     { word: "consumer rights", translation: "droits du consommateur", example: "Consumer rights laws protect buyers from unfair business practices." },
     { word: "complaint", translation: "réclamation", example: "The company responded quickly to my complaint about the defective product." },
     { word: "consumer protection", translation: "protection du consommateur", example: "Consumer protection agencies investigate fraudulent businesses." },
-    { word: "warranty", translation: "garantie", example: "The laptop comes with a two-year warranty." },
+    
     { word: "money-back guarantee", translation: "garantie de remboursement", example: "Their money-back guarantee makes trying the product risk-free." },
     { word: "product recall", translation: "rappel de produit", example: "The company issued a product recall due to safety concerns." },
     { word: "return policy", translation: "politique de retour", example: "Read the return policy before making a purchase." },
-    { word: "refund", translation: "remboursement", example: "I received a full refund for the damaged item." },
+    
     { word: "dispute resolution", translation: "résolution des litiges", example: "The company offers a dispute resolution process for unhappy customers." },
-    { word: "customer service", translation: "service client", example: "I contacted customer service about the delivery delay." },
+    
     { word: "class action lawsuit", translation: "recours collectif", example: "Affected consumers joined the class action lawsuit against the manufacturer." },
-    { word: "compensation", translation: "dédommagement", example: "She sought compensation for damages caused by the faulty product." },
+    
     { word: "fine print", translation: "petites lignes", example: "Always read the fine print before signing a contract." },
     { word: "terms and conditions", translation: "conditions générales", example: "Most people don't read the terms and conditions before agreeing." },
     
@@ -116,7 +116,7 @@ export const vocab = {
     { word: "sales promotion", translation: "promotion des ventes", example: "The store is running a sales promotion this weekend." },
     { word: "market segment", translation: "segment de marché", example: "The company is focusing on the luxury market segment." },
     { word: "advertising budget", translation: "budget publicitaire", example: "Small businesses often have limited advertising budgets." },
-    { word: "commercial", translation: "publicité télévisée", example: "The Super Bowl commercials are often more entertaining than the game itself." },
+    
     { word: "endorsement", translation: "soutien publicitaire", example: "Celebrity endorsements can significantly increase product sales." },
     { word: "promotional offer", translation: "offre promotionnelle", example: "The promotional offer included a free gift with purchase." },
     { word: "call to action", translation: "appel à l'action", example: "Effective advertisements include a clear call to action." },

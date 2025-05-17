@@ -2,15 +2,15 @@
   title: "Achats Simples",
   words: [
     // Types de magasins
-    { word: "shop", translation: "magasin", example: "I need to go to the shop." },
-    { word: "store", translation: "magasin", example: "The store is open until 8 p.m." },
-    { word: "supermarket", translation: "supermarché", example: "I buy food at the supermarket." },
+    
+    
+    
     { word: "bakery", translation: "boulangerie", example: "I buy bread at the bakery." },
     { word: "butcher", translation: "boucher", example: "I buy meat at the butcher's." },
     { word: "grocery store", translation: "épicerie", example: "There's a small grocery store near my house." },
-    { word: "pharmacy", translation: "pharmacie", example: "I need to go to the pharmacy to buy medicine." },
+    
     { word: "bookstore", translation: "librairie", example: "I love reading, so I often go to the bookstore." },
-    { word: "market", translation: "marché", example: "The market is open on Saturday mornings." },
+    
     { word: "mall", translation: "centre commercial", example: "We spent the afternoon at the mall." },
     { word: "department store", translation: "grand magasin", example: "This department store has everything." },
     { word: "clothes shop", translation: "magasin de vêtements", example: "She works in a clothes shop." },
@@ -20,20 +20,20 @@
     
     // Articles courants
     { word: "food", translation: "nourriture", example: "I need to buy some food." },
-    { word: "clothes", translation: "vêtements", example: "She likes to buy new clothes." },
+    
     { word: "book", translation: "livre", example: "I want to buy this book." },
     { word: "newspaper", translation: "journal", example: "I buy a newspaper every day." },
     { word: "magazine", translation: "magazine", example: "She reads fashion magazines." },
     { word: "medicine", translation: "médicament", example: "I need to buy some medicine for my cold." },
     { word: "gift", translation: "cadeau", example: "I'm looking for a gift for my mother." },
     { word: "souvenir", translation: "souvenir", example: "I bought this souvenir in Paris." },
-    { word: "bread", translation: "pain", example: "I need to buy some bread." },
-    { word: "milk", translation: "lait", example: "We're out of milk." },
-    { word: "fruit", translation: "fruit", example: "I like to eat fresh fruit." },
-    { word: "vegetable", translation: "légume", example: "You should eat more vegetables." },
-    { word: "meat", translation: "viande", example: "I'm going to the butcher's to buy some meat." },
+    
+    
+    
+    
+    
     { word: "bottle", translation: "bouteille", example: "I need a bottle of water." },
-    { word: "bag", translation: "sac", example: "I need a bag for my shopping." },
+    
     
     // Transactions simples
     { word: "to buy", translation: "acheter", example: "I want to buy this book." },
@@ -41,10 +41,10 @@
     { word: "to pay", translation: "payer", example: "I need to pay for my shopping." },
     { word: "to spend", translation: "dépenser", example: "I don't want to spend too much money." },
     { word: "to cost", translation: "coûter", example: "How much does this cost?" },
-    { word: "price", translation: "prix", example: "What's the price of this shirt?" },
-    { word: "expensive", translation: "cher", example: "This restaurant is very expensive." },
-    { word: "cheap", translation: "bon marché", example: "I like to buy cheap clothes." },
-    { word: "money", translation: "argent", example: "I don't have much money." },
+    
+    
+    
+    
     { word: "cash", translation: "espèces", example: "Can I pay in cash?" },
     { word: "credit card", translation: "carte de crédit", example: "I'll pay by credit card." },
     { word: "receipt", translation: "reçu/ticket de caisse", example: "Can I have a receipt, please?" },

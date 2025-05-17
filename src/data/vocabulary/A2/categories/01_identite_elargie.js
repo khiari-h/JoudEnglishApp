@@ -20,7 +20,7 @@ export const vocab = {
     { word: "curly", translation: "bouclé", example: "She has beautiful curly hair." },
     { word: "straight", translation: "raide", example: "He has straight black hair." },
     { word: "wavy", translation: "ondulé", example: "She has wavy brown hair." },
-    { word: "bald", translation: "chauve", example: "My grandfather is bald." },
+    
     
     // Traits de caractère simples
     { word: "personality", translation: "personnalité", example: "He has a friendly personality." },
@@ -49,7 +49,7 @@ export const vocab = {
     { word: "emotion", translation: "émotion", example: "Happiness is a positive emotion." },
     { word: "feeling", translation: "sentiment", example: "I have a strange feeling about this." },
     { word: "stressed", translation: "stressé", example: "I'm feeling stressed about the exam." },
-    { word: "relaxed", translation: "détendu", example: "I feel relaxed after yoga." },
+    
     { word: "anxious", translation: "anxieux", example: "She's anxious about her interview." },
     { word: "calm", translation: "calme", example: "Try to stay calm in difficult situations." },
     { word: "frustrated", translation: "frustré", example: "I'm frustrated because I can't solve this problem." },
@@ -65,18 +65,18 @@ export const vocab = {
     { word: "taste", translation: "goût", example: "Everyone has different tastes in music." },
     { word: "preference", translation: "préférence", example: "What are your preferences for dinner?" },
     { word: "interest", translation: "intérêt", example: "I have an interest in photography." },
-    { word: "favorite", translation: "préféré", example: "What's your favorite book?" },
-    { word: "to enjoy", translation: "apprécier", example: "I enjoy watching movies." },
-    { word: "to prefer", translation: "préférer", example: "I prefer tea to coffee." },
+    
+    
+    
     { word: "to be fond of", translation: "être amateur de", example: "She's fond of classical music." },
     { word: "to be keen on", translation: "être passionné par", example: "He's keen on sports." },
     { word: "to be interested in", translation: "être intéressé par", example: "I'm interested in learning languages." },
     { word: "to dislike", translation: "ne pas aimer", example: "I dislike waiting in long lines." },
-    { word: "to hate", translation: "détester", example: "She hates getting up early." },
+    
     { word: "to can't stand", translation: "ne pas supporter", example: "I can't stand noisy places." },
     { word: "enthusiastic", translation: "enthousiaste", example: "She's enthusiastic about her new job." },
     { word: "passion", translation: "passion", example: "Music is his passion." },
-    { word: "hobby", translation: "passe-temps", example: "What are your hobbies?" },
+    
     
     // Compétences personnelles
     { word: "skill", translation: "compétence", example: "Speaking English is an important skill." },
@@ -96,15 +96,15 @@ export const vocab = {
     { word: "to practice", translation: "pratiquer/s'entraîner", example: "You need to practice every day." },
     
     // Habitudes
-    { word: "habit", translation: "habitude", example: "Reading before bed is a good habit." },
-    { word: "routine", translation: "routine", example: "I follow the same morning routine every day." },
+    
+    
     { word: "lifestyle", translation: "style de vie", example: "She leads a healthy lifestyle." },
-    { word: "daily", translation: "quotidien", example: "What are your daily activities?" },
+    
     { word: "regular", translation: "régulier", example: "I take regular breaks when studying." },
     { word: "occasionally", translation: "occasionnellement", example: "I occasionally eat at restaurants." },
     { word: "frequently", translation: "fréquemment", example: "He frequently travels for work." },
-    { word: "rarely", translation: "rarement", example: "I rarely watch TV." },
-    { word: "usually", translation: "habituellement", example: "I usually have coffee in the morning." },
+    
+    
     { word: "to tend to", translation: "avoir tendance à", example: "I tend to work late at night." },
     { word: "to be used to", translation: "être habitué à", example: "I'm used to waking up early." },
     { word: "custom", translation: "coutume", example: "It's his custom to take a walk after dinner." },

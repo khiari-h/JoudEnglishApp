@@ -22,7 +22,7 @@ export const vocab = {
     // Infrastructure urbaine
     { word: "bridge", translation: "pont", example: "We crossed the bridge to reach the other side of the river." },
     { word: "tunnel", translation: "tunnel", example: "The tunnel goes under the mountain." },
-    { word: "highway", translation: "autoroute", example: "Take the highway to get there faster." },
+    
     { word: "underpass", translation: "passage souterrain", example: "Use the underpass to cross the busy road." },
     { word: "overpass", translation: "passage supérieur", example: "The overpass helps traffic flow smoothly." },
     { word: "subway system", translation: "réseau de métro", example: "London has an extensive subway system." },
@@ -42,7 +42,7 @@ export const vocab = {
     { word: "town hall", translation: "mairie", example: "The meeting will take place at the town hall." },
     { word: "public library", translation: "bibliothèque municipale", example: "I borrow books from the public library." },
     { word: "fire station", translation: "caserne de pompiers", example: "The fire station is just around the corner." },
-    { word: "police station", translation: "commissariat de police", example: "She went to the police station to report the theft." },
+    
     { word: "community center", translation: "centre communautaire", example: "The community center offers activities for all ages." },
     { word: "recycling center", translation: "centre de recyclage", example: "Take your glass bottles to the recycling center." },
     { word: "waste collection", translation: "collecte des déchets", example: "Waste collection takes place on Tuesdays and Fridays." },
@@ -56,7 +56,7 @@ export const vocab = {
     { word: "city services", translation: "services municipaux", example: "Many city services are now available online." },
     
     // Environnement rural
-    { word: "countryside", translation: "campagne", example: "They moved to the countryside for a quieter life." },
+    
     { word: "farmland", translation: "terres agricoles", example: "Farmland surrounds the small village." },
     { word: "field", translation: "champ", example: "The farmer works in the fields all day." },
     { word: "meadow", translation: "prairie", example: "Wildflowers grow in the meadow." },
@@ -72,7 +72,7 @@ export const vocab = {
     { word: "rural community", translation: "communauté rurale", example: "Rural communities often have strong traditions." },
     { word: "agricultural area", translation: "zone agricole", example: "This is primarily an agricultural area." },
     { word: "hamlet", translation: "hameau", example: "They live in a small hamlet with just a few houses." },
-    { word: "farmhouse", translation: "ferme (maison)", example: "They renovated an old farmhouse." },
+    
     
     // Orientation & direction
     { word: "intersection", translation: "intersection", example: "The accident happened at the intersection." },

@@ -4,7 +4,7 @@ export const vocab = {
     // Professions courantes
     { word: "doctor", translation: "médecin", example: "My sister is a doctor at the local hospital." },
     { word: "nurse", translation: "infirmier/ère", example: "The nurse took my temperature." },
-    { word: "teacher", translation: "enseignant/e", example: "My English teacher is very patient." },
+    
     { word: "lawyer", translation: "avocat/e", example: "She's a lawyer specializing in family law." },
     { word: "engineer", translation: "ingénieur/e", example: "He works as an engineer for a construction company." },
     { word: "architect", translation: "architecte", example: "The architect designed our new house." },
@@ -18,30 +18,30 @@ export const vocab = {
     { word: "scientist", translation: "scientifique", example: "My uncle is a scientist researching climate change." },
     { word: "artist", translation: "artiste", example: "She's an artist who paints landscapes." },
     { word: "musician", translation: "musicien/ne", example: "He's a musician in a jazz band." },
-    { word: "electrician", translation: "électricien/ne", example: "We called an electrician to fix the lights." },
-    { word: "plumber", translation: "plombier", example: "The plumber fixed our leaking sink." },
+    
+    
     { word: "carpenter", translation: "charpentier/menuisier", example: "The carpenter built our new bookshelf." },
     { word: "factory worker", translation: "ouvrier d'usine", example: "My father was a factory worker for 30 years." },
     
     // Lieux de travail
     { word: "office", translation: "bureau", example: "I work in an office in the city center." },
     { word: "factory", translation: "usine", example: "The factory produces car parts." },
-    { word: "hospital", translation: "hôpital", example: "She works night shifts at the hospital." },
-    { word: "school", translation: "école", example: "My mother teaches at a primary school." },
-    { word: "university", translation: "université", example: "He's a professor at the university." },
-    { word: "restaurant", translation: "restaurant", example: "She's the manager of an Italian restaurant." },
-    { word: "shop", translation: "magasin", example: "She works in a clothes shop." },
-    { word: "store", translation: "magasin", example: "He manages a department store." },
-    { word: "bank", translation: "banque", example: "My brother works at a bank." },
+    
+    
+    
+    
+    
+    
+    
     { word: "workshop", translation: "atelier", example: "The carpenter has a workshop downtown." },
-    { word: "laboratory", translation: "laboratoire", example: "Scientists conduct experiments in the laboratory." },
+    
     { word: "construction site", translation: "chantier", example: "He works on a construction site." },
     { word: "farm", translation: "ferme", example: "They work on a dairy farm." },
     { word: "headquarters", translation: "siège social", example: "The company's headquarters are in London." },
     { word: "branch", translation: "succursale", example: "The bank has branches in every major city." },
     
     // Activités professionnelles
-    { word: "to work", translation: "travailler", example: "I work from Monday to Friday." },
+    
     { word: "to meet", translation: "rencontrer/réunir", example: "We meet with clients every week." },
     { word: "to discuss", translation: "discuter", example: "We need to discuss the project details." },
     { word: "to present", translation: "présenter", example: "She will present the new product tomorrow." },
@@ -49,11 +49,11 @@ export const vocab = {
     { word: "to manage", translation: "gérer", example: "He manages a team of ten people." },
     { word: "to supervise", translation: "superviser", example: "She supervises the new employees." },
     { word: "to train", translation: "former", example: "They train new staff members." },
-    { word: "to hire", translation: "embaucher", example: "We're hiring ten new employees this month." },
-    { word: "to fire", translation: "licencier", example: "The company had to fire some workers due to financial difficulties." },
+    
+    
     { word: "to promote", translation: "promouvoir", example: "She was promoted to manager last month." },
     { word: "to report to", translation: "rendre des comptes à", example: "I report to the marketing director." },
-    { word: "to collaborate", translation: "collaborer", example: "We collaborate with other departments on this project." },
+    
     { word: "to communicate", translation: "communiquer", example: "It's important to communicate clearly with colleagues." },
     { word: "to lead", translation: "diriger", example: "She leads the marketing team." },
     { word: "to negotiate", translation: "négocier", example: "We're negotiating a new contract with suppliers." },
@@ -68,8 +68,8 @@ export const vocab = {
     { word: "printer", translation: "imprimante", example: "The printer is out of paper." },
     { word: "photocopier", translation: "photocopieur", example: "The photocopier is broken." },
     { word: "scanner", translation: "scanner", example: "Use the scanner to digitize these documents." },
-    { word: "desk", translation: "bureau (meuble)", example: "My desk is next to the window." },
-    { word: "chair", translation: "chaise", example: "This office chair is very comfortable." },
+    
+    
     { word: "filing cabinet", translation: "classeur", example: "The documents are in the filing cabinet." },
     { word: "stapler", translation: "agrafeuse", example: "Can I borrow your stapler?" },
     { word: "paper clip", translation: "trombone", example: "I need a paper clip to attach these documents." },
@@ -90,7 +90,7 @@ export const vocab = {
     { word: "reference", translation: "référence", example: "My previous employer gave me a good reference." },
     { word: "qualification", translation: "qualification", example: "Do you have the necessary qualifications for this position?" },
     { word: "experience", translation: "expérience", example: "I have five years of experience in marketing." },
-    { word: "skill", translation: "compétence", example: "What skills do you need for this job?" },
+    
     { word: "job offer", translation: "offre d'emploi", example: "I received a job offer from two companies." },
     { word: "recruitment", translation: "recrutement", example: "The recruitment process takes several weeks." },
     { word: "job search", translation: "recherche d'emploi", example: "My job search has been difficult." },

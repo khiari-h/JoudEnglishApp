@@ -34,7 +34,7 @@
     { word: "stairs", translation: "escalier", example: "Be careful on the stairs." },
     { word: "wall", translation: "mur", example: "The walls in my room are white." },
     { word: "ceiling", translation: "plafond", example: "The ceiling is very high." },
-    { word: "floor", translation: "sol", example: "The floor is made of wood." },
+    
     { word: "door", translation: "porte", example: "Please close the door." },
     { word: "window", translation: "fenêtre", example: "Open the window, please." },
     

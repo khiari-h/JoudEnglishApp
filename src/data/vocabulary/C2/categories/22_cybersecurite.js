@@ -2,32 +2,32 @@ export const vocab = {
   title: "Cybersécurité et Protection des Données",
   words: [
     // Principes fondamentaux et menaces (50 mots)
-    { word: "cybersecurity", translation: "cybersécurité", example: "The organization's cybersecurity framework implements multiple layers of protection against evolving threats." },
-    { word: "information security", translation: "sécurité de l'information", example: "Information security encompasses technological, procedural, and human factors in protecting sensitive data." },
-    { word: "confidentiality", translation: "confidentialité", example: "Encryption protocols maintain confidentiality by ensuring that only authorized parties can access transmitted information." },
+    
+    
+    
     { word: "integrity", translation: "intégrité", example: "Data integrity verification mechanisms detect unauthorized modifications to critical information." },
     { word: "availability", translation: "disponibilité", example: "Redundant systems enhance availability by ensuring continuous access to essential services despite component failures." },
-    { word: "authentication", translation: "authentification", example: "Multi-factor authentication combines something you know, have, and are to verify user identity." },
+    
     { word: "authorization", translation: "autorisation", example: "Granular authorization controls provide access to specific resources based on validated user privileges." },
     { word: "non-repudiation", translation: "non-répudiation", example: "Digital signatures ensure non-repudiation by providing cryptographic proof of message origin." },
-    { word: "vulnerability", translation: "vulnérabilité", example: "The security audit identified several critical vulnerabilities requiring immediate remediation." },
+    
     { word: "threat", translation: "menace", example: "Advanced persistent threats maintain long-term unauthorized access through sophisticated evasion techniques." },
     { word: "exploit", translation: "exploitation", example: "Attackers developed an exploit targeting the zero-day vulnerability before patches were available." },
     { word: "attack vector", translation: "vecteur d'attaque", example: "Phishing remains a primary attack vector for initial network penetration attempts." },
-    { word: "attack surface", translation: "surface d'attaque", example: "Cloud migration expanded the organization's attack surface, requiring updated security controls." },
+    
     { word: "breach", translation: "violation de données", example: "The data breach exposed sensitive information from millions of customer accounts." },
-    { word: "malware", translation: "logiciel malveillant", example: "The malware established persistence using registry modifications and scheduled tasks." },
-    { word: "ransomware", translation: "rançongiciel", example: "The ransomware encrypted critical files and demanded cryptocurrency payment for decryption keys." },
+    
+    
     { word: "spyware", translation: "logiciel espion", example: "The spyware covertly monitored user activities and transmitted sensitive information to remote servers." },
     { word: "trojan", translation: "cheval de Troie", example: "The trojan appeared legitimate but secretly installed backdoor access to the compromised system." },
-    { word: "virus", translation: "virus", example: "The virus propagated by attaching its code to executable files across the network." },
+    
     { word: "worm", translation: "ver informatique", example: "The worm exploited network vulnerabilities to self-replicate without user intervention." },
     { word: "botnet", translation: "réseau de machines zombies", example: "The distributed denial-of-service attack leveraged thousands of compromised devices in a botnet." },
-    { word: "phishing", translation: "hameçonnage", example: "The sophisticated phishing campaign targeted executives with convincing communications from apparent trusted sources." },
+    
     { word: "spear phishing", translation: "harponnage", example: "The spear phishing attack used personalized information gathered from social media to increase credibility." },
     { word: "social engineering", translation: "ingénierie sociale", example: "Social engineering exploits human psychology rather than technical vulnerabilities to obtain sensitive information." },
     { word: "insider threat", translation: "menace interne", example: "The insider threat program monitors for anomalous behavior patterns among employees with privileged access." },
-    { word: "zero-day vulnerability", translation: "vulnérabilité zero-day", example: "The zero-day vulnerability was exploited in the wild before developers became aware of its existence." },
+    
     { word: "supply chain attack", translation: "attaque par chaîne d'approvisionnement", example: "The supply chain attack compromised legitimate software distribution channels to deliver malicious updates." },
     { word: "man-in-the-middle attack", translation: "attaque de l'homme du milieu", example: "The man-in-the-middle attack intercepted encrypted communications by impersonating the legitimate server." },
     { word: "denial-of-service attack", translation: "attaque par déni de service", example: "The denial-of-service attack overwhelmed server resources by flooding the network with malicious traffic." },
@@ -41,14 +41,14 @@ export const vocab = {
     { word: "privilege escalation", translation: "élévation de privilèges", example: "After gaining initial access, the attacker performed privilege escalation to obtain administrative rights." },
     { word: "lateral movement", translation: "mouvement latéral", example: "The threat actor used lateral movement techniques to access increasingly sensitive systems after the initial breach." },
     { word: "data exfiltration", translation: "exfiltration de données", example: "The investigation revealed systematic data exfiltration occurring over several months before detection." },
-    { word: "advanced persistent threat", translation: "menace persistante avancée", example: "The advanced persistent threat maintained undetected network presence for over a year through sophisticated evasion techniques." },
-    { word: "threat intelligence", translation: "renseignement sur les menaces", example: "Threat intelligence provides contextual information about adversaries' capabilities, motivations, and tactics." },
+    
+    
     { word: "vulnerability assessment", translation: "évaluation des vulnérabilités", example: "The quarterly vulnerability assessment identified and prioritized security weaknesses across the infrastructure." },
-    { word: "penetration testing", translation: "test d'intrusion", example: "Authorized penetration testing simulates real-world attacks to identify exploitable vulnerabilities." },
+    
     { word: "red team", translation: "équipe rouge", example: "The red team conducted an adversarial simulation to evaluate the effectiveness of security controls." },
     { word: "blue team", translation: "équipe bleue", example: "The blue team defended against the simulated attack while improving detection and response capabilities." },
     { word: "purple team", translation: "équipe violette", example: "Purple team exercises combine offensive and defensive personnel to maximize security improvement outcomes." },
-    { word: "security posture", translation: "posture de sécurité", example: "The organization regularly evaluates its security posture against evolving threat landscapes." },
+    
     { word: "attack lifecycle", translation: "cycle de vie de l'attaque", example: "Understanding the attack lifecycle helps defenders implement controls at each potential stage." },
     { word: "kill chain", translation: "chaîne cybernétique", example: "The Cyber Kill Chain framework maps defensive countermeasures to each stage of an attack sequence." },
     { word: "MITRE ATT&CK framework", translation: "cadre MITRE ATT&CK", example: "The security team mapped detection capabilities to adversary techniques documented in the MITRE ATT&CK framework." },
@@ -58,65 +58,65 @@ export const vocab = {
     { word: "principle of least privilege", translation: "principe du moindre privilège", example: "The principle of least privilege limits user permissions to the minimum required for legitimate job functions." },
     { word: "need-to-know basis", translation: "besoin d'en connaître", example: "Sensitive information access is restricted on a need-to-know basis to minimize exposure risk." },
     { word: "segregation of duties", translation: "séparation des tâches", example: "Segregation of duties prevents individuals from controlling entire processes that could facilitate fraud." },
-    { word: "security by design", translation: "sécurité dès la conception", example: "Security by design incorporates protective measures throughout the development lifecycle rather than as afterthoughts." },
-    { word: "zero trust architecture", translation: "architecture de confiance zéro", example: "Zero trust architecture requires verification of every access attempt regardless of source location." },
+    
+    
     { word: "security control", translation: "contrôle de sécurité", example: "Administrative, technical, and physical security controls work together to protect information assets." },
     { word: "preventive control", translation: "contrôle préventif", example: "Preventive controls deter security incidents before they occur through proactive measures." },
     { word: "detective control", translation: "contrôle détectif", example: "Detective controls identify potentially malicious activities that circumvent preventive measures." },
     { word: "corrective control", translation: "contrôle correctif", example: "Corrective controls mitigate damage and restore systems following security incidents." },
-    { word: "firewall", translation: "pare-feu", example: "Next-generation firewalls combine traditional packet filtering with application-level inspection capabilities." },
+    
     { word: "intrusion detection system", translation: "système de détection d'intrusion", example: "The intrusion detection system monitors network traffic for patterns matching known attack signatures." },
     { word: "intrusion prevention system", translation: "système de prévention d'intrusion", example: "Unlike passive IDS, intrusion prevention systems actively block suspected malicious traffic." },
     { word: "endpoint detection and response", translation: "détection et réponse sur les terminaux", example: "Endpoint detection and response solutions monitor devices for suspicious activities and facilitate incident investigation." },
-    { word: "security information and event management", translation: "gestion des informations et événements de sécurité", example: "The SIEM platform aggregates and correlates security events from diverse sources to identify potential threats." },
-    { word: "data loss prevention", translation: "prévention de perte de données", example: "Data loss prevention tools monitor and control data transfers to prevent unauthorized information disclosure." },
+    
+    
     { word: "network segmentation", translation: "segmentation réseau", example: "Network segmentation limits lateral movement by restricting communication between different system components." },
-    { word: "access control", translation: "contrôle d'accès", example: "Comprehensive access control encompasses identification, authentication, and authorization mechanisms." },
+    
     { word: "multi-factor authentication", translation: "authentification multifacteur", example: "Multi-factor authentication significantly reduces unauthorized access even when credentials are compromised." },
     { word: "single sign-on", translation: "authentification unique", example: "Single sign-on balances security and usability by requiring one authentication for multiple applications." },
     { word: "identity and access management", translation: "gestion des identités et des accès", example: "The identity and access management framework centralizes user provisioning, authentication, and authorization." },
     { word: "privileged access management", translation: "gestion des accès à privilèges", example: "Privileged access management provides enhanced controls for administrative and sensitive accounts." },
-    { word: "encryption", translation: "chiffrement", example: "Strong encryption transforms readable data into unintelligible format without the proper decryption key." },
+    
     { word: "symmetric encryption", translation: "chiffrement symétrique", example: "Symmetric encryption uses the same key for both encryption and decryption operations." },
     { word: "asymmetric encryption", translation: "chiffrement asymétrique", example: "Asymmetric encryption uses mathematically related public and private key pairs for different operations." },
     { word: "public key infrastructure", translation: "infrastructure à clés publiques", example: "Public key infrastructure establishes a trusted environment for digital certificate issuance and verification." },
     { word: "digital certificate", translation: "certificat numérique", example: "Digital certificates verify entity identities through cryptographic techniques and trusted authorities." },
     { word: "hashing", translation: "hachage", example: "Cryptographic hashing creates fixed-size outputs that change dramatically with even minor input modifications." },
-    { word: "digital signature", translation: "signature numérique", example: "Digital signatures verify message authenticity and integrity using asymmetric cryptography." },
+    
     { word: "secure sockets layer/transport layer security", translation: "couche de sockets sécurisée/sécurité de la couche de transport", example: "SSL/TLS protocols establish encrypted connections between clients and servers across untrusted networks." },
     { word: "virtual private network", translation: "réseau privé virtuel", example: "The virtual private network creates encrypted tunnels for secure communication across public networks." },
     { word: "patch management", translation: "gestion des correctifs", example: "Effective patch management balances security requirements with operational impact considerations." },
-    { word: "vulnerability management", translation: "gestion des vulnérabilités", example: "The vulnerability management program identifies, classifies, prioritizes, and remediates security weaknesses." },
+    
     { word: "security baseline", translation: "base de référence de sécurité", example: "Security baselines establish minimum requirements for different system categories across the organization." },
     { word: "security hardening", translation: "renforcement de la sécurité", example: "System hardening removes unnecessary services and applies secure configuration settings." },
     { word: "configuration management", translation: "gestion de la configuration", example: "Configuration management maintains and enforces secure settings across the technology environment." },
-    { word: "change management", translation: "gestion des changements", example: "Security-focused change management prevents unauthorized modifications and evaluates security implications." },
+    
     { word: "security awareness training", translation: "formation à la sensibilisation à la sécurité", example: "Regular security awareness training educates employees about evolving threats and protective measures." },
-    { word: "incident response", translation: "réponse aux incidents", example: "The incident response plan defines structured processes for addressing security breaches effectively." },
-    { word: "digital forensics", translation: "criminalistique numérique", example: "Digital forensics practitioners collect and analyze evidence following rigorous procedures to ensure admissibility." },
+    
+    
     { word: "security orchestration, automation and response", translation: "orchestration, automatisation et réponse de sécurité", example: "SOAR platforms integrate diverse security tools to automate incident response workflows." },
-    { word: "disaster recovery", translation: "reprise après sinistre", example: "The disaster recovery plan ensures critical systems can be restored within defined timeframes following disruptions." },
-    { word: "business continuity", translation: "continuité des activités", example: "Business continuity planning ensures essential operations can continue during significant disruptions." },
+    
+    
     { word: "backup and recovery", translation: "sauvegarde et restauration", example: "The 3-2-1 backup strategy maintains three copies on two different media with one offsite." },
-    { word: "security operations center", translation: "centre des opérations de sécurité", example: "The security operations center provides 24/7 monitoring and incident response capabilities." },
+    
     { word: "threat hunting", translation: "chasse aux menaces", example: "Proactive threat hunting searches for adversaries who have evaded existing detection mechanisms." },
     { word: "security metrics", translation: "métriques de sécurité", example: "Actionable security metrics enable data-driven decisions about control effectiveness and resource allocation." },
-    { word: "risk assessment", translation: "évaluation des risques", example: "The annual risk assessment identifies, analyzes, and prioritizes threats to information assets." },
-    { word: "security audit", translation: "audit de sécurité", example: "Independent security audits verify control effectiveness against established requirements and best practices." },
+    
+    
     { word: "penetration test", translation: "test d'intrusion", example: "The penetration test identified exploitable vulnerabilities that automated scans had missed." },
     
     // Protection des données et conformité (50 mots)
-    { word: "data protection", translation: "protection des données", example: "Comprehensive data protection encompasses technological controls, organizational measures, and user awareness." },
+    
     { word: "personally identifiable information", translation: "informations personnelles identifiables", example: "Personally identifiable information requires enhanced safeguards under multiple regulatory frameworks." },
     { word: "sensitive personal data", translation: "données personnelles sensibles", example: "Sensitive personal data includes health information, biometrics, and other categories requiring special protection." },
     { word: "data classification", translation: "classification des données", example: "Data classification categorizes information based on sensitivity and business impact to apply appropriate controls." },
     { word: "data mapping", translation: "cartographie des données", example: "Data mapping documents information flows throughout collection, processing, storage, and transfer phases." },
     { word: "data inventory", translation: "inventaire des données", example: "A comprehensive data inventory identifies all sensitive information and its storage locations across systems." },
-    { word: "data minimization", translation: "minimisation des données", example: "Data minimization principles limit collection and retention to information necessary for specified purposes." },
+    
     { word: "purpose limitation", translation: "limitation des finalités", example: "Purpose limitation restricts data usage to the specific reasons for which it was originally collected." },
-    { word: "consent management", translation: "gestion du consentement", example: "The consent management platform documents and enforces user preferences regarding data processing." },
-    { word: "privacy by design", translation: "protection de la vie privée dès la conception", example: "Privacy by design incorporates data protection principles throughout the development lifecycle." },
-    { word: "privacy impact assessment", translation: "analyse d'impact relative à la protection des données", example: "The privacy impact assessment evaluates potential risks before implementing new data processing activities." },
+    
+    
+    
     { word: "data subject rights", translation: "droits des personnes concernées", example: "Modern privacy regulations grant data subjects various rights regarding their personal information." },
     { word: "right to access", translation: "droit d'accès", example: "The right to access enables individuals to obtain confirmation of processing and copies of their personal data." },
     { word: "right to rectification", translation: "droit de rectification", example: "Right to rectification allows individuals to correct inaccurate or incomplete personal information." },
@@ -127,14 +127,14 @@ export const vocab = {
     { word: "anonymization", translation: "anonymisation", example: "True anonymization permanently prevents re-identification even with additional data sources." },
     { word: "pseudonymization", translation: "pseudonymisation", example: "Unlike anonymization, pseudonymization allows re-identification with additional information kept separately." },
     { word: "data masking", translation: "masquage de données", example: "Data masking replaces sensitive information with realistic but fictitious values for testing environments." },
-    { word: "tokenization", translation: "tokenisation", example: "Tokenization substitutes sensitive data with non-sensitive placeholders linked to the original values in secure storage." },
-    { word: "data loss prevention", translation: "prévention de perte de données", example: "Data loss prevention systems monitor, detect, and block unauthorized transmission of sensitive information." },
-    { word: "privacy-enhancing technology", translation: "technologie renforçant la confidentialité", example: "Privacy-enhancing technologies provide technical solutions for data protection beyond regulatory compliance." },
+    
+    
+    
     { word: "homomorphic encryption", translation: "chiffrement homomorphique", example: "Homomorphic encryption allows computation on encrypted data without decryption, preserving confidentiality." },
-    { word: "differential privacy", translation: "confidentialité différentielle", example: "Differential privacy injects calculated noise into datasets to protect individual records while maintaining analytical utility." },
-    { word: "data breach", translation: "violation de données", example: "A data breach involves unauthorized access, disclosure, alteration, or destruction of protected information." },
+    
+    
     { word: "breach notification", translation: "notification de violation", example: "Regulatory frameworks specify breach notification requirements including timelines and content." },
-    { word: "regulatory compliance", translation: "conformité réglementaire", example: "The compliance program ensures adherence to applicable laws, regulations, and industry standards." },
+    
     { word: "General Data Protection Regulation", translation: "Règlement général sur la protection des données", example: "The GDPR established comprehensive privacy requirements for organizations processing EU residents' data." },
     { word: "California Consumer Privacy Act", translation: "Loi californienne sur la protection de la vie privée des consommateurs", example: "The CCPA grants California residents specific rights regarding personal information collected by businesses." },
     { word: "Health Insurance Portability and Accountability Act", translation: "Loi sur la portabilité et la responsabilité de l'assurance maladie", example: "HIPAA establishes standards for protected health information in the United States." },
@@ -150,20 +150,20 @@ export const vocab = {
     { word: "privacy notice", translation: "politique de confidentialité", example: "A comprehensive privacy notice transparently discloses data collection and processing practices to individuals." },
     { word: "cookie consent", translation: "consentement aux cookies", example: "European regulations require explicit cookie consent before storing non-essential tracking technologies." },
     { word: "vendor risk management", translation: "gestion des risques liés aux fournisseurs", example: "Vendor risk management assesses third-party data handling practices before and during relationships." },
-    { word: "supply chain security", translation: "sécurité de la chaîne d'approvisionnement", example: "Supply chain security ensures appropriate controls throughout the service provider ecosystem." },
+    
     { word: "security assessment", translation: "évaluation de sécurité", example: "Third-party security assessments verify control effectiveness through documentation review and testing." },
     { word: "attestation", translation: "attestation", example: "Independent attestation reports provide assurance regarding control design and operational effectiveness." },
     { word: "security certification", translation: "certification de sécurité", example: "Industry security certifications demonstrate compliance with established standards through external validation." },
     { word: "continuous monitoring", translation: "surveillance continue", example: "Continuous monitoring provides real-time visibility into security and compliance posture." },
     
     // Cybersécurité avancée et tendances émergentes (50 mots)
-    { word: "security architecture", translation: "architecture de sécurité", example: "The enterprise security architecture aligns protection mechanisms with business objectives and risk tolerances." },
-    { word: "cyber resilience", translation: "cyber-résilience", example: "Cyber resilience encompasses the ability to prepare for, withstand, recover from, and adapt to security incidents." },
-    { word: "cyber risk management", translation: "gestion des cyber-risques", example: "Effective cyber risk management balances security investment against potential impact and likelihood of threats." },
+    
+    
+    
     { word: "cyber insurance", translation: "cyber-assurance", example: "The cyber insurance policy provides financial protection against specific categories of security incidents." },
     { word: "offensive security", translation: "sécurité offensive", example: "Offensive security approaches identify vulnerabilities through the same techniques utilized by adversaries." },
-    { word: "security automation", translation: "automatisation de la sécurité", example: "Security automation implements programmatic responses to common scenarios, reducing manual intervention." },
-    { word: "security orchestration", translation: "orchestration de la sécurité", example: "Security orchestration coordinates actions across multiple tools through defined workflows and integrations." },
+    
+    
     { word: "devsecops", translation: "devsecops", example: "DevSecOps integrates security throughout the development pipeline rather than as a separate phase." },
     { word: "shift-left security", translation: "sécurité décalée vers la gauche", example: "Shift-left security implements controls earlier in the development lifecycle to reduce remediation costs." },
     { word: "cloud security", translation: "sécurité du cloud", example: "Cloud security requires different approaches than traditional infrastructure due to shared responsibility models." },
@@ -172,37 +172,37 @@ export const vocab = {
     { word: "infrastructure as code security", translation: "sécurité de l'infrastructure en tant que code", example: "Security scanning of infrastructure as code identifies misconfigurations before deployment." },
     { word: "serverless security", translation: "sécurité sans serveur", example: "Serverless security focuses on application layer protections when underlying infrastructure is abstracted." },
     { word: "internet of things security", translation: "sécurité de l'internet des objets", example: "Internet of Things security addresses challenges of limited computing resources and massive deployment scale." },
-    { word: "operational technology security", translation: "sécurité des technologies opérationnelles", example: "Operational technology security protects industrial control systems with different requirements than IT environments." },
+    
     { word: "industrial control system security", translation: "sécurité des systèmes de contrôle industriel", example: "Industrial control system security prioritizes availability and physical safety alongside confidentiality and integrity." },
     { word: "SCADA security", translation: "sécurité SCADA", example: "SCADA security protects supervisory control and data acquisition systems controlling critical infrastructure." },
     { word: "embedded device security", translation: "sécurité des appareils embarqués", example: "Embedded device security addresses risks in firmware and hardware with limited update capabilities." },
-    { word: "mobile security", translation: "sécurité mobile", example: "Mobile security encompasses device protection, application controls, and secure communications for portable systems." },
+    
     { word: "bring your own device", translation: "apportez votre appareil personnel", example: "Bring your own device policies balance security requirements with employee flexibility." },
-    { word: "endpoint security", translation: "sécurité des terminaux", example: "Modern endpoint security combines traditional antivirus with behavioral analysis and response capabilities." },
-    { word: "behavioral analytics", translation: "analyse comportementale", example: "Security behavioral analytics identifies anomalous actions that may indicate compromise or insider threats." },
+    
+    
     { word: "user and entity behavior analytics", translation: "analyse comportementale des utilisateurs et des entités", example: "UEBA establishes baselines of normal activity to detect potentially malicious deviations." },
-    { word: "security orchestration, automation and response", translation: "orchestration, automatisation et réponse de sécurité", example: "SOAR platforms enhance efficiency through workflow automation and coordinated tool actions." },
-    { word: "security information and event management", translation: "gestion des informations et des événements de sécurité", example: "Next-generation SIEM platforms incorporate behavioral analytics and threat intelligence into correlation rules." },
+    
+    
     { word: "extended detection and response", translation: "détection et réponse étendues", example: "XDR solutions integrate multiple security controls for comprehensive visibility and coordinated response." },
     { word: "threat intelligence platform", translation: "plateforme de renseignement sur les menaces", example: "The threat intelligence platform aggregates, analyzes, and operationalizes information about potential adversaries." },
-    { word: "threat hunting", translation: "chasse aux menaces", example: "Proactive threat hunting searches for indicators of compromise that automated detection missed." },
+    
     { word: "managed security service provider", translation: "fournisseur de services de sécurité gérés", example: "The organization partnered with a managed security service provider for 24/7 monitoring capabilities." },
     { word: "security as a service", translation: "sécurité en tant que service", example: "Security as a service offerings provide subscription-based protection without capital investment." },
-    { word: "digital forensics", translation: "investigation numérique légale", example: "Advanced digital forensics techniques recover evidence from volatile memory and encrypted storage." },
-    { word: "incident response", translation: "réponse aux incidents", example: "The incident response team conducts regular exercises simulating different attack scenarios." },
-    { word: "cyber threat intelligence", translation: "renseignement sur les cybermenaces", example: "Actionable cyber threat intelligence provides context about adversaries' capabilities and intentions." },
+    
+    
+    
     { word: "security framework", translation: "cadre de sécurité", example: "The organization adopted the NIST Cybersecurity Framework to structure its security program." },
     { word: "zero trust", translation: "confiance zéro", example: "Zero trust architecture requires verification of every access request regardless of source location." },
     { word: "microsegmentation", translation: "microsegmentation", example: "Microsegmentation creates granular security zones to contain lateral movement during breaches." },
     { word: "software-defined perimeter", translation: "périmètre défini par logiciel", example: "Software-defined perimeter creates dynamic, identity-based boundaries instead of static network segments." },
-    { word: "quantum cryptography", translation: "cryptographie quantique", example: "Quantum cryptography offers theoretical protection against computational attacks including quantum computing threats." },
+    
     { word: "post-quantum cryptography", translation: "cryptographie post-quantique", example: "Post-quantum cryptographic algorithms resist attacks from both classical and quantum computers." },
     { word: "blockchain security", translation: "sécurité de la blockchain", example: "Blockchain security addresses unique concerns including consensus mechanisms and smart contract vulnerabilities." },
-    { word: "homomorphic encryption", translation: "chiffrement homomorphique", example: "Homomorphic encryption enables computation on encrypted data without revealing the underlying information." },
+    
     { word: "artificial intelligence in cybersecurity", translation: "intelligence artificielle en cybersécurité", example: "Artificial intelligence enhances threat detection through pattern recognition and anomaly identification." },
     { word: "adversarial machine learning", translation: "apprentissage automatique antagoniste", example: "Adversarial machine learning studies how attackers can manipulate AI systems through specially crafted inputs." },
-    { word: "security automation", translation: "automatisation de la sécurité", example: "The organization implemented security automation to handle routine tasks and initial incident triage." },
-    { word: "secure access service edge", translation: "périphérie de service d'accès sécurisé", example: "SASE combines network security functions with wide area networking capabilities in cloud-delivered architecture." },
+    
+    
     { word: "cyber threat framework", translation: "cadre de cybermenace", example: "The cyber threat framework provides a common language for describing adversary behaviors across different contexts." },
     { word: "attack simulation", translation: "simulation d'attaque", example: "Automated attack simulation tools continuously validate security controls against common adversary techniques." },
     { word: "breach and attack simulation", translation: "simulation de violation et d'attaque", example: "Breach and attack simulation platforms automate security control validation against common adversary techniques." },

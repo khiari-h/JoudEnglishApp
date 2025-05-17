@@ -2,9 +2,9 @@ export const vocab = {
   title: "Expressions Idiomatiques Avancées",
   words: [
     // Expressions liées aux affaires et au monde professionnel (50 mots)
-    { word: "to throw in the towel", translation: "jeter l'éponge", example: "After three failed attempts to secure funding, the startup finally threw in the towel." },
-    { word: "to cut corners", translation: "faire des économies de bouts de chandelle", example: "The contractor was accused of cutting corners on building materials to increase profits." },
-    { word: "to bite off more than one can chew", translation: "voir trop grand", example: "By expanding into three new markets simultaneously, the company bit off more than it could chew." },
+    
+    
+    
     { word: "to hit the ground running", translation: "être opérationnel dès le début", example: "The new CEO hit the ground running, implementing changes within her first week." },
     { word: "to be in the red", translation: "être déficitaire", example: "Despite increased sales, the company remained in the red due to high operating costs." },
     { word: "to make a killing", translation: "faire fortune", example: "Early investors in the tech startup made a killing when it went public." },
@@ -34,32 +34,32 @@ export const vocab = {
     { word: "to read between the lines", translation: "lire entre les lignes", example: "Reading between the lines of the announcement, it seems layoffs may be imminent." },
     { word: "to test the waters", translation: "tâter le terrain", example: "Before fully committing to the Chinese market, they decided to test the waters with a limited product line." },
     { word: "to go back to the drawing board", translation: "tout reprendre à zéro", example: "After the prototype failed testing, the team went back to the drawing board." },
-    { word: "to jump on the bandwagon", translation: "suivre le mouvement", example: "Many companies jumped on the sustainability bandwagon once they saw its marketing potential." },
+    
     { word: "to give someone the green light", translation: "donner le feu vert", example: "The board gave the CEO the green light to proceed with the acquisition." },
-    { word: "to cut to the chase", translation: "en venir au fait", example: "Let's cut to the chase—are you interested in the partnership or not?" },
-    { word: "to miss the boat", translation: "rater le coche", example: "By delaying their digital transformation, the company missed the boat on crucial industry developments." },
+    
+    
     { word: "to move the goalposts", translation: "changer les règles en cours de route", example: "It's frustrating when clients move the goalposts after work has already begun." },
-    { word: "to see eye to eye", translation: "être d'accord", example: "The marketing and sales departments don't always see eye to eye on campaign priorities." },
+    
     { word: "to keep one's head above water", translation: "garder la tête hors de l'eau", example: "During the recession, many small businesses struggled just to keep their heads above water." },
     { word: "a cash cow", translation: "une vache à lait", example: "The printer ink business remains the company's cash cow, generating reliable profits." },
     { word: "to give someone a run for their money", translation: "donner du fil à retordre", example: "The new competitor is giving established firms a run for their money with innovative pricing." },
     { word: "to weather the storm", translation: "résister aux difficultés", example: "With adequate capital reserves, the company was able to weather the storm during the market downturn." },
     { word: "to be ahead of the curve", translation: "avoir une longueur d'avance", example: "Their early investment in artificial intelligence put them ahead of the curve in their industry." },
-    { word: "to bite the bullet", translation: "prendre son courage à deux mains", example: "The company finally bit the bullet and discontinued its underperforming legacy product line." },
+    
     { word: "to break even", translation: "atteindre le seuil de rentabilité", example: "The startup expects to break even by the end of its second year of operations." },
     { word: "to talk shop", translation: "parler métier", example: "Even at social gatherings, the colleagues couldn't help talking shop." },
     { word: "to pick someone's brain", translation: "demander l'avis de quelqu'un", example: "I'd like to pick your brain about the Asian market expansion strategy." },
     { word: "a shoestring budget", translation: "un budget très serré", example: "The team launched the product on a shoestring budget, relying heavily on organic marketing." },
     { word: "to put out fires", translation: "résoudre des problèmes urgents", example: "The new manager spent her first month putting out fires left by her predecessor." },
-    { word: "to take the bull by the horns", translation: "prendre le taureau par les cornes", example: "Rather than delaying the difficult restructuring, the CEO took the bull by the horns." },
+    
     
     // Expressions liées à la communication et aux relations (50 mots)
-    { word: "to beat around the bush", translation: "tourner autour du pot", example: "Stop beating around the bush and tell me directly what happened with the client." },
+    
     { word: "to put one's foot in one's mouth", translation: "faire un impair", example: "He put his foot in his mouth by asking about her pregnancy when she had simply gained weight." },
     { word: "to read someone like a book", translation: "cerner quelqu'un facilement", example: "After working together for years, she could read her business partner like a book." },
     { word: "to give someone the cold shoulder", translation: "battre froid à quelqu'un", example: "After the disagreement, several colleagues gave him the cold shoulder at the conference." },
-    { word: "to hit a nerve", translation: "toucher un point sensible", example: "The journalist's question about executive compensation hit a nerve during the press conference." },
-    { word: "to break the ice", translation: "briser la glace", example: "The team-building activity helped break the ice among the newly merged departments." },
+    
+    
     { word: "to get off on the wrong foot", translation: "mal commencer une relation", example: "They got off on the wrong foot when she criticized his proposal during their first meeting." },
     { word: "to see through someone", translation: "ne pas être dupe de quelqu'un", example: "Experienced negotiators can see through attempts at artificial time pressure." },
     { word: "to talk at cross purposes", translation: "ne pas parler de la même chose", example: "It became clear that the teams were talking at cross purposes regarding project objectives." },
@@ -67,7 +67,7 @@ export const vocab = {
     { word: "to speak volumes", translation: "être très révélateur", example: "The CEO's absence from the announcement speaks volumes about the company's direction." },
     { word: "to take something with a grain of salt", translation: "prendre avec des pincettes", example: "You should take market forecasts with a grain of salt, especially during volatile periods." },
     { word: "to sugarcoat something", translation: "enjoliver quelque chose", example: "The annual report sugarcoated the significant challenges facing the company." },
-    { word: "to play devil's advocate", translation: "jouer l'avocat du diable", example: "Let me play devil's advocate for a moment—what if the competitor lowers their prices in response?" },
+    
     { word: "to get to the point", translation: "en venir au fait", example: "After a lengthy introduction, the presenter finally got to the point of the proposal." },
     { word: "to put in a good word", translation: "recommander quelqu'un", example: "My former manager put in a good word for me during the interview process." },
     { word: "to hold one's tongue", translation: "se retenir de parler", example: "She held her tongue during the meeting, saving her criticisms for a private conversation later." },
@@ -95,7 +95,7 @@ export const vocab = {
     { word: "to bury the hatchet", translation: "enterrer la hache de guerre", example: "The competing firms decided to bury the hatchet and explore collaboration opportunities." },
     { word: "to butter someone up", translation: "flatter quelqu'un de manière excessive", example: "He tried to butter up the client before asking for the contract extension." },
     { word: "to get one's wires crossed", translation: "avoir un malentendu", example: "We got our wires crossed about the meeting time, which is why I arrived an hour late." },
-    { word: "to keep someone at arm's length", translation: "garder quelqu'un à distance", example: "The founder kept potential investors at arm's length until the prototype was completed." },
+    
     { word: "to sing someone's praises", translation: "faire l'éloge de quelqu'un", example: "The director has been singing your praises after the successful project delivery." },
     { word: "to take something at face value", translation: "prendre quelque chose au pied de la lettre", example: "Experienced auditors never take financial statements at face value." },
     { word: "to wash one's hands of something", translation: "se désolidariser de quelque chose", example: "After raising concerns and being ignored, she washed her hands of the questionable project." },
@@ -105,34 +105,34 @@ export const vocab = {
     { word: "to tread on thin ice", translation: "être en terrain glissant", example: "When discussing potential layoffs, managers need to recognize they're treading on thin ice." },
     
     // Expressions pour la prise de décision et les situations complexes (50 mots)
-    { word: "to bite the bullet", translation: "prendre son courage à deux mains", example: "After months of deliberation, the board bit the bullet and approved the costly but necessary infrastructure upgrade." },
+    
     { word: "to cross the Rubicon", translation: "franchir le Rubicon", example: "By going public with the allegations, the whistleblower had crossed the Rubicon—there was no turning back." },
     { word: "between a rock and a hard place", translation: "entre le marteau et l'enclume", example: "The CEO found himself between a rock and a hard place: cut jobs or risk bankruptcy." },
     { word: "to cut the Gordian knot", translation: "trancher le nœud gordien", example: "The mediator cut the Gordian knot by proposing a completely novel solution acceptable to both parties." },
-    { word: "to face the music", translation: "affronter les conséquences", example: "After the failed project, the team had to face the music during the executive review." },
-    { word: "to go out on a limb", translation: "prendre un risque", example: "The analyst went out on a limb with her contrary market prediction, which ultimately proved correct." },
+    
+    
     { word: "to grasp the nettle", translation: "prendre le taureau par les cornes", example: "Rather than delaying further, the new director grasped the nettle and initiated the difficult restructuring." },
     { word: "to have an ace up one's sleeve", translation: "avoir plus d'un tour dans son sac", example: "During the difficult negotiations, the company had an ace up its sleeve: a signed letter of intent from a major competitor." },
     { word: "to jump the gun", translation: "agir prématurément", example: "The marketing team jumped the gun by announcing features that were still in development." },
     { word: "to navigate uncharted waters", translation: "s'aventurer en terrain inconnu", example: "Entering the emerging market required the company to navigate uncharted waters." },
-    { word: "to open a can of worms", translation: "ouvrir la boîte de Pandore", example: "The internal audit opened a can of worms regarding the previous accounting practices." },
+    
     { word: "to play hardball", translation: "jouer dur", example: "When negotiations stalled, the acquiring company began playing hardball with aggressive deadlines." },
     { word: "to roll the dice", translation: "jouer le tout pour le tout", example: "With the new product launch, the struggling company was essentially rolling the dice on its future." },
     { word: "to stick to one's guns", translation: "camper sur ses positions", example: "Despite pressure from shareholders, the CEO stuck to her guns regarding the ethical sourcing policy." },
-    { word: "to take the bull by the horns", translation: "prendre le taureau par les cornes", example: "The new manager took the bull by the horns and addressed the team's performance issues directly." },
+    
     { word: "to throw caution to the wind", translation: "jeter la prudence aux orties", example: "With nothing left to lose, the startup threw caution to the wind with its disruptive business model." },
     { word: "to tread carefully", translation: "avancer avec prudence", example: "When restructuring international operations, the company needs to tread carefully regarding local regulations." },
     { word: "to venture into the lion's den", translation: "s'aventurer dans la fosse aux lions", example: "The spokesperson ventured into the lion's den by agreeing to an interview with the normally hostile media outlet." },
-    { word: "to weather the storm", translation: "résister aux difficultés", example: "With adequate capital reserves, the company was able to weather the storm during the economic downturn." },
+    
     { word: "to be caught between Scylla and Charybdis", translation: "être entre Charybde et Scylla", example: "The central bank was caught between Scylla and Charybdis: raise rates and risk recession, or maintain them and risk inflation." },
     { word: "to burn one's bridges", translation: "brûler ses vaisseaux", example: "By publicly criticizing the industry leader, the startup burned its bridges regarding potential partnership opportunities." },
     { word: "to cross the bridge when one comes to it", translation: "aviser en temps voulu", example: "Rather than worrying about potential regulatory changes, we'll cross that bridge when we come to it." },
     { word: "to have too many irons in the fire", translation: "courir plusieurs lièvres à la fois", example: "The company's poor performance stemmed from having too many irons in the fire and lacking focus." },
     { word: "to leave no stone unturned", translation: "ne négliger aucune piste", example: "The due diligence team left no stone unturned in their examination of the acquisition target." },
-    { word: "to play devil's advocate", translation: "jouer l'avocat du diable", example: "To stress-test the strategy, the consultant played devil's advocate during the planning session." },
+    
     { word: "to play one's cards close to one's chest", translation: "garder ses cartes près de son corps", example: "During negotiations, the investor played his cards close to his chest regarding his true budget." },
     { word: "to pull out all the stops", translation: "mettre le paquet", example: "For the critical product launch, the marketing team pulled out all the stops with a comprehensive campaign." },
-    { word: "to put all one's eggs in one basket", translation: "mettre tous ses œufs dans le même panier", example: "The investment advisory warned against putting all our eggs in one basket, even with promising opportunities." },
+    
     { word: "to rise to the occasion", translation: "être à la hauteur de la situation", example: "Despite being relatively inexperienced, the project manager rose to the occasion during the crisis." },
     { word: "to take a calculated risk", translation: "prendre un risque calculé", example: "Entering the emerging market was a calculated risk based on extensive research and controlled investment." },
     { word: "to take a leaf out of someone's book", translation: "s'inspirer de quelqu'un", example: "The startup took a leaf out of the tech giant's book by implementing a similar customer service approach." },
@@ -197,7 +197,7 @@ export const vocab = {
     { word: "a blessing in disguise", translation: "un mal pour un bien", example: "Losing the government contract forced diversification, which proved a blessing in disguise when public spending was cut." },
     { word: "cross that bridge when you come to it", translation: "on verra en temps voulu", example: "Rather than worrying about potential regulatory changes, we'll cross that bridge when we come to it." },
     { word: "cutting corners", translation: "faire des économies de bouts de chandelle", example: "The investigation revealed that cutting corners on safety protocols led to the industrial accident." },
-    { word: "the elephant in the room", translation: "le sujet dont personne n'ose parler", example: "The company's unsustainable debt burden was the elephant in the room during strategic discussions." },
+    
     { word: "get a taste of one's own medicine", translation: "goûter à sa propre médecine", example: "After years of aggressive tactics, the company got a taste of its own medicine when facing a hostile takeover." },
     { word: "hit the nail on the head", translation: "mettre dans le mille", example: "The analysis hit the nail on the head by identifying supply chain vulnerabilities as our primary risk." },
     { word: "leave no stone unturned", translation: "ne négliger aucune piste", example: "The audit team will leave no stone unturned in investigating the accounting discrepancies." },

@@ -2,13 +2,13 @@
   title: "Lieux & Environnements",
   words: [
     // Lieux dans la ville
-    { word: "city", translation: "ville", example: "London is a big city." },
+    
     { word: "town", translation: "ville (petite)", example: "I live in a small town." },
-    { word: "street", translation: "rue", example: "I live on Main Street." },
+    
     { word: "road", translation: "route", example: "This road leads to the beach." },
-    { word: "building", translation: "bâtiment", example: "This is a very tall building." },
-    { word: "house", translation: "maison", example: "They have a beautiful house." },
-    { word: "apartment", translation: "appartement", example: "I live in an apartment." },
+    
+    
+    
     { word: "shop", translation: "magasin", example: "There's a new shop in town." },
     { word: "store", translation: "magasin", example: "I need to go to the grocery store." },
     { word: "restaurant", translation: "restaurant", example: "Let's eat at this restaurant." },
@@ -22,18 +22,18 @@
     { word: "market", translation: "marché", example: "I buy fresh vegetables at the market." },
     
     // Espaces domestiques
-    { word: "home", translation: "maison/foyer", example: "Welcome to my home." },
-    { word: "house", translation: "maison", example: "They have a big house." },
-    { word: "apartment", translation: "appartement", example: "My apartment is small but comfortable." },
+    
+    
+    
     { word: "room", translation: "pièce/chambre", example: "This room is very spacious." },
-    { word: "living room", translation: "salon", example: "We watch TV in the living room." },
-    { word: "bedroom", translation: "chambre", example: "My bedroom is upstairs." },
-    { word: "kitchen", translation: "cuisine", example: "She's cooking in the kitchen." },
-    { word: "bathroom", translation: "salle de bain", example: "The bathroom is on the right." },
-    { word: "toilet", translation: "toilettes", example: "The toilet is out of order." },
-    { word: "garden", translation: "jardin", example: "We have flowers in our garden." },
-    { word: "garage", translation: "garage", example: "I park my car in the garage." },
-    { word: "balcony", translation: "balcon", example: "I like to sit on my balcony in the evening." },
+    
+    
+    
+    
+    
+    
+    
+    
     { word: "yard", translation: "cour", example: "The children play in the yard." },
     
     // Lieux éducatifs

@@ -2,21 +2,21 @@ export const vocab = {
   title: "Débats Sociétaux Contemporains",
   words: [
     // Droits civiques
-    { word: "civil rights", translation: "droits civiques", example: "Civil rights movements continue to fight for equality and justice." },
+    
     { word: "equal opportunity", translation: "égalité des chances", example: "Equal opportunity policies aim to create fairness in education and employment." },
-    { word: "discrimination", translation: "discrimination", example: "Anti-discrimination laws protect individuals from unfair treatment." },
+    
     { word: "racial profiling", translation: "profilage racial", example: "Racial profiling occurs when authorities target individuals based on race or ethnicity." },
     { word: "affirmative action", translation: "discrimination positive", example: "Affirmative action policies seek to increase representation of underrepresented groups." },
     { word: "voter suppression", translation: "suppression du vote", example: "Voter suppression tactics prevent eligible citizens from exercising their right to vote." },
     { word: "disenfranchisement", translation: "privation des droits civiques", example: "Disenfranchisement historically excluded certain groups from political participation." },
-    { word: "civil liberties", translation: "libertés civiles", example: "Civil liberties include freedom of speech, religion, and assembly." },
+    
     { word: "police brutality", translation: "brutalité policière", example: "Protests against police brutality have increased public awareness of systemic issues." },
     { word: "racial justice", translation: "justice raciale", example: "Racial justice advocates work to dismantle structural racism." },
-    { word: "hate crime", translation: "crime haineux", example: "Hate crime legislation imposes harsher penalties for bias-motivated offenses." },
+    
     { word: "racial bias", translation: "préjugé racial", example: "Implicit racial bias can affect decision-making even without conscious prejudice." },
-    { word: "systemic racism", translation: "racisme systémique", example: "Systemic racism operates through institutional policies and practices." },
+    
     { word: "segregation", translation: "ségrégation", example: "De facto segregation persists in many housing and educational systems." },
-    { word: "integration", translation: "intégration", example: "School integration policies aim to create diverse learning environments." },
+    
     { word: "minority rights", translation: "droits des minorités", example: "Minority rights protect groups from discrimination by the majority." },
     { word: "racial equity", translation: "équité raciale", example: "Racial equity involves addressing historical disadvantages to achieve fair outcomes." },
     { word: "voter rights", translation: "droits des électeurs", example: "Voter rights campaigns focus on accessibility and protection from intimidation." },
@@ -24,52 +24,52 @@ export const vocab = {
     { word: "xenophobia", translation: "xénophobie", example: "Xenophobia manifests as fear or hatred toward people from other countries." },
     
     // Débats bioéthiques
-    { word: "bioethics", translation: "bioéthique", example: "Bioethics addresses moral questions arising from advances in medicine and biology." },
+    
     { word: "reproductive rights", translation: "droits reproductifs", example: "Reproductive rights encompass access to contraception, abortion, and fertility treatments." },
-    { word: "gene editing", translation: "édition génétique", example: "Gene editing technologies raise questions about human enhancement and designer babies." },
+    
     { word: "stem cell research", translation: "recherche sur les cellules souches", example: "Stem cell research holds medical promise but raises ethical concerns." },
     { word: "cloning", translation: "clonage", example: "Therapeutic cloning differs from reproductive cloning in purpose and ethical implications." },
-    { word: "euthanasia", translation: "euthanasie", example: "Voluntary euthanasia involves a person's informed request to end their life." },
-    { word: "assisted suicide", translation: "suicide assisté", example: "Assisted suicide provides patients with means to end their own lives." },
+    
+    
     { word: "right to die", translation: "droit de mourir", example: "Right to die advocates support individuals' autonomy in end-of-life decisions." },
     { word: "organ donation", translation: "don d'organes", example: "Opt-out organ donation systems presume consent unless explicitly refused." },
     { word: "artificial intelligence ethics", translation: "éthique de l'intelligence artificielle", example: "Artificial intelligence ethics addresses bias, privacy, and autonomy concerns." },
     { word: "surrogacy", translation: "gestation pour autrui", example: "Commercial surrogacy raises questions about exploitation and commodification." },
     { word: "human enhancement", translation: "amélioration humaine", example: "Human enhancement technologies could widen inequality between enhanced and unenhanced populations." },
     { word: "genetic privacy", translation: "confidentialité génétique", example: "Genetic privacy concerns increase as DNA testing becomes more common." },
-    { word: "informed consent", translation: "consentement éclairé", example: "Informed consent requires full disclosure of risks and benefits before medical procedures." },
-    { word: "medical ethics", translation: "éthique médicale", example: "Medical ethics guides healthcare providers' decisions and relationships with patients." },
+    
+    
     
     // Enjeux démographiques
-    { word: "demographic change", translation: "changement démographique", example: "Demographic change affects economic growth, political representation, and social services." },
+    
     { word: "population aging", translation: "vieillissement de la population", example: "Population aging creates challenges for pension systems and healthcare." },
     { word: "fertility rate", translation: "taux de fécondité", example: "Many developed countries have fertility rates below replacement level." },
     { word: "life expectancy", translation: "espérance de vie", example: "Life expectancy continues to increase in most regions, though inequalities persist." },
     { word: "migration pattern", translation: "schéma migratoire", example: "Migration patterns respond to economic opportunities and environmental conditions." },
     { word: "rural depopulation", translation: "dépeuplement rural", example: "Rural depopulation affects community sustainability and service provision." },
-    { word: "urbanization", translation: "urbanisation", example: "Rapid urbanization creates housing challenges and infrastructure demands." },
+    
     { word: "population density", translation: "densité de population", example: "Population density affects transportation systems and housing costs." },
     { word: "demographic dividend", translation: "dividende démographique", example: "A demographic dividend occurs when working-age populations exceed dependent populations." },
     { word: "gender imbalance", translation: "déséquilibre entre les sexes", example: "Gender imbalance in certain regions results from sex-selective practices and migration." },
     { word: "generational divide", translation: "fracture générationnelle", example: "The generational divide manifests in different political priorities and technological adoption." },
     { word: "dependency ratio", translation: "ratio de dépendance", example: "The dependency ratio measures the proportion of non-working to working-age population." },
-    { word: "demographic transition", translation: "transition démographique", example: "Demographic transition involves shifts from high to low birth and death rates." },
+    
     { word: "population projection", translation: "projection démographique", example: "Population projections help governments plan for future service needs." },
     { word: "brain drain", translation: "fuite des cerveaux", example: "Brain drain occurs when educated professionals emigrate from developing regions." },
     
     // Questions identitaires
     { word: "identity politics", translation: "politique identitaire", example: "Identity politics mobilizes groups based on shared experiences and characteristics." },
-    { word: "cultural identity", translation: "identité culturelle", example: "Cultural identity encompasses language, traditions, and shared values." },
+    
     { word: "national identity", translation: "identité nationale", example: "National identity shapes attitudes toward immigration and international cooperation." },
     { word: "religious identity", translation: "identité religieuse", example: "Religious identity influences political participation and social values." },
     { word: "ethnic identity", translation: "identité ethnique", example: "Ethnic identity includes cultural heritage and ancestral connections." },
     { word: "gender identity", translation: "identité de genre", example: "Gender identity refers to a person's internal sense of their gender." },
     { word: "sexual orientation", translation: "orientation sexuelle", example: "Sexual orientation describes patterns of emotional and sexual attraction." },
-    { word: "intersectionality", translation: "intersectionnalité", example: "Intersectionality examines how multiple identities create overlapping forms of discrimination." },
-    { word: "assimilation", translation: "assimilation", example: "Assimilation involves adopting the cultural norms of the dominant society." },
-    { word: "multiculturalism", translation: "multiculturalisme", example: "Multiculturalism recognizes and supports diverse cultural identities within society." },
-    { word: "cultural appropriation", translation: "appropriation culturelle", example: "Cultural appropriation involves adopting elements from another culture inappropriately." },
-    { word: "diaspora", translation: "diaspora", example: "Diaspora communities maintain connections to their ancestral homelands." },
+    
+    
+    
+    
+    
     { word: "indigenous rights", translation: "droits des peuples autochtones", example: "Indigenous rights include self-determination and cultural preservation." },
     { word: "LGBTQ+ rights", translation: "droits LGBTQ+", example: "LGBTQ+ rights vary significantly across different countries and regions." },
     { word: "gender equality", translation: "égalité des genres", example: "Gender equality remains an unfinished goal in most societies." },
@@ -77,53 +77,53 @@ export const vocab = {
     { word: "marginalization", translation: "marginalisation", example: "Marginalization excludes groups from full participation in society." },
     
     // Inégalités structurelles
-    { word: "structural inequality", translation: "inégalité structurelle", example: "Structural inequality persists through institutions and systems, not just individual actions." },
-    { word: "income inequality", translation: "inégalité de revenus", example: "Income inequality has increased in many countries over recent decades." },
+    
+    
     { word: "wealth gap", translation: "écart de richesse", example: "The wealth gap between the richest and poorest continues to widen globally." },
-    { word: "social mobility", translation: "mobilité sociale", example: "Social mobility describes the ability to improve one's economic position." },
+    
     { word: "opportunity gap", translation: "écart d'opportunité", example: "The opportunity gap begins early with unequal access to education and resources." },
-    { word: "digital divide", translation: "fracture numérique", example: "The digital divide separates those with and without access to technology and internet." },
-    { word: "educational inequality", translation: "inégalité éducative", example: "Educational inequality perpetuates disadvantage across generations." },
+    
+    
     { word: "gender wage gap", translation: "écart salarial entre les sexes", example: "The gender wage gap persists even in advanced economies." },
-    { word: "housing discrimination", translation: "discrimination au logement", example: "Housing discrimination restricts residential options for marginalized groups." },
-    { word: "food insecurity", translation: "insécurité alimentaire", example: "Food insecurity affects millions despite global agricultural abundance." },
-    { word: "environmental justice", translation: "justice environnementale", example: "Environmental justice addresses the unequal distribution of environmental harms." },
-    { word: "healthcare disparity", translation: "disparité en matière de santé", example: "Healthcare disparities result in different outcomes based on social factors." },
+    
+    
+    
+    
     { word: "intergenerational poverty", translation: "pauvreté intergénérationnelle", example: "Intergenerational poverty persists when families lack resources to improve their situation." },
-    { word: "socioeconomic status", translation: "statut socioéconomique", example: "Socioeconomic status influences health, education, and life opportunities." },
-    { word: "privilege", translation: "privilège", example: "Privilege confers unearned advantages based on social categories." },
+    
+    
     { word: "institutional racism", translation: "racisme institutionnel", example: "Institutional racism operates through organizational policies and practices." },
     { word: "wage stagnation", translation: "stagnation des salaires", example: "Wage stagnation affects middle and working-class families despite economic growth." },
     
     // Mouvements sociaux
-    { word: "social movement", translation: "mouvement social", example: "Social movements organize collectively to promote or resist social change." },
-    { word: "activism", translation: "activisme", example: "Digital activism uses online platforms to mobilize support for causes." },
+    
+    
     { word: "grassroots organizing", translation: "organisation populaire", example: "Grassroots organizing builds power from local communities upward." },
     { word: "civil disobedience", translation: "désobéissance civile", example: "Civil disobedience involves peacefully breaking unjust laws to highlight their injustice." },
-    { word: "protest", translation: "manifestation", example: "Protests bring public attention to issues and demonstrate collective power." },
+    
     { word: "coalition building", translation: "construction de coalitions", example: "Coalition building unites diverse groups around common goals." },
-    { word: "direct action", translation: "action directe", example: "Direct action addresses problems immediately rather than through institutional channels." },
-    { word: "solidarity", translation: "solidarité", example: "Solidarity involves supporting others' struggles as connected to one's own." },
-    { word: "collective action", translation: "action collective", example: "Collective action achieves goals that individuals cannot accomplish alone." },
-    { word: "labor movement", translation: "mouvement ouvrier", example: "The labor movement advocates for workers' rights and improved conditions." },
-    { word: "environmental movement", translation: "mouvement environnemental", example: "The environmental movement addresses pollution, habitat loss, and climate change." },
+    
+    
+    
+    
+    
     { word: "feminist movement", translation: "mouvement féministe", example: "The feminist movement works toward gender equality in all aspects of society." },
-    { word: "community organizing", translation: "organisation communautaire", example: "Community organizing builds local power to address shared concerns." },
+    
     { word: "nonviolent resistance", translation: "résistance non-violente", example: "Nonviolent resistance uses peaceful tactics to oppose injustice." },
     { word: "mobilization", translation: "mobilisation", example: "Effective mobilization brings large numbers of people into coordinated action." },
-    { word: "advocacy", translation: "plaidoyer", example: "Advocacy promotes specific policies and supports affected communities." },
+    
     
     // Globalisation & réactions
-    { word: "globalization", translation: "mondialisation", example: "Globalization connects economies, cultures, and people across national boundaries." },
+    
     { word: "antiglobalization", translation: "antimondialisation", example: "Antiglobalization movements critique corporate-led international integration." },
     { word: "economic integration", translation: "intégration économique", example: "Economic integration reduces barriers to trade and investment between countries." },
-    { word: "outsourcing", translation: "externalisation", example: "Outsourcing moves production and services to lower-cost locations abroad." },
+    
     { word: "trade liberalization", translation: "libéralisation des échanges", example: "Trade liberalization removes tariffs and other barriers to international commerce." },
     { word: "cultural homogenization", translation: "homogénéisation culturelle", example: "Cultural homogenization reduces diversity through global consumer culture." },
-    { word: "sovereignty", translation: "souveraineté", example: "National sovereignty faces challenges from global economic and political forces." },
-    { word: "protectionism", translation: "protectionnisme", example: "Protectionism uses tariffs and other measures to shield domestic industries." },
-    { word: "nationalism", translation: "nationalisme", example: "Resurgent nationalism emphasizes national identity and interests over global concerns." },
-    { word: "populism", translation: "populisme", example: "Populism claims to represent ordinary people against corrupt elites." },
+    
+    
+    
+    
     { word: "transnational corporation", translation: "société transnationale", example: "Transnational corporations operate across multiple countries and jurisdictions." },
     { word: "global governance", translation: "gouvernance mondiale", example: "Global governance addresses issues that transcend national boundaries." },
     { word: "digital globalization", translation: "mondialisation numérique", example: "Digital globalization connects people through information technologies." },

@@ -2,8 +2,8 @@ export const vocab = {
   title: "Analyse Psychosociale & Comportementale",
   words: [
     // Théories psychologiques
-    { word: "cognitive dissonance", translation: "dissonance cognitive", example: "The study examined how cognitive dissonance affects decision-making processes." },
-    { word: "attachment theory", translation: "théorie de l'attachement", example: "Attachment theory explains the dynamics of long-term relationships between humans." },
+    
+    
     { word: "social learning theory", translation: "théorie de l'apprentissage social", example: "According to social learning theory, children learn behaviors through observation and imitation." },
     { word: "psychoanalytic approach", translation: "approche psychanalytique", example: "The therapist used a psychoanalytic approach to explore the patient's unconscious conflicts." },
     { word: "behavioral paradigm", translation: "paradigme comportemental", example: "The researcher's work falls within the behavioral paradigm, focusing on observable actions." },
@@ -18,7 +18,7 @@ export const vocab = {
     { word: "gestalt psychology", translation: "psychologie de la gestalt", example: "Gestalt psychology focuses on perception of complete patterns rather than individual components." },
     { word: "attribution theory", translation: "théorie de l'attribution", example: "Attribution theory examines how individuals explain the causes of behaviors and events." },
     { word: "evolutionary psychology", translation: "psychologie évolutionniste", example: "Evolutionary psychology considers how natural selection shaped human behavior." },
-    { word: "operant conditioning", translation: "conditionnement opérant", example: "Operant conditioning explains behavior through reinforcement and punishment." },
+    
     { word: "classical conditioning", translation: "conditionnement classique", example: "Pavlov's experiments demonstrated classical conditioning with dogs salivating at the sound of a bell." },
     { word: "positive psychology", translation: "psychologie positive", example: "Positive psychology examines human strengths, virtues, and factors that lead to a fulfilling life." },
     { word: "systems theory", translation: "théorie des systèmes", example: "Family therapists often apply systems theory to understand relationship dynamics." },
@@ -35,7 +35,7 @@ export const vocab = {
     { word: "psychological resilience", translation: "résilience psychologique", example: "The study examined factors contributing to psychological resilience after trauma." },
     
     // Cognition sociale
-    { word: "social cognition", translation: "cognition sociale", example: "Social cognition research investigates how people process, store, and apply information about others." },
+    
     { word: "implicit bias", translation: "biais implicite", example: "Implicit bias affects judgments without conscious awareness or control." },
     { word: "stereotype threat", translation: "menace du stéréotype", example: "Stereotype threat can diminish performance when negative stereotypes are made salient." },
     { word: "fundamental attribution error", translation: "erreur fondamentale d'attribution", example: "The fundamental attribution error leads us to overemphasize personality and underemphasize situational factors." },
@@ -46,15 +46,15 @@ export const vocab = {
     { word: "social categorization", translation: "catégorisation sociale", example: "Social categorization is the process of dividing people into groups based on common attributes." },
     { word: "self-serving bias", translation: "biais d'auto-complaisance", example: "Self-serving bias leads people to attribute success to personal factors and failure to external factors." },
     { word: "halo effect", translation: "effet de halo", example: "The halo effect occurs when one positive trait influences perception of other traits." },
-    { word: "social perception", translation: "perception sociale", example: "Social perception involves the processes through which we interpret social information." },
+    
     { word: "impression formation", translation: "formation d'impression", example: "First impressions strongly influence subsequent impression formation." },
-    { word: "cognitive load", translation: "charge cognitive", example: "Stereotype activation increases under conditions of high cognitive load." },
+    
     { word: "mental representation", translation: "représentation mentale", example: "Mental representations of social groups influence intergroup behavior." },
     { word: "illusory correlation", translation: "corrélation illusoire", example: "Illusory correlation leads to perception of relationships between unrelated variables." },
     { word: "social information processing", translation: "traitement de l'information sociale", example: "Aggressive children often show distortions in social information processing." },
     { word: "perspective taking", translation: "prise de perspective", example: "Perspective taking involves understanding a situation from another's point of view." },
     { word: "anchoring effect", translation: "effet d'ancrage", example: "The anchoring effect shows how initial information influences subsequent judgments." },
-    { word: "implicit cognition", translation: "cognition implicite", example: "Implicit cognition involves mental processes operating outside conscious awareness." },
+    
     { word: "priming effect", translation: "effet d'amorçage", example: "The priming effect demonstrates how exposure to one stimulus influences response to another." },
     { word: "social projection", translation: "projection sociale", example: "Social projection involves assuming others share our attributes and opinions." },
     { word: "hindsight bias", translation: "biais rétrospectif", example: "Hindsight bias leads people to perceive events as predictable after they've occurred." },
@@ -80,7 +80,7 @@ export const vocab = {
     { word: "neurocognitive mechanisms", translation: "mécanismes neurocognitifs", example: "The research explored neurocognitive mechanisms underlying attention disorders." },
     { word: "neural pathway", translation: "voie neuronale", example: "This neural pathway connects the hippocampus to the prefrontal cortex." },
     { word: "neuromodulator", translation: "neuromodulateur", example: "Serotonin functions as a neuromodulator affecting mood and anxiety." },
-    { word: "neuroplasticity", translation: "neuroplasticité", example: "Neuroplasticity enables the brain to reorganize after injury." },
+    
     { word: "neurodevelopmental trajectory", translation: "trajectoire neurodéveloppementale", example: "Early adversity can alter neurodevelopmental trajectories." },
     { word: "hormonal regulation", translation: "régulation hormonale", example: "Stress affects behavior through hormonal regulation systems." },
     { word: "neuroendocrine response", translation: "réponse neuroendocrine", example: "The neuroendocrine response to stress involves the HPA axis." },
@@ -89,7 +89,7 @@ export const vocab = {
     { word: "cortical thickness", translation: "épaisseur corticale", example: "The study measured cortical thickness in regions associated with language processing." },
     { word: "inhibitory control", translation: "contrôle inhibiteur", example: "Inhibitory control develops gradually throughout childhood." },
     { word: "neural correlate", translation: "corrélat neuronal", example: "Researchers identified the neural correlates of conscious perception." },
-    { word: "executive function", translation: "fonction exécutive", example: "Executive function includes working memory, cognitive flexibility, and inhibitory control." },
+    
     { word: "synaptic transmission", translation: "transmission synaptique", example: "Synaptic transmission involves the release of neurotransmitters across the synaptic cleft." },
     { word: "neuroepigenetics", translation: "neuroépigénétique", example: "Neuroepigenetics examines how environmental factors affect gene expression in the brain." },
     { word: "dendritic spine", translation: "épine dendritique", example: "Learning increases dendritic spine formation in specific neural circuits." },
@@ -124,7 +124,7 @@ export const vocab = {
     { word: "personality pathology", translation: "pathologie de la personnalité", example: "The dimensional model conceptualizes personality pathology as extreme variants of normal traits." },
     { word: "dissociative state", translation: "état dissociatif", example: "Trauma can trigger dissociative states as a psychological defense mechanism." },
     { word: "somatization", translation: "somatisation", example: "Somatization involves physical symptoms stemming from psychological distress." },
-    { word: "cognitive distortion", translation: "distorsion cognitive", example: "All-or-nothing thinking is a common cognitive distortion in anxiety disorders." },
+    
     { word: "affect regulation", translation: "régulation des affects", example: "Therapy focused on improving affect regulation skills to manage emotional intensity." },
     { word: "thought suppression", translation: "suppression de pensée", example: "Thought suppression often paradoxically increases unwanted thoughts." },
     { word: "psychological vulnerability", translation: "vulnérabilité psychologique", example: "Early childhood adversity creates psychological vulnerability to later disorders." },
@@ -134,53 +134,53 @@ export const vocab = {
     { word: "psychosomatic manifestation", translation: "manifestation psychosomatique", example: "Chronic stress often leads to psychosomatic manifestations like tension headaches." },
     
     // Dynamiques identitaires
-    { word: "identity formation", translation: "formation identitaire", example: "Adolescence is a critical period for identity formation and exploration." },
-    { word: "cultural identity", translation: "identité culturelle", example: "Immigration can create challenges for cultural identity and belonging." },
-    { word: "self-concept", translation: "concept de soi", example: "Academic achievement influences children's self-concept development." },
+    
+    
+    
     { word: "social identity theory", translation: "théorie de l'identité sociale", example: "Social identity theory explains intergroup behavior through group membership." },
     { word: "identity negotiation", translation: "négociation identitaire", example: "Bicultural individuals engage in constant identity negotiation across contexts." },
-    { word: "collective identity", translation: "identité collective", example: "Social movements strengthen collective identity among members." },
+    
     { word: "identity conflict", translation: "conflit identitaire", example: "Adolescents often experience identity conflict when navigating different social roles." },
     { word: "identity development", translation: "développement identitaire", example: "Identity development involves exploration and commitment to various life domains." },
-    { word: "ethnic identity", translation: "identité ethnique", example: "Strong ethnic identity can provide psychological resilience against discrimination." },
+    
     { word: "self-categorization", translation: "auto-catégorisation", example: "Self-categorization processes determine which identities become salient in different contexts." },
     { word: "bicultural identity", translation: "identité biculturelle", example: "Many immigrants develop a bicultural identity integrating aspects of both cultures." },
-    { word: "gender identity", translation: "identité de genre", example: "Gender identity refers to one's internal sense of their own gender." },
+    
     { word: "identity status", translation: "statut identitaire", example: "Marcia described four identity statuses based on exploration and commitment." },
     { word: "narrative identity", translation: "identité narrative", example: "Narrative identity involves constructing a life story that provides coherence and meaning." },
-    { word: "identity crisis", translation: "crise identitaire", example: "Major life transitions can precipitate an identity crisis requiring restructuring of self-concept." },
+    
     { word: "identity achievement", translation: "réalisation identitaire", example: "Identity achievement follows a period of exploration and culminates in commitment." },
     { word: "social role", translation: "rôle social", example: "Professional identity develops through internalization of social roles in workplace settings." },
     { word: "identity integration", translation: "intégration identitaire", example: "Successful identity integration involves harmonizing potentially conflicting aspects of self." },
     { word: "possible self", translation: "soi possible", example: "Possible selves represent individuals' ideas about what they might become in the future." },
     { word: "identity performance", translation: "performance identitaire", example: "Identity performance involves behavioral expressions that signal group membership." },
-    { word: "social identity complexity", translation: "complexité de l'identité sociale", example: "Social identity complexity reflects awareness of partial overlap between different group memberships." },
+    
     { word: "individual differentiation", translation: "différenciation individuelle", example: "The process of individual differentiation distinguishes oneself from reference groups." },
     { word: "identity threat", translation: "menace identitaire", example: "Stereotype threat is a form of identity threat that affects performance." },
     { word: "identity-based motivation", translation: "motivation basée sur l'identité", example: "Identity-based motivation drives choices congruent with salient identities." },
     { word: "relational identity", translation: "identité relationnelle", example: "Relational identity derives from interpersonal roles and connections to others." },
     { word: "identity marker", translation: "marqueur identitaire", example: "Language can serve as a powerful identity marker for cultural groups." },
     { word: "identity affirmation", translation: "affirmation identitaire", example: "Identity affirmation involves positive engagement with aspects of one's identity." },
-    { word: "social comparison", translation: "comparaison sociale", example: "Social comparison processes contribute to identity development and self-evaluation." },
+    
     { word: "identity salience", translation: "saillance identitaire", example: "Context determines identity salience, which identity becomes activated and influential." },
     { word: "identity fusion", translation: "fusion identitaire", example: "Identity fusion occurs when personal and group identities become functionally equivalent." },
     { word: "identity capital", translation: "capital identitaire", example: "Identity capital comprises resources that help navigate identity challenges successfully." },
     
     // Phénomènes sociocognitifs
-    { word: "social influence", translation: "influence sociale", example: "Conformity is a form of social influence where individuals align with group norms." },
-    { word: "group polarization", translation: "polarisation de groupe", example: "Group polarization often leads discussions to more extreme positions than initial individual views." },
-    { word: "social facilitation", translation: "facilitation sociale", example: "Social facilitation enhances performance on simple tasks but impairs complex task performance." },
-    { word: "bystander effect", translation: "effet du témoin", example: "The bystander effect explains why individuals are less likely to help in the presence of others." },
-    { word: "groupthink", translation: "pensée de groupe", example: "Groupthink leads to flawed decision-making in highly cohesive groups." },
-    { word: "social loafing", translation: "paresse sociale", example: "Social loafing occurs when individuals exert less effort in group versus individual tasks." },
-    { word: "deindividuation", translation: "désindividuation", example: "Anonymity in crowds can lead to deindividuation and reduced self-awareness." },
+    
+    
+    
+    
+    
+    
+    
     { word: "obedience to authority", translation: "obéissance à l'autorité", example: "Milgram's experiments demonstrated surprising levels of obedience to authority." },
     { word: "social contagion", translation: "contagion sociale", example: "Emotional states can spread through social contagion in groups." },
     { word: "ingroup favoritism", translation: "favoritisme envers l'endogroupe", example: "Ingroup favoritism leads people to favor members of their own group." },
     { word: "intergroup bias", translation: "biais intergroupe", example: "Intergroup bias affects perceptions, evaluations, and behavior toward outgroup members." },
-    { word: "self-fulfilling prophecy", translation: "prophétie auto-réalisatrice", example: "Teacher expectations can create self-fulfilling prophecies in student performance." },
+    
     { word: "social representation", translation: "représentation sociale", example: "Social representations provide shared frameworks for understanding complex phenomena." },
-    { word: "social norms", translation: "normes sociales", example: "Social norms guide behavior through implicit expectations and explicit rules." },
+    
     { word: "pluralistic ignorance", translation: "ignorance pluraliste", example: "Pluralistic ignorance occurs when people incorrectly assume others' private attitudes." },
     { word: "social tuning", translation: "ajustement social", example: "Social tuning involves adjusting attitudes to align with perceived views of others." },
     { word: "outgroup homogeneity", translation: "homogénéité de l'exogroupe", example: "Outgroup homogeneity is the tendency to perceive outgroup members as more similar to each other than they actually are." },
@@ -209,7 +209,7 @@ export const vocab = {
     { word: "enculturation", translation: "enculturation", example: "Enculturation is the process of learning one's native culture from early childhood." },
     { word: "acculturation strategy", translation: "stratégie d'acculturation", example: "Integration is an acculturation strategy that maintains cultural identity while adopting host culture practices." },
     { word: "cultural competence", translation: "compétence culturelle", example: "Therapists need cultural competence to work effectively with diverse clients." },
-    { word: "cultural relativism", translation: "relativisme culturel", example: "Cultural relativism advocates understanding practices within their cultural context." },
+    
     { word: "ethnocentrism", translation: "ethnocentrisme", example: "Ethnocentrism involves judging other cultures by the standards of one's own." },
     { word: "indigenous psychology", translation: "psychologie autochtone", example: "Indigenous psychology develops theories grounded in local cultural contexts." },
     { word: "cultural identity development", translation: "développement de l'identité culturelle", example: "Minority youth navigate cultural identity development across multiple contexts." },
@@ -217,7 +217,7 @@ export const vocab = {
     { word: "collectivistic orientation", translation: "orientation collectiviste", example: "East Asian cultures often demonstrate a collectivistic orientation emphasizing group harmony." },
     { word: "cultural syndrome", translation: "syndrome culturel", example: "Cultural syndromes are patterns of behavior specific to particular cultural contexts." },
     { word: "cultural distance", translation: "distance culturelle", example: "Greater cultural distance typically requires more significant adaptation efforts." },
-    { word: "intercultural communication", translation: "communication interculturelle", example: "Nonverbal gestures often cause misunderstandings in intercultural communication." },
+    
     { word: "cultural intelligence", translation: "intelligence culturelle", example: "Cultural intelligence involves effectively adapting behavior across cultural contexts." },
     { word: "bicultural competence", translation: "compétence biculturelle", example: "Bicultural competence allows individuals to function effectively in two cultures." },
     { word: "acculturative stress", translation: "stress acculturatif", example: "Immigrants often experience acculturative stress during cultural transition." },

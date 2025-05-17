@@ -38,17 +38,17 @@
     { word: "Australian", translation: "australien", example: "I would like to visit Australia." },
 
     // Langues
-    { word: "English", translation: "anglais", example: "I speak English." },
-    { word: "French", translation: "français", example: "She speaks French." },
-    { word: "Spanish", translation: "espagnol", example: "They are learning Spanish." },
-    { word: "German", translation: "allemand", example: "He is studying German." },
-    { word: "Italian", translation: "italien", example: "I want to learn Italian." },
-    { word: "Chinese", translation: "chinois", example: "Do you understand Chinese?" },
-    { word: "Russian", translation: "russe", example: "He speaks Russian fluently." },
-    { word: "Japanese", translation: "japonais", example: "My brother speaks Japanese." },
+    
+    
+    
+    
+    
+    
+    
+    
     { word: "Arabic", translation: "arabe", example: "I don't speak Arabic." },
     { word: "Portuguese", translation: "portugais", example: "We are learning Portuguese." },
-    { word: "Dutch", translation: "néerlandais", example: "She is learning Dutch." },
+    
     { word: "Korean", translation: "coréen", example: "I want to learn Korean." },
     { word: "Hindi", translation: "hindi", example: "They speak Hindi." },
     { word: "Swedish", translation: "suédois", example: "She is Swedish." },
@@ -69,16 +69,16 @@
     { word: "toddler", translation: "tout-petit", example: "The toddler is learning to walk." },
     { word: "youth", translation: "jeunesse", example: "Youth is a precious time." },
     { word: "senior", translation: "senior", example: "He is a senior citizen." },
-    { word: "adult", translation: "adulte", example: "They are adults now." },
+    
     { word: "birthday", translation: "anniversaire", example: "Today is my birthday." },
     { word: "generation", translation: "génération", example: "Each generation has its own challenges." },
 
     // Informations de contact
     { word: "phone", translation: "téléphone", example: "Call me on my phone." },
     { word: "email", translation: "e-mail", example: "My email is example@mail.com." },
-    { word: "address", translation: "adresse", example: "Send it to my address." },
-    { word: "city", translation: "ville", example: "I live in Paris." },
-    { word: "country", translation: "pays", example: "They live in the USA." },
+    
+    
+    
     { word: "postcode", translation: "code postal", example: "What's your postcode?" },
     { word: "contact", translation: "contact", example: "You can contact me anytime." },
     { word: "number", translation: "numéro", example: "What is your phone number?" },
@@ -100,12 +100,11 @@
     { word: "skin", translation: "peau", example: "He has dark skin." },
     { word: "handsome", translation: "beau", example: "He is a handsome man." },
     { word: "beautiful", translation: "belle", example: "She is a beautiful woman." },
-    { word: "young", translation: "jeune", example: "They are very young." },
-    { word: "old", translation: "vieux", example: "He is quite old now." },
+    
+    
     { word: "bald", translation: "chauve", example: "He is bald." },
     { word: "glasses", translation: "lunettes", example: "She wears glasses." },
 { word: "beard", translation: "barbe", example: "He has a beard." },
 { word: "freckles", translation: "taches de rousseur", example: "She has freckles on her face." },
-{ word: "hands", translation: "mains", example: "I have small hands." },
-]
+{ word: "hands", translation: "mains", example: "I have small hands." }]
 };

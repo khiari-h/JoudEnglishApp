@@ -10,9 +10,9 @@ export const vocab = {
     { word: "industry", translation: "industrie", example: "The automotive industry has undergone significant technological transformation." },
     { word: "service economy", translation: "économie de services", example: "Most developed nations have shifted toward a service economy." },
     { word: "knowledge economy", translation: "économie du savoir", example: "The knowledge economy values intellectual capabilities over physical inputs." },
-    { word: "sharing economy", translation: "économie du partage", example: "Airbnb and Uber are prime examples of the sharing economy." },
-    { word: "gig economy", translation: "économie des petits boulots", example: "The gig economy is characterized by temporary and flexible jobs." },
-    { word: "circular economy", translation: "économie circulaire", example: "A circular economy aims to eliminate waste through recycling and reuse." },
+    
+    
+    
     { word: "digital economy", translation: "économie numérique", example: "The digital economy has created entirely new business models." },
     { word: "agrarian economy", translation: "économie agraire", example: "An agrarian economy depends primarily on agricultural production." },
     { word: "industrial economy", translation: "économie industrielle", example: "China's transition to an industrial economy happened rapidly." },
@@ -42,7 +42,7 @@ export const vocab = {
     { word: "hedge fund", translation: "fonds spéculatif", example: "Hedge funds use sophisticated strategies to maximize returns." },
     { word: "mutual fund", translation: "fonds commun de placement", example: "Mutual funds pool money from many investors to buy diversified assets." },
     { word: "exchange-traded fund", translation: "fonds négocié en bourse", example: "Exchange-traded funds combine features of stocks and mutual funds." },
-    { word: "portfolio", translation: "portefeuille", example: "A diversified portfolio reduces investment risk." },
+    
     { word: "asset allocation", translation: "allocation d'actifs", example: "Asset allocation distributes investments across different asset classes." },
     { word: "market index", translation: "indice boursier", example: "The S&P 500 is a widely followed market index." },
     { word: "initial public offering", translation: "introduction en bourse", example: "The company's initial public offering raised billions of dollars." },
@@ -60,7 +60,7 @@ export const vocab = {
     { word: "revenue stream", translation: "flux de revenus", example: "The company has diversified revenue streams to reduce risk." },
     { word: "cost structure", translation: "structure de coûts", example: "Analyzing the cost structure helps identify areas for efficiency improvements." },
     { word: "target market", translation: "marché cible", example: "The product was designed specifically for their target market of young professionals." },
-    { word: "market segment", translation: "segment de marché", example: "The luxury market segment remained resilient during the economic downturn." },
+    
     { word: "competitive advantage", translation: "avantage concurrentiel", example: "Their proprietary technology provides a significant competitive advantage." },
     { word: "barriers to entry", translation: "barrières à l'entrée", example: "High capital requirements create barriers to entry in the pharmaceutical industry." },
     { word: "economies of scale", translation: "économies d'échelle", example: "Large manufacturers benefit from economies of scale in production." },
@@ -68,7 +68,7 @@ export const vocab = {
     { word: "horizontal integration", translation: "intégration horizontale", example: "The merger was a strategy of horizontal integration to gain market share." },
     { word: "diversification", translation: "diversification", example: "Diversification into new product lines reduced their business risk." },
     { word: "core competency", translation: "compétence clé", example: "The firm focuses on its core competency in software development." },
-    { word: "outsourcing", translation: "externalisation", example: "Outsourcing non-essential functions allowed them to focus on innovation." },
+    
     { word: "franchise", translation: "franchise", example: "Opening a franchise requires following the established business model." },
     { word: "joint venture", translation: "coentreprise", example: "The joint venture combined resources from both parent companies." },
     { word: "strategic alliance", translation: "alliance stratégique", example: "The strategic alliance allowed them to enter new markets quickly." },
@@ -78,7 +78,7 @@ export const vocab = {
     { word: "pivot", translation: "pivotement", example: "The startup executed a pivot when their initial strategy wasn't working." },
     { word: "business ecosystem", translation: "écosystème d'affaires", example: "Apple has created a profitable business ecosystem of products and services." },
     { word: "first-mover advantage", translation: "avantage du premier arrivant", example: "Amazon gained first-mover advantage in online retail." },
-    { word: "market penetration", translation: "pénétration du marché", example: "The aggressive pricing strategy increased their market penetration." },
+    
     { word: "network effect", translation: "effet de réseau", example: "Social media platforms benefit from the network effect as more users join." },
     
     // Management & leadership
@@ -92,14 +92,14 @@ export const vocab = {
     { word: "organizational structure", translation: "structure organisationnelle", example: "They adopted a flat organizational structure to encourage innovation." },
     { word: "corporate governance", translation: "gouvernance d'entreprise", example: "Strong corporate governance ensures accountability to stakeholders." },
     { word: "delegation", translation: "délégation", example: "Effective delegation develops team members while freeing up leadership time." },
-    { word: "decision-making process", translation: "processus décisionnel", example: "Their decision-making process balances data analysis with intuition." },
-    { word: "conflict management", translation: "gestion des conflits", example: "Skilled conflict management turns disagreements into productive discussions." },
+    
+    
     { word: "succession planning", translation: "planification de la relève", example: "Succession planning ensures leadership continuity when executives retire." },
     { word: "coaching", translation: "coaching", example: "Managers receive training in coaching techniques to develop their teams." },
     { word: "mentoring", translation: "mentorat", example: "The mentoring program pairs junior employees with experienced leaders." },
-    { word: "team building", translation: "consolidation d'équipe", example: "Regular team building activities strengthen collaboration and trust." },
-    { word: "emotional intelligence", translation: "intelligence émotionnelle", example: "Emotional intelligence is now considered essential for effective leadership." },
-    { word: "accountability", translation: "responsabilisation", example: "The new system increases accountability for project outcomes." },
+    
+    
+    
     { word: "micromanagement", translation: "microgestion", example: "Micromanagement typically reduces employee initiative and satisfaction." },
     { word: "transformational leadership", translation: "leadership transformationnel", example: "Transformational leadership focuses on inspiring positive change in followers." },
     { word: "transactional leadership", translation: "leadership transactionnel", example: "Transactional leadership emphasizes supervision, organization, and performance." },
@@ -110,14 +110,14 @@ export const vocab = {
     
     // Marketing stratégique
     { word: "marketing strategy", translation: "stratégie marketing", example: "Their marketing strategy targets millennials through social media platforms." },
-    { word: "market research", translation: "étude de marché", example: "Thorough market research revealed unexpected customer preferences." },
-    { word: "brand positioning", translation: "positionnement de marque", example: "The luxury brand positioning justifies their premium pricing." },
+    
+    
     { word: "customer segmentation", translation: "segmentation de la clientèle", example: "Customer segmentation allows for more personalized marketing approaches." },
-    { word: "target audience", translation: "public cible", example: "Understanding your target audience is essential for effective messaging." },
-    { word: "value proposition", translation: "proposition de valeur", example: "Their value proposition clearly communicates how they solve customer problems." },
-    { word: "customer journey", translation: "parcours client", example: "Mapping the customer journey helps identify improvement opportunities." },
+    
+    
+    
     { word: "customer acquisition", translation: "acquisition de clients", example: "The campaign reduced customer acquisition costs by 30%." },
-    { word: "customer retention", translation: "fidélisation de la clientèle", example: "Their loyalty program improves customer retention significantly." },
+    
     { word: "customer lifetime value", translation: "valeur à vie du client", example: "Understanding customer lifetime value helps prioritize marketing investments." },
     { word: "competitive analysis", translation: "analyse concurrentielle", example: "The competitive analysis revealed a gap in the market they could exploit." },
     { word: "market share", translation: "part de marché", example: "The company increased its market share through aggressive pricing." },
@@ -132,7 +132,7 @@ export const vocab = {
     
     // Commerce international
     { word: "international trade", translation: "commerce international", example: "International trade allows countries to specialize in their comparative advantages." },
-    { word: "globalization", translation: "mondialisation", example: "Globalization has created complex international supply chains." },
+    
     { word: "export", translation: "exportation", example: "The company's exports to Asian markets grew by 50% last year." },
     { word: "import", translation: "importation", example: "Tariffs increased the cost of imports from China." },
     { word: "trade deficit", translation: "déficit commercial", example: "The country has maintained a persistent trade deficit for decades." },
@@ -147,9 +147,9 @@ export const vocab = {
     { word: "trade barrier", translation: "barrière commerciale", example: "Non-tariff trade barriers include regulations and licensing requirements." },
     { word: "comparative advantage", translation: "avantage comparatif", example: "Countries benefit from trading according to their comparative advantages." },
     { word: "balance of payments", translation: "balance des paiements", example: "The balance of payments records all international transactions." },
-    { word: "exchange rate", translation: "taux de change", example: "A weak exchange rate makes exports more competitive." },
+    
     { word: "foreign direct investment", translation: "investissement direct étranger", example: "Foreign direct investment brings capital and technology transfers." },
-    { word: "outsourcing", translation: "externalisation", example: "Companies often outsource manufacturing to countries with lower labor costs." },
+    
     { word: "offshoring", translation: "délocalisation", example: "Offshoring involves relocating business processes to another country." },
     
     // Entrepreneuriat
@@ -161,13 +161,13 @@ export const vocab = {
     { word: "bootstrapping", translation: "autofinancement", example: "Bootstrapping meant growing the business without external investment." },
     { word: "business plan", translation: "plan d'affaires", example: "A comprehensive business plan helps attract potential investors." },
     { word: "minimum viable product", translation: "produit minimum viable", example: "They launched a minimum viable product to test market demand." },
-    { word: "scalability", translation: "évolutivité", example: "Investors look for business ideas with proven scalability." },
+    
     { word: "burn rate", translation: "taux de combustion", example: "The high burn rate meant they needed additional funding within six months." },
     { word: "exit strategy", translation: "stratégie de sortie", example: "Their exit strategy involved an acquisition by a larger company." },
-    { word: "disruptive innovation", translation: "innovation de rupture", example: "Their disruptive innovation transformed the industry." },
+    
     { word: "business incubator", translation: "incubateur d'entreprises", example: "The business incubator provides resources and mentoring to startups." },
     { word: "accelerator program", translation: "programme d'accélération", example: "The accelerator program compressed years of growth into a few months." },
-    { word: "pivot", translation: "pivot", example: "After customer feedback, they executed a pivot to address a different market need." },
+    
     { word: "unicorn", translation: "licorne", example: "The startup achieved unicorn status with a valuation over one billion dollars." },
     { word: "serial entrepreneur", translation: "entrepreneur en série", example: "As a serial entrepreneur, she has founded three successful companies." },
     { word: "pitch deck", translation: "présentation de démarrage", example: "The pitch deck clearly communicated the business opportunity to investors." },
@@ -176,20 +176,20 @@ export const vocab = {
     
     // Éthique des affaires
     { word: "business ethics", translation: "éthique des affaires", example: "Business ethics concerns the moral principles that guide business conduct." },
-    { word: "corporate social responsibility", translation: "responsabilité sociale des entreprises", example: "Their corporate social responsibility initiatives include environmental protection." },
+    
     { word: "sustainability", translation: "durabilité", example: "The company prioritizes sustainability throughout its supply chain." },
     { word: "stakeholder", translation: "partie prenante", example: "Effective leaders consider the interests of all stakeholders, not just shareholders." },
-    { word: "transparency", translation: "transparence", example: "Transparency about business practices builds consumer trust." },
+    
     { word: "ethical dilemma", translation: "dilemme éthique", example: "Managers often face ethical dilemmas when different values conflict." },
-    { word: "corporate governance", translation: "gouvernance d'entreprise", example: "Strong corporate governance prevents misconduct and ensures accountability." },
+    
     { word: "conflict of interest", translation: "conflit d'intérêts", example: "Board members must disclose any potential conflict of interest." },
     { word: "whistleblower", translation: "lanceur d'alerte", example: "Whistleblower protection encourages reporting of misconduct." },
     { word: "code of conduct", translation: "code de conduite", example: "All employees must adhere to the company's code of conduct." },
-    { word: "fair trade", translation: "commerce équitable", example: "Fair trade ensures producers receive reasonable compensation for their products." },
+    
     { word: "greenwashing", translation: "écoblanchiment", example: "Greenwashing involves misleading claims about environmental practices." },
     { word: "compliance", translation: "conformité", example: "The compliance department ensures adherence to laws and regulations." },
     { word: "ethical investment", translation: "investissement éthique", example: "Ethical investment excludes companies with questionable practices." },
-    { word: "triple bottom line", translation: "triple résultat", example: "The triple bottom line considers profits, people, and the planet." },
+    
     { word: "environmental, social, and governance", translation: "environnemental, social et gouvernance", example: "ESG factors are increasingly important in investment decisions." }
   ]
 };

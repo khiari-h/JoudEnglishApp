@@ -5,10 +5,10 @@ export const vocab = {
     { word: "education system", translation: "système éducatif", example: "The education system varies from country to country." },
     { word: "elementary school", translation: "école primaire", example: "My daughter starts elementary school next year." },
     { word: "middle school", translation: "collège", example: "In many countries, students attend middle school from ages 11 to 14." },
-    { word: "high school", translation: "lycée", example: "He graduated from high school last year." },
-    { word: "university", translation: "université", example: "She studies medicine at the university." },
-    { word: "college", translation: "établissement d'enseignement supérieur", example: "He's in his second year of college." },
-    { word: "kindergarten", translation: "école maternelle", example: "My son loves going to kindergarten." },
+    
+    
+    
+    
     { word: "nursery school", translation: "crèche", example: "Children can attend nursery school from a very young age." },
     { word: "public school", translation: "école publique", example: "Most children in our neighborhood go to public school." },
     { word: "private school", translation: "école privée", example: "Private schools often have smaller class sizes." },
@@ -28,8 +28,8 @@ export const vocab = {
     { word: "history", translation: "histoire", example: "We're learning about ancient civilizations in history class." },
     { word: "geography", translation: "géographie", example: "In geography, we study maps and different countries." },
     { word: "literature", translation: "littérature", example: "We read classic novels in literature class." },
-    { word: "art", translation: "art", example: "The children enjoy their art lessons." },
-    { word: "music", translation: "musique", example: "They learn to play instruments in music class." },
+    
+    
     { word: "physical education", translation: "éducation physique", example: "Physical education helps students stay fit and healthy." },
     { word: "foreign language", translation: "langue étrangère", example: "Learning a foreign language is important in today's global world." },
     { word: "social studies", translation: "sciences sociales", example: "Social studies covers topics like civics and economics." },
@@ -40,20 +40,20 @@ export const vocab = {
     { word: "notebook", translation: "cahier", example: "I write all my notes in my notebook." },
     { word: "workbook", translation: "cahier d'exercices", example: "Complete the exercises in your workbook for homework." },
     { word: "binder", translation: "classeur", example: "I keep all my class handouts in a binder." },
-    { word: "folder", translation: "pochette/dossier", example: "Put your assignments in the red folder." },
+    
     { word: "highlighter", translation: "surligneur", example: "I use a highlighter to mark important information." },
-    { word: "whiteboard", translation: "tableau blanc", example: "The teacher writes on the whiteboard." },
-    { word: "projector", translation: "projecteur", example: "We watched a documentary using the projector." },
+    
+    
     { word: "calculator", translation: "calculatrice", example: "You're allowed to use a calculator during the math exam." },
     { word: "ruler", translation: "règle", example: "Use a ruler to draw straight lines." },
     { word: "protractor", translation: "rapporteur", example: "You need a protractor to measure angles." },
     { word: "compass", translation: "compas", example: "Draw a circle using a compass." },
     { word: "dictionary", translation: "dictionnaire", example: "Look up the word in the dictionary." },
     { word: "library card", translation: "carte de bibliothèque", example: "You need a library card to borrow books." },
-    { word: "school supplies", translation: "fournitures scolaires", example: "We buy new school supplies every September." },
+    
     
     // Personnel éducatif
-    { word: "teacher", translation: "enseignant/professeur", example: "My English teacher is very patient." },
+    
     { word: "principal", translation: "directeur (d'école)", example: "You need the principal's permission for this activity." },
     { word: "headmaster", translation: "proviseur", example: "The headmaster gave a speech at the graduation ceremony." },
     { word: "professor", translation: "professeur (université)", example: "Professor Smith teaches economics at the university." },
@@ -64,8 +64,8 @@ export const vocab = {
     { word: "school psychologist", translation: "psychologue scolaire", example: "The school psychologist works with students who have learning difficulties." },
     { word: "librarian", translation: "bibliothécaire", example: "Ask the librarian if you can't find the book you're looking for." },
     { word: "teaching assistant", translation: "assistant d'éducation", example: "The teaching assistant helps the teacher with classroom activities." },
-    { word: "staff", translation: "personnel", example: "The school staff includes teachers, administrators, and maintenance workers." },
-    { word: "colleague", translation: "collègue", example: "The teachers meet with their colleagues regularly to discuss curriculum." },
+    
+    
     { word: "faculty", translation: "corps enseignant", example: "The faculty at this university is highly qualified." },
     { word: "school board", translation: "conseil scolaire", example: "The school board decides on educational policies." },
     
@@ -74,8 +74,8 @@ export const vocab = {
     { word: "lecture", translation: "cours magistral", example: "I attended a fascinating lecture on quantum physics." },
     { word: "seminar", translation: "séminaire", example: "The seminar involved small group discussions." },
     { word: "tutorial", translation: "travaux dirigés", example: "The tutorial helps students apply what they've learned in lectures." },
-    { word: "workshop", translation: "atelier", example: "We participated in a writing workshop." },
-    { word: "laboratory", translation: "laboratoire", example: "We conduct experiments in the laboratory." },
+    
+    
     { word: "field trip", translation: "sortie scolaire", example: "The class went on a field trip to the museum." },
     { word: "group work", translation: "travail de groupe", example: "Group work helps develop collaboration skills." },
     { word: "presentation", translation: "exposé", example: "I'm nervous about giving my presentation tomorrow." },
@@ -91,7 +91,7 @@ export const vocab = {
     { word: "exam", translation: "examen", example: "I'm studying for my final exams." },
     { word: "quiz", translation: "interrogation écrite", example: "The teacher gives a quiz every Friday." },
     { word: "assessment", translation: "évaluation", example: "Regular assessments help track students' progress." },
-    { word: "grade", translation: "note", example: "I got a good grade on my history test." },
+    
     { word: "score", translation: "score/résultat", example: "What was your score on the math quiz?" },
     { word: "pass", translation: "réussir", example: "You need to get at least 60% to pass the exam." },
     { word: "fail", translation: "échouer", example: "If you don't study, you might fail the test." },
@@ -112,7 +112,7 @@ export const vocab = {
     { word: "internship", translation: "stage", example: "She did an internship at a local newspaper." },
     { word: "certification", translation: "certification", example: "This program offers certification in computer skills." },
     { word: "diploma", translation: "diplôme", example: "You'll receive a diploma upon completion of the course." },
-    { word: "qualification", translation: "qualification", example: "You need specific qualifications for this job." },
+    
     { word: "lifelong learning", translation: "apprentissage tout au long de la vie", example: "Lifelong learning is important in today's changing world." }
   ]
 };

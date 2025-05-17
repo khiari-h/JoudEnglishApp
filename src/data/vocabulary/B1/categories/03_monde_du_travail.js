@@ -2,24 +2,24 @@ export const vocab = {
   title: "Monde du Travail",
   words: [
     // Carrière & parcours professionnel
-    { word: "career", translation: "carrière", example: "She has had a successful career in marketing." },
+    
     { word: "profession", translation: "profession", example: "Teaching is a rewarding profession." },
     { word: "occupation", translation: "métier", example: "What's your current occupation?" },
     { word: "job hunting", translation: "recherche d'emploi", example: "Job hunting can be stressful." },
-    { word: "application", translation: "candidature", example: "I submitted my application for the position." },
+    
     { word: "résumé/CV", translation: "CV", example: "I need to update my résumé." },
-    { word: "cover letter", translation: "lettre de motivation", example: "Write a compelling cover letter." },
-    { word: "interview", translation: "entretien", example: "I have a job interview tomorrow." },
-    { word: "recruitment", translation: "recrutement", example: "The company has started its recruitment process." },
+    
+    
+    
     { word: "career path", translation: "parcours professionnel", example: "She's considering a change in her career path." },
-    { word: "promotion", translation: "promotion", example: "He received a promotion after three years." },
+    
     { word: "advancement", translation: "avancement", example: "There are good opportunities for advancement in this company." },
     { word: "transfer", translation: "mutation", example: "He requested a transfer to the Paris office." },
-    { word: "retirement", translation: "retraite", example: "She's planning for her retirement." },
+    
     { word: "resignation", translation: "démission", example: "He submitted his resignation last week." },
     { word: "termination", translation: "licenciement", example: "The company announced several terminations due to budget cuts." },
     { word: "apprenticeship", translation: "apprentissage", example: "He completed a two-year apprenticeship as an electrician." },
-    { word: "internship", translation: "stage", example: "The internship provided valuable experience." },
+    
     { word: "mentor", translation: "mentor", example: "My mentor guided me through my early career." },
     { word: "networking", translation: "réseautage", example: "Networking is essential for career growth." },
     { word: "portfolio", translation: "portfolio", example: "Designers need to maintain an updated portfolio." },
@@ -30,13 +30,13 @@ export const vocab = {
     { word: "mission statement", translation: "énoncé de mission", example: "The mission statement defines the company's purpose." },
     { word: "work ethic", translation: "éthique de travail", example: "She has a strong work ethic." },
     { word: "team building", translation: "renforcement d'équipe", example: "We have team building activities every month." },
-    { word: "hierarchy", translation: "hiérarchie", example: "There's a clear hierarchy in traditional companies." },
+    
     { word: "flat organization", translation: "organisation horizontale", example: "Many startups prefer a flat organization structure." },
     { word: "workplace environment", translation: "environnement de travail", example: "A positive workplace environment boosts productivity." },
     { word: "dress code", translation: "code vestimentaire", example: "The company has a casual dress code." },
     { word: "office politics", translation: "politique de bureau", example: "Office politics can create a toxic environment." },
     { word: "diversity", translation: "diversité", example: "The company is committed to workplace diversity." },
-    { word: "inclusion", translation: "inclusion", example: "Inclusion policies ensure everyone feels valued." },
+    
     { word: "transparency", translation: "transparence", example: "Management believes in transparency with employees." },
     { word: "accountability", translation: "responsabilité", example: "Each team member is held to high accountability standards." },
     { word: "corporate social responsibility", translation: "responsabilité sociale des entreprises", example: "Their corporate social responsibility program focuses on environmental issues." },
@@ -45,30 +45,30 @@ export const vocab = {
     { word: "skill set", translation: "ensemble de compétences", example: "He has an impressive skill set." },
     { word: "expertise", translation: "expertise", example: "She has expertise in data analysis." },
     { word: "proficiency", translation: "maîtrise", example: "Proficiency in Excel is required for this position." },
-    { word: "qualification", translation: "qualification", example: "What qualifications do you have?" },
+    
     { word: "competence", translation: "compétence", example: "Technical competence is essential for this role." },
     { word: "hard skills", translation: "compétences techniques", example: "Programming is one of the hard skills needed." },
     { word: "soft skills", translation: "compétences relationnelles", example: "Communication is an important soft skill." },
     { word: "leadership", translation: "leadership", example: "She demonstrates strong leadership abilities." },
-    { word: "teamwork", translation: "travail d'équipe", example: "The project requires effective teamwork." },
+    
     { word: "problem-solving", translation: "résolution de problèmes", example: "Problem-solving is a valuable skill in any job." },
     { word: "time management", translation: "gestion du temps", example: "Good time management increases productivity." },
     { word: "multitasking", translation: "multitâche", example: "The job requires excellent multitasking abilities." },
     { word: "decision-making", translation: "prise de décision", example: "Managers need strong decision-making skills." },
     { word: "adaptability", translation: "adaptabilité", example: "Adaptability is crucial in a changing work environment." },
-    { word: "creativity", translation: "créativité", example: "Innovation requires creativity and imagination." },
+    
     { word: "critical thinking", translation: "esprit critique", example: "Critical thinking helps in analyzing complex situations." },
     
     // Réunions & négociations
     { word: "meeting", translation: "réunion", example: "We have a team meeting every Monday." },
-    { word: "conference", translation: "conférence", example: "The annual conference will be held in Chicago." },
-    { word: "agenda", translation: "ordre du jour", example: "The agenda was distributed before the meeting." },
+    
+    
     { word: "minutes", translation: "procès-verbal", example: "The secretary takes the minutes during meetings." },
     { word: "brainstorming", translation: "remue-méninges", example: "Let's have a brainstorming session to generate ideas." },
-    { word: "presentation", translation: "présentation", example: "She gave an excellent presentation to the clients." },
+    
     { word: "negotiation", translation: "négociation", example: "The negotiation lasted for several hours." },
     { word: "mediation", translation: "médiation", example: "They used mediation to resolve the workplace conflict." },
-    { word: "compromise", translation: "compromis", example: "Both parties reached a compromise." },
+    
     { word: "consensus", translation: "consensus", example: "The team reached a consensus on the project direction." },
     { word: "chairperson", translation: "président", example: "The chairperson closed the meeting at noon." },
     { word: "participant", translation: "participant", example: "All participants contributed to the discussion." },
@@ -84,7 +84,7 @@ export const vocab = {
     { word: "hardware", translation: "matériel informatique", example: "All employees received updated hardware." },
     { word: "cloud computing", translation: "informatique en nuage", example: "Cloud computing allows remote access to company data." },
     { word: "database", translation: "base de données", example: "All client information is stored in our database." },
-    { word: "network", translation: "réseau", example: "There are issues with the office network today." },
+    
     { word: "cybersecurity", translation: "cybersécurité", example: "Cybersecurity measures protect sensitive information." },
     { word: "digital tools", translation: "outils numériques", example: "We use various digital tools to increase productivity." },
     { word: "automation", translation: "automatisation", example: "Automation has streamlined many routine tasks." },
@@ -101,9 +101,9 @@ export const vocab = {
     { word: "discrimination", translation: "discrimination", example: "The company has strict policies against discrimination." },
     { word: "harassment", translation: "harcèlement", example: "Sexual harassment training is mandatory for all employees." },
     { word: "burnout", translation: "épuisement professionnel", example: "Many professionals experience burnout at some point." },
-    { word: "stress", translation: "stress", example: "Job-related stress can affect physical health." },
-    { word: "workload", translation: "charge de travail", example: "He complained about his excessive workload." },
-    { word: "overtime", translation: "heures supplémentaires", example: "Employees are compensated for overtime hours." },
+    
+    
+    
     { word: "work-life balance", translation: "équilibre travail-vie personnelle", example: "Maintaining a healthy work-life balance is important." },
     { word: "understaffing", translation: "sous-effectif", example: "Understaffing has led to increased pressure on employees." },
     { word: "downsizing", translation: "réduction d'effectif", example: "The company announced downsizing due to economic challenges." },
@@ -118,12 +118,12 @@ export const vocab = {
     { word: "employment rate", translation: "taux d'emploi", example: "The employment rate has improved this quarter." },
     { word: "unemployment", translation: "chômage", example: "Unemployment has decreased in recent months." },
     { word: "job creation", translation: "création d'emploi", example: "The new factory will lead to job creation in the region." },
-    { word: "wage", translation: "salaire", example: "The minimum wage increased this year." },
-    { word: "salary", translation: "rémunération", example: "They offer a competitive salary package." },
+    
+    
     { word: "benefits", translation: "avantages sociaux", example: "The job comes with excellent benefits." },
     { word: "compensation", translation: "rémunération", example: "The compensation package includes healthcare and retirement plans." },
-    { word: "bonus", translation: "prime", example: "Employees receive an annual performance bonus." },
-    { word: "pension", translation: "retraite", example: "The company offers a pension plan." },
+    
+    
     { word: "labor union", translation: "syndicat", example: "The labor union negotiates working conditions." },
     { word: "collective bargaining", translation: "négociation collective", example: "Collective bargaining led to improved benefits." },
     { word: "labor laws", translation: "droit du travail", example: "Employers must comply with labor laws." },

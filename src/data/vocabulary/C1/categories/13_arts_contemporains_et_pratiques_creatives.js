@@ -2,22 +2,22 @@ export const vocab = {
   title: "Arts Contemporains & Pratiques Créatives",
   words: [
     // Tendances artistiques émergentes
-    { word: "post-internet art", translation: "art post-internet", example: "Post-internet art explores the impact of digital networks on everyday experience." },
-    { word: "new media art", translation: "art des nouveaux médias", example: "The gallery specializes in new media art incorporating technology and digital interfaces." },
+    
+    
     { word: "bio art", translation: "bio-art", example: "Bio art uses living organisms and biological processes as artistic media." },
     { word: "immersive installation", translation: "installation immersive", example: "The immersive installation transformed the entire gallery space into an interactive environment." },
-    { word: "socially engaged art", translation: "art socialement engagé", example: "Socially engaged art projects directly involve communities in collaborative creation." },
+    
     { word: "transmedial art", translation: "art transmédial", example: "Transmedial art projects exist across multiple platforms and formats simultaneously." },
-    { word: "activist art", translation: "art militant", example: "Activist art addresses political issues to inspire awareness and social change." },
+    
     { word: "post-disciplinary practice", translation: "pratique post-disciplinaire", example: "Her post-disciplinary practice combines dance, visual art, and digital technology." },
-    { word: "generative art", translation: "art génératif", example: "Generative art creates works through autonomous systems or algorithms." },
-    { word: "participatory art", translation: "art participatif", example: "Participatory art relies on audience involvement to complete the work." },
+    
+    
     { word: "augmented reality art", translation: "art en réalité augmentée", example: "Augmented reality art overlays digital content onto physical environments through mobile devices." },
     { word: "data visualization art", translation: "art de visualisation de données", example: "Data visualization art transforms complex information into accessible visual experiences." },
     { word: "eco art", translation: "art écologique", example: "Eco art addresses environmental issues through sustainable materials and processes." },
     { word: "digital performance", translation: "performance numérique", example: "The digital performance incorporated live feeds from remote participants around the world." },
     { word: "post-studio practice", translation: "pratique post-atelier", example: "Post-studio practice rejects traditional artistic production in favor of site-specific work." },
-    { word: "sound art", translation: "art sonore", example: "Sound art explores acoustic experience as a primary artistic medium." },
+    
     { word: "tactical media", translation: "médias tactiques", example: "Tactical media projects intervene in dominant communication channels with subversive messages." },
     { word: "virtual reality art", translation: "art en réalité virtuelle", example: "Virtual reality art creates immersive environments that viewers experience through headsets." },
     { word: "hybrid art", translation: "art hybride", example: "Hybrid art combines traditionally separate disciplines, materials, or approaches." },
@@ -25,32 +25,32 @@ export const vocab = {
     { word: "net art", translation: "art Internet", example: "Net art exists primarily or exclusively online, using internet protocols as creative material." },
     { word: "performative installation", translation: "installation performative", example: "The performative installation combines physical structures with choreographed human activity." },
     { word: "interdisciplinary collaboration", translation: "collaboration interdisciplinaire", example: "The project emerged from interdisciplinary collaboration between scientists and artists." },
-    { word: "relational aesthetics", translation: "esthétique relationnelle", example: "Relational aesthetics focuses on human interactions created through artistic situations." },
+    
     { word: "locative media", translation: "médias de géolocalisation", example: "Locative media art uses location-aware technologies to create place-specific experiences." },
-    { word: "artificial intelligence art", translation: "art d'intelligence artificielle", example: "Artificial intelligence art employs machine learning systems as creative collaborators." },
+    
     
     // Analyse esthétique avancée
     { word: "aesthetic discourse", translation: "discours esthétique", example: "Contemporary aesthetic discourse increasingly addresses political dimensions of art." },
-    { word: "critical theory", translation: "théorie critique", example: "Critical theory provides frameworks for analyzing artistic practice within social contexts." },
-    { word: "phenomenological approach", translation: "approche phénoménologique", example: "A phenomenological approach examines how art creates embodied experiences." },
+    
+    
     { word: "postcolonial aesthetics", translation: "esthétique postcoloniale", example: "Postcolonial aesthetics challenges Western artistic traditions and hierarchies." },
     { word: "feminist critique", translation: "critique féministe", example: "Feminist critique examines gender representation and exclusion in artistic canons." },
     { word: "neuroaesthetics", translation: "neuroesthétique", example: "Neuroaesthetics studies the neurological basis of aesthetic experience and judgment." },
-    { word: "curatorial practice", translation: "pratique curatoriale", example: "Contemporary curatorial practice extends beyond selection to active meaning creation." },
-    { word: "institutional critique", translation: "critique institutionnelle", example: "Institutional critique examines the systems and structures that present and validate art." },
+    
+    
     { word: "visual culture studies", translation: "études de culture visuelle", example: "Visual culture studies analyzes images across artistic and non-artistic contexts." },
     { word: "semiotic analysis", translation: "analyse sémiotique", example: "Semiotic analysis examines how artworks function as sign systems conveying meaning." },
     { word: "comparative aesthetics", translation: "esthétique comparée", example: "Comparative aesthetics examines different cultural traditions of artistic evaluation." },
-    { word: "reception theory", translation: "théorie de la réception", example: "Reception theory focuses on how audiences interpret and engage with artworks." },
+    
     { word: "formalist critique", translation: "critique formaliste", example: "Formalist critique analyzes compositional elements and relationships within artworks." },
     { word: "spatial theory", translation: "théorie spatiale", example: "Spatial theory examines how art constructs, represents, and transforms space." },
     { word: "visual rhetoric", translation: "rhétorique visuelle", example: "Visual rhetoric analyzes how images persuade viewers through formal strategies." },
     { word: "decolonial aesthetics", translation: "esthétique décoloniale", example: "Decolonial aesthetics challenges continuing colonial influence in artistic practices." },
     { word: "hermeneutic interpretation", translation: "interprétation herméneutique", example: "Hermeneutic interpretation explores multiple layers of meaning within artworks." },
-    { word: "psychoanalytic criticism", translation: "critique psychanalytique", example: "Psychoanalytic criticism examines unconscious dimensions of artistic creation and reception." },
+    
     { word: "aesthetic judgment", translation: "jugement esthétique", example: "Contemporary theory questions the basis and validity of aesthetic judgment." },
     { word: "representational politics", translation: "politique de représentation", example: "Representational politics examines how art depicts marginalized communities." },
-    { word: "affect theory", translation: "théorie des affects", example: "Affect theory explores emotional and embodied responses to artistic experiences." },
+    
     { word: "aesthetic taxonomy", translation: "taxonomie esthétique", example: "Traditional aesthetic taxonomy categorizes art into distinct styles and movements." },
     { word: "artistic autonomy", translation: "autonomie artistique", example: "Modernism privileged artistic autonomy from social and political functions." },
     { word: "intermediality", translation: "intermédialité", example: "Intermediality analyzes relationships between different artistic media and forms." },
@@ -63,18 +63,18 @@ export const vocab = {
     { word: "intermedia", translation: "intermédia", example: "Fluxus artists pioneered intermedia approaches combining multiple artistic forms." },
     { word: "transdisciplinary research", translation: "recherche transdisciplinaire", example: "The lab supports transdisciplinary research connecting art with scientific inquiry." },
     { word: "expanded practice", translation: "pratique élargie", example: "Many contemporary artists maintain expanded practice across multiple media." },
-    { word: "artistic collaboration", translation: "collaboration artistique", example: "The project emerged from artistic collaboration between dancers and programmers." },
+    
     { word: "discipline intersection", translation: "intersection disciplinaire", example: "Innovation often emerges at discipline intersections rather than within established fields." },
     { word: "methodological crossover", translation: "croisement méthodologique", example: "The workshop explored methodological crossover between scientific and artistic processes." },
     { word: "medium convergence", translation: "convergence des médiums", example: "Digital technology accelerates medium convergence in contemporary art." },
     { word: "genre hybridization", translation: "hybridation des genres", example: "Contemporary practice features increasing genre hybridization between previously separate forms." },
-    { word: "boundary crossing", translation: "traversée des frontières", example: "Artistic boundary crossing challenges traditional disciplinary categories." },
-    { word: "interdisciplinary dialogue", translation: "dialogue interdisciplinaire", example: "The conference promoted interdisciplinary dialogue between diverse practitioners." },
+    
+    
     { word: "artistic cross-pollination", translation: "pollinisation croisée artistique", example: "Artistic cross-pollination occurs when techniques migrate between different fields." },
     { word: "disciplinary fluidity", translation: "fluidité disciplinaire", example: "Contemporary education increasingly emphasizes disciplinary fluidity rather than specialization." },
     { word: "media integration", translation: "intégration des médias", example: "The performance featured media integration combining live action with digital projection." },
     { word: "intermedial practice", translation: "pratique intermédiale", example: "Intermedial practice explores relationships between different artistic platforms." },
-    { word: "knowledge exchange", translation: "échange de connaissances", example: "The residency program facilitates knowledge exchange between artists and scientists." },
+    
     { word: "cross-modal perception", translation: "perception intermodale", example: "The installation explores cross-modal perception connecting sound and visual elements." },
     { word: "interdisciplinary approach", translation: "approche interdisciplinaire", example: "An interdisciplinary approach combines multiple methodologies and perspectives." },
     { word: "disciplinary convergence", translation: "convergence disciplinaire", example: "Digital media accelerates disciplinary convergence across previously separate fields." },
@@ -83,26 +83,26 @@ export const vocab = {
     { word: "transmedia practice", translation: "pratique transmédiatique", example: "Transmedia practice extends creative projects across multiple platforms." },
     { word: "interdisciplinary synthesis", translation: "synthèse interdisciplinaire", example: "The project represents interdisciplinary synthesis merging scientific data with artistic expression." },
     { word: "artistic research", translation: "recherche artistique", example: "Universities increasingly recognize artistic research as legitimate knowledge production." },
-    { word: "collaborative methodology", translation: "méthodologie collaborative", example: "The project employed collaborative methodology involving diverse specialists." },
+    
     
     // Marché de l'art
-    { word: "art market", translation: "marché de l'art", example: "The art market continues to reach record prices despite economic uncertainty." },
-    { word: "commercial gallery", translation: "galerie commerciale", example: "Commercial galleries typically take a 50% commission on sales of artists' work." },
+    
+    
     { word: "primary market", translation: "marché primaire", example: "The primary market involves first sales of artists' work through galleries or directly to collectors." },
     { word: "secondary market", translation: "marché secondaire", example: "Auction houses operate in the secondary market, reselling previously purchased artworks." },
     { word: "art valuation", translation: "évaluation d'art", example: "Art valuation remains subjective despite attempts to identify objective factors." },
     { word: "blue-chip artist", translation: "artiste de premier plan", example: "Blue-chip artists represent relatively safe investments with established market value." },
     { word: "emerging artist", translation: "artiste émergent", example: "Galleries often promote emerging artists who show commercial potential." },
-    { word: "art fair", translation: "foire d'art", example: "International art fairs have become crucial venues for galleries to reach global collectors." },
-    { word: "auction house", translation: "maison de ventes aux enchères", example: "Major auction houses handle high-value art transactions worldwide." },
+    
+    
     { word: "art speculation", translation: "spéculation artistique", example: "Art speculation treats artworks primarily as investment vehicles rather than cultural objects." },
     { word: "private collection", translation: "collection privée", example: "Major private collections increasingly influence museum exhibitions and acquisitions." },
-    { word: "provenance", translation: "provenance", example: "Establishing clear provenance is essential for high-value art transactions." },
+    
     { word: "art investment", translation: "investissement artistique", example: "Art investment funds allow participation in the market without direct ownership." },
     { word: "gallery representation", translation: "représentation par une galerie", example: "Gallery representation provides artists with exhibition opportunities and market access." },
     { word: "market value", translation: "valeur marchande", example: "An artist's market value can fluctuate dramatically based on institutional recognition." },
     { word: "art commodity", translation: "bien artistique", example: "Critics argue that treating art as commodity undermines its cultural significance." },
-    { word: "art dealer", translation: "marchand d'art", example: "Influential art dealers can significantly impact artists' career trajectories." },
+    
     { word: "collector base", translation: "base de collectionneurs", example: "Developing a loyal collector base is crucial for artists' financial sustainability." },
     { word: "market manipulation", translation: "manipulation du marché", example: "Some practices in the art world constitute market manipulation that would be regulated in other sectors." },
     { word: "art as investment", translation: "art comme investissement", example: "Viewing art as investment has transformed collecting practices and market dynamics." },
@@ -114,30 +114,30 @@ export const vocab = {
     { word: "middle market", translation: "marché intermédiaire", example: "Many galleries operate in the middle market between blue-chip and emerging sectors." },
     
     // Politiques culturelles
-    { word: "cultural policy", translation: "politique culturelle", example: "Cultural policy shapes public funding priorities for artistic organizations." },
-    { word: "arts funding", translation: "financement des arts", example: "Government arts funding varies dramatically between different countries." },
-    { word: "creative economy", translation: "économie créative", example: "The creative economy includes commercial and noncommercial cultural production." },
-    { word: "public art", translation: "art public", example: "Public art programs integrate creative works into communal spaces." },
-    { word: "cultural democracy", translation: "démocratie culturelle", example: "Cultural democracy emphasizes broad participation rather than passive consumption." },
-    { word: "cultural heritage", translation: "patrimoine culturel", example: "UNESCO designations protect tangible and intangible cultural heritage." },
-    { word: "cultural diplomacy", translation: "diplomatie culturelle", example: "Nations employ cultural diplomacy to strengthen international relationships." },
+    
+    
+    
+    
+    
+    
+    
     { word: "cultural equity", translation: "équité culturelle", example: "Cultural equity initiatives address historical funding disparities between communities." },
-    { word: "cultural institution", translation: "institution culturelle", example: "Major cultural institutions face increasing pressure to diversify their programs." },
-    { word: "public engagement", translation: "engagement public", example: "Museums develop public engagement strategies to reach diverse audiences." },
+    
+    
     { word: "creative city", translation: "ville créative", example: "Urban planners promote creative city development through cultural infrastructure." },
     { word: "cultural planning", translation: "planification culturelle", example: "Cultural planning integrates arts into broader urban development strategies." },
-    { word: "cultural district", translation: "quartier culturel", example: "Many cities designate cultural districts to concentrate artistic resources." },
+    
     { word: "cultural impact assessment", translation: "évaluation d'impact culturel", example: "Development projects increasingly require cultural impact assessment." },
     { word: "art ecosystem", translation: "écosystème artistique", example: "A healthy art ecosystem includes education, creation, presentation, and preservation." },
     { word: "creative placemaking", translation: "création de lieu créatif", example: "Creative placemaking uses arts to revitalize urban neighborhoods." },
     { word: "cultural sustainability", translation: "durabilité culturelle", example: "Cultural sustainability ensures ongoing viability of artistic traditions." },
-    { word: "cultural appropriation", translation: "appropriation culturelle", example: "Institutions increasingly address issues of cultural appropriation in exhibitions." },
-    { word: "cultural rights", translation: "droits culturels", example: "The UN recognizes cultural rights as fundamental human rights." },
+    
+    
     { word: "deaccessioning", translation: "aliénation d'œuvres", example: "Museum deaccessioning policies govern the removal of objects from collections." },
-    { word: "cultural preservation", translation: "préservation culturelle", example: "Digital archives support cultural preservation of ephemeral artworks." },
-    { word: "arts advocacy", translation: "défense des arts", example: "Arts advocacy organizations lobby for favorable public policies." },
+    
+    
     { word: "cultural indicator", translation: "indicateur culturel", example: "Researchers develop cultural indicators to measure sector health and impact." },
-    { word: "creative industries", translation: "industries créatives", example: "Creative industries contribute significantly to advanced economies." },
+    
     { word: "community arts", translation: "arts communautaires", example: "Community arts programs emphasize local participation and relevance." },
     { word: "cultural authority", translation: "autorité culturelle", example: "Institutions exercise cultural authority through collection and exhibition decisions." },
     
@@ -145,11 +145,11 @@ export const vocab = {
     { word: "site-specific installation", translation: "installation in situ", example: "The site-specific installation responded directly to the architectural context." },
     { word: "durational performance", translation: "performance de longue durée", example: "The durational performance unfolded continuously over 24 hours." },
     { word: "participatory performance", translation: "performance participative", example: "The participatory performance invited audience members to become active collaborators." },
-    { word: "installation art", translation: "art d'installation", example: "Installation art transforms space through multidimensional environments." },
-    { word: "performance art", translation: "art de la performance", example: "Performance art uses the artist's body as a primary medium." },
+    
+    
     { word: "spatial intervention", translation: "intervention spatiale", example: "The spatial intervention temporarily transformed the building's facade." },
     { word: "embodied practice", translation: "pratique incarnée", example: "Her embodied practice explores relationships between movement and identity." },
-    { word: "ephemeral art", translation: "art éphémère", example: "Ephemeral art exists temporarily before disappearing or transforming." },
+    
     { word: "performative gesture", translation: "geste performatif", example: "The performative gesture repeated throughout the three-hour work." },
     { word: "audience participation", translation: "participation du public", example: "Audience participation transformed the work from presentation to collaboration." },
     { word: "performance documentation", translation: "documentation de performance", example: "Performance documentation raises questions about the artwork's true form." },
@@ -170,31 +170,31 @@ export const vocab = {
     { word: "spatial practice", translation: "pratique spatiale", example: "Contemporary installation represents spatial practice transforming places into experiences." },
     
     // Art numérique
-    { word: "digital art", translation: "art numérique", example: "Digital art encompasses works created or presented through computational technology." },
+    
     { word: "algorithmic art", translation: "art algorithmique", example: "Algorithmic art uses mathematical rules to generate visual compositions." },
-    { word: "interactive media", translation: "médias interactifs", example: "Interactive media responds to audience input or environmental factors." },
-    { word: "virtual reality", translation: "réalité virtuelle", example: "Virtual reality artworks create immersive simulated environments." },
-    { word: "augmented reality", translation: "réalité augmentée", example: "Augmented reality overlays digital content onto physical spaces." },
+    
+    
+    
     { word: "digital installation", translation: "installation numérique", example: "The digital installation responds to visitors' movements through motion sensors." },
     { word: "net-based art", translation: "art en réseau", example: "Net-based art exists primarily online, using internet protocols as creative material." },
     { word: "code-based art", translation: "art basé sur le code", example: "Code-based art uses programming languages as a creative medium." },
     { word: "digital fabrication", translation: "fabrication numérique", example: "Digital fabrication technologies like 3D printing enable new sculptural forms." },
-    { word: "projection mapping", translation: "mapping vidéo", example: "Projection mapping precisely overlays visuals onto three-dimensional surfaces." },
+    
     { word: "generative system", translation: "système génératif", example: "The artwork uses a generative system that creates unique compositions in real-time." },
     { word: "media archeology", translation: "archéologie des médias", example: "Media archeology examines forgotten or obsolete technologies as artistic media." },
     { word: "electronic art", translation: "art électronique", example: "Electronic art incorporates circuits and components as expressive elements." },
     { word: "software art", translation: "art logiciel", example: "Software art considers code itself as an aesthetic and conceptual medium." },
-    { word: "data visualization", translation: "visualisation de données", example: "Artistic data visualization transforms complex information into sensory experience." },
-    { word: "artificial intelligence art", translation: "art d'intelligence artificielle", example: "Artificial intelligence art employs machine learning as creative collaborator." },
+    
+    
     { word: "digital aesthetics", translation: "esthétique numérique", example: "Digital aesthetics examines visual languages specific to computational media." },
     { word: "screen-based art", translation: "art sur écran", example: "Screen-based art utilizes displays as its primary presentation surface." },
     { word: "mixed reality", translation: "réalité mixte", example: "Mixed reality art blends virtual elements with physical environments." },
     { word: "robotics art", translation: "art robotique", example: "Robotics art incorporates automated mechanical systems as expressive media." },
-    { word: "digital performance", translation: "performance numérique", example: "Digital performance integrates live action with computational systems." },
+    
     { word: "virtual environment", translation: "environnement virtuel", example: "The virtual environment creates navigable spaces that exist only digitally." },
     { word: "interactive design", translation: "conception interactive", example: "Interactive design creates responsive systems that engage users actively." },
     { word: "digital sculpture", translation: "sculpture numérique", example: "Digital sculpture employs computational tools to create three-dimensional forms." },
-    { word: "new media art", translation: "art des nouveaux médias", example: "New media art engages critically with emerging technologies and their cultural impact." },
+    
     { word: "biotech art", translation: "art biotechnologique", example: "Biotech art incorporates living organisms and biological materials." }
   ]
 };

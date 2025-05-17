@@ -2,88 +2,88 @@ export const vocab = {
   title: "Enjeux Mondiaux et Coopération Internationale",
   words: [
     // Organisations et structures internationales (38 mots)
-    { word: "international organization", translation: "organisation internationale", example: "The international organization coordinates humanitarian responses across multiple countries." },
+    
     { word: "United Nations", translation: "Nations Unies", example: "The United Nations General Assembly meets annually to discuss global challenges." },
-    { word: "non-governmental organization", translation: "organisation non gouvernementale", example: "The non-governmental organization provides educational support in developing regions." },
-    { word: "World Health Organization", translation: "Organisation mondiale de la Santé", example: "The World Health Organization issued guidelines for responding to the outbreak." },
-    { word: "treaty", translation: "traité", example: "The treaty was ratified by sufficient countries to enter into force last month." },
+    
+    
+    
     { word: "bilateral agreement", translation: "accord bilatéral", example: "The bilateral agreement facilitated trade between the neighboring countries." },
     { word: "multilateral cooperation", translation: "coopération multilatérale", example: "Multilateral cooperation is essential to address transboundary environmental issues." },
-    { word: "summit", translation: "sommet", example: "World leaders gathered at the summit to discuss climate action initiatives." },
+    
     { word: "diplomatic relations", translation: "relations diplomatiques", example: "The countries have maintained diplomatic relations for over fifty years." },
     { word: "peacekeeping mission", translation: "mission de maintien de la paix", example: "The peacekeeping mission helps stabilize the region following the conflict." },
-    { word: "international law", translation: "droit international", example: "The action was condemned as a violation of international law." },
+    
     { word: "human rights council", translation: "conseil des droits de l'homme", example: "The Human Rights Council investigated reports of abuses in the conflict zone." },
     { word: "diplomatic corps", translation: "corps diplomatique", example: "Members of the diplomatic corps attended the national day celebration." },
-    { word: "international court", translation: "cour internationale", example: "The dispute was submitted to the international court for resolution." },
-    { word: "world trade organization", translation: "organisation mondiale du commerce", example: "The World Trade Organization mediates trade disputes between member states." },
+    
+    
     { word: "sanctions", translation: "sanctions", example: "Economic sanctions were imposed following violations of the peace agreement." },
     { word: "ambassador", translation: "ambassadeur", example: "The newly appointed ambassador presented her credentials to the host government." },
     { word: "embassy", translation: "ambassade", example: "Citizens sought assistance at their embassy following the natural disaster." },
     { word: "consulate", translation: "consulat", example: "The consulate processed visa applications for travelers to the region." },
-    { word: "diplomatic immunity", translation: "immunité diplomatique", example: "Diplomatic immunity protects foreign officials from prosecution in host countries." },
+    
     { word: "international community", translation: "communauté internationale", example: "The international community expressed concern about the deteriorating situation." },
-    { word: "foreign policy", translation: "politique étrangère", example: "The administration's foreign policy prioritizes regional security cooperation." },
-    { word: "diplomatic mission", translation: "mission diplomatique", example: "The diplomatic mission works to strengthen bilateral relations between the countries." },
-    { word: "negotiation", translation: "négociation", example: "Peace negotiations continued despite setbacks in the implementation process." },
-    { word: "convention", translation: "convention", example: "The convention establishes international standards for treatment of refugees." },
-    { word: "protocol", translation: "protocole", example: "The protocol outlines specific procedures for reducing carbon emissions." },
-    { word: "resolution", translation: "résolution", example: "The Security Council passed a resolution condemning the recent violence." },
+    
+    
+    
+    
+    
+    
     { word: "international aid", translation: "aide internationale", example: "International aid was mobilized following the devastating earthquake." },
-    { word: "mediation", translation: "médiation", example: "Regional leaders offered mediation to resolve the ongoing border dispute." },
-    { word: "delegation", translation: "délégation", example: "The delegation represented their country's interests at the international conference." },
+    
+    
     { word: "secretary-general", translation: "secrétaire général", example: "The Secretary-General urged member states to increase their climate commitments." },
     { word: "diplomatic channel", translation: "voie diplomatique", example: "The countries communicated through diplomatic channels to avoid public confrontation." },
     { word: "international waters", translation: "eaux internationales", example: "The incident occurred in international waters, complicating jurisdiction questions." },
     { word: "international alliance", translation: "alliance internationale", example: "The international alliance coordinated military operations against terrorist groups." },
-    { word: "trade agreement", translation: "accord commercial", example: "The trade agreement eliminated tariffs on agricultural products between the countries." },
+    
     { word: "diplomatic crisis", translation: "crise diplomatique", example: "The diplomatic crisis escalated after the expulsion of several ambassadors." },
-    { word: "international relations", translation: "relations internationales", example: "She studied international relations before joining the foreign service." },
+    
     { word: "sovereign state", translation: "État souverain", example: "As a sovereign state, the country determines its own domestic policies." },
     
     // Enjeux mondiaux (37 mots)
-    { word: "climate change", translation: "changement climatique", example: "Climate change impacts are increasingly visible across various ecosystems." },
-    { word: "global warming", translation: "réchauffement climatique", example: "Global warming has accelerated the melting of polar ice caps." },
+    
+    
     { word: "greenhouse gas emissions", translation: "émissions de gaz à effet de serre", example: "The agreement commits countries to reducing greenhouse gas emissions significantly." },
-    { word: "sustainable development", translation: "développement durable", example: "Sustainable development balances economic growth with environmental protection." },
-    { word: "renewable energy", translation: "énergie renouvelable", example: "The country is investing heavily in renewable energy infrastructure." },
+    
+    
     { word: "biodiversity loss", translation: "perte de biodiversité", example: "Habitat destruction accelerates biodiversity loss worldwide." },
-    { word: "deforestation", translation: "déforestation", example: "Measures to combat deforestation include reforestation programs and sustainable farming." },
-    { word: "food security", translation: "sécurité alimentaire", example: "Climate change threatens food security in vulnerable regions." },
+    
+    
     { word: "water scarcity", translation: "pénurie d'eau", example: "Water scarcity affects over two billion people globally." },
     { word: "refugee crisis", translation: "crise des réfugiés", example: "The refugee crisis requires coordinated international responses." },
     { word: "human rights violation", translation: "violation des droits de l'homme", example: "The report documented numerous human rights violations in the region." },
-    { word: "poverty reduction", translation: "réduction de la pauvreté", example: "Poverty reduction strategies focus on education, healthcare, and economic opportunity." },
-    { word: "gender equality", translation: "égalité des genres", example: "The organization promotes gender equality through educational initiatives." },
+    
+    
     { word: "humanitarian crisis", translation: "crise humanitaire", example: "The conflict has triggered a humanitarian crisis affecting millions." },
-    { word: "pandemic", translation: "pandémie", example: "International cooperation is essential in responding to a pandemic effectively." },
+    
     { word: "infectious disease", translation: "maladie infectieuse", example: "Global travel facilitates the spread of infectious diseases across borders." },
-    { word: "global health", translation: "santé mondiale", example: "Improving global health requires addressing social determinants beyond medical care." },
+    
     { word: "nuclear proliferation", translation: "prolifération nucléaire", example: "The treaty aims to prevent nuclear proliferation through verification measures." },
     { word: "terrorism", translation: "terrorisme", example: "Countering terrorism requires international intelligence sharing and cooperation." },
-    { word: "cybersecurity", translation: "cybersécurité", example: "Cybersecurity threats increasingly target critical infrastructure across countries." },
+    
     { word: "cross-border crime", translation: "criminalité transfrontalière", example: "Cross-border crime includes human trafficking, drug smuggling, and money laundering." },
     { word: "economic inequality", translation: "inégalité économique", example: "Economic inequality has increased within many countries despite overall growth." },
-    { word: "human trafficking", translation: "traite des êtres humains", example: "Combating human trafficking requires coordination between source and destination countries." },
+    
     { word: "disarmament", translation: "désarmement", example: "The disarmament negotiations aim to reduce conventional weapons stockpiles." },
     { word: "peace process", translation: "processus de paix", example: "The peace process involves multiple rounds of negotiations between conflict parties." },
-    { word: "conflict resolution", translation: "résolution des conflits", example: "Effective conflict resolution addresses underlying causes rather than just symptoms." },
-    { word: "global governance", translation: "gouvernance mondiale", example: "Global governance systems are evolving to address 21st century challenges." },
-    { word: "migration pattern", translation: "schéma migratoire", example: "Climate change affects migration patterns as people leave increasingly uninhabitable areas." },
-    { word: "international security", translation: "sécurité internationale", example: "Regional tensions threaten international security across the area." },
+    
+    
+    
+    
     { word: "arms control", translation: "contrôle des armements", example: "Arms control agreements limit specific weapons technologies and quantities." },
-    { word: "resource depletion", translation: "épuisement des ressources", example: "Unsustainable practices accelerate resource depletion worldwide." },
+    
     { word: "population growth", translation: "croissance démographique", example: "Rapid population growth creates challenges for urban infrastructure and services." },
     { word: "border dispute", translation: "litige frontalier", example: "The longstanding border dispute occasionally flares into minor confrontations." },
-    { word: "air pollution", translation: "pollution atmosphérique", example: "Air pollution crosses national boundaries, requiring regional cooperation." },
-    { word: "marine pollution", translation: "pollution marine", example: "Plastic waste contributes significantly to marine pollution globally." },
-    { word: "endangered species", translation: "espèce menacée", example: "International trade restrictions aim to protect endangered species from exploitation." },
-    { word: "overfishing", translation: "surpêche", example: "Overfishing threatens marine ecosystems and coastal communities' livelihoods." },
+    
+    
+    
+    
     
     // Développement international et aide (38 mots)
     { word: "humanitarian aid", translation: "aide humanitaire", example: "Humanitarian aid was dispatched to the earthquake-affected regions." },
     { word: "development assistance", translation: "aide au développement", example: "Development assistance focuses on building long-term capacity rather than short-term relief." },
-    { word: "foreign aid", translation: "aide étrangère", example: "The country increased its foreign aid budget following the crisis." },
+    
     { word: "disaster relief", translation: "secours en cas de catastrophe", example: "International disaster relief arrived within days of the hurricane." },
     { word: "poverty alleviation", translation: "réduction de la pauvreté", example: "Microcredit programs contribute to poverty alleviation in rural communities." },
     { word: "capacity building", translation: "renforcement des capacités", example: "The program focuses on capacity building for local government officials." },
@@ -93,31 +93,31 @@ export const vocab = {
     { word: "least developed country", translation: "pays les moins avancés", example: "Special trade provisions apply to least developed countries under the agreement." },
     { word: "technical assistance", translation: "assistance technique", example: "The organization provides technical assistance in water management practices." },
     { word: "developmental goal", translation: "objectif de développement", example: "Universal education remains a key developmental goal worldwide." },
-    { word: "economic development", translation: "développement économique", example: "Infrastructure investment stimulates economic development in the region." },
+    
     { word: "sustainable growth", translation: "croissance durable", example: "The policy promotes sustainable growth through green technology incentives." },
     { word: "donor country", translation: "pays donateur", example: "The donor country attached conditions to its financial assistance package." },
     { word: "recipient nation", translation: "pays bénéficiaire", example: "The recipient nation implemented transparency measures for aid management." },
     { word: "aid effectiveness", translation: "efficacité de l'aide", example: "Research examines factors influencing aid effectiveness across contexts." },
-    { word: "grant", translation: "subvention", example: "The foundation provided a grant for clean water infrastructure." },
-    { word: "loan", translation: "prêt", example: "The development bank approved a low-interest loan for the transportation project." },
+    
+    
     { word: "debt relief", translation: "allègement de la dette", example: "Debt relief enabled the country to increase education spending." },
     { word: "financial assistance", translation: "assistance financière", example: "Financial assistance was conditional on governance reforms." },
-    { word: "emergency response", translation: "intervention d'urgence", example: "The agency coordinated the emergency response following the flood." },
+    
     { word: "rural development", translation: "développement rural", example: "The program supports rural development through agricultural modernization." },
-    { word: "urban planning", translation: "planification urbaine", example: "Sustainable urban planning addresses housing, transportation, and service needs." },
+    
     { word: "infrastructure development", translation: "développement des infrastructures", example: "Infrastructure development focuses on renewable energy and digital connectivity." },
-    { word: "health system", translation: "système de santé", example: "The partnership aims to strengthen the country's health system capacity." },
+    
     { word: "education access", translation: "accès à l'éducation", example: "Improving education access for girls remains a priority initiative." },
     { word: "literacy program", translation: "programme d'alphabétisation", example: "The literacy program targets adult learners in underserved communities." },
     { word: "vaccination campaign", translation: "campagne de vaccination", example: "The global vaccination campaign aims to eradicate the disease." },
     { word: "maternal health", translation: "santé maternelle", example: "Improving maternal health reduces preventable mortality in developing regions." },
     { word: "child mortality", translation: "mortalité infantile", example: "Child mortality rates have declined significantly following the intervention." },
-    { word: "community empowerment", translation: "autonomisation communautaire", example: "The approach emphasizes community empowerment rather than top-down solutions." },
+    
     { word: "grassroots organization", translation: "organisation locale", example: "The grassroots organization mobilizes residents for neighborhood improvement initiatives." },
     { word: "microfinance", translation: "microfinance", example: "Microfinance provides small business loans to entrepreneurs without access to traditional banking." },
     { word: "social enterprise", translation: "entreprise sociale", example: "The social enterprise creates employment while addressing environmental challenges." },
     { word: "sustainable livelihood", translation: "moyens de subsistance durables", example: "Training programs promote sustainable livelihoods through diversified income sources." },
-    { word: "technology transfer", translation: "transfert de technologie", example: "Technology transfer enables local production of essential medical supplies." },
+    
     { word: "knowledge sharing", translation: "partage des connaissances", example: "The platform facilitates knowledge sharing between practitioners worldwide." }
   ]
 };

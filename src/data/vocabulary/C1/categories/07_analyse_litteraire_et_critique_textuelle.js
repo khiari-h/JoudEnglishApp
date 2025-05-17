@@ -2,15 +2,15 @@ export const vocab = {
   title: "Analyse Littéraire & Critique Textuelle",
   words: [
     // Théories critiques
-    { word: "critical theory", translation: "théorie critique", example: "The essay applies critical theory to examine power dynamics in dystopian fiction." },
-    { word: "formalism", translation: "formalisme", example: "Formalism emphasizes structural elements rather than historical or biographical contexts." },
+    
+    
     { word: "structuralism", translation: "structuralisme", example: "Structuralism analyzes patterns and relationships that organize cultural systems." },
     { word: "post-structuralism", translation: "post-structuralisme", example: "Post-structuralism questions fixed meanings and stable interpretive frameworks." },
-    { word: "deconstruction", translation: "déconstruction", example: "Deconstruction reveals contradictions and assumptions within philosophical and literary texts." },
+    
     { word: "reader-response criticism", translation: "critique de la réception", example: "Reader-response criticism examines how readers create meaning through interpretation." },
-    { word: "feminist criticism", translation: "critique féministe", example: "Feminist criticism analyzes gender politics and patriarchal structures in literature." },
+    
     { word: "queer theory", translation: "théorie queer", example: "Queer theory challenges normative categories of gender and sexuality in cultural texts." },
-    { word: "postcolonial theory", translation: "théorie postcoloniale", example: "Postcolonial theory examines literature through the lens of colonial experience and its aftermath." },
+    
     { word: "cultural materialism", translation: "matérialisme culturel", example: "Cultural materialism interprets texts within their socioeconomic and historical context." },
     { word: "new historicism", translation: "nouvel historicisme", example: "New historicism situates literary works within the power structures of their historical period." },
     { word: "psychoanalytic criticism", translation: "critique psychanalytique", example: "Psychoanalytic criticism applies Freudian concepts to interpret literary characters and themes." },
@@ -19,7 +19,7 @@ export const vocab = {
     { word: "hermeneutics", translation: "herméneutique", example: "Hermeneutics explores the methodology and principles of textual interpretation." },
     { word: "archetypal criticism", translation: "critique archétypale", example: "Archetypal criticism identifies recurring mythic patterns and symbols across literature." },
     { word: "dialogism", translation: "dialogisme", example: "Bakhtin's concept of dialogism emphasizes the multiple voices operating within a text." },
-    { word: "reception theory", translation: "théorie de la réception", example: "Reception theory examines how texts are interpreted differently across historical periods." },
+    
     { word: "subaltern studies", translation: "études subalternes", example: "Subaltern studies focuses on marginalized perspectives omitted from dominant historical narratives." },
     { word: "cognitive criticism", translation: "critique cognitive", example: "Cognitive criticism applies insights from psychology to understand literary processing." },
     { word: "critical race theory", translation: "théorie critique de la race", example: "Critical race theory examines how racial power structures influence literary representation." },
@@ -27,35 +27,35 @@ export const vocab = {
     { word: "trauma theory", translation: "théorie du trauma", example: "Trauma theory examines how catastrophic experiences are represented in narrative form." },
     { word: "affect theory", translation: "théorie des affects", example: "Affect theory considers emotional responses and bodily sensations in literary experience." },
     { word: "postmodernist theory", translation: "théorie postmoderniste", example: "Postmodernist theory questions grand narratives and embraces contradiction and fragmentation." },
-    { word: "cultural studies", translation: "études culturelles", example: "Cultural studies analyzes popular media and everyday practices as significant texts." },
+    
     
     // Analyse rhétorique
-    { word: "rhetorical analysis", translation: "analyse rhétorique", example: "Rhetorical analysis examines how language is used to persuade specific audiences." },
+    
     { word: "rhetorical figure", translation: "figure rhétorique", example: "Metaphor functions as a rhetorical figure that creates meaning through comparison." },
-    { word: "rhetorical strategy", translation: "stratégie rhétorique", example: "The essay identifies rhetorical strategies that build ethos in political speeches." },
+    
     { word: "argumentative structure", translation: "structure argumentative", example: "The poem's argumentative structure progresses from concrete observation to abstract reflection." },
-    { word: "rhetorical situation", translation: "situation rhétorique", example: "Rhetorical situation encompasses the context, audience, and purpose shaping a text." },
-    { word: "rhetorical appeal", translation: "appel rhétorique", example: "Effective persuasion balances logical, emotional, and ethical rhetorical appeals." },
-    { word: "rhetorical device", translation: "procédé rhétorique", example: "Anaphora is a rhetorical device involving repetition of initial words for emphasis." },
-    { word: "rhetorical mode", translation: "mode rhétorique", example: "Description, narration, and argumentation represent different rhetorical modes." },
-    { word: "discursive practice", translation: "pratique discursive", example: "Academic writing constitutes a discursive practice with established conventions." },
-    { word: "figurative language", translation: "langage figuré", example: "Figurative language creates meaning beyond the literal through imagery and association." },
+    
+    
+    
+    
+    
+    
     { word: "rhetorical criticism", translation: "critique rhétorique", example: "Rhetorical criticism analyzes how texts function persuasively in specific contexts." },
     { word: "rhetorical grammar", translation: "grammaire rhétorique", example: "Rhetorical grammar examines how syntactic choices create specific effects." },
-    { word: "discourse analysis", translation: "analyse du discours", example: "Discourse analysis examines language patterns and their social implications." },
+    
     { word: "stylistic device", translation: "procédé stylistique", example: "Parallelism is a stylistic device that creates rhythm through similar structures." },
-    { word: "rhetorical question", translation: "question rhétorique", example: "The essay concludes with a rhetorical question that invites reflection rather than response." },
+    
     { word: "rhetorical framework", translation: "cadre rhétorique", example: "The rhetorical framework shaped how arguments were presented to the intended audience." },
     { word: "rhetorical effect", translation: "effet rhétorique", example: "The abrupt shift in tone creates a rhetorical effect of surprise and emphasis." },
     { word: "rhetorical pattern", translation: "schéma rhétorique", example: "Problem-solution represents a common rhetorical pattern in persuasive essays." },
-    { word: "rhetorical stance", translation: "posture rhétorique", example: "The author adopts a rhetorical stance of objective analyst rather than passionate advocate." },
-    { word: "rhetorical context", translation: "contexte rhétorique", example: "The rhetorical context of wartime influenced how the speech was crafted and received." },
+    
+    
     { word: "trope", translation: "trope", example: "Irony functions as a trope that creates meaning through contrast between expression and intent." },
     { word: "scheme", translation: "schéma", example: "Chiasmus is a scheme involving reversed parallelism for rhetorical emphasis." },
     { word: "rhetorical tradition", translation: "tradition rhétorique", example: "The essay draws on the classical rhetorical tradition from Aristotle to Cicero." },
     { word: "rhetoric of science", translation: "rhétorique de la science", example: "The rhetoric of science examines persuasive strategies in scientific discourse." },
-    { word: "persuasive appeal", translation: "appel persuasif", example: "The argument relies heavily on emotional persuasive appeals rather than logical evidence." },
-    { word: "rhetorical analysis", translation: "analyse rhétorique", example: "Rhetorical analysis reveals how technical descriptions establish scientific authority." },
+    
+    
     
     // Genres littéraires avancés
     { word: "metafiction", translation: "métafiction", example: "The novel employs metafiction to draw attention to its own artifice and construction." },
@@ -86,16 +86,16 @@ export const vocab = {
     { word: "prose poem", translation: "poème en prose", example: "The prose poem combines poetic language with paragraph form rather than lineation." },
     
     // Intertextualité
-    { word: "intertextuality", translation: "intertextualité", example: "Intertextuality reveals how texts gain meaning through relationships with other texts." },
+    
     { word: "allusion", translation: "allusion", example: "The novel contains numerous allusions to Greek mythology that enrich its thematic depth." },
     { word: "pastiche", translation: "pastiche", example: "The author created a pastiche that imitated Dickensian style and characterization." },
     { word: "parody", translation: "parodie", example: "The parody exaggerates stylistic features of the original for comic effect." },
     { word: "adaptation", translation: "adaptation", example: "The film adaptation transposes the novel's themes into visual storytelling." },
-    { word: "appropriation", translation: "appropriation", example: "Literary appropriation repurposes canonical texts from marginalized perspectives." },
+    
     { word: "palimpsest", translation: "palimpseste", example: "The novel functions as a palimpsest where earlier texts remain visible beneath the surface." },
     { word: "quotation", translation: "citation", example: "Direct quotation creates explicit dialogue between contemporary and historical texts." },
     { word: "ekphrasis", translation: "ekphrasis", example: "Ekphrasis describes visual artwork within literary narrative or poetry." },
-    { word: "influence", translation: "influence", example: "Textual analysis reveals Woolf's influence on subsequent stream-of-consciousness writing." },
+    
     { word: "textual transformation", translation: "transformation textuelle", example: "Textual transformation reconfigures source material for new contexts and purposes." },
     { word: "literary borrowing", translation: "emprunt littéraire", example: "Shakespeare's literary borrowing drew from historical chronicles and earlier plays." },
     { word: "transtextuality", translation: "transtextualité", example: "Genette identified five types of transtextuality including intertextuality and metatextuality." },
@@ -124,14 +124,14 @@ export const vocab = {
     { word: "embedded narrative", translation: "récit enchâssé", example: "The novel contains embedded narratives that characters tell within the main story." },
     { word: "narrative level", translation: "niveau narratif", example: "The character's story creates a second narrative level within the primary frame." },
     { word: "narrative discourse", translation: "discours narratif", example: "Narrative discourse refers to how story content is presented and organized." },
-    { word: "narrative arc", translation: "arc narratif", example: "The narrative arc traces the protagonist's transformation through conflict and resolution." },
+    
     { word: "narrative device", translation: "procédé narratif", example: "Flashback functions as a narrative device revealing crucial background information." },
     { word: "story/discourse", translation: "histoire/récit", example: "Narratology distinguishes between story (what happens) and discourse (how it's told)." },
     { word: "narrative theory", translation: "théorie narrative", example: "Narrative theory examines common patterns and principles across different stories." },
     { word: "fabula/syuzhet", translation: "fabula/syuzhet", example: "Russian formalists distinguished between fabula (raw story events) and syuzhet (their presentation)." },
     { word: "narrative space", translation: "espace narratif", example: "Narrative space encompasses both physical settings and conceptual landscapes." },
     { word: "frame narrative", translation: "récit-cadre", example: "The frame narrative establishes the context for the multiple stories within it." },
-    { word: "dialogism", translation: "dialogisme", example: "Bakhtinian dialogism examines the multiple voices operating within narrative texts." },
+    
     { word: "narrative rhythm", translation: "rythme narratif", example: "The narrative rhythm accelerates as it approaches the climactic scene." },
     { word: "narrative progression", translation: "progression narrative", example: "Narrative progression tracks how the story develops toward resolution." },
     { word: "analepsis", translation: "analepse", example: "Analepsis (flashback) disrupts chronological order to reveal past events." },
@@ -144,7 +144,7 @@ export const vocab = {
     // Stylistique comparative
     { word: "stylistic analysis", translation: "analyse stylistique", example: "Stylistic analysis examines language patterns that create literary effects." },
     { word: "authorial style", translation: "style auctorial", example: "Hemingway's authorial style features concise sentences and understated emotion." },
-    { word: "stylistic device", translation: "procédé stylistique", example: "Parallelism functions as a stylistic device creating rhythm through structure." },
+    
     { word: "literary register", translation: "registre littéraire", example: "The poem shifts between formal and colloquial literary registers for contrast." },
     { word: "stylistic signature", translation: "signature stylistique", example: "Complex syntax and philosophical digression form part of George Eliot's stylistic signature." },
     { word: "stylistic comparison", translation: "comparaison stylistique", example: "Stylistic comparison reveals differences between modernist and Victorian prose." },
@@ -162,30 +162,30 @@ export const vocab = {
     { word: "stylistic convention", translation: "convention stylistique", example: "Romantic poetry established stylistic conventions that later writers rejected." },
     { word: "discourse style", translation: "style discursif", example: "Each author develops a recognizable discourse style across multiple works." },
     { word: "stylistic feature", translation: "trait stylistique", example: "Free indirect discourse is a stylistic feature common in nineteenth-century novels." },
-    { word: "stylistic analysis", translation: "analyse stylistique", example: "Computational stylistic analysis identifies distinctive patterns in word usage." },
+    
     { word: "literary expression", translation: "expression littéraire", example: "Literary expression varies across historical periods and cultural contexts." },
     { word: "linguistic style", translation: "style linguistique", example: "Linguistic style encompasses lexical, grammatical, and phonological patterns." },
     { word: "comparative stylistics", translation: "stylistique comparée", example: "Comparative stylistics examines how stylistic features differ across languages." },
     { word: "diction", translation: "diction", example: "The poem's elevated diction creates a sense of formality and gravitas." },
     
     // Critique culturelle
-    { word: "cultural critique", translation: "critique culturelle", example: "The essay offers cultural critique of consumerism in contemporary novels." },
+    
     { word: "ideological analysis", translation: "analyse idéologique", example: "Ideological analysis reveals assumptions about gender roles in popular media." },
-    { word: "cultural studies", translation: "études culturelles", example: "Cultural studies examines relationships between texts and social power structures." },
+    
     { word: "representation politics", translation: "politique de représentation", example: "Representation politics concerns how marginalized groups appear in cultural texts." },
-    { word: "cultural materialism", translation: "matérialisme culturel", example: "Cultural materialism interprets texts within their socioeconomic conditions." },
+    
     { word: "hegemonic discourse", translation: "discours hégémonique", example: "The novel challenges hegemonic discourse about national identity and belonging." },
-    { word: "cultural capital", translation: "capital culturel", example: "Literary knowledge functions as cultural capital in specific social contexts." },
-    { word: "cultural production", translation: "production culturelle", example: "Cultural production occurs within economic and institutional constraints." },
-    { word: "identity politics", translation: "politique identitaire", example: "Contemporary literature increasingly engages with identity politics." },
-    { word: "interpretive community", translation: "communauté interprétative", example: "Interpretive communities develop shared reading conventions and values." },
+    
+    
+    
+    
     { word: "cultural interpretation", translation: "interprétation culturelle", example: "Cultural interpretation situates texts within broader social discourses." },
     { word: "cultural analysis", translation: "analyse culturelle", example: "Cultural analysis examines how texts reflect and shape social values." },
     { word: "popular culture", translation: "culture populaire", example: "Academic criticism increasingly treats popular culture as worthy of serious analysis." },
     { word: "cultural value", translation: "valeur culturelle", example: "Literary canons reflect judgments about cultural value that change over time." },
     { word: "cultural context", translation: "contexte culturel", example: "Understanding cultural context is essential for interpreting historical texts." },
     { word: "cultural politics", translation: "politique culturelle", example: "Cultural politics addresses how power operates through artistic representation." },
-    { word: "cultural significance", translation: "signification culturelle", example: "The novel's cultural significance extends beyond its aesthetic qualities." },
+    
     { word: "cultural narrative", translation: "récit culturel", example: "Dominant cultural narratives shape collective understanding of shared history." },
     { word: "critical intervention", translation: "intervention critique", example: "The essay makes a critical intervention in debates about literary value." },
     { word: "cultural semiotics", translation: "sémiotique culturelle", example: "Cultural semiotics studies how social meanings operate through sign systems." },

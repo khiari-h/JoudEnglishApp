@@ -26,7 +26,7 @@ export const vocab = {
     { word: "perceived self", translation: "soi perçu", example: "Our perceived self is how we think others see us." },
     { word: "existential crisis", translation: "crise existentielle", example: "She experienced an existential crisis after the death of her mother." },
     { word: "collective identity", translation: "identité collective", example: "Religious groups often share a strong collective identity." },
-    { word: "cultural identity", translation: "identité culturelle", example: "For immigrants, maintaining cultural identity can be both challenging and important." },
+    
     
     // Personnalité approfondie
     { word: "personality trait", translation: "trait de personnalité", example: "Extraversion is a personality trait characterized by sociability and assertiveness." },
@@ -66,8 +66,8 @@ export const vocab = {
     { word: "cognitive bias", translation: "biais cognitif", example: "Confirmation bias leads people to favor information that confirms existing beliefs." },
     { word: "heuristic", translation: "heuristique", example: "A heuristic is a mental shortcut used to make decisions quickly." },
     { word: "cognitive load", translation: "charge cognitive", example: "Complex tasks increase cognitive load and can impair performance." },
-    { word: "problem-solving", translation: "résolution de problèmes", example: "Effective problem-solving requires analyzing information and generating solutions." },
-    { word: "decision-making", translation: "prise de décision", example: "Emotions play a significant role in decision-making processes." },
+    
+    
     { word: "reasoning", translation: "raisonnement", example: "Critical thinking involves logical reasoning and evaluation of evidence." },
     { word: "mental model", translation: "modèle mental", example: "People develop mental models to understand how things work in the world." },
     { word: "schema", translation: "schéma", example: "A schema is a mental framework that helps organize and interpret information." },
@@ -76,16 +76,16 @@ export const vocab = {
     { word: "metacognition", translation: "métacognition", example: "Metacognition involves thinking about your own thinking processes." },
     { word: "cognitive neuroscience", translation: "neuroscience cognitive", example: "Cognitive neuroscience examines the biological basis of mental processes." },
     { word: "information processing", translation: "traitement de l'information", example: "The information processing model compares human thinking to computer operations." },
-    { word: "cognitive development", translation: "développement cognitif", example: "Piaget's theory describes stages of cognitive development in children." },
+    
     { word: "cognitive flexibility", translation: "flexibilité cognitive", example: "Cognitive flexibility allows you to adapt your thinking to new situations." },
     { word: "cognitive reserve", translation: "réserve cognitive", example: "Education and mental stimulation build cognitive reserve that can delay dementia symptoms." },
     { word: "implicit cognition", translation: "cognition implicite", example: "Implicit cognition occurs outside conscious awareness and affects behavior." },
     { word: "cognitive architecture", translation: "architecture cognitive", example: "Cognitive architecture describes the underlying structure of mental processes." },
     
     // Émotions complexes
-    { word: "emotional intelligence", translation: "intelligence émotionnelle", example: "Emotional intelligence involves recognizing and managing emotions in yourself and others." },
+    
     { word: "emotional regulation", translation: "régulation émotionnelle", example: "Emotional regulation skills help people manage difficult feelings appropriately." },
-    { word: "emotional resilience", translation: "résilience émotionnelle", example: "Emotional resilience allows you to adapt to stressful situations and adversity." },
+    
     { word: "emotional awareness", translation: "conscience émotionnelle", example: "Emotional awareness is the ability to identify your own feelings as they occur." },
     { word: "emotional expression", translation: "expression émotionnelle", example: "Cultural norms influence acceptable emotional expression." },
     { word: "emotional contagion", translation: "contagion émotionnelle", example: "Emotional contagion explains how people unconsciously mirror others' emotions." },
@@ -110,7 +110,7 @@ export const vocab = {
     { word: "primary emotion", translation: "émotion primaire", example: "Fear is considered a primary emotion present across cultures." },
     
     // Intelligence émotionnelle
-    { word: "self-awareness", translation: "conscience de soi", example: "Self-awareness is the foundation of emotional intelligence." },
+    
     { word: "social awareness", translation: "conscience sociale", example: "Social awareness involves recognizing others' emotions and group dynamics." },
     { word: "emotional perception", translation: "perception émotionnelle", example: "Emotional perception involves identifying emotions in facial expressions and voice tone." },
     { word: "emotional understanding", translation: "compréhension émotionnelle", example: "Emotional understanding includes recognizing how emotions blend and change over time." },
@@ -138,11 +138,11 @@ export const vocab = {
     { word: "incentive", translation: "incitation", example: "Financial incentives can increase productivity in the workplace." },
     { word: "reinforcement", translation: "renforcement", example: "Positive reinforcement strengthens behaviors through rewards." },
     { word: "punishment", translation: "punition", example: "Punishment aims to decrease unwanted behaviors." },
-    { word: "conditioning", translation: "conditionnement", example: "Classical conditioning associates a neutral stimulus with a response." },
+    
     { word: "operant conditioning", translation: "conditionnement opérant", example: "Operant conditioning uses consequences to modify voluntary behaviors." },
     { word: "intrinsic motivation", translation: "motivation intrinsèque", example: "Intrinsic motivation comes from within, like curiosity or enjoyment." },
     { word: "extrinsic motivation", translation: "motivation extrinsèque", example: "Extrinsic motivation involves external rewards like money or praise." },
-    { word: "self-determination", translation: "autodétermination", example: "Self-determination theory focuses on autonomy, competence, and relatedness." },
+    
     { word: "goal-setting", translation: "fixation d'objectifs", example: "Effective goal-setting increases motivation and achievement." },
     { word: "learned helplessness", translation: "impuissance apprise", example: "Learned helplessness occurs when people believe they cannot control their situation." },
     { word: "procrastination", translation: "procrastination", example: "Procrastination often results from fear of failure rather than laziness." },
@@ -153,7 +153,7 @@ export const vocab = {
     { word: "habit formation", translation: "formation d'habitudes", example: "Habit formation requires consistency and repetition over time." },
     { word: "behavioral change", translation: "changement comportemental", example: "Successful behavioral change often involves small, incremental steps." },
     { word: "motivational interviewing", translation: "entretien motivationnel", example: "Motivational interviewing helps people resolve ambivalence about change." },
-    { word: "self-efficacy", translation: "auto-efficacité", example: "Self-efficacy beliefs strongly influence motivation and persistence." },
+    
     { word: "expectancy theory", translation: "théorie des attentes", example: "Expectancy theory suggests motivation depends on expected outcomes and their value." },
     { word: "attributional style", translation: "style attributionnel", example: "Your attributional style affects how you explain successes and failures." },
     { word: "locus of control", translation: "lieu de contrôle", example: "Internal locus of control means believing you control your own outcomes." },
@@ -178,12 +178,12 @@ export const vocab = {
     { word: "zone of proximal development", translation: "zone proximale de développement", example: "The zone of proximal development is the gap between what a learner can do independently and with guidance." },
     { word: "developmental delay", translation: "retard de développement", example: "Early intervention helps children with developmental delays." },
     { word: "neuroplasticity", translation: "neuroplasticité", example: "Neuroplasticity allows the brain to reorganize itself throughout development." },
-    { word: "resilience", translation: "résilience", example: "Resilience helps children overcome adversity and trauma." },
+    
     { word: "developmental context", translation: "contexte développemental", example: "Understanding developmental context helps explain individual differences." },
     { word: "lifespan development", translation: "développement tout au long de la vie", example: "Lifespan development recognizes that growth continues throughout adulthood." },
     { word: "maturation", translation: "maturation", example: "Maturation involves biological growth processes that unfold naturally." },
     { word: "regression", translation: "régression", example: "Children may show regression during times of stress or major changes." },
-    { word: "developmental psychology", translation: "psychologie développementale", example: "Developmental psychology examines how and why people change over time." },
+    
     { word: "emerging adulthood", translation: "âge adulte émergent", example: "Emerging adulthood describes the transition period between adolescence and adulthood." }
   ]
 };

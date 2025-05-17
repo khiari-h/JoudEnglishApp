@@ -12,7 +12,7 @@ export const vocab = {
     { word: "modernism", translation: "modernisme", example: "Modernism rejected traditional art forms and conventions." },
     { word: "pop art", translation: "art pop", example: "Andy Warhol was a leading figure in pop art." },
     { word: "expressionism", translation: "expressionnisme", example: "Expressionism conveys emotion rather than physical reality." },
-    { word: "minimalism", translation: "minimalisme", example: "Minimalism uses simple elements and often emphasizes space." },
+    
     { word: "installation art", translation: "art d'installation", example: "The gallery features installation art that transforms the entire room." },
     { word: "performance art", translation: "art de performance", example: "Performance art often involves live action by the artist." },
     { word: "conceptual art", translation: "art conceptuel", example: "In conceptual art, the idea takes precedence over traditional aesthetic concerns." },
@@ -21,12 +21,12 @@ export const vocab = {
     { word: "landscape art", translation: "paysagisme", example: "The exhibition features landscape art from around the world." },
     
     // Événements culturels
-    { word: "art exhibition", translation: "exposition d'art", example: "The art exhibition showcases works by local artists." },
+    
     { word: "vernissage", translation: "vernissage", example: "The vernissage attracted art enthusiasts from across the city." },
     { word: "retrospective", translation: "rétrospective", example: "The museum is hosting a retrospective of the artist's 50-year career." },
     { word: "art fair", translation: "foire d'art", example: "International galleries participate in the annual art fair." },
     { word: "biennale", translation: "biennale", example: "The Venice Biennale is a prestigious international art event." },
-    { word: "cultural festival", translation: "festival culturel", example: "The cultural festival celebrates traditions from around the world." },
+    
     { word: "literary festival", translation: "festival littéraire", example: "The literary festival features readings and discussions with authors." },
     { word: "film premiere", translation: "première de film", example: "Celebrities attended the film premiere in Hollywood." },
     { word: "heritage day", translation: "journée du patrimoine", example: "On heritage day, many historical buildings open to the public." },
@@ -40,19 +40,19 @@ export const vocab = {
     // Pratiques artistiques
     { word: "brushwork", translation: "coup de pinceau", example: "The painting is characterized by bold brushwork." },
     { word: "composition", translation: "composition", example: "The composition of the photograph draws your eye to the center." },
-    { word: "perspective", translation: "perspective", example: "Renaissance artists developed techniques for creating realistic perspective." },
-    { word: "medium", translation: "médium", example: "Oil paint is a traditional medium used by many artists." },
+    
+    
     { word: "technique", translation: "technique", example: "The artist developed a unique technique using coffee as paint." },
     { word: "craftsmanship", translation: "savoir-faire", example: "The furniture shows exceptional craftsmanship in every detail." },
     { word: "mixed media", translation: "technique mixte", example: "The artwork combines photography and painting in a mixed media approach." },
     { word: "sketch", translation: "esquisse", example: "The artist made several sketches before starting the painting." },
     { word: "canvas", translation: "toile", example: "She prefers to work on large canvases." },
     { word: "mural", translation: "fresque", example: "The artist was commissioned to paint a mural for the community center." },
-    { word: "texture", translation: "texture", example: "The sculpture has an interesting texture that invites touching." },
+    
     { word: "color palette", translation: "palette de couleurs", example: "Her work is known for its vibrant color palette." },
     { word: "collage", translation: "collage", example: "The collage incorporated magazine cutouts and found objects." },
     { word: "printmaking", translation: "gravure", example: "Printmaking allows artists to create multiple copies of their work." },
-    { word: "sculpture", translation: "sculpture", example: "The marble sculpture took two years to complete." },
+    
     { word: "ceramics", translation: "céramique", example: "She teaches ceramics at the community art center." },
     { word: "textile art", translation: "art textile", example: "Textile art includes techniques like weaving, embroidery, and quilting." },
     
@@ -80,9 +80,9 @@ export const vocab = {
     { word: "aesthetic", translation: "esthétique", example: "The designer has a distinctive aesthetic that defines his work." },
     { word: "art movement", translation: "mouvement artistique", example: "Dadaism was an influential art movement of the early 20th century." },
     { word: "artistic merit", translation: "mérite artistique", example: "Critics debate the artistic merit of controversial works." },
-    { word: "critic", translation: "critique", example: "The critic wrote a favorable review of the exhibition." },
+    
     { word: "review", translation: "critique/compte-rendu", example: "The exhibition received positive reviews in major newspapers." },
-    { word: "artistic expression", translation: "expression artistique", example: "Freedom of artistic expression is essential in a democratic society." },
+    
     { word: "symbolism", translation: "symbolisme", example: "The painting contains symbolism related to mortality and rebirth." },
     { word: "visual language", translation: "langage visuel", example: "Each artist develops their own visual language over time." },
     { word: "avant-garde", translation: "avant-garde", example: "The avant-garde challenges established artistic conventions." },
@@ -90,10 +90,10 @@ export const vocab = {
     { word: "tradition", translation: "tradition", example: "Some artists work within tradition while others break from it." },
     
     // Patrimoine culturel
-    { word: "cultural heritage", translation: "patrimoine culturel", example: "UNESCO works to protect cultural heritage worldwide." },
+    
     { word: "artifact", translation: "artéfact", example: "The museum displays artifacts from ancient civilizations." },
-    { word: "preservation", translation: "préservation", example: "Preservation of historical artwork requires specialized knowledge." },
-    { word: "restoration", translation: "restauration", example: "The painting underwent careful restoration to repair damage." },
+    
+    
     { word: "cultural landmark", translation: "site culturel", example: "The theater is a cultural landmark in the city." },
     { word: "historical significance", translation: "importance historique", example: "The artwork has historical significance as a record of its time." },
     { word: "provenance", translation: "provenance", example: "The auction house verified the painting's provenance." },
@@ -102,12 +102,12 @@ export const vocab = {
     { word: "archaeological site", translation: "site archéologique", example: "The archaeological site reveals ancient artistic practices." },
     { word: "cultural identity", translation: "identité culturelle", example: "Traditional crafts are an important part of cultural identity." },
     { word: "intangible heritage", translation: "patrimoine immatériel", example: "Folk music is considered intangible heritage." },
-    { word: "conservation", translation: "conservation", example: "Art conservation requires scientific knowledge and artistic sensitivity." },
+    
     
     // Arts numériques
-    { word: "digital art", translation: "art numérique", example: "Digital art uses technology as an essential part of the creative process." },
+    
     { word: "new media art", translation: "art des nouveaux médias", example: "New media art incorporates emerging technologies." },
-    { word: "virtual reality", translation: "réalité virtuelle", example: "The exhibition includes a virtual reality experience." },
+    
     { word: "interactive installation", translation: "installation interactive", example: "Visitors can participate in the interactive installation." },
     { word: "video art", translation: "art vidéo", example: "The gallery is showing a retrospective of pioneering video art." },
     { word: "digital animation", translation: "animation numérique", example: "Digital animation allows for effects impossible in traditional animation." },

@@ -2,45 +2,44 @@ export const vocab = {
   title: "Sciences Médicales Avancées",
   words: [
     // Recherche médicale (25 mots)
-    { word: "clinical trial", translation: "essai clinique", example: "The clinical trial evaluated the new treatment's safety and efficacy." },
-    { word: "translational research", translation: "recherche translationnelle", example: "Translational research bridges laboratory discoveries and clinical applications." },
+    
+    
     { word: "biomedical research", translation: "recherche biomédicale", example: "Biomedical research explores the mechanisms of disease at the molecular level." },
     { word: "evidence-based medicine", translation: "médecine fondée sur les preuves", example: "Evidence-based medicine integrates clinical expertise with systematic research." },
-    { word: "randomized controlled trial", translation: "essai contrôlé randomisé", example: "The randomized controlled trial compared the drug against a placebo." },
-    { word: "cohort study", translation: "étude de cohorte", example: "The cohort study followed patients over twenty years to identify risk factors." },
-    { word: "meta-analysis", translation: "méta-analyse", example: "The meta-analysis combined results from multiple independent studies." },
-    { word: "peer review", translation: "évaluation par les pairs", example: "Peer review ensures research meets scientific standards before publication." },
+    
+    
+    
+    
     { word: "research protocol", translation: "protocole de recherche", example: "The research protocol outlined methodology, objectives, and ethical considerations." },
-    { word: "longitudinal study", translation: "étude longitudinale", example: "The longitudinal study tracked patient outcomes over a decade." },
-    { word: "case-control study", translation: "étude cas-témoins", example: "The case-control study compared patients with the disease to those without it." },
+    
+    
     { word: "systematic review", translation: "revue systématique", example: "The systematic review identified consistent findings across multiple studies." },
-    { word: "medical ethics", translation: "éthique médicale", example: "Medical ethics committees review research proposals involving human subjects." },
-    { word: "informed consent", translation: "consentement éclairé", example: "Informed consent ensures patients understand research risks and benefits." },
+    
+    
     { word: "clinical endpoint", translation: "critère d'évaluation clinique", example: "Survival rate was the primary clinical endpoint in the cancer study." },
-    { word: "statistical significance", translation: "signification statistique", example: "The results achieved statistical significance with a p-value below 0.05." },
-    { word: "placebo effect", translation: "effet placebo", example: "The placebo effect demonstrates the influence of psychological factors on physical symptoms." },
-    { word: "double-blind study", translation: "étude en double aveugle", example: "In the double-blind study, neither patients nor researchers knew who received the treatment." },
-    { word: "research methodology", translation: "méthodologie de recherche", example: "Robust research methodology minimizes bias and confounding variables." },
+    
+    
+    
+    
     { word: "investigational drug", translation: "médicament expérimental", example: "The investigational drug showed promise in preliminary animal studies." },
     { word: "research grant", translation: "subvention de recherche", example: "The research grant funded their investigation into autoimmune disorders." },
     { word: "bench research", translation: "recherche fondamentale", example: "Bench research identified the cellular pathway responsible for the condition." },
     { word: "clinical correlation", translation: "corrélation clinique", example: "The researchers established clinical correlation between the biomarker and disease progression." },
     { word: "research pipeline", translation: "pipeline de recherche", example: "Their research pipeline includes several compounds in various development stages." },
-    { word: "experimental design", translation: "conception expérimentale", example: "The experimental design controlled for potential confounding variables." },
+    
     
     // Génétique médicale (25 mots)
-    { word: "genomic medicine", translation: "médecine génomique", example: "Genomic medicine uses genetic information to guide healthcare decisions." },
-    { word: "gene therapy", translation: "thérapie génique", example: "Gene therapy introduces genetic material to treat or prevent disease." },
+    
+    
     { word: "genetic screening", translation: "dépistage génétique", example: "Genetic screening identifies individuals at risk for heritable conditions." },
-    { word: "precision medicine", translation: "médecine de précision", example: "Precision medicine tailors treatments based on genetic, environmental, and lifestyle factors." },
+    
     { word: "genetic biomarker", translation: "biomarqueur génétique", example: "The genetic biomarker predicted treatment response in cancer patients." },
     { word: "whole genome sequencing", translation: "séquençage du génome entier", example: "Whole genome sequencing analyzed the patient's complete genetic code." },
     { word: "germline mutation", translation: "mutation germinale", example: "Germline mutations can be passed to offspring, unlike somatic mutations." },
-    { word: "genetic counseling", translation: "conseil génétique", example: "Genetic counseling helps families understand and manage heritable conditions." },
-    { word: "pharmacogenomics", translation: "pharmacogénomique", example: "Pharmacogenomics studies how genes affect medication response." },
-    { word: "genetic predisposition", translation: "prédisposition génétique", example: "Genetic predisposition influences disease susceptibility but doesn't guarantee development." },
+    
+    eptibility but doesn't guarantee development." },
     { word: "gene expression", translation: "expression génique", example: "Gene expression profiling revealed activity patterns in tumor cells." },
-    { word: "CRISPR technology", translation: "technologie CRISPR", example: "CRISPR technology enables precise editing of DNA sequences." },
+    
     { word: "genetic variant", translation: "variant génétique", example: "The genetic variant was associated with increased heart disease risk." },
     { word: "DNA methylation", translation: "méthylation de l'ADN", example: "DNA methylation patterns serve as epigenetic markers affecting gene activity." },
     { word: "exome sequencing", translation: "séquençage de l'exome", example: "Exome sequencing analyzes protein-coding regions of the genome." },
@@ -56,11 +55,11 @@ export const vocab = {
     { word: "genetic cascade", translation: "cascade génétique", example: "The genetic cascade involved multiple interacting pathways." },
     
     // Neurologie avancée (25 mots)
-    { word: "neuroplasticity", translation: "neuroplasticité", example: "Neuroplasticity allows the brain to reorganize itself after injury." },
+    
     { word: "neurodegenerative disease", translation: "maladie neurodégénérative", example: "Alzheimer's disease is a common neurodegenerative disease affecting cognition." },
     { word: "functional MRI", translation: "IRM fonctionnelle", example: "Functional MRI measures brain activity by detecting blood flow changes." },
-    { word: "neural network", translation: "réseau neuronal", example: "Neural networks process information through interconnected neurons." },
-    { word: "neurotransmitter", translation: "neurotransmetteur", example: "Dopamine is a neurotransmitter involved in reward and movement." },
+    
+    
     { word: "brain-computer interface", translation: "interface cerveau-ordinateur", example: "Brain-computer interfaces translate neural activity into digital commands." },
     { word: "neuromodulation", translation: "neuromodulation", example: "Neuromodulation therapies alter nerve activity to treat conditions." },
     { word: "connectome", translation: "connectome", example: "The human connectome maps neural connections within the brain." },
@@ -71,20 +70,20 @@ export const vocab = {
     { word: "axonal transport", translation: "transport axonal", example: "Disrupted axonal transport contributes to neurodegenerative diseases." },
     { word: "neurostimulation", translation: "neurostimulation", example: "Neurostimulation therapies deliver electrical pulses to targeted brain regions." },
     { word: "tractography", translation: "tractographie", example: "Tractography visualizes neural pathways using diffusion imaging." },
-    { word: "neurogenesis", translation: "neurogénèse", example: "Adult neurogenesis creates new neurons in specific brain regions." },
+    
     { word: "neural oscillation", translation: "oscillation neuronale", example: "Neural oscillations represent synchronized activity across brain regions." },
     { word: "optogenetics", translation: "optogénétique", example: "Optogenetics controls neurons using light-sensitive proteins." },
     { word: "neuroproteomics", translation: "neuroprotéomique", example: "Neuroproteomics studies protein expression in neural tissues." },
     { word: "blood-brain barrier", translation: "barrière hémato-encéphalique", example: "The blood-brain barrier selectively restricts substance passage to the brain." },
     { word: "neurofeedback", translation: "neurofeedback", example: "Neurofeedback training helps patients regulate their brain activity." },
     { word: "cerebral organoid", translation: "organoïde cérébral", example: "Cerebral organoids model early brain development in laboratory settings." },
-    { word: "neuroepigenetics", translation: "neuroépigénétique", example: "Neuroepigenetics studies how environmental factors affect gene expression in neural cells." },
+    
     { word: "neural stem cell", translation: "cellule souche neurale", example: "Neural stem cells can differentiate into various cell types in the nervous system." },
     { word: "electrophysiology", translation: "électrophysiologie", example: "Electrophysiology measures electrical activity in neural tissues." },
     
     // Immunologie et maladies infectieuses (25 mots)
     { word: "immune response", translation: "réponse immunitaire", example: "The vaccine triggers a protective immune response against the pathogen." },
-    { word: "immunotherapy", translation: "immunothérapie", example: "Immunotherapy harnesses the body's immune system to fight disease." },
+    
     { word: "monoclonal antibody", translation: "anticorps monoclonal", example: "Monoclonal antibodies target specific antigens with high precision." },
     { word: "adaptive immunity", translation: "immunité adaptative", example: "Adaptive immunity develops specific responses to pathogens encountered." },
     { word: "innate immunity", translation: "immunité innée", example: "Innate immunity provides rapid, non-specific defense against pathogens." },
@@ -93,9 +92,9 @@ export const vocab = {
     { word: "antigen presentation", translation: "présentation d'antigène", example: "Antigen presentation displays foreign molecules to immune cells." },
     { word: "T-cell receptor", translation: "récepteur des lymphocytes T", example: "T-cell receptors recognize antigens presented by other cells." },
     { word: "vaccine adjuvant", translation: "adjuvant vaccinal", example: "Vaccine adjuvants enhance immune responses to vaccine components." },
-    { word: "pathogen", translation: "agent pathogène", example: "The pathogen evolved mechanisms to evade immune detection." },
+    
     { word: "viral vector", translation: "vecteur viral", example: "Viral vectors deliver therapeutic genes in some vaccines and treatments." },
-    { word: "herd immunity", translation: "immunité collective", example: "Herd immunity occurs when a significant portion of a population becomes immune." },
+    
     { word: "immunological memory", translation: "mémoire immunologique", example: "Immunological memory enables rapid responses to previously encountered pathogens." },
     { word: "antigenic drift", translation: "dérive antigénique", example: "Antigenic drift creates gradual mutations in viral surface proteins." },
     { word: "immunosuppression", translation: "immunosuppression", example: "Immunosuppression prevents rejection of transplanted organs." },
@@ -103,7 +102,7 @@ export const vocab = {
     { word: "antimicrobial resistance", translation: "résistance aux antimicrobiens", example: "Antimicrobial resistance develops when pathogens evolve to survive treatments." },
     { word: "epitope", translation: "épitope", example: "An epitope is the specific part of an antigen recognized by antibodies." },
     { word: "immunoglobulin", translation: "immunoglobuline", example: "Immunoglobulins are proteins that function as antibodies." },
-    { word: "zoonotic disease", translation: "zoonose", example: "Zoonotic diseases transmit between animals and humans." },
+    
     { word: "passive immunity", translation: "immunité passive", example: "Passive immunity involves transferring antibodies from one individual to another." },
     { word: "disease vector", translation: "vecteur de maladie", example: "Mosquitoes serve as disease vectors for malaria and other infections." },
     { word: "virulence factor", translation: "facteur de virulence", example: "Virulence factors enhance a pathogen's ability to cause disease." },
@@ -111,13 +110,13 @@ export const vocab = {
     
     // Chirurgie et techniques médicales (25 mots)
     { word: "minimally invasive surgery", translation: "chirurgie mini-invasive", example: "Minimally invasive surgery reduces recovery time and complications." },
-    { word: "robotic surgery", translation: "chirurgie robotique", example: "Robotic surgery enhances precision during complex procedures." },
+    
     { word: "laparoscopic procedure", translation: "procédure laparoscopique", example: "The laparoscopic procedure required only small incisions." },
     { word: "interventional radiology", translation: "radiologie interventionnelle", example: "Interventional radiology uses imaging guidance for minimally invasive procedures." },
     { word: "endovascular surgery", translation: "chirurgie endovasculaire", example: "Endovascular surgery treats blood vessel problems without open operations." },
     { word: "intraoperative imaging", translation: "imagerie peropératoire", example: "Intraoperative imaging guides surgeons during the procedure." },
     { word: "microsurgery", translation: "microchirurgie", example: "Microsurgery involves operating on tiny structures using magnification." },
-    { word: "tissue engineering", translation: "ingénierie tissulaire", example: "Tissue engineering creates functional replacements for damaged tissues." },
+    
     { word: "surgical navigation", translation: "navigation chirurgicale", example: "Surgical navigation systems provide real-time guidance during procedures." },
     { word: "hybrid operating room", translation: "salle d'opération hybride", example: "The hybrid operating room combined surgical and imaging capabilities." },
     { word: "endoscopic procedure", translation: "procédure endoscopique", example: "Endoscopic procedures use flexible tubes with cameras to view internal organs." },
@@ -137,14 +136,14 @@ export const vocab = {
     { word: "intraoperative monitoring", translation: "surveillance peropératoire", example: "Intraoperative monitoring tracks vital functions during surgery." },
     
     // Oncologie avancée (25 mots)
-    { word: "targeted therapy", translation: "thérapie ciblée", example: "Targeted therapy blocks specific molecules involved in cancer growth." },
+    
     { word: "tumor microenvironment", translation: "microenvironnement tumoral", example: "The tumor microenvironment includes surrounding blood vessels and immune cells." },
     { word: "cancer immunotherapy", translation: "immunothérapie contre le cancer", example: "Cancer immunotherapy enhances the immune system's ability to fight tumors." },
     { word: "precision oncology", translation: "oncologie de précision", example: "Precision oncology tailors treatment based on molecular characteristics of tumors." },
     { word: "metastasis", translation: "métastase", example: "Metastasis occurs when cancer spreads from its original site to distant organs." },
     { word: "oncogenic mutation", translation: "mutation oncogénique", example: "Oncogenic mutations transform normal cells into cancerous ones." },
     { word: "tumor suppressor gene", translation: "gène suppresseur de tumeur", example: "Tumor suppressor genes regulate cell division and prevent uncontrolled growth." },
-    { word: "molecular profiling", translation: "profilage moléculaire", example: "Molecular profiling identifies genetic alterations driving tumor growth." },
+    
     { word: "cancer biomarker", translation: "biomarqueur du cancer", example: "Cancer biomarkers help diagnose, predict outcomes, and guide treatment decisions." },
     { word: "checkpoint inhibitor", translation: "inhibiteur de point de contrôle", example: "Checkpoint inhibitors block proteins that restrain immune responses to cancer." },
     { word: "tumor heterogeneity", translation: "hétérogénéité tumorale", example: "Tumor heterogeneity describes genetic diversity within a single tumor." },
@@ -157,7 +156,7 @@ export const vocab = {
     { word: "radiotherapy", translation: "radiothérapie", example: "Radiotherapy damages cancer cell DNA to prevent replication." },
     { word: "chemoresistance", translation: "chimiorésistance", example: "Chemoresistance develops when cancer cells no longer respond to chemotherapy." },
     { word: "tumor angiogenesis", translation: "angiogenèse tumorale", example: "Tumor angiogenesis forms new blood vessels to support cancer growth." },
-    { word: "liquid biopsy", translation: "biopsie liquide", example: "Liquid biopsy analyzes cancer material from blood rather than tissue samples." },
+    
     { word: "oncogene", translation: "oncogène", example: "Oncogenes can transform normal cells into tumor cells when activated." },
     { word: "apoptosis", translation: "apoptose", example: "Many cancer treatments induce apoptosis, or programmed cell death." },
     { word: "cancer metabolism", translation: "métabolisme du cancer", example: "Cancer metabolism studies how tumor cells process nutrients differently." },
@@ -166,7 +165,7 @@ export const vocab = {
     // Imagerie médicale avancée (25 mots)
     { word: "advanced imaging", translation: "imagerie avancée", example: "Advanced imaging techniques provide detailed anatomical and functional information." },
     { word: "positron emission tomography", translation: "tomographie par émission de positons", example: "Positron emission tomography visualizes metabolic processes within the body." },
-    { word: "functional MRI", translation: "IRM fonctionnelle", example: "Functional MRI detects blood flow changes related to neural activity." },
+    
     { word: "diffusion tensor imaging", translation: "imagerie du tenseur de diffusion", example: "Diffusion tensor imaging maps water molecule movement in tissues." },
     { word: "spectral CT", translation: "tomodensitométrie spectrale", example: "Spectral CT distinguishes tissues based on material composition." },
     { word: "molecular imaging", translation: "imagerie moléculaire", example: "Molecular imaging visualizes biological processes at the cellular level." },
@@ -191,53 +190,53 @@ export const vocab = {
     { word: "artificial intelligence imaging", translation: "imagerie par intelligence artificielle", example: "Artificial intelligence enhances image interpretation and analysis." },
     
     // Santé numérique (25 mots)
-    { word: "digital health", translation: "santé numérique", example: "Digital health applications transform healthcare delivery and patient engagement." },
-    { word: "telehealth", translation: "télésanté", example: "Telehealth connects patients with providers through telecommunications technology." },
+    
+    
     { word: "electronic health record", translation: "dossier médical électronique", example: "Electronic health records store patient information in digital format." },
     { word: "health informatics", translation: "informatique de la santé", example: "Health informatics applies information technology to healthcare delivery." },
     { word: "remote patient monitoring", translation: "surveillance à distance des patients", example: "Remote patient monitoring tracks health status outside clinical settings." },
     { word: "clinical decision support", translation: "aide à la décision clinique", example: "Clinical decision support systems assist healthcare providers with evidence-based recommendations." },
     { word: "health data analytics", translation: "analyse de données de santé", example: "Health data analytics identifies patterns to improve clinical outcomes." },
     { word: "mHealth", translation: "santé mobile", example: "mHealth applications deliver healthcare services through mobile devices." },
-    { word: "virtual care", translation: "soins virtuels", example: "Virtual care platforms connect patients with providers through video consultation." },
+    
     { word: "patient portal", translation: "portail patient", example: "Patient portals provide secure online access to personal health information." },
-    { word: "health information exchange", translation: "échange d'informations de santé", example: "Health information exchange shares patient data across healthcare systems." },
-    { word: "interoperability", translation: "interopérabilité", example: "Interoperability enables different health information systems to work together." },
+    
+    
     { word: "healthcare artificial intelligence", translation: "intelligence artificielle pour la santé", example: "Healthcare artificial intelligence analyzes complex medical data to support decisions." },
-    { word: "digital therapeutics", translation: "thérapeutiques numériques", example: "Digital therapeutics deliver evidence-based interventions through software applications." },
-    { word: "predictive analytics", translation: "analytique prédictive", example: "Predictive analytics forecasts patient risks and healthcare outcomes." },
-    { word: "telemedicine", translation: "télémédecine", example: "Telemedicine enables remote diagnosis and treatment of patients." },
+    
+    
+    
     { word: "virtual reality therapy", translation: "thérapie par réalité virtuelle", example: "Virtual reality therapy treats psychological conditions through immersive environments." },
     { word: "digital biomarker", translation: "biomarqueur numérique", example: "Digital biomarkers measure health status through personal digital devices." },
-    { word: "health information technology", translation: "technologie de l'information en santé", example: "Health information technology improves healthcare quality, safety, and efficiency." },
+    
     { word: "patient-generated health data", translation: "données de santé générées par le patient", example: "Patient-generated health data comes from personal devices and applications." },
     { word: "connected health device", translation: "dispositif de santé connecté", example: "Connected health devices transmit information to monitoring systems." },
     { word: "digital health platform", translation: "plateforme de santé numérique", example: "Digital health platforms integrate various applications and services." },
     { word: "remote consultation", translation: "consultation à distance", example: "Remote consultation provides medical advice without in-person visits." },
     { word: "e-prescription", translation: "e-prescription", example: "E-prescription systems transmit medication orders electronically." },
-    { word: "health information system", translation: "système d'information de santé", example: "Health information systems manage healthcare data for organizations." },
+    
     
     // Médecine personnalisée (25 mots)
-    { word: "personalized medicine", translation: "médecine personnalisée", example: "Personalized medicine tailors healthcare to individual characteristics." },
+    
     { word: "pharmacogenomics", translation: "pharmacogénomique", example: "Pharmacogenomics studies how genes affect medication response." },
     { word: "precision treatment", translation: "traitement de précision", example: "Precision treatment approaches target specific disease mechanisms." },
-    { word: "companion diagnostics", translation: "diagnostics compagnons", example: "Companion diagnostics identify patients likely to benefit from specific therapies." },
+    
     { word: "genetic risk assessment", translation: "évaluation du risque génétique", example: "Genetic risk assessment predicts disease susceptibility based on DNA analysis." },
-    { word: "molecular diagnosis", translation: "diagnostic moléculaire", example: "Molecular diagnosis identifies disease through specific biological markers." },
-    { word: "targeted therapy", translation: "thérapie ciblée", example: "Targeted therapy addresses specific molecular targets driving disease." },
+    
+    
     { word: "individualized treatment plan", translation: "plan de traitement individualisé", example: "The individualized treatment plan addressed the patient's unique characteristics." },
     { word: "biomarker panel", translation: "panel de biomarqueurs", example: "The biomarker panel predicted treatment response with high accuracy." },
     { word: "therapeutic drug monitoring", translation: "suivi thérapeutique des médicaments", example: "Therapeutic drug monitoring adjusts dosage based on measured drug levels." },
-    { word: "molecular profiling", translation: "profilage moléculaire", example: "Molecular profiling identifies actionable targets for precision therapies." },
+    
     { word: "personalized dosing", translation: "dosage personnalisé", example: "Personalized dosing optimizes medication effectiveness while minimizing side effects." },
-    { word: "patient stratification", translation: "stratification des patients", example: "Patient stratification groups individuals based on likely treatment outcomes." },
-    { word: "predictive biomarker", translation: "biomarqueur prédictif", example: "Predictive biomarkers indicate likely response to specific treatments." },
+    
+    
     { word: "genome-guided therapy", translation: "thérapie guidée par le génome", example: "Genome-guided therapy selects treatments based on genetic information." },
-    { word: "molecular subtyping", translation: "sous-typage moléculaire", example: "Molecular subtyping classifies diseases based on underlying biology." },
+    
     { word: "prognostic test", translation: "test pronostique", example: "The prognostic test predicted disease progression risk accurately." },
-    { word: "N-of-1 trial", translation: "essai N-of-1", example: "N-of-1 trials evaluate treatments in single patients over multiple time periods." },
+    
     { word: "digital phenotyping", translation: "phénotypage numérique", example: "Digital phenotyping collects health data through smartphones and wearables." },
-    { word: "theranostics", translation: "théranostique", example: "Theranostics combines therapeutic and diagnostic capabilities in one approach." },
+    
     { word: "pathway analysis", translation: "analyse des voies", example: "Pathway analysis identifies biological processes involved in disease manifestation." },
     { word: "recurrence risk prediction", translation: "prédiction du risque de récidive", example: "The test provided accurate recurrence risk prediction after cancer treatment." },
     { word: "adaptive therapy", translation: "thérapie adaptative", example: "Adaptive therapy adjusts treatment based on evolving disease characteristics." },
@@ -245,17 +244,17 @@ export const vocab = {
     { word: "phenotypic precision medicine", translation: "médecine de précision phénotypique", example: "Phenotypic precision medicine incorporates comprehensive patient characteristics beyond genetics." },
     
     // Médecine régénérative (25 mots)
-    { word: "regenerative medicine", translation: "médecine régénérative", example: "Regenerative medicine develops methods to replace damaged tissues and organs." },
-    { word: "stem cell therapy", translation: "thérapie par cellules souches", example: "Stem cell therapy utilizes undifferentiated cells to repair damaged tissues." },
-    { word: "tissue engineering", translation: "ingénierie tissulaire", example: "Tissue engineering combines scaffolds, cells, and biological factors to create functional tissues." },
-    { word: "cellular reprogramming", translation: "reprogrammation cellulaire", example: "Cellular reprogramming converts differentiated cells into stem-like states." },
+    
+    
+    
+    
     { word: "induced pluripotent stem cell", translation: "cellule souche pluripotente induite", example: "Induced pluripotent stem cells are created from adult cells through genetic reprogramming." },
     { word: "extracellular matrix", translation: "matrice extracellulaire", example: "The extracellular matrix provides structural support and biochemical cues for cells." },
-    { word: "biomaterial scaffold", translation: "échafaudage biomateriel", example: "Biomaterial scaffolds provide structural frameworks for tissue regeneration." },
+    
     { word: "cell differentiation", translation: "différenciation cellulaire", example: "Cell differentiation transforms stem cells into specialized cell types." },
     { word: "organoid", translation: "organoïde", example: "Organoids are three-dimensional tissue cultures that mimic organs." },
     { word: "regenerative capacity", translation: "capacité régénérative", example: "The therapy enhanced the tissue's natural regenerative capacity." },
-    { word: "bioprinting", translation: "bio-impression", example: "Bioprinting creates tissue structures through precise deposition of cells and materials." },
+    
     { word: "mesenchymal stem cell", translation: "cellule souche mésenchymateuse", example: "Mesenchymal stem cells have regenerative and immunomodulatory properties." },
     { word: "bioreactor", translation: "bioréacteur", example: "Bioreactors provide controlled environments for tissue cultivation." },
     { word: "biocompatible material", translation: "matériau biocompatible", example: "Biocompatible materials integrate with biological systems without causing harm." },

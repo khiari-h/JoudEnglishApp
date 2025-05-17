@@ -2,18 +2,18 @@ export const vocab = {
   title: "Relations Interpersonnelles",
   words: [
     // Dynamiques relationnelles
-    { word: "relationship", translation: "relation", example: "They have a close relationship." },
+    
     { word: "interaction", translation: "interaction", example: "Social interactions are important for mental health." },
     { word: "bond", translation: "lien", example: "The bond between siblings is usually very strong." },
-    { word: "connection", translation: "connexion", example: "I felt an immediate connection with her." },
+    
     { word: "rapport", translation: "rapport", example: "Building rapport with clients is essential in sales." },
-    { word: "chemistry", translation: "alchimie", example: "There was good chemistry between the team members." },
+    
     { word: "dynamic", translation: "dynamique", example: "The dynamic between them has changed since the argument." },
     { word: "intimacy", translation: "intimité", example: "Emotional intimacy requires trust and vulnerability." },
     { word: "closeness", translation: "proximité", example: "There's a closeness between them that comes from shared experiences." },
     { word: "distance", translation: "distance", example: "He maintains a professional distance with his employees." },
     { word: "boundary", translation: "limite", example: "It's important to set clear boundaries in relationships." },
-    { word: "attachment", translation: "attachement", example: "Children form attachments to their caregivers." },
+    
     { word: "dependency", translation: "dépendance", example: "Healthy relationships avoid excessive dependency." },
     { word: "independence", translation: "indépendance", example: "She values her independence within the relationship." },
     { word: "interdependence", translation: "interdépendance", example: "Successful marriages are based on interdependence, not dependence." },
@@ -27,20 +27,20 @@ export const vocab = {
     
     // Communication interpersonnelle
     { word: "communication", translation: "communication", example: "Good communication is essential in any relationship." },
-    { word: "conversation", translation: "conversation", example: "They had a deep conversation about their future." },
+    
     { word: "dialogue", translation: "dialogue", example: "Open dialogue helps resolve misunderstandings." },
-    { word: "discussion", translation: "discussion", example: "The discussion became heated at times." },
-    { word: "debate", translation: "débat", example: "A healthy debate can help clarify different viewpoints." },
+    
+    
     { word: "verbal", translation: "verbal", example: "Verbal communication includes the words we choose." },
     { word: "non-verbal", translation: "non-verbal", example: "Non-verbal cues like body language can reveal true feelings." },
-    { word: "body language", translation: "langage corporel", example: "His body language suggested he was uncomfortable." },
-    { word: "tone", translation: "ton", example: "The tone of her voice indicated she was upset." },
+    
+    
     { word: "articulate", translation: "articuler", example: "She's very articulate when expressing complex ideas." },
     { word: "eloquent", translation: "éloquent", example: "His eloquent speech moved the audience." },
     { word: "expressive", translation: "expressif", example: "She's very expressive when telling stories." },
     { word: "direct", translation: "direct", example: "He's known for being very direct in his communication." },
     { word: "indirect", translation: "indirect", example: "Some cultures prefer indirect communication styles." },
-    { word: "open", translation: "ouvert", example: "She's very open about her feelings." },
+    
     { word: "reserved", translation: "réservé", example: "He's quite reserved and rarely shares personal information." },
     { word: "assertive", translation: "affirmé", example: "Learning to be assertive can improve your relationships." },
     { word: "passive", translation: "passif", example: "Passive communication often leads to resentment." },
@@ -50,15 +50,15 @@ export const vocab = {
     { word: "candid", translation: "franc", example: "I appreciate his candid feedback." },
     
     // Conflits & résolutions
-    { word: "conflict", translation: "conflit", example: "Some conflict in relationships is normal." },
+    
     { word: "disagreement", translation: "désaccord", example: "They had a minor disagreement about the plans." },
     { word: "dispute", translation: "litige", example: "The dispute between the neighbors has been ongoing for years." },
-    { word: "argument", translation: "dispute", example: "The argument escalated quickly." },
-    { word: "tension", translation: "tension", example: "There's been tension in the office since the announcement." },
+    
+    
     { word: "friction", translation: "friction", example: "There's some friction between the two departments." },
     { word: "clash", translation: "affrontement", example: "Their personalities clash in the workplace." },
     { word: "misunderstanding", translation: "malentendu", example: "It was just a misunderstanding, not a serious problem." },
-    { word: "resolution", translation: "résolution", example: "Conflict resolution skills are valuable in any workplace." },
+    
     { word: "compromise", translation: "compromis", example: "A successful relationship requires compromise from both sides." },
     { word: "negotiate", translation: "négocier", example: "They need to negotiate a solution that works for everyone." },
     { word: "mediate", translation: "arbitrer", example: "The manager had to mediate between the two employees." },
@@ -74,21 +74,21 @@ export const vocab = {
     { word: "peacemaker", translation: "pacificateur", example: "She's a natural peacemaker in group settings." },
     
     // Relations amoureuses
-    { word: "partner", translation: "partenaire", example: "She introduced me to her partner at the party." },
-    { word: "relationship", translation: "relation", example: "They've been in a relationship for three years." },
+    
+    
     { word: "romance", translation: "romance", example: "There's still romance in their marriage after twenty years." },
     { word: "courtship", translation: "cour", example: "Traditional courtship practices vary across cultures." },
     { word: "dating", translation: "rencontres", example: "Online dating has become increasingly common." },
     { word: "significant other", translation: "partenaire", example: "Will your significant other join us for dinner?" },
-    { word: "chemistry", translation: "alchimie", example: "They felt an immediate chemistry on their first date." },
+    
     { word: "attraction", translation: "attirance", example: "Physical attraction is important but not sufficient for a lasting relationship." },
     { word: "infatuation", translation: "engouement", example: "What you're feeling might just be infatuation, not love." },
-    { word: "intimacy", translation: "intimité", example: "Emotional intimacy takes time to develop." },
-    { word: "commitment", translation: "engagement", example: "Marriage represents a formal commitment between two people." },
+    
+    
     { word: "devotion", translation: "dévotion", example: "His devotion to her was obvious to everyone." },
-    { word: "passion", translation: "passion", example: "The passion in their relationship has never faded." },
+    
     { word: "affection", translation: "affection", example: "They show their affection through small daily gestures." },
-    { word: "compatibility", translation: "compatibilité", example: "Shared values contribute to compatibility in relationships." },
+    
     { word: "trust", translation: "confiance", example: "Trust is the foundation of any healthy relationship." },
     { word: "loyalty", translation: "loyauté", example: "Loyalty is important to him in a partner." },
     { word: "fidelity", translation: "fidélité", example: "They've maintained fidelity throughout their marriage." },
@@ -98,10 +98,10 @@ export const vocab = {
     { word: "reconciliation", translation: "réconciliation", example: "Their reconciliation surprised everyone." },
     
     // Réseaux sociaux élargis
-    { word: "network", translation: "réseau", example: "Having a strong professional network is valuable for your career." },
-    { word: "community", translation: "communauté", example: "They've built a supportive community around their hobby." },
+    
+    
     { word: "circle", translation: "cercle", example: "My circle of friends has changed since I moved." },
-    { word: "acquaintance", translation: "connaissance", example: "He's just an acquaintance, not a close friend." },
+    
     { word: "association", translation: "association", example: "She's a member of several professional associations." },
     { word: "affiliation", translation: "affiliation", example: "The organization has no political affiliation." },
     { word: "society", translation: "société", example: "The local historical society meets monthly." },
@@ -116,13 +116,13 @@ export const vocab = {
     { word: "exclusion", translation: "exclusion", example: "Social exclusion can have serious psychological effects." },
     { word: "clique", translation: "clique", example: "The office has several cliques that rarely interact." },
     { word: "outsider", translation: "étranger", example: "She felt like an outsider at the family gathering." },
-    { word: "connection", translation: "connexion", example: "Networking is about making meaningful connections." },
+    
     { word: "contacts", translation: "contacts", example: "He has useful contacts in the industry." },
     { word: "peer", translation: "pair", example: "Peer support is valuable during difficult times." },
-    { word: "professional relationship", translation: "relation professionnelle", example: "Maintain professional relationships with colleagues." },
+    
     
     // Comportements sociaux
-    { word: "behavior", translation: "comportement", example: "His behavior at the party was inappropriate." },
+    
     { word: "conduct", translation: "conduite", example: "The code of conduct outlines acceptable behavior." },
     { word: "manners", translation: "manières", example: "Good manners make social interactions smoother." },
     { word: "etiquette", translation: "étiquette", example: "Business etiquette varies across cultures." },
@@ -131,12 +131,12 @@ export const vocab = {
     { word: "respect", translation: "respect", example: "Mutual respect is essential in any relationship." },
     { word: "politeness", translation: "politesse", example: "Her politeness was appreciated by everyone." },
     { word: "rudeness", translation: "impolitesse", example: "There's no excuse for rudeness to service staff." },
-    { word: "tactful", translation: "plein de tact", example: "A tactful approach is best in sensitive situations." },
+    
     { word: "appropriate", translation: "approprié", example: "Make sure your clothing is appropriate for the occasion." },
     { word: "inappropriate", translation: "inapproprié", example: "His comment was inappropriate for a work meeting." },
     { word: "acceptable", translation: "acceptable", example: "This behavior is not acceptable in our community." },
     { word: "unacceptable", translation: "inacceptable", example: "Harassment is unacceptable in any context." },
-    { word: "considerate", translation: "prévenant", example: "It's considerate to call if you're going to be late." },
+    
     { word: "inconsiderate", translation: "peu attentionné", example: "Playing loud music late at night is inconsiderate." },
     { word: "thoughtful", translation: "attentionné", example: "He's always thoughtful about remembering special occasions." },
     { word: "thoughtless", translation: "irréfléchi", example: "It was a thoughtless remark that hurt her feelings." },

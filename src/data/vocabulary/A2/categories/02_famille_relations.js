@@ -78,11 +78,11 @@ export const vocab = {
     { word: "to network", translation: "réseauter", example: "It's important to network in this industry." },
     
     // Description des personnes
-    { word: "appearance", translation: "apparence", example: "Don't judge people by their appearance." },
+    
     { word: "behavior", translation: "comportement", example: "His behavior was inappropriate at the meeting." },
     { word: "attitude", translation: "attitude", example: "I like her positive attitude." },
     { word: "manner", translation: "manière", example: "She has a gentle manner with children." },
-    { word: "personality", translation: "personnalité", example: "He has a charming personality." },
+    
     { word: "reputation", translation: "réputation", example: "The restaurant has a good reputation." },
     { word: "background", translation: "origine/parcours", example: "People from different backgrounds work together in our company." },
     { word: "upbringing", translation: "éducation", example: "Your upbringing influences your values." },

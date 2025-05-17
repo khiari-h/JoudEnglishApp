@@ -3,7 +3,7 @@ export const vocab = {
   words: [
     // Types de commerces spécifiques
     { word: "shopping mall", translation: "centre commercial", example: "Let's meet at the shopping mall this afternoon." },
-    { word: "department store", translation: "grand magasin", example: "You can find everything you need at the department store." },
+    
     { word: "hardware store", translation: "quincaillerie", example: "I need to go to the hardware store to buy some tools." },
     { word: "electronics store", translation: "magasin d'électronique", example: "I bought my new laptop at the electronics store." },
     { word: "furniture store", translation: "magasin de meubles", example: "We're going to a furniture store to look for a new sofa." },
@@ -51,15 +51,15 @@ export const vocab = {
     { word: "fresh produce", translation: "produits frais", example: "I always try to buy fresh produce from local farmers." },
     
     // Transactions commerciales
-    { word: "receipt", translation: "reçu/ticket de caisse", example: "Always keep your receipt in case you need to return something." },
+    
     { word: "warranty", translation: "garantie", example: "This laptop comes with a two-year warranty." },
     { word: "refund", translation: "remboursement", example: "If you're not satisfied, you can get a refund." },
     { word: "exchange", translation: "échange", example: "If it doesn't fit, you can make an exchange." },
-    { word: "discount", translation: "remise", example: "Students get a 10% discount." },
+    
     { word: "loyalty card", translation: "carte de fidélité", example: "Use your loyalty card to earn points." },
     { word: "gift card", translation: "carte-cadeau", example: "I got a gift card for my birthday." },
     { word: "installment", translation: "versement/mensualité", example: "You can pay in installments over six months." },
-    { word: "delivery", translation: "livraison", example: "Delivery is free for orders over $50." },
+    
     { word: "shipping", translation: "expédition", example: "The shipping cost depends on the destination." },
     { word: "order", translation: "commande", example: "I placed an order online yesterday." },
     { word: "invoice", translation: "facture", example: "The company will send you an invoice." },
@@ -70,7 +70,7 @@ export const vocab = {
     { word: "bank account", translation: "compte bancaire", example: "You need to open a bank account to receive your salary." },
     { word: "savings account", translation: "compte d'épargne", example: "Put some money in your savings account every month." },
     { word: "checking account", translation: "compte courant", example: "I use my checking account for daily expenses." },
-    { word: "credit card", translation: "carte de crédit", example: "You can pay with a credit card." },
+    
     { word: "debit card", translation: "carte de débit", example: "I prefer using my debit card for shopping." },
     { word: "PIN", translation: "code PIN", example: "Never share your PIN with anyone." },
     { word: "to withdraw", translation: "retirer", example: "I need to withdraw some cash from the ATM." },
@@ -79,18 +79,18 @@ export const vocab = {
     { word: "bank statement", translation: "relevé bancaire", example: "Check your bank statement for any unusual transactions." },
     { word: "to transfer", translation: "virer/transférer", example: "I'll transfer the money to your account." },
     { word: "loan", translation: "prêt", example: "They took out a loan to buy their house." },
-    { word: "interest", translation: "intérêt", example: "The bank pays very little interest on savings accounts." },
+    
     { word: "balance", translation: "solde", example: "I need to check my account balance." },
     
     // Services publics
-    { word: "post office", translation: "bureau de poste", example: "I need to go to the post office to mail this package." },
-    { word: "town hall", translation: "mairie", example: "You can get this document at the town hall." },
-    { word: "public library", translation: "bibliothèque municipale", example: "I borrow books from the public library." },
+    
+    
+    
     { word: "utility company", translation: "entreprise de service public", example: "Contact the utility company if you have problems with your electricity." },
-    { word: "public transportation", translation: "transports en commun", example: "I use public transportation to get to work." },
+    
     { word: "garbage collection", translation: "collecte des ordures", example: "Garbage collection is on Tuesdays and Fridays." },
-    { word: "recycling center", translation: "centre de recyclage", example: "Take your glass bottles to the recycling center." },
-    { word: "social services", translation: "services sociaux", example: "Contact social services if you need assistance." },
+    
+    
     { word: "employment agency", translation: "agence pour l'emploi", example: "The employment agency helps people find jobs." },
     { word: "tourism office", translation: "office de tourisme", example: "We got a map at the tourism office." },
     { word: "tax office", translation: "centre des impôts", example: "You need to file your tax return at the tax office." },
@@ -104,7 +104,7 @@ export const vocab = {
     { word: "poster", translation: "affiche", example: "There's a poster advertising the concert in the shop window." },
     { word: "flyer", translation: "prospectus", example: "They were distributing flyers outside the supermarket." },
     { word: "promotion", translation: "promotion", example: "The store is running a promotion this weekend." },
-    { word: "sale", translation: "soldes", example: "The summer sales start next week." },
+    
     { word: "special offer", translation: "offre spéciale", example: "There's a special offer on kitchen appliances." },
     { word: "discount coupon", translation: "bon de réduction", example: "I have a discount coupon for this restaurant." },
     { word: "two-for-one", translation: "deux pour le prix d'un", example: "They have a two-for-one offer on pizzas on Tuesdays." },

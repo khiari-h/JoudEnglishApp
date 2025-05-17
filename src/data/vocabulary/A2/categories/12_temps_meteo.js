@@ -11,23 +11,23 @@ export const vocab = {
     { word: "period", translation: "période", example: "The Victorian period was named after Queen Victoria." },
     { word: "interval", translation: "intervalle", example: "There's a ten-minute interval between the acts." },
     { word: "duration", translation: "durée", example: "The duration of the flight is two hours." },
-    { word: "deadline", translation: "date limite", example: "The deadline for applications is next Friday." },
+    
     { word: "appointment", translation: "rendez-vous", example: "I have a dentist appointment on Monday." },
-    { word: "anniversary", translation: "anniversaire", example: "Today is their wedding anniversary." },
-    { word: "date", translation: "date", example: "What's the date of the meeting?" },
+    
+    
     { word: "occasion", translation: "occasion", example: "It was a special occasion for the whole family." },
     
     // Planification temporelle
-    { word: "schedule", translation: "emploi du temps", example: "My schedule is very busy this week." },
+    
     { word: "agenda", translation: "agenda", example: "Let's discuss the agenda for tomorrow's meeting." },
-    { word: "timetable", translation: "horaire", example: "The train timetable changed last month." },
-    { word: "calendar", translation: "calendrier", example: "I marked the date on my calendar." },
+    
+    
     { word: "planner", translation: "agenda/planificateur", example: "I write all my appointments in my planner." },
     { word: "to plan", translation: "planifier", example: "We need to plan our vacation carefully." },
     { word: "to arrange", translation: "organiser", example: "Let's arrange a time to meet." },
     { word: "to postpone", translation: "reporter", example: "The meeting has been postponed until next week." },
     { word: "to reschedule", translation: "reprogrammer", example: "We had to reschedule our flight due to bad weather." },
-    { word: "to cancel", translation: "annuler", example: "They had to cancel the event because of rain." },
+    
     { word: "advance booking", translation: "réservation à l'avance", example: "Advance booking is recommended for popular restaurants." },
     { word: "to pencil in", translation: "noter provisoirement", example: "Let's pencil in Tuesday for our meeting." },
     { word: "reminder", translation: "rappel", example: "I set a reminder on my phone." },
@@ -36,10 +36,10 @@ export const vocab = {
     // Conditions météorologiques spécifiques
     { word: "drizzle", translation: "bruine", example: "There's a light drizzle this morning." },
     { word: "downpour", translation: "averse/déluge", example: "We got caught in a sudden downpour." },
-    { word: "shower", translation: "averse", example: "There will be occasional showers throughout the day." },
+    
     { word: "thunderstorm", translation: "orage", example: "A thunderstorm is forecast for this evening." },
-    { word: "lightning", translation: "éclair", example: "The lightning struck a tree in our garden." },
-    { word: "thunder", translation: "tonnerre", example: "We could hear thunder in the distance." },
+    
+    
     { word: "hail", translation: "grêle", example: "The hail damaged the car's paintwork." },
     { word: "sleet", translation: "neige fondue", example: "The rain turned to sleet as the temperature dropped." },
     { word: "blizzard", translation: "blizzard", example: "The blizzard closed all the roads." },
@@ -68,7 +68,7 @@ export const vocab = {
     { word: "weather update", translation: "mise à jour météo", example: "Check for weather updates before your journey." },
     
     // Phénomènes naturels simples
-    { word: "rainbow", translation: "arc-en-ciel", example: "We saw a beautiful rainbow after the rain." },
+    
     { word: "sunrise", translation: "lever du soleil", example: "The sunrise over the mountains was spectacular." },
     { word: "sunset", translation: "coucher du soleil", example: "We watched the sunset from the beach." },
     { word: "eclipse", translation: "éclipse", example: "There will be a solar eclipse next month." },
@@ -82,7 +82,7 @@ export const vocab = {
     { word: "earthquake", translation: "tremblement de terre", example: "The earthquake measured 5.2 on the Richter scale." },
     
     // Climat par région
-    { word: "climate", translation: "climat", example: "The climate in the Mediterranean is hot and dry in summer." },
+    
     { word: "tropical", translation: "tropical", example: "The island has a tropical climate with high humidity." },
     { word: "subtropical", translation: "subtropical", example: "Florida has a subtropical climate." },
     { word: "temperate", translation: "tempéré", example: "The UK has a temperate climate." },

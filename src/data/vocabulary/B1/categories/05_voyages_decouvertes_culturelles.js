@@ -2,16 +2,16 @@ export const vocab = {
   title: "Voyages & Découvertes Culturelles",
   words: [
     // Préparation de voyage
-    { word: "destination", translation: "destination", example: "They're trying to choose a destination for their next vacation." },
-    { word: "accommodation", translation: "hébergement", example: "We need to book our accommodation well in advance." },
-    { word: "travel agency", translation: "agence de voyage", example: "She works at a travel agency that specializes in Asian tours." },
-    { word: "itinerary", translation: "itinéraire", example: "Our itinerary includes three days in Rome and four in Florence." },
-    { word: "travel insurance", translation: "assurance voyage", example: "Always purchase travel insurance before going abroad." },
+    
+    
+    
+    
+    
     { word: "guidebook", translation: "guide touristique", example: "I bought a guidebook to learn about the local culture and attractions." },
     { word: "language barrier", translation: "barrière linguistique", example: "The language barrier made ordering food challenging." },
     { word: "foreign exchange", translation: "bureau de change", example: "You'll find foreign exchange offices at the airport." },
     { word: "travel adapter", translation: "adaptateur de voyage", example: "Don't forget to pack a travel adapter for your electronics." },
-    { word: "to pack", translation: "faire ses bagages", example: "I always pack too many clothes when I travel." },
+    
     { word: "booking", translation: "réservation", example: "The booking confirmation should arrive by email." },
     { word: "luggage allowance", translation: "franchise de bagages", example: "Check the luggage allowance before packing your suitcase." },
     { word: "travel documents", translation: "documents de voyage", example: "Make sure you have all your travel documents before leaving." },
@@ -21,11 +21,11 @@ export const vocab = {
     { word: "emergency contact", translation: "contact d'urgence", example: "Always leave emergency contact information with family when traveling abroad." },
     { word: "vaccination", translation: "vaccination", example: "Certain vaccinations are required for travel to tropical regions." },
     { word: "to plan ahead", translation: "planifier à l'avance", example: "It's best to plan ahead when visiting popular tourist destinations." },
-    { word: "weather forecast", translation: "prévisions météorologiques", example: "Check the weather forecast before packing for your trip." },
+    
     
     // Types de tourisme
     { word: "adventure tourism", translation: "tourisme d'aventure", example: "Adventure tourism includes activities like white-water rafting and rock climbing." },
-    { word: "cultural tourism", translation: "tourisme culturel", example: "Cultural tourism focuses on experiencing a region's culture and heritage." },
+    
     { word: "sustainable tourism", translation: "tourisme durable", example: "Sustainable tourism aims to minimize impact on local environments." },
     { word: "medical tourism", translation: "tourisme médical", example: "Medical tourism involves traveling abroad for healthcare procedures." },
     { word: "gastronomic tourism", translation: "tourisme gastronomique", example: "Gastronomic tourism revolves around experiencing local cuisines." },
@@ -47,7 +47,7 @@ export const vocab = {
     { word: "cultural shock", translation: "choc culturel", example: "Many travelers experience cultural shock when first visiting very different countries." },
     { word: "off the beaten path", translation: "hors des sentiers battus", example: "They prefer traveling off the beaten path to discover hidden gems." },
     { word: "homestay", translation: "séjour chez l'habitant", example: "A homestay can provide deeper insights into local life than a hotel." },
-    { word: "guided tour", translation: "visite guidée", example: "The guided tour offered fascinating historical information about the site." },
+    
     { word: "self-guided tour", translation: "visite auto-guidée", example: "The museum offers self-guided tours with audio headsets." },
     { word: "scenic route", translation: "route panoramique", example: "We took the scenic route along the coast instead of the highway." },
     { word: "highlight", translation: "temps fort", example: "Seeing the Northern Lights was the highlight of our trip to Iceland." },
@@ -79,14 +79,14 @@ export const vocab = {
     { word: "cross-cultural communication", translation: "communication interculturelle", example: "Cross-cultural communication skills are essential for international business." },
     { word: "cultural understanding", translation: "compréhension culturelle", example: "Travel promotes cultural understanding and tolerance." },
     { word: "cultural sensitivity", translation: "sensibilité culturelle", example: "Cultural sensitivity is important when visiting religious sites." },
-    { word: "etiquette", translation: "étiquette", example: "Different countries have different dining etiquette." },
+    
     { word: "cultural taboo", translation: "tabou culturel", example: "It's important to learn about cultural taboos before visiting a new country." },
     { word: "intercultural exchange", translation: "échange interculturel", example: "The program fosters intercultural exchange between students from different countries." },
     { word: "global perspective", translation: "perspective mondiale", example: "Travel helps develop a global perspective on issues." },
     { word: "culture clash", translation: "choc des cultures", example: "There was some culture clash when the international team first started working together." },
     { word: "cultural relativism", translation: "relativisme culturel", example: "Cultural relativism involves understanding behaviors within their cultural context." },
     { word: "cultural appropriation", translation: "appropriation culturelle", example: "The festival was criticized for cultural appropriation of indigenous traditions." },
-    { word: "cultural heritage", translation: "patrimoine culturel", example: "UNESCO works to protect cultural heritage sites worldwide." },
+    
     { word: "indigenous culture", translation: "culture autochtone", example: "The tour offered insights into indigenous culture and traditions." },
     { word: "cultural diplomacy", translation: "diplomatie culturelle", example: "Cultural diplomacy uses cultural exchange to strengthen relationships between nations." },
     { word: "expat community", translation: "communauté d'expatriés", example: "The expat community organized weekly language exchange meetings." },
@@ -96,7 +96,7 @@ export const vocab = {
     { word: "travel expenses", translation: "frais de voyage", example: "Keep track of your travel expenses to avoid overspending." },
     { word: "exchange rate", translation: "taux de change", example: "A favorable exchange rate can make your trip more affordable." },
     { word: "budget traveler", translation: "voyageur économe", example: "Budget travelers often stay in hostels instead of hotels." },
-    { word: "cost of living", translation: "coût de la vie", example: "The cost of living varies significantly between different destinations." },
+    
     { word: "affordable destination", translation: "destination abordable", example: "Southeast Asia is known as an affordable destination for Western travelers." },
     { word: "money-saving tip", translation: "conseil pour économiser", example: "A good money-saving tip is to eat where the locals eat." },
     { word: "travel fund", translation: "fonds de voyage", example: "They set aside a travel fund each month for future trips." },

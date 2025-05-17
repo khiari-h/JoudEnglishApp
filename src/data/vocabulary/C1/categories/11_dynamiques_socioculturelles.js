@@ -2,24 +2,24 @@ export const vocab = {
   title: "Dynamiques Socioculturelles",
   words: [
     // Transformation culturelle
-    { word: "cultural shift", translation: "changement culturel", example: "The digital revolution has caused a profound cultural shift in how people form relationships." },
-    { word: "cultural evolution", translation: "évolution culturelle", example: "Cultural evolution theory examines how beliefs and practices change over generations." },
+    
+    
     { word: "cultural diffusion", translation: "diffusion culturelle", example: "Global travel and communication have accelerated cultural diffusion worldwide." },
     { word: "cultural syncretism", translation: "syncrétisme culturel", example: "Caribbean music demonstrates cultural syncretism blending African, European and indigenous influences." },
     { word: "acculturation", translation: "acculturation", example: "Immigrants often experience acculturation as they adapt to their new country's norms." },
     { word: "cultural assimilation", translation: "assimilation culturelle", example: "Many educational systems historically promoted cultural assimilation rather than diversity." },
     { word: "cultural hybridization", translation: "hybridation culturelle", example: "Fusion cuisine represents cultural hybridization combining culinary traditions from different regions." },
-    { word: "cultural exchange", translation: "échange culturel", example: "The festival was designed to promote cultural exchange between participating nations." },
-    { word: "cultural innovation", translation: "innovation culturelle", example: "Social media platforms have driven cultural innovation in communication patterns." },
+    
+    
     { word: "cultural resilience", translation: "résilience culturelle", example: "Indigenous communities demonstrate cultural resilience by preserving traditions despite external pressures." },
-    { word: "cultural adaptation", translation: "adaptation culturelle", example: "Cultural adaptation involves modifying traditions to survive in changing environments." },
+    
     { word: "cultural transmission", translation: "transmission culturelle", example: "Schools play a critical role in cultural transmission between generations." },
-    { word: "cultural appropriation", translation: "appropriation culturelle", example: "The fashion industry often faces criticism for cultural appropriation without proper acknowledgment." },
+    
     { word: "cultural zeitgeist", translation: "esprit culturel du temps", example: "The television series perfectly captured the cultural zeitgeist of post-war America." },
     { word: "cultural renaissance", translation: "renaissance culturelle", example: "The neighborhood experienced a cultural renaissance as artists moved into the area." },
     { word: "cultural trajectory", translation: "trajectoire culturelle", example: "Demographic changes are altering the cultural trajectory of urban centers." },
     { word: "cultural transition", translation: "transition culturelle", example: "The society is undergoing a cultural transition toward greater environmental awareness." },
-    { word: "cultural preservation", translation: "préservation culturelle", example: "The foundation supports cultural preservation projects for endangered traditions." },
+    
     { word: "cultural revitalization", translation: "revitalisation culturelle", example: "Language immersion programs contribute to cultural revitalization in indigenous communities." },
     { word: "cultural transformation", translation: "transformation culturelle", example: "Digital technology has driven cultural transformation in media consumption patterns." },
     { word: "cultural reclamation", translation: "récupération culturelle", example: "The museum collaborated with tribal representatives on cultural reclamation initiatives." },
@@ -30,23 +30,22 @@ export const vocab = {
     { word: "cultural displacement", translation: "déplacement culturel", example: "Rapid urbanization has led to cultural displacement in traditional communities." },
     { word: "cultural disruption", translation: "perturbation culturelle", example: "The pandemic caused cultural disruption in social interaction patterns." },
     { word: "cultural backlash", translation: "contrecoup culturel", example: "Progressive social changes sometimes trigger cultural backlash from traditional segments of society." },
-    { word: "cultural homogenization", translation: "homogénéisation culturelle", example: "Globalization has raised concerns about cultural homogenization across different societies." },
+    
     { word: "cultural divergence", translation: "divergence culturelle", example: "Despite increased connectivity, research shows cultural divergence persisting in many values and practices." },
     
     // Mobilité sociale
-    { word: "social mobility", translation: "mobilité sociale", example: "Educational access remains a key factor affecting social mobility across generations." },
-    { word: "intergenerational mobility", translation: "mobilité intergénérationnelle", example: "The study tracked intergenerational mobility by comparing parents' income with their children's earnings." },
+    
+    
     { word: "upward mobility", translation: "mobilité ascendante", example: "The scholarship program aims to enhance opportunities for upward mobility among disadvantaged students." },
     { word: "downward mobility", translation: "mobilité descendante", example: "Economic restructuring led to downward mobility for many manufacturing workers." },
-    { word: "social stratification", translation: "stratification sociale", example: "The research examined how housing policies reinforce social stratification in urban areas." },
-    { word: "socioeconomic status", translation: "statut socioéconomique", example: "Healthcare outcomes often correlate with socioeconomic status across populations." },
+    
+    
     { word: "class barrier", translation: "barrière de classe", example: "Elite universities have implemented programs designed to overcome class barriers to enrollment." },
     { word: "status attainment", translation: "acquisition de statut", example: "The sociological model examines factors influencing status attainment in different societies." },
-    { word: "social capital", translation: "capital social", example: "Professional networks provide social capital that facilitates career advancement." },
-    { word: "cultural capital", translation: "capital culturel", example: "Educational systems often reward students who possess specific forms of cultural capital." },
-    { word: "opportunity structure", translation: "structure d'opportunité", example: "Regional economic development shapes the opportunity structure available to residents." },
+    
+    o residents." },
     { word: "occupational mobility", translation: "mobilité professionnelle", example: "Digital skills training promotes occupational mobility in changing job markets." },
-    { word: "social reproduction", translation: "reproduction sociale", example: "The educational system often facilitates social reproduction rather than economic mobility." },
+    
     { word: "social advancement", translation: "avancement social", example: "The memoir describes her journey of social advancement from poverty to professional success." },
     { word: "achievement gap", translation: "écart de réussite", example: "Policy interventions aim to address the persistent achievement gap between demographic groups." },
     { word: "status inconsistency", translation: "incohérence de statut", example: "Status inconsistency occurs when individuals rank differently across various socioeconomic dimensions." },
@@ -66,74 +65,74 @@ export const vocab = {
     { word: "class consciousness", translation: "conscience de classe", example: "The labor movement sought to develop class consciousness among industrial workers." },
     
     // Construction identitaire
-    { word: "identity formation", translation: "formation identitaire", example: "Adolescence represents a critical period for identity formation and self-concept development." },
+    
     { word: "identity construction", translation: "construction identitaire", example: "Social media platforms influence identity construction among young users." },
     { word: "social identity", translation: "identité sociale", example: "Professional affiliations often become a central component of social identity." },
-    { word: "cultural identity", translation: "identité culturelle", example: "Immigration can create complex challenges for cultural identity maintenance." },
-    { word: "identity negotiation", translation: "négociation identitaire", example: "Bicultural individuals engage in constant identity negotiation across different contexts." },
-    { word: "identity development", translation: "développement identitaire", example: "Erikson's theory outlines stages of identity development throughout the lifespan." },
-    { word: "identity politics", translation: "politique identitaire", example: "Contemporary social movements often engage in identity politics to advocate for specific groups." },
-    { word: "self-concept", translation: "concept de soi", example: "Early educational experiences significantly influence children's academic self-concept." },
-    { word: "collective identity", translation: "identité collective", example: "National narratives help establish collective identity among citizens." },
-    { word: "identity marker", translation: "marqueur identitaire", example: "Language serves as a powerful identity marker for many cultural groups." },
-    { word: "identity conflict", translation: "conflit identitaire", example: "The memoir explores identity conflict experienced by children of immigrants." },
-    { word: "social categorization", translation: "catégorisation sociale", example: "Social categorization processes affect how individuals perceive themselves and others." },
-    { word: "identity salience", translation: "saillance identitaire", example: "Different contexts activate varying identity salience among multiple social identities." },
-    { word: "identity performance", translation: "performance identitaire", example: "Professional environments often require specific forms of identity performance." },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     { word: "identity work", translation: "travail identitaire", example: "Career transitions necessitate significant identity work as individuals reimagine themselves." },
-    { word: "identity achievement", translation: "accomplissement identitaire", example: "Identity achievement follows exploration and commitment to values and goals." },
+    
     { word: "situational identity", translation: "identité situationnelle", example: "Certain aspects of identity become more prominent in specific situational contexts." },
     { word: "hybridized identity", translation: "identité hybride", example: "Transnational communities often develop hybridized identities incorporating multiple cultural elements." },
-    { word: "identity capital", translation: "capital identitaire", example: "Educational experiences provide identity capital that helps navigate diverse social environments." },
+    
     { word: "identity cohesion", translation: "cohésion identitaire", example: "Traumatic experiences can disrupt identity cohesion and self-narrative continuity." },
     { word: "identity exploration", translation: "exploration identitaire", example: "College provides a context for identity exploration through exposure to diverse perspectives." },
-    { word: "identity integration", translation: "intégration identitaire", example: "Successful identity integration involves harmonizing potentially conflicting aspects of self." },
-    { word: "identity crisis", translation: "crise identitaire", example: "Major life transitions can trigger identity crises requiring psychological adjustment." },
+    
+    
     { word: "imposed identity", translation: "identité imposée", example: "Marginalized groups often struggle against stereotypes and imposed identity assumptions." },
     { word: "identity narrative", translation: "récit identitaire", example: "Personal identity narratives help individuals make meaning of their life experiences." },
     { word: "identity disruption", translation: "perturbation identitaire", example: "Serious illness can cause identity disruption as patients redefine themselves." },
     { word: "identity resilience", translation: "résilience identitaire", example: "Identity resilience allows adaptation to changing circumstances while maintaining core self-concepts." },
-    { word: "social role", translation: "rôle social", example: "Parenthood represents a significant social role that transforms identity for many individuals." },
+    
     { word: "identity commitment", translation: "engagement identitaire", example: "Identity commitment develops as individuals solidify their values and life direction." },
     { word: "ascribed identity", translation: "identité attribuée", example: "Ascribed identity characteristics include attributes assigned at birth like ethnicity or gender." },
     
     // Idéologies contemporaines
-    { word: "political ideology", translation: "idéologie politique", example: "Political ideology shapes individuals' positions on economic and social policies." },
+    
     { word: "neoliberalism", translation: "néolibéralisme", example: "Neoliberalism emphasizes free markets and minimal government intervention in the economy." },
     { word: "progressivism", translation: "progressisme", example: "Progressivism advocates social reform and addressing structural inequality." },
-    { word: "conservatism", translation: "conservatisme", example: "Conservatism often emphasizes traditional values and institutional stability." },
-    { word: "populism", translation: "populisme", example: "Populism positions ordinary people against perceived corrupt elites." },
-    { word: "nationalism", translation: "nationalisme", example: "Nationalism emphasizes national identity and interests above other considerations." },
-    { word: "cosmopolitanism", translation: "cosmopolitisme", example: "Cosmopolitanism promotes global citizenship and transnational cooperation." },
+    
+    
+    
+    
     { word: "libertarianism", translation: "libertarianisme", example: "Libertarianism prioritizes individual liberty and limited government authority." },
-    { word: "authoritarianism", translation: "autoritarisme", example: "Authoritarianism concentrates power within centralized leadership structures." },
+    
     { word: "social democracy", translation: "social-démocratie", example: "Social democracy seeks to combine market economies with robust social welfare systems." },
     { word: "democratic socialism", translation: "socialisme démocratique", example: "Democratic socialism advocates democratic control of economic institutions." },
-    { word: "fascism", translation: "fascisme", example: "Fascism combines ultranationalism with authoritarian governance and militaristic values." },
-    { word: "environmentalism", translation: "environnementalisme", example: "Environmentalism prioritizes protection of natural ecosystems and sustainable practices." },
-    { word: "feminism", translation: "féminisme", example: "Contemporary feminism addresses intersectional aspects of gender inequality." },
+    
+    
+    
     { word: "post-colonialism", translation: "post-colonialisme", example: "Post-colonialism examines cultural and political legacies of colonialism and imperialism." },
-    { word: "multiculturalism", translation: "multiculturalisme", example: "Multiculturalism promotes recognition and respect for diverse cultural identities." },
+    
     { word: "secular humanism", translation: "humanisme séculier", example: "Secular humanism emphasizes human agency and rationality over religious authority." },
     { word: "religious fundamentalism", translation: "fondamentalisme religieux", example: "Religious fundamentalism advocates strict adherence to doctrinal orthodoxy." },
     { word: "techno-utopianism", translation: "techno-utopisme", example: "Techno-utopianism envisions technological progress solving humanity's greatest challenges." },
     { word: "anti-globalism", translation: "anti-mondialisme", example: "Anti-globalism opposes international economic integration and supranational governance." },
-    { word: "anarchism", translation: "anarchisme", example: "Anarchism rejects hierarchical authority structures including state power." },
+    
     { word: "communitarianism", translation: "communautarisme", example: "Communitarianism emphasizes the importance of community bonds and shared values." },
-    { word: "meritocracy", translation: "méritocratie", example: "Meritocracy proposes that advancement should be based solely on individual ability and effort." },
+    
     { word: "nativism", translation: "nativisme", example: "Nativism favors the interests of native-born citizens over immigrants." },
     { word: "identitarianism", translation: "identitarisme", example: "Identitarianism emphasizes collective identity based on ethnic or cultural heritage." },
-    { word: "eco-socialism", translation: "éco-socialisme", example: "Eco-socialism connects environmental sustainability with critiques of capitalist production." },
-    { word: "transhumanism", translation: "transhumanisme", example: "Transhumanism promotes using technology to enhance human capabilities beyond biological limitations." },
-    { word: "postmodernism", translation: "postmodernisme", example: "Postmodernism questions grand narratives and universal claims to truth." },
+    
+    
+    
     { word: "accelerationism", translation: "accélérationnisme", example: "Accelerationism proposes intensifying capitalism's contradictions to hasten systemic change." },
     { word: "technocracy", translation: "technocratie", example: "Technocracy advocates governance by technical experts rather than elected representatives." },
     
     // Analyse intersectionnelle
-    { word: "intersectionality", translation: "intersectionnalité", example: "Intersectionality examines how overlapping identities create distinct experiences of discrimination." },
+    
     { word: "overlapping oppression", translation: "oppression superposée", example: "The study documented overlapping oppression affecting women of color in professional settings." },
     { word: "identity intersection", translation: "intersection identitaire", example: "Policy effectiveness depends on recognizing identity intersections among target populations." },
-    { word: "structural discrimination", translation: "discrimination structurelle", example: "Housing patterns reflect structural discrimination operating across multiple demographic factors." },
+    
     { word: "interlocking systems", translation: "systèmes imbriqués", example: "Feminist theory examines interlocking systems of oppression including sexism and racism." },
     { word: "compound disadvantage", translation: "désavantage composé", example: "Rural minority communities often experience compound disadvantage in accessing services." },
     { word: "matrix of domination", translation: "matrice de domination", example: "Collins described a matrix of domination affecting individuals differently based on social location." },
@@ -165,7 +164,7 @@ export const vocab = {
     { word: "gender studies", translation: "études de genre", example: "Gender studies programs examine how gender shapes social and cultural experiences." },
     { word: "gender socialization", translation: "socialisation de genre", example: "Gender socialization begins in early childhood through family interactions and media exposure." },
     { word: "gender norm", translation: "norme de genre", example: "Gender norms vary significantly across cultural and historical contexts." },
-    { word: "gender identity", translation: "identité de genre", example: "Gender identity refers to one's internal sense of gender regardless of biological characteristics." },
+    
     { word: "gender expression", translation: "expression de genre", example: "Gender expression involves how individuals communicate their gender through appearance and behavior." },
     { word: "gender binary", translation: "binarité de genre", example: "Many societies traditionally enforce a gender binary categorizing people as exclusively male or female." },
     { word: "gender fluidity", translation: "fluidité de genre", example: "Gender fluidity describes gender identity that varies over time or context." },
@@ -176,7 +175,7 @@ export const vocab = {
     { word: "gender bias", translation: "biais de genre", example: "Research has documented gender bias in hiring practices across multiple industries." },
     { word: "gender gap", translation: "écart entre les genres", example: "The gender gap in STEM fields remains significant despite equity initiatives." },
     { word: "gender mainstreaming", translation: "intégration de la dimension de genre", example: "The organization implemented gender mainstreaming in all policy development." },
-    { word: "gender equality", translation: "égalité des genres", example: "Gender equality initiatives address systemic barriers to equal participation." },
+    
     { word: "gender equity", translation: "équité entre les genres", example: "Gender equity focuses on fairness in outcomes rather than identical treatment." },
     { word: "gender discrimination", translation: "discrimination de genre", example: "Legislation prohibits gender discrimination in employment and education." },
     { word: "gender-based violence", translation: "violence basée sur le genre", example: "Organizations work to address gender-based violence in conflict regions." },
@@ -195,33 +194,33 @@ export const vocab = {
     
     // Phénomènes socioculturels
     { word: "cultural phenomenon", translation: "phénomène culturel", example: "Social media has emerged as a cultural phenomenon reshaping communication patterns." },
-    { word: "social movement", translation: "mouvement social", example: "The environmental social movement mobilized young activists across national boundaries." },
+    
     { word: "cultural trend", translation: "tendance culturelle", example: "Minimalism represents a cultural trend responding to consumer excess and environmental concerns." },
     { word: "moral panic", translation: "panique morale", example: "Media coverage sometimes generates moral panic about youth behaviors and technology use." },
     { word: "counterculture", translation: "contre-culture", example: "The 1960s counterculture challenged dominant social norms and political institutions." },
     { word: "subculture", translation: "sous-culture", example: "Urban skateboarding represents a subculture with distinct practices and aesthetic values." },
-    { word: "cultural zeitgeist", translation: "esprit du temps culturel", example: "The television series captured the cultural zeitgeist of post-recession America." },
+    
     { word: "cultural polarization", translation: "polarisation culturelle", example: "Political discourse increasingly reflects cultural polarization on social issues." },
     { word: "culture war", translation: "guerre culturelle", example: "Education policies often become battlegrounds in ongoing culture wars." },
-    { word: "social contagion", translation: "contagion sociale", example: "Research examines social contagion effects in the spread of behaviors through networks." },
-    { word: "collective behavior", translation: "comportement collectif", example: "Flash mobs represent spontaneous collective behavior facilitated by technology." },
+    
+    
     { word: "sociocultural evolution", translation: "évolution socioculturelle", example: "Digital communication has accelerated sociocultural evolution in recent decades." },
     { word: "lifestyle movement", translation: "mouvement de style de vie", example: "Veganism represents a lifestyle movement connecting personal choices with ethical positions." },
     { word: "cultural revival", translation: "renouveau culturel", example: "Indigenous language programs contribute to cultural revival in many communities." },
     { word: "symbolic interaction", translation: "interaction symbolique", example: "Fashion choices represent symbolic interaction communicating identity and affiliation." },
     { word: "urban tribe", translation: "tribu urbaine", example: "Coworking spaces have created urban tribes based on shared work patterns and values." },
     { word: "networked individualism", translation: "individualisme en réseau", example: "Digital connectivity supports networked individualism rather than traditional community structures." },
-    { word: "social capital", translation: "capital social", example: "Neighborhood associations build social capital through shared activities and mutual support." },
+    
     { word: "cultural lag", translation: "décalage culturel", example: "Ethics frameworks often experience cultural lag behind rapid technological development." },
     { word: "mass hysteria", translation: "hystérie collective", example: "The incident was later attributed to mass hysteria rather than environmental toxins." },
-    { word: "collective identity", translation: "identité collective", example: "Sports fandom creates powerful collective identity across diverse demographic groups." },
+    
     { word: "cultural trauma", translation: "traumatisme culturel", example: "The genocide created cultural trauma affecting multiple generations." },
-    { word: "popular culture", translation: "culture populaire", example: "Scholars analyze popular culture as a reflection of societal values and concerns." },
-    { word: "cultural practice", translation: "pratique culturelle", example: "Food traditions represent cultural practices connecting communities across generations." },
+    
+    
     { word: "cultural conflict", translation: "conflit culturel", example: "Immigration policies often generate cultural conflict between different value systems." },
     { word: "social ritual", translation: "rituel social", example: "Graduation ceremonies function as social rituals marking life transitions." },
     { word: "cultural resistance", translation: "résistance culturelle", example: "Music often serves as cultural resistance for marginalized communities." },
-    { word: "collective memory", translation: "mémoire collective", example: "Monuments shape collective memory of historical events for future generations." },
+    
     { word: "consumer culture", translation: "culture de consommation", example: "Advertising promotes consumer culture by associating products with identity and status." },
     { word: "cultural capital", translation: "capital culturel", example: "Educational systems often reward students who possess specific forms of cultural capital." }
   ]

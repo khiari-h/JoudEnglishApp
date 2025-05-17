@@ -9,7 +9,7 @@ export const vocab = {
     { word: "seed", translation: "graine", example: "Sunflower seeds are a popular snack." },
     { word: "herb", translation: "herbe aromatique", example: "Basil is my favorite herb for Italian cooking." },
     { word: "spice", translation: "épice", example: "Cinnamon is a common spice used in desserts." },
-    { word: "seafood", translation: "fruits de mer", example: "I love seafood, especially shrimp and mussels." },
+    
     { word: "poultry", translation: "volaille", example: "Chicken and turkey are types of poultry." },
     { word: "processed food", translation: "aliment transformé", example: "It's healthier to avoid processed foods." },
     { word: "frozen food", translation: "surgelé", example: "Frozen food is convenient when you're in a hurry." },
@@ -37,8 +37,8 @@ export const vocab = {
     { word: "to roast", translation: "rôtir", example: "I'm going to roast a chicken for Sunday lunch." },
     { word: "to marinate", translation: "mariner", example: "Marinate the meat for at least two hours." },
     { word: "to season", translation: "assaisonner", example: "Season the dish with salt and pepper." },
-    { word: "to taste", translation: "goûter", example: "Taste the sauce and add more salt if needed." },
-    { word: "to serve", translation: "servir", example: "Serve the soup while it's still hot." },
+    
+    
     { word: "to reheat", translation: "réchauffer", example: "You can reheat the leftovers in the microwave." },
     
     // Goûts & textures (plus avancés que A1)
@@ -59,7 +59,7 @@ export const vocab = {
     { word: "moist", translation: "moelleux/humide", example: "This bread is still moist." },
     
     // Recettes simples
-    { word: "recipe", translation: "recette", example: "This recipe has been in my family for generations." },
+    
     { word: "ingredient", translation: "ingrédient", example: "Make sure you have all the ingredients before starting." },
     { word: "measurement", translation: "mesure", example: "The recipe includes precise measurements." },
     { word: "portion", translation: "portion", example: "This recipe serves four portions." },
@@ -88,7 +88,7 @@ export const vocab = {
     { word: "nutrition", translation: "nutrition", example: "He studied nutrition at university." },
     { word: "protein", translation: "protéine", example: "Eggs are a good source of protein." },
     { word: "carbohydrate", translation: "glucide", example: "Pasta and bread are rich in carbohydrates." },
-    { word: "fat", translation: "graisse/lipide", example: "Avocados contain healthy fats." },
+    
     { word: "vitamin", translation: "vitamine", example: "Oranges are high in vitamin C." },
     { word: "mineral", translation: "minéral", example: "Bananas are a good source of minerals like potassium." },
     
@@ -103,8 +103,8 @@ export const vocab = {
     { word: "grater", translation: "râpe", example: "Use a grater for the cheese." },
     { word: "peeler", translation: "éplucheur", example: "I need a peeler for these carrots." },
     { word: "chopping board", translation: "planche à découper", example: "Always use a chopping board for cutting." },
-    { word: "blender", translation: "mixeur", example: "Use a blender to make smoothies." },
-    { word: "food processor", translation: "robot de cuisine", example: "A food processor makes chopping much easier." },
+    
+    
     { word: "measuring cup", translation: "tasse à mesurer", example: "Use a measuring cup for precise quantities." },
     { word: "measuring spoon", translation: "cuillère à mesurer", example: "The recipe calls for one measuring spoon of spice." },
     { word: "whisk", translation: "fouet", example: "Use a whisk to beat the eggs." },
@@ -113,22 +113,22 @@ export const vocab = {
     { word: "tongs", translation: "pince de cuisine", example: "Use tongs to turn the meat." },
     
     // Restaurants & services alimentaires
-    { word: "restaurant", translation: "restaurant", example: "Let's have dinner at a restaurant tonight." },
+    
     { word: "café", translation: "café", example: "We'll meet at the café at 10 am." },
     { word: "bistro", translation: "bistro", example: "This little bistro serves excellent French food." },
-    { word: "fast food", translation: "restauration rapide", example: "We stopped at a fast food restaurant on our trip." },
+    
     { word: "takeaway", translation: "plat à emporter", example: "Let's get a takeaway instead of cooking tonight." },
     { word: "delivery", translation: "livraison", example: "Many restaurants offer food delivery." },
     { word: "self-service", translation: "self-service", example: "The cafeteria is self-service." },
     { word: "buffet", translation: "buffet", example: "The hotel offers a breakfast buffet." },
-    { word: "menu", translation: "menu/carte", example: "Let's look at the menu and decide what to order." },
+    
     { word: "specials", translation: "plats du jour", example: "The chef's specials change daily." },
-    { word: "reservation", translation: "réservation", example: "We should make a reservation for dinner." },
+    
     { word: "waiter", translation: "serveur", example: "The waiter brought our drinks." },
     { word: "waitress", translation: "serveuse", example: "The waitress recommended the fish." },
-    { word: "chef", translation: "chef cuisinier", example: "The chef in this restaurant is famous." },
+    
     { word: "tip", translation: "pourboire", example: "We left a generous tip for the excellent service." },
-    { word: "bill", translation: "addition", example: "Could we have the bill, please?" },
+    
     { word: "service", translation: "service", example: "The service in this restaurant is excellent." }
   ]
 };

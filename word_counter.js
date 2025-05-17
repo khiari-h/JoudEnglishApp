@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Fonction pour compter les mots dans un fichier JS
-async function countWordsInFile(filePath) {
+// Fonction pour extraire les mots d'un fichier JS
+async function processFile(filePath) {
   try {
     const fileContent = fs.readFileSync(filePath, 'utf8');
     
@@ -11,20 +11,26 @@ async function countWordsInFile(filePath) {
     
     if (!wordsArrayMatch) {
       console.error(`Impossible de trouver le tableau "words" dans le fichier ${filePath}`);
-      return 0;
+      return { count: 0 };
     }
 
-    // Compter les occurrences de "word:"
-    const wordEntries = (wordsArrayMatch[1].match(/word:/g) || []).length;
-    return wordEntries;
+    // Extraire tous les mots du fichier
+    const wordMatches = wordsArrayMatch[1].match(/word:\s*"([^"]+)"/g);
+    
+    if (!wordMatches) {
+      return { count: 0 };
+    }
+
+    // Retourner simplement le nombre de mots
+    return { count: wordMatches.length };
   } catch (error) {
     console.error(`Erreur lors de la lecture du fichier ${filePath}:`, error.message);
-    return 0;
+    return { count: 0 };
   }
 }
 
 // Fonction pour analyser un niveau
-async function analyzeLevelVocabulary(level) {
+async function countLevelWords(level) {
   const categoryDir = path.join(__dirname, 'src', 'data', 'vocabulary', level, 'categories');
   
   if (!fs.existsSync(categoryDir)) {
@@ -38,69 +44,65 @@ async function analyzeLevelVocabulary(level) {
 
   for (const file of files) {
     const filePath = path.join(categoryDir, file);
-    const wordCount = await countWordsInFile(filePath);
-    totalWords += wordCount;
+    const result = await processFile(filePath);
+    totalWords += result.count;
     
     fileStats.push({
       fileName: file,
-      wordCount
+      wordCount: result.count
     });
   }
 
   return {
     level,
     totalWords,
-    files: fileStats
+    files: fileStats.sort((a, b) => a.fileName.localeCompare(b.fileName))
   };
 }
 
-// Fonction principale
-async function analyzeAllVocabulary() {
+// Fonction pour afficher le rapport dans la console
+function displayLevelReport(levelStats) {
+  console.log(`\n${levelStats.level} - Total: ${levelStats.totalWords} mots`);
+  console.log('-'.repeat(80));
+  
+  for (const file of levelStats.files) {
+    console.log(`${file.fileName.padEnd(50, ' ')} : ${file.wordCount} mots`);
+  }
+}
+
+// Fonction pour analyser tous les niveaux
+async function countAllVocabulary() {
   const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   const results = [];
   let grandTotal = 0;
   let totalFiles = 0;
-
+  
   console.log('='.repeat(80));
-  console.log('ANALYSE DU VOCABULAIRE PAR NIVEAU');
+  console.log('COMPTAGE DU VOCABULAIRE PAR NIVEAU');
   console.log('='.repeat(80));
 
   for (const level of levels) {
-    const levelStats = await analyzeLevelVocabulary(level);
+    console.log(`\nAnalyse du niveau ${level}...`);
+    const levelStats = await countLevelWords(level);
     results.push(levelStats);
     grandTotal += levelStats.totalWords;
     totalFiles += levelStats.files.length;
     
-    console.log(`\n${level} - Total: ${levelStats.totalWords} mots`);
-    console.log('-'.repeat(80));
-    
-    // Trier les fichiers par ordre alphabétique
-    levelStats.files.sort((a, b) => a.fileName.localeCompare(b.fileName));
-    
-    for (const file of levelStats.files) {
-      console.log(`${file.fileName.padEnd(50, ' ')} : ${file.wordCount} mots`);
-    }
+    // Afficher le détail du niveau
+    displayLevelReport(levelStats);
   }
-
+  
+  // Afficher le récapitulatif
   console.log('\nRÉSUMÉ PAR NIVEAU:');
   console.log('-'.repeat(80));
   for (const result of results) {
     console.log(`${result.level.padEnd(5, ' ')} : ${result.totalWords} mots (${result.files.length} fichiers)`);
   }
 
-  // Déplacer le total général après le résumé par niveau
   console.log('\n' + '='.repeat(80));
-  console.log(`TOTAL GÉNÉRAL: ${grandTotal} mots`);
+  console.log(`TOTAL GÉNÉRAL: ${grandTotal} mots dans ${totalFiles} fichiers`);
   console.log('='.repeat(80));
 
-  // Ajout d'un récapitulatif final plus détaillé
-  console.log('\nRÉCAPITULATIF FINAL');
-  console.log('-'.repeat(80));
-  console.log(`Nombre total de mots: ${grandTotal} mots`);
-  console.log(`Nombre total de fichiers: ${totalFiles} fichiers`);
-  console.log(`Moyenne de mots par niveau: ${Math.round(grandTotal / levels.length)} mots`);
-  console.log(`Moyenne de mots par fichier: ${Math.round(grandTotal / totalFiles)} mots`);
-  
   // Distribution par niveau en pourcentage
   console.log('\nDistribution du vocabulaire:');
   console.log('-'.repeat(80));
@@ -109,9 +111,59 @@ async function analyzeAllVocabulary() {
     const bar = '█'.repeat(Math.floor(percentage / 2)); // Représentation visuelle
     console.log(`${result.level.padEnd(5, ' ')} : ${result.totalWords.toString().padEnd(5, ' ')} mots (${percentage}%) ${bar}`);
   }
+  
+  return {
+    results,
+    grandTotal,
+    totalFiles
+  };
 }
 
-// Exécuter l'analyse
-analyzeAllVocabulary().catch(error => {
-  console.error('Erreur lors de l\'analyse:', error);
-});
+// Interface CLI
+async function main() {
+  const args = process.argv.slice(2);
+  let level = null;
+  
+  // Analyser les arguments
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--level' || args[i] === '-l') {
+      level = args[i + 1];
+      i++;
+    }
+  }
+  
+  if (level) {
+    // Analyser un niveau spécifique
+    const validLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    if (!validLevels.includes(level)) {
+      console.error(`Niveau invalide: ${level}. Utilisez un des niveaux suivants: ${validLevels.join(', ')}`);
+      return;
+    }
+    
+    console.log(`Comptage du vocabulaire du niveau ${level}...`);
+    const levelStats = await countLevelWords(level);
+    displayLevelReport(levelStats);
+    
+    console.log('\nRÉCAPITULATIF:');
+    console.log('-'.repeat(80));
+    console.log(`Nombre total de mots: ${levelStats.totalWords} mots`);
+    console.log(`Nombre total de fichiers: ${levelStats.files.length} fichiers`);
+    console.log(`Moyenne de mots par fichier: ${Math.round(levelStats.totalWords / levelStats.files.length)} mots`);
+  } else {
+    // Analyser tous les niveaux
+    await countAllVocabulary();
+  }
+}
+
+// Point d'entrée principal
+if (require.main === module) {
+  main().catch(error => {
+    console.error('Erreur:', error);
+  });
+}
+
+// Exporter les fonctions pour pouvoir les utiliser dans d'autres scripts
+module.exports = {
+  countLevelWords,
+  countAllVocabulary
+};

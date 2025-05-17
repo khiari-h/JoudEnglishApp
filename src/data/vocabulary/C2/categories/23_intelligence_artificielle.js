@@ -2,42 +2,42 @@ export const vocab = {
   title: "Intelligence Artificielle et Analyse de Données",
   words: [
     // Concepts fondamentaux de l'IA et du ML (50 mots)
-    { word: "artificial intelligence", translation: "intelligence artificielle", example: "Artificial intelligence encompasses systems that can perceive environments, reason about information, and take actions to achieve specific goals." },
-    { word: "machine learning", translation: "apprentissage automatique", example: "Machine learning algorithms improve performance on tasks through experience without explicit programming." },
-    { word: "deep learning", translation: "apprentissage profond", example: "Deep learning architectures use multiple processing layers to learn hierarchical representations of data." },
-    { word: "neural network", translation: "réseau neuronal", example: "The neural network modeled complex non-linear relationships between variables using interconnected artificial neurons." },
-    { word: "algorithm", translation: "algorithme", example: "The recommendation algorithm analyzes user behavior patterns to suggest relevant content." },
-    { word: "supervised learning", translation: "apprentissage supervisé", example: "Supervised learning algorithms learn from labeled examples to generalize to new, unseen data." },
-    { word: "unsupervised learning", translation: "apprentissage non supervisé", example: "Unsupervised learning discovers hidden patterns in data without pre-existing labels." },
-    { word: "reinforcement learning", translation: "apprentissage par renforcement", example: "Reinforcement learning systems learn optimal behaviors through interactions with environments and reward signals." },
-    { word: "transfer learning", translation: "apprentissage par transfert", example: "Transfer learning leverages knowledge from one domain to improve performance in another, reducing required training data." },
-    { word: "self-supervised learning", translation: "apprentissage auto-supervisé", example: "Self-supervised learning derives supervisory signals from the data itself rather than external annotations." },
-    { word: "federated learning", translation: "apprentissage fédéré", example: "Federated learning trains models across decentralized devices without exchanging the underlying data." },
-    { word: "feature", translation: "caractéristique", example: "The model's accuracy improved after engineers added domain-specific features capturing essential patterns." },
-    { word: "feature engineering", translation: "ingénierie des caractéristiques", example: "Effective feature engineering transforms raw data into representations that enhance model performance." },
-    { word: "feature extraction", translation: "extraction de caractéristiques", example: "Deep networks perform automatic feature extraction, learning increasingly abstract representations in higher layers." },
-    { word: "training data", translation: "données d'entraînement", example: "The model's performance reflects patterns and biases present in its training data." },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     { word: "validation data", translation: "données de validation", example: "Hyperparameters were optimized using performance on the validation data, separate from the training set." },
     { word: "test data", translation: "données de test", example: "The final evaluation used previously unseen test data to assess real-world performance." },
-    { word: "cross-validation", translation: "validation croisée", example: "K-fold cross-validation provides robust performance estimates by averaging results across multiple data splits." },
-    { word: "hyperparameter", translation: "hyperparamètre", example: "Hyperparameters control model architecture and training process rather than being learned from data." },
+    
+    
     { word: "hyperparameter optimization", translation: "optimisation des hyperparamètres", example: "Bayesian hyperparameter optimization efficiently explores the parameter space by leveraging information from previous evaluations." },
-    { word: "bias-variance tradeoff", translation: "compromis biais-variance", example: "The bias-variance tradeoff balances underfitting against overfitting in predictive models." },
-    { word: "overfitting", translation: "surapprentissage", example: "The model exhibited overfitting, performing excellently on training data but poorly on new examples." },
-    { word: "underfitting", translation: "sous-apprentissage", example: "Underfitting occurs when models are too simple to capture underlying data patterns." },
-    { word: "regularization", translation: "régularisation", example: "Regularization techniques prevent overfitting by constraining model complexity during training." },
+    
+    
+    
+    
     { word: "loss function", translation: "fonction de perte", example: "The loss function quantifies the difference between predicted outputs and ground truth values." },
-    { word: "gradient descent", translation: "descente de gradient", example: "Gradient descent iteratively adjusts model parameters to minimize the loss function." },
-    { word: "backpropagation", translation: "rétropropagation", example: "Backpropagation efficiently calculates gradients throughout neural networks during training." },
-    { word: "generative model", translation: "modèle génératif", example: "Generative models learn the underlying data distribution to create new, synthetic examples." },
+    
+    
+    
     { word: "discriminative model", translation: "modèle discriminatif", example: "Discriminative models focus on decision boundaries between classes rather than modeling the full data distribution." },
     { word: "classification", translation: "classification", example: "The classification algorithm assigns input examples to discrete categories based on their features." },
-    { word: "regression", translation: "régression", example: "The regression model predicts continuous values based on input variables and their relationships." },
+    
     { word: "clustering", translation: "regroupement", example: "Clustering algorithms identify natural groupings in data based on similarity measures." },
     { word: "dimensionality reduction", translation: "réduction de dimensionnalité", example: "Dimensionality reduction techniques compress high-dimensional data while preserving important structures." },
-    { word: "anomaly detection", translation: "détection d'anomalies", example: "The anomaly detection system identifies unusual patterns that deviate from normal behavior." },
-    { word: "ensemble method", translation: "méthode d'ensemble", example: "Ensemble methods combine multiple models to achieve better performance than individual predictors." },
-    { word: "decision tree", translation: "arbre de décision", example: "Decision trees make predictions by following a hierarchy of if-then rules derived from data." },
+    
+    
+    
     { word: "random forest", translation: "forêt aléatoire", example: "Random forests combine multiple decision trees to reduce overfitting and improve generalization." },
     { word: "gradient boosting", translation: "amplification de gradient", example: "Gradient boosting sequentially builds models that correct errors made by previous iterations." },
     { word: "support vector machine", translation: "machine à vecteurs de support", example: "Support vector machines find optimal hyperplanes that maximize the margin between different classes." },
@@ -47,15 +47,15 @@ export const vocab = {
     { word: "transformer", translation: "transformeur", example: "Transformer architectures revolutionized language processing through attention mechanisms and parallel computation." },
     { word: "generative adversarial network", translation: "réseau antagoniste génératif", example: "Generative adversarial networks consist of competing networks that simultaneously improve generation quality." },
     { word: "reinforcement learning agent", translation: "agent d'apprentissage par renforcement", example: "The reinforcement learning agent learned optimal strategies through repeated interactions with its environment." },
-    { word: "natural language processing", translation: "traitement du langage naturel", example: "Natural language processing enables machines to understand, interpret, and generate human language." },
-    { word: "computer vision", translation: "vision par ordinateur", example: "Computer vision systems extract meaningful information from visual inputs like images and videos." },
+    
+    
     { word: "speech recognition", translation: "reconnaissance vocale", example: "The speech recognition system converts spoken language into text with contextual understanding." },
-    { word: "autonomous system", translation: "système autonome", example: "Autonomous systems make independent decisions based on environmental perception and learned policies." },
-    { word: "human-in-the-loop", translation: "humain dans la boucle", example: "Human-in-the-loop systems combine algorithmic processing with human judgment for critical decisions." },
+    
+    
     
     // Techniques avancées et modèles (50 mots)
     { word: "deep neural network", translation: "réseau neuronal profond", example: "Deep neural networks with multiple layers can learn increasingly abstract representations of input data." },
-    { word: "artificial neural network", translation: "réseau neuronal artificiel", example: "Artificial neural networks consist of interconnected nodes that process information in parallel." },
+    
     { word: "multilayer perceptron", translation: "perceptron multicouche", example: "The multilayer perceptron contains input, hidden, and output layers fully connected between adjacent levels." },
     { word: "activation function", translation: "fonction d'activation", example: "Non-linear activation functions enable neural networks to model complex relationships in data." },
     { word: "rectified linear unit", translation: "unité linéaire rectifiée", example: "ReLU activation functions accelerate training by addressing vanishing gradient problems in deep networks." },
@@ -67,7 +67,7 @@ export const vocab = {
     { word: "batch size", translation: "taille du lot", example: "Larger batch sizes enable more stable gradient estimates but require more memory during training." },
     { word: "learning rate", translation: "taux d'apprentissage", example: "Adaptive learning rate schedules adjust optimization step sizes throughout training for better convergence." },
     { word: "weight initialization", translation: "initialisation des poids", example: "Proper weight initialization prevents signal vanishing or explosion in deep networks." },
-    { word: "attention mechanism", translation: "mécanisme d'attention", example: "Attention mechanisms enable models to focus on relevant parts of inputs when making predictions." },
+    
     { word: "self-attention", translation: "auto-attention", example: "Self-attention allows models to consider relationships between all positions in a sequence simultaneously." },
     { word: "multi-head attention", translation: "attention multi-têtes", example: "Multi-head attention projects inputs into multiple subspaces to capture different relationship types." },
     { word: "encoder-decoder architecture", translation: "architecture encodeur-décodeur", example: "Encoder-decoder architectures transform input sequences into intermediate representations before generating outputs." },
@@ -76,29 +76,27 @@ export const vocab = {
     { word: "sequence-to-sequence model", translation: "modèle séquence-à-séquence", example: "Sequence-to-sequence models transform input sequences into output sequences of potentially different lengths." },
     { word: "autoencoder", translation: "auto-encodeur", example: "Autoencoders learn efficient data representations by reconstructing inputs through compressed encodings." },
     { word: "variational autoencoder", translation: "auto-encodeur variationnel", example: "Variational autoencoders learn probabilistic latent representations enabling controlled generation." },
-    { word: "diffusion model", translation: "modèle de diffusion", example: "Diffusion models generate high-quality images by gradually removing noise from random initial states." },
-    { word: "foundation model", translation: "modèle fondationnel", example: "Foundation models trained on vast datasets serve as versatile bases for numerous downstream applications." },
-    { word: "large language model", translation: "grand modèle de langage", example: "Large language models with billions of parameters demonstrate emergent capabilities across diverse tasks." },
+    
+    
+    
     { word: "fine-tuning", translation: "ajustement fin", example: "Fine-tuning adapts pre-trained models to specific domains or tasks with smaller, specialized datasets." },
-    { word: "prompt engineering", translation: "ingénierie des instructions", example: "Prompt engineering optimizes input formats to elicit desired behaviors from language models." },
-    { word: "few-shot learning", translation: "apprentissage à partir de peu d'exemples", example: "Few-shot learning enables models to adapt to new tasks with minimal labeled examples." },
-    { word: "zero-shot learning", translation: "apprentissage zéro-shot", example: "Zero-shot learning tackles previously unseen tasks without specific training examples." },
+    
+    
+    
     { word: "meta-learning", translation: "méta-apprentissage", example: "Meta-learning algorithms learn how to learn, developing strategies that generalize across different tasks." },
     { word: "multitask learning", translation: "apprentissage multitâche", example: "Multitask learning simultaneously trains models on related tasks to improve performance through shared representations." },
-    { word: "transfer learning", translation: "apprentissage par transfert", example: "Transfer learning leverages knowledge from source domains to improve performance in target domains." },
+    
     { word: "domain adaptation", translation: "adaptation de domaine", example: "Domain adaptation techniques bridge distribution gaps between training and deployment environments." },
-    { word: "active learning", translation: "apprentissage actif", example: "Active learning strategically selects the most informative examples for labeling to maximize learning efficiency." },
-    { word: "semi-supervised learning", translation: "apprentissage semi-supervisé", example: "Semi-supervised learning combines limited labeled data with abundant unlabeled examples to improve performance." },
-    { word: "reinforcement learning from human feedback", translation: "apprentissage par renforcement à partir de retours humains", example: "RLHF aligns model behavior with human preferences through feedback-based optimization." },
+    
+    
+    
     { word: "curriculum learning", translation: "apprentissage par curriculum", example: "Curriculum learning presents training examples in increasing complexity to facilitate more efficient learning." },
-    { word: "contrastive learning", translation: "apprentissage contrastif", example: "Contrastive learning creates robust representations by bringing similar examples closer and pushing different ones apart." },
+    
     { word: "multimodal learning", translation: "apprentissage multimodal", example: "Multimodal learning integrates information from different data types like text, images, and audio." },
     { word: "graph neural network", translation: "réseau neuronal de graphe", example: "Graph neural networks process data with irregular structure by operating on node and edge representations." },
     { word: "knowledge distillation", translation: "distillation de connaissances", example: "Knowledge distillation transfers capabilities from larger models to smaller, more efficient ones." },
-    { word: "adversarial training", translation: "entraînement antagoniste", example: "Adversarial training improves robustness by incorporating examples designed to fool the model." },
-    { word: "explainable AI", translation: "IA explicable", example: "Explainable AI techniques provide interpretable insights into model decision processes." },
-    { word: "neural architecture search", translation: "recherche d'architecture neuronale", example: "Neural architecture search automates model design by systematically exploring possible network configurations." },
-    { word: "quantization", translation: "quantification", example: "Model quantization reduces computational requirements by decreasing numerical precision of parameters." },
+    
+    recision of parameters." },
     { word: "pruning", translation: "élagage", example: "Network pruning removes redundant parameters to create smaller, more efficient models without significant performance loss." },
     { word: "model deployment", translation: "déploiement de modèle", example: "Model deployment integrates AI systems into production environments with monitoring and maintenance capabilities." },
     { word: "model serving", translation: "service de modèle", example: "Efficient model serving infrastructure handles prediction requests at scale with low latency requirements." },
@@ -106,108 +104,105 @@ export const vocab = {
     { word: "model monitoring", translation: "surveillance de modèle", example: "Continuous model monitoring detects performance degradation and data drift in production environments." },
     
     // Analyse de données et techniques statistiques (50 mots)
-    { word: "data analysis", translation: "analyse de données", example: "Comprehensive data analysis revealed unexpected patterns that informed strategic decision-making." },
+    
     { word: "exploratory data analysis", translation: "analyse exploratoire des données", example: "Exploratory data analysis examines distributions and relationships before formal modeling begins." },
-    { word: "descriptive statistics", translation: "statistiques descriptives", example: "Descriptive statistics summarize central tendencies, dispersion, and distributions of variables." },
-    { word: "inferential statistics", translation: "statistiques inférentielles", example: "Inferential statistics extends findings from samples to broader populations through hypothesis testing." },
-    { word: "statistical significance", translation: "signification statistique", example: "Results achieved statistical significance, indicating observations were unlikely due to random chance." },
+    
+    
+    
     { word: "p-value", translation: "valeur p", example: "The p-value quantifies evidence against the null hypothesis in hypothesis testing." },
-    { word: "confidence interval", translation: "intervalle de confiance", example: "The 95% confidence interval provides a range likely to contain the true population parameter." },
-    { word: "statistical power", translation: "puissance statistique", example: "Sufficient statistical power ensures the ability to detect effects when they genuinely exist." },
-    { word: "effect size", translation: "taille d'effet", example: "Beyond significance, effect size quantifies the magnitude of observed relationships or differences." },
+    
+    
+    
     { word: "correlation", translation: "corrélation", example: "Correlation measures strength and direction of relationships between variables without implying causation." },
-    { word: "regression analysis", translation: "analyse de régression", example: "Regression analysis quantifies relationships between predictor and outcome variables." },
+    
     { word: "linear regression", translation: "régression linéaire", example: "Linear regression models relationships between variables using straight-line functions." },
     { word: "logistic regression", translation: "régression logistique", example: "Logistic regression predicts categorical outcomes through probability estimation." },
-    { word: "multivariate analysis", translation: "analyse multivariée", example: "Multivariate analysis examines relationships among multiple variables simultaneously." },
-    { word: "factor analysis", translation: "analyse factorielle", example: "Factor analysis identifies underlying dimensions explaining patterns of correlations among observed variables." },
+    
+    
     { word: "principal component analysis", translation: "analyse en composantes principales", example: "Principal component analysis reduces dimensionality while preserving maximum variance." },
-    { word: "cluster analysis", translation: "analyse par grappes", example: "Cluster analysis groups similar observations based on multiple attributes simultaneously." },
-    { word: "time series analysis", translation: "analyse de séries temporelles", example: "Time series analysis examines sequential data points to identify patterns and forecast future values." },
+    
+    
     { word: "seasonality", translation: "saisonnalité", example: "The analysis revealed strong seasonality with consistent patterns repeating annually." },
-    { word: "trend analysis", translation: "analyse de tendance", example: "Trend analysis identified long-term directional movements in the data beyond cyclical fluctuations." },
-    { word: "anomaly detection", translation: "détection d'anomalies", example: "Robust anomaly detection algorithms identified unusual patterns requiring further investigation." },
-    { word: "data mining", translation: "exploration de données", example: "Data mining discovers non-obvious patterns and relationships in large datasets." },
+    
+    
+    
     { word: "association rule learning", translation: "apprentissage des règles d'association", example: "Association rule learning identifies co-occurring elements within transactional datasets." },
-    { word: "pattern recognition", translation: "reconnaissance de formes", example: "Pattern recognition identifies regularities in data that distinguish different categories." },
-    { word: "data visualization", translation: "visualisation de données", example: "Effective data visualization transforms complex information into intuitive graphical representations." },
-    { word: "dashboard", translation: "tableau de bord", example: "The interactive dashboard presents key metrics and trends for operational decision-making." },
+    
+    
+    
     { word: "pivot table", translation: "tableau croisé dynamique", example: "Pivot tables aggregate and summarize data across multiple dimensions for comparative analysis." },
     { word: "heatmap", translation: "carte thermique", example: "The correlation heatmap visually represents relationship strengths between multiple variables." },
     { word: "scatter plot", translation: "nuage de points", example: "Scatter plots reveal relationships between two continuous variables including potential non-linearities." },
     { word: "histogram", translation: "histogramme", example: "Histograms display frequency distributions of continuous variables across defined intervals." },
     { word: "box plot", translation: "boîte à moustaches", example: "Box plots summarize distributions through quartiles while highlighting potential outliers." },
-    { word: "data cleaning", translation: "nettoyage des données", example: "Rigorous data cleaning addresses missing values, outliers, and inconsistencies before analysis." },
+    
     { word: "data preprocessing", translation: "prétraitement des données", example: "Data preprocessing transforms raw information into formats suitable for modeling and analysis." },
-    { word: "data transformation", translation: "transformation des données", example: "Data transformation techniques include normalization, scaling, and encoding categorical variables." },
+    
     { word: "feature selection", translation: "sélection des caractéristiques", example: "Feature selection identifies the most informative variables while removing redundant or irrelevant ones." },
-    { word: "dimensionality reduction", translation: "réduction de dimensionnalité", example: "Dimensionality reduction techniques compress data while preserving important structures and relationships." },
-    { word: "sampling", translation: "échantillonnage", example: "Appropriate sampling techniques ensure representative subsets for efficient analysis of large datasets." },
-    { word: "stratified sampling", translation: "échantillonnage stratifié", example: "Stratified sampling maintains proportional representation of important subgroups within samples." },
-    { word: "bootstrapping", translation: "bootstrap", example: "Bootstrapping generates empirical distributions through repeated resampling with replacement." },
-    { word: "cross-validation", translation: "validation croisée", example: "K-fold cross-validation provides robust performance estimates by averaging results across multiple data divisions." },
-    { word: "data pipeline", translation: "pipeline de données", example: "Automated data pipelines streamline acquisition, processing, and analysis workflows." },
+    
+    
+    
+    
+    
+    
     { word: "ETL process", translation: "processus ETL", example: "ETL processes extract data from sources, transform it to appropriate formats, and load it into analytical systems." },
-    { word: "data warehouse", translation: "entrepôt de données", example: "The data warehouse consolidates information from multiple systems for integrated analysis and reporting." },
-    { word: "data lake", translation: "lac de données", example: "The data lake stores raw, unprocessed data in its native format until needed for specific analyses." },
-    { word: "big data", translation: "mégadonnées", example: "Big data technologies handle datasets too large or complex for traditional processing applications." },
+    
+    
+    
     { word: "distributed computing", translation: "informatique distribuée", example: "Distributed computing frameworks parallelize data processing across multiple machines." },
-    { word: "edge computing", translation: "informatique en périphérie", example: "Edge computing processes data near its source rather than transmitting everything to centralized systems." },
+    
     { word: "streaming analytics", translation: "analyse en continu", example: "Streaming analytics processes data in real-time as it arrives rather than in batches." },
-    { word: "predictive analytics", translation: "analyse prédictive", example: "Predictive analytics leverages historical data to forecast likely future outcomes." },
-    { word: "prescriptive analytics", translation: "analyse prescriptive", example: "Prescriptive analytics recommends actions to optimize outcomes based on predictive insights." },
+    
+    
     
     // Applications et considérations éthiques (50 mots)
-    { word: "recommendation system", translation: "système de recommandation", example: "The recommendation system suggests relevant content based on user behavior and preference patterns." },
+    
     { word: "personalization algorithm", translation: "algorithme de personnalisation", example: "Personalization algorithms tailor experiences to individual users based on their characteristics and history." },
-    { word: "sentiment analysis", translation: "analyse de sentiment", example: "Sentiment analysis evaluates subjective opinions and emotions expressed in text data." },
-    { word: "chatbot", translation: "agent conversationnel", example: "The customer service chatbot handles routine inquiries while escalating complex issues to human agents." },
+    
+    
     { word: "virtual assistant", translation: "assistant virtuel", example: "The virtual assistant integrates with multiple systems to perform tasks through natural language commands." },
-    { word: "predictive maintenance", translation: "maintenance prédictive", example: "Predictive maintenance forecasts equipment failures before they occur, reducing downtime and costs." },
+    
     { word: "fraud detection", translation: "détection de fraude", example: "Advanced fraud detection systems identify suspicious patterns that indicate potentially illicit activities." },
     { word: "image recognition", translation: "reconnaissance d'image", example: "Image recognition technologies automatically identify objects, people, and activities in visual data." },
-    { word: "facial recognition", translation: "reconnaissance faciale", example: "Facial recognition systems identify individuals by analyzing distinctive facial features." },
-    { word: "speech recognition", translation: "reconnaissance vocale", example: "Speech recognition converts spoken language into text with increasing accuracy across accents and conditions." },
+    
+    
     { word: "natural language understanding", translation: "compréhension du langage naturel", example: "Natural language understanding extracts meaning and intent from human communication." },
     { word: "natural language generation", translation: "génération de langage naturel", example: "Natural language generation produces human-like text based on provided information and context." },
     { word: "text summarization", translation: "résumé de texte", example: "Automatic text summarization condenses documents while preserving key information and meaning." },
     { word: "machine translation", translation: "traduction automatique", example: "Neural machine translation systems convert text between languages while maintaining semantic meaning." },
     { word: "demand forecasting", translation: "prévision de la demande", example: "Demand forecasting models predict future customer requirements based on historical patterns and contextual factors." },
     { word: "dynamic pricing", translation: "tarification dynamique", example: "Dynamic pricing algorithms adjust rates in real-time based on demand, competition, and other market factors." },
-    { word: "market segmentation", translation: "segmentation du marché", example: "AI-driven market segmentation identifies distinct customer groups with similar characteristics and behaviors." },
+    
     { word: "customer lifetime value prediction", translation: "prédiction de la valeur vie client", example: "Advanced models forecast customer lifetime value to optimize acquisition and retention strategies." },
     { word: "churn prediction", translation: "prédiction d'attrition", example: "Churn prediction identifies customers likely to discontinue services, enabling proactive retention efforts." },
     { word: "algorithmic trading", translation: "trading algorithmique", example: "Algorithmic trading systems execute financial transactions based on predefined rules and market conditions." },
     { word: "risk modeling", translation: "modélisation du risque", example: "Sophisticated risk modeling evaluates potential threats across multiple variables and scenarios." },
     { word: "credit scoring", translation: "évaluation du crédit", example: "Machine learning credit scoring assesses default risk using diverse data beyond traditional financial factors." },
     { word: "supply chain optimization", translation: "optimisation de la chaîne d'approvisionnement", example: "AI-driven supply chain optimization balances inventory, transportation, and production constraints for maximum efficiency." },
-    { word: "autonomous vehicle", translation: "véhicule autonome", example: "Autonomous vehicles integrate multiple AI systems for perception, prediction, and navigation." },
-    { word: "robotics", translation: "robotique", example: "Advanced robotics combines AI with mechanical systems for automation in diverse environments." },
-    { word: "augmented reality", translation: "réalité augmentée", example: "AI enhances augmented reality by intelligently integrating virtual elements with physical environments." },
-    { word: "algorithmic bias", translation: "biais algorithmique", example: "Algorithmic bias occurs when systems produce unfair outcomes for different demographic groups." },
+    
+    
+    
+    
     { word: "model transparency", translation: "transparence du modèle", example: "Model transparency enables understanding of how AI systems arrive at specific decisions or predictions." },
     { word: "black box problem", translation: "problème de la boîte noire", example: "The black box problem refers to AI systems producing outputs without explainable reasoning processes." },
     { word: "explainable AI", translation: "IA explicable", example: "Explainable AI techniques provide interpretable insights into model decision processes." },
     { word: "feature importance", translation: "importance des caractéristiques", example: "Feature importance analysis reveals which variables most significantly influence model predictions." },
     { word: "model interpretability", translation: "interprétabilité du modèle", example: "Model interpretability techniques help humans understand how AI systems reach specific conclusions." },
-    { word: "fairness metric", translation: "métrique d'équité", example: "Fairness metrics quantify disparate impacts across different demographic groups." },
+    
     { word: "demographic parity", translation: "parité démographique", example: "Demographic parity requires equal prediction rates across protected groups regardless of base rates." },
-    { word: "equal opportunity", translation: "égalité des chances", example: "Equal opportunity fairness ensures similar true positive rates across different demographics." },
+    
     { word: "bias mitigation", translation: "atténuation des biais", example: "Bias mitigation techniques address unfairness in training data and model behavior." },
-    { word: "AI ethics", translation: "éthique de l'IA", example: "AI ethics examines moral implications of artificial intelligence development and deployment." },
-    { word: "responsible AI", translation: "IA responsable", example: "Responsible AI frameworks ensure systems are developed and deployed with appropriate safeguards." },
+    
+    
     { word: "privacy-preserving machine learning", translation: "apprentissage automatique respectueux de la vie privée", example: "Privacy-preserving machine learning enables analysis without exposing individual sensitive data." },
-    { word: "federated learning", translation: "apprentissage fédéré", example: "Federated learning trains models across decentralized devices without exchanging raw data." },
-    { word: "differential privacy", translation: "confidentialité différentielle", example: "Differential privacy adds calibrated noise to protect individual information while maintaining aggregate insights." },
+    
+    
     { word: "model governance", translation: "gouvernance des modèles", example: "Model governance establishes policies and procedures for responsible AI development and deployment." },
-    { word: "AI alignment", translation: "alignement de l'IA", example: "AI alignment ensures artificial intelligence systems behave according to human values and intentions." },
+    
     { word: "human-AI collaboration", translation: "collaboration homme-IA", example: "Human-AI collaboration leverages complementary strengths of people and machines for enhanced outcomes." },
-    { word: "AI safety", translation: "sécurité de l'IA", example: "AI safety research addresses potential risks from increasingly capable artificial intelligence systems." },
-    { word: "value alignment", translation: "alignement des valeurs", example: "Value alignment ensures AI systems optimize for objectives consistent with human preferences." },
+    
+    
     { word: "AI regulation", translation: "réglementation de l'IA", example: "AI regulation frameworks establish boundaries and requirements for artificial intelligence development and use." },
-    { word: "AI governance", translation: "gouvernance de l'IA", example: "AI governance encompasses policies, institutions, and norms guiding artificial intelligence advancement." },
-    { word: "algorithmic impact assessment", translation: "évaluation de l'impact algorithmique", example: "Algorithmic impact assessments evaluate potential consequences before deploying automated systems." },
-    { word: "technological unemployment", translation: "chômage technologique", example: "Discussions of technological unemployment address labor market impacts of increasing automation." },
-    { word: "artificial general intelligence", translation: "intelligence artificielle générale", example: "Artificial general intelligence would match human versatility across diverse cognitive tasks." }
-  ]
+    
+    { word: "algorithmic impact assessment", translation: "évaluation de l'impact algorithmique", example: "Algorithmic impact assessments evaluate potential consequences before deploying automated systems." }]
 };

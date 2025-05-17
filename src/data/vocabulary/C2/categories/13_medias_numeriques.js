@@ -4,70 +4,70 @@ export const vocab = {
     // Journalisme numérique (25 mots)
     { word: "digital journalism", translation: "journalisme numérique", example: "Digital journalism transforms news gathering and distribution through online platforms." },
     { word: "multimedia storytelling", translation: "narration multimédia", example: "Multimedia storytelling combines text, audio, and visuals for immersive reporting." },
-    { word: "data journalism", translation: "journalisme de données", example: "Data journalism analyzes large datasets to uncover and explain news stories." },
+    
     { word: "interactive reporting", translation: "reportage interactif", example: "Interactive reporting enables audience engagement with news content." },
-    { word: "citizen journalism", translation: "journalisme citoyen", example: "Citizen journalism involves non-professionals in news gathering and dissemination." },
+    
     { word: "social media journalism", translation: "journalisme sur les réseaux sociaux", example: "Social media journalism leverages platforms for news distribution and sourcing." },
-    { word: "mobile journalism", translation: "journalisme mobile", example: "Mobile journalism creates content primarily using smartphone technology." },
-    { word: "subscription model", translation: "modèle par abonnement", example: "The subscription model provides sustainable revenue for digital news outlets." },
+    
+    
     { word: "digital newsroom", translation: "salle de rédaction numérique", example: "Digital newsrooms integrate technology throughout the editorial process." },
     { word: "content aggregation", translation: "agrégation de contenu", example: "Content aggregation collects information from multiple sources into a single platform." },
     { word: "algorithmic journalism", translation: "journalisme algorithmique", example: "Algorithmic journalism uses automation to generate news content." },
-    { word: "engagement metrics", translation: "métriques d'engagement", example: "Engagement metrics track how audiences interact with digital news content." },
-    { word: "immersive journalism", translation: "journalisme immersif", example: "Immersive journalism uses virtual reality to place audiences within news events." },
+    
+    
     { word: "newsletter journalism", translation: "journalisme par infolettre", example: "Newsletter journalism delivers curated content directly to subscriber inboxes." },
     { word: "digital news platform", translation: "plateforme d'information numérique", example: "Digital news platforms distribute content across multiple devices and formats." },
-    { word: "paywall", translation: "mur payant", example: "Paywalls restrict access to content for non-subscribers or non-paying users." },
-    { word: "news app", translation: "application d'actualités", example: "News apps provide streamlined mobile access to journalistic content." },
+    
+    
     { word: "longform journalism", translation: "journalisme de format long", example: "Longform journalism explores complex topics through extended digital narratives." },
     { word: "crowdsourced reporting", translation: "reportage collaboratif", example: "Crowdsourced reporting integrates information from audience contributors." },
     { word: "hyperlocal journalism", translation: "journalisme hyperlocal", example: "Hyperlocal journalism focuses on community-specific news coverage." },
     { word: "editorial analytics", translation: "analyse éditoriale", example: "Editorial analytics guides content decisions based on audience data." },
     { word: "verification technology", translation: "technologie de vérification", example: "Verification technology authenticates digital content and sources." },
-    { word: "content monetization", translation: "monétisation de contenu", example: "Content monetization strategies generate revenue from digital journalism." },
+    
     { word: "cross-platform publishing", translation: "publication multiplateforme", example: "Cross-platform publishing adapts content for various digital channels." },
-    { word: "media convergence", translation: "convergence médiatique", example: "Media convergence blends traditional and digital journalism approaches." },
+    
     
     // Médias sociaux (25 mots)
     { word: "social media platform", translation: "plateforme de médias sociaux", example: "Social media platforms connect users and facilitate content sharing." },
     { word: "content algorithm", translation: "algorithme de contenu", example: "Content algorithms determine which posts users see in their feeds." },
-    { word: "viral content", translation: "contenu viral", example: "Viral content spreads rapidly through social networks and platforms." },
-    { word: "social networking", translation: "réseautage social", example: "Social networking connects individuals through online relationships." },
-    { word: "user-generated content", translation: "contenu généré par les utilisateurs", example: "User-generated content forms the backbone of social media platforms." },
+    
+    
+    
     { word: "social media engagement", translation: "engagement sur les médias sociaux", example: "Social media engagement measures interactions with online content." },
     { word: "feed curation", translation: "curation de fil d'actualité", example: "Feed curation algorithms personalize content based on user behavior." },
     { word: "platform moderation", translation: "modération de plateforme", example: "Platform moderation policies govern acceptable content and behavior." },
-    { word: "social listening", translation: "écoute sociale", example: "Social listening analyzes online conversations for consumer insights." },
-    { word: "influencer marketing", translation: "marketing d'influence", example: "Influencer marketing leverages prominent social media personalities." },
-    { word: "community management", translation: "gestion de communauté", example: "Community management nurtures online groups around brands or interests." },
-    { word: "content strategy", translation: "stratégie de contenu", example: "Content strategy guides creation and distribution across social platforms." },
+    
+    
+    
+    
     { word: "social media metrics", translation: "métriques des médias sociaux", example: "Social media metrics quantify performance and audience response." },
     { word: "platform policy", translation: "politique de plateforme", example: "Platform policies establish rules governing user behavior and content." },
-    { word: "echo chamber", translation: "chambre d'écho", example: "Echo chambers reinforce existing beliefs through algorithmic content filtering." },
-    { word: "filter bubble", translation: "bulle de filtre", example: "Filter bubbles limit exposure to diverse viewpoints through personalization." },
-    { word: "microblogging", translation: "microblogage", example: "Microblogging platforms restrict content to short-form messages." },
+    
+    
+    
     { word: "social commerce", translation: "commerce social", example: "Social commerce integrates shopping functionality into social platforms." },
-    { word: "social media analytics", translation: "analytique des médias sociaux", example: "Social media analytics measures performance across platforms and campaigns." },
-    { word: "content moderation", translation: "modération de contenu", example: "Content moderation removes prohibited material from social platforms." },
-    { word: "platform governance", translation: "gouvernance des plateformes", example: "Platform governance determines how social media services are regulated." },
-    { word: "engagement rate", translation: "taux d'engagement", example: "Engagement rate measures audience interactions relative to follower count." },
-    { word: "social proof", translation: "preuve sociale", example: "Social proof influences behavior through visibility of others' actions and opinions." },
+    
+    
+    
+    
+    
     { word: "digital community", translation: "communauté numérique", example: "Digital communities form around shared interests on social platforms." },
     { word: "social media management", translation: "gestion des médias sociaux", example: "Social media management coordinates presence across multiple platforms." },
     
     // Communication numérique (25 mots)
-    { word: "digital communication", translation: "communication numérique", example: "Digital communication encompasses messages exchanged through electronic channels." },
-    { word: "content marketing", translation: "marketing de contenu", example: "Content marketing creates valuable materials to attract specific audiences." },
-    { word: "media relations", translation: "relations médias", example: "Media relations builds connections between organizations and news outlets." },
+    
+    
+    
     { word: "brand messaging", translation: "messages de marque", example: "Brand messaging establishes consistent organizational identity and value propositions." },
     { word: "audience targeting", translation: "ciblage d'audience", example: "Audience targeting directs communication to specific demographic segments." },
-    { word: "content strategy", translation: "stratégie de contenu", example: "Content strategy guides creation and distribution of valuable materials." },
-    { word: "communication channel", translation: "canal de communication", example: "Communication channels include various media for message transmission." },
+    
+    
     { word: "multimedia content", translation: "contenu multimédia", example: "Multimedia content combines text, images, audio, and video elements." },
-    { word: "content calendar", translation: "calendrier éditorial", example: "Content calendars organize publication schedules across platforms." },
+    
     { word: "brand voice", translation: "voix de marque", example: "Brand voice establishes distinctive tone and personality in communications." },
-    { word: "digital storytelling", translation: "narration numérique", example: "Digital storytelling uses multimedia to create compelling narratives." },
-    { word: "content distribution", translation: "distribution de contenu", example: "Content distribution strategies disseminate materials across channels." },
+    
+    
     { word: "audience engagement", translation: "engagement de l'audience", example: "Audience engagement measures interaction with digital content." },
     { word: "multichannel communication", translation: "communication multicanal", example: "Multichannel communication delivers consistent messages across platforms." },
     { word: "communication analytics", translation: "analytique de communication", example: "Communication analytics measures effectiveness of digital messaging." },
@@ -75,20 +75,20 @@ export const vocab = {
     { word: "digital messaging", translation: "messagerie numérique", example: "Digital messaging platforms facilitate text-based communications." },
     { word: "personalized communication", translation: "communication personnalisée", example: "Personalized communication tailors messages to individual recipients." },
     { word: "messaging strategy", translation: "stratégie de messagerie", example: "Messaging strategy guides organizational communication approach." },
-    { word: "communication planning", translation: "planification de communication", example: "Communication planning coordinates messaging across campaigns and channels." },
-    { word: "content curation", translation: "curation de contenu", example: "Content curation selects and organizes existing materials for specific audiences." },
+    
+    
     { word: "audience segmentation", translation: "segmentation d'audience", example: "Audience segmentation divides recipients into targetable groups." },
     { word: "tone of voice", translation: "ton de voix", example: "Tone of voice establishes how brand personality is expressed in communications." },
-    { word: "integrated communication", translation: "communication intégrée", example: "Integrated communication aligns messaging across functions and channels." },
-    { word: "content governance", translation: "gouvernance de contenu", example: "Content governance establishes standards and processes for digital materials." },
+    
+    
     
     // Marketing digital (25 mots)
-    { word: "digital marketing", translation: "marketing digital", example: "Digital marketing promotes products and services through online channels." },
-    { word: "search engine optimization", translation: "optimisation pour les moteurs de recherche", example: "Search engine optimization improves website visibility in search results." },
-    { word: "pay-per-click advertising", translation: "publicité au coût par clic", example: "Pay-per-click advertising charges marketers when users click on ads." },
-    { word: "content marketing", translation: "marketing de contenu", example: "Content marketing attracts audiences through valuable information rather than direct promotion." },
+    
+    
+    
+    
     { word: "social media marketing", translation: "marketing sur les médias sociaux", example: "Social media marketing engages audiences on social platforms." },
-    { word: "email marketing", translation: "marketing par courriel", example: "Email marketing delivers targeted messages directly to prospect inboxes." },
+    
     { word: "conversion rate optimization", translation: "optimisation du taux de conversion", example: "Conversion rate optimization improves the percentage of visitors completing desired actions." },
     { word: "digital advertising", translation: "publicité numérique", example: "Digital advertising promotes products across websites, social media, and apps." },
     { word: "marketing automation", translation: "automatisation du marketing", example: "Marketing automation streamlines repetitive tasks through technology." },
@@ -96,16 +96,16 @@ export const vocab = {
     { word: "inbound marketing", translation: "marketing entrant", example: "Inbound marketing attracts customers through helpful content and experiences." },
     { word: "search engine marketing", translation: "marketing sur les moteurs de recherche", example: "Search engine marketing increases visibility through paid search listings." },
     { word: "landing page optimization", translation: "optimisation de page d'atterrissage", example: "Landing page optimization enhances pages designed to convert visitors to leads." },
-    { word: "marketing analytics", translation: "analytique marketing", example: "Marketing analytics measures campaign performance and customer behavior." },
+    
     { word: "customer journey mapping", translation: "cartographie du parcours client", example: "Customer journey mapping visualizes the complete experience from awareness to purchase." },
     { word: "remarketing", translation: "remarketing", example: "Remarketing targets ads to users who previously visited a website." },
     { word: "mobile marketing", translation: "marketing mobile", example: "Mobile marketing reaches audiences on smartphones and tablets." },
     { word: "marketing attribution", translation: "attribution marketing", example: "Marketing attribution identifies which channels influence conversion." },
-    { word: "influencer marketing", translation: "marketing d'influence", example: "Influencer marketing leverages respected voices to promote products." },
-    { word: "native advertising", translation: "publicité native", example: "Native advertising matches the form and function of the platform on which it appears." },
+    
+    
     { word: "marketing funnel", translation: "entonnoir marketing", example: "The marketing funnel visualizes the customer journey from awareness to purchase." },
     { word: "digital brand strategy", translation: "stratégie de marque numérique", example: "Digital brand strategy coordinates online representation and messaging." },
-    { word: "customer acquisition", translation: "acquisition de clients", example: "Customer acquisition tactics attract new buyers through digital channels." },
+    
     { word: "programmatic advertising", translation: "publicité programmatique", example: "Programmatic advertising automates digital ad buying through algorithms." },
     { word: "conversion tracking", translation: "suivi des conversions", example: "Conversion tracking measures when users complete desired actions." },
     
@@ -117,17 +117,17 @@ export const vocab = {
     { word: "messaging application", translation: "application de messagerie", example: "Messaging applications facilitate text-based exchanges between users." },
     { word: "cloud communication", translation: "communication dans le cloud", example: "Cloud communication services store and transmit data through remote servers." },
     { word: "livestreaming platform", translation: "plateforme de diffusion en direct", example: "Livestreaming platforms broadcast video content in real-time." },
-    { word: "digital workspace", translation: "espace de travail numérique", example: "Digital workspaces integrate tools and resources for remote collaboration." },
+    
     { word: "unified communications", translation: "communications unifiées", example: "Unified communications integrate multiple channels into cohesive systems." },
     { word: "communication API", translation: "API de communication", example: "Communication APIs enable integration of messaging features into applications." },
     { word: "peer-to-peer communication", translation: "communication pair à pair", example: "Peer-to-peer communication connects users directly without central servers." },
     { word: "asynchronous communication", translation: "communication asynchrone", example: "Asynchronous communication occurs without requiring simultaneous participation." },
     { word: "synchronous communication", translation: "communication synchrone", example: "Synchronous communication involves real-time interaction between participants." },
     { word: "instant messaging", translation: "messagerie instantanée", example: "Instant messaging enables real-time text-based conversation." },
-    { word: "customer relationship management", translation: "gestion de la relation client", example: "Customer relationship management platforms organize interactions with prospects and customers." },
+    
     { word: "communication infrastructure", translation: "infrastructure de communication", example: "Communication infrastructure provides technological foundations for connectivity." },
     { word: "social intranet", translation: "intranet social", example: "Social intranets combine internal communication with collaboration features." },
-    { word: "user interface", translation: "interface utilisateur", example: "User interfaces determine how people interact with communication technologies." },
+    
     { word: "communication protocol", translation: "protocole de communication", example: "Communication protocols standardize data exchange between systems." },
     { word: "virtual event platform", translation: "plateforme d'événements virtuels", example: "Virtual event platforms host online conferences and gatherings." },
     { word: "application programming interface", translation: "interface de programmation d'applications", example: "Application programming interfaces enable communication between software systems." },
@@ -141,38 +141,38 @@ export const vocab = {
     { word: "internal communication", translation: "communication interne", example: "Internal communication connects employees and departments within organizations." },
     { word: "external communication", translation: "communication externe", example: "External communication addresses stakeholders outside the organization." },
     { word: "corporate messaging", translation: "messagerie d'entreprise", example: "Corporate messaging establishes consistent organizational voice and content." },
-    { word: "crisis communication", translation: "communication de crise", example: "Crisis communication manages information flow during challenging situations." },
-    { word: "change communication", translation: "communication du changement", example: "Change communication facilitates organizational transitions and transformations." },
+    
+    
     { word: "leadership communication", translation: "communication de leadership", example: "Leadership communication conveys vision and direction from executives." },
-    { word: "strategic communication", translation: "communication stratégique", example: "Strategic communication aligns messaging with organizational objectives." },
-    { word: "employee engagement", translation: "engagement des employés", example: "Communication strategies influence employee engagement and commitment." },
-    { word: "communication audit", translation: "audit de communication", example: "Communication audits assess effectiveness of organizational messaging." },
+    
+    
+    
     { word: "vertical communication", translation: "communication verticale", example: "Vertical communication flows between different hierarchical levels." },
     { word: "horizontal communication", translation: "communication horizontale", example: "Horizontal communication occurs between peers across departments." },
-    { word: "communication channel", translation: "canal de communication", example: "Organizations leverage multiple communication channels for internal messaging." },
+    
     { word: "corporate narrative", translation: "récit d'entreprise", example: "Corporate narratives tell cohesive stories about organizational identity and purpose." },
-    { word: "stakeholder communication", translation: "communication avec les parties prenantes", example: "Stakeholder communication addresses diverse groups with organizational interests." },
+    
     { word: "communication strategy", translation: "stratégie de communication", example: "Communication strategy guides organizational messaging approach and execution." },
-    { word: "communication climate", translation: "climat de communication", example: "Communication climate reflects the atmosphere for information exchange." },
+    
     { word: "feedback mechanism", translation: "mécanisme de rétroaction", example: "Feedback mechanisms facilitate two-way organizational communication." },
-    { word: "corporate transparency", translation: "transparence d'entreprise", example: "Corporate transparency involves open information sharing with stakeholders." },
+    
     { word: "communication effectiveness", translation: "efficacité de communication", example: "Communication effectiveness measures impact of organizational messaging." },
     { word: "information dissemination", translation: "diffusion d'information", example: "Information dissemination distributes content throughout organizations." },
-    { word: "communication competence", translation: "compétence en communication", example: "Communication competence involves skills for effective message exchange." },
+    
     { word: "organizational dialogue", translation: "dialogue organisationnel", example: "Organizational dialogue encourages open exchange between stakeholders." },
     { word: "communication network", translation: "réseau de communication", example: "Communication networks represent patterns of information flow within organizations." },
     { word: "message consistency", translation: "cohérence des messages", example: "Message consistency ensures alignment across organizational communications." },
     
     // Stratégie de contenu (25 mots)
-    { word: "content strategy", translation: "stratégie de contenu", example: "Content strategy guides creation and management of digital materials." },
+    
     { word: "content planning", translation: "planification de contenu", example: "Content planning organizes production and publication schedules." },
-    { word: "editorial calendar", translation: "calendrier éditorial", example: "Editorial calendars coordinate content creation and distribution timelines." },
+    
     { word: "content audit", translation: "audit de contenu", example: "Content audits assess existing materials for quality and effectiveness." },
     { word: "content governance", translation: "gouvernance de contenu", example: "Content governance establishes standards and processes for digital materials." },
-    { word: "content lifecycle", translation: "cycle de vie du contenu", example: "Content lifecycle encompasses planning, creation, management, and archiving." },
-    { word: "target audience", translation: "public cible", example: "Content strategy identifies and addresses specific target audiences." },
-    { word: "content optimization", translation: "optimisation de contenu", example: "Content optimization enhances materials for search engines and user experience." },
-    { word: "content distribution", translation: "distribution de contenu", example: "Content distribution strategies disseminate materials across platforms." },
+    
+    
+    
+    
     { word: "editorial guidelines", translation: "directives éditoriales", example: "Editorial guidelines establish standards for voice, style, and format." },
     { word: "content performance", translation: "performance du contenu", example: "Content performance metrics measure effectiveness and engagement." },
     { word: "content mapping", translation: "cartographie de contenu", example: "Content mapping aligns materials with audience needs and journey stages." },
@@ -194,22 +194,22 @@ export const vocab = {
     { word: "visual communication", translation: "communication visuelle", example: "Visual communication conveys messages through images, typography, and design." },
     { word: "information design", translation: "design d'information", example: "Information design presents complex data visually for enhanced understanding." },
     { word: "visual identity", translation: "identité visuelle", example: "Visual identity establishes consistent brand representation through design elements." },
-    { word: "graphic design", translation: "conception graphique", example: "Graphic design combines images and text to communicate ideas effectively." },
-    { word: "visual hierarchy", translation: "hiérarchie visuelle", example: "Visual hierarchy guides attention to elements in order of importance." },
+    
+    
     { word: "typography", translation: "typographie", example: "Typography influences message perception through font selection and arrangement." },
-    { word: "infographic", translation: "infographie", example: "Infographics communicate complex information through visualizations and minimal text." },
+    
     { word: "color theory", translation: "théorie des couleurs", example: "Color theory guides strategic use of hues to evoke specific responses." },
-    { word: "data visualization", translation: "visualisation de données", example: "Data visualization presents statistics and information graphically." },
-    { word: "visual storytelling", translation: "narration visuelle", example: "Visual storytelling communicates narratives primarily through images." },
+    
+    
     { word: "brand guidelines", translation: "charte graphique", example: "Brand guidelines establish rules for consistent visual presentation." },
-    { word: "composition", translation: "composition", example: "Composition arranges visual elements to create balanced, effective designs." },
+    
     { word: "image selection", translation: "sélection d'images", example: "Strategic image selection reinforces messaging and brand identity." },
     { word: "visual consistency", translation: "cohérence visuelle", example: "Visual consistency strengthens brand recognition across communications." },
-    { word: "design thinking", translation: "pensée design", example: "Design thinking applies creative problem-solving to visual communication challenges." },
-    { word: "visual rhetoric", translation: "rhétorique visuelle", example: "Visual rhetoric uses images to persuade and influence audience perception." },
-    { word: "iconography", translation: "iconographie", example: "Iconography uses symbolic images to represent concepts quickly and clearly." },
+    
+    
+    
     { word: "layout design", translation: "conception de mise en page", example: "Layout design organizes visual and textual elements for optimal communication." },
-    { word: "responsive design", translation: "conception adaptative", example: "Responsive design adjusts visual presentation across different device screens." },
+    
     { word: "motion graphics", translation: "infographie animée", example: "Motion graphics combine animation and visual design to communicate dynamically." },
     { word: "user interface design", translation: "conception d'interface utilisateur", example: "User interface design creates visual interaction points between humans and technology." },
     { word: "white space", translation: "espace blanc", example: "Strategic white space improves readability and visual impact in design." },
@@ -218,47 +218,47 @@ export const vocab = {
     { word: "multimedia design", translation: "conception multimédia", example: "Multimedia design integrates various visual formats for comprehensive communication." },
     
     // Analyse et métriques de communication (25 mots)
-    { word: "communication analytics", translation: "analytique de communication", example: "Communication analytics measures effectiveness of messaging and content." },
+    
     { word: "performance metrics", translation: "métriques de performance", example: "Performance metrics quantify communication campaign results against objectives." },
-    { word: "engagement rate", translation: "taux d'engagement", example: "Engagement rate measures audience interaction with digital content." },
+    
     { word: "audience analysis", translation: "analyse d'audience", example: "Audience analysis examines demographic and behavioral characteristics." },
-    { word: "conversion tracking", translation: "suivi des conversions", example: "Conversion tracking measures when communications drive desired actions." },
+    
     { word: "impression", translation: "impression", example: "Impressions count how often content appears in audience feeds or pages." },
     { word: "reach", translation: "portée", example: "Reach measures the total number of unique individuals exposed to content." },
-    { word: "sentiment analysis", translation: "analyse de sentiment", example: "Sentiment analysis evaluates emotional tone in audience responses." },
+    
     { word: "attribution modeling", translation: "modélisation d'attribution", example: "Attribution modeling assigns value to different communication touchpoints." },
-    { word: "key performance indicator", translation: "indicateur clé de performance", example: "Key performance indicators measure progress toward communication objectives." },
-    { word: "content performance", translation: "performance du contenu", example: "Content performance metrics assess effectiveness across platforms." },
+    
+    
     { word: "share of voice", translation: "part de voix", example: "Share of voice compares brand visibility against competitors in media coverage." },
-    { word: "return on investment", translation: "retour sur investissement", example: "Return on investment calculates financial value generated by communication efforts." },
+    
     { word: "click-through rate", translation: "taux de clics", example: "Click-through rate measures the percentage of viewers who click on content links." },
     { word: "bounce rate", translation: "taux de rebond", example: "Bounce rate indicates when visitors leave websites without further interaction." },
     { word: "media monitoring", translation: "veille médiatique", example: "Media monitoring tracks brand mentions across online and traditional channels." },
-    { word: "audience segmentation", translation: "segmentation d'audience", example: "Audience segmentation divides viewers into groups for targeted analysis." },
-    { word: "benchmarking", translation: "analyse comparative", example: "Benchmarking compares communication performance against industry standards." },
-    { word: "quantitative analysis", translation: "analyse quantitative", example: "Quantitative analysis applies statistical methods to communication data." },
+    
+    
+    
     { word: "qualitative analysis", translation: "analyse qualitative", example: "Qualitative analysis examines subjective aspects of communication effectiveness." },
-    { word: "data visualization", translation: "visualisation de données", example: "Data visualization presents communication analytics in graphical formats." },
-    { word: "predictive analytics", translation: "analytique prédictive", example: "Predictive analytics forecasts future communication performance trends." },
-    { word: "conversion rate", translation: "taux de conversion", example: "Conversion rate measures the percentage of audience members completing desired actions." },
+    
+    
+    
     { word: "audience retention", translation: "rétention d'audience", example: "Audience retention metrics track continued engagement over time." },
     { word: "A/B testing", translation: "test A/B", example: "A/B testing compares performance between communication variants." },
     
     // Tendances et innovation en communication (25 mots)
     { word: "communication innovation", translation: "innovation en communication", example: "Communication innovation transforms how messages reach and influence audiences." },
-    { word: "digital transformation", translation: "transformation numérique", example: "Digital transformation fundamentally changes organizational communication approaches." },
-    { word: "artificial intelligence", translation: "intelligence artificielle", example: "Artificial intelligence automates and enhances communication processes." },
+    
+    
     { word: "voice technology", translation: "technologie vocale", example: "Voice technology creates new channels for audience interaction." },
-    { word: "augmented reality", translation: "réalité augmentée", example: "Augmented reality overlays digital information onto physical environments." },
-    { word: "virtual reality", translation: "réalité virtuelle", example: "Virtual reality creates immersive communication experiences." },
+    
+    
     { word: "interactive content", translation: "contenu interactif", example: "Interactive content engages audiences through participation rather than passive consumption." },
-    { word: "personalization", translation: "personnalisation", example: "Personalization tailors communications to individual preferences and behaviors." },
+    
     { word: "chatbot", translation: "agent conversationnel", example: "Chatbots provide automated, conversational audience interactions." },
     { word: "communication automation", translation: "automatisation de la communication", example: "Communication automation streamlines repetitive messaging tasks." },
     { word: "mobile-first communication", translation: "communication mobile-first", example: "Mobile-first communication prioritizes smartphone and tablet experiences." },
     { word: "data-driven messaging", translation: "messagerie axée sur les données", example: "Data-driven messaging optimizes content based on audience analytics." },
     { word: "omnichannel communication", translation: "communication omnicanal", example: "Omnichannel communication creates seamless experiences across platforms." },
-    { word: "content personalization", translation: "personnalisation de contenu", example: "Content personalization adapts messages for individual recipients." },
+    
     { word: "emerging platform", translation: "plateforme émergente", example: "Communication strategies must continually adapt to emerging platforms." },
     { word: "visual search", translation: "recherche visuelle", example: "Visual search enables image-based information discovery." },
     { word: "voice search optimization", translation: "optimisation pour la recherche vocale", example: "Voice search optimization adapts content for spoken queries." },

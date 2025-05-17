@@ -2,15 +2,15 @@ export const vocab = {
   title: "Méthodologie de Recherche",
   words: [
     // Principes et approches méthodologiques (50 mots)
-    { word: "research methodology", translation: "méthodologie de recherche", example: "The research methodology section clearly articulates the ontological and epistemological assumptions underpinning the study." },
+    
     { word: "research paradigm", translation: "paradigme de recherche", example: "The constructivist research paradigm assumes that reality is socially constructed through shared meanings." },
     { word: "positivism", translation: "positivisme", example: "Positivism emphasizes objective measurement, verification, and the discovery of causal relationships between variables." },
     { word: "post-positivism", translation: "post-positivisme", example: "Post-positivism acknowledges that observations are theory-laden while maintaining commitment to objectivity as a regulatory ideal." },
     { word: "interpretivism", translation: "interprétativisme", example: "The researcher adopted an interpretivist approach to understand how participants construct meaning from their experiences." },
-    { word: "constructivism", translation: "constructivisme", example: "Constructivism posits that knowledge emerges through interaction between researcher and participants rather than being discovered." },
-    { word: "critical theory", translation: "théorie critique", example: "Critical theory research aims not merely to understand social phenomena but to transform oppressive structures." },
+    
+    
     { word: "pragmatism", translation: "pragmatisme", example: "Pragmatism focuses on practical consequences rather than abstract philosophical positions in research design." },
-    { word: "postmodernism", translation: "postmodernisme", example: "Postmodernism questions grand narratives and emphasizes plurality, fragmentation, and contextuality of knowledge." },
+    
     { word: "epistemology", translation: "épistémologie", example: "The researcher's epistemology influences what counts as valid knowledge and appropriate methods for acquiring it." },
     { word: "ontology", translation: "ontologie", example: "The study's ontological position conceptualizes identity as fluid and contextual rather than fixed and essential." },
     { word: "axiology", translation: "axiologie", example: "Axiology addresses how researcher values inevitably influence the research process and knowledge production." },
@@ -19,41 +19,41 @@ export const vocab = {
     { word: "abductive reasoning", translation: "raisonnement abductif", example: "Abductive reasoning moves between deduction and induction, developing explanatory hypotheses from puzzling observations." },
     { word: "qualitative methodology", translation: "méthodologie qualitative", example: "Qualitative methodology examines meanings, contexts, and processes through rich descriptive data." },
     { word: "quantitative methodology", translation: "méthodologie quantitative", example: "Quantitative methodology employs statistical analysis to identify patterns, relationships, and causal connections." },
-    { word: "mixed methods", translation: "méthodes mixtes", example: "The mixed methods design integrated survey data with in-depth interviews to provide both breadth and depth of understanding." },
-    { word: "interdisciplinary research", translation: "recherche interdisciplinaire", example: "Interdisciplinary research integrates theoretical frameworks and methodological approaches from multiple academic disciplines." },
+    
+    
     { word: "transdisciplinary approach", translation: "approche transdisciplinaire", example: "The transdisciplinary approach incorporated both academic knowledge and practitioner perspectives throughout the research process." },
-    { word: "methodological pluralism", translation: "pluralisme méthodologique", example: "Methodological pluralism acknowledges that different research questions may require different methodological approaches." },
+    
     { word: "research design", translation: "conception de recherche", example: "The research design articulated logical connections between research questions, data collection, and analytical strategies." },
     { word: "cross-sectional design", translation: "conception transversale", example: "The cross-sectional design collected data at a single point in time across multiple comparison groups." },
-    { word: "longitudinal design", translation: "conception longitudinale", example: "The longitudinal design tracked changes in participants' attitudes over a three-year period." },
-    { word: "experimental design", translation: "conception expérimentale", example: "The experimental design manipulated independent variables while controlling potential confounding factors." },
-    { word: "quasi-experimental design", translation: "conception quasi-expérimentale", example: "The quasi-experimental design utilized naturally occurring comparison groups when random assignment was infeasible." },
+    
+    
+    
     { word: "observational study", translation: "étude observationnelle", example: "The observational study examined behavior in natural settings without experimental manipulation." },
-    { word: "conceptual framework", translation: "cadre conceptuel", example: "The conceptual framework integrated multiple theoretical perspectives to guide data collection and analysis." },
-    { word: "theoretical framework", translation: "cadre théorique", example: "The theoretical framework specified relationships between key constructs based on prior research." },
+    
+    
     { word: "exploratory research", translation: "recherche exploratoire", example: "Exploratory research was appropriate given limited prior knowledge about the phenomenon under investigation." },
     { word: "descriptive research", translation: "recherche descriptive", example: "Descriptive research documented patterns and characteristics without focusing on causal relationships." },
     { word: "explanatory research", translation: "recherche explicative", example: "Explanatory research identified causal mechanisms underlying the observed relationships between variables." },
-    { word: "evaluative research", translation: "recherche évaluative", example: "Evaluative research assessed the implementation and outcomes of the policy intervention against stated objectives." },
-    { word: "action research", translation: "recherche-action", example: "Action research engaged practitioners as co-researchers to address concrete organizational challenges." },
+    
+    
     { word: "participatory research", translation: "recherche participative", example: "Participatory research involved community members in problem definition, data collection, and analysis." },
     { word: "emancipatory research", translation: "recherche émancipatoire", example: "Emancipatory research aims to challenge power relations and promote social transformation." },
     { word: "feminist methodology", translation: "méthodologie féministe", example: "Feminist methodology centers gender as an analytical category while questioning traditional scientific objectivity claims." },
     { word: "indigenous methodology", translation: "méthodologie autochtone", example: "Indigenous methodology integrates cultural protocols and knowledge systems throughout the research process." },
-    { word: "grounded theory", translation: "théorie ancrée", example: "Grounded theory develops theoretical explanations inductively through iterative data collection and analysis." },
+    
     { word: "phenomenology", translation: "phénoménologie", example: "Phenomenology explores lived experiences through detailed examination of participants' conscious perceptions." },
-    { word: "ethnography", translation: "ethnographie", example: "Ethnography involves immersion in community contexts to understand cultural practices and meaning systems." },
-    { word: "case study", translation: "étude de cas", example: "The case study examined the phenomenon within its real-world context using multiple data sources." },
+    
+    
     { word: "narrative inquiry", translation: "enquête narrative", example: "Narrative inquiry analyzes stories as both data and analytical framework for understanding human experience." },
-    { word: "discourse analysis", translation: "analyse du discours", example: "Discourse analysis examined how language constructs social phenomena rather than merely describing reality." },
+    
     { word: "comparative approach", translation: "approche comparative", example: "The comparative approach identified patterns of similarity and difference across six organizational contexts." },
     { word: "historical method", translation: "méthode historique", example: "The historical method employed primary source documents to reconstruct institutional development chronologically." },
-    { word: "meta-analysis", translation: "méta-analyse", example: "The meta-analysis statistically integrated findings across 47 independent studies examining the phenomenon." },
-    { word: "systematic review", translation: "revue systématique", example: "The systematic review applied explicit criteria to comprehensively evaluate existing empirical literature." },
+    
+    
     { word: "scoping review", translation: "revue exploratoire", example: "The scoping review mapped conceptual boundaries and methodological approaches across the fragmented literature." },
     
     // Méthodes de collecte et d'analyse de données (50 mots)
-    { word: "data collection", translation: "collecte de données", example: "The data collection strategy combined administrative records with primary survey data for comprehensive analysis." },
+    
     { word: "sampling strategy", translation: "stratégie d'échantillonnage", example: "The sampling strategy employed maximum variation to capture diverse experiences within the population." },
     { word: "probability sampling", translation: "échantillonnage probabiliste", example: "Probability sampling ensured each population element had a known, non-zero chance of selection." },
     { word: "random sampling", translation: "échantillonnage aléatoire", example: "Simple random sampling minimized selection bias through equal selection probability for all population members." },
@@ -73,134 +73,134 @@ export const vocab = {
     { word: "participant observation", translation: "observation participante", example: "Participant observation documented both explicit practices and tacit knowledge embedded in daily routines." },
     { word: "fieldwork", translation: "travail de terrain", example: "Extended fieldwork facilitated deeper contextual understanding and rapport with community members." },
     { word: "document analysis", translation: "analyse documentaire", example: "Document analysis examined both content and production contexts of organizational archives and public records." },
-    { word: "archival research", translation: "recherche d'archives", example: "Archival research reconstructed institutional development through historical documents and administrative records." },
+    
     { word: "secondary data analysis", translation: "analyse de données secondaires", example: "Secondary data analysis repurposed existing datasets to address novel research questions cost-effectively." },
-    { word: "big data", translation: "mégadonnées", example: "The big data approach analyzed social media interactions across multiple platforms using computational methods." },
+    
     { word: "data triangulation", translation: "triangulation des données", example: "Data triangulation corroborated findings through multiple data sources to enhance validity and comprehensiveness." },
     { word: "method triangulation", translation: "triangulation des méthodes", example: "Method triangulation combined surveys, interviews, and observations to overcome limitations of any single approach." },
     { word: "data preparation", translation: "préparation des données", example: "Data preparation included cleaning, recoding, and transformation procedures prior to analysis." },
     { word: "data cleaning", translation: "nettoyage des données", example: "Data cleaning identified and addressed missing values, outliers, and coding errors systematically." },
     { word: "missing data", translation: "données manquantes", example: "Missing data were addressed through multiple imputation rather than simple case deletion to preserve statistical power." },
     { word: "outlier analysis", translation: "analyse des valeurs aberrantes", example: "Outlier analysis distinguished influential data points requiring investigation from simple recording errors." },
-    { word: "quantitative analysis", translation: "analyse quantitative", example: "Quantitative analysis employed both descriptive statistics and inferential tests appropriate to the data structure." },
-    { word: "statistical analysis", translation: "analyse statistique", example: "Statistical analysis included both bivariate relationships and multivariate modeling to address potential confounding." },
-    { word: "descriptive statistics", translation: "statistiques descriptives", example: "Descriptive statistics characterized central tendency and variability for key variables before hypothesis testing." },
-    { word: "inferential statistics", translation: "statistiques inférentielles", example: "Inferential statistics assessed whether observed relationships generalized beyond the immediate sample." },
+    
+    
+    
+    
     { word: "correlation analysis", translation: "analyse de corrélation", example: "Correlation analysis identified bivariate relationships without addressing causal direction." },
-    { word: "regression analysis", translation: "analyse de régression", example: "Multiple regression analysis estimated the independent effect of each predictor while controlling for covariates." },
+    
     { word: "moderation analysis", translation: "analyse de modération", example: "Moderation analysis examined how the relationship between variables differed across contextual conditions." },
     { word: "mediation analysis", translation: "analyse de médiation", example: "Mediation analysis tested theoretical mechanisms through which independent variables influenced outcomes." },
-    { word: "factor analysis", translation: "analyse factorielle", example: "Exploratory factor analysis identified underlying dimensions across multiple observed indicators." },
-    { word: "structural equation modeling", translation: "modélisation par équations structurelles", example: "Structural equation modeling simultaneously tested measurement models and structural relationships between latent constructs." },
+    
+    
     { word: "significance testing", translation: "test de signification", example: "Significance testing determined whether observed relationships exceeded what would be expected by chance alone." },
-    { word: "effect size", translation: "taille d'effet", example: "Effect size calculations complemented significance tests by estimating the practical importance of findings." },
-    { word: "confidence interval", translation: "intervalle de confiance", example: "Confidence intervals provided a range of plausible values rather than single-point estimates of parameters." },
-    { word: "statistical power", translation: "puissance statistique", example: "Statistical power calculations determined the ability to detect effects of theoretical and practical significance." },
-    { word: "qualitative analysis", translation: "analyse qualitative", example: "Qualitative analysis moved beyond mere content categorization to identify patterns, relationships, and meanings." },
-    { word: "thematic analysis", translation: "analyse thématique", example: "Thematic analysis identified recurrent patterns of meaning across the dataset through iterative coding." },
-    { word: "content analysis", translation: "analyse de contenu", example: "Content analysis quantified textual characteristics while examining their contextual meaning." },
+    
+    
+    
+    
+    
+    
     { word: "coding framework", translation: "cadre de codage", example: "The coding framework evolved through constant comparison between emergent categories and raw data." },
     { word: "analytical memo", translation: "mémo analytique", example: "Analytical memos documented evolving interpretations and methodological decisions throughout data analysis." },
     { word: "thick description", translation: "description dense", example: "Thick description situated observed behavior within its cultural context to convey implicit meanings." },
     
     // Conception de recherche (50 mots)
     { word: "research question", translation: "question de recherche", example: "The research questions evolved throughout the study as the phenomenon's complexity became apparent." },
-    { word: "hypothesis", translation: "hypothèse", example: "The study tested competing hypotheses derived from contrasting theoretical frameworks." },
+    
     { word: "research objective", translation: "objectif de recherche", example: "Research objectives specified both descriptive and explanatory aims guiding methodological decisions." },
-    { word: "literature review", translation: "revue de littérature", example: "The literature review synthesized empirical findings and theoretical approaches across disciplines." },
+    
     { word: "gap in knowledge", translation: "lacune dans les connaissances", example: "The study addressed a significant gap in knowledge regarding how contextual factors moderate the observed relationship." },
     { word: "research contribution", translation: "contribution à la recherche", example: "The research contribution extends beyond empirical findings to methodological innovation in measuring the construct." },
     { word: "delimitation", translation: "délimitation", example: "Study delimitations established boundaries regarding population, timeframe, and variables examined." },
     { word: "conceptualization", translation: "conceptualisation", example: "Careful conceptualization distinguished the construct from related concepts with which it is often conflated." },
     { word: "operationalization", translation: "opérationnalisation", example: "Operationalization translated abstract concepts into measurable indicators with established validity." },
-    { word: "measurement", translation: "mesure", example: "Measurement approaches balanced psychometric rigor with contextual relevance to the population." },
+    
     { word: "indicator", translation: "indicateur", example: "Multiple indicators captured distinct dimensions of the complex theoretical construct." },
-    { word: "validity", translation: "validité", example: "Construct validity evidence demonstrated that instruments measured the intended theoretical concepts." },
+    
     { word: "content validity", translation: "validité de contenu", example: "Content validity assessment ensured comprehensive coverage of all relevant aspects of the construct." },
     { word: "criterion validity", translation: "validité critérielle", example: "Criterion validity was established through correlation with established measures and predictive accuracy." },
     { word: "construct validity", translation: "validité de construit", example: "Construct validity evidence included convergent relationships with similar constructs and discriminant patterns with distinct concepts." },
     { word: "ecological validity", translation: "validité écologique", example: "The methodology prioritized ecological validity through naturalistic settings rather than artificial laboratory conditions." },
-    { word: "reliability", translation: "fiabilité", example: "Reliability analysis demonstrated measurement consistency across items, time, and different raters." },
+    
     { word: "internal consistency", translation: "cohérence interne", example: "Internal consistency coefficients exceeded conventional thresholds for all measurement scales." },
     { word: "test-retest reliability", translation: "fidélité test-retest", example: "Test-retest reliability assessment verified measurement stability across two-week intervals." },
     { word: "inter-rater reliability", translation: "fidélité inter-évaluateurs", example: "Rigorous training and standardized procedures enhanced inter-rater reliability for observational measures." },
     { word: "measurement error", translation: "erreur de mesure", example: "Statistical models incorporated measurement error estimates rather than assuming perfect measurement." },
     { word: "unit of analysis", translation: "unité d'analyse", example: "The research design aligned data collection methods with the organizational unit of analysis." },
     { word: "level of analysis", translation: "niveau d'analyse", example: "The multi-level analysis distinguished individual, team, and organizational factors affecting outcomes." },
-    { word: "independent variable", translation: "variable indépendante", example: "The independent variable was experimentally manipulated with three distinct conditions." },
-    { word: "dependent variable", translation: "variable dépendante", example: "Multiple dependent variables captured distinct dimensions of the complex outcome construct." },
+    
+    
     { word: "moderating variable", translation: "variable modératrice", example: "The analysis identified organizational culture as a significant moderating variable affecting implementation success." },
     { word: "mediating variable", translation: "variable médiatrice", example: "The theoretical model proposed cognitive appraisal as a mediating variable explaining the observed relationship." },
     { word: "control variable", translation: "variable de contrôle", example: "Statistical models included relevant control variables to minimize alternative explanations." },
-    { word: "confounding variable", translation: "variable parasite", example: "The research design incorporated strategies to address potential confounding variables threatening internal validity." },
+    
     { word: "covariate", translation: "covariable", example: "Analysis included demographic characteristics as covariates to isolate the effects of primary interest." },
     { word: "causal inference", translation: "inférence causale", example: "Methodological limitations constrained causal inference despite the observed statistical relationship." },
     { word: "counterfactual", translation: "contrefactuel", example: "Causal inference requires comparing observed outcomes with counterfactual scenarios had treatment not occurred." },
     { word: "internal validity", translation: "validité interne", example: "The experimental design prioritized internal validity through random assignment and controlled conditions." },
     { word: "external validity", translation: "validité externe", example: "Diverse sampling enhanced external validity by representing the population's heterogeneity." },
-    { word: "ecological validity", translation: "validité écologique", example: "Field experiments offered greater ecological validity than laboratory studies despite reduced control." },
+    
     { word: "generalizability", translation: "généralisabilité", example: "Findings' generalizability extended to similar organizational contexts but required caution for distinct settings." },
-    { word: "replication", translation: "réplication", example: "The study methodology facilitated future replication through transparent reporting of procedures and materials." },
+    
     { word: "randomization", translation: "randomisation", example: "Randomization equalized groups on both measured and unmeasured confounding factors." },
-    { word: "random assignment", translation: "assignation aléatoire", example: "Random assignment to experimental conditions supported causal inference by creating equivalent groups." },
+    
     { word: "matching", translation: "appariement", example: "Propensity score matching created comparable groups when random assignment was infeasible." },
-    { word: "baseline measurement", translation: "mesure de référence", example: "Baseline measurements established pre-intervention status for subsequent comparison." },
-    { word: "longitudinal design", translation: "conception longitudinale", example: "The longitudinal design tracked developmental trajectories over five measurement waves." },
-    { word: "repeated measures", translation: "mesures répétées", example: "Repeated measures designs increase statistical power by controlling for individual differences." },
-    { word: "cross-sectional design", translation: "conception transversale", example: "The cross-sectional design provided a snapshot of current conditions across diverse contexts." },
-    { word: "pilot study", translation: "étude pilote", example: "The pilot study refined methodology and established feasibility before full-scale implementation." },
-    { word: "field experiment", translation: "expérience de terrain", example: "The field experiment balanced scientific rigor with real-world relevance through randomized intervention." },
+    
+    
+    
+    
+    
+    
     { word: "natural experiment", translation: "expérience naturelle", example: "The policy change created a natural experiment allowing comparison of affected and unaffected regions." },
     { word: "quasi-experiment", translation: "quasi-expérience", example: "The quasi-experimental design utilized naturally occurring comparison groups when randomization was impractical." },
     { word: "case-control design", translation: "conception cas-témoins", example: "The case-control design compared individuals with the outcome to similar individuals without it." },
     
     // Évaluation et éthique de la recherche (50 mots)
-    { word: "research ethics", translation: "éthique de la recherche", example: "Research ethics considerations extended beyond formal requirements to researchers' moral responsibilities toward participants." },
-    { word: "informed consent", translation: "consentement éclairé", example: "Informed consent procedures ensured participants understood study purposes, procedures, risks, and benefits before enrollment." },
+    
+    
     { word: "voluntary participation", translation: "participation volontaire", example: "The researcher emphasized voluntary participation and the right to withdraw without consequences." },
-    { word: "confidentiality", translation: "confidentialité", example: "Confidentiality protections included data encryption, secure storage, and removal of identifying information." },
+    
     { word: "anonymity", translation: "anonymat", example: "Research procedures preserved participant anonymity through disassociation of responses from identifiers." },
     { word: "ethical approval", translation: "approbation éthique", example: "The study received ethical approval from the institutional review board before participant recruitment began." },
-    { word: "ethical dilemma", translation: "dilemme éthique", example: "The researcher navigated ethical dilemmas regarding disclosure of sensitive information discovered during interviews." },
-    { word: "vulnerable population", translation: "population vulnérable", example: "Research with vulnerable populations required additional safeguards beyond standard ethical protocols." },
+    
+    
     { word: "deception", translation: "tromperie", example: "The methodology avoided deception, providing complete information about study purposes and procedures." },
-    { word: "debriefing", translation: "débriefing", example: "The debriefing process explained research objectives and addressed participants' questions following data collection." },
+    
     { word: "harm minimization", translation: "minimisation des préjudices", example: "The research design incorporated harm minimization strategies for potentially sensitive topics." },
-    { word: "beneficence", translation: "bienfaisance", example: "The principle of beneficence guided research design to maximize potential benefits while minimizing risks." },
+    
     { word: "power relation", translation: "rapport de pouvoir", example: "The methodology acknowledged power relations between researchers and participants that might affect responses." },
     { word: "positionality", translation: "positionnalité", example: "The researcher reflected on how their positionality influenced research interactions and interpretations." },
     { word: "reflexivity", translation: "réflexivité", example: "Reflexivity involved critical self-examination of how the researcher's background affected research processes." },
-    { word: "research integrity", translation: "intégrité de la recherche", example: "Research integrity requires transparency about methodological limitations and potential conflicts of interest." },
-    { word: "responsible conduct", translation: "conduite responsable", example: "Responsible conduct of research includes fair attribution of contributions and accurate reporting of methods." },
-    { word: "transparency", translation: "transparence", example: "Methodological transparency included detailed reporting of analytical decisions and null findings." },
+    
+    
+    
     { word: "replicability", translation: "reproductibilité", example: "The study enhanced replicability by publishing materials, data, and analysis code in open repositories." },
     { word: "open science", translation: "science ouverte", example: "Open science practices included pre-registration of hypotheses and public data sharing following publication." },
     { word: "pre-registration", translation: "pré-enregistrement", example: "Study pre-registration distinguished confirmatory from exploratory analyses to address publication bias." },
-    { word: "data management", translation: "gestion des données", example: "The data management plan specified collection, storage, access, and preservation procedures for research materials." },
+    
     { word: "data curation", translation: "conservation des données", example: "Data curation ensured appropriate documentation and formatting for long-term usability." },
-    { word: "peer review", translation: "évaluation par les pairs", example: "The manuscript underwent rigorous peer review addressing theoretical framing and methodological approach." },
-    { word: "publication bias", translation: "biais de publication", example: "Publication bias creates distorted understanding when negative findings remain unpublished." },
+    
+    
     { word: "research quality", translation: "qualité de la recherche", example: "Research quality assessments considered both methodological rigor and substantive contribution." },
     { word: "trustworthiness", translation: "fiabilité", example: "Qualitative research established trustworthiness through credibility, transferability, dependability, and confirmability." },
-    { word: "credibility", translation: "crédibilité", example: "Member checking and prolonged engagement enhanced the credibility of qualitative findings." },
+    
     { word: "transferability", translation: "transférabilité", example: "Rich contextual description facilitated reader assessment of findings' transferability to other settings." },
     { word: "dependability", translation: "fiabilité", example: "Dependability was enhanced through detailed documentation of methodological decisions and shifting conditions." },
     { word: "confirmability", translation: "confirmabilité", example: "Confirmability procedures ensured findings reflected participants' perspectives rather than researcher bias." },
-    { word: "audit trail", translation: "piste d'audit", example: "The audit trail documented methodological decisions, data transformations, and evolving interpretations." },
+    
     { word: "triangulation", translation: "triangulation", example: "Methodological triangulation corroborated findings across different data collection approaches." },
     { word: "member checking", translation: "vérification par les membres", example: "Member checking invited participants to review preliminary findings and interpretations for accuracy." },
     { word: "research limitations", translation: "limites de la recherche", example: "The discussion acknowledged research limitations while explaining steps taken to mitigate their impact." },
     { word: "evaluation criteria", translation: "critères d'évaluation", example: "Evaluation criteria aligned with the study's methodological approach and philosophical assumptions." },
     { word: "practical significance", translation: "signification pratique", example: "Beyond statistical significance, the discussion addressed the practical significance of findings for stakeholders." },
     { word: "theoretical significance", translation: "signification théorique", example: "The findings offered theoretical significance by reconciling contradictory results in previous literature." },
-    { word: "societal impact", translation: "impact sociétal", example: "The research demonstrated societal impact through policy influence and professional practice changes." },
+    
     { word: "knowledge mobilization", translation: "mobilisation des connaissances", example: "Knowledge mobilization strategies included practitioner-oriented publications and community workshops." },
     { word: "knowledge translation", translation: "application des connaissances", example: "Knowledge translation converted research findings into accessible recommendations for implementation." },
     { word: "knowledge co-creation", translation: "co-création des connaissances", example: "Knowledge co-creation engaged practitioners throughout the research process from design to dissemination." },
     { word: "research utilization", translation: "utilisation de la recherche", example: "Research utilization tracking documented how findings influenced organizational policies and practices." },
     { word: "evidence-based practice", translation: "pratique fondée sur des données probantes", example: "Evidence-based practice integrates research findings with practitioner expertise and stakeholder preferences." },
-    { word: "implementation science", translation: "science de la mise en œuvre", example: "Implementation science examines facilitators and barriers to adopting research-supported interventions." },
-    { word: "research dissemination", translation: "diffusion de la recherche", example: "Research dissemination strategies targeted both academic and practitioner audiences through varied channels." },
+    
+    
     { word: "research-practice gap", translation: "écart recherche-pratique", example: "Collaborative research approaches help bridge the research-practice gap affecting knowledge utilization." },
     { word: "engaged scholarship", translation: "recherche engagée", example: "Engaged scholarship integrates stakeholder perspectives throughout the research process for enhanced relevance." },
     { word: "participatory knowledge", translation: "connaissance participative", example: "The methodology valued participatory knowledge production through collaborative interpretation with community members." }

@@ -3,40 +3,40 @@ export const vocab = {
   words: [
     // Structure des médias
     { word: "media landscape", translation: "paysage médiatique", example: "The media landscape has transformed dramatically with the rise of digital platforms." },
-    { word: "media ownership", translation: "propriété des médias", example: "Media ownership concentration has raised concerns about diversity of perspectives." },
-    { word: "media conglomerate", translation: "conglomérat médiatique", example: "The media conglomerate controls television networks, film studios, and publishing houses." },
+    
+    
     { word: "public broadcasting", translation: "radiodiffusion publique", example: "Public broadcasting provides educational and cultural programming with limited advertising." },
-    { word: "commercial media", translation: "médias commerciaux", example: "Commercial media rely primarily on advertising revenue to operate." },
-    { word: "independent media", translation: "médias indépendants", example: "Independent media often focus on stories overlooked by mainstream outlets." },
+    
+    
     { word: "media pluralism", translation: "pluralisme médiatique", example: "Media pluralism ensures diverse voices and perspectives reach the public." },
     { word: "media ecosystem", translation: "écosystème médiatique", example: "The media ecosystem includes traditional outlets, digital platforms, and content creators." },
     { word: "media infrastructure", translation: "infrastructure médiatique", example: "Developing countries often struggle with limited media infrastructure." },
-    { word: "vertical integration", translation: "intégration verticale", example: "Vertical integration allows media companies to control content production and distribution." },
-    { word: "media regulation", translation: "réglementation des médias", example: "Media regulation seeks to ensure fair competition and ethical standards." },
+    
+    
     { word: "broadcast licensing", translation: "licence de diffusion", example: "Broadcast licensing requires stations to serve the public interest." },
     { word: "public sphere", translation: "sphère publique", example: "A healthy public sphere depends on accessible and diverse media platforms." },
     { word: "media concentration", translation: "concentration médiatique", example: "Media concentration reduces the number of independent information sources." },
-    { word: "media market", translation: "marché des médias", example: "Competition in the media market has intensified with digital disruption." },
+    
     
     // Narratifs médiatiques
     { word: "media narrative", translation: "narratif médiatique", example: "The media narrative shaped public perception of the political scandal." },
     { word: "framing", translation: "cadrage", example: "The framing of news stories influences how audiences interpret events." },
-    { word: "agenda setting", translation: "établissement de l'agenda", example: "Media agenda setting determines which issues receive public attention." },
+    
     { word: "news values", translation: "valeurs d'information", example: "News values determine which events journalists consider newsworthy." },
     { word: "editorial line", translation: "ligne éditoriale", example: "The newspaper's editorial line reflects its political perspective." },
-    { word: "media bias", translation: "parti pris médiatique", example: "Readers should critically evaluate potential media bias in news sources." },
+    
     { word: "objectivity", translation: "objectivité", example: "Journalistic objectivity aims to separate facts from opinion." },
     { word: "sensationalism", translation: "sensationnalisme", example: "Sensationalism sacrifices accuracy for dramatic appeal." },
-    { word: "propaganda", translation: "propagande", example: "Propaganda deliberately spreads information to influence public opinion." },
-    { word: "misinformation", translation: "mésinformation", example: "Misinformation spreads false content without necessarily intending to deceive." },
-    { word: "disinformation", translation: "désinformation", example: "Disinformation campaigns deliberately spread false information to mislead." },
-    { word: "filter bubble", translation: "bulle de filtres", example: "Filter bubbles expose users primarily to ideas that reinforce existing beliefs." },
-    { word: "echo chamber", translation: "chambre d'écho", example: "Social media echo chambers limit exposure to opposing viewpoints." },
-    { word: "viral content", translation: "contenu viral", example: "Viral content spreads rapidly through social sharing." },
-    { word: "media literacy", translation: "littératie médiatique", example: "Media literacy helps people critically evaluate information sources." },
+    
+    
+    
+    
+    
+    
+    
     
     // Analyse du discours
-    { word: "discourse analysis", translation: "analyse du discours", example: "Discourse analysis examines language patterns in media content." },
+    
     { word: "rhetorical strategy", translation: "stratégie rhétorique", example: "Politicians employ rhetorical strategies to persuade voters." },
     { word: "public discourse", translation: "discours public", example: "Social media has transformed public discourse on political issues." },
     { word: "critical discourse analysis", translation: "analyse critique du discours", example: "Critical discourse analysis reveals power relationships embedded in language." },
@@ -48,23 +48,23 @@ export const vocab = {
     { word: "semantic analysis", translation: "analyse sémantique", example: "Semantic analysis examines the meaning and context of words in media texts." },
     { word: "multimodal analysis", translation: "analyse multimodale", example: "Multimodal analysis considers visual and textual elements together." },
     { word: "language ideology", translation: "idéologie linguistique", example: "Language ideology influences how issues are discussed in public forums." },
-    { word: "intertextuality", translation: "intertextualité", example: "Intertextuality reveals connections between different media texts." },
-    { word: "representation", translation: "représentation", example: "Media representation of minority groups affects public perception." },
-    { word: "semiotics", translation: "sémiotique", example: "Semiotics studies how signs and symbols create meaning in media content." },
+    
+    
+    
     
     // Production de contenus
     { word: "content production", translation: "production de contenu", example: "Digital tools have democratized content production." },
-    { word: "content creator", translation: "créateur de contenu", example: "Content creators build audiences across multiple platforms." },
-    { word: "editorial process", translation: "processus éditorial", example: "The editorial process ensures content meets quality standards." },
+    
+    
     { word: "newsroom", translation: "salle de rédaction", example: "The digital transformation has reshaped traditional newsroom structures." },
-    { word: "content strategy", translation: "stratégie de contenu", example: "Effective content strategy aligns with audience interests and platform requirements." },
-    { word: "user-generated content", translation: "contenu généré par les utilisateurs", example: "Social media platforms rely heavily on user-generated content." },
+    
+    
     { word: "content curation", translation: "curation de contenu", example: "Content curation involves selecting and organizing existing material." },
     { word: "multimedia production", translation: "production multimédia", example: "Multimedia production combines text, images, audio, and video." },
-    { word: "podcast", translation: "podcast", example: "The investigative podcast explored the historical events in depth." },
-    { word: "content management", translation: "gestion de contenu", example: "Content management systems streamline digital publishing workflows." },
-    { word: "content distribution", translation: "distribution de contenu", example: "Content distribution strategies must adapt to changing platform algorithms." },
-    { word: "content monetization", translation: "monétisation de contenu", example: "Content monetization options include advertising, subscriptions, and sponsored content." },
+    
+    
+    
+    
     { word: "transmedia storytelling", translation: "narration transmédia", example: "Transmedia storytelling extends narratives across multiple platforms." },
     { word: "editorial calendar", translation: "calendrier éditorial", example: "An editorial calendar organizes content production and publication schedules." },
     { word: "content lifecycle", translation: "cycle de vie du contenu", example: "The content lifecycle includes creation, distribution, and archiving phases." },
@@ -72,23 +72,23 @@ export const vocab = {
     // Éthique journalistique
     { word: "journalistic ethics", translation: "éthique journalistique", example: "Journalistic ethics guide responsible reporting practices." },
     { word: "editorial independence", translation: "indépendance éditoriale", example: "Editorial independence protects journalism from external influence." },
-    { word: "accountability", translation: "responsabilité", example: "Media accountability mechanisms include corrections and reader feedback." },
-    { word: "transparency", translation: "transparence", example: "Transparency about sources and methods builds audience trust." },
-    { word: "fact-checking", translation: "vérification des faits", example: "Rigorous fact-checking ensures accurate reporting." },
+    
+    
+    
     { word: "source protection", translation: "protection des sources", example: "Source protection safeguards confidential informants." },
-    { word: "conflict of interest", translation: "conflit d'intérêts", example: "Journalists must disclose any conflict of interest related to their reporting." },
+    
     { word: "impartiality", translation: "impartialité", example: "Impartiality requires presenting multiple perspectives on controversial issues." },
     { word: "editorial judgment", translation: "jugement éditorial", example: "Editorial judgment determines which stories deserve coverage." },
-    { word: "press freedom", translation: "liberté de la presse", example: "Press freedom is essential for democratic governance." },
-    { word: "public interest", translation: "intérêt public", example: "Journalists must balance public interest against potential harm." },
+    
+    
     { word: "right to reply", translation: "droit de réponse", example: "The right to reply allows subjects of criticism to respond." },
-    { word: "confidentiality", translation: "confidentialité", example: "Journalists must respect confidentiality agreements with sources." },
+    
     { word: "privacy concerns", translation: "préoccupations de confidentialité", example: "Digital reporting raises new privacy concerns for subjects and sources." },
-    { word: "media accountability", translation: "responsabilité des médias", example: "Media accountability includes both legal obligations and ethical standards." },
+    
     
     // Médias alternatifs
-    { word: "alternative media", translation: "médias alternatifs", example: "Alternative media provide perspectives outside mainstream narratives." },
-    { word: "citizen journalism", translation: "journalisme citoyen", example: "Citizen journalism allows ordinary people to report on local events." },
+    
+    
     { word: "community media", translation: "médias communautaires", example: "Community media serve specific geographic or identity-based audiences." },
     { word: "grassroots media", translation: "médias populaires", example: "Grassroots media emerge from community initiatives rather than commercial interests." },
     { word: "participatory journalism", translation: "journalisme participatif", example: "Participatory journalism involves audience members in reporting processes." },
@@ -102,7 +102,7 @@ export const vocab = {
     { word: "media activism", translation: "activisme médiatique", example: "Media activism challenges dominant media practices and representations." },
     
     // Communication stratégique
-    { word: "strategic communication", translation: "communication stratégique", example: "Strategic communication aligns messaging with organizational goals." },
+    
     { word: "public relations", translation: "relations publiques", example: "Public relations manages the public image of organizations and individuals." },
     { word: "crisis communication", translation: "communication de crise", example: "Effective crisis communication addresses emergencies transparently and promptly." },
     { word: "corporate communication", translation: "communication d'entreprise", example: "Corporate communication includes both internal and external messaging." },

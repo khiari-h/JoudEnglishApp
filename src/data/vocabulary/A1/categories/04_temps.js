@@ -52,7 +52,7 @@
     { word: "late", translation: "tard", example: "I went to bed late." },
     { word: "hour", translation: "heure", example: "The meeting lasted one hour." },
     { word: "minute", translation: "minute", example: "Please wait five minutes." },
-    { word: "second", translation: "seconde", example: "It takes only a few seconds." },
+    
     { word: "o'clock", translation: "heure", example: "The class starts at 9 o'clock." },
     { word: "time", translation: "temps/heure", example: "What time is it?" },
     { word: "watch", translation: "montre", example: "I have a new watch." },

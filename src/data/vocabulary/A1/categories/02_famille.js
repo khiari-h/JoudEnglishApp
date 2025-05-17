@@ -10,8 +10,8 @@
     { word: "daughter", translation: "fille", example: "Their daughter is five years old." },
     { word: "brother", translation: "frère", example: "I have one brother." },
     { word: "sister", translation: "sœur", example: "My sister lives in London." },
-    { word: "baby", translation: "bébé", example: "The baby is sleeping." },
-    { word: "child", translation: "enfant", example: "They have three children." },
+    
+    
     { word: "twin", translation: "jumeau/jumelle", example: "They are twins." },
     { word: "sibling", translation: "frère ou sœur", example: "How many siblings do you have?" },
     { word: "stepfather", translation: "beau-père", example: "This is my stepfather." },
@@ -66,7 +66,7 @@
     { word: "team", translation: "équipe", example: "We are a good team." },
     { word: "stranger", translation: "étranger/inconnu", example: "Don't talk to strangers." },
     { word: "friendship", translation: "amitié", example: "Our friendship is very important to me." },
-    { word: "relationship", translation: "relation", example: "I have a good relationship with my boss." },
+    
     { word: "community", translation: "communauté", example: "We have a strong community in our neighborhood." },
     { word: "close friend", translation: "ami proche", example: "She is one of my close friends." },
     { word: "old friend", translation: "vieil ami", example: "We are old friends from school." },

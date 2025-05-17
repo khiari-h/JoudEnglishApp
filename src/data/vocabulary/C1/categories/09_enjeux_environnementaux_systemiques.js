@@ -21,39 +21,39 @@ export const vocab = {
     { word: "model parameterization", translation: "paramétrisation de modèle", example: "Model parameterization represents sub-grid processes that cannot be directly simulated." },
     { word: "climate simulation", translation: "simulation climatique", example: "The climate simulation projected temperature increases over a 100-year timeframe." },
     { word: "nested model", translation: "modèle imbriqué", example: "Nested models provide higher resolution for specific regions within global simulations." },
-    { word: "model validation", translation: "validation de modèle", example: "Model validation compares simulation outputs against observed climate patterns." },
+    
     { word: "climate forecasting", translation: "prévision climatique", example: "Climate forecasting predicts conditions months or years in advance." },
     { word: "climate reanalysis", translation: "réanalyse climatique", example: "Climate reanalysis combines historical observations with models to create comprehensive datasets." },
     { word: "boundary condition", translation: "condition aux limites", example: "Ocean temperatures serve as boundary conditions for atmospheric models." },
     { word: "climate fingerprinting", translation: "empreinte climatique", example: "Climate fingerprinting identifies human influence on observed patterns." },
     { word: "coupled model", translation: "modèle couplé", example: "Coupled models connect atmospheric, oceanic, and land surface components." },
     { word: "regional climate model", translation: "modèle climatique régional", example: "Regional climate models provide higher resolution for specific geographic areas." },
-    { word: "model uncertainty", translation: "incertitude du modèle", example: "Model uncertainty stems from incomplete knowledge of climate processes." },
+    
     
     // Justice environnementale
-    { word: "environmental justice", translation: "justice environnementale", example: "Environmental justice addresses unfair distribution of environmental benefits and burdens." },
+    
     { word: "environmental racism", translation: "racisme environnemental", example: "Environmental racism describes discriminatory policies that expose minorities to greater pollution." },
-    { word: "distributive justice", translation: "justice distributive", example: "Distributive justice focuses on fair allocation of environmental resources and risks." },
+    
     { word: "procedural equity", translation: "équité procédurale", example: "Procedural equity ensures meaningful participation in environmental decision-making." },
     { word: "vulnerable population", translation: "population vulnérable", example: "Climate adaptation must prioritize vulnerable populations with fewer resources." },
     { word: "environmental burden", translation: "fardeau environnemental", example: "Industrial facilities often concentrate environmental burdens in low-income communities." },
     { word: "environmental equity", translation: "équité environnementale", example: "Environmental equity aims to ensure fair treatment regardless of socioeconomic status." },
     { word: "ecological debt", translation: "dette écologique", example: "Ecological debt recognizes historical exploitation of environmental resources." },
-    { word: "just transition", translation: "transition juste", example: "A just transition protects workers and communities during shifts to sustainable practices." },
-    { word: "climate justice", translation: "justice climatique", example: "Climate justice links human rights with development in addressing climate change impacts." },
+    
+    
     { word: "environmental discrimination", translation: "discrimination environnementale", example: "Environmental discrimination occurs when policies harm specific communities." },
     { word: "disproportionate impact", translation: "impact disproportionné", example: "Studies document disproportionate impacts of pollution on minority neighborhoods." },
     { word: "environmental rights", translation: "droits environnementaux", example: "Environmental rights include access to clean air, water, and healthy ecosystems." },
-    { word: "intergenerational equity", translation: "équité intergénérationnelle", example: "Intergenerational equity considers obligations to future generations." },
+    
     { word: "participatory governance", translation: "gouvernance participative", example: "Participatory governance involves affected communities in environmental decisions." },
     { word: "environmental inequality", translation: "inégalité environnementale", example: "Environmental inequality describes uneven distribution of environmental quality." },
     { word: "recognition justice", translation: "justice de reconnaissance", example: "Recognition justice acknowledges diverse experiences and cultural perspectives." },
     { word: "environmental privilege", translation: "privilège environnemental", example: "Environmental privilege describes differential access to healthy environments." },
-    { word: "capacity building", translation: "renforcement des capacités", example: "Capacity building enables marginalized communities to advocate for their interests." },
-    { word: "community empowerment", translation: "autonomisation communautaire", example: "Community empowerment supports local participation in environmental governance." },
+    
+    
     { word: "territorial justice", translation: "justice territoriale", example: "Territorial justice addresses geographic disparities in environmental conditions." },
     { word: "social vulnerability", translation: "vulnérabilité sociale", example: "Social vulnerability increases susceptibility to environmental hazards." },
-    { word: "environmental advocacy", translation: "plaidoyer environnemental", example: "Environmental advocacy promotes policy changes to address community concerns." },
+    
     { word: "community-based monitoring", translation: "surveillance communautaire", example: "Community-based monitoring involves residents in documenting pollution issues." },
     { word: "environmental health disparity", translation: "disparité de santé environnementale", example: "Environmental health disparities correlate with socioeconomic factors." },
     { word: "differential exposure", translation: "exposition différentielle", example: "Research documented differential exposure to air pollution across neighborhoods." },
@@ -61,26 +61,26 @@ export const vocab = {
     
     // Gouvernance écologique
     { word: "ecological governance", translation: "gouvernance écologique", example: "Ecological governance addresses complex relationships between human and natural systems." },
-    { word: "environmental policy", translation: "politique environnementale", example: "Environmental policy establishes rules and incentives for resource management." },
+    
     { word: "adaptive management", translation: "gestion adaptative", example: "Adaptive management adjusts strategies based on monitoring results and new information." },
     { word: "ecosystem approach", translation: "approche écosystémique", example: "The ecosystem approach integrates ecological and human dimensions in governance." },
-    { word: "precautionary principle", translation: "principe de précaution", example: "The precautionary principle advocates preventive action despite scientific uncertainty." },
-    { word: "multilevel governance", translation: "gouvernance à multiniveaux", example: "Environmental challenges require multilevel governance from local to global scales." },
+    
+    
     { word: "environmental compliance", translation: "conformité environnementale", example: "Regulatory authorities monitor environmental compliance with pollution standards." },
     { word: "integrated assessment", translation: "évaluation intégrée", example: "Integrated assessment combines natural and social science perspectives." },
     { word: "policy integration", translation: "intégration des politiques", example: "Policy integration coordinates environmental concerns across different sectors." },
     { word: "collaborative governance", translation: "gouvernance collaborative", example: "Collaborative governance engages multiple stakeholders in shared decision-making." },
     { word: "ecosystem stewardship", translation: "intendance des écosystèmes", example: "Ecosystem stewardship promotes responsible management of natural resources." },
     { word: "environmental institution", translation: "institution environnementale", example: "Environmental institutions establish rules for sustainable resource use." },
-    { word: "regulatory framework", translation: "cadre réglementaire", example: "The regulatory framework sets standards for industrial emissions and waste disposal." },
+    
     { word: "resource regime", translation: "régime de ressources", example: "Resource regimes establish rights and responsibilities for natural resource management." },
     { word: "stakeholder participation", translation: "participation des parties prenantes", example: "Stakeholder participation improves legitimacy and effectiveness of decisions." },
     { word: "governance instrument", translation: "instrument de gouvernance", example: "Carbon taxes represent a market-based governance instrument for emissions reduction." },
     { word: "conservation policy", translation: "politique de conservation", example: "Conservation policy designates protected areas and endangered species protections." },
-    { word: "environmental governance", translation: "gouvernance environnementale", example: "Environmental governance includes both formal regulations and informal norms." },
-    { word: "collective action", translation: "action collective", example: "Addressing common pool resources requires collective action among resource users." },
+    
+    
     { word: "environmental leadership", translation: "leadership environnemental", example: "Environmental leadership promotes sustainable practices within organizations." },
-    { word: "enforcement mechanism", translation: "mécanisme d'application", example: "Effective governance requires robust enforcement mechanisms for regulations." },
+    
     { word: "cross-sectoral coordination", translation: "coordination intersectorielle", example: "Cross-sectoral coordination integrates environmental concerns across departments." },
     { word: "environmental assessment", translation: "évaluation environnementale", example: "Environmental assessment analyzes potential impacts of proposed projects." },
     { word: "adaptive capacity", translation: "capacité d'adaptation", example: "Governance systems need adaptive capacity to respond to changing conditions." },
@@ -91,7 +91,7 @@ export const vocab = {
     // Innovation durable
     { word: "sustainable innovation", translation: "innovation durable", example: "Sustainable innovation creates value while reducing environmental impacts." },
     { word: "eco-innovation", translation: "éco-innovation", example: "Eco-innovation develops new products and processes with environmental benefits." },
-    { word: "circular economy", translation: "économie circulaire", example: "Circular economy designs eliminate waste and keep materials in productive use." },
+    
     { word: "green technology", translation: "technologie verte", example: "Green technology addresses environmental challenges through technical solutions." },
     { word: "regenerative design", translation: "conception régénérative", example: "Regenerative design creates systems that restore rather than deplete resources." },
     { word: "clean technology", translation: "technologie propre", example: "Clean technology minimizes pollution and resource consumption in industrial processes." },
@@ -99,16 +99,16 @@ export const vocab = {
     { word: "biomimicry", translation: "biomimétisme", example: "Biomimicry draws inspiration from natural systems to solve design challenges." },
     { word: "sustainable design", translation: "conception durable", example: "Sustainable design considers environmental impacts throughout product lifecycles." },
     { word: "green chemistry", translation: "chimie verte", example: "Green chemistry reduces hazardous substances in chemical processes and products." },
-    { word: "cradle-to-cradle", translation: "du berceau au berceau", example: "Cradle-to-cradle design creates continuous material cycles without waste." },
-    { word: "technology transfer", translation: "transfert de technologie", example: "Technology transfer enables developing countries to adopt sustainable solutions." },
-    { word: "innovation ecosystem", translation: "écosystème d'innovation", example: "A supportive innovation ecosystem accelerates sustainable technology development." },
+    
+    
+    
     { word: "leapfrog technology", translation: "technologie de saut", example: "Developing regions can leapfrog directly to sustainable technologies." },
     { word: "transition experiment", translation: "expérimentation de transition", example: "Transition experiments test sustainable approaches at manageable scales." },
     { word: "socio-technical transition", translation: "transition socio-technique", example: "Sustainable development requires socio-technical transitions in multiple systems." },
-    { word: "innovation diffusion", translation: "diffusion de l'innovation", example: "Policies can accelerate innovation diffusion for sustainable technologies." },
+    
     { word: "niche innovation", translation: "innovation de niche", example: "Niche innovations develop in protected spaces before broader adoption." },
     { word: "frugal innovation", translation: "innovation frugale", example: "Frugal innovation creates affordable solutions with minimal resources." },
-    { word: "breakthrough technology", translation: "technologie révolutionnaire", example: "Breakthrough technologies can transform sustainability performance in entire sectors." },
+    
     { word: "sustainability-oriented innovation", translation: "innovation orientée durabilité", example: "Sustainability-oriented innovation explicitly addresses environmental challenges." },
     { word: "technological substitution", translation: "substitution technologique", example: "Technological substitution replaces harmful materials with sustainable alternatives." },
     { word: "innovation policy", translation: "politique d'innovation", example: "Innovation policy can direct research toward sustainability challenges." },
@@ -120,10 +120,10 @@ export const vocab = {
     // Écologie politique
     { word: "political ecology", translation: "écologie politique", example: "Political ecology examines how power relations shape environmental conditions." },
     { word: "environmental politics", translation: "politique environnementale", example: "Environmental politics involves contests over resource access and distribution." },
-    { word: "environmental governance", translation: "gouvernance environnementale", example: "Environmental governance establishes rules for managing natural resources." },
-    { word: "environmental movement", translation: "mouvement environnemental", example: "The environmental movement mobilizes collective action for ecological protection." },
+    
+    
     { word: "green political theory", translation: "théorie politique verte", example: "Green political theory emphasizes ecological sustainability in governance principles." },
-    { word: "ecological citizenship", translation: "citoyenneté écologique", example: "Ecological citizenship emphasizes responsibilities toward the natural environment." },
+    
     { word: "environmental activism", translation: "activisme environnemental", example: "Environmental activism applies pressure for policy changes and corporate behavior." },
     { word: "ecological democracy", translation: "démocratie écologique", example: "Ecological democracy extends political representation to non-human interests." },
     { word: "ecological modernization", translation: "modernisation écologique", example: "Ecological modernization proposes market-based solutions to environmental problems." },
@@ -133,15 +133,15 @@ export const vocab = {
     { word: "environmental conflict", translation: "conflit environnemental", example: "Environmental conflicts arise from competing interests in resource management." },
     { word: "ecological distribution", translation: "distribution écologique", example: "Ecological distribution concerns how environmental benefits and burdens are allocated." },
     { word: "environmental discourse", translation: "discours environnemental", example: "Environmental discourse shapes public understanding of ecological issues." },
-    { word: "political ecology", translation: "écologie politique", example: "Political ecology analyzes how social and political factors affect ecological conditions." },
+    
     { word: "deep ecology", translation: "écologie profonde", example: "Deep ecology argues for the inherent value of all living beings beyond human utility." },
     { word: "social ecology", translation: "écologie sociale", example: "Social ecology links environmental problems to hierarchical social structures." },
     { word: "eco-feminism", translation: "éco-féminisme", example: "Eco-feminism connects environmental degradation with systems of patriarchal domination." },
-    { word: "environmental protest", translation: "protestation environnementale", example: "Environmental protests oppose projects threatening ecological systems." },
+    
     { word: "environmental NGO", translation: "ONG environnementale", example: "Environmental NGOs advocate for policy changes and corporate accountability." },
     { word: "ecological economics", translation: "économie écologique", example: "Ecological economics situates economic activity within biophysical limits." },
-    { word: "environmental policy", translation: "politique environnementale", example: "Environmental policy establishes rules for managing impacts on natural systems." },
-    { word: "ecological footprint", translation: "empreinte écologique", example: "Ecological footprint quantifies human demands on Earth's ecosystems." },
+    
+    
     { word: "political-ecological system", translation: "système politico-écologique", example: "Political-ecological systems connect governance structures with ecosystem dynamics." },
     { word: "environmental resistance", translation: "résistance environnementale", example: "Environmental resistance opposes projects threatening ecological systems." },
     { word: "eco-socialism", translation: "éco-socialisme", example: "Eco-socialism integrates ecological principles with critique of capitalist production." },
@@ -149,28 +149,28 @@ export const vocab = {
     // Systèmes alimentaires
     { word: "food system", translation: "système alimentaire", example: "Sustainable food systems consider environmental and social impacts from production to consumption." },
     { word: "agricultural biodiversity", translation: "biodiversité agricole", example: "Agricultural biodiversity strengthens resilience to pests and climate change." },
-    { word: "agroecology", translation: "agroécologie", example: "Agroecology applies ecological principles to agricultural production systems." },
-    { word: "food security", translation: "sécurité alimentaire", example: "Food security ensures all people have reliable access to sufficient, nutritious food." },
-    { word: "food sovereignty", translation: "souveraineté alimentaire", example: "Food sovereignty emphasizes local control over agricultural production methods." },
-    { word: "sustainable agriculture", translation: "agriculture durable", example: "Sustainable agriculture maintains productivity while protecting ecosystems." },
-    { word: "food supply chain", translation: "chaîne d'approvisionnement alimentaire", example: "The food supply chain connects production, processing, distribution, and consumption." },
-    { word: "food waste", translation: "gaspillage alimentaire", example: "Food waste reduction addresses environmental impacts of discarded food." },
-    { word: "regenerative agriculture", translation: "agriculture régénérative", example: "Regenerative agriculture improves soil health and ecosystem functions." },
+    
+    
+    
+    
+    
+    
+    
     { word: "urban agriculture", translation: "agriculture urbaine", example: "Urban agriculture produces food within cities, reducing transportation impacts." },
     { word: "food desert", translation: "désert alimentaire", example: "Food deserts lack access to affordable, nutritious food options." },
     { word: "local food system", translation: "système alimentaire local", example: "Local food systems reduce transportation emissions and support regional economies." },
     { word: "food resilience", translation: "résilience alimentaire", example: "Food resilience enables systems to withstand disruptions and environmental changes." },
     { word: "alternative food network", translation: "réseau alimentaire alternatif", example: "Alternative food networks create direct connections between producers and consumers." },
     { word: "food justice", translation: "justice alimentaire", example: "Food justice addresses inequitable access to healthy, culturally appropriate food." },
-    { word: "precision agriculture", translation: "agriculture de précision", example: "Precision agriculture uses technology to optimize resource inputs and reduce waste." },
+    
     { word: "crop diversification", translation: "diversification des cultures", example: "Crop diversification reduces vulnerability to pests and market fluctuations." },
     { word: "food policy", translation: "politique alimentaire", example: "Food policy addresses agricultural production, distribution, and nutritional standards." },
-    { word: "vertical farming", translation: "agriculture verticale", example: "Vertical farming produces crops in stacked layers, reducing land requirements." },
-    { word: "agrobiodiversity", translation: "agrobiodiversité", example: "Agrobiodiversity supports ecosystem services while providing diverse nutrients." },
+    
+    
     { word: "community-supported agriculture", translation: "agriculture soutenue par la communauté", example: "Community-supported agriculture creates direct relationships between farmers and consumers." },
     { word: "nutrition security", translation: "sécurité nutritionnelle", example: "Nutrition security ensures access to appropriate nutrients, not just calories." },
     { word: "food self-sufficiency", translation: "autosuffisance alimentaire", example: "Food self-sufficiency reduces dependence on imported food products." },
-    { word: "sustainable intensification", translation: "intensification durable", example: "Sustainable intensification increases agricultural yields while minimizing environmental impacts." },
+    
     { word: "agrifood system", translation: "système agroalimentaire", example: "The agrifood system encompasses production, processing, distribution, and consumption." },
     { word: "food traceability", translation: "traçabilité alimentaire", example: "Food traceability systems track products from farm to consumer." },
     { word: "conservation agriculture", translation: "agriculture de conservation", example: "Conservation agriculture minimizes soil disturbance and maintains permanent soil cover." },
@@ -178,18 +178,18 @@ export const vocab = {
     // Transition socioécologique
     { word: "socio-ecological transition", translation: "transition socio-écologique", example: "Socio-ecological transition involves fundamental shifts in relationships between society and nature." },
     { word: "sustainability transition", translation: "transition vers la durabilité", example: "Sustainability transition requires changes in technology, practices, and governance." },
-    { word: "transformative change", translation: "changement transformateur", example: "Meeting environmental challenges requires transformative change across multiple systems." },
+    
     { word: "transition management", translation: "gestion de la transition", example: "Transition management guides long-term processes toward sustainability." },
     { word: "societal transformation", translation: "transformation sociétale", example: "Climate action requires societal transformation beyond technical solutions." },
     { word: "transition pathway", translation: "voie de transition", example: "Communities explore alternative transition pathways toward sustainable futures." },
     { word: "system innovation", translation: "innovation systémique", example: "System innovation addresses root causes rather than symptoms of environmental problems." },
     { word: "transition arena", translation: "arène de transition", example: "Transition arenas bring diverse stakeholders together to develop shared visions." },
-    { word: "transformation strategy", translation: "stratégie de transformation", example: "Transformation strategies combine technological innovation with social change." },
-    { word: "sustainable development", translation: "développement durable", example: "Sustainable development meets present needs without compromising future generations." },
-    { word: "transition experiment", translation: "expérimentation de transition", example: "Transition experiments test innovative approaches at manageable scales." },
+    
+    
+    
     { word: "niche development", translation: "développement de niche", example: "Niche development nurtures sustainable alternatives outside dominant systems." },
     { word: "transition governance", translation: "gouvernance de la transition", example: "Transition governance coordinates diverse actors toward sustainability goals." },
-    { word: "just transition", translation: "transition juste", example: "Just transition ensures that vulnerable communities aren't disadvantaged by environmental policies." },
+    
     { word: "regime shift", translation: "changement de régime", example: "Ecological regime shifts involve abrupt transitions to alternative stable states." },
     { word: "socio-technical system", translation: "système socio-technique", example: "Energy transitions involve changes in socio-technical systems beyond technology alone." },
     { word: "transition politics", translation: "politique de transition", example: "Transition politics addresses power dynamics in sustainability transformations." },

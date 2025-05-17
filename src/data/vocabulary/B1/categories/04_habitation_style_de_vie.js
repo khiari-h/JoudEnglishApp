@@ -13,7 +13,7 @@ export const vocab = {
     { word: "housing bubble", translation: "bulle immobilière", example: "Economists are concerned about a potential housing bubble." },
     { word: "foreclosure", translation: "saisie immobilière", example: "The number of foreclosures has decreased in recent years." },
     { word: "property tax", translation: "taxe foncière", example: "Property taxes vary depending on the location." },
-    { word: "housing shortage", translation: "pénurie de logements", example: "The city is experiencing a severe housing shortage." },
+    
     { word: "market trends", translation: "tendances du marché", example: "Market trends indicate a shift toward suburban properties." },
     { word: "investment property", translation: "bien immobilier d'investissement", example: "They purchased an investment property to rent out." },
     { word: "appraisal", translation: "évaluation", example: "The bank required an appraisal before approving the loan." },
@@ -40,7 +40,7 @@ export const vocab = {
     { word: "retrofit", translation: "rénovation énergétique", example: "They retrofitted their old house with modern energy systems." },
     
     // Aménagement intérieur
-    { word: "interior design", translation: "design d'intérieur", example: "She hired an interior design firm to redecorate her home." },
+    
     { word: "color scheme", translation: "palette de couleurs", example: "The color scheme creates a calm atmosphere." },
     { word: "statement piece", translation: "pièce maîtresse", example: "The vintage chandelier serves as a statement piece in the dining room." },
     { word: "feature wall", translation: "mur d'accent", example: "They painted a feature wall in a bold color." },
@@ -58,9 +58,9 @@ export const vocab = {
     
     // Problèmes de logement
     { word: "housing crisis", translation: "crise du logement", example: "The city is facing a severe housing crisis." },
-    { word: "homelessness", translation: "sans-abrisme", example: "Homelessness is increasing in urban areas." },
-    { word: "gentrification", translation: "gentrification", example: "Gentrification has changed the character of the neighborhood." },
-    { word: "overcrowding", translation: "surpeuplement", example: "Overcrowding is a common issue in affordable housing." },
+    
+    
+    
     { word: "inadequate housing", translation: "logement inadéquat", example: "Many families live in inadequate housing conditions." },
     { word: "eviction", translation: "expulsion", example: "Tenants received an eviction notice due to building renovation." },
     { word: "housing discrimination", translation: "discrimination au logement", example: "There are laws against housing discrimination." },
@@ -95,7 +95,7 @@ export const vocab = {
     { word: "logistics", translation: "logistique", example: "Planning the logistics of a move can be complicated." },
     { word: "transitional housing", translation: "logement transitoire", example: "They stayed in transitional housing while searching for a permanent home." },
     { word: "moving in", translation: "emménagement", example: "Moving in is exciting but stressful." },
-    { word: "housewarming", translation: "pendaison de crémaillère", example: "They hosted a housewarming party for their friends." },
+    
     { word: "settling in", translation: "s'installer", example: "It takes time to settle in to a new neighborhood." },
     { word: "forwarding address", translation: "adresse de réexpédition", example: "Don't forget to set up a forwarding address with the post office." },
     { word: "change of address", translation: "changement d'adresse", example: "Submit a change of address form for all your accounts." },
@@ -105,7 +105,7 @@ export const vocab = {
     // Écologie domestique
     { word: "sustainable living", translation: "mode de vie durable", example: "They practice sustainable living in their home." },
     { word: "energy efficiency", translation: "efficacité énergétique", example: "Energy efficiency reduces both costs and environmental impact." },
-    { word: "carbon footprint", translation: "empreinte carbone", example: "They've taken steps to reduce their household carbon footprint." },
+    
     { word: "renewable energy", translation: "énergie renouvelable", example: "The house uses renewable energy from solar panels." },
     { word: "greywater system", translation: "système d'eau grise", example: "A greywater system recycles water from sinks and showers." },
     { word: "composting", translation: "compostage", example: "Composting kitchen waste reduces landfill contributions." },

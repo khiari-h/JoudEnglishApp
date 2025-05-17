@@ -17,7 +17,7 @@ export const vocab = {
     { word: "administrative law", translation: "droit administratif", example: "Administrative law governs the activities of government agencies." },
     { word: "judicial review", translation: "contrôle juridictionnel", example: "Judicial review allows courts to examine the constitutionality of laws." },
     { word: "judicial independence", translation: "indépendance judiciaire", example: "Judicial independence ensures courts can make decisions without interference." },
-    { word: "separation of powers", translation: "séparation des pouvoirs", example: "Separation of powers divides government into distinct branches." },
+    
     { word: "legal hierarchy", translation: "hiérarchie des normes", example: "The legal hierarchy determines which laws take precedence when conflicts arise." },
     { word: "binding precedent", translation: "précédent contraignant", example: "Binding precedent requires courts to follow earlier decisions in similar cases." },
     { word: "legal pluralism", translation: "pluralisme juridique", example: "Legal pluralism recognizes multiple legal systems operating within one society." },
@@ -27,14 +27,14 @@ export const vocab = {
     { word: "trial", translation: "procès", example: "The trial allowed both sides to present evidence and arguments." },
     { word: "litigation", translation: "contentieux", example: "Litigation involves resolving disputes through the court system." },
     { word: "lawsuit", translation: "procès", example: "She filed a lawsuit seeking compensation for her injuries." },
-    { word: "appeal", translation: "appel", example: "The defendant filed an appeal after the unfavorable verdict." },
-    { word: "arbitration", translation: "arbitrage", example: "Arbitration provides an alternative to resolving disputes in court." },
-    { word: "mediation", translation: "médiation", example: "Mediation helps parties reach a mutually acceptable resolution with a neutral third party." },
-    { word: "evidence", translation: "preuve", example: "The prosecution presented compelling evidence linking the suspect to the crime." },
+    
+    
+    
+    
     { word: "testimony", translation: "témoignage", example: "The witness provided testimony about what she had seen." },
     { word: "cross-examination", translation: "contre-interrogatoire", example: "During cross-examination, the attorney challenged the witness's account." },
     { word: "legal procedure", translation: "procédure juridique", example: "Legal procedures ensure cases are handled consistently and fairly." },
-    { word: "due process", translation: "procédure régulière", example: "Due process guarantees fair treatment through the judicial system." },
+    
     { word: "motion", translation: "requête", example: "The defense filed a motion to dismiss the charges." },
     { word: "discovery", translation: "communication préalable", example: "Discovery allows parties to obtain evidence from each other before trial." },
     { word: "burden of proof", translation: "charge de la preuve", example: "In criminal cases, the prosecution bears the burden of proof." },
@@ -50,34 +50,34 @@ export const vocab = {
     { word: "legal duty", translation: "obligation juridique", example: "Parents have a legal duty to care for their children." },
     { word: "legal responsibility", translation: "responsabilité juridique", example: "Property owners have legal responsibility for maintaining safe conditions." },
     { word: "liability", translation: "responsabilité civile", example: "The company's liability insurance covered damages from the accident." },
-    { word: "civil rights", translation: "droits civiques", example: "Civil rights protect individuals from discrimination and ensure equal treatment." },
-    { word: "human rights", translation: "droits humains", example: "Human rights are universal entitlements inherent to all people." },
+    
+    
     { word: "legal capacity", translation: "capacité juridique", example: "Legal capacity refers to a person's ability to enter into binding contracts." },
     { word: "legal obligation", translation: "obligation légale", example: "Tax payment is a legal obligation for citizens and businesses." },
-    { word: "informed consent", translation: "consentement éclairé", example: "Medical procedures require patients' informed consent." },
-    { word: "legal protection", translation: "protection juridique", example: "Whistleblowers receive legal protection against retaliation." },
+    
+    
     { word: "equality before the law", translation: "égalité devant la loi", example: "Equality before the law ensures all persons are treated the same under legal statutes." },
     { word: "legal privilege", translation: "privilège juridique", example: "Attorney-client communications are protected by legal privilege." },
     { word: "reasonable care", translation: "diligence raisonnable", example: "Doctors must exercise reasonable care when treating patients." },
     { word: "privacy rights", translation: "droits à la vie privée", example: "Privacy rights protect personal information from unauthorized disclosure." },
     { word: "constitutional guarantee", translation: "garantie constitutionnelle", example: "Freedom of speech is a constitutional guarantee in many democracies." },
-    { word: "property rights", translation: "droits de propriété", example: "Property rights allow owners to use, sell, or transfer their possessions." },
-    { word: "intellectual property", translation: "propriété intellectuelle", example: "Patents and copyrights protect intellectual property from unauthorized use." },
+    
+    
     { word: "right to counsel", translation: "droit à un avocat", example: "The right to counsel ensures defendants have legal representation." },
     { word: "presumption of innocence", translation: "présomption d'innocence", example: "The presumption of innocence means defendants are considered innocent until proven guilty." },
     
     // Contentieux & règlement
-    { word: "dispute resolution", translation: "résolution des litiges", example: "Dispute resolution mechanisms provide alternatives to traditional court proceedings." },
+    
     { word: "alternative dispute resolution", translation: "résolution alternative des conflits", example: "Alternative dispute resolution includes mediation, arbitration, and negotiation." },
     { word: "settlement agreement", translation: "accord de règlement", example: "The settlement agreement outlined the terms for resolving the dispute." },
-    { word: "negotiation", translation: "négociation", example: "Negotiation allowed both parties to reach a mutually acceptable solution." },
+    
     { word: "conciliation", translation: "conciliation", example: "Conciliation helped the disputing parties restore their relationship." },
     { word: "binding arbitration", translation: "arbitrage contraignant", example: "Binding arbitration produces decisions that parties must follow." },
     { word: "non-binding arbitration", translation: "arbitrage non contraignant", example: "Non-binding arbitration provides recommendations that parties can accept or reject." },
     { word: "class action", translation: "action collective", example: "A class action allows many plaintiffs with similar claims to sue together." },
     { word: "out-of-court settlement", translation: "règlement à l'amiable", example: "The out-of-court settlement avoided a lengthy trial process." },
     { word: "small claims court", translation: "tribunal des petites créances", example: "Small claims court handles minor disputes with simplified procedures." },
-    { word: "conflict of interest", translation: "conflit d'intérêts", example: "The judge recused herself due to a potential conflict of interest." },
+    
     { word: "adjudication", translation: "décision judiciaire", example: "Adjudication involves a neutral third party making a binding decision." },
     { word: "final judgment", translation: "jugement définitif", example: "The final judgment concluded the legal proceedings." },
     { word: "restitution", translation: "restitution", example: "The court ordered restitution to compensate victims for their losses." },
@@ -85,14 +85,14 @@ export const vocab = {
     { word: "damages", translation: "dommages-intérêts", example: "The jury awarded damages to compensate for the plaintiff's injuries." },
     
     // Droit international
-    { word: "international law", translation: "droit international", example: "International law governs relations between countries and other global actors." },
-    { word: "treaty", translation: "traité", example: "Treaties establish binding agreements between nations on specific issues." },
+    
+    
     { word: "international court", translation: "cour internationale", example: "The International Court of Justice resolves legal disputes between states." },
     { word: "international criminal court", translation: "cour pénale internationale", example: "The International Criminal Court prosecutes genocide, war crimes, and crimes against humanity." },
     { word: "extradition", translation: "extradition", example: "Extradition involves transferring an accused person from one country to another." },
     { word: "diplomatic immunity", translation: "immunité diplomatique", example: "Diplomatic immunity protects foreign officials from arrest or prosecution." },
     { word: "humanitarian law", translation: "droit humanitaire", example: "Humanitarian law governs the conduct of armed conflicts." },
-    { word: "sovereignty", translation: "souveraineté", example: "National sovereignty gives states authority over their territory and affairs." },
+    
     { word: "human rights law", translation: "droit des droits humains", example: "Human rights law protects fundamental freedoms and dignities globally." },
     { word: "maritime law", translation: "droit maritime", example: "Maritime law governs activities on international waters." },
     { word: "customary international law", translation: "droit international coutumier", example: "Customary international law derives from consistent state practice." },
@@ -104,7 +104,7 @@ export const vocab = {
     { word: "territorial jurisdiction", translation: "compétence territoriale", example: "Territorial jurisdiction limits a state's authority to its geographical boundaries." },
     
     // Professions juridiques
-    { word: "lawyer", translation: "avocat", example: "The lawyer represented her client throughout the legal proceedings." },
+    
     { word: "attorney", translation: "avocat", example: "The attorney specialized in corporate law cases." },
     { word: "judge", translation: "juge", example: "The judge presided over the trial and issued the final ruling." },
     { word: "prosecutor", translation: "procureur", example: "The prosecutor presented evidence to prove the defendant's guilt." },
@@ -121,15 +121,15 @@ export const vocab = {
     { word: "law firm", translation: "cabinet d'avocats", example: "The law firm specialized in patent litigation cases." },
     { word: "legal aid", translation: "aide juridique", example: "Legal aid provides assistance to those who cannot afford legal services." },
     { word: "bar association", translation: "barreau", example: "The bar association regulates the professional conduct of lawyers." },
-    { word: "judiciary", translation: "magistrature", example: "Members of the judiciary are expected to remain impartial." },
+    
     
     // Criminalité & application de la loi
-    { word: "crime", translation: "crime", example: "The crime was investigated thoroughly by local police." },
+    
     { word: "criminal law", translation: "droit pénal", example: "Criminal law defines offenses against the state and establishes punishments." },
     { word: "felony", translation: "crime", example: "Murder and armed robbery are examples of felonies." },
     { word: "misdemeanor", translation: "délit", example: "Petty theft and trespassing are typically classified as misdemeanors." },
     { word: "law enforcement", translation: "application de la loi", example: "Law enforcement agencies work to prevent and investigate crimes." },
-    { word: "police officer", translation: "agent de police", example: "The police officer arrested the suspect at the scene." },
+    
     { word: "arrest", translation: "arrestation", example: "The arrest occurred after officers observed illegal activity." },
     { word: "search warrant", translation: "mandat de perquisition", example: "Police must obtain a search warrant before entering private property." },
     { word: "probable cause", translation: "cause probable", example: "Officers need probable cause to make an arrest or search someone." },
@@ -138,7 +138,7 @@ export const vocab = {
     { word: "incarceration", translation: "incarcération", example: "Incarceration separates offenders from society during their punishment." },
     { word: "parole", translation: "libération conditionnelle", example: "Parole allows prisoners to serve the remainder of their sentence in the community." },
     { word: "probation", translation: "probation", example: "Probation requires offenders to meet certain conditions while living in the community." },
-    { word: "rehabilitation", translation: "réhabilitation", example: "Rehabilitation programs aim to reduce reoffending by addressing underlying issues." },
+    
     { word: "penal code", translation: "code pénal", example: "The penal code defines criminal offenses and their punishments." },
     { word: "prosecution", translation: "poursuite", example: "The prosecution must prove guilt beyond a reasonable doubt." },
     { word: "detention", translation: "détention", example: "The suspect remained in detention while awaiting trial." },

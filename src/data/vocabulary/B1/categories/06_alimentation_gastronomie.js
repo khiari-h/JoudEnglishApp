@@ -45,7 +45,7 @@ export const vocab = {
     { word: "prix fixe menu", translation: "menu à prix fixe", example: "The restaurant offers a prix fixe menu for special occasions." },
     { word: "signature dish", translation: "plat signature", example: "The truffle pasta is the chef's signature dish." },
     { word: "food critic", translation: "critique gastronomique", example: "The food critic gave the restaurant a glowing review." },
-    { word: "reservation", translation: "réservation", example: "You need to make a reservation weeks in advance." },
+    
     { word: "dining experience", translation: "expérience gastronomique", example: "They offer a unique dining experience with entertainment." },
     { word: "culinary tourism", translation: "tourisme culinaire", example: "Culinary tourism has become increasingly popular." },
     { word: "food delivery service", translation: "service de livraison de repas", example: "Food delivery services boomed during the pandemic." },
@@ -95,7 +95,7 @@ export const vocab = {
     // Nutrition & diététique
     { word: "nutritional value", translation: "valeur nutritive", example: "The nutritional value of processed foods is often lower." },
     { word: "dietary requirement", translation: "besoin diététique", example: "The menu accommodates various dietary requirements." },
-    { word: "balanced diet", translation: "alimentation équilibrée", example: "A balanced diet includes a variety of food groups." },
+    
     { word: "nutrient density", translation: "densité nutritionnelle", example: "Leafy greens have high nutrient density." },
     { word: "nutritional deficiency", translation: "carence nutritionnelle", example: "Iron deficiency is a common nutritional deficiency." },
     { word: "caloric intake", translation: "apport calorique", example: "Athletes need a higher caloric intake than sedentary individuals." },
@@ -126,7 +126,7 @@ export const vocab = {
     { word: "crop rotation", translation: "rotation des cultures", example: "Crop rotation helps maintain soil health." },
     { word: "livestock farming", translation: "élevage", example: "Sustainable livestock farming practices are gaining popularity." },
     { word: "food waste", translation: "gaspillage alimentaire", example: "Restaurants are finding creative ways to reduce food waste." },
-    { word: "carbon footprint", translation: "empreinte carbone", example: "The carbon footprint of food production varies by method." },
+    
     { word: "food technology", translation: "technologie alimentaire", example: "Food technology innovations can improve shelf life." },
     { word: "food security", translation: "sécurité alimentaire", example: "Climate change threatens global food security." },
     { word: "vertical farming", translation: "agriculture verticale", example: "Vertical farming allows food production in urban environments." },

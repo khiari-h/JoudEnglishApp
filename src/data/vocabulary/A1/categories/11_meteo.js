@@ -18,10 +18,10 @@
     { word: "rainbow", translation: "arc-en-ciel", example: "Look, there's a rainbow!" },
     
     // Températures simples
-    { word: "hot", translation: "chaud", example: "It's very hot in summer." },
+    
     { word: "warm", translation: "tiède", example: "The weather is warm today." },
     { word: "cool", translation: "frais", example: "The evenings are cool in autumn." },
-    { word: "cold", translation: "froid", example: "It's very cold in winter." },
+    
     { word: "freezing", translation: "glacial", example: "It's freezing outside!" },
     { word: "temperature", translation: "température", example: "The temperature is rising." },
     { word: "degree", translation: "degré", example: "It's 20 degrees today." },
@@ -32,10 +32,10 @@
     { word: "weather", translation: "temps/météo", example: "What's the weather like today?" },
     { word: "forecast", translation: "prévisions", example: "The weather forecast says it will rain tomorrow." },
     { word: "climate", translation: "climat", example: "The climate is different in every country." },
-    { word: "season", translation: "saison", example: "Summer is my favorite season." },
+    
     { word: "umbrella", translation: "parapluie", example: "Take an umbrella, it might rain." },
-    { word: "sunglasses", translation: "lunettes de soleil", example: "Wear sunglasses, it's very sunny." },
-    { word: "coat", translation: "manteau", example: "Wear a warm coat, it's cold outside." },
+    
+    
     { word: "What's the weather like?", translation: "Quel temps fait-il?", example: "What's the weather like in your city?" }
   ]
 };

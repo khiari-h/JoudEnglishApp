@@ -2,65 +2,64 @@ export const vocab = {
   title: "Diplomatie et Négociations Internationales",
   words: [
     // Relations diplomatiques (25 mots)
-    { word: "diplomatic relations", translation: "relations diplomatiques", example: "Diplomatic relations between the countries were established in 1965." },
-    { word: "embassy", translation: "ambassade", example: "The embassy represents its country's interests in the host nation." },
-    { word: "ambassador", translation: "ambassadeur", example: "The ambassador presented her credentials to the head of state." },
-    { word: "consulate", translation: "consulat", example: "The consulate provides services to citizens living abroad." },
-    { word: "diplomatic corps", translation: "corps diplomatique", example: "The diplomatic corps includes foreign representatives accredited to the country." },
-    { word: "diplomatic immunity", translation: "immunité diplomatique", example: "Diplomatic immunity protects envoys from prosecution in the host country." },
-    { word: "diplomatic mission", translation: "mission diplomatique", example: "The diplomatic mission works to advance bilateral relations." },
-    { word: "diplomatic protocol", translation: "protocole diplomatique", example: "Diplomatic protocol governs official interactions and ceremonies." },
-    { word: "diplomatic recognition", translation: "reconnaissance diplomatique", example: "Diplomatic recognition formally acknowledges a foreign government's legitimacy." },
-    { word: "credentials", translation: "lettres de créance", example: "The ambassador presented his credentials to the head of state." },
-    { word: "diplomatic cable", translation: "télégramme diplomatique", example: "Diplomatic cables securely communicate between missions and headquarters." },
-    { word: "diplomatic pouch", translation: "valise diplomatique", example: "The diplomatic pouch carries official correspondence without inspection." },
-    { word: "diplomatic service", translation: "service diplomatique", example: "The diplomatic service represents national interests overseas." },
+    
+    
+    
+    
+    
+    
+    
+     government's legitimacy." },
+    
+    
+    
+    
     { word: "receiving state", translation: "État accréditaire", example: "The receiving state hosts foreign diplomatic missions." },
     { word: "sending state", translation: "État accréditant", example: "The sending state dispatches diplomats to represent its interests." },
-    { word: "persona non grata", translation: "persona non grata", example: "The diplomat was declared persona non grata and asked to leave the country." },
-    { word: "diplomatic channel", translation: "voie diplomatique", example: "The message was conveyed through diplomatic channels." },
+    
+    
     { word: "foreign service", translation: "service extérieur", example: "The foreign service manages international relations and diplomacy." },
     { word: "diplomatic rank", translation: "rang diplomatique", example: "Diplomatic ranks include ambassadors, ministers, and attachés." },
     { word: "chargé d'affaires", translation: "chargé d'affaires", example: "The chargé d'affaires headed the mission in the ambassador's absence." },
-    { word: "diplomatic representation", translation: "représentation diplomatique", example: "Diplomatic representation ranges from full embassies to liaison offices." },
-    { word: "diplomatic incident", translation: "incident diplomatique", example: "The diplomatic incident strained relations between the countries." },
+    
+    
     { word: "diplomatic note", translation: "note diplomatique", example: "The diplomatic note formally communicated the government's position." },
     { word: "diplomatic bag", translation: "sac diplomatique", example: "The diplomatic bag carried classified documents between missions." },
-    { word: "extraterritoriality", translation: "extraterritorialité", example: "Extraterritoriality exempts embassy grounds from host country jurisdiction." },
+    
     
     // Organisations internationales (25 mots)
-    { word: "international organization", translation: "organisation internationale", example: "International organizations facilitate cooperation between countries." },
-    { word: "United Nations", translation: "Nations Unies", example: "The United Nations promotes international peace and security." },
-    { word: "Security Council", translation: "Conseil de sécurité", example: "The Security Council addresses threats to international peace." },
-    { word: "General Assembly", translation: "Assemblée générale", example: "The General Assembly includes all UN member states." },
-    { word: "World Health Organization", translation: "Organisation mondiale de la Santé", example: "The World Health Organization coordinates international public health efforts." },
-    { word: "International Monetary Fund", translation: "Fonds monétaire international", example: "The International Monetary Fund promotes global financial stability." },
-    { word: "World Bank", translation: "Banque mondiale", example: "The World Bank provides financial assistance to developing countries." },
-    { word: "regional organization", translation: "organisation régionale", example: "Regional organizations address issues specific to geographic areas." },
-    { word: "multilateral institution", translation: "institution multilatérale", example: "Multilateral institutions involve multiple countries in governance." },
+    
+    
+    
+    
+    
+    
+    
+    
+    
     { word: "treaty organization", translation: "organisation conventionnelle", example: "Treaty organizations implement specific international agreements." },
-    { word: "specialized agency", translation: "institution spécialisée", example: "Specialized agencies focus on specific functional areas." },
-    { word: "international secretariat", translation: "secrétariat international", example: "The international secretariat administers the organization's operations." },
+    
+    
     { word: "governing board", translation: "conseil d'administration", example: "The governing board oversees the organization's strategic direction." },
-    { word: "member state", translation: "État membre", example: "Member states participate in the organization's decision-making processes." },
-    { word: "non-governmental organization", translation: "organisation non gouvernementale", example: "Non-governmental organizations advocate for various causes internationally." },
-    { word: "observer status", translation: "statut d'observateur", example: "Observer status grants limited participation rights in proceedings." },
+    
+    
+    
     { word: "headquarters agreement", translation: "accord de siège", example: "The headquarters agreement established the organization's legal status." },
     { word: "diplomatic conference", translation: "conférence diplomatique", example: "The diplomatic conference negotiated the organization's founding treaty." },
     { word: "international civil servant", translation: "fonctionnaire international", example: "International civil servants work for global organizations, not individual countries." },
-    { word: "executive board", translation: "conseil exécutif", example: "The executive board implements policies approved by the general assembly." },
-    { word: "international mandate", translation: "mandat international", example: "The organization's international mandate authorized peacekeeping operations." },
+    
+    
     { word: "privileges and immunities", translation: "privilèges et immunités", example: "Privileges and immunities protect the organization's independent functioning." },
     { word: "voting procedure", translation: "procédure de vote", example: "The voting procedure required a two-thirds majority for important questions." },
-    { word: "institutional mechanism", translation: "mécanisme institutionnel", example: "Institutional mechanisms coordinate responses to international challenges." },
-    { word: "international bureaucracy", translation: "bureaucratie internationale", example: "The international bureaucracy administers programs worldwide." },
+    
+    
     
     // Négociations multilatérales (25 mots)
     { word: "multilateral negotiation", translation: "négociation multilatérale", example: "Multilateral negotiations involve multiple parties addressing common issues." },
-    { word: "plenary session", translation: "session plénière", example: "The plenary session included all conference participants." },
+    
     { word: "working group", translation: "groupe de travail", example: "The working group developed technical proposals on specific topics." },
-    { word: "consensus decision-making", translation: "prise de décision par consensus", example: "Consensus decision-making seeks agreement without formal voting." },
-    { word: "coalition building", translation: "formation de coalition", example: "Coalition building unites parties with similar interests." },
+    
+    
     { word: "negotiating bloc", translation: "bloc de négociation", example: "The negotiating bloc coordinated positions among like-minded countries." },
     { word: "draft resolution", translation: "projet de résolution", example: "The draft resolution was circulated for comments before formal submission." },
     { word: "amendment proposal", translation: "proposition d'amendement", example: "The amendment proposal modified language in the original text." },
@@ -69,7 +68,7 @@ export const vocab = {
     { word: "conference diplomacy", translation: "diplomatie de conférence", example: "Conference diplomacy characterizes interactions at major international meetings." },
     { word: "intergovernmental conference", translation: "conférence intergouvernementale", example: "The intergovernmental conference developed new treaty provisions." },
     { word: "diplomatic procedure", translation: "procédure diplomatique", example: "Diplomatic procedure structured the formal negotiation process." },
-    { word: "negotiation round", translation: "cycle de négociation", example: "Each negotiation round addressed progressive sets of issues." },
+    
     { word: "single undertaking", translation: "engagement unique", example: "The single undertaking principle required agreement on all elements as a package." },
     { word: "parallel negotiations", translation: "négociations parallèles", example: "Parallel negotiations addressed different aspects simultaneously." },
     { word: "national position", translation: "position nationale", example: "National positions outlined each country's priorities and interests." },
@@ -83,69 +82,69 @@ export const vocab = {
     { word: "multilateral process", translation: "processus multilatéral", example: "The multilateral process incorporated diverse perspectives and interests." },
     
     // Résolution des conflits (25 mots)
-    { word: "conflict resolution", translation: "résolution des conflits", example: "Conflict resolution seeks sustainable, mutually acceptable solutions." },
+    
     { word: "peace negotiation", translation: "négociation de paix", example: "Peace negotiations aimed to end the decade-long civil conflict." },
-    { word: "mediation", translation: "médiation", example: "The UN provided mediation to facilitate dialogue between parties." },
+    
     { word: "peacekeeping", translation: "maintien de la paix", example: "Peacekeeping operations deployed to monitor the ceasefire agreement." },
     { word: "peacebuilding", translation: "consolidation de la paix", example: "Peacebuilding activities strengthened institutions after the conflict." },
-    { word: "ceasefire agreement", translation: "accord de cessez-le-feu", example: "The ceasefire agreement halted military operations immediately." },
+    
     { word: "peace agreement", translation: "accord de paix", example: "The peace agreement addressed political, economic, and security arrangements." },
-    { word: "peace process", translation: "processus de paix", example: "The peace process progressed through dialogue and confidence-building measures." },
+    
     { word: "third-party facilitation", translation: "facilitation par une tierce partie", example: "Third-party facilitation helped overcome negotiation obstacles." },
-    { word: "conflict prevention", translation: "prévention des conflits", example: "Conflict prevention addresses tensions before violence erupts." },
-    { word: "reconciliation", translation: "réconciliation", example: "Reconciliation processes healed divisions between former adversaries." },
-    { word: "transitional justice", translation: "justice transitionnelle", example: "Transitional justice addressed human rights violations during the conflict." },
+    
+    
+    
     { word: "confidence-building measure", translation: "mesure de confiance", example: "Confidence-building measures reduced tensions along the disputed border." },
-    { word: "shuttle diplomacy", translation: "diplomatie navette", example: "Shuttle diplomacy involved mediators traveling between negotiating parties." },
-    { word: "disarmament", translation: "désarmement", example: "The disarmament process collected weapons from former combatants." },
+    
+    
     { word: "demobilization", translation: "démobilisation", example: "Demobilization transitioned fighters from military to civilian status." },
     { word: "reintegration", translation: "réintégration", example: "Reintegration programs helped former combatants return to civilian life." },
-    { word: "peace enforcement", translation: "imposition de la paix", example: "Peace enforcement operations used force to maintain security." },
-    { word: "conflict management", translation: "gestion des conflits", example: "Conflict management contained violence while seeking longer-term solutions." },
-    { word: "conflict transformation", translation: "transformation des conflits", example: "Conflict transformation addressed underlying causes and relationships." },
-    { word: "peace dividend", translation: "dividende de la paix", example: "The peace dividend provided economic benefits after conflict resolution." },
-    { word: "post-conflict reconstruction", translation: "reconstruction post-conflit", example: "Post-conflict reconstruction rebuilt infrastructure and institutions." },
+    
+    
+    
+    
+    
     { word: "international observer", translation: "observateur international", example: "International observers monitored compliance with peace terms." },
-    { word: "conflict mediation", translation: "médiation de conflit", example: "Conflict mediation facilitated direct dialogue between parties." },
+    
     { word: "peace settlement", translation: "règlement pacifique", example: "The peace settlement established new political arrangements." },
     
     // Stratégie de négociation (25 mots)
-    { word: "negotiation strategy", translation: "stratégie de négociation", example: "The negotiation strategy combined cooperative and competitive approaches." },
+    
     { word: "negotiating position", translation: "position de négociation", example: "Their negotiating position outlined core interests and acceptable outcomes." },
     { word: "negotiating power", translation: "pouvoir de négociation", example: "Economic resources increased their negotiating power substantially." },
     { word: "bargaining chip", translation: "monnaie d'échange", example: "Market access served as an important bargaining chip in the talks." },
-    { word: "negotiation tactic", translation: "tactique de négociation", example: "The delay was a negotiation tactic to increase pressure." },
+    
     { word: "zone of possible agreement", translation: "zone d'accord possible", example: "The zone of possible agreement narrowed as positions hardened." },
     { word: "best alternative to negotiated agreement", translation: "meilleure solution de rechange à un accord négocié", example: "A strong best alternative to negotiated agreement improved their leverage." },
     { word: "concession", translation: "concession", example: "The concession on timeframes secured movement on substantive issues." },
     { word: "interest-based negotiation", translation: "négociation fondée sur les intérêts", example: "Interest-based negotiation focuses on underlying needs rather than stated positions." },
-    { word: "positional bargaining", translation: "négociation de position", example: "Positional bargaining involved incremental movement from opening offers." },
+    
     { word: "deadline pressure", translation: "pression de l'échéance", example: "Deadline pressure accelerated progress in the final negotiation phase." },
     { word: "walk-away point", translation: "point de rupture", example: "The delegation identified its walk-away point before entering talks." },
     { word: "diplomatic leverage", translation: "levier diplomatique", example: "Coalition formation increased their diplomatic leverage considerably." },
-    { word: "negotiation preparation", translation: "préparation à la négociation", example: "Negotiation preparation involved extensive stakeholder consultation." },
+    
     { word: "fall-back position", translation: "position de repli", example: "The fall-back position provided flexibility if primary objectives proved unattainable." },
-    { word: "win-win solution", translation: "solution gagnant-gagnant", example: "The agreement represented a win-win solution addressing core interests of both parties." },
+    
     { word: "strategic patience", translation: "patience stratégique", example: "Strategic patience allowed tensions to subside before resuming talks." },
     { word: "linkage strategy", translation: "stratégie de liaison", example: "Their linkage strategy connected progress in separate negotiation tracks." },
     { word: "red line", translation: "ligne rouge", example: "The delegation established red lines that couldn't be crossed during negotiations." },
     { word: "constructive ambiguity", translation: "ambiguïté constructive", example: "Constructive ambiguity in the text allowed different interpretations by the parties." },
     { word: "negotiation dynamic", translation: "dynamique de négociation", example: "The negotiation dynamic shifted after the ministerial intervention." },
     { word: "escalation management", translation: "gestion de l'escalade", example: "Escalation management prevented minor disputes from derailing the process." },
-    { word: "principled negotiation", translation: "négociation raisonnée", example: "Principled negotiation separates people from problems and focuses on interests." },
+    
     { word: "integrative approach", translation: "approche intégrative", example: "The integrative approach expanded available options through creative problem-solving." },
     { word: "distributive bargaining", translation: "négociation distributive", example: "Distributive bargaining focused on allocating fixed resources between parties." },
     
     // Relations internationales (25 mots)
-    { word: "international relations", translation: "relations internationales", example: "International relations theory examines interactions between global actors." },
-    { word: "foreign policy", translation: "politique étrangère", example: "Foreign policy articulates a country's international objectives and approach." },
-    { word: "national interest", translation: "intérêt national", example: "National interest considerations drive foreign policy decisions." },
+    
+    
+    
     { word: "bilateral relationship", translation: "relation bilatérale", example: "The bilateral relationship improved through regular high-level dialogue." },
-    { word: "multilateralism", translation: "multilatéralisme", example: "Multilateralism addresses global challenges through collective action." },
-    { word: "geopolitics", translation: "géopolitique", example: "Geopolitics examines how geography influences international relationships." },
+    
+    
     { word: "strategic partnership", translation: "partenariat stratégique", example: "The strategic partnership deepened cooperation in defense and technology." },
-    { word: "soft power", translation: "puissance douce", example: "Cultural influence represents an important soft power resource." },
-    { word: "hard power", translation: "puissance dure", example: "Military capabilities constitute traditional hard power assets." },
+    
+    
     { word: "regional integration", translation: "intégration régionale", example: "Regional integration strengthened economic ties between neighboring states." },
     { word: "international system", translation: "système international", example: "The international system has evolved from bipolarity to multipolarity." },
     { word: "diplomatic influence", translation: "influence diplomatique", example: "Their diplomatic influence expanded through coalition-building efforts." },
@@ -156,71 +155,71 @@ export const vocab = {
     { word: "alliance system", translation: "système d'alliance", example: "The alliance system created mutual defense commitments among partners." },
     { word: "non-interference", translation: "non-ingérence", example: "The principle of non-interference respects domestic jurisdiction." },
     { word: "great power politics", translation: "politique des grandes puissances", example: "Great power politics shapes global security arrangements." },
-    { word: "power projection", translation: "projection de puissance", example: "Naval capabilities enable global power projection capabilities." },
+    
     { word: "foreign minister", translation: "ministre des affaires étrangères", example: "The foreign minister represented the country at international meetings." },
-    { word: "diplomatic initiative", translation: "initiative diplomatique", example: "The diplomatic initiative proposed new approaches to regional security." },
+    
     { word: "international engagement", translation: "engagement international", example: "International engagement expanded beyond traditional partners." },
     { word: "foreign service officer", translation: "agent diplomatique", example: "Foreign service officers represent their country's interests abroad." },
     { word: "international influence", translation: "influence internationale", example: "Economic growth increased their international influence considerably." },
     
     // Politique étrangère (25 mots)
-    { word: "foreign policy", translation: "politique étrangère", example: "Foreign policy establishes how a country interacts with other nations." },
+    
     { word: "diplomatic approach", translation: "approche diplomatique", example: "Their diplomatic approach emphasized multilateral engagement." },
-    { word: "strategic objective", translation: "objectif stratégique", example: "Regional stability remained a key strategic objective." },
-    { word: "foreign affairs", translation: "affaires étrangères", example: "The ministry of foreign affairs implements diplomatic initiatives." },
-    { word: "bilateral agreement", translation: "accord bilatéral", example: "The bilateral agreement strengthened economic cooperation." },
-    { word: "foreign policy doctrine", translation: "doctrine de politique étrangère", example: "The foreign policy doctrine outlined principles guiding international engagement." },
-    { word: "diplomatic initiative", translation: "initiative diplomatique", example: "The diplomatic initiative proposed a new regional security framework." },
+    
+    
+    
+    
+    
     { word: "national security strategy", translation: "stratégie de sécurité nationale", example: "The national security strategy identified priority threats and responses." },
-    { word: "foreign policy establishment", translation: "establishment de politique étrangère", example: "The foreign policy establishment includes career diplomats and advisors." },
-    { word: "international engagement", translation: "engagement international", example: "Their international engagement expanded to include new regions." },
-    { word: "diplomatic outreach", translation: "action diplomatique", example: "Diplomatic outreach sought to rebuild strained relationships." },
-    { word: "strategic interest", translation: "intérêt stratégique", example: "Maritime security represented a vital strategic interest." },
-    { word: "diplomatic relations", translation: "relations diplomatiques", example: "Diplomatic relations were restored after years of tension." },
+    
+    
+    
+    
+    
     { word: "overseas mission", translation: "mission à l'étranger", example: "Overseas missions implement foreign policy objectives locally." },
-    { word: "policy implementation", translation: "mise en œuvre des politiques", example: "Policy implementation required coordination across agencies." },
-    { word: "diplomatic strategy", translation: "stratégie diplomatique", example: "Their diplomatic strategy balanced engagement with pressure." },
+    
+    
     { word: "international posture", translation: "posture internationale", example: "The international posture projected strength while seeking dialogue." },
-    { word: "diplomatic corps", translation: "corps diplomatique", example: "The diplomatic corps executed the foreign policy agenda globally." },
+    
     { word: "foreign affairs ministry", translation: "ministère des affaires étrangères", example: "The foreign affairs ministry coordinates all diplomatic activities." },
-    { word: "diplomatic network", translation: "réseau diplomatique", example: "Their diplomatic network included embassies on every continent." },
+    
     { word: "international policy", translation: "politique internationale", example: "International policy addressed both bilateral and multilateral relationships." },
-    { word: "diplomatic priority", translation: "priorité diplomatique", example: "Regional integration remained a top diplomatic priority." },
+    
     { word: "strategic dialogue", translation: "dialogue stratégique", example: "The strategic dialogue addressed security and economic concerns." },
-    { word: "diplomatic engagement", translation: "engagement diplomatique", example: "Diplomatic engagement continued despite political differences." },
+    
     { word: "policy guidance", translation: "orientation politique", example: "Policy guidance established parameters for negotiating positions." },
     
     // Défense et sécurité internationale (25 mots)
-    { word: "international security", translation: "sécurité internationale", example: "International security involves protecting states from external threats." },
+    
     { word: "defense alliance", translation: "alliance de défense", example: "The defense alliance established mutual protection commitments." },
-    { word: "collective security", translation: "sécurité collective", example: "Collective security systems respond to aggression against any member." },
+    
     { word: "defense cooperation", translation: "coopération en matière de défense", example: "Defense cooperation included joint military exercises." },
     { word: "security policy", translation: "politique de sécurité", example: "Security policy addressed both traditional and emerging threats." },
-    { word: "arms control", translation: "contrôle des armements", example: "Arms control agreements limit weapons systems and capabilities." },
-    { word: "non-proliferation", translation: "non-prolifération", example: "Non-proliferation efforts prevent weapons technology spread." },
-    { word: "strategic stability", translation: "stabilité stratégique", example: "Strategic stability depends on credible deterrence capabilities." },
+    
+    
+    
     { word: "defense capability", translation: "capacité de défense", example: "Defense capabilities included both conventional and cyber systems." },
     { word: "security threat", translation: "menace sécuritaire", example: "Transnational terrorism presents a significant security threat." },
     { word: "military alliance", translation: "alliance militaire", example: "The military alliance coordinated defense planning and operations." },
-    { word: "security cooperation", translation: "coopération sécuritaire", example: "Security cooperation addressed shared regional challenges." },
+    
     { word: "strategic deterrence", translation: "dissuasion stratégique", example: "Strategic deterrence prevents attacks through credible retaliation threats." },
-    { word: "defense posture", translation: "posture de défense", example: "Their defense posture emphasized forward deployment of forces." },
+    
     { word: "security arrangement", translation: "arrangement de sécurité", example: "Regional security arrangements provided stability frameworks." },
     { word: "military capability", translation: "capacité militaire", example: "Military capability assessments inform defense planning." },
     { word: "defense minister", translation: "ministre de la défense", example: "The defense minister oversees military policy and operations." },
-    { word: "security guarantee", translation: "garantie de sécurité", example: "The treaty provided security guarantees to smaller allies." },
+    
     { word: "defense strategy", translation: "stratégie de défense", example: "The defense strategy identified priorities and resource allocation." },
     { word: "threat assessment", translation: "évaluation des menaces", example: "Threat assessments analyze potential risks to national security." },
     { word: "defense diplomacy", translation: "diplomatie de défense", example: "Defense diplomacy builds relationships through military engagement." },
     { word: "security challenge", translation: "défi sécuritaire", example: "Cybersecurity represents a growing security challenge." },
-    { word: "strategic partnership", translation: "partenariat stratégique", example: "The strategic partnership enhanced regional stability." },
+    
     { word: "combat readiness", translation: "préparation au combat", example: "The alliance assessed combat readiness through regular exercises." },
     { word: "security doctrine", translation: "doctrine de sécurité", example: "Their security doctrine emphasized preventive diplomacy." },
     
     // Communication diplomatique (25 mots)
     { word: "diplomatic communication", translation: "communication diplomatique", example: "Diplomatic communication requires precision and cultural sensitivity." },
     { word: "official statement", translation: "déclaration officielle", example: "The official statement expressed concern over border incidents." },
-    { word: "diplomatic note", translation: "note diplomatique", example: "The diplomatic note formally conveyed the government's position." },
+    
     { word: "joint communiqué", translation: "communiqué conjoint", example: "The joint communiqué announced cooperation on climate initiatives." },
     { word: "diplomatic language", translation: "langage diplomatique", example: "Diplomatic language employs carefully chosen terminology." },
     { word: "press briefing", translation: "point de presse", example: "The press briefing clarified the delegation's objectives." },
@@ -229,15 +228,15 @@ export const vocab = {
     { word: "diplomatic signal", translation: "signal diplomatique", example: "Canceling the visit sent a strong diplomatic signal." },
     { word: "policy statement", translation: "déclaration de politique", example: "The policy statement outlined the government's position." },
     { word: "diplomatic clarity", translation: "clarté diplomatique", example: "Diplomatic clarity prevented misunderstanding of intentions." },
-    { word: "public diplomacy", translation: "diplomatie publique", example: "Public diplomacy engages foreign populations directly." },
-    { word: "diplomatic messaging", translation: "messagerie diplomatique", example: "Diplomatic messaging coordinated communication across channels." },
-    { word: "press release", translation: "communiqué de presse", example: "The press release announced the treaty signing ceremony." },
+    
+    
+    
     { word: "official announcement", translation: "annonce officielle", example: "The official announcement confirmed the diplomatic appointment." },
-    { word: "diplomatic discourse", translation: "discours diplomatique", example: "Diplomatic discourse maintains respectful engagement despite disagreements." },
-    { word: "strategic communication", translation: "communication stratégique", example: "Strategic communication aligned messaging with policy objectives." },
-    { word: "diplomatic channel", translation: "canal diplomatique", example: "The message was conveyed through established diplomatic channels." },
+    
+    
+    
     { word: "official communication", translation: "communication officielle", example: "The official communication requested bilateral consultations." },
-    { word: "diplomatic cable", translation: "câble diplomatique", example: "The diplomatic cable reported developments to headquarters." },
+    
     { word: "talking points", translation: "éléments de langage", example: "Talking points ensured consistent messaging across representatives." },
     { word: "diplomatic exchange", translation: "échange diplomatique", example: "The diplomatic exchange clarified positions on disputed issues." },
     { word: "public statement", translation: "déclaration publique", example: "The public statement reaffirmed commitment to the agreement." },
@@ -253,12 +252,12 @@ export const vocab = {
     { word: "official reception", translation: "réception officielle", example: "The official reception welcomed the visiting delegation." },
     { word: "state dinner", translation: "dîner d'État", example: "The state dinner honored the visiting head of state." },
     { word: "presentation of credentials", translation: "présentation des lettres de créance", example: "Presentation of credentials initiates an ambassador's mission." },
-    { word: "diplomatic courtesy", translation: "courtoisie diplomatique", example: "Diplomatic courtesy facilitates productive international relations." },
+    
     { word: "protocol officer", translation: "officier du protocole", example: "Protocol officers ensure proper ceremonial arrangements." },
     { word: "formal ceremony", translation: "cérémonie formelle", example: "The formal ceremony marked the diplomatic anniversary." },
     { word: "diplomatic formality", translation: "formalité diplomatique", example: "Diplomatic formalities structure official interactions." },
     { word: "ceremonial protocol", translation: "protocole cérémoniel", example: "Ceremonial protocol dictates procedures for state events." },
-    { word: "diplomatic procedure", translation: "procédure diplomatique", example: "Diplomatic procedure establishes standard practices for official interactions." },
+    
     { word: "flag protocol", translation: "protocole des drapeaux", example: "Flag protocol specifies display arrangements for national symbols." },
     { word: "welcoming ceremony", translation: "cérémonie d'accueil", example: "The welcoming ceremony included military honors." },
     { word: "diplomatic honor", translation: "honneur diplomatique", example: "Diplomatic honors recognized outstanding service." },

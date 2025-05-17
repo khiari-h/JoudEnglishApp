@@ -18,8 +18,8 @@
     // État physique simple
     { word: "hungry", translation: "avoir faim", example: "I'm hungry, let's eat." },
     { word: "thirsty", translation: "avoir soif", example: "I'm thirsty, I need water." },
-    { word: "hot", translation: "avoir chaud", example: "It's summer, so I'm hot." },
-    { word: "cold", translation: "avoir froid", example: "Put on a jacket if you're cold." },
+    
+    
     { word: "sick", translation: "malade", example: "I'm sick, I can't go to work." },
     { word: "well", translation: "bien/en bonne santé", example: "I feel well today." },
     { word: "ill", translation: "malade", example: "She's been ill for three days." },

@@ -43,7 +43,7 @@
     { word: "egg", translation: "œuf", example: "I had two eggs for breakfast." },
     { word: "sugar", translation: "sucre", example: "Would you like sugar in your coffee?" },
     { word: "salt", translation: "sel", example: "Add a little salt to the soup." },
-    { word: "pepper", translation: "poivre", example: "Add salt and pepper to taste." },
+    
     { word: "flour", translation: "farine", example: "You need flour to make bread." },
     { word: "cereal", translation: "céréale", example: "I eat cereal for breakfast." },
     { word: "honey", translation: "miel", example: "I prefer honey to sugar in my tea." },

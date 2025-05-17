@@ -4,7 +4,7 @@ export const vocab = {
     // Structures sociales
     { word: "social class", translation: "classe sociale", example: "Social class can affect educational and employment opportunities." },
     { word: "socioeconomic status", translation: "statut socio-économique", example: "Socioeconomic status influences many aspects of daily life." },
-    { word: "hierarchy", translation: "hiérarchie", example: "Traditional societies often have a clear social hierarchy." },
+    
     { word: "social mobility", translation: "mobilité sociale", example: "Education can be a pathway to social mobility." },
     { word: "meritocracy", translation: "méritocratie", example: "A pure meritocracy rewards people based solely on their abilities and efforts." },
     { word: "privilege", translation: "privilège", example: "Understanding privilege helps us recognize systemic advantages." },
@@ -12,7 +12,7 @@ export const vocab = {
     { word: "social stratification", translation: "stratification sociale", example: "Social stratification divides society into different layers or classes." },
     { word: "social institution", translation: "institution sociale", example: "The family is a fundamental social institution in most cultures." },
     { word: "patriarchy", translation: "patriarcat", example: "Feminism challenges patriarchy and gender inequalities." },
-    { word: "social norm", translation: "norme sociale", example: "Social norms vary across cultures and time periods." },
+    
     { word: "power structure", translation: "structure de pouvoir", example: "Understanding power structures helps explain decision-making processes." },
     { word: "social system", translation: "système social", example: "Healthcare is an essential component of a functioning social system." },
     { word: "group dynamics", translation: "dynamique de groupe", example: "Group dynamics influence how people behave in social settings." },
@@ -23,27 +23,27 @@ export const vocab = {
     // Phénomènes sociaux
     { word: "social movement", translation: "mouvement social", example: "The civil rights movement fought for racial equality." },
     { word: "urbanization", translation: "urbanisation", example: "Urbanization has accelerated in developing countries." },
-    { word: "globalization", translation: "mondialisation", example: "Globalization has connected economies and cultures worldwide." },
-    { word: "migration", translation: "migration", example: "Migration patterns are influenced by economic and political factors." },
+    
+    
     { word: "demographic change", translation: "changement démographique", example: "Many developed countries are experiencing demographic change with aging populations." },
     { word: "social media influence", translation: "influence des réseaux sociaux", example: "Social media influence has transformed how people communicate and consume information." },
     { word: "polarization", translation: "polarisation", example: "Political polarization has increased in many democracies." },
     { word: "populism", translation: "populisme", example: "Populism has gained traction in several countries in recent years." },
     { word: "activism", translation: "activisme", example: "Youth activism has brought attention to climate change issues." },
-    { word: "protest", translation: "manifestation", example: "The protest attracted thousands of participants." },
+    
     { word: "social trend", translation: "tendance sociale", example: "Working remotely became a major social trend after the pandemic." },
     { word: "collective behavior", translation: "comportement collectif", example: "Panic buying is an example of collective behavior during crises." },
-    { word: "mass media", translation: "médias de masse", example: "Mass media shapes public opinion on many issues." },
-    { word: "consumerism", translation: "consumérisme", example: "Consumerism drives economic growth but raises environmental concerns." },
+    
+    
     { word: "cultural shift", translation: "changement culturel", example: "Attitudes toward marriage have undergone a cultural shift in recent decades." },
-    { word: "generation gap", translation: "fossé générationnel", example: "The generation gap is evident in differing views on technology use." },
-    { word: "information society", translation: "société de l'information", example: "We live in an information society where knowledge is a key resource." },
+    
+    
     
     // Problèmes sociaux
-    { word: "poverty", translation: "pauvreté", example: "Poverty affects both rural and urban communities." },
-    { word: "homelessness", translation: "sans-abrisme", example: "Homelessness is a complex issue with multiple causes." },
-    { word: "unemployment", translation: "chômage", example: "The recession led to increased unemployment rates." },
-    { word: "discrimination", translation: "discrimination", example: "Laws prohibit discrimination based on race, gender, and other characteristics." },
+    
+    
+    
+    
     { word: "social exclusion", translation: "exclusion sociale", example: "Social exclusion prevents full participation in society." },
     { word: "gender inequality", translation: "inégalité de genre", example: "Gender inequality persists in many workplaces." },
     { word: "racial disparity", translation: "disparité raciale", example: "Racial disparities exist in healthcare access and outcomes." },
@@ -59,14 +59,14 @@ export const vocab = {
     { word: "systemic racism", translation: "racisme systémique", example: "Systemic racism affects institutions and social structures." },
     
     // Services sociaux
-    { word: "social services", translation: "services sociaux", example: "Social services provide support to vulnerable populations." },
+    
     { word: "welfare system", translation: "système d'aide sociale", example: "The welfare system provides financial assistance to those in need." },
-    { word: "public housing", translation: "logement social", example: "Public housing aims to provide affordable homes for low-income families." },
+    
     { word: "food bank", translation: "banque alimentaire", example: "The food bank distributes donations to families in need." },
     { word: "homeless shelter", translation: "refuge pour sans-abri", example: "The homeless shelter provides temporary accommodation." },
-    { word: "community center", translation: "centre communautaire", example: "The community center offers programs for all age groups." },
+    
     { word: "social worker", translation: "travailleur social", example: "The social worker assessed the family's needs." },
-    { word: "counseling", translation: "conseil psychologique", example: "Free counseling services are available for victims of abuse." },
+    
     { word: "crisis intervention", translation: "intervention de crise", example: "Crisis intervention teams respond to emergency situations." },
     { word: "public assistance", translation: "aide publique", example: "Many families rely on public assistance programs." },
     { word: "child protective services", translation: "services de protection de l'enfance", example: "Child protective services investigate reports of abuse and neglect." },
@@ -79,18 +79,18 @@ export const vocab = {
     { word: "multiculturalism", translation: "multiculturalisme", example: "Multiculturalism celebrates diversity within a society." },
     { word: "integration", translation: "intégration", example: "Integration policies help immigrants become part of society." },
     { word: "assimilation", translation: "assimilation", example: "Assimilation involves adopting the dominant culture's practices." },
-    { word: "cultural identity", translation: "identité culturelle", example: "Many people draw strength from their cultural identity." },
-    { word: "heritage", translation: "patrimoine", example: "Immigrant communities often maintain connections to their heritage." },
+    
+    
     { word: "minority group", translation: "groupe minoritaire", example: "Minority groups may face unique challenges in society." },
     { word: "diaspora", translation: "diaspora", example: "The diaspora maintains connections to their homeland." },
     { word: "indigenous peoples", translation: "peuples autochtones", example: "Indigenous peoples have fought for recognition of their rights." },
     { word: "cultural diversity", translation: "diversité culturelle", example: "Cultural diversity enriches society with different perspectives." },
     { word: "intercultural communication", translation: "communication interculturelle", example: "Intercultural communication skills are valuable in global businesses." },
-    { word: "cultural exchange", translation: "échange culturel", example: "The festival promotes cultural exchange between communities." },
+    
     { word: "ethnic enclave", translation: "enclave ethnique", example: "The neighborhood developed as an ethnic enclave over generations." },
-    { word: "cultural appropriation", translation: "appropriation culturelle", example: "Discussions about cultural appropriation have become more common." },
-    { word: "cultural sensitivity", translation: "sensibilité culturelle", example: "Healthcare providers receive training in cultural sensitivity." },
-    { word: "inclusion", translation: "inclusion", example: "The organization promotes diversity and inclusion in its practices." },
+    
+    
+    
     { word: "representation", translation: "représentation", example: "Media representation of diverse groups has improved in recent years." },
     
     // Changements sociétaux
@@ -98,15 +98,15 @@ export const vocab = {
     { word: "progress", translation: "progrès", example: "Social progress often requires challenging established norms." },
     { word: "revolution", translation: "révolution", example: "The digital revolution has transformed how we live and work." },
     { word: "reform", translation: "réforme", example: "Educational reform aims to improve learning outcomes." },
-    { word: "tradition", translation: "tradition", example: "Some communities balance modernity with respect for tradition." },
-    { word: "innovation", translation: "innovation", example: "Social innovation addresses community challenges in creative ways." },
+    
+    
     { word: "paradigm shift", translation: "changement de paradigme", example: "Remote work represents a paradigm shift in employment practices." },
     { word: "modernization", translation: "modernisation", example: "Modernization brings both benefits and challenges to traditional societies." },
     { word: "social transformation", translation: "transformation sociale", example: "The women's movement led to significant social transformation." },
     { word: "cultural evolution", translation: "évolution culturelle", example: "Cultural evolution happens gradually over generations." },
     { word: "value shift", translation: "changement de valeurs", example: "Younger generations often reflect a value shift in their priorities." },
     { word: "demographic transition", translation: "transition démographique", example: "Developing countries undergo demographic transition as they industrialize." },
-    { word: "digital transformation", translation: "transformation numérique", example: "Digital transformation affects nearly every aspect of society." },
+    
     { word: "social disruption", translation: "perturbation sociale", example: "The pandemic caused unprecedented social disruption." },
     { word: "resilience", translation: "résilience", example: "Communities demonstrate resilience when adapting to major changes." },
     
@@ -124,7 +124,7 @@ export const vocab = {
     { word: "collective action", translation: "action collective", example: "Collective action can lead to meaningful social change." },
     { word: "awareness campaign", translation: "campagne de sensibilisation", example: "The awareness campaign educated the public about mental health." },
     { word: "voter registration", translation: "inscription des électeurs", example: "Voter registration drives aim to increase democratic participation." },
-    { word: "public service", translation: "service public", example: "Many choose careers in public service to make a difference." },
+    
     { word: "social entrepreneurship", translation: "entrepreneuriat social", example: "Social entrepreneurship combines business principles with social goals." }
   ]
 };

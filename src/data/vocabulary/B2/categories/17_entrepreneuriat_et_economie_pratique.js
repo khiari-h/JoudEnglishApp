@@ -2,121 +2,118 @@ export const vocab = {
   title: "Entrepreneuriat et Économie Pratique",
   words: [
     // Création et gestion d'entreprise (38 mots)
-    { word: "business model", translation: "modèle d'affaires", example: "The subscription-based business model generates predictable monthly revenue." },
-    { word: "startup", translation: "entreprise en démarrage", example: "The technology startup secured its first round of venture funding last month." },
+    
+    
     { word: "entrepreneur", translation: "entrepreneur", example: "As an entrepreneur, she identified an unmet market need and developed a solution." },
-    { word: "venture capital", translation: "capital-risque", example: "The company attracted venture capital due to its innovative technology and growth potential." },
-    { word: "angel investor", translation: "investisseur providentiel", example: "An angel investor provided the initial funding to develop the prototype." },
-    { word: "seed funding", translation: "financement d'amorçage", example: "The seed funding allowed them to hire their first employees and refine the product." },
-    { word: "business plan", translation: "plan d'affaires", example: "The business plan outlined the company's market strategy and financial projections." },
-    { word: "market research", translation: "étude de marché", example: "Thorough market research revealed significant demand for their service." },
-    { word: "target audience", translation: "public cible", example: "Their marketing campaign resonated strongly with their target audience of young professionals." },
-    { word: "value proposition", translation: "proposition de valeur", example: "The company's value proposition centers on time savings and ease of use." },
+    
+    
+    
+    
+    
+    
+    
     { word: "unique selling point", translation: "argument de vente unique", example: "The product's unique selling point is its environmentally friendly manufacturing process." },
-    { word: "competitive advantage", translation: "avantage concurrentiel", example: "Their proprietary technology provides a significant competitive advantage." },
+    
     { word: "market entry", translation: "entrée sur le marché", example: "The company's market entry strategy focused on a specific urban demographic." },
-    { word: "business incubator", translation: "incubateur d'entreprises", example: "The business incubator provides office space and mentoring for early-stage companies." },
-    { word: "accelerator program", translation: "programme d'accélération", example: "The accelerator program helped the startup refine its business model and connect with investors." },
+    
+    
     { word: "mentorship", translation: "mentorat", example: "Experienced entrepreneurs provide mentorship to the next generation of business founders." },
-    { word: "scalability", translation: "évolutivité", example: "Investors evaluate a business concept's scalability before committing funds." },
+    
     { word: "growth strategy", translation: "stratégie de croissance", example: "Their growth strategy involves expanding into adjacent market segments." },
     { word: "profit margin", translation: "marge bénéficiaire", example: "Increasing operational efficiency improved the company's profit margin." },
     { word: "cash flow", translation: "flux de trésorerie", example: "Managing cash flow is critical for small businesses, especially during rapid growth." },
     { word: "break-even point", translation: "seuil de rentabilité", example: "The company expects to reach its break-even point by the second quarter." },
-    { word: "bootstrapping", translation: "autofinancement", example: "The founders relied on bootstrapping initially, reinvesting all revenues into growth." },
-    { word: "pitch deck", translation: "présentation investisseur", example: "The pitch deck concisely presented the problem, solution, and market opportunity." },
+    
+    
     { word: "elevator pitch", translation: "argumentaire éclair", example: "She refined her elevator pitch to communicate the concept in under 30 seconds." },
     { word: "business networking", translation: "réseautage d'affaires", example: "Business networking events help entrepreneurs connect with potential partners and clients." },
     { word: "small business loan", translation: "prêt aux petites entreprises", example: "The bank offers small business loans with favorable terms for local entrepreneurs." },
-    { word: "crowdfunding", translation: "financement participatif", example: "The product launch was financed through a successful crowdfunding campaign." },
+    
     { word: "business angel", translation: "investisseur providentiel", example: "The business angel provided both capital and industry expertise to the startup." },
-    { word: "intellectual property", translation: "propriété intellectuelle", example: "Protecting intellectual property through patents was a key priority." },
-    { word: "trademark", translation: "marque déposée", example: "The company registered a trademark to protect its distinctive logo and name." },
-    { word: "patent", translation: "brevet", example: "Their innovation is protected by a patent valid for twenty years." },
-    { word: "minimum viable product", translation: "produit minimum viable", example: "They launched a minimum viable product to test market response before full development." },
+    
+    
+    
+    
     { word: "early adopter", translation: "utilisateur précoce", example: "Early adopters provided valuable feedback that improved the final product." },
-    { word: "pivot", translation: "pivot", example: "The company made a strategic pivot after discovering a more promising market opportunity." },
-    { word: "exit strategy", translation: "stratégie de sortie", example: "Potential exit strategies include acquisition by a larger company or an initial public offering." },
+    
+    
     { word: "business owner", translation: "propriétaire d'entreprise", example: "As a business owner, she's responsible for both strategic decisions and daily operations." },
     { word: "entrepreneurial mindset", translation: "état d'esprit entrepreneurial", example: "An entrepreneurial mindset involves seeing opportunities where others see only problems." },
-    { word: "serial entrepreneur", translation: "entrepreneur en série", example: "The serial entrepreneur has successfully launched and sold three technology companies." },
+    
     
     // Marketing et clients (37 mots)
-    { word: "customer acquisition", translation: "acquisition de clients", example: "Digital advertising has become their main customer acquisition channel." },
-    { word: "conversion rate", translation: "taux de conversion", example: "Website improvements increased the conversion rate from visitors to customers." },
-    { word: "customer retention", translation: "fidélisation de la clientèle", example: "Their excellent service resulted in high customer retention rates." },
-    { word: "customer lifetime value", translation: "valeur vie client", example: "The subscription model significantly increased average customer lifetime value." },
+    
+    
+    
+    
     { word: "user experience", translation: "expérience utilisateur", example: "They invested in improving user experience to reduce customer frustration." },
-    { word: "digital marketing", translation: "marketing numérique", example: "Their digital marketing strategy includes search, social, and email campaigns." },
-    { word: "content marketing", translation: "marketing de contenu", example: "Content marketing establishes their expertise through valuable information sharing." },
+    
+    
     { word: "social media strategy", translation: "stratégie de médias sociaux", example: "Their social media strategy focuses on engaging visual content and community building." },
-    { word: "brand awareness", translation: "notoriété de la marque", example: "The campaign successfully increased brand awareness among key demographics." },
+    
     { word: "market segmentation", translation: "segmentation du marché", example: "Effective market segmentation allows for more targeted marketing messages." },
     { word: "customer persona", translation: "persona client", example: "They developed detailed customer personas to better understand their users' needs." },
     { word: "lead generation", translation: "génération de prospects", example: "The webinar proved effective for lead generation among industry professionals." },
     { word: "sales funnel", translation: "entonnoir de vente", example: "They optimized each stage of the sales funnel to improve conversion rates." },
     { word: "customer feedback", translation: "retour client", example: "Product improvements are prioritized based on customer feedback surveys." },
     { word: "market positioning", translation: "positionnement sur le marché", example: "Their market positioning emphasizes premium quality and exceptional service." },
-    { word: "brand identity", translation: "identité de marque", example: "The rebranding created a more consistent brand identity across all touchpoints." },
-    { word: "customer journey", translation: "parcours client", example: "Mapping the customer journey helped identify pain points in the purchasing process." },
-    { word: "search engine optimization", translation: "optimisation pour les moteurs de recherche", example: "Search engine optimization improved their visibility for relevant keywords." },
+    
+    
+    
     { word: "pay-per-click advertising", translation: "publicité au coût par clic", example: "Pay-per-click advertising campaigns target users actively searching for their solutions." },
     { word: "retargeting", translation: "reciblage", example: "Retargeting ads remind website visitors about products they viewed but didn't purchase." },
     { word: "customer relationship management", translation: "gestion de la relation client", example: "Their customer relationship management system tracks all customer interactions." },
     { word: "email marketing", translation: "marketing par courriel", example: "Personalized email marketing campaigns yield higher engagement rates." },
-    { word: "influencer marketing", translation: "marketing d'influence", example: "Influencer marketing partnerships extended their reach to new audiences." },
+    
     { word: "word-of-mouth", translation: "bouche-à-oreille", example: "Their exceptional service generates significant word-of-mouth referrals." },
-    { word: "market share", translation: "part de marché", example: "The company increased its market share despite growing competition." },
+    
     { word: "niche market", translation: "marché de niche", example: "They dominate a profitable niche market with specialized offerings." },
     { word: "early majority", translation: "majorité précoce", example: "The product is now reaching the early majority beyond initial technology enthusiasts." },
-    { word: "customer service", translation: "service client", example: "They differentiate through outstanding customer service and rapid response times." },
+    
     { word: "customer satisfaction", translation: "satisfaction client", example: "Regular surveys measure customer satisfaction and identify improvement areas." },
     { word: "testimonial", translation: "témoignage", example: "Customer testimonials provide social proof of the product's effectiveness." },
-    { word: "case study", translation: "étude de cas", example: "Detailed case studies demonstrate how the solution solved specific client problems." },
+    
     { word: "referral program", translation: "programme de parrainage", example: "Their referral program rewards customers who bring in new business." },
-    { word: "viral marketing", translation: "marketing viral", example: "The campaign's clever concept led to viral marketing success across social platforms." },
+    
     { word: "call-to-action", translation: "appel à l'action", example: "Clear calls-to-action increased conversion rates on landing pages." },
     { word: "landing page", translation: "page d'atterrissage", example: "Each advertising campaign directs to a specific landing page with relevant messaging." },
     { word: "product-market fit", translation: "adéquation produit-marché", example: "Achieving product-market fit is essential before scaling marketing efforts." },
     { word: "market demand", translation: "demande du marché", example: "Market demand for sustainable products continues to grow steadily." },
     
     // Économie collaborative et innovations (37 mots)
-    { word: "sharing economy", translation: "économie du partage", example: "Ride-sharing services exemplify the sharing economy's efficient resource utilization." },
-    { word: "collaborative consumption", translation: "consommation collaborative", example: "Collaborative consumption models enable access to goods without ownership requirements." },
+    
+    
     { word: "peer-to-peer platform", translation: "plateforme pair-à-pair", example: "The peer-to-peer platform connects homeowners directly with potential renters." },
-    { word: "gig economy", translation: "économie des petits boulots", example: "The gig economy offers flexible work opportunities through digital platforms." },
+    
     { word: "on-demand service", translation: "service à la demande", example: "On-demand service apps connect consumers with service providers in real-time." },
     { word: "co-working space", translation: "espace de cotravail", example: "The co-working space hosts entrepreneurs from diverse industries." },
-    { word: "crowdsourcing", translation: "production participative", example: "Crowdsourcing leverages collective intelligence to solve complex problems." },
+    
     { word: "open innovation", translation: "innovation ouverte", example: "The company embraces open innovation by collaborating with external partners." },
     { word: "collaborative platform", translation: "plateforme collaborative", example: "The collaborative platform enables knowledge sharing across organizational boundaries." },
-    { word: "digital marketplace", translation: "place de marché numérique", example: "The digital marketplace connects artisans directly with global customers." },
-    { word: "subscription model", translation: "modèle d'abonnement", example: "The subscription model provides predictable revenue and ongoing customer relationships." },
+    
+    
     { word: "freemium", translation: "freemium", example: "Their freemium strategy offers basic features for free while charging for premium capabilities." },
-    { word: "disruptive innovation", translation: "innovation disruptive", example: "The technology represents a disruptive innovation in the traditional industry." },
+    
     { word: "micro-entrepreneurship", translation: "micro-entrepreneuriat", example: "Digital platforms enable micro-entrepreneurship opportunities for individuals." },
-    { word: "social entrepreneurship", translation: "entrepreneuriat social", example: "Social entrepreneurship addresses community challenges through sustainable business models." },
-    { word: "circular economy", translation: "économie circulaire", example: "The company implements circular economy principles by recycling all manufacturing waste." },
-    { word: "upcycling", translation: "surcyclage", example: "Their business model focuses on upcycling discarded materials into premium products." },
+    
+    
+    
     { word: "sustainable business", translation: "entreprise durable", example: "The sustainable business balances profit goals with environmental responsibility." },
-    { word: "corporate social responsibility", translation: "responsabilité sociale des entreprises", example: "Their corporate social responsibility initiatives focus on local community development." },
+    
     { word: "impact investing", translation: "investissement à impact", example: "Impact investing seeks both financial returns and positive social outcomes." },
-    { word: "triple bottom line", translation: "triple bilan", example: "The company measures success using the triple bottom line: profit, people, and planet." },
+    
     { word: "ethical business", translation: "entreprise éthique", example: "The ethical business maintains transparent supply chain practices." },
-    { word: "fair trade", translation: "commerce équitable", example: "Fair trade certification ensures producers receive reasonable compensation." },
-    { word: "local sourcing", translation: "approvisionnement local", example: "Their commitment to local sourcing reduces transportation emissions and supports regional economies." },
+    
+    
     { word: "direct-to-consumer", translation: "direct au consommateur", example: "The direct-to-consumer model eliminates intermediaries to offer better value." },
     { word: "blockchain technology", translation: "technologie de la chaîne de blocs", example: "Blockchain technology enables secure transactions without centralized intermediaries." },
-    { word: "contactless payment", translation: "paiement sans contact", example: "Contactless payment adoption accelerated significantly during the pandemic." },
-    { word: "mobile banking", translation: "services bancaires mobiles", example: "Mobile banking applications provide financial services to previously underserved communities." },
-    { word: "remote work", translation: "travail à distance", example: "The company embraced remote work policies even before the pandemic made them necessary." },
+    
+    
+    
     { word: "digital nomad", translation: "nomade numérique", example: "As a digital nomad, she manages her business while traveling internationally." },
     { word: "flex work", translation: "travail flexible", example: "Flex work arrangements increase employee satisfaction and retention." },
     { word: "platform economy", translation: "économie de plateforme", example: "The platform economy connects service providers with customers through digital interfaces." },
-    { word: "data-driven decision making", translation: "prise de décision basée sur les données", example: "Data-driven decision making improves business outcomes through objective analysis." },
-    { word: "agile methodology", translation: "méthodologie agile", example: "The startup applies agile methodology principles to product development." },
-    { word: "lean startup", translation: "startup allégée", example: "The lean startup approach emphasizes rapid iteration and customer feedback." },
-    { word: "business ecosystem", translation: "écosystème d'affaires", example: "Success depends on understanding the broader business ecosystem, not just direct competitors." },
-    { word: "network effect", translation: "effet de réseau", example: "Their platform benefits from network effects—each new user increases value for all users." }
-  ]
+    
+    
+    { word: "lean startup", translation: "startup allégée", example: "The lean startup approach emphasizes rapid iteration and customer feedback." }]
 };

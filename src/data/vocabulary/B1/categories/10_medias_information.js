@@ -6,17 +6,17 @@ export const vocab = {
     { word: "digital media", translation: "médias numériques", example: "Digital media has transformed how we consume information." },
     { word: "print media", translation: "presse écrite", example: "Newspapers and magazines are forms of print media." },
     { word: "broadcast media", translation: "médias audiovisuels", example: "Radio and television are examples of broadcast media." },
-    { word: "social media", translation: "réseaux sociaux", example: "Many people get their news from social media platforms." },
+    
     { word: "mainstream media", translation: "médias traditionnels", example: "The story was widely covered in the mainstream media." },
     { word: "alternative media", translation: "médias alternatifs", example: "Alternative media often presents perspectives not found in mainstream outlets." },
     { word: "independent media", translation: "médias indépendants", example: "Independent media is not controlled by large corporations." },
     { word: "public media", translation: "médias publics", example: "Public media is funded by taxpayers rather than advertising." },
     { word: "commercial media", translation: "médias commerciaux", example: "Commercial media relies primarily on advertising revenue." },
-    { word: "online platform", translation: "plateforme en ligne", example: "YouTube is a popular online platform for video content." },
-    { word: "podcast", translation: "podcast/baladodiffusion", example: "She hosts a weekly podcast about science." },
+    
+    
     { word: "blog", translation: "blog", example: "His blog focuses on travel photography." },
     { word: "video-sharing platform", translation: "plateforme de partage vidéo", example: "TikTok is a rapidly growing video-sharing platform." },
-    { word: "streaming service", translation: "service de streaming", example: "Streaming services have changed how we watch television." },
+    
     { word: "news aggregator", translation: "agrégateur d'actualités", example: "News aggregators compile articles from various sources." },
     { word: "multimedia", translation: "multimédia", example: "The website features multimedia content including videos and interactive graphics." },
     { word: "user-generated content", translation: "contenu généré par les utilisateurs", example: "Many websites rely on user-generated content." },
@@ -30,13 +30,13 @@ export const vocab = {
     { word: "content creator", translation: "créateur de contenu", example: "Many young people aspire to become content creators." },
     { word: "viral content", translation: "contenu viral", example: "The video became viral content overnight." },
     { word: "exclusive", translation: "exclusivité", example: "The magazine published an exclusive interview with the president." },
-    { word: "headline", translation: "titre", example: "The sensational headline attracted many readers." },
-    { word: "byline", translation: "signature", example: "I always check the byline to see who wrote the article." },
+    
+    
     { word: "sponsored content", translation: "contenu sponsorisé", example: "The website clearly labels sponsored content." },
     { word: "paywall", translation: "mur payant", example: "Many news websites have implemented paywalls." },
     { word: "infographic", translation: "infographie", example: "The infographic explained complex data in a visual format." },
     { word: "press release", translation: "communiqué de presse", example: "The company issued a press release about the new product." },
-    { word: "broadcast", translation: "émission", example: "The broadcast was interrupted by breaking news." },
+    
     { word: "podcast episode", translation: "épisode de podcast", example: "The podcast episode featured an interview with a renowned scientist." },
     { word: "livestream", translation: "diffusion en direct", example: "The conference was available via livestream." },
     
@@ -47,9 +47,9 @@ export const vocab = {
     { word: "publishing", translation: "publication", example: "The publishing process includes several review stages." },
     { word: "broadcasting", translation: "diffusion", example: "Broadcasting regulations vary by country." },
     { word: "production team", translation: "équipe de production", example: "The production team works behind the scenes." },
-    { word: "deadline", translation: "date limite", example: "Journalists often work under tight deadlines." },
+    
     { word: "editorial process", translation: "processus éditorial", example: "The editorial process ensures quality and accuracy." },
-    { word: "fact-checking", translation: "vérification des faits", example: "Fact-checking is a crucial step in responsible journalism." },
+    
     { word: "crowdsourcing", translation: "production participative", example: "The project used crowdsourcing to gather information." },
     { word: "content management", translation: "gestion de contenu", example: "Content management systems help organize digital publications." },
     { word: "content strategy", translation: "stratégie de contenu", example: "A good content strategy considers audience needs." },
@@ -60,7 +60,7 @@ export const vocab = {
     
     // Littératie médiatique
     { word: "media literacy", translation: "littératie médiatique", example: "Media literacy helps people critically evaluate information." },
-    { word: "critical thinking", translation: "pensée critique", example: "Critical thinking is essential when consuming news." },
+    
     { word: "information evaluation", translation: "évaluation de l'information", example: "Information evaluation skills help identify reliable sources." },
     { word: "source verification", translation: "vérification des sources", example: "Source verification is an important step in research." },
     { word: "digital literacy", translation: "littératie numérique", example: "Digital literacy includes understanding online privacy issues." },
@@ -110,9 +110,9 @@ export const vocab = {
     // Désinformation & fake news
     { word: "disinformation", translation: "désinformation", example: "Disinformation is deliberately created to mislead." },
     { word: "misinformation", translation: "mésinformation", example: "Misinformation can spread unintentionally." },
-    { word: "fake news", translation: "fausses nouvelles", example: "Social media has accelerated the spread of fake news." },
-    { word: "rumor", translation: "rumeur", example: "The rumor spread quickly despite being false." },
-    { word: "propaganda", translation: "propagande", example: "State media in authoritarian countries often serves as propaganda." },
+    
+    
+    
     { word: "conspiracy theory", translation: "théorie du complot", example: "The internet has facilitated the spread of conspiracy theories." },
     { word: "manipulation", translation: "manipulation", example: "Image manipulation can create misleading content." },
     { word: "deepfake", translation: "hypertrucage", example: "Deepfake technology creates convincing but fabricated videos." },

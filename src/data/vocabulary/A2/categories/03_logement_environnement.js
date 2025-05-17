@@ -63,8 +63,8 @@ export const vocab = {
     { word: "to install", translation: "installer", example: "We need to install new shelves in the garage." },
     { word: "to assemble", translation: "assembler", example: "I have to assemble this furniture from IKEA." },
     { word: "to build", translation: "construire", example: "My father built a shed in the garden." },
-    { word: "to repair", translation: "réparer", example: "I need to repair the broken chair." },
-    { word: "to paint", translation: "peindre", example: "We're going to paint the walls blue." },
+    
+    
     { word: "to decorate", translation: "décorer", example: "She likes to decorate the house for Christmas." },
     { word: "to furnish", translation: "meubler", example: "They need to furnish their new apartment." },
     { word: "to renovate", translation: "rénover", example: "They decided to renovate the old bathroom." },
@@ -91,7 +91,7 @@ export const vocab = {
     { word: "maintenance", translation: "entretien", example: "Regular maintenance prevents major problems." },
     
     // Jardinage simple
-    { word: "garden", translation: "jardin", example: "I spend a lot of time in my garden during summer." },
+    
     { word: "lawn", translation: "pelouse", example: "He mows the lawn every weekend." },
     { word: "flower bed", translation: "parterre de fleurs", example: "She planted tulips in the flower bed." },
     { word: "hedge", translation: "haie", example: "We need to trim the hedge." },
@@ -108,7 +108,7 @@ export const vocab = {
     { word: "to grow", translation: "cultiver", example: "They grow their own vegetables." },
     
     // Entretien de la maison
-    { word: "maintenance", translation: "entretien", example: "Home maintenance is important to prevent problems." },
+    
     { word: "repair", translation: "réparation", example: "The roof repair will be expensive." },
     { word: "upkeep", translation: "entretien", example: "The upkeep of an old house can be costly." },
     { word: "to fix", translation: "réparer", example: "I need to fix the broken window." },

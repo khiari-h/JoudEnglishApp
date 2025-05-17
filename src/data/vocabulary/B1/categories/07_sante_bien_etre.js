@@ -17,12 +17,12 @@ export const vocab = {
     { word: "gastroenterology", translation: "gastroentérologie", example: "Gastroenterology deals with digestive system disorders." },
     { word: "pulmonology", translation: "pneumologie", example: "Pulmonology specializes in respiratory tract diseases." },
     { word: "nephrology", translation: "néphrologie", example: "Nephrology focuses on kidney function and diseases." },
-    { word: "general practitioner", translation: "médecin généraliste", example: "Your general practitioner is usually your first point of medical contact." },
-    { word: "specialist", translation: "spécialiste", example: "You may need to see a specialist for specific health conditions." },
+    
+    
     
     // Traitements médicaux
     { word: "medication", translation: "médicament", example: "Take your medication as prescribed by your doctor." },
-    { word: "prescription", translation: "ordonnance", example: "You need a prescription to get certain medications." },
+    
     { word: "treatment plan", translation: "plan de traitement", example: "The doctor developed a comprehensive treatment plan." },
     { word: "surgery", translation: "chirurgie", example: "She will need surgery to repair the damaged tissue." },
     { word: "physical therapy", translation: "kinésithérapie", example: "Physical therapy helped her recover after the accident." },
@@ -33,7 +33,7 @@ export const vocab = {
     { word: "transplant", translation: "greffe", example: "He received a kidney transplant last year." },
     { word: "dialysis", translation: "dialyse", example: "Patients with kidney failure often require regular dialysis." },
     { word: "clinical trial", translation: "essai clinique", example: "The new drug is currently in clinical trials." },
-    { word: "antibiotic", translation: "antibiotique", example: "Antibiotics are used to treat bacterial infections." },
+    
     { word: "vaccine", translation: "vaccin", example: "Vaccines help prevent infectious diseases." },
     { word: "side effect", translation: "effet secondaire", example: "The medication may cause drowsiness as a side effect." },
     { word: "recovery period", translation: "période de convalescence", example: "The recovery period after surgery varies for each patient." },
@@ -41,7 +41,7 @@ export const vocab = {
     
     // Services de santé
     { word: "healthcare system", translation: "système de santé", example: "Every country has a different healthcare system." },
-    { word: "hospital", translation: "hôpital", example: "She was admitted to the hospital yesterday." },
+    
     { word: "emergency room", translation: "service des urgences", example: "Go to the emergency room if you have severe chest pain." },
     { word: "clinic", translation: "clinique", example: "The clinic offers walk-in appointments for minor illnesses." },
     { word: "medical center", translation: "centre médical", example: "The medical center provides various specialized services." },
@@ -51,7 +51,7 @@ export const vocab = {
     { word: "intensive care unit", translation: "unité de soins intensifs", example: "The critically ill patient was transferred to the intensive care unit." },
     { word: "nursing home", translation: "maison de retraite médicalisée", example: "His grandmother moved to a nursing home last year." },
     { word: "hospice care", translation: "soins palliatifs", example: "Hospice care focuses on quality of life for terminal patients." },
-    { word: "health insurance", translation: "assurance maladie", example: "Health insurance covers many medical expenses." },
+    
     { word: "copayment", translation: "ticket modérateur", example: "You'll need to make a copayment for each doctor visit." },
     { word: "referral", translation: "orientation", example: "Your primary doctor will give you a referral to see a specialist." },
     { word: "patient record", translation: "dossier médical", example: "Your patient record contains your medical history." },
@@ -62,12 +62,12 @@ export const vocab = {
     { word: "preventive care", translation: "soins préventifs", example: "Regular check-ups are an important part of preventive care." },
     { word: "screening", translation: "dépistage", example: "Cancer screening can detect problems early." },
     { word: "health check", translation: "bilan de santé", example: "She gets an annual health check with her doctor." },
-    { word: "vaccination", translation: "vaccination", example: "Childhood vaccination prevents many serious diseases." },
+    
     { word: "immunization", translation: "immunisation", example: "Immunization schedules vary by country." },
     { word: "risk factor", translation: "facteur de risque", example: "Smoking is a major risk factor for heart disease." },
     { word: "lifestyle modification", translation: "modification du style de vie", example: "Lifestyle modification can prevent many chronic diseases." },
     { word: "health promotion", translation: "promotion de la santé", example: "Health promotion focuses on education and awareness." },
-    { word: "public health", translation: "santé publique", example: "Public health initiatives aim to improve community health." },
+    
     { word: "epidemic prevention", translation: "prévention des épidémies", example: "Handwashing is crucial for epidemic prevention." },
     { word: "early detection", translation: "détection précoce", example: "Early detection improves treatment outcomes for many conditions." },
     { word: "health education", translation: "éducation à la santé", example: "Health education is taught in many schools." },
@@ -85,7 +85,7 @@ export const vocab = {
     { word: "stamina", translation: "résistance", example: "Building stamina requires consistent training." },
     { word: "muscle tone", translation: "tonus musculaire", example: "Regular exercise improves muscle tone." },
     { word: "body composition", translation: "composition corporelle", example: "Body composition refers to the ratio of fat to muscle in your body." },
-    { word: "metabolism", translation: "métabolisme", example: "Age can slow down your metabolism." },
+    
     { word: "physical activity", translation: "activité physique", example: "Even light physical activity has health benefits." },
     { word: "workout", translation: "séance d'entraînement", example: "She completes a 30-minute workout every morning." },
     { word: "recovery", translation: "récupération", example: "Recovery is as important as the workout itself." },
@@ -107,13 +107,13 @@ export const vocab = {
     { word: "mindfulness", translation: "pleine conscience", example: "Mindfulness helps you stay present and reduces rumination." },
     { word: "coping mechanism", translation: "mécanisme d'adaptation", example: "Healthy coping mechanisms help manage difficult emotions." },
     { word: "emotional intelligence", translation: "intelligence émotionnelle", example: "Emotional intelligence involves recognizing and managing emotions." },
-    { word: "work-life balance", translation: "équilibre travail-vie personnelle", example: "A good work-life balance prevents burnout." },
+    
     { word: "mental health stigma", translation: "stigmatisation de la santé mentale", example: "Education helps reduce mental health stigma." },
     { word: "support network", translation: "réseau de soutien", example: "A strong support network is important during difficult times." },
-    { word: "burnout", translation: "épuisement professionnel", example: "Chronic workplace stress can lead to burnout." },
+    
     
     // Approches thérapeutiques complémentaires
-    { word: "physical therapy", translation: "physiothérapie", example: "Physical therapy helps restore movement and function after an injury." },
+    
     { word: "massage therapy", translation: "massothérapie", example: "Massage therapy can reduce muscle tension and improve circulation." },
     { word: "osteopathy", translation: "ostéopathie", example: "Osteopathy uses manual techniques to improve musculoskeletal issues." },
     { word: "hydrotherapy", translation: "hydrothérapie", example: "Hydrotherapy uses water to relieve discomfort and promote physical wellbeing." },
@@ -121,7 +121,7 @@ export const vocab = {
     { word: "herbal medicine", translation: "phytothérapie", example: "Herbal medicine has been practiced for thousands of years." },
     { word: "nutritional therapy", translation: "thérapie nutritionnelle", example: "Nutritional therapy uses dietary changes to support health." },
     { word: "therapeutic exercise", translation: "exercice thérapeutique", example: "Therapeutic exercise is designed to improve specific health conditions." },
-    { word: "rehabilitation", translation: "réadaptation", example: "Rehabilitation helps patients recover function after illness or injury." },
+    
     { word: "pain management", translation: "gestion de la douleur", example: "Pain management techniques include both medication and non-medication approaches." },
     { word: "balneotherapy", translation: "balnéothérapie", example: "Balneotherapy involves bathing in mineral waters for therapeutic purposes." },
     { word: "compression therapy", translation: "thérapie par compression", example: "Compression therapy is used to improve circulation in the limbs." },

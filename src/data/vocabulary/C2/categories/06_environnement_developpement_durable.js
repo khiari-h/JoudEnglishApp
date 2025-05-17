@@ -2,143 +2,143 @@ export const vocab = {
   title: "Environnement et Développement Durable",
   words: [
     // Changement climatique (25 mots)
-    { word: "climate change", translation: "changement climatique", example: "Climate change impacts ecosystems and human societies globally." },
-    { word: "global warming", translation: "réchauffement climatique", example: "Global warming results primarily from greenhouse gas emissions." },
-    { word: "greenhouse effect", translation: "effet de serre", example: "The greenhouse effect traps heat in Earth's atmosphere." },
-    { word: "carbon footprint", translation: "empreinte carbone", example: "Companies work to reduce their carbon footprint through various initiatives." },
-    { word: "climate mitigation", translation: "atténuation du changement climatique", example: "Climate mitigation strategies aim to reduce greenhouse gas emissions." },
-    { word: "climate adaptation", translation: "adaptation au changement climatique", example: "Climate adaptation involves adjusting to actual or expected climate effects." },
-    { word: "carbon neutrality", translation: "neutralité carbone", example: "The organization aims to achieve carbon neutrality by 2030." },
+    
+    
+    
+    
+    
+    
+    
     { word: "emissions reduction", translation: "réduction des émissions", example: "Their emissions reduction plan exceeded international targets." },
-    { word: "climate resilience", translation: "résilience climatique", example: "Urban planning focused on climate resilience for coastal communities." },
+    
     { word: "climate vulnerability", translation: "vulnérabilité climatique", example: "The assessment identified areas of high climate vulnerability." },
     { word: "extreme weather event", translation: "événement météorologique extrême", example: "Extreme weather events have increased in frequency and intensity." },
-    { word: "sea level rise", translation: "élévation du niveau de la mer", example: "Sea level rise threatens coastal cities and island nations." },
+    
     { word: "climate model", translation: "modèle climatique", example: "Climate models project future temperature and precipitation patterns." },
     { word: "carbon sink", translation: "puits de carbone", example: "Forests function as carbon sinks by absorbing carbon dioxide." },
     { word: "climate feedback", translation: "rétroaction climatique", example: "Climate feedback mechanisms can amplify or diminish initial changes." },
     { word: "climate science", translation: "science du climat", example: "Climate science integrates multiple disciplines to understand Earth's climate system." },
-    { word: "decarbonization", translation: "décarbonisation", example: "Decarbonization of the energy sector requires transitioning to renewable sources." },
-    { word: "climate policy", translation: "politique climatique", example: "Effective climate policy combines regulations, incentives, and public engagement." },
-    { word: "climate justice", translation: "justice climatique", example: "Climate justice addresses inequitable impacts of climate change." },
-    { word: "carbon budget", translation: "budget carbone", example: "The carbon budget quantifies allowable emissions to limit warming." },
-    { word: "ocean acidification", translation: "acidification des océans", example: "Ocean acidification threatens marine ecosystems, particularly coral reefs." },
+    
+    
+    
+    
+    
     { word: "climate tipping point", translation: "point de basculement climatique", example: "Climate tipping points represent thresholds beyond which major changes become irreversible." },
-    { word: "climate diplomacy", translation: "diplomatie climatique", example: "Climate diplomacy seeks international cooperation on climate challenges." },
+    
     { word: "carbon sequestration", translation: "séquestration du carbone", example: "Carbon sequestration technologies capture and store carbon dioxide." },
-    { word: "climate scenario", translation: "scénario climatique", example: "Climate scenarios model possible futures under different emission pathways." },
+    
     
     // Énergies renouvelables (25 mots)
-    { word: "renewable energy", translation: "énergie renouvelable", example: "Renewable energy sources include solar, wind, hydro, and geothermal power." },
-    { word: "solar power", translation: "énergie solaire", example: "Solar power capacity has grown exponentially in the past decade." },
-    { word: "wind energy", translation: "énergie éolienne", example: "Wind energy provides an increasingly significant portion of electricity generation." },
-    { word: "hydroelectric power", translation: "énergie hydroélectrique", example: "Hydroelectric power harnesses flowing water to generate electricity." },
-    { word: "geothermal energy", translation: "énergie géothermique", example: "Geothermal energy utilizes heat from within the Earth." },
-    { word: "biomass energy", translation: "énergie de la biomasse", example: "Biomass energy derives from organic materials like plants and waste." },
+    
+    
+    
+    
+    
+    
     { word: "tidal power", translation: "énergie marémotrice", example: "Tidal power captures energy from tidal flows and ocean currents." },
-    { word: "energy transition", translation: "transition énergétique", example: "The energy transition involves shifting from fossil fuels to renewable sources." },
+    
     { word: "photovoltaic system", translation: "système photovoltaïque", example: "Photovoltaic systems convert sunlight directly into electricity." },
     { word: "wind turbine", translation: "éolienne", example: "Modern wind turbines can generate several megawatts of power." },
     { word: "solar thermal", translation: "solaire thermique", example: "Solar thermal systems use sunlight to produce heat rather than electricity." },
-    { word: "energy storage", translation: "stockage d'énergie", example: "Energy storage technologies address intermittency in renewable generation." },
-    { word: "smart grid", translation: "réseau intelligent", example: "Smart grids optimize electricity distribution and integrate renewable sources." },
-    { word: "feed-in tariff", translation: "tarif de rachat", example: "Feed-in tariffs guarantee prices for renewable electricity fed into the grid." },
+    
+    
+    
     { word: "net metering", translation: "facturation nette", example: "Net metering allows consumers to sell excess renewable energy to utilities." },
-    { word: "distributed generation", translation: "production décentralisée", example: "Distributed generation places smaller energy sources close to energy needs." },
+    
     { word: "renewable portfolio standard", translation: "norme de portefeuille d'énergies renouvelables", example: "Renewable portfolio standards require utilities to use specific amounts of renewable energy." },
     { word: "biofuel", translation: "biocarburant", example: "Biofuels derive from plant materials and organic waste." },
     { word: "hydrogen fuel", translation: "hydrogène comme carburant", example: "Green hydrogen fuel produces zero emissions when combusted." },
     { word: "concentrated solar power", translation: "énergie solaire concentrée", example: "Concentrated solar power uses mirrors to focus sunlight for electricity generation." },
     { word: "microgrid", translation: "micro-réseau", example: "Microgrids can operate independently from the main power grid." },
-    { word: "power purchase agreement", translation: "contrat d'achat d'électricité", example: "Power purchase agreements secure long-term renewable energy supply." },
+    
     { word: "renewable energy certificate", translation: "certificat d'énergie renouvelable", example: "Renewable energy certificates represent the environmental benefits of clean electricity." },
     { word: "offshore wind", translation: "éolien offshore", example: "Offshore wind farms generate electricity from ocean winds." },
-    { word: "energy efficiency", translation: "efficacité énergétique", example: "Energy efficiency measures reduce consumption while maintaining service levels." },
+    
     
     // Conservation et biodiversité (25 mots)
-    { word: "biodiversity conservation", translation: "conservation de la biodiversité", example: "Biodiversity conservation protects the variety of life forms on Earth." },
-    { word: "ecosystem services", translation: "services écosystémiques", example: "Ecosystem services include water purification, pollination, and climate regulation." },
+    
+    
     { word: "habitat protection", translation: "protection de l'habitat", example: "Habitat protection preserves areas essential for species survival." },
-    { word: "endangered species", translation: "espèce menacée", example: "Endangered species face high risk of extinction in the wild." },
-    { word: "wildlife corridor", translation: "corridor faunique", example: "Wildlife corridors connect isolated habitat patches to facilitate animal movement." },
-    { word: "protected area", translation: "zone protégée", example: "Protected areas restrict human activities to conserve natural resources." },
-    { word: "biodiversity hotspot", translation: "point chaud de biodiversité", example: "Biodiversity hotspots contain exceptional concentrations of endemic species." },
-    { word: "ecological restoration", translation: "restauration écologique", example: "Ecological restoration repairs damaged or destroyed ecosystems." },
-    { word: "invasive species", translation: "espèce envahissante", example: "Invasive species threaten native biodiversity when introduced to new environments." },
+    
+    
+    
+    
+    
+    
     { word: "conservation biology", translation: "biologie de la conservation", example: "Conservation biology applies science to protect biodiversity and ecosystems." },
-    { word: "keystone species", translation: "espèce clé de voûte", example: "Keystone species have disproportionate effects on their ecosystems." },
-    { word: "biosphere reserve", translation: "réserve de biosphère", example: "Biosphere reserves promote sustainable development while conserving biodiversity." },
+    
+    
     { word: "ex-situ conservation", translation: "conservation ex-situ", example: "Ex-situ conservation preserves species outside their natural habitats." },
     { word: "in-situ conservation", translation: "conservation in-situ", example: "In-situ conservation protects species within their natural environments." },
     { word: "rewilding", translation: "réensauvagement", example: "Rewilding restores ecosystems by reintroducing lost species." },
     { word: "conservation genetics", translation: "génétique de la conservation", example: "Conservation genetics applies genetic analysis to preserve biodiversity." },
     { word: "biodiversity assessment", translation: "évaluation de la biodiversité", example: "Biodiversity assessment measures species richness and abundance." },
-    { word: "flagship species", translation: "espèce phare", example: "Flagship species attract public support for broader conservation efforts." },
-    { word: "habitat fragmentation", translation: "fragmentation de l'habitat", example: "Habitat fragmentation divides continuous environments into isolated patches." },
+    
+    
     { word: "conservation easement", translation: "servitude de conservation", example: "Conservation easements restrict land use while maintaining private ownership." },
     { word: "community-based conservation", translation: "conservation communautaire", example: "Community-based conservation involves local people in protection efforts." },
     { word: "species reintroduction", translation: "réintroduction d'espèces", example: "Species reintroduction returns native species to areas where they've disappeared." },
     { word: "biodiversity monitoring", translation: "surveillance de la biodiversité", example: "Biodiversity monitoring tracks changes in species composition over time." },
-    { word: "wildlife management", translation: "gestion de la faune", example: "Wildlife management balances conservation with human needs and activities." },
-    { word: "ecosystem approach", translation: "approche écosystémique", example: "The ecosystem approach considers entire systems rather than individual species." },
+    
+    
     
     // Économie circulaire (25 mots)
-    { word: "circular economy", translation: "économie circulaire", example: "Circular economy models minimize waste and maximize resource reuse." },
+    
     { word: "cradle-to-cradle design", translation: "conception du berceau au berceau", example: "Cradle-to-cradle design creates products with full lifecycle consideration." },
-    { word: "industrial symbiosis", translation: "symbiose industrielle", example: "Industrial symbiosis involves sharing resources among different industries." },
-    { word: "closed-loop system", translation: "système en boucle fermée", example: "Closed-loop systems recover and reuse materials indefinitely." },
-    { word: "resource efficiency", translation: "efficacité des ressources", example: "Resource efficiency maximizes value while minimizing environmental impacts." },
+    
+    
+    
     { word: "waste hierarchy", translation: "hiérarchie des déchets", example: "The waste hierarchy prioritizes prevention, reuse, recycling, and disposal options." },
     { word: "product stewardship", translation: "gestion responsable des produits", example: "Product stewardship extends manufacturer responsibility beyond the point of sale." },
-    { word: "upcycling", translation: "surcyclage", example: "Upcycling transforms waste materials into products of higher value." },
-    { word: "remanufacturing", translation: "refabrication", example: "Remanufacturing restores used products to like-new condition." },
-    { word: "sharing economy", translation: "économie du partage", example: "The sharing economy maximizes resource utilization through collaborative consumption." },
-    { word: "extended producer responsibility", translation: "responsabilité élargie du producteur", example: "Extended producer responsibility makes manufacturers accountable for product end-of-life." },
+    
+    
+    
+    
     { word: "material recovery", translation: "récupération de matériaux", example: "Material recovery facilities extract usable resources from waste streams." },
     { word: "circular supply chain", translation: "chaîne d'approvisionnement circulaire", example: "Circular supply chains recover and reintegrate materials after use." },
-    { word: "reverse logistics", translation: "logistique inverse", example: "Reverse logistics manages product returns for reuse or proper disposal." },
+    
     { word: "product-service system", translation: "système produit-service", example: "Product-service systems sell performance rather than physical products." },
-    { word: "design for disassembly", translation: "conception pour le démontage", example: "Design for disassembly facilitates repair and material recovery." },
-    { word: "regenerative design", translation: "conception régénérative", example: "Regenerative design creates systems that restore rather than deplete resources." },
+    
+    
     { word: "secondary raw material", translation: "matière première secondaire", example: "Secondary raw materials derive from recovered waste rather than virgin resources." },
     { word: "take-back program", translation: "programme de reprise", example: "Take-back programs collect used products for recycling or refurbishment." },
     { word: "circular business model", translation: "modèle d'affaires circulaire", example: "Circular business models generate value while minimizing resource consumption." },
-    { word: "zero waste", translation: "zéro déchet", example: "Zero waste approaches eliminate rather than manage waste streams." },
-    { word: "material passport", translation: "passeport de matériaux", example: "Material passports document product components to facilitate future recycling." },
+    
+    
     { word: "urban mining", translation: "extraction urbaine", example: "Urban mining recovers valuable materials from buildings and infrastructure." },
     { word: "circular procurement", translation: "approvisionnement circulaire", example: "Circular procurement prioritizes products designed for reuse and recycling." },
     { word: "resource cascading", translation: "cascade des ressources", example: "Resource cascading uses materials for progressively lower-grade applications before disposal." },
     
     // Urbanisme durable (25 mots)
     { word: "sustainable urban planning", translation: "urbanisme durable", example: "Sustainable urban planning balances social, environmental, and economic considerations." },
-    { word: "smart city", translation: "ville intelligente", example: "Smart cities use technology to enhance sustainability and quality of life." },
-    { word: "transit-oriented development", translation: "développement axé sur le transport en commun", example: "Transit-oriented development concentrates growth around transportation hubs." },
+    
+    
     { word: "green infrastructure", translation: "infrastructure verte", example: "Green infrastructure incorporates natural systems into urban environments." },
-    { word: "mixed-use development", translation: "développement à usage mixte", example: "Mixed-use development combines residential, commercial, and other functions." },
+    
     { word: "walkability", translation: "marchabilité", example: "Walkability measures how friendly an area is for pedestrian activity." },
-    { word: "urban density", translation: "densité urbaine", example: "Appropriate urban density reduces resource consumption and transportation needs." },
-    { word: "green building", translation: "bâtiment écologique", example: "Green buildings minimize environmental impacts throughout their lifecycle." },
-    { word: "urban heat island", translation: "îlot de chaleur urbain", example: "Urban heat islands occur when cities experience higher temperatures than surrounding areas." },
+    
+    
+    
     { word: "low-impact development", translation: "aménagement à faible impact", example: "Low-impact development manages stormwater through natural processes." },
     { word: "complete streets", translation: "rues complètes", example: "Complete streets accommodate all transportation modes and user abilities." },
-    { word: "eco-district", translation: "éco-quartier", example: "Eco-districts apply sustainability principles at the neighborhood scale." },
-    { word: "urban agriculture", translation: "agriculture urbaine", example: "Urban agriculture produces food within city environments." },
-    { word: "biophilic design", translation: "conception biophilique", example: "Biophilic design incorporates natural elements into built environments." },
+    
+    
+    
     { word: "compact development", translation: "développement compact", example: "Compact development concentrates urban functions to preserve open space." },
     { word: "sustainable transportation", translation: "transport durable", example: "Sustainable transportation prioritizes walking, cycling, and public transit." },
-    { word: "urban resilience", translation: "résilience urbaine", example: "Urban resilience helps cities withstand and recover from environmental shocks." },
+    
     { word: "livable city", translation: "ville habitable", example: "Livable cities provide high quality of life through thoughtful planning." },
     { word: "urban metabolism", translation: "métabolisme urbain", example: "Urban metabolism analyzes resource flows through city systems." },
-    { word: "placemaking", translation: "création de lieux", example: "Placemaking transforms public spaces to strengthen community connections." },
-    { word: "urban regeneration", translation: "régénération urbaine", example: "Urban regeneration revitalizes declining areas through comprehensive approaches." },
+    
+    
     { word: "sustainable mobility", translation: "mobilité durable", example: "Sustainable mobility reduces environmental impacts of transportation systems." },
-    { word: "net-zero building", translation: "bâtiment à énergie nette zéro", example: "Net-zero buildings produce as much energy as they consume." },
+    
     { word: "urban ecology", translation: "écologie urbaine", example: "Urban ecology studies relationships between organisms in city environments." },
     { word: "green roof", translation: "toit végétalisé", example: "Green roofs provide insulation, stormwater management, and habitat in urban areas." },
     
     // Gestion de l'eau (25 mots)
-    { word: "water management", translation: "gestion de l'eau", example: "Integrated water management addresses supply, quality, and ecosystem needs." },
-    { word: "water scarcity", translation: "pénurie d'eau", example: "Water scarcity affects billions of people worldwide." },
+    
+    
     { word: "watershed protection", translation: "protection des bassins versants", example: "Watershed protection safeguards sources of drinking water." },
     { word: "water conservation", translation: "conservation de l'eau", example: "Water conservation measures reduce unnecessary consumption." },
     { word: "groundwater recharge", translation: "recharge des nappes phréatiques", example: "Groundwater recharge replenishes aquifers with surface water." },
@@ -155,7 +155,7 @@ export const vocab = {
     { word: "water security", translation: "sécurité hydrique", example: "Water security ensures sustainable access to adequate water supplies." },
     { word: "desalination", translation: "dessalement", example: "Desalination converts seawater into freshwater by removing salt." },
     { word: "rainwater harvesting", translation: "collecte des eaux de pluie", example: "Rainwater harvesting captures precipitation for later use." },
-    { word: "greywater system", translation: "système d'eaux grises", example: "Greywater systems reuse household wastewater for irrigation." },
+    
     { word: "water privatization", translation: "privatisation de l'eau", example: "Water privatization transfers management from public to private entities." },
     { word: "water allocation", translation: "allocation de l'eau", example: "Water allocation distributes resources among competing users." },
     { word: "riparian buffer", translation: "zone tampon riveraine", example: "Riparian buffers protect waterways from adjacent land activities." },
@@ -183,91 +183,90 @@ export const vocab = {
     { word: "toxic release", translation: "rejet toxique", example: "The facility must report any toxic release to environmental authorities." },
     { word: "air pollutant", translation: "polluant atmosphérique", example: "Common air pollutants include ozone, nitrogen dioxide, and sulfur dioxide." },
     { word: "soil remediation", translation: "assainissement des sols", example: "Soil remediation restored the former industrial site to usable condition." },
-    { word: "water contamination", translation: "contamination de l'eau", example: "Water contamination can originate from various industrial and agricultural sources." },
+    
     { word: "filtration system", translation: "système de filtration", example: "The filtration system removes particulates from the exhaust stream." },
     { word: "pollution prevention", translation: "prévention de la pollution", example: "Pollution prevention addresses environmental problems before they occur." },
     { word: "emission standard", translation: "norme d'émission", example: "Emission standards establish legal limits for pollutant releases." },
     { word: "cleanup operation", translation: "opération de nettoyage", example: "The cleanup operation addressed hazardous materials from the spill." },
-    { word: "polluter pays principle", translation: "principe du pollueur-payeur", example: "The polluter pays principle makes polluters responsible for environmental damages." },
+    
     
     // Gouvernance environnementale (25 mots)
-    { word: "environmental governance", translation: "gouvernance environnementale", example: "Environmental governance coordinates efforts to address ecological challenges." },
+    
     { word: "sustainability policy", translation: "politique de durabilité", example: "Sustainability policy integrates economic, social, and environmental considerations." },
-    { word: "environmental regulation", translation: "réglementation environnementale", example: "Environmental regulation establishes standards for pollution control." },
+    
     { word: "stakeholder engagement", translation: "engagement des parties prenantes", example: "Stakeholder engagement involves affected groups in environmental decisions." },
-    { word: "environmental impact assessment", translation: "évaluation d'impact environnemental", example: "Environmental impact assessment analyzes potential effects of proposed projects." },
-    { word: "precautionary principle", translation: "principe de précaution", example: "The precautionary principle advocates caution when actions might harm the environment." },
+    
+    
     { word: "green policy", translation: "politique verte", example: "Green policy promotes environmentally friendly practices and technologies." },
-    { word: "environmental justice", translation: "justice environnementale", example: "Environmental justice addresses fair distribution of environmental benefits and burdens." },
+    
     { word: "multilateral environmental agreement", translation: "accord environnemental multilatéral", example: "Multilateral environmental agreements establish international ecological commitments." },
-    { word: "environmental compliance", translation: "conformité environnementale", example: "Environmental compliance ensures adherence to ecological regulations." },
-    { word: "environmental institution", translation: "institution environnementale", example: "Environmental institutions coordinate governance across sectors and levels." },
-    { word: "sustainability reporting", translation: "rapport de durabilité", example: "Sustainability reporting discloses organization-level environmental performance." },
+    
+    
+    
     { word: "environmental standard", translation: "norme environnementale", example: "Environmental standards establish minimum acceptable practices." },
-    { word: "adaptive management", translation: "gestion adaptative", example: "Adaptive management adjusts strategies based on monitoring results." },
-    { word: "ecosystem-based management", translation: "gestion écosystémique", example: "Ecosystem-based management considers entire systems rather than isolated components." },
-    { word: "public participation", translation: "participation publique", example: "Public participation enhances environmental decision-making legitimacy." },
+    
+    
+    
     { word: "accountability mechanism", translation: "mécanisme de responsabilisation", example: "Accountability mechanisms ensure responsible environmental management." },
     { word: "sustainable development goal", translation: "objectif de développement durable", example: "The Sustainable Development Goals address global environmental and social challenges." },
     { word: "environmental policy integration", translation: "intégration des politiques environnementales", example: "Environmental policy integration incorporates ecological considerations across sectors." },
     { word: "monitoring and evaluation", translation: "suivi et évaluation", example: "Monitoring and evaluation assess environmental program effectiveness." },
-    { word: "capacity building", translation: "renforcement des capacités", example: "Capacity building develops skills and institutions for environmental management." },
-    { word: "institutional arrangement", translation: "dispositif institutionnel", example: "Institutional arrangements specify roles and responsibilities in environmental governance." },
-    { word: "compliance mechanism", translation: "mécanisme de conformité", example: "Compliance mechanisms ensure adherence to environmental commitments." },
+    
+    
+    
     { word: "policy framework", translation: "cadre politique", example: "The policy framework establishes principles for environmental decision-making." },
     { word: "environmental democracy", translation: "démocratie environnementale", example: "Environmental democracy involves citizens in decisions affecting their environment." },
     
     // Agriculture durable (25 mots)
-    { word: "sustainable agriculture", translation: "agriculture durable", example: "Sustainable agriculture maintains productivity while protecting ecosystems." },
-    { word: "organic farming", translation: "agriculture biologique", example: "Organic farming avoids synthetic pesticides and fertilizers." },
-    { word: "agroecology", translation: "agroécologie", example: "Agroecology applies ecological principles to agricultural systems." },
-    { word: "conservation agriculture", translation: "agriculture de conservation", example: "Conservation agriculture minimizes soil disturbance and maintains permanent soil cover." },
+    
+    
+    
+    
     { word: "regenerative farming", translation: "agriculture régénérative", example: "Regenerative farming enhances ecosystem services rather than depleting them." },
-    { word: "crop rotation", translation: "rotation des cultures", example: "Crop rotation improves soil health and disrupts pest cycles." },
-    { word: "precision agriculture", translation: "agriculture de précision", example: "Precision agriculture uses technology to optimize inputs and reduce waste." },
-    { word: "integrated pest management", translation: "lutte intégrée contre les ravageurs", example: "Integrated pest management combines techniques to control pests effectively." },
+    
+    
+    
     { word: "soil health", translation: "santé du sol", example: "Soil health management increases organic matter and biological activity." },
     { word: "cover crop", translation: "culture de couverture", example: "Cover crops protect and improve soil between production periods." },
-    { word: "agroforestry", translation: "agroforesterie", example: "Agroforestry integrates trees with crops or livestock production." },
-    { word: "food security", translation: "sécurité alimentaire", example: "Food security ensures reliable access to sufficient, nutritious food." },
-    { word: "sustainable intensification", translation: "intensification durable", example: "Sustainable intensification increases production while minimizing environmental impacts." },
-    { word: "permaculture", translation: "permaculture", example: "Permaculture designs agricultural systems based on natural ecosystems." },
-    { word: "biodiversity conservation", translation: "conservation de la biodiversité", example: "Agricultural biodiversity conservation protects crop and livestock genetic diversity." },
-    { word: "water conservation", translation: "conservation de l'eau", example: "Water conservation in agriculture reduces consumption while maintaining production." },
+    
+    
+    
+    
+    
+    
     { word: "sustainable livestock", translation: "élevage durable", example: "Sustainable livestock practices minimize environmental impacts of animal production." },
     { word: "integrated farming system", translation: "système agricole intégré", example: "Integrated farming systems combine crop and livestock production for efficiency." },
-    { word: "local food system", translation: "système alimentaire local", example: "Local food systems connect producers and consumers within regions." },
+    
     { word: "agricultural resilience", translation: "résilience agricole", example: "Agricultural resilience enables farming systems to withstand environmental changes." },
-    { word: "agricultural biodiversity", translation: "biodiversité agricole", example: "Agricultural biodiversity includes diverse crops, livestock, and supporting organisms." },
-    { word: "no-till farming", translation: "agriculture sans labour", example: "No-till farming maintains soil structure and reduces erosion." },
+    
+    
     { word: "smallholder agriculture", translation: "agriculture paysanne", example: "Smallholder agriculture involves farms operated primarily by family labor." },
-    { word: "agrobiodiversity", translation: "agrobiodiversité", example: "Agrobiodiversity strengthens farming systems through genetic and ecological diversity." },
-    { word: "climate-smart agriculture", translation: "agriculture intelligente face au climat", example: "Climate-smart agriculture adapts to changing conditions while reducing emissions." },
+    
+    
     
     // Développement durable (25 mots)
-    { word: "sustainable development", translation: "développement durable", example: "Sustainable development meets present needs without compromising future generations." },
-    { word: "triple bottom line", translation: "triple bilan", example: "The triple bottom line considers social, environmental, and economic performance." },
+    
+    
     { word: "corporate sustainability", translation: "durabilité d'entreprise", example: "Corporate sustainability aligns business strategy with environmental and social goals." },
     { word: "sustainability assessment", translation: "évaluation de la durabilité", example: "Sustainability assessment measures progress toward environmental and social objectives." },
-    { word: "sustainable consumption", translation: "consommation durable", example: "Sustainable consumption considers environmental impacts of purchasing decisions." },
+    
     { word: "social sustainability", translation: "durabilité sociale", example: "Social sustainability addresses equity, health, and well-being considerations." },
-    { word: "intergenerational equity", translation: "équité intergénérationnelle", example: "Intergenerational equity considers the rights of future generations." },
-    { word: "ecological footprint", translation: "empreinte écologique", example: "Ecological footprint measures human demand on natural resources." },
-    { word: "sustainability transition", translation: "transition vers la durabilité", example: "Sustainability transition involves fundamental shifts in socio-technical systems." },
+    
+    
+    
     { word: "sustainable supply chain", translation: "chaîne d'approvisionnement durable", example: "Sustainable supply chain management addresses environmental and social impacts." },
     { word: "green economy", translation: "économie verte", example: "Green economy initiatives promote well-being while reducing environmental risks." },
     { word: "sustainability indicator", translation: "indicateur de durabilité", example: "Sustainability indicators track progress toward environmental and social goals." },
     { word: "life cycle assessment", translation: "analyse du cycle de vie", example: "Life cycle assessment evaluates environmental impacts throughout a product's life." },
     { word: "planetary boundaries", translation: "limites planétaires", example: "Planetary boundaries define environmental thresholds for safe human development." },
-    { word: "sustainable business model", translation: "modèle d'affaires durable", example: "Sustainable business models create value while addressing environmental and social needs." },
-    { word: "sustainability certification", translation: "certification de durabilité", example: "Sustainability certification verifies adherence to environmental and social standards." },
-    { word: "corporate social responsibility", translation: "responsabilité sociale des entreprises", example: "Corporate social responsibility addresses company impacts on society and environment." },
-    { word: "sustainable procurement", translation: "approvisionnement durable", example: "Sustainable procurement considers environmental and social criteria in purchasing." },
+    
+    
+    
+    
     { word: "sustainability strategy", translation: "stratégie de durabilité", example: "The sustainability strategy aligned environmental goals with business objectives." },
     { word: "inclusive growth", translation: "croissance inclusive", example: "Inclusive growth ensures economic benefits reach all segments of society." },
-    { word: "sustainability reporting", translation: "reporting de durabilité", example: "Sustainability reporting discloses environmental and social performance information." },
-    { word: "shared value", translation: "valeur partagée", example: "Creating shared value addresses societal needs through profitable business practices." },
+    
+    
     { word: "sustainable investment", translation: "investissement durable", example: "Sustainable investment considers environmental and social outcomes alongside financial returns." },
-    { word: "sustainability leadership", translation: "leadership en durabilité", example: "Sustainability leadership drives organizational and systemic change." },
-  ]
+    { word: "sustainability leadership", translation: "leadership en durabilité", example: "Sustainability leadership drives organizational and systemic change." }]
 };

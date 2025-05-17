@@ -4,34 +4,34 @@ export const vocab = {
     // Structure et organisation des textes académiques (50 mots)
     { word: "academic writing", translation: "rédaction académique", example: "Effective academic writing balances precision, clarity, and appropriate disciplinary conventions." },
     { word: "scholarly discourse", translation: "discours savant", example: "The scholarly discourse surrounding this theoretical framework has evolved significantly in recent decades." },
-    { word: "dissertation", translation: "thèse", example: "Her dissertation makes a significant methodological contribution to the field through innovative analytical techniques." },
+    
     { word: "thesis statement", translation: "énoncé de thèse", example: "A precise thesis statement articulates both the argument and its significance to the broader literature." },
     { word: "research article", translation: "article de recherche", example: "The research article presents empirical findings supporting the theoretical model proposed in earlier work." },
-    { word: "journal article", translation: "article de revue", example: "The journal article underwent substantive revisions following detailed reviewer feedback." },
+    
     { word: "conference proceedings", translation: "actes de conférence", example: "The conference proceedings include both completed studies and works in progress from symposium presenters." },
-    { word: "literature review", translation: "revue de littérature", example: "An effective literature review synthesizes previous research rather than merely summarizing individual studies." },
-    { word: "systematic review", translation: "revue systématique", example: "The systematic review employed explicit inclusion criteria and quality assessment of all relevant studies." },
-    { word: "meta-analysis", translation: "méta-analyse", example: "The meta-analysis revealed a moderate effect size across 43 studies examining this relationship." },
-    { word: "monograph", translation: "monographie", example: "The monograph offers a comprehensive theoretical framework based on a decade of field research." },
+    
+    
+    
+    
     { word: "book chapter", translation: "chapitre d'ouvrage", example: "The book chapter situates empirical findings within broader theoretical and historical contexts." },
-    { word: "edited volume", translation: "ouvrage collectif", example: "The edited volume brings together diverse disciplinary perspectives on this emerging research area." },
+    
     { word: "abstract", translation: "résumé", example: "A well-structured abstract concisely presents the research problem, methods, findings, and implications." },
     { word: "executive summary", translation: "résumé analytique", example: "The executive summary distills complex findings into actionable insights for policy stakeholders." },
     { word: "introduction", translation: "introduction", example: "The introduction establishes the research problem's significance within theoretical and practical contexts." },
     { word: "literature review section", translation: "section de revue de littérature", example: "The literature review section identifies key debates and knowledge gaps justifying the current study." },
-    { word: "theoretical framework", translation: "cadre théorique", example: "The theoretical framework integrates concepts from three complementary perspectives to guide analysis." },
+    
     { word: "methodology section", translation: "section méthodologique", example: "The methodology section justifies research design choices in relation to the study's objectives." },
     { word: "results section", translation: "section des résultats", example: "The results section presents findings systematically without interpretive commentary." },
     { word: "discussion section", translation: "section de discussion", example: "The discussion section contextualizes findings within existing literature and addresses theoretical implications." },
-    { word: "conclusion", translation: "conclusion", example: "Rather than merely summarizing, the conclusion articulates broader significance and future research directions." },
+    
     { word: "heading", translation: "titre de section", example: "Descriptive headings guide readers through the manuscript's logical structure and major transitions." },
     { word: "subheading", translation: "sous-titre", example: "Hierarchical subheadings organize content into meaningful conceptual units for improved navigation." },
-    { word: "paragraph structure", translation: "structure de paragraphe", example: "Effective paragraph structure builds from topic sentences through supporting evidence to concluding synthesis." },
+    
     { word: "topic sentence", translation: "phrase-thème", example: "Each paragraph opens with a topic sentence establishing its central idea and relation to the overall argument." },
     { word: "transition", translation: "transition", example: "Skillful transitions maintain logical flow between paragraphs and major sections of the manuscript." },
-    { word: "signposting", translation: "balisage", example: "Explicit signposting helps readers navigate complex arguments through preview and review statements." },
-    { word: "coherence", translation: "cohérence", example: "Textual coherence requires consistent conceptualization and logical progression between ideas." },
-    { word: "cohesion", translation: "cohésion", example: "Lexical and grammatical cohesion devices connect sentences and paragraphs into unified discourse." },
+    
+    
+    
     { word: "thematic progression", translation: "progression thématique", example: "Thematic progression moves from established information to new insights throughout the manuscript." },
     { word: "information structure", translation: "structure informationnelle", example: "Effective information structure places important content in prominent syntactic positions." },
     { word: "literature synthesis", translation: "synthèse de la littérature", example: "The literature synthesis organizes previous research by theoretical approach rather than chronologically." },
@@ -47,7 +47,7 @@ export const vocab = {
     { word: "style guide", translation: "guide de style", example: "Authors must adhere to the journal's style guide regarding structure, formatting, and reference conventions." },
     { word: "submission guidelines", translation: "directives de soumission", example: "Submission guidelines specify manuscript length, formatting requirements, and peer review procedures." },
     { word: "blind review", translation: "évaluation à l'aveugle", example: "For blind review, authors remove identifying information from manuscripts before submission." },
-    { word: "revision process", translation: "processus de révision", example: "The revision process requires addressing reviewer critiques while maintaining the manuscript's core contribution." },
+    
     { word: "rebuttal letter", translation: "lettre de réfutation", example: "The rebuttal letter systematically responds to each reviewer comment with corresponding manuscript changes." },
     { word: "manuscript rejection", translation: "rejet de manuscrit", example: "Manuscript rejection often reflects fit with journal scope rather than research quality alone." },
     { word: "resubmission", translation: "nouvelle soumission", example: "The resubmission incorporated substantial methodological improvements based on initial reviewer feedback." },
@@ -55,42 +55,42 @@ export const vocab = {
     
     // Style académique et conventions (50 mots)
     { word: "academic tone", translation: "ton académique", example: "Academic tone conveys analytical distance while maintaining engagement with the subject matter." },
-    { word: "formal register", translation: "registre formel", example: "Formal register avoids colloquialisms, contractions, and personal anecdotes in scholarly writing." },
+    
     { word: "scholarly voice", translation: "voix savante", example: "The scholarly voice balances confidence in assertions with appropriate qualification of claims." },
     { word: "objective stance", translation: "posture objective", example: "Traditional academic writing maintains an objective stance through impersonal constructions and evidence-based claims." },
-    { word: "authorial presence", translation: "présence auctoriale", example: "Contemporary scholarship often acknowledges authorial presence rather than affecting complete objectivity." },
+    
     { word: "authorial voice", translation: "voix d'auteur", example: "A distinctive authorial voice emerges through consistent stylistic choices and analytical perspective." },
     { word: "first-person perspective", translation: "perspective à la première personne", example: "Many journals now accept judicious use of first-person perspective in appropriate sections." },
-    { word: "third-person perspective", translation: "perspective à la troisième personne", example: "Traditional academic writing employs third-person perspective to emphasize ideas over individuals." },
-    { word: "passive voice", translation: "voix passive", example: "While overuse creates dullness, strategic passive voice emphasizes processes and results over agents." },
-    { word: "active voice", translation: "voix active", example: "Active voice creates clarity and directness when appropriate for the rhetorical context." },
-    { word: "hedging", translation: "atténuation", example: "Academic hedging acknowledges limitations through qualifying terms like 'suggests' rather than 'proves'." },
+    
+    
+    
+    
     { word: "boosting", translation: "amplification", example: "Strategic boosting emphasizes central claims while maintaining scholarly caution on secondary points." },
     { word: "stance markers", translation: "marqueurs de position", example: "Stance markers such as 'clearly' and 'importantly' signal the author's assessment of information significance." },
     { word: "epistemic modality", translation: "modalité épistémique", example: "Epistemic modality through terms like 'may' and 'suggests' indicates level of certainty about claims." },
     { word: "metadiscourse", translation: "métadiscours", example: "Metadiscourse guides readers through complex arguments with phrases like 'as demonstrated above'." },
     { word: "academic lexis", translation: "lexique académique", example: "Discipline-specific academic lexis signals membership in particular scholarly communities." },
-    { word: "specialized terminology", translation: "terminologie spécialisée", example: "Specialized terminology requires definition when first introduced or when used in distinctive ways." },
+    
     { word: "nominalizations", translation: "nominalisations", example: "Academic writing often employs nominalizations to present processes as abstract concepts for analysis." },
     { word: "lexical density", translation: "densité lexicale", example: "High lexical density in academic prose packs substantial information into concise expressions." },
-    { word: "syntactic complexity", translation: "complexité syntaxique", example: "Appropriate syntactic complexity expresses nuanced relationships between concepts and qualifications." },
-    { word: "conciseness", translation: "concision", example: "Scholarly conciseness eliminates redundancy while maintaining necessary nuance and precision." },
-    { word: "precision", translation: "précision", example: "Terminological precision distinguishes between related concepts with specific technical meanings." },
-    { word: "clarity", translation: "clarté", example: "Clarity prioritizes comprehensibility without sacrificing conceptual sophistication." },
+    
+    
+    
+    
     { word: "economy of expression", translation: "économie d'expression", example: "Economy of expression communicates complex ideas efficiently without unnecessary elaboration." },
-    { word: "redundancy", translation: "redondance", example: "Effective editing eliminates redundancy that doesn't serve rhetorical or clarification purposes." },
-    { word: "verbosity", translation: "verbosité", example: "Verbosity through unnecessary qualification and repetition weakens academic arguments." },
-    { word: "jargon", translation: "jargon", example: "While necessary for precision, excessive jargon can obscure meaning for interdisciplinary audiences." },
+    
+    
+    
     { word: "technical language", translation: "langage technique", example: "Technical language requires calibration to the audience's expertise and disciplinary background." },
     { word: "academic prose", translation: "prose académique", example: "Effective academic prose balances complexity with clarity through well-structured sentences and paragraphs." },
     { word: "parallel structure", translation: "structure parallèle", example: "Parallel structure in lists and comparative analyses enhances clarity and rhetorical effect." },
-    { word: "sentence variety", translation: "variété phrastique", example: "Sentence variety prevents monotony while maintaining appropriate academic formality." },
+    
     { word: "paragraph coherence", translation: "cohérence des paragraphes", example: "Paragraph coherence depends on logical connection between sentences developing a central idea." },
     { word: "transitional devices", translation: "connecteurs logiques", example: "Transitional devices like 'however' and 'consequently' signal logical relationships between ideas." },
     { word: "signaling language", translation: "langage de signalisation", example: "Signaling language prepares readers for upcoming content with phrases like 'The following section examines...'." },
     { word: "metatextual commentary", translation: "commentaire métatextuel", example: "Metatextual commentary explains the text's structure with statements like 'Having established X, we now turn to Y'." },
-    { word: "academese", translation: "jargon académique", example: "Impenetrable academese prioritizes sophistication over communication through unnecessarily complex language." },
-    { word: "stylistic convention", translation: "convention stylistique", example: "Stylistic conventions vary across disciplines regarding passive voice, first-person usage, and structural elements." },
+    
+    
     { word: "academic genres", translation: "genres académiques", example: "Different academic genres have distinct structural conventions and rhetorical expectations." },
     { word: "discipline-specific conventions", translation: "conventions disciplinaires", example: "Discipline-specific conventions reflect epistemological assumptions about knowledge production and representation." },
     { word: "interdisciplinary writing", translation: "rédaction interdisciplinaire", example: "Interdisciplinary writing requires calibrating terminology and methodological explanation for diverse audiences." },
@@ -98,36 +98,36 @@ export const vocab = {
     { word: "editorial style", translation: "style rédactionnel", example: "Each journal maintains specific editorial style requirements regarding formatting, headings, and citations." },
     { word: "style sheet", translation: "feuille de style", example: "Authors should consult the publisher's style sheet for specific formatting guidelines and preferences." },
     { word: "manuscript preparation", translation: "préparation du manuscrit", example: "Careful manuscript preparation according to journal guidelines prevents desk rejection on technical grounds." },
-    { word: "manuscript formatting", translation: "formatage du manuscrit", example: "Manuscript formatting requirements specify margins, fonts, heading styles, and reference format." },
-    { word: "revision process", translation: "processus de révision", example: "The revision process requires addressing both conceptual critiques and technical corrections." },
+    
+    
     { word: "proofreading", translation: "relecture", example: "Meticulous proofreading identifies grammatical errors, typos, and formatting inconsistencies." },
-    { word: "editing", translation: "édition", example: "Substantive editing addresses structural organization, argument coherence, and analytical depth." },
+    
     { word: "editorial feedback", translation: "commentaires éditoriaux", example: "Editorial feedback often addresses both substantive arguments and presentational elements." },
     
     // Argumentation et pensée critique (50 mots)
-    { word: "argumentation", translation: "argumentation", example: "Scholarly argumentation builds systematic cases through claims, evidence, and logical reasoning." },
+    
     { word: "thesis development", translation: "développement de thèse", example: "Effective thesis development articulates the central argument's scope, significance, and relationship to existing scholarship." },
     { word: "claim", translation: "affirmation", example: "Each major claim requires appropriate evidence and logical connection to the overarching thesis." },
-    { word: "premise", translation: "prémisse", example: "The argument's validity depends on explicit articulation of underlying premises and assumptions." },
-    { word: "evidence", translation: "preuve", example: "Scholarly evidence includes empirical data, textual analysis, and established theoretical frameworks." },
-    { word: "empirical evidence", translation: "preuve empirique", example: "The article presents compelling empirical evidence from three independent data sources." },
+    
+    
+    
     { word: "logical reasoning", translation: "raisonnement logique", example: "Rigorous logical reasoning connects evidence to claims through explicit analytical steps." },
-    { word: "deductive reasoning", translation: "raisonnement déductif", example: "Deductive reasoning applies general principles to specific cases for necessary conclusions." },
-    { word: "inductive reasoning", translation: "raisonnement inductif", example: "Inductive reasoning develops generalized propositions from observed patterns in specific instances." },
-    { word: "abductive reasoning", translation: "raisonnement abductif", example: "Abductive reasoning constructs explanatory hypotheses for observed phenomena as starting points for investigation." },
+    
+    
+    
     { word: "warranted argument", translation: "argument justifié", example: "A warranted argument explicitly connects evidence to claims through disciplinary-appropriate reasoning." },
     { word: "scholarly skepticism", translation: "scepticisme savant", example: "Scholarly skepticism questions assumptions and evidence quality rather than accepting claims at face value." },
-    { word: "critical analysis", translation: "analyse critique", example: "Critical analysis evaluates both strengths and limitations of theoretical frameworks and methodological approaches." },
+    
     { word: "analytical depth", translation: "profondeur analytique", example: "The manuscript demonstrates analytical depth through multi-layered interpretation of complex phenomena." },
-    { word: "interpretive framework", translation: "cadre interprétatif", example: "The interpretive framework explicates theoretical assumptions guiding analysis of primary materials." },
-    { word: "conceptual framework", translation: "cadre conceptuel", example: "The conceptual framework integrates key constructs from multiple theoretical traditions." },
+    
+    
     { word: "theoretical lens", translation: "perspective théorique", example: "The study applies a novel theoretical lens to familiar empirical problems, generating fresh insights." },
-    { word: "analytical framework", translation: "cadre analytique", example: "The analytical framework specifies relationships between key variables and underlying mechanisms." },
-    { word: "critical perspective", translation: "perspective critique", example: "The article develops a critical perspective on existing approaches, identifying conceptual limitations." },
-    { word: "counterargument", translation: "contre-argument", example: "Addressing potential counterarguments strengthens the overall thesis through anticipatory rebuttal." },
+    
+    
+    
     { word: "alternative explanation", translation: "explication alternative", example: "The discussion considers alternative explanations for observed patterns before advancing preferred interpretation." },
     { word: "scholarly critique", translation: "critique savante", example: "Effective scholarly critique addresses substantive issues rather than superficial or stylistic concerns." },
-    { word: "logical fallacy", translation: "sophisme", example: "The literature review identifies logical fallacies in previous theoretical arguments on this topic." },
+    
     { word: "conceptual clarity", translation: "clarté conceptuelle", example: "Conceptual clarity distinguishes related but distinct theoretical constructs often conflated in the literature." },
     { word: "theoretical contribution", translation: "contribution théorique", example: "The manuscript's theoretical contribution extends beyond empirical findings to conceptual innovation." },
     { word: "analytical contribution", translation: "contribution analytique", example: "The analytical contribution lies in novel methodological approaches revealing previously unrecognized patterns." },
@@ -141,7 +141,7 @@ export const vocab = {
     { word: "logical consistency", translation: "cohérence logique", example: "Internal logical consistency requires compatible theoretical assumptions across the argument." },
     { word: "logical progression", translation: "progression logique", example: "Logical progression builds argument components sequentially toward the central thesis." },
     { word: "analytical categories", translation: "catégories analytiques", example: "The methodology justifies analytical categories employed in data classification and interpretation." },
-    { word: "conceptualization", translation: "conceptualisation", example: "Theoretical conceptualization transforms observed phenomena into analytically useful constructs." },
+    
     { word: "abstract reasoning", translation: "raisonnement abstrait", example: "Abstract reasoning identifies underlying principles connecting seemingly disparate phenomena." },
     { word: "theoretical abstraction", translation: "abstraction théorique", example: "Theoretical abstraction develops generalizable concepts from specific observed instances." },
     { word: "conceptual innovation", translation: "innovation conceptuelle", example: "The paper's conceptual innovation reconceptualizes familiar phenomena through novel theoretical lenses." },
@@ -149,17 +149,17 @@ export const vocab = {
     { word: "scholarly debate", translation: "débat académique", example: "The manuscript situates its argument within ongoing scholarly debates about theoretical approaches." },
     { word: "intellectual contribution", translation: "contribution intellectuelle", example: "The work's intellectual contribution extends beyond new data to reconceptualizing fundamental questions." },
     { word: "critical engagement", translation: "engagement critique", example: "Critical engagement with existing literature identifies both strengths and limitations of previous approaches." },
-    { word: "argument structure", translation: "structure argumentative", example: "Clear argument structure guides readers through claims, evidence, and analytical development." },
-    { word: "rhetorical strategy", translation: "stratégie rhétorique", example: "The rhetorical strategy builds credibility through methodological transparency and measured claims." },
-    { word: "rhetorical effectiveness", translation: "efficacité rhétorique", example: "Rhetorical effectiveness persuades through logical coherence rather than stylistic flourish." },
+    
+    
+    
     { word: "academic persuasion", translation: "persuasion académique", example: "Academic persuasion relies on evidence quality, logical reasoning, and disciplinary conventions." },
     { word: "dialectical thinking", translation: "pensée dialectique", example: "Dialectical thinking examines tensions between opposing perspectives to develop synthetic understanding." },
     
     // Normes de citation et référencement (50 mots)
-    { word: "citation", translation: "citation", example: "Appropriate citation acknowledges intellectual debts while positioning current work within scholarly conversations." },
+    
     { word: "in-text citation", translation: "citation dans le texte", example: "In-text citation formats vary across documentation styles regarding author names and publication years." },
     { word: "reference list", translation: "liste de références", example: "The reference list includes only sources directly cited in the manuscript, formatted according to style guidelines." },
-    { word: "bibliography", translation: "bibliographie", example: "Unlike a reference list, a comprehensive bibliography may include relevant works not directly cited." },
+    
     { word: "citation style", translation: "style de citation", example: "Different disciplines employ distinct citation styles reflecting disciplinary conventions and priorities." },
     { word: "APA style", translation: "style APA", example: "APA style predominates in social sciences, emphasizing publication dates and author names." },
     { word: "MLA style", translation: "style MLA", example: "MLA style, common in humanities, emphasizes author names and page numbers for precise textual location." },
@@ -177,11 +177,11 @@ export const vocab = {
     { word: "summary", translation: "résumé", example: "Citation is required for summarized source material even when significantly condensing original content." },
     { word: "synthesis", translation: "synthèse", example: "Scholarly synthesis integrates multiple sources around conceptual themes rather than serially summarizing individual works." },
     { word: "attribution", translation: "attribution", example: "Proper attribution distinguishes the author's original contributions from ideas derived from other sources." },
-    { word: "plagiarism", translation: "plagiat", example: "Unintentional plagiarism often results from inadequate paraphrasing or citation rather than deliberate misrepresentation." },
+    
     { word: "self-plagiarism", translation: "auto-plagiat", example: "Self-plagiarism concerns republishing one's previous work without appropriate acknowledgment." },
-    { word: "intellectual property", translation: "propriété intellectuelle", example: "Citation practices respect intellectual property while facilitating scholarly conversation and knowledge advancement." },
-    { word: "copyright", translation: "droit d'auteur", example: "Short quotations generally constitute fair use under copyright law when properly attributed in scholarly contexts." },
-    { word: "fair use", translation: "usage équitable", example: "Fair use provisions permit limited quotation for purposes of commentary, criticism, and scholarly analysis." },
+    
+    
+    
     { word: "primary source", translation: "source primaire", example: "Historical research prioritizes primary sources created during the period under investigation." },
     { word: "secondary source", translation: "source secondaire", example: "Secondary sources analyze and interpret primary materials from historical or critical distance." },
     { word: "tertiary source", translation: "source tertiaire", example: "Encyclopedias and textbooks constitute tertiary sources summarizing established knowledge from secondary literature." },
@@ -196,7 +196,7 @@ export const vocab = {
     { word: "digital object identifier", translation: "identifiant d'objet numérique", example: "Digital object identifiers provide permanent links to digital resources independent of URL changes." },
     { word: "metadata", translation: "métadonnées", example: "Complete bibliographic metadata facilitates accurate citation and resource discovery." },
     { word: "annotated bibliography", translation: "bibliographie annotée", example: "An annotated bibliography includes descriptive or evaluative commentary on each cited source." },
-    { word: "literature review", translation: "revue de littérature", example: "A comprehensive literature review synthesizes existing scholarship rather than merely listing relevant publications." },
+    
     { word: "citation chaining", translation: "chaînage de citations", example: "Citation chaining identifies relevant sources by following references forward and backward from key publications." },
     { word: "citation indexing", translation: "indexation des citations", example: "Citation indexing databases track scholarly influence through reference networks across publications." },
     { word: "h-index", translation: "indice h", example: "The h-index attempts to measure both productivity and citation impact of a scholar's publication record." },
