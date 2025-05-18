@@ -4,6 +4,22 @@
 const grammarRulesA2 = [
   {
     id: 1,
+    title: "Le passé simple (past simple)",
+    explanation: "Le passé simple est utilisé pour parler d'actions terminées dans le passé à un moment précis.",
+    examples: [
+      { english: "I visited Paris last summer.", french: "J'ai visité Paris l'été dernier." },
+      { english: "She bought a new car in 2020.", french: "Elle a acheté une nouvelle voiture en 2020." },
+      { english: "Did you watch the movie yesterday?", french: "As-tu regardé le film hier ?" }
+    ],
+    rules: [
+      "Verbes réguliers: ajouter -ed (work → worked)",
+      "Verbes irréguliers: formes spécifiques à apprendre (go → went, see → saw)",
+      "Forme négative: did not (didn't) + verbe base",
+      "Forme interrogative: did + sujet + verbe base?"
+    ]
+  },
+  {
+    id: 2,
     title: "Le présent parfait",
     explanation: "Le présent parfait est utilisé pour parler d'actions qui ont commencé dans le passé et qui ont un impact sur le présent.",
     examples: [
@@ -19,7 +35,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     title: "Le passé continu",
     explanation: "Le passé continu exprime une action qui était en cours à un moment précis du passé.",
     examples: [
@@ -35,7 +51,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     title: "Le futur avec 'going to'",
     explanation: "Le futur avec 'going to' exprime des intentions ou des prédictions basées sur des preuves présentes.",
     examples: [
@@ -51,7 +67,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     title: "Le futur avec 'will'",
     explanation: "Le futur avec 'will' exprime des décisions spontanées, des promesses et des prédictions générales.",
     examples: [
@@ -68,7 +84,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     title: "Les conditionnels 0 et 1",
     explanation: "Les conditionnels expriment des conditions et leurs résultats.",
     examples: [
@@ -84,7 +100,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     title: "Les comparatifs et superlatifs",
     explanation: "Les comparatifs et superlatifs sont utilisés pour comparer des personnes, des objets ou des actions.",
     examples: [
@@ -100,7 +116,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     title: "Les noms dénombrables et indénombrables",
     explanation: "Les noms dénombrables peuvent être comptés, les indénombrables ne le peuvent pas.",
     examples: [
@@ -116,7 +132,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     title: "L'impératif",
     explanation: "L'impératif est utilisé pour donner des ordres, des instructions ou faire des suggestions.",
     examples: [
@@ -132,7 +148,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     title: "Should, shouldn't",
     explanation: "Should et shouldn't sont utilisés pour donner des conseils ou exprimer une obligation morale.",
     examples: [
@@ -148,7 +164,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 10,
+    id: 11,
     title: "Must, mustn't, have to",
     explanation: "Ces modaux expriment l'obligation ou l'interdiction.",
     examples: [
@@ -164,7 +180,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 11,
+    id: 12,
     title: "Might, might not, may",
     explanation: "Might et may expriment la possibilité ou la permission.",
     examples: [
@@ -180,7 +196,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 12,
+    id: 13,
     title: "Les quantifieurs - some, any, much, many",
     explanation: "Les quantifieurs expriment la quantité.",
     examples: [
@@ -196,7 +212,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 13,
+    id: 14,
     title: "Would like",
     explanation: "Would like est une forme polie pour exprimer ce qu'on veut.",
     examples: [
@@ -212,7 +228,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 14,
+    id: 15,
     title: "Les verbes à particule (phrasal verbs) basiques",
     explanation: "Les verbes à particule sont des verbes suivis de prépositions ou d'adverbes qui changent leur sens.",
     examples: [
@@ -228,7 +244,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 15,
+    id: 16,
     title: "Adjectifs en -ing et -ed",
     explanation: "Les adjectifs finissant en -ing et -ed décrivent différents aspects d'une situation.",
     examples: [
@@ -244,7 +260,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 16,
+    id: 17,
     title: "Pronoms indéfinis",
     explanation: "Les pronoms indéfinis font référence à des personnes ou choses de manière générale.",
     examples: [
@@ -260,7 +276,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 17,
+    id: 18,
     title: "Le présent continu pour le futur",
     explanation: "Le présent continu peut exprimer des arrangements futurs définis.",
     examples: [
@@ -276,7 +292,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 18,
+    id: 19,
     title: "Les adverbes de manière",
     explanation: "Les adverbes de manière décrivent comment une action est réalisée.",
     examples: [
@@ -292,7 +308,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 19,
+    id: 20,
     title: "Questions avec mots interrogatifs avancés",
     explanation: "Utilisation avancée des mots interrogatifs pour poser des questions.",
     examples: [
@@ -309,7 +325,7 @@ const grammarRulesA2 = [
     ]
   },
   {
-    id: 20,
+    id: 21,
     title: "So, neither - réponses courtes",
     explanation: "So et neither sont utilisés pour montrer un accord ou un désaccord.",
     examples: [
@@ -322,6 +338,38 @@ const grammarRulesA2 = [
       "Neither + auxiliaire + sujet (accord négatif)",
       "L'auxiliaire suit le temps du verbe original",
       "Me too/Me neither pour des réponses plus simples"
+    ]
+  },
+  {
+    id: 22,
+    title: "Les dates et les chiffres",
+    explanation: "Comment exprimer les dates, heures et chiffres en anglais.",
+    examples: [
+      { english: "My birthday is on June 15th.", french: "Mon anniversaire est le 15 juin." },
+      { english: "It's quarter past ten. (10:15)", french: "Il est dix heures et quart." },
+      { english: "The temperature is minus five degrees. (-5°)", french: "La température est de moins cinq degrés." }
+    ],
+    rules: [
+      "Dates: préposition 'on' + jour + mois (on March 21st)",
+      "Heures: It's + heure (It's half past eight = 8:30)",
+      "Années: En anglais britannique 'nineteen ninety-nine' (1999), en anglais américain parfois 'nineteen ninety-nine' ou 'two thousand'",
+      "Nombres ordinaux: first (1st), second (2nd), third (3rd), fourth (4th)..."
+    ]
+  },
+  {
+    id: 23,
+    title: "Questions avec how + adjectif",
+    explanation: "Formation de questions avec 'how' suivi d'un adjectif pour demander des informations spécifiques.",
+    examples: [
+      { english: "How old are you?", french: "Quel âge as-tu ?" },
+      { english: "How tall is your brother?", french: "Quelle est la taille de ton frère ?" },
+      { english: "How big is your apartment?", french: "Quelle est la taille de ton appartement ?" }
+    ],
+    rules: [
+      "Structure: How + adjectif + be + sujet",
+      "Courant avec: old (âge), tall (hauteur), big (taille), heavy (poids), long (longueur)",
+      "Peut être utilisé pour demander des mesures ou des caractéristiques",
+      "Réponse: souvent avec unités de mesure (I'm 25 years old, It's 2 meters long)"
     ]
   }
 ];

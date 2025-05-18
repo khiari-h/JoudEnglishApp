@@ -2,7 +2,7 @@
 // Fichier qui combine les règles de grammaire et les exercices pour le niveau A1 du CECR
 
 import grammarRulesA1 from './rules/grammarRulesA1.js';
-import grammarExercisesA1 from './exercices/grammarExercicesA1.js';
+import grammarExercisesA1 from './exercices/grammarExercisesA1.js';
 
 // Combine les règles de grammaire avec leurs exercices
 const grammarA1 = grammarRulesA1.map(rule => ({

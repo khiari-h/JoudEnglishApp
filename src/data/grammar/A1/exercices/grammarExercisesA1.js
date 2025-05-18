@@ -187,6 +187,75 @@ const grammarExercisesA1 = {
         question: "There are ___ students in this school.",
         answer: "many"
       }
+    ],
+    16: [ // Les adverbes de fréquence
+      {
+        type: "fillInTheBlank",
+        question: "He ___ goes to the gym. (5 days per week)",
+        answer: "often",
+        options: ["never", "sometimes", "often", "always"]
+      },
+      {
+        type: "reorder",
+        question: "always / early / she / arrives",
+        answer: "She always arrives early."
+      }
+    ],
+    17: [ // Le génitif possessif ('s)
+      {
+        type: "transformation",
+        question: "The car of John → _______",
+        answer: "John's car"
+      },
+      {
+        type: "fillInTheBlank",
+        question: "The ___ (children) toys are on the floor.",
+        answer: "children's"
+      }
+    ],
+    18: [ // Les conjonctions simples
+      {
+        type: "fillInTheBlank",
+        question: "I like tea ___ coffee.",
+        answer: "and"
+      },
+      {
+        type: "multipleChoice",
+        question: "I want to go out, ___ it's raining.",
+        options: ["and", "but", "or", "so"],
+        answer: "but"
+      }
+    ],
+    19: [ // L'impératif
+      {
+        type: "transformation",
+        question: "You close the door. (make an order)",
+        answer: "Close the door!"
+      },
+      {
+        type: "fillInTheBlank",
+        question: "___ quiet, please! The baby is sleeping.",
+        answer: "Be",
+        options: ["Be", "Are", "Is", "Am"]
+      }
+    ],
+    20: [ // Les mots interrogatifs
+      {
+        type: "fillInTheBlank",
+        question: "___ is your name?",
+        answer: "What",
+        options: ["What", "Where", "When", "Who"]
+      },
+      {
+        type: "matching",
+        pairs: [
+          { item: "Where", match: "place" },
+          { item: "When", match: "time" },
+          { item: "Who", match: "person" },
+          { item: "Why", match: "reason" },
+          { item: "How", match: "manner" }
+        ]
+      }
     ]
   };
   

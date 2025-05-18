@@ -2,7 +2,19 @@
 // Fichier contenant uniquement les exercices pour le niveau A2 du CECR
 
 const grammarExercisesA2 = {
-  1: [ // Le présent parfait
+  1: [ // Le passé simple (past simple)
+    {
+      type: "fillInTheBlank",
+      question: "She ___ (go) to Paris last summer.",
+      answer: "went"
+    },
+    {
+      type: "transformation",
+      question: "They visited Rome. (make negative)",
+      answer: "They didn't visit Rome."
+    }
+  ],
+  2: [ // Le présent parfait
     {
       type: "fillInTheBlank",
       question: "I ___ (live) here for five years.",
@@ -15,7 +27,7 @@ const grammarExercisesA2 = {
       answer: "has never been"
     }
   ],
-  2: [ // Le passé continu
+  3: [ // Le passé continu
     {
       type: "fillInTheBlank",
       question: "It ___ (rain) when I left the house.",
@@ -27,7 +39,7 @@ const grammarExercisesA2 = {
       answer: "I was reading a book when he came."
     }
   ],
-  3: [ // Le futur avec 'going to'
+  4: [ // Le futur avec 'going to'
     {
       type: "fillInTheBlank",
       question: "Look at those clouds! It ___ (rain).",
@@ -39,7 +51,7 @@ const grammarExercisesA2 = {
       answer: "They are going to move next month."
     }
   ],
-  4: [ // Le futur avec 'will'
+  5: [ // Le futur avec 'will'
     {
       type: "fillInTheBlank",
       question: "I think it ___ (be) sunny tomorrow.",
@@ -52,7 +64,7 @@ const grammarExercisesA2 = {
       answer: "will"
     }
   ],
-  5: [ // Les conditionnels 0 et 1
+  6: [ // Les conditionnels 0 et 1
     {
       type: "fillInTheBlank",
       question: "If you ___ (heat) ice, it ___ (melt).",
@@ -64,7 +76,7 @@ const grammarExercisesA2 = {
       answer: "rains, will stay"
     }
   ],
-  6: [ // Les comparatifs et superlatifs
+  7: [ // Les comparatifs et superlatifs
     {
       type: "fillInTheBlank",
       question: "This book is ___ (interesting) than that one.",
@@ -76,7 +88,7 @@ const grammarExercisesA2 = {
       answer: "tallest"
     }
   ],
-  7: [ // Les noms dénombrables et indénombrables
+  8: [ // Les noms dénombrables et indénombrables
     {
       type: "multipleChoice",
       question: "We don't have ___ money left.",
@@ -89,7 +101,7 @@ const grammarExercisesA2 = {
       answer: "many"
     }
   ],
-  8: [ // L'impératif
+  9: [ // L'impératif
     {
       type: "transformation",
       question: "You close the door. (Make it an order)",
@@ -101,7 +113,7 @@ const grammarExercisesA2 = {
       answer: "Let's go to the park."
     }
   ],
-  9: [ // Should, shouldn't
+  10: [ // Should, shouldn't
     {
       type: "fillInTheBlank",
       question: "You ___ (go) to bed earlier.",
@@ -114,7 +126,7 @@ const grammarExercisesA2 = {
       answer: "shouldn't"
     }
   ],
-  10: [ // Must, mustn't, have to
+  11: [ // Must, mustn't, have to
     {
       type: "fillInTheBlank",
       question: "You ___ (not/park) here. It's forbidden.",
@@ -127,7 +139,7 @@ const grammarExercisesA2 = {
       answer: "have to"
     }
   ],
-  11: [ // Might, might not, may
+  12: [ // Might, might not, may
     {
       type: "fillInTheBlank",
       question: "She ___ (come) to the party tonight.",
@@ -140,7 +152,7 @@ const grammarExercisesA2 = {
       answer: "May"
     }
   ],
-  12: [ // Les quantifieurs
+  13: [ // Les quantifieurs
     {
       type: "fillInTheBlank",
       question: "I have ___ questions for you.",
@@ -152,7 +164,7 @@ const grammarExercisesA2 = {
       answer: "any"
     }
   ],
-  13: [ // Would like
+  14: [ // Would like
     {
       type: "fillInTheBlank",
       question: "I ___ a coffee, please.",
@@ -164,7 +176,7 @@ const grammarExercisesA2 = {
       answer: "She would like to learn French."
     }
   ],
-  14: [ // Les verbes à particule
+  15: [ // Les verbes à particule
     {
       type: "fillInTheBlank",
       question: "Please ___ ___ the lights when you leave.",
@@ -177,7 +189,7 @@ const grammarExercisesA2 = {
       answer: "look for"
     }
   ],
-  15: [ // Adjectifs en -ing et -ed
+  16: [ // Adjectifs en -ing et -ed
     {
       type: "fillInTheBlank",
       question: "The movie was really ___.",
@@ -190,7 +202,7 @@ const grammarExercisesA2 = {
       answer: "interested"
     }
   ],
-  16: [ // Pronoms indéfinis
+  17: [ // Pronoms indéfinis
     {
       type: "fillInTheBlank",
       question: "___ left a message for you.",
@@ -203,7 +215,7 @@ const grammarExercisesA2 = {
       answer: "something"
     }
   ],
-  17: [ // Le présent continu pour le futur
+  18: [ // Le présent continu pour le futur
     {
       type: "fillInTheBlank",
       question: "I ___ (meet) Sarah tomorrow at 5 PM.",
@@ -215,7 +227,7 @@ const grammarExercisesA2 = {
       answer: "We are visiting Paris next month."
     }
   ],
-  18: [ // Les adverbes de manière
+  19: [ // Les adverbes de manière
     {
       type: "fillInTheBlank",
       question: "She sings ___. (beautiful)",
@@ -227,7 +239,7 @@ const grammarExercisesA2 = {
       answer: "He drives carefully."
     }
   ],
-  19: [ // Questions avec mots interrogatifs avancés
+  20: [ // Questions avec mots interrogatifs avancés
     {
       type: "fillInTheBlank",
       question: "___ ___ have you been studying English?",
@@ -240,7 +252,7 @@ const grammarExercisesA2 = {
       answer: "How often"
     }
   ],
-  20: [ // So, neither - réponses courtes
+  21: [ // So, neither - réponses courtes
     {
       type: "fillInTheBlank",
       question: "I'm hungry. - So ___ I.",
@@ -250,6 +262,36 @@ const grammarExercisesA2 = {
       type: "transformation",
       question: "She doesn't like coffee. - I don't like coffee either. (Use 'neither')",
       answer: "She doesn't like coffee. - Neither do I."
+    }
+  ],
+  22: [ // Les dates et les chiffres
+    {
+      type: "fillInTheBlank",
+      question: "My birthday is ___ March ___.",
+      answer: "on, 21st",
+      options: ["in, 21", "on, 21st", "at, 21", "in, 21st"]
+    },
+    {
+      type: "multipleChoice",
+      question: "It's quarter ___ ten. (10:15)",
+      options: ["past", "to", "at", "for"],
+      answer: "past"
+    }
+  ],
+  23: [ // Questions avec how + adjectif
+    {
+      type: "fillInTheBlank",
+      question: "__ __ is your brother?",
+      answer: "How old"
+    },
+    {
+      type: "matching",
+      pairs: [
+        { item: "How old", match: "age" },
+        { item: "How tall", match: "height" },
+        { item: "How big", match: "size" },
+        { item: "How far", match: "distance" }
+      ]
     }
   ]
 };

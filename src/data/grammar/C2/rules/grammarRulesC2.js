@@ -396,6 +396,54 @@ const grammarRulesC2 = [
       "Positive reframing of limitations",
       "Appeal to universality: across diverse contexts"
     ]
+  },
+  {
+    id: 26,
+    title: "Analyse critique du discours",
+    explanation: "Méthodes d'analyse et de déconstruction des structures rhétoriques et des constructions idéologiques dans le discours.",
+    examples: [
+      { english: "The text subtly reinforces dominant narratives through its selective emphasis on certain aspects of the issue.", french: "Le texte renforce subtilement les récits dominants par son accent sélectif sur certains aspects de la question." },
+      { english: "Such phrasing reveals underlying assumptions that merit interrogation.", french: "Une telle formulation révèle des hypothèses sous-jacentes qui méritent d'être interrogées." },
+      { english: "The rhetorical devices employed herein function to naturalize what are, in fact, contingent social arrangements.", french: "Les dispositifs rhétoriques employés ici fonctionnent pour naturaliser ce qui sont, en fait, des arrangements sociaux contingents." }
+    ],
+    rules: [
+      "Identification des présupposés idéologiques",
+      "Analyse des stratégies d'exclusion/inclusion",
+      "Déconstruction des binarités conceptuelles",
+      "Examen des métaphores conceptuelles structurantes"
+    ]
+  },
+  {
+    id: 27,
+    title: "Jeux de mots et double sens",
+    explanation: "Utilisation consciente de l'ambiguïté lexicale et sémantique à des fins stylistiques et argumentatives.",
+    examples: [
+      { english: "Their groundbreaking research was, quite literally, breaking new ground in geological exploration.", french: "Leur recherche révolutionnaire était, au sens propre, en train de creuser de nouveaux terrains dans l'exploration géologique." },
+      { english: "The gravity of the situation cannot be overstated—particularly in astrophysical terms.", french: "La gravité de la situation ne peut être surestimée—particulièrement en termes astrophysiques." },
+      { english: "His illuminating presentation shed light on several previously obscure theoretical dark corners.", french: "Sa présentation éclairante a jeté de la lumière sur plusieurs coins théoriques obscurs auparavant dans l'ombre." }
+    ],
+    rules: [
+      "Double sens délibéré: exploitation des multiples significations",
+      "Jeux sur polysémie technique/ordinaire",
+      "Paronomase: jeux sur des mots similaires phonétiquement",
+      "Exploitation consciente de métaphores figées"
+    ]
+  },
+  {
+    id: 28,
+    title: "Usage littéraire de structures archaïques",
+    explanation: "Emploi stratégique de formes grammaticales archaïques pour des effets stylistiques particuliers.",
+    examples: [
+      { english: "Whence cometh this notion, if not from a fundamentally flawed understanding?", french: "D'où vient donc cette notion, si ce n'est d'une compréhension fondamentalement imparfaite ?" },
+      { english: "One must needs consider the historical context.", french: "Force est de considérer le contexte historique." },
+      { english: "Methinks the theory doth promise too much.", french: "Il me semble que la théorie promet trop." }
+    ],
+    rules: [
+      "Inversion sujet-verbe archaïque",
+      "Formes verbales obsolètes: doth, hath, cometh",
+      "Pronoms archaïques: thee, thou, thy, thine",
+      "Archaïsmes lexicaux délibérés: ere, betwixt, forsooth, verily"
+    ]
   }
 ];
 

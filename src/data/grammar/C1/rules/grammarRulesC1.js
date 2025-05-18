@@ -401,6 +401,54 @@ const grammarRulesC1 = [
         "Technical precision: coefficient, methodology, analysis",
         "Avoiding contractions and colloquialisms"
       ]
+    },
+    {
+      id: 26,
+      title: "Utilisation stratégique de la ponctuation",
+      explanation: "Emploi précis et nuancé de la ponctuation pour structurer le discours académique et formel.",
+      examples: [
+        { english: "The research addresses three key areas: methodology, analysis and interpretation.", french: "La recherche aborde trois domaines clés : méthodologie, analyse et interprétation." },
+        { english: "The findings—while preliminary—suggest a correlation; however, further research is needed.", french: "Les résultats—bien que préliminaires—suggèrent une corrélation ; cependant, des recherches supplémentaires sont nécessaires." },
+        { english: "This approach (which we term 'integrative analysis') combines multiple perspectives.", french: "Cette approche (que nous appelons 'analyse intégrative') combine plusieurs perspectives." }
+      ],
+      rules: [
+        "Deux-points : pour introduire des listes, explications ou élaborations",
+        "Point-virgule : pour connecter des propositions indépendantes mais liées",
+        "Tirets et parenthèses : pour insérer des informations complémentaires",
+        "Italiques et guillemets : pour mettre en évidence des termes spécifiques ou néologismes"
+      ]
+    },
+    {
+      id: 27,
+      title: "Euphémismes et langage diplomatique",
+      explanation: "Techniques pour adoucir les critiques et maintenir la neutralité dans des contextes sensibles.",
+      examples: [
+        { english: "The results were somewhat less promising than anticipated.", french: "Les résultats étaient quelque peu moins prometteurs que prévu." },
+        { english: "There appears to be room for improvement in the methodology.", french: "Il semble y avoir une marge d'amélioration dans la méthodologie." },
+        { english: "The arguments presented are not entirely persuasive.", french: "Les arguments présentés ne sont pas entièrement convaincants." }
+      ],
+      rules: [
+        "Litotes (double négation) : not insignificant = significant",
+        "Adverbes atténuants : somewhat, rather, relatively, comparatively",
+        "Verbes euphémiques : enhance (improve), address (fix), consider (criticize)",
+        "Expressions indirectes : less than ideal, leaves something to be desired"
+      ]
+    },
+    {
+      id: 28,
+      title: "Registre et adaptation stylistique",
+      explanation: "Adaptation consciente du style linguistique selon le contexte et l'audience.",
+      examples: [
+        { english: "Our investigation yielded significant results. [formal]", french: "Notre investigation a donné des résultats significatifs. [formel]" },
+        { english: "We found some pretty important stuff. [informal]", french: "Nous avons trouvé des choses assez importantes. [informel]" },
+        { english: "The aforementioned considerations notwithstanding... [very formal]", french: "Nonobstant les considérations susmentionnées... [très formel]" }
+      ],
+      rules: [
+        "Registre formel : nominalisation, voix passive, vocabulaire spécialisé",
+        "Registre semi-formel : équilibre entre clarté et précision académique",
+        "Adaptation au public : simplication pour les non-spécialistes, précision pour les experts",
+        "Conventions de genre : différences entre article scientifique, rapport technique, vulgarisation"
+      ]
     }
   ];
   

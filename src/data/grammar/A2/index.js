@@ -2,7 +2,7 @@
 // Fichier principal qui combine les règles et exercices pour le niveau A2
 
 import grammarRulesA2 from "./rules/grammarRulesA2.js";
-import grammarExercisesA2 from "./exercices/grammarExercicesA2.js";
+import grammarExercisesA2 from "./exercices/grammarExercisesA2.js";
 
 // Combine les règles de grammaire avec leurs exercices
 const grammarA2 = grammarRulesA2.map((rule) => ({

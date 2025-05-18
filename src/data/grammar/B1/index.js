@@ -2,7 +2,7 @@
 // Fichier principal qui combine les règles et exercices pour le niveau B1
 
 import grammarRulesB1 from "./rules/grammarRulesB1.js";
-import grammarExercisesB1 from "./exercices/grammarExercicesB1.js";
+import grammarExercisesB1 from "./exercices/grammarExercisesB1.js";
 
 // Combine les règles de grammaire avec leurs exercices
 const grammarB1 = grammarRulesB1.map((rule) => ({

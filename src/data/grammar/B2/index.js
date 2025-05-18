@@ -2,7 +2,7 @@
 // Fichier principal qui combine les règles et exercices pour le niveau B2
 
 import grammarRulesB2 from "./rules/grammarRulesB2.js";
-import grammarExercisesB2 from "./exercices/grammarExercicesB2.js";
+import grammarExercisesB2 from "./exercices/grammarExercisesB2.js";
 
 // Combine les règles de grammaire avec leurs exercices
 const grammarB2 = grammarRulesB2.map((rule) => ({

@@ -401,6 +401,54 @@ const grammarRulesB2 = [
       "Distancing: It would seem/appear that",
       "Qualifying: largely, partly, mainly"
     ]
+  },
+  {
+    id: 26,
+    title: "Structures causatives détaillées",
+    explanation: "Utilisation avancée des structures causatives dans différents contextes.",
+    examples: [
+      { english: "She had her car stolen. (something bad happened)", french: "On lui a volé sa voiture. (quelque chose de négatif)" },
+      { english: "I'll have you know that I'm an expert. (informer avec emphase)", french: "Je tiens à te faire savoir que je suis un expert. (informer avec emphase)" },
+      { english: "The teacher is having the students write essays. (faire faire)", french: "Le professeur fait écrire des essais aux étudiants. (faire faire)" }
+    ],
+    rules: [
+      "Have + objet + past participle: action subie (souvent négative)",
+      "Have + objet + infinitif: faire faire activement",
+      "Get + objet + to + infinitif: persuader quelqu'un de faire quelque chose",
+      "Get + objet + participe passé: faire faire (résultat souhaité)"
+    ]
+  },
+  {
+    id: 27,
+    title: "Expressions idiomatiques avec prépositions",
+    explanation: "Expressions figées contenant des prépositions avec des sens idiomatiques.",
+    examples: [
+      { english: "You're really getting on my nerves.", french: "Tu me tapes vraiment sur les nerfs." },
+      { english: "We're not out of the woods yet.", french: "Nous ne sommes pas encore tirés d'affaire." },
+      { english: "She's always been at odds with her parents.", french: "Elle a toujours été en désaccord avec ses parents." }
+    ],
+    rules: [
+      "Expressions de sentiment: on edge, in a mood, at peace, under pressure",
+      "Expressions de situation: in trouble, out of luck, at a loss, on the verge of",
+      "Expressions de relation: on good terms with, at loggerheads with, in touch with",
+      "Expressions de temps: on time, in advance, at the last minute, for ages"
+    ]
+  },
+  {
+    id: 28,
+    title: "Conditionnels mixtes complexes",
+    explanation: "Conditionnels mixtes avec des nuances temporelles et modales complexes.",
+    examples: [
+      { english: "If he hadn't been driving so fast, he wouldn't be in hospital now.", french: "S'il n'avait pas conduit si vite, il ne serait pas à l'hôpital maintenant." },
+      { english: "If I were you, I would have approached the problem differently.", french: "Si j'étais toi, j'aurais abordé le problème différemment." },
+      { english: "If you had taken my advice, you might not be facing these difficulties now.", french: "Si tu avais suivi mon conseil, tu ne ferais peut-être pas face à ces difficultés maintenant." }
+    ],
+    rules: [
+      "Mélange de conditionnels avec modaux: could, might, would, should",
+      "Type 3 → Type 2: condition passée → résultat présent",
+      "Type 2 → Type 3: condition présente → résultat passé",
+      "Variations avec des modaux passés dans les propositions principales: might have been + -ing"
+    ]
   }
 ];
 

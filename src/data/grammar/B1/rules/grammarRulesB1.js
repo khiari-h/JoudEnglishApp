@@ -403,6 +403,72 @@ const grammarRulesB1 = [
       "Pas couramment utilisé avec tous les temps",
       "Met l'accent sur la durée de l'action passive"
     ]
+  },
+  {
+    id: 26,
+    title: "Le futur dans le passé",
+    explanation: "Comment exprimer des actions futures vues d'un point de vue passé.",
+    examples: [
+      { english: "She said she would come to the party.", french: "Elle a dit qu'elle viendrait à la fête." },
+      { english: "I was going to call you, but I forgot.", french: "J'allais t'appeler, mais j'ai oublié." },
+      { english: "We were about to leave when it started raining.", french: "Nous étions sur le point de partir quand il a commencé à pleuvoir." }
+    ],
+    rules: [
+      "Would + verbe base: futur simple vu du passé",
+      "Was/were going to: intention ou plan dans le passé",
+      "Was/were about to: sur le point de faire quelque chose",
+      "Souvent utilisé dans le discours rapporté"
+    ]
+  },
+  {
+    id: 27,
+    title: "Distinction entre 'as' et 'like'",
+    explanation: "Différence d'utilisation entre 'as' et 'like' qui sont souvent confondus.",
+    examples: [
+      { english: "She works as a teacher. (She is a teacher)", french: "Elle travaille comme enseignante. (Elle est enseignante)" },
+      { english: "She talks like a teacher. (She is not a teacher)", french: "Elle parle comme une enseignante. (Elle n'est pas enseignante)" },
+      { english: "As I said before, we need to be careful.", french: "Comme je l'ai dit auparavant, nous devons être prudents." }
+    ],
+    rules: [
+      "As: indique un rôle, une fonction ou une identité réelle",
+      "Like: indique une ressemblance ou une comparaison",
+      "As: utilisé comme conjonction pour introduire une clause (as you know)",
+      "Like: généralement suivi d'un nom ou pronom, pas d'une clause complète (sauf en anglais informel)"
+    ]
+  },
+  {
+    id: 28,
+    title: "Infinitif vs gérondif - détails avancés",
+    explanation: "Analyse approfondie des verbes qui peuvent être suivis d'infinitifs ou de gérondifs avec changement de sens.",
+    examples: [
+      { english: "I remember posting the letter. (I did it)", french: "Je me souviens d'avoir posté la lettre. (Je l'ai fait)" },
+      { english: "I remembered to post the letter. (I didn't forget)", french: "Je me suis souvenu de poster la lettre. (Je n'ai pas oublié)" },
+      { english: "He stopped smoking. (He quit)", french: "Il a arrêté de fumer. (Il a cessé)" },
+      { english: "He stopped to smoke. (He paused to have a cigarette)", french: "Il s'est arrêté pour fumer. (Il a fait une pause)" }
+    ],
+    rules: [
+      "Remember + gérondif: se souvenir d'une action passée",
+      "Remember + infinitif: se souvenir de faire quelque chose dans le futur",
+      "Stop + gérondif: cesser une activité",
+      "Stop + infinitif: s'arrêter pour faire quelque chose",
+      "Autres verbes avec changement de sens: forget, try, regret, mean"
+    ]
+  },
+  {
+    id: 29,
+    title: "Phrasal verbs idiomatiques courants",
+    explanation: "Verbes à particule ayant des significations idiomatiques difficiles à deviner.",
+    examples: [
+      { english: "The plane took off an hour late.", french: "L'avion a décollé avec une heure de retard." },
+      { english: "I can't put up with this noise anymore.", french: "Je ne peux plus supporter ce bruit." },
+      { english: "She turned down the job offer.", french: "Elle a refusé l'offre d'emploi." }
+    ],
+    rules: [
+      "Expressions idiomatiques à mémoriser",
+      "Exemples courants: break down (tomber en panne), give up (abandonner), look forward to (attendre avec impatience)",
+      "Bring up (élever/évoquer), come across (tomber sur), figure out (comprendre/résoudre)",
+      "Run out of (manquer de), set up (établir/installer), make up (inventer/se réconcilier)"
+    ]
   }
 ];
 
