@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { ThemeContext } from "@/src/contexts/ThemeContext";
-import ProgressBar from "@/src/components/ui/ProgressBar";
+import { ThemeContext } from "../../../contexts/ThemeContext";
+import ProgressBar from "../ProgressBar";
 import styles from "./style";
 
 /**

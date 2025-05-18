@@ -4,19 +4,19 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 
 // Contextes
-import { ThemeContext } from "@/src/contexts/ThemeContext";
-import { ProgressContext } from "@/src/contexts/ProgressContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { ProgressContext } from "../../contexts/ProgressContext";
 
 // Composants UI
-import Card from "@/src/components/ui/Card";
-import Button from "@/src/components/ui/Button";
+import Card from "../../components/ui/Card";
+import Button from "../../components/ui/Button";
 
 // Composants Layout
-import Container from "@/src/components/layout/Container";
-import Header from "@/src/components/layout/Header";
+import Container from "../../components/layout/Container";
+import Header from "../../components/layout/Header";
 
 // Constantes et Helpers
-import { EXERCISE_TYPES, LANGUAGE_LEVELS, ROUTES } from "@/src/utils/constants";
+import { EXERCISE_TYPES, LANGUAGE_LEVELS, ROUTES } from "../../utils/constants";
 
 // Styles
 import styles from "./style";

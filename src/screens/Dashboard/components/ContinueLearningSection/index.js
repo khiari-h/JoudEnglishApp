@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Card from "@/src/components/ui/Card";
+import Card from "../../../../components/ui/Card";
 import styles from "./style";
 
 /**
@@ -13,17 +13,22 @@ const ContinueLearningSection = ({
   onPress,
   accentColor = "#3B82F6",
   formatProgressSubtitle,
-  isLoading = false
+  isLoading = false,
 }) => {
   // État de chargement
   if (isLoading) {
     return (
       <Card
-        style={[styles.card, { borderLeftColor: accentColor, borderLeftWidth: 4 }]}
+        style={[
+          styles.card,
+          { borderLeftColor: accentColor, borderLeftWidth: 4 },
+        ]}
       >
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="small" color={accentColor} />
-          <Text style={styles.loadingText}>Chargement de votre dernière activité...</Text>
+          <Text style={styles.loadingText}>
+            Chargement de votre dernière activité...
+          </Text>
         </View>
       </Card>
     );
@@ -33,12 +38,18 @@ const ContinueLearningSection = ({
   if (!lastActivity) {
     return (
       <Card
-        style={[styles.card, { borderLeftColor: accentColor, borderLeftWidth: 4 }]}
+        style={[
+          styles.card,
+          { borderLeftColor: accentColor, borderLeftWidth: 4 },
+        ]}
       >
         <View style={styles.content}>
-          <Text style={styles.emptyStateTitle}>Commencer votre apprentissage</Text>
+          <Text style={styles.emptyStateTitle}>
+            Commencer votre apprentissage
+          </Text>
           <Text style={styles.emptyStateDescription}>
-            Choisissez un niveau et un exercice pour débuter votre parcours linguistique
+            Choisissez un niveau et un exercice pour débuter votre parcours
+            linguistique
           </Text>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: accentColor }]}
@@ -53,38 +64,46 @@ const ContinueLearningSection = ({
   }
 
   // Obtenir le sous-titre formaté pour afficher des détails précis sur la position
-  const subtitle = formatProgressSubtitle 
+  const subtitle = formatProgressSubtitle
     ? formatProgressSubtitle(lastActivity)
     : `Niveau ${lastActivity.level}`;
 
   return (
     <Card
-      style={[styles.card, { borderLeftColor: accentColor, borderLeftWidth: 4 }]}
+      style={[
+        styles.card,
+        { borderLeftColor: accentColor, borderLeftWidth: 4 },
+      ]}
     >
       <View style={styles.content}>
         <View style={styles.header}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{lastActivity.title}</Text>
-            
+
             {/* Sous-titre avec détails sur la position */}
             <View style={styles.subtitleRow}>
               <Text style={styles.subtitle}>{subtitle}</Text>
             </View>
-            
+
             {/* Temps écoulé */}
             <View style={styles.timeContainer}>
               <Ionicons name="time-outline" size={14} color="#6B7280" />
               <Text style={styles.timeText}>{lastActivity.timeElapsed}</Text>
             </View>
           </View>
-          
+
           {/* Bouton pour reprendre l'activité */}
           <TouchableOpacity
             style={[styles.button, { backgroundColor: accentColor }]}
             onPress={() => onPress && onPress(lastActivity)}
             activeOpacity={0.7}
           >
-            <Ionicons name="play" size={16} color="white" style={styles.buttonIcon} />
+            <Ionicons
+              name="play"
+              size={16}
+              color="white"
+              style={styles.buttonIcon}
+            />
             <Text style={styles.buttonText}>Reprendre</Text>
           </TouchableOpacity>
         </View>
@@ -95,10 +114,10 @@ const ContinueLearningSection = ({
             <View
               style={[
                 styles.progressFill,
-                { 
-                  width: `${lastActivity.progress || 0}%`, 
-                  backgroundColor: accentColor 
-                }
+                {
+                  width: `${lastActivity.progress || 0}%`,
+                  backgroundColor: accentColor,
+                },
               ]}
             />
           </View>

@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import Card from "@/src/components/ui/Card";
-import Button from "@/src/components/ui/Button";
+import Card from "../../../../components/ui/Card";
+import Button from "../../../../components/ui/Button";
 import styles from "./style";
 
 /**
- * Composant pour afficher le parcours d'apprentissage avec 
+ * Composant pour afficher le parcours d'apprentissage avec
  * mise en évidence du niveau actif sélectionné par l'utilisateur
  */
 const LearningPathCompact = ({
@@ -13,7 +13,7 @@ const LearningPathCompact = ({
   currentLevel = "A1",
   onSelectLevel,
   onViewProgress,
-  primaryColor = "#3B82F6"
+  primaryColor = "#3B82F6",
 }) => {
   // Si aucun niveau n'est fourni, utiliser les niveaux CECRL par défaut
   const defaultLevels = [
@@ -26,10 +26,10 @@ const LearningPathCompact = ({
   ];
 
   const displayLevels = levels.length > 0 ? levels : defaultLevels;
-  
+
   // Trouver l'index du niveau actuel
-  const currentLevelIndex = displayLevels.findIndex(level => 
-    level.id === currentLevel || level.isActive
+  const currentLevelIndex = displayLevels.findIndex(
+    (level) => level.id === currentLevel || level.isActive
   );
 
   // Texte explicatif selon le niveau actuel
@@ -62,46 +62,47 @@ const LearningPathCompact = ({
           </Text>
         </TouchableOpacity>
       </View>
-      
+
       <Card style={styles.card}>
         {/* Information sur le niveau actif */}
         <View style={styles.activeInfoContainer}>
           <Text style={styles.activeInfoLabel}>Niveau actif :</Text>
-          <View 
-            style={[
-              styles.activeInfoBadge, 
-              { backgroundColor: primaryColor }
-            ]}
+          <View
+            style={[styles.activeInfoBadge, { backgroundColor: primaryColor }]}
           >
             <Text style={styles.activeInfoText}>{currentLevel}</Text>
           </View>
         </View>
-        
-        <Text style={styles.levelDescription}>
-          {getLevelDescription()}
-        </Text>
-        
+
+        <Text style={styles.levelDescription}>{getLevelDescription()}</Text>
+
         {/* Niveaux de langue */}
         <View style={styles.levelsContainer}>
           {displayLevels.map((level, index) => {
             // Déterminer l'état du niveau (actif, complété, ou futur)
             const isActive = level.id === currentLevel || level.isActive;
             const isCompletedLevel = index < currentLevelIndex;
-            
+
             let circleStyle;
             let textStyle;
-            
+
             if (isActive) {
-              circleStyle = [styles.levelCircle, { backgroundColor: level.color || primaryColor }];
+              circleStyle = [
+                styles.levelCircle,
+                { backgroundColor: level.color || primaryColor },
+              ];
               textStyle = styles.activeLevelText;
             } else if (isCompletedLevel) {
-              circleStyle = [styles.levelCircle, { backgroundColor: `${level.color || primaryColor}40` }];
+              circleStyle = [
+                styles.levelCircle,
+                { backgroundColor: `${level.color || primaryColor}40` },
+              ];
               textStyle = styles.completedLevelText;
             } else {
               circleStyle = [styles.levelCircle, styles.futureLevelCircle];
               textStyle = styles.futureLevelText;
             }
-            
+
             return (
               <TouchableOpacity
                 key={level.id}
@@ -116,21 +117,23 @@ const LearningPathCompact = ({
             );
           })}
         </View>
-        
+
         {/* Ligne de progression */}
         <View style={styles.progressLineContainer}>
           <View style={styles.progressLineTrack} />
-          <View 
+          <View
             style={[
               styles.progressLineFill,
-              { 
-                width: `${((currentLevelIndex) / (displayLevels.length - 1)) * 100}%`,
-                backgroundColor: primaryColor
-              }
-            ]} 
+              {
+                width: `${
+                  (currentLevelIndex / (displayLevels.length - 1)) * 100
+                }%`,
+                backgroundColor: primaryColor,
+              },
+            ]}
           />
         </View>
-        
+
         {/* Bouton pour explorer le niveau actuel */}
         <Button
           title={`Explorer le niveau ${currentLevel}`}
