@@ -12,7 +12,7 @@ export const CATEGORIES = [
   { id: 43, name: "Arts et littérature" },
   { id: 44, name: "Économie et politique" },
   { id: 45, name: "Processus et instructions complexes" },
-  { id: 46, name: "Expressions de regret et souhait" },
+  { id: 46, name: "Réflexion rétrospective" },
   { id: 47, name: "Santé et bien-être avancés" },
   { id: 48, name: "Environnement et enjeux sociaux" }
 ];
@@ -31,7 +31,7 @@ export const CATEGORY_DESCRIPTIONS = {
   43: "Expressions pour discuter d'œuvres artistiques et littéraires avec un vocabulaire spécialisé et nuancé",
   44: "Phrases pour aborder des sujets économiques et politiques avec précision et objectivité",
   45: "Expressions pour expliquer des processus complexes et donner des instructions détaillées en plusieurs étapes",
-  46: "Phrases pour exprimer des regrets sur le passé et des souhaits pour l'avenir, en utilisant des structures conditionnelles",
+  46: "Expressions pour analyser des expériences passées, tirer des leçons et partager des insights dans un contexte professionnel",
   47: "Expressions avancées liées à la santé physique et mentale, aux traitements et au bien-être général",
   48: "Phrases pour discuter de manière approfondie des enjeux environnementaux et sociaux contemporains"
 };
@@ -81,5 +81,5 @@ export const LEARNING_SEQUENCE = [
   "Développer les compétences en communication professionnelle (catégories 38, 40, 42)",
   "Aborder progressivement les sujets spécialisés (catégories 43, 44, 47, 48)",
   "Maîtriser l'expression des processus complexes et des instructions (catégorie 45)",
-  "Terminer avec les expressions de regret et souhait (catégorie 46)"
+  "Terminer avec la réflexion rétrospective (catégorie 46)"
 ];

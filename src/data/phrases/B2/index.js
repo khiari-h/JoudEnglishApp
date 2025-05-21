@@ -14,7 +14,7 @@ import diplomaticCommunication from './categories/diplomatic-communication.js';
 import artsLiterature from './categories/arts-literature.js';
 import economyPolitics from './categories/economy-politics.js';
 import complexProcesses from './categories/complex-processes.js';
-import regretWish from './categories/regret-wish.js';
+import retrospectiveReflection from './categories/retrospective-reflection.js';
 import advancedHealth from './categories/advanced-health.js';
 import environmentSocialIssues from './categories/environment-social-issues.js';
 
@@ -53,7 +53,7 @@ const phrasesB2 = {
     ...artsLiterature,
     ...economyPolitics,
     ...complexProcesses,
-    ...regretWish,
+    ...retrospectiveReflection,
     ...advancedHealth,
     ...environmentSocialIssues
   ]
@@ -75,7 +75,7 @@ export {
   artsLiterature,
   economyPolitics,
   complexProcesses,
-  regretWish,
+  retrospectiveReflection,
   advancedHealth,
   environmentSocialIssues,
   CATEGORIES,
