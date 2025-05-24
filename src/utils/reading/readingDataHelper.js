@@ -1,12 +1,12 @@
 // src/utils/reading/readingHelper.js
 
 // Import de tous les index des niveaux CECR
-import readingA1Data from "../../data/exercises/reading/readingA1Index";
-import readingA2Data from "../../data/exercises/reading/readingA2Index";
-import readingB1Data from "../../data/exercises/reading/readingB1Index";
-import readingB2Data from "../../data/exercises/reading/readingB2Index";
-import readingC1Data from "../../data/exercises/reading/readingC1Index";
-import readingC2Data from "../../data/exercises/reading/readingC2Index";
+import readingA1Data from "../../data/reading/A1";
+import readingA2Data from "../../data/reading/A2";
+import readingB1Data from "../../data/reading/B1";
+import readingB2Data from "../../data/reading/B2";
+import readingC1Data from "../../data/reading/C1";
+import readingC2Data from "../../data/reading/C2";
 
 /**
  * Récupère les données de lecture en fonction du niveau

@@ -2,22 +2,22 @@
 
 // Import des données d'error correction par niveau
 // Niveau A1
-import errorCorrectionA1 from "../../data/exercises/errorCorrection/A1/index";
+import errorCorrectionA1 from "../../data/errorCorrection/A1";
 
-// Niveau A2  
-import errorCorrectionA2 from "../../data/exercises/errorCorrection/A2/index";
+// Niveau A2
+import errorCorrectionA2 from "../../data/errorCorrection/A2";
 
 // Niveau B1
-import errorCorrectionB1 from "../../data/exercises/errorCorrection/B1/index";
+import errorCorrectionB1 from "../../data/errorCorrection/B1";
 
 // Niveau B2
-import errorCorrectionB2 from "../../data/exercises/errorCorrection/B2/index";
+import errorCorrectionB2 from "../../data/errorCorrection/B2";
 
 // Niveau C1
-import errorCorrectionC1 from "../../data/exercises/errorCorrection/C1/index";
+import errorCorrectionC1 from "../../data/errorCorrection/C1";
 
 // Niveau C2
-import errorCorrectionC2 from "../../data/exercises/errorCorrection/C2/index";
+import errorCorrectionC2 from "../../data/errorCorrection/C2";
 
 /**
  * Récupère les données d'exercices d'error correction en fonction du niveau
@@ -67,7 +67,7 @@ export const getLevelCharacteristics = (level) => {
       errorCount: "1-2 erreurs par exercice",
       errorTypes: ["Basic grammar", "Simple vocabulary", "Word order"],
       difficulty: "Très facile",
-      focus: "Erreurs évidentes, correction directe"
+      focus: "Erreurs évidentes, correction directe",
     },
     A2: {
       name: "Élémentaire",
@@ -75,7 +75,7 @@ export const getLevelCharacteristics = (level) => {
       errorCount: "2-3 erreurs par exercice",
       errorTypes: ["Intermediate grammar", "Tense usage", "Prepositions"],
       difficulty: "Facile",
-      focus: "Erreurs communes, inférences simples"
+      focus: "Erreurs communes, inférences simples",
     },
     B1: {
       name: "Intermédiaire",
@@ -83,7 +83,7 @@ export const getLevelCharacteristics = (level) => {
       errorCount: "3-4 erreurs par exercice",
       errorTypes: ["Complex tenses", "Passive voice", "Reported speech"],
       difficulty: "Modéré",
-      focus: "Erreurs subtiles, analyse requise"
+      focus: "Erreurs subtiles, analyse requise",
     },
     B2: {
       name: "Intermédiaire avancé",
@@ -91,15 +91,19 @@ export const getLevelCharacteristics = (level) => {
       errorCount: "4-5 erreurs par exercice",
       errorTypes: ["Advanced conditionals", "Register", "Discourse markers"],
       difficulty: "Difficile",
-      focus: "Nuances grammaticales et stylistiques"
+      focus: "Nuances grammaticales et stylistiques",
     },
     C1: {
       name: "Autonome",
       textLength: "5-6 phrases (200-300 caractères)",
       errorCount: "5-6 erreurs par exercice",
-      errorTypes: ["Sophisticated structures", "Cultural references", "Stylistic nuances"],
+      errorTypes: [
+        "Sophisticated structures",
+        "Cultural references",
+        "Stylistic nuances",
+      ],
       difficulty: "Très difficile",
-      focus: "Erreurs sophistiquées, analyse approfondie"
+      focus: "Erreurs sophistiquées, analyse approfondie",
     },
     C2: {
       name: "Maîtrise",
@@ -107,10 +111,10 @@ export const getLevelCharacteristics = (level) => {
       errorCount: "6-8 erreurs par exercice",
       errorTypes: ["Literary language", "Archaic forms", "Creative expression"],
       difficulty: "Expert",
-      focus: "Subtilités linguistiques maximales"
-    }
+      focus: "Subtilités linguistiques maximales",
+    },
   };
-  
+
   return characteristics[level] || characteristics.A1;
 };
 
@@ -127,53 +131,61 @@ export const getErrorCorrectionStats = (level) => {
     typeDistribution: {
       full: 0,
       identify: 0,
-      multiple_choice: 0
+      multiple_choice: 0,
     },
     categories: [],
     averageTextLength: 0,
-    totalErrorPositions: 0
+    totalErrorPositions: 0,
   };
 
   try {
     const data = getErrorsData(level);
-    
+
     if (data && data.exercises) {
       stats.exerciseCount = data.exercises.length;
       stats.totalQuestions = data.exercises.length; // Chaque exercice = 1 question
       stats.categoryCount = data.categories ? data.categories.length : 0;
-      
+
       // Distribution par type
       if (data.statistics) {
         stats.typeDistribution = {
           full: data.statistics.full || 0,
           identify: data.statistics.identify || 0,
-          multiple_choice: data.statistics.multiple_choice || 0
+          multiple_choice: data.statistics.multiple_choice || 0,
         };
       }
-      
+
       // Informations sur les catégories
       if (data.categories) {
-        stats.categories = data.categories.map(cat => ({
+        stats.categories = data.categories.map((cat) => ({
           id: cat.id,
           name: cat.name,
           count: cat.exerciseCount || 0,
-          difficulty: cat.difficulty || "Unknown"
+          difficulty: cat.difficulty || "Unknown",
         }));
       }
-      
+
       // Calcul longueur moyenne des textes
-      const textLengths = data.exercises.map(ex => ex.text ? ex.text.length : 0);
-      stats.averageTextLength = textLengths.length > 0 
-        ? Math.round(textLengths.reduce((a, b) => a + b, 0) / textLengths.length)
-        : 0;
-      
+      const textLengths = data.exercises.map((ex) =>
+        ex.text ? ex.text.length : 0
+      );
+      stats.averageTextLength =
+        textLengths.length > 0
+          ? Math.round(
+              textLengths.reduce((a, b) => a + b, 0) / textLengths.length
+            )
+          : 0;
+
       // Calcul total des positions d'erreurs
       stats.totalErrorPositions = data.exercises
-        .filter(ex => ex.errorPositions)
+        .filter((ex) => ex.errorPositions)
         .reduce((total, ex) => total + ex.errorPositions.length, 0);
     }
   } catch (error) {
-    console.error(`Error calculating error correction stats for level ${level}:`, error);
+    console.error(
+      `Error calculating error correction stats for level ${level}:`,
+      error
+    );
   }
 
   return stats;
@@ -193,31 +205,32 @@ export const getGlobalErrorCorrectionStats = () => {
     byType: {
       full: 0,
       identify: 0,
-      multiple_choice: 0
+      multiple_choice: 0,
     },
     implementedLevels: 6, // Maintenant tous les niveaux sont implémentés
-    progression: []
+    progression: [],
   };
 
-  levels.forEach(level => {
+  levels.forEach((level) => {
     const levelStats = getErrorCorrectionStats(level);
     globalStats.byLevel[level] = levelStats;
-    
+
     if (levelStats.exerciseCount > 0) {
       globalStats.totalExercises += levelStats.exerciseCount;
       globalStats.totalQuestions += levelStats.totalQuestions;
       globalStats.totalCategories += levelStats.categoryCount;
-      
+
       // Cumul par type
       globalStats.byType.full += levelStats.typeDistribution.full;
       globalStats.byType.identify += levelStats.typeDistribution.identify;
-      globalStats.byType.multiple_choice += levelStats.typeDistribution.multiple_choice;
-      
+      globalStats.byType.multiple_choice +=
+        levelStats.typeDistribution.multiple_choice;
+
       // Progression des niveaux
       globalStats.progression.push({
         level: level,
         exercises: levelStats.exerciseCount,
-        difficulty: getLevelCharacteristics(level).difficulty
+        difficulty: getLevelCharacteristics(level).difficulty,
       });
     }
   });
@@ -236,7 +249,7 @@ export const getExercisesByCategory = (level, categoryId) => {
   if (data && data.getExercisesByCategory) {
     return data.getExercisesByCategory(categoryId);
   }
-  return data?.exercises?.filter(ex => ex.categoryId === categoryId) || [];
+  return data?.exercises?.filter((ex) => ex.categoryId === categoryId) || [];
 };
 
 /**
@@ -250,7 +263,7 @@ export const getExercisesByType = (level, type) => {
   if (data && data.getExercisesByType) {
     return data.getExercisesByType(type);
   }
-  return data?.exercises?.filter(ex => ex.type === type) || [];
+  return data?.exercises?.filter((ex) => ex.type === type) || [];
 };
 
 /**
@@ -265,7 +278,11 @@ export const getExercisesByCategoryAndType = (level, categoryId, type) => {
   if (data && data.getExercisesByCategoryAndType) {
     return data.getExercisesByCategoryAndType(categoryId, type);
   }
-  return data?.exercises?.filter(ex => ex.categoryId === categoryId && ex.type === type) || [];
+  return (
+    data?.exercises?.filter(
+      (ex) => ex.categoryId === categoryId && ex.type === type
+    ) || []
+  );
 };
 
 /**
@@ -279,8 +296,15 @@ export const validateErrorCorrectionExercise = (exercise) => {
   }
 
   // Champs requis pour tous les types
-  const requiredFields = ["categoryId", "type", "text", "correctedText", "hint", "explanation"];
-  
+  const requiredFields = [
+    "categoryId",
+    "type",
+    "text",
+    "correctedText",
+    "hint",
+    "explanation",
+  ];
+
   for (const field of requiredFields) {
     if (!exercise[field]) {
       console.warn(`Missing required field: ${field}`);
@@ -297,14 +321,20 @@ export const validateErrorCorrectionExercise = (exercise) => {
 
   // Validation spécifique par type
   if (exercise.type === "multiple_choice") {
-    if (!exercise.choices || !Array.isArray(exercise.choices) || exercise.choices.length < 2) {
+    if (
+      !exercise.choices ||
+      !Array.isArray(exercise.choices) ||
+      exercise.choices.length < 2
+    ) {
       console.warn("Multiple choice exercise needs at least 2 choices");
       return false;
     }
-    
-    if (typeof exercise.correctChoiceIndex !== "number" || 
-        exercise.correctChoiceIndex < 0 || 
-        exercise.correctChoiceIndex >= exercise.choices.length) {
+
+    if (
+      typeof exercise.correctChoiceIndex !== "number" ||
+      exercise.correctChoiceIndex < 0 ||
+      exercise.correctChoiceIndex >= exercise.choices.length
+    ) {
       console.warn("Multiple choice exercise has invalid correctChoiceIndex");
       return false;
     }
@@ -326,12 +356,12 @@ export const validateErrorCorrectionExercise = (exercise) => {
  */
 export const validateErrorCorrectionData = (level) => {
   const data = getErrorsData(level);
-  
+
   if (!data || !data.exercises) {
     return {
       valid: false,
       error: "No error correction data found",
-      exerciseCount: 0
+      exerciseCount: 0,
     };
   }
 
@@ -344,8 +374,8 @@ export const validateErrorCorrectionData = (level) => {
     typeDistribution: {
       full: 0,
       identify: 0,
-      multiple_choice: 0
-    }
+      multiple_choice: 0,
+    },
   };
 
   // Validation des exercices
@@ -353,7 +383,11 @@ export const validateErrorCorrectionData = (level) => {
     if (!validateErrorCorrectionExercise(exercise)) {
       results.valid = false;
       results.invalidExercises.push(index);
-      results.errors.push(`Exercise ${index + 1} (category ${exercise.categoryId || 'unknown'}) is invalid`);
+      results.errors.push(
+        `Exercise ${index + 1} (category ${
+          exercise.categoryId || "unknown"
+        }) is invalid`
+      );
     } else {
       // Comptage par type
       if (results.typeDistribution.hasOwnProperty(exercise.type)) {
@@ -378,25 +412,31 @@ export const validateErrorCorrectionData = (level) => {
  * @param {number} categoryId - L'ID de la catégorie (optionnel)
  * @returns {Object|null} Un exercice aléatoire ou null si aucun trouvé
  */
-export const getRandomErrorCorrectionExercise = (level, type = null, categoryId = null) => {
+export const getRandomErrorCorrectionExercise = (
+  level,
+  type = null,
+  categoryId = null
+) => {
   const data = getErrorsData(level);
-  
+
   if (!data || !data.exercises || data.exercises.length === 0) {
     return null;
   }
 
   let filteredExercises = data.exercises;
-  
+
   // Filtrage par type si spécifié
   if (type) {
-    filteredExercises = filteredExercises.filter(ex => ex.type === type);
+    filteredExercises = filteredExercises.filter((ex) => ex.type === type);
   }
-  
+
   // Filtrage par catégorie si spécifiée
   if (categoryId) {
-    filteredExercises = filteredExercises.filter(ex => ex.categoryId === categoryId);
+    filteredExercises = filteredExercises.filter(
+      (ex) => ex.categoryId === categoryId
+    );
   }
-  
+
   if (filteredExercises.length === 0) {
     return null;
   }
@@ -406,7 +446,7 @@ export const getRandomErrorCorrectionExercise = (level, type = null, categoryId 
     ...filteredExercises[randomIndex],
     index: randomIndex,
     totalCount: filteredExercises.length,
-    level: level
+    level: level,
   };
 };
 
@@ -422,24 +462,24 @@ export const getModeInfo = (mode) => {
       description: "Rewrite the entire text correcting all errors",
       difficulty: "Hard",
       icon: "✏️",
-      color: "#ef4444"
+      color: "#ef4444",
     },
     identify: {
       name: "Identify Errors",
       description: "Click on words that contain errors",
       difficulty: "Medium",
       icon: "🔍",
-      color: "#f59e0b"
+      color: "#f59e0b",
     },
     multiple_choice: {
       name: "Multiple Choice",
       description: "Choose the correct option from multiple choices",
       difficulty: "Easy",
       icon: "✅",
-      color: "#10b981"
-    }
+      color: "#10b981",
+    },
   };
-  
+
   return modes[mode] || modes.full;
 };
 
@@ -450,16 +490,20 @@ export const getModeInfo = (mode) => {
  * @param {Object} performance - Statistiques de performance
  * @returns {Array} Exercices recommandés
  */
-export const getRecommendedExercises = (level, completedExercises = [], performance = {}) => {
+export const getRecommendedExercises = (
+  level,
+  completedExercises = [],
+  performance = {}
+) => {
   const data = getErrorsData(level);
-  
+
   if (!data || !data.exercises) {
     return [];
   }
 
   // Filtrer les exercices non complétés
-  const availableExercises = data.exercises.filter(ex => 
-    !completedExercises.includes(ex.categoryId + "_" + ex.type)
+  const availableExercises = data.exercises.filter(
+    (ex) => !completedExercises.includes(ex.categoryId + "_" + ex.type)
   );
 
   // Si pas de données de performance, retourner des exercices variés
@@ -469,9 +513,11 @@ export const getRecommendedExercises = (level, completedExercises = [], performa
 
   // Prioriser les catégories faibles
   const recommendedExercises = [];
-  
-  performance.weakCategories.forEach(categoryId => {
-    const categoryExercises = availableExercises.filter(ex => ex.categoryId === categoryId);
+
+  performance.weakCategories.forEach((categoryId) => {
+    const categoryExercises = availableExercises.filter(
+      (ex) => ex.categoryId === categoryId
+    );
     recommendedExercises.push(...categoryExercises.slice(0, 2));
   });
 
@@ -483,11 +529,35 @@ export const getRecommendedExercises = (level, completedExercises = [], performa
  */
 export const getAvailableLevels = () => {
   return [
-    { level: "A1", name: "Débutant", exercises: getErrorCorrectionStats("A1").exerciseCount },
-    { level: "A2", name: "Élémentaire", exercises: getErrorCorrectionStats("A2").exerciseCount },
-    { level: "B1", name: "Intermédiaire", exercises: getErrorCorrectionStats("B1").exerciseCount },
-    { level: "B2", name: "Intermédiaire avancé", exercises: getErrorCorrectionStats("B2").exerciseCount },
-    { level: "C1", name: "Autonome", exercises: getErrorCorrectionStats("C1").exerciseCount },
-    { level: "C2", name: "Maîtrise", exercises: getErrorCorrectionStats("C2").exerciseCount },
+    {
+      level: "A1",
+      name: "Débutant",
+      exercises: getErrorCorrectionStats("A1").exerciseCount,
+    },
+    {
+      level: "A2",
+      name: "Élémentaire",
+      exercises: getErrorCorrectionStats("A2").exerciseCount,
+    },
+    {
+      level: "B1",
+      name: "Intermédiaire",
+      exercises: getErrorCorrectionStats("B1").exerciseCount,
+    },
+    {
+      level: "B2",
+      name: "Intermédiaire avancé",
+      exercises: getErrorCorrectionStats("B2").exerciseCount,
+    },
+    {
+      level: "C1",
+      name: "Autonome",
+      exercises: getErrorCorrectionStats("C1").exerciseCount,
+    },
+    {
+      level: "C2",
+      name: "Maîtrise",
+      exercises: getErrorCorrectionStats("C2").exerciseCount,
+    },
   ];
 };

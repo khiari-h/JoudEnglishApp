@@ -34,7 +34,6 @@ import styles from "./style";
 const ErrorCorrectionExercise = ({ route }) => {
   // Hooks de navigation
   const navigation = useNavigation();
-  G;
   const { level = "A1" } = route.params || {};
 
   // Initialisation des données
