@@ -18,7 +18,7 @@ import useWordGamesProgress from "./hooks/useWordGamesProgress";
 import {
   getWordGamesData,
   getLevelColor,
-} from "../../../utils/wordGames/wordGamesHelper";
+} from "../../../utils/wordGames/wordGamesDataHelper.js";
 
 // Styles
 import styles from "./style";
