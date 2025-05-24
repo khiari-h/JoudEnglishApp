@@ -1,9 +1,35 @@
 // src/utils/spelling/spellingDataHelper.js
 
 // Import des données d'orthographe par niveau et type
+// Niveau A1
 import spellingCorrectionA1 from "../../data/spelling/A1/spellingCorrectionA1";
 import spellingRulesA1 from "../../data/spelling/A1/spellingRulesA1";
 import spellingHomophonesA1 from "../../data/spelling/A1/spellingHomophonesA1";
+
+// Niveau A2
+import spellingCorrectionA2 from "../../data/spelling/A2/spellingCorrectionA2";
+import spellingRulesA2 from "../../data/spelling/A2/spellingRulesA2";
+import spellingHomophonesA2 from "../../data/spelling/A2/spellingHomophonesA2";
+
+// Niveau B1
+import spellingCorrectionB1 from "../../data/spelling/B1/spellingCorrectionB1";
+import spellingRulesB1 from "../../data/spelling/B1/spellingRulesB1";
+import spellingHomophonesB1 from "../../data/spelling/B1/spellingHomophonesB1";
+
+// Niveau B2
+import spellingCorrectionB2 from "../../data/spelling/B2/spellingCorrectionB2";
+import spellingRulesB2 from "../../data/spelling/B2/spellingRulesB2";
+import spellingHomophonesB2 from "../../data/spelling/B2/spellingHomophonesB2";
+
+// Niveau C1
+import spellingCorrectionC1 from "../../data/spelling/C1/spellingCorrectionC1";
+import spellingRulesC1 from "../../data/spelling/C1/spellingRulesC1";
+import spellingHomophonesC1 from "../../data/spelling/C1/spellingHomophonesC1";
+
+// Niveau C2
+import spellingCorrectionC2 from "../../data/spelling/C2/spellingCorrectionC2";
+import spellingRulesC2 from "../../data/spelling/C2/spellingRulesC2";
+import spellingHomophonesC2 from "../../data/spelling/C2/spellingHomophonesC2";
 
 /**
  * Récupère les données d'exercices d'orthographe en fonction du niveau et du type
@@ -19,36 +45,30 @@ export const getSpellingData = (level, type) => {
       rules: spellingRulesA1,
       homophones: spellingHomophonesA1,
     },
-    // TODO: Ajouter d'autres niveaux
     A2: {
-      // Fallback temporaire vers A1 en attendant l'implémentation
-      correction: spellingCorrectionA1,
-      rules: spellingRulesA1,
-      homophones: spellingHomophonesA1,
+      correction: spellingCorrectionA2,
+      rules: spellingRulesA2,
+      homophones: spellingHomophonesA2,
     },
     B1: {
-      // Fallback temporaire vers A1 en attendant l'implémentation
-      correction: spellingCorrectionA1,
-      rules: spellingRulesA1,
-      homophones: spellingHomophonesA1,
+      correction: spellingCorrectionB1,
+      rules: spellingRulesB1,
+      homophones: spellingHomophonesB1,
     },
     B2: {
-      // Fallback temporaire vers A1 en attendant l'implémentation
-      correction: spellingCorrectionA1,
-      rules: spellingRulesA1,
-      homophones: spellingHomophonesA1,
+      correction: spellingCorrectionB2,
+      rules: spellingRulesB2,
+      homophones: spellingHomophonesB2,
     },
     C1: {
-      // Fallback temporaire vers A1 en attendant l'implémentation
-      correction: spellingCorrectionA1,
-      rules: spellingRulesA1,
-      homophones: spellingHomophonesA1,
+      correction: spellingCorrectionC1,
+      rules: spellingRulesC1,
+      homophones: spellingHomophonesC1,
     },
     C2: {
-      // Fallback temporaire vers A1 en attendant l'implémentation
-      correction: spellingCorrectionA1,
-      rules: spellingRulesA1,
-      homophones: spellingHomophonesA1,
+      correction: spellingCorrectionC2,
+      rules: spellingRulesC2,
+      homophones: spellingHomophonesC2,
     },
   };
 
@@ -164,12 +184,10 @@ export const getGlobalStats = () => {
     globalStats.byLevel[level] = levelStats;
     globalStats.totalExercises += levelStats.total;
     
-    // Seulement compter A1 pour éviter les doublons des fallbacks
-    if (level === "A1") {
-      globalStats.byType.correction += levelStats.correction;
-      globalStats.byType.rules += levelStats.rules;
-      globalStats.byType.homophones += levelStats.homophones;
-    }
+    // Compter tous les niveaux maintenant qu'ils sont implémentés
+    globalStats.byType.correction += levelStats.correction;
+    globalStats.byType.rules += levelStats.rules;
+    globalStats.byType.homophones += levelStats.homophones;
   });
 
   return globalStats;
