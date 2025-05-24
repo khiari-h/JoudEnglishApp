@@ -15,7 +15,6 @@ import ReadingTextSelector from "./ReadingTextSelector";
 import ReadingText from "./ReadingText";
 import ReadingQuestion from "./ReadingQuestion";
 import QuestionIndicators from "./QuestionIndicators";
-import VocabularyPopup from "./VocabularyPopup";
 
 // Hooks
 import useReadingExerciseState from "./hooks/useReadingExerciseState";
@@ -25,7 +24,7 @@ import useReadingProgress from "./hooks/useReadingProgress";
 import {
   getReadingData,
   getLevelColor,
-} from "../../../utils/reading/readingDataHelper";
+} from "../../../utils/reading/readingHelper";
 import styles from "./style";
 
 /**
@@ -52,7 +51,6 @@ const ReadingExercise = ({ route }) => {
     selectedAnswer,
     showFeedback,
     textExpanded,
-    highlightedWord,
     attempts,
     fadeAnim,
     slideAnim,
@@ -66,8 +64,6 @@ const ReadingExercise = ({ route }) => {
     handleNextQuestion: goToNextQuestion,
     handlePreviousQuestion: goToPreviousQuestion,
     toggleTextExpansion,
-    handleWordPress,
-    closeVocabularyPopup,
     calculateProgress: calculateExerciseProgress,
     setCurrentQuestionIndex,
     setSelectedAnswer,
@@ -255,7 +251,7 @@ const ReadingExercise = ({ route }) => {
         {/* Instructions */}
         <InstructionBox
           title="Reading Exercise"
-          instructions="Read the text carefully and answer the questions. You can tap on underlined words to see their definition."
+          instructions="Read the text carefully and answer the questions."
           variant="compact"
           primaryColor={levelColor}
           initiallyExpanded={false}
@@ -266,7 +262,6 @@ const ReadingExercise = ({ route }) => {
           exercise={currentExercise}
           textExpanded={textExpanded}
           onToggleExpand={toggleTextExpansion}
-          onWordPress={handleWordPress}
           levelColor={levelColor}
         />
 
@@ -332,14 +327,6 @@ const ReadingExercise = ({ route }) => {
         onNext={showFeedback ? handleNextQuestion : handleCheckAnswer}
         onPrevious={handlePreviousQuestion}
         onRetry={retryQuestion}
-      />
-
-      {/* Popup de vocabulaire */}
-      <VocabularyPopup
-        visible={!!highlightedWord}
-        word={highlightedWord?.word}
-        definition={highlightedWord?.definition}
-        onClose={closeVocabularyPopup}
       />
     </SafeAreaView>
   );

@@ -1,7 +1,12 @@
 // src/utils/reading/readingHelper.js
-import readingA1Data from "../../data/reading/readingA1";
-// Futurs imports pour d'autres niveaux
-// import readingA2Data from "../../data/exercises/reading/readingA2";
+
+// Import de tous les index des niveaux CECR
+import readingA1Data from "../../data/exercises/reading/readingA1Index";
+import readingA2Data from "../../data/exercises/reading/readingA2Index";
+import readingB1Data from "../../data/exercises/reading/readingB1Index";
+import readingB2Data from "../../data/exercises/reading/readingB2Index";
+import readingC1Data from "../../data/exercises/reading/readingC1Index";
+import readingC2Data from "../../data/exercises/reading/readingC2Index";
 
 /**
  * Récupère les données de lecture en fonction du niveau
@@ -11,9 +16,13 @@ import readingA1Data from "../../data/reading/readingA1";
 export const getReadingData = (level) => {
   const dataMap = {
     A1: readingA1Data,
-    // Futurs niveaux: A2: readingA2Data, etc.
+    A2: readingA2Data,
+    B1: readingB1Data,
+    B2: readingB2Data,
+    C1: readingC1Data,
+    C2: readingC2Data,
   };
-  return dataMap[level] || readingA1Data;
+  return dataMap[level] || readingA1Data; // A1 par défaut
 };
 
 /**

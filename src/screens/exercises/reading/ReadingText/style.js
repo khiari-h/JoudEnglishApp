@@ -1,43 +1,38 @@
-// src/components/screens/exercises/reading/ReadingText/style.js
-import { StyleSheet } from 'react-native';
+// Dans le fichier style.js du ReadingText, ajouter/modifier :
 
 const styles = StyleSheet.create({
   textContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginBottom: 16,
+    paddingVertical: 12,
   },
-  wordContainer: {
-    flexDirection: "row",
-  },
-  word: {
+  
+  // Nouveau style pour le texte complet (remplace le système word par word)
+  fullText: {
     fontSize: 16,
     lineHeight: 24,
-    color: "#334155",
+    color: '#374151',
+    textAlign: 'justify',
   },
-  highlightedWord: {
-    color: "#3b82f6",
-    textDecorationLine: "underline",
-    textDecorationStyle: "dotted",
-  },
+  
   collapsedText: {
     fontSize: 16,
     lineHeight: 24,
-    color: "#334155",
-    marginBottom: 16,
+    color: '#6b7280',
+    fontStyle: 'italic',
   },
+  
   expandButton: {
-    alignSelf: "center",
-    marginTop: 8,
-    paddingHorizontal: 16,
+    marginTop: 12,
     paddingVertical: 8,
+    paddingHorizontal: 16,
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 8,
+    alignSelf: 'center',
+    backgroundColor: 'transparent',
   },
+  
   expandButtonText: {
     fontSize: 14,
-    fontWeight: "500",
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
-
-export default styles;

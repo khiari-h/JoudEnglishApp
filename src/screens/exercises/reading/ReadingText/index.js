@@ -11,7 +11,6 @@ const ReadingText = ({
   exercise,
   textExpanded,
   onToggleExpand,
-  onWordPress,
   levelColor,
 }) => {
   if (!exercise) return null;
@@ -24,27 +23,9 @@ const ReadingText = ({
     >
       {textExpanded ? (
         <View style={styles.textContainer}>
-          {exercise.text.split(" ").map((word, index) => {
-            // Supprimer la ponctuation pour vérifier le vocabulaire
-            const cleanWord = word.replace(/[.,!?;:""]/g, "");
-            const hasDefinition =
-              exercise.vocabulary && exercise.vocabulary[cleanWord];
-
-            return (
-              <TouchableOpacity
-                key={index}
-                disabled={!hasDefinition}
-                onPress={() => hasDefinition && onWordPress(cleanWord)}
-                style={styles.wordContainer}
-              >
-                <Text
-                  style={[styles.word, hasDefinition && styles.highlightedWord]}
-                >
-                  {word}{" "}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
+          <Text style={styles.fullText}>
+            {exercise.text}
+          </Text>
         </View>
       ) : (
         <Text style={styles.collapsedText}>

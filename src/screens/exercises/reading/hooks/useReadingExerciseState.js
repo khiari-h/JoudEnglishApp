@@ -17,7 +17,6 @@ const useReadingExerciseState = (exercises = [], level) => {
   const [completedQuestions, setCompletedQuestions] = useState({});
   const [showFeedback, setShowFeedback] = useState(false);
   const [textExpanded, setTextExpanded] = useState(true);
-  const [highlightedWord, setHighlightedWord] = useState(null);
   const [attempts, setAttempts] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -261,25 +260,6 @@ const useReadingExerciseState = (exercises = [], level) => {
     }
   };
 
-  // Gérer la pression sur un mot pour l'aide au vocabulaire
-  const handleWordPress = (word) => {
-    if (
-      currentExercise &&
-      currentExercise.vocabulary &&
-      currentExercise.vocabulary[word]
-    ) {
-      setHighlightedWord({
-        word,
-        definition: currentExercise.vocabulary[word],
-      });
-    }
-  };
-
-  // Fermer la popup de vocabulaire
-  const closeVocabularyPopup = () => {
-    setHighlightedWord(null);
-  };
-
   return {
     allExercises,
     selectedExerciseIndex,
@@ -289,7 +269,6 @@ const useReadingExerciseState = (exercises = [], level) => {
     completedQuestions,
     showFeedback,
     textExpanded,
-    highlightedWord,
     attempts,
     progress,
     fadeAnim,
@@ -304,8 +283,6 @@ const useReadingExerciseState = (exercises = [], level) => {
     handleNextQuestion,
     handlePreviousQuestion,
     toggleTextExpansion,
-    handleWordPress,
-    closeVocabularyPopup,
     calculateProgress,
     setCurrentQuestionIndex,
     setSelectedAnswer,
