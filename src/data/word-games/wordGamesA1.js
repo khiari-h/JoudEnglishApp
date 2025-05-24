@@ -2,29 +2,8 @@
 
 export default {
   level: "A1",
-  description: "Basic vocabulary exercises for beginners",
+  description: "Basic vocabulary games for beginners - learning through play",
   games: [
-    // Anagram games
-    {
-      type: "anagram",
-      title: "Food Words Anagram",
-      instructions: "Rearrange the letters to form a food word.",
-      word: "apple",
-      hint: "A common fruit that's red or green",
-      successMessage: "Great job! 'Apple' is correct!",
-      timeLimit: 60,
-      maxScore: 10,
-    },
-    {
-      type: "anagram",
-      title: "Animal Words Anagram",
-      instructions: "Rearrange the letters to form an animal name.",
-      word: "cat",
-      hint: "A popular pet that purrs",
-      successMessage: "Excellent! 'Cat' is correct!",
-      maxScore: 10,
-    },
-
     // Matching games
     {
       type: "matching",
@@ -41,7 +20,7 @@ export default {
     },
     {
       type: "matching",
-      title: "Match Words with Pictures",
+      title: "Match Words with Meanings",
       instructions: "Match each English word with its meaning.",
       pairs: [
         { word: "House", match: "Home" },
@@ -51,23 +30,18 @@ export default {
       ],
       maxScore: 10,
     },
-
-    // Word search games
     {
-      type: "word_search",
-      title: "Simple Word Search",
-      instructions:
-        "Find the hidden words in the grid. Words can be horizontal or vertical.",
-      grid: [
-        ["D", "O", "G", "P", "S"],
-        ["C", "A", "T", "I", "K"],
-        ["F", "L", "B", "G", "Y"],
-        ["H", "O", "U", "S", "E"],
-        ["J", "V", "S", "U", "N"],
+      type: "matching",
+      title: "Match Numbers",
+      instructions: "Match each number with its written form.",
+      pairs: [
+        { word: "1", match: "One" },
+        { word: "2", match: "Two" },
+        { word: "3", match: "Three" },
+        { word: "4", match: "Four" },
+        { word: "5", match: "Five" },
       ],
-      words: ["dog", "cat", "pig", "house", "sun"],
-      timeLimit: 120,
-      maxScore: 15,
+      maxScore: 10,
     },
 
     // Categorization games
@@ -83,7 +57,7 @@ export default {
       currentCategory: "Fruits",
       words: [
         "apple",
-        "banana",
+        "banana", 
         "dog",
         "red",
         "orange",
@@ -93,28 +67,47 @@ export default {
       ],
       maxScore: 10,
     },
-
-    // Another anagram for variety
     {
-      type: "anagram",
-      title: "Simple Object Anagram",
-      instructions: "Rearrange the letters to form an object word.",
-      word: "book",
-      hint: "You read this",
-      successMessage: "Correct! 'Book' is the answer!",
+      type: "categorization", 
+      title: "Animals Category",
+      instructions: "Select all words that belong to the given category.",
+      categories: {
+        Fruits: ["apple", "banana", "orange", "grape"],
+        Animals: ["dog", "cat", "bird", "fish"],
+        Colors: ["red", "blue", "green", "yellow"],
+      },
+      currentCategory: "Animals",
+      words: [
+        "dog",
+        "apple", 
+        "cat",
+        "red",
+        "bird",
+        "house",
+        "fish",
+        "banana",
+      ],
       maxScore: 10,
     },
-
-    // Another matching exercise
     {
-      type: "matching",
-      title: "Match Numbers",
-      instructions: "Match each number with its written form.",
-      pairs: [
-        { word: "1", match: "One" },
-        { word: "2", match: "Two" },
-        { word: "3", match: "Three" },
-        { word: "4", match: "Four" },
+      type: "categorization",
+      title: "Colors Category", 
+      instructions: "Select all words that belong to the given category.",
+      categories: {
+        Fruits: ["apple", "banana", "orange", "grape"],
+        Animals: ["dog", "cat", "bird", "fish"],
+        Colors: ["red", "blue", "green", "yellow"],
+      },
+      currentCategory: "Colors",
+      words: [
+        "red",
+        "dog",
+        "blue", 
+        "apple",
+        "green",
+        "car",
+        "yellow",
+        "house",
       ],
       maxScore: 10,
     },

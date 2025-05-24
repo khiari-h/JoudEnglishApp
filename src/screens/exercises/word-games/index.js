@@ -12,20 +12,20 @@ import WordGamesResults from "./WordGamesResults";
 
 // Hooks personnalisés
 import useWordGamesState from "./hooks/useWordGamesState";
-import useWordGamesProgress from "./hooks/useWordGamesProgress"; // Nouveau hook de progression
+import useWordGamesProgress from "./hooks/useWordGamesProgress";
 
-// Utilitaires et helpers
+// Utilitaires et helpers (version simplifiée)
 import {
   getWordGamesData,
   getLevelColor,
-} from "../../../utils/wordGames/wordGamesDataHelper";
+} from "../../../utils/wordGames/wordGamesHelper";
 
 // Styles
 import styles from "./style";
 
 /**
  * Composant principal pour les exercices de jeux de mots (Word Games)
- * Version améliorée avec gestion de la progression et sauvegarde de la dernière position
+ * Version simplifiée - Focus sur matching et categorization uniquement
  */
 const WordGamesExercise = ({ route }) => {
   // Hooks de navigation
@@ -46,8 +46,6 @@ const WordGamesExercise = ({ route }) => {
     showResults,
     score,
     gameResults,
-    timeLeft,
-    timerActive,
     selectedItems,
     matchedItems,
     shuffledOptions,
@@ -57,11 +55,10 @@ const WordGamesExercise = ({ route }) => {
     checkAnswer,
     handleNextGame,
     resetGames,
-    handleTimeUp,
     setCurrentGameIndex,
   } = useWordGamesState(wordGamesData.games, level);
 
-  // Utilisation du nouveau hook de progression pour le suivi des activités
+  // Hook de progression pour le suivi des activités
   const { 
     completedGames,
     lastPosition,
@@ -71,15 +68,12 @@ const WordGamesExercise = ({ route }) => {
     initializeProgress
   } = useWordGamesProgress(level);
 
-  // Initialiser la progression et restaurer la dernière position si disponible
+  // Initialiser la progression et restaurer la dernière position
   useEffect(() => {
     if (progressLoaded && wordGamesData && wordGamesData.games) {
-      // Initialiser la progression avec les jeux disponibles
       initializeProgress(wordGamesData.games);
       
-      // Si une position sauvegardée existe, restaurer à cette position
       if (lastPosition && typeof lastPosition.gameIndex === 'number') {
-        // S'assurer que l'index est valide
         const validIndex = Math.min(
           lastPosition.gameIndex, 
           wordGamesData.games.length - 1
@@ -91,34 +85,31 @@ const WordGamesExercise = ({ route }) => {
     }
   }, [progressLoaded, wordGamesData, initializeProgress, lastPosition, setCurrentGameIndex]);
 
-  // Sauvegarder la position actuelle lorsque le jeu change
+  // Sauvegarder la position actuelle
   useEffect(() => {
     if (progressLoaded && currentGameIndex !== undefined) {
-      console.log('Saving position:', currentGameIndex);
       saveLastPosition(currentGameIndex);
     }
   }, [currentGameIndex, progressLoaded, saveLastPosition]);
 
-  // Version améliorée de handleNextGame pour enregistrer la progression
+  // Gérer l'avancement avec sauvegarde de progression
   const handleGameAdvance = () => {
-    // Marquer le jeu actuel comme complété si feedback est affiché (jeu terminé)
     if (showFeedback && currentGame) {
       const earnedScore = isCorrect ? (currentGame.maxScore || 10) : 0;
       const maxPossibleScore = currentGame.maxScore || 10;
       markGameAsCompleted(currentGameIndex, earnedScore, maxPossibleScore);
     }
     
-    // Utiliser la fonction existante pour passer au jeu suivant
     handleNextGame();
   };
 
-  // Gérer la réinitialisation complète des jeux
+  // Réinitialisation complète
   const handleResetGames = () => {
     resetGames();
-    saveLastPosition(0); // Réinitialiser la position sauvegardée
+    saveLastPosition(0);
   };
 
-  // Si aucun jeu n'est chargé, afficher un écran de chargement
+  // État de chargement
   if (!currentGame) {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -129,7 +120,7 @@ const WordGamesExercise = ({ route }) => {
     );
   }
 
-  // Si aucun jeu n'est disponible pour ce niveau
+  // Aucun jeu disponible
   if (games.length === 0) {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -140,20 +131,20 @@ const WordGamesExercise = ({ route }) => {
         />
         <View style={styles.emptyGamesContainer}>
           <Text style={styles.emptyGamesText}>
-            Aucun jeu de mots disponible pour le niveau {level}.
+            No word games available for level {level}.
           </Text>
           <TouchableOpacity
             style={[styles.emptyGamesButton, { backgroundColor: levelColor }]}
             onPress={() => navigation.goBack()}
           >
-            <Text style={styles.emptyGamesButtonText}>Retour</Text>
+            <Text style={styles.emptyGamesButtonText}>Back</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
     );
   }
 
-  // Affichage des résultats finaux
+  // Écran des résultats finaux
   if (showResults) {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -167,7 +158,7 @@ const WordGamesExercise = ({ route }) => {
           gameResults={gameResults}
           score={score}
           levelColor={levelColor}
-          onPlayAgain={handleResetGames} // Utiliser la version avec sauvegarde
+          onPlayAgain={handleResetGames}
           onExit={() => navigation.goBack()}
         />
       </SafeAreaView>
@@ -187,7 +178,6 @@ const WordGamesExercise = ({ route }) => {
         currentIndex={currentGameIndex}
         totalGames={games.length}
         showFeedback={showFeedback}
-        timeLeft={timeLeft}
         levelColor={levelColor}
       />
 
@@ -211,7 +201,7 @@ const WordGamesExercise = ({ route }) => {
         totalGames={games.length}
         levelColor={levelColor}
         onCheckAnswer={() => checkAnswer()}
-        onNextGame={handleGameAdvance} // Utiliser la version améliorée
+        onNextGame={handleGameAdvance}
       />
     </SafeAreaView>
   );

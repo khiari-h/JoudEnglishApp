@@ -40,6 +40,14 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 16,
     color: "#ef4444",
+    fontWeight: "600",
+    textAlign: "center",
+  },
+  errorSubText: {
+    fontSize: 14,
+    color: "#64748b",
+    marginTop: 8,
+    textAlign: "center",
   },
 });
 

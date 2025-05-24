@@ -1,7 +1,7 @@
-// src/utils/wordGames/wordGamesDataHelper.js
+// src/utils/wordGames/wordGamesHelper.js
 
 // Import des données de jeux de mots par niveau
-import wordGamesA1Data from "../../data/word-games/wordGamesA1";
+import wordGamesA1Data from "../../data/exercises/wordGames/wordGamesA1";
 
 /**
  * Récupère les données des jeux de mots en fonction du niveau
@@ -11,8 +11,12 @@ import wordGamesA1Data from "../../data/word-games/wordGamesA1";
 export const getWordGamesData = (level) => {
   const dataMap = {
     A1: wordGamesA1Data,
+    // Futurs niveaux à ajouter
+    // A2: wordGamesA2Data,
+    // B1: wordGamesB1Data,
+    // etc.
   };
-  return dataMap[level] || wordGamesA1Data;
+  return dataMap[level] || wordGamesA1Data; // A1 par défaut
 };
 
 /**
@@ -29,5 +33,5 @@ export const getLevelColor = (level) => {
     C1: "#ef4444", // Rouge
     C2: "#6366f1", // Indigo
   };
-  return colors[level] || "#4361EE"; // Couleur par défaut
+  return colors[level] || "#3b82f6"; // Bleu par défaut
 };

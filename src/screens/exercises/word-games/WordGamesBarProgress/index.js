@@ -1,23 +1,21 @@
-// src/screens/exercises/wordGames/WordGamesProgressBar/index.js
+// src/screens/exercises/wordGames/WordGamesBarProgress/index.js
 import React from "react";
 import { View, Text } from "react-native";
-import GameTimer from "../GameTimer";
 import styles from "./style";
 
 /**
  * Barre de progression pour l'exercice de jeux de mots
+ * Version simplifiée sans timer
  *
  * @param {number} currentIndex - Index du jeu actuel
  * @param {number} totalGames - Nombre total de jeux
  * @param {boolean} showFeedback - Indique si le feedback est affiché (complété)
- * @param {number} timeLeft - Temps restant pour le jeu actuel
  * @param {string} levelColor - Couleur associée au niveau
  */
 const WordGamesProgressBar = ({
   currentIndex,
   totalGames,
   showFeedback,
-  timeLeft,
   levelColor,
 }) => {
   // Calculer la progression
@@ -25,25 +23,21 @@ const WordGamesProgressBar = ({
     ((currentIndex + (showFeedback ? 1 : 0)) / totalGames) * 100;
 
   return (
-    <View>
-      <View style={styles.progressContainer}>
-        <View style={styles.progressBar}>
-          <View
-            style={[
-              styles.progressFill,
-              {
-                width: `${progressPercentage}%`,
-                backgroundColor: levelColor,
-              },
-            ]}
-          />
-        </View>
-        <Text style={styles.progressText}>
-          {currentIndex + 1}/{totalGames}
-        </Text>
+    <View style={styles.progressContainer}>
+      <View style={styles.progressBar}>
+        <View
+          style={[
+            styles.progressFill,
+            {
+              width: `${progressPercentage}%`,
+              backgroundColor: levelColor,
+            },
+          ]}
+        />
       </View>
-
-      {timeLeft > 0 && <GameTimer timeLeft={timeLeft} />}
+      <Text style={styles.progressText}>
+        {currentIndex + 1}/{totalGames}
+      </Text>
     </View>
   );
 };
