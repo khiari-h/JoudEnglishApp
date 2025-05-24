@@ -38,6 +38,18 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "bold",
   },
+   homophoneContainer: {
+    marginBottom: 16,
+  },
+
+  instruction: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#1e293b",
+    textAlign: "center",
+    marginBottom: 8,
+    lineHeight: 24,
+  },
 });
 
 export default styles;

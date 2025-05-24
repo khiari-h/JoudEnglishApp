@@ -6,7 +6,7 @@ import { getSpellingData } from '../../../../utils/spelling/spellingDataHelper';
  * Hook personnalisé pour gérer l'état des exercices d'orthographe
  * 
  * @param {string} level - Niveau de langue (A1, A2, etc.)
- * @param {string} exerciseType - Type d'exercice (correction, rules)
+ * @param {string} exerciseType - Type d'exercice (correction, rules, homophones)
  */
 const useSpellingExerciseState = (level, exerciseType) => {
   // États pour gérer l'exercice
@@ -44,15 +44,30 @@ const useSpellingExerciseState = (level, exerciseType) => {
     setShowHint(!showHint);
   }, [showHint]);
 
-  // Vérifier la réponse
+  // Vérifier la réponse selon le type d'exercice
   const checkAnswer = useCallback(() => {
     const currentExercise = getCurrentExercise();
-    if (!currentExercise || !userInput.trim()) return false;
+    if (!currentExercise) return false;
 
-    // Comparer la réponse de l'utilisateur avec la réponse correcte
-    const userAnswer = userInput.trim().toLowerCase();
-    const correctAnswer = currentExercise.correctAnswer.toLowerCase();
-    const correct = userAnswer === correctAnswer;
+    let correct = false;
+
+    switch (currentExercise.type) {
+      case 'homophones':
+        // Pour les homophones, vérifier le choix sélectionné
+        if (!userInput) return false;
+        correct = userInput === currentExercise.correctAnswer;
+        break;
+        
+      case 'correction':
+      case 'spelling_rule':
+      default:
+        // Pour les autres types, vérifier le texte saisi
+        if (!userInput.trim()) return false;
+        const userAnswer = userInput.trim().toLowerCase();
+        const correctAnswer = currentExercise.correctAnswer.toLowerCase();
+        correct = userAnswer === correctAnswer;
+        break;
+    }
 
     setIsCorrect(correct);
     setShowFeedback(true);

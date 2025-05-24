@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * Hook personnalisé pour gérer la progression dans les exercices d'orthographe
  * 
  * @param {string} level - Niveau de langue (A1, A2, B1, B2, C1, C2)
- * @param {string} exerciseType - Type d'exercice (correction, rules)
+ * @param {string} exerciseType - Type d'exercice (correction, rules, homophones)
  */
 const useSpellingProgress = (level, exerciseType) => {
   // États pour suivre la progression
@@ -87,7 +87,7 @@ const useSpellingProgress = (level, exerciseType) => {
   }, [LAST_POSITION_KEY, exerciseType]);
 
   // Marquer un exercice comme complété
-  const markExerciseAsCompleted = useCallback(async (exerciseIndex, isCorrect, userAnswer, correctAnswer) => {
+  const markExerciseAsCompleted = useCallback(async (exerciseIndex, isCorrect, userAnswer, correctAnswer, additionalData = {}) => {
     try {
       // Mettre à jour les exercices complétés
       const updatedCompletedExercises = [...completedExercises];
@@ -104,7 +104,9 @@ const useSpellingProgress = (level, exerciseType) => {
         isCorrect,
         userAnswer,
         correctAnswer,
-        timestamp: Date.now()
+        exerciseType, // ✨ Ajout pour traçabilité
+        timestamp: Date.now(),
+        ...additionalData // ✨ Pour données spécifiques (ex: choix disponibles pour homophones)
       };
       
       const updatedUserAnswers = [...userAnswers, newAnswer];
@@ -114,7 +116,7 @@ const useSpellingProgress = (level, exerciseType) => {
     } catch (error) {
       console.error('Erreur lors du marquage de l\'exercice comme complété:', error);
     }
-  }, [completedExercises, userAnswers, COMPLETED_EXERCISES_KEY, USER_ANSWERS_KEY]);
+  }, [completedExercises, userAnswers, COMPLETED_EXERCISES_KEY, USER_ANSWERS_KEY, exerciseType]);
 
   // Initialiser la progression
   const initializeProgress = useCallback((exercises) => {
@@ -134,6 +136,19 @@ const useSpellingProgress = (level, exerciseType) => {
     return completedExercises.includes(exerciseIndex);
   }, [completedExercises]);
 
+  // ✨ Nouvelle fonction pour obtenir les statistiques par type
+  const getStatsByType = useCallback(() => {
+    const typeAnswers = userAnswers.filter(answer => answer.exerciseType === exerciseType);
+    const correct = typeAnswers.filter(answer => answer.isCorrect).length;
+    const total = typeAnswers.length;
+    
+    return {
+      correct,
+      total,
+      accuracy: total > 0 ? (correct / total) * 100 : 0
+    };
+  }, [userAnswers, exerciseType]);
+
   return {
     completedExercises,
     lastPosition,
@@ -143,7 +158,8 @@ const useSpellingProgress = (level, exerciseType) => {
     markExerciseAsCompleted,
     initializeProgress,
     calculateProgress,
-    isExerciseCompleted
+    isExerciseCompleted,
+    getStatsByType 
   };
 };
 

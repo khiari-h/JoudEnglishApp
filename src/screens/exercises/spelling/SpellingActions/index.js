@@ -13,6 +13,7 @@ import styles from "./style";
  * @param {string} userInput - Texte saisi par l'utilisateur
  * @param {boolean} isLastExercise - Indique si c'est le dernier exercice
  * @param {boolean} isCompleted - Indique si l'exercice a déjà été complété
+ * @param {string} exerciseType - Type d'exercice (correction, spelling_rule, homophones)
  * @param {string} levelColor - Couleur associée au niveau
  * @param {Function} onCheck - Fonction pour vérifier la réponse
  * @param {Function} onNext - Fonction pour passer à l'exercice suivant
@@ -24,11 +25,23 @@ const SpellingActions = ({
   userInput,
   isLastExercise,
   isCompleted,
+  exerciseType,
   levelColor,
   onCheck,
   onNext,
   onRetry
 }) => {
+  // Fonction pour déterminer si la réponse peut être vérifiée
+  const canCheckAnswer = () => {
+    if (exerciseType === "homophones") {
+      // Pour les homophones, vérifier qu'un choix est sélectionné
+      return userInput !== "";
+    } else {
+      // Pour les autres types, vérifier que le texte n'est pas vide
+      return userInput.trim() !== "";
+    }
+  };
+
   // Si l'exercice est déjà complété, montrer simplement le bouton "Next"
   if (isCompleted && !showFeedback) {
     return (
@@ -59,7 +72,7 @@ const SpellingActions = ({
         <NavigationButtons
           onNext={onCheck}
           disablePrevious={true}
-          disableNext={userInput.trim() === ""}
+          disableNext={!canCheckAnswer()}
           showSkip={false}
           primaryColor={levelColor}
           buttonLabels={{

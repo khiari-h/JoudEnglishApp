@@ -133,17 +133,18 @@ const SpellingExercise = ({ route }) => {
       />
       
       {/* Boutons d'action */}
-      <SpellingActions 
-        showFeedback={showFeedback}
-        isCorrect={isCorrect}
-        userInput={userInput}
-        isLastExercise={currentExerciseIndex === totalExercises - 1}
-        isCompleted={isExerciseCompleted(currentExerciseIndex)}
-        levelColor={levelColor}
-        onCheck={handleCheckAnswer}
-        onNext={handleNextExercise}
-        onRetry={retryExercise}
-      />
+<SpellingActions 
+  showFeedback={showFeedback}
+  isCorrect={isCorrect}
+  userInput={userInput}
+  isLastExercise={currentExerciseIndex === totalExercises - 1}
+  isCompleted={isExerciseCompleted(currentExerciseIndex)}
+  exerciseType={exerciseType} 
+  levelColor={levelColor}
+  onCheck={handleCheckAnswer}
+  onNext={handleNextExercise}
+  onRetry={retryExercise}
+/>
     </SafeAreaView>
   );
 };

@@ -6,6 +6,7 @@ import SpellingHint from "../SpellingHint";
 import SpellingFeedback from "../SpellingFeedback";
 import SpellingCorrection from "../SpellingCorrection";
 import SpellingRule from "../SpellingRule";
+import HomophoneChoices from "../HomophoneChoices";
 import styles from "./style";
 
 /**
@@ -51,8 +52,39 @@ const SpellingCard = ({
             instruction={exercise.instruction}
           />
         );
+      case "homophones":
+        return (
+          <View style={styles.homophoneContainer}>
+            <Text style={styles.instruction}>{exercise.instruction}</Text>
+          </View>
+        );
       default:
         return null;
+    }
+  };
+
+  // Afficher la zone de saisie appropriée selon le type
+  const renderInputArea = () => {
+    if (exercise.type === "homophones") {
+      return (
+        <HomophoneChoices
+          sentence={exercise.sentence}
+          choices={exercise.choices}
+          selectedChoice={userInput}
+          onSelectChoice={onChangeText}
+          disabled={showFeedback}
+          levelColor={levelColor}
+        />
+      );
+    } else {
+      return (
+        <SpellingInput
+          value={userInput}
+          onChangeText={onChangeText}
+          disabled={showFeedback}
+          levelColor={levelColor}
+        />
+      );
     }
   };
 
@@ -73,13 +105,8 @@ const SpellingCard = ({
         {/* Contenu de l'exercice */}
         {renderExerciseContent()}
 
-        {/* Zone de saisie */}
-        <SpellingInput
-          value={userInput}
-          onChangeText={onChangeText}
-          disabled={showFeedback}
-          levelColor={levelColor}
-        />
+        {/* Zone de saisie (TextInput ou HomophoneChoices) */}
+        {renderInputArea()}
 
         {/* Indice */}
         {exercise.hasHint && (
