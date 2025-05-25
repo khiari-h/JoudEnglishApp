@@ -1,0 +1,122 @@
+// src/data/exercises/wordGames/wordGamesA2.js
+
+export default {
+  level: "A2",
+  description: "Elementary vocabulary games - expanding your word knowledge",
+  games: [
+    // Matching games
+    {
+      type: "matching",
+      title: "Jobs and Workplaces",
+      instructions: "Match each job with its typical workplace.",
+      pairs: [
+        { word: "Teacher", match: "School" },
+        { word: "Doctor", match: "Hospital" },
+        { word: "Chef", match: "Restaurant" },
+        { word: "Librarian", match: "Library" },
+        { word: "Farmer", match: "Farm" },
+      ],
+      hint: "Think about where these professionals usually work",
+      maxScore: 12,
+    },
+    {
+      type: "matching",
+      title: "Past and Present Verbs",
+      instructions: "Match each present tense verb with its past tense form.",
+      pairs: [
+        { word: "Go", match: "Went" },
+        { word: "Eat", match: "Ate" },
+        { word: "See", match: "Saw" },
+        { word: "Buy", match: "Bought" },
+        { word: "Take", match: "Took" },
+      ],
+      hint: "Remember irregular past tense forms",
+      maxScore: 12,
+    },
+    {
+      type: "matching",
+      title: "Weather and Activities",
+      instructions: "Match each weather condition with a suitable activity.",
+      pairs: [
+        { word: "Sunny", match: "Swimming" },
+        { word: "Rainy", match: "Reading" },
+        { word: "Snowy", match: "Skiing" },
+        { word: "Windy", match: "Flying kites" },
+      ],
+      hint: "What activities suit different weather conditions?",
+      maxScore: 10,
+    },
+
+    // Categorization games
+    {
+      type: "categorization",
+      title: "Transportation Categories",
+      instructions: "Select all words that belong to the given category.",
+      categories: {
+        "Land Transport": ["car", "bus", "bicycle", "train", "motorcycle"],
+        "Water Transport": ["boat", "ship", "ferry", "submarine"],
+        "Air Transport": ["plane", "helicopter", "balloon"],
+      },
+      currentCategory: "Land Transport",
+      words: [
+        "car",
+        "boat",
+        "bus",
+        "plane",
+        "bicycle",
+        "ship",
+        "train",
+        "helicopter",
+        "motorcycle",
+        "house",
+      ],
+      maxScore: 12,
+    },
+    {
+      type: "categorization",
+      title: "Food Groups",
+      instructions: "Select all words that belong to the given category.",
+      categories: {
+        "Dairy Products": ["milk", "cheese", "butter", "yogurt"],
+        "Vegetables": ["carrot", "broccoli", "tomato", "onion", "lettuce"],
+        "Meat": ["chicken", "beef", "pork", "fish"],
+      },
+      currentCategory: "Vegetables",
+      words: [
+        "carrot",
+        "milk",
+        "broccoli",
+        "chicken",
+        "tomato",
+        "cheese",
+        "onion",
+        "lettuce",
+        "car",
+        "beef",
+      ],
+      maxScore: 12,
+    },
+    {
+      type: "categorization",
+      title: "Daily Activities",
+      instructions: "Select all words that belong to the given category.",
+      categories: {
+        "Morning Activities": ["wake up", "brush teeth", "have breakfast", "get dressed"],
+        "Evening Activities": ["watch TV", "have dinner", "read books", "go to bed"],
+        "Weekend Activities": ["go shopping", "visit friends", "play sports", "relax"],
+      },
+      currentCategory: "Morning Activities",
+      words: [
+        "wake up",
+        "watch TV",
+        "brush teeth",
+        "go shopping",
+        "have breakfast",
+        "have dinner",
+        "get dressed",
+        "study",
+      ],
+      maxScore: 12,
+    },
+  ],
+};
