@@ -2,11 +2,15 @@
 
 export default {
   level: "A1",
-  description: "Test your basic English skills at the A1 level",
+  description: "Évaluez vos compétences de base en anglais niveau A1",
+  totalQuestions: 50,
+  timeLimit: 45, // minutes
+  passScore: 70, // pourcentage
 
   vocabulary: {
-    title: "Vocabulary",
-    description: "Test your knowledge of basic English words",
+    title: "Vocabulaire",
+    description: "Testez votre connaissance des mots de base",
+    icon: "📚",
     questions: [
       {
         text: "Which word means 'a place where you live'?",
@@ -18,8 +22,7 @@ export default {
         text: "What is this? 🍎",
         options: ["Orange", "Banana", "Apple", "Strawberry"],
         correctAnswer: 2,
-        explanation:
-          "This is an apple, a common fruit that is often red or green.",
+        explanation: "This is an apple, a common fruit that is often red or green.",
       },
       {
         text: "Which word describes the color of the sky on a clear day?",
@@ -43,8 +46,9 @@ export default {
   },
 
   grammar: {
-    title: "Grammar",
-    description: "Test your understanding of basic grammar structures",
+    title: "Grammaire",
+    description: "Testez votre compréhension des structures grammaticales de base",
+    icon: "📝",
     questions: [
       {
         text: "_____ name is John.",
@@ -62,50 +66,37 @@ export default {
         text: "I _____ coffee every morning.",
         options: ["drinking", "drink", "drinks", "drank"],
         correctAnswer: 1,
-        explanation:
-          "For habits in the present simple, we use the base form of the verb with 'I'.",
+        explanation: "For habits in the present simple, we use the base form of the verb with 'I'.",
       },
       {
         text: "She _____ like spicy food.",
         options: ["don't", "not", "doesn't", "isn't"],
         correctAnswer: 2,
-        explanation:
-          "For negation in the present simple with he/she/it, we use 'doesn't'.",
+        explanation: "For negation in the present simple with he/she/it, we use 'doesn't'.",
       },
       {
         text: "_____ they have a car?",
         options: ["Do", "Does", "Are", "Have"],
         correctAnswer: 0,
-        explanation:
-          "For questions in the present simple with they/we/you, we use 'Do'.",
+        explanation: "For questions in the present simple with they/we/you, we use 'Do'.",
       },
     ],
   },
 
   phrases_expressions: {
-    title: "Phrases & Expressions",
-    description: "Test your knowledge of common expressions",
+    title: "Expressions & Politesse",
+    description: "Testez votre connaissance des expressions courantes",
+    icon: "🗣️",
     questions: [
       {
         text: "What do you say when you meet someone for the first time?",
-        options: [
-          "Goodbye",
-          "Hello, nice to meet you",
-          "See you later",
-          "I'm sorry",
-        ],
+        options: ["Goodbye", "Hello, nice to meet you", "See you later", "I'm sorry"],
         correctAnswer: 1,
-        explanation:
-          "When meeting someone for the first time, you typically say 'Hello, nice to meet you'.",
+        explanation: "When meeting someone for the first time, you typically say 'Hello, nice to meet you'.",
       },
       {
         text: "How do you ask for someone's name?",
-        options: [
-          "How are you?",
-          "Where are you from?",
-          "What's your name?",
-          "How old are you?",
-        ],
+        options: ["How are you?", "Where are you from?", "What's your name?", "How old are you?"],
         correctAnswer: 2,
         explanation: "To ask for someone's name, you say 'What's your name?'",
       },
@@ -117,12 +108,7 @@ export default {
       },
       {
         text: "How do you ask for the price of something?",
-        options: [
-          "How much is it?",
-          "Where is it?",
-          "What time is it?",
-          "Who is it?",
-        ],
+        options: ["How much is it?", "Where is it?", "What time is it?", "Who is it?"],
         correctAnswer: 0,
         explanation: "To ask about price, you say 'How much is it?'",
       },
@@ -135,9 +121,162 @@ export default {
     ],
   },
 
+  numbers_time: {
+    title: "Nombres & Heure",
+    description: "Testez votre connaissance des nombres et de l'heure",
+    icon: "🕐",
+    questions: [
+      {
+        text: "What number comes after fifteen?",
+        options: ["Fourteen", "Sixteen", "Thirteen", "Seventeen"],
+        correctAnswer: 1,
+        explanation: "After fifteen (15) comes sixteen (16).",
+      },
+      {
+        text: "How do you say '3:30' in English?",
+        options: ["Three thirty", "Half past three", "Three and half", "Both A and B"],
+        correctAnswer: 3,
+        explanation: "You can say '3:30' as both 'three thirty' and 'half past three'.",
+      },
+      {
+        text: "What is 'vingt' in English?",
+        options: ["Twelve", "Twenty", "Thirty", "Fifty"],
+        correctAnswer: 1,
+        explanation: "'Vingt' means 'twenty' in English.",
+      },
+      {
+        text: "How do you ask about someone's age?",
+        options: ["How old are you?", "What age you have?", "How many years?", "What is your old?"],
+        correctAnswer: 0,
+        explanation: "To ask about age, you say 'How old are you?'",
+      },
+      {
+        text: "What time expression means 'morning'?",
+        options: ["p.m.", "a.m.", "o'clock", "past"],
+        correctAnswer: 1,
+        explanation: "'a.m.' (ante meridiem) refers to morning hours before noon.",
+      },
+    ],
+  },
+
+  can_cant: {
+    title: "Can / Can't",
+    description: "Testez votre connaissance du modal 'can'",
+    icon: "💪",
+    questions: [
+      {
+        text: "I _____ swim very well.",
+        options: ["can", "can't", "could", "should"],
+        correctAnswer: 0,
+        explanation: "Use 'can' to express ability. 'I can swim' means I have the ability to swim.",
+      },
+      {
+        text: "She _____ speak Chinese.",
+        options: ["can", "can't", "cans", "cannot to"],
+        correctAnswer: 0,
+        explanation: "'Can' is used to express ability. 'She can speak Chinese' means she has this ability.",
+      },
+      {
+        text: "_____ you drive a car?",
+        options: ["Can", "Do", "Are", "Have"],
+        correctAnswer: 0,
+        explanation: "To ask about ability, we use 'Can you...?'",
+      },
+      {
+        text: "I _____ play the piano. I never learned.",
+        options: ["can", "can't", "could", "couldn't"],
+        correctAnswer: 1,
+        explanation: "'Can't' (cannot) expresses inability. 'I can't play' means I don't have this ability.",
+      },
+      {
+        text: "Dogs _____ fly.",
+        options: ["can", "can't", "could", "should"],
+        correctAnswer: 1,
+        explanation: "Dogs cannot fly naturally, so we use 'can't' to express this impossibility.",
+      },
+    ],
+  },
+
+  prepositions: {
+    title: "Prépositions Simples",
+    description: "Testez votre connaissance des prépositions de base",
+    icon: "📍",
+    questions: [
+      {
+        text: "I live _____ Paris.",
+        options: ["at", "in", "on", "by"],
+        correctAnswer: 1,
+        explanation: "We use 'in' with cities and countries. 'I live in Paris'.",
+      },
+      {
+        text: "The book is _____ the table.",
+        options: ["in", "at", "on", "by"],
+        correctAnswer: 2,
+        explanation: "We use 'on' when something is on the surface of something else.",
+      },
+      {
+        text: "I wake up _____ 7 o'clock.",
+        options: ["in", "on", "at", "by"],
+        correctAnswer: 2,
+        explanation: "We use 'at' with specific times. 'At 7 o'clock', 'at midnight'.",
+      },
+      {
+        text: "My birthday is _____ May.",
+        options: ["at", "in", "on", "by"],
+        correctAnswer: 1,
+        explanation: "We use 'in' with months, years, and seasons. 'In May', 'in 2024'.",
+      },
+      {
+        text: "The meeting is _____ Monday.",
+        options: ["at", "in", "on", "by"],
+        correctAnswer: 2,
+        explanation: "We use 'on' with days of the week and specific dates. 'On Monday'.",
+      },
+    ],
+  },
+
+  demonstratives: {
+    title: "Démonstratifs",
+    description: "Testez votre connaissance de this, that, these, those",
+    icon: "👉",
+    questions: [
+      {
+        text: "_____ is my book. (the book is near you)",
+        options: ["This", "That", "These", "Those"],
+        correctAnswer: 0,
+        explanation: "'This' is used for singular objects that are close to the speaker.",
+      },
+      {
+        text: "_____ are my friends. (the friends are near you)",
+        options: ["This", "That", "These", "Those"],
+        correctAnswer: 2,
+        explanation: "'These' is used for plural objects that are close to the speaker.",
+      },
+      {
+        text: "_____ car over there is expensive. (pointing to a distant car)",
+        options: ["This", "That", "These", "Those"],
+        correctAnswer: 1,
+        explanation: "'That' is used for singular objects that are far from the speaker.",
+      },
+      {
+        text: "_____ people in the photo are my family. (pointing to a photo)",
+        options: ["This", "That", "These", "Those"],
+        correctAnswer: 3,
+        explanation: "'Those' is used for plural objects that are far from the speaker or in a photo/picture.",
+      },
+      {
+        text: "What is _____ ? (pointing to something in your hand)",
+        options: ["this", "that", "these", "those"],
+        correctAnswer: 0,
+        explanation: "'This' is used when referring to something close to you, like in your hand.",
+      },
+    ],
+  },
+
   error_correction: {
-    title: "Error Correction",
-    description: "Find the mistake in these sentences",
+    title: "Correction d'Erreurs",
+    description: "Trouvez l'erreur dans ces phrases",
+    icon: "✏️",
     questions: [
       {
         text: "Which sentence is correct?",
@@ -148,8 +287,7 @@ export default {
           "She haves three brothers.",
         ],
         correctAnswer: 1,
-        explanation:
-          "The correct form is 'She has' - third person singular in present simple.",
+        explanation: "The correct form is 'She has' - third person singular in present simple.",
       },
       {
         text: "Which sentence is correct?",
@@ -160,8 +298,7 @@ export default {
           "I the student.",
         ],
         correctAnswer: 1,
-        explanation:
-          "We need the indefinite article 'a' before singular countable nouns like 'student'.",
+        explanation: "We need the indefinite article 'a' before singular countable nouns like 'student'.",
       },
       {
         text: "Which sentence is correct?",
@@ -172,20 +309,18 @@ export default {
           "They not like coffee.",
         ],
         correctAnswer: 2,
-        explanation:
-          "For plural subjects (they), we use 'don't like' in the negative form.",
+        explanation: "For plural subjects (they), we use 'don't like' in the negative form.",
       },
       {
         text: "Which sentence is correct?",
         options: [
-          "We are go to school every day.",
-          "We going to school every day.",
-          "We goes to school every day.",
-          "We go to school every day.",
+          "I can to swim.",
+          "I can swim.",
+          "I can swimming.",
+          "I can swims.",
         ],
-        correctAnswer: 3,
-        explanation:
-          "For plural subjects (we) in present simple, we use the base form of the verb.",
+        correctAnswer: 1,
+        explanation: "After 'can', we use the base form of the verb without 'to'.",
       },
       {
         text: "Which sentence is correct?",
@@ -202,121 +337,77 @@ export default {
   },
 
   spelling: {
-    title: "Spelling",
-    description: "Test your spelling skills",
+    title: "Orthographe",
+    description: "Testez vos compétences en orthographe",
+    icon: "🔤",
     questions: [
       {
         text: "Which word is spelled correctly?",
         options: ["freind", "friend", "frend", "friende"],
         correctAnswer: 1,
-        explanation: "The correct spelling is 'friend'.",
+        explanation: "The correct spelling is 'friend' - remember 'i before e'.",
       },
       {
         text: "Choose the correct spelling:",
         options: ["hapy", "happie", "happy", "happey"],
         correctAnswer: 2,
-        explanation: "The correct spelling is 'happy' with a double 'p'.",
+        explanation: "The correct spelling is 'happy' with a double 'p' and 'y' at the end.",
       },
       {
         text: "Choose the correct spelling:",
         options: ["becuase", "because", "becaus", "becose"],
         correctAnswer: 1,
-        explanation: "The correct spelling is 'because' with 'cau' not 'cua'.",
+        explanation: "The correct spelling is 'because' - remember 'cause' at the end.",
       },
       {
         text: "Choose the correct spelling:",
-        options: ["beutiful", "beautiful", "beatiful", "beautyful"],
+        options: ["whant", "want", "wante", "waunt"],
         correctAnswer: 1,
-        explanation:
-          "The correct spelling is 'beautiful' with 'eau' in the middle.",
+        explanation: "The correct spelling is 'want' - simple and short.",
       },
       {
         text: "Choose the correct spelling:",
         options: ["recieve", "receve", "receive", "reciave"],
         correctAnswer: 2,
-        explanation: "The correct spelling is 'receive' with 'ei' after 'c'.",
-      },
-    ],
-  },
-
-  spelling_rules: {
-    title: "Spelling Rules",
-    description: "Test your knowledge of basic English spelling rules",
-    questions: [
-      {
-        text: "What is the plural form of 'box'?",
-        options: ["boxs", "boxes", "box", "boxies"],
-        correctAnswer: 1,
-        explanation:
-          "Nouns ending in s, ss, sh, ch, x, or z add 'es' to form the plural: box → boxes.",
-      },
-      {
-        text: "What is the plural form of 'baby'?",
-        options: ["babys", "babyes", "babies", "babis"],
-        correctAnswer: 2,
-        explanation:
-          "When a noun ends in 'y' after a consonant, change the 'y' to 'i' and add 'es': baby → babies.",
-      },
-      {
-        text: "What is the correct -ing form of 'write'?",
-        options: ["writeing", "writinge", "writing", "writiing"],
-        correctAnswer: 2,
-        explanation:
-          "For verbs ending in 'e', we drop the 'e' and add 'ing': write → writing.",
-      },
-      {
-        text: "What is the correct -ing form of 'run'?",
-        options: ["runing", "running", "runeing", "runneing"],
-        correctAnswer: 1,
-        explanation:
-          "For short verbs ending in consonant-vowel-consonant, we double the final consonant and add 'ing': run → running.",
-      },
-      {
-        text: "Choose the correct spelling with the 'th' sound:",
-        options: ["tink", "think", "sink", "fink"],
-        correctAnswer: 1,
-        explanation:
-          "The 'th' sound is common in English and is always spelled with 'th': think, thank, this, that.",
+        explanation: "The correct spelling is 'receive' - 'ei' after 'c' (exception to i before e rule).",
       },
     ],
   },
 
   reading_comprehension: {
-    title: "Reading Comprehension",
-    description: "Read the text and answer questions",
+    title: "Compréhension Écrite",
+    description: "Lisez le texte et répondez aux questions",
+    icon: "📖",
     questions: [
       {
-        text: "Read: 'My name is John. I am 25 years old. I live in London with my dog, Max.' How old is John?",
-        options: ["20", "25", "30", "35"],
+        text: "Read: 'My name is Sarah. I am 22 years old. I live in London with my cat, Luna. I work in a hospital.' Where does Sarah work?",
+        options: ["In a school", "In a hospital", "In a shop", "In a restaurant"],
         correctAnswer: 1,
-        explanation: "The text states that John is 25 years old.",
+        explanation: "According to the text, Sarah works in a hospital.",
       },
       {
-        text: "Read: 'I wake up at 7:00. I have breakfast at 7:30. I go to work at 8:30.' When does this person have breakfast?",
-        options: ["7:00", "7:30", "8:00", "8:30"],
-        correctAnswer: 1,
-        explanation: "According to the text, the person has breakfast at 7:30.",
-      },
-      {
-        text: "Read: 'The restaurant is open from Monday to Friday, 9:00 to 21:00.' Is the restaurant open on Saturday?",
-        options: ["Yes", "No", "Sometimes", "It doesn't say"],
-        correctAnswer: 1,
-        explanation:
-          "The restaurant is only open Monday to Friday, so it is not open on Saturday.",
-      },
-      {
-        text: "Read: 'I have a sister and two brothers. My sister is 15. My brothers are 10 and 8.' How many siblings does the writer have?",
-        options: ["One", "Two", "Three", "Four"],
+        text: "Read: 'I wake up at 6:30. I have breakfast at 7:00. I leave home at 8:00. I start work at 9:00.' When does this person leave home?",
+        options: ["6:30", "7:00", "8:00", "9:00"],
         correctAnswer: 2,
-        explanation:
-          "The writer has three siblings: one sister and two brothers.",
+        explanation: "The text states 'I leave home at 8:00'.",
       },
       {
-        text: "Read: 'The weather today is cold and rainy. You need a coat and an umbrella.' What do you need today?",
-        options: ["Sunglasses", "A coat and an umbrella", "A hat", "A t-shirt"],
+        text: "Read: 'The library is open Monday to Friday, 9 AM to 6 PM. On Saturday, it opens from 10 AM to 4 PM. It is closed on Sunday.' When is the library closed?",
+        options: ["Monday", "Saturday morning", "Sunday", "Friday evening"],
+        correctAnswer: 2,
+        explanation: "The text clearly states 'It is closed on Sunday'.",
+      },
+      {
+        text: "Read: 'Tom has two sisters and one brother. His sisters are 16 and 14. His brother is 12.' How many children are in Tom's family?",
+        options: ["Three", "Four", "Five", "Six"],
         correctAnswer: 1,
-        explanation:
-          "According to the text, you need a coat and an umbrella because it's cold and rainy.",
+        explanation: "Tom + two sisters + one brother = four children total.",
+      },
+      {
+        text: "Read: 'Today is sunny and warm. The temperature is 25°C. It's a perfect day for a picnic in the park.' What's the weather like today?",
+        options: ["Cold and rainy", "Sunny and warm", "Cloudy and cool", "Windy and cold"],
+        correctAnswer: 1,
+        explanation: "The text describes the weather as 'sunny and warm'.",
       },
     ],
   },
