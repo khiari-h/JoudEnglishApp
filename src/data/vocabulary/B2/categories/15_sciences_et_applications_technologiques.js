@@ -101,5 +101,43 @@ export const vocab = {
     { word: "explainer", translation: "vulgarisateur", example: "The explainer translated quantum physics concepts into everyday language." },
     { word: "scientific illustration", translation: "illustration scientifique", example: "Scientific illustration clarifies complex structures and processes." },
     { word: "science podcast", translation: "podcast scientifique", example: "The science podcast discusses recent discoveries for general audiences." }
+// 30 mots à ajouter dans 15_sciences_et_applications_technologiques.js
+// Pour passer de 67 à 97 mots
+
+// Technologies spécifiques modernes (10 mots)
+{ word: "artificial intelligence", translation: "intelligence artificielle", example: "Artificial intelligence revolutionizes data analysis and decision-making processes." },
+{ word: "machine learning", translation: "apprentissage automatique", example: "Machine learning algorithms improve performance through experience with data." },
+{ word: "nanotechnology", translation: "nanotechnologie", example: "Nanotechnology manipulates matter at the molecular and atomic scale." },
+{ word: "biotechnology", translation: "biotechnologie", example: "Biotechnology applies biological processes to develop useful products." },
+{ word: "renewable energy", translation: "énergie renouvelable", example: "Renewable energy sources reduce dependence on fossil fuels." },
+{ word: "gene therapy", translation: "thérapie génique", example: "Gene therapy treats diseases by modifying defective genes." },
+{ word: "stem cell research", translation: "recherche sur cellules souches", example: "Stem cell research offers potential treatments for degenerative diseases." },
+{ word: "3d printing", translation: "impression 3D", example: "3D printing creates physical objects from digital designs." },
+{ word: "robotics", translation: "robotique", example: "Robotics combines engineering and computer science to create automated machines." },
+{ word: "cybersecurity", translation: "cybersécurité", example: "Cybersecurity protects digital systems from malicious attacks." },
+
+// Applications pratiques (10 mots)
+{ word: "telemedicine", translation: "télémédecine", example: "Telemedicine enables remote healthcare delivery through technology." },
+{ word: "precision medicine", translation: "médecine de précision", example: "Precision medicine tailors treatments to individual genetic profiles." },
+{ word: "smart technology", translation: "technologie intelligente", example: "Smart technology adapts automatically to user needs and preferences." },
+{ word: "automation", translation: "automatisation", example: "Automation reduces human intervention in repetitive processes." },
+{ word: "digitalization", translation: "numérisation", example: "Digitalization transforms analog information into digital formats." },
+{ word: "virtual reality", translation: "réalité virtuelle", example: "Virtual reality creates immersive computer-generated environments." },
+{ word: "augmented reality", translation: "réalité augmentée", example: "Augmented reality overlays digital information onto real-world views." },
+{ word: "cloud computing", translation: "informatique en nuage", example: "Cloud computing provides on-demand access to computing resources." },
+{ word: "big data", translation: "mégadonnées", example: "Big data analytics reveals patterns in massive datasets." },
+{ word: "internet of things", translation: "internet des objets", example: "Internet of Things connects everyday devices to communication networks." },
+
+// Processus et méthodes (10 mots)
+{ word: "peer review", translation: "évaluation par les pairs", example: "Peer review ensures quality control in scientific publishing." },
+{ word: "clinical trial", translation: "essai clinique", example: "Clinical trials test new medical treatments for safety and effectiveness." },
+{ word: "data analysis", translation: "analyse de données", example: "Data analysis transforms raw information into meaningful insights." },
+{ word: "simulation", translation: "simulation", example: "Computer simulation models complex systems without physical experiments." },
+{ word: "modeling", translation: "modélisation", example: "Mathematical modeling predicts system behavior under different conditions." },
+{ word: "algorithm", translation: "algorithme", example: "The algorithm processes information to solve specific problems efficiently." },
+{ word: "database", translation: "base de données", example: "The research database contains thousands of scientific publications." },
+{ word: "software development", translation: "développement logiciel", example: "Software development creates applications for scientific research." },
+{ word: "quality control", translation: "contrôle qualité", example: "Quality control ensures products meet specified standards." },
+{ word: "risk assessment", translation: "évaluation des risques", example: "Risk assessment identifies potential hazards in new technologies." }
   ]
 };
