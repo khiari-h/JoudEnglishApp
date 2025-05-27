@@ -33,7 +33,6 @@ export const CATEGORY_DESCRIPTIONS = {
   58: "Citations célèbres, références culturelles implicites et allusions qui nécessitent une culture générale approfondie",
   59: "Capacité d'analyse complexe, interprétation nuancée et synthèse intellectuelle de haut niveau",
   60: "Langage imagé, style poétique, figures de style avancées et expression créative de la beauté linguistique",
-  61: "Protocole linguistique, discours cérémoniels, expressions solennelles et langage des grandes occasions",
   62: "Communication fine entre cultures, diplomatie linguistique et adaptation stylistique selon les contextes culturels",
   63: "Maîtrise complète des registres, adaptation stylistique parfaite et virtuosité dans l'usage de la langue"
 };
@@ -41,7 +40,6 @@ export const CATEGORY_DESCRIPTIONS = {
 export const USAGE_NOTES = {
   rare: "Expressions rares ou archaïques, à utiliser avec parcimonie et en contexte approprié",
   literary: "Style littéraire et soutenu, particulièrement adapté à l'expression écrite de qualité",
-  ceremonial: "Langage protocolaire et cérémoniel pour les grandes occasions et contextes solennels",
   academic: "Registre académique de très haut niveau pour la recherche et l'enseignement supérieur",
   artistic: "Vocabulaire spécialisé des arts et de la critique culturelle",
   legal: "Terminologie juridique et administrative spécialisée",
@@ -91,7 +89,6 @@ export const LEARNING_SEQUENCE = [
   "Découvrir les jeux de mots et double sens (catégorie 50)",
   "Maîtriser l'ironie, sarcasme et subtilités humoristiques (catégorie 51)",
   "Apprendre les citations et références culturelles (catégorie 58)",
-  "Se spécialiser dans les registres formels : académique (54), juridique (53), cérémoniel (61)",
   "Développer la critique littéraire et artistique (catégorie 55)",
   "Perfectionner la communication interculturelle avancée (catégorie 62)",
   "Finaliser avec la maîtrise stylistique et variations d'usage (catégorie 63)"

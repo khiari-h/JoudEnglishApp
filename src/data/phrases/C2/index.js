@@ -15,7 +15,6 @@ import preciseEmotionalNuances from './categories/precise-emotional-nuances.js';
 import quotesCulturalReferences from './categories/quotes-cultural-references.js';
 import complexAnalysisInterpretation from './categories/complex-analysis-interpretation.js';
 import poeticFigurativeLanguage from './categories/poetic-figurative-language.js';
-import ceremonialFormalRegisters from './categories/ceremonial-formal-registers.js';
 import advancedInterculturalCommunication from './categories/advanced-intercultural-communication.js';
 import stylisticMasteryVariations from './categories/stylistic-mastery-variations.js';
 
@@ -55,7 +54,6 @@ const phrasesC2 = {
     ...quotesCulturalReferences,
     ...complexAnalysisInterpretation,
     ...poeticFigurativeLanguage,
-    ...ceremonialFormalRegisters,
     ...advancedInterculturalCommunication,
     ...stylisticMasteryVariations
   ]
