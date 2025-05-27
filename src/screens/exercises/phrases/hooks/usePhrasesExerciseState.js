@@ -1,15 +1,20 @@
+// hooks/usePhrasesExerciseState.js - VERSION COMPLÈTE MODIFIÉE
+
 import { useState, useCallback, useEffect } from "react";
 
 /**
  * Hook personnalisé pour gérer l'état de l'exercice des phrases
+ * Version modifiée : suppression du modal, ajout du toggle translation
  * @param {string} level - Niveau de langue (A1, A2, etc.)
  * @param {Object} phrasesData - Données de phrases (peut être null initialement)
  */
 const usePhrasesExerciseState = (level, phrasesData) => {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [phraseIndex, setPhraseIndex] = useState(0);
-  const [selectedPhrase, setSelectedPhrase] = useState(null);
-  const [showDetails, setShowDetails] = useState(false);
+  
+  // ✅ AJOUTÉ - Toggle translation (remplace le modal)
+  const [showTranslation, setShowTranslation] = useState(false);
+  
   const [completionProgress, setCompletionProgress] = useState(0);
 
   // Vérifier si phrasesData est valide et a des catégories
@@ -53,6 +58,7 @@ const usePhrasesExerciseState = (level, phrasesData) => {
       if (index !== categoryIndex && index >= 0 && index < categories.length) {
         setCategoryIndex(index);
         setPhraseIndex(0); // Réinitialiser l'index de phrase lors du changement de catégorie
+        setShowTranslation(false); // ✅ AJOUTÉ - Reset translation
       }
     },
     [categoryIndex, categories.length]
@@ -62,6 +68,7 @@ const usePhrasesExerciseState = (level, phrasesData) => {
   const goToNextPhrase = useCallback(() => {
     if (phraseIndex < currentPhrases.length - 1) {
       setPhraseIndex((prev) => prev + 1);
+      setShowTranslation(false); // ✅ AJOUTÉ - Reset translation
     }
   }, [phraseIndex, currentPhrases.length]);
 
@@ -69,33 +76,33 @@ const usePhrasesExerciseState = (level, phrasesData) => {
   const goToPreviousPhrase = useCallback(() => {
     if (phraseIndex > 0) {
       setPhraseIndex((prev) => prev - 1);
+      setShowTranslation(false); // ✅ AJOUTÉ - Reset translation
     }
   }, [phraseIndex]);
 
-  // Ouvrir les détails d'une phrase
-  const openPhraseDetails = useCallback((phrase) => {
-    setSelectedPhrase(phrase);
-    setShowDetails(true);
-  }, []);
-
-  // Fermer les détails
-  const closePhraseDetails = useCallback(() => {
-    setShowDetails(false);
-    // Délai pour une meilleure expérience utilisateur
-    setTimeout(() => setSelectedPhrase(null), 300);
+  // ✅ AJOUTÉ - Toggle translation (remplace openPhraseDetails/closePhraseDetails)
+  const toggleTranslation = useCallback(() => {
+    setShowTranslation((prev) => !prev);
   }, []);
 
   return {
+    // États existants
     categoryIndex,
     phraseIndex,
-    selectedPhrase,
-    showDetails,
     completionProgress,
+    
+    // ✅ AJOUTÉ - État translation
+    showTranslation,
+    
+    // Fonctions existantes
     changeCategory,
     goToNextPhrase,
     goToPreviousPhrase,
-    openPhraseDetails,
-    closePhraseDetails,
+    
+    // ✅ AJOUTÉ - Function toggle
+    toggleTranslation,
+    
+    // Données calculées
     currentCategory,
     currentPhrases,
     hasValidData,
