@@ -1,6 +1,7 @@
 export const vocab = {
   title: "Technologies de l'Information & Communication",
   words: [
+    { word: "api integration", translation: "intégration d'API", example: "API integration enables seamless third-party service connections." },
     // Infrastructure numérique
     
     

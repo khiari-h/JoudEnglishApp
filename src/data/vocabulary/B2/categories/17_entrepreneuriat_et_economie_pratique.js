@@ -1,17 +1,16 @@
 export const vocab = {
   title: "Entrepreneuriat et Économie Pratique",
   words: [
+    { word: "churn rate", translation: "taux d'attrition", example: "Low churn rate indicates strong customer satisfaction." },
+    { word: "lifetime value", translation: "valeur vie client", example: "High customer lifetime value justifies premium acquisition spending." },
+    { word: "customer acquisition cost", translation: "coût d'acquisition client", example: "Reducing customer acquisition cost improved overall profitability." },
+    { word: "e-commerce platform", translation: "plateforme de commerce électronique", example: "Their e-commerce platform processes thousands of orders daily." },
+    { word: "equity stake", translation: "participation au capital", example: "Investors received a 20% equity stake in exchange for funding." },
     // Création et gestion d'entreprise (38 mots)
     
     
     { word: "entrepreneur", translation: "entrepreneur", example: "As an entrepreneur, she identified an unmet market need and developed a solution." },
-    
-    
-    
-    
-    
-    
-    
+
     { word: "unique selling point", translation: "argument de vente unique", example: "The product's unique selling point is its environmentally friendly manufacturing process." },
     
     { word: "market entry", translation: "entrée sur le marché", example: "The company's market entry strategy focused on a specific urban demographic." },
