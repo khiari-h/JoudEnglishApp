@@ -5,7 +5,6 @@ export const vocab = {
     // Infrastructure numérique
     
     
-    
     { word: "data center", translation: "centre de données", example: "The company built a new data center to support its cloud services." },
     { word: "server farm", translation: "ferme de serveurs", example: "The server farm consumed massive amounts of electricity for computing and cooling." },
     
