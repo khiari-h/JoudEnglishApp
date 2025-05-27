@@ -119,5 +119,43 @@ export const vocab = {
     { word: "sustainable livelihood", translation: "moyens de subsistance durables", example: "Training programs promote sustainable livelihoods through diversified income sources." },
     
     { word: "knowledge sharing", translation: "partage des connaissances", example: "The platform facilitates knowledge sharing between practitioners worldwide." }
+// 30 mots à ajouter dans 16_enjeux_mondiaux_et_cooperation_internationale.js
+// Pour passer de 64 à 94 mots
+
+// Commerce international et économie mondiale (10 mots)
+{ word: "global trade", translation: "commerce mondial", example: "Global trade policies affect economic development in emerging markets." },
+{ word: "free trade agreement", translation: "accord de libre-échange", example: "The free trade agreement eliminated tariffs between member countries." },
+{ word: "trade barrier", translation: "barrière commerciale", example: "Trade barriers can protect domestic industries but may increase consumer prices." },
+{ word: "economic partnership", translation: "partenariat économique", example: "The economic partnership promotes investment and technology transfer." },
+{ word: "global supply chain", translation: "chaîne d'approvisionnement mondiale", example: "The pandemic disrupted global supply chains across multiple industries." },
+{ word: "economic integration", translation: "intégration économique", example: "Economic integration requires harmonization of regulations and standards." },
+{ word: "foreign investment", translation: "investissement étranger", example: "Foreign investment can stimulate economic growth but may create dependencies." },
+{ word: "currency exchange", translation: "change de devises", example: "Currency exchange rates affect international trade competitiveness." },
+{ word: "financial markets", translation: "marchés financiers", example: "Global financial markets are increasingly interconnected and volatile." },
+{ word: "economic sanctions", translation: "sanctions économiques", example: "Economic sanctions aim to change behavior through financial pressure." },
+
+// Migration et mouvement de populations (10 mots)
+{ word: "migration flow", translation: "flux migratoire", example: "Climate change is expected to increase migration flows from vulnerable regions." },
+{ word: "asylum seeker", translation: "demandeur d'asile", example: "Asylum seekers require legal protection while their cases are processed." },
+{ word: "internally displaced person", translation: "personne déplacée à l'intérieur du pays", example: "Internally displaced persons often face similar challenges to refugees." },
+{ word: "brain drain", translation: "fuite des cerveaux", example: "Brain drain affects developing countries when skilled workers emigrate." },
+{ word: "remittances", translation: "envois de fonds", example: "Remittances from migrant workers support families and local economies." },
+{ word: "integration policy", translation: "politique d'intégration", example: "Effective integration policies help migrants contribute to host societies." },
+{ word: "stateless person", translation: "apatride", example: "Stateless persons lack citizenship protection and face legal difficulties." },
+{ word: "human trafficking", translation: "traite des êtres humains", example: "International cooperation is essential to combat human trafficking." },
+{ word: "border control", translation: "contrôle frontalier", example: "Border control must balance security concerns with humanitarian obligations." },
+{ word: "resettlement program", translation: "programme de réinstallation", example: "The resettlement program helps refugees rebuild their lives in host countries." },
+
+// Défis technologiques et gouvernance globale (10 mots)
+{ word: "digital divide", translation: "fracture numérique", example: "The digital divide limits access to online education and services." },
+{ word: "cyber warfare", translation: "cyberguerre", example: "Cyber warfare poses new challenges to international security frameworks." },
+{ word: "data governance", translation: "gouvernance des données", example: "International data governance requires balancing privacy with innovation." },
+{ word: "technology transfer", translation: "transfert de technologie", example: "Technology transfer programs help developing countries access modern innovations." },
+{ word: "global governance", translation: "gouvernance mondiale", example: "Global governance institutions struggle to adapt to rapid technological change." },
+{ word: "international law", translation: "droit international", example: "International law provides frameworks for resolving cross-border disputes." },
+{ word: "treaty negotiation", translation: "négociation de traité", example: "Treaty negotiations often require years of diplomatic discussions." },
+{ word: "compliance monitoring", translation: "suivi de la conformité", example: "Compliance monitoring ensures countries meet their international obligations." },
+{ word: "multilateral institution", translation: "institution multilatérale", example: "Multilateral institutions coordinate responses to global challenges." },
+{ word: "global citizenship", translation: "citoyenneté mondiale", example: "Education promotes global citizenship and cross-cultural understanding." }
   ]
 };
