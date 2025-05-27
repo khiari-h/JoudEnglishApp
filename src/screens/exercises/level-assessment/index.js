@@ -14,7 +14,10 @@ import useAssessmentState from "./hooks/useAssessmentState";
 import useAssessmentProgress from "./hooks/useAssessmentProgress"; // Nouveau hook de progression
 
 // Utilitaires et helpers
-import { getLevelColor, getAssessmentSections } from "../../../utils/assessment/assessmentDataHelper";
+import {
+  getLevelColor,
+  getAssessmentSections,
+} from "../../../utils/assessment/assessmentDataHelper";
 
 // Styles
 import styles from "./style";
@@ -42,97 +45,134 @@ const LevelAssessment = ({ route }) => {
     selectedAnswer,
     showFeedback,
     testCompleted,
-    fadeAnim,
     assessmentData,
     handleSelectAnswer,
     validateAnswer,
     goToNextQuestion,
     tryAgain,
-    setCurrentSection,
-    setCurrentQuestionIndex,
-    setTestCompleted
+    changeSection, // Fonction pour changer de section
+    changeQuestion, // Fonction pour changer de question
+    setTestCompleted,
+    restoreState, // Fonction pour restaurer l'état complet
   } = useAssessmentState(level);
 
   // Utilisation du nouveau hook de progression pour le suivi des activités
-  const { 
+  const {
     lastPosition,
     loaded: progressLoaded,
     saveLastPosition,
     saveUserAnswer,
     saveAssessmentResults,
-    isAssessmentCompleted
+    isAssessmentCompleted,
   } = useAssessmentProgress(level);
 
   // Restaurer la dernière position si disponible
   useEffect(() => {
     if (progressLoaded && lastPosition) {
-      console.log('[Assessment] Restauration depuis la position sauvegardée:', lastPosition);
-      
-      // Restaurer la section
-      if (typeof lastPosition.sectionIndex === 'number' && sections[lastPosition.sectionIndex]) {
-        const sectionKey = sections[lastPosition.sectionIndex];
-        setCurrentSection(sectionKey);
+      console.log(
+        "[Assessment] Restauration depuis la position sauvegardée:",
+        lastPosition
+      );
+
+      // Utiliser restoreState si disponible, sinon utiliser les fonctions individuelles
+      if (restoreState) {
+        restoreState(lastPosition.sectionIndex, lastPosition.questionIndex);
+      } else {
+        // Restaurer la section
+        if (
+          typeof lastPosition.sectionIndex === "number" &&
+          sections[lastPosition.sectionIndex]
+        ) {
+          const sectionKey = sections[lastPosition.sectionIndex];
+          if (changeSection) {
+            changeSection(sectionKey);
+          }
+        }
+
+        // Restaurer la question
+        if (typeof lastPosition.questionIndex === "number" && changeQuestion) {
+          changeQuestion(lastPosition.questionIndex);
+        }
       }
-      
-      // Restaurer la question
-      if (typeof lastPosition.questionIndex === 'number') {
-        setCurrentQuestionIndex(lastPosition.questionIndex);
-      }
-      
+
       // Si l'évaluation était déjà terminée, afficher les résultats
       if (isAssessmentCompleted()) {
         setTestCompleted(true);
       }
     }
-  }, [progressLoaded, lastPosition, sections]);
+  }, [
+    progressLoaded,
+    lastPosition,
+    sections,
+    restoreState,
+    changeSection,
+    changeQuestion,
+  ]);
 
-  // Sauvegarder la position quand la section ou la question change
+  // Sauvegarder la position quand la section ou la question change (pas lors de la sélection de réponse)
   useEffect(() => {
-    if (progressLoaded && currentSection) {
+    if (progressLoaded && currentSection && !showFeedback) {
       const sectionIndex = sections.indexOf(currentSection);
       if (sectionIndex !== -1) {
-        console.log(`[Assessment] Mise à jour de la position: section ${sectionIndex}, question ${currentQuestionIndex}`);
+        console.log(
+          `[Assessment] Mise à jour de la position: section ${sectionIndex}, question ${currentQuestionIndex}`
+        );
         saveLastPosition(sectionIndex, currentQuestionIndex);
       }
     }
-  }, [currentSection, currentQuestionIndex, progressLoaded, saveLastPosition, sections]);
+  }, [
+    currentSection,
+    currentQuestionIndex,
+    progressLoaded,
+    saveLastPosition,
+    sections,
+  ]);
 
   // Version améliorée de validateAnswer pour sauvegarder la réponse
   const handleValidateAnswer = () => {
     if (selectedAnswer === null) return;
-    
+
     // Vérifier si la réponse est correcte
-    const isCorrect = currentQuestion && selectedAnswer === currentQuestion.correctAnswer;
-    
+    const isCorrect =
+      currentQuestion && selectedAnswer === currentQuestion.correctAnswer;
+
     // Appeler la fonction originale
     validateAnswer();
-    
+
     // Sauvegarder la réponse dans AsyncStorage
     if (currentSection && currentQuestion) {
-      saveUserAnswer(currentSection, currentQuestionIndex, selectedAnswer, isCorrect);
+      saveUserAnswer(
+        currentSection,
+        currentQuestionIndex,
+        selectedAnswer,
+        isCorrect
+      );
     }
   };
 
   // Version améliorée de goToNextQuestion
   const handleNextQuestion = () => {
     // Si c'est la dernière question de la dernière section
-    const isLastSection = sections.indexOf(currentSection) === sections.length - 1;
-    const isLastQuestion = currentQuestionIndex === assessmentData[currentSection]?.questions.length - 1;
-    
+    const isLastSection =
+      sections.indexOf(currentSection) === sections.length - 1;
+    const isLastQuestion =
+      currentQuestionIndex ===
+      assessmentData[currentSection]?.questions.length - 1;
+
     if (isLastSection && isLastQuestion && showFeedback) {
       // Sauvegarder les résultats complets
       const results = {
         level,
-        sectionsCompleted: sections.map(section => ({ 
-          key: section, 
-          title: assessmentData[section]?.title || section 
+        sectionsCompleted: sections.map((section) => ({
+          key: section,
+          title: assessmentData[section]?.title || section,
         })),
-        completedAt: new Date().toISOString()
+        completedAt: new Date().toISOString(),
       };
-      
+
       saveAssessmentResults(results);
     }
-    
+
     // Appeler la fonction originale
     goToNextQuestion();
   };
@@ -141,7 +181,7 @@ const LevelAssessment = ({ route }) => {
   if (testCompleted) {
     return (
       <SafeAreaView style={styles.container}>
-        <AssessmentResults 
+        <AssessmentResults
           level={level}
           levelColor={levelColor}
           onContinue={() => navigation.navigate("Dashboard")}
@@ -153,10 +193,10 @@ const LevelAssessment = ({ route }) => {
   return (
     <SafeAreaView style={styles.container}>
       {/* En-tête */}
-      <AssessmentHeader 
-        level={level} 
-        levelColor={levelColor} 
-        onBackPress={() => navigation.goBack()} 
+      <AssessmentHeader
+        level={level}
+        levelColor={levelColor}
+        onBackPress={() => navigation.goBack()}
       />
 
       <ScrollView
@@ -170,7 +210,6 @@ const LevelAssessment = ({ route }) => {
             selectedAnswer={selectedAnswer}
             showFeedback={showFeedback}
             levelColor={levelColor}
-            fadeAnim={fadeAnim}
             onSelectAnswer={handleSelectAnswer}
           />
         )}
@@ -182,9 +221,9 @@ const LevelAssessment = ({ route }) => {
         currentQuestionIndex={currentQuestionIndex}
         currentSection={currentSection}
         levelColor={levelColor}
-        onValidateAnswer={handleValidateAnswer} 
+        onValidateAnswer={handleValidateAnswer}
         onTryAgain={tryAgain}
-        onNextQuestion={handleNextQuestion} 
+        onNextQuestion={handleNextQuestion}
       />
     </SafeAreaView>
   );

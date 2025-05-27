@@ -1,18 +1,19 @@
 // src/screens/exercises/levelAssessment/AssessmentQuestion/index.js
 import React from "react";
-import { View, Text, TouchableOpacity, Animated } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import AssessmentFeedback from "../AssessmentFeedback";
 import styles from "./style";
 
 /**
  * Composant pour afficher une question d'évaluation
- * 
+ * Version corrigée sans animation pour éviter le tremblement
+ *
  * @param {string} section - Section actuelle de l'évaluation
  * @param {Object} question - Question actuelle avec ses options
  * @param {number} selectedAnswer - Index de la réponse sélectionnée
  * @param {boolean} showFeedback - Indique si le feedback doit être affiché
  * @param {string} levelColor - Couleur associée au niveau
- * @param {Object} fadeAnim - Animation de fondu
+ * @param {Object} fadeAnim - Animation de fondu (non utilisée dans cette version)
  * @param {Function} onSelectAnswer - Fonction appelée lors de la sélection d'une réponse
  */
 const AssessmentQuestion = ({
@@ -21,11 +22,11 @@ const AssessmentQuestion = ({
   selectedAnswer,
   showFeedback,
   levelColor,
-  fadeAnim,
-  onSelectAnswer
+  fadeAnim, // Gardé pour la compatibilité mais non utilisé
+  onSelectAnswer,
 }) => {
   return (
-    <Animated.View style={[styles.questionCard, { opacity: fadeAnim }]}>
+    <View style={styles.questionCard}>
       <Text style={styles.sectionTitle}>
         {section.replace("_", " ").toUpperCase()}
       </Text>
@@ -70,7 +71,7 @@ const AssessmentQuestion = ({
           explanation={question.explanation}
         />
       )}
-    </Animated.View>
+    </View>
   );
 };
 

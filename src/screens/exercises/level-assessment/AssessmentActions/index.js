@@ -5,7 +5,7 @@ import styles from "./style";
 
 /**
  * Composant pour les boutons d'action
- * 
+ *
  * @param {boolean} showFeedback - Indique si le feedback est affiché
  * @param {number} selectedAnswer - Index de la réponse sélectionnée
  * @param {number} currentQuestionIndex - Index de la question actuelle
@@ -23,12 +23,24 @@ const AssessmentActions = ({
   levelColor,
   onValidateAnswer,
   onTryAgain,
-  onNextQuestion
+  onNextQuestion,
 }) => {
   // Déterminer si nous passons à la section suivante
-  const isLastQuestionInSection = (currentQuestionIndex, currentSection, sectionData) => {
+  const isLastQuestionInSection = (
+    currentQuestionIndex,
+    currentSection,
+    sectionData
+  ) => {
     if (!sectionData || !sectionData[currentSection]) return false;
-    return currentQuestionIndex === sectionData[currentSection].questions.length - 1;
+    return (
+      currentQuestionIndex === sectionData[currentSection].questions.length - 1
+    );
+  };
+
+  const handleValidatePress = () => {
+    if (onValidateAnswer) {
+      onValidateAnswer();
+    }
   };
 
   return (
@@ -38,9 +50,9 @@ const AssessmentActions = ({
           style={[
             styles.actionButton,
             selectedAnswer === null && styles.disabledButton,
-            { backgroundColor: levelColor },
+            { backgroundColor: selectedAnswer === null ? "#ccc" : levelColor },
           ]}
-          onPress={onValidateAnswer}
+          onPress={handleValidatePress}
           disabled={selectedAnswer === null}
         >
           <Text style={styles.actionButtonText}>Check Answer</Text>
@@ -53,7 +65,9 @@ const AssessmentActions = ({
               styles.tryAgainButton,
               { borderColor: levelColor },
             ]}
-            onPress={onTryAgain}
+            onPress={() => {
+              onTryAgain();
+            }}
           >
             <Text style={[styles.actionButtonText, { color: levelColor }]}>
               Try Again
@@ -61,7 +75,9 @@ const AssessmentActions = ({
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.actionButton, { backgroundColor: levelColor }]}
-            onPress={onNextQuestion}
+            onPress={() => {
+              onNextQuestion();
+            }}
           >
             <Text style={styles.actionButtonText}>
               Next{" "}
