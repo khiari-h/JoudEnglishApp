@@ -62,7 +62,7 @@ export const vocab = {
     // Modélisation scientifique
     { word: "theoretical model", translation: "modèle théorique", example: "The theoretical model proposed mechanisms linking childhood adversity to adult health outcomes." },
     { word: "computational model", translation: "modèle computationnel", example: "The computational model simulated cell interactions during embryonic development." },
-    
+    { word: "simulation", translation: "simulation", example: "The simulation tested how the system would respond under various environmental conditions." },
     { word: "mathematical modeling", translation: "modélisation mathématique", example: "Mathematical modeling predicted the spread of the epidemic under different intervention scenarios." },
     { word: "system dynamics", translation: "dynamique des systèmes", example: "System dynamics modeling captured feedback loops in the ecological network." },
     { word: "predictive model", translation: "modèle prédictif", example: "The predictive model achieved 87% accuracy in forecasting patient outcomes." },

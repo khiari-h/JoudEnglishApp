@@ -404,17 +404,41 @@ export const vocab = {
     // Pour passer de 64 à 94 mots
 
     // Technologies médiatiques et numérique (10 mots)
-    
-    
+    {
+      word: "digital media",
+      translation: "médias numériques",
+      example:
+        "Digital media platforms have revolutionized information distribution and consumption.",
+    },
+    {
+      word: "social media",
+      translation: "médias sociaux",
+      example: "Social media algorithms determine which content reaches users.",
+    },
     {
       word: "streaming platform",
       translation: "plateforme de diffusion en continu",
       example:
         "Streaming platforms have disrupted traditional television broadcasting.",
     },
-    
-    
-    
+    {
+      word: "podcast",
+      translation: "podcast",
+      example:
+        "Podcasts have created new opportunities for niche content creators.",
+    },
+    {
+      word: "user-generated content",
+      translation: "contenu généré par l'utilisateur",
+      example:
+        "User-generated content challenges traditional gatekeeping roles.",
+    },
+    {
+      word: "viral content",
+      translation: "contenu viral",
+      example:
+        "Viral content spreads rapidly across social networks without traditional promotion.",
+    },
     {
       word: "algorithmic curation",
       translation: "curation algorithmique",
@@ -427,7 +451,12 @@ export const vocab = {
       example:
         "Artificial intelligence in media automates content creation and distribution.",
     },
-    
+    {
+      word: "deepfake",
+      translation: "hypertrucage",
+      example:
+        "Deepfake technology raises concerns about authenticity in digital media.",
+    },
     {
       word: "augmented reality journalism",
       translation: "journalisme en réalité augmentée",
@@ -442,11 +471,36 @@ export const vocab = {
       example:
         "Media economics examines financial structures and market dynamics in communication industries.",
     },
-    
-    
-    
-    
-    
+    {
+      word: "subscription model",
+      translation: "modèle d'abonnement",
+      example:
+        "The subscription model has become crucial for news organizations' financial sustainability.",
+    },
+    {
+      word: "advertising revenue",
+      translation: "revenus publicitaires",
+      example:
+        "Declining advertising revenue has forced traditional media to diversify income sources.",
+    },
+    {
+      word: "paywall",
+      translation: "mur payant",
+      example:
+        "Newspapers implement paywalls to generate revenue from digital content.",
+    },
+    {
+      word: "media conglomerate",
+      translation: "conglomérat médiatique",
+      example:
+        "Media conglomerates control multiple types of communication outlets.",
+    },
+    {
+      word: "market share",
+      translation: "part de marché",
+      example:
+        "Streaming services compete aggressively for market share in entertainment.",
+    },
     {
       word: "audience monetization",
       translation: "monétisation de l'audience",
@@ -473,14 +527,53 @@ export const vocab = {
     },
 
     // Régulation, politique et société (10 mots)
-    
-    
-    
-    
-    
-    
-    
-    
+    {
+      word: "media regulation",
+      translation: "régulation des médias",
+      example:
+        "Media regulation balances free speech with public interest concerns.",
+    },
+    {
+      word: "press freedom",
+      translation: "liberté de la presse",
+      example:
+        "Press freedom remains under pressure in many democratic societies.",
+    },
+    {
+      word: "media literacy",
+      translation: "littératie médiatique",
+      example:
+        "Media literacy education helps citizens critically evaluate information sources.",
+    },
+    {
+      word: "filter bubble",
+      translation: "bulle de filtres",
+      example:
+        "Filter bubbles limit exposure to diverse perspectives and information.",
+    },
+    {
+      word: "echo chamber",
+      translation: "chambre d'écho",
+      example:
+        "Social media can create echo chambers that reinforce existing beliefs.",
+    },
+    {
+      word: "digital divide",
+      translation: "fracture numérique",
+      example:
+        "The digital divide creates unequal access to information and communication technologies.",
+    },
+    {
+      word: "misinformation",
+      translation: "désinformation",
+      example: "Misinformation spreads rapidly through social media networks.",
+    },
+    {
+      word: "fact-checking",
+      translation: "vérification des faits",
+      example:
+        "Fact-checking has become essential in combating false information.",
+    },
     {
       word: "media influence",
       translation: "influence médiatique",

@@ -150,7 +150,7 @@ export const vocab = {
 
 { word: "cyber warfare", translation: "cyberguerre", example: "Cyber warfare poses new challenges to international security frameworks." },
 
-
+{ word: "technology transfer", translation: "transfert de technologie", example: "Technology transfer programs help developing countries access modern innovations." },
 
 
 { word: "treaty negotiation", translation: "négociation de traité", example: "Treaty negotiations often require years of diplomatic discussions." },

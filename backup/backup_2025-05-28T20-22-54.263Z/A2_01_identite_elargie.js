@@ -18,7 +18,7 @@ export const vocab = {
     { word: "complexion", translation: "teint", example: "She has a pale complexion." },
     { word: "wrinkles", translation: "rides", example: "As we age, wrinkles appear on our skin." },
     { word: "curly", translation: "bouclé", example: "She has beautiful curly hair." },
-    
+    { word: "straight", translation: "raide", example: "He has straight black hair." },
     { word: "wavy", translation: "ondulé", example: "She has wavy brown hair." },
     
     

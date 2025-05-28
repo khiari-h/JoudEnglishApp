@@ -58,8 +58,8 @@ export const vocab = {
     // Analyse formelle (25 mots)
     { word: "formal analysis", translation: "analyse formelle", example: "Formal analysis examines visual elements and their relationships." },
     
-    
-    
+    { word: "line", translation: "ligne", example: "Expressive line quality conveys emotional intensity throughout the drawing." },
+    { word: "shape", translation: "forme", example: "Organic shapes contrast with geometric elements in the composition." },
     
     
     { word: "value", translation: "valeur", example: "Dramatic value contrasts establish focal hierarchy within the image." },
@@ -74,7 +74,7 @@ export const vocab = {
     
     { word: "variety", translation: "variété", example: "Textural variety maintains visual interest throughout the surface." },
     { word: "emphasis", translation: "accentuation", example: "Strategic emphasis directs attention to significant narrative elements." },
-    
+    { word: "pattern", translation: "motif", example: "Repeating patterns establish visual continuity across the installation." },
     
     { word: "movement", translation: "mouvement", example: "Directional brushwork creates visual movement across the canvas." },
     

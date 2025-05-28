@@ -14,6 +14,7 @@ import { vocab as communication } from "./categories/13_communication.js";
 import { vocab as loisirs } from "./categories/14_loisirs.js";
 import { vocab as emotions } from "./categories/15_emotions.js";
 import { vocab as animals } from "./categories/16_animals.js";
+import { vocab as couleurs_et_formes } from "./categories/17_couleurs_et_formes.js";
 
 export default {
   exercises: [
@@ -32,6 +33,7 @@ export default {
     communication,
     loisirs,
     emotions,
-    animals
+    animals,
+    couleurs_et_formes
   ],
 };

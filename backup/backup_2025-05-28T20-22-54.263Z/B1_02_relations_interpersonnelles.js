@@ -100,7 +100,7 @@ export const vocab = {
     // Réseaux sociaux élargis
     
     
-    
+    { word: "circle", translation: "cercle", example: "My circle of friends has changed since I moved." },
     
     { word: "association", translation: "association", example: "She's a member of several professional associations." },
     { word: "affiliation", translation: "affiliation", example: "The organization has no political affiliation." },

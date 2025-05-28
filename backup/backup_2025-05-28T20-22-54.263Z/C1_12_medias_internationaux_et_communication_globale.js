@@ -139,7 +139,7 @@ export const vocab = {
     { word: "distributed content", translation: "contenu distribué", example: "Publishers increasingly rely on distributed content across external platforms." },
     { word: "audience analytics", translation: "analyse d'audience", example: "Audience analytics provide detailed insights into content consumption patterns." },
     { word: "news bot", translation: "robot d'information", example: "News bots automatically generate and distribute updates on specific topics." },
-    
+    { word: "augmented reality journalism", translation: "journalisme en réalité augmentée", example: "Augmented reality journalism enhances stories with digital overlays on physical environments." },
     
     // Journalisme d'investigation
     { word: "investigative journalism", translation: "journalisme d'investigation", example: "Investigative journalism requires extended research into hidden or complex topics." },
@@ -169,7 +169,7 @@ export const vocab = {
     { word: "high-impact journalism", translation: "journalisme à fort impact", example: "High-impact journalism drives policy change and public awareness." },
     
     // Influence médiatique
-    
+    { word: "media influence", translation: "influence médiatique", example: "Research examines media influence on public opinion formation." },
     
     { word: "information flow", translation: "flux d'information", example: "Global information flow remains uneven between regions and countries." },
     
