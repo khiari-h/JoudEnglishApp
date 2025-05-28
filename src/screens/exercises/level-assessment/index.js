@@ -11,7 +11,7 @@ import AssessmentResults from "./AssessmentResults";
 
 // Hooks personnalisés
 import useAssessmentState from "./hooks/useAssessmentState";
-import useAssessmentProgress from "./hooks/useAssessmentProgress"; // Nouveau hook de progression
+import useAssessmentProgress from "./hooks/useAssessmentProgress";
 
 // Utilitaires et helpers
 import {
@@ -24,7 +24,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'évaluation de niveau (Level Assessment)
- * Version améliorée avec gestion de la progression et sauvegarde de la dernière position
+ * Version complète avec système de notation et gestion de la progression
  */
 const LevelAssessment = ({ route }) => {
   // Hooks de navigation
@@ -50,13 +50,13 @@ const LevelAssessment = ({ route }) => {
     validateAnswer,
     goToNextQuestion,
     tryAgain,
-    changeSection, // Fonction pour changer de section
-    changeQuestion, // Fonction pour changer de question
+    changeSection,
+    changeQuestion,
     setTestCompleted,
-    restoreState, // Fonction pour restaurer l'état complet
+    restoreState,
   } = useAssessmentState(level);
 
-  // Utilisation du nouveau hook de progression pour le suivi des activités
+  // Utilisation du hook de progression pour le suivi et la notation
   const {
     lastPosition,
     loaded: progressLoaded,
@@ -64,6 +64,8 @@ const LevelAssessment = ({ route }) => {
     saveUserAnswer,
     saveAssessmentResults,
     isAssessmentCompleted,
+    calculateUserScore,
+    resetAssessment,
   } = useAssessmentProgress(level);
 
   // Restaurer la dernière position si disponible
@@ -74,11 +76,11 @@ const LevelAssessment = ({ route }) => {
         lastPosition
       );
 
-      // Utiliser restoreState si disponible, sinon utiliser les fonctions individuelles
+      // Utiliser restoreState pour restaurer l'état complet
       if (restoreState) {
         restoreState(lastPosition.sectionIndex, lastPosition.questionIndex);
       } else {
-        // Restaurer la section
+        // Fallback : restaurer manuellement
         if (
           typeof lastPosition.sectionIndex === "number" &&
           sections[lastPosition.sectionIndex]
@@ -89,7 +91,6 @@ const LevelAssessment = ({ route }) => {
           }
         }
 
-        // Restaurer la question
         if (typeof lastPosition.questionIndex === "number" && changeQuestion) {
           changeQuestion(lastPosition.questionIndex);
         }
@@ -107,15 +108,17 @@ const LevelAssessment = ({ route }) => {
     restoreState,
     changeSection,
     changeQuestion,
+    isAssessmentCompleted,
+    setTestCompleted,
   ]);
 
-  // Sauvegarder la position quand la section ou la question change (pas lors de la sélection de réponse)
+  // Sauvegarder la position lors des changements de section/question
   useEffect(() => {
     if (progressLoaded && currentSection && !showFeedback) {
       const sectionIndex = sections.indexOf(currentSection);
       if (sectionIndex !== -1) {
         console.log(
-          `[Assessment] Mise à jour de la position: section ${sectionIndex}, question ${currentQuestionIndex}`
+          `[Assessment] Sauvegarde position: section ${sectionIndex}, question ${currentQuestionIndex}`
         );
         saveLastPosition(sectionIndex, currentQuestionIndex);
       }
@@ -126,9 +129,10 @@ const LevelAssessment = ({ route }) => {
     progressLoaded,
     saveLastPosition,
     sections,
+    showFeedback,
   ]);
 
-  // Version améliorée de validateAnswer pour sauvegarder la réponse
+  // Validation de réponse avec sauvegarde
   const handleValidateAnswer = () => {
     if (selectedAnswer === null) return;
 
@@ -136,10 +140,10 @@ const LevelAssessment = ({ route }) => {
     const isCorrect =
       currentQuestion && selectedAnswer === currentQuestion.correctAnswer;
 
-    // Appeler la fonction originale
+    // Appeler la fonction de validation originale
     validateAnswer();
 
-    // Sauvegarder la réponse dans AsyncStorage
+    // Sauvegarder la réponse pour le calcul du score
     if (currentSection && currentQuestion) {
       saveUserAnswer(
         currentSection,
@@ -150,9 +154,9 @@ const LevelAssessment = ({ route }) => {
     }
   };
 
-  // Version améliorée de goToNextQuestion
+  // Navigation vers la question suivante avec sauvegarde des résultats
   const handleNextQuestion = () => {
-    // Si c'est la dernière question de la dernière section
+    // Vérifier si c'est la fin de l'évaluation
     const isLastSection =
       sections.indexOf(currentSection) === sections.length - 1;
     const isLastQuestion =
@@ -160,9 +164,11 @@ const LevelAssessment = ({ route }) => {
       assessmentData[currentSection]?.questions.length - 1;
 
     if (isLastSection && isLastQuestion && showFeedback) {
-      // Sauvegarder les résultats complets
+      // Calculer et sauvegarder les résultats finaux
+      const userScore = calculateUserScore();
       const results = {
         level,
+        userScore,
         sectionsCompleted: sections.map((section) => ({
           key: section,
           title: assessmentData[section]?.title || section,
@@ -170,38 +176,59 @@ const LevelAssessment = ({ route }) => {
         completedAt: new Date().toISOString(),
       };
 
+      console.log("[Assessment] Sauvegarde des résultats finaux:", results);
       saveAssessmentResults(results);
     }
 
-    // Appeler la fonction originale
+    // Passer à la question suivante
     goToNextQuestion();
   };
 
-  // Si le test est terminé, afficher les résultats
+  // Fonction pour recommencer l'évaluation
+  const handleRetry = async () => {
+    console.log("[Assessment] Recommencer l'évaluation");
+    await resetAssessment();
+    setTestCompleted(false);
+    
+    // Recommencer à la première section
+    if (sections.length > 0) {
+      changeSection(sections[0]);
+      changeQuestion(0);
+    }
+  };
+
+  // Affichage des résultats avec notation
   if (testCompleted) {
+    const userScore = calculateUserScore();
+    
     return (
       <SafeAreaView style={styles.container}>
-        <AssessmentResults
+        <AssessmentResults 
           level={level}
           levelColor={levelColor}
+          userScore={userScore}
           onContinue={() => navigation.navigate("Dashboard")}
+          onRetry={handleRetry}
         />
       </SafeAreaView>
     );
   }
 
+  // Affichage principal de l'évaluation
   return (
     <SafeAreaView style={styles.container}>
-      {/* En-tête */}
+      {/* En-tête avec niveau et bouton retour */}
       <AssessmentHeader
         level={level}
         levelColor={levelColor}
         onBackPress={() => navigation.goBack()}
       />
 
+      {/* Zone de contenu principal */}
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollViewContent}
+        showsVerticalScrollIndicator={false}
       >
         {currentSection && currentQuestion && (
           <AssessmentQuestion
@@ -215,6 +242,7 @@ const LevelAssessment = ({ route }) => {
         )}
       </ScrollView>
 
+      {/* Boutons d'action */}
       <AssessmentActions
         showFeedback={showFeedback}
         selectedAnswer={selectedAnswer}
