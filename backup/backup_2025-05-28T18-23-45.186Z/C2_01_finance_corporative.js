@@ -34,7 +34,7 @@ export const vocab = {
     
     
     { word: "hostile takeover", translation: "prise de contrôle hostile", example: "The board implemented defensive measures against the hostile takeover attempt." },
-    
+    { word: "valuation", translation: "évaluation", example: "The valuation indicated the target was significantly underpriced." },
     { word: "deal structure", translation: "structure de transaction", example: "The complex deal structure included both cash and stock components." },
     { word: "post-merger integration", translation: "intégration post-fusion", example: "Post-merger integration challenges delayed the expected synergies." },
     { word: "leveraged buyout", translation: "acquisition par emprunt", example: "The private equity firm financed the leveraged buyout with high-yield bonds." },
@@ -256,7 +256,7 @@ export const vocab = {
     { word: "whistleblower protection", translation: "protection des lanceurs d'alerte", example: "Whistleblower protection encourages reporting of misconduct." },
     { word: "financial ethics", translation: "éthique financière", example: "Financial ethics training is mandatory for all employees." },
     { word: "know your customer", translation: "connaissance du client", example: "Know your customer procedures verify client identities and backgrounds." },
-    
+    { word: "compliance monitoring", translation: "surveillance de la conformité", example: "Compliance monitoring ensures ongoing adherence to requirements." },
     { word: "compliance program", translation: "programme de conformité", example: "The compliance program establishes policies, training, and oversight." },
     { word: "regulatory examination", translation: "examen réglementaire", example: "The regulatory examination found no material deficiencies." },
     { word: "compliance testing", translation: "tests de conformité", example: "Compliance testing verifies that controls function as designed." },

@@ -59,7 +59,7 @@ export const vocab = {
     
     
     { word: "General Agreement on Tariffs and Trade", translation: "Accord général sur les tarifs douaniers et le commerce", example: "The General Agreement on Tariffs and Trade preceded the WTO system." },
-    
+    { word: "free trade agreement", translation: "accord de libre-échange", example: "The free trade agreement eliminated tariffs between the participating countries." },
     
     { word: "tariff barrier", translation: "barrière tarifaire", example: "The tariff barrier increased the cost of foreign products." },
     { word: "non-tariff barrier", translation: "barrière non tarifaire", example: "Non-tariff barriers include quotas, embargoes, and regulatory restrictions." },

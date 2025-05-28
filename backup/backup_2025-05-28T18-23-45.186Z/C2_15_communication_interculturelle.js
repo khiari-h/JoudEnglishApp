@@ -157,7 +157,7 @@ export const vocab = {
     { word: "cultural synergy", translation: "synergie culturelle", example: "Cultural synergy creates solutions superior to those of any single cultural approach." },
     
     // Tendances contemporaines (50 mots)
-    
+    { word: "global citizenship", translation: "citoyenneté mondiale", example: "Education for global citizenship develops intercultural competence and responsibility." },
     { word: "cultural intelligence development", translation: "développement de l'intelligence culturelle", example: "Cultural intelligence development requires cognitive, motivational, and behavioral training." },
     { word: "culture and technology", translation: "culture et technologie", example: "Culture and technology interact as digital tools reflect and reshape cultural patterns." },
     { word: "intercultural virtual teams", translation: "équipes virtuelles interculturelles", example: "Intercultural virtual teams face challenges of both distance and cultural differences." },

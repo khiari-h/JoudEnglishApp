@@ -35,7 +35,7 @@ export const vocab = {
     { word: "economic decoupling", translation: "découplage économique", example: "Economic decoupling between the two largest economies would significantly disrupt global trade." },
     
     // Organisations supranationales
-    
+    { word: "multilateral institution", translation: "institution multilatérale", example: "The World Trade Organization is a multilateral institution that regulates international trade." },
     { word: "supranational governance", translation: "gouvernance supranationale", example: "The European Union represents the most developed form of supranational governance." },
     { word: "transnational network", translation: "réseau transnational", example: "Civil society organizations form transnational networks to address global challenges." },
     

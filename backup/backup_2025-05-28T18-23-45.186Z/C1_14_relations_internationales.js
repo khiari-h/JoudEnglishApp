@@ -157,13 +157,13 @@ export const vocab = {
     
     // Relations économiques internationales
     
-    
+    { word: "economic sanctions", translation: "sanctions économiques", example: "Economic sanctions were imposed to pressure the regime." },
     { word: "international finance", translation: "finance internationale", example: "International finance flows have become increasingly complex." },
     { word: "trade dispute", translation: "différend commercial", example: "The trade dispute was brought before the WTO for resolution." },
     
     
     { word: "customs union", translation: "union douanière", example: "The customs union removed internal trade barriers among member states." },
-    
+    { word: "economic partnership", translation: "partenariat économique", example: "The economic partnership agreement covers trade and investment." },
     
     { word: "financial diplomacy", translation: "diplomatie financière", example: "Financial diplomacy includes coordination of monetary policies." },
     { word: "trade diplomacy", translation: "diplomatie commerciale", example: "Trade diplomacy aims to increase exports and investment." },

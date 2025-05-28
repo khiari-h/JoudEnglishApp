@@ -259,6 +259,9 @@ export const vocab = {
     { word: "entrepreneurial ecosystem", translation: "écosystème entrepreneurial", example: "A thriving entrepreneurial ecosystem includes funding sources, mentors, and support services." },
     
     
+    { word: "market validation", translation: "validation de marché", example: "Market validation confirms actual customer demand for the concept." },
+    { word: "bootstrap", translation: "autofinancement", example: "They chose to bootstrap the company rather than seek external funding." },
     
-    { word: "bootstrap", translation: "autofinancement", example: "They chose to bootstrap the company rather than seek external funding." }]
+    
+    { word: "growth hacking", translation: "growth hacking", example: "Growth hacking strategies accelerated customer acquisition with minimal spending." }]
 };

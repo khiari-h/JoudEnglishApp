@@ -115,38 +115,38 @@ export const vocab = {
 // Pour passer de 53 à 83 mots
 
 // Financement et investissement (10 mots)
-
-
-
-
-
-
-
+{ word: "seed funding", translation: "financement d'amorçage", example: "The startup raised seed funding to develop their prototype." },
+{ word: "venture capital", translation: "capital-risque", example: "Venture capital firms invest in high-growth potential startups." },
+{ word: "crowdfunding", translation: "financement participatif", example: "The crowdfunding campaign exceeded its target by 200%." },
+{ word: "bootstrapping", translation: "autofinancement", example: "She grew her business through bootstrapping without external investment." },
+{ word: "business incubator", translation: "incubateur d'entreprises", example: "Business incubators provide resources and mentorship to startups." },
+{ word: "accelerator program", translation: "programme d'accélération", example: "The accelerator program helped them scale rapidly." },
+{ word: "exit strategy", translation: "stratégie de sortie", example: "The founders developed an exit strategy for potential acquisition." },
 { word: "valuation", translation: "évaluation", example: "The company's valuation doubled after the successful product launch." },
-
-
+{ word: "burn rate", translation: "taux de combustion", example: "Managing burn rate is crucial for startup survival." },
+{ word: "runway", translation: "trésorerie disponible", example: "With current burn rate, they have 18 months of runway remaining." },
 
 // Opérations et développement (10 mots)
-
-
-
+{ word: "minimum viable product", translation: "produit minimum viable", example: "They launched with a minimum viable product to test market response." },
+{ word: "scalability", translation: "évolutivité", example: "The platform's scalability allows for rapid user growth." },
+{ word: "pivot", translation: "pivot", example: "The startup decided to pivot after initial market feedback." },
 { word: "market validation", translation: "validation du marché", example: "Market validation confirmed demand for their solution." },
-
-
-
-
-
-
+{ word: "competitive advantage", translation: "avantage concurrentiel", example: "Their patented technology provides a strong competitive advantage." },
+{ word: "intellectual property", translation: "propriété intellectuelle", example: "Protecting intellectual property is crucial for tech startups." },
+{ word: "disruptive innovation", translation: "innovation de rupture", example: "Their disruptive innovation transformed the entire industry." },
+{ word: "agile methodology", translation: "méthodologie agile", example: "The team uses agile methodology for rapid product development." },
+{ word: "supply chain", translation: "chaîne d'approvisionnement", example: "Optimizing the supply chain reduced production costs significantly." },
+{ word: "business model", translation: "modèle économique", example: "Their innovative business model creates value for all stakeholders." },
 
 // Économie numérique et technologies (10 mots)
-
-
-
-
-
-
-
-
+{ word: "digital transformation", translation: "transformation numérique", example: "Digital transformation is essential for modern business success." },
+{ word: "subscription model", translation: "modèle d'abonnement", example: "The subscription model provides predictable recurring revenue." },
+{ word: "data analytics", translation: "analyse de données", example: "Data analytics reveals insights about customer behavior patterns." },
+{ word: "cloud computing", translation: "informatique en nuage", example: "Cloud computing reduces infrastructure costs for small businesses." },
+{ word: "artificial intelligence", translation: "intelligence artificielle", example: "Artificial intelligence automates customer service interactions." },
+{ word: "automation", translation: "automatisation", example: "Process automation increases efficiency and reduces errors." },
+{ word: "api integration", translation: "intégration d'API", example: "API integration enables seamless third-party service connections." },
+{ word: "cybersecurity", translation: "cybersécurité", example: "Investing in cybersecurity protects customer data and business reputation." },
 { word: "mobile app", translation: "application mobile", example: "Their mobile app increased customer engagement significantly." },
 { word: "growth hacking", translation: "piratage de croissance", example: "Growth hacking techniques drove viral user adoption." }]
 };

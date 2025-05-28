@@ -131,7 +131,7 @@ export const vocab = {
     { word: "cyber attribution", translation: "attribution cyber", example: "Cyber attribution identifies responsible actors behind digital attacks." },
     { word: "threat intelligence", translation: "renseignement sur les menaces", example: "Threat intelligence provides actionable information about potential attackers." },
     { word: "security orchestration", translation: "orchestration de sécurité", example: "Security orchestration automates responses to detected threats across multiple platforms." },
-    
+    { word: "cyber warfare", translation: "guerre cybernétique", example: "Cyber warfare involves state-sponsored attacks against critical infrastructure and military systems." },
     { word: "cyber espionage", translation: "cyber-espionnage", example: "Cyber espionage operations extract sensitive information for intelligence purposes." },
     { word: "zero trust architecture", translation: "architecture à confiance zéro", example: "Zero trust architecture verifies every user and device attempting to access resources." },
     { word: "security by design", translation: "sécurité dès la conception", example: "Security by design integrates protections throughout system development rather than adding them later." },
