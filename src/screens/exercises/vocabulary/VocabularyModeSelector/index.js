@@ -26,8 +26,8 @@ const VocabularyModeSelector = ({ route }) => {
   }, [level]);
 
   const handleModeSelect = (mode) => {
-    router.push({
-      pathname: '/exercises/vocabulary/VocabularyExercise',
+    router.replace({
+      pathname: '/exercises/vocabulary', // ← Chemin correct vers index.js
       params: { level, mode }
     });
   };
