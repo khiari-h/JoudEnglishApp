@@ -34,12 +34,16 @@ export const getLevelColor = (level) => {
 
 /**
  * Obtient les sections de l'évaluation
- * @returns {Array} Liste des sections disponibles
+ * @returns {Array} Liste des sections disponibles (11 sections × 5 questions = 55 questions)
  */
 export const getAssessmentSections = () => [
   "vocabulary",
   "grammar",
   "phrases_expressions",
+  "numbers_time",        // ← AJOUTÉ
+  "can_cant",           // ← AJOUTÉ
+  "prepositions",       // ← AJOUTÉ
+  "demonstratives",     // ← AJOUTÉ
   "error_correction",
   "spelling",
   "spelling_rules",

@@ -1,119 +1,189 @@
 // src/screens/exercises/levelAssessment/AssessmentResults/index.js
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import styles from "./style";
 
 /**
- * Composant pour afficher les résultats de l'évaluation avec système de notation
- * Compatible avec l'index existant - fonctionne avec ou sans userScore
- * 
- * @param {string} level - Niveau de langue
- * @param {string} levelColor - Couleur associée au niveau
- * @param {Object} userScore - Score de l'utilisateur (optionnel)
- * @param {Function} onContinue - Fonction appelée quand l'utilisateur continue
- * @param {Function} onRetry - Fonction pour recommencer (optionnel)
+ * Composant moderne pour afficher les résultats de l'évaluation
+ * Design complètement repensé pour être visuellement attrayant
  */
 const AssessmentResults = ({ 
   level, 
   levelColor, 
-  userScore, // Peut être undefined si pas encore implémenté
+  userScore,
   onContinue,
   onRetry 
 }) => {
   
-  // Si userScore n'est pas fourni, afficher la version basique
+  // Fallback si pas de score
   if (!userScore) {
     return (
-      <View style={styles.resultsContainer}>
-        <Text style={styles.resultsTitle}>Assessment Complete!</Text>
-        <Text style={styles.resultsFeedback}>
-          Thank you for completing the level {level} assessment.
-        </Text>
-        <TouchableOpacity
-          style={[styles.continueButton, { backgroundColor: levelColor }]}
-          onPress={onContinue}
-        >
-          <Text style={styles.continueButtonText}>Continue to Dashboard</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView style={styles.resultsContainer}>
+        <View style={styles.headerSection}>
+          <Text style={styles.celebrationIcon}>🎯</Text>
+          <Text style={styles.resultsTitle}>Assessment Complete!</Text>
+          <View style={[styles.levelBadge, { backgroundColor: levelColor }]}>
+            <Text style={styles.levelBadgeText}>Level {level}</Text>
+          </View>
+        </View>
+        
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity
+            style={[styles.primaryButton, { backgroundColor: levelColor }]}
+            onPress={onContinue}
+          >
+            <Text style={styles.primaryButtonText}>Continue to Dashboard</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
   }
 
-  // Version avec notation si userScore est fourni
+  // Calculs pour l'affichage
   const scoreOutOf20 = Math.round((userScore.percentage / 100) * 20);
+  const wrongAnswers = userScore.totalQuestions - userScore.correctAnswers;
   
-  // Messages de performance
-  const getPerformanceMessage = (percentage) => {
-    if (percentage >= 85) return "Excellent work! 🎉";
-    if (percentage >= 70) return "Great job! 👏";
-    if (percentage >= 60) return "Good effort! 👍";
-    return "Keep practicing! 💪";
+  // Déterminer le niveau de performance et les éléments visuels
+  const getPerformanceData = (percentage) => {
+    if (percentage >= 85) {
+      return {
+        icon: "🎉",
+        title: "Outstanding!",
+        subtitle: "You've mastered this level! Ready for the next challenge?",
+        color: "#10b981",
+        borderColor: "#10b981",
+        glowStyle: styles.excellentGlow
+      };
+    } else if (percentage >= 70) {
+      return {
+        icon: "👏",
+        title: "Well Done!",
+        subtitle: "Great progress! You're showing solid understanding.",
+        color: "#f59e0b",
+        borderColor: "#f59e0b",
+        glowStyle: styles.goodGlow
+      };
+    } else if (percentage >= 50) {
+      return {
+        icon: "💪",
+        title: "Keep Going!",
+        subtitle: "You're on the right track. A bit more practice will help!",
+        color: "#f97316",
+        borderColor: "#f97316",
+        glowStyle: styles.goodGlow
+      };
+    } else {
+      return {
+        icon: "🎯",
+        title: "Keep Practicing!",
+        subtitle: "Every expert was once a beginner. You've got this!",
+        color: "#ef4444",
+        borderColor: "#ef4444",
+        glowStyle: styles.needsImprovementGlow
+      };
+    }
   };
 
-  // Couleurs du score
-  const getScoreColor = (percentage) => {
-    if (percentage >= 85) return "#10B981";
-    if (percentage >= 70) return "#F59E0B";
-    if (percentage >= 60) return "#F97316";
-    return "#EF4444";
-  };
-
-  const performanceMessage = getPerformanceMessage(userScore.percentage);
-  const scoreColor = getScoreColor(userScore.percentage);
+  const performance = getPerformanceData(userScore.percentage);
 
   return (
-    <View style={styles.resultsContainer}>
-      <Text style={styles.resultsTitle}>Assessment Complete!</Text>
-      
-      {/* Section Score */}
-      <View style={styles.scoreSection}>
+    <ScrollView style={styles.resultsContainer} showsVerticalScrollIndicator={false}>
+      {/* Éléments décoratifs flottants */}
+      <View style={styles.decorativeElements}>
+        <View style={[styles.floatingShape, { width: 80, height: 80, top: 100, right: 30 }]} />
+        <View style={[styles.floatingShape, { width: 60, height: 60, top: 300, left: 20 }]} />
+        <View style={[styles.floatingShape, { width: 40, height: 40, bottom: 200, right: 50 }]} />
+      </View>
+
+      {/* Header avec célébration */}
+      <View style={styles.headerSection}>
+        <Text style={styles.celebrationIcon}>{performance.icon}</Text>
+        <Text style={styles.resultsTitle}>Assessment Complete!</Text>
+        <View style={[styles.levelBadge, { backgroundColor: levelColor }]}>
+          <Text style={styles.levelBadgeText}>Level {level}</Text>
+        </View>
+      </View>
+
+      {/* Carte de score principale */}
+      <View style={[styles.scoreCard, performance.glowStyle]}>
         <Text style={styles.scoreLabel}>Your Score</Text>
-        <Text style={[styles.mainScore, { color: scoreColor }]}>
-          {scoreOutOf20}/20
-        </Text>
-        <Text style={styles.percentageScore}>
-          ({userScore.percentage.toFixed(1)}%)
-        </Text>
         
-        {/* Détails du score */}
-        <View style={styles.scoreDetails}>
-          <Text style={styles.scoreDetailText}>
-            {userScore.correctAnswers} correct out of {userScore.totalQuestions} questions
+        {/* Cercle de score avec couleur dynamique */}
+        <View style={[
+          styles.scoreCircle, 
+          { 
+            borderColor: performance.color,
+            backgroundColor: `${performance.color}15` // 15 = ~8% opacity
+          }
+        ]}>
+          <Text style={[styles.mainScore, { color: performance.color }]}>
+            {scoreOutOf20}/20
+          </Text>
+          <Text style={styles.percentageScore}>
+            ({userScore.percentage.toFixed(1)}%)
           </Text>
         </View>
-        
-        {/* Message de performance */}
-        <Text style={[styles.performanceMessage, { color: scoreColor }]}>
-          {performanceMessage}
+
+        {/* Statistiques détaillées */}
+        <View style={styles.statsContainer}>
+          <View style={styles.statItem}>
+            <Text style={[styles.statValue, { color: "#10b981" }]}>
+              {userScore.correctAnswers}
+            </Text>
+            <Text style={styles.statLabel}>Correct</Text>
+          </View>
+          
+          <View style={styles.statItem}>
+            <Text style={[styles.statValue, { color: "#ef4444" }]}>
+              {wrongAnswers}
+            </Text>
+            <Text style={styles.statLabel}>Wrong</Text>
+          </View>
+          
+          <View style={styles.statItem}>
+            <Text style={styles.statValue}>
+              {userScore.totalQuestions}
+            </Text>
+            <Text style={styles.statLabel}>Total</Text>
+          </View>
+        </View>
+      </View>
+
+      {/* Message de performance */}
+      <View style={[styles.performanceSection, { borderColor: performance.borderColor }]}>
+        <Text style={[styles.performanceMessage, { color: performance.color }]}>
+          {performance.title}
+        </Text>
+        <Text style={styles.performanceSubtitle}>
+          {performance.subtitle}
         </Text>
       </View>
 
-      <Text style={styles.resultsFeedback}>
-        Thank you for completing the level {level} assessment.
-      </Text>
-
       {/* Boutons d'action */}
-      <View style={styles.buttonContainer}>
-        {/* Bouton Try Again seulement si score < 70% et fonction fournie */}
+      <View style={styles.buttonsContainer}>
+        {/* Bouton Try Again pour les scores faibles */}
         {onRetry && userScore.percentage < 70 && (
           <TouchableOpacity
-            style={[styles.retryButton, { borderColor: levelColor }]}
+            style={[styles.secondaryButton, { borderColor: performance.color }]}
             onPress={onRetry}
           >
-            <Text style={[styles.retryButtonText, { color: levelColor }]}>
-              Try Again
+            <Text style={[styles.secondaryButtonText, { color: performance.color }]}>
+              🔄 Try Again
             </Text>
           </TouchableOpacity>
         )}
         
+        {/* Bouton principal */}
         <TouchableOpacity
-          style={[styles.continueButton, { backgroundColor: levelColor }]}
+          style={[styles.primaryButton, { backgroundColor: levelColor }]}
           onPress={onContinue}
         >
-          <Text style={styles.continueButtonText}>Continue to Dashboard</Text>
+          <Text style={styles.primaryButtonText}>
+            {userScore.percentage >= 70 ? "🚀 Continue Journey" : "📚 Keep Learning"}
+          </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

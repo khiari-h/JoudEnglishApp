@@ -147,6 +147,8 @@ const LevelAssessment = ({ route }) => {
 
   // Navigation vers la question suivante avec sauvegarde des résultats
   const handleNextQuestion = () => {
+    console.log("[DEBUG] handleNextQuestion appelé");
+    
     // Vérifier si c'est la fin de l'évaluation
     const isLastSection =
       sections.indexOf(currentSection) === sections.length - 1;
@@ -155,6 +157,8 @@ const LevelAssessment = ({ route }) => {
       assessmentData[currentSection]?.questions.length - 1;
 
     if (isLastSection && isLastQuestion && showFeedback) {
+      console.log("[DEBUG] Fin d'évaluation détectée - Calcul du score...");
+      
       // Calculer et sauvegarder les résultats finaux
       const userScore = calculateUserScore();
       const results = {
@@ -167,8 +171,12 @@ const LevelAssessment = ({ route }) => {
         completedAt: new Date().toISOString(),
       };
 
-      console.log("[Assessment] Sauvegarde des résultats finaux:", results);
+      console.log("[DEBUG] Sauvegarde des résultats finaux:", results);
       saveAssessmentResults(results);
+      
+      // Marquer le test comme terminé AVANT d'appeler goToNextQuestion
+      setTestCompleted(true);
+      return; // Important : sortir ici pour éviter d'appeler goToNextQuestion
     }
 
     // Passer à la question suivante
@@ -190,19 +198,34 @@ const LevelAssessment = ({ route }) => {
 
   // Affichage des résultats avec notation
   if (testCompleted) {
-    const userScore = calculateUserScore();
-    
-    return (
-      <SafeAreaView style={styles.container}>
-        <AssessmentResults 
-          level={level}
-          levelColor={levelColor}
-          userScore={userScore}
-          onContinue={() => navigation.navigate("Dashboard")}
-          onRetry={handleRetry}
-        />
-      </SafeAreaView>
-    );
+    try {
+      const userScore = calculateUserScore();
+      
+      return (
+        <SafeAreaView style={styles.container}>
+          <AssessmentResults 
+            level={level}
+            levelColor={levelColor}
+            userScore={userScore}
+            onContinue={() => navigation.navigate("Dashboard")}
+            onRetry={handleRetry}
+          />
+        </SafeAreaView>
+      );
+    } catch (error) {
+      console.error("[DEBUG] Erreur lors du calcul du score:", error);
+      
+      // Affichage de fallback en cas d'erreur
+      return (
+        <SafeAreaView style={styles.container}>
+          <AssessmentResults 
+            level={level}
+            levelColor={levelColor}
+            onContinue={() => navigation.navigate("Dashboard")}
+          />
+        </SafeAreaView>
+      );
+    }
   }
 
   // Affichage principal de l'évaluation
