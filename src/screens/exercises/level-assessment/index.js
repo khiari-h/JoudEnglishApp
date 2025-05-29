@@ -68,9 +68,9 @@ const LevelAssessment = ({ route }) => {
     resetAssessment,
   } = useAssessmentProgress(level);
 
-  // Restaurer la dernière position si disponible
+  // Restaurer la dernière position si disponible (avec protection anti-boucle)
   useEffect(() => {
-    if (progressLoaded && lastPosition) {
+    if (progressLoaded && lastPosition && !currentSection) { // ← Condition importante ajoutée
       console.log(
         "[Assessment] Restauration depuis la position sauvegardée:",
         lastPosition
@@ -101,36 +101,27 @@ const LevelAssessment = ({ route }) => {
         setTestCompleted(true);
       }
     }
-  }, [
-    progressLoaded,
-    lastPosition,
-    sections,
-    restoreState,
-    changeSection,
-    changeQuestion,
-    isAssessmentCompleted,
-    setTestCompleted,
-  ]);
+  }, [progressLoaded, lastPosition]); // ← Dépendances réduites
 
-  // Sauvegarder la position lors des changements de section/question
+  // Sauvegarder la position lors des changements de section/question (avec protection anti-boucle)
   useEffect(() => {
-    if (progressLoaded && currentSection && !showFeedback) {
+    // Ne sauvegarder que si on n'est pas en train de restaurer et qu'on a une section valide
+    if (progressLoaded && currentSection && !showFeedback && sections.indexOf(currentSection) !== -1) {
       const sectionIndex = sections.indexOf(currentSection);
-      if (sectionIndex !== -1) {
-        console.log(
-          `[Assessment] Sauvegarde position: section ${sectionIndex}, question ${currentQuestionIndex}`
-        );
-        saveLastPosition(sectionIndex, currentQuestionIndex);
+      
+      // Éviter de sauvegarder si c'est la même position que celle restaurée
+      if (lastPosition && 
+          lastPosition.sectionIndex === sectionIndex && 
+          lastPosition.questionIndex === currentQuestionIndex) {
+        return; // Ne pas sauvegarder la même position
       }
+      
+      console.log(
+        `[Assessment] Sauvegarde position: section ${sectionIndex}, question ${currentQuestionIndex}`
+      );
+      saveLastPosition(sectionIndex, currentQuestionIndex);
     }
-  }, [
-    currentSection,
-    currentQuestionIndex,
-    progressLoaded,
-    saveLastPosition,
-    sections,
-    showFeedback,
-  ]);
+  }, [currentSection, currentQuestionIndex]); // ← Dépendances simplifiées
 
   // Validation de réponse avec sauvegarde
   const handleValidateAnswer = () => {

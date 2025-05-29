@@ -1,16 +1,17 @@
 // src/screens/exercises/levelAssessment/hooks/useAssessmentState.js
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from 'react';
 
 // Utilitaires
-import {
-  getAssessmentData,
-  getAssessmentSections,
-  isLastQuestionInSection,
-} from "../../../../utils/assessment/assessmentDataHelper";
+import { 
+  getAssessmentData, 
+  getAssessmentSections, 
+  isLastQuestionInSection 
+} from '../../../../utils/assessment/assessmentDataHelper';
 
 /**
  * Hook personnalisé pour gérer l'état de l'évaluation de niveau
- *
+ * VERSION SIMPLIFIÉE POUR DEBUG
+ * 
  * @param {string} level - Niveau de langue (A1, A2, etc.)
  */
 const useAssessmentState = (level) => {
@@ -25,36 +26,66 @@ const useAssessmentState = (level) => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [testCompleted, setTestCompleted] = useState(false);
 
+  // Debug - Log tous les changements d'état
+  useEffect(() => {
+    console.log(`[Hook] État mis à jour:`, {
+      currentSection,
+      currentQuestionIndex,
+      selectedAnswer,
+      showFeedback,
+      testCompleted
+    });
+  }, [currentSection, currentQuestionIndex, selectedAnswer, showFeedback, testCompleted]);
+
   // Initialisation du test
   useEffect(() => {
-    // Commencer par la première section
-    setCurrentSection(sections[0]);
-  }, []);
+    if (!currentSection && sections.length > 0) {
+      console.log(`[Hook] Initialisation avec la première section: ${sections[0]}`);
+      setCurrentSection(sections[0]);
+    }
+  }, [currentSection, sections]);
 
   // Obtenir la question actuelle
   const getCurrentQuestion = () => {
-    if (!currentSection || !assessmentData[currentSection]) return null;
-    return assessmentData[currentSection].questions[currentQuestionIndex];
+    if (!currentSection || !assessmentData[currentSection]) {
+      console.log(`[Hook] Pas de question trouvée pour la section: ${currentSection}`);
+      return null;
+    }
+    const question = assessmentData[currentSection].questions[currentQuestionIndex];
+    console.log(`[Hook] Question actuelle:`, question?.text?.slice(0, 50) + '...');
+    return question;
   };
 
-  // Gestion de la sélection de réponse (avec protection contre les appels multiples)
+  // Gestion de la sélection de réponse (VERSION SIMPLIFIÉE)
   const handleSelectAnswer = (answerIndex) => {
-    if (showFeedback) return; // Ne pas permettre de changer la réponse si le feedback est affiché
-
-    console.log(`[Assessment] Sélection de la réponse: ${answerIndex}`);
+    console.log(`[Hook] handleSelectAnswer appelé avec: ${answerIndex}, showFeedback: ${showFeedback}`);
+    
+    if (showFeedback) {
+      console.log(`[Hook] Sélection ignorée - feedback déjà affiché`);
+      return;
+    }
+    
+    console.log(`[Hook] Définition de selectedAnswer à: ${answerIndex}`);
     setSelectedAnswer(answerIndex);
   };
 
-  // Vérification de la réponse (sans animation pour éviter le tremblement)
+  // Vérification de la réponse (VERSION SIMPLIFIÉE)
   const validateAnswer = () => {
-    if (selectedAnswer === null || showFeedback) return;
-
-    // Montrer le feedback directement sans animation
+    console.log(`[Hook] validateAnswer appelé - selectedAnswer: ${selectedAnswer}, showFeedback: ${showFeedback}`);
+    
+    if (selectedAnswer === null || showFeedback) {
+      console.log(`[Hook] Validation ignorée`);
+      return;
+    }
+    
+    console.log(`[Hook] Affichage du feedback`);
     setShowFeedback(true);
   };
 
-  // Passer à la question suivante ou section suivante
+  // Passer à la question suivante
   const goToNextQuestion = () => {
+    console.log(`[Hook] goToNextQuestion appelé`);
+    
     if (!currentSection) return;
 
     const currentSectionData = assessmentData[currentSection];
@@ -62,6 +93,7 @@ const useAssessmentState = (level) => {
 
     if (currentQuestionIndex < currentSectionData.questions.length - 1) {
       // Passer à la question suivante dans la section
+      console.log(`[Hook] Passage à la question suivante`);
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setSelectedAnswer(null);
       setShowFeedback(false);
@@ -69,12 +101,14 @@ const useAssessmentState = (level) => {
       // Passer à la section suivante
       const currentSectionIndex = sections.indexOf(currentSection);
       if (currentSectionIndex < sections.length - 1) {
+        console.log(`[Hook] Passage à la section suivante`);
         setCurrentSection(sections[currentSectionIndex + 1]);
         setCurrentQuestionIndex(0);
         setSelectedAnswer(null);
         setShowFeedback(false);
       } else {
         // Test terminé
+        console.log(`[Hook] Test terminé`);
         setTestCompleted(true);
       }
     }
@@ -82,16 +116,15 @@ const useAssessmentState = (level) => {
 
   // Réessayer la question actuelle
   const tryAgain = () => {
+    console.log(`[Hook] tryAgain appelé`);
     setSelectedAnswer(null);
     setShowFeedback(false);
   };
 
-  // **NOUVELLES FONCTIONS** - Pour correspondre au pattern VocabularyExercise
-
-  // Changer de section manuellement (avec protection)
+  // Fonctions simplifiées pour la compatibilité
   const changeSection = (sectionKey) => {
-    if (sections.includes(sectionKey) && sectionKey !== currentSection) {
-      console.log(`[Assessment] Changement de section vers: ${sectionKey}`);
+    console.log(`[Hook] changeSection appelé avec: ${sectionKey}`);
+    if (sections.includes(sectionKey)) {
       setCurrentSection(sectionKey);
       setCurrentQuestionIndex(0);
       setSelectedAnswer(null);
@@ -99,106 +132,46 @@ const useAssessmentState = (level) => {
     }
   };
 
-  // Changer de question manuellement (avec protection)
   const changeQuestion = (questionIndex) => {
+    console.log(`[Hook] changeQuestion appelé avec: ${questionIndex}`);
     if (!currentSection) return;
-
+    
     const currentSectionData = assessmentData[currentSection];
-    if (
-      currentSectionData &&
-      questionIndex >= 0 &&
-      questionIndex < currentSectionData.questions.length &&
-      questionIndex !== currentQuestionIndex
-    ) {
-      console.log(`[Assessment] Changement de question vers: ${questionIndex}`);
+    if (currentSectionData && questionIndex >= 0 && questionIndex < currentSectionData.questions.length) {
       setCurrentQuestionIndex(questionIndex);
       setSelectedAnswer(null);
       setShowFeedback(false);
     }
   };
 
-  // Restaurer l'état complet (section + question) avec protection contre les boucles
+  // Restaurer l'état complet (section + question) avec protection anti-boucle
   const restoreState = (sectionIndex, questionIndex) => {
-    console.log(
-      `[Assessment Hook] Restauration de l'état: section ${sectionIndex}, question ${questionIndex}`
-    );
-
-    // Vérifier si on a vraiment besoin de restaurer
+    console.log(`[Hook] restoreState appelé avec: section ${sectionIndex}, question ${questionIndex}`);
+    
+    // Vérifier si on a vraiment besoin de restaurer (éviter les boucles)
     const targetSection = sections[sectionIndex];
-    if (!targetSection || targetSection === currentSection) {
-      console.log(
-        `[Assessment Hook] Restauration ignorée - section identique ou invalide`
-      );
+    const currentSectionIndex = sections.indexOf(currentSection);
+    
+    if (currentSectionIndex === sectionIndex && currentQuestionIndex === questionIndex) {
+      console.log(`[Hook] Restauration ignorée - état déjà identique`);
       return;
     }
-
-    // Restaurer la section
-    if (
-      typeof sectionIndex === "number" &&
-      sectionIndex >= 0 &&
-      sectionIndex < sections.length
-    ) {
+    
+    if (typeof sectionIndex === 'number' && sectionIndex >= 0 && sectionIndex < sections.length) {
       const sectionKey = sections[sectionIndex];
+      console.log(`[Hook] Changement vers section: ${sectionKey}`);
       setCurrentSection(sectionKey);
-
-      // Restaurer la question après avoir défini la section
-      if (
-        assessmentData[sectionKey] &&
-        typeof questionIndex === "number" &&
-        questionIndex >= 0 &&
-        questionIndex < assessmentData[sectionKey].questions.length
-      ) {
+      
+      if (assessmentData[sectionKey] && typeof questionIndex === 'number' && 
+          questionIndex >= 0 && questionIndex < assessmentData[sectionKey].questions.length) {
         setCurrentQuestionIndex(questionIndex);
       } else {
         setCurrentQuestionIndex(0);
       }
     }
-
-    // Réinitialiser les états de réponse
+    
     setSelectedAnswer(null);
     setShowFeedback(false);
-  };
-
-  // Aller à la question précédente
-  const goToPreviousQuestion = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setSelectedAnswer(null);
-      setShowFeedback(false);
-      return true;
-    }
-    return false;
-  };
-
-  // Obtenir les informations sur la progression
-  const getProgressInfo = () => {
-    const currentSectionIndex = sections.indexOf(currentSection);
-    const totalSections = sections.length;
-
-    let totalQuestions = 0;
-    let currentPosition = 0;
-
-    // Calculer le total de questions et la position actuelle
-    sections.forEach((section, index) => {
-      const sectionData = assessmentData[section];
-      if (sectionData && sectionData.questions) {
-        if (index < currentSectionIndex) {
-          currentPosition += sectionData.questions.length;
-        } else if (index === currentSectionIndex) {
-          currentPosition += currentQuestionIndex;
-        }
-        totalQuestions += sectionData.questions.length;
-      }
-    });
-
-    return {
-      currentSectionIndex,
-      totalSections,
-      currentPosition: currentPosition + 1, // +1 pour base 1
-      totalQuestions,
-      progress:
-        totalQuestions > 0 ? (currentPosition / totalQuestions) * 100 : 0,
-    };
   };
 
   return {
@@ -210,24 +183,20 @@ const useAssessmentState = (level) => {
     showFeedback,
     testCompleted,
     assessmentData,
-
-    // Actions originales
+    
+    // Actions
     handleSelectAnswer,
     validateAnswer,
     goToNextQuestion,
     tryAgain,
-
-    // Nouvelles actions pour la gestion de l'état
     changeSection,
     changeQuestion,
     restoreState,
-    goToPreviousQuestion,
     setTestCompleted,
-
+    
     // Utilitaires
-    getProgressInfo,
-    isLastQuestionInSection: (questionIndex, section) =>
-      isLastQuestionInSection(questionIndex, section, assessmentData),
+    isLastQuestionInSection: (questionIndex, section) => 
+      isLastQuestionInSection(questionIndex, section, assessmentData)
   };
 };
 
