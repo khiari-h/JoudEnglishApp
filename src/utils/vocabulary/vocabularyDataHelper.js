@@ -23,8 +23,8 @@ import fastVocabularyBLevelData from "../../data/fastVocabulary/BLevel"; // Nive
  * @param {string} mode - Le mode ('classic' ou 'fast')
  * @returns {Object} Les données de vocabulaire pour le niveau et mode spécifiés
  */
-export const getVocabularyData = (level, mode = 'classic') => {
-  if (mode === 'fast') {
+export const getVocabularyData = (level, mode = "classic") => {
+  if (mode === "fast") {
     const fastDataMap = {
       A1: fastVocabularyA1Data,
       A2: fastVocabularyA2Data,
@@ -36,7 +36,7 @@ export const getVocabularyData = (level, mode = 'classic') => {
     };
     return fastDataMap[level] || fastVocabularyA1Data;
   }
-  
+
   // Mode classic (6 niveaux standards)
   const classicDataMap = {
     A1: vocabularyA1Data,
@@ -54,11 +54,11 @@ export const getVocabularyData = (level, mode = 'classic') => {
  * @param {string} mode - Le mode ('classic' ou 'fast')
  * @returns {Array} Liste des niveaux disponibles
  */
-export const getAvailableLevels = (mode = 'classic') => {
-  if (mode === 'fast') {
-    return ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'BLevel']; // 7 niveaux avec bonus
+export const getAvailableLevels = (mode = "classic") => {
+  if (mode === "fast") {
+    return ["A1", "A2", "B1", "B2", "C1", "C2", "BLevel"]; // 7 niveaux avec bonus
   }
-  return ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']; // 6 niveaux standards
+  return ["A1", "A2", "B1", "B2", "C1", "C2"]; // 6 niveaux standards
 };
 
 /**
@@ -87,7 +87,7 @@ export const getLevelColor = (level) => {
 export const getLevelDisplayName = (level) => {
   const displayNames = {
     A1: "Débutant",
-    A2: "Élémentaire", 
+    A2: "Élémentaire",
     B1: "Intermédiaire",
     B2: "Intermédiaire+",
     C1: "Avancé",
@@ -103,5 +103,5 @@ export const getLevelDisplayName = (level) => {
  * @returns {boolean} True si c'est un niveau bonus
  */
 export const isBonusLevel = (level) => {
-  return level === 'BLevel';
+  return level === "BLevel";
 };
