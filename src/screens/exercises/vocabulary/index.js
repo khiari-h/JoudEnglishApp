@@ -2,14 +2,17 @@ import React, { useMemo, useEffect, useState } from "react";
 import { View, Text, Alert, ActivityIndicator, ScrollView } from "react-native";
 import { router } from "expo-router";
 
+// Composants
 import VocabularyHeader from "./VocabularyHeader";
 import VocabularyNavigation from "./VocabularyNavigation";
 import VocabularyWordCard from "./VocabularyWordCard";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import VocabularyProgress from "./VocabularyProgress";
 import LearningTipCard from "./LearningTipCard";
+import VocabularyModeSelector from "./VocabularyModeSelector"; // Import du sélecteur
 
-import { getVocabularyData, isBonusLevel, getLevelDisplayName } from "../../../utils/vocabulary/vocabularyDataHelper";
+// Utils et hooks
+import { getVocabularyData, isBonusLevel, getLevelDisplayName, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
 import { LANGUAGE_LEVELS } from "../../../utils/constants";
 import {
   calculateTotalWords,
@@ -21,15 +24,29 @@ import useVocabularyProgress from "./hooks/useVocabularyProgress";
 import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
 
 const VocabularyExercise = ({ route }) => {
-  // Récupération des paramètres avec support du mode
-  const { level, mode = 'classic' } = route.params;
+  // Récupération des paramètres
+  const { level, mode } = route.params;
   
-  // Données de vocabulaire basées sur le niveau ET le mode
+  // === LOGIQUE D'ASSEMBLAGE ===
+  // Si pas de mode ET pas BLevel → Afficher VocabularyModeSelector
+  const shouldShowModeSelector = !mode && !isBonusLevel(level);
+  
+  // Si BLevel ET pas de mode → Mode fast automatique
+  const finalMode = mode || (isBonusLevel(level) ? 'fast' : 'classic');
+  
+  // === ASSEMBLAGE DES COMPOSANTS ===
+  if (shouldShowModeSelector) {
+    return <VocabularyModeSelector route={route} />;
+  }
+
+  // === EXERCICE DE VOCABULAIRE ===
+  return <VocabularyExerciseContent level={level} mode={finalMode} />;
+};
+
+// Composant séparé pour l'exercice de vocabulaire
+const VocabularyExerciseContent = ({ level, mode }) => {
+  const levelColor = getLevelColor(level);
   const vocabularyData = useMemo(() => getVocabularyData(level, mode), [level, mode]);
-  
-  // Couleur du niveau (gestion spéciale pour BLevel)
-  const levelColor = LANGUAGE_LEVELS[level]?.color || "#5E60CE";
-  
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
   // Hook de progression avec identifiant unique par niveau ET mode
@@ -117,7 +134,6 @@ const VocabularyExercise = ({ route }) => {
     } else {
       const nextCategoryIndex = findNextUncompletedCategory();
       if (nextCategoryIndex === -1) {
-        // Message adapté selon le mode
         const completionMessage = mode === 'fast' 
           ? `Félicitations ! Vous avez terminé le Fast Vocabulary ${level} !`
           : `Félicitations ! Vous avez terminé le vocabulaire ${level} !`;
@@ -152,8 +168,6 @@ const VocabularyExercise = ({ route }) => {
 
   const currentWord = getCurrentWord();
   const currentCategory = vocabularyData?.exercises?.[categoryIndex] || {};
-
-  // Affichage du compteur de mots
   const wordCounter = `${wordIndex + 1} / ${currentCategory?.words?.length || 0}`;
 
   // Titre adapté selon le mode et le niveau
@@ -169,8 +183,8 @@ const VocabularyExercise = ({ route }) => {
     <ScrollView style={{ flex: 1, backgroundColor: "#f8fafc" }}>
       <VocabularyHeader
         level={level}
-        mode={mode} // Passer le mode au header
-        title={getHeaderTitle()} // Titre personnalisé
+        mode={mode}
+        title={getHeaderTitle()}
         progress={0}
         completedWords={0}
         totalWords={0}
@@ -194,7 +208,6 @@ const VocabularyExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Compteur de mots avec indicateur de mode */}
       <View style={{ 
         padding: 10, 
         alignItems: 'center', 
@@ -207,7 +220,6 @@ const VocabularyExercise = ({ route }) => {
         }}>
           {wordCounter}
         </Text>
-        {/* Indicateur de mode pour le mode fast */}
         {mode === 'fast' && (
           <Text style={{
             color: '#f59e0b',
@@ -233,7 +245,7 @@ const VocabularyExercise = ({ route }) => {
 
       <LearningTipCard
         level={level}
-        mode={mode} // Passer le mode pour des tips adaptés
+        mode={mode}
         levelColor={levelColor}
       />
 
