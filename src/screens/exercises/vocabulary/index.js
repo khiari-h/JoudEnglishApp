@@ -6,11 +6,10 @@ import VocabularyHeader from "./VocabularyHeader";
 import VocabularyNavigation from "./VocabularyNavigation";
 import VocabularyWordCard from "./VocabularyWordCard";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
-// Import retiré: VocabularyCardIndicators
 import VocabularyProgress from "./VocabularyProgress";
 import LearningTipCard from "./LearningTipCard";
 
-import { getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
+import { getVocabularyData, isBonusLevel, getLevelDisplayName } from "../../../utils/vocabulary/vocabularyDataHelper";
 import { LANGUAGE_LEVELS } from "../../../utils/constants";
 import {
   calculateTotalWords,
@@ -22,12 +21,19 @@ import useVocabularyProgress from "./hooks/useVocabularyProgress";
 import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
 
 const VocabularyExercise = ({ route }) => {
-  const { level } = route.params;
-  const vocabularyData = useMemo(() => getVocabularyData(level), [level]);
+  // Récupération des paramètres avec support du mode
+  const { level, mode = 'classic' } = route.params;
+  
+  // Données de vocabulaire basées sur le niveau ET le mode
+  const vocabularyData = useMemo(() => getVocabularyData(level, mode), [level, mode]);
+  
+  // Couleur du niveau (gestion spéciale pour BLevel)
   const levelColor = LANGUAGE_LEVELS[level]?.color || "#5E60CE";
+  
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
-  // Utiliser le hook pour gérer la progression
+  // Hook de progression avec identifiant unique par niveau ET mode
+  const progressKey = `${level}_${mode}`;
   const {
     completedWords,
     lastPosition,
@@ -35,10 +41,9 @@ const VocabularyExercise = ({ route }) => {
     markWordAsCompleted,
     saveLastPosition,
     initializeProgress,
-  } = useVocabularyProgress(level);
+  } = useVocabularyProgress(progressKey);
 
-  // Initialiser le hook d'état avec des valeurs par défaut
-  // (il sera mis à jour une fois lastPosition chargé)
+  // Hook d'état avec clé unique
   const {
     categoryIndex,
     wordIndex,
@@ -48,7 +53,7 @@ const VocabularyExercise = ({ route }) => {
     goToNextWord,
     changeCategory,
     toggleTranslation,
-  } = useVocabularyExerciseState(level, 0, 0);
+  } = useVocabularyExerciseState(progressKey, 0, 0);
 
   // Restaurer l'état une fois les données chargées
   useEffect(() => {
@@ -112,10 +117,12 @@ const VocabularyExercise = ({ route }) => {
     } else {
       const nextCategoryIndex = findNextUncompletedCategory();
       if (nextCategoryIndex === -1) {
-        Alert.alert(
-          "Félicitations",
-          "Vous avez terminé tous les exercices de vocabulaire !"
-        );
+        // Message adapté selon le mode
+        const completionMessage = mode === 'fast' 
+          ? `Félicitations ! Vous avez terminé le Fast Vocabulary ${level} !`
+          : `Félicitations ! Vous avez terminé le vocabulaire ${level} !`;
+          
+        Alert.alert("Félicitations", completionMessage);
         router.back();
       } else {
         changeCategory(nextCategoryIndex);
@@ -146,13 +153,24 @@ const VocabularyExercise = ({ route }) => {
   const currentWord = getCurrentWord();
   const currentCategory = vocabularyData?.exercises?.[categoryIndex] || {};
 
-  // Affichage du compteur de mots pour remplacer les points
+  // Affichage du compteur de mots
   const wordCounter = `${wordIndex + 1} / ${currentCategory?.words?.length || 0}`;
+
+  // Titre adapté selon le mode et le niveau
+  const getHeaderTitle = () => {
+    const displayName = getLevelDisplayName(level);
+    if (mode === 'fast') {
+      return isBonusLevel(level) ? displayName : `${displayName} - Fast`;
+    }
+    return displayName;
+  };
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#f8fafc" }}>
       <VocabularyHeader
         level={level}
+        mode={mode} // Passer le mode au header
+        title={getHeaderTitle()} // Titre personnalisé
         progress={0}
         completedWords={0}
         totalWords={0}
@@ -176,7 +194,7 @@ const VocabularyExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Ajout d'un compteur de mots textuel pour remplacer les points */}
+      {/* Compteur de mots avec indicateur de mode */}
       <View style={{ 
         padding: 10, 
         alignItems: 'center', 
@@ -189,6 +207,18 @@ const VocabularyExercise = ({ route }) => {
         }}>
           {wordCounter}
         </Text>
+        {/* Indicateur de mode pour le mode fast */}
+        {mode === 'fast' && (
+          <Text style={{
+            color: '#f59e0b',
+            fontSize: 12,
+            fontWeight: '600',
+            marginTop: 2,
+            textTransform: 'uppercase'
+          }}>
+            {isBonusLevel(level) ? 'Bonus Level' : 'Fast Mode'}
+          </Text>
+        )}
       </View>
 
       <VocabularyWordCard
@@ -203,6 +233,7 @@ const VocabularyExercise = ({ route }) => {
 
       <LearningTipCard
         level={level}
+        mode={mode} // Passer le mode pour des tips adaptés
         levelColor={levelColor}
       />
 
