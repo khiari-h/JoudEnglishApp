@@ -8,14 +8,30 @@ import vocabularyB2Data from "../../data/vocabulary/B2";
 import vocabularyC1Data from "../../data/vocabulary/C1";
 import vocabularyC2Data from "../../data/vocabulary/C2";
 
-// Import des données Fast Vocabulary (7 niveaux avec bonus)
-import fastVocabularyA1Data from "../../data/fastVocabulary/A1";
-import fastVocabularyA2Data from "../../data/fastVocabulary/A2";
-import fastVocabularyB1Data from "../../data/fastVocabulary/B1";
-import fastVocabularyB2Data from "../../data/fastVocabulary/B2";
-import fastVocabularyC1Data from "../../data/fastVocabulary/C1";
-import fastVocabularyC2Data from "../../data/fastVocabulary/C2";
-import fastVocabularyBLevelData from "../../data/fastVocabulary/BLevel"; // Niveau bonus
+// Import des données Fast Vocabulary (exports nommés, pas default)
+import { vocab as fastVocabA1 } from "../../data/fastVocabulary/A1";
+import { vocab as fastVocabA2 } from "../../data/fastVocabulary/A2";
+import { vocab as fastVocabB1 } from "../../data/fastVocabulary/B1";
+import { vocab as fastVocabB2 } from "../../data/fastVocabulary/B2";
+import { vocab as fastVocabC1 } from "../../data/fastVocabulary/C1";
+import { vocab as fastVocabC2 } from "../../data/fastVocabulary/C2";
+import { vocab as fastVocabBLevel } from "../../data/fastVocabulary/BLevel";
+
+// Fonction pour convertir la structure Fast vers la structure attendue
+const convertFastVocabToExercises = (fastVocab) => {
+  if (!fastVocab || !fastVocab.words) {
+    return { exercises: [] };
+  }
+
+  return {
+    exercises: [
+      {
+        title: fastVocab.title || "Vocabulaire Fast",
+        words: fastVocab.words,
+      },
+    ],
+  };
+};
 
 /**
  * Récupère les données de vocabulaire en fonction du niveau et du mode
@@ -24,17 +40,29 @@ import fastVocabularyBLevelData from "../../data/fastVocabulary/BLevel"; // Nive
  * @returns {Object} Les données de vocabulaire pour le niveau et mode spécifiés
  */
 export const getVocabularyData = (level, mode = "classic") => {
+  console.log(
+    `🔍 getVocabularyData appelé avec level: ${level}, mode: ${mode}`
+  );
+
   if (mode === "fast") {
     const fastDataMap = {
-      A1: fastVocabularyA1Data,
-      A2: fastVocabularyA2Data,
-      B1: fastVocabularyB1Data,
-      B2: fastVocabularyB2Data,
-      C1: fastVocabularyC1Data,
-      C2: fastVocabularyC2Data,
-      BLevel: fastVocabularyBLevelData, // Niveau bonus uniquement en mode fast
+      A1: convertFastVocabToExercises(fastVocabA1),
+      A2: convertFastVocabToExercises(fastVocabA2),
+      B1: convertFastVocabToExercises(fastVocabB1),
+      B2: convertFastVocabToExercises(fastVocabB2),
+      C1: convertFastVocabToExercises(fastVocabC1),
+      C2: convertFastVocabToExercises(fastVocabC2),
+      BLevel: convertFastVocabToExercises(fastVocabBLevel),
     };
-    return fastDataMap[level] || fastVocabularyA1Data;
+
+    const data = fastDataMap[level] || convertFastVocabToExercises(fastVocabA1);
+    console.log(
+      `📊 Données Fast pour ${level}:`,
+      data ? "TROUVÉES" : "VIDES",
+      data?.exercises?.length || 0,
+      "exercices"
+    );
+    return data;
   }
 
   // Mode classic (6 niveaux standards)
@@ -46,7 +74,15 @@ export const getVocabularyData = (level, mode = "classic") => {
     C1: vocabularyC1Data,
     C2: vocabularyC2Data,
   };
-  return classicDataMap[level] || vocabularyA1Data;
+
+  const data = classicDataMap[level] || vocabularyA1Data;
+  console.log(
+    `📊 Données Classic pour ${level}:`,
+    data ? "TROUVÉES" : "VIDES",
+    data?.exercises?.length || 0,
+    "exercices"
+  );
+  return data;
 };
 
 /**

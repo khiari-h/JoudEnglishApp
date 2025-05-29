@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect, useState } from "react";
 import { View, Text, Alert, ActivityIndicator, ScrollView } from "react-native";
-import { router } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 // Composants
 import VocabularyHeader from "./VocabularyHeader";
@@ -12,7 +12,12 @@ import LearningTipCard from "./LearningTipCard";
 import VocabularyModeSelector from "./VocabularyModeSelector"; // Import du sélecteur
 
 // Utils et hooks
-import { getVocabularyData, isBonusLevel, getLevelDisplayName, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
+import {
+  getVocabularyData,
+  isBonusLevel,
+  getLevelDisplayName,
+  getLevelColor,
+} from "../../../utils/vocabulary/vocabularyDataHelper";
 import { LANGUAGE_LEVELS } from "../../../utils/constants";
 import {
   calculateTotalWords,
@@ -25,18 +30,28 @@ import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
 
 const VocabularyExercise = ({ route }) => {
   // Récupération des paramètres
-  const { level, mode } = route.params;
-  
+  const { level, mode: initialMode } = route.params;
+
+  // State local pour gérer le mode sélectionné
+  const [selectedMode, setSelectedMode] = useState(initialMode);
+
   // === LOGIQUE D'ASSEMBLAGE ===
   // Si pas de mode ET pas BLevel → Afficher VocabularyModeSelector
-  const shouldShowModeSelector = !mode && !isBonusLevel(level);
-  
+  const shouldShowModeSelector = !selectedMode && !isBonusLevel(level);
+
   // Si BLevel ET pas de mode → Mode fast automatique
-  const finalMode = mode || (isBonusLevel(level) ? 'fast' : 'classic');
-  
+  const finalMode = selectedMode || (isBonusLevel(level) ? "fast" : "classic");
+
+  // Fonction pour gérer la sélection du mode
+  const handleModeSelect = (mode) => {
+    setSelectedMode(mode);
+  };
+
   // === ASSEMBLAGE DES COMPOSANTS ===
   if (shouldShowModeSelector) {
-    return <VocabularyModeSelector route={route} />;
+    return (
+      <VocabularyModeSelector route={route} onModeSelect={handleModeSelect} />
+    );
   }
 
   // === EXERCICE DE VOCABULAIRE ===
@@ -45,12 +60,25 @@ const VocabularyExercise = ({ route }) => {
 
 // Composant séparé pour l'exercice de vocabulaire
 const VocabularyExerciseContent = ({ level, mode }) => {
+  const navigation = useNavigation();
   const levelColor = getLevelColor(level);
-  const vocabularyData = useMemo(() => getVocabularyData(level, mode), [level, mode]);
+  const vocabularyData = useMemo(() => {
+    console.log("🔍 Récupération des données pour:", { level, mode });
+    const data = getVocabularyData(level, mode);
+    console.log(
+      "📊 Données récupérées:",
+      data ? "OK" : "VIDE",
+      data?.exercises?.length || 0,
+      "exercices"
+    );
+    return data;
+  }, [level, mode]);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
   // Hook de progression avec identifiant unique par niveau ET mode
   const progressKey = `${level}_${mode}`;
+  console.log("🔑 ProgressKey:", progressKey);
+
   const {
     completedWords,
     lastPosition,
@@ -59,6 +87,8 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     saveLastPosition,
     initializeProgress,
   } = useVocabularyProgress(progressKey);
+
+  console.log("📈 Progress state:", { loaded, completedWords, lastPosition });
 
   // Hook d'état avec clé unique
   const {
@@ -86,6 +116,22 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     }
   }, [loaded, vocabularyData, initializeProgress]);
 
+  // Calculs de statistiques avec vocabularyStats
+  const totalWords = useMemo(() => {
+    return calculateTotalWords(vocabularyData?.exercises || []);
+  }, [vocabularyData]);
+
+  const completedWordsCount = useMemo(() => {
+    return calculateCompletedWordsCount(completedWords);
+  }, [completedWords]);
+
+  const totalProgress = useMemo(() => {
+    return calculateTotalProgress(
+      vocabularyData?.exercises || [],
+      completedWords
+    );
+  }, [completedWords, vocabularyData]);
+
   // Affiche le spinner pendant le chargement des données
   if (!loaded || !vocabularyData) {
     return (
@@ -106,7 +152,9 @@ const VocabularyExerciseContent = ({ level, mode }) => {
 
   const isLastWordInExercise = () => {
     const category = vocabularyData?.exercises?.[categoryIndex];
-    return category && category.words && wordIndex === category.words.length - 1;
+    return (
+      category && category.words && wordIndex === category.words.length - 1
+    );
   };
 
   const findNextUncompletedCategory = () => {
@@ -125,21 +173,22 @@ const VocabularyExerciseContent = ({ level, mode }) => {
   const handleNext = () => {
     const category = vocabularyData.exercises[categoryIndex];
     if (!category) return;
-    
+
     markWordAsCompleted(categoryIndex, wordIndex);
-    
+
     if (wordIndex < category.words.length - 1) {
       goToNextWord();
       saveLastPosition(categoryIndex, wordIndex + 1);
     } else {
       const nextCategoryIndex = findNextUncompletedCategory();
       if (nextCategoryIndex === -1) {
-        const completionMessage = mode === 'fast' 
-          ? `Félicitations ! Vous avez terminé le Fast Vocabulary ${level} !`
-          : `Félicitations ! Vous avez terminé le vocabulaire ${level} !`;
-          
+        const completionMessage =
+          mode === "fast"
+            ? `Félicitations ! Vous avez terminé le Fast Vocabulary ${level} !`
+            : `Félicitations ! Vous avez terminé le vocabulaire ${level} !`;
+
         Alert.alert("Félicitations", completionMessage);
-        router.back();
+        navigation.goBack();
       } else {
         changeCategory(nextCategoryIndex);
         saveLastPosition(nextCategoryIndex, 0);
@@ -168,12 +217,14 @@ const VocabularyExerciseContent = ({ level, mode }) => {
 
   const currentWord = getCurrentWord();
   const currentCategory = vocabularyData?.exercises?.[categoryIndex] || {};
-  const wordCounter = `${wordIndex + 1} / ${currentCategory?.words?.length || 0}`;
+  const wordCounter = `${wordIndex + 1} / ${
+    currentCategory?.words?.length || 0
+  }`;
 
   // Titre adapté selon le mode et le niveau
   const getHeaderTitle = () => {
     const displayName = getLevelDisplayName(level);
-    if (mode === 'fast') {
+    if (mode === "fast") {
       return isBonusLevel(level) ? displayName : `${displayName} - Fast`;
     }
     return displayName;
@@ -185,13 +236,13 @@ const VocabularyExerciseContent = ({ level, mode }) => {
         level={level}
         mode={mode}
         title={getHeaderTitle()}
-        progress={0}
-        completedWords={0}
-        totalWords={0}
+        progress={totalProgress}
+        completedWords={completedWordsCount}
+        totalWords={totalWords}
         levelColor={levelColor}
-        onBackPress={() => router.back()}
+        onBackPress={() => navigation.goBack()}
       />
-      
+
       <VocabularyProgress
         vocabularyData={vocabularyData}
         completedWords={completedWords}
@@ -208,27 +259,33 @@ const VocabularyExerciseContent = ({ level, mode }) => {
         levelColor={levelColor}
       />
 
-      <View style={{ 
-        padding: 10, 
-        alignItems: 'center', 
-        marginVertical: 5 
-      }}>
-        <Text style={{ 
-          color: levelColor, 
-          fontWeight: 'bold',
-          fontSize: 16
-        }}>
+      <View
+        style={{
+          padding: 10,
+          alignItems: "center",
+          marginVertical: 5,
+        }}
+      >
+        <Text
+          style={{
+            color: levelColor,
+            fontWeight: "bold",
+            fontSize: 16,
+          }}
+        >
           {wordCounter}
         </Text>
-        {mode === 'fast' && (
-          <Text style={{
-            color: '#f59e0b',
-            fontSize: 12,
-            fontWeight: '600',
-            marginTop: 2,
-            textTransform: 'uppercase'
-          }}>
-            {isBonusLevel(level) ? 'Bonus Level' : 'Fast Mode'}
+        {mode === "fast" && (
+          <Text
+            style={{
+              color: "#f59e0b",
+              fontSize: 12,
+              fontWeight: "600",
+              marginTop: 2,
+              textTransform: "uppercase",
+            }}
+          >
+            {isBonusLevel(level) ? "Bonus Level" : "Fast Mode"}
           </Text>
         )}
       </View>
@@ -243,11 +300,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
         levelColor={levelColor}
       />
 
-      <LearningTipCard
-        level={level}
-        mode={mode}
-        levelColor={levelColor}
-      />
+      <LearningTipCard level={level} mode={mode} levelColor={levelColor} />
 
       <VocabularyNavigation
         onNext={handleNext}
