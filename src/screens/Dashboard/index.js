@@ -35,7 +35,7 @@ const Dashboard = ({ route }) => {
   // Valeurs par défaut sécurisées pour le thème
   const colors = themeContext?.colors || {
     background: "#F9FAFB",
-    primary: "#3B82F6", // Nouvelle couleur principale (bleu)
+    primary: "#3B82F6",
   };
 
   // Récupération des données et fonctions de progression avec valeurs par défaut
@@ -46,7 +46,7 @@ const Dashboard = ({ route }) => {
     updateStreak = () => {}
   } = progressContext || {};
 
-  // Calculer la progression globale maintenant que la fonction est disponible
+  // Calculer la progression globale
   const globalProgress = calculateGlobalProgress();
 
   // Utilisation du hook useLastActivity
@@ -63,10 +63,24 @@ const Dashboard = ({ route }) => {
   const [showLevelProgress, setShowLevelProgress] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState("home");
-  const [currentLevel, setCurrentLevel] = useState("1"); // Niveau par défaut mis à jour
+  const [currentLevel, setCurrentLevel] = useState("1"); // Niveau par défaut nouveau système
 
   // Paramètres du profil
   const { name = "Utilisateur", streak = 0 } = route?.params || {};
+
+  // Fonction pour mapper les anciens niveaux vers les nouveaux
+  const mapOldToNewLevel = (level) => {
+    const mapping = {
+      'A1': '1',
+      'A2': '2',
+      'B1': '3', 
+      'B2': '4',
+      'C1': '5',
+      'C2': '6',
+      'bonus': 'bonus'
+    };
+    return mapping[level] || level;
+  };
 
   // Récupérer le niveau actif de l'utilisateur au chargement
   useEffect(() => {
@@ -95,20 +109,6 @@ const Dashboard = ({ route }) => {
 
     loadActiveLevel();
   }, [progress?.currentLevel]);
-
-  // Fonction pour mapper les anciens niveaux vers les nouveaux
-  const mapOldToNewLevel = (level) => {
-    const mapping = {
-      'A1': '1',
-      'A2': '2',
-      'B1': '3', 
-      'B2': '4',
-      'C1': '5',
-      'C2': '6',
-      'bonus': 'bonus'
-    };
-    return mapping[level] || level;
-  };
 
   // Mettre à jour le streak
   useEffect(() => {
@@ -157,31 +157,30 @@ const Dashboard = ({ route }) => {
     // Ici, vous pourriez implémenter une logique qui récupère
     // dynamiquement les objectifs quotidiens depuis AsyncStorage
     // ou un autre système de persistance
-
     return {
       completed: 2,
       total: 5,
     };
   }, []);
 
-  // Exercices recommandés basés sur le niveau actuel
-  const recommendations = React.useMemo(() => {
-    return Object.keys(EXERCISE_TYPES)
-      .slice(0, 3) // Limiter à 3 recommandations pour la lisibilité
-      .map((key, index) => {
-        const exerciseInfo = EXERCISE_TYPES[key];
-        return {
-          id: index + 1,
-          title: exerciseInfo.title,
-          description: exerciseInfo.description,
-          type: key,
-          level: currentLevel, // Utilise le niveau actif
-          icon: exerciseInfo.icon,
-        };
-      });
-  }, [currentLevel]);
+  // Stats de temps par exercice pour les recommandations intelligentes
+  const exerciseTimeStats = React.useMemo(() => {
+    // Pour l'instant, on simule avec des valeurs de test
+    // Plus tard, ça viendra du tracking réel du temps passé sur chaque exercice
+    return {
+      vocabulary: 20, // 20 minutes passées sur vocabulary → recommandera phrases
+      phrases: 12,    // 12 minutes sur phrases → pas encore assez pour recommander
+      grammar: 25,    // 25 minutes sur grammar → recommandera reading
+      reading: 8,     // 8 minutes sur reading → pas assez
+      conversations: 18, // 18 minutes → recommandera assessment
+      spelling: 0,    // Jamais fait
+      errorCorrection: 5, // Peu fait
+      wordGames: 0,   // Jamais fait
+      assessment: 0,  // Jamais fait
+    };
+  }, []);
 
-  // Naviguer vers un exercice spécifique
+  // Naviguer vers un exercice spécifique (dernière activité)
   const handleLastActivityPress = (activity) => {
     if (activity === "levelSelection") {
       router.push("/(tabs)/levelSelection");
@@ -198,38 +197,46 @@ const Dashboard = ({ route }) => {
     switch (type) {
       case "vocabulary":
         pathname = "/(tabs)/vocabularyExercise";
-        params.initialCategoryIndex = position.categoryIndex;
-        params.initialWordIndex = position.wordIndex;
+        params.initialCategoryIndex = position?.categoryIndex;
+        params.initialWordIndex = position?.wordIndex;
         break;
       case "grammar":
         pathname = "/(tabs)/grammarExercise";
-        params.initialRuleIndex = position.ruleIndex;
-        params.initialExerciseIndex = position.exerciseIndex;
+        params.initialRuleIndex = position?.ruleIndex;
+        params.initialExerciseIndex = position?.exerciseIndex;
         break;
       case "reading":
         pathname = "/(tabs)/readingExercise";
-        params.initialExerciseIndex = position.exerciseIndex;
-        params.initialQuestionIndex = position.questionIndex;
+        params.initialExerciseIndex = position?.exerciseIndex;
+        params.initialQuestionIndex = position?.questionIndex;
         break;
-      case "error_correction":
+      case "errorCorrection":
         pathname = "/(tabs)/errorCorrectionExercise";
-        params.initialCategoryIndex = position.categoryIndex;
-        params.initialExerciseIndex = position.exerciseIndex;
+        params.initialCategoryIndex = position?.categoryIndex;
+        params.initialExerciseIndex = position?.exerciseIndex;
         break;
-      case "chatbot":
-        pathname = "/(tabs)/chatbotExercise";
-        params.initialScenarioIndex = position.scenarioIndex;
-        params.initialStepIndex = position.stepIndex;
+      case "conversations":
+        pathname = "/(tabs)/conversationsExercise";
+        params.initialScenarioIndex = position?.scenarioIndex;
+        params.initialStepIndex = position?.stepIndex;
         break;
       case "phrases":
         pathname = "/(tabs)/phrasesExercise";
-        params.initialCategoryIndex = position.categoryIndex;
-        params.initialPhraseIndex = position.phraseIndex;
+        params.initialCategoryIndex = position?.categoryIndex;
+        params.initialPhraseIndex = position?.phraseIndex;
         break;
       case "spelling":
         pathname = "/(tabs)/spellingExercise";
-        params.exerciseType = position.exerciseType || "correction";
-        params.initialExerciseIndex = position.exerciseIndex;
+        params.exerciseType = position?.exerciseType || "correction";
+        params.initialExerciseIndex = position?.exerciseIndex;
+        break;
+      case "wordGames":
+        pathname = "/(tabs)/wordGamesExercise";
+        params.initialGameIndex = position?.gameIndex;
+        break;
+      case "assessment":
+        pathname = "/(tabs)/levelAssessment";
+        params.initialSectionIndex = position?.sectionIndex;
         break;
       default:
         pathname = "/(tabs)/levelSelection";
@@ -242,7 +249,7 @@ const Dashboard = ({ route }) => {
     });
   };
 
-  // Naviguer vers un exercice recommandé
+  // Naviguer vers un exercice recommandé (recommandations intelligentes)
   const handleRecommendedExercisePress = (exercise) => {
     let pathname;
 
@@ -253,8 +260,8 @@ const Dashboard = ({ route }) => {
       case "grammar":
         pathname = "/(tabs)/grammarExercise";
         break;
-      case "chatbot":
-        pathname = "/(tabs)/chatbotExercise";
+      case "conversations":
+        pathname = "/(tabs)/conversationsExercise";
         break;
       case "phrases":
         pathname = "/(tabs)/phrasesExercise";
@@ -274,7 +281,6 @@ const Dashboard = ({ route }) => {
       case "assessment":
         pathname = "/(tabs)/levelAssessment";
         break;
-      // Autres types d'exercices...
       default:
         pathname = "/(tabs)/levelSelection";
     }
@@ -289,7 +295,7 @@ const Dashboard = ({ route }) => {
   const allLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
     id: levelKey,
     color: LANGUAGE_LEVELS[levelKey].color,
-    isActive: levelKey === currentLevel, // Indique le niveau actif
+    isActive: levelKey === currentLevel,
   }));
 
   // Gérer la sélection d'un niveau
@@ -318,7 +324,7 @@ const Dashboard = ({ route }) => {
         title: levelInfo.title,
         color: levelInfo.color,
         progress: calculateLevelProgress(levelKey),
-        isActive: levelKey === currentLevel, // Indique le niveau actif
+        isActive: levelKey === currentLevel,
       };
     });
 
@@ -364,14 +370,14 @@ const Dashboard = ({ route }) => {
           accentColor={levelColor}
         />
 
-        {/* Exercices recommandés */}
-<RecommendationsSection
-  lastActivity={lastActivity}
-  exerciseTimeStats={exerciseTimeStats} // ← À ajouter
-  currentLevel={currentLevel}
-  onSelectExercise={handleRecommendedExercisePress}
-  accentColor={levelColor}
-/>
+        {/* Recommandations intelligentes */}
+        <RecommendationsSection
+          lastActivity={lastActivity}
+          exerciseTimeStats={exerciseTimeStats}
+          currentLevel={currentLevel}
+          onSelectExercise={handleRecommendedExercisePress}
+          accentColor={levelColor}
+        />
 
         {/* Parcours d'apprentissage compact avec progression globale */}
         <LearningPathCompact
@@ -392,7 +398,7 @@ const Dashboard = ({ route }) => {
         activeTab={activeTab}
         onTabChange={setActiveTab}
         accentColor={levelColor}
-        currentLevel={currentLevel} // Passer le niveau actuel pour la redirection du chatbot
+        currentLevel={currentLevel}
       />
 
       {/* Modal de progression des niveaux */}
