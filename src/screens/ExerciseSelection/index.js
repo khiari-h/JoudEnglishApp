@@ -10,6 +10,7 @@ import { ProgressContext } from "../../contexts/ProgressContext";
 // Composants UI
 import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
+import ProgressBar from "../../components/ui/ProgressBar";
 
 // Composants Layout
 import Container from "../../components/layout/Container";
@@ -36,7 +37,7 @@ const DEFAULT_PROGRESS = {
 };
 
 // Exercices qui ont accès au niveau bonus
-const BONUS_EXERCISE_TYPES = ['reading', 'vocabulary', 'phrases'];
+const BONUS_EXERCISE_TYPES = ["reading", "vocabulary", "phrases"];
 
 const ExerciseSelection = ({ route }) => {
   const { level } = route.params;
@@ -45,7 +46,7 @@ const ExerciseSelection = ({ route }) => {
   // Récupération sécurisée des contextes
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const progressContext = useContext(ProgressContext) || DEFAULT_PROGRESS;
-  
+
   const { colors } = themeContext;
   const { progress } = progressContext;
 
@@ -55,7 +56,7 @@ const ExerciseSelection = ({ route }) => {
       LANGUAGE_LEVELS[level] || {
         color: colors.primary,
         title: `Niveau ${level}`,
-        icon: level === 'bonus' ? "⭐" : "📚",
+        icon: level === "bonus" ? "⭐" : "📚",
       }
     );
   }, [level, colors.primary]);
@@ -68,18 +69,18 @@ const ExerciseSelection = ({ route }) => {
     return Object.keys(EXERCISE_TYPES)
       .map((exerciseKey) => {
         const exerciseInfo = EXERCISE_TYPES[exerciseKey];
-        
+
         // Si c'est le niveau bonus, filtrer seulement les exercices autorisés
-        if (level === 'bonus' && !BONUS_EXERCISE_TYPES.includes(exerciseKey)) {
+        if (level === "bonus" && !BONUS_EXERCISE_TYPES.includes(exerciseKey)) {
           return null;
         }
 
         // Utiliser la couleur spécifique à l'exercice ou celle du niveau par défaut
         const exerciseColor = exerciseInfo.color || levelColor;
-        
-        // Récupérer la progression ou initialiser à 0
+
+        // Récupérer la progression selon la structure: exercises[exerciseType][level]
         const exerciseProgress =
-          progress?.exercises?.[`${level}_${exerciseKey}`]?.completed || 0;
+          progress?.exercises?.[exerciseKey]?.[level]?.completed || 0;
 
         return {
           ...exerciseInfo,
@@ -110,18 +111,10 @@ const ExerciseSelection = ({ route }) => {
 
   // Obtenir le titre d'affichage du niveau
   const getLevelDisplayTitle = () => {
-    if (level === 'bonus') {
-      return 'Niveau Bonus';
+    if (level === "bonus") {
+      return "Niveau Bonus";
     }
     return `Niveau ${level}`;
-  };
-
-  // Obtenir le badge du niveau
-  const getLevelBadge = () => {
-    if (level === 'bonus') {
-      return 'BONUS';
-    }
-    return level.toString();
   };
 
   // Rendu d'une carte d'exercice
@@ -136,10 +129,6 @@ const ExerciseSelection = ({ route }) => {
         sideBorderColor={exercise.color}
         onPress={() => handleExerciseSelect(exercise)}
         contentStyle={styles.cardContentStyle}
-        // Progress bar intégrée dans la carte
-        progress={exercise.progress}
-        progressColor={exercise.color}
-        showPercentage={exercise.progress > 0}
       >
         <View style={styles.exerciseHeader}>
           <View style={styles.exerciseTitleContainer}>
@@ -159,7 +148,23 @@ const ExerciseSelection = ({ route }) => {
             </View>
           </View>
         </View>
-        
+
+        {/* Barre de progression discrète */}
+        <View style={styles.progressSection}>
+          <ProgressBar
+            progress={exercise.progress}
+            height={4}
+            fillColor={exercise.color}
+            backgroundColor="#E5E7EB"
+            borderRadius={2}
+            showPercentage={exercise.progress > 0}
+            labelPosition="none"
+            animated={true}
+            animationDuration={600}
+            style={styles.exerciseProgressBar}
+          />
+        </View>
+
         <Button
           title="Commencer"
           variant="filled"
@@ -190,34 +195,23 @@ const ExerciseSelection = ({ route }) => {
           style={styles.headerGradient}
         >
           <Header
-            title=""
+            title={getLevelDisplayTitle()}
             showBackButton={true}
             backgroundColor="transparent"
             textColor="white"
             withStatusBar={false}
             withShadow={false}
+            titleStyle={styles.headerTitleStyle}
+            style={styles.headerStyle}
           />
-          
-          {/* Badge de niveau centré */}
-          <View style={styles.levelBadgeContainer}>
-            <View style={[
-              styles.levelBadge,
-              level === 'bonus' && styles.bonusLevelBadge
-            ]}>
-              <Text style={[
-                styles.levelBadgeText,
-                level === 'bonus' && styles.bonusLevelBadgeText
-              ]}>
-                {getLevelBadge()}
-              </Text>
-            </View>
-            <Text style={styles.levelTitle}>{getLevelDisplayTitle()}</Text>
-            {level === 'bonus' && (
+
+          {level === "bonus" && (
+            <View style={styles.bonusSubtitleContainer}>
               <Text style={styles.bonusSubtitle}>
                 Contenu exclusif débloqué !
               </Text>
-            )}
-          </View>
+            </View>
+          )}
         </LinearGradient>
       </View>
 
@@ -227,12 +221,11 @@ const ExerciseSelection = ({ route }) => {
         showsVerticalScrollIndicator={false}
       >
         <Text style={styles.introText}>
-          {level === 'bonus' 
+          {level === "bonus"
             ? "Découvrez du contenu exclusif et avancé"
-            : "Sélectionnez une activité pour améliorer vos compétences"
-          }
+            : "Sélectionnez une activité pour améliorer vos compétences"}
         </Text>
-        
+
         <View style={styles.exercisesContainer}>
           {exercises.map(renderExerciseCard)}
         </View>

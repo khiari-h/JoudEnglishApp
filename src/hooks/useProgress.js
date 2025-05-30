@@ -1,6 +1,6 @@
 // src/hooks/useProgress.js
-import { useState, useEffect, useCallback } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState, useEffect, useCallback } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 /**
  * Hook pour gérer la progression de l'utilisateur dans l'application
@@ -10,86 +10,90 @@ const useProgress = () => {
   const [progress, setProgress] = useState({
     // Progression globale par niveau
     levels: {
-      A1: { completed: 0, total: 100 },
-      A2: { completed: 0, total: 100 },
-      B1: { completed: 0, total: 100 },
-      B2: { completed: 0, total: 100 },
-      C1: { completed: 0, total: 100 },
-      C2: { completed: 0, total: 100 },
+      1: { completed: 0, total: 100 },
+      2: { completed: 0, total: 100 },
+      3: { completed: 0, total: 100 },
+      4: { completed: 0, total: 100 },
+      5: { completed: 0, total: 100 },
+      6: { completed: 0, total: 100 },
+      bonus: { completed: 0, total: 100 },
     },
     // Progression par type d'exercice et niveau
     exercises: {
       vocabulary: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
-      },
-      grammar: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
-      },
-      reading: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
-      },
-      chatbot: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
-      },
-      errorCorrection: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
+        bonus: { completed: 0, total: 100 },
       },
       phrases: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
+        bonus: { completed: 0, total: 100 },
+      },
+      grammar: {
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
       },
       spelling: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
+      },
+      reading: {
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
+        bonus: { completed: 0, total: 100 },
+      },
+      errorCorrection: {
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
+      },
+      conversations: {
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
       },
       wordGames: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
       },
       assessment: {
-        A1: { completed: 0, total: 100 },
-        A2: { completed: 0, total: 100 },
-        B1: { completed: 0, total: 100 },
-        B2: { completed: 0, total: 100 },
-        C1: { completed: 0, total: 100 },
-        C2: { completed: 0, total: 100 },
+        1: { completed: 0, total: 100 },
+        2: { completed: 0, total: 100 },
+        3: { completed: 0, total: 100 },
+        4: { completed: 0, total: 100 },
+        5: { completed: 0, total: 100 },
+        6: { completed: 0, total: 100 },
       },
     },
     // Dernière activité
@@ -113,13 +117,13 @@ const useProgress = () => {
   useEffect(() => {
     const loadProgress = async () => {
       try {
-        const storedProgress = await AsyncStorage.getItem('userProgress');
-        
+        const storedProgress = await AsyncStorage.getItem("userProgress");
+
         if (storedProgress) {
           setProgress(JSON.parse(storedProgress));
         }
       } catch (error) {
-        console.error('Error loading progress:', error);
+        console.error("Error loading progress:", error);
       }
     };
 
@@ -130,9 +134,9 @@ const useProgress = () => {
   useEffect(() => {
     const saveProgress = async () => {
       try {
-        await AsyncStorage.setItem('userProgress', JSON.stringify(progress));
+        await AsyncStorage.setItem("userProgress", JSON.stringify(progress));
       } catch (error) {
-        console.error('Error saving progress:', error);
+        console.error("Error saving progress:", error);
       }
     };
 
@@ -140,49 +144,61 @@ const useProgress = () => {
   }, [progress]);
 
   // Mise à jour de la progression d'un exercice
-  const updateExerciseProgress = useCallback((exerciseType, level, completed, total = 100) => {
-    setProgress(prevProgress => {
-      // Copie pour éviter de modifier directement l'état
-      const newProgress = { ...prevProgress };
-      
-      // Mise à jour de la progression de l'exercice spécifique
-      newProgress.exercises[exerciseType][level] = { 
-        completed, 
-        total 
-      };
-      
-      // Recalcul de la progression globale du niveau
-      const levelExercises = Object.keys(newProgress.exercises).map(
-        type => newProgress.exercises[type][level]
-      );
-      
-      const totalCompleted = levelExercises.reduce(
-        (sum, exercise) => sum + exercise.completed, 0
-      );
-      
-      const totalPossible = levelExercises.reduce(
-        (sum, exercise) => sum + exercise.total, 0
-      );
-      
-      newProgress.levels[level] = {
-        completed: Math.round((totalCompleted / totalPossible) * 100),
-        total: 100
-      };
-      
-      // Mise à jour de la dernière activité
-      newProgress.lastActivity = {
-        type: exerciseType,
-        level,
-        timestamp: new Date().toISOString(),
-      };
-      
-      return newProgress;
-    });
-  }, []);
+  const updateExerciseProgress = useCallback(
+    (exerciseType, level, completed, total = 100) => {
+      setProgress((prevProgress) => {
+        // Copie pour éviter de modifier directement l'état
+        const newProgress = { ...prevProgress };
+
+        // Mise à jour de la progression de l'exercice spécifique
+        if (
+          newProgress.exercises[exerciseType] &&
+          newProgress.exercises[exerciseType][level]
+        ) {
+          newProgress.exercises[exerciseType][level] = {
+            completed,
+            total,
+          };
+        }
+
+        // Recalcul de la progression globale du niveau
+        const levelExercises = Object.keys(newProgress.exercises)
+          .filter((type) => newProgress.exercises[type][level])
+          .map((type) => newProgress.exercises[type][level]);
+
+        if (levelExercises.length > 0) {
+          const totalCompleted = levelExercises.reduce(
+            (sum, exercise) => sum + exercise.completed,
+            0
+          );
+
+          const totalPossible = levelExercises.reduce(
+            (sum, exercise) => sum + exercise.total,
+            0
+          );
+
+          newProgress.levels[level] = {
+            completed: Math.round((totalCompleted / totalPossible) * 100),
+            total: 100,
+          };
+        }
+
+        // Mise à jour de la dernière activité
+        newProgress.lastActivity = {
+          type: exerciseType,
+          level,
+          timestamp: new Date().toISOString(),
+        };
+
+        return newProgress;
+      });
+    },
+    []
+  );
 
   // Mise à jour du streak et d'autres statistiques
   const updateStats = useCallback((statsUpdates) => {
-    setProgress(prevProgress => {
+    setProgress((prevProgress) => {
       const newProgress = { ...prevProgress };
       newProgress.stats = { ...newProgress.stats, ...statsUpdates };
       return newProgress;
@@ -192,19 +208,28 @@ const useProgress = () => {
   // Réinitialisation de la progression
   const resetProgress = useCallback(async () => {
     try {
-      await AsyncStorage.removeItem('userProgress');
+      await AsyncStorage.removeItem("userProgress");
       setProgress({
-        // Réinitialiser à l'état initial
         levels: {
-          A1: { completed: 0, total: 100 },
-          // ...autres niveaux
+          1: { completed: 0, total: 100 },
+          2: { completed: 0, total: 100 },
+          3: { completed: 0, total: 100 },
+          4: { completed: 0, total: 100 },
+          5: { completed: 0, total: 100 },
+          6: { completed: 0, total: 100 },
+          bonus: { completed: 0, total: 100 },
         },
         exercises: {
           vocabulary: {
-            A1: { completed: 0, total: 100 },
-            // ...autres niveaux
+            1: { completed: 0, total: 100 },
+            2: { completed: 0, total: 100 },
+            3: { completed: 0, total: 100 },
+            4: { completed: 0, total: 100 },
+            5: { completed: 0, total: 100 },
+            6: { completed: 0, total: 100 },
+            bonus: { completed: 0, total: 100 },
           },
-          // ...autres types d'exercices
+          // ... autres exercices avec la même structure
         },
         lastActivity: {
           type: null,
@@ -221,7 +246,7 @@ const useProgress = () => {
         },
       });
     } catch (error) {
-      console.error('Error resetting progress:', error);
+      console.error("Error resetting progress:", error);
     }
   }, []);
 

@@ -4,55 +4,63 @@
  * Constantes pour l'application d'apprentissage des langues
  */
 
-// Niveaux du Cadre Européen Commun de Référence pour les Langues (CECRL)
+// Niveaux simplifiés (1 à 6 + bonus)
 export const LANGUAGE_LEVELS = {
-  A1: {
-    id: "A1",
-    name: "A1",
-    title: "Débutant",
+  1: {
+    id: "1",
+    name: "1",
+    title: "Niveau 1",
     description: "Communication basique, expressions simples du quotidien",
     color: "#3b82f6", // Bleu
-    icon: "🔤",
+    icon: "🌱",
   },
-  A2: {
-    id: "A2",
-    name: "A2",
-    title: "Élémentaire",
+  2: {
+    id: "2",
+    name: "2",
+    title: "Niveau 2",
     description: "Expressions simples, conversations courantes",
     color: "#8b5cf6", // Violet
-    icon: "💬",
+    icon: "🌿",
   },
-  B1: {
-    id: "B1",
-    name: "B1",
-    title: "Intermédiaire",
+  3: {
+    id: "3",
+    name: "3",
+    title: "Niveau 3",
     description: "Communication claire sur des sujets familiers",
     color: "#10b981", // Vert
-    icon: "📝",
+    icon: "🌳",
   },
-  B2: {
-    id: "B2",
-    name: "B2",
-    title: "Intermédiaire avancé",
+  4: {
+    id: "4",
+    name: "4",
+    title: "Niveau 4",
     description: "Communication complexe, discussions techniques",
     color: "#f59e0b", // Orange
-    icon: "🗣️",
+    icon: "🚀",
   },
-  C1: {
-    id: "C1",
-    name: "C1",
-    title: "Avancé",
+  5: {
+    id: "5",
+    name: "5",
+    title: "Niveau 5",
     description: "Expression fluide, sujets complexes",
     color: "#ef4444", // Rouge
-    icon: "📚",
+    icon: "💎",
   },
-  C2: {
-    id: "C2",
-    name: "C2",
-    title: "Maîtrise",
+  6: {
+    id: "6",
+    name: "6",
+    title: "Niveau 6",
     description: "Niveau proche du locuteur natif, maîtrise de la langue",
     color: "#6366f1", // Indigo
-    icon: "🎓",
+    icon: "🏆",
+  },
+  bonus: {
+    id: "bonus",
+    name: "B",
+    title: "Bonus",
+    description: "Contenu exclusif et avancé",
+    color: "#9333EA", // Violet premium
+    icon: "🔥",
   },
 };
 
@@ -65,6 +73,7 @@ export const EXERCISE_TYPES = {
     title: "Vocabulaire",
     description: "Apprenez de nouveaux mots et expressions",
     icon: "📚",
+    color: "#3b82f6",
     route: "VocabularyExercise",
   },
   phrases: {
@@ -72,6 +81,7 @@ export const EXERCISE_TYPES = {
     title: "Expressions",
     description: "Apprenez des expressions utiles dans leur contexte",
     icon: "🗣️",
+    color: "#10b981",
     route: "PhrasesExercise",
   },
   grammar: {
@@ -79,6 +89,7 @@ export const EXERCISE_TYPES = {
     title: "Grammaire",
     description: "Pratiquez les règles et structures grammaticales",
     icon: "📝",
+    color: "#f59e0b",
     route: "GrammarExercise",
   },
   spelling: {
@@ -86,6 +97,7 @@ export const EXERCISE_TYPES = {
     title: "Orthographe",
     description: "Travaillez sur l'orthographe et la ponctuation",
     icon: "🔤",
+    color: "#8b5cf6",
     route: "SpellingExercise",
   },
   reading: {
@@ -93,6 +105,7 @@ export const EXERCISE_TYPES = {
     title: "Lecture",
     description: "Améliorez votre compréhension écrite",
     icon: "📖",
+    color: "#ef4444",
     route: "ReadingExercise",
   },
   errorCorrection: {
@@ -100,6 +113,7 @@ export const EXERCISE_TYPES = {
     title: "Correction d'erreurs",
     description: "Identifiez et corrigez les erreurs dans des textes",
     icon: "✏️",
+    color: "#6366f1",
     route: "ErrorCorrectionExercise",
   },
   conversations: {
@@ -107,6 +121,7 @@ export const EXERCISE_TYPES = {
     title: "Conversations",
     description: "Pratiquez la conversation avec des scénarios guidés",
     icon: "💬",
+    color: "#10b981",
     route: "ConversationsExercise",
   },
   wordGames: {
@@ -114,6 +129,7 @@ export const EXERCISE_TYPES = {
     title: "Jeux de mots",
     description: "Jeux amusants basés sur le vocabulaire et la grammaire",
     icon: "🎮",
+    color: "#f59e0b",
     route: "WordGamesExercise",
   },
   assessment: {
@@ -121,6 +137,7 @@ export const EXERCISE_TYPES = {
     title: "Évaluation",
     description: "Testez votre niveau et vos progrès",
     icon: "🏆",
+    color: "#ef4444",
     route: "LevelAssessment",
   },
 };

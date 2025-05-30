@@ -47,8 +47,8 @@ const LevelSelection = () => {
     const levelInfo = LANGUAGE_LEVELS[levelKey];
     return {
       id: levelKey,
-      name: levelKey,
-      title: levelInfo.title,
+      name: levelInfo.name, // Maintenant "1", "2", "3", etc. ou "B"
+      title: levelInfo.title, // "Niveau 1", "Niveau 2", etc.
       description: levelInfo.description,
       progress: progress?.levels?.[levelKey]?.completed || 0,
       color: levelInfo.color,
@@ -65,24 +65,26 @@ const LevelSelection = () => {
     });
   };
 
-  // Générer le chemin compact de tous les niveaux
+  // Générer le chemin compact de tous les niveaux (1,2,3,4,5,6,B)
   const renderCompactLevelPath = () => {
     const allLevels = Object.keys(LANGUAGE_LEVELS);
-    
+
     return (
       <View style={localStyles.compactPathContainer}>
         <View style={localStyles.levelPath}>
           {allLevels.map((level, index, array) => (
             <React.Fragment key={level}>
-              <View 
+              <View
                 style={[
-                  localStyles.smallLevelDot, 
-                  { backgroundColor: LANGUAGE_LEVELS[level].color }
+                  localStyles.smallLevelDot,
+                  { backgroundColor: LANGUAGE_LEVELS[level].color },
                 ]}
               >
-                <Text style={localStyles.smallLevelDotText}>{level}</Text>
+                <Text style={localStyles.smallLevelDotText}>
+                  {LANGUAGE_LEVELS[level].name}
+                </Text>
               </View>
-              
+
               {index < array.length - 1 && (
                 <View style={localStyles.smallLevelLine} />
               )}
@@ -104,7 +106,7 @@ const LevelSelection = () => {
       {/* Header avec chemin de niveaux compact */}
       <View style={localStyles.headerContainer}>
         <LinearGradient
-          colors={['#6366F1', '#8B5CF6']}
+          colors={["#6366F1", "#8B5CF6"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={localStyles.headerGradient}
@@ -118,21 +120,21 @@ const LevelSelection = () => {
             withShadow={false}
             titleContainerStyle={localStyles.headerTitle}
           />
-          
-          {/* Chemin de niveaux compact */}
+
+          {/* Chemin de niveaux compact : ○1 ○2 ○3 ○4 ○5 ○6 ○B */}
           {renderCompactLevelPath()}
         </LinearGradient>
       </View>
 
-      <ScrollView 
+      <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.introSection}>
           <Text style={styles.introText}>
-            Nos niveaux structurés s'adaptent à votre progression. 
-            Commencez par le niveau qui correspond le mieux à vos capacités linguistiques.
+            Nos niveaux structurés s'adaptent à votre progression. Commencez par
+            le niveau qui correspond le mieux à vos capacités linguistiques.
           </Text>
         </View>
 
@@ -151,13 +153,15 @@ const LevelSelection = () => {
               {/* En-tête personnalisé pour la carte */}
               <View style={localStyles.cardHeader}>
                 <View style={localStyles.titleBadgeContainer}>
-                  <View 
+                  <View
                     style={[
-                      localStyles.badge, 
-                      { backgroundColor: `${level.color}15` }
+                      localStyles.badge,
+                      { backgroundColor: `${level.color}15` },
                     ]}
                   >
-                    <Text style={[localStyles.badgeText, { color: level.color }]}>
+                    <Text
+                      style={[localStyles.badgeText, { color: level.color }]}
+                    >
                       {level.name}
                     </Text>
                   </View>
@@ -169,7 +173,7 @@ const LevelSelection = () => {
               </View>
 
               <Text style={styles.levelDescription}>{level.description}</Text>
-              
+
               {level.progress > 0 && (
                 <ProgressBar
                   progress={level.progress}
@@ -181,7 +185,7 @@ const LevelSelection = () => {
                   style={styles.progressBar}
                 />
               )}
-              
+
               <Button
                 title="Commencer l'apprentissage"
                 variant="filled"
@@ -202,7 +206,7 @@ const LevelSelection = () => {
 // Styles locaux
 const localStyles = StyleSheet.create({
   headerContainer: {
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   headerGradient: {
     borderBottomLeftRadius: 16,
@@ -211,76 +215,83 @@ const localStyles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
-  
+
   // Styles pour le chemin de niveaux compact
   compactPathContainer: {
     paddingVertical: 12,
-    alignItems: 'center',
+    alignItems: "center",
   },
   levelPath: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
   smallLevelDot: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 2,
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 3,
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
   smallLevelDotText: {
-    color: 'white',
-    fontSize: 10,
-    fontWeight: 'bold',
+    color: "white",
+    fontSize: 12,
+    fontWeight: "bold",
   },
   smallLevelLine: {
     height: 2,
-    width: 15,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    width: 16,
+    backgroundColor: "rgba(255, 255, 255, 0.5)",
   },
-  
+
   // Styles pour la mise en page des cartes
   cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 10,
   },
   titleBadgeContainer: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flex: 1,
     marginRight: 10,
   },
   badge: {
-    alignSelf: 'flex-start',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
-    marginBottom: 5,
+    alignSelf: "flex-start",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
+    marginBottom: 6,
+    minWidth: 32,
+    alignItems: "center",
   },
   badgeText: {
-    fontSize: 12,
-    fontWeight: '600',
+    fontSize: 14,
+    fontWeight: "700",
   },
   levelTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#1F2937',
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#1F2937",
   },
   iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: "center",
+    justifyContent: "center",
   },
   iconText: {
-    fontSize: 24,
-  }
+    fontSize: 28,
+  },
 });
 
 export default LevelSelection;
