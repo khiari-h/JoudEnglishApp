@@ -7,7 +7,7 @@ import styles from "./style";
 
 /**
  * Composant pour afficher le parcours d'apprentissage avec
- * mise en évidence du niveau actif sélectionné par l'utilisateur
+ * progression globale de l'application (moyenne de tous les niveaux)
  * Mise à jour pour le système 1-6+B
  */
 const LearningPathCompact = ({
@@ -16,17 +16,18 @@ const LearningPathCompact = ({
   onSelectLevel,
   onViewProgress,
   primaryColor = "#3B82F6",
+  globalProgress = 0, // Nouvelle prop pour progression globale
 }) => {
   // Mapper les anciens niveaux CECRL vers les nouveaux niveaux numériques
   const mapOldLevelToNew = (oldLevel) => {
     const mapping = {
-      A1: "1",
-      A2: "2",
-      B1: "3",
-      B2: "4",
-      C1: "5",
-      C2: "6",
-      bonus: "bonus",
+      'A1': '1',
+      'A2': '2', 
+      'B1': '3',
+      'B2': '4',
+      'C1': '5',
+      'C2': '6',
+      'bonus': 'bonus'
     };
     return mapping[oldLevel] || oldLevel;
   };
@@ -34,13 +35,13 @@ const LearningPathCompact = ({
   // Mapper les nouveaux niveaux vers les anciens pour compatibilité
   const mapNewLevelToOld = (newLevel) => {
     const mapping = {
-      1: "A1",
-      2: "A2",
-      3: "B1",
-      4: "B2",
-      5: "C1",
-      6: "C2",
-      bonus: "bonus",
+      '1': 'A1',
+      '2': 'A2',
+      '3': 'B1', 
+      '4': 'B2',
+      '5': 'C1',
+      '6': 'C2',
+      'bonus': 'bonus'
     };
     return mapping[newLevel] || newLevel;
   };
@@ -52,9 +53,7 @@ const LearningPathCompact = ({
   const defaultLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
     id: levelKey,
     color: LANGUAGE_LEVELS[levelKey].color,
-    isActive:
-      levelKey === displayCurrentLevel ||
-      mapNewLevelToOld(levelKey) === currentLevel,
+    isActive: levelKey === displayCurrentLevel || mapNewLevelToOld(levelKey) === currentLevel
   }));
 
   const displayLevels = levels.length > 0 ? levels : defaultLevels;
@@ -75,14 +74,14 @@ const LearningPathCompact = ({
 
   // Affichage du niveau (1,2,3,4,5,6 ou B pour bonus)
   const getLevelDisplay = (levelId) => {
-    return levelId === "bonus" ? "B" : levelId;
+    return levelId === 'bonus' ? 'B' : levelId;
   };
 
   // Titre du niveau actuel (utiliser le niveau mappé)
   const getCurrentLevelTitle = () => {
     const levelInfo = LANGUAGE_LEVELS[displayCurrentLevel];
     if (levelInfo) {
-      return levelInfo.name === "B" ? "B" : levelInfo.name;
+      return levelInfo.name === 'B' ? 'B' : levelInfo.name;
     }
     return displayCurrentLevel;
   };
@@ -99,13 +98,22 @@ const LearningPathCompact = ({
       </View>
 
       <Card style={styles.card}>
-        {/* Information sur le niveau actif */}
-        <View style={styles.activeInfoContainer}>
-          <Text style={styles.activeInfoLabel}>Niveau actif :</Text>
-          <View
-            style={[styles.activeInfoBadge, { backgroundColor: primaryColor }]}
-          >
-            <Text style={styles.activeInfoText}>{getCurrentLevelTitle()}</Text>
+        {/* Information sur la progression globale et niveau actif */}
+        <View style={styles.progressInfoContainer}>
+          <View style={styles.globalProgressContainer}>
+            <Text style={styles.globalProgressLabel}>Progression globale :</Text>
+            <Text style={[styles.globalProgressValue, { color: primaryColor }]}>
+              {globalProgress}%
+            </Text>
+          </View>
+          
+          <View style={styles.activeInfoContainer}>
+            <Text style={styles.activeInfoLabel}>Niveau actif :</Text>
+            <View
+              style={[styles.activeInfoBadge, { backgroundColor: primaryColor }]}
+            >
+              <Text style={styles.activeInfoText}>{getCurrentLevelTitle()}</Text>
+            </View>
           </View>
         </View>
 
@@ -125,14 +133,14 @@ const LearningPathCompact = ({
               circleStyle = [
                 styles.levelCircle,
                 { backgroundColor: level.color || primaryColor },
-                styles.activeLevelCircle,
+                styles.activeLevelCircle
               ];
               textStyle = styles.activeLevelText;
             } else if (isCompletedLevel) {
               circleStyle = [
                 styles.levelCircle,
                 { backgroundColor: `${level.color || primaryColor}40` },
-                styles.completedLevelCircle,
+                styles.completedLevelCircle
               ];
               textStyle = styles.completedLevelText;
             } else {
@@ -162,11 +170,9 @@ const LearningPathCompact = ({
             style={[
               styles.progressLineFill,
               {
-                width: `${Math.max(
-                  0,
-                  (currentLevelIndex / Math.max(1, displayLevels.length - 1)) *
-                    100
-                )}%`,
+                width: `${
+                  Math.max(0, (currentLevelIndex / Math.max(1, (displayLevels.length - 1))) * 100)
+                }%`,
                 backgroundColor: primaryColor,
               },
             ]}

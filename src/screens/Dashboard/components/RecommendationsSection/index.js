@@ -1,103 +1,139 @@
 import React from "react";
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { View, Text, TouchableOpacity } from "react-native";
+import Card from "../../../../components/ui/Card";
+import Button from "../../../../components/ui/Button";
+import useSmartRecommendations from "../../../../hooks/useSmartRecommendations";
 import styles from "./style";
 
 /**
- * Composant pour afficher les exercices recommandés
+ * Composant pour afficher UNE recommandation intelligente basée sur :
+ * - Le temps passé sur chaque type d'exercice  
+ * - Un parcours pédagogique optimal
+ * - Des messages bienveillants style "coach"
  */
 const RecommendationsSection = ({
-  recommendations = [],
+  lastActivity,
+  exerciseTimeStats = {},
+  currentLevel,
   onSelectExercise,
   accentColor = "#3B82F6",
-  title = "Recommandé pour vous"
 }) => {
-  // Si aucune recommandation n'est disponible
-  if (!recommendations || recommendations.length === 0) {
+
+  // Utiliser le hook de recommandations intelligentes
+  const { smartRecommendation } = useSmartRecommendations(
+    lastActivity, 
+    exerciseTimeStats, 
+    currentLevel
+  );
+
+  // Si aucune recommandation, ne rien afficher
+  if (!smartRecommendation) {
     return null;
   }
 
-  // Déterminer l'icône en fonction du type d'exercice
-  const getExerciseIcon = (type) => {
-    switch (type) {
-      case "vocabulary":
-        return "book-outline";
-      case "grammar":
-        return "pencil-outline";
-      case "reading":
-        return "reader-outline";
-      case "chatbot":
-        return "chatbubble-outline";
-      case "error_correction":
-        return "checkmark-circle-outline";
-      case "phrases":
-        return "text-outline";
-      case "spelling":
-        return "create-outline";
-      default:
-        return "document-text-outline";
-    }
-  };
+  const { recommendationData } = smartRecommendation;
 
-  // Rendu d'un exercice recommandé
-  const renderRecommendation = ({ item }) => {
-    const icon = item.icon || getExerciseIcon(item.type);
-    
+  // Message pour exercice de démarrage
+  if (smartRecommendation.id === 'start_vocabulary') {
     return (
-      <TouchableOpacity
-        style={styles.recommendationCard}
-        onPress={() => onSelectExercise && onSelectExercise(item)}
-        activeOpacity={0.7}
-      >
-        <View 
-          style={[
-            styles.iconContainer, 
-            { backgroundColor: `${accentColor}15` }
-          ]}
-        >
-          {typeof icon === 'string' && icon.includes('outline') ? (
-            <Ionicons name={icon} size={24} color={accentColor} />
-          ) : (
-            <Text style={styles.emoji}>{icon}</Text>
-          )}
-        </View>
+      <View style={styles.container}>
+        <Text style={styles.sectionTitle}>Pour toi</Text>
         
-        <View style={styles.contentContainer}>
-          <Text style={styles.exerciseTitle} numberOfLines={1}>
-            {item.title}
-          </Text>
-          
-          <View style={styles.tagContainer}>
-            <View style={styles.typeTag}>
-              <Text style={styles.typeText}>{item.type}</Text>
+        <Card style={styles.recommendationCard}>
+          <View style={styles.startRecommendationContent}>
+            <View style={styles.messageHeader}>
+              <Text style={styles.messageIcon}>{recommendationData.icon}</Text>
+              <Text style={styles.messageTitle}>{recommendationData.title}</Text>
             </View>
             
-            <View style={[styles.levelTag, { backgroundColor: `${accentColor}20` }]}>
-              <Text style={[styles.levelText, { color: accentColor }]}>
-                {item.level}
+            <Text style={styles.messageText}>
+              {recommendationData.message}
+            </Text>
+            
+            <Button
+              title={recommendationData.button}
+              variant="filled" 
+              color={accentColor}
+              fullWidth
+              rightIcon="arrow-forward-outline"
+              onPress={() => onSelectExercise && onSelectExercise(smartRecommendation)}
+              style={styles.recommendationButton}
+            />
+          </View>
+        </Card>
+      </View>
+    );
+  }
+
+  // Message de recommandation après temps d'activité
+  return (
+    <View style={styles.container}>
+      <Text style={styles.sectionTitle}>Suggestion pour toi</Text>
+      
+      <Card style={styles.recommendationCard}>
+        <View style={styles.recommendationContent}>
+          {/* Header avec icône et titre coach */}
+          <View style={styles.messageHeader}>
+            <Text style={styles.messageIcon}>{recommendationData.icon}</Text>
+            <Text style={styles.messageTitle}>{recommendationData.title}</Text>
+          </View>
+          
+          {/* Message bienveillant */}
+          <Text style={styles.messageText}>
+            {recommendationData.message}
+          </Text>
+          
+          {/* Info sur le temps passé */}
+          <View style={styles.timeInfo}>
+            <View style={styles.timeProgressContainer}>
+              <View style={styles.timeDot} />
+              <Text style={styles.timeText}>
+                {recommendationData.timeSpent} min sur {recommendationData.fromExercise}
               </Text>
             </View>
           </View>
+          
+          {/* Aperçu de l'exercice recommandé */}
+          <TouchableOpacity
+            style={styles.exercisePreview}
+            onPress={() => onSelectExercise && onSelectExercise(smartRecommendation)}
+            activeOpacity={0.7}
+          >
+            <View style={styles.exercisePreviewContent}>
+              <View 
+                style={[
+                  styles.exerciseIconContainer, 
+                  { backgroundColor: `${smartRecommendation.color}15` }
+                ]}
+              >
+                <Text style={styles.exerciseIcon}>{smartRecommendation.icon}</Text>
+              </View>
+              
+              <View style={styles.exerciseInfo}>
+                <Text style={styles.exerciseTitle}>{smartRecommendation.title}</Text>
+                <Text style={styles.exerciseDescription} numberOfLines={2}>
+                  {smartRecommendation.description}
+                </Text>
+              </View>
+              
+              <View style={[styles.levelBadge, { backgroundColor: accentColor }]}>
+                <Text style={styles.levelBadgeText}>{currentLevel}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          
+          {/* Bouton d'action principal */}
+          <Button
+            title={recommendationData.button}
+            variant="filled"
+            color={smartRecommendation.color}
+            fullWidth
+            rightIcon="arrow-forward-outline"
+            onPress={() => onSelectExercise && onSelectExercise(smartRecommendation)}
+            style={styles.recommendationButton}
+          />
         </View>
-        
-        <View style={styles.arrowContainer}>
-          <Ionicons name="chevron-forward" size={20} color={accentColor} />
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.sectionTitle}>{title}</Text>
-      
-      <FlatList
-        data={recommendations}
-        renderItem={renderRecommendation}
-        keyExtractor={(item) => item.id.toString()}
-        scrollEnabled={false}
-        contentContainerStyle={styles.listContainer}
-      />
+      </Card>
     </View>
   );
 };

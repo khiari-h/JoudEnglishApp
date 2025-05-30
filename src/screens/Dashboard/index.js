@@ -32,13 +32,22 @@ const Dashboard = ({ route }) => {
   const themeContext = useContext(ThemeContext);
   const progressContext = useContext(ProgressContext);
 
-  // Valeurs par défaut sécurisées
+  // Valeurs par défaut sécurisées pour le thème
   const colors = themeContext?.colors || {
     background: "#F9FAFB",
     primary: "#3B82F6", // Nouvelle couleur principale (bleu)
   };
-  const progress = progressContext?.progress || {};
-  const updateStreak = progressContext?.updateStreak || (() => {});
+
+  // Récupération des données et fonctions de progression avec valeurs par défaut
+  const { 
+    progress = {}, 
+    calculateGlobalProgress = () => 0,
+    calculateLevelProgress = () => 0,
+    updateStreak = () => {}
+  } = progressContext || {};
+
+  // Calculer la progression globale maintenant que la fonction est disponible
+  const globalProgress = calculateGlobalProgress();
 
   // Utilisation du hook useLastActivity
   const {
@@ -54,7 +63,7 @@ const Dashboard = ({ route }) => {
   const [showLevelProgress, setShowLevelProgress] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState("home");
-  const [currentLevel, setCurrentLevel] = useState("A1"); // Niveau par défaut
+  const [currentLevel, setCurrentLevel] = useState("1"); // Niveau par défaut mis à jour
 
   // Paramètres du profil
   const { name = "Utilisateur", streak = 0 } = route?.params || {};
@@ -67,14 +76,17 @@ const Dashboard = ({ route }) => {
         const savedLevel = await AsyncStorage.getItem(ACTIVE_LEVEL_KEY);
 
         if (savedLevel) {
-          setCurrentLevel(savedLevel);
+          // Mapper les anciens niveaux vers les nouveaux si nécessaire
+          const mappedLevel = mapOldToNewLevel(savedLevel);
+          setCurrentLevel(mappedLevel);
         } else {
           // Si pas de niveau sauvegardé, utiliser celui du contexte de progression
           const contextLevel = progress?.currentLevel;
           if (contextLevel && LANGUAGE_LEVELS[contextLevel]) {
-            setCurrentLevel(contextLevel);
+            const mappedLevel = mapOldToNewLevel(contextLevel);
+            setCurrentLevel(mappedLevel);
           }
-          // Sinon, on garde le niveau par défaut (A1)
+          // Sinon, on garde le niveau par défaut (1)
         }
       } catch (error) {
         console.error("Erreur lors du chargement du niveau actif:", error);
@@ -83,6 +95,20 @@ const Dashboard = ({ route }) => {
 
     loadActiveLevel();
   }, [progress?.currentLevel]);
+
+  // Fonction pour mapper les anciens niveaux vers les nouveaux
+  const mapOldToNewLevel = (level) => {
+    const mapping = {
+      'A1': '1',
+      'A2': '2',
+      'B1': '3', 
+      'B2': '4',
+      'C1': '5',
+      'C2': '6',
+      'bonus': 'bonus'
+    };
+    return mapping[level] || level;
+  };
 
   // Mettre à jour le streak
   useEffect(() => {
@@ -124,7 +150,7 @@ const Dashboard = ({ route }) => {
 
   // Calculer la couleur du niveau actuel
   const levelColor = LANGUAGE_LEVELS[currentLevel]?.color || colors.primary;
-  const levelProgress = progress?.levels?.[currentLevel]?.completed || 0;
+  const levelProgress = calculateLevelProgress(currentLevel);
 
   // Données de l'objectif quotidien
   const dailyGoal = React.useMemo(() => {
@@ -230,6 +256,24 @@ const Dashboard = ({ route }) => {
       case "chatbot":
         pathname = "/(tabs)/chatbotExercise";
         break;
+      case "phrases":
+        pathname = "/(tabs)/phrasesExercise";
+        break;
+      case "reading":
+        pathname = "/(tabs)/readingExercise";
+        break;
+      case "errorCorrection":
+        pathname = "/(tabs)/errorCorrectionExercise";
+        break;
+      case "spelling":
+        pathname = "/(tabs)/spellingExercise";
+        break;
+      case "wordGames":
+        pathname = "/(tabs)/wordGamesExercise";
+        break;
+      case "assessment":
+        pathname = "/(tabs)/levelAssessment";
+        break;
       // Autres types d'exercices...
       default:
         pathname = "/(tabs)/levelSelection";
@@ -241,7 +285,7 @@ const Dashboard = ({ route }) => {
     });
   };
 
-  // Niveaux CECRL pour le parcours d'apprentissage
+  // Niveaux pour le parcours d'apprentissage (nouveau système 1-6+B)
   const allLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
     id: levelKey,
     color: LANGUAGE_LEVELS[levelKey].color,
@@ -265,15 +309,15 @@ const Dashboard = ({ route }) => {
     router.push("/(tabs)/profile");
   };
 
-  // Récupérer tous les niveaux avec leur progression
+  // Récupérer tous les niveaux avec leur progression pour la modale
   const getAllLearningLevels = () =>
     Object.keys(LANGUAGE_LEVELS).map((levelKey) => {
       const levelInfo = LANGUAGE_LEVELS[levelKey];
       return {
-        id: levelKey.toLowerCase(),
-        title: `${levelKey} - ${levelInfo.title}`,
+        id: levelKey,
+        title: levelInfo.title,
         color: levelInfo.color,
-        progress: progress?.levels?.[levelKey]?.completed || 0,
+        progress: calculateLevelProgress(levelKey),
         isActive: levelKey === currentLevel, // Indique le niveau actif
       };
     });
@@ -321,14 +365,17 @@ const Dashboard = ({ route }) => {
         />
 
         {/* Exercices recommandés */}
-        <RecommendationsSection
-          recommendations={recommendations}
-          onSelectExercise={handleRecommendedExercisePress}
-          accentColor={levelColor}
-        />
+<RecommendationsSection
+  lastActivity={lastActivity}
+  exerciseTimeStats={exerciseTimeStats} // ← À ajouter
+  currentLevel={currentLevel}
+  onSelectExercise={handleRecommendedExercisePress}
+  accentColor={levelColor}
+/>
 
-        {/* Parcours d'apprentissage compact */}
+        {/* Parcours d'apprentissage compact avec progression globale */}
         <LearningPathCompact
+          globalProgress={globalProgress}
           levels={allLevels}
           currentLevel={currentLevel}
           onSelectLevel={handleLevelSelect}

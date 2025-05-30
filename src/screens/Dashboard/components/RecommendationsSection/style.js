@@ -1,76 +1,136 @@
+// src/screens/Dashboard/components/RecommendationsSection/style.js
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
-    marginBottom: 16,
+    marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "600",
-    color: "#1F2937",
+    fontWeight: '700',
+    color: '#1F2937',
     marginBottom: 12,
     paddingHorizontal: 4,
   },
-  listContainer: {
-    gap: 8,
-  },
   recommendationCard: {
-    flexDirection: "row",
-    backgroundColor: "white",
-    borderRadius: 12,
-    overflow: "hidden",
-    alignItems: "center",
-    paddingVertical: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
+    borderRadius: 16,
+    overflow: 'hidden',
   },
-  iconContainer: {
-    width: 48,
-    height: 48,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 8,
-    marginHorizontal: 12,
+  
+  // Contenu pour recommandation de démarrage
+  startRecommendationContent: {
+    padding: 20,
   },
-  emoji: {
+  
+  // Contenu pour recommandation normale
+  recommendationContent: {
+    padding: 20,
+  },
+  
+  // Header avec icône et titre
+  messageHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  messageIcon: {
     fontSize: 24,
-  },
-  contentContainer: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  exerciseTitle: {
-    fontSize: 15,
-    fontWeight: "600",
-    color: "#1F2937",
-    marginBottom: 4,
-  },
-  tagContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  typeTag: {
     marginRight: 8,
   },
-  typeText: {
-    fontSize: 12,
-    color: "#6B7280",
+  messageTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#1F2937',
+    flex: 1,
   },
-  levelTag: {
+  
+  // Message principal
+  messageText: {
+    fontSize: 15,
+    color: '#4B5563',
+    lineHeight: 22,
+    marginBottom: 16,
+  },
+  
+  // Info sur le temps passé
+  timeInfo: {
+    marginBottom: 16,
+  },
+  timeProgressContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F3F4F6',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+  },
+  timeDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#10B981',
+    marginRight: 8,
+  },
+  timeText: {
+    fontSize: 13,
+    color: '#6B7280',
+    fontWeight: '500',
+  },
+  
+  // Aperçu de l'exercice recommandé
+  exercisePreview: {
+    backgroundColor: '#FAFBFC',
+    borderRadius: 12,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+  },
+  exercisePreviewContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
+  },
+  exerciseIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+  exerciseIcon: {
+    fontSize: 24,
+  },
+  exerciseInfo: {
+    flex: 1,
+    marginRight: 12,
+  },
+  exerciseTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#1F2937',
+    marginBottom: 2,
+  },
+  exerciseDescription: {
+    fontSize: 13,
+    color: '#6B7280',
+    lineHeight: 18,
+  },
+  levelBadge: {
     paddingHorizontal: 8,
-    paddingVertical: 2,
-    borderRadius: 4,
+    paddingVertical: 4,
+    borderRadius: 8,
+    minWidth: 32,
+    alignItems: 'center',
   },
-  levelText: {
+  levelBadgeText: {
     fontSize: 12,
-    fontWeight: "500",
+    fontWeight: '700',
+    color: 'white',
   },
-  arrowContainer: {
-    paddingHorizontal: 16,
+  
+  // Bouton d'action
+  recommendationButton: {
+    marginTop: 4,
   },
 });
-
-export default styles;
