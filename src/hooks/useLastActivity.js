@@ -17,7 +17,8 @@ const useLastActivity = () => {
       key: 'vocabulary',
       title: 'Vocabulaire',
       icon: 'book-outline',
-      positionKey: 'vocabulary_position_'
+      positionKey: 'vocabulary_position_',
+      hasModes: true // NOUVEAU : vocabulary a des modes
     },
     { 
       key: 'phrases',
@@ -73,19 +74,22 @@ const useLastActivity = () => {
   const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
 
   // Charger les métadonnées de progression pour un exercice
-  const loadProgressMetadata = async (exerciseType, level, position) => {
+  const loadProgressMetadata = async (exerciseType, level, position, mode = null) => {
     let progress = 0;
     let metadata = {};
 
     try {
       if (exerciseType.key === 'vocabulary') {
-        const completedKey = `vocabulary_completed_${level}`;
+        // NOUVEAU : gérer les modes vocabulary
+        const progressKey = mode ? `${level}_${mode}` : level;
+        const completedKey = `vocabulary_completed_${progressKey}`;
         const completedJson = await AsyncStorage.getItem(completedKey);
         
         if (completedJson) {
           const completed = JSON.parse(completedJson);
           metadata.category = position.categoryIndex || 0;
           metadata.word = position.wordIndex || 0;
+          metadata.mode = mode; // Ajouter le mode aux métadonnées
           
           // Calculer la progression approximative
           const totalCategories = Object.keys(completed).length;
@@ -149,9 +153,47 @@ const useLastActivity = () => {
     return { progress, metadata };
   };
 
+  // NOUVEAU : Charger les activités vocabulary avec modes
+  const loadVocabularyActivities = async (level) => {
+    const activities = [];
+    const modes = ['fast', 'classic'];
+
+    for (const mode of modes) {
+      const positionKey = `vocabulary_position_${level}_${mode}`;
+      const positionJson = await AsyncStorage.getItem(positionKey);
+      
+      if (positionJson) {
+        const position = JSON.parse(positionJson);
+        const exerciseType = exerciseTypes.find(e => e.key === 'vocabulary');
+        
+        // Charger les métadonnées avec le mode
+        const { progress, metadata } = await loadProgressMetadata(exerciseType, level, position, mode);
+
+        const activity = {
+          type: 'vocabulary',
+          level,
+          mode, // IMPORTANT : inclure le mode
+          position,
+          title: `${exerciseType.title} ${mode === 'fast' ? 'Fast' : 'Classique'}`,
+          icon: exerciseType.icon,
+          progress,
+          metadata,
+          timestamp: position.timestamp || Date.now(),
+          timeElapsed: "Récemment"
+        };
+
+        activities.push(activity);
+      }
+    }
+
+    return activities;
+  };
+
   // Charger les dernières activités
   const loadLastActivities = useCallback(async () => {
     setIsLoading(true);
+    console.log("🔄 Chargement des dernières activités...");
+    
     try {
       const activitiesByLevel = {};
 
@@ -161,35 +203,34 @@ const useLastActivity = () => {
 
         // Pour chaque type d'exercice
         for (const exerciseType of exerciseTypes) {
-          // Construire la clé de position
-          const positionKey = exerciseType.positionKey + level;
           
-          // Récupérer la position sauvegardée
-          const positionJson = await AsyncStorage.getItem(positionKey);
-          
-          if (positionJson) {
-            // Convertir en objet
-            const position = JSON.parse(positionJson);
+          if (exerciseType.hasModes && exerciseType.key === 'vocabulary') {
+            // NOUVEAU : Traitement spécial pour vocabulary avec modes
+            const vocabularyActivities = await loadVocabularyActivities(level);
+            activitiesByLevel[level].push(...vocabularyActivities);
+          } else {
+            // Traitement normal pour les autres exercices
+            const positionKey = exerciseType.positionKey + level;
+            const positionJson = await AsyncStorage.getItem(positionKey);
             
-            // Charger les métadonnées de progression
-            const { progress, metadata } = await loadProgressMetadata(exerciseType, level, position);
+            if (positionJson) {
+              const position = JSON.parse(positionJson);
+              const { progress, metadata } = await loadProgressMetadata(exerciseType, level, position);
 
-            // Créer un objet d'activité avec des informations riches
-            const activity = {
-              type: exerciseType.key,
-              level,
-              position,
-              title: exerciseType.title,
-              icon: exerciseType.icon,
-              progress,
-              metadata,
-              // Ajouter un timestamp si disponible, sinon utiliser maintenant
-              timestamp: position.timestamp || Date.now(),
-              // Formater l'heure relative (sera mis à jour lors de l'affichage)
-              timeElapsed: "Récemment"
-            };
+              const activity = {
+                type: exerciseType.key,
+                level,
+                position,
+                title: exerciseType.title,
+                icon: exerciseType.icon,
+                progress,
+                metadata,
+                timestamp: position.timestamp || Date.now(),
+                timeElapsed: "Récemment"
+              };
 
-            activitiesByLevel[level].push(activity);
+              activitiesByLevel[level].push(activity);
+            }
           }
         }
 
@@ -197,10 +238,11 @@ const useLastActivity = () => {
         activitiesByLevel[level].sort((a, b) => b.timestamp - a.timestamp);
       }
 
+      console.log("✅ Activités chargées:", activitiesByLevel);
       setLastActivities(activitiesByLevel);
       setIsLoading(false);
     } catch (error) {
-      console.error('Erreur lors du chargement des dernières activités:', error);
+      console.error('❌ Erreur lors du chargement des dernières activités:', error);
       setIsLoading(false);
     }
   }, []);
@@ -264,7 +306,12 @@ const useLastActivity = () => {
       }
     });
     
-    if (!mostRecentActivity) return null;
+    if (!mostRecentActivity) {
+      console.log("❌ Aucune activité récente trouvée");
+      return null;
+    }
+    
+    console.log("✅ Dernière activité trouvée:", mostRecentActivity);
     
     // Mettre à jour le temps écoulé
     return {
@@ -278,7 +325,8 @@ const useLastActivity = () => {
     const { type, level, metadata } = activity;
     
     if (type === 'vocabulary' && metadata.category !== undefined) {
-      return `Catégorie ${metadata.category + 1}, Mot ${metadata.word + 1} • Niveau ${level}`;
+      const modeText = metadata.mode ? ` (${metadata.mode === 'fast' ? 'Fast' : 'Classique'})` : '';
+      return `Catégorie ${metadata.category + 1}, Mot ${metadata.word + 1}${modeText} • Niveau ${level}`;
     } else if (type === 'grammar' && metadata.rule !== undefined) {
       return `Règle ${metadata.rule + 1}, Exercice ${metadata.exercise + 1} • Niveau ${level}`;
     } else if (type === 'reading' && metadata.exercise !== undefined) {
