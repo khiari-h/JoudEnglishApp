@@ -2,60 +2,95 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Card from "../../../../components/ui/Card";
 import Button from "../../../../components/ui/Button";
+import { LANGUAGE_LEVELS } from "../../../../utils/constants";
 import styles from "./style";
 
 /**
  * Composant pour afficher le parcours d'apprentissage avec
  * mise en évidence du niveau actif sélectionné par l'utilisateur
+ * Mise à jour pour le système 1-6+B
  */
 const LearningPathCompact = ({
   levels = [],
-  currentLevel = "A1",
+  currentLevel = "1",
   onSelectLevel,
   onViewProgress,
   primaryColor = "#3B82F6",
 }) => {
-  // Si aucun niveau n'est fourni, utiliser les niveaux CECRL par défaut
-  const defaultLevels = [
-    { id: "A1", color: "#22C55E", isActive: currentLevel === "A1" },
-    { id: "A2", color: "#10B981", isActive: currentLevel === "A2" },
-    { id: "B1", color: "#3B82F6", isActive: currentLevel === "B1" },
-    { id: "B2", color: "#8B5CF6", isActive: currentLevel === "B2" },
-    { id: "C1", color: "#EC4899", isActive: currentLevel === "C1" },
-    { id: "C2", color: "#F43F5E", isActive: currentLevel === "C2" },
-  ];
+  // Mapper les anciens niveaux CECRL vers les nouveaux niveaux numériques
+  const mapOldLevelToNew = (oldLevel) => {
+    const mapping = {
+      A1: "1",
+      A2: "2",
+      B1: "3",
+      B2: "4",
+      C1: "5",
+      C2: "6",
+      bonus: "bonus",
+    };
+    return mapping[oldLevel] || oldLevel;
+  };
+
+  // Mapper les nouveaux niveaux vers les anciens pour compatibilité
+  const mapNewLevelToOld = (newLevel) => {
+    const mapping = {
+      1: "A1",
+      2: "A2",
+      3: "B1",
+      4: "B2",
+      5: "C1",
+      6: "C2",
+      bonus: "bonus",
+    };
+    return mapping[newLevel] || newLevel;
+  };
+
+  // Utiliser le niveau mappé pour l'affichage
+  const displayCurrentLevel = mapOldLevelToNew(currentLevel);
+
+  // Générer les niveaux depuis les constantes avec le bon mapping
+  const defaultLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
+    id: levelKey,
+    color: LANGUAGE_LEVELS[levelKey].color,
+    isActive:
+      levelKey === displayCurrentLevel ||
+      mapNewLevelToOld(levelKey) === currentLevel,
+  }));
 
   const displayLevels = levels.length > 0 ? levels : defaultLevels;
 
-  // Trouver l'index du niveau actuel
+  // Trouver l'index du niveau actuel (utiliser le niveau mappé)
   const currentLevelIndex = displayLevels.findIndex(
-    (level) => level.id === currentLevel || level.isActive
+    (level) => level.id === displayCurrentLevel || level.isActive
   );
 
-  // Texte explicatif selon le niveau actuel
+  // Texte explicatif selon le niveau actuel (utiliser le niveau mappé)
   const getLevelDescription = () => {
-    switch (currentLevel) {
-      case "A1":
-        return "Niveau débutant - Communication de base";
-      case "A2":
-        return "Niveau élémentaire - Expressions courantes";
-      case "B1":
-        return "Niveau intermédiaire - Communication claire";
-      case "B2":
-        return "Niveau intermédiaire avancé - Sujets complexes";
-      case "C1":
-        return "Niveau avancé - Expression fluide";
-      case "C2":
-        return "Niveau maîtrise - Proche du locuteur natif";
-      default:
-        return "Choisissez votre niveau d'apprentissage";
+    const levelInfo = LANGUAGE_LEVELS[displayCurrentLevel];
+    if (levelInfo) {
+      return levelInfo.description;
     }
+    return "Choisissez votre niveau d'apprentissage";
+  };
+
+  // Affichage du niveau (1,2,3,4,5,6 ou B pour bonus)
+  const getLevelDisplay = (levelId) => {
+    return levelId === "bonus" ? "B" : levelId;
+  };
+
+  // Titre du niveau actuel (utiliser le niveau mappé)
+  const getCurrentLevelTitle = () => {
+    const levelInfo = LANGUAGE_LEVELS[displayCurrentLevel];
+    if (levelInfo) {
+      return levelInfo.name === "B" ? "B" : levelInfo.name;
+    }
+    return displayCurrentLevel;
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.sectionTitle}>Parcours d'apprentissage</Text>
+        <Text style={styles.sectionTitle}>Avancement général</Text>
         <TouchableOpacity onPress={onViewProgress}>
           <Text style={[styles.actionText, { color: primaryColor }]}>
             Voir détails
@@ -70,7 +105,7 @@ const LearningPathCompact = ({
           <View
             style={[styles.activeInfoBadge, { backgroundColor: primaryColor }]}
           >
-            <Text style={styles.activeInfoText}>{currentLevel}</Text>
+            <Text style={styles.activeInfoText}>{getCurrentLevelTitle()}</Text>
           </View>
         </View>
 
@@ -80,7 +115,7 @@ const LearningPathCompact = ({
         <View style={styles.levelsContainer}>
           {displayLevels.map((level, index) => {
             // Déterminer l'état du niveau (actif, complété, ou futur)
-            const isActive = level.id === currentLevel || level.isActive;
+            const isActive = level.id === displayCurrentLevel || level.isActive;
             const isCompletedLevel = index < currentLevelIndex;
 
             let circleStyle;
@@ -90,12 +125,14 @@ const LearningPathCompact = ({
               circleStyle = [
                 styles.levelCircle,
                 { backgroundColor: level.color || primaryColor },
+                styles.activeLevelCircle,
               ];
               textStyle = styles.activeLevelText;
             } else if (isCompletedLevel) {
               circleStyle = [
                 styles.levelCircle,
                 { backgroundColor: `${level.color || primaryColor}40` },
+                styles.completedLevelCircle,
               ];
               textStyle = styles.completedLevelText;
             } else {
@@ -111,7 +148,7 @@ const LearningPathCompact = ({
                 activeOpacity={0.7}
               >
                 <View style={circleStyle}>
-                  <Text style={textStyle}>{level.id}</Text>
+                  <Text style={textStyle}>{getLevelDisplay(level.id)}</Text>
                 </View>
               </TouchableOpacity>
             );
@@ -125,9 +162,11 @@ const LearningPathCompact = ({
             style={[
               styles.progressLineFill,
               {
-                width: `${
-                  (currentLevelIndex / (displayLevels.length - 1)) * 100
-                }%`,
+                width: `${Math.max(
+                  0,
+                  (currentLevelIndex / Math.max(1, displayLevels.length - 1)) *
+                    100
+                )}%`,
                 backgroundColor: primaryColor,
               },
             ]}
@@ -136,12 +175,12 @@ const LearningPathCompact = ({
 
         {/* Bouton pour explorer le niveau actuel */}
         <Button
-          title={`Explorer le niveau ${currentLevel}`}
+          title={`Explorer le niveau ${getCurrentLevelTitle()}`}
           variant="filled"
           color={primaryColor}
           fullWidth
           rightIcon="arrow-forward-outline"
-          onPress={() => onSelectLevel && onSelectLevel(currentLevel)}
+          onPress={() => onSelectLevel && onSelectLevel(displayCurrentLevel)}
           style={styles.exploreButton}
         />
       </Card>

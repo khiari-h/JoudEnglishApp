@@ -1,99 +1,108 @@
-import { StyleSheet } from 'react-native';
+// src/screens/Dashboard/components/LearningPathCompact/style.js
+import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
-    marginBottom: 16,
+    marginBottom: 20,
   },
   headerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 12,
     paddingHorizontal: 4,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "600",
+    fontWeight: "700",
     color: "#1F2937",
   },
   actionText: {
     fontSize: 14,
-    fontWeight: "500",
+    fontWeight: "600",
   },
   card: {
-    borderRadius: 12,
-    backgroundColor: "white",
-    padding: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
+    padding: 20,
   },
   activeInfoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 12,
   },
   activeInfoLabel: {
-    fontSize: 14,
-    fontWeight: "500",
+    fontSize: 16,
     color: "#6B7280",
     marginRight: 8,
   },
   activeInfoBadge: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
   },
   activeInfoText: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: "700",
     color: "white",
   },
   levelDescription: {
     fontSize: 14,
-    color: "#4B5563",
-    marginBottom: 16,
+    color: "#6B7280",
+    marginBottom: 20,
     lineHeight: 20,
   },
   levelsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 4,
+    marginBottom: 20,
+    paddingHorizontal: 4,
   },
   levelButton: {
     alignItems: "center",
   },
   levelCircle: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 4,
+  },
+  activeLevelCircle: {
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+  },
+  completedLevelCircle: {
+    borderWidth: 2,
+    borderColor: "#E5E7EB",
   },
   futureLevelCircle: {
     backgroundColor: "#F3F4F6",
+    borderWidth: 2,
+    borderColor: "#E5E7EB",
   },
   activeLevelText: {
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: 16,
+    fontWeight: "700",
     color: "white",
   },
   completedLevelText: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "white",
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#6B7280",
   },
   futureLevelText: {
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: 16,
+    fontWeight: "500",
     color: "#9CA3AF",
   },
   progressLineContainer: {
-    height: 4,
-    marginVertical: 16,
     position: "relative",
+    height: 4,
+    marginBottom: 20,
+    marginHorizontal: 20,
   },
   progressLineTrack: {
     position: "absolute",
@@ -101,19 +110,14 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 4,
-    backgroundColor: "#F3F4F6",
+    backgroundColor: "#E5E7EB",
     borderRadius: 2,
   },
   progressLineFill: {
-    position: "absolute",
-    top: 0,
-    left: 0,
     height: 4,
     borderRadius: 2,
   },
   exploreButton: {
-    marginTop: 8,
+    marginTop: 4,
   },
 });
-
-export default styles;
