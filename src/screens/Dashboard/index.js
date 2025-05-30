@@ -364,11 +364,13 @@ const Dashboard = ({ route }) => {
         />
 
         {/* Objectif quotidien */}
-        <DailyGoalSection
-          completed={dailyGoal.completed}
-          total={dailyGoal.total}
-          accentColor={levelColor}
-        />
+<DailyGoalSection
+  currentLevel={currentLevel}
+  progress={progress}
+  accentColor={levelColor}
+  onStartExercise={(type, level) => { /* Navigation vers exercice */ }}
+  onStartEvaluation={(level) => { /* Navigation vers évaluation */ }}
+/>
 
         {/* Recommandations intelligentes */}
         <RecommendationsSection

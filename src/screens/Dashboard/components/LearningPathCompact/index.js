@@ -163,22 +163,6 @@ const LearningPathCompact = ({
           })}
         </View>
 
-        {/* Ligne de progression */}
-        <View style={styles.progressLineContainer}>
-          <View style={styles.progressLineTrack} />
-          <View
-            style={[
-              styles.progressLineFill,
-              {
-                width: `${
-                  Math.max(0, (currentLevelIndex / Math.max(1, (displayLevels.length - 1))) * 100)
-                }%`,
-                backgroundColor: primaryColor,
-              },
-            ]}
-          />
-        </View>
-
         {/* Bouton pour explorer le niveau actuel */}
         <Button
           title={`Explorer le niveau ${getCurrentLevelTitle()}`}
