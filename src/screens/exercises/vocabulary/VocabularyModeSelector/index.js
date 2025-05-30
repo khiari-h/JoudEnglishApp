@@ -1,4 +1,3 @@
-// src/screens/exercises/vocabulary/VocabularyModeSelector/index.js
 import React from "react";
 import {
   View,
@@ -21,6 +20,8 @@ import styles from "./style";
  */
 const VocabularyModeSelector = ({ route, onModeSelect }) => {
   const { level } = route.params;
+  const navigation = useNavigation(); // Hook au niveau racine
+
   const levelColor = getLevelColor(level);
   const levelDisplayName = getLevelDisplayName(level);
 
@@ -32,13 +33,10 @@ const VocabularyModeSelector = ({ route, onModeSelect }) => {
   }, [level]);
 
   const handleModeSelect = (mode) => {
-    // Appeler la callback du parent au lieu de naviguer
     onModeSelect(mode);
   };
 
   const handleBack = () => {
-    // Ici on peut vraiment faire un goBack car on revient à l'écran précédent
-    const navigation = useNavigation();
     navigation.goBack();
   };
 

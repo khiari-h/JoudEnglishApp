@@ -6,7 +6,7 @@ import styles from "./style";
 
 /**
  * Composant pour continuer la dernière activité de l'utilisateur
- * Reçoit les données du parent (Dashboard) qui utilise le hook useLastActivity
+ * Textes cohérents avec le nom du composant
  */
 const ContinueLearningSection = ({
   lastActivity,
@@ -27,14 +27,14 @@ const ContinueLearningSection = ({
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="small" color={accentColor} />
           <Text style={styles.loadingText}>
-            Chargement de votre dernière activité...
+            Chargement de votre activité récente...
           </Text>
         </View>
       </Card>
     );
   }
 
-  // Si aucune activité n'est disponible, afficher un état vide
+  // Si aucune activité n'est disponible, juste informer
   if (!lastActivity) {
     return (
       <Card
@@ -44,20 +44,20 @@ const ContinueLearningSection = ({
         ]}
       >
         <View style={styles.content}>
-          <Text style={styles.emptyStateTitle}>
-            Commencer votre apprentissage
-          </Text>
-          <Text style={styles.emptyStateDescription}>
-            Choisissez un niveau et un exercice pour débuter votre parcours
-            linguistique
-          </Text>
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: accentColor }]}
-            onPress={() => onPress && onPress("levelSelection")}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.buttonText}>Explorer les niveaux</Text>
-          </TouchableOpacity>
+          <View style={styles.header}>
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>Activité récente</Text>
+              <Text style={styles.emptyStateDescription}>
+                Aucune activité récente trouvée
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.emptyStateContainer}>
+            <Text style={styles.emptyStateHint}>
+              💡 Vos prochains exercices apparaîtront ici
+            </Text>
+          </View>
         </View>
       </Card>
     );
@@ -78,11 +78,15 @@ const ContinueLearningSection = ({
       <View style={styles.content}>
         <View style={styles.header}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>{lastActivity.title}</Text>
+            <Text style={styles.title}>Continuer l'apprentissage</Text>
 
             {/* Sous-titre avec détails sur la position */}
             <View style={styles.subtitleRow}>
-              <Text style={styles.subtitle}>{subtitle}</Text>
+              <Text style={styles.subtitle}>{lastActivity.title}</Text>
+            </View>
+
+            <View style={styles.detailsRow}>
+              <Text style={styles.details}>{subtitle}</Text>
             </View>
 
             {/* Temps écoulé */}

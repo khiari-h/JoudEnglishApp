@@ -6,9 +6,7 @@ import { LANGUAGE_LEVELS } from "../../../../utils/constants";
 import styles from "./style";
 
 /**
- * Composant pour afficher le parcours d'apprentissage avec
- * progression globale de l'application (moyenne de tous les niveaux)
- * Mise à jour pour le système 1-6+B
+ * Parcours d'apprentissage - Système 1-6+Bonus
  */
 const LearningPathCompact = ({
   levels = [],
@@ -16,75 +14,32 @@ const LearningPathCompact = ({
   onSelectLevel,
   onViewProgress,
   primaryColor = "#3B82F6",
-  globalProgress = 0, // Nouvelle prop pour progression globale
+  globalProgress = 0,
 }) => {
-  // Mapper les anciens niveaux CECRL vers les nouveaux niveaux numériques
-  const mapOldLevelToNew = (oldLevel) => {
-    const mapping = {
-      'A1': '1',
-      'A2': '2', 
-      'B1': '3',
-      'B2': '4',
-      'C1': '5',
-      'C2': '6',
-      'bonus': 'bonus'
-    };
-    return mapping[oldLevel] || oldLevel;
-  };
-
-  // Mapper les nouveaux niveaux vers les anciens pour compatibilité
-  const mapNewLevelToOld = (newLevel) => {
-    const mapping = {
-      '1': 'A1',
-      '2': 'A2',
-      '3': 'B1', 
-      '4': 'B2',
-      '5': 'C1',
-      '6': 'C2',
-      'bonus': 'bonus'
-    };
-    return mapping[newLevel] || newLevel;
-  };
-
-  // Utiliser le niveau mappé pour l'affichage
-  const displayCurrentLevel = mapOldLevelToNew(currentLevel);
-
-  // Générer les niveaux depuis les constantes avec le bon mapping
+  // Générer les niveaux par défaut si pas fournis
   const defaultLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
     id: levelKey,
     color: LANGUAGE_LEVELS[levelKey].color,
-    isActive: levelKey === displayCurrentLevel || mapNewLevelToOld(levelKey) === currentLevel
+    isActive: levelKey === currentLevel,
   }));
 
   const displayLevels = levels.length > 0 ? levels : defaultLevels;
-
-  // Trouver l'index du niveau actuel (utiliser le niveau mappé)
   const currentLevelIndex = displayLevels.findIndex(
-    (level) => level.id === displayCurrentLevel || level.isActive
+    (level) => level.id === currentLevel || level.isActive
   );
 
-  // Texte explicatif selon le niveau actuel (utiliser le niveau mappé)
-  const getLevelDescription = () => {
-    const levelInfo = LANGUAGE_LEVELS[displayCurrentLevel];
-    if (levelInfo) {
-      return levelInfo.description;
-    }
-    return "Choisissez votre niveau d'apprentissage";
+  // Info du niveau actuel
+  const getCurrentLevelInfo = () => {
+    return LANGUAGE_LEVELS[currentLevel] || LANGUAGE_LEVELS["1"];
   };
 
   // Affichage du niveau (1,2,3,4,5,6 ou B pour bonus)
   const getLevelDisplay = (levelId) => {
-    return levelId === 'bonus' ? 'B' : levelId;
+    return levelId === "bonus" ? "B" : levelId;
   };
 
-  // Titre du niveau actuel (utiliser le niveau mappé)
-  const getCurrentLevelTitle = () => {
-    const levelInfo = LANGUAGE_LEVELS[displayCurrentLevel];
-    if (levelInfo) {
-      return levelInfo.name === 'B' ? 'B' : levelInfo.name;
-    }
-    return displayCurrentLevel;
-  };
+  const currentLevelInfo = getCurrentLevelInfo();
+  const currentLevelDisplay = getLevelDisplay(currentLevel);
 
   return (
     <View style={styles.container}>
@@ -98,33 +53,39 @@ const LearningPathCompact = ({
       </View>
 
       <Card style={styles.card}>
-        {/* Information sur la progression globale et niveau actif */}
+        {/* Progression globale et niveau actif */}
         <View style={styles.progressInfoContainer}>
           <View style={styles.globalProgressContainer}>
-            <Text style={styles.globalProgressLabel}>Progression globale :</Text>
+            <Text style={styles.globalProgressLabel}>
+              Progression globale :
+            </Text>
             <Text style={[styles.globalProgressValue, { color: primaryColor }]}>
               {globalProgress}%
             </Text>
           </View>
-          
+
           <View style={styles.activeInfoContainer}>
             <Text style={styles.activeInfoLabel}>Niveau actif :</Text>
             <View
-              style={[styles.activeInfoBadge, { backgroundColor: primaryColor }]}
+              style={[
+                styles.activeInfoBadge,
+                { backgroundColor: primaryColor },
+              ]}
             >
-              <Text style={styles.activeInfoText}>{getCurrentLevelTitle()}</Text>
+              <Text style={styles.activeInfoText}>{currentLevelDisplay}</Text>
             </View>
           </View>
         </View>
 
-        <Text style={styles.levelDescription}>{getLevelDescription()}</Text>
+        <Text style={styles.levelDescription}>
+          {currentLevelInfo.description || "Continuez votre apprentissage"}
+        </Text>
 
-        {/* Niveaux de langue */}
+        {/* Niveaux */}
         <View style={styles.levelsContainer}>
           {displayLevels.map((level, index) => {
-            // Déterminer l'état du niveau (actif, complété, ou futur)
-            const isActive = level.id === displayCurrentLevel || level.isActive;
-            const isCompletedLevel = index < currentLevelIndex;
+            const isActive = level.id === currentLevel || level.isActive;
+            const isCompleted = index < currentLevelIndex;
 
             let circleStyle;
             let textStyle;
@@ -133,14 +94,14 @@ const LearningPathCompact = ({
               circleStyle = [
                 styles.levelCircle,
                 { backgroundColor: level.color || primaryColor },
-                styles.activeLevelCircle
+                styles.activeLevelCircle,
               ];
               textStyle = styles.activeLevelText;
-            } else if (isCompletedLevel) {
+            } else if (isCompleted) {
               circleStyle = [
                 styles.levelCircle,
                 { backgroundColor: `${level.color || primaryColor}40` },
-                styles.completedLevelCircle
+                styles.completedLevelCircle,
               ];
               textStyle = styles.completedLevelText;
             } else {
@@ -163,14 +124,14 @@ const LearningPathCompact = ({
           })}
         </View>
 
-        {/* Bouton pour explorer le niveau actuel */}
+        {/* Bouton explorer */}
         <Button
-          title={`Explorer le niveau ${getCurrentLevelTitle()}`}
+          title={`Explorer le niveau ${currentLevelDisplay}`}
           variant="filled"
           color={primaryColor}
           fullWidth
           rightIcon="arrow-forward-outline"
-          onPress={() => onSelectLevel && onSelectLevel(displayCurrentLevel)}
+          onPress={() => onSelectLevel && onSelectLevel(currentLevel)}
           style={styles.exploreButton}
         />
       </Card>

@@ -5,63 +5,58 @@ import { useRouter } from "expo-router";
 import styles from "./style";
 
 /**
- * Composant de navigation en bas de l'écran avec redirection
- * adaptative pour le chatbot en fonction du niveau actuel
+ * Navigation en bas - Système 1-6+Bonus
  */
 const BottomNavigation = ({
   activeTab = "home",
   onTabChange,
   accentColor = "#3B82F6",
-  currentLevel = "A1" // Niveau actuel de l'utilisateur
+  currentLevel = "1",
 }) => {
   const router = useRouter();
 
-  // Définition des onglets
   const tabs = [
     {
       id: "home",
       icon: "home-outline",
       activeIcon: "home",
       label: "Accueil",
-      route: "/(tabs)/"
+      route: "/(tabs)/",
     },
     {
       id: "exercises",
       icon: "book-outline",
       activeIcon: "book",
       label: "Exercices",
-      route: "/(tabs)/levelSelection"
+      route: "/(tabs)/levelSelection",
     },
     {
       id: "chat",
       icon: "chatbubble-outline",
       activeIcon: "chatbubble",
       label: "Conversation",
-      route: "/(tabs)/chatbotExercise" // La route de base, sans paramètres
+      route: "/(tabs)/chatbotExercise",
     },
     {
       id: "profile",
       icon: "person-outline",
       activeIcon: "person",
       label: "Profil",
-      route: "/(tabs)/profile"
-    }
+      route: "/(tabs)/profile",
+    },
   ];
 
-  // Gérer le changement d'onglet avec redirection adaptée au niveau pour le chatbot
   const handleTabPress = (tab) => {
     if (onTabChange) {
       onTabChange(tab.id);
     }
-    
-    // Cas spécial pour l'onglet conversation - redirection adaptée au niveau
-    if (tab.id === 'chat') {
+
+    if (tab.id === "chat") {
       router.push({
         pathname: "/(tabs)/chatbotExercise",
-        params: { level: currentLevel }  // Utilise le niveau actuel de l'utilisateur
+        params: { level: currentLevel },
       });
     } else {
-      // Navigation normale pour les autres onglets
       router.push(tab.route);
     }
   };
@@ -71,7 +66,7 @@ const BottomNavigation = ({
       {tabs.map((tab) => {
         const isActive = tab.id === activeTab;
         const iconName = isActive ? tab.activeIcon : tab.icon;
-        
+
         return (
           <TouchableOpacity
             key={tab.id}
@@ -87,7 +82,7 @@ const BottomNavigation = ({
             <Text
               style={[
                 styles.tabLabel,
-                { color: isActive ? accentColor : "#6B7280" }
+                { color: isActive ? accentColor : "#6B7280" },
               ]}
             >
               {tab.label}

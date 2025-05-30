@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { View, ScrollView, StatusBar, RefreshControl } from "react-native";
 import { router } from "expo-router";
 import { useFocusEffect } from "@react-navigation/native";
@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { ProgressContext } from "../../contexts/ProgressContext";
 
-// Composants Dashboard révisés
+// Composants Dashboard
 import CompactHeader from "./components/CompactHeader";
 import ContinueLearningSection from "./components/ContinueLearningSection";
 import DailyGoalSection from "./components/DailyGoalSection";
@@ -17,39 +17,39 @@ import LearningPathCompact from "./components/LearningPathCompact";
 import BottomNavigation from "./components/BottomNavigation";
 import LevelProgressModal from "./components/LevelProgressModal";
 
-// Hooks personnalisés
+// Hooks
 import useLastActivity from "../../hooks/useLastActivity";
 
-// Constantes et utilitaires
-import { LANGUAGE_LEVELS, EXERCISE_TYPES } from "../../utils/constants";
+// Constantes
+import { LANGUAGE_LEVELS } from "../../utils/constants";
 import styles from "./style";
 
-// Clé pour stocker le niveau actif choisi par l'utilisateur
 const ACTIVE_LEVEL_KEY = "user_active_level";
 
 const Dashboard = ({ route }) => {
-  // Récupération sécurisée des contextes
+  // ========== CONTEXTES ==========
   const themeContext = useContext(ThemeContext);
   const progressContext = useContext(ProgressContext);
 
-  // Valeurs par défaut sécurisées pour le thème
   const colors = themeContext?.colors || {
     background: "#F9FAFB",
     primary: "#3B82F6",
   };
 
-  // Récupération des données et fonctions de progression avec valeurs par défaut
-  const { 
-    progress = {}, 
+  const {
+    progress = {},
     calculateGlobalProgress = () => 0,
     calculateLevelProgress = () => 0,
-    updateStreak = () => {}
+    updateStreak = () => {},
   } = progressContext || {};
 
-  // Calculer la progression globale
-  const globalProgress = calculateGlobalProgress();
+  // ========== ÉTATS ==========
+  const [currentLevel, setCurrentLevel] = useState("1");
+  const [showLevelProgress, setShowLevelProgress] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState("home");
 
-  // Utilisation du hook useLastActivity
+  // ========== HOOKS ==========
   const {
     getLastActivity,
     isLoading: isActivityLoading,
@@ -57,282 +57,163 @@ const Dashboard = ({ route }) => {
     formatProgressSubtitle,
   } = useLastActivity();
 
-  const lastActivity = getLastActivity();
-
-  // États
-  const [showLevelProgress, setShowLevelProgress] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
-  const [activeTab, setActiveTab] = useState("home");
-  const [currentLevel, setCurrentLevel] = useState("1"); // Niveau par défaut nouveau système
-
-  // Paramètres du profil
+  // ========== DONNÉES ==========
   const { name = "Utilisateur", streak = 0 } = route?.params || {};
+  const lastActivity = getLastActivity();
+  const globalProgress = calculateGlobalProgress();
+  const levelProgress = calculateLevelProgress(currentLevel);
+  const levelColor = LANGUAGE_LEVELS[currentLevel]?.color || colors.primary;
 
-  // Fonction pour mapper les anciens niveaux vers les nouveaux
+  // Stats temps exercices (simulation pour maintenant)
+  const exerciseTimeStats = {
+    vocabulary: 20,
+    phrases: 12,
+    grammar: 25,
+    reading: 8,
+    conversations: 18,
+    spelling: 0,
+    errorCorrection: 5,
+    wordGames: 0,
+    assessment: 0,
+  };
+
+  // ========== NIVEAU MANAGEMENT ==========
   const mapOldToNewLevel = (level) => {
     const mapping = {
-      'A1': '1',
-      'A2': '2',
-      'B1': '3', 
-      'B2': '4',
-      'C1': '5',
-      'C2': '6',
-      'bonus': 'bonus'
+      A1: "1",
+      A2: "2",
+      B1: "3",
+      B2: "4",
+      C1: "5",
+      C2: "6",
+      bonus: "bonus",
     };
     return mapping[level] || level;
   };
 
-  // Récupérer le niveau actif de l'utilisateur au chargement
+  const handleChangeActiveLevel = useCallback(async (newLevel) => {
+    if (!LANGUAGE_LEVELS[newLevel]) return;
+
+    setCurrentLevel(newLevel);
+    try {
+      await AsyncStorage.setItem(ACTIVE_LEVEL_KEY, newLevel);
+    } catch (error) {
+      console.error("Erreur sauvegarde niveau:", error);
+    }
+  }, []);
+
+  // ========== NAVIGATION ==========
+  const navigateToExercise = useCallback((activity) => {
+    if (!activity) return;
+
+    try {
+      if (activity === "levelSelection") {
+        router.push("/(tabs)/levelSelection");
+        return;
+      }
+
+      const { type, level } = activity;
+      const routes = {
+        vocabulary: "/(tabs)/vocabularyExercise",
+        grammar: "/(tabs)/grammarExercise",
+        reading: "/(tabs)/readingExercise",
+        conversations: "/(tabs)/conversationsExercise",
+        phrases: "/(tabs)/phrasesExercise",
+        spelling: "/(tabs)/spellingExercise",
+        wordGames: "/(tabs)/wordGamesExercise",
+        assessment: "/(tabs)/levelAssessment",
+      };
+
+      const pathname = routes[type] || "/(tabs)/levelSelection";
+      router.push({ pathname, params: { level } });
+    } catch (error) {
+      console.error("Erreur navigation:", error);
+    }
+  }, []);
+
+  // ========== GESTIONNAIRES ==========
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await loadLastActivities();
+    setRefreshing(false);
+  }, [loadLastActivities]);
+
+  const handleLevelSelect = useCallback(
+    (level) => {
+      handleChangeActiveLevel(level);
+      router.push({
+        pathname: "/(tabs)/exerciseSelection",
+        params: { level },
+      });
+    },
+    [handleChangeActiveLevel]
+  );
+
+  const handleProfilePress = useCallback(() => {
+    router.push("/(tabs)/profile");
+  }, []);
+
+  // ========== EFFETS ==========
   useEffect(() => {
     const loadActiveLevel = async () => {
       try {
-        // Essayer de charger le niveau actif depuis le stockage
         const savedLevel = await AsyncStorage.getItem(ACTIVE_LEVEL_KEY);
-
-        if (savedLevel) {
-          // Mapper les anciens niveaux vers les nouveaux si nécessaire
-          const mappedLevel = mapOldToNewLevel(savedLevel);
-          setCurrentLevel(mappedLevel);
-        } else {
-          // Si pas de niveau sauvegardé, utiliser celui du contexte de progression
-          const contextLevel = progress?.currentLevel;
-          if (contextLevel && LANGUAGE_LEVELS[contextLevel]) {
-            const mappedLevel = mapOldToNewLevel(contextLevel);
-            setCurrentLevel(mappedLevel);
-          }
-          // Sinon, on garde le niveau par défaut (1)
+        if (savedLevel && LANGUAGE_LEVELS[savedLevel]) {
+          setCurrentLevel(mapOldToNewLevel(savedLevel));
+        } else if (progress?.currentLevel) {
+          setCurrentLevel(mapOldToNewLevel(progress.currentLevel));
         }
       } catch (error) {
-        console.error("Erreur lors du chargement du niveau actif:", error);
+        console.error("Erreur chargement niveau:", error);
       }
     };
-
     loadActiveLevel();
-  }, [progress?.currentLevel]);
+  }, []);
 
-  // Mettre à jour le streak
   useEffect(() => {
     updateStreak();
-  }, [updateStreak]);
+  }, []);
 
-  // Recharger les données au montage initial
   useEffect(() => {
     loadLastActivities();
   }, []);
 
-  // Recharger les données à chaque fois que l'écran revient au focus
   useFocusEffect(
-    React.useCallback(() => {
-      console.log("Dashboard en focus, rechargement des activités");
+    useCallback(() => {
       loadLastActivities();
-      return () => {};
-    }, [loadLastActivities])
+    }, [])
   );
 
-  // Fonction de rafraîchissement
-  const onRefresh = async () => {
-    setRefreshing(true);
-    await loadLastActivities();
-    setRefreshing(false);
-  };
+  // ========== DEBUG ==========
+  console.log("DEBUG Dashboard - lastActivity:", lastActivity);
+  console.log("DEBUG Dashboard - isActivityLoading:", isActivityLoading);
+  console.log("DEBUG Dashboard - currentLevel:", currentLevel);
 
-  // Fonction pour changer le niveau actif
-  const handleChangeActiveLevel = async (newLevel) => {
-    if (LANGUAGE_LEVELS[newLevel]) {
-      setCurrentLevel(newLevel);
-      try {
-        await AsyncStorage.setItem(ACTIVE_LEVEL_KEY, newLevel);
-      } catch (error) {
-        console.error("Erreur lors de la sauvegarde du niveau actif:", error);
-      }
-    }
-  };
-
-  // Calculer la couleur du niveau actuel
-  const levelColor = LANGUAGE_LEVELS[currentLevel]?.color || colors.primary;
-  const levelProgress = calculateLevelProgress(currentLevel);
-
-  // Données de l'objectif quotidien
-  const dailyGoal = React.useMemo(() => {
-    // Ici, vous pourriez implémenter une logique qui récupère
-    // dynamiquement les objectifs quotidiens depuis AsyncStorage
-    // ou un autre système de persistance
-    return {
-      completed: 2,
-      total: 5,
-    };
-  }, []);
-
-  // Stats de temps par exercice pour les recommandations intelligentes
-  const exerciseTimeStats = React.useMemo(() => {
-    // Pour l'instant, on simule avec des valeurs de test
-    // Plus tard, ça viendra du tracking réel du temps passé sur chaque exercice
-    return {
-      vocabulary: 20, // 20 minutes passées sur vocabulary → recommandera phrases
-      phrases: 12,    // 12 minutes sur phrases → pas encore assez pour recommander
-      grammar: 25,    // 25 minutes sur grammar → recommandera reading
-      reading: 8,     // 8 minutes sur reading → pas assez
-      conversations: 18, // 18 minutes → recommandera assessment
-      spelling: 0,    // Jamais fait
-      errorCorrection: 5, // Peu fait
-      wordGames: 0,   // Jamais fait
-      assessment: 0,  // Jamais fait
-    };
-  }, []);
-
-  // Naviguer vers un exercice spécifique (dernière activité)
-  const handleLastActivityPress = (activity) => {
-    if (activity === "levelSelection") {
-      router.push("/(tabs)/levelSelection");
-      return;
-    }
-
-    if (!activity) return;
-
-    // Naviguer vers l'exercice spécifique avec ses paramètres
-    const { type, level, position } = activity;
-    let pathname;
-    let params = { level };
-
-    switch (type) {
-      case "vocabulary":
-        pathname = "/(tabs)/vocabularyExercise";
-        params.initialCategoryIndex = position?.categoryIndex;
-        params.initialWordIndex = position?.wordIndex;
-        break;
-      case "grammar":
-        pathname = "/(tabs)/grammarExercise";
-        params.initialRuleIndex = position?.ruleIndex;
-        params.initialExerciseIndex = position?.exerciseIndex;
-        break;
-      case "reading":
-        pathname = "/(tabs)/readingExercise";
-        params.initialExerciseIndex = position?.exerciseIndex;
-        params.initialQuestionIndex = position?.questionIndex;
-        break;
-      case "errorCorrection":
-        pathname = "/(tabs)/errorCorrectionExercise";
-        params.initialCategoryIndex = position?.categoryIndex;
-        params.initialExerciseIndex = position?.exerciseIndex;
-        break;
-      case "conversations":
-        pathname = "/(tabs)/conversationsExercise";
-        params.initialScenarioIndex = position?.scenarioIndex;
-        params.initialStepIndex = position?.stepIndex;
-        break;
-      case "phrases":
-        pathname = "/(tabs)/phrasesExercise";
-        params.initialCategoryIndex = position?.categoryIndex;
-        params.initialPhraseIndex = position?.phraseIndex;
-        break;
-      case "spelling":
-        pathname = "/(tabs)/spellingExercise";
-        params.exerciseType = position?.exerciseType || "correction";
-        params.initialExerciseIndex = position?.exerciseIndex;
-        break;
-      case "wordGames":
-        pathname = "/(tabs)/wordGamesExercise";
-        params.initialGameIndex = position?.gameIndex;
-        break;
-      case "assessment":
-        pathname = "/(tabs)/levelAssessment";
-        params.initialSectionIndex = position?.sectionIndex;
-        break;
-      default:
-        pathname = "/(tabs)/levelSelection";
-        break;
-    }
-
-    router.push({
-      pathname,
-      params,
-    });
-  };
-
-  // Naviguer vers un exercice recommandé (recommandations intelligentes)
-  const handleRecommendedExercisePress = (exercise) => {
-    let pathname;
-
-    switch (exercise.type) {
-      case "vocabulary":
-        pathname = "/(tabs)/vocabularyExercise";
-        break;
-      case "grammar":
-        pathname = "/(tabs)/grammarExercise";
-        break;
-      case "conversations":
-        pathname = "/(tabs)/conversationsExercise";
-        break;
-      case "phrases":
-        pathname = "/(tabs)/phrasesExercise";
-        break;
-      case "reading":
-        pathname = "/(tabs)/readingExercise";
-        break;
-      case "errorCorrection":
-        pathname = "/(tabs)/errorCorrectionExercise";
-        break;
-      case "spelling":
-        pathname = "/(tabs)/spellingExercise";
-        break;
-      case "wordGames":
-        pathname = "/(tabs)/wordGamesExercise";
-        break;
-      case "assessment":
-        pathname = "/(tabs)/levelAssessment";
-        break;
-      default:
-        pathname = "/(tabs)/levelSelection";
-    }
-
-    router.push({
-      pathname,
-      params: { level: exercise.level },
-    });
-  };
-
-  // Niveaux pour le parcours d'apprentissage (nouveau système 1-6+B)
+  // ========== DONNÉES NIVEAUX ==========
   const allLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
     id: levelKey,
     color: LANGUAGE_LEVELS[levelKey].color,
     isActive: levelKey === currentLevel,
   }));
 
-  // Gérer la sélection d'un niveau
-  const handleLevelSelect = (level) => {
-    // Mettre à jour le niveau actif
-    handleChangeActiveLevel(level);
-
-    // Naviguer vers les exercices de ce niveau
-    router.push({
-      pathname: "/(tabs)/exerciseSelection",
-      params: { level },
-    });
-  };
-
-  // Gérer la navigation vers le profil
-  const handleProfilePress = () => {
-    router.push("/(tabs)/profile");
-  };
-
-  // Récupérer tous les niveaux avec leur progression pour la modale
-  const getAllLearningLevels = () =>
-    Object.keys(LANGUAGE_LEVELS).map((levelKey) => {
-      const levelInfo = LANGUAGE_LEVELS[levelKey];
-      return {
+  const getAllLearningLevels = useCallback(
+    () =>
+      Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
         id: levelKey,
-        title: levelInfo.title,
-        color: levelInfo.color,
+        title: LANGUAGE_LEVELS[levelKey].title,
+        color: LANGUAGE_LEVELS[levelKey].color,
         progress: calculateLevelProgress(levelKey),
         isActive: levelKey === currentLevel,
-      };
-    });
+      })),
+    [calculateLevelProgress, currentLevel]
+  );
 
+  // ========== RENDU ==========
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StatusBar barStyle="light-content" />
 
-      {/* Header compact avec niveau actuel */}
+      {/* Header */}
       <CompactHeader
         level={currentLevel}
         progress={levelProgress}
@@ -341,7 +222,7 @@ const Dashboard = ({ route }) => {
         onProfilePress={handleProfilePress}
       />
 
-      {/* Contenu principal scrollable */}
+      {/* Contenu scrollable */}
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
@@ -354,34 +235,39 @@ const Dashboard = ({ route }) => {
           />
         }
       >
-        {/* Section pour continuer l'apprentissage */}
+        {/* 1. Continue Learning */}
         <ContinueLearningSection
           lastActivity={lastActivity}
-          onPress={handleLastActivityPress}
+          onPress={navigateToExercise}
           accentColor={levelColor}
           formatProgressSubtitle={formatProgressSubtitle}
           isLoading={isActivityLoading}
         />
 
-        {/* Objectif quotidien */}
-<DailyGoalSection
-  currentLevel={currentLevel}
-  progress={progress}
-  accentColor={levelColor}
-  onStartExercise={(type, level) => { /* Navigation vers exercice */ }}
-  onStartEvaluation={(level) => { /* Navigation vers évaluation */ }}
-/>
+        {/* 2. Défi du jour */}
+        <DailyGoalSection
+          currentLevel={currentLevel}
+          progress={progress}
+          accentColor={levelColor}
+          onStartExercise={(type, level) => navigateToExercise({ type, level })}
+          onStartEvaluation={(level) =>
+            router.push({
+              pathname: "/(tabs)/levelAssessment",
+              params: { level },
+            })
+          }
+        />
 
-        {/* Recommandations intelligentes */}
+        {/* 3. Suggestions/Recommandations */}
         <RecommendationsSection
           lastActivity={lastActivity}
           exerciseTimeStats={exerciseTimeStats}
           currentLevel={currentLevel}
-          onSelectExercise={handleRecommendedExercisePress}
+          onSelectExercise={navigateToExercise}
           accentColor={levelColor}
         />
 
-        {/* Parcours d'apprentissage compact avec progression globale */}
+        {/* 4. Parcours d'apprentissage */}
         <LearningPathCompact
           globalProgress={globalProgress}
           levels={allLevels}
@@ -391,11 +277,10 @@ const Dashboard = ({ route }) => {
           primaryColor={levelColor}
         />
 
-        {/* Espace en bas pour éviter que le contenu soit caché par la navigation */}
         <View style={styles.bottomSpacer} />
       </ScrollView>
 
-      {/* Navigation en bas avec le niveau actuel */}
+      {/* Navigation bottom */}
       <BottomNavigation
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -403,17 +288,14 @@ const Dashboard = ({ route }) => {
         currentLevel={currentLevel}
       />
 
-      {/* Modal de progression des niveaux */}
+      {/* Modal progression niveaux */}
       <LevelProgressModal
         visible={showLevelProgress}
         levels={getAllLearningLevels()}
         onClose={() => setShowLevelProgress(false)}
         onSelectLevel={(level) => {
-          // Mettre à jour le niveau actif et fermer la modal
           handleChangeActiveLevel(level);
           setShowLevelProgress(false);
-
-          // Optionnel : naviguer vers les exercices de ce niveau
           router.push({
             pathname: "/(tabs)/exerciseSelection",
             params: { level },
