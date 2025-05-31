@@ -1,19 +1,24 @@
-// 7. VocabularyHeader (mise à jour pour retirer la barre de progression)
-// src/components/screens/exercises/vocabulary/VocabularyHeader/index.js
+// 7. VocabularyHeader - MIS À JOUR (avec support mode)
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-const VocabularyHeader = ({ level, onBackPress, levelColor }) => {
+const VocabularyHeader = ({ level, mode, onBackPress }) => {
+  // Titre adapté selon le mode
+  const getTitle = () => {
+    if (mode === 'fast') return 'Vocabulaire Fast';
+    if (mode === 'classic') return 'Vocabulaire Classique';
+    return 'Vocabulaire';
+  };
+
   return (
     <ExerciseHeader
-      title="Vocabulary"
+      title={getTitle()}
       level={level}
+      exerciseType="vocabulary" // ✅ NOUVEAU
       onClose={onBackPress}
-      levelColor={levelColor}
       backIcon="arrow-back"
     />
   );
 };
 
 export default VocabularyHeader;
-

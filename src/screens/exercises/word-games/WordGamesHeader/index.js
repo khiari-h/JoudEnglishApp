@@ -1,15 +1,14 @@
-// 8. WordGamesHeader (déjà uniformisé sans barre de progression)
-// src/screens/exercises/wordGames/WordGamesHeader/index.js
+// 9. WordGamesHeader - MIS À JOUR
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-const WordGamesHeader = ({ level, levelColor, onBackPress }) => {
+const WordGamesHeader = ({ level, onBackPress }) => {
   return (
     <ExerciseHeader
-      title="Word Games"
+      title="Jeux de mots"
       level={level}
+      exerciseType="wordGames" // ✅ NOUVEAU
       onClose={onBackPress}
-      levelColor={levelColor}
       backIcon="arrow-back"
     />
   );

@@ -1,19 +1,18 @@
-// 3. GrammarHeader (déjà uniformisé sans barre de progression)
-// src/components/screens/exercises/grammar/GrammarHeader/index.js
+
+// 3. GrammarHeader - MIS À JOUR
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-const GrammarHeader = ({ level, onBackPress, levelColor }) => {
+const GrammarHeader = ({ level, onBackPress }) => {
   return (
     <ExerciseHeader
-      title="Grammar"
+      title="Grammaire"
       level={level}
+      exerciseType="grammar" // ✅ NOUVEAU
       onClose={onBackPress}
-      levelColor={levelColor}
       backIcon="arrow-back"
     />
   );
 };
 
 export default GrammarHeader;
-

@@ -1,19 +1,17 @@
-// 5. ReadingHeader (déjà uniformisé sans barre de progression)
-// src/components/screens/exercises/reading/ReadingHeader/index.js
+// 6. ReadingHeader - MIS À JOUR
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-const ReadingHeader = ({ level, onBackPress, levelColor }) => {
+const ReadingHeader = ({ level, onBackPress }) => {
   return (
     <ExerciseHeader
-      title="Reading"
+      title="Lecture"
       level={level}
+      exerciseType="reading" // ✅ NOUVEAU
       onClose={onBackPress}
-      levelColor={levelColor}
       backIcon="arrow-back"
     />
   );
 };
 
 export default ReadingHeader;
-

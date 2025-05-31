@@ -1,18 +1,17 @@
-// 6. SpellingHeader (déjà uniformisé sans barre de progression)
-// src/screens/exercises/spelling/SpellingHeader/index.js
+// 8. SpellingHeader - MIS À JOUR
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-const SpellingHeader = ({ level, exerciseType, levelColor, onBackPress }) => {
+const SpellingHeader = ({ level, exerciseType, onBackPress }) => {
   // Formatage du titre en fonction du type d'exercice
   const getExerciseTitle = (type) => {
     switch (type) {
       case "correction":
-        return "Spelling Correction";
+        return "Orthographe - Correction";
       case "rules":
-        return "Spelling Rules";
+        return "Orthographe - Règles";
       default:
-        return "Spelling Practice";
+        return "Orthographe";
     }
   };
 
@@ -20,12 +19,11 @@ const SpellingHeader = ({ level, exerciseType, levelColor, onBackPress }) => {
     <ExerciseHeader
       title={getExerciseTitle(exerciseType)}
       level={level}
+      exerciseType="spelling" // ✅ NOUVEAU
       onClose={onBackPress}
-      levelColor={levelColor}
       backIcon="arrow-back"
     />
   );
 };
 
 export default SpellingHeader;
-

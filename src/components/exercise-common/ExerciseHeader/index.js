@@ -1,22 +1,35 @@
-// src/components/exercise-common/ExerciseHeader/index.js
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../../utils/constants";
 import styles from "./style";
 
 /**
- * En-tête standardisé pour tous les écrans d'exercices
- * Version simplifiée sans barre de progression
+ * En-tête redesigné pour tous les écrans d'exercices
+ * Option B : couleur par exercice + gradient subtil + icônes thématiques
  */
 const ExerciseHeader = ({
   title,
   level,
+  exerciseType = "vocabulary", // Type d'exercice pour récupérer couleur/icône
   onClose,
-  levelColor = "#5E60CE",
   backIcon = "arrow-back",
 }) => {
   const navigation = useNavigation();
+
+  // Récupérer les infos de l'exercice depuis les constantes
+  const exerciseInfo = EXERCISE_TYPES[exerciseType] || EXERCISE_TYPES.vocabulary;
+  const exerciseColor = exerciseInfo.color;
+  const exerciseIcon = exerciseInfo.icon;
+  
+  // Récupérer la couleur du niveau pour le badge
+  const levelInfo = LANGUAGE_LEVELS[level] || LANGUAGE_LEVELS["1"];
+  const levelColor = levelInfo.color;
+  
+  // Affichage du niveau (1,2,3,4,5,6 ou B pour bonus)
+  const displayLevel = level === "bonus" ? "B" : level;
 
   const handleClose = () => {
     if (onClose) {
@@ -27,23 +40,36 @@ const ExerciseHeader = ({
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.topRow}>
-        <TouchableOpacity
-          style={styles.closeButton}
-          onPress={handleClose}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        >
-          <Ionicons name={backIcon} size={24} color="#6B7280" />
-        </TouchableOpacity>
+    <LinearGradient
+      colors={[`${exerciseColor}12`, `${exerciseColor}04`, "transparent"]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.container}
+    >
+      <View style={styles.content}>
+        <View style={styles.leftSection}>
+          {/* Bouton retour stylé */}
+          <TouchableOpacity
+            style={[styles.backButton, { backgroundColor: `${exerciseColor}15` }]}
+            onPress={handleClose}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
+            <Ionicons name={backIcon} size={20} color={exerciseColor} />
+          </TouchableOpacity>
 
-        <Text style={styles.title}>{title}</Text>
+          {/* Titre avec icône */}
+          <View style={styles.titleSection}>
+            <Text style={styles.exerciseIcon}>{exerciseIcon}</Text>
+            <Text style={[styles.title, { color: exerciseColor }]}>{title}</Text>
+          </View>
+        </View>
 
+        {/* Badge niveau */}
         <View style={[styles.levelBadge, { backgroundColor: levelColor }]}>
-          <Text style={styles.levelText}>{level}</Text>
+          <Text style={styles.levelText}>{displayLevel}</Text>
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 

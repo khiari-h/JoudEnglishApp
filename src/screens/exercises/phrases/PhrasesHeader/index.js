@@ -1,19 +1,17 @@
-// 4. PhrasesHeader (déjà uniformisé sans barre de progression)
-// src/screens/exercises/phrases/PhrasesHeader/index.js
+// 5. PhrasesHeader - MIS À JOUR
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
-const PhrasesHeader = ({ level, onBackPress, levelColor }) => {
+const PhrasesHeader = ({ level, onBackPress }) => {
   return (
     <ExerciseHeader
-      title="Phrases & Expressions"
+      title="Expressions"
       level={level}
+      exerciseType="phrases" // ✅ NOUVEAU
       onClose={onBackPress}
-      levelColor={levelColor}
       backIcon="arrow-back"
     />
   );
 };
 
 export default PhrasesHeader;
-
