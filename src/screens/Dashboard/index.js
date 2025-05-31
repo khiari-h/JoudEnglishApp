@@ -61,6 +61,9 @@ const Dashboard = ({ route }) => {
   // Hook streak - nouvelle logique
   const { currentStreak, updateStreak } = useStreak();
 
+  // ✅ LIGNE MANQUANTE AJOUTÉE
+  const { isTracking, stopAndSave, startTracking } = useExerciseTimeTracking();
+
   // ========== DONNÉES ==========
   const { name = "Utilisateur" } = route?.params || {}; // Plus de streak dans params
   const lastActivity = getLastActivity();

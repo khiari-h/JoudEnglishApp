@@ -1,23 +1,5 @@
-// NOUVELLE fonction pour recommandation vocabulary par défaut
-  const getDefaultVocabularyRecommendation = () => {
-    return {
-      id: 'default_vocabulary',
-      title: EXERCISE_TYPES.vocabulary.title,
-      description: EXERCISE_TYPES.vocabulary.description,
-      type: 'vocabulary',
-      level: currentLevel,
-      icon: EXERCISE_TYPES.vocabulary.icon,
-      color: EXERCISE_TYPES.vocabulary.color,
-      isRecommendation: true,
-      recommendationData: {
-        icon: '📚',
-        title: 'Commençons par la base !',
-        message: 'Le vocabulaire est la fondation de toute langue. Prêt à enrichir tes connaissances ?',
-        button: 'Apprendre du vocabulaire'
-      }
-    };
-  };// src/hooks/useSmartRecommendations.js
-import { useMemo } from 'react';
+// src/hooks/useSmartRecommendations.js
+import { useMemo, useCallback } from 'react';
 import { EXERCISE_TYPES } from '../utils/constants';
 
 /**
@@ -112,12 +94,10 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
   };
 
   // Seuil de temps pour déclencher une recommandation (en minutes)
-  const TIME_THRESHOLD = 3; // Abaissé à 3 minutes avec vraies données
+  const TIME_THRESHOLD = 3;
 
   // NOUVELLE fonction pour vérifier le temps vocabulary avec modes
   const getVocabularyTime = useCallback(() => {
-    // Pour vocabulary, on a vocabulary_classic et vocabulary_fast dans les données détaillées
-    // Mais dans exerciseTimeStats formatées on a juste "vocabulary" (qui est le max des deux)
     return exerciseTimeStats.vocabulary || 0;
   }, [exerciseTimeStats]);
 
@@ -128,6 +108,8 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
     }
     return exerciseTimeStats[exerciseType] || 0;
   }, [exerciseTimeStats, getVocabularyTime]);
+
+  // Fonction pour recommandation vocabulary par défaut
   const getDefaultVocabularyRecommendation = () => {
     return {
       id: 'default_vocabulary',
@@ -210,7 +192,7 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
     }
 
     // 4. FALLBACK : Toujours proposer vocabulary par défaut
-    console.log("📚 Fallback → recommandation vocabulary par défaut (avec vraies données)");
+    console.log("📚 Fallback → recommandation vocabulary par défaut");
     return getDefaultVocabularyRecommendation();
 
   }, [lastActivity, exerciseTimeStats, currentLevel, getExerciseTime]);
@@ -231,7 +213,7 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
   };
 
   return {
-    smartRecommendation, // JAMAIS null maintenant !
+    smartRecommendation,
     getTimeSpent,
     canRecommend,
     getNextRecommendedExercise,
