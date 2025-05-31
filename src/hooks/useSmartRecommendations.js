@@ -7,6 +7,8 @@ import { EXERCISE_TYPES } from '../utils/constants';
  * - Temps passé sur chaque type d'exercice
  * - Parcours pédagogique optimal
  * - Messages bienveillants style "coach"
+ * 
+ * TOUJOURS affiche une recommandation - vocabulary par défaut
  */
 const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLevel) => {
 
@@ -92,12 +94,36 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
   };
 
   // Seuil de temps pour déclencher une recommandation (en minutes)
-  const TIME_THRESHOLD = 15;
+  const TIME_THRESHOLD = 10; // Réduit de 15 à 10 minutes
+
+  // NOUVELLE fonction pour recommandation vocabulary par défaut
+  const getDefaultVocabularyRecommendation = () => {
+    return {
+      id: 'default_vocabulary',
+      title: EXERCISE_TYPES.vocabulary.title,
+      description: EXERCISE_TYPES.vocabulary.description,
+      type: 'vocabulary',
+      level: currentLevel,
+      icon: EXERCISE_TYPES.vocabulary.icon,
+      color: EXERCISE_TYPES.vocabulary.color,
+      isRecommendation: true,
+      recommendationData: {
+        icon: '📚',
+        title: 'Commençons par la base !',
+        message: 'Le vocabulaire est la fondation de toute langue. Prêt à enrichir tes connaissances ?',
+        button: 'Apprendre du vocabulaire'
+      }
+    };
+  };
 
   // Calculer la recommandation intelligente
   const smartRecommendation = useMemo(() => {
-    // Si pas d'activité récente, recommander vocabulary pour commencer
+    console.log("🤖 Smart recommendations - lastActivity:", lastActivity);
+    console.log("📊 Smart recommendations - exerciseTimeStats:", exerciseTimeStats);
+    
+    // 1. Si pas d'activité récente → vocabulary pour débuter
     if (!lastActivity) {
+      console.log("✨ Pas d'activité → recommandation vocabulary début");
       return {
         id: 'start_vocabulary',
         title: EXERCISE_TYPES.vocabulary.title,
@@ -116,46 +142,44 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
       };
     }
 
-    // Vérifier le temps passé sur le dernier type d'exercice
+    // 2. Vérifier le temps passé sur le dernier type d'exercice
     const lastExerciseType = lastActivity.type;
     const timeSpent = exerciseTimeStats[lastExerciseType] || 0;
 
-    // Si pas assez de temps passé, pas de recommandation
-    if (timeSpent < TIME_THRESHOLD) {
-      return null;
-    }
+    console.log(`⏱️ Temps passé sur ${lastExerciseType}: ${timeSpent}min (seuil: ${TIME_THRESHOLD}min)`);
 
-    // Obtenir le prochain exercice dans le parcours
-    const nextExerciseType = LEARNING_PATH[lastExerciseType];
-    
-    if (!nextExerciseType || !EXERCISE_TYPES[nextExerciseType]) {
-      return null;
-    }
+    // 3. Si assez de temps passé → recommandation intelligente
+    if (timeSpent >= TIME_THRESHOLD) {
+      const nextExerciseType = LEARNING_PATH[lastExerciseType];
+      
+      if (nextExerciseType && EXERCISE_TYPES[nextExerciseType]) {
+        const messageKey = `${lastExerciseType}->${nextExerciseType}`;
+        const recommendationMessage = RECOMMENDATION_MESSAGES[messageKey];
 
-    // Générer la clé du message
-    const messageKey = `${lastExerciseType}->${nextExerciseType}`;
-    const recommendationMessage = RECOMMENDATION_MESSAGES[messageKey];
-
-    if (!recommendationMessage) {
-      return null;
-    }
-
-    // Créer la recommandation complète
-    return {
-      id: `recommendation_${nextExerciseType}`,
-      title: EXERCISE_TYPES[nextExerciseType].title,
-      description: EXERCISE_TYPES[nextExerciseType].description,
-      type: nextExerciseType,
-      level: currentLevel,
-      icon: EXERCISE_TYPES[nextExerciseType].icon,
-      color: EXERCISE_TYPES[nextExerciseType].color,
-      isRecommendation: true,
-      recommendationData: {
-        ...recommendationMessage,
-        timeSpent: Math.round(timeSpent),
-        fromExercise: lastExerciseType
+        if (recommendationMessage) {
+          console.log(`🎯 Recommandation intelligente: ${lastExerciseType} → ${nextExerciseType}`);
+          return {
+            id: `recommendation_${nextExerciseType}`,
+            title: EXERCISE_TYPES[nextExerciseType].title,
+            description: EXERCISE_TYPES[nextExerciseType].description,
+            type: nextExerciseType,
+            level: currentLevel,
+            icon: EXERCISE_TYPES[nextExerciseType].icon,
+            color: EXERCISE_TYPES[nextExerciseType].color,
+            isRecommendation: true,
+            recommendationData: {
+              ...recommendationMessage,
+              timeSpent: Math.round(timeSpent),
+              fromExercise: lastExerciseType
+            }
+          };
+        }
       }
-    };
+    }
+
+    // 4. FALLBACK : Toujours proposer vocabulary par défaut
+    console.log("📚 Fallback → recommandation vocabulary par défaut");
+    return getDefaultVocabularyRecommendation();
 
   }, [lastActivity, exerciseTimeStats, currentLevel]);
 
@@ -175,7 +199,7 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
   };
 
   return {
-    smartRecommendation,
+    smartRecommendation, // JAMAIS null maintenant !
     getTimeSpent,
     canRecommend,
     getNextRecommendedExercise,
