@@ -76,22 +76,21 @@ const ContinueLearningSection = ({
       ]}
     >
       <View style={styles.content}>
-        <View style={styles.header}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Continuer l'apprentissage</Text>
+        {/* Titre principal */}
+        <Text style={styles.title}>Continuer l'apprentissage</Text>
 
-            {/* Sous-titre avec détails sur la position */}
-            <View style={styles.subtitleRow}>
-              <Text style={styles.subtitle}>{lastActivity.title}</Text>
-            </View>
+        {/* Activité et détails */}
+        <Text style={styles.activityTitle}>
+          {lastActivity.title} • {subtitle.split(" • ")[0]}
+        </Text>
 
-            <View style={styles.detailsRow}>
-              <Text style={styles.details}>{subtitle}</Text>
-            </View>
-
-            {/* Temps écoulé */}
+        {/* Ligne avec niveau/temps et bouton */}
+        <View style={styles.bottomRow}>
+          <View style={styles.metaInfo}>
+            <Text style={styles.levelText}>Niveau {lastActivity.level}</Text>
+            <Text style={styles.separator}> • </Text>
             <View style={styles.timeContainer}>
-              <Ionicons name="time-outline" size={14} color="#6B7280" />
+              <Ionicons name="time-outline" size={12} color="#6B7280" />
               <Text style={styles.timeText}>{lastActivity.timeElapsed}</Text>
             </View>
           </View>
@@ -110,24 +109,6 @@ const ContinueLearningSection = ({
             />
             <Text style={styles.buttonText}>Reprendre</Text>
           </TouchableOpacity>
-        </View>
-
-        {/* Barre de progression */}
-        <View style={styles.progressContainer}>
-          <View style={styles.progressTrack}>
-            <View
-              style={[
-                styles.progressFill,
-                {
-                  width: `${lastActivity.progress || 0}%`,
-                  backgroundColor: accentColor,
-                },
-              ]}
-            />
-          </View>
-          <Text style={styles.progressText}>
-            {Math.round(lastActivity.progress || 0)}%
-          </Text>
         </View>
       </View>
     </Card>

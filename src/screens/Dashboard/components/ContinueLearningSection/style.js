@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   card: {
@@ -15,29 +15,34 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
   },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    marginBottom: 12,
-  },
-  titleContainer: {
-    flex: 1,
-    marginRight: 12,
-  },
+
+  // Nouveau layout simplifié
   title: {
     fontSize: 16,
     fontWeight: "600",
     color: "#1F2937",
-    marginBottom: 4,
+    marginBottom: 8,
   },
-  subtitleRow: {
-    marginBottom: 4,
-  },
-  subtitle: {
-    fontSize: 13,
-    color: "#4B5563",
+  activityTitle: {
+    fontSize: 14,
     fontWeight: "500",
+    color: "#374151",
+    marginBottom: 8,
+    lineHeight: 20,
+  },
+  metaRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  levelText: {
+    fontSize: 13,
+    color: "#6B7280",
+    fontWeight: "400",
+  },
+  separator: {
+    fontSize: 13,
+    color: "#6B7280",
   },
   timeContainer: {
     flexDirection: "row",
@@ -51,8 +56,9 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 14,
-    paddingVertical: 8,
+    justifyContent: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     borderRadius: 8,
   },
   buttonIcon: {
@@ -63,40 +69,21 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "500",
   },
-  progressContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  progressTrack: {
-    flex: 1,
-    height: 6,
-    backgroundColor: "#F3F4F6",
-    borderRadius: 3,
-    overflow: "hidden",
-    marginRight: 8,
-  },
-  progressFill: {
-    height: "100%",
-    borderRadius: 3,
-  },
-  progressText: {
-    fontSize: 12,
-    fontWeight: "500",
-    color: "#6B7280",
-    width: 32,
-    textAlign: "right",
-  },
-  emptyStateTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#1F2937",
-    marginBottom: 8,
-  },
+
+  // États vides et loading
   emptyStateDescription: {
     fontSize: 14,
     color: "#6B7280",
     marginBottom: 16,
     lineHeight: 20,
+  },
+  emptyStateContainer: {
+    marginTop: 8,
+  },
+  emptyStateHint: {
+    fontSize: 13,
+    color: "#9CA3AF",
+    fontStyle: "italic",
   },
   loadingContainer: {
     padding: 16,
