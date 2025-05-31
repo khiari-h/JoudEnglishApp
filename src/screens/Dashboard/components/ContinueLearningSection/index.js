@@ -52,7 +52,7 @@ const ContinueLearningSection = ({
               </Text>
             </View>
           </View>
-
+          
           <View style={styles.emptyStateContainer}>
             <Text style={styles.emptyStateHint}>
               💡 Vos prochains exercices apparaîtront ici
@@ -68,6 +68,27 @@ const ContinueLearningSection = ({
     ? formatProgressSubtitle(lastActivity)
     : `Niveau ${lastActivity.level}`;
 
+  // Extraire les infos pour le nouveau format
+  const levelNumber = lastActivity.level;
+  const mode = lastActivity.metadata?.mode;
+  const modeText = mode === 'fast' ? 'Fast' : mode === 'classic' ? 'Classique' : '';
+  const categoryIndex = (lastActivity.metadata?.category || 0) + 1;
+  const wordIndex = (lastActivity.metadata?.word || 0) + 1;
+  
+  // Format temps court
+  const formatShortTime = (timeElapsed) => {
+    if (!timeElapsed) return '';
+    return timeElapsed
+      .replace('Il y a ', '')
+      .replace(' minute', 'min')
+      .replace(' minutes', 'min')
+      .replace(' heure', 'h')
+      .replace(' heures', 'h')
+      .replace(' jour', 'j')
+      .replace(' jours', 'j')
+      .replace('quelques instants', 'maintenant');
+  };
+
   return (
     <Card
       style={[
@@ -76,40 +97,41 @@ const ContinueLearningSection = ({
       ]}
     >
       <View style={styles.content}>
-        {/* Titre principal */}
-        <Text style={styles.title}>Continuer l'apprentissage</Text>
-
-        {/* Activité et détails */}
-        <Text style={styles.activityTitle}>
-          {lastActivity.title} • {subtitle.split(" • ")[0]}
-        </Text>
-
-        {/* Ligne avec niveau/temps et bouton */}
-        <View style={styles.bottomRow}>
-          <View style={styles.metaInfo}>
-            <Text style={styles.levelText}>Niveau {lastActivity.level}</Text>
-            <Text style={styles.separator}> • </Text>
-            <View style={styles.timeContainer}>
-              <Ionicons name="time-outline" size={12} color="#6B7280" />
-              <Text style={styles.timeText}>{lastActivity.timeElapsed}</Text>
-            </View>
-          </View>
-
-          {/* Bouton pour reprendre l'activité */}
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: accentColor }]}
-            onPress={() => onPress && onPress(lastActivity)}
-            activeOpacity={0.7}
-          >
-            <Ionicons
-              name="play"
-              size={16}
-              color="white"
-              style={styles.buttonIcon}
-            />
-            <Text style={styles.buttonText}>Reprendre</Text>
-          </TouchableOpacity>
+        {/* Titre avec emoji */}
+        <View style={styles.titleRow}>
+          <Text style={styles.emoji}>📚</Text>
+          <Text style={styles.title}>Reprendre où vous vous êtes arrêté</Text>
         </View>
+        
+        {/* Ligne d'infos */}
+        <View style={styles.infoRow}>
+          <Text style={styles.exerciseTitle}>
+            {lastActivity.title} {modeText && `${modeText} `}
+          </Text>
+          
+          {/* Badge niveau */}
+          <View style={[styles.levelBadge, { backgroundColor: accentColor }]}>
+            <Text style={styles.levelBadgeText}>{levelNumber}</Text>
+          </View>
+          
+          <Text style={styles.positionText}>
+            • Mot {wordIndex} ({categoryIndex}) • 
+          </Text>
+          
+          <Text style={styles.timeText}>
+            {formatShortTime(lastActivity.timeElapsed)}
+          </Text>
+        </View>
+        
+        {/* Bouton avec emoji */}
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: accentColor }]}
+          onPress={() => onPress && onPress(lastActivity)}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.buttonEmoji}>▶️</Text>
+          <Text style={styles.buttonText}>Continuer</Text>
+        </TouchableOpacity>
       </View>
     </Card>
   );

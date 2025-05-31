@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   card: {
@@ -15,38 +15,51 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
   },
-
-  // Nouveau layout simplifié
-  title: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#1F2937",
+  
+  // Nouveau design avec emoji et badges
+  titleRow: {
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 8,
   },
-  activityTitle: {
+  emoji: {
+    fontSize: 18,
+    marginRight: 8,
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#1F2937",
+    flex: 1,
+  },
+  infoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "wrap",
+    marginBottom: 12,
+  },
+  exerciseTitle: {
     fontSize: 14,
     fontWeight: "500",
     color: "#374151",
-    marginBottom: 8,
-    lineHeight: 20,
   },
-  metaRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 12,
+  levelBadge: {
+    backgroundColor: "#3b82f6",
+    borderRadius: 10,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    marginLeft: 6,
+    marginRight: 4,
   },
-  levelText: {
+  levelBadgeText: {
+    color: "white",
+    fontSize: 12,
+    fontWeight: "600",
+  },
+  positionText: {
     fontSize: 13,
     color: "#6B7280",
-    fontWeight: "400",
-  },
-  separator: {
-    fontSize: 13,
-    color: "#6B7280",
-  },
-  timeContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    marginLeft: 2,
   },
   timeText: {
     fontSize: 13,
@@ -61,7 +74,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 8,
   },
-  buttonIcon: {
+  buttonEmoji: {
+    fontSize: 16,
     marginRight: 6,
   },
   buttonText: {
