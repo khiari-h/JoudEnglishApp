@@ -19,8 +19,8 @@ import LevelProgressModal from "./components/LevelProgressModal";
 
 // Hooks Dashboard
 import useLastActivity from "../../hooks/useLastActivity";
-import useStreak from "./hooks/useStreak"; // Hook dashboard local
-import useExerciseTimeTracking from "./hooks/useExerciseTimeTracking"; // NOUVEAU hook
+import useStreak from "./hooks/useStreak";
+import useExerciseTimeTracking from "../../hooks/useExerciceTimeTracking";
 
 // Constantes
 import { LANGUAGE_LEVELS } from "../../utils/constants";
@@ -85,7 +85,7 @@ const Dashboard = ({ route }) => {
   const mapOldToNewLevel = (level) => {
     const mapping = {
       A1: "1",
-      A2: "2", 
+      A2: "2",
       B1: "3",
       B2: "4",
       C1: "5",
@@ -107,43 +107,46 @@ const Dashboard = ({ route }) => {
   }, []);
 
   // ========== NAVIGATION AVEC STREAK ==========
-  const navigateToExercise = useCallback((activity) => {
-    if (!activity) return;
+  const navigateToExercise = useCallback(
+    (activity) => {
+      if (!activity) return;
 
-    try {
-      // 🔥 METTRE À JOUR LE STREAK À CHAQUE ACTIVITÉ
-      updateStreak();
-      
-      if (activity === "levelSelection") {
-        router.push("/(tabs)/levelSelection");
-        return;
+      try {
+        // 🔥 METTRE À JOUR LE STREAK À CHAQUE ACTIVITÉ
+        updateStreak();
+
+        if (activity === "levelSelection") {
+          router.push("/(tabs)/levelSelection");
+          return;
+        }
+
+        const { type, level, mode } = activity;
+        const routes = {
+          vocabulary: "/(tabs)/vocabularyExercise",
+          grammar: "/(tabs)/grammarExercise",
+          reading: "/(tabs)/readingExercise",
+          conversations: "/(tabs)/conversationsExercise",
+          phrases: "/(tabs)/phrasesExercise",
+          spelling: "/(tabs)/spellingExercise",
+          wordGames: "/(tabs)/wordGamesExercise",
+          assessment: "/(tabs)/levelAssessment",
+        };
+
+        const pathname = routes[type] || "/(tabs)/levelSelection";
+
+        // Passer le mode pour vocabulary
+        const params = { level };
+        if (mode && type === "vocabulary") {
+          params.mode = mode;
+        }
+
+        router.push({ pathname, params });
+      } catch (error) {
+        console.error("Erreur navigation:", error);
       }
-
-      const { type, level, mode } = activity;
-      const routes = {
-        vocabulary: "/(tabs)/vocabularyExercise",
-        grammar: "/(tabs)/grammarExercise",
-        reading: "/(tabs)/readingExercise",
-        conversations: "/(tabs)/conversationsExercise",
-        phrases: "/(tabs)/phrasesExercise",
-        spelling: "/(tabs)/spellingExercise",
-        wordGames: "/(tabs)/wordGamesExercise",
-        assessment: "/(tabs)/levelAssessment",
-      };
-
-      const pathname = routes[type] || "/(tabs)/levelSelection";
-      
-      // Passer le mode pour vocabulary
-      const params = { level };
-      if (mode && type === 'vocabulary') {
-        params.mode = mode;
-      }
-      
-      router.push({ pathname, params });
-    } catch (error) {
-      console.error("Erreur navigation:", error);
-    }
-  }, [updateStreak]);
+    },
+    [updateStreak]
+  );
 
   // ========== AUTRES GESTIONNAIRES ==========
   const onRefresh = useCallback(async () => {
@@ -152,13 +155,16 @@ const Dashboard = ({ route }) => {
     setRefreshing(false);
   }, [loadLastActivities]);
 
-  const handleLevelSelect = useCallback((level) => {
-    handleChangeActiveLevel(level);
-    router.push({
-      pathname: "/(tabs)/exerciseSelection",
-      params: { level },
-    });
-  }, [handleChangeActiveLevel]);
+  const handleLevelSelect = useCallback(
+    (level) => {
+      handleChangeActiveLevel(level);
+      router.push({
+        pathname: "/(tabs)/exerciseSelection",
+        params: { level },
+      });
+    },
+    [handleChangeActiveLevel]
+  );
 
   // ========== EFFETS ==========
   useEffect(() => {
@@ -184,7 +190,7 @@ const Dashboard = ({ route }) => {
   useFocusEffect(
     useCallback(() => {
       loadLastActivities();
-      
+
       // ⏹️ ARRÊTER LE TRACKING SI EN COURS (retour au Dashboard)
       if (isTracking) {
         const timeSpent = stopAndSave();
@@ -207,14 +213,17 @@ const Dashboard = ({ route }) => {
     isActive: levelKey === currentLevel,
   }));
 
-  const getAllLearningLevels = useCallback(() =>
-    Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
-      id: levelKey,
-      title: LANGUAGE_LEVELS[levelKey].title,
-      color: LANGUAGE_LEVELS[levelKey].color,
-      progress: calculateLevelProgress(levelKey),
-      isActive: levelKey === currentLevel,
-    })), [calculateLevelProgress, currentLevel]);
+  const getAllLearningLevels = useCallback(
+    () =>
+      Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
+        id: levelKey,
+        title: LANGUAGE_LEVELS[levelKey].title,
+        color: LANGUAGE_LEVELS[levelKey].color,
+        progress: calculateLevelProgress(levelKey),
+        isActive: levelKey === currentLevel,
+      })),
+    [calculateLevelProgress, currentLevel]
+  );
 
   // ========== RENDU ==========
   return (
@@ -257,19 +266,19 @@ const Dashboard = ({ route }) => {
           accentColor={levelColor}
           onStartExercise={(type, level) => {
             updateStreak(); // Streak pour défi du jour aussi
-            
+
             // Démarrer tracking pour défi du jour
             let trackingKey = type;
-            if (type === 'vocabulary') {
-              trackingKey = 'vocabulary_classic'; // Par défaut classic pour défi
+            if (type === "vocabulary") {
+              trackingKey = "vocabulary_classic"; // Par défaut classic pour défi
             }
             startTracking(trackingKey);
-            
+
             navigateToExercise({ type, level });
           }}
           onStartEvaluation={(level) => {
             updateStreak(); // Streak pour évaluation aussi
-            startTracking('assessment'); // Tracking pour évaluations
+            startTracking("assessment"); // Tracking pour évaluations
             router.push({
               pathname: "/(tabs)/levelAssessment",
               params: { level },
