@@ -7,7 +7,7 @@ import styles from "./style";
 
 /**
  * Composant pour afficher UNE recommandation intelligente basée sur :
- * - Le temps passé sur chaque type d'exercice  
+ * - Le temps passé sur chaque type d'exercice (VRAIES DONNÉES maintenant !)
  * - Un parcours pédagogique optimal
  * - Des messages bienveillants style "coach"
  */
@@ -19,21 +19,26 @@ const RecommendationsSection = ({
   accentColor = "#3B82F6",
 }) => {
 
-  // Utiliser le hook de recommandations intelligentes
+  // Utiliser le hook de recommandations intelligentes avec vraies données
   const { smartRecommendation } = useSmartRecommendations(
     lastActivity, 
-    exerciseTimeStats, 
+    exerciseTimeStats, // Maintenant ce sont les VRAIES données !
     currentLevel
   );
 
-  // Si aucune recommandation, ne rien afficher
+  // Debug : afficher les données reçues
+  console.log("📋 RecommendationsSection - exerciseTimeStats reçues:", exerciseTimeStats);
+  console.log("🎯 RecommendationsSection - smartRecommendation:", smartRecommendation);
+
+  // Le hook retourne TOUJOURS une recommandation maintenant
   if (!smartRecommendation) {
+    console.log("❌ Pas de recommandation - ne devrait jamais arriver !");
     return null;
   }
 
   const { recommendationData } = smartRecommendation;
 
-  // Message pour exercice de démarrage
+  // Message pour exercice de démarrage (premier usage)
   if (smartRecommendation.id === 'start_vocabulary') {
     return (
       <View style={styles.container}>
@@ -65,7 +70,39 @@ const RecommendationsSection = ({
     );
   }
 
-  // Message de recommandation après temps d'activité
+  // Message de recommandation par défaut (pas assez de temps)
+  if (smartRecommendation.id === 'default_vocabulary') {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.sectionTitle}>Recommandation</Text>
+        
+        <Card style={styles.recommendationCard}>
+          <View style={styles.startRecommendationContent}>
+            <View style={styles.messageHeader}>
+              <Text style={styles.messageIcon}>{recommendationData.icon}</Text>
+              <Text style={styles.messageTitle}>{recommendationData.title}</Text>
+            </View>
+            
+            <Text style={styles.messageText}>
+              {recommendationData.message}
+            </Text>
+            
+            <Button
+              title={recommendationData.button}
+              variant="filled" 
+              color={smartRecommendation.color}
+              fullWidth
+              rightIcon="arrow-forward-outline"
+              onPress={() => onSelectExercise && onSelectExercise(smartRecommendation)}
+              style={styles.recommendationButton}
+            />
+          </View>
+        </Card>
+      </View>
+    );
+  }
+
+  // Message de recommandation intelligente (basée sur temps réel !)
   return (
     <View style={styles.container}>
       <Text style={styles.sectionTitle}>Suggestion pour toi</Text>
@@ -83,15 +120,17 @@ const RecommendationsSection = ({
             {recommendationData.message}
           </Text>
           
-          {/* Info sur le temps passé */}
-          <View style={styles.timeInfo}>
-            <View style={styles.timeProgressContainer}>
-              <View style={styles.timeDot} />
-              <Text style={styles.timeText}>
-                {recommendationData.timeSpent} min sur {recommendationData.fromExercise}
-              </Text>
+          {/* Info sur le temps passé RÉEL */}
+          {recommendationData.timeSpent && (
+            <View style={styles.timeInfo}>
+              <View style={styles.timeProgressContainer}>
+                <View style={styles.timeDot} />
+                <Text style={styles.timeText}>
+                  {recommendationData.timeSpent} min sur {recommendationData.fromExercise}
+                </Text>
+              </View>
             </View>
-          </View>
+          )}
           
           {/* Aperçu de l'exercice recommandé */}
           <TouchableOpacity

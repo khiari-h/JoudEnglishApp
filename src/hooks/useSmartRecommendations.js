@@ -1,10 +1,28 @@
-// src/hooks/useSmartRecommendations.js
+// NOUVELLE fonction pour recommandation vocabulary par défaut
+  const getDefaultVocabularyRecommendation = () => {
+    return {
+      id: 'default_vocabulary',
+      title: EXERCISE_TYPES.vocabulary.title,
+      description: EXERCISE_TYPES.vocabulary.description,
+      type: 'vocabulary',
+      level: currentLevel,
+      icon: EXERCISE_TYPES.vocabulary.icon,
+      color: EXERCISE_TYPES.vocabulary.color,
+      isRecommendation: true,
+      recommendationData: {
+        icon: '📚',
+        title: 'Commençons par la base !',
+        message: 'Le vocabulaire est la fondation de toute langue. Prêt à enrichir tes connaissances ?',
+        button: 'Apprendre du vocabulaire'
+      }
+    };
+  };// src/hooks/useSmartRecommendations.js
 import { useMemo } from 'react';
 import { EXERCISE_TYPES } from '../utils/constants';
 
 /**
  * Hook pour générer des recommandations intelligentes basées sur :
- * - Temps passé sur chaque type d'exercice
+ * - Temps passé sur chaque type d'exercice (VRAIES DONNÉES maintenant !)
  * - Parcours pédagogique optimal
  * - Messages bienveillants style "coach"
  * 
@@ -94,9 +112,22 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
   };
 
   // Seuil de temps pour déclencher une recommandation (en minutes)
-  const TIME_THRESHOLD = 10; // Réduit de 15 à 10 minutes
+  const TIME_THRESHOLD = 3; // Abaissé à 3 minutes avec vraies données
 
-  // NOUVELLE fonction pour recommandation vocabulary par défaut
+  // NOUVELLE fonction pour vérifier le temps vocabulary avec modes
+  const getVocabularyTime = useCallback(() => {
+    // Pour vocabulary, on a vocabulary_classic et vocabulary_fast dans les données détaillées
+    // Mais dans exerciseTimeStats formatées on a juste "vocabulary" (qui est le max des deux)
+    return exerciseTimeStats.vocabulary || 0;
+  }, [exerciseTimeStats]);
+
+  // Fonction améliorée pour vérifier le temps d'un exercice
+  const getExerciseTime = useCallback((exerciseType) => {
+    if (exerciseType === 'vocabulary') {
+      return getVocabularyTime();
+    }
+    return exerciseTimeStats[exerciseType] || 0;
+  }, [exerciseTimeStats, getVocabularyTime]);
   const getDefaultVocabularyRecommendation = () => {
     return {
       id: 'default_vocabulary',
@@ -119,7 +150,7 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
   // Calculer la recommandation intelligente
   const smartRecommendation = useMemo(() => {
     console.log("🤖 Smart recommendations - lastActivity:", lastActivity);
-    console.log("📊 Smart recommendations - exerciseTimeStats:", exerciseTimeStats);
+    console.log("📊 Smart recommendations - exerciseTimeStats VRAIES:", exerciseTimeStats);
     
     // 1. Si pas d'activité récente → vocabulary pour débuter
     if (!lastActivity) {
@@ -134,7 +165,7 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
         color: EXERCISE_TYPES.vocabulary.color,
         isRecommendation: true,
         recommendationData: {
-          icon: '🌟',
+          icon: '🚀',
           title: 'Commençons !',
           message: 'Prêt à débuter ton apprentissage ? Commençons par enrichir ton vocabulaire !',
           button: 'Commencer le vocabulaire'
@@ -142,11 +173,12 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
       };
     }
 
-    // 2. Vérifier le temps passé sur le dernier type d'exercice
+    // 2. Vérifier le temps passé sur le dernier type d'exercice avec nouvelle logique
     const lastExerciseType = lastActivity.type;
-    const timeSpent = exerciseTimeStats[lastExerciseType] || 0;
+    const timeSpent = getExerciseTime(lastExerciseType);
 
-    console.log(`⏱️ Temps passé sur ${lastExerciseType}: ${timeSpent}min (seuil: ${TIME_THRESHOLD}min)`);
+    console.log(`⏱️ Temps RÉEL passé sur ${lastExerciseType}: ${timeSpent}min (seuil: ${TIME_THRESHOLD}min)`);
+    console.log(`📋 Détail exerciseTimeStats:`, exerciseTimeStats);
 
     // 3. Si assez de temps passé → recommandation intelligente
     if (timeSpent >= TIME_THRESHOLD) {
@@ -157,7 +189,7 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
         const recommendationMessage = RECOMMENDATION_MESSAGES[messageKey];
 
         if (recommendationMessage) {
-          console.log(`🎯 Recommandation intelligente: ${lastExerciseType} → ${nextExerciseType}`);
+          console.log(`🎯 Recommandation intelligente RÉELLE: ${lastExerciseType} → ${nextExerciseType}`);
           return {
             id: `recommendation_${nextExerciseType}`,
             title: EXERCISE_TYPES[nextExerciseType].title,
@@ -178,10 +210,10 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
     }
 
     // 4. FALLBACK : Toujours proposer vocabulary par défaut
-    console.log("📚 Fallback → recommandation vocabulary par défaut");
+    console.log("📚 Fallback → recommandation vocabulary par défaut (avec vraies données)");
     return getDefaultVocabularyRecommendation();
 
-  }, [lastActivity, exerciseTimeStats, currentLevel]);
+  }, [lastActivity, exerciseTimeStats, currentLevel, getExerciseTime]);
 
   // Fonction pour obtenir le temps passé sur un type d'exercice
   const getTimeSpent = (exerciseType) => {
