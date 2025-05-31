@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 16, // Ajustez en fonction de la barre d'état
+    paddingTop: 16,
     paddingBottom: 16,
     paddingHorizontal: 16,
     borderBottomLeftRadius: 16,
@@ -13,64 +13,50 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  leftSection: {
+
+  // Logo section avec emoji
+  logoSection: {
     flexDirection: "row",
     alignItems: "center",
   },
-  logo: {
+  logoEmoji: {
+    fontSize: 22,
+    marginRight: 8,
+  },
+  logoText: {
     fontSize: 20,
     fontWeight: "bold",
     color: "white",
-    marginRight: 12,
   },
-  levelContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    borderRadius: 20,
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-  },
-  levelBadge: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 8,
-  },
-  levelText: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#3B82F6",
-  },
-  levelProgressContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  levelProgressTrack: {
-    width: 60,
-    height: 4,
-    backgroundColor: "rgba(255, 255, 255, 0.3)",
-    borderRadius: 2,
-    overflow: "hidden",
-    marginRight: 8,
-  },
-  levelProgressFill: {
-    height: "100%",
-    backgroundColor: "white",
-    borderRadius: 2,
-  },
-  levelPercentage: {
-    fontSize: 12,
-    color: "white",
-    fontWeight: "500",
-  },
+
+  // Section droite : niveau + streak
   rightSection: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 12, // Espace entre niveau et streak
   },
+
+  // Badge niveau
+  levelBadge: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  levelText: {
+    fontSize: 15,
+    fontWeight: "bold",
+    // Couleur dynamique basée sur levelColor
+  },
+
+  // Streak container
   streakContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -78,21 +64,15 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    marginRight: 12,
+  },
+  streakEmoji: {
+    fontSize: 16,
+    marginRight: 4,
   },
   streakText: {
     color: "white",
     fontSize: 14,
     fontWeight: "600",
-    marginLeft: 4,
-  },
-  profileButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
 

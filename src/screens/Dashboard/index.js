@@ -17,8 +17,9 @@ import LearningPathCompact from "./components/LearningPathCompact";
 import BottomNavigation from "./components/BottomNavigation";
 import LevelProgressModal from "./components/LevelProgressModal";
 
-// Hooks
+// Hooks Dashboard
 import useLastActivity from "../../hooks/useLastActivity";
+import useStreak from "./hooks/useStreak"; // Hook dashboard local
 
 // Constantes
 import { LANGUAGE_LEVELS } from "../../utils/constants";
@@ -40,7 +41,6 @@ const Dashboard = ({ route }) => {
     progress = {},
     calculateGlobalProgress = () => 0,
     calculateLevelProgress = () => 0,
-    updateStreak = () => {},
   } = progressContext || {};
 
   // ========== ÉTATS ==========
@@ -57,8 +57,11 @@ const Dashboard = ({ route }) => {
     formatProgressSubtitle,
   } = useLastActivity();
 
+  // Hook streak - nouvelle logique
+  const { currentStreak, updateStreak } = useStreak();
+
   // ========== DONNÉES ==========
-  const { name = "Utilisateur", streak = 0 } = route?.params || {};
+  const { name = "Utilisateur" } = route?.params || {}; // Plus de streak dans params
   const lastActivity = getLastActivity();
   const globalProgress = calculateGlobalProgress();
   const levelProgress = calculateLevelProgress(currentLevel);
@@ -102,36 +105,49 @@ const Dashboard = ({ route }) => {
     }
   }, []);
 
-  // ========== NAVIGATION ==========
-  const navigateToExercise = useCallback((activity) => {
-    if (!activity) return;
+  // ========== NAVIGATION AVEC STREAK ==========
+  const navigateToExercise = useCallback(
+    (activity) => {
+      if (!activity) return;
 
-    try {
-      if (activity === "levelSelection") {
-        router.push("/(tabs)/levelSelection");
-        return;
+      try {
+        // 🔥 METTRE À JOUR LE STREAK À CHAQUE ACTIVITÉ
+        updateStreak();
+
+        if (activity === "levelSelection") {
+          router.push("/(tabs)/levelSelection");
+          return;
+        }
+
+        const { type, level, mode } = activity;
+        const routes = {
+          vocabulary: "/(tabs)/vocabularyExercise",
+          grammar: "/(tabs)/grammarExercise",
+          reading: "/(tabs)/readingExercise",
+          conversations: "/(tabs)/conversationsExercise",
+          phrases: "/(tabs)/phrasesExercise",
+          spelling: "/(tabs)/spellingExercise",
+          wordGames: "/(tabs)/wordGamesExercise",
+          assessment: "/(tabs)/levelAssessment",
+        };
+
+        const pathname = routes[type] || "/(tabs)/levelSelection";
+
+        // Passer le mode pour vocabulary
+        const params = { level };
+        if (mode && type === "vocabulary") {
+          params.mode = mode;
+        }
+
+        router.push({ pathname, params });
+      } catch (error) {
+        console.error("Erreur navigation:", error);
       }
+    },
+    [updateStreak]
+  );
 
-      const { type, level } = activity;
-      const routes = {
-        vocabulary: "/(tabs)/vocabularyExercise",
-        grammar: "/(tabs)/grammarExercise",
-        reading: "/(tabs)/readingExercise",
-        conversations: "/(tabs)/conversationsExercise",
-        phrases: "/(tabs)/phrasesExercise",
-        spelling: "/(tabs)/spellingExercise",
-        wordGames: "/(tabs)/wordGamesExercise",
-        assessment: "/(tabs)/levelAssessment",
-      };
-
-      const pathname = routes[type] || "/(tabs)/levelSelection";
-      router.push({ pathname, params: { level } });
-    } catch (error) {
-      console.error("Erreur navigation:", error);
-    }
-  }, []);
-
-  // ========== GESTIONNAIRES ==========
+  // ========== AUTRES GESTIONNAIRES ==========
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
     await loadLastActivities();
@@ -148,10 +164,6 @@ const Dashboard = ({ route }) => {
     },
     [handleChangeActiveLevel]
   );
-
-  const handleProfilePress = useCallback(() => {
-    router.push("/(tabs)/profile");
-  }, []);
 
   // ========== EFFETS ==========
   useEffect(() => {
@@ -171,23 +183,19 @@ const Dashboard = ({ route }) => {
   }, []);
 
   useEffect(() => {
-    updateStreak();
-  }, []);
-
-  useEffect(() => {
     loadLastActivities();
   }, []);
 
   useFocusEffect(
     useCallback(() => {
       loadLastActivities();
-    }, [])
+    }, [loadLastActivities])
   );
 
   // ========== DEBUG ==========
-  console.log("DEBUG Dashboard - lastActivity:", lastActivity);
-  console.log("DEBUG Dashboard - isActivityLoading:", isActivityLoading);
-  console.log("DEBUG Dashboard - currentLevel:", currentLevel);
+  console.log("🎯 DEBUG Dashboard - lastActivity:", lastActivity);
+  console.log("🎯 DEBUG Dashboard - currentStreak:", currentStreak);
+  console.log("🎯 DEBUG Dashboard - currentLevel:", currentLevel);
 
   // ========== DONNÉES NIVEAUX ==========
   const allLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
@@ -213,13 +221,11 @@ const Dashboard = ({ route }) => {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StatusBar barStyle="light-content" />
 
-      {/* Header */}
+      {/* Header simplifié avec vraie logique streak */}
       <CompactHeader
         level={currentLevel}
-        progress={levelProgress}
-        streak={streak}
+        streak={currentStreak}
         levelColor={levelColor}
-        onProfilePress={handleProfilePress}
       />
 
       {/* Contenu scrollable */}
@@ -235,7 +241,7 @@ const Dashboard = ({ route }) => {
           />
         }
       >
-        {/* 1. Continue Learning */}
+        {/* 1. Continue Learning - Design revu */}
         <ContinueLearningSection
           lastActivity={lastActivity}
           onPress={navigateToExercise}
@@ -249,16 +255,20 @@ const Dashboard = ({ route }) => {
           currentLevel={currentLevel}
           progress={progress}
           accentColor={levelColor}
-          onStartExercise={(type, level) => navigateToExercise({ type, level })}
-          onStartEvaluation={(level) =>
+          onStartExercise={(type, level) => {
+            updateStreak(); // Streak pour défi du jour aussi
+            navigateToExercise({ type, level });
+          }}
+          onStartEvaluation={(level) => {
+            updateStreak(); // Streak pour évaluation aussi
             router.push({
               pathname: "/(tabs)/levelAssessment",
               params: { level },
-            })
-          }
+            });
+          }}
         />
 
-        {/* 3. Suggestions/Recommandations */}
+        {/* 3. Suggestions intelligentes */}
         <RecommendationsSection
           lastActivity={lastActivity}
           exerciseTimeStats={exerciseTimeStats}

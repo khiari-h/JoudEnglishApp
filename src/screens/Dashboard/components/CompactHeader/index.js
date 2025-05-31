@@ -5,18 +5,11 @@ import { LinearGradient } from "expo-linear-gradient";
 import styles from "./style";
 
 /**
- * Header compact pour le Dashboard - Système 1-6+Bonus
+ * Header compact pour le Dashboard - Design simplifié 🎓 JOUD [1] 🔥15
  */
-const CompactHeader = ({
-  level = "1",
-  progress = 0,
-  streak = 0,
-  levelColor = "#3B82F6",
-  onProfilePress,
-}) => {
+const CompactHeader = ({ level = "1", streak = 0, levelColor = "#3B82F6" }) => {
   // Affichage du niveau (1,2,3,4,5,6 ou B pour bonus)
   const displayLevel = level === "bonus" ? "B" : level;
-  const formattedProgress = Math.round(progress);
 
   return (
     <LinearGradient
@@ -26,37 +19,26 @@ const CompactHeader = ({
       style={styles.container}
     >
       <View style={styles.content}>
-        <View style={styles.leftSection}>
-          <Text style={styles.logo}>JOUD</Text>
-          <View style={styles.levelContainer}>
-            <View style={styles.levelBadge}>
-              <Text style={styles.levelText}>{displayLevel}</Text>
-            </View>
-            <View style={styles.levelProgressContainer}>
-              <View style={styles.levelProgressTrack}>
-                <View
-                  style={[
-                    styles.levelProgressFill,
-                    { width: `${formattedProgress}%` },
-                  ]}
-                />
-              </View>
-              <Text style={styles.levelPercentage}>{formattedProgress}%</Text>
-            </View>
-          </View>
+        {/* Logo avec emoji */}
+        <View style={styles.logoSection}>
+          <Text style={styles.logoEmoji}>🎓</Text>
+          <Text style={styles.logoText}>JOUD</Text>
         </View>
 
+        {/* Section droite : Niveau + Streak */}
         <View style={styles.rightSection}>
+          {/* Badge niveau */}
+          <View style={styles.levelBadge}>
+            <Text style={[styles.levelText, { color: levelColor }]}>
+              {displayLevel}
+            </Text>
+          </View>
+
+          {/* Streak */}
           <View style={styles.streakContainer}>
-            <Ionicons name="flame" size={16} color="#FFB830" />
+            <Text style={styles.streakEmoji}>🔥</Text>
             <Text style={styles.streakText}>{streak}</Text>
           </View>
-          <TouchableOpacity
-            style={styles.profileButton}
-            onPress={onProfilePress}
-          >
-            <Ionicons name="person" size={20} color="white" />
-          </TouchableOpacity>
         </View>
       </View>
     </LinearGradient>
