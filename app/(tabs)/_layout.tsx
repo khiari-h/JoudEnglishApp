@@ -35,7 +35,7 @@ export default function TabLayout() {
         },
       }}
     >
-      {/* Onglet Accueil - Dashboard */}
+      {/* Onglets visibles */}
       <Tabs.Screen
         name="dashboard"
         options={{
@@ -50,7 +50,6 @@ export default function TabLayout() {
         }}
       />
 
-      {/* Onglet Exercices - Sélection niveau */}
       <Tabs.Screen
         name="levelSelection"
         options={{
@@ -65,7 +64,6 @@ export default function TabLayout() {
         }}
       />
 
-      {/* Onglet Conversation - conversationsExercise (nouveau nom) */}
       <Tabs.Screen
         name="conversationsExercise"
         options={{
@@ -80,7 +78,7 @@ export default function TabLayout() {
         }}
       />
 
-      {/* Masquer tous les autres écrans */}
+      {/* Écrans cachés mais accessibles par navigation */}
       <Tabs.Screen name="exerciseSelection" options={{ href: null }} />
       <Tabs.Screen name="levelAssessment" options={{ href: null }} />
       <Tabs.Screen name="vocabularyExercise" options={{ href: null }} />
