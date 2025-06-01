@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Card from "../../../../components/ui/Card";
 import Button from "../../../../components/ui/Button";
@@ -10,6 +10,8 @@ import styles from "./style";
  * - Le temps passé sur chaque type d'exercice (VRAIES DONNÉES maintenant !)
  * - Un parcours pédagogique optimal
  * - Des messages bienveillants style "coach"
+ * 
+ * OPTIMISÉ - Plus de console.log, calculs mémorisés
  */
 const RecommendationsSection = ({
   lastActivity,
@@ -22,28 +24,22 @@ const RecommendationsSection = ({
   // Utiliser le hook de recommandations intelligentes avec vraies données
   const { smartRecommendation } = useSmartRecommendations(
     lastActivity, 
-    exerciseTimeStats, // Maintenant ce sont les VRAIES données !
+    exerciseTimeStats,
     currentLevel
   );
 
-  // Debug : afficher les données reçues
-  console.log("📋 RecommendationsSection - exerciseTimeStats reçues:", exerciseTimeStats);
-  console.log("🎯 RecommendationsSection - smartRecommendation:", smartRecommendation);
+  // Mémoriser le rendu pour éviter les re-calculs inutiles
+  const recommendationContent = useMemo(() => {
+    // Le hook retourne TOUJOURS une recommandation maintenant
+    if (!smartRecommendation) {
+      return null;
+    }
 
-  // Le hook retourne TOUJOURS une recommandation maintenant
-  if (!smartRecommendation) {
-    console.log("❌ Pas de recommandation - ne devrait jamais arriver !");
-    return null;
-  }
+    const { recommendationData } = smartRecommendation;
 
-  const { recommendationData } = smartRecommendation;
-
-  // Message pour exercice de démarrage (premier usage)
-  if (smartRecommendation.id === 'start_vocabulary') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.sectionTitle}>Pour toi</Text>
-        
+    // Message pour exercice de démarrage (premier usage)
+    if (smartRecommendation.id === 'start_vocabulary') {
+      return (
         <Card style={styles.recommendationCard}>
           <View style={styles.startRecommendationContent}>
             <View style={styles.messageHeader}>
@@ -66,16 +62,12 @@ const RecommendationsSection = ({
             />
           </View>
         </Card>
-      </View>
-    );
-  }
+      );
+    }
 
-  // Message de recommandation par défaut (pas assez de temps)
-  if (smartRecommendation.id === 'default_vocabulary') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.sectionTitle}>Recommandation</Text>
-        
+    // Message de recommandation par défaut (pas assez de temps)
+    if (smartRecommendation.id === 'default_vocabulary') {
+      return (
         <Card style={styles.recommendationCard}>
           <View style={styles.startRecommendationContent}>
             <View style={styles.messageHeader}>
@@ -98,15 +90,11 @@ const RecommendationsSection = ({
             />
           </View>
         </Card>
-      </View>
-    );
-  }
+      );
+    }
 
-  // Message de recommandation intelligente (basée sur temps réel !)
-  return (
-    <View style={styles.container}>
-      <Text style={styles.sectionTitle}>Suggestion pour toi</Text>
-      
+    // Message de recommandation intelligente (basée sur temps réel !)
+    return (
       <Card style={styles.recommendationCard}>
         <View style={styles.recommendationContent}>
           {/* Header avec icône et titre coach */}
@@ -173,6 +161,26 @@ const RecommendationsSection = ({
           />
         </View>
       </Card>
+    );
+  }, [smartRecommendation, accentColor, currentLevel, onSelectExercise]);
+
+  // Mémoriser le titre de section
+  const sectionTitle = useMemo(() => {
+    if (!smartRecommendation) return "Recommandations";
+    
+    if (smartRecommendation.id === 'start_vocabulary') return "Pour toi";
+    if (smartRecommendation.id === 'default_vocabulary') return "Recommandation";
+    return "Suggestion pour toi";
+  }, [smartRecommendation]);
+
+  if (!recommendationContent) {
+    return null;
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.sectionTitle}>{sectionTitle}</Text>
+      {recommendationContent}
     </View>
   );
 };
