@@ -101,14 +101,14 @@ const useDailyGoal = (currentLevel, progress) => {
   // Messages motivants selon l'exercice et le jour
   const getDailyMessage = (exerciseType, day) => {
     const messages = {
-      vocabulary: `Enrichis ton arsenal de mots !`,
-      phrases: `Mets tes nouveaux mots en action !`,
-      grammar: `Affine ta précision !`,
-      reading: `Vois tout en contexte !`,
-      conversations: `Pratique en situation réelle !`,
-      spelling: `Perfectionne ton orthographe !`,
-      errorCorrection: `Chasse les erreurs !`,
-      wordGames: `Révise en t'amusant !`
+      vocabulary: "Enrichis ton arsenal de mots !",
+      phrases: "Mets tes nouveaux mots en action !",
+      grammar: "Affine ta précision !",
+      reading: "Vois tout en contexte !",
+      conversations: "Pratique en situation réelle !",
+      spelling: "Perfectionne ton orthographe !",
+      errorCorrection: "Chasse les erreurs !",
+      wordGames: "Révise en t'amusant !"
     };
     
     return messages[exerciseType] || `Progresse dans ${exerciseType} !`;

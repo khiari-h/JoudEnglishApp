@@ -646,7 +646,7 @@ async function displayDuplicateStats() {
   console.log('='.repeat(80));
   console.log(`\nNombre total de mots uniques: ${stats.totalUniqueWords}`);
   console.log(`Nombre total d'occurrences de doublons: ${stats.totalDuplicateInstances}`);
-  console.log(`\nRépartition des doublons:`);
+  console.log("\nRépartition des doublons:");
   console.log(`- Doublons internes aux fichiers: ${stats.internalDuplicates}`);
   console.log(`- Doublons entre fichiers d'un même niveau: ${stats.sameLevelDuplicates}`);
   console.log(`- Mots apparaissant dans plusieurs niveaux: ${stats.crossLevelDuplicates}`);

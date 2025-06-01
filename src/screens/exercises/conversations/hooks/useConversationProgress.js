@@ -45,7 +45,7 @@ const useConversationProgress = (level) => {
           ? JSON.parse(savedHistoryJson) 
           : {};
         
-        console.log(`[ConversationProgress] Données chargées:`, { 
+        console.log("[ConversationProgress] Données chargées:", { 
           completedScenarios: Object.keys(savedCompletedScenarios).length,
           position: savedPosition,
           conversationHistory: Object.keys(savedHistory).length
@@ -81,7 +81,7 @@ const useConversationProgress = (level) => {
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
       
-      console.log(`[ConversationProgress] Position sauvegardée avec succès`);
+      console.log("[ConversationProgress] Position sauvegardée avec succès");
       return true;
     } catch (error) {
       console.error('[ConversationProgress] Erreur lors de la sauvegarde de la position:', error);
@@ -106,7 +106,7 @@ const useConversationProgress = (level) => {
         
         setCompletedScenarios(updatedCompletedScenarios);
         await AsyncStorage.setItem(COMPLETED_SCENARIOS_KEY, JSON.stringify(updatedCompletedScenarios));
-        console.log(`[ConversationProgress] Scénario marqué comme complété`);
+        console.log("[ConversationProgress] Scénario marqué comme complété");
       }
       
       return true;
@@ -151,7 +151,7 @@ const useConversationProgress = (level) => {
       setConversationHistory(updatedHistory);
       await AsyncStorage.setItem(CONVERSATION_HISTORY_KEY, JSON.stringify(updatedHistory));
       
-      console.log(`[ConversationProgress] Conversation sauvegardée avec succès`);
+      console.log("[ConversationProgress] Conversation sauvegardée avec succès");
       return true;
     } catch (error) {
       console.error('[ConversationProgress] Erreur lors de la sauvegarde de la conversation:', error);
@@ -162,7 +162,7 @@ const useConversationProgress = (level) => {
   // Initialiser la progression
   const initializeProgress = useCallback((ConversationData) => {
     if (!initialized && loaded && ConversationData) {
-      console.log(`[ConversationProgress] Initialisation de la progression`);
+      console.log("[ConversationProgress] Initialisation de la progression");
       const scenarios = ConversationData.exercises || [];
       const newCompletedScenarios = { ...completedScenarios };
       
@@ -209,7 +209,7 @@ const useConversationProgress = (level) => {
         saveLastPosition(scenarioIndex, 0);
       }
       
-      console.log(`[ConversationProgress] Conversation réinitialisée`);
+      console.log("[ConversationProgress] Conversation réinitialisée");
       return true;
     } catch (error) {
       console.error('[ConversationProgress] Erreur lors de la réinitialisation:', error);
@@ -220,7 +220,7 @@ const useConversationProgress = (level) => {
   // Réinitialiser toutes les données
   const resetAllProgress = useCallback(async () => {
     try {
-      console.log(`[ConversationProgress] Réinitialisation de toutes les données`);
+      console.log("[ConversationProgress] Réinitialisation de toutes les données");
       
       // Supprimer les données de l'AsyncStorage
       await AsyncStorage.multiRemove([
@@ -235,7 +235,7 @@ const useConversationProgress = (level) => {
       setConversationHistory({});
       setInitialized(false);
       
-      console.log(`[ConversationProgress] Toutes les données ont été réinitialisées`);
+      console.log("[ConversationProgress] Toutes les données ont été réinitialisées");
       return true;
     } catch (error) {
       console.error('[ConversationProgress] Erreur lors de la réinitialisation complète:', error);
