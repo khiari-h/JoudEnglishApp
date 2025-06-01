@@ -85,7 +85,7 @@ export const shuffleArray = (array) => {
       .toString()
       .toLowerCase()
       .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[\u0300-\u036f]/gu, '')
       .replace(/[^\w\s-]/g, '')
       .replace(/\s+/g, '-')
       .replace(/--+/g, '-')
@@ -307,7 +307,7 @@ export const shuffleArray = (array) => {
     }
     
     if (removeAccents) {
-      normalized = normalized.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      normalized = normalized.normalize("NFD").replace(/[\u0300-\u036f]/gu, "");
     }
     
     if (removePunctuation) {
