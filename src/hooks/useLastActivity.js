@@ -1,4 +1,4 @@
-// src/hooks/useLastActivity.js - FIXED
+// src/hooks/useLastActivity.js - CLEAN VERSION
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -145,7 +145,7 @@ const useLastActivity = () => {
         progress = position.progress || 0;
       }
     } catch (error) {
-      console.error(`Erreur lors du chargement des métadonnées pour ${exerciseType.key}:`, error);
+      // Silencieux - pas de log pour éviter le spam
     }
 
     return { progress, metadata };
@@ -189,7 +189,6 @@ const useLastActivity = () => {
   // ✅ FIX PRINCIPAL : useCallback STABLE avec dépendances vides
   const loadLastActivities = useCallback(async () => {
     setIsLoading(true);
-    console.log("🔄 Chargement des dernières activités...");
     
     try {
       const activitiesByLevel = {};
@@ -230,11 +229,9 @@ const useLastActivity = () => {
         activitiesByLevel[level].sort((a, b) => b.timestamp - a.timestamp);
       }
 
-      console.log("✅ Activités chargées:", activitiesByLevel);
       setLastActivities(activitiesByLevel);
       setIsLoading(false);
     } catch (error) {
-      console.error('❌ Erreur lors du chargement des dernières activités:', error);
       setIsLoading(false);
     }
   }, []); // ✅ DÉPENDANCES VIDES = fonction stable !
@@ -296,11 +293,8 @@ const useLastActivity = () => {
     });
     
     if (!mostRecentActivity) {
-      console.log("❌ Aucune activité récente trouvée");
       return null;
     }
-    
-    console.log("✅ Dernière activité trouvée:", mostRecentActivity);
     
     return {
       ...mostRecentActivity,

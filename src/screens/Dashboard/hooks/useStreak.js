@@ -36,17 +36,8 @@ const useStreak = () => {
         const today = getTodayDate();
         const lastActivityDate = streakData.lastActivityDate;
 
-        console.log("🔥 Streak data chargée:", streakData);
-        console.log(
-          "📅 Aujourd'hui:",
-          today,
-          "| Dernière activité:",
-          lastActivityDate
-        );
-
         if (lastActivityDate) {
           const daysDiff = getDaysDifference(lastActivityDate, today);
-          console.log("📊 Différence en jours:", daysDiff);
 
           if (daysDiff === 0) {
             // Même jour - garde le streak actuel
@@ -56,7 +47,6 @@ const useStreak = () => {
             setCurrentStreak(streakData.currentStreak || 0);
           } else {
             // Plus d'un jour - streak cassé
-            console.log("💔 Streak cassé ! Remise à 0");
             setCurrentStreak(0);
             // Sauvegarder le reset
             await saveStreakData(0, null, streakData.longestStreak || 0);
@@ -69,14 +59,12 @@ const useStreak = () => {
         setLongestStreak(streakData.longestStreak || 0);
       } else {
         // Première utilisation
-        console.log("🆕 Nouveau utilisateur - initialisation streak");
         setCurrentStreak(0);
         setLongestStreak(0);
       }
 
       setIsLoading(false);
     } catch (error) {
-      console.error("❌ Erreur chargement streak:", error);
       setCurrentStreak(0);
       setLongestStreak(0);
       setIsLoading(false);
@@ -97,9 +85,8 @@ const useStreak = () => {
         STREAK_STORAGE_KEY,
         JSON.stringify(streakData)
       );
-      console.log("💾 Streak sauvegardé:", streakData);
     } catch (error) {
-      console.error("❌ Erreur sauvegarde streak:", error);
+      // Silencieux
     }
   };
 
@@ -118,7 +105,6 @@ const useStreak = () => {
 
         if (lastActivityDate === today) {
           // Déjà une activité aujourd'hui - pas de changement
-          console.log("✅ Activité déjà comptée aujourd'hui");
           return;
         }
 
@@ -128,11 +114,9 @@ const useStreak = () => {
           if (daysDiff === 1) {
             // Jour consécutif - increment streak
             newStreak = (streakData.currentStreak || 0) + 1;
-            console.log("🔥 Streak continue ! Jour", newStreak);
           } else {
             // Streak cassé ou relancé
             newStreak = 1;
-            console.log("🔄 Nouveau streak démarré");
           }
         }
       }
@@ -140,7 +124,6 @@ const useStreak = () => {
       // Mettre à jour le longest streak
       if (newStreak > newLongest) {
         newLongest = newStreak;
-        console.log("🏆 Nouveau record de streak !", newLongest);
       }
 
       // Sauvegarder et mettre à jour les états
@@ -148,7 +131,7 @@ const useStreak = () => {
       setCurrentStreak(newStreak);
       setLongestStreak(newLongest);
     } catch (error) {
-      console.error("❌ Erreur update streak:", error);
+      // Silencieux
     }
   }, [longestStreak]);
 
@@ -161,10 +144,10 @@ const useStreak = () => {
     };
   }, [currentStreak, longestStreak]);
 
-  // Charger au montage
+  // Charger au montage - UNE SEULE FOIS
   useEffect(() => {
     loadStreakData();
-  }, [loadStreakData]);
+  }, []); // ✅ Dépendances vides pour éviter les boucles
 
   return {
     currentStreak,

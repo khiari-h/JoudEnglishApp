@@ -35,8 +35,6 @@ const useExerciseTimeTracking = () => {
   // Démarrer le tracking d'un exercice
   const startTracking = useCallback(
     (exerciseKey) => {
-      console.log(`⏱️ Début tracking: ${exerciseKey}`);
-
       // Arrêter le tracking précédent s'il y en a un
       if (currentlyTracking) {
         stopAndSave();
@@ -66,8 +64,6 @@ const useExerciseTimeTracking = () => {
     // Calculer le temps de session en secondes
     const sessionDuration = Math.floor((Date.now() - sessionStartTime) / 1000);
 
-    console.log(`⏹️ Fin tracking: ${currentlyTracking} - ${sessionDuration}s`);
-
     // Arrêter le chronomètre
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -94,8 +90,6 @@ const useExerciseTimeTracking = () => {
   // Ajouter du temps manuellement (en secondes)
   const addTime = useCallback(
     (exerciseKey, seconds) => {
-      console.log(`➕ Ajout manuel: ${exerciseKey} + ${seconds}s`);
-
       setExerciseTimeStats((prevStats) => ({
         ...prevStats,
         [exerciseKey]: (prevStats[exerciseKey] || 0) + seconds,
@@ -168,8 +162,6 @@ const useExerciseTimeTracking = () => {
 
   // Reset toutes les données
   const resetAllStats = useCallback(() => {
-    console.log("🔄 Reset toutes les stats de temps");
-
     const emptyStats = {
       vocabulary_classic: 0,
       vocabulary_fast: 0,
@@ -212,14 +204,6 @@ const useExerciseTimeTracking = () => {
       }
     };
   }, [currentlyTracking, sessionStartTime]);
-
-  // Debug logs
-  useEffect(() => {
-    if (loaded) {
-      console.log("📊 Stats exercices chargées:", exerciseTimeStats);
-      console.log("📊 Stats formatées (min):", getFormattedStats());
-    }
-  }, [loaded, exerciseTimeStats, getFormattedStats]);
 
   return {
     // États
