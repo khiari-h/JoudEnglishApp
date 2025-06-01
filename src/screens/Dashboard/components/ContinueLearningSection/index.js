@@ -126,7 +126,7 @@ const ContinueLearningSection = ({
         {/* Bouton avec emoji */}
         <TouchableOpacity
           style={[styles.button, { backgroundColor: accentColor }]}
-          onPress={() => onPress && onPress(lastActivity)}
+          onPress={() => onPress?.(lastActivity)}
           activeOpacity={0.7}
         >
           <Text style={styles.buttonEmoji}>▶️</Text>

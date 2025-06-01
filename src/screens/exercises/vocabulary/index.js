@@ -144,7 +144,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
 
   const getCurrentWord = () => {
     const category = vocabularyData?.exercises?.[categoryIndex];
-    if (category && category.words && wordIndex < category.words.length) {
+    if (category?.words && wordIndex < category.words.length) {
       return category.words[wordIndex];
     }
     return { word: "", translation: "", definition: "", example: "" };
@@ -153,7 +153,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
   const isLastWordInExercise = () => {
     const category = vocabularyData?.exercises?.[categoryIndex];
     return (
-      category && category.words && wordIndex === category.words.length - 1
+      category?.words && wordIndex === category.words.length - 1
     );
   };
 

@@ -61,7 +61,7 @@ const PaginationDots = ({
             },
             dotStyle,
           ]}
-          onPress={() => onDotPress && onDotPress(i)}
+          onPress={() => onDotPress?.(i)}
           disabled={!onDotPress}
         />
       );

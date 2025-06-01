@@ -115,7 +115,7 @@ const errorCorrectionB1 = {
   getExercisesByTopic: (topic) => {
     return allExercises.filter(exercise => {
       const category = errorCorrectionB1.categories.find(cat => cat.id === exercise.categoryId);
-      return category && category.topics.includes(topic);
+      return category?.topics.includes(topic);
     });
   },
 
@@ -123,7 +123,7 @@ const errorCorrectionB1 = {
   getExercisesByErrorType: (errorType) => {
     return allExercises.filter(exercise => {
       const category = errorCorrectionB1.categories.find(cat => cat.id === exercise.categoryId);
-      return category && category.commonErrors.some(error => error.includes(errorType));
+      return category?.commonErrors.some(error => error.includes(errorType));
     });
   },
 

@@ -61,7 +61,7 @@ const RecommendationsSection = ({
               color={accentColor}
               fullWidth
               rightIcon="arrow-forward-outline"
-              onPress={() => onSelectExercise && onSelectExercise(smartRecommendation)}
+              onPress={() => onSelectExercise?.(smartRecommendation)}
               style={styles.recommendationButton}
             />
           </View>
@@ -93,7 +93,7 @@ const RecommendationsSection = ({
               color={smartRecommendation.color}
               fullWidth
               rightIcon="arrow-forward-outline"
-              onPress={() => onSelectExercise && onSelectExercise(smartRecommendation)}
+              onPress={() => onSelectExercise?.(smartRecommendation)}
               style={styles.recommendationButton}
             />
           </View>
@@ -135,7 +135,7 @@ const RecommendationsSection = ({
           {/* Aperçu de l'exercice recommandé */}
           <TouchableOpacity
             style={styles.exercisePreview}
-            onPress={() => onSelectExercise && onSelectExercise(smartRecommendation)}
+            onPress={() => onSelectExercise?.(smartRecommendation)}
             activeOpacity={0.7}
           >
             <View style={styles.exercisePreviewContent}>
@@ -168,7 +168,7 @@ const RecommendationsSection = ({
             color={smartRecommendation.color}
             fullWidth
             rightIcon="arrow-forward-outline"
-            onPress={() => onSelectExercise && onSelectExercise(smartRecommendation)}
+            onPress={() => onSelectExercise?.(smartRecommendation)}
             style={styles.recommendationButton}
           />
         </View>

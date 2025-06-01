@@ -31,7 +31,7 @@ const useErrorCorrectionExerciseState = (level, initialData = []) => {
   
   // Initialiser la première catégorie
   useEffect(() => {
-    if (initialData && initialData.categories && initialData.categories.length > 0) {
+    if (initialData?.categories && initialData.categories.length > 0) {
       const firstCategory = initialData.categories[0].id;
       setSelectedCategory(firstCategory);
       console.log("🎯 Catégorie par défaut sélectionnée:", firstCategory);
@@ -231,8 +231,7 @@ const useErrorCorrectionExerciseState = (level, initialData = []) => {
   // ========== DONNÉES CALCULÉES ==========
   
   // Vérifier si les données sont valides
-  const hasValidData = initialData && 
-                      initialData.categories && 
+  const hasValidData = initialData?.categories && 
                       Array.isArray(initialData.categories) && 
                       initialData.categories.length > 0;
 

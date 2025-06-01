@@ -73,7 +73,7 @@ export const getSpellingData = (level, type) => {
   };
 
   // Sélectionner les données appropriées
-  if (dataMap[level] && dataMap[level][type]) {
+  if (dataMap[level]?.[type]) {
     return dataMap[level][type];
   }
 

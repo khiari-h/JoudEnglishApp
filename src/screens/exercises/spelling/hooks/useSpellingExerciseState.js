@@ -23,7 +23,7 @@ const useSpellingExerciseState = (level, exerciseType) => {
   // Charger les données d'exercice
   useEffect(() => {
     const data = getSpellingData(level, exerciseType);
-    if (data && data.exercises) {
+    if (data?.exercises) {
       setExercises(data.exercises);
       console.log(`📚 ${data.exercises.length} exercices chargés pour ${exerciseType} niveau ${level}`);
     }

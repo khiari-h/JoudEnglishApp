@@ -113,7 +113,7 @@ const LearningPathCompact = ({
               <TouchableOpacity
                 key={level.id}
                 style={styles.levelButton}
-                onPress={() => onSelectLevel && onSelectLevel(level.id)}
+                onPress={() => onSelectLevel?.(level.id)}
                 activeOpacity={0.7}
               >
                 <View style={circleStyle}>
@@ -131,7 +131,7 @@ const LearningPathCompact = ({
           color={primaryColor}
           fullWidth
           rightIcon="arrow-forward-outline"
-          onPress={() => onSelectLevel && onSelectLevel(currentLevel)}
+          onPress={() => onSelectLevel?.(currentLevel)}
           style={styles.exploreButton}
         />
       </Card>
