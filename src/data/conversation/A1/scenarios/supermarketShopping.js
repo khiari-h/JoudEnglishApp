@@ -154,5 +154,5 @@ const supermarketShopping = {
       ]
     }
   };
-  
+
   export default supermarketShopping;

@@ -18,10 +18,10 @@ let exportNames = [];
 // Traitement de chaque fichier
 files.forEach((file) => {
   const base = file.replace(".js", "");
-  
+
   // Conversion de kebab-case en camelCase pour le nom de variable
   const varName = base.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
-  
+
   // Ajout des imports default
   imports += `import ${varName} from "./categories/${base}.js";\n`;
   varNames.push(varName);
@@ -46,4 +46,4 @@ export {
 
 // Écriture dans le fichier index.js
 fs.writeFileSync(path.join(__dirname, "index.js"), content, "utf8");
-console.log("index.js généré avec", files.length, "fichiers de catégories.");
+

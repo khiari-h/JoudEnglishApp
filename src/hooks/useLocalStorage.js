@@ -12,10 +12,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const useLocalStorage = (key, initialValue) => {
   // État pour stocker notre valeur
   const [storedValue, setStoredValue] = useState(initialValue);
-  
+
   // Flag pour indiquer si les données ont été chargées
   const [loaded, setLoaded] = useState(false);
-  
+
   // Erreur éventuelle
   const [error, setError] = useState(null);
 
@@ -24,7 +24,7 @@ const useLocalStorage = (key, initialValue) => {
     try {
       // Récupérer la valeur depuis AsyncStorage
       const item = await AsyncStorage.getItem(key);
-      
+
       // Analyser la valeur stockée ou retourner initialValue
       const value = item ? JSON.parse(item) : initialValue;
       setStoredValue(value);
@@ -32,7 +32,7 @@ const useLocalStorage = (key, initialValue) => {
       setError(null);
       return value;
     } catch (error) {
-      console.error(`Error getting item ${key} from AsyncStorage:`, error);
+
       setError(error);
       setLoaded(true);
       return initialValue;
@@ -44,15 +44,15 @@ const useLocalStorage = (key, initialValue) => {
     try {
       // Permettre à la valeur d'être une fonction pour la même API que useState
       const valueToStore = value instanceof Function ? value(storedValue) : value;
-      
+
       // Sauvegarder dans l'état
       setStoredValue(valueToStore);
-      
+
       // Sauvegarder dans AsyncStorage
       await AsyncStorage.setItem(key, JSON.stringify(valueToStore));
       setError(null);
     } catch (error) {
-      console.error(`Error setting item ${key} in AsyncStorage:`, error);
+
       setError(error);
     }
   }, [key, storedValue]);
@@ -64,7 +64,7 @@ const useLocalStorage = (key, initialValue) => {
       setStoredValue(initialValue);
       setError(null);
     } catch (error) {
-      console.error(`Error removing item ${key} from AsyncStorage:`, error);
+
       setError(error);
     }
   }, [key, initialValue]);

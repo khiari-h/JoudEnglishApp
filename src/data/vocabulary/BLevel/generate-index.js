@@ -48,4 +48,5 @@ const content =
 
 // Écriture dans le fichier index.js
 fs.writeFileSync(path.join(__dirname, "index.js"), content, "utf8");
-console.log("index.js généré avec", files.length, "fichiers.");
+
+

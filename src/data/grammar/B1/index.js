@@ -15,3 +15,4 @@ export { grammarRulesB1, grammarExercisesB1, grammarB1 };
 
 // Export par défaut
 export default grammarB1;
+

@@ -24,7 +24,7 @@ export const vocab = {
     { word: "checks and balances", translation: "freins et contrepoids", example: "Checks and balances prevent any branch of government from becoming too powerful." },
     { word: "separation of powers", translation: "séparation des pouvoirs", example: "Separation of powers divides government authority among different branches." },
     { word: "constitutional framework", translation: "cadre constitutionnel", example: "The constitutional framework establishes the fundamental political principles of a nation." },
-    
+
     // Institutions publiques
     { word: "legislature", translation: "législature", example: "The legislature is responsible for making and amending laws." },
     { word: "executive branch", translation: "pouvoir exécutif", example: "The executive branch implements and enforces laws." },
@@ -44,11 +44,11 @@ export const vocab = {
     { word: "public institution", translation: "institution publique", example: "Public institutions serve societal needs through government funding." },
     { word: "ombudsman", translation: "médiateur", example: "An ombudsman investigates citizens' complaints against public organizations." },
     { word: "administrative state", translation: "État administratif", example: "The administrative state includes the agencies implementing government policy." },
-    
+
     { word: "state apparatus", translation: "appareil d'État", example: "The state apparatus encompasses all institutions exercising government authority." },
-    
+
     // Processus électoraux
-    
+
     { word: "voting system", translation: "système de vote", example: "Different voting systems can produce different electoral outcomes." },
     { word: "proportional representation", translation: "représentation proportionnelle", example: "Proportional representation allocates seats according to parties' vote shares." },
     { word: "first-past-the-post", translation: "scrutin uninominal majoritaire à un tour", example: "First-past-the-post systems award seats to candidates with the most votes." },
@@ -62,32 +62,32 @@ export const vocab = {
     { word: "electoral system", translation: "système électoral", example: "The electoral system determines how votes translate into representation." },
     { word: "electoral commission", translation: "commission électorale", example: "An electoral commission administers elections and ensures their integrity." },
     { word: "absentee ballot", translation: "vote par correspondance", example: "Absentee ballots allow voting without physically attending polling stations." },
-    
+
     { word: "universal suffrage", translation: "suffrage universel", example: "Universal suffrage extends voting rights to all adult citizens." },
     { word: "election observer", translation: "observateur électoral", example: "Election observers monitor voting to ensure fairness and transparency." },
     { word: "referendum", translation: "référendum", example: "A referendum allows citizens to vote directly on a specific issue." },
     { word: "vote counting", translation: "dépouillement des votes", example: "Vote counting procedures must be transparent to maintain trust." },
-    
+
     // Politiques publiques
     { word: "public policy", translation: "politique publique", example: "Public policy addresses societal issues through government action." },
     { word: "policy making", translation: "élaboration des politiques", example: "Policy making involves identifying problems and developing solutions." },
-    
+
     { word: "policy evaluation", translation: "évaluation des politiques", example: "Policy evaluation assesses the outcomes and effectiveness of government actions." },
     { word: "policy analysis", translation: "analyse des politiques", example: "Policy analysis examines alternatives to address public problems." },
     { word: "agenda setting", translation: "définition de l'agenda", example: "Agenda setting determines which issues receive government attention." },
     { word: "social policy", translation: "politique sociale", example: "Social policy addresses issues like healthcare, education, and welfare." },
     { word: "economic policy", translation: "politique économique", example: "Economic policy manages growth, employment, and monetary stability." },
     { word: "foreign policy", translation: "politique étrangère", example: "Foreign policy guides a nation's interactions with other countries." },
-    
+
     { word: "fiscal policy", translation: "politique fiscale", example: "Fiscal policy uses government spending and taxation to influence the economy." },
     { word: "monetary policy", translation: "politique monétaire", example: "Monetary policy controls the money supply and interest rates." },
     { word: "regulatory policy", translation: "politique de régulation", example: "Regulatory policy establishes rules for businesses and markets." },
-    
+
     { word: "policy cycle", translation: "cycle politique", example: "The policy cycle includes problem identification, formulation, implementation, and evaluation." },
     { word: "evidence-based policy", translation: "politique fondée sur des preuves", example: "Evidence-based policy relies on research and data rather than ideology." },
     { word: "policy instrument", translation: "instrument politique", example: "Policy instruments include regulations, subsidies, and information campaigns." },
     { word: "policy outcome", translation: "résultat politique", example: "Policy outcomes may differ from intended objectives due to implementation challenges." },
-    
+
     // Relations internationales
     { word: "international relations", translation: "relations internationales", example: "International relations studies interactions between countries and global issues." },
     { word: "diplomacy", translation: "diplomatie", example: "Diplomacy involves negotiation and relationship-building between nations." },
@@ -106,9 +106,9 @@ export const vocab = {
     { word: "geopolitics", translation: "géopolitique", example: "Geopolitics examines how geography influences international relations." },
     { word: "international cooperation", translation: "coopération internationale", example: "International cooperation addresses challenges that cross national borders." },
     { word: "diplomatic mission", translation: "mission diplomatique", example: "Diplomatic missions represent countries in foreign capitals." },
-    
+
     { word: "international security", translation: "sécurité internationale", example: "International security addresses threats to peace and stability worldwide." },
-    
+
     // Droits & libertés
     { word: "human rights", translation: "droits humains", example: "Human rights are universal entitlements inherent to all people." },
     { word: "civil liberties", translation: "libertés civiles", example: "Civil liberties protect individuals from government overreach." },
@@ -128,21 +128,20 @@ export const vocab = {
     { word: "rights violation", translation: "violation des droits", example: "Rights violations occur when protected freedoms are infringed upon." },
     { word: "state obligation", translation: "obligation de l'État", example: "State obligations include protecting and fulfilling citizens' rights." },
     { word: "legal protection", translation: "protection juridique", example: "Legal protection ensures rights can be defended in court." },
-    
+
     // Mouvements politiques
     { word: "political movement", translation: "mouvement politique", example: "Political movements mobilize people around shared ideas and goals." },
     { word: "liberalism", translation: "libéralisme", example: "Liberalism emphasizes individual rights, democracy, and free markets." },
     { word: "conservatism", translation: "conservatisme", example: "Conservatism values tradition, stability, and gradual change." },
     { word: "socialism", translation: "socialisme", example: "Socialism advocates collective ownership of production means." },
     { word: "nationalism", translation: "nationalisme", example: "Nationalism emphasizes loyalty and devotion to one's nation." },
-    
+
     { word: "environmentalism", translation: "environnementalisme", example: "Environmentalism advocates for the protection of the natural world." },
     { word: "feminism", translation: "féminisme", example: "Feminism supports gender equality in all aspects of society." },
     { word: "civil rights movement", translation: "mouvement des droits civiques", example: "The civil rights movement fought racial discrimination and segregation." },
     { word: "labor movement", translation: "mouvement ouvrier", example: "The labor movement advocates for workers' rights and interests." },
     { word: "anti-globalization movement", translation: "mouvement altermondialiste", example: "The anti-globalization movement opposes certain aspects of economic globalization." },
-    
-    
+
     { word: "anarchism", translation: "anarchisme", example: "Anarchism opposes authority and advocates voluntary associations." },
     { word: "fascism", translation: "fascisme", example: "Fascism combines nationalism, authoritarianism, and state control." },
     { word: "political ideology", translation: "idéologie politique", example: "Political ideologies provide frameworks for understanding society and governance." },

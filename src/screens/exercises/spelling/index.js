@@ -30,7 +30,7 @@ const SpellingExercise = ({ route }) => {
   const levelColor = getLevelColor(level);
 
   // ========== HOOKS D'ÉTAT ==========
-  
+
   // État des exercices (sans progression - supprimée)
   const {
     exercises,
@@ -61,35 +61,26 @@ const SpellingExercise = ({ route }) => {
   } = useSpellingProgress(level, exerciseType);
 
   // ========== INITIALISATION ==========
-  
+
   // Initialiser les exercices et restaurer la position
   useEffect(() => {
     if (exercises.length > 0 && loaded) {
-      console.log("🎯 Initialisation Spelling:", {
-        exercisesCount: exercises.length,
-        lastPosition,
-        completedCount: completedExercises.length
-      });
-
       initializeProgress(exercises);
-      
+
       // Restaurer la dernière position si valide
       if (lastPosition > 0 && lastPosition < exercises.length) {
         setCurrentExerciseIndex(lastPosition);
-        console.log(`📚 Position restaurée: ${lastPosition}`);
       }
     }
   }, [exercises, loaded, lastPosition, initializeProgress, setCurrentExerciseIndex, completedExercises.length]);
 
   // ========== GESTIONNAIRES D'ÉVÉNEMENTS ==========
-  
+
   // Vérification de la réponse
   const handleCheckAnswer = () => {
     const result = checkAnswer();
-    
+
     if (result && currentExercise) {
-      console.log(`✅ Exercice ${currentExerciseIndex} complété correctement`);
-      
       // Marquer comme complété avec toutes les données
       markExerciseAsCompleted(
         currentExerciseIndex,
@@ -102,43 +93,25 @@ const SpellingExercise = ({ route }) => {
           timestamp: Date.now()
         }
       );
-    } else {
-      console.log(`❌ Exercice ${currentExerciseIndex} incorrect`);
     }
   };
 
   // Passage à l'exercice suivant
   const handleNextExercise = () => {
     const nextIndex = currentExerciseIndex + 1;
-    
-    console.log(`➡️ Passage à l'exercice ${nextIndex}`);
-    
+
     // Sauvegarder la position pour persistance
     if (nextIndex < totalExercises) {
       saveLastPosition(nextIndex);
-    } else {
-      console.log("🎉 Tous les exercices terminés !");
-      // Optionnel: navigation vers écran de résultats
     }
-    
+
     nextExercise();
   };
 
   // Retour en arrière
   const handleBackPress = () => {
-    console.log("🔙 Retour depuis Spelling");
     navigation.goBack();
   };
-
-  // ========== LOGS DEBUG ==========
-  console.log("📊 DEBUG Spelling Exercise:", {
-    currentIndex: currentExerciseIndex,
-    totalExercises,
-    completedCount: completedExercises.length,
-    progressPercent: totalExercises > 0 ? Math.round((completedExercises.length / totalExercises) * 100) : 0,
-    isCurrentCompleted: isExerciseCompleted(currentExerciseIndex),
-    currentExerciseType: currentExercise?.type
-  });
 
   // ========== RENDU ==========
   return (
@@ -150,7 +123,7 @@ const SpellingExercise = ({ route }) => {
         levelColor={levelColor} 
         onBackPress={handleBackPress} 
       />
-      
+
       {/* Barre de progression basée sur les exercices complétés */}
       <SpellingProgressBar 
         currentIndex={currentExerciseIndex + 1}
@@ -158,7 +131,7 @@ const SpellingExercise = ({ route }) => {
         completedCount={completedExercises.length}
         levelColor={levelColor}
       />
-      
+
       {/* Carte d'exercice principale */}
       <SpellingCard 
         exercise={currentExercise}
@@ -171,7 +144,7 @@ const SpellingExercise = ({ route }) => {
         onToggleHint={toggleHint}
         levelColor={levelColor}
       />
-      
+
       {/* Boutons d'action */}
       <SpellingActions 
         showFeedback={showFeedback}

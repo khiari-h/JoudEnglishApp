@@ -17,7 +17,7 @@ export const vocab = {
     { word: "mobile home", translation: "maison mobile", example: "They live in a mobile home during the summer." },
     { word: "houseboat", translation: "péniche", example: "Living on a houseboat gives you a unique lifestyle." },
     { word: "residence", translation: "résidence", example: "It's a prestigious residence with security services." },
-    
+
     // Mobilier & aménagement
     { word: "furniture", translation: "mobilier", example: "We need to buy new furniture for the living room." },
     { word: "decor", translation: "décoration", example: "I like the minimalist decor of this apartment." },
@@ -38,7 +38,7 @@ export const vocab = {
     { word: "shutters", translation: "volets", example: "Close the shutters before going to bed." },
     { word: "carpet", translation: "moquette", example: "There's a carpet in the living room." },
     { word: "rug", translation: "tapis", example: "She bought a Persian rug for the living room." },
-    
+
     // Équipements domestiques
     { word: "appliance", translation: "appareil électroménager", example: "All the kitchen appliances are energy-efficient." },
     { word: "food processor", translation: "robot de cuisine", example: "I use a food processor to make smoothies." },
@@ -55,7 +55,7 @@ export const vocab = {
     { word: "extractor fan", translation: "ventilateur d'extraction", example: "The extractor fan removes steam from the bathroom." },
     { word: "water heater", translation: "chauffe-eau", example: "The water heater is in the basement." },
     { word: "thermostat", translation: "thermostat", example: "You can adjust the thermostat to control the temperature." },
-    
+
     // Travaux domestiques
     { word: "renovation", translation: "rénovation", example: "The house is under renovation." },
     { word: "redecoration", translation: "redécoration", example: "We're planning a redecoration of the living room." },
@@ -63,8 +63,7 @@ export const vocab = {
     { word: "to install", translation: "installer", example: "We need to install new shelves in the garage." },
     { word: "to assemble", translation: "assembler", example: "I have to assemble this furniture from IKEA." },
     { word: "to build", translation: "construire", example: "My father built a shed in the garden." },
-    
-    
+
     { word: "to decorate", translation: "décorer", example: "She likes to decorate the house for Christmas." },
     { word: "to furnish", translation: "meubler", example: "They need to furnish their new apartment." },
     { word: "to renovate", translation: "rénover", example: "They decided to renovate the old bathroom." },
@@ -72,7 +71,7 @@ export const vocab = {
     { word: "to drill", translation: "percer", example: "I need to drill a hole in the wall to hang this shelf." },
     { word: "to screw", translation: "visser", example: "You need to screw these parts together." },
     { word: "to nail", translation: "clouer", example: "He nailed the picture frame to the wall." },
-    
+
     // Services domestiques
     { word: "housekeeper", translation: "gouvernante", example: "They employ a housekeeper to clean their large house." },
     { word: "cleaner", translation: "femme de ménage", example: "The cleaner comes twice a week." },
@@ -89,9 +88,9 @@ export const vocab = {
     { word: "laundry service", translation: "service de blanchisserie", example: "The hotel offers a laundry service." },
     { word: "home delivery", translation: "livraison à domicile", example: "We often use home delivery for groceries." },
     { word: "maintenance", translation: "entretien", example: "Regular maintenance prevents major problems." },
-    
+
     // Jardinage simple
-    
+
     { word: "lawn", translation: "pelouse", example: "He mows the lawn every weekend." },
     { word: "flower bed", translation: "parterre de fleurs", example: "She planted tulips in the flower bed." },
     { word: "hedge", translation: "haie", example: "We need to trim the hedge." },
@@ -106,9 +105,9 @@ export const vocab = {
     { word: "pruning shears", translation: "sécateur", example: "Use pruning shears to cut the branches." },
     { word: "to plant", translation: "planter", example: "We're going to plant some trees in the garden." },
     { word: "to grow", translation: "cultiver", example: "They grow their own vegetables." },
-    
+
     // Entretien de la maison
-    
+
     { word: "repair", translation: "réparation", example: "The roof repair will be expensive." },
     { word: "upkeep", translation: "entretien", example: "The upkeep of an old house can be costly." },
     { word: "to fix", translation: "réparer", example: "I need to fix the broken window." },

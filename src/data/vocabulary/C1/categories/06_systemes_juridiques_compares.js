@@ -7,9 +7,9 @@ export const vocab = {
     { word: "civil law system", translation: "système de droit civil", example: "The civil law system, predominant in continental Europe, prioritizes codified statutes." },
     { word: "legal transplant", translation: "transplant juridique", example: "The legal transplant adapted foreign legal concepts to fit within the domestic system." },
     { word: "mixed jurisdiction", translation: "juridiction mixte", example: "Louisiana represents a mixed jurisdiction combining elements of civil and common law." },
-    
+
     { word: "religious legal system", translation: "système juridique religieux", example: "Islamic law is a religious legal system that guides governance in several countries." },
-    
+
     { word: "legal culture", translation: "culture juridique", example: "Legal culture influences how formal rules are interpreted and applied in practice." },
     { word: "socialist legal tradition", translation: "tradition juridique socialiste", example: "The socialist legal tradition emphasized collective interests over individual rights." },
     { word: "legal formalism", translation: "formalisme juridique", example: "Legal formalism stresses strict adherence to established rules and categories." },
@@ -31,7 +31,7 @@ export const vocab = {
     { word: "transsystemic law", translation: "droit transsystémique", example: "Transsystemic law programs teach multiple legal traditions simultaneously." },
     { word: "legal archetype", translation: "archétype juridique", example: "The contract represents a legal archetype found across diverse traditions." },
     { word: "comparative perspective", translation: "perspective comparative", example: "A comparative perspective reveals structural similarities beneath apparent differences." },
-    
+
     // Jurisprudence analytique
     { word: "analytical jurisprudence", translation: "jurisprudence analytique", example: "Analytical jurisprudence examines the nature and structure of legal concepts." },
     { word: "legal reasoning", translation: "raisonnement juridique", example: "Legal reasoning involves applying abstract principles to concrete factual situations." },
@@ -41,8 +41,7 @@ export const vocab = {
     { word: "judicial discretion", translation: "discrétion judiciaire", example: "Hard cases involve significant judicial discretion in applying abstract principles." },
     { word: "legal authority", translation: "autorité juridique", example: "Legal authority stems from constitutional recognition and social acceptance." },
     { word: "legal validity", translation: "validité juridique", example: "Legal validity depends on whether a norm was properly enacted according to higher rules." },
-    
-    
+
     { word: "legal doctrine", translation: "doctrine juridique", example: "Legal doctrine systematizes rules and principles within a specific domain." },
     { word: "legal principle", translation: "principe juridique", example: "Legal principles provide normative guidance when specific rules are unclear." },
     { word: "rule of recognition", translation: "règle de reconnaissance", example: "The rule of recognition identifies which norms qualify as valid law in a system." },
@@ -50,7 +49,7 @@ export const vocab = {
     { word: "normative theory", translation: "théorie normative", example: "Normative theory addresses how judges should decide cases in principle." },
     { word: "stare decisis", translation: "stare decisis", example: "Stare decisis requires courts to follow precedent in similar future cases." },
     { word: "ratio decidendi", translation: "ratio decidendi", example: "The ratio decidendi constitutes the binding element of a judicial decision." },
-    
+
     { word: "judicial methodology", translation: "méthodologie judiciaire", example: "Judicial methodology differs significantly between civil and common law systems." },
     { word: "judicial constraint", translation: "contrainte judiciaire", example: "Legal formalism promotes judicial constraint through strict adherence to rules." },
     { word: "interpretive theory", translation: "théorie interprétative", example: "Dworkin's interpretive theory views law as constructive interpretation of legal practice." },
@@ -62,18 +61,14 @@ export const vocab = {
     { word: "statutory construction", translation: "interprétation des lois", example: "Statutory construction involves multiple techniques for determining legislative intent." },
     { word: "justiciability", translation: "justiciabilité", example: "Justiciability doctrines determine which disputes courts will consider decidable." },
     { word: "legal methodology", translation: "méthodologie juridique", example: "Legal methodology encompasses approaches to identifying, interpreting, and applying law." },
-    
+
     // Droit constitutionnel
-    
-    
-    
+
     { word: "constitutional review", translation: "contrôle de constitutionnalité", example: "Constitutional review mechanisms vary from specialized courts to diffuse systems." },
     { word: "fundamental rights", translation: "droits fondamentaux", example: "Constitutions typically enumerate fundamental rights protected from governmental infringement." },
     { word: "constitutional amendment", translation: "amendement constitutionnel", example: "Constitutional amendment procedures balance stability with adaptability." },
     { word: "constitutional interpretation", translation: "interprétation constitutionnelle", example: "Constitutional interpretation approaches include originalism and living constitutionalism." },
-    
-    
-    
+
     { word: "parliamentary sovereignty", translation: "souveraineté parlementaire", example: "Parliamentary sovereignty empowers the legislature to enact any law without judicial invalidation." },
     { word: "constitutional tradition", translation: "tradition constitutionnelle", example: "Britain's constitutional tradition relies on unwritten conventions and precedents." },
     { word: "constitutional democracy", translation: "démocratie constitutionnelle", example: "Constitutional democracy constrains majority rule through protected rights." },
@@ -93,20 +88,20 @@ export const vocab = {
     { word: "constitutional development", translation: "développement constitutionnel", example: "Constitutional development reflects changing societal values and political realities." },
     { word: "constitutional safeguard", translation: "garantie constitutionnelle", example: "Judicial review serves as a constitutional safeguard against legislative overreach." },
     { word: "constitutional structure", translation: "structure constitutionnelle", example: "The constitutional structure defines institutional relationships and authority." },
-    
+
     // Justice transitionnelle
     { word: "transitional justice", translation: "justice transitionnelle", example: "Transitional justice addresses human rights violations during democratic transitions." },
     { word: "truth commission", translation: "commission de vérité", example: "The truth commission documented abuses without necessarily pursuing prosecutions." },
     { word: "historical reckoning", translation: "règlement de comptes historique", example: "The trials initiated a historical reckoning with the authoritarian past." },
     { word: "reconciliation process", translation: "processus de réconciliation", example: "The reconciliation process aimed to heal societal divisions after conflict." },
     { word: "reparation program", translation: "programme de réparation", example: "The reparation program provided compensation to victims of state violence." },
-    
+
     { word: "amnesty provision", translation: "disposition d'amnistie", example: "The peace agreement contained controversial amnesty provisions for political crimes." },
     { word: "victim-centered approach", translation: "approche centrée sur les victimes", example: "A victim-centered approach prioritizes the needs and perspectives of those harmed." },
     { word: "transitional period", translation: "période transitionnelle", example: "The transitional period bridged authoritarian rule and democratic governance." },
     { word: "historical memory", translation: "mémoire historique", example: "Monuments and memorials preserved historical memory of human rights violations." },
     { word: "post-conflict justice", translation: "justice post-conflit", example: "Post-conflict justice mechanisms addressed war crimes after hostilities ended." },
-    
+
     { word: "restorative justice", translation: "justice restaurative", example: "Restorative justice focused on repairing harm rather than merely punishing offenders." },
     { word: "transitional governance", translation: "gouvernance transitionnelle", example: "Transitional governance arrangements guided the shift to democratic institutions." },
     { word: "lustration law", translation: "loi de lustration", example: "Lustration laws restricted former regime officials from holding public office." },
@@ -123,7 +118,7 @@ export const vocab = {
     { word: "transformative justice", translation: "justice transformative", example: "Transformative justice addressed structural inequalities underlying the conflict." },
     { word: "memorial site", translation: "site mémoriel", example: "The former detention center became a memorial site educating visitors about past abuses." },
     { word: "testimonial project", translation: "projet testimonial", example: "The testimonial project recorded survivors' accounts of human rights violations." },
-    
+
     // Arbitrage international
     { word: "international arbitration", translation: "arbitrage international", example: "International arbitration offers a neutral forum for resolving cross-border disputes." },
     { word: "arbitral tribunal", translation: "tribunal arbitral", example: "The arbitral tribunal consisted of three arbitrators with expertise in construction law." },
@@ -153,17 +148,17 @@ export const vocab = {
     { word: "arbitration cost", translation: "coût d'arbitrage", example: "Arbitration costs include arbitrators' fees, administrative expenses, and legal representation." },
     { word: "arbitral immunity", translation: "immunité arbitrale", example: "Arbitral immunity protects arbitrators from liability for decisions made in good faith." },
     { word: "public policy exception", translation: "exception d'ordre public", example: "Courts may refuse enforcement based on the public policy exception." },
-    
+
     // Droits spécialisés
     { word: "intellectual property law", translation: "droit de la propriété intellectuelle", example: "Intellectual property law protects creative works and inventions." },
     { word: "environmental law", translation: "droit de l'environnement", example: "Environmental law regulates human impact on the natural environment." },
     { word: "competition law", translation: "droit de la concurrence", example: "Competition law prohibits anti-competitive business practices and mergers." },
     { word: "labor law", translation: "droit du travail", example: "Labor law governs employment relationships and working conditions." },
     { word: "tax law", translation: "droit fiscal", example: "Tax law determines revenue collection obligations for individuals and entities." },
-    
+
     { word: "corporate law", translation: "droit des sociétés", example: "Corporate law establishes rules for business entity formation and operation." },
     { word: "bankruptcy law", translation: "droit des faillites", example: "Bankruptcy law provides procedures for resolving insolvency situations." },
-    
+
     { word: "aviation law", translation: "droit aérien", example: "Aviation law governs aircraft operation and air transportation." },
     { word: "media law", translation: "droit des médias", example: "Media law balances free expression with privacy and reputational interests." },
     { word: "telecommunications law", translation: "droit des télécommunications", example: "Telecommunications law regulates communication networks and services." },
@@ -183,7 +178,7 @@ export const vocab = {
     { word: "privacy law", translation: "droit à la vie privée", example: "Privacy law protects personal information from unauthorized access or use." },
     { word: "consumer protection law", translation: "droit de la protection des consommateurs", example: "Consumer protection law prevents unfair business practices targeting customers." },
     { word: "securities law", translation: "droit des valeurs mobilières", example: "Securities law regulates financial investment instruments and markets." },
-    
+
     // Réforme juridique
     { word: "legal reform", translation: "réforme juridique", example: "Legal reform modernized outdated provisions in the criminal code." },
     { word: "law reform commission", translation: "commission de réforme du droit", example: "The law reform commission recommended comprehensive changes to family legislation." },
@@ -191,26 +186,24 @@ export const vocab = {
     { word: "judicial reform", translation: "réforme judiciaire", example: "Judicial reform strengthened court independence and efficiency." },
     { word: "regulatory modernization", translation: "modernisation réglementaire", example: "Regulatory modernization addressed challenges posed by technological innovation." },
     { word: "legal transplantation", translation: "transplantation juridique", example: "Legal transplantation adapted foreign regulatory models to domestic contexts." },
-    
+
     { word: "law revision", translation: "révision juridique", example: "Law revision eliminated contradictions and outdated provisions." },
     { word: "substantive reform", translation: "réforme substantielle", example: "Substantive reform changed fundamental legal principles governing liability." },
     { word: "procedural reform", translation: "réforme procédurale", example: "Procedural reform streamlined court processes to reduce delays." },
     { word: "legal development", translation: "développement juridique", example: "Legal development programs strengthened rule of law in transitional democracies." },
     { word: "harmonization effort", translation: "effort d'harmonisation", example: "The harmonization effort aligned national regulations with international standards." },
-    
+
     { word: "codification project", translation: "projet de codification", example: "The codification project consolidated scattered provisions into a coherent framework." },
     { word: "legal system overhaul", translation: "refonte du système juridique", example: "The legal system overhaul modernized colonial-era institutions." },
-    
-    
+
     { word: "progressive reform", translation: "réforme progressive", example: "Progressive reform expanded legal protections for vulnerable populations." },
     { word: "legal infrastructure", translation: "infrastructure juridique", example: "Development programs strengthened legal infrastructure in post-conflict regions." },
-    
+
     { word: "legal advancement", translation: "avancement juridique", example: "Legal advancement involves both normative improvement and institutional development." },
     { word: "reform strategy", translation: "stratégie de réforme", example: "The reform strategy prioritized high-impact changes to essential institutions." },
     { word: "institutional renovation", translation: "rénovation institutionnelle", example: "Institutional renovation modernized archaic court administration practices." },
     { word: "legal innovation", translation: "innovation juridique", example: "Legal innovation developed novel approaches to emerging regulatory challenges." },
-    
-    
+
     { word: "modernization initiative", translation: "initiative de modernisation", example: "The modernization initiative introduced digital systems for case management." }
   ]
 };

@@ -40,9 +40,6 @@ const convertFastVocabToExercises = (fastVocab) => {
  * @returns {Object} Les données de vocabulaire pour le niveau et mode spécifiés
  */
 export const getVocabularyData = (level, mode = "classic") => {
-  console.log(
-    `🔍 getVocabularyData appelé avec level: ${level}, mode: ${mode}`
-  );
 
   if (mode === "fast") {
     const fastDataMap = {
@@ -56,12 +53,7 @@ export const getVocabularyData = (level, mode = "classic") => {
     };
 
     const data = fastDataMap[level] || convertFastVocabToExercises(fastVocabA1);
-    console.log(
-      `📊 Données Fast pour ${level}:`,
-      data ? "TROUVÉES" : "VIDES",
-      data?.exercises?.length || 0,
-      "exercices"
-    );
+
     return data;
   }
 
@@ -76,12 +68,7 @@ export const getVocabularyData = (level, mode = "classic") => {
   };
 
   const data = classicDataMap[level] || vocabularyA1Data;
-  console.log(
-    `📊 Données Classic pour ${level}:`,
-    data ? "TROUVÉES" : "VIDES",
-    data?.exercises?.length || 0,
-    "exercices"
-  );
+
   return data;
 };
 
@@ -141,3 +128,4 @@ export const getLevelDisplayName = (level) => {
 export const isBonusLevel = (level) => {
   return level === "BLevel";
 };
+

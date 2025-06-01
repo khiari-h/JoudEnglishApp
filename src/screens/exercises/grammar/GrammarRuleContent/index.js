@@ -9,12 +9,12 @@ import styles from './style';
  */
 const GrammarRuleContent = ({ rule }) => {
   if (!rule) return null;
-  
+
   return (
     <View style={styles.ruleContainer}>
       <Text style={styles.ruleTitle}>{rule.title}</Text>
       <Text style={styles.ruleExplanation}>{rule.explanation}</Text>
-      
+
       {/* Exemples */}
       {rule.examples && rule.examples.length > 0 && (
         <View style={styles.examplesContainer}>
@@ -27,7 +27,7 @@ const GrammarRuleContent = ({ rule }) => {
           ))}
         </View>
       )}
-      
+
       {/* Règles */}
       {rule.rules && rule.rules.length > 0 && (
         <View style={styles.rulesListContainer}>

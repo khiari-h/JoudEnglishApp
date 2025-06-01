@@ -258,5 +258,5 @@ const grammarExercisesA1 = {
       }
     ]
   };
-  
+
   export default grammarExercisesA1;

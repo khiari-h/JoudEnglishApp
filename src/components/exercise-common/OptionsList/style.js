@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#1F2937',
   },
-  
+
   // Styles pour la mise en page en grille
   gridContainer: {
     flexDirection: 'row',
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#1F2937',
   },
-  
+
   // Styles communs pour les états des options
   option: {
     borderColor: '#E5E7EB',

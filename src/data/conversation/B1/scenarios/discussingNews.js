@@ -173,5 +173,5 @@ const discussingNews = {
       ]
     }
   };
-  
+
   export default discussingNews;

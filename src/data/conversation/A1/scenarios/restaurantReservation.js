@@ -154,5 +154,5 @@ const restaurantReservation = {
       ]
     }
   };
-  
+
   export default restaurantReservation;

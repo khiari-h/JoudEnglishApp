@@ -203,5 +203,5 @@ const culturalDiplomacy = {
       ]
     }
   };
-  
+
   export default culturalDiplomacy;

@@ -176,3 +176,4 @@ const silenceCommunication = {
 };
 
 export default silenceCommunication;
+

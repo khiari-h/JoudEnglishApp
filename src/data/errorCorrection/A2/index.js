@@ -24,7 +24,7 @@ allExercises.sort((a, b) => {
 const errorCorrectionA2 = {
   level: "A2",
   totalExercises: allExercises.length,
-  
+
   // Statistics by type
   statistics: {
     full: errorCorrectionA2Full.length,
@@ -118,19 +118,19 @@ const errorCorrectionA2 = {
   validateStructure: () => {
     const requiredFields = ['categoryId', 'type', 'text', 'correctedText', 'hint', 'explanation'];
     const validTypes = ['full', 'identify', 'multiple_choice'];
-    
+
     return allExercises.every(exercise => {
       // Check required fields
       const hasRequiredFields = requiredFields.every(field => 
         exercise.hasOwnProperty(field) && exercise[field] !== undefined
       );
-      
+
       // Check valid type
       const hasValidType = validTypes.includes(exercise.type);
-      
+
       // Check valid category (1-5 for A2)
       const hasValidCategory = exercise.categoryId >= 1 && exercise.categoryId <= 5;
-      
+
       // Check type-specific fields
       let hasTypeSpecificFields = true;
       if (exercise.type === 'multiple_choice') {
@@ -143,7 +143,7 @@ const errorCorrectionA2 = {
       } else {
         hasTypeSpecificFields = exercise.errorPositions && Array.isArray(exercise.errorPositions);
       }
-      
+
       return hasRequiredFields && hasValidType && hasValidCategory && hasTypeSpecificFields;
     });
   },
@@ -167,9 +167,9 @@ const errorCorrectionA2 = {
 
 // Validate structure on export
 if (!errorCorrectionA2.validateStructure()) {
-  console.warn('Error Correction A2: Some exercises have invalid structure');
+
 } else {
-  console.log(`Error Correction A2: Successfully loaded ${allExercises.length} exercises`);
+
 }
 
 export default errorCorrectionA2;

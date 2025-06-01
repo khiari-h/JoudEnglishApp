@@ -2,9 +2,7 @@ export const vocab = {
   title: "Loisirs & Culture Élargie",
   words: [
     // Activités culturelles
-    
-    
-    
+
     { word: "heritage site", translation: "site du patrimoine", example: "Stonehenge is a World Heritage site." },
     { word: "historical monument", translation: "monument historique", example: "The cathedral is a historical monument." },
     { word: "cultural center", translation: "centre culturel", example: "The cultural center offers various workshops." },
@@ -19,7 +17,7 @@ export const vocab = {
     { word: "live performance", translation: "spectacle vivant", example: "I prefer live performances to recorded music." },
     { word: "backstage", translation: "coulisses", example: "We got a backstage tour after the show." },
     { word: "cultural heritage", translation: "patrimoine culturel", example: "It's important to preserve our cultural heritage." },
-    
+
     // Sports & équipements sportifs
     { word: "athletics", translation: "athlétisme", example: "She competes in athletics at a national level." },
     { word: "gymnastics", translation: "gymnastique", example: "Gymnastics requires strength and flexibility." },
@@ -38,11 +36,11 @@ export const vocab = {
     { word: "sports club", translation: "club sportif", example: "I joined a sports club to meet new people." },
     { word: "sports coach", translation: "entraîneur sportif", example: "Our sports coach is very experienced." },
     { word: "championship", translation: "championnat", example: "They won the national championship last year." },
-    
+
     // Activités créatives
     { word: "arts and crafts", translation: "travaux manuels", example: "The children enjoy arts and crafts activities." },
     { word: "pottery", translation: "poterie", example: "I'm taking a pottery class this summer." },
-    
+
     { word: "knitting", translation: "tricot", example: "Knitting is a relaxing hobby." },
     { word: "sewing", translation: "couture", example: "My grandmother taught me sewing." },
     { word: "embroidery", translation: "broderie", example: "Her embroidery work is very detailed." },
@@ -54,10 +52,10 @@ export const vocab = {
     { word: "digital art", translation: "art numérique", example: "Digital art is becoming increasingly popular." },
     { word: "craft fair", translation: "salon d'artisanat", example: "Local artists sell their work at the craft fair." },
     { word: "DIY project", translation: "projet bricolage", example: "We're working on a DIY project to renovate the kitchen." },
-    
+
     { word: "artistic expression", translation: "expression artistique", example: "Dance is a form of artistic expression." },
     { word: "creativity", translation: "créativité", example: "These exercises help develop your creativity." },
-    
+
     // Médias & divertissement
     { word: "streaming service", translation: "service de streaming", example: "Many people subscribe to multiple streaming services." },
     { word: "podcast", translation: "podcast", example: "I listen to podcasts during my commute." },
@@ -69,17 +67,16 @@ export const vocab = {
     { word: "reality show", translation: "émission de téléréalité", example: "Reality shows are very popular nowadays." },
     { word: "talk show", translation: "talk-show", example: "She was a guest on a late-night talk show." },
     { word: "news bulletin", translation: "bulletin d'information", example: "I watch the news bulletin every evening." },
-    
+
     { word: "online platform", translation: "plateforme en ligne", example: "The film premiered on an online platform." },
     { word: "digital content", translation: "contenu numérique", example: "The company produces digital content for various platforms." },
     { word: "entertainment industry", translation: "industrie du divertissement", example: "The entertainment industry generates billions in revenue." },
     { word: "media coverage", translation: "couverture médiatique", example: "The event received extensive media coverage." },
     { word: "audience", translation: "public", example: "The show attracts a young audience." },
     { word: "critic", translation: "critique", example: "The movie received positive reviews from critics." },
-    
+
     // Événements sociaux
-    
-    
+
     { word: "live show", translation: "spectacle vivant", example: "The live show was spectacular." },
     { word: "art exhibition", translation: "exposition d'art", example: "The art exhibition showcases local talent." },
     { word: "cultural festival", translation: "festival culturel", example: "The cultural festival celebrates diversity." },
@@ -88,14 +85,14 @@ export const vocab = {
     { word: "community gathering", translation: "rassemblement communautaire", example: "The community gathering takes place every summer." },
     { word: "public holiday", translation: "jour férié", example: "Most businesses are closed on public holidays." },
     { word: "celebration", translation: "célébration", example: "The celebration lasted all night." },
-    
+
     { word: "parade", translation: "défilé", example: "The parade goes through the city center." },
     { word: "street fair", translation: "fête de rue", example: "There will be a street fair in our neighborhood this weekend." },
     { word: "carnival", translation: "carnaval", example: "Rio de Janeiro is famous for its carnival." },
     { word: "opening ceremony", translation: "cérémonie d'ouverture", example: "The opening ceremony was broadcast live." },
     { word: "closing ceremony", translation: "cérémonie de clôture", example: "The festival ended with a spectacular closing ceremony." },
     { word: "award ceremony", translation: "cérémonie de remise de prix", example: "The award ceremony recognizes outstanding achievements." },
-    
+
     // Activités de plein air
     { word: "hiking", translation: "randonnée", example: "We go hiking in the mountains every summer." },
     { word: "trekking", translation: "trekking", example: "Trekking in the Himalayas requires good preparation." },
@@ -114,7 +111,7 @@ export const vocab = {
     { word: "outdoor recreation", translation: "loisirs de plein air", example: "The area offers many outdoor recreation opportunities." },
     { word: "naturalist", translation: "naturaliste", example: "A naturalist guided our walk through the nature reserve." },
     { word: "wilderness", translation: "nature sauvage", example: "They spent a week in the wilderness." },
-    
+
     // Voyages de loisirs
     { word: "road trip", translation: "voyage en voiture", example: "We took a road trip along the coast." },
     { word: "backpacking trip", translation: "voyage sac au dos", example: "After college, they went on a backpacking trip around Southeast Asia." },
@@ -128,6 +125,6 @@ export const vocab = {
     { word: "day trip", translation: "excursion d'une journée", example: "From London, you can take a day trip to many interesting places." },
     { word: "package holiday", translation: "forfait vacances", example: "Package holidays are convenient but less flexible." },
     { word: "self-catering", translation: "location sans repas", example: "We prefer self-catering accommodation so we can cook our own meals." },
-    
+
     { word: "travel itinerary", translation: "itinéraire de voyage", example: "Our travel itinerary includes three different countries." }]
 };

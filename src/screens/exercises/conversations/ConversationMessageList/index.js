@@ -13,7 +13,7 @@ import styles from './style';
  */
 const ConversationMessageList = ({ messages, isTyping, levelColor }) => {
   const scrollViewRef = useRef(null);
-  
+
   // Faire défiler automatiquement vers le bas quand de nouveaux messages arrivent
   useEffect(() => {
     if (scrollViewRef.current) {
@@ -22,7 +22,7 @@ const ConversationMessageList = ({ messages, isTyping, levelColor }) => {
       }, 100);
     }
   }, [messages, isTyping]);
-  
+
   return (
     <ScrollView
       ref={scrollViewRef}
@@ -38,7 +38,7 @@ const ConversationMessageList = ({ messages, isTyping, levelColor }) => {
           levelColor={levelColor}
         />
       ))}
-      
+
       {/* Afficher l'indicateur de frappe si nécessaire */}
       {isTyping && <ConversationTypingIndicator levelColor={levelColor} />}
     </ScrollView>

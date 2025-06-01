@@ -46,3 +46,4 @@ const CompactHeader = ({ level = "1", streak = 0, levelColor = "#3B82F6" }) => {
 };
 
 export default CompactHeader;
+

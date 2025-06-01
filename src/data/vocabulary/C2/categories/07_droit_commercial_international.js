@@ -27,40 +27,31 @@ export const vocab = {
     { word: "severability clause", translation: "clause de divisibilité", example: "The severability clause ensured remaining provisions survived if some were invalidated." },
     { word: "confidentiality provision", translation: "clause de confidentialité", example: "The confidentiality provision protected sensitive information exchanged during performance." },
     { word: "term sheet", translation: "protocole d'accord", example: "The term sheet outlined key commercial terms for the proposed transaction." },
-    
+
     // Arbitrage commercial international (25 mots)
-    
-    
+
     { word: "arbitral award", translation: "sentence arbitrale", example: "The arbitral award ordered payment of $2.7 million in damages." },
-    
-    
-    
-    
-    
+
     { word: "enforcement of award", translation: "exécution de la sentence", example: "The New York Convention facilitates enforcement of awards across borders." },
     { word: "recognition of award", translation: "reconnaissance de la sentence", example: "Recognition of award precedes enforcement in foreign jurisdictions." },
-    
+
     { word: "challenge to award", translation: "recours contre la sentence", example: "Grounds for challenge to award are limited under most legal systems." },
-    
+
     { word: "party autonomy", translation: "autonomie des parties", example: "Party autonomy enables customization of the arbitration process." },
-    
+
     { word: "preliminary hearing", translation: "audience préliminaire", example: "The preliminary hearing established procedural rules for the arbitration." },
     { word: "arbitrator appointment", translation: "nomination d'arbitre", example: "Each party selected one arbitrator for the three-member panel." },
-    
-    
-    
+
     { word: "bifurcation", translation: "bifurcation", example: "Bifurcation separated liability and damages phases of the proceedings." },
     { word: "confidentiality in arbitration", translation: "confidentialité en arbitrage", example: "Confidentiality in arbitration protects sensitive business information." },
     { word: "document production", translation: "production de documents", example: "Document production requests were limited to relevant, material items." },
     { word: "witness examination", translation: "interrogatoire des témoins", example: "Witness examination included direct and cross-examination phases." },
     { word: "costs of arbitration", translation: "frais d'arbitrage", example: "Costs of arbitration were allocated based on the outcome." },
-    
+
     // Droit du commerce international (25 mots)
-    
-    
+
     { word: "General Agreement on Tariffs and Trade", translation: "Accord général sur les tarifs douaniers et le commerce", example: "The General Agreement on Tariffs and Trade preceded the WTO system." },
-    
-    
+
     { word: "tariff barrier", translation: "barrière tarifaire", example: "The tariff barrier increased the cost of foreign products." },
     { word: "non-tariff barrier", translation: "barrière non tarifaire", example: "Non-tariff barriers include quotas, embargoes, and regulatory restrictions." },
     { word: "most favored nation", translation: "nation la plus favorisée", example: "Most favored nation status ensures equal treatment among trading partners." },
@@ -69,24 +60,21 @@ export const vocab = {
     { word: "anti-dumping duty", translation: "droit antidumping", example: "Anti-dumping duties counter artificially low-priced imports." },
     { word: "countervailing duty", translation: "droit compensateur", example: "Countervailing duties offset foreign government subsidies." },
     { word: "safeguard measure", translation: "mesure de sauvegarde", example: "Safeguard measures protect domestic industries from import surges." },
-    
+
     { word: "trade sanction", translation: "sanction commerciale", example: "Trade sanctions restricted business with the targeted country." },
     { word: "customs valuation", translation: "évaluation en douane", example: "Customs valuation determines the tax base for import duties." },
     { word: "rules of origin", translation: "règles d'origine", example: "Rules of origin determine a product's national source." },
-    
+
     { word: "sanitary and phytosanitary measure", translation: "mesure sanitaire et phytosanitaire", example: "Sanitary and phytosanitary measures protect human, animal, and plant health." },
-    
+
     { word: "regional trade agreement", translation: "accord commercial régional", example: "Regional trade agreements create preferential trading arrangements." },
-    
+
     { word: "trade restriction", translation: "restriction commerciale", example: "The trade restriction limited imports of certain products." },
     { word: "export control", translation: "contrôle des exportations", example: "Export controls regulate sensitive technology transfers." },
     { word: "trade compliance", translation: "conformité commerciale", example: "Trade compliance ensures adherence to import and export regulations." },
-    
+
     // Droit de la propriété intellectuelle (25 mots)
-    
-    
-    
-    
+
     { word: "trade secret", translation: "secret commercial", example: "Trade secrets include confidential formulas and manufacturing processes." },
     { word: "patent infringement", translation: "contrefaçon de brevet", example: "The lawsuit alleged patent infringement of their technology." },
     { word: "trademark registration", translation: "enregistrement de marque", example: "Trademark registration provides nationwide protection." },
@@ -101,26 +89,24 @@ export const vocab = {
     { word: "intellectual property portfolio", translation: "portefeuille de propriété intellectuelle", example: "Their intellectual property portfolio included patents in multiple jurisdictions." },
     { word: "fair use", translation: "usage loyal", example: "Fair use allows limited use of copyrighted material without permission." },
     { word: "patent examination", translation: "examen de brevet", example: "Patent examination assesses novelty and inventive step." },
-    
+
     { word: "exclusive right", translation: "droit exclusif", example: "Patents confer exclusive rights to make, use, and sell inventions." },
     { word: "geographical indication", translation: "indication géographique", example: "Geographical indications identify products originating from specific regions." },
     { word: "industrial design", translation: "dessin industriel", example: "Industrial design protection covers a product's appearance." },
     { word: "patent prosecution", translation: "poursuite de brevet", example: "Patent prosecution involves interactions with patent offices." },
     { word: "parallel import", translation: "importation parallèle", example: "Parallel imports involve genuine products imported through unofficial channels." },
     { word: "intellectual property enforcement", translation: "application des droits de propriété intellectuelle", example: "Effective intellectual property enforcement deters counterfeit products." },
-    
+
     // Droit des sociétés international (25 mots)
-    
+
     { word: "multinational corporation", translation: "société multinationale", example: "Multinational corporations operate across multiple jurisdictions." },
-    
+
     { word: "shareholder", translation: "actionnaire", example: "Shareholders own equity interests in the company." },
-    
+
     { word: "subsidiary", translation: "filiale", example: "The subsidiary operated as a separate legal entity in the foreign market." },
     { word: "parent company", translation: "société mère", example: "The parent company owned controlling interests in multiple subsidiaries." },
     { word: "corporate veil", translation: "voile social", example: "Courts occasionally pierce the corporate veil to impose liability on shareholders." },
-    
-    
-    
+
     { word: "mergers and acquisitions", translation: "fusions et acquisitions", example: "Mergers and acquisitions activity increased during market consolidation." },
     { word: "corporate liability", translation: "responsabilité des sociétés", example: "Corporate liability extends to actions taken by company representatives." },
     { word: "director's duty", translation: "devoir d'administrateur", example: "Director's duties include loyalty and care to the corporation." },
@@ -128,21 +114,21 @@ export const vocab = {
     { word: "corporate compliance", translation: "conformité d'entreprise", example: "Corporate compliance programs ensure adherence to applicable laws." },
     { word: "articles of incorporation", translation: "statuts constitutifs", example: "Articles of incorporation establish the company's legal existence." },
     { word: "shareholder agreement", translation: "pacte d'actionnaires", example: "The shareholder agreement governed relationships among equity owners." },
-    
+
     { word: "registered office", translation: "siège social", example: "The registered office served as the company's official address." },
     { word: "cross-border merger", translation: "fusion transfrontalière", example: "The cross-border merger combined entities from different countries." },
     { word: "corporate nationality", translation: "nationalité des sociétés", example: "Corporate nationality affects applicable regulatory requirements." },
     { word: "share capital", translation: "capital social", example: "Share capital represents the total investment by shareholders." },
     { word: "corporate group", translation: "groupe de sociétés", example: "The corporate group included numerous related entities worldwide." },
     { word: "corporate transaction", translation: "opération sociétaire", example: "The corporate transaction required regulatory approvals in multiple jurisdictions." },
-    
+
     // Financement international (25 mots)
-    
+
     { word: "project finance", translation: "financement de projet", example: "Project finance structures funded the infrastructure development." },
     { word: "syndicated loan", translation: "prêt syndiqué", example: "The syndicated loan involved multiple lenders sharing risk." },
     { word: "letter of credit", translation: "lettre de crédit", example: "The letter of credit guaranteed payment upon proper documentation." },
     { word: "foreign exchange transaction", translation: "opération de change", example: "Foreign exchange transactions convert between different currencies." },
-    
+
     { word: "export credit", translation: "crédit à l'exportation", example: "Export credit agencies support international sales through financing." },
     { word: "financial security", translation: "garantie financière", example: "Financial securities backed the payment obligations." },
     { word: "collateral", translation: "sûreté", example: "The lender required collateral to secure the international loan." },
@@ -151,47 +137,42 @@ export const vocab = {
     { word: "structured finance", translation: "financement structuré", example: "Structured finance techniques created the complex transaction." },
     { word: "private equity", translation: "capital-investissement", example: "Private equity investors acquired the foreign manufacturing operation." },
     { word: "international bond", translation: "obligation internationale", example: "The international bond issuance raised capital across multiple markets." },
-    
+
     { word: "credit enhancement", translation: "rehaussement de crédit", example: "Credit enhancement improved the transaction's risk profile." },
     { word: "cross-border financing", translation: "financement transfrontalier", example: "Cross-border financing arranged capital from international sources." },
     { word: "debt restructuring", translation: "restructuration de dette", example: "Debt restructuring revised payment terms for distressed obligations." },
     { word: "loan agreement", translation: "contrat de prêt", example: "The loan agreement specified interest rates and repayment schedules." },
     { word: "financial covenant", translation: "engagement financier", example: "Financial covenants required maintaining specific performance metrics." },
     { word: "international banking", translation: "services bancaires internationaux", example: "International banking facilitated global business operations." },
-    
-    
-    
+
     { word: "capital movement", translation: "mouvement de capitaux", example: "Capital movements across borders influence exchange rates." },
-    
+
     // Résolution des litiges commerciaux (25 mots)
-    
+
     { word: "commercial dispute", translation: "litige commercial", example: "The commercial dispute arose from conflicting contract interpretations." },
-    
-    
+
     { word: "negotiated settlement", translation: "règlement négocié", example: "The negotiated settlement avoided lengthy court procedures." },
-    
-    
+
     { word: "conflict of laws", translation: "conflit de lois", example: "Conflict of laws principles determine applicable substantive law." },
     { word: "enforcement of judgment", translation: "exécution du jugement", example: "Enforcement of judgment required recognition in the foreign jurisdiction." },
     { word: "judicial proceeding", translation: "procédure judiciaire", example: "Judicial proceedings commenced with the filing of a complaint." },
     { word: "discovery process", translation: "procédure de communication préalable", example: "The discovery process required document production and depositions." },
     { word: "cross-border litigation", translation: "contentieux transfrontalier", example: "Cross-border litigation involved complex jurisdictional questions." },
-    
+
     { word: "legal remedy", translation: "recours juridique", example: "Available legal remedies included damages and injunctive relief." },
     { word: "choice of forum", translation: "choix du for", example: "The choice of forum clause designated courts in Paris for disputes." },
     { word: "legal standing", translation: "qualité pour agir", example: "Legal standing determines who may bring claims before the court." },
     { word: "expert witness", translation: "témoin expert", example: "Expert witnesses provided specialized technical testimony." },
     { word: "summary judgment", translation: "jugement sommaire", example: "Summary judgment resolved the case without full trial." },
     { word: "settlement conference", translation: "conférence de règlement", example: "The settlement conference explored possible resolution terms." },
-    
+
     { word: "judicial relief", translation: "réparation judiciaire", example: "Judicial relief may include monetary and non-monetary remedies." },
     { word: "provisional measure", translation: "mesure provisoire", example: "Provisional measures preserved assets during the dispute." },
-    
-    
+
     { word: "amicable settlement", translation: "règlement à l'amiable", example: "The parties reached an amicable settlement through direct negotiations." },
-    
+
     // Droit de la concurrence (25 mots)
-    
+
     { word: "antitrust law", translation: "droit antitrust", example: "Antitrust law prevents monopolistic behavior in markets." },
     { word: "merger control", translation: "contrôle des concentrations", example: "Merger control regulations required pre-transaction approval." },
     { word: "cartel", translation: "entente", example: "The cartel illegally coordinated prices among competitors." },
@@ -204,7 +185,7 @@ export const vocab = {
     { word: "competition authority", translation: "autorité de la concurrence", example: "The competition authority investigated alleged anticompetitive practices." },
     { word: "leniency program", translation: "programme de clémence", example: "Leniency programs encourage cartel members to report violations." },
     { word: "market concentration", translation: "concentration du marché", example: "Market concentration measures inform merger review decisions." },
-    
+
     { word: "tying arrangement", translation: "vente liée", example: "The tying arrangement required purchasing both products together." },
     { word: "predatory pricing", translation: "prix prédateur", example: "Predatory pricing aims to eliminate competition through below-cost sales." },
     { word: "exclusive dealing", translation: "distribution exclusive", example: "Exclusive dealing arrangements prevent suppliers from selling to competitors." },
@@ -216,22 +197,22 @@ export const vocab = {
     { word: "anticompetitive effect", translation: "effet anticoncurrentiel", example: "The merger created anticompetitive effects in regional markets." },
     { word: "concerted practice", translation: "pratique concertée", example: "Concerted practices coordinate market behavior without formal agreements." },
     { word: "resale price maintenance", translation: "maintien des prix de revente", example: "Resale price maintenance policies restrict retailer pricing freedom." },
-    
+
     // Protection des consommateurs (25 mots)
-    
+
     { word: "product liability", translation: "responsabilité du fait des produits", example: "Product liability holds manufacturers accountable for defective goods." },
-    
+
     { word: "unfair commercial practice", translation: "pratique commerciale déloyale", example: "Unfair commercial practices include misleading advertising and coercion." },
     { word: "misleading advertising", translation: "publicité trompeuse", example: "Misleading advertising creates false impressions about products or services." },
     { word: "deceptive trade practice", translation: "pratique commerciale trompeuse", example: "Deceptive trade practices mislead consumers about material facts." },
-    
+
     { word: "consumer contract", translation: "contrat de consommation", example: "Consumer contracts receive special protections under many legal systems." },
     { word: "door-to-door selling", translation: "vente à domicile", example: "Door-to-door selling regulations include cooling-off periods." },
     { word: "cooling-off period", translation: "délai de réflexion", example: "The cooling-off period allowed consumers to cancel without penalty." },
     { word: "unfair contract term", translation: "clause abusive", example: "Courts may invalidate unfair contract terms in consumer agreements." },
-    
+
     { word: "consumer agency", translation: "agence de protection des consommateurs", example: "The consumer agency investigated complaints about the service provider." },
-    
+
     { word: "product safety", translation: "sécurité des produits", example: "Product safety regulations establish minimum standards for goods." },
     { word: "consumer redress", translation: "réparation du consommateur", example: "Consumer redress mechanisms facilitate compensation for harm." },
     { word: "labeling requirement", translation: "exigence d'étiquetage", example: "Labeling requirements ensure products disclose important information." },
@@ -239,35 +220,28 @@ export const vocab = {
     { word: "distance selling", translation: "vente à distance", example: "Distance selling regulations apply to online and telephone transactions." },
     { word: "goods and services", translation: "biens et services", example: "Consumer protection covers both goods and services transactions." },
     { word: "marketplace fairness", translation: "équité du marché", example: "Marketplace fairness principles prohibit exploitative practices." },
-    
+
     { word: "consumer dispute resolution", translation: "règlement des litiges de consommation", example: "Consumer dispute resolution systems offer accessible remedies." },
-    
+
     { word: "consumer advocacy", translation: "défense des consommateurs", example: "Consumer advocacy organizations promote purchaser interests." },
-    
+
     // Droit international de l'environnement (25 mots)
-    
-    
-    
-    
-    
-    
-    
+
     { word: "environmental permit", translation: "permis environnemental", example: "The environmental permit established operating conditions and limits." },
-    
+
     { word: "carbon regulation", translation: "réglementation du carbone", example: "Carbon regulations limit greenhouse gas emissions from industrial sources." },
-    
-    
+
     { word: "environmental remediation", translation: "assainissement environnemental", example: "Environmental remediation cleans up contaminated sites." },
     { word: "renewable energy law", translation: "droit des énergies renouvelables", example: "Renewable energy law promotes sustainable power generation." },
-    
+
     { word: "climate change regulation", translation: "réglementation du changement climatique", example: "Climate change regulations address greenhouse gas emissions." },
     { word: "environmental due diligence", translation: "diligence raisonnable environnementale", example: "Environmental due diligence assesses potential ecological liabilities." },
-    
+
     { word: "water pollution control", translation: "contrôle de la pollution de l'eau", example: "Water pollution control protects aquatic ecosystems and drinking supplies." },
     { word: "environmental enforcement", translation: "application du droit environnemental", example: "Environmental enforcement ensures compliance with ecological regulations." },
-    
+
     { word: "transboundary pollution", translation: "pollution transfrontalière", example: "Transboundary pollution affects territories beyond its source country." },
-    
+
     { word: "environmental covenant", translation: "engagement environnemental", example: "Environmental covenants restrict future land use to protect ecosystems." },
     { word: "ecological damage", translation: "dommage écologique", example: "Compensation for ecological damage restored the affected habitats." }
   ]

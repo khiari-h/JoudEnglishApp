@@ -3,17 +3,14 @@ export const vocab = {
   words: [
     // Relations complexes
     { word: "interpersonal relationship", translation: "relation interpersonnelle", example: "Healthy interpersonal relationships require trust and communication." },
-    
-    
-    
-    
+
     { word: "mutual respect", translation: "respect mutuel", example: "Mutual respect forms the foundation of healthy partnerships." },
     { word: "personal boundaries", translation: "limites personnelles", example: "Setting clear personal boundaries is essential in any relationship." },
     { word: "codependency", translation: "codépendance", example: "Codependency occurs when someone is excessively reliant on a relationship." },
-    
+
     { word: "attachment style", translation: "style d'attachement", example: "Your attachment style can influence how you connect with others throughout life." },
     { word: "relationship dynamics", translation: "dynamiques relationnelles", example: "Understanding relationship dynamics helps identify harmful patterns." },
-    
+
     { word: "social bond", translation: "lien social", example: "Strong social bonds contribute significantly to mental well-being." },
     { word: "emotional connection", translation: "connexion émotionnelle", example: "The emotional connection between them grew stronger over time." },
     { word: "relationship satisfaction", translation: "satisfaction relationnelle", example: "Communication quality strongly predicts relationship satisfaction." },
@@ -26,7 +23,7 @@ export const vocab = {
     { word: "emotional intimacy", translation: "intimité émotionnelle", example: "Emotional intimacy involves sharing your true self with another person." },
     { word: "interpersonal boundary", translation: "limite interpersonnelle", example: "Respecting interpersonal boundaries shows consideration for others' comfort." },
     { word: "interpersonal conflict", translation: "conflit interpersonnel", example: "Unresolved interpersonal conflict can damage relationships permanently." },
-    
+
     // Communication avancée
     { word: "nonverbal communication", translation: "communication non verbale", example: "Facial expressions are a powerful form of nonverbal communication." },
     { word: "active listening", translation: "écoute active", example: "Active listening involves fully focusing on the speaker without planning your response." },
@@ -48,36 +45,30 @@ export const vocab = {
     { word: "strategic communication", translation: "communication stratégique", example: "The company employed strategic communication to manage the crisis effectively." },
     { word: "communication channel", translation: "canal de communication", example: "Choosing the appropriate communication channel enhances message effectiveness." },
     { word: "communication theory", translation: "théorie de la communication", example: "Communication theory examines how messages are transmitted and received." },
-    
-    
-    
-    
-    
+
     // Gestion de conflits
     { word: "conflict resolution", translation: "résolution de conflits", example: "Effective conflict resolution leads to stronger relationships." },
-    
-    
-    
+
     { word: "win-win solution", translation: "solution gagnant-gagnant", example: "A win-win solution satisfies the core needs of all involved parties." },
     { word: "conflict management", translation: "gestion des conflits", example: "Conflict management skills are essential in leadership roles." },
-    
+
     { word: "conflict avoidance", translation: "évitement des conflits", example: "Conflict avoidance can prevent necessary conversations from happening." },
     { word: "conflict escalation", translation: "escalade de conflit", example: "Emotional reactions can lead to rapid conflict escalation." },
     { word: "constructive controversy", translation: "controverse constructive", example: "Constructive controversy encourages examining different perspectives." },
     { word: "collaborative problem-solving", translation: "résolution collaborative de problèmes", example: "Collaborative problem-solving creates solutions that incorporate multiple viewpoints." },
     { word: "conflict style", translation: "style de conflit", example: "Understanding your conflict style helps manage disagreements more effectively." },
     { word: "arbitration", translation: "arbitrage", example: "In arbitration, the third party makes a binding decision for the disputing parties." },
-    
+
     { word: "conflict transformation", translation: "transformation de conflit", example: "Conflict transformation aims to change the relationship, not just resolve the issue." },
     { word: "peace-building", translation: "consolidation de la paix", example: "Peace-building efforts focus on creating sustainable harmony after conflict." },
     { word: "de-escalation", translation: "désescalade", example: "De-escalation techniques can calm tense situations before they worsen." },
     { word: "conflict trigger", translation: "déclencheur de conflit", example: "Identifying your conflict triggers helps prevent unnecessary disputes." },
     { word: "relationship repair", translation: "réparation relationnelle", example: "Relationship repair often requires sincere apologies and changed behavior." },
     { word: "conflict cycle", translation: "cycle de conflit", example: "Understanding the conflict cycle helps break negative patterns." },
-    
+
     // Intelligence sociale
     { word: "social intelligence", translation: "intelligence sociale", example: "Social intelligence involves understanding social dynamics and navigating them effectively." },
-    
+
     { word: "people skills", translation: "compétences relationnelles", example: "Strong people skills help build productive professional networks." },
     { word: "social perception", translation: "perception sociale", example: "Social perception involves interpreting others' behavior accurately." },
     { word: "social cognition", translation: "cognition sociale", example: "Social cognition examines how we process, store, and apply information about people." },
@@ -88,24 +79,23 @@ export const vocab = {
     { word: "social influence", translation: "influence sociale", example: "Understanding social influence helps you persuade others ethically." },
     { word: "impression management", translation: "gestion des impressions", example: "Impression management involves controlling how others perceive you." },
     { word: "social networking", translation: "réseautage social", example: "Social networking skills are increasingly important in professional contexts." },
-    
+
     { word: "psychological safety", translation: "sécurité psychologique", example: "Psychological safety allows people to take interpersonal risks without fear." },
     { word: "social norms", translation: "normes sociales", example: "Social norms guide behavior within specific cultural contexts." },
     { word: "social script", translation: "script social", example: "Social scripts provide templates for behavior in common situations." },
     { word: "social exchange", translation: "échange social", example: "Social exchange theory suggests relationships involve cost-benefit analyses." },
     { word: "perspective-taking", translation: "prise de perspective", example: "Perspective-taking involves imagining situations from others' viewpoints." },
-    
+
     { word: "social dynamics", translation: "dynamiques sociales", example: "Understanding social dynamics helps navigate complex group interactions." },
-    
+
     // Structures familiales contemporaines
     { word: "nuclear family", translation: "famille nucléaire", example: "The traditional nuclear family consists of two parents and their children." },
-    
-    
+
     { word: "single-parent family", translation: "famille monoparentale", example: "Single-parent families face unique challenges and strengths." },
     { word: "same-sex parent family", translation: "famille homoparentale", example: "Same-sex parent families have become increasingly recognized legally." },
     { word: "multigenerational household", translation: "ménage multigénérationnel", example: "Multigenerational households have family members from different generations living together." },
     { word: "adoptive family", translation: "famille adoptive", example: "Adoptive families form through the legal process of adoption." },
-    
+
     { word: "childless family", translation: "famille sans enfant", example: "Childless families may choose not to have children or be unable to have them." },
     { word: "cohabitation", translation: "cohabitation", example: "Cohabitation before marriage has become increasingly common." },
     { word: "domestic partnership", translation: "partenariat domestique", example: "Domestic partnerships provide legal recognition for committed relationships." },
@@ -118,9 +108,9 @@ export const vocab = {
     { word: "family resilience", translation: "résilience familiale", example: "Family resilience helps units adapt positively to adversity." },
     { word: "co-parenting", translation: "coparentalité", example: "Successful co-parenting requires communication and consistency between separated parents." },
     { word: "family cohesion", translation: "cohésion familiale", example: "Family cohesion reflects the emotional bonding between family members." },
-    
+
     // Dynamiques de groupe
-    
+
     { word: "group cohesion", translation: "cohésion de groupe", example: "Group cohesion increases commitment to collective goals." },
     { word: "groupthink", translation: "pensée de groupe", example: "Groupthink can lead teams to make poor decisions due to pressure for conformity." },
     { word: "social loafing", translation: "flânerie sociale", example: "Social loafing occurs when individuals exert less effort in a group." },
@@ -135,13 +125,13 @@ export const vocab = {
     { word: "bystander effect", translation: "effet du spectateur", example: "The bystander effect explains why people are less likely to help when others are present." },
     { word: "deindividuation", translation: "désindividuation", example: "Deindividuation occurs when people feel anonymous in a group." },
     { word: "group development", translation: "développement de groupe", example: "Group development typically progresses through forming, storming, norming, and performing stages." },
-    
+
     { word: "group decision-making", translation: "prise de décision collective", example: "Effective group decision-making balances diverse perspectives with efficiency." },
     { word: "group conflict", translation: "conflit de groupe", example: "Some group conflict can be productive when managed constructively." },
     { word: "social power", translation: "pouvoir social", example: "Different types of social power influence group dynamics." },
-    
+
     // Capital social
-    
+
     { word: "social network", translation: "réseau social", example: "Your social network includes all the people you have relationships with." },
     { word: "network density", translation: "densité de réseau", example: "Network density measures how interconnected people are within a social group." },
     { word: "weak tie", translation: "lien faible", example: "Weak ties often provide access to new information and opportunities." },

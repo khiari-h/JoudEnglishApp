@@ -42,7 +42,7 @@ export const vocab = {
     { word: "to keep someone at arm's length", translation: "tenir quelqu'un à distance", example: "She keeps her colleagues at arm's length, rarely sharing personal information." },
     { word: "to take center stage", translation: "occuper le devant de la scène", example: "Climate concerns have taken center stage in recent political debates." },
     { word: "to kick the bucket", translation: "casser sa pipe", example: "The old expression 'kick the bucket' is a somewhat light-hearted way to refer to death." },
-    
+
     // Références culturelles
     { word: "Achilles' heel", translation: "talon d'Achille", example: "Overconfidence has always been his Achilles' heel in business negotiations." },
     { word: "Catch-22", translation: "situation sans issue", example: "Job seekers face a Catch-22: needing experience to get hired, but needing a job to gain experience." },
@@ -60,7 +60,7 @@ export const vocab = {
     { word: "Shakespearean tragedy", translation: "tragédie shakespearienne", example: "The downfall of the once-respected leader had elements of a Shakespearean tragedy." },
     { word: "Dickensian conditions", translation: "conditions dickensiennes", example: "The report revealed Dickensian conditions in some of the country's aging prisons." },
     { word: "Gordian knot", translation: "nœud gordien", example: "The complex legal dispute represented a Gordian knot that required bold action to resolve." },
-    
+
     { word: "Socratic method", translation: "méthode socratique", example: "The professor used the Socratic method, guiding students through questions rather than providing answers." },
     { word: "Pavlovian response", translation: "réponse pavlovienne", example: "The marketing campaign hoped to create a Pavlovian response associating the brand with positive emotions." },
     { word: "Messianic complex", translation: "complexe messianique", example: "The leader's Messianic complex led him to believe only he could save the organization." },
@@ -78,30 +78,28 @@ export const vocab = {
     { word: "Frankenstein's monster", translation: "monstre de Frankenstein", example: "The hastily designed social media platform became Frankenstein's monster, causing unintended social problems." },
     { word: "Jekyll and Hyde personality", translation: "personnalité de Jekyll et Hyde", example: "His Jekyll and Hyde personality made him charming in public but abusive in private." },
     { word: "Schrödinger's cat", translation: "chat de Schrödinger", example: "The merger exists in a Schrödinger's cat state—simultaneously proceeding and suspended until the regulatory decision." },
-    
+
     { word: "Ivory tower", translation: "tour d'ivoire", example: "Academics are often accused of remaining in their ivory tower, disconnected from practical realities." },
     { word: "Cinderella story", translation: "histoire de Cendrillon", example: "The company's rise from a garage startup to global corporation is a classic Cinderella story." },
-    
+
     { word: "Kafkaesque nightmare", translation: "cauchemar kafkaïen", example: "Dealing with insurance claims after the accident became a Kafkaesque nightmare of bureaucracy." },
     { word: "Orwellian doublespeak", translation: "double langage orwellien", example: "The memo used Orwellian doublespeak, describing layoffs as 'workforce optimization'." },
-    
+
     // Humour linguistique
     { word: "pun", translation: "jeu de mots", example: "The vegetarian's favorite pun was 'I find that joke very a-peeling' when shown pictures of bananas." },
     { word: "wordplay", translation: "jeu de mots", example: "The headline 'Local Dairy Owner is Udder Failure' used wordplay to lighten the economic news." },
     { word: "malapropism", translation: "malapropisme", example: "Her malapropism—saying 'He's a wolf in cheap clothing' instead of 'sheep's clothing'—amused the entire room." },
     { word: "double entendre", translation: "double sens", example: "The advertisement relied on a double entendre that could be interpreted innocently by children but differently by adults." },
-    
+
     { word: "spoonerism", translation: "contrepèterie", example: "A classic spoonerism switches initial sounds, turning 'crushing blow' into 'blushing crow'." },
     { word: "paraprosdokian", translation: "paraprosdokian", example: "The comedian specialized in paraprosdokians like 'I've had a perfectly wonderful evening, but this wasn't it'." },
     { word: "oxymoron", translation: "oxymore", example: "'Clearly confused' is an oxymoron that effectively describes many students before exams." },
-    
-    
+
     { word: "satire", translation: "satire", example: "The novel is a brilliant satire of corporate culture and consumer society." },
-    
+
     { word: "wit", translation: "esprit", example: "Her quick wit made her a favorite guest on late-night talk shows." },
     { word: "repartee", translation: "repartie", example: "The siblings engaged in clever repartee throughout dinner, amusing the entire family." },
-    
-    
+
     { word: "deadpan delivery", translation: "ton pince-sans-rire", example: "His deadpan delivery made it difficult to tell whether he was joking or serious." },
     { word: "gallows humor", translation: "humour noir", example: "Medical professionals often use gallows humor to cope with stressful situations." },
     { word: "self-deprecating humor", translation: "humour autodérisoire", example: "Her self-deprecating humor about her cooking skills made everyone comfortable at the dinner party." },
@@ -126,7 +124,7 @@ export const vocab = {
     { word: "jest", translation: "plaisanterie", example: "What began as a jest about starting their own business eventually led to a successful startup." },
     { word: "crack wise", translation: "faire de l'esprit", example: "The new employee quickly learned when it was appropriate to crack wise during team meetings." },
     { word: "dry humor", translation: "humour pince-sans-rire", example: "British comedies often feature dry humor that might be missed by inattentive viewers." },
-    
+
     // Registres spécialisés
     { word: "legalese", translation: "jargon juridique", example: "The contract was written in dense legalese that obscured its actual implications." },
     { word: "medicalese", translation: "jargon médical", example: "Doctors sometimes forget to translate medicalese into plain language for patients." },
@@ -158,15 +156,14 @@ export const vocab = {
     { word: "insider vocabulary", translation: "vocabulaire d'initié", example: "Learning the insider vocabulary is part of becoming accepted in professional communities." },
     { word: "professional shorthand", translation: "sténographie professionnelle", example: "Medical professionals use professional shorthand in their notes to save time." },
     { word: "field-specific expressions", translation: "expressions spécifiques au domaine", example: "Understanding field-specific expressions is crucial for effective communication between specialists." },
-    
+
     // Jargons professionnels
     { word: "scope creep", translation: "dérive du périmètre", example: "The project manager warned about scope creep as clients requested additional features." },
     { word: "low-hanging fruit", translation: "objectifs faciles à atteindre", example: "Let's focus on the low-hanging fruit first to show quick progress on the initiative." },
-    
+
     { word: "mission-critical", translation: "critique pour la mission", example: "The backup system is mission-critical and must function during the upgrade." },
     { word: "deep dive", translation: "analyse approfondie", example: "We'll need to do a deep dive into the customer data to understand the trend." },
-    
-    
+
     { word: "scalable", translation: "évolutif", example: "We need a more scalable solution as our user base grows exponentially." },
     { word: "circle back", translation: "revenir sur", example: "Let's circle back to that topic after we've reviewed the quarterly results." },
     { word: "deliverable", translation: "livrable", example: "The project timeline lists all expected deliverables and their due dates." },
@@ -183,24 +180,17 @@ export const vocab = {
     { word: "boil the ocean", translation: "entreprendre l'impossible", example: "Let's focus our efforts—we don't need to boil the ocean with this initial phase." },
     { word: "thought leadership", translation: "leadership intellectuel", example: "Publishing the research established the company's thought leadership in cybersecurity." },
     { word: "bleeding edge", translation: "technologie ultramoderne", example: "Their development team works with bleeding edge technologies not yet widely adopted." },
-    
-    
+
     { word: "ballpark figure", translation: "estimation approximative", example: "I need a ballpark figure for the project cost by tomorrow's meeting." },
-    
-    
-    
-    
-    
+
     { word: "proof of concept", translation: "preuve de concept", example: "The successful proof of concept secured additional funding for full development." },
     { word: "user-centric design", translation: "conception centrée sur l'utilisateur", example: "User-centric design principles guided the app's interface development." },
-    
-    
+
     { word: "legacy system", translation: "système hérité", example: "The legacy system's limitations were hindering the company's ability to innovate." },
     { word: "change agent", translation: "agent de changement", example: "She served as a change agent, championing new approaches within the conservative organization." },
     { word: "bottom line", translation: "résultat net", example: "While the initiative improves employee satisfaction, how will it affect the bottom line?" },
     { word: "stakeholder management", translation: "gestion des parties prenantes", example: "Effective stakeholder management was crucial to the project's success." },
-    
-    
+
     // Variations dialectales
     { word: "y'all", translation: "vous tous (dialecte du Sud des États-Unis)", example: "Y'all should come over for dinner sometime next week." },
     { word: "wee", translation: "petit (dialecte écossais)", example: "Just a wee bit more sugar in my tea, please." },
@@ -219,7 +209,7 @@ export const vocab = {
     { word: "deadly", translation: "excellent (dialecte irlandais)", example: "That was a deadly performance by the band last night." },
     { word: "proper", translation: "très, vraiment (dialecte britannique)", example: "I was proper exhausted after the marathon." },
     { word: "pop", translation: "soda (dialecte du Midwest américain)", example: "Would you like a pop with your sandwich?" },
-    
+
     { word: "dag", translation: "personne amusante/ringarde (dialecte australien)", example: "You're such a dag with those jokes of yours." },
     { word: "bodega", translation: "épicerie de quartier (dialecte new-yorkais)", example: "I'm just going to the bodega to pick up some milk." },
     { word: "chur", translation: "merci/super (dialecte néo-zélandais)", example: "Chur bro, I really appreciate the help." },
@@ -232,7 +222,7 @@ export const vocab = {
     { word: "fixin' to", translation: "s'apprêter à (dialecte du Sud des États-Unis)", example: "I'm fixin' to head out to the store in a few minutes." },
     { word: "give out", translation: "se plaindre (dialecte irlandais)", example: "She was giving out about the poor service at the restaurant." },
     { word: "sanger", translation: "sandwich (dialecte australien)", example: "I packed a vegemite sanger for lunch today." },
-    
+
     // Néologismes
     { word: "doomscrolling", translation: "défilement anxiogène", example: "She realized she'd spent an hour doomscrolling through negative news headlines." },
     { word: "phubbing", translation: "snober par téléphone", example: "Their relationship suffered because of his constant phubbing during their conversations." },
@@ -243,26 +233,23 @@ export const vocab = {
     { word: "humble-brag", translation: "auto-glorification déguisée", example: "His post about being 'exhausted from all the job offers' was a classic humble-brag." },
     { word: "mansplaining", translation: "explication condescendante masculine", example: "She was frustrated by the mansplaining she encountered at the technical conference." },
     { word: "rage-quit", translation: "abandonner par colère", example: "He rage-quit the game after losing for the third time." },
-    
+
     { word: "bromance", translation: "amitié masculine proche", example: "The two actors developed a bromance while filming the action movie." },
-    
+
     { word: "infodemic", translation: "infodémie", example: "The health crisis was accompanied by an infodemic of misinformation on social media." },
     { word: "doxing", translation: "divulgation de données personnelles", example: "The online harassment included doxing that revealed his home address." },
-    
-    
-    
+
     { word: "binge-watch", translation: "visionner en rafale", example: "I binge-watched the entire series over the weekend." },
-    
+
     { word: "flexitarian", translation: "flexitarien", example: "She describes herself as a flexitarian, primarily eating plant-based foods but occasionally consuming meat." },
     { word: "microaggression", translation: "micro-agression", example: "The workshop addressed common microaggressions in workplace communication." },
-    
+
     { word: "catfishing", translation: "usurpation d'identité en ligne", example: "The documentary explored catfishing techniques used to deceive people on dating apps." },
-    
-    
+
     { word: "cancel culture", translation: "culture de l'annulation", example: "The debate examined whether cancel culture discourages open dialogue or promotes accountability." },
     { word: "hustle culture", translation: "culture de l'hyperactivité professionnelle", example: "Younger employees are increasingly rejecting hustle culture and prioritizing work-life balance." },
     { word: "influencer", translation: "influenceur", example: "Brands collaborate with social media influencers to reach targeted audiences." },
-    
+
     { word: "doomism", translation: "catastrophisme", example: "Climate scientists warn against doomism that leads to inaction rather than solutions." }
   ]
 };

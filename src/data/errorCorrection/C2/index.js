@@ -24,7 +24,7 @@ allExercises.sort((a, b) => {
 const errorCorrectionC2 = {
   level: "C2",
   totalExercises: allExercises.length,
-  
+
   // Statistics by type
   statistics: {
     full: errorCorrectionC2Full.length,
@@ -169,24 +169,24 @@ const errorCorrectionC2 = {
   validateStructure: () => {
     const requiredFields = ['categoryId', 'type', 'text', 'correctedText', 'hint', 'explanation'];
     const validTypes = ['full', 'identify', 'multiple_choice'];
-    
+
     return allExercises.every(exercise => {
       // Check required fields
       const hasRequiredFields = requiredFields.every(field => 
         exercise.hasOwnProperty(field) && exercise[field] !== undefined
       );
-      
+
       // Check valid type
       const hasValidType = validTypes.includes(exercise.type);
-      
+
       // Check valid category (1-5 for C2)
       const hasValidCategory = exercise.categoryId >= 1 && exercise.categoryId <= 5;
-      
+
       // Check C2 mastery level complexity
       const hasMasteryComplexity = exercise.text.split(' ').length >= 15;
       const hasSophisticatedVocab = exercise.text.length > 100;
       const hasAdvancedConcepts = exercise.explanation.length > 50; // Detailed explanations
-      
+
       // Check type-specific fields with C2 mastery standards
       let hasTypeSpecificFields = true;
       if (exercise.type === 'multiple_choice') {
@@ -200,7 +200,7 @@ const errorCorrectionC2 = {
       } else {
         hasTypeSpecificFields = exercise.errorPositions && Array.isArray(exercise.errorPositions);
       }
-      
+
       return hasRequiredFields && hasValidType && hasValidCategory && 
              hasMasteryComplexity && hasSophisticatedVocab && hasAdvancedConcepts && hasTypeSpecificFields;
     });
@@ -211,13 +211,13 @@ const errorCorrectionC2 = {
     const totalErrorPositions = allExercises
       .filter(ex => ex.errorPositions)
       .reduce((sum, ex) => sum + ex.errorPositions.length, 0);
-    
+
     const totalTextLength = allExercises.reduce((sum, ex) => sum + ex.text.length, 0);
     const masteryExercises = errorCorrectionC2.getMasteryLevelExercises().length;
     const literaryExercises = errorCorrectionC2.getLiteraryExercises().length;
     const culturalExercises = errorCorrectionC2.getCulturalReferenceExercises().length;
     const artisticExercises = errorCorrectionC2.getArtisticLanguageExercises().length;
-    
+
     return {
       level: "C2",
       totalExercises: allExercises.length,
@@ -262,9 +262,9 @@ const errorCorrectionC2 = {
 
 // Validate structure on export
 if (!errorCorrectionC2.validateStructure()) {
-  console.warn('Error Correction C2: Some exercises have invalid structure');
+
 } else {
-  console.log(`Error Correction C2: Successfully loaded ${allExercises.length} mastery-level exercises`);
+
 }
 
 export default errorCorrectionC2;

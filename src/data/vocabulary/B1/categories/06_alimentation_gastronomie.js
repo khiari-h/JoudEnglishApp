@@ -20,7 +20,7 @@ export const vocab = {
     { word: "gastronomic region", translation: "région gastronomique", example: "Burgundy is a famous gastronomic region in France." },
     { word: "cooking method", translation: "méthode de cuisson", example: "Stir-frying is a common cooking method in Chinese cuisine." },
     { word: "culinary identity", translation: "identité culinaire", example: "The nation has maintained its culinary identity despite outside influences." },
-    
+
     // Habitudes alimentaires
     { word: "food habit", translation: "habitude alimentaire", example: "Food habits vary greatly between cultures." },
     { word: "eating pattern", translation: "habitude alimentaire", example: "The study examines eating patterns in different communities." },
@@ -37,7 +37,7 @@ export const vocab = {
     { word: "culinary custom", translation: "coutume culinaire", example: "In Japan, it's a culinary custom to say 'itadakimasu' before eating." },
     { word: "food preference", translation: "préférence alimentaire", example: "Food preferences begin developing in childhood." },
     { word: "intergenerational tradition", translation: "tradition intergénérationnelle", example: "Family recipes are intergenerational traditions." },
-    
+
     // Restaurants & services culinaires
     { word: "fine dining", translation: "haute cuisine", example: "The city is known for its fine dining establishments." },
     { word: "Michelin star", translation: "étoile Michelin", example: "The chef's restaurant earned its first Michelin star last year." },
@@ -45,7 +45,7 @@ export const vocab = {
     { word: "prix fixe menu", translation: "menu à prix fixe", example: "The restaurant offers a prix fixe menu for special occasions." },
     { word: "signature dish", translation: "plat signature", example: "The truffle pasta is the chef's signature dish." },
     { word: "food critic", translation: "critique gastronomique", example: "The food critic gave the restaurant a glowing review." },
-    
+
     { word: "dining experience", translation: "expérience gastronomique", example: "They offer a unique dining experience with entertainment." },
     { word: "culinary tourism", translation: "tourisme culinaire", example: "Culinary tourism has become increasingly popular." },
     { word: "food delivery service", translation: "service de livraison de repas", example: "Food delivery services boomed during the pandemic." },
@@ -56,7 +56,7 @@ export const vocab = {
     { word: "food truck", translation: "camion-restaurant", example: "Food trucks offer gourmet options at lower prices." },
     { word: "pop-up restaurant", translation: "restaurant éphémère", example: "The chef is hosting a pop-up restaurant for three months." },
     { word: "hospitality industry", translation: "industrie hôtelière", example: "She works in the hospitality industry as a sommelier." },
-    
+
     // Critique gastronomique
     { word: "restaurant review", translation: "critique de restaurant", example: "The restaurant review helped them decide where to eat." },
     { word: "culinary critique", translation: "critique culinaire", example: "His culinary critique focuses on authenticity and execution." },
@@ -74,7 +74,7 @@ export const vocab = {
     { word: "food influencer", translation: "influenceur culinaire", example: "Food influencers can significantly impact a restaurant's popularity." },
     { word: "critical assessment", translation: "évaluation critique", example: "Her critical assessment noted both strengths and weaknesses." },
     { word: "culinary standard", translation: "standard culinaire", example: "The restaurant sets high culinary standards." },
-    
+
     // Événements culinaires
     { word: "food festival", translation: "festival gastronomique", example: "The annual food festival celebrates local specialties." },
     { word: "culinary competition", translation: "concours culinaire", example: "Chefs from around the world participate in the culinary competition." },
@@ -91,11 +91,11 @@ export const vocab = {
     { word: "cooking marathon", translation: "marathon de cuisine", example: "Chefs participate in a 24-hour cooking marathon for charity." },
     { word: "culinary tour", translation: "circuit gastronomique", example: "The culinary tour includes visits to markets and restaurants." },
     { word: "food symposium", translation: "symposium alimentaire", example: "The food symposium brings together chefs, producers, and researchers." },
-    
+
     // Nutrition & diététique
     { word: "nutritional value", translation: "valeur nutritive", example: "The nutritional value of processed foods is often lower." },
     { word: "dietary requirement", translation: "besoin diététique", example: "The menu accommodates various dietary requirements." },
-    
+
     { word: "nutrient density", translation: "densité nutritionnelle", example: "Leafy greens have high nutrient density." },
     { word: "nutritional deficiency", translation: "carence nutritionnelle", example: "Iron deficiency is a common nutritional deficiency." },
     { word: "caloric intake", translation: "apport calorique", example: "Athletes need a higher caloric intake than sedentary individuals." },
@@ -110,7 +110,7 @@ export const vocab = {
     { word: "digestive health", translation: "santé digestive", example: "Probiotics can support digestive health." },
     { word: "nutritional science", translation: "science nutritionnelle", example: "Nutritional science is constantly evolving." },
     { word: "eating disorder", translation: "trouble alimentaire", example: "Eating disorders require professional treatment." },
-    
+
     // Production alimentaire
     { word: "sustainable farming", translation: "agriculture durable", example: "Sustainable farming practices protect the environment." },
     { word: "organic production", translation: "production biologique", example: "Organic production prohibits synthetic pesticides." },
@@ -126,7 +126,7 @@ export const vocab = {
     { word: "crop rotation", translation: "rotation des cultures", example: "Crop rotation helps maintain soil health." },
     { word: "livestock farming", translation: "élevage", example: "Sustainable livestock farming practices are gaining popularity." },
     { word: "food waste", translation: "gaspillage alimentaire", example: "Restaurants are finding creative ways to reduce food waste." },
-    
+
     { word: "food technology", translation: "technologie alimentaire", example: "Food technology innovations can improve shelf life." },
     { word: "food security", translation: "sécurité alimentaire", example: "Climate change threatens global food security." },
     { word: "vertical farming", translation: "agriculture verticale", example: "Vertical farming allows food production in urban environments." },

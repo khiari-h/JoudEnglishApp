@@ -46,11 +46,11 @@ const RecommendationsSection = ({
               <Text style={styles.messageIcon}>{recommendationData.icon}</Text>
               <Text style={styles.messageTitle}>{recommendationData.title}</Text>
             </View>
-            
+
             <Text style={styles.messageText}>
               {recommendationData.message}
             </Text>
-            
+
             <Button
               title={recommendationData.button}
               variant="filled" 
@@ -74,11 +74,11 @@ const RecommendationsSection = ({
               <Text style={styles.messageIcon}>{recommendationData.icon}</Text>
               <Text style={styles.messageTitle}>{recommendationData.title}</Text>
             </View>
-            
+
             <Text style={styles.messageText}>
               {recommendationData.message}
             </Text>
-            
+
             <Button
               title={recommendationData.button}
               variant="filled" 
@@ -102,12 +102,12 @@ const RecommendationsSection = ({
             <Text style={styles.messageIcon}>{recommendationData.icon}</Text>
             <Text style={styles.messageTitle}>{recommendationData.title}</Text>
           </View>
-          
+
           {/* Message bienveillant */}
           <Text style={styles.messageText}>
             {recommendationData.message}
           </Text>
-          
+
           {/* Info sur le temps passé RÉEL */}
           {recommendationData.timeSpent && (
             <View style={styles.timeInfo}>
@@ -119,7 +119,7 @@ const RecommendationsSection = ({
               </View>
             </View>
           )}
-          
+
           {/* Aperçu de l'exercice recommandé */}
           <TouchableOpacity
             style={styles.exercisePreview}
@@ -135,20 +135,20 @@ const RecommendationsSection = ({
               >
                 <Text style={styles.exerciseIcon}>{smartRecommendation.icon}</Text>
               </View>
-              
+
               <View style={styles.exerciseInfo}>
                 <Text style={styles.exerciseTitle}>{smartRecommendation.title}</Text>
                 <Text style={styles.exerciseDescription} numberOfLines={2}>
                   {smartRecommendation.description}
                 </Text>
               </View>
-              
+
               <View style={[styles.levelBadge, { backgroundColor: accentColor }]}>
                 <Text style={styles.levelBadgeText}>{currentLevel}</Text>
               </View>
             </View>
           </TouchableOpacity>
-          
+
           {/* Bouton d'action principal */}
           <Button
             title={recommendationData.button}
@@ -167,7 +167,7 @@ const RecommendationsSection = ({
   // Mémoriser le titre de section
   const sectionTitle = useMemo(() => {
     if (!smartRecommendation) return "Recommandations";
-    
+
     if (smartRecommendation.id === 'start_vocabulary') return "Pour toi";
     if (smartRecommendation.id === 'default_vocabulary') return "Recommandation";
     return "Suggestion pour toi";

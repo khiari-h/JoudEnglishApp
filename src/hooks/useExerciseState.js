@@ -41,7 +41,7 @@ const useExerciseState = (initialExercises = [], options = {}) => {
   const [results, setResults] = useState(null);
   const [isCompleted, setIsCompleted] = useState(false);
   const [timeSpent, setTimeSpent] = useState(0);
-  
+
   // Références pour le timer
   const timerRef = useRef(null);
   const startTimeRef = useRef(new Date());
@@ -51,7 +51,7 @@ const useExerciseState = (initialExercises = [], options = {}) => {
   useEffect(() => {
     if (trackTime && !isCompleted) {
       startTimeRef.current = new Date();
-      
+
       timerRef.current = setInterval(() => {
         setTimeSpent(Math.floor((new Date() - startTimeRef.current) / 1000));
       }, 1000);
@@ -203,10 +203,10 @@ const useExerciseState = (initialExercises = [], options = {}) => {
     setResults(null);
     setIsCompleted(false);
     setTimeSpent(0);
-    
+
     // Réinitialiser les refs
     endTimeRef.current = null;
-    
+
     // Le timer sera redémarré automatiquement par useEffect
     // grâce au changement d'isCompleted
   }, [effectiveExercises.length]);
@@ -233,7 +233,7 @@ const useExerciseState = (initialExercises = [], options = {}) => {
     results,
     timeSpent,
     progress,
-    
+
     // Actions
     nextExercise,
     previousExercise,

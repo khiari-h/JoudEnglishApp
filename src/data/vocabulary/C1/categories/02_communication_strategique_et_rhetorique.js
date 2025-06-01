@@ -4,10 +4,7 @@ export const vocab = {
     // Discours persuasif
     { word: "rhetorical device", translation: "procédé rhétorique", example: "The politician used several rhetorical devices to emphasize key points in the speech." },
     { word: "persuasive appeal", translation: "appel persuasif", example: "The advertisement relies on emotional persuasive appeals rather than logical arguments." },
-    
-    
-    
-    
+
     { word: "rhetorical question", translation: "question rhétorique", example: "The speech ended with a powerful rhetorical question that lingered in viewers' minds." },
     { word: "rhetorical analysis", translation: "analyse rhétorique", example: "Rhetorical analysis examines how language is used to persuade an audience." },
     { word: "persuasive discourse", translation: "discours persuasif", example: "Political campaigns engage in persuasive discourse to influence voter behavior." },
@@ -32,46 +29,46 @@ export const vocab = {
     { word: "rhetorical context", translation: "contexte rhétorique", example: "The rhetorical context shapes how a message should be crafted for maximum effect." },
     { word: "appeal to authority", translation: "appel à l'autorité", example: "The advertisement used an appeal to authority by featuring a respected scientist." },
     { word: "rhetorical fallacy", translation: "sophisme rhétorique", example: "Ad hominem attacks are a rhetorical fallacy that target the person rather than their argument." },
-    
+
     // Stratégies argumentatives
     { word: "argumentation structure", translation: "structure d'argumentation", example: "The essay uses a clear argumentation structure with claims supported by evidence." },
     { word: "argumentative strategy", translation: "stratégie argumentative", example: "Conceding minor points can be an effective argumentative strategy." },
-    
+
     { word: "argumentative fallacy", translation: "sophisme argumentatif", example: "Straw man is an argumentative fallacy that misrepresents an opponent's position." },
     { word: "inductive reasoning", translation: "raisonnement inductif", example: "Scientific discovery often relies on inductive reasoning from observations to general principles." },
     { word: "deductive reasoning", translation: "raisonnement déductif", example: "Mathematical proofs employ deductive reasoning from general principles to specific conclusions." },
-    
+
     { word: "syllogism", translation: "syllogisme", example: "A classic syllogism contains two premises and a conclusion." },
     { word: "warrant", translation: "garant", example: "The warrant connects evidence to a claim in Toulmin's model of argumentation." },
     { word: "argumentative claim", translation: "affirmation argumentative", example: "The thesis statement presents the central argumentative claim of the paper." },
     { word: "logical coherence", translation: "cohérence logique", example: "The argument lacked logical coherence, with contradictory assertions." },
-    
+
     { word: "defeater", translation: "réfutateur", example: "This evidence acts as a defeater for the competing theory." },
     { word: "evidential support", translation: "support évidentiel", example: "The argument requires stronger evidential support to be convincing." },
     { word: "proposition", translation: "proposition", example: "The debate centered on competing propositions about economic policy." },
     { word: "causal argument", translation: "argument causal", example: "The report presents a causal argument linking pollution to health outcomes." },
-    
+
     { word: "argumentative framework", translation: "cadre argumentatif", example: "Toulmin's model provides an argumentative framework for analyzing persuasive discourse." },
     { word: "dialectical approach", translation: "approche dialectique", example: "A dialectical approach considers thesis, antithesis, and synthesis." },
     { word: "critical discussion", translation: "discussion critique", example: "The pragma-dialectical theory views argumentation as critical discussion." },
     { word: "evidentiary standard", translation: "norme probatoire", example: "Legal arguments must meet specific evidentiary standards to prevail." },
     { word: "presumptive reasoning", translation: "raisonnement présomptif", example: "Everyday arguments often rely on presumptive reasoning rather than formal logic." },
     { word: "informal logic", translation: "logique informelle", example: "Informal logic analyzes reasoning in natural language arguments." },
-    
+
     { word: "analytical argument", translation: "argument analytique", example: "The philosopher constructed an analytical argument examining the concept of justice." },
     { word: "argumentative scheme", translation: "schéma argumentatif", example: "Argument from expert opinion follows a specific argumentative scheme." },
     { word: "logical fallacy", translation: "sophisme logique", example: "Appeal to popularity is a logical fallacy based on widespread belief." },
     { word: "circular reasoning", translation: "raisonnement circulaire", example: "The explanation relies on circular reasoning that assumes what it aims to prove." },
-    
+
     { word: "steelmanning", translation: "renforcement d'argument", example: "Steelmanning involves presenting the strongest version of an opposing argument." },
-    
+
     // Manipulation langagière
     { word: "linguistic manipulation", translation: "manipulation linguistique", example: "The advertisement used linguistic manipulation to create a false sense of urgency." },
-    
+
     { word: "persuasive language", translation: "langage persuasif", example: "Political speeches employ persuasive language to shape public opinion." },
     { word: "loaded language", translation: "langage tendancieux", example: "The report contained loaded language that revealed bias rather than objectivity." },
     { word: "linguistic distortion", translation: "distorsion linguistique", example: "Propaganda relies on linguistic distortion to misrepresent facts." },
-    
+
     { word: "dysphemism", translation: "dysphémisme", example: "Political opponents often use dysphemisms to portray rivals' policies negatively." },
     { word: "weasel words", translation: "mots évasifs", example: "The statement was full of weasel words that created an impression without making verifiable claims." },
     { word: "doublespeak", translation: "double langage", example: "Corporate doublespeak obscured responsibility for the environmental damage." },
@@ -91,12 +88,10 @@ export const vocab = {
     { word: "intentional ambiguity", translation: "ambiguïté intentionnelle", example: "The policy statement contained intentional ambiguity to allow multiple interpretations." },
     { word: "presupposition", translation: "présupposition", example: "The question contained a presupposition that assumed guilt without evidence." },
     { word: "persuasive definition", translation: "définition persuasive", example: "The debate hinged on competing persuasive definitions of 'freedom'." },
-    
-    
+
     { word: "manufactured consent", translation: "consentement fabriqué", example: "Media can create manufactured consent for policies through selective coverage." },
     { word: "rhetorical redefinition", translation: "redéfinition rhétorique", example: "The argument used rhetorical redefinition to change the terms of the debate." },
-    
-    
+
     // Communication non-verbale avancée
     { word: "nonverbal cue", translation: "indice non verbal", example: "Subtle nonverbal cues revealed the negotiator's uncertainty despite confident words." },
     { word: "microexpression", translation: "microexpression", example: "Trained observers can detect microexpressions that last just a fraction of a second." },
@@ -125,10 +120,10 @@ export const vocab = {
     { word: "synchrony", translation: "synchronie", example: "Interpersonal synchrony in movement indicates rapport between communicators." },
     { word: "facial coding", translation: "codage facial", example: "Facial coding systems like FACS identify specific muscle movements during expressions." },
     { word: "gestural accent", translation: "accent gestuel", example: "Cultural background creates a gestural accent that persists even in new languages." },
-    
+
     { word: "nonverbal expectancy", translation: "attente non verbale", example: "Nonverbal expectancy violations can strengthen or weaken persuasive messages." },
     { word: "semiotic resource", translation: "ressource sémiotique", example: "Body positioning functions as a semiotic resource in meaning-making." },
-    
+
     // Narration stratégique
     { word: "strategic narrative", translation: "récit stratégique", example: "The company developed a strategic narrative to explain its transformation to stakeholders." },
     { word: "narrative framework", translation: "cadre narratif", example: "The campaign used a narrative framework that positioned voters as heroes in a national story." },
@@ -145,7 +140,7 @@ export const vocab = {
     { word: "narrative coherence", translation: "cohérence narrative", example: "Effective strategic communication maintains narrative coherence across channels and time." },
     { word: "strategic theme", translation: "thème stratégique", example: "The campaign identified three strategic themes that resonated with target audiences." },
     { word: "anecdotal evidence", translation: "preuve anecdotique", example: "While statistically weak, anecdotal evidence can be persuasively powerful in narratives." },
-    
+
     { word: "story arc", translation: "arc narratif", example: "The communication plan followed a story arc that built toward product launch." },
     { word: "narrative fidelity", translation: "fidélité narrative", example: "Successful messaging achieves narrative fidelity with audience's lived experience." },
     { word: "strategic storyline", translation: "trame narrative stratégique", example: "The campaign developed a strategic storyline around economic renewal." },
@@ -155,7 +150,7 @@ export const vocab = {
     { word: "narrative engagement", translation: "engagement narratif", example: "Marketing campaigns aim for deep narrative engagement rather than passive consumption." },
     { word: "strategic plot", translation: "intrigue stratégique", example: "The communication strategy followed a strategic plot of overcoming obstacles." },
     { word: "narrative positioning", translation: "positionnement narratif", example: "The rebrand involved narrative positioning as an industry pioneer rather than follower." },
-    
+
     // Analyse conversationnelle
     { word: "turn-taking", translation: "alternance de tours de parole", example: "Conversation analysis examines how turn-taking is negotiated between speakers." },
     { word: "conversational implicature", translation: "implicature conversationnelle", example: "Conversational implicature allows meaning to be conveyed indirectly." },
@@ -164,7 +159,7 @@ export const vocab = {
     { word: "discourse marker", translation: "marqueur de discours", example: "Words like 'however' and 'nevertheless' function as discourse markers signaling relationships between ideas." },
     { word: "speech act", translation: "acte de langage", example: "Promising is a speech act that creates commitment through utterance." },
     { word: "conversational maxim", translation: "maxime conversationnelle", example: "Grice's conversational maxims include quantity, quality, relation, and manner." },
-    
+
     { word: "conversation analysis", translation: "analyse conversationnelle", example: "Conversation analysis examines the structures of talk-in-interaction." },
     { word: "footing", translation: "positionnement", example: "Speakers shift footing to signal changes in their role or alignment in conversation." },
     { word: "preference organization", translation: "organisation préférentielle", example: "Preference organization explains why accepting invitations is structurally simpler than declining." },
@@ -182,7 +177,7 @@ export const vocab = {
     { word: "discourse structure", translation: "structure du discours", example: "Professional meetings follow recognizable discourse structures." },
     { word: "institutional talk", translation: "conversation institutionnelle", example: "Institutional talk in medical settings follows different patterns than casual conversation." },
     { word: "interactional sociolinguistics", translation: "sociolinguistique interactionnelle", example: "Interactional sociolinguistics examines how cultural differences affect communication." },
-    
+
     // Pragmatique communicationnelle
     { word: "pragmatic competence", translation: "compétence pragmatique", example: "Language learners must develop pragmatic competence beyond grammatical knowledge." },
     { word: "speech act theory", translation: "théorie des actes de langage", example: "Speech act theory distinguishes between locutionary, illocutionary, and perlocutionary acts." },
@@ -216,3 +211,4 @@ export const vocab = {
     { word: "pragmatic awareness", translation: "conscience pragmatique", example: "Language teachers must develop students' pragmatic awareness alongside grammar." }
   ]
 };
+

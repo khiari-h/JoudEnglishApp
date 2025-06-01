@@ -27,13 +27,13 @@ const SpellingFeedback = ({
       <Text style={styles.resultText}>
         {isCorrect ? "Correct!" : "Incorrect!"}
       </Text>
-      
+
       {!isCorrect && (
         <Text style={styles.correctAnswerText}>
           The correct answer is: <Text style={styles.answerHighlight}>{correctAnswer}</Text>
         </Text>
       )}
-      
+
       {explanation && (
         <Text style={styles.explanationText}>
           {explanation}

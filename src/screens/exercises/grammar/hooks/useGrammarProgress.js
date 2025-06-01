@@ -52,10 +52,7 @@ const useGrammarProgress = (level) => {
         setUserAnswers(savedAnswers);
         setLoaded(true);
       } catch (error) {
-        console.error(
-          "Erreur lors du chargement des données de progression:",
-          error
-        );
+
         setCompletedExercises({});
         setLastPosition({ ruleIndex: 0, exerciseIndex: 0 });
         setUserAnswers([]);
@@ -83,7 +80,7 @@ const useGrammarProgress = (level) => {
           JSON.stringify(newPosition)
         );
       } catch (error) {
-        console.error("Erreur lors de la sauvegarde de la position:", error);
+
       }
     },
     [LAST_POSITION_KEY]
@@ -128,10 +125,7 @@ const useGrammarProgress = (level) => {
           JSON.stringify(updatedUserAnswers)
         );
       } catch (error) {
-        console.error(
-          "Erreur lors du marquage de l'exercice comme complété:",
-          error
-        );
+
       }
     },
     [completedExercises, userAnswers, COMPLETED_EXERCISES_KEY, USER_ANSWERS_KEY]
@@ -208,10 +202,7 @@ const useGrammarProgress = (level) => {
       setUserAnswers([]);
       setInitialized(false);
     } catch (error) {
-      console.error(
-        "Erreur lors de la réinitialisation de la progression:",
-        error
-      );
+
     }
   }, [COMPLETED_EXERCISES_KEY, LAST_POSITION_KEY, USER_ANSWERS_KEY]);
 
@@ -231,3 +222,4 @@ const useGrammarProgress = (level) => {
 };
 
 export default useGrammarProgress;
+

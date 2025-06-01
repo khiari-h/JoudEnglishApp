@@ -79,7 +79,7 @@ const ConversationExercise = ({ route }) => {
   // Initialiser les données de progression
   useEffect(() => {
     if (progressLoaded && conversationData) {
-      console.log("[Conversation] Initialisation de la progression");
+
       initializeProgress(conversationData);
 
       // Enregistrer la sélection initiale du scénario
@@ -109,7 +109,7 @@ const ConversationExercise = ({ route }) => {
         scenarioHistory?.conversation &&
         scenarioHistory.conversation.length > 0
       ) {
-        console.log("[Conversation] Restauration de la conversation existante");
+
         setConversation(scenarioHistory.conversation);
 
         // Calculer l'étape actuelle en fonction des messages du bot
@@ -120,9 +120,7 @@ const ConversationExercise = ({ route }) => {
       } else {
         // Nouvelle conversation - initialiser avec le premier message du bot
         if (scenario.steps && scenario.steps.length > 0) {
-          console.log(
-            "[Conversation] Initialisation d'une nouvelle conversation"
-          );
+
           const initialBotMessage = {
             id: `bot-initial-${Date.now()}`,
             text: scenario.steps[0].botMessage,
@@ -152,7 +150,7 @@ const ConversationExercise = ({ route }) => {
       // Fonction de nettoyage exécutée lorsque l'utilisateur quitte la page
       return () => {
         if (progressLoaded && conversationChanged) {
-          console.log("[Conversation] Sauvegarde au départ de la page");
+
           saveProgressState();
         }
       };
@@ -366,3 +364,4 @@ const ConversationExercise = ({ route }) => {
 };
 
 export default ConversationExercise;
+

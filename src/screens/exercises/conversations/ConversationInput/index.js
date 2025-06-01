@@ -13,14 +13,14 @@ import styles from './style';
 const ConversationInput = ({ message, onChangeMessage, onSendMessage, levelColor }) => {
   // Vérifier si le bouton d'envoi doit être activé
   const isButtonEnabled = message.trim() !== '';
-  
+
   // Gérer l'envoi du message
   const handleSend = () => {
     if (isButtonEnabled) {
       onSendMessage();
     }
   };
-  
+
   return (
     <View style={styles.container}>
       <TextInput

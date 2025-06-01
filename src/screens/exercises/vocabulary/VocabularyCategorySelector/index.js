@@ -40,3 +40,4 @@ const VocabularyCategorySelector = ({
 };
 
 export default VocabularyCategorySelector;
+

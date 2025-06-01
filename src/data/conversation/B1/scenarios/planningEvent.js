@@ -173,5 +173,5 @@ const planningEvent = {
       ]
     }
   };
-  
+
   export default planningEvent;

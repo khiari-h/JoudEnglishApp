@@ -171,5 +171,5 @@ const healthAndFitness = {
       ]
     }
   };
-  
+
   export default healthAndFitness;

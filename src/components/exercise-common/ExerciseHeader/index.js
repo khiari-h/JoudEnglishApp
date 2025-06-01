@@ -23,11 +23,11 @@ const ExerciseHeader = ({
   const exerciseInfo = EXERCISE_TYPES[exerciseType] || EXERCISE_TYPES.vocabulary;
   const exerciseColor = exerciseInfo.color;
   const exerciseIcon = exerciseInfo.icon;
-  
+
   // Récupérer la couleur du niveau pour le badge
   const levelInfo = LANGUAGE_LEVELS[level] || LANGUAGE_LEVELS["1"];
   const levelColor = levelInfo.color;
-  
+
   // Affichage du niveau (1,2,3,4,5,6 ou B pour bonus)
   const displayLevel = level === "bonus" ? "B" : level;
 

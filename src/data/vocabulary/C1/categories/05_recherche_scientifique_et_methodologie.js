@@ -2,11 +2,11 @@ export const vocab = {
   title: "Recherche Scientifique & Méthodologie",
   words: [
     // Conception expérimentale
-    
+
     { word: "treatment group", translation: "groupe expérimental", example: "The treatment group received the new medication while the control group received a placebo." },
-    
+
     { word: "random assignment", translation: "assignation aléatoire", example: "Random assignment helps eliminate selection bias in experimental studies." },
-    
+
     { word: "independent variable", translation: "variable indépendante", example: "The amount of fertilizer applied was the independent variable in the agricultural experiment." },
     { word: "dependent variable", translation: "variable dépendante", example: "Crop yield served as the dependent variable to measure the fertilizer's effectiveness." },
     { word: "double-blind study", translation: "étude en double aveugle", example: "In a double-blind study, neither participants nor researchers know who receives the treatment." },
@@ -19,7 +19,7 @@ export const vocab = {
     { word: "baseline measurement", translation: "mesure de référence", example: "Baseline measurements were collected before the intervention to enable comparison." },
     { word: "matched pairs design", translation: "plan par paires appariées", example: "The matched pairs design grouped participants with similar characteristics before treatment assignment." },
     { word: "longitudinal design", translation: "conception longitudinale", example: "The longitudinal design tracked participants over five years to observe developmental changes." },
-    
+
     { word: "field experiment", translation: "expérience de terrain", example: "The field experiment tested the intervention in real-world conditions rather than a laboratory." },
     { word: "naturalistic observation", translation: "observation naturaliste", example: "Naturalistic observation allowed researchers to study behavior in authentic settings." },
     { word: "experimental control", translation: "contrôle expérimental", example: "Strict experimental control minimized the influence of extraneous variables." },
@@ -29,16 +29,16 @@ export const vocab = {
     { word: "experimental condition", translation: "condition expérimentale", example: "Participants were randomly assigned to one of three experimental conditions." },
     { word: "repeated measures", translation: "mesures répétées", example: "The repeated measures design increased statistical power by reducing individual variation." },
     { word: "carryover effect", translation: "effet de transfert", example: "Researchers were concerned about carryover effects between sequential treatments." },
-    
+
     // Analyse de données
-    
+
     { word: "data interpretation", translation: "interprétation des données", example: "Data interpretation requires both technical expertise and domain knowledge." },
     { word: "correlation coefficient", translation: "coefficient de corrélation", example: "The correlation coefficient indicated a strong positive relationship between the variables." },
     { word: "regression analysis", translation: "analyse de régression", example: "Regression analysis identified predictors of academic performance among the variables studied." },
     { word: "statistical significance", translation: "signification statistique", example: "The results achieved statistical significance with a p-value below 0.05." },
     { word: "effect size", translation: "taille d'effet", example: "Beyond statistical significance, the effect size indicated the practical importance of the findings." },
     { word: "confidence interval", translation: "intervalle de confiance", example: "The 95% confidence interval provides a range likely to contain the true population parameter." },
-    
+
     { word: "outlier detection", translation: "détection des valeurs aberrantes", example: "Outlier detection identified several cases that required further investigation." },
     { word: "multivariate analysis", translation: "analyse multivariée", example: "Multivariate analysis examined relationships among multiple dependent variables simultaneously." },
     { word: "cluster analysis", translation: "analyse de classification", example: "Cluster analysis identified distinct subgroups within the heterogeneous sample." },
@@ -52,21 +52,20 @@ export const vocab = {
     { word: "non-parametric test", translation: "test non paramétrique", example: "The researchers used a non-parametric test because the data violated normality assumptions." },
     { word: "statistical modeling", translation: "modélisation statistique", example: "Statistical modeling helped predict outcomes based on various input factors." },
     { word: "meta-analysis", translation: "méta-analyse", example: "The meta-analysis synthesized results from 42 independent studies on the topic." },
-    
-    
+
     { word: "structural equation modeling", translation: "modélisation par équations structurelles", example: "Structural equation modeling tested complex relationships among latent variables." },
     { word: "time series analysis", translation: "analyse des séries temporelles", example: "Time series analysis revealed cyclical patterns in the economic indicators." },
     { word: "longitudinal data analysis", translation: "analyse de données longitudinales", example: "Longitudinal data analysis tracked developmental trajectories over multiple time points." },
     { word: "Bayesian analysis", translation: "analyse bayésienne", example: "Bayesian analysis incorporated prior knowledge into the statistical model." },
-    
+
     // Modélisation scientifique
     { word: "theoretical model", translation: "modèle théorique", example: "The theoretical model proposed mechanisms linking childhood adversity to adult health outcomes." },
     { word: "computational model", translation: "modèle computationnel", example: "The computational model simulated cell interactions during embryonic development." },
-    
+
     { word: "mathematical modeling", translation: "modélisation mathématique", example: "Mathematical modeling predicted the spread of the epidemic under different intervention scenarios." },
     { word: "system dynamics", translation: "dynamique des systèmes", example: "System dynamics modeling captured feedback loops in the ecological network." },
     { word: "predictive model", translation: "modèle prédictif", example: "The predictive model achieved 87% accuracy in forecasting patient outcomes." },
-    
+
     { word: "mechanistic model", translation: "modèle mécaniste", example: "The mechanistic model described chemical reactions occurring in cellular respiration." },
     { word: "stochastic model", translation: "modèle stochastique", example: "The stochastic model incorporated random variables to represent natural variability." },
     { word: "deterministic model", translation: "modèle déterministe", example: "Unlike probabilistic approaches, the deterministic model produced identical outputs given the same inputs." },
@@ -87,10 +86,9 @@ export const vocab = {
     { word: "dynamic model", translation: "modèle dynamique", example: "The dynamic model captured changes in system states over time." },
     { word: "statistical model", translation: "modèle statistique", example: "The statistical model quantified relationships between variables while accounting for uncertainty." },
     { word: "model complexity", translation: "complexité du modèle", example: "Researchers balanced model complexity against interpretability and practical utility." },
-    
+
     // Publication académique
-    
-    
+
     { word: "journal impact factor", translation: "facteur d'impact de revue", example: "The journal impact factor influences where many researchers choose to submit their work." },
     { word: "academic citation", translation: "citation académique", example: "Academic citations acknowledge the influence of prior scholarship on current research." },
     { word: "research manuscript", translation: "manuscrit de recherche", example: "The research manuscript detailed methodology, results, and implications of the study." },
@@ -105,7 +103,7 @@ export const vocab = {
     { word: "research dissemination", translation: "diffusion de la recherche", example: "Digital platforms have transformed research dissemination beyond traditional journals." },
     { word: "publication bias", translation: "biais de publication", example: "Publication bias favors studies with statistically significant findings." },
     { word: "preprint server", translation: "serveur de prépublication", example: "The preprint server allowed early sharing of results before formal peer review." },
-    
+
     { word: "academic publishing", translation: "édition académique", example: "Academic publishing has undergone significant changes with digital technologies." },
     { word: "bibliometric analysis", translation: "analyse bibliométrique", example: "Bibliometric analysis evaluated research impact through citation patterns." },
     { word: "authorship criteria", translation: "critères d'auteur", example: "Authorship criteria specify contributions necessary to be listed as a paper's author." },
@@ -116,10 +114,10 @@ export const vocab = {
     { word: "data availability statement", translation: "déclaration de disponibilité des données", example: "The data availability statement explained how researchers could access the study materials." },
     { word: "conflict of interest disclosure", translation: "déclaration de conflit d'intérêts", example: "The conflict of interest disclosure revealed financial relationships with industry partners." },
     { word: "research repository", translation: "dépôt de recherche", example: "The institutional research repository archived faculty publications and datasets." },
-    
+
     // Controverses scientifiques
     { word: "scientific controversy", translation: "controverse scientifique", example: "The scientific controversy over methodology divided the research community." },
-    
+
     { word: "methodological debate", translation: "débat méthodologique", example: "The methodological debate centered on appropriate measurement techniques." },
     { word: "replication crisis", translation: "crise de réplication", example: "The replication crisis raised questions about reliability of published findings." },
     { word: "scientific consensus", translation: "consensus scientifique", example: "Despite public debate, scientific consensus strongly supports anthropogenic climate change." },
@@ -128,9 +126,9 @@ export const vocab = {
     { word: "evidential ambiguity", translation: "ambiguïté des preuves", example: "Evidential ambiguity prevented definitive conclusions from the available data." },
     { word: "scientific skepticism", translation: "scepticisme scientifique", example: "Scientific skepticism demands rigorous evidence before accepting new claims." },
     { word: "scientific misconduct", translation: "inconduite scientifique", example: "Allegations of scientific misconduct led to an institutional investigation." },
-    
+
     { word: "interpretive disagreement", translation: "désaccord interprétatif", example: "Researchers reached interpretive disagreement about the implications of the findings." },
-    
+
     { word: "intellectual conflict", translation: "conflit intellectuel", example: "The intellectual conflict between competing schools of thought advanced theoretical understanding." },
     { word: "contentious finding", translation: "résultat controversé", example: "The contentious finding challenged fundamental assumptions in the discipline." },
     { word: "fringe theory", translation: "théorie marginale", example: "Most researchers dismissed the explanation as a fringe theory lacking empirical support." },
@@ -139,13 +137,13 @@ export const vocab = {
     { word: "anomalous evidence", translation: "preuve anomale", example: "Anomalous evidence prompted reconsideration of the established theoretical model." },
     { word: "scientific authority", translation: "autorité scientifique", example: "Appeals to scientific authority alone cannot resolve empirical questions." },
     { word: "methodological criticism", translation: "critique méthodologique", example: "Methodological criticism focused on sampling limitations and measurement issues." },
-    
+
     { word: "contradictory results", translation: "résultats contradictoires", example: "Contradictory results from different laboratories fueled the ongoing controversy." },
     { word: "scientific dissent", translation: "dissidence scientifique", example: "Scientific dissent from mainstream views should be evaluated on evidential merit." },
-    
+
     { word: "theoretical reconciliation", translation: "réconciliation théorique", example: "The paper attempted theoretical reconciliation between competing explanations." },
     { word: "scientific critique", translation: "critique scientifique", example: "The scientific critique identified fundamental flaws in the experimental design." },
-    
+
     // Épistémologie disciplinaire
     { word: "epistemological framework", translation: "cadre épistémologique", example: "The research was conducted within a constructivist epistemological framework." },
     { word: "disciplinary paradigm", translation: "paradigme disciplinaire", example: "The disciplinary paradigm shapes which questions researchers consider important." },
@@ -174,31 +172,31 @@ export const vocab = {
     { word: "epistemic value", translation: "valeur épistémique", example: "Predictive accuracy represents a central epistemic value in many scientific disciplines." },
     { word: "epistemological diversity", translation: "diversité épistémologique", example: "Interdisciplinary collaboration benefits from epistemological diversity among team members." },
     { word: "disciplinary worldview", translation: "vision du monde disciplinaire", example: "The disciplinary worldview shapes which phenomena researchers consider significant." },
-    
+
     // Sciences interdisciplinaires
     { word: "interdisciplinary research", translation: "recherche interdisciplinaire", example: "Interdisciplinary research integrated methods from sociology and epidemiology." },
     { word: "cross-disciplinary approach", translation: "approche transdisciplinaire", example: "The cross-disciplinary approach brought together insights from economics and psychology." },
     { word: "disciplinary integration", translation: "intégration disciplinaire", example: "Disciplinary integration allowed comprehensive analysis of complex environmental problems." },
     { word: "convergent research", translation: "recherche convergente", example: "Convergent research addressed societal challenges by combining diverse disciplines." },
     { word: "transdisciplinary method", translation: "méthode transdisciplinaire", example: "The transdisciplinary method engaged both academic and community knowledge." },
-    
+
     { word: "disciplinary collaboration", translation: "collaboration disciplinaire", example: "Disciplinary collaboration enabled innovative approaches to longstanding questions." },
     { word: "integrative framework", translation: "cadre intégratif", example: "The integrative framework connected biological mechanisms with social contexts." },
-    
+
     { word: "boundary-spanning research", translation: "recherche traversant les frontières", example: "Boundary-spanning research developed new methodologies by combining disciplinary approaches." },
     { word: "synthetic approach", translation: "approche synthétique", example: "The synthetic approach unified previously disconnected theoretical traditions." },
     { word: "interdisciplinary field", translation: "domaine interdisciplinaire", example: "Cognitive science emerged as an interdisciplinary field combining multiple perspectives." },
     { word: "collaborative methodology", translation: "méthodologie collaborative", example: "The collaborative methodology integrated qualitative and quantitative techniques." },
     { word: "conceptual integration", translation: "intégration conceptuelle", example: "Conceptual integration developed new theoretical insights at disciplinary intersections." },
     { word: "knowledge exchange", translation: "échange de connaissances", example: "The conference facilitated knowledge exchange between traditionally separate fields." },
-    
+
     { word: "interdisciplinary dialogue", translation: "dialogue interdisciplinaire", example: "Interdisciplinary dialogue revealed conceptual connections between distinct research traditions." },
     { word: "boundary object", translation: "objet-frontière", example: "Climate models function as boundary objects connecting different scientific communities." },
     { word: "integrative knowledge", translation: "connaissance intégrative", example: "Addressing sustainability challenges requires integrative knowledge spanning natural and social sciences." },
-    
+
     { word: "hybrid methodology", translation: "méthodologie hybride", example: "The hybrid methodology combined ethnographic fieldwork with statistical analysis." },
     { word: "methodological pluralism", translation: "pluralisme méthodologique", example: "Methodological pluralism recognizes the value of diverse research approaches." },
-    
+
     { word: "epistemic bridge", translation: "pont épistémique", example: "Systems thinking serves as an epistemic bridge between natural and social sciences." },
     { word: "interdisciplinary literacy", translation: "littératie interdisciplinaire", example: "Interdisciplinary literacy enables researchers to engage meaningfully across fields." },
     { word: "consilience", translation: "consilience", example: "The project aimed for consilience by unifying knowledge across biological and social sciences." },

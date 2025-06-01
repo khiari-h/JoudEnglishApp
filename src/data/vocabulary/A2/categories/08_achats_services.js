@@ -3,7 +3,7 @@ export const vocab = {
   words: [
     // Types de commerces spécifiques
     { word: "shopping mall", translation: "centre commercial", example: "Let's meet at the shopping mall this afternoon." },
-    
+
     { word: "hardware store", translation: "quincaillerie", example: "I need to go to the hardware store to buy some tools." },
     { word: "electronics store", translation: "magasin d'électronique", example: "I bought my new laptop at the electronics store." },
     { word: "furniture store", translation: "magasin de meubles", example: "We're going to a furniture store to look for a new sofa." },
@@ -16,7 +16,7 @@ export const vocab = {
     { word: "boutique", translation: "boutique", example: "She owns a small boutique selling handmade jewelry." },
     { word: "outlet", translation: "magasin d'usine", example: "You can find discounted brand items at the outlet." },
     { word: "wholesale market", translation: "marché de gros", example: "Restaurants buy their supplies at the wholesale market." },
-    
+
     // Sections de magasin
     { word: "aisle", translation: "rayon/allée", example: "You'll find pasta in aisle 5." },
     { word: "checkout", translation: "caisse", example: "There's a long line at the checkout." },
@@ -33,7 +33,7 @@ export const vocab = {
     { word: "clothing department", translation: "rayon vêtements", example: "The clothing department is on the second floor." },
     { word: "fitting room", translation: "cabine d'essayage", example: "She took several dresses into the fitting room." },
     { word: "return desk", translation: "comptoir des retours", example: "If you want to return an item, go to the return desk." },
-    
+
     // Produits par catégories
     { word: "household goods", translation: "articles ménagers", example: "We need to buy some household goods for our new apartment." },
     { word: "toiletries", translation: "produits de toilette", example: "Don't forget to pack toiletries for the trip." },
@@ -49,28 +49,28 @@ export const vocab = {
     { word: "over-the-counter drugs", translation: "médicaments sans ordonnance", example: "You can buy over-the-counter drugs for a common cold." },
     { word: "frozen goods", translation: "produits surgelés", example: "Frozen goods are convenient when you're busy." },
     { word: "fresh produce", translation: "produits frais", example: "I always try to buy fresh produce from local farmers." },
-    
+
     // Transactions commerciales
-    
+
     { word: "warranty", translation: "garantie", example: "This laptop comes with a two-year warranty." },
     { word: "refund", translation: "remboursement", example: "If you're not satisfied, you can get a refund." },
     { word: "exchange", translation: "échange", example: "If it doesn't fit, you can make an exchange." },
-    
+
     { word: "loyalty card", translation: "carte de fidélité", example: "Use your loyalty card to earn points." },
     { word: "gift card", translation: "carte-cadeau", example: "I got a gift card for my birthday." },
     { word: "installment", translation: "versement/mensualité", example: "You can pay in installments over six months." },
-    
+
     { word: "shipping", translation: "expédition", example: "The shipping cost depends on the destination." },
     { word: "order", translation: "commande", example: "I placed an order online yesterday." },
     { word: "invoice", translation: "facture", example: "The company will send you an invoice." },
     { word: "payment", translation: "paiement", example: "We accept various methods of payment." },
     { word: "bargain", translation: "bonne affaire", example: "This coat was a real bargain." },
-    
+
     // Services bancaires basiques
     { word: "bank account", translation: "compte bancaire", example: "You need to open a bank account to receive your salary." },
     { word: "savings account", translation: "compte d'épargne", example: "Put some money in your savings account every month." },
     { word: "checking account", translation: "compte courant", example: "I use my checking account for daily expenses." },
-    
+
     { word: "debit card", translation: "carte de débit", example: "I prefer using my debit card for shopping." },
     { word: "PIN", translation: "code PIN", example: "Never share your PIN with anyone." },
     { word: "to withdraw", translation: "retirer", example: "I need to withdraw some cash from the ATM." },
@@ -79,32 +79,29 @@ export const vocab = {
     { word: "bank statement", translation: "relevé bancaire", example: "Check your bank statement for any unusual transactions." },
     { word: "to transfer", translation: "virer/transférer", example: "I'll transfer the money to your account." },
     { word: "loan", translation: "prêt", example: "They took out a loan to buy their house." },
-    
+
     { word: "balance", translation: "solde", example: "I need to check my account balance." },
-    
+
     // Services publics
-    
-    
-    
+
     { word: "utility company", translation: "entreprise de service public", example: "Contact the utility company if you have problems with your electricity." },
-    
+
     { word: "garbage collection", translation: "collecte des ordures", example: "Garbage collection is on Tuesdays and Fridays." },
-    
-    
+
     { word: "employment agency", translation: "agence pour l'emploi", example: "The employment agency helps people find jobs." },
     { word: "tourism office", translation: "office de tourisme", example: "We got a map at the tourism office." },
     { word: "tax office", translation: "centre des impôts", example: "You need to file your tax return at the tax office." },
     { word: "public service", translation: "service public", example: "Education is an essential public service." },
     { word: "government agency", translation: "agence gouvernementale", example: "This form is issued by a government agency." },
     { word: "citizen service", translation: "service aux citoyens", example: "The citizen service desk is open from 9 to 5." },
-    
+
     // Publicité simple
     { word: "advertisement", translation: "publicité", example: "I saw an advertisement for this product on TV." },
     { word: "commercial", translation: "spot publicitaire", example: "They broadcast the commercial during the football game." },
     { word: "poster", translation: "affiche", example: "There's a poster advertising the concert in the shop window." },
     { word: "flyer", translation: "prospectus", example: "They were distributing flyers outside the supermarket." },
     { word: "promotion", translation: "promotion", example: "The store is running a promotion this weekend." },
-    
+
     { word: "special offer", translation: "offre spéciale", example: "There's a special offer on kitchen appliances." },
     { word: "discount coupon", translation: "bon de réduction", example: "I have a discount coupon for this restaurant." },
     { word: "two-for-one", translation: "deux pour le prix d'un", example: "They have a two-for-one offer on pizzas on Tuesdays." },

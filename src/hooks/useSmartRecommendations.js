@@ -34,21 +34,21 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
       message: 'Tu as bien enrichi ton vocabulaire ! Que dirais-tu de mettre ces mots en pratique avec des expressions ?',
       button: 'Pratiquer les expressions'
     },
-    
+
     'phrases->grammar': {
       icon: '💪', 
       title: 'Bien joué !',
       message: 'Tu progresses bien avec les expressions ! Pour être encore plus précis, on travaille la grammaire ?',
       button: 'Renforcer la grammaire'
     },
-    
+
     'grammar->reading': {
       icon: '🎯',
       title: 'Tu avances bien !', 
       message: 'Tu progresses en grammaire ! Pour voir tout en action, que dirais-tu de lire des textes complets ?',
       button: 'Passer à la lecture'
     },
-    
+
     'reading->conversations': {
       icon: '🗣️',
       title: 'Super entraînement !',
@@ -163,7 +163,7 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
     // 3. Si assez de temps passé → recommandation intelligente
     if (timeSpent >= TIME_THRESHOLD) {
       const nextExerciseType = LEARNING_PATH[lastExerciseType];
-      
+
       if (nextExerciseType && EXERCISE_TYPES[nextExerciseType]) {
         const messageKey = `${lastExerciseType}->${nextExerciseType}`;
         const recommendationMessage = RECOMMENDATION_MESSAGES[messageKey];

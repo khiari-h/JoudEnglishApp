@@ -10,33 +10,33 @@ import useLocalStorage from './useLocalStorage';
 const useTheme = () => {
   // Récupérer le contexte du thème (à implémenter dans ThemeContext.js)
   const themeContext = useContext(ThemeContext);
-  
+
   // Utiliser useLocalStorage pour stocker les préférences de thème
   const { value: storedTheme, setValue: setStoredTheme } = useLocalStorage(
     'appTheme',
     'system' // Par défaut, suivre le thème du système
   );
-  
+
   // Récupérer le schéma de couleurs du système
   const systemColorScheme = useColorScheme();
-  
+
   // Si le contexte de thème existe, l'utiliser
   if (themeContext) {
     return themeContext;
   }
-  
+
   // Sinon, fournir une implémentation de base
-  
+
   // Déterminer le thème actuel
   const currentTheme = storedTheme === 'system' 
     ? systemColorScheme || 'light' 
     : storedTheme;
-  
+
   // Changer le thème
   const setTheme = useCallback((theme) => {
     setStoredTheme(theme);
   }, [setStoredTheme]);
-  
+
   // Basculer entre les thèmes
   const toggleTheme = useCallback(() => {
     setStoredTheme(prevTheme => {
@@ -46,15 +46,15 @@ const useTheme = () => {
       return prevTheme === 'dark' ? 'light' : 'dark';
     });
   }, [setStoredTheme, systemColorScheme]);
-  
+
   // Réinitialiser au thème du système
   const resetToSystemTheme = useCallback(() => {
     setStoredTheme('system');
   }, [setStoredTheme]);
-  
+
   // Vérifier si c'est le thème sombre
   const isDarkTheme = currentTheme === 'dark';
-  
+
   // Couleurs de base en fonction du thème
   const colors = isDarkTheme 
     ? {
@@ -89,7 +89,7 @@ const useTheme = () => {
         disabled: '#9CA3AF',
         icon: '#4B5563',
       };
-  
+
   // Espacement et dimensions cohérents
   const spacing = {
     xs: 4,
@@ -99,7 +99,7 @@ const useTheme = () => {
     xl: 32,
     xxl: 48,
   };
-  
+
   // Typographie
   const typography = {
     fontSizes: {
@@ -119,7 +119,7 @@ const useTheme = () => {
       bold: '700',
     },
   };
-  
+
   // Rayons de bordure
   const borderRadius = {
     sm: 4,
@@ -128,7 +128,7 @@ const useTheme = () => {
     xl: 16,
     round: 9999,
   };
-  
+
   return {
     theme: currentTheme,
     setTheme,

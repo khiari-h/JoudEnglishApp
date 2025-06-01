@@ -24,7 +24,7 @@ allExercises.sort((a, b) => {
 const errorCorrectionB1 = {
   level: "B1",
   totalExercises: allExercises.length,
-  
+
   // Statistics by type
   statistics: {
     full: errorCorrectionB1Full.length,
@@ -141,22 +141,22 @@ const errorCorrectionB1 = {
   validateStructure: () => {
     const requiredFields = ['categoryId', 'type', 'text', 'correctedText', 'hint', 'explanation'];
     const validTypes = ['full', 'identify', 'multiple_choice'];
-    
+
     return allExercises.every(exercise => {
       // Check required fields
       const hasRequiredFields = requiredFields.every(field => 
         exercise.hasOwnProperty(field) && exercise[field] !== undefined
       );
-      
+
       // Check valid type
       const hasValidType = validTypes.includes(exercise.type);
-      
+
       // Check valid category (1-5 for B1)
       const hasValidCategory = exercise.categoryId >= 1 && exercise.categoryId <= 5;
-      
+
       // Check B1 level complexity (minimum text length)
       const hasMinimumComplexity = exercise.text.split(' ').length >= 6;
-      
+
       // Check type-specific fields
       let hasTypeSpecificFields = true;
       if (exercise.type === 'multiple_choice') {
@@ -169,7 +169,7 @@ const errorCorrectionB1 = {
       } else {
         hasTypeSpecificFields = exercise.errorPositions && Array.isArray(exercise.errorPositions);
       }
-      
+
       return hasRequiredFields && hasValidType && hasValidCategory && 
              hasMinimumComplexity && hasTypeSpecificFields;
     });
@@ -180,7 +180,7 @@ const errorCorrectionB1 = {
     const totalErrorPositions = allExercises
       .filter(ex => ex.errorPositions)
       .reduce((sum, ex) => sum + ex.errorPositions.length, 0);
-    
+
     return {
       level: "B1",
       totalExercises: allExercises.length,
@@ -204,9 +204,9 @@ const errorCorrectionB1 = {
 
 // Validate structure on export
 if (!errorCorrectionB1.validateStructure()) {
-  console.warn('Error Correction B1: Some exercises have invalid structure');
+
 } else {
-  console.log(`Error Correction B1: Successfully loaded ${allExercises.length} exercises`);
+
 }
 
 export default errorCorrectionB1;

@@ -191,5 +191,5 @@ const presentingIdeas = {
       ]
     }
   };
-  
+
   export default presentingIdeas;

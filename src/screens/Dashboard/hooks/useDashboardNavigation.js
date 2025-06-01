@@ -38,7 +38,7 @@ export const useDashboardNavigation = (updateStreak, startTracking) => {
 
         router.push({ pathname, params });
       } catch (error) {
-        console.error("Erreur navigation:", error);
+
       }
     },
     [updateStreak]
@@ -91,3 +91,4 @@ export const useDashboardNavigation = (updateStreak, startTracking) => {
     handleEvaluationStart,
   };
 };
+

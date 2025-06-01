@@ -159,5 +159,5 @@ const moralDilemma = {
       ]
     }
   };
-  
+
   export default moralDilemma;

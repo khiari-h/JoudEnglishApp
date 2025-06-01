@@ -25,3 +25,4 @@ const PhrasesCategorySelector = ({
 };
 
 export default PhrasesCategorySelector;
+

@@ -32,7 +32,6 @@ export const vocab = {
     { word: "certainly", translation: "certainement", example: "I'll certainly help you." },
     { word: "definitely", translation: "définitivement", example: "I'll definitely be there." },
 
-
     { word: "might", translation: "pourrait", example: "It might rain tomorrow." },
     { word: "could", translation: "pourrait", example: "You could try calling him." },
     { word: "would", translation: "voudrait", example: "I would like to help." },
@@ -59,7 +58,6 @@ export const vocab = {
     { word: "probably", translation: "probablement", example: "He'll probably come tomorrow." },
     { word: "definitely", translation: "définitivement", example: "I'll definitely be there." },
 
-
     { word: "management", translation: "gestion", example: "Good management is essential." },
     { word: "strategy", translation: "stratégie", example: "We need a new marketing strategy." },
     { word: "analysis", translation: "analyse", example: "This analysis is very thorough." },
@@ -80,7 +78,6 @@ export const vocab = {
     { word: "solution", translation: "solution", example: "We found the perfect solution." },
     { word: "target", translation: "objectif", example: "We exceeded our sales target." },
     { word: "deadline", translation: "échéance", example: "The deadline is next Friday." },
-
 
     { word: "concept", translation: "concept", example: "This is a difficult concept." },
     { word: "theory", translation: "théorie", example: "Einstein's theory of relativity." },
@@ -103,7 +100,6 @@ export const vocab = {
     { word: "consequence", translation: "conséquence", example: "Consider the consequences." },
     { word: "outcome", translation: "résultat", example: "The outcome was positive." },
 
-
     { word: "debate", translation: "débat", example: "The debate was very heated." },
     { word: "discussion", translation: "discussion", example: "We had a good discussion." },
     { word: "argument", translation: "argument", example: "That's a strong argument." },
@@ -120,7 +116,6 @@ export const vocab = {
     { word: "tactic", translation: "tactique", example: "That's a clever tactic." },
     { word: "plan", translation: "plan", example: "We need a better plan." },
 
-
     { word: "frustrated", translation: "frustré", example: "I'm frustrated with this situation." },
     { word: "concerned", translation: "inquiet", example: "I'm concerned about your health." },
     { word: "relieved", translation: "soulagé", example: "I'm relieved that you're safe." },
@@ -136,7 +131,6 @@ export const vocab = {
     { word: "stressed", translation: "stressé", example: "I'm stressed about work." },
     { word: "overwhelmed", translation: "dépassé", example: "I feel overwhelmed by everything." },
     { word: "confused", translation: "confus", example: "I'm confused about the instructions." },
-
 
     { word: "government", translation: "gouvernement", example: "The government announced new policies." },
     { word: "policy", translation: "politique", example: "The new policy is controversial." },

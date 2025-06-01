@@ -173,5 +173,5 @@ const rentingCar = {
       ]
     }
   };
-  
+
   export default rentingCar;

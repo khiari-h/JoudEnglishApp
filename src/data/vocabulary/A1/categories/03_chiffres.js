@@ -1,8 +1,8 @@
-ï»¿export const vocab = {
-  title: "Chiffres & QuantitÃ©s",
+export const vocab = {
+  title: "Chiffres & Quantités",
   words: [
     // Nombres 0-100
-    { word: "zero", translation: "zÃ©ro", example: "I have zero dollars." },
+    { word: "zero", translation: "zéro", example: "I have zero dollars." },
     { word: "one", translation: "un", example: "I need one apple." },
     { word: "two", translation: "deux", example: "She has two brothers." },
     { word: "three", translation: "trois", example: "There are three books on the table." },
@@ -31,17 +31,17 @@
     { word: "eighty", translation: "quatre-vingts", example: "He is eighty years old." },
     { word: "ninety", translation: "quatre-vingt-dix", example: "It costs ninety euros." },
     { word: "hundred", translation: "cent", example: "There are a hundred pages in this book." },
-    
+
     // Nombres ordinaux simples
     { word: "first", translation: "premier", example: "This is my first day at school." },
-    { word: "second", translation: "deuxiÃ¨me", example: "He lives on the second floor." },
-    { word: "third", translation: "troisiÃ¨me", example: "This is the third time I've seen this movie." },
-    { word: "fourth", translation: "quatriÃ¨me", example: "July is the fourth month of the year." },
-    { word: "fifth", translation: "cinquiÃ¨me", example: "This is my fifth visit to Paris." },
+    { word: "second", translation: "deuxième", example: "He lives on the second floor." },
+    { word: "third", translation: "troisième", example: "This is the third time I've seen this movie." },
+    { word: "fourth", translation: "quatrième", example: "July is the fourth month of the year." },
+    { word: "fifth", translation: "cinquième", example: "This is my fifth visit to Paris." },
     { word: "last", translation: "dernier", example: "This is the last piece of cake." },
     { word: "next", translation: "prochain", example: "See you next week." },
-    
-    // QuantitÃ©s basiques
+
+    // Quantités basiques
     { word: "many", translation: "beaucoup", example: "There are many people here." },
     { word: "few", translation: "peu", example: "I have few friends in this city." },
     { word: "a lot", translation: "beaucoup", example: "She has a lot of books." },
@@ -52,15 +52,15 @@
     { word: "much", translation: "beaucoup", example: "How much water do you drink?" },
     { word: "several", translation: "plusieurs", example: "I've seen this movie several times." },
     { word: "enough", translation: "assez", example: "I have enough money." },
-    { word: "half", translation: "moitiÃ©", example: "I ate half of the pizza." },
+    { word: "half", translation: "moitié", example: "I ate half of the pizza." },
     { word: "pair", translation: "paire", example: "I need a new pair of shoes." },
     { word: "all", translation: "tout", example: "All the students are here." },
     { word: "none", translation: "aucun", example: "None of my friends can come." },
-    
+
     // Prix simples
     { word: "price", translation: "prix", example: "What's the price of this book?" },
-    { word: "cost", translation: "coÃ»t", example: "The cost of living is high in New York." },
-    { word: "cheap", translation: "bon marchÃ©", example: "This restaurant is very cheap." },
+    { word: "cost", translation: "coût", example: "The cost of living is high in New York." },
+    { word: "cheap", translation: "bon marché", example: "This restaurant is very cheap." },
     { word: "expensive", translation: "cher", example: "The hotel was too expensive." },
     { word: "free", translation: "gratuit", example: "The museum is free on Sundays." },
     { word: "dollar", translation: "dollar", example: "The book costs ten dollars." },
@@ -68,7 +68,7 @@
     { word: "pound", translation: "livre sterling", example: "It costs twenty pounds." },
     { word: "cent", translation: "centime", example: "It costs fifty cents." },
     { word: "money", translation: "argent", example: "I don't have much money." },
-    { word: "coin", translation: "piÃ¨ce", example: "I found a coin on the street." },
+    { word: "coin", translation: "pièce", example: "I found a coin on the street." },
     { word: "bill", translation: "billet", example: "I only have a twenty-dollar bill." }
   ]
 };

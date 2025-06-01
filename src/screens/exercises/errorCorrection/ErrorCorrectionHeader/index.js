@@ -17,4 +17,3 @@ const ErrorCorrectionHeader = ({ level, onBackPress }) => {
 export default ErrorCorrectionHeader;
 
 
-

@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   disabledButton: {
     backgroundColor: '#D1D5DB',
   },
-  
+
   // Styles pour la variante compacte
   compactContainer: {
     alignItems: 'center',
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     marginRight: 4,
   },
-  
+
   // Styles pour la variante centrée
   centeredContainer: {
     alignItems: 'center',

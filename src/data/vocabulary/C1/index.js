@@ -33,3 +33,4 @@ export default {
     sante_globale_et_enjeux_biomedical
   ],
 };
+

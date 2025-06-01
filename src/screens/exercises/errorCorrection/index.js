@@ -37,7 +37,7 @@ const ErrorCorrectionExercise = ({ route }) => {
   // ========== NAVIGATION ET PARAMÈTRES ==========
   const navigation = useNavigation();
   const { level = "A1" } = route.params || {};
-  
+
   // Couleur et données du niveau
   const levelColor = getLevelColor(level);
   const exercisesData = useMemo(() => getErrorsData(level), [level]);
@@ -46,7 +46,7 @@ const ErrorCorrectionExercise = ({ route }) => {
   const [viewMode, setViewMode] = useState("browse"); // "browse", "exercise", "results"
 
   // ========== HOOKS D'ÉTAT ==========
-  
+
   // Hook d'état des exercices (sans progression)
   const {
     selectedCategory,
@@ -91,49 +91,48 @@ const ErrorCorrectionExercise = ({ route }) => {
   } = useErrorCorrectionProgress(level);
 
   // ========== DONNÉES CALCULÉES ==========
-  
+
   // Progression de la catégorie actuelle
   const currentCategoryProgress = selectedCategory 
     ? getCategoryProgress(selectedCategory, totalExercises)
     : 0;
-    
+
   // Nombre d'exercices complétés dans la catégorie actuelle
   const completedInCurrentCategory = selectedCategory 
     ? getCompletedCountInCategory(selectedCategory)
     : 0;
 
   // ========== INITIALISATION ==========
-  
+
   // Restaurer la dernière position
   useEffect(() => {
     if (loaded && lastPosition.categoryId && exercisesData && hasValidData) {
-      console.log("🔄 Restauration position:", lastPosition);
-      
+
       // Changer la catégorie si différente
       if (lastPosition.categoryId !== selectedCategory) {
         changeCategory(lastPosition.categoryId);
       }
-      
+
       // Note: currentExerciseIndex sera géré par le hook d'état
     }
   }, [loaded, lastPosition, exercisesData, hasValidData, selectedCategory, changeCategory]);
 
   // ========== GESTIONNAIRES D'ÉVÉNEMENTS ==========
-  
+
   // Retour navigation
   const handleBack = useCallback(() => {
     if (viewMode === "exercise") {
       setViewMode("browse");
-      console.log("🔙 Retour au mode browse");
+
     } else {
-      console.log("🔙 Retour navigation");
+
       navigation.goBack();
     }
   }, [viewMode, navigation]);
 
   // Démarrer un exercice avec un mode spécifique
   const handleStartExercise = useCallback((mode) => {
-    console.log(`🎯 Démarrage exercice mode: ${mode}`);
+
     startExercise(mode);
     setViewMode("exercise");
   }, [startExercise]);
@@ -154,9 +153,9 @@ const ErrorCorrectionExercise = ({ route }) => {
           }
         );
       }
-      
+
       goToNextExercise();
-      
+
       // Sauvegarder la position
       if (currentExerciseIndex < totalExercises - 1) {
         saveLastPosition(selectedCategory, currentExerciseIndex + 1);
@@ -197,7 +196,7 @@ const ErrorCorrectionExercise = ({ route }) => {
       // Retour au mode browse depuis les résultats
       setViewMode("browse");
       setShowResults(false);
-      console.log("📊 Retour browse depuis résultats");
+
     } else {
       handleNextAction();
     }
@@ -205,20 +204,20 @@ const ErrorCorrectionExercise = ({ route }) => {
 
   // Réessayer les exercices
   const handleRetry = useCallback(() => {
-    console.log("🔄 Retry exercices");
+
     resetExerciseState();
     setShowResults(false);
   }, [resetExerciseState, setShowResults]);
 
   // Changement de catégorie
   const handleCategoryChange = useCallback((categoryId) => {
-    console.log(`📂 Changement catégorie: ${selectedCategory} → ${categoryId}`);
+
     changeCategory(categoryId);
     saveLastPosition(categoryId, 0);
   }, [changeCategory, saveLastPosition, selectedCategory]);
 
   // ========== RENDU MODES ==========
-  
+
   // Mode parcourir (sélection catégorie + mode)
   const renderBrowseMode = () => (
     <>
@@ -234,7 +233,7 @@ const ErrorCorrectionExercise = ({ route }) => {
         disabled={exercises.length === 0}
         levelColor={levelColor}
       />
-      
+
       {/* Info progression pour la catégorie sélectionnée */}
       {selectedCategory && (
         <View style={styles.categoryProgressInfo}>
@@ -315,7 +314,7 @@ const ErrorCorrectionExercise = ({ route }) => {
   );
 
   // ========== GESTION CHARGEMENT ==========
-  
+
   if (!loaded || !hasValidData) {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -328,16 +327,6 @@ const ErrorCorrectionExercise = ({ route }) => {
   }
 
   // ========== LOGS DEBUG ==========
-  console.log("📊 DEBUG ErrorCorrection:", {
-    viewMode,
-    selectedCategory,
-    currentExerciseIndex,
-    totalExercises,
-    completedInCurrentCategory,
-    currentCategoryProgress,
-    correctionMode,
-    showResults
-  });
 
   // ========== RENDU PRINCIPAL ==========
   return (

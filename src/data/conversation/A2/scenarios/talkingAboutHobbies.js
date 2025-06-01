@@ -171,5 +171,5 @@ const talkingAboutHobbies = {
       ]
     }
   };
-  
+
   export default talkingAboutHobbies;

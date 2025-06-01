@@ -27,18 +27,18 @@ const useReadingProgress = (level) => {
         const savedCompletedExercises = savedCompletedExercisesJson 
           ? JSON.parse(savedCompletedExercisesJson) 
           : {};
-        
+
         // Récupérer la dernière position
         const savedPositionJson = await AsyncStorage.getItem(LAST_POSITION_KEY);
         const savedPosition = savedPositionJson 
           ? JSON.parse(savedPositionJson) 
           : { exerciseIndex: 0, questionIndex: 0 };
-        
+
         setCompletedExercises(savedCompletedExercises);
         setLastPosition(savedPosition);
         setLoaded(true);
       } catch (error) {
-        console.error('Erreur lors du chargement des données de progression:', error);
+
         setCompletedExercises({});
         setLastPosition({ exerciseIndex: 0, questionIndex: 0 });
         setLoaded(true);
@@ -59,7 +59,7 @@ const useReadingProgress = (level) => {
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
     } catch (error) {
-      console.error('Erreur lors de la sauvegarde de la position:', error);
+
     }
   }, [LAST_POSITION_KEY]);
 
@@ -67,7 +67,7 @@ const useReadingProgress = (level) => {
   const markExerciseAsCompleted = useCallback(async (exerciseIndex, completedQuestions) => {
     try {
       const updatedCompletedExercises = { ...completedExercises };
-      
+
       if (!updatedCompletedExercises[exerciseIndex]) {
         updatedCompletedExercises[exerciseIndex] = {
           completedAt: new Date().toISOString(),
@@ -80,11 +80,11 @@ const useReadingProgress = (level) => {
           completedQuestions
         };
       }
-      
+
       setCompletedExercises(updatedCompletedExercises);
       await AsyncStorage.setItem(COMPLETED_EXERCISES_KEY, JSON.stringify(updatedCompletedExercises));
     } catch (error) {
-      console.error('Erreur lors du marquage de l\'exercice comme complété:', error);
+
     }
   }, [completedExercises, COMPLETED_EXERCISES_KEY]);
 
@@ -92,7 +92,7 @@ const useReadingProgress = (level) => {
   const updateExerciseProgress = useCallback(async (exerciseIndex, completedQuestions) => {
     try {
       const updatedCompletedExercises = { ...completedExercises };
-      
+
       if (!updatedCompletedExercises[exerciseIndex]) {
         updatedCompletedExercises[exerciseIndex] = {
           updatedAt: new Date().toISOString(),
@@ -105,11 +105,11 @@ const useReadingProgress = (level) => {
           completedQuestions
         };
       }
-      
+
       setCompletedExercises(updatedCompletedExercises);
       await AsyncStorage.setItem(COMPLETED_EXERCISES_KEY, JSON.stringify(updatedCompletedExercises));
     } catch (error) {
-      console.error('Erreur lors de la mise à jour de la progression:', error);
+
     }
   }, [completedExercises, COMPLETED_EXERCISES_KEY]);
 
@@ -118,7 +118,7 @@ const useReadingProgress = (level) => {
     if (!initialized && loaded && readingData) {
       const exercises = readingData.exercises || [];
       const newCompletedExercises = { ...completedExercises };
-      
+
       // Vérifier si les données correspondent aux exercices disponibles
       exercises.forEach((_, index) => {
         // Initialiser uniquement les entrées manquantes
@@ -126,7 +126,7 @@ const useReadingProgress = (level) => {
           newCompletedExercises[index] = null;
         }
       });
-      
+
       setCompletedExercises(newCompletedExercises);
       setInitialized(true);
     }
@@ -136,7 +136,7 @@ const useReadingProgress = (level) => {
   const calculateOverallProgress = useCallback(() => {
     const totalExercises = Object.keys(completedExercises).length;
     if (totalExercises === 0) return 0;
-    
+
     const completedCount = Object.values(completedExercises).filter(Boolean).length;
     return (completedCount / totalExercises) * 100;
   }, [completedExercises]);

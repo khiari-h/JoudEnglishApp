@@ -46,7 +46,7 @@ const useDailyGoal = (currentLevel, progress) => {
         initializeNewCycle();
       }
     } catch (error) {
-      console.error('Erreur chargement daily goal:', error);
+
     }
   };
 
@@ -54,7 +54,7 @@ const useDailyGoal = (currentLevel, progress) => {
     try {
       await AsyncStorage.setItem(DAILY_GOAL_KEY, JSON.stringify(dailyGoalData));
     } catch (error) {
-      console.error('Erreur sauvegarde daily goal:', error);
+
     }
   };
 
@@ -80,13 +80,13 @@ const useDailyGoal = (currentLevel, progress) => {
   const generateTodayGoal = (day) => {
     const exerciseTypes = Object.keys(EXERCISE_TYPES);
     const baseExercises = ['vocabulary', 'phrases', 'grammar', 'reading', 'conversations'];
-    
+
     // Exercice selon le jour dans le cycle
     const exerciseIndex = (day - 1) % baseExercises.length;
     const exerciseType = baseExercises[exerciseIndex];
-    
+
     const exerciseInfo = EXERCISE_TYPES[exerciseType];
-    
+
     return {
       type: exerciseType,
       title: exerciseInfo.title,
@@ -110,38 +110,38 @@ const useDailyGoal = (currentLevel, progress) => {
       errorCorrection: "Chasse les erreurs !",
       wordGames: "Révise en t'amusant !"
     };
-    
+
     return messages[exerciseType] || `Progresse dans ${exerciseType} !`;
   };
 
   // Calculer l'état actuel du cycle
   const cycleStatus = useMemo(() => {
     if (!dailyGoalData.currentCycle.startDate) return 'not_started';
-    
+
     const startDate = new Date(dailyGoalData.currentCycle.startDate);
     const today = new Date();
     const daysElapsed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
-    
+
     // Phase 1: Premier check (J+15)
     if (daysElapsed >= 15 && !dailyGoalData.currentCycle.evaluationOffered) {
       return 'ready_for_first_eval';
     }
-    
+
     // Phase 2: Deuxième chance (J+29)  
     if (daysElapsed >= 29 && dailyGoalData.currentCycle.evaluationDeclined === 1) {
       return 'ready_for_second_eval';
     }
-    
+
     // Phase 3: Mode libre (J+30+ et décliné 2 fois)
     if (daysElapsed >= 30 && dailyGoalData.currentCycle.evaluationDeclined >= 2) {
       return 'free_mode';
     }
-    
+
     // Évaluation terminée
     if (dailyGoalData.currentCycle.evaluationCompleted) {
       return 'evaluation_completed';
     }
-    
+
     return 'training';
   }, [dailyGoalData]);
 
@@ -155,7 +155,7 @@ const useDailyGoal = (currentLevel, progress) => {
         evaluationDeclined: accepted ? prev.currentCycle.evaluationDeclined : prev.currentCycle.evaluationDeclined + 1
       }
     }));
-    
+
     return accepted;
   };
 
@@ -168,7 +168,7 @@ const useDailyGoal = (currentLevel, progress) => {
         evaluationCompleted: true
       }
     }));
-    
+
     // Démarrer un nouveau cycle après un délai
     setTimeout(() => {
       initializeNewCycle();
@@ -178,7 +178,7 @@ const useDailyGoal = (currentLevel, progress) => {
   // Marquer l'objectif du jour comme terminé
   const completeTodayGoal = (exerciseType) => {
     const today = new Date().toDateString();
-    
+
     setDailyGoalData(prev => ({
       ...prev,
       currentCycle: {
@@ -201,7 +201,7 @@ const useDailyGoal = (currentLevel, progress) => {
     const todayExercise = dailyGoalData.currentCycle.exercisesCompleted.find(
       ex => ex.date === today
     );
-    
+
     setDailyGoalData(prev => ({
       ...prev,
       todayCompleted: Boolean(todayExercise)
@@ -218,7 +218,7 @@ const useDailyGoal = (currentLevel, progress) => {
           message: 'Ça fait 15 jours ! Tu te sens prêt pour l\'évaluation ?',
           buttons: ['Oui, je me lance !', 'Encore un peu d\'entraînement']
         };
-        
+
       case 'ready_for_second_eval':
         return {
           type: 'evaluation_offer',
@@ -226,7 +226,7 @@ const useDailyGoal = (currentLevel, progress) => {
           message: '2 semaines de plus ! Tu veux tenter maintenant ?',
           buttons: ['Oui, allons-y !', 'Pas encore prêt']
         };
-        
+
       case 'free_mode':
         return {
           type: 'free_mode',
@@ -234,7 +234,7 @@ const useDailyGoal = (currentLevel, progress) => {
           message: 'Fais l\'évaluation quand tu te sens prêt ! 💪',
           buttons: ['Évaluation disponible']
         };
-        
+
       case 'evaluation_completed':
         return {
           type: 'completed',
@@ -242,7 +242,7 @@ const useDailyGoal = (currentLevel, progress) => {
           message: 'Objectif atteint ! Prêt pour le niveau suivant ?',
           buttons: ['Continuer']
         };
-        
+
       default:
         return null;
     }

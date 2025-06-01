@@ -171,5 +171,5 @@ const travelPlanning = {
       ]
     }
   };
-  
+
   export default travelPlanning;

@@ -447,5 +447,4 @@ const humorCulturalSubtleties = [
   },
 ];
 
-
 export default humorCulturalSubtleties;

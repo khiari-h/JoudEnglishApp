@@ -41,7 +41,6 @@ const BONUS_EXERCISE_TYPES = ["reading", "vocabulary", "phrases"];
 
 const ExerciseSelection = ({ route }) => {
   const { level } = route.params;
-  console.log("Level received in ExerciseSelection:", level);
 
   // Récupération sécurisée des contextes
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
@@ -235,3 +234,4 @@ const ExerciseSelection = ({ route }) => {
 };
 
 export default ExerciseSelection;
+

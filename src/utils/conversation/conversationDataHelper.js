@@ -108,3 +108,4 @@ export const getConversationLevelStats = (level) => {
       totalScenarios > 0 ? totalSteps / totalScenarios : 0,
   };
 };
+

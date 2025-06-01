@@ -31,7 +31,7 @@ const HomophoneChoices = ({
       {/* Choix multiples */}
       <View style={styles.choicesContainer}>
         <Text style={styles.choicesLabel}>Choose the correct word:</Text>
-        
+
         <View style={styles.choicesGrid}>
           {choices.map((choice, index) => (
             <TouchableOpacity

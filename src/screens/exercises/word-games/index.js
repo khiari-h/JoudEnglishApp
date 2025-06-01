@@ -31,7 +31,7 @@ const WordGamesExercise = ({ route }) => {
   // Hooks de navigation
   const navigation = useNavigation();
   const { level = "A1" } = route.params || {};
-  
+
   // Initialisation des données et couleurs
   const levelColor = getLevelColor(level);
   const wordGamesData = getWordGamesData(level);
@@ -72,7 +72,7 @@ const WordGamesExercise = ({ route }) => {
   useEffect(() => {
     if (progressLoaded && wordGamesData && wordGamesData.games) {
       initializeProgress(wordGamesData.games);
-      
+
       if (lastPosition && typeof lastPosition.gameIndex === 'number') {
         const validIndex = Math.min(
           lastPosition.gameIndex, 
@@ -99,7 +99,7 @@ const WordGamesExercise = ({ route }) => {
       const maxPossibleScore = currentGame.maxScore || 10;
       markGameAsCompleted(currentGameIndex, earnedScore, maxPossibleScore);
     }
-    
+
     handleNextGame();
   };
 

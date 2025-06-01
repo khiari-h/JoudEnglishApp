@@ -428,38 +428,18 @@ export const vocab = {
     // Pour passer de 67 à 97 mots
 
     // Technologies spécifiques modernes (10 mots)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     // Applications pratiques (10 mots)
-    
-    
-    
-    
+
     {
       word: "digitalization",
       translation: "numérisation",
       example:
         "Digitalization transforms analog information into digital formats.",
     },
-    
-    
-    
-    
-    
 
     // Processus et méthodes (10 mots)
-    
-    
-    
+
     {
       word: "simulation",
       translation: "simulation",
@@ -472,12 +452,11 @@ export const vocab = {
       example:
         "Mathematical modeling predicts system behavior under different conditions.",
     },
-    
-    
-    
+
     {
       word: "quality control",
       translation: "contrôle qualité",
       example: "Quality control ensures products meet specified standards.",
     }]
 };
+

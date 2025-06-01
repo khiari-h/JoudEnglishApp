@@ -13,14 +13,14 @@ export const vocab = {
     { word: "housing bubble", translation: "bulle immobilière", example: "Economists are concerned about a potential housing bubble." },
     { word: "foreclosure", translation: "saisie immobilière", example: "The number of foreclosures has decreased in recent years." },
     { word: "property tax", translation: "taxe foncière", example: "Property taxes vary depending on the location." },
-    
+
     { word: "market trends", translation: "tendances du marché", example: "Market trends indicate a shift toward suburban properties." },
     { word: "investment property", translation: "bien immobilier d'investissement", example: "They purchased an investment property to rent out." },
     { word: "appraisal", translation: "évaluation", example: "The bank required an appraisal before approving the loan." },
     { word: "housing affordability", translation: "accessibilité au logement", example: "Housing affordability is a major issue in many cities." },
     { word: "property deed", translation: "acte de propriété", example: "The property deed confirms legal ownership." },
     { word: "closing costs", translation: "frais de clôture", example: "Don't forget to budget for closing costs when buying a home." },
-    
+
     // Architecture & design
     { word: "architectural style", translation: "style architectural", example: "The house has a distinctive Victorian architectural style." },
     { word: "contemporary design", translation: "design contemporain", example: "The building features contemporary design elements." },
@@ -38,9 +38,9 @@ export const vocab = {
     { word: "design elements", translation: "éléments de design", example: "The room incorporates various design elements from different periods." },
     { word: "proportion", translation: "proportion", example: "Balance and proportion are essential in good design." },
     { word: "retrofit", translation: "rénovation énergétique", example: "They retrofitted their old house with modern energy systems." },
-    
+
     // Aménagement intérieur
-    
+
     { word: "color scheme", translation: "palette de couleurs", example: "The color scheme creates a calm atmosphere." },
     { word: "statement piece", translation: "pièce maîtresse", example: "The vintage chandelier serves as a statement piece in the dining room." },
     { word: "feature wall", translation: "mur d'accent", example: "They painted a feature wall in a bold color." },
@@ -55,12 +55,10 @@ export const vocab = {
     { word: "flow", translation: "circulation", example: "Good design ensures a natural flow between spaces." },
     { word: "reupholster", translation: "retapisser", example: "They decided to reupholster the antique chair instead of replacing it." },
     { word: "layering", translation: "superposition", example: "Layering different textiles creates a cozy atmosphere." },
-    
+
     // Problèmes de logement
     { word: "housing crisis", translation: "crise du logement", example: "The city is facing a severe housing crisis." },
-    
-    
-    
+
     { word: "inadequate housing", translation: "logement inadéquat", example: "Many families live in inadequate housing conditions." },
     { word: "eviction", translation: "expulsion", example: "Tenants received an eviction notice due to building renovation." },
     { word: "housing discrimination", translation: "discrimination au logement", example: "There are laws against housing discrimination." },
@@ -72,7 +70,7 @@ export const vocab = {
     { word: "displacement", translation: "déplacement", example: "Urban renewal often leads to displacement of residents." },
     { word: "affordable housing", translation: "logement abordable", example: "The city needs more affordable housing options." },
     { word: "public housing", translation: "logement social", example: "Public housing provides homes for low-income families." },
-    
+
     // Services résidentiels
     { word: "property management", translation: "gestion immobilière", example: "The property management company maintains the building." },
     { word: "homeowners association", translation: "syndicat de copropriété", example: "The homeowners association enforces community rules." },
@@ -87,7 +85,7 @@ export const vocab = {
     { word: "emergency response", translation: "intervention d'urgence", example: "The community has a rapid emergency response protocol." },
     { word: "home warranty", translation: "garantie habitation", example: "A home warranty covers repairs for major systems and appliances." },
     { word: "home inspection", translation: "inspection de maison", example: "Always get a thorough home inspection before buying." },
-    
+
     // Déménagement & installation
     { word: "relocation", translation: "déménagement", example: "The company offered a relocation package for the new job." },
     { word: "moving company", translation: "entreprise de déménagement", example: "They hired a moving company for their cross-country move." },
@@ -95,17 +93,17 @@ export const vocab = {
     { word: "logistics", translation: "logistique", example: "Planning the logistics of a move can be complicated." },
     { word: "transitional housing", translation: "logement transitoire", example: "They stayed in transitional housing while searching for a permanent home." },
     { word: "moving in", translation: "emménagement", example: "Moving in is exciting but stressful." },
-    
+
     { word: "settling in", translation: "s'installer", example: "It takes time to settle in to a new neighborhood." },
     { word: "forwarding address", translation: "adresse de réexpédition", example: "Don't forget to set up a forwarding address with the post office." },
     { word: "change of address", translation: "changement d'adresse", example: "Submit a change of address form for all your accounts." },
     { word: "inventory", translation: "inventaire", example: "Make an inventory of your belongings before moving." },
     { word: "setup services", translation: "services d'installation", example: "Schedule setup services for utilities and internet in advance." },
-    
+
     // Écologie domestique
     { word: "sustainable living", translation: "mode de vie durable", example: "They practice sustainable living in their home." },
     { word: "energy efficiency", translation: "efficacité énergétique", example: "Energy efficiency reduces both costs and environmental impact." },
-    
+
     { word: "renewable energy", translation: "énergie renouvelable", example: "The house uses renewable energy from solar panels." },
     { word: "greywater system", translation: "système d'eau grise", example: "A greywater system recycles water from sinks and showers." },
     { word: "composting", translation: "compostage", example: "Composting kitchen waste reduces landfill contributions." },

@@ -29,7 +29,7 @@ const ConversationMessage = ({ message, levelColor }) => {
       >
         {message.text}
       </Text>
-      
+
       <Text
         style={[
           styles.messageTime,

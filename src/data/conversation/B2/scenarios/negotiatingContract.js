@@ -173,5 +173,5 @@ const negotiatingContract = {
       ]
     }
   };
-  
+
   export default negotiatingContract;

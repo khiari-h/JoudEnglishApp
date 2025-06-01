@@ -171,5 +171,5 @@ const jobApplicationCall = {
       ]
     }
   };
-  
+
   export default jobApplicationCall;

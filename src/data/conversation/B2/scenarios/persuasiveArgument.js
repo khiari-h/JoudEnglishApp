@@ -172,5 +172,5 @@ const persuasiveArgument = {
       ]
     }
   };
-  
+
   export default persuasiveArgument;

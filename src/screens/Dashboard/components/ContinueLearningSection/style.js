@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
   },
-  
+
   // Nouveau design avec emoji et badges
   titleRow: {
     flexDirection: "row",

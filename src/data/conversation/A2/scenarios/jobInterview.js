@@ -172,5 +172,5 @@ const jobInterview = {
       ]
     }
   };
-  
+
   export default jobInterview;

@@ -8,7 +8,7 @@ export const vocab = {
     { word: "to answer", translation: "répondre", example: "She didn't answer her phone." },
     { word: "to hang up", translation: "raccrocher", example: "Don't hang up, I need to ask you something." },
     { word: "to hold", translation: "patienter", example: "Please hold while I transfer your call." },
-    
+
     { word: "to leave a message", translation: "laisser un message", example: "If she's not there, leave a message." },
     { word: "voice mail", translation: "messagerie vocale", example: "I left a message on his voice mail." },
     { word: "missed call", translation: "appel manqué", example: "I had three missed calls while I was in the meeting." },
@@ -17,7 +17,7 @@ export const vocab = {
     { word: "ringtone", translation: "sonnerie", example: "I changed my ringtone to a new song." },
     { word: "phone directory", translation: "annuaire téléphonique", example: "Look for her number in the phone directory." },
     { word: "callback", translation: "rappel", example: "I requested a callback from customer service." },
-    
+
     // Correspondance simple
     { word: "to write", translation: "écrire", example: "I'll write to you soon." },
     { word: "to respond", translation: "répondre", example: "I haven't had time to respond to your email yet." },
@@ -30,18 +30,17 @@ export const vocab = {
     { word: "stamp", translation: "timbre", example: "You need to put a stamp on the envelope." },
     { word: "postcard", translation: "carte postale", example: "I sent a postcard from my vacation." },
     { word: "mailbox", translation: "boîte aux lettres", example: "Check the mailbox for today's mail." },
-    
-    
+
     { word: "zip code", translation: "code postal", example: "Don't forget to include the zip code." },
     { word: "sender", translation: "expéditeur", example: "The sender's address goes in the top left corner." },
     { word: "recipient", translation: "destinataire", example: "The recipient wasn't at home to receive the package." },
-    
+
     // Médias sociaux basiques
-    
+
     { word: "profile", translation: "profil", example: "I updated my profile picture." },
     { word: "post", translation: "publication", example: "Her latest post got a lot of likes." },
     { word: "to share", translation: "partager", example: "She shared the news with all her friends." },
-    
+
     { word: "to comment", translation: "commenter", example: "Many people commented on his post." },
     { word: "comment", translation: "commentaire", example: "There were many positive comments on her article." },
     { word: "follower", translation: "abonné", example: "She has over a thousand followers on Instagram." },
@@ -53,11 +52,10 @@ export const vocab = {
     { word: "notification", translation: "notification", example: "I received a notification about your comment." },
     { word: "hashtag", translation: "hashtag", example: "The trending hashtag was about the new movie." },
     { word: "trending", translation: "tendance", example: "This topic is trending on Twitter right now." },
-    
+
     // Appareils de communication
     { word: "smartphone", translation: "smartphone", example: "Most people have a smartphone these days." },
-    
-    
+
     { word: "desktop computer", translation: "ordinateur de bureau", example: "He uses a desktop computer for work." },
     { word: "landline", translation: "téléphone fixe", example: "Few young people have landlines nowadays." },
     { word: "headphones", translation: "écouteurs", example: "I use headphones to listen to music." },
@@ -70,7 +68,7 @@ export const vocab = {
     { word: "Wi-Fi", translation: "Wi-Fi", example: "Is there Wi-Fi in this café?" },
     { word: "data", translation: "données", example: "I've used all my mobile data this month." },
     { word: "network", translation: "réseau", example: "The network connection is weak here." },
-    
+
     // Expressions d'opinion simples
     { word: "to think", translation: "penser", example: "I think the movie was interesting." },
     { word: "to believe", translation: "croire", example: "I believe she's right about this." },
@@ -84,13 +82,13 @@ export const vocab = {
     { word: "opinion", translation: "opinion/avis", example: "In my opinion, the book is better than the movie." },
     { word: "to express", translation: "exprimer", example: "She expressed her concerns about the project." },
     { word: "to state", translation: "déclarer", example: "He clearly stated his position on the issue." },
-    
+
     { word: "to oppose", translation: "s'opposer à", example: "Many people oppose this new law." },
-    
+
     // Discussions informelles
     { word: "to chat", translation: "bavarder", example: "We chatted for hours about old times." },
     { word: "small talk", translation: "conversation légère", example: "I'm not very good at small talk." },
-    
+
     { word: "to mention", translation: "mentionner", example: "She mentioned that she's moving to Paris." },
     { word: "to joke", translation: "plaisanter", example: "Don't take it seriously, I was just joking." },
     { word: "to laugh", translation: "rire", example: "We laughed at his funny story." },
@@ -106,7 +104,7 @@ export const vocab = {
     { word: "conversation", translation: "conversation", example: "We had an interesting conversation about art." },
     { word: "to catch up", translation: "se mettre à jour", example: "Let's meet for coffee and catch up." },
     { word: "to ask around", translation: "se renseigner", example: "I'll ask around and see if anyone knows about it." },
-    
+
     { word: "to get back to", translation: "revenir vers", example: "I'll get back to you on that question tomorrow." }
   ]
 };

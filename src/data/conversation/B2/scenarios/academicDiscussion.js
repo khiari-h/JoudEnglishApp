@@ -153,5 +153,5 @@ const academicDiscussion = {
       ]
     }
   };
-  
+
   export default academicDiscussion;

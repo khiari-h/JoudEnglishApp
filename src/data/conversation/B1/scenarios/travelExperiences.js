@@ -173,5 +173,5 @@ const travelExperiences = {
       ]
     }
   };
-  
+
   export default travelExperiences;

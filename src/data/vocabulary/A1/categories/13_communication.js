@@ -1,49 +1,49 @@
-ï»¿export const vocab = {
-  title: "Communication Ã‰lÃ©mentaire",
+export const vocab = {
+  title: "Communication Élémentaire",
   words: [
     // Salutations & politesse
     { word: "hello", translation: "bonjour", example: "Hello, how are you?" },
     { word: "hi", translation: "salut", example: "Hi, nice to see you!" },
     { word: "good morning", translation: "bonjour (matin)", example: "Good morning, everyone!" },
-    { word: "good afternoon", translation: "bon aprÃ¨s-midi", example: "Good afternoon, Mr. Smith." },
+    { word: "good afternoon", translation: "bon après-midi", example: "Good afternoon, Mr. Smith." },
     { word: "good evening", translation: "bonsoir", example: "Good evening, welcome to our restaurant." },
     { word: "good night", translation: "bonne nuit", example: "Good night, sleep well." },
     { word: "goodbye", translation: "au revoir", example: "Goodbye, see you tomorrow." },
     { word: "bye", translation: "salut", example: "Bye, see you later!" },
-    { word: "see you later", translation: "Ã  plus tard", example: "I have to go now. See you later!" },
-    { word: "see you tomorrow", translation: "Ã  demain", example: "The class is over. See you tomorrow!" },
-    { word: "please", translation: "s'il vous plaÃ®t", example: "Please, can you help me?" },
+    { word: "see you later", translation: "à plus tard", example: "I have to go now. See you later!" },
+    { word: "see you tomorrow", translation: "à demain", example: "The class is over. See you tomorrow!" },
+    { word: "please", translation: "s'il vous plaît", example: "Please, can you help me?" },
     { word: "thank you", translation: "merci", example: "Thank you for your help." },
     { word: "thanks", translation: "merci", example: "Thanks for the coffee." },
     { word: "you're welcome", translation: "de rien", example: "You're welcome, it was my pleasure." },
     { word: "excuse me", translation: "excusez-moi", example: "Excuse me, is this seat taken?" },
-    { word: "sorry", translation: "dÃ©solÃ©", example: "I'm sorry I'm late." },
-    
+    { word: "sorry", translation: "désolé", example: "I'm sorry I'm late." },
+
     // Questions simples
     { word: "what", translation: "quoi/que", example: "What is your name?" },
     { word: "who", translation: "qui", example: "Who is that person?" },
-    { word: "where", translation: "oÃ¹", example: "Where do you live?" },
+    { word: "where", translation: "où", example: "Where do you live?" },
     { word: "when", translation: "quand", example: "When is your birthday?" },
     { word: "why", translation: "pourquoi", example: "Why are you learning English?" },
     { word: "how", translation: "comment", example: "How are you today?" },
-    { word: "how many", translation: "combien (dÃ©nombrable)", example: "How many brothers do you have?" },
-    { word: "how much", translation: "combien (non dÃ©nombrable)", example: "How much does it cost?" },
+    { word: "how many", translation: "combien (dénombrable)", example: "How many brothers do you have?" },
+    { word: "how much", translation: "combien (non dénombrable)", example: "How much does it cost?" },
     { word: "which", translation: "quel", example: "Which color do you prefer?" },
-    { word: "can", translation: "pouvoir (capacitÃ©)", example: "Can you swim?" },
+    { word: "can", translation: "pouvoir (capacité)", example: "Can you swim?" },
     { word: "do", translation: "faire (auxiliaire)", example: "Do you like coffee?" },
-    { word: "are", translation: "Ãªtre (auxiliaire)", example: "Are you a student?" },
-    { word: "is", translation: "Ãªtre (auxiliaire)", example: "Is this your book?" },
+    { word: "are", translation: "être (auxiliaire)", example: "Are you a student?" },
+    { word: "is", translation: "être (auxiliaire)", example: "Is this your book?" },
     { word: "have", translation: "avoir (auxiliaire)", example: "Have you been to Paris?" },
     { word: "would", translation: "conditionnel (auxiliaire)", example: "Would you like some tea?" },
     { word: "could", translation: "pouvoir (auxiliaire)", example: "Could you help me, please?" },
-    
-    // PrÃ©sentation personnelle
+
+    // Présentation personnelle
     { word: "I am", translation: "je suis", example: "I am Paul." },
     { word: "my name is", translation: "je m'appelle", example: "My name is Sophie." },
     { word: "I'm from", translation: "je viens de", example: "I'm from Canada." },
-    { word: "I live in", translation: "j'habite Ã ", example: "I live in London." },
+    { word: "I live in", translation: "j'habite à", example: "I live in London." },
     { word: "I work as", translation: "je travaille comme", example: "I work as a teacher." },
-    { word: "I study", translation: "j'Ã©tudie", example: "I study English." },
+    { word: "I study", translation: "j'étudie", example: "I study English." },
     { word: "I'm ... years old", translation: "j'ai ... ans", example: "I'm 25 years old." },
     { word: "I like", translation: "j'aime", example: "I like reading books." },
     { word: "I don't like", translation: "je n'aime pas", example: "I don't like coffee." },
@@ -53,14 +53,14 @@
     { word: "I want", translation: "je veux", example: "I want to learn English." },
     { word: "I need", translation: "j'ai besoin", example: "I need to practice more." },
     { word: "I can", translation: "je peux", example: "I can help you with that." },
-    { word: "nice to meet you", translation: "enchantÃ©", example: "Nice to meet you, John." },
-    
+    { word: "nice to meet you", translation: "enchanté", example: "Nice to meet you, John." },
+
     // Instructions basiques
-    { word: "listen", translation: "Ã©couter", example: "Listen to the recording, please." },
+    { word: "listen", translation: "écouter", example: "Listen to the recording, please." },
     { word: "read", translation: "lire", example: "Read the text on page 10." },
-    { word: "write", translation: "Ã©crire", example: "Write your name here." },
+    { word: "write", translation: "écrire", example: "Write your name here." },
     { word: "speak", translation: "parler", example: "Speak slowly, please." },
-    { word: "repeat", translation: "rÃ©pÃ©ter", example: "Repeat after me." },
+    { word: "repeat", translation: "répéter", example: "Repeat after me." },
     { word: "open", translation: "ouvrir", example: "Open your books." },
     { word: "close", translation: "fermer", example: "Close the door, please." },
     { word: "come", translation: "venir", example: "Come here, please." },
@@ -69,26 +69,26 @@
     { word: "stand", translation: "se lever", example: "Stand up, please." },
     { word: "wait", translation: "attendre", example: "Wait a moment, please." },
     { word: "look", translation: "regarder", example: "Look at the picture." },
-    { word: "stop", translation: "arrÃªter", example: "Stop talking, please." },
+    { word: "stop", translation: "arrêter", example: "Stop talking, please." },
     { word: "start", translation: "commencer", example: "Start reading now." },
     { word: "turn on", translation: "allumer", example: "Turn on the lights, please." },
-    
+
     // Demandes d'aide simples
     { word: "help", translation: "aide/aider", example: "Can you help me, please?" },
     { word: "I need help", translation: "j'ai besoin d'aide", example: "I need help with this exercise." },
     { word: "I don't understand", translation: "je ne comprends pas", example: "I don't understand this word." },
-    { word: "can you repeat", translation: "pouvez-vous rÃ©pÃ©ter", example: "Can you repeat that, please?" },
+    { word: "can you repeat", translation: "pouvez-vous répéter", example: "Can you repeat that, please?" },
     { word: "can you speak slowly", translation: "pouvez-vous parler lentement", example: "Can you speak slowly, please?" },
     { word: "what does ... mean", translation: "que signifie...", example: "What does this word mean?" },
     { word: "how do you say", translation: "comment dit-on", example: "How do you say 'bonjour' in English?" },
     { word: "could you show me", translation: "pourriez-vous me montrer", example: "Could you show me how to do this?" },
     { word: "I have a question", translation: "j'ai une question", example: "I have a question about the homework." },
-    { word: "I have a problem", translation: "j'ai un problÃ¨me", example: "I have a problem with my computer." },
+    { word: "I have a problem", translation: "j'ai un problème", example: "I have a problem with my computer." },
     { word: "I'm lost", translation: "je suis perdu", example: "I'm lost. Can you show me the way to the station?" },
     { word: "I'm looking for", translation: "je cherche", example: "I'm looking for the bathroom." },
-    { word: "can you help me find", translation: "pouvez-vous m'aider Ã  trouver", example: "Can you help me find my keys?" },
+    { word: "can you help me find", translation: "pouvez-vous m'aider à trouver", example: "Can you help me find my keys?" },
     { word: "I don't know", translation: "je ne sais pas", example: "I don't know the answer." },
-    { word: "I forgot", translation: "j'ai oubliÃ©", example: "I forgot my book at home." },
-    { word: "I'm sorry", translation: "je suis dÃ©solÃ©", example: "I'm sorry, I didn't hear you." }
+    { word: "I forgot", translation: "j'ai oublié", example: "I forgot my book at home." },
+    { word: "I'm sorry", translation: "je suis désolé", example: "I'm sorry, I didn't hear you." }
   ]
 };

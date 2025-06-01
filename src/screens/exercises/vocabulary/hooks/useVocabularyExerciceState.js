@@ -22,16 +22,11 @@ const useVocabularyExerciseState = (
   const isInitialized = useRef(false);
 
   // DEBUG
-  console.log("🎮 Hook useVocabularyExerciseState - progressKey:", progressKey);
 
   // Initialiser l'état au premier rendu avec les valeurs fournies
   useEffect(() => {
     if (!isInitialized.current) {
-      console.log("🎯 Initialisation état:", {
-        progressKey,
-        initialCategoryIndex,
-        initialWordIndex,
-      });
+
       setCategoryIndex(initialCategoryIndex);
       setWordIndex(initialWordIndex);
       isInitialized.current = true;
@@ -41,11 +36,7 @@ const useVocabularyExerciseState = (
   // Méthode pour restaurer l'état à une position spécifique
   const restoreState = useCallback(
     (newCategoryIndex, newWordIndex) => {
-      console.log("🔄 Restauration état:", {
-        progressKey,
-        newCategoryIndex,
-        newWordIndex,
-      });
+
       setCategoryIndex(newCategoryIndex);
       setWordIndex(newWordIndex);
       setShowTranslation(false);
@@ -56,11 +47,7 @@ const useVocabularyExerciseState = (
   // Fonction pour naviguer vers le mot précédent
   const goToPreviousWord = useCallback(() => {
     if (wordIndex > 0) {
-      console.log("⬅️ Mot précédent:", {
-        progressKey,
-        fromIndex: wordIndex,
-        toIndex: wordIndex - 1,
-      });
+
       setWordIndex((prev) => prev - 1);
       setShowTranslation(false);
       return true;
@@ -70,11 +57,7 @@ const useVocabularyExerciseState = (
 
   // Fonction pour naviguer vers le mot suivant
   const goToNextWord = useCallback(() => {
-    console.log("➡️ Mot suivant:", {
-      progressKey,
-      fromIndex: wordIndex,
-      toIndex: wordIndex + 1,
-    });
+
     setWordIndex((prev) => prev + 1);
     setShowTranslation(false);
     return true;
@@ -83,11 +66,7 @@ const useVocabularyExerciseState = (
   // Fonction pour changer de catégorie
   const changeCategory = useCallback(
     (newCategoryIndex) => {
-      console.log("📂 Changement catégorie:", {
-        progressKey,
-        fromCategory: categoryIndex,
-        toCategory: newCategoryIndex,
-      });
+
       setCategoryIndex(newCategoryIndex);
       setWordIndex(0);
       setShowTranslation(false);
@@ -97,10 +76,7 @@ const useVocabularyExerciseState = (
 
   // Fonction pour basculer l'affichage de la traduction
   const toggleTranslation = useCallback(() => {
-    console.log("🔄 Toggle traduction:", {
-      progressKey,
-      current: showTranslation,
-    });
+
     setShowTranslation((prev) => !prev);
   }, [progressKey, showTranslation]);
 
@@ -117,3 +93,4 @@ const useVocabularyExerciseState = (
 };
 
 export default useVocabularyExerciseState;
+

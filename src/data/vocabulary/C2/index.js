@@ -53,3 +53,4 @@ export default {
     psychologie_sante_mentale
   ],
 };
+

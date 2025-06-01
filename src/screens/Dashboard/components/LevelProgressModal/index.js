@@ -166,3 +166,4 @@ const LevelProgressModal = ({
 };
 
 export default LevelProgressModal;
+

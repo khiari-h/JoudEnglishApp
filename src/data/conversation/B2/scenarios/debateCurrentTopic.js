@@ -173,5 +173,5 @@ const debateCurrentTopic = {
       ]
     }
   };
-  
+
   export default debateCurrentTopic;

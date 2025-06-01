@@ -18,11 +18,11 @@ export const vocab = {
     { word: "urban sprawl", translation: "étalement urbain", example: "Urban sprawl has led to longer commuting times." },
     { word: "gentrification", translation: "gentrification", example: "Gentrification is changing the character of the neighborhood." },
     { word: "pedestrian zone", translation: "zone piétonne", example: "The city center is now a pedestrian zone." },
-    
+
     // Infrastructure urbaine
     { word: "bridge", translation: "pont", example: "We crossed the bridge to reach the other side of the river." },
     { word: "tunnel", translation: "tunnel", example: "The tunnel goes under the mountain." },
-    
+
     { word: "underpass", translation: "passage souterrain", example: "Use the underpass to cross the busy road." },
     { word: "overpass", translation: "passage supérieur", example: "The overpass helps traffic flow smoothly." },
     { word: "subway system", translation: "réseau de métro", example: "London has an extensive subway system." },
@@ -37,12 +37,12 @@ export const vocab = {
     { word: "sewage system", translation: "système d'égouts", example: "The city is upgrading its sewage system." },
     { word: "public transportation", translation: "transports en commun", example: "I use public transportation to get to work." },
     { word: "water supply", translation: "approvisionnement en eau", example: "The drought affected the city's water supply." },
-    
+
     // Services municipaux
     { word: "town hall", translation: "mairie", example: "The meeting will take place at the town hall." },
     { word: "public library", translation: "bibliothèque municipale", example: "I borrow books from the public library." },
     { word: "fire station", translation: "caserne de pompiers", example: "The fire station is just around the corner." },
-    
+
     { word: "community center", translation: "centre communautaire", example: "The community center offers activities for all ages." },
     { word: "recycling center", translation: "centre de recyclage", example: "Take your glass bottles to the recycling center." },
     { word: "waste collection", translation: "collecte des déchets", example: "Waste collection takes place on Tuesdays and Fridays." },
@@ -54,9 +54,9 @@ export const vocab = {
     { word: "public health", translation: "santé publique", example: "Public health measures were put in place during the pandemic." },
     { word: "civic center", translation: "centre civique", example: "The exhibition is being held at the civic center." },
     { word: "city services", translation: "services municipaux", example: "Many city services are now available online." },
-    
+
     // Environnement rural
-    
+
     { word: "farmland", translation: "terres agricoles", example: "Farmland surrounds the small village." },
     { word: "field", translation: "champ", example: "The farmer works in the fields all day." },
     { word: "meadow", translation: "prairie", example: "Wildflowers grow in the meadow." },
@@ -72,8 +72,7 @@ export const vocab = {
     { word: "rural community", translation: "communauté rurale", example: "Rural communities often have strong traditions." },
     { word: "agricultural area", translation: "zone agricole", example: "This is primarily an agricultural area." },
     { word: "hamlet", translation: "hameau", example: "They live in a small hamlet with just a few houses." },
-    
-    
+
     // Orientation & direction
     { word: "intersection", translation: "intersection", example: "The accident happened at the intersection." },
     { word: "landmark", translation: "point de repère", example: "The church tower is a useful landmark." },
@@ -90,7 +89,7 @@ export const vocab = {
     { word: "destination", translation: "destination", example: "What's your final destination?" },
     { word: "crossroads", translation: "carrefour", example: "The village is at a crossroads of two main highways." },
     { word: "getting lost", translation: "se perdre", example: "I'm afraid of getting lost in the big city." },
-    
+
     // Problèmes urbains simples
     { word: "traffic jam", translation: "embouteillage", example: "I was stuck in a traffic jam for an hour." },
     { word: "pollution", translation: "pollution", example: "Air pollution is a major problem in large cities." },

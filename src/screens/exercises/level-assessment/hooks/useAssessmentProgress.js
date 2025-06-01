@@ -24,38 +24,35 @@ const useAssessmentProgress = (level) => {
   useEffect(() => {
     const loadSavedData = async () => {
       try {
-        console.log(`[Assessment] Chargement des données de progression pour le niveau ${level}`);
-        
+
         // Récupérer les résultats d'évaluation
         const savedResultsJson = await AsyncStorage.getItem(ASSESSMENT_RESULTS_KEY);
         const savedResults = savedResultsJson 
           ? JSON.parse(savedResultsJson) 
           : {};
-        
+
         // Récupérer la dernière position
         const savedPositionJson = await AsyncStorage.getItem(LAST_POSITION_KEY);
         const savedPosition = savedPositionJson 
           ? JSON.parse(savedPositionJson) 
           : { sectionIndex: 0, questionIndex: 0 };
-        
+
         // Récupérer les réponses de l'utilisateur
         const savedAnswersJson = await AsyncStorage.getItem(USER_ANSWERS_KEY);
         const savedAnswers = savedAnswersJson 
           ? JSON.parse(savedAnswersJson) 
           : {};
-        
-        console.log("[Assessment] Données chargées:", { 
-          position: savedPosition,
-          resultsCount: Object.keys(savedResults).length,
+
+        .length,
           answersCount: Object.keys(savedAnswers).length
         });
-        
+
         setAssessmentResults(savedResults);
         setLastPosition(savedPosition);
         setUserAnswers(savedAnswers);
         setLoaded(true);
       } catch (error) {
-        console.error('[Assessment] Erreur lors du chargement des données de progression:', error);
+
         setAssessmentResults({});
         setLastPosition({ sectionIndex: 0, questionIndex: 0 });
         setUserAnswers({});
@@ -69,8 +66,7 @@ const useAssessmentProgress = (level) => {
   // Sauvegarder la dernière position
   const saveLastPosition = useCallback(async (sectionIndex, questionIndex) => {
     try {
-      console.log(`[Assessment] Sauvegarde de la position: section ${sectionIndex}, question ${questionIndex}`);
-      
+
       const newPosition = { 
         sectionIndex, 
         questionIndex,
@@ -78,57 +74,53 @@ const useAssessmentProgress = (level) => {
       };
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
-      
-      console.log(`[Assessment] Position sauvegardée avec timestamp: ${new Date(newPosition.timestamp).toISOString()}`);
+
+      .toISOString()}`);
     } catch (error) {
-      console.error('[Assessment] Erreur lors de la sauvegarde de la position:', error);
+
     }
   }, [LAST_POSITION_KEY]);
 
   // Enregistrer une réponse de l'utilisateur
   const saveUserAnswer = useCallback(async (sectionKey, questionIndex, selectedAnswer, isCorrect) => {
     try {
-      console.log(`[Assessment] Enregistrement de la réponse: section ${sectionKey}, question ${questionIndex}, réponse ${selectedAnswer}`);
-      
+
       // Mettre à jour les réponses de l'utilisateur
       const updatedAnswers = { ...userAnswers };
-      
+
       if (!updatedAnswers[sectionKey]) {
         updatedAnswers[sectionKey] = {};
       }
-      
+
       updatedAnswers[sectionKey][questionIndex] = {
         selectedAnswer,
         isCorrect,
         timestamp: Date.now()
       };
-      
+
       setUserAnswers(updatedAnswers);
       await AsyncStorage.setItem(USER_ANSWERS_KEY, JSON.stringify(updatedAnswers));
-      
-      console.log("[Assessment] Réponse enregistrée");
+
     } catch (error) {
-      console.error('[Assessment] Erreur lors de l\'enregistrement de la réponse:', error);
+
     }
   }, [userAnswers, USER_ANSWERS_KEY]);
 
   // Sauvegarder les résultats complets de l'évaluation
   const saveAssessmentResults = useCallback(async (results) => {
     try {
-      console.log("[Assessment] Sauvegarde des résultats complets");
-      
+
       const resultsWithTimestamp = {
         ...results,
         completedAt: new Date().toISOString(),
         timestamp: Date.now()
       };
-      
+
       setAssessmentResults(resultsWithTimestamp);
       await AsyncStorage.setItem(ASSESSMENT_RESULTS_KEY, JSON.stringify(resultsWithTimestamp));
-      
-      console.log("[Assessment] Résultats sauvegardés");
+
     } catch (error) {
-      console.error('[Assessment] Erreur lors de la sauvegarde des résultats:', error);
+
     }
   }, [ASSESSMENT_RESULTS_KEY]);
 
@@ -141,7 +133,7 @@ const useAssessmentProgress = (level) => {
   const calculateUserScore = useCallback(() => {
     let correctAnswers = 0;
     let totalQuestions = 0;
-    
+
     Object.values(userAnswers).forEach(section => {
       Object.values(section).forEach(answer => {
         totalQuestions++;
@@ -150,7 +142,7 @@ const useAssessmentProgress = (level) => {
         }
       });
     });
-    
+
     return {
       correctAnswers,
       totalQuestions,
@@ -166,21 +158,19 @@ const useAssessmentProgress = (level) => {
   // Réinitialiser toutes les données d'évaluation
   const resetAssessment = useCallback(async () => {
     try {
-      console.log("[Assessment] Réinitialisation de l'évaluation");
-      
+
       await AsyncStorage.multiRemove([
         ASSESSMENT_RESULTS_KEY,
         LAST_POSITION_KEY,
         USER_ANSWERS_KEY
       ]);
-      
+
       setAssessmentResults({});
       setLastPosition({ sectionIndex: 0, questionIndex: 0 });
       setUserAnswers({});
-      
-      console.log("[Assessment] Évaluation réinitialisée");
+
     } catch (error) {
-      console.error('[Assessment] Erreur lors de la réinitialisation de l\'évaluation:', error);
+
     }
   }, [ASSESSMENT_RESULTS_KEY, LAST_POSITION_KEY, USER_ANSWERS_KEY]);
 

@@ -73,3 +73,4 @@ const CategorizationGame = ({
 };
 
 export default CategorizationGame;
+

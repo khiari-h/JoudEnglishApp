@@ -32,3 +32,4 @@ const GrammarRuleSelector = ({
 };
 
 export default GrammarRuleSelector;
+

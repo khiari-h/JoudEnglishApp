@@ -173,5 +173,5 @@ const educationChoices = {
       ]
     }
   };
-  
+
   export default educationChoices;

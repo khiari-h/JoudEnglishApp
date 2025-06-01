@@ -24,7 +24,7 @@ const ConversationHelpPanel = ({ helpText, isVisible, onToggle, levelColor }) =>
       </TouchableOpacity>
     );
   }
-  
+
   return (
     <View style={[styles.container, { borderColor: `${levelColor}30` }]}>
       <View style={styles.headerContainer}>

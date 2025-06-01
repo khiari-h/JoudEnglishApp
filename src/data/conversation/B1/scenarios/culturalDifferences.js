@@ -173,5 +173,5 @@ const culturalDifferences = {
       ]
     }
   };
-  
+
   export default culturalDifferences;

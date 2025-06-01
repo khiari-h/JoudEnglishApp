@@ -1,4 +1,4 @@
-ï»¿export const vocab = {
+export const vocab = {
   title: "Temps & Calendrier",
   words: [
     // Jours de la semaine
@@ -12,33 +12,33 @@
     { word: "weekday", translation: "jour de semaine", example: "I work on weekdays." },
     { word: "weekend", translation: "week-end", example: "We go to the beach on weekends." },
     { word: "week", translation: "semaine", example: "There are seven days in a week." },
-    
-    // Mois de l'annÃ©e
+
+    // Mois de l'année
     { word: "January", translation: "janvier", example: "My birthday is in January." },
-    { word: "February", translation: "fÃ©vrier", example: "February is the shortest month." },
+    { word: "February", translation: "février", example: "February is the shortest month." },
     { word: "March", translation: "mars", example: "Spring begins in March." },
     { word: "April", translation: "avril", example: "It often rains in April." },
     { word: "May", translation: "mai", example: "My sister is getting married in May." },
     { word: "June", translation: "juin", example: "School ends in June." },
     { word: "July", translation: "juillet", example: "We go on vacation in July." },
-    { word: "August", translation: "aoÃ»t", example: "August is usually very hot." },
+    { word: "August", translation: "août", example: "August is usually very hot." },
     { word: "September", translation: "septembre", example: "School starts in September." },
     { word: "October", translation: "octobre", example: "Halloween is in October." },
     { word: "November", translation: "novembre", example: "It gets colder in November." },
-    { word: "December", translation: "dÃ©cembre", example: "Christmas is in December." },
+    { word: "December", translation: "décembre", example: "Christmas is in December." },
     { word: "month", translation: "mois", example: "There are twelve months in a year." },
-    
+
     // Saisons
     { word: "spring", translation: "printemps", example: "Flowers bloom in spring." },
-    { word: "summer", translation: "Ã©tÃ©", example: "I love swimming in summer." },
+    { word: "summer", translation: "été", example: "I love swimming in summer." },
     { word: "autumn", translation: "automne", example: "The leaves change color in autumn." },
     { word: "fall", translation: "automne", example: "Fall is my favorite season." },
     { word: "winter", translation: "hiver", example: "It snows in winter." },
     { word: "season", translation: "saison", example: "What's your favorite season?" },
-    
-    // Heure & moments de la journÃ©e
+
+    // Heure & moments de la journée
     { word: "morning", translation: "matin", example: "I have breakfast in the morning." },
-    { word: "afternoon", translation: "aprÃ¨s-midi", example: "We have lunch in the afternoon." },
+    { word: "afternoon", translation: "après-midi", example: "We have lunch in the afternoon." },
     { word: "evening", translation: "soir", example: "We watch TV in the evening." },
     { word: "night", translation: "nuit", example: "I sleep at night." },
     { word: "midnight", translation: "minuit", example: "The party ends at midnight." },
@@ -48,17 +48,17 @@
     { word: "yesterday", translation: "hier", example: "I was at school yesterday." },
     { word: "now", translation: "maintenant", example: "I am busy now." },
     { word: "later", translation: "plus tard", example: "We'll go to the movies later." },
-    { word: "early", translation: "tÃ´t", example: "I wake up early." },
+    { word: "early", translation: "tôt", example: "I wake up early." },
     { word: "late", translation: "tard", example: "I went to bed late." },
     { word: "hour", translation: "heure", example: "The meeting lasted one hour." },
     { word: "minute", translation: "minute", example: "Please wait five minutes." },
-    
+
     { word: "o'clock", translation: "heure", example: "The class starts at 9 o'clock." },
     { word: "time", translation: "temps/heure", example: "What time is it?" },
     { word: "watch", translation: "montre", example: "I have a new watch." },
     { word: "clock", translation: "horloge", example: "The clock on the wall shows 3 o'clock." },
-    
-    // FrÃ©quences simples
+
+    // Fréquences simples
     { word: "always", translation: "toujours", example: "I always brush my teeth before bed." },
     { word: "usually", translation: "habituellement", example: "I usually have coffee in the morning." },
     { word: "often", translation: "souvent", example: "We often go to the park." },
@@ -73,12 +73,12 @@
     { word: "daily", translation: "quotidiennement", example: "I take this medicine daily." },
     { word: "weekly", translation: "hebdomadaire", example: "This is a weekly magazine." },
     { word: "monthly", translation: "mensuel", example: "I pay rent monthly." },
-    
-    // DurÃ©es simples
+
+    // Durées simples
     { word: "for", translation: "pendant", example: "I studied for two hours." },
     { word: "since", translation: "depuis", example: "I've lived here since 2010." },
     { word: "during", translation: "pendant", example: "I sleep during the night." },
-    { word: "all day", translation: "toute la journÃ©e", example: "I worked all day." },
+    { word: "all day", translation: "toute la journée", example: "I worked all day." },
     { word: "a moment", translation: "un moment", example: "Please wait a moment." },
     { word: "a while", translation: "un moment", example: "It took a while to finish." },
     { word: "forever", translation: "pour toujours", example: "I will remember this forever." },
@@ -90,6 +90,6 @@
     { word: "day", translation: "jour", example: "There are 30 days in April." },
     { word: "date", translation: "date", example: "What's the date today?" },
     { word: "calendar", translation: "calendrier", example: "I marked the date on my calendar." },
-    { word: "year", translation: "annÃ©e", example: "Last year was 2024." }
+    { word: "year", translation: "année", example: "Last year was 2024." }
   ]
 };

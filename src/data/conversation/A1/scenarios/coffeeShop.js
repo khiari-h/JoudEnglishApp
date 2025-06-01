@@ -137,5 +137,5 @@ const coffeeShop = {
       ]
     }
   };
-  
+
   export default coffeeShop;

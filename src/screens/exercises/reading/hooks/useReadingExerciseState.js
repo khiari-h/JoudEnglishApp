@@ -23,7 +23,7 @@ const useReadingExerciseState = (exercises = [], level) => {
   // Références pour les animations
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const slideAnim = useRef(new Animated.Value(0)).current;
-  
+
   // Références pour le défilement
   const scrollViewRef = useRef(null);
   const textsScrollViewRef = useRef(null);
@@ -131,7 +131,7 @@ const useReadingExerciseState = (exercises = [], level) => {
   // Calculer la progression pour l'exercice actuel
   const calculateProgress = () => {
     if (!currentExercise) return 0;
-    
+
     const completed = completedQuestions[selectedExerciseIndex]?.length || 0;
     const total = currentExercise.questions.length || 0;
     return total > 0 ? (completed / total) * 100 : 0;
@@ -177,7 +177,7 @@ const useReadingExerciseState = (exercises = [], level) => {
   // Demander confirmation pour passer à l'exercice suivant
   const askToMoveToNextExercise = (nextExerciseIndex) => {
     const nextExerciseTitle = allExercises[nextExerciseIndex]?.title || "l'exercice suivant";
-    
+
     Alert.alert(
       "Texte terminé ! 🎯",
       `Bravo ! Souhaitez-vous passer à "${nextExerciseTitle}" ?`,

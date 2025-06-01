@@ -21,14 +21,11 @@ const useVocabularyProgress = (progressKey) => {
   const LAST_POSITION_KEY = `vocabulary_position_${progressKey}`;
 
   // DEBUG
-  console.log("🔑 Hook useVocabularyProgress - progressKey:", progressKey);
-  console.log("🗄️ Storage keys:", { COMPLETED_WORDS_KEY, LAST_POSITION_KEY });
 
   // Charger les données sauvegardées au premier rendu
   useEffect(() => {
     const loadSavedData = async () => {
       try {
-        console.log("📥 Chargement données pour:", progressKey);
 
         // Récupérer les mots complétés
         const savedCompletedWordsJson = await AsyncStorage.getItem(
@@ -44,19 +41,11 @@ const useVocabularyProgress = (progressKey) => {
           ? JSON.parse(savedPositionJson)
           : { categoryIndex: 0, wordIndex: 0 };
 
-        console.log("📊 Données chargées:", {
-          savedCompletedWords,
-          savedPosition,
-        });
-
         setCompletedWords(savedCompletedWords);
         setLastPosition(savedPosition);
         setLoaded(true);
       } catch (error) {
-        console.error(
-          "❌ Erreur lors du chargement des données de progression:",
-          error
-        );
+
         // En cas d'erreur, initialiser avec des valeurs par défaut
         setCompletedWords({});
         setLastPosition({ categoryIndex: 0, wordIndex: 0 });
@@ -78,15 +67,13 @@ const useVocabularyProgress = (progressKey) => {
           progressKey, // Ajouter la clé pour debug
         };
 
-        console.log("💾 Sauvegarde position:", newPosition);
-
         setLastPosition(newPosition);
         await AsyncStorage.setItem(
           LAST_POSITION_KEY,
           JSON.stringify(newPosition)
         );
       } catch (error) {
-        console.error("❌ Erreur lors de la sauvegarde de la position:", error);
+
       }
     },
     [LAST_POSITION_KEY, progressKey]
@@ -107,12 +94,6 @@ const useVocabularyProgress = (progressKey) => {
         if (!updatedCompletedWords[categoryIndex].includes(wordIndex)) {
           updatedCompletedWords[categoryIndex].push(wordIndex);
 
-          console.log("✅ Mot complété:", {
-            progressKey,
-            categoryIndex,
-            wordIndex,
-          });
-
           setCompletedWords(updatedCompletedWords);
           await AsyncStorage.setItem(
             COMPLETED_WORDS_KEY,
@@ -120,10 +101,7 @@ const useVocabularyProgress = (progressKey) => {
           );
         }
       } catch (error) {
-        console.error(
-          "❌ Erreur lors du marquage du mot comme complété:",
-          error
-        );
+
       }
     },
     [completedWords, COMPLETED_WORDS_KEY, progressKey]
@@ -143,8 +121,6 @@ const useVocabularyProgress = (progressKey) => {
           }
         });
 
-        console.log("🚀 Progression initialisée pour:", progressKey);
-
         setCompletedWords(newCompletedWords);
         setInitialized(true);
       }
@@ -163,3 +139,4 @@ const useVocabularyProgress = (progressKey) => {
 };
 
 export default useVocabularyProgress;
+

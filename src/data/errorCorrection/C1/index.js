@@ -24,7 +24,7 @@ allExercises.sort((a, b) => {
 const errorCorrectionC1 = {
   level: "C1",
   totalExercises: allExercises.length,
-  
+
   // Statistics by type
   statistics: {
     full: errorCorrectionC1Full.length,
@@ -158,23 +158,23 @@ const errorCorrectionC1 = {
   validateStructure: () => {
     const requiredFields = ['categoryId', 'type', 'text', 'correctedText', 'hint', 'explanation'];
     const validTypes = ['full', 'identify', 'multiple_choice'];
-    
+
     return allExercises.every(exercise => {
       // Check required fields
       const hasRequiredFields = requiredFields.every(field => 
         exercise.hasOwnProperty(field) && exercise[field] !== undefined
       );
-      
+
       // Check valid type
       const hasValidType = validTypes.includes(exercise.type);
-      
+
       // Check valid category (1-5 for C1)
       const hasValidCategory = exercise.categoryId >= 1 && exercise.categoryId <= 5;
-      
+
       // Check C1 level complexity (sophisticated texts and vocabulary)
       const hasExpertComplexity = exercise.text.split(' ').length >= 12;
       const hasSophisticatedVocab = exercise.text.length > 80;
-      
+
       // Check type-specific fields with C1 standards
       let hasTypeSpecificFields = true;
       if (exercise.type === 'multiple_choice') {
@@ -187,7 +187,7 @@ const errorCorrectionC1 = {
       } else {
         hasTypeSpecificFields = exercise.errorPositions && Array.isArray(exercise.errorPositions);
       }
-      
+
       return hasRequiredFields && hasValidType && hasValidCategory && 
              hasExpertComplexity && hasSophisticatedVocab && hasTypeSpecificFields;
     });
@@ -198,12 +198,12 @@ const errorCorrectionC1 = {
     const totalErrorPositions = allExercises
       .filter(ex => ex.errorPositions)
       .reduce((sum, ex) => sum + ex.errorPositions.length, 0);
-    
+
     const totalTextLength = allExercises.reduce((sum, ex) => sum + ex.text.length, 0);
     const expertExercises = errorCorrectionC1.getExpertLevelExercises().length;
     const culturalExercises = errorCorrectionC1.getCulturalReferenceExercises().length;
     const academicExercises = errorCorrectionC1.getAcademicPrecisionExercises().length;
-    
+
     return {
       level: "C1",
       totalExercises: allExercises.length,
@@ -238,9 +238,9 @@ const errorCorrectionC1 = {
 
 // Validate structure on export
 if (!errorCorrectionC1.validateStructure()) {
-  console.warn('Error Correction C1: Some exercises have invalid structure');
+
 } else {
-  console.log(`Error Correction C1: Successfully loaded ${allExercises.length} expert-level exercises`);
+
 }
 
 export default errorCorrectionC1;

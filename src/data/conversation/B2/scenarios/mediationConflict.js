@@ -169,5 +169,5 @@ const mediationConflict = {
       ]
     }
   };
-  
+
   export default mediationConflict;

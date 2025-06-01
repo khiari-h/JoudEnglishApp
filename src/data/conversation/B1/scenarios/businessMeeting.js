@@ -173,5 +173,5 @@ const businessMeeting = {
       ]
     }
   };
-  
+
   export default businessMeeting;

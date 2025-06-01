@@ -4,7 +4,7 @@ export const vocab = {
     // Systèmes économiques
     { word: "economic system", translation: "système économique", example: "Different economic systems determine how goods and services are produced and distributed." },
     { word: "capitalism", translation: "capitalisme", example: "Capitalism relies on private ownership and market competition." },
-    
+
     { word: "mixed economy", translation: "économie mixte", example: "Most countries operate mixed economies with both market and government elements." },
     { word: "market economy", translation: "économie de marché", example: "A market economy allows supply and demand to determine prices and production." },
     { word: "command economy", translation: "économie planifiée", example: "In a command economy, the government makes key economic decisions." },
@@ -17,10 +17,10 @@ export const vocab = {
     { word: "austerity", translation: "austérité", example: "Austerity measures reduce government spending to address fiscal imbalances." },
     { word: "economic ideology", translation: "idéologie économique", example: "Economic ideology influences policy choices and development strategies." },
     { word: "laissez-faire", translation: "laissez-faire", example: "Laissez-faire economics minimizes government interference in markets." },
-    
+
     // Institutions financières
     { word: "financial institution", translation: "institution financière", example: "Financial institutions include banks, insurance companies, and investment firms." },
-    
+
     { word: "commercial bank", translation: "banque commerciale", example: "Commercial banks provide services to individuals and businesses." },
     { word: "investment bank", translation: "banque d'investissement", example: "Investment banks specialize in capital raising and financial advisory services." },
     { word: "World Bank", translation: "Banque mondiale", example: "The World Bank provides financial assistance to developing countries." },
@@ -28,30 +28,23 @@ export const vocab = {
     { word: "stock exchange", translation: "bourse", example: "Companies list their shares on stock exchanges for public trading." },
     { word: "credit union", translation: "coopérative de crédit", example: "Credit unions are member-owned financial cooperatives." },
     { word: "sovereign wealth fund", translation: "fonds souverain", example: "Sovereign wealth funds invest government assets in global markets." },
-    
-    
+
     { word: "microfinance institution", translation: "institution de microfinance", example: "Microfinance institutions provide financial services to low-income individuals." },
     { word: "insurance company", translation: "compagnie d'assurance", example: "Insurance companies protect against financial losses from specific risks." },
     { word: "pension fund", translation: "fonds de pension", example: "Pension funds manage retirement savings for workers." },
     { word: "financial regulator", translation: "régulateur financier", example: "Financial regulators oversee markets and enforce compliance with laws." },
-    
+
     // Marchés globaux
     { word: "global market", translation: "marché mondial", example: "Digital technologies have transformed global markets for goods and services." },
-    
-    
-    
+
     { word: "portfolio investment", translation: "investissement de portefeuille", example: "Portfolio investment involves purchasing foreign securities without management control." },
-    
+
     { word: "currency market", translation: "marché des changes", example: "The currency market is the largest financial market in the world." },
-    
+
     { word: "capital flow", translation: "flux de capitaux", example: "Global capital flows can bring benefits but also create financial instability." },
-    
-    
-    
-    
-    
+
     { word: "market integration", translation: "intégration des marchés", example: "Market integration connects national economies through trade and investment." },
-    
+
     // Crises & régulation
     { word: "financial crisis", translation: "crise financière", example: "The 2008 financial crisis originated in the U.S. housing market." },
     { word: "economic recession", translation: "récession économique", example: "Economic recession involves declining economic activity across the economy." },
@@ -68,47 +61,44 @@ export const vocab = {
     { word: "asset bubble", translation: "bulle spéculative", example: "An asset bubble involves prices rising far above fundamental values." },
     { word: "liquidity crisis", translation: "crise de liquidité", example: "During a liquidity crisis, assets cannot be sold quickly without significant loss." },
     { word: "financial oversight", translation: "surveillance financière", example: "Financial oversight aims to identify risks before they trigger crises." },
-    
+
     // Développement économique
     { word: "economic development", translation: "développement économique", example: "Economic development strategies aim to improve living standards and reduce poverty." },
-    
+
     { word: "emerging market", translation: "marché émergent", example: "Emerging markets offer growth opportunities but with higher risks." },
     { word: "developing economy", translation: "économie en développement", example: "Developing economies work to build industrial capacity and infrastructure." },
     { word: "industrialization", translation: "industrialisation", example: "Industrialization transforms agricultural societies into manufacturing economies." },
     { word: "economic growth", translation: "croissance économique", example: "Economic growth measures increases in a country's production." },
     { word: "gross domestic product", translation: "produit intérieur brut", example: "Gross domestic product measures the total value of goods and services produced." },
-    
-    
+
     { word: "poverty reduction", translation: "réduction de la pauvreté", example: "Poverty reduction strategies address both income and non-income dimensions." },
-    
+
     { word: "economic transformation", translation: "transformation économique", example: "Economic transformation involves shifting to higher-value activities." },
     { word: "middle-income trap", translation: "piège du revenu intermédiaire", example: "The middle-income trap occurs when countries struggle to reach high-income status." },
     { word: "export-led growth", translation: "croissance tirée par les exportations", example: "Export-led growth focuses on producing goods for international markets." },
     { word: "structural adjustment", translation: "ajustement structurel", example: "Structural adjustment programs require economic reforms in exchange for loans." },
-    
+
     // Commerce équitable
-    
-    
+
     { word: "supply chain transparency", translation: "transparence de la chaîne d'approvisionnement", example: "Supply chain transparency reveals how and where products are made." },
     { word: "labor standards", translation: "normes du travail", example: "International labor standards establish minimum rights for workers worldwide." },
     { word: "living wage", translation: "salaire vital", example: "A living wage covers basic needs for workers and their families." },
-    
-    
+
     { word: "ethical trade", translation: "commerce éthique", example: "Ethical trade focuses on working conditions in supply chains." },
     { word: "producer cooperative", translation: "coopérative de producteurs", example: "Producer cooperatives give farmers collective ownership and market power." },
     { word: "direct trade", translation: "commerce direct", example: "Direct trade establishes relationships between producers and buyers." },
     { word: "exploitation", translation: "exploitation", example: "Fair trade aims to prevent exploitation of vulnerable producers." },
     { word: "conscious capitalism", translation: "capitalisme conscient", example: "Conscious capitalism integrates ethical principles into business practices." },
-    
+
     // Innovations financières
     { word: "financial innovation", translation: "innovation financière", example: "Financial innovation creates new products, services, and transaction methods." },
     { word: "digital currency", translation: "monnaie numérique", example: "Digital currencies operate without central bank involvement." },
     { word: "cryptocurrency", translation: "cryptomonnaie", example: "Cryptocurrencies use encryption techniques for secure transactions." },
-    
+
     { word: "fintech", translation: "technologie financière", example: "Fintech companies apply technology to improve financial services." },
-    
+
     { word: "peer-to-peer lending", translation: "prêt entre particuliers", example: "Peer-to-peer lending connects borrowers directly with individual lenders." },
-    
+
     { word: "digital payment", translation: "paiement numérique", example: "Digital payment systems allow electronic money transfers." },
     { word: "robo-advisor", translation: "conseiller robotisé", example: "Robo-advisors provide automated investment management services." },
     { word: "financial inclusion", translation: "inclusion financière", example: "Financial inclusion extends banking services to underserved populations." },

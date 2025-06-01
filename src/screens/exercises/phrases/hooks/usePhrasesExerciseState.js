@@ -11,10 +11,10 @@ import { useState, useCallback, useEffect } from "react";
 const usePhrasesExerciseState = (level, phrasesData) => {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [phraseIndex, setPhraseIndex] = useState(0);
-  
+
   // ✅ AJOUTÉ - Toggle translation (remplace le modal)
   const [showTranslation, setShowTranslation] = useState(false);
-  
+
   const [completionProgress, setCompletionProgress] = useState(0);
 
   // Vérifier si phrasesData est valide et a des catégories
@@ -89,18 +89,18 @@ const usePhrasesExerciseState = (level, phrasesData) => {
     categoryIndex,
     phraseIndex,
     completionProgress,
-    
+
     // ✅ AJOUTÉ - État translation
     showTranslation,
-    
+
     // Fonctions existantes
     changeCategory,
     goToNextPhrase,
     goToPreviousPhrase,
-    
+
     // ✅ AJOUTÉ - Function toggle
     toggleTranslation,
-    
+
     // Données calculées
     currentCategory,
     currentPhrases,

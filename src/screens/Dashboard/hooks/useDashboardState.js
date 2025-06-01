@@ -12,7 +12,7 @@ export const useDashboardState = (loadLastActivities) => {
     try {
       await loadLastActivities();
     } catch (error) {
-      console.error("Erreur refresh:", error);
+
     } finally {
       setRefreshing(false);
     }
@@ -38,3 +38,4 @@ export const useDashboardState = (loadLastActivities) => {
     onRefresh,
   };
 };
+

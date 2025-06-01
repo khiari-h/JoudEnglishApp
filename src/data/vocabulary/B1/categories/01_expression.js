@@ -19,7 +19,7 @@ export const vocab = {
     { word: "ethos", translation: "ethos", example: "His ethos as a respected doctor gives weight to his medical opinions." },
     { word: "pathos", translation: "pathos", example: "The speech used pathos to appeal to the audience's emotions." },
     { word: "logos", translation: "logos", example: "Her argument relied heavily on logos, using statistics and logic." },
-    
+
     // Communication non-verbale
     { word: "body language", translation: "langage corporel", example: "His body language revealed his nervousness." },
     { word: "gesture", translation: "geste", example: "She emphasized her point with a hand gesture." },
@@ -31,29 +31,29 @@ export const vocab = {
     { word: "volume", translation: "volume", example: "He lowered his volume to emphasize the serious point." },
     { word: "pace", translation: "rythme", example: "Speaking at a slower pace can help the audience understand complex ideas." },
     { word: "proxemics", translation: "proxémie", example: "Proxemics studies how people use physical space in communication." },
-    
+
     { word: "kinesics", translation: "kinésique", example: "Kinesics is the study of body movements and gestures in communication." },
     { word: "paralanguage", translation: "paralangage", example: "Paralanguage includes vocal elements like tone, pitch, and volume." },
     { word: "haptics", translation: "haptique", example: "Haptics refers to communication through touch." },
     { word: "silence", translation: "silence", example: "Sometimes silence can communicate more than words." },
-    
+
     // Prise de parole en public
     { word: "public speaking", translation: "prise de parole en public", example: "Public speaking is one of the most common fears." },
-    
+
     { word: "podium", translation: "podium", example: "The speaker approached the podium nervously." },
     { word: "stage fright", translation: "trac", example: "Many people experience stage fright before speaking publicly." },
     { word: "keynote", translation: "discours principal", example: "She delivered the keynote at the conference." },
-    
+
     { word: "speech", translation: "discours", example: "The speech lasted for thirty minutes." },
-    
+
     { word: "projection", translation: "projection", example: "Voice projection is essential when speaking to large groups." },
     { word: "articulation", translation: "articulation", example: "Clear articulation helps the audience understand your message." },
     { word: "prompt", translation: "aide-mémoire", example: "He used note cards as prompts during his speech." },
     { word: "impromptu", translation: "impromptu", example: "She gave an impressive impromptu speech without preparation." },
     { word: "teleprompter", translation: "téléprompteur", example: "The politician read his speech from a teleprompter." },
-    
+
     { word: "moderator", translation: "modérateur", example: "The moderator introduced each speaker." },
-    
+
     // Nuances d'expression
     { word: "nuance", translation: "nuance", example: "The language has many nuances that are difficult to translate." },
     { word: "connotation", translation: "connotation", example: "The word has a negative connotation in this context." },
@@ -69,8 +69,7 @@ export const vocab = {
     { word: "understatement", translation: "litote", example: "Saying 'not bad' when something is excellent is an understatement." },
     { word: "sarcasm", translation: "sarcasme", example: "Her sarcasm wasn't appreciated by everyone." },
     { word: "irony", translation: "ironie", example: "The irony of the situation wasn't lost on anyone." },
-    
-    
+
     // Adaptation du discours
     { word: "register", translation: "registre", example: "You should use a formal register for academic writing." },
     { word: "jargon", translation: "jargon", example: "The report was full of legal jargon." },
@@ -87,13 +86,13 @@ export const vocab = {
     { word: "code-switching", translation: "alternance codique", example: "Code-switching between languages is common in bilingual communities." },
     { word: "dialect", translation: "dialecte", example: "He spoke in his regional dialect." },
     { word: "vernacular", translation: "vernaculaire", example: "The poem uses local vernacular expressions." },
-    
+
     // Techniques narratives
     { word: "narrative", translation: "récit", example: "Personal narratives can be powerful communication tools." },
     { word: "storytelling", translation: "narration", example: "Effective storytelling can make complex ideas memorable." },
-    
+
     { word: "plot", translation: "intrigue", example: "The plot of his story captivated the audience." },
-    
+
     { word: "setting", translation: "cadre", example: "The setting of the story was a small village in France." },
     { word: "conflict", translation: "conflit", example: "Every compelling story has some form of conflict." },
     { word: "resolution", translation: "résolution", example: "The resolution of the story offered a satisfying conclusion." },
@@ -104,10 +103,9 @@ export const vocab = {
     { word: "climax", translation: "apogée", example: "The climax of his speech received a standing ovation." },
     { word: "pacing", translation: "rythme", example: "Good pacing keeps the audience engaged with your story." },
     { word: "hook", translation: "accroche", example: "Start with a strong hook to grab the audience's attention." },
-    
+
     // Débat et argumentation
-    
-    
+
     { word: "counterargument", translation: "contre-argument", example: "She anticipated his counterargument and addressed it preemptively." },
     { word: "rebuttal", translation: "réfutation", example: "His rebuttal effectively dismantled the opposing argument." },
     { word: "premise", translation: "prémisse", example: "The argument is based on a flawed premise." },

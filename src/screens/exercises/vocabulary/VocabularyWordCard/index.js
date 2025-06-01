@@ -74,7 +74,6 @@ const VocabularyWordCard = ({
         )}
       </View>
 
-
       {/* Section exemple */}
       <View style={styles.contentSection}>
         <View style={styles.sectionHeader}>
@@ -90,3 +89,4 @@ const VocabularyWordCard = ({
 };
 
 export default VocabularyWordCard;
+

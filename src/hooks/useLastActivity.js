@@ -83,13 +83,13 @@ const useLastActivity = () => {
         const progressKey = mode ? `${level}_${mode}` : level;
         const completedKey = `vocabulary_completed_${progressKey}`;
         const completedJson = await AsyncStorage.getItem(completedKey);
-        
+
         if (completedJson) {
           const completed = JSON.parse(completedJson);
           metadata.category = position.categoryIndex || 0;
           metadata.word = position.wordIndex || 0;
           metadata.mode = mode;
-          
+
           const totalCategories = Object.keys(completed).length;
           const completedCategories = Object.values(completed)
             .filter(arr => arr && arr.length > 0).length;
@@ -99,12 +99,12 @@ const useLastActivity = () => {
       else if (exerciseType.key === 'grammar') {
         const completedKey = `grammar_completed_${level}`;
         const completedJson = await AsyncStorage.getItem(completedKey);
-        
+
         if (completedJson) {
           const completed = JSON.parse(completedJson);
           metadata.rule = position.ruleIndex || 0;
           metadata.exercise = position.exerciseIndex || 0;
-          
+
           const totalRules = Object.keys(completed).length;
           const completedRules = Object.values(completed)
             .filter(arr => arr && arr.length > 0).length;
@@ -159,11 +159,11 @@ const useLastActivity = () => {
     for (const mode of modes) {
       const positionKey = `vocabulary_position_${level}_${mode}`;
       const positionJson = await AsyncStorage.getItem(positionKey);
-      
+
       if (positionJson) {
         const position = JSON.parse(positionJson);
         const exerciseType = exerciseTypes.find(e => e.key === 'vocabulary');
-        
+
         const { progress, metadata } = await loadProgressMetadata(exerciseType, level, position, mode);
 
         const activity = {
@@ -189,7 +189,7 @@ const useLastActivity = () => {
   // ✅ FIX PRINCIPAL : useCallback STABLE avec dépendances vides
   const loadLastActivities = useCallback(async () => {
     setIsLoading(true);
-    
+
     try {
       const activitiesByLevel = {};
 
@@ -197,14 +197,14 @@ const useLastActivity = () => {
         activitiesByLevel[level] = [];
 
         for (const exerciseType of exerciseTypes) {
-          
+
           if (exerciseType.hasModes && exerciseType.key === 'vocabulary') {
             const vocabularyActivities = await loadVocabularyActivities(level);
             activitiesByLevel[level].push(...vocabularyActivities);
           } else {
             const positionKey = exerciseType.positionKey + level;
             const positionJson = await AsyncStorage.getItem(positionKey);
-            
+
             if (positionJson) {
               const position = JSON.parse(positionJson);
               const { progress, metadata } = await loadProgressMetadata(exerciseType, level, position);
@@ -245,19 +245,19 @@ const useLastActivity = () => {
   const getTimeElapsed = useCallback((timestamp) => {
     const now = Date.now();
     const diffInSeconds = Math.floor((now - timestamp) / 1000);
-    
+
     if (diffInSeconds < 60) return "Il y a quelques instants";
-    
+
     const diffInMinutes = Math.floor(diffInSeconds / 60);
     if (diffInMinutes < 60) {
       return `Il y a ${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''}`;
     }
-    
+
     const diffInHours = Math.floor(diffInMinutes / 60);
     if (diffInHours < 24) {
       return `Il y a ${diffInHours} heure${diffInHours > 1 ? 's' : ''}`;
     }
-    
+
     const diffInDays = Math.floor(diffInHours / 24);
     return `Il y a ${diffInDays} jour${diffInDays > 1 ? 's' : ''}`;
   }, []);
@@ -267,9 +267,9 @@ const useLastActivity = () => {
     if (!lastActivities[level] || lastActivities[level].length === 0) {
       return null;
     }
-    
+
     const activity = lastActivities[level][0];
-    
+
     return {
       ...activity,
       timeElapsed: getTimeElapsed(activity.timestamp)
@@ -280,22 +280,22 @@ const useLastActivity = () => {
   const getLastActivity = useCallback(() => {
     let mostRecentActivity = null;
     let mostRecentTimestamp = 0;
-    
+
     Object.values(lastActivities).forEach(activitiesForLevel => {
       if (activitiesForLevel.length > 0) {
         const activity = activitiesForLevel[0];
-        
+
         if (activity.timestamp > mostRecentTimestamp) {
           mostRecentActivity = activity;
           mostRecentTimestamp = activity.timestamp;
         }
       }
     });
-    
+
     if (!mostRecentActivity) {
       return null;
     }
-    
+
     return {
       ...mostRecentActivity,
       timeElapsed: getTimeElapsed(mostRecentActivity.timestamp)
@@ -305,7 +305,7 @@ const useLastActivity = () => {
   // Formatter le texte de la progression pour l'affichage
   const formatProgressSubtitle = useCallback((activity) => {
     const { type, level, metadata } = activity;
-    
+
     if (type === 'vocabulary' && metadata.category !== undefined) {
       const modeText = metadata.mode ? ` (${metadata.mode === 'fast' ? 'Fast' : 'Classique'})` : '';
       return `Catégorie ${metadata.category + 1}, Mot ${metadata.word + 1}${modeText} • Niveau ${level}`;
@@ -326,7 +326,7 @@ const useLastActivity = () => {
     } else if (type === 'assessment' && metadata.section !== undefined) {
       return `Section ${metadata.section + 1} • Niveau ${level}`;
     }
-    
+
     return `Niveau ${level}`;
   }, []);
 

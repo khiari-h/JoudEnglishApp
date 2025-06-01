@@ -136,5 +136,5 @@ const hotelCheckIn = {
       ]
     }
   };
-  
+
   export default hotelCheckIn;

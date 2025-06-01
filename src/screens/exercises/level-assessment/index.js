@@ -37,7 +37,7 @@ const LevelAssessment = ({ route }) => {
   const sections = getAssessmentSections();
 
   // ========== HOOKS EXISTANTS (utilisés tels quels) ==========
-  
+
   // Hook d'état UI (avec toute sa logique existante)
   const {
     currentSection,
@@ -71,19 +71,19 @@ const LevelAssessment = ({ route }) => {
   } = useAssessmentProgress(level);
 
   // ========== DONNÉES CALCULÉES (utilisant hooks existants) ==========
-  
+
   // Index de la section actuelle (1-based pour affichage)
   const currentSectionIndex = sections.indexOf(currentSection) + 1;
-  
+
   // Titre de la section actuelle
   const sectionTitle = assessmentData[currentSection]?.title || currentSection;
-  
+
   // Question actuelle (1-based pour affichage)
   const currentQuestionNumber = currentQuestionIndex + 1;
-  
+
   // Total questions dans la section actuelle
   const totalQuestionsInSection = assessmentData[currentSection]?.questions?.length || 0;
-  
+
   // Questions répondues dans la section actuelle
   const answeredInCurrentSection = Object.keys(userAnswers[currentSection] || {}).length;
 
@@ -93,11 +93,10 @@ const LevelAssessment = ({ route }) => {
     : false;
 
   // ========== INITIALISATION ==========
-  
+
   // Restaurer la dernière position (logique existante)
   useEffect(() => {
     if (progressLoaded && lastPosition && !currentSection) {
-      console.log("🔄 Restauration position Assessment:", lastPosition);
 
       // Utiliser restoreState du hook existant
       if (restoreState) {
@@ -127,26 +126,23 @@ const LevelAssessment = ({ route }) => {
   useEffect(() => {
     if (progressLoaded && currentSection && !showFeedback && sections.indexOf(currentSection) !== -1) {
       const sectionIndex = sections.indexOf(currentSection);
-      
+
       // Éviter sauvegarde si même position
       if (lastPosition && 
           lastPosition.sectionIndex === sectionIndex && 
           lastPosition.questionIndex === currentQuestionIndex) {
         return;
       }
-      
-      console.log(`💾 Sauvegarde position Assessment: section ${sectionIndex}, question ${currentQuestionIndex}`);
+
       saveLastPosition(sectionIndex, currentQuestionIndex);
     }
   }, [progressLoaded, currentSection, currentQuestionIndex, showFeedback, sections, lastPosition, saveLastPosition]);
 
   // ========== GESTIONNAIRES D'ÉVÉNEMENTS ==========
-  
+
   // Validation de réponse (utilise hooks existants + sync)
   const handleValidateAnswer = useCallback(() => {
     if (selectedAnswer === null) return;
-
-    console.log(`📝 Validation réponse Assessment: section ${currentSection}, question ${currentQuestionIndex}`);
 
     // Appeler la validation du hook existant
     validateAnswer();
@@ -159,22 +155,19 @@ const LevelAssessment = ({ route }) => {
         selectedAnswer,
         isCorrect
       );
-      
-      console.log(`💾 Réponse sauvegardée: ${isCorrect ? 'correcte' : 'incorrecte'}`);
+
     }
   }, [selectedAnswer, currentSection, currentQuestionIndex, currentQuestion, validateAnswer, saveUserAnswer, isCorrect]);
 
   // Navigation question suivante (override du hook existant)
   const handleNextQuestion = useCallback(() => {
-    console.log("➡️ Navigation question suivante Assessment");
-    
+
     // Vérifier si fin de l'évaluation
     const isLastSection = sections.indexOf(currentSection) === sections.length - 1;
     const isLastQuestion = currentQuestionIndex === (assessmentData[currentSection]?.questions?.length || 0) - 1;
 
     if (isLastSection && isLastQuestion && showFeedback) {
-      console.log("🎉 Fin d'évaluation détectée - Calcul du score...");
-      
+
       // Calculer et sauvegarder les résultats finaux
       try {
         const userScore = calculateUserScore();
@@ -188,14 +181,13 @@ const LevelAssessment = ({ route }) => {
           completedAt: new Date().toISOString(),
         };
 
-        console.log("💾 Sauvegarde résultats finaux:", results);
         saveAssessmentResults(results);
-        
+
         // Marquer le test comme terminé
         setTestCompleted(true);
         return;
       } catch (error) {
-        console.error("❌ Erreur calcul score:", error);
+
         Alert.alert("Erreur", "Impossible de calculer le score final.");
         return;
       }
@@ -207,41 +199,40 @@ const LevelAssessment = ({ route }) => {
 
   // Recommencer l'évaluation
   const handleRetry = useCallback(async () => {
-    console.log("🔄 Recommencer évaluation Assessment");
-    
+
     try {
       await resetAssessment();
       setTestCompleted(false);
-      
+
       // Recommencer à la première section
       if (sections.length > 0) {
         changeSection(sections[0]);
         changeQuestion(0);
       }
     } catch (error) {
-      console.error("❌ Erreur reset Assessment:", error);
+
       Alert.alert("Erreur", "Impossible de réinitialiser l'évaluation.");
     }
   }, [resetAssessment, setTestCompleted, sections, changeSection, changeQuestion]);
 
   // Retour navigation
   const handleBackPress = useCallback(() => {
-    console.log("🔙 Retour depuis Assessment");
+
     navigation.goBack();
   }, [navigation]);
 
   // Navigation vers Dashboard
   const handleContinue = useCallback(() => {
-    console.log("🏠 Retour Dashboard depuis Assessment");
+
     navigation.navigate("Dashboard");
   }, [navigation]);
 
   // ========== GESTION RÉSULTATS ==========
-  
+
   if (testCompleted) {
     try {
       const userScore = calculateUserScore();
-      
+
       return (
         <SafeAreaView style={styles.container}>
           <AssessmentResults 
@@ -254,8 +245,7 @@ const LevelAssessment = ({ route }) => {
         </SafeAreaView>
       );
     } catch (error) {
-      console.error("❌ Erreur affichage résultats:", error);
-      
+
       // Affichage de fallback
       return (
         <SafeAreaView style={styles.container}>
@@ -271,7 +261,7 @@ const LevelAssessment = ({ route }) => {
   }
 
   // ========== GESTION CHARGEMENT ==========
-  
+
   if (!currentSection || !currentQuestion) {
     return (
       <SafeAreaView style={styles.container}>
@@ -288,15 +278,6 @@ const LevelAssessment = ({ route }) => {
   }
 
   // ========== LOGS DEBUG ==========
-  console.log("📊 DEBUG Assessment Exercise:", {
-    currentSection,
-    currentSectionIndex,
-    currentQuestionIndex,
-    answeredInCurrentSection,
-    totalQuestionsInSection,
-    showFeedback,
-    isCorrect
-  });
 
   // ========== RENDU PRINCIPAL ==========
   return (

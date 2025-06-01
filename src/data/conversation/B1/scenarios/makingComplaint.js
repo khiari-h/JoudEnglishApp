@@ -173,5 +173,5 @@ const makingComplaint = {
       ]
     }
   };
-  
+
   export default makingComplaint;

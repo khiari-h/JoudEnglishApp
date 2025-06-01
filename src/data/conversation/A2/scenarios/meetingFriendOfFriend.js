@@ -172,5 +172,5 @@ const meetingFriendOfFriend = {
       ]
     }
   };
-  
+
   export default meetingFriendOfFriend;

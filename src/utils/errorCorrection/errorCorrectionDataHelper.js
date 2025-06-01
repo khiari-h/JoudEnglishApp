@@ -182,10 +182,7 @@ export const getErrorCorrectionStats = (level) => {
         .reduce((total, ex) => total + ex.errorPositions.length, 0);
     }
   } catch (error) {
-    console.error(
-      `Error calculating error correction stats for level ${level}:`,
-      error
-    );
+
   }
 
   return stats;
@@ -307,7 +304,7 @@ export const validateErrorCorrectionExercise = (exercise) => {
 
   for (const field of requiredFields) {
     if (!exercise[field]) {
-      console.warn(`Missing required field: ${field}`);
+
       return false;
     }
   }
@@ -315,7 +312,7 @@ export const validateErrorCorrectionExercise = (exercise) => {
   // Validation des types autorisés
   const validTypes = ["full", "identify", "multiple_choice"];
   if (!validTypes.includes(exercise.type)) {
-    console.warn(`Invalid exercise type: ${exercise.type}`);
+
     return false;
   }
 
@@ -326,7 +323,7 @@ export const validateErrorCorrectionExercise = (exercise) => {
       !Array.isArray(exercise.choices) ||
       exercise.choices.length < 2
     ) {
-      console.warn("Multiple choice exercise needs at least 2 choices");
+
       return false;
     }
 
@@ -335,13 +332,13 @@ export const validateErrorCorrectionExercise = (exercise) => {
       exercise.correctChoiceIndex < 0 ||
       exercise.correctChoiceIndex >= exercise.choices.length
     ) {
-      console.warn("Multiple choice exercise has invalid correctChoiceIndex");
+
       return false;
     }
   } else {
     // Pour "full" et "identify", errorPositions est requis
     if (!exercise.errorPositions || !Array.isArray(exercise.errorPositions)) {
-      console.warn(`${exercise.type} exercise missing errorPositions array`);
+
       return false;
     }
   }
@@ -561,3 +558,4 @@ export const getAvailableLevels = () => {
     },
   ];
 };
+

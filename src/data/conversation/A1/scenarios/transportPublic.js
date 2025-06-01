@@ -154,5 +154,5 @@ const transportPublic = {
       ]
     }
   };
-  
+
   export default transportPublic;

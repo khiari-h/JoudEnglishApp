@@ -154,5 +154,5 @@ const bankBasics = {
       ]
     }
   };
-  
+
   export default bankBasics;

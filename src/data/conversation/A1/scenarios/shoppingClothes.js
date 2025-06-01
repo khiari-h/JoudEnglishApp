@@ -170,5 +170,5 @@ const shoppingClothes = {
       ]
     }
   };
-  
+
   export default shoppingClothes;

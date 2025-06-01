@@ -8,7 +8,6 @@ import grammarB2 from "../../data/grammar/B2";
 import grammarC1 from "../../data/grammar/C1";
 import grammarC2 from "../../data/grammar/C2";
 
-
 /**
  * Récupère les données de grammaire en fonction du niveau
  * @param {string} level - Le niveau de langue (A1, A2, B1, B2, C1, C2)
@@ -62,7 +61,7 @@ export const getGrammarRulesCount = (level) => {
 export const getTotalExercisesCount = (level) => {
   const data = getGrammarData(level);
   if (!data) return 0;
-  
+
   return data.reduce((total, rule) => {
     return total + (rule.exercises ? rule.exercises.length : 0);
   }, 0);
@@ -75,16 +74,16 @@ export const getTotalExercisesCount = (level) => {
  */
 export const getLevelStats = (level) => {
   const data = getGrammarData(level);
-  
+
   if (!data) return {
     rules: 0,
     exercises: 0,
     averageExercisesPerRule: 0
   };
-  
+
   const totalRules = data.length;
   const totalExercises = getTotalExercisesCount(level);
-  
+
   return {
     rules: totalRules,
     exercises: totalExercises,

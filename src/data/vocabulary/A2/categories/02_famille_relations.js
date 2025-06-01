@@ -20,7 +20,7 @@ export const vocab = {
     { word: "generation gap", translation: "fossé générationnel", example: "There's often a generation gap between parents and teenagers." },
     { word: "family tree", translation: "arbre généalogique", example: "I'm researching my family tree." },
     { word: "bloodline", translation: "lignée", example: "The bloodline goes back hundreds of years." },
-    
+
     // Étapes de la vie familiale
     { word: "birth", translation: "naissance", example: "The birth of their child changed their lives." },
     { word: "childhood", translation: "enfance", example: "I had a happy childhood." },
@@ -42,7 +42,7 @@ export const vocab = {
     { word: "to grow up", translation: "grandir", example: "I grew up in a small town." },
     { word: "to raise children", translation: "élever des enfants", example: "It's not easy to raise children nowadays." },
     { word: "family values", translation: "valeurs familiales", example: "They were raised with strong family values." },
-    
+
     // Types d'amitié (sans doublons avec A1)
     { word: "companionship", translation: "camaraderie", example: "Dogs provide great companionship." },
     { word: "confidant", translation: "confident", example: "She's my confidant; I tell her everything." },
@@ -59,7 +59,7 @@ export const vocab = {
     { word: "to fall out with", translation: "se fâcher avec", example: "I fell out with my friend over a misunderstanding." },
     { word: "to trust", translation: "faire confiance", example: "I trust her completely." },
     { word: "to support", translation: "soutenir", example: "Friends should support each other through difficult times." },
-    
+
     // Relations professionnelles simples (sans doublons avec A1)
     { word: "professional relationship", translation: "relation professionnelle", example: "We maintain a strictly professional relationship." },
     { word: "coworker", translation: "collègue de travail", example: "My coworkers organized a party for my birthday." },
@@ -76,13 +76,13 @@ export const vocab = {
     { word: "to resign", translation: "démissionner", example: "She resigned from her job to start her own business." },
     { word: "to collaborate", translation: "collaborer", example: "We need to collaborate on this project." },
     { word: "to network", translation: "réseauter", example: "It's important to network in this industry." },
-    
+
     // Description des personnes
-    
+
     { word: "behavior", translation: "comportement", example: "His behavior was inappropriate at the meeting." },
     { word: "attitude", translation: "attitude", example: "I like her positive attitude." },
     { word: "manner", translation: "manière", example: "She has a gentle manner with children." },
-    
+
     { word: "reputation", translation: "réputation", example: "The restaurant has a good reputation." },
     { word: "background", translation: "origine/parcours", example: "People from different backgrounds work together in our company." },
     { word: "upbringing", translation: "éducation", example: "Your upbringing influences your values." },

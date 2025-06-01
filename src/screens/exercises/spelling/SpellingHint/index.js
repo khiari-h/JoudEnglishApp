@@ -22,7 +22,7 @@ const SpellingHint = ({ hint, showHint, onToggle, levelColor }) => {
           {showHint ? "Hide hint" : "Show hint"}
         </Text>
       </TouchableOpacity>
-      
+
       {showHint && (
         <View style={[styles.hintContainer, { borderColor: `${levelColor}30` }]}>
           <Text style={styles.hintText}>

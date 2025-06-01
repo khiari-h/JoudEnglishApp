@@ -19,10 +19,10 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
   // Animation pour le texte uniquement
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const slideAnim = useRef(new Animated.Value(0)).current;
-  
+
   // Clé pour stocker la préférence de visibilité
   const TIPS_VISIBLE_KEY = `vocabulary_tips_visible_${level}`;
-  
+
   // Liste de conseils utiles pour l'apprentissage du vocabulaire
   const VOCABULARY_TIPS = [
     "Utilise ce mot dans une phrase pour mieux le retenir !",
@@ -46,10 +46,10 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
           setTipsVisible(JSON.parse(savedVisibility));
         }
       } catch (error) {
-        console.error('Erreur lors du chargement des préférences de conseils:', error);
+
       }
     };
-    
+
     loadTipsVisibility();
   }, [TIPS_VISIBLE_KEY]);
 
@@ -58,7 +58,7 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
     try {
       await AsyncStorage.setItem(TIPS_VISIBLE_KEY, JSON.stringify(isVisible));
     } catch (error) {
-      console.error('Erreur lors de la sauvegarde des préférences de conseils:', error);
+
     }
   };
 
@@ -91,7 +91,7 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
     ]).start(() => {
       setCurrentTipIndex((prevIndex) => (prevIndex + 1) % VOCABULARY_TIPS.length);
       slideAnim.setValue(15);  // Prépare le texte à entrer depuis la droite
-      
+
       // Animation d'entrée du nouveau texte
       Animated.parallel([
         Animated.timing(fadeAnim, {
@@ -127,7 +127,7 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
         prevIndex === 0 ? VOCABULARY_TIPS.length - 1 : prevIndex - 1
       );
       slideAnim.setValue(-15);  // Prépare le texte à entrer depuis la gauche
-      
+
       // Animation d'entrée du nouveau texte
       Animated.parallel([
         Animated.timing(fadeAnim, {
@@ -163,7 +163,7 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
         <Text style={styles.icon}>💡</Text>
         <View style={styles.textContainer}>
           <Text style={styles.title}>Conseil d'apprentissage</Text>
-          
+
           {/* Animation uniquement sur le texte du conseil */}
           <Animated.Text 
             style={[
@@ -178,7 +178,7 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
           </Animated.Text>
         </View>
       </View>
-      
+
       <View style={styles.navigationContainer}>
         <TouchableOpacity 
           style={styles.navButton}
@@ -187,11 +187,11 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
         >
           <Ionicons name="chevron-back" size={16} color={levelColor} />
         </TouchableOpacity>
-        
+
         <Text style={styles.pageIndicator}>
           {currentTipIndex + 1}/{VOCABULARY_TIPS.length}
         </Text>
-        
+
         <TouchableOpacity 
           style={styles.navButton}
           onPress={nextTip}
@@ -200,7 +200,7 @@ const LearningTipCard = ({ level, levelColor = "#5E60CE" }) => {
           <Ionicons name="chevron-forward" size={16} color={levelColor} />
         </TouchableOpacity>
       </View>
-      
+
       <TouchableOpacity 
         style={styles.closeButton} 
         onPress={toggleTipsVisibility}

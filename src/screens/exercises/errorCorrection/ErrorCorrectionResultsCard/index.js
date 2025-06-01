@@ -76,3 +76,4 @@ const ErrorCorrectionResultsCard = ({
 };
 
 export default ErrorCorrectionResultsCard;
+

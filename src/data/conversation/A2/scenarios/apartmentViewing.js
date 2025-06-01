@@ -171,5 +171,5 @@ const apartmentViewing = {
       ]
     }
   };
-  
+
   export default apartmentViewing;

@@ -163,5 +163,5 @@ const artCriticism = {
       ]
     }
   };
-  
+
   export default artCriticism;

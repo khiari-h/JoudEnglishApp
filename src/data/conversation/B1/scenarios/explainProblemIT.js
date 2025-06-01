@@ -173,5 +173,5 @@ const explainProblemIT = {
       ]
     }
   };
-  
+
   export default explainProblemIT;

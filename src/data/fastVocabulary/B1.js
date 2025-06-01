@@ -42,7 +42,6 @@ export const vocab = {
     { word: "analyze", translation: "analyser", example: "Let's analyze the situation." },
     { word: "evaluate", translation: "évaluer", example: "Evaluate your progress regularly." },
 
-
     { word: "experience", translation: "expérience", example: "That was an amazing experience." },
     { word: "happen", translation: "arriver", example: "What happened yesterday?" },
     { word: "occur", translation: "se produire", example: "The accident occurred at noon." },
@@ -79,7 +78,6 @@ export const vocab = {
     { word: "achievement", translation: "réussite", example: "Graduating was a great achievement." },
     { word: "goal", translation: "objectif", example: "What's your main goal in life?" },
 
-
     { word: "relationship", translation: "relation", example: "We have a good relationship." },
     { word: "friendship", translation: "amitié", example: "Our friendship is very important." },
     { word: "love", translation: "amour", example: "Love conquers all." },
@@ -111,7 +109,6 @@ export const vocab = {
     { word: "worry", translation: "inquiétude", example: "Don't worry about me." },
     { word: "fear", translation: "peur", example: "Fear can hold you back." },
 
-
     { word: "communication", translation: "communication", example: "Good communication is key." },
     { word: "conversation", translation: "conversation", example: "We had an interesting conversation." },
     { word: "chat", translation: "bavarder", example: "Let's chat over coffee." },
@@ -138,7 +135,6 @@ export const vocab = {
     { word: "broadcast", translation: "diffusion", example: "The broadcast starts at 8 PM." },
     { word: "program", translation: "programme", example: "What's your favorite TV program?" },
 
-
     { word: "health", translation: "santé", example: "Health is wealth." },
     { word: "disease", translation: "maladie", example: "This disease is serious." },
     { word: "illness", translation: "maladie", example: "She's recovering from illness." },
@@ -159,7 +155,6 @@ export const vocab = {
     { word: "wound", translation: "blessure", example: "Clean the wound carefully." },
     { word: "pain", translation: "douleur", example: "The pain is getting worse." },
     { word: "ache", translation: "mal", example: "I have a stomach ache." },
-
 
     { word: "idea", translation: "idée", example: "That's a brilliant idea!" },
     { word: "concept", translation: "concept", example: "Explain this concept to me." },

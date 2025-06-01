@@ -157,5 +157,5 @@ const greetingsBasics = {
       ]
     }
   };
-  
+
   export default greetingsBasics;

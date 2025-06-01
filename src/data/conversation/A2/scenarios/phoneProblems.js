@@ -171,5 +171,5 @@ const phoneProblems = {
       ]
     }
   };
-  
+
   export default phoneProblems;

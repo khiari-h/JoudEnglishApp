@@ -86,7 +86,7 @@ const ResultsScreen = ({
         title: "Mes résultats d'apprentissage",
       });
     } catch (error) {
-      console.error("Erreur lors du partage:", error);
+
     }
   };
 
@@ -275,3 +275,4 @@ const ResultsScreen = ({
 };
 
 export default ResultsScreen;
+

@@ -472,5 +472,4 @@ const critiquesEvaluations = [
   },
 ];
 
-
 export default critiquesEvaluations;

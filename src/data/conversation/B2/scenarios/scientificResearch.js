@@ -166,5 +166,5 @@ const scientificResearch = {
       ]
     }
   };
-  
+
   export default scientificResearch;

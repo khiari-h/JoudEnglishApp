@@ -24,7 +24,7 @@ const ExerciseFooter = ({
 }) => {
   // Ajustement du label pour le dernier exercice
   const finalPrimaryLabel = isLastQuestion ? 'Terminer' : primaryLabel;
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.buttonRow}>

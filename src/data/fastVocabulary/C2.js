@@ -12,7 +12,6 @@ export const vocab = {
     { word: "implicit", translation: "implicite", example: "There was an implicit understanding." },
     { word: "explicit", translation: "explicite", example: "He was explicit about his expectations." },
 
-
     { word: "eloquent", translation: "éloquent", example: "Her speech was eloquent and moving." },
     { word: "poignant", translation: "poignant", example: "It was a poignant moment." },
     { word: "evocative", translation: "évocateur", example: "The music was evocative of childhood." },
@@ -22,14 +21,12 @@ export const vocab = {
     { word: "discerning", translation: "perspicace", example: "She has a discerning eye for art." },
     { word: "astute", translation: "astucieux", example: "That was an astute observation." },
 
-
     { word: "notwithstanding", translation: "nonobstant", example: "Notwithstanding the difficulties, we succeeded." },
     { word: "hitherto", translation: "jusqu'ici", example: "Hitherto unknown facts emerged." },
     { word: "whereby", translation: "par lequel", example: "A system whereby everyone benefits." },
     { word: "albeit", translation: "bien que", example: "The plan worked, albeit with difficulties." },
     { word: "vis-à-vis", translation: "vis-à-vis", example: "What's our position vis-à-vis the competition?" },
     { word: "per se", translation: "en soi", example: "Money isn't evil per se." },
-
 
     { word: "perspicacious", translation: "perspicace", example: "She made a perspicacious analysis." },
     { word: "sagacious", translation: "sage", example: "His sagacious advice proved invaluable." },

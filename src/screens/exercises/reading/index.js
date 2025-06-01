@@ -41,7 +41,7 @@ const ReadingExercise = ({ route }) => {
   const readingData = getReadingData(level);
 
   // ========== HOOKS EXISTANTS (utilisés tels quels) ==========
-  
+
   // Hook d'état UI (avec toute sa logique existante)
   const {
     allExercises,
@@ -85,11 +85,11 @@ const ReadingExercise = ({ route }) => {
   } = useReadingProgress(level);
 
   // ========== INITIALISATION ==========
-  
+
   // Initialiser la progression (hook existant)
   useEffect(() => {
     if (loaded && readingData) {
-      console.log("📚 Initialisation Reading progression");
+
       initializeProgress(readingData);
     }
   }, [loaded, readingData, initializeProgress]);
@@ -97,13 +97,12 @@ const ReadingExercise = ({ route }) => {
   // Restaurer la dernière position (hook existant)
   useEffect(() => {
     if (loaded && lastPosition && allExercises.length > 0) {
-      console.log("🔄 Restauration position Reading:", lastPosition);
-      
+
       // Restaurer l'exercice si différent
       if (lastPosition.exerciseIndex !== selectedExerciseIndex) {
         handleTextChange(lastPosition.exerciseIndex);
       }
-      
+
       // Restaurer la question si différente
       if (lastPosition.questionIndex !== currentQuestionIndex) {
         setCurrentQuestionIndex(lastPosition.questionIndex);
@@ -115,10 +114,10 @@ const ReadingExercise = ({ route }) => {
   }, [loaded, lastPosition, allExercises.length, selectedExerciseIndex, currentQuestionIndex, handleTextChange, setCurrentQuestionIndex, setSelectedAnswer, setShowFeedback, setAttempts]);
 
   // ========== DONNÉES CALCULÉES (utilisant hooks existants) ==========
-  
+
   // Question actuelle
   const getCurrentQuestion = currentExercise?.questions?.[currentQuestionIndex] || null;
-  
+
   // Vérification réponse
   const isCorrect = getCurrentQuestion && selectedAnswer !== null
     ? selectedAnswer === getCurrentQuestion.correctAnswer
@@ -128,32 +127,29 @@ const ReadingExercise = ({ route }) => {
   const completedInCurrentExercise = completedQuestions[selectedExerciseIndex]?.length || 0;
 
   // ========== GESTIONNAIRES PERSONNALISÉS ==========
-  
+
   // Vérifier la réponse (utilise hook existant + sync avec progression)
   const handleCheckAnswer = useCallback(() => {
     if (selectedAnswer === null || !getCurrentQuestion) return;
 
-    console.log(`📝 Vérification réponse: exercice ${selectedExerciseIndex}, question ${currentQuestionIndex}`);
-    
     // Utiliser la fonction du hook existant
     handleSubmitAnswer();
-    
+
     // Si correct, synchroniser avec useReadingProgress
     if (isCorrect) {
       // Récupérer les questions complétées actuelles
       const currentCompleted = completedQuestions[selectedExerciseIndex] || [];
-      
+
       // Ajouter la question actuelle si pas déjà dans la liste
       if (!currentCompleted.includes(currentQuestionIndex)) {
         const updatedCompleted = [...currentCompleted, currentQuestionIndex];
-        
+
         // Synchroniser avec useReadingProgress
         updateExerciseProgress(selectedExerciseIndex, updatedCompleted);
       }
-      
-      console.log(`✅ Question ${currentQuestionIndex} complétée`);
+
     } else {
-      console.log(`❌ Question ${currentQuestionIndex} incorrecte`);
+
     }
   }, [selectedAnswer, getCurrentQuestion, selectedExerciseIndex, currentQuestionIndex, handleSubmitAnswer, isCorrect, completedQuestions, updateExerciseProgress]);
 
@@ -184,7 +180,6 @@ const ReadingExercise = ({ route }) => {
     // Utiliser la navigation du hook existant
     originalHandleNextQuestion();
 
-    console.log(`➡️ Navigation: vers exercice ${selectedExerciseIndex}, question ${currentQuestionIndex + 1}`);
   }, [currentQuestionIndex, currentExercise, selectedExerciseIndex, allExercises.length, saveLastPosition, originalHandleNextQuestion, navigation]);
 
   // Navigation question précédente (override du hook existant)
@@ -192,40 +187,37 @@ const ReadingExercise = ({ route }) => {
     // Sauvegarder position avant navigation
     const newQuestionIndex = Math.max(0, currentQuestionIndex - 1);
     saveLastPosition(selectedExerciseIndex, newQuestionIndex);
-    
+
     // Utiliser la navigation du hook existant
     originalHandlePreviousQuestion();
-    
-    console.log(`⬅️ Navigation: vers exercice ${selectedExerciseIndex}, question ${newQuestionIndex}`);
+
   }, [currentQuestionIndex, selectedExerciseIndex, saveLastPosition, originalHandlePreviousQuestion]);
 
   // Changer d'exercice (utilise hook existant + sync position)
   const handleExerciseChange = useCallback((exerciseIndex) => {
-    console.log(`📂 Changement exercice: ${selectedExerciseIndex} → ${exerciseIndex}`);
-    
+
     // Utiliser le hook existant
     handleTextChange(exerciseIndex);
-    
+
     // Sauvegarder nouvelle position
     saveLastPosition(exerciseIndex, 0);
   }, [selectedExerciseIndex, handleTextChange, saveLastPosition]);
 
   // Sélection directe de question (utilise hooks existants)
   const handleQuestionSelect = useCallback((questionIndex) => {
-    console.log(`🎯 Sélection directe question ${questionIndex}`);
-    
+
     // Utiliser les setters du hook existant
     setCurrentQuestionIndex(questionIndex);
     setSelectedAnswer(null);
     setShowFeedback(false);
     setAttempts(0);
-    
+
     // Sauvegarder position
     saveLastPosition(selectedExerciseIndex, questionIndex);
   }, [setCurrentQuestionIndex, setSelectedAnswer, setShowFeedback, setAttempts, selectedExerciseIndex, saveLastPosition]);
 
   // ========== GESTION CHARGEMENT ==========
-  
+
   if (!loaded || allExercises.length === 0) {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -248,14 +240,6 @@ const ReadingExercise = ({ route }) => {
   }
 
   // ========== LOGS DEBUG ==========
-  console.log("📊 DEBUG Reading Exercise:", {
-    selectedExerciseIndex,
-    currentQuestionIndex,
-    completedInCurrentExercise,
-    totalQuestions: currentExercise?.questions?.length || 0,
-    showFeedback,
-    isCorrect
-  });
 
   // ========== RENDU ==========
   return (

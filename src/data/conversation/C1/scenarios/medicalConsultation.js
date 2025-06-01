@@ -201,5 +201,5 @@ const medicalConsultation = {
       ]
     }
   };
-  
+
   export default medicalConsultation;

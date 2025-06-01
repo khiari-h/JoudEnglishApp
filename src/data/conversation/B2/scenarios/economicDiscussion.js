@@ -177,5 +177,5 @@ const economicDiscussion = {
       ]
     }
   };
-  
+
   export default economicDiscussion;

@@ -1,85 +1,74 @@
-ï»¿export const vocab = {
+export const vocab = {
   title: "Lieux & Environnements",
   words: [
     // Lieux dans la ville
-    
+
     { word: "town", translation: "ville (petite)", example: "I live in a small town." },
-    
+
     { word: "road", translation: "route", example: "This road leads to the beach." },
-    
-    
-    
+
     { word: "shop", translation: "magasin", example: "There's a new shop in town." },
     { word: "store", translation: "magasin", example: "I need to go to the grocery store." },
     { word: "restaurant", translation: "restaurant", example: "Let's eat at this restaurant." },
-    { word: "cafe", translation: "cafÃ©", example: "I have coffee at this cafe every morning." },
-    { word: "supermarket", translation: "supermarchÃ©", example: "I buy food at the supermarket." },
+    { word: "cafe", translation: "café", example: "I have coffee at this cafe every morning." },
+    { word: "supermarket", translation: "supermarché", example: "I buy food at the supermarket." },
     { word: "bank", translation: "banque", example: "I need to go to the bank." },
-    { word: "hospital", translation: "hÃ´pital", example: "The hospital is on Park Street." },
+    { word: "hospital", translation: "hôpital", example: "The hospital is on Park Street." },
     { word: "police station", translation: "commissariat", example: "The police station is near the town hall." },
     { word: "post office", translation: "bureau de poste", example: "I need to go to the post office to send a letter." },
     { word: "pharmacy", translation: "pharmacie", example: "The pharmacy is closed on Sundays." },
-    { word: "market", translation: "marchÃ©", example: "I buy fresh vegetables at the market." },
-    
+    { word: "market", translation: "marché", example: "I buy fresh vegetables at the market." },
+
     // Espaces domestiques
-    
-    
-    
-    { word: "room", translation: "piÃ¨ce/chambre", example: "This room is very spacious." },
-    
-    
-    
-    
-    
-    
-    
-    
+
+    { word: "room", translation: "pièce/chambre", example: "This room is very spacious." },
+
     { word: "yard", translation: "cour", example: "The children play in the yard." },
-    
-    // Lieux Ã©ducatifs
-    { word: "school", translation: "Ã©cole", example: "Children go to school to learn." },
-    { word: "university", translation: "universitÃ©", example: "She studies at the university." },
-    { word: "college", translation: "Ã©cole supÃ©rieure", example: "He's in his second year of college." },
+
+    // Lieux éducatifs
+    { word: "school", translation: "école", example: "Children go to school to learn." },
+    { word: "university", translation: "université", example: "She studies at the university." },
+    { word: "college", translation: "école supérieure", example: "He's in his second year of college." },
     { word: "classroom", translation: "salle de classe", example: "The classroom is on the second floor." },
-    { word: "library", translation: "bibliothÃ¨que", example: "I study at the library." },
+    { word: "library", translation: "bibliothèque", example: "I study at the library." },
     { word: "laboratory", translation: "laboratoire", example: "Students do experiments in the laboratory." },
     { word: "campus", translation: "campus", example: "The university campus is very large." },
-    { word: "kindergarten", translation: "Ã©cole maternelle", example: "My son goes to kindergarten." },
-    { word: "high school", translation: "lycÃ©e", example: "She goes to high school." },
+    { word: "kindergarten", translation: "école maternelle", example: "My son goes to kindergarten." },
+    { word: "high school", translation: "lycée", example: "She goes to high school." },
     { word: "course", translation: "cours", example: "I'm taking an English course." },
     { word: "class", translation: "cours/classe", example: "I have a math class today." },
-    { word: "student", translation: "Ã©tudiant", example: "He is a university student." },
+    { word: "student", translation: "étudiant", example: "He is a university student." },
     { word: "teacher", translation: "enseignant", example: "My English teacher is very good." },
-    
+
     // Espaces de loisirs simples
     { word: "park", translation: "parc", example: "We go to the park on Sundays." },
-    { word: "cinema", translation: "cinÃ©ma", example: "Let's go to the cinema tonight." },
-    { word: "theater", translation: "thÃ©Ã¢tre", example: "I love going to the theater." },
-    { word: "museum", translation: "musÃ©e", example: "The museum is open from 9 to 5." },
+    { word: "cinema", translation: "cinéma", example: "Let's go to the cinema tonight." },
+    { word: "theater", translation: "théâtre", example: "I love going to the theater." },
+    { word: "museum", translation: "musée", example: "The museum is open from 9 to 5." },
     { word: "stadium", translation: "stade", example: "The football match is at the stadium." },
     { word: "gym", translation: "salle de sport", example: "I go to the gym three times a week." },
     { word: "swimming pool", translation: "piscine", example: "We swim at the swimming pool." },
     { word: "beach", translation: "plage", example: "We go to the beach in summer." },
-    { word: "forest", translation: "forÃªt", example: "We like to walk in the forest." },
+    { word: "forest", translation: "forêt", example: "We like to walk in the forest." },
     { word: "mountain", translation: "montagne", example: "They go skiing in the mountains." },
     { word: "lake", translation: "lac", example: "There's a beautiful lake near our house." },
-    { word: "river", translation: "riviÃ¨re", example: "We can swim in the river." },
+    { word: "river", translation: "rivière", example: "We can swim in the river." },
     { word: "countryside", translation: "campagne", example: "I prefer the countryside to the city." },
-    
-    // PrÃ©positions de lieu
+
+    // Prépositions de lieu
     { word: "in", translation: "dans", example: "The book is in my bag." },
     { word: "on", translation: "sur", example: "The book is on the table." },
     { word: "under", translation: "sous", example: "The cat is under the table." },
     { word: "above", translation: "au-dessus", example: "The lamp is above the table." },
     { word: "below", translation: "en dessous", example: "The basement is below the house." },
-    { word: "behind", translation: "derriÃ¨re", example: "The garden is behind the house." },
+    { word: "behind", translation: "derrière", example: "The garden is behind the house." },
     { word: "in front of", translation: "devant", example: "The car is in front of the garage." },
-    { word: "next to", translation: "Ã  cÃ´tÃ© de", example: "The school is next to the park." },
+    { word: "next to", translation: "à côté de", example: "The school is next to the park." },
     { word: "between", translation: "entre", example: "The bank is between the post office and the supermarket." },
     { word: "opposite", translation: "en face de", example: "The restaurant is opposite the cinema." },
-    { word: "near", translation: "prÃ¨s de", example: "We live near the station." },
+    { word: "near", translation: "près de", example: "We live near the station." },
     { word: "far from", translation: "loin de", example: "The airport is far from the city center." },
-    { word: "inside", translation: "Ã  l'intÃ©rieur", example: "It's cold outside, let's go inside." },
-    { word: "outside", translation: "Ã  l'extÃ©rieur", example: "The children are playing outside." }
+    { word: "inside", translation: "à l'intérieur", example: "It's cold outside, let's go inside." },
+    { word: "outside", translation: "à l'extérieur", example: "The children are playing outside." }
   ]
 };

@@ -7,12 +7,12 @@ import readingQuestionsA2 from './categories/readingQuestionsA2.js';
 const combineTextWithQuestions = (textId) => {
   const text = readingTextsA2.find(t => t.id === textId);
   const questions = readingQuestionsA2.find(q => q.textId === textId);
-  
+
   if (!text || !questions) {
-    console.warn(`Text or questions not found for ID: ${textId}`);
+
     return null;
   }
-  
+
   return {
     ...text,
     questions: questions.questions
@@ -58,13 +58,13 @@ const a2Metadata = {
 const readingA2Data = {
   metadata: a2Metadata,
   exercises: getAllA2Exercises(),
-  
+
   // Fonctions utilitaires
   getAll: getAllA2Exercises,
   getById: getA2ExerciseById,
   getByDifficulty: getA2ExercisesByDifficulty,
   getByTopic: getA2ExercisesByTopic,
-  
+
   // Accès séparé aux données brutes
   texts: readingTextsA2,
   questions: readingQuestionsA2

@@ -157,7 +157,7 @@ export const getExerciseStats = (level) => {
     stats.homophones = homophonesData?.exercises?.length || 0;
     stats.total = stats.correction + stats.rules + stats.homophones;
   } catch (error) {
-    console.error("Error calculating exercise stats:", error);
+
   }
 
   return stats;
@@ -183,7 +183,7 @@ export const getGlobalStats = () => {
     const levelStats = getExerciseStats(level);
     globalStats.byLevel[level] = levelStats;
     globalStats.totalExercises += levelStats.total;
-    
+
     // Compter tous les niveaux maintenant qu'ils sont implémentés
     globalStats.byType.correction += levelStats.correction;
     globalStats.byType.rules += levelStats.rules;
@@ -205,10 +205,10 @@ export const validateExercise = (exercise) => {
 
   // Champs requis pour tous les types
   const requiredFields = ["type", "instruction", "correctAnswer"];
-  
+
   for (const field of requiredFields) {
     if (!exercise[field]) {
-      console.warn(`Missing required field: ${field}`);
+
       return false;
     }
   }
@@ -217,35 +217,35 @@ export const validateExercise = (exercise) => {
   switch (exercise.type) {
     case "correction":
       if (!exercise.wordToCorrect) {
-        console.warn("Correction exercise missing wordToCorrect");
+
         return false;
       }
       break;
-    
+
     case "spelling_rule":
       if (!exercise.rule) {
-        console.warn("Spelling rule exercise missing rule");
+
         return false;
       }
       break;
-    
+
     case "homophones":
       if (!exercise.sentence || !exercise.choices || !Array.isArray(exercise.choices)) {
-        console.warn("Homophones exercise missing sentence or choices");
+
         return false;
       }
       if (exercise.choices.length < 2) {
-        console.warn("Homophones exercise needs at least 2 choices");
+
         return false;
       }
       if (!exercise.choices.includes(exercise.correctAnswer)) {
-        console.warn("Homophones exercise correctAnswer not in choices");
+
         return false;
       }
       break;
-    
+
     default:
-      console.warn(`Unknown exercise type: ${exercise.type}`);
+
       return false;
   }
 
@@ -260,7 +260,7 @@ export const validateExercise = (exercise) => {
  */
 export const validateExerciseData = (level, type) => {
   const data = getSpellingData(level, type);
-  
+
   if (!data || !data.exercises) {
     return {
       valid: false,
@@ -295,7 +295,7 @@ export const validateExerciseData = (level, type) => {
  */
 export const getRandomExercise = (level, type) => {
   const data = getSpellingData(level, type);
-  
+
   if (!data || !data.exercises || data.exercises.length === 0) {
     return null;
   }

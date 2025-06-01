@@ -140,3 +140,4 @@ const LearningPathCompact = ({
 };
 
 export default LearningPathCompact;
+

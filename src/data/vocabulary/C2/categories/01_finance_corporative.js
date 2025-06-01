@@ -24,17 +24,16 @@ export const vocab = {
     { word: "corporate restructuring", translation: "restructuration d'entreprise", example: "Corporate restructuring aims to optimize financial performance and strategic focus." },
     { word: "enterprise value", translation: "valeur d'entreprise", example: "Enterprise value includes both equity and debt components." },
     { word: "financial engineering", translation: "ingénierie financière", example: "Financial engineering develops innovative solutions for capital needs." },
-    
+
     { word: "value chain analysis", translation: "analyse de la chaîne de valeur", example: "Value chain analysis identified opportunities to improve profitability." },
     { word: "capital intensity", translation: "intensité capitalistique", example: "The new strategy reduced the business's capital intensity." },
-    
+
     // Fusions et acquisitions (25 mots)
     { word: "merger", translation: "fusion", example: "The merger created the largest telecommunications company in the market." },
     { word: "acquisition", translation: "acquisition", example: "The strategic acquisition expanded their market share by 15%." },
-    
-    
+
     { word: "hostile takeover", translation: "prise de contrôle hostile", example: "The board implemented defensive measures against the hostile takeover attempt." },
-    
+
     { word: "deal structure", translation: "structure de transaction", example: "The complex deal structure included both cash and stock components." },
     { word: "post-merger integration", translation: "intégration post-fusion", example: "Post-merger integration challenges delayed the expected synergies." },
     { word: "leveraged buyout", translation: "acquisition par emprunt", example: "The private equity firm financed the leveraged buyout with high-yield bonds." },
@@ -54,23 +53,22 @@ export const vocab = {
     { word: "breakup fee", translation: "frais de rupture", example: "The breakup fee discouraged the target from pursuing other offers." },
     { word: "fairness opinion", translation: "attestation d'équité", example: "The investment bank provided a fairness opinion on the acquisition price." },
     { word: "divestiture", translation: "cession d'actifs", example: "The divestiture of non-core businesses improved their strategic focus." },
-    
+
     // Planification financière (25 mots)
     { word: "financial planning", translation: "planification financière", example: "Robust financial planning helped the company navigate market volatility." },
     { word: "financial forecast", translation: "prévision financière", example: "Their five-year financial forecast projected substantial revenue growth." },
-    
-    
+
     { word: "cash flow projection", translation: "projection de flux de trésorerie", example: "The cash flow projection indicated potential liquidity issues next quarter." },
     { word: "capital expenditure", translation: "dépense d'investissement", example: "The board approved capital expenditures for new manufacturing facilities." },
     { word: "working capital management", translation: "gestion du fonds de roulement", example: "Improved working capital management released significant cash resources." },
     { word: "financial modeling", translation: "modélisation financière", example: "Financial modeling showed the acquisition would be accretive to earnings." },
-    
+
     { word: "long-range planning", translation: "planification à long terme", example: "Their long-range planning incorporated emerging market opportunities." },
     { word: "budget variance", translation: "écart budgétaire", example: "The monthly review analyzed budget variance for each department." },
     { word: "rolling forecast", translation: "prévision glissante", example: "Their rolling forecast is updated quarterly with new market information." },
     { word: "operational planning", translation: "planification opérationnelle", example: "Operational planning translates strategic goals into specific initiatives." },
     { word: "profit planning", translation: "planification des bénéfices", example: "Profit planning ensures alignment between sales targets and expense controls." },
-    
+
     { word: "financial objective", translation: "objectif financier", example: "Their financial objectives included margin expansion and debt reduction." },
     { word: "planning assumption", translation: "hypothèse de planification", example: "Key planning assumptions were documented and reviewed quarterly." },
     { word: "growth projection", translation: "projection de croissance", example: "Their growth projections incorporated both organic expansion and acquisitions." },
@@ -81,19 +79,19 @@ export const vocab = {
     { word: "cost projection", translation: "projection des coûts", example: "Cost projections incorporated inflation and efficiency initiatives." },
     { word: "financial plan", translation: "plan financier", example: "The board approved the financial plan for the coming fiscal year." },
     { word: "resource allocation", translation: "allocation des ressources", example: "Strategic priorities guide resource allocation decisions." },
-    
+
     // Gouvernance d'entreprise (25 mots)
-    
+
     { word: "board of directors", translation: "conseil d'administration", example: "The board of directors oversees management and protects shareholder interests." },
     { word: "fiduciary duty", translation: "obligation fiduciaire", example: "Directors have a fiduciary duty to act in the company's best interests." },
     { word: "shareholder rights", translation: "droits des actionnaires", example: "The proposal aimed to strengthen shareholder rights through proxy access." },
     { word: "agency problem", translation: "problème d'agence", example: "Executive compensation seeks to address the agency problem between managers and owners." },
-    
+
     { word: "internal controls", translation: "contrôles internes", example: "Effective internal controls prevent fraud and ensure accurate financial reporting." },
     { word: "audit committee", translation: "comité d'audit", example: "The audit committee reviews financial statements and oversees the external auditors." },
     { word: "independent director", translation: "administrateur indépendant", example: "The majority of board members must be independent directors." },
     { word: "corporate bylaws", translation: "statuts de l'entreprise", example: "The corporate bylaws establish procedures for board meetings and elections." },
-    
+
     { word: "board independence", translation: "indépendance du conseil", example: "Board independence ensures objective oversight of management decisions." },
     { word: "corporate charter", translation: "charte d'entreprise", example: "The corporate charter defines the organization's fundamental authorities." },
     { word: "proxy statement", translation: "déclaration de procuration", example: "The proxy statement discloses executive compensation and board nominees." },
@@ -105,37 +103,20 @@ export const vocab = {
     { word: "governance policy", translation: "politique de gouvernance", example: "Their governance policy addresses board composition and succession planning." },
     { word: "say on pay", translation: "vote consultatif sur la rémunération", example: "The say on pay resolution received 85% shareholder approval." },
     { word: "governance rating", translation: "notation de gouvernance", example: "Governance ratings evaluate board structures and shareholder rights." },
-    
+
     { word: "board evaluation", translation: "évaluation du conseil", example: "Annual board evaluations assess effectiveness and identify improvement areas." },
     { word: "corporate secretary", translation: "secrétaire général", example: "The corporate secretary advises on governance procedures and requirements." },
-    
+
     // Gestion des risques (25 mots)
     { word: "risk management", translation: "gestion des risques", example: "Comprehensive risk management identifies and mitigates potential threats." },
-    
-    
-    
+
     { word: "hedging strategy", translation: "stratégie de couverture", example: "The hedging strategy protected against currency fluctuations." },
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     { word: "risk dashboard", translation: "tableau de bord des risques", example: "The risk dashboard provides visualization of key risk metrics." },
-    
-    
+
     { word: "emerging risk", translation: "risque émergent", example: "Their risk process includes scanning for emerging risks and trends." },
     { word: "systematic risk", translation: "risque systématique", example: "Systematic risk affects the entire market and cannot be diversified away." },
-    
-    
-    
+
     // Tresorerie et gestion de liquidité (25 mots)
     { word: "treasury management", translation: "gestion de trésorerie", example: "Treasury management optimizes cash resources and minimizes financing costs." },
     { word: "cash pooling", translation: "centralisation de trésorerie", example: "Global cash pooling improved liquidity across their subsidiaries." },
@@ -162,21 +143,21 @@ export const vocab = {
     { word: "collection efficiency", translation: "efficacité de recouvrement", example: "Collection efficiency improved following process standardization." },
     { word: "disbursement control", translation: "contrôle des décaissements", example: "Disbursement controls prevent unauthorized payments." },
     { word: "bank fee analysis", translation: "analyse des frais bancaires", example: "Bank fee analysis identified opportunities to reduce transaction costs." },
-    
+
     // Reporting et analyse financière (25 mots)
     { word: "financial reporting", translation: "reporting financier", example: "Financial reporting must comply with accounting standards and regulations." },
     { word: "management accounting", translation: "comptabilité de gestion", example: "Management accounting provides information for internal decision-making." },
     { word: "financial analysis", translation: "analyse financière", example: "Financial analysis revealed opportunities to improve operational efficiency." },
     { word: "profitability analysis", translation: "analyse de rentabilité", example: "Profitability analysis identified underperforming product lines." },
-    
+
     { word: "break-even analysis", translation: "analyse du seuil de rentabilité", example: "Break-even analysis determined the minimum sales volume needed." },
     { word: "financial dashboard", translation: "tableau de bord financier", example: "The financial dashboard provides real-time performance metrics." },
-    
+
     { word: "cost allocation", translation: "allocation des coûts", example: "Their cost allocation methodology distributes overhead expenses equitably." },
     { word: "contribution margin", translation: "marge sur coût variable", example: "Products with high contribution margins received marketing priority." },
     { word: "financial statement analysis", translation: "analyse des états financiers", example: "Financial statement analysis evaluates company performance and position." },
     { word: "ratio analysis", translation: "analyse par ratios", example: "Ratio analysis compares performance metrics against industry benchmarks." },
-    
+
     { word: "segment reporting", translation: "information sectorielle", example: "Segment reporting reveals performance by business unit and geography." },
     { word: "benchmarking", translation: "analyse comparative", example: "Financial benchmarking compares performance against industry peers." },
     { word: "peer comparison", translation: "comparaison avec les pairs", example: "The peer comparison highlighted their superior margin performance." },
@@ -188,8 +169,7 @@ export const vocab = {
     { word: "cost behavior", translation: "comportement des coûts", example: "Understanding cost behavior improves budgeting accuracy." },
     { word: "margin analysis", translation: "analyse des marges", example: "Margin analysis revealed product mix opportunities." },
     { word: "cost driver", translation: "inducteur de coûts", example: "Transaction volume is the primary cost driver for customer service operations." },
-    
-    
+
     // Fiscalité d'entreprise (25 mots)
     { word: "corporate taxation", translation: "fiscalité d'entreprise", example: "Corporate taxation significantly impacts investment decisions." },
     { word: "tax planning", translation: "planification fiscale", example: "Strategic tax planning reduces the effective tax rate legally." },
@@ -216,23 +196,22 @@ export const vocab = {
     { word: "cross-border taxation", translation: "fiscalité transfrontalière", example: "Cross-border taxation creates complexity for international operations." },
     { word: "tax audit", translation: "contrôle fiscal", example: "The tax audit examined transfer pricing documentation." },
     { word: "tax strategy", translation: "stratégie fiscale", example: "Their tax strategy balances compliance, efficiency, and reputation." },
-    
+
     // Finance durable (25 mots)
     { word: "sustainable finance", translation: "finance durable", example: "Sustainable finance integrates ESG factors into investment decisions." },
     { word: "ESG integration", translation: "intégration ESG", example: "ESG integration has become a strategic priority for corporate finance." },
     { word: "green bond", translation: "obligation verte", example: "The green bond financed renewable energy infrastructure." },
     { word: "sustainability-linked loan", translation: "prêt lié à la durabilité", example: "The sustainability-linked loan offered lower interest rates for meeting environmental targets." },
-    
+
     { word: "climate risk disclosure", translation: "divulgation des risques climatiques", example: "Climate risk disclosure has become mandatory in many jurisdictions." },
     { word: "carbon accounting", translation: "comptabilité carbone", example: "Carbon accounting quantifies emissions across the value chain." },
     { word: "stranded asset risk", translation: "risque d'actifs échoués", example: "The fossil fuel investments face potential stranded asset risk in a low-carbon economy." },
     { word: "sustainable investment strategy", translation: "stratégie d'investissement durable", example: "Their sustainable investment strategy prioritizes climate resilience." },
-    
-    
+
     { word: "sustainable finance framework", translation: "cadre de finance durable", example: "Their sustainable finance framework establishes principles for raising and allocating capital." },
     { word: "blended finance", translation: "financement mixte", example: "Blended finance combines public and private capital for sustainable development." },
     { word: "sustainability rating", translation: "notation de durabilité", example: "The sustainability rating assesses environmental and social performance." },
-    
+
     { word: "sustainable debt", translation: "dette durable", example: "Sustainable debt issuance reached record levels last year." },
     { word: "transition finance", translation: "finance de transition", example: "Transition finance supports companies shifting toward sustainable business models." },
     { word: "sustainability premium", translation: "prime de durabilité", example: "The analysis examined whether sustainable companies command a sustainability premium." },
@@ -243,7 +222,7 @@ export const vocab = {
     { word: "responsible investment", translation: "investissement responsable", example: "Responsible investment considers long-term sustainability factors." },
     { word: "circular economy finance", translation: "finance de l'économie circulaire", example: "Circular economy finance supports business models that eliminate waste." },
     { word: "blue bond", translation: "obligation bleue", example: "The blue bond finances sustainable ocean and water projects." },
-    
+
     // Conformité financière (25 mots)
     { word: "financial compliance", translation: "conformité financière", example: "Financial compliance ensures adherence to laws and regulations." },
     { word: "regulatory requirements", translation: "exigences réglementaires", example: "Evolving regulatory requirements demand continuous process adaptation." },
@@ -251,24 +230,24 @@ export const vocab = {
     { word: "audit trail", translation: "piste d'audit", example: "The system maintains comprehensive audit trails for all transactions." },
     { word: "disclosure requirements", translation: "exigences de divulgation", example: "Public companies must meet extensive disclosure requirements." },
     { word: "regulatory reporting", translation: "reporting réglementaire", example: "Regulatory reporting deadlines became more stringent after the financial crisis." },
-    
+
     { word: "anti-money laundering", translation: "lutte contre le blanchiment d'argent", example: "Anti-money laundering procedures identify suspicious transactions." },
     { word: "whistleblower protection", translation: "protection des lanceurs d'alerte", example: "Whistleblower protection encourages reporting of misconduct." },
     { word: "financial ethics", translation: "éthique financière", example: "Financial ethics training is mandatory for all employees." },
     { word: "know your customer", translation: "connaissance du client", example: "Know your customer procedures verify client identities and backgrounds." },
-    
+
     { word: "compliance program", translation: "programme de conformité", example: "The compliance program establishes policies, training, and oversight." },
     { word: "regulatory examination", translation: "examen réglementaire", example: "The regulatory examination found no material deficiencies." },
     { word: "compliance testing", translation: "tests de conformité", example: "Compliance testing verifies that controls function as designed." },
     { word: "compliance audit", translation: "audit de conformité", example: "The annual compliance audit reviews all critical processes." },
     { word: "suspicious activity reporting", translation: "déclaration d'activité suspecte", example: "Financial institutions must file suspicious activity reporting for unusual transactions." },
     { word: "compliance officer", translation: "responsable de la conformité", example: "The compliance officer reports directly to the board of directors." },
-    
+
     { word: "regulatory sandbox", translation: "bac à sable réglementaire", example: "The regulatory sandbox allows controlled testing of financial innovations." },
     { word: "compliance culture", translation: "culture de conformité", example: "A strong compliance culture starts with leadership commitment." },
     { word: "regulatory fine", translation: "amende réglementaire", example: "The regulatory fine highlighted the importance of proper controls." },
     { word: "financial crime", translation: "crime financier", example: "Sophisticated systems detect potential financial crime patterns." },
-    
+
     { word: "compliance training", translation: "formation à la conformité", example: "Compliance training covers regulations, policies, and procedures." }
   ]
 };

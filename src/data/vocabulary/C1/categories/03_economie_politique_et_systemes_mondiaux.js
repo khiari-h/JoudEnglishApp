@@ -29,16 +29,16 @@ export const vocab = {
     { word: "geopolitical risk", translation: "risque géopolitique", example: "Companies must factor geopolitical risk into investment decisions in unstable regions." },
     { word: "economic alignment", translation: "alignement économique", example: "Trading patterns reflect growing economic alignment with the new regional power." },
     { word: "strategic economic security", translation: "sécurité économique stratégique", example: "The policy prioritizes strategic economic security over short-term commercial gains." },
-    
+
     { word: "resource diplomacy", translation: "diplomatie des ressources", example: "Resource diplomacy aims to secure access to critical minerals through international agreements." },
     { word: "rival economic bloc", translation: "bloc économique rival", example: "Trade tensions between rival economic blocs have increased in recent years." },
     { word: "economic decoupling", translation: "découplage économique", example: "Economic decoupling between the two largest economies would significantly disrupt global trade." },
-    
+
     // Organisations supranationales
-    
+
     { word: "supranational governance", translation: "gouvernance supranationale", example: "The European Union represents the most developed form of supranational governance." },
     { word: "transnational network", translation: "réseau transnational", example: "Civil society organizations form transnational networks to address global challenges." },
-    
+
     { word: "global regulatory body", translation: "organisme de régulation mondial", example: "The Basel Committee serves as a global regulatory body for banking standards." },
     { word: "collective security", translation: "sécurité collective", example: "NATO was founded on principles of collective security among member states." },
     { word: "consensus decision-making", translation: "prise de décision par consensus", example: "The organization relies on consensus decision-making, which can slow responses to crises." },
@@ -63,12 +63,11 @@ export const vocab = {
     { word: "regulatory harmonization", translation: "harmonisation réglementaire", example: "Trade agreements often promote regulatory harmonization to reduce barriers." },
     { word: "supranational authority", translation: "autorité supranationale", example: "The court holds supranational authority over member states in specific legal domains." },
     { word: "compliance mechanism", translation: "mécanisme de conformité", example: "The treaty includes a compliance mechanism to ensure parties fulfill commitments." },
-    
+
     { word: "multilateral framework", translation: "cadre multilatéral", example: "The multilateral framework establishes principles for cooperation on transboundary issues." },
-    
-    
+
     // Politiques monétaires
-    
+
     { word: "interest rate mechanism", translation: "mécanisme de taux d'intérêt", example: "The interest rate mechanism transmits policy changes to the broader economy." },
     { word: "quantitative easing", translation: "assouplissement quantitatif", example: "The central bank implemented quantitative easing by purchasing government bonds." },
     { word: "open market operations", translation: "opérations d'open market", example: "Open market operations involve buying and selling securities to influence money supply." },
@@ -96,23 +95,22 @@ export const vocab = {
     { word: "dual mandate", translation: "double mandat", example: "The Federal Reserve operates under a dual mandate of price stability and maximum employment." },
     { word: "policy tools", translation: "outils de politique", example: "Central banks have expanded their policy tools beyond traditional interest rate adjustments." },
     { word: "policy corridor", translation: "corridor de politique", example: "The standing facilities define the policy corridor for short-term interest rates." },
-    
+
     { word: "monetary independence", translation: "indépendance monétaire", example: "Currency pegs typically reduce monetary independence in favor of exchange rate stability." },
     { word: "liquidity trap", translation: "trappe à liquidité", example: "The economy experienced a liquidity trap when interest rates approached zero." },
-    
+
     // Économies émergentes
-    
-    
+
     { word: "industrial policy", translation: "politique industrielle", example: "South Korea's industrial policy focused on developing strategic export sectors." },
     { word: "developmental state", translation: "État développementaliste", example: "East Asian tigers exemplify the developmental state model of economic growth." },
     { word: "structural transformation", translation: "transformation structurelle", example: "Economic development requires structural transformation from agriculture to manufacturing." },
     { word: "export-oriented industrialization", translation: "industrialisation orientée vers l'exportation", example: "Export-oriented industrialization drove rapid growth in several Asian economies." },
     { word: "import substitution", translation: "substitution aux importations", example: "Latin American countries pursued import substitution strategies in the mid-20th century." },
-    
+
     { word: "capital account liberalization", translation: "libéralisation du compte de capital", example: "The IMF advocated capital account liberalization for developing economies." },
     { word: "growth trajectory", translation: "trajectoire de croissance", example: "The pandemic disrupted the growth trajectory of many emerging economies." },
     { word: "catch-up growth", translation: "croissance de rattrapage", example: "Catch-up growth allows developing countries to converge toward advanced economy levels." },
-    
+
     { word: "investment climate", translation: "climat d'investissement", example: "Regulatory reforms improved the investment climate for foreign businesses." },
     { word: "commodity dependence", translation: "dépendance aux produits de base", example: "Commodity dependence makes economies vulnerable to price fluctuations." },
     { word: "economic diversification", translation: "diversification économique", example: "The government prioritized economic diversification to reduce oil dependence." },
@@ -120,10 +118,10 @@ export const vocab = {
     { word: "capital flight", translation: "fuite des capitaux", example: "Political instability triggered capital flight from the emerging market." },
     { word: "remittance flow", translation: "flux de transferts de fonds", example: "Remittance flows provide crucial foreign exchange for many developing economies." },
     { word: "poverty reduction strategy", translation: "stratégie de réduction de la pauvreté", example: "The poverty reduction strategy focused on rural infrastructure development." },
-    
+
     { word: "human capital development", translation: "développement du capital humain", example: "Singapore prioritized human capital development as a core economic strategy." },
     { word: "resource curse", translation: "malédiction des ressources", example: "Many oil-rich nations have struggled with the resource curse of underperformance." },
-    
+
     { word: "urbanization rate", translation: "taux d'urbanisation", example: "The rapid urbanization rate created challenges for housing and infrastructure." },
     { word: "productivity gap", translation: "écart de productivité", example: "A substantial productivity gap remains between emerging and advanced economies." },
     { word: "special economic zone", translation: "zone économique spéciale", example: "The special economic zone offered tax incentives to attract foreign manufacturers." },
@@ -132,11 +130,11 @@ export const vocab = {
     { word: "infant industry protection", translation: "protection des industries naissantes", example: "Infant industry protection allowed domestic manufacturers to develop capabilities." },
     { word: "growth diagnostic", translation: "diagnostic de croissance", example: "The growth diagnostic identified infrastructure as the binding constraint on development." },
     { word: "industrial upgrading", translation: "modernisation industrielle", example: "Industrial upgrading requires moving from assembly to higher-value activities." },
-    
+
     // Inégalités structurelles
     { word: "wealth concentration", translation: "concentration de richesse", example: "Wealth concentration has reached levels not seen since the Gilded Age." },
     { word: "income disparity", translation: "disparité de revenus", example: "Income disparity between urban and rural regions continues to widen." },
-    
+
     { word: "distributional impact", translation: "impact distributif", example: "The policy analysis examined the distributional impact across income quintiles." },
     { word: "socioeconomic stratification", translation: "stratification socio-économique", example: "Residential patterns reflect socioeconomic stratification in the metropolitan area." },
     { word: "intergenerational mobility", translation: "mobilité intergénérationnelle", example: "Intergenerational mobility has declined in many advanced economies." },
@@ -145,16 +143,16 @@ export const vocab = {
     { word: "opportunity hoarding", translation: "accaparement des opportunités", example: "Elite universities can facilitate opportunity hoarding among privileged groups." },
     { word: "regressive taxation", translation: "fiscalité régressive", example: "Consumption taxes tend to have regressive taxation effects on lower-income households." },
     { word: "asset inequality", translation: "inégalité patrimoniale", example: "Asset inequality exceeds income inequality in most developed economies." },
-    
+
     { word: "power asymmetry", translation: "asymétrie de pouvoir", example: "Labor market regulations aim to address power asymmetry between employers and workers." },
     { word: "wealth extraction", translation: "extraction de richesse", example: "Critics argue that financial speculation enables wealth extraction rather than creation." },
-    
+
     { word: "distributive justice", translation: "justice distributive", example: "The policy debate centered on competing conceptions of distributive justice." },
-    
+
     { word: "rent-seeking behavior", translation: "comportement de recherche de rente", example: "Regulatory capture enables rent-seeking behavior by established firms." },
     { word: "structural discrimination", translation: "discrimination structurelle", example: "Mortgage lending patterns revealed structural discrimination in housing markets." },
     { word: "wealth disparity", translation: "disparité de richesse", example: "Racial wealth disparity reflects historical patterns of exclusion and discrimination." },
-    
+
     { word: "spatial inequality", translation: "inégalité spatiale", example: "Investment patterns reinforce spatial inequality between regions." },
     { word: "class-based segregation", translation: "ségrégation par classe sociale", example: "Housing costs drive class-based segregation in metropolitan areas." },
     { word: "economic marginalization", translation: "marginalisation économique", example: "Deindustrialization contributed to economic marginalization of former manufacturing communities." },
@@ -165,12 +163,12 @@ export const vocab = {
     { word: "equity gap", translation: "écart d'équité", example: "Policy reforms aim to address the equity gap in public service provision." },
     { word: "economic segregation", translation: "ségrégation économique", example: "Zoning policies contribute to economic segregation in urban housing markets." },
     { word: "social mobility barrier", translation: "barrière à la mobilité sociale", example: "Excessive credential requirements can function as social mobility barriers." },
-    
+
     // Régulation internationale
     { word: "regulatory framework", translation: "cadre réglementaire", example: "The Basel III regulatory framework strengthens bank capital requirements." },
-    
+
     { word: "international standard", translation: "norme internationale", example: "The International Organization for Standardization develops international standards for industries." },
-    
+
     { word: "mutual recognition agreement", translation: "accord de reconnaissance mutuelle", example: "The mutual recognition agreement allows certification in one country to be valid in partner countries." },
     { word: "binding constraint", translation: "contrainte obligatoire", example: "Legally binding constraints on emissions were controversial during negotiations." },
     { word: "regulatory arbitrage", translation: "arbitrage réglementaire", example: "Companies exploit differences between jurisdictions through regulatory arbitrage." },
@@ -198,7 +196,7 @@ export const vocab = {
     { word: "principle-based regulation", translation: "réglementation basée sur des principes", example: "The financial authority shifted toward principle-based regulation after the crisis." },
     { word: "cross-border compliance", translation: "conformité transfrontalière", example: "Global operations require addressing cross-border compliance with multiple regulatory regimes." },
     { word: "transparency provision", translation: "disposition de transparence", example: "The treaty contains transparency provisions requiring public disclosure of actions." },
-    
+
     // Analyse conjoncturelle
     { word: "economic outlook", translation: "perspectives économiques", example: "The central bank published its quarterly economic outlook predicting modest growth." },
     { word: "leading indicator", translation: "indicateur avancé", example: "Building permits serve as a leading indicator for construction activity." },
@@ -219,7 +217,7 @@ export const vocab = {
     { word: "coincident indicator", translation: "indicateur coïncident", example: "Industrial production is a coincident indicator that moves with the overall economy." },
     { word: "sectoral analysis", translation: "analyse sectorielle", example: "The sectoral analysis showed diverging trends between manufacturing and services." },
     { word: "economic release", translation: "publication économique", example: "Markets reacted strongly to the economic release of inflation data." },
-    
+
     { word: "confidence indicator", translation: "indicateur de confiance", example: "Business confidence indicators declined for the third consecutive month." },
     { word: "economic trajectory", translation: "trajectoire économique", example: "The central bank revised its view of the economic trajectory following new data." },
     { word: "cyclical upswing", translation: "reprise cyclique", example: "The cyclical upswing in manufacturing boosted employment in industrial regions." },

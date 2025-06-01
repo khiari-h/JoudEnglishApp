@@ -28,7 +28,7 @@ export const calculateCategoryProgress = (exercises = [], completedWords = {}) =
     const progress = totalInCategory > 0 
       ? Math.min(100, Math.round((completedInCategory / totalInCategory) * 100))
       : 0;
-    
+
     return {
       title: category.title || `Catégorie ${index + 1}`,
       totalWords: totalInCategory,

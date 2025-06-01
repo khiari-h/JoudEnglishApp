@@ -28,7 +28,7 @@ export const useDashboardLevel = (progressContext) => {
     try {
       await AsyncStorage.setItem(ACTIVE_LEVEL_KEY, newLevel);
     } catch (error) {
-      console.error("Erreur sauvegarde niveau:", error);
+
     }
   }, []);
 
@@ -44,7 +44,7 @@ export const useDashboardLevel = (progressContext) => {
           );
         }
       } catch (error) {
-        console.error("Erreur chargement niveau:", error);
+
       }
     };
     loadActiveLevel();
@@ -58,3 +58,4 @@ export const useDashboardLevel = (progressContext) => {
     levelColor,
   };
 };
+

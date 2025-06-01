@@ -63,21 +63,15 @@ const VocabularyExerciseContent = ({ level, mode }) => {
   const navigation = useNavigation();
   const levelColor = getLevelColor(level);
   const vocabularyData = useMemo(() => {
-    console.log("🔍 Récupération des données pour:", { level, mode });
+
     const data = getVocabularyData(level, mode);
-    console.log(
-      "📊 Données récupérées:",
-      data ? "OK" : "VIDE",
-      data?.exercises?.length || 0,
-      "exercices"
-    );
+
     return data;
   }, [level, mode]);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
   // Hook de progression avec identifiant unique par niveau ET mode
   const progressKey = `${level}_${mode}`;
-  console.log("🔑 ProgressKey:", progressKey);
 
   const {
     completedWords,
@@ -87,8 +81,6 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     saveLastPosition,
     initializeProgress,
   } = useVocabularyProgress(progressKey);
-
-  console.log("📈 Progress state:", { loaded, completedWords, lastPosition });
 
   // Hook d'état avec clé unique
   const {
@@ -314,3 +306,4 @@ const VocabularyExerciseContent = ({ level, mode }) => {
 };
 
 export default VocabularyExercise;
+

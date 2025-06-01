@@ -404,17 +404,14 @@ export const vocab = {
     // Pour passer de 64 à 94 mots
 
     // Technologies médiatiques et numérique (10 mots)
-    
-    
+
     {
       word: "streaming platform",
       translation: "plateforme de diffusion en continu",
       example:
         "Streaming platforms have disrupted traditional television broadcasting.",
     },
-    
-    
-    
+
     {
       word: "algorithmic curation",
       translation: "curation algorithmique",
@@ -427,7 +424,7 @@ export const vocab = {
       example:
         "Artificial intelligence in media automates content creation and distribution.",
     },
-    
+
     {
       word: "augmented reality journalism",
       translation: "journalisme en réalité augmentée",
@@ -442,11 +439,7 @@ export const vocab = {
       example:
         "Media economics examines financial structures and market dynamics in communication industries.",
     },
-    
-    
-    
-    
-    
+
     {
       word: "audience monetization",
       translation: "monétisation de l'audience",
@@ -473,14 +466,7 @@ export const vocab = {
     },
 
     // Régulation, politique et société (10 mots)
-    
-    
-    
-    
-    
-    
-    
-    
+
     {
       word: "media influence",
       translation: "influence médiatique",
@@ -495,3 +481,4 @@ export const vocab = {
     }
   ]
 };
+

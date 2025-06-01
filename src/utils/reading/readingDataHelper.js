@@ -41,3 +41,4 @@ export const getLevelColor = (level) => {
   };
   return colors[level] || "#3b82f6"; // Bleu par défaut
 };
+

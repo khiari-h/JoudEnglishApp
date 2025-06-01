@@ -21,7 +21,7 @@ const useWordGamesState = (initialGames = [], level) => {
   const [score, setScore] = useState(0);
   const [gameResults, setGameResults] = useState([]);
   const [shuffledOptions, setShuffledOptions] = useState([]);
-  
+
   // Hook pour les animations
   const { fadeAnim, bounceAnim, animateFeedback, animateBounce } = useGameAnimation();
 
@@ -92,7 +92,7 @@ const useWordGamesState = (initialGames = [], level) => {
     if (newSelectedItems.length < 2) {
       // Vérifier que l'item n'est pas déjà matché
       if (matchedItems.includes(item)) return;
-      
+
       newSelectedItems.push({ value: item, index });
       setSelectedItems(newSelectedItems);
 

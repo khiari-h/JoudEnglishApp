@@ -15,15 +15,15 @@ export const vocab = {
     { word: "light pollution", translation: "pollution lumineuse", example: "Light pollution makes it difficult to see stars in urban areas." },
     { word: "noise pollution", translation: "pollution sonore", example: "Airport noise pollution affects residents' quality of life." },
     { word: "overfishing", translation: "surpêche", example: "Overfishing has depleted many fish stocks worldwide." },
-    
+
     { word: "industrial runoff", translation: "ruissellement industriel", example: "Industrial runoff contaminates nearby waterways." },
     { word: "land degradation", translation: "dégradation des terres", example: "Mining operations often cause severe land degradation." },
     { word: "ecological footprint", translation: "empreinte écologique", example: "Developed nations typically have a larger ecological footprint." },
     { word: "resource depletion", translation: "épuisement des ressources", example: "Resource depletion threatens future generations' wellbeing." },
     { word: "invasive species", translation: "espèces invasives", example: "Invasive species can disrupt local ecosystems." },
-    
+
     // Protection de l'environnement
-    
+
     { word: "environmental protection", translation: "protection de l'environnement", example: "Environmental protection laws regulate industrial activities." },
     { word: "preservation", translation: "préservation", example: "The organization works for the preservation of natural habitats." },
     { word: "wildlife corridor", translation: "corridor faunique", example: "Wildlife corridors allow animals to move between fragmented habitats." },
@@ -38,23 +38,23 @@ export const vocab = {
     { word: "environmental advocacy", translation: "défense de l'environnement", example: "She works in environmental advocacy to influence policy." },
     { word: "wildlife management", translation: "gestion de la faune", example: "Wildlife management ensures healthy populations of native species." },
     { word: "ecological restoration", translation: "restauration écologique", example: "Ecological restoration seeks to return damaged ecosystems to their natural state." },
-    
+
     // Développement durable
     { word: "sustainable development", translation: "développement durable", example: "Sustainable development meets present needs without compromising future generations." },
     { word: "circular economy", translation: "économie circulaire", example: "A circular economy aims to eliminate waste and continually reuse resources." },
     { word: "renewable resource", translation: "ressource renouvelable", example: "Solar energy is a renewable resource that will not be depleted." },
     { word: "green energy", translation: "énergie verte", example: "Many countries are investing in green energy infrastructure." },
     { word: "eco-friendly", translation: "écologique", example: "The company promotes eco-friendly products and practices." },
-    
+
     { word: "carbon neutral", translation: "neutre en carbone", example: "The company aims to be carbon neutral by 2030." },
-    
+
     { word: "green building", translation: "bâtiment écologique", example: "Green building techniques minimize environmental impact." },
     { word: "sustainable agriculture", translation: "agriculture durable", example: "Sustainable agriculture preserves soil health for future generations." },
     { word: "organic farming", translation: "agriculture biologique", example: "Organic farming avoids synthetic chemicals and pesticides." },
-    
+
     { word: "sustainability certification", translation: "certification de durabilité", example: "The product has a sustainability certification ensuring ethical production." },
     { word: "triple bottom line", translation: "triple bilan", example: "The triple bottom line considers social, environmental, and financial impacts." },
-    
+
     // Biodiversité
     { word: "biodiversity hotspot", translation: "point chaud de biodiversité", example: "Madagascar is a biodiversity hotspot with many unique species." },
     { word: "genetic diversity", translation: "diversité génétique", example: "Genetic diversity helps species adapt to environmental changes." },
@@ -69,14 +69,14 @@ export const vocab = {
     { word: "ecological niche", translation: "niche écologique", example: "Each species has a specific ecological niche in its ecosystem." },
     { word: "mass extinction", translation: "extinction massive", example: "Scientists warn we may be entering a sixth mass extinction event." },
     { word: "habitat connectivity", translation: "connectivité des habitats", example: "Habitat connectivity allows wildlife to move between areas." },
-    
+
     // Comportements écologiques
     { word: "eco-conscious", translation: "éco-conscient", example: "More consumers are becoming eco-conscious in their purchasing decisions." },
     { word: "green living", translation: "mode de vie écologique", example: "Green living involves making environmentally friendly choices daily." },
     { word: "zero waste", translation: "zéro déchet", example: "The zero waste movement aims to eliminate trash sent to landfills." },
-    
+
     { word: "ethical consumption", translation: "consommation éthique", example: "Ethical consumption considers environmental and social impacts of purchases." },
-    
+
     { word: "carpooling", translation: "covoiturage", example: "Carpooling reduces emissions by sharing rides to common destinations." },
     { word: "public transit", translation: "transport en commun", example: "Using public transit instead of driving helps reduce air pollution." },
     { word: "energy conservation", translation: "conservation d'énergie", example: "Energy conservation includes turning off lights when not in use." },
@@ -85,7 +85,7 @@ export const vocab = {
     { word: "slow fashion", translation: "mode éthique", example: "Slow fashion opposes mass-produced, disposable clothing." },
     { word: "vegan lifestyle", translation: "mode de vie végétalien", example: "Some choose a vegan lifestyle to reduce their environmental impact." },
     { word: "local consumption", translation: "consommation locale", example: "Local consumption reduces transportation emissions and supports community businesses." },
-    
+
     // Politiques environnementales
     { word: "environmental policy", translation: "politique environnementale", example: "The country's environmental policy aims to reduce emissions by 50%." },
     { word: "emissions standards", translation: "normes d'émissions", example: "Stricter emissions standards forced auto manufacturers to develop cleaner engines." },
@@ -100,15 +100,15 @@ export const vocab = {
     { word: "regulatory compliance", translation: "conformité réglementaire", example: "The company must ensure regulatory compliance with environmental laws." },
     { word: "environmental justice", translation: "justice environnementale", example: "Environmental justice addresses the unfair distribution of environmental benefits and burdens." },
     { word: "precautionary principle", translation: "principe de précaution", example: "The precautionary principle advocates caution when actions might harm the environment." },
-    
+
     // Changements climatiques
-    
+
     { word: "greenhouse effect", translation: "effet de serre", example: "The greenhouse effect is a natural process that warms Earth's surface." },
     { word: "carbon dioxide", translation: "dioxyde de carbone", example: "Carbon dioxide is the primary greenhouse gas causing climate change." },
     { word: "methane", translation: "méthane", example: "Methane is a potent greenhouse gas released from agriculture and fossil fuels." },
     { word: "emissions", translation: "émissions", example: "Reducing emissions is crucial to mitigate climate change." },
     { word: "fossil fuels", translation: "combustibles fossiles", example: "Burning fossil fuels releases carbon dioxide into the atmosphere." },
-    
+
     { word: "climate crisis", translation: "crise climatique", example: "Many experts now refer to the situation as a climate crisis rather than just change." },
     { word: "extreme weather", translation: "conditions météorologiques extrêmes", example: "Climate change increases the frequency of extreme weather events." },
     { word: "sea level rise", translation: "élévation du niveau de la mer", example: "Coastal communities are threatened by sea level rise." },

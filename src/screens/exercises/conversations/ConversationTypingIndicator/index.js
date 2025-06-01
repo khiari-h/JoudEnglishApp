@@ -10,7 +10,7 @@ import styles from './style';
 const ConversationTypingIndicator = ({ levelColor }) => {
   // Animation pour faire pulser les points
   const typingAnimation = useRef(new Animated.Value(0)).current;
-  
+
   // Lancer l'animation en boucle
   useEffect(() => {
     const startAnimation = () => {
@@ -29,9 +29,9 @@ const ConversationTypingIndicator = ({ levelColor }) => {
         ])
       ).start();
     };
-    
+
     startAnimation();
-    
+
     return () => {
       // Arrêter l'animation quand le composant est démonté
       typingAnimation.stopAnimation();

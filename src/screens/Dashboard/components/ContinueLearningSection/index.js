@@ -52,7 +52,7 @@ const ContinueLearningSection = ({
               </Text>
             </View>
           </View>
-          
+
           <View style={styles.emptyStateContainer}>
             <Text style={styles.emptyStateHint}>
               💡 Vos prochains exercices apparaîtront ici
@@ -74,7 +74,7 @@ const ContinueLearningSection = ({
   const modeText = mode === 'fast' ? 'Fast' : mode === 'classic' ? 'Classique' : '';
   const categoryIndex = (lastActivity.metadata?.category || 0) + 1;
   const wordIndex = (lastActivity.metadata?.word || 0) + 1;
-  
+
   // Format temps court
   const formatShortTime = (timeElapsed) => {
     if (!timeElapsed) return '';
@@ -102,27 +102,27 @@ const ContinueLearningSection = ({
           <Text style={styles.emoji}>📚</Text>
           <Text style={styles.title}>Reprendre où vous vous êtes arrêté</Text>
         </View>
-        
+
         {/* Ligne d'infos */}
         <View style={styles.infoRow}>
           <Text style={styles.exerciseTitle}>
             {lastActivity.title} {modeText && `${modeText} `}
           </Text>
-          
+
           {/* Badge niveau */}
           <View style={[styles.levelBadge, { backgroundColor: accentColor }]}>
             <Text style={styles.levelBadgeText}>{levelNumber}</Text>
           </View>
-          
+
           <Text style={styles.positionText}>
             • Mot {wordIndex} ({categoryIndex}) • 
           </Text>
-          
+
           <Text style={styles.timeText}>
             {formatShortTime(lastActivity.timeElapsed)}
           </Text>
         </View>
-        
+
         {/* Bouton avec emoji */}
         <TouchableOpacity
           style={[styles.button, { backgroundColor: accentColor }]}

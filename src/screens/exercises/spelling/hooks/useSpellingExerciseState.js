@@ -25,7 +25,7 @@ const useSpellingExerciseState = (level, exerciseType) => {
     const data = getSpellingData(level, exerciseType);
     if (data?.exercises) {
       setExercises(data.exercises);
-      console.log(`📚 ${data.exercises.length} exercices chargés pour ${exerciseType} niveau ${level}`);
+
     }
   }, [level, exerciseType]);
 
@@ -54,7 +54,7 @@ const useSpellingExerciseState = (level, exerciseType) => {
         if (!userInput) return false;
         correct = userInput === currentExercise.correctAnswer;
         break;
-        
+
       case 'correction':
       case 'spelling_rule':
       default:
@@ -68,8 +68,7 @@ const useSpellingExerciseState = (level, exerciseType) => {
 
     setIsCorrect(correct);
     setShowFeedback(true);
-    
-    console.log(`${correct ? '✅' : '❌'} Exercice ${currentExerciseIndex}: ${correct ? 'correct' : 'incorrect'}`);
+
     return correct;
   }, [userInput, getCurrentExercise, currentExerciseIndex]);
 
@@ -78,15 +77,15 @@ const useSpellingExerciseState = (level, exerciseType) => {
     if (currentExerciseIndex < exercises.length - 1) {
       setCurrentExerciseIndex(currentExerciseIndex + 1);
       resetExerciseState();
-      console.log(`➡️ Passage exercice ${currentExerciseIndex + 2}/${exercises.length}`);
+
     } else {
-      console.log('🎉 Tous les exercices terminés !');
+
     }
   }, [currentExerciseIndex, exercises.length]);
 
   // Réessayer l'exercice actuel
   const retryExercise = useCallback(() => {
-    console.log(`🔄 Retry exercice ${currentExerciseIndex + 1}`);
+
     resetExerciseState();
   }, [currentExerciseIndex]);
 

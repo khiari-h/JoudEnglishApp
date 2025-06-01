@@ -9,7 +9,7 @@ export default StyleSheet.create({
     backgroundColor: "white",
     padding: 16,
   },
-  
+
   // Header normal
   header: {
     flexDirection: "row",

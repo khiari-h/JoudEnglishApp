@@ -173,5 +173,5 @@ const complainingService = {
       ]
     }
   };
-  
+
   export default complainingService;

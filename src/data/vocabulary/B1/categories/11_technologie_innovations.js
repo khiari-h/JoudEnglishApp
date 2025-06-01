@@ -2,8 +2,7 @@ export const vocab = {
   title: "Technologie & Innovations",
   words: [
     // Appareils numériques
-    
-    
+
     { word: "smartwatch", translation: "montre connectée", example: "His smartwatch tracks his physical activity." },
     { word: "e-reader", translation: "liseuse électronique", example: "An e-reader is designed specifically for reading digital books." },
     { word: "smart TV", translation: "téléviseur intelligent", example: "We can stream content directly on our smart TV." },
@@ -20,11 +19,11 @@ export const vocab = {
     { word: "digital assistant", translation: "assistant numérique", example: "Digital assistants like Siri and Alexa are becoming increasingly capable." },
     { word: "wireless charger", translation: "chargeur sans fil", example: "Simply place your phone on the wireless charger to power it up." },
     { word: "external monitor", translation: "écran externe", example: "An external monitor improves productivity when working from home." },
-    
+
     // Internet & réseaux
     { word: "broadband", translation: "haut débit", example: "Broadband internet is essential for video streaming." },
     { word: "fiber optic", translation: "fibre optique", example: "Fiber optic cables allow for much faster internet speeds." },
-    
+
     { word: "Ethernet", translation: "Ethernet", example: "For gaming, an Ethernet connection is more reliable than Wi-Fi." },
     { word: "bandwidth", translation: "bande passante", example: "Video conferences require significant bandwidth." },
     { word: "router", translation: "routeur", example: "You may need to restart your router to fix connection issues." },
@@ -37,13 +36,12 @@ export const vocab = {
     { word: "IoT (Internet of Things)", translation: "IdO (Internet des Objets)", example: "IoT devices can communicate with each other over the internet." },
     { word: "network security", translation: "sécurité réseau", example: "Network security is crucial for protecting sensitive information." },
     { word: "peer-to-peer", translation: "pair à pair", example: "Peer-to-peer networks allow direct sharing between users." },
-    
+
     { word: "latency", translation: "latence", example: "Low latency is important for online gaming." },
     { word: "ISP (Internet Service Provider)", translation: "FAI (Fournisseur d'Accès Internet)", example: "Contact your ISP if you're having internet connection problems." },
-    
+
     // Applications & logiciels
-    
-    
+
     { word: "operating system", translation: "système d'exploitation", example: "Windows and macOS are popular operating systems for computers." },
     { word: "update", translation: "mise à jour", example: "Always install the latest updates for security reasons." },
     { word: "interface", translation: "interface", example: "The new app has a more user-friendly interface." },
@@ -60,26 +58,25 @@ export const vocab = {
     { word: "subscription-based", translation: "par abonnement", example: "Many software companies have moved to a subscription-based model." },
     { word: "cloud-based", translation: "basé sur le cloud", example: "Cloud-based applications can be accessed from anywhere." },
     { word: "beta version", translation: "version bêta", example: "The beta version may still contain some bugs." },
-    
+
     // Médias sociaux avancés
     { word: "algorithm", translation: "algorithme", example: "Social media algorithms determine what content appears in your feed." },
     { word: "engagement rate", translation: "taux d'engagement", example: "Influencers with high engagement rates are attractive to advertisers." },
-    
+
     { word: "live streaming", translation: "diffusion en direct", example: "Live streaming allows real-time interaction with viewers." },
-    
-    
+
     { word: "digital footprint", translation: "empreinte numérique", example: "Be mindful of your digital footprint when posting online." },
     { word: "hashtag campaign", translation: "campagne de hashtag", example: "The hashtag campaign raised awareness about the issue." },
     { word: "microblogging", translation: "microblogage", example: "Twitter is a popular microblogging platform." },
-    
+
     { word: "social listening", translation: "écoute sociale", example: "Companies use social listening to track mentions of their brand." },
     { word: "community management", translation: "gestion de communauté", example: "Community management involves engaging with followers and moderating discussions." },
     { word: "content moderation", translation: "modération de contenu", example: "Content moderation policies aim to prevent harmful material." },
     { word: "verification badge", translation: "badge de vérification", example: "Public figures often have a verification badge on their accounts." },
     { word: "social media analytics", translation: "analytique des médias sociaux", example: "Social media analytics help measure campaign effectiveness." },
-    
+
     // Innovations technologiques
-    
+
     { word: "machine learning", translation: "apprentissage automatique", example: "Machine learning algorithms improve with more data." },
     { word: "blockchain", translation: "chaîne de blocs", example: "Blockchain technology underlies cryptocurrencies like Bitcoin." },
     { word: "augmented reality", translation: "réalité augmentée", example: "Augmented reality apps overlay digital information on the real world." },
@@ -95,7 +92,7 @@ export const vocab = {
     { word: "smart grid", translation: "réseau électrique intelligent", example: "Smart grids improve efficiency in electricity distribution." },
     { word: "gene editing", translation: "édition génétique", example: "CRISPR is a revolutionary gene editing technology." },
     { word: "neural network", translation: "réseau neuronal", example: "Neural networks are designed to mimic human brain function." },
-    
+
     // Problèmes techniques
     { word: "glitch", translation: "anomalie", example: "The software has a glitch that causes it to crash occasionally." },
     { word: "malware", translation: "logiciel malveillant", example: "Install antivirus software to protect against malware." },
@@ -112,15 +109,15 @@ export const vocab = {
     { word: "outdated software", translation: "logiciel obsolète", example: "Outdated software may not have the latest security patches." },
     { word: "technical support", translation: "support technique", example: "Contact technical support if you can't resolve the issue." },
     { word: "system overload", translation: "surcharge du système", example: "The website crashed due to system overload from too many visitors." },
-    
+
     // Impact technologique
     { word: "digital divide", translation: "fracture numérique", example: "The digital divide refers to unequal access to technology and internet." },
-    
+
     { word: "data privacy", translation: "confidentialité des données", example: "New laws aim to improve data privacy protection." },
-    
+
     { word: "tech ethics", translation: "éthique technologique", example: "Tech ethics addresses moral questions related to technology development." },
     { word: "surveillance", translation: "surveillance", example: "Digital surveillance raises privacy concerns." },
-    
+
     { word: "digital addiction", translation: "dépendance numérique", example: "Digital addiction is a growing concern, especially among young people." },
     { word: "technological disruption", translation: "perturbation technologique", example: "Technological disruption has transformed many industries." },
     { word: "screen time", translation: "temps d'écran", example: "Many parents try to limit their children's screen time." },

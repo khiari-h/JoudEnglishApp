@@ -58,3 +58,4 @@ export {
 
 // Export par défaut
 export default chatbotB1;
+

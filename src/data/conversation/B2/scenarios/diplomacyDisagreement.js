@@ -172,5 +172,5 @@ const diplomacyDisagreement = {
       ]
     }
   };
-  
+
   export default diplomacyDisagreement;

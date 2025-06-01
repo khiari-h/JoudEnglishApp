@@ -58,7 +58,7 @@ const LevelSelection = () => {
 
   // Naviguer vers la sélection d'exercice avec le niveau sélectionné
   const handleLevelSelect = (level) => {
-    console.log("Navigating to level:", level.id);
+
     router.push({
       pathname: "/(tabs)/exerciseSelection",
       params: { level: level.id },
@@ -295,3 +295,4 @@ const localStyles = StyleSheet.create({
 });
 
 export default LevelSelection;
+

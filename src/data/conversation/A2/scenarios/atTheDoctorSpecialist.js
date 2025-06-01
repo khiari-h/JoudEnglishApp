@@ -171,5 +171,5 @@ const atTheDoctorSpecialist = {
       ]
     }
   };
-  
+
   export default atTheDoctorSpecialist;

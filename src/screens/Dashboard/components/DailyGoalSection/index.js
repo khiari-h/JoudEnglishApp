@@ -29,7 +29,7 @@ const DailyGoalSection = ({
   // Gérer le clic sur l'objectif du jour
   const handleGoalPress = () => {
     if (todayCompleted) return;
-    
+
     if (todayGoal && onStartExercise) {
       onStartExercise(todayGoal.type, currentLevel);
     }
@@ -38,7 +38,7 @@ const DailyGoalSection = ({
   // Gérer l'offre d'évaluation
   const handleEvaluationOffer = (accepted) => {
     const result = handleEvaluationResponse(accepted);
-    
+
     if (result && onStartEvaluation) {
       onStartEvaluation(currentLevel);
     } else {
@@ -59,7 +59,7 @@ const DailyGoalSection = ({
         <View style={styles.specialStateContainer}>
           <Text style={styles.specialTitle}>{statusMessage.title}</Text>
           <Text style={styles.specialMessage}>{statusMessage.message}</Text>
-          
+
           {statusMessage.type === 'evaluation_offer' && (
             <View style={styles.buttonContainer}>
               <Button
@@ -78,7 +78,7 @@ const DailyGoalSection = ({
               />
             </View>
           )}
-          
+
           {statusMessage.type === 'free_mode' && (
             <Button
               title={statusMessage.buttons[0]}
@@ -88,7 +88,7 @@ const DailyGoalSection = ({
               style={styles.evaluationButton}
             />
           )}
-          
+
           {statusMessage.type === 'completed' && (
             <Button
               title={statusMessage.buttons[0]}
@@ -123,7 +123,7 @@ const DailyGoalSection = ({
             </Text>
           </View>
         </View>
-        
+
         <View 
           style={[
             styles.badge, 
@@ -160,14 +160,14 @@ const DailyGoalSection = ({
           >
             <Text style={styles.exerciseIcon}>{todayGoal.icon}</Text>
           </View>
-          
+
           <View style={styles.exerciseInfo}>
             <Text style={styles.exerciseTitle}>{todayGoal.title}</Text>
             <Text style={styles.exerciseDescription}>
               {todayGoal.description}
             </Text>
           </View>
-          
+
           {todayCompleted ? (
             <View style={styles.completedIndicator}>
               <Ionicons name="checkmark-circle" size={32} color="#10B981" />

@@ -17,7 +17,6 @@ export const vocab = {
     { word: "furthermore", translation: "en outre", example: "The weather is bad; furthermore, it's getting worse." },
     { word: "consequently", translation: "par conséquent", example: "It rained; consequently, the match was cancelled." },
 
-
     { word: "hypothesis", translation: "hypothèse", example: "My hypothesis is that prices will fall." },
     { word: "methodology", translation: "méthodologie", example: "The research methodology was flawed." },
     { word: "paradigm", translation: "paradigme", example: "We need a new paradigm for education." },
@@ -39,7 +38,6 @@ export const vocab = {
     { word: "significant", translation: "significatif", example: "This is a significant development." },
     { word: "fundamental", translation: "fondamental", example: "This is a fundamental principle." },
 
-
     { word: "endeavor", translation: "s'efforcer", example: "I shall endeavor to help you." },
     { word: "commence", translation: "commencer", example: "The ceremony will commence at noon." },
     { word: "facilitate", translation: "faciliter", example: "This will facilitate our work." },
@@ -56,7 +54,6 @@ export const vocab = {
     { word: "exacerbate", translation: "exacerber", example: "This will exacerbate the problem." },
     { word: "alleviate", translation: "soulager", example: "This medicine will alleviate the pain." },
 
-
     { word: "subtle", translation: "subtil", example: "There's a subtle difference between them." },
     { word: "intricate", translation: "complexe", example: "The design is intricate and beautiful." },
     { word: "profound", translation: "profond", example: "He made a profound observation." },
@@ -67,7 +64,6 @@ export const vocab = {
     { word: "coherent", translation: "cohérent", example: "Present a coherent argument." },
     { word: "lucid", translation: "lucide", example: "His explanation was lucid and clear." },
     { word: "compelling", translation: "convaincant", example: "That's a compelling argument." },
-
 
     { word: "bear in mind", translation: "garder à l'esprit", example: "Bear in mind that time is limited." },
     { word: "take into account", translation: "prendre en compte", example: "Take into account all factors." },

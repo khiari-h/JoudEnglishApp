@@ -171,5 +171,5 @@ const weatherAndSeasons = {
       ]
     }
   };
-  
+
   export default weatherAndSeasons;

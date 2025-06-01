@@ -61,3 +61,4 @@ export const getLevelTitle = (level) => {
   };
   return `${level} - ${titles[level] || titles.A1}`;
 };
+

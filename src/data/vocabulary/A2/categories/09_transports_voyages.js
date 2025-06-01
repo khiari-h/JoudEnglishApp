@@ -18,9 +18,9 @@ export const vocab = {
     { word: "charter flight", translation: "vol charter", example: "They booked a charter flight for their group tour." },
     { word: "domestic flight", translation: "vol intérieur", example: "We'll take a domestic flight from New York to Chicago." },
     { word: "international flight", translation: "vol international", example: "The international flight to Tokyo takes 14 hours." },
-    
+
     // Infrastructure de transport
-    
+
     { word: "boarding gate", translation: "porte d'embarquement", example: "The boarding gate closes 20 minutes before departure." },
     { word: "check-in counter", translation: "comptoir d'enregistrement", example: "Please proceed to the check-in counter to get your boarding pass." },
     { word: "baggage claim", translation: "récupération des bagages", example: "After landing, go to baggage claim to get your suitcase." },
@@ -33,14 +33,13 @@ export const vocab = {
     { word: "lost and found", translation: "objets trouvés", example: "If you lose something, check at the lost and found office." },
     { word: "station platform", translation: "quai de gare", example: "The train arrives at platform 5." },
     { word: "bicycle lane", translation: "piste cyclable", example: "The city has many bicycle lanes for safer cycling." },
-    
+
     { word: "rest area", translation: "aire de repos", example: "We stopped at a rest area on the highway." },
     { word: "toll booth", translation: "péage", example: "You'll have to pay at the toll booth on this highway." },
-    
+
     // Planification de voyage
     { word: "itinerary", translation: "itinéraire", example: "Our itinerary includes visits to three countries." },
-    
-    
+
     { word: "travel agency", translation: "agence de voyage", example: "We booked our trip through a travel agency." },
     { word: "package tour", translation: "voyage organisé", example: "They prefer package tours because everything is arranged for them." },
     { word: "guided tour", translation: "visite guidée", example: "We took a guided tour of the museum." },
@@ -53,7 +52,7 @@ export const vocab = {
     { word: "boarding time", translation: "heure d'embarquement", example: "The boarding time is 10:30 for our 11:15 flight." },
     { word: "departure time", translation: "heure de départ", example: "What's the departure time of the train?" },
     { word: "arrival time", translation: "heure d'arrivée", example: "The arrival time depends on traffic." },
-    
+
     // Hébergement touristique
     { word: "accommodation", translation: "hébergement", example: "We need to find accommodation for our trip." },
     { word: "hotel", translation: "hôtel", example: "We're staying at a four-star hotel." },
@@ -71,24 +70,23 @@ export const vocab = {
     { word: "double room", translation: "chambre double", example: "We booked a double room with a sea view." },
     { word: "single room", translation: "chambre simple", example: "I prefer a single room when traveling alone." },
     { word: "twin room", translation: "chambre à lits jumeaux", example: "The children stayed in a twin room." },
-    
+
     // Documents de voyage
-    
+
     { word: "visa", translation: "visa", example: "You need a visa to visit many countries." },
     { word: "boarding pass", translation: "carte d'embarquement", example: "You can download your boarding pass to your phone." },
-    
+
     { word: "driver's license", translation: "permis de conduire", example: "You'll need an international driver's license to rent a car abroad." },
     { word: "travel document", translation: "document de voyage", example: "Make sure to keep all your travel documents in a safe place." },
     { word: "insurance certificate", translation: "certificat d'assurance", example: "Bring your insurance certificate with you when traveling." },
     { word: "vaccination certificate", translation: "certificat de vaccination", example: "Some countries require a vaccination certificate for entry." },
     { word: "customs declaration", translation: "déclaration de douane", example: "Fill out the customs declaration form before landing." },
     { word: "entry form", translation: "formulaire d'entrée", example: "You'll need to complete an entry form upon arrival." },
-    
+
     // Situations de voyage
     { word: "layover", translation: "escale", example: "We have a three-hour layover in Frankfurt." },
     { word: "connection", translation: "correspondance", example: "I'm worried about making my connection in time." },
-    
-    
+
     { word: "to check in", translation: "s'enregistrer", example: "We need to check in two hours before the flight." },
     { word: "to check out", translation: "libérer la chambre", example: "We'll check out of the hotel by 10 AM." },
     { word: "to board", translation: "embarquer", example: "Passengers with small children board first." },
@@ -99,13 +97,13 @@ export const vocab = {
     { word: "jet lag", translation: "décalage horaire", example: "It took me several days to recover from jet lag." },
     { word: "travel sickness", translation: "mal des transports", example: "She often gets travel sickness on long car journeys." },
     { word: "lost luggage", translation: "bagages perdus", example: "The airline found my lost luggage after two days." },
-    
+
     // Vacances & tourisme
     { word: "vacation", translation: "vacances", example: "We're going on vacation next month." },
     { word: "tourism", translation: "tourisme", example: "Tourism is the main industry in this coastal town." },
     { word: "sightseeing", translation: "tourisme", example: "We spent the day sightseeing in Rome." },
     { word: "tourist attraction", translation: "attraction touristique", example: "The Eiffel Tower is a major tourist attraction." },
-    
+
     { word: "tourist information center", translation: "office de tourisme", example: "We got a map at the tourist information center." },
     { word: "excursion", translation: "excursion", example: "We took a day excursion to the nearby islands." },
     { word: "all-inclusive", translation: "tout compris", example: "They prefer all-inclusive resorts for their vacations." },

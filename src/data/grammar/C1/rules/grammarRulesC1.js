@@ -451,5 +451,5 @@ const grammarRulesC1 = [
       ]
     }
   ];
-  
+
   export default grammarRulesC1;

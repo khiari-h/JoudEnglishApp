@@ -15,13 +15,13 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('system'); // 'light', 'dark', 'system'
   const systemColorScheme = useColorScheme();
   const [loaded, setLoaded] = useState(false);
-  
+
   // Mode sombre déterminé en fonction du thème et du système
   const isDarkTheme = 
     theme === 'system' 
       ? systemColorScheme === 'dark'
       : theme === 'dark';
-  
+
   // Charger le thème sauvegardé au démarrage
   useEffect(() => {
     const loadTheme = async () => {
@@ -32,26 +32,26 @@ export const ThemeProvider = ({ children }) => {
         }
         setLoaded(true);
       } catch (error) {
-        console.error('Erreur lors du chargement du thème:', error);
+
         setLoaded(true);
       }
     };
-    
+
     loadTheme();
   }, []);
-  
+
   // Sauvegarder le thème lorsqu'il change
   useEffect(() => {
     if (loaded) {
       storeData('appTheme', theme);
     }
   }, [theme, loaded]);
-  
+
   // Changer le thème
   const setAppTheme = (newTheme) => {
     setTheme(newTheme);
   };
-  
+
   // Basculer entre les thèmes
   const toggleTheme = () => {
     if (theme === 'system') {
@@ -60,12 +60,12 @@ export const ThemeProvider = ({ children }) => {
       setTheme(theme === 'dark' ? 'light' : 'dark');
     }
   };
-  
+
   // Réinitialiser au thème du système
   const resetToSystemTheme = () => {
     setTheme('system');
   };
-  
+
   // Couleurs en fonction du thème
   const colors = isDarkTheme 
     ? {
@@ -83,7 +83,7 @@ export const ThemeProvider = ({ children }) => {
         divider: '#2C2C2C',
         disabled: '#666666',
         icon: '#FFFFFF',
-        
+
         // Couleurs spécifiques au niveau
         level: {
           A1: '#3b82f6',
@@ -97,7 +97,7 @@ export const ThemeProvider = ({ children }) => {
     : {
         // Palette de couleurs pour le thème clair
         ...COLORS,
-        
+
         // Couleurs spécifiques au niveau
         level: {
           A1: '#3b82f6',
@@ -108,7 +108,7 @@ export const ThemeProvider = ({ children }) => {
           C2: '#6366f1',
         }
       };
-  
+
   // Espacement et dimensions cohérents
   const spacing = {
     xs: 4,
@@ -118,7 +118,7 @@ export const ThemeProvider = ({ children }) => {
     xl: 32,
     xxl: 48,
   };
-  
+
   // Typographie
   const typography = {
     fontSizes: {
@@ -143,7 +143,7 @@ export const ThemeProvider = ({ children }) => {
       loose: 1.8,
     },
   };
-  
+
   // Rayons de bordure
   const borderRadius = {
     sm: 4,
@@ -152,7 +152,7 @@ export const ThemeProvider = ({ children }) => {
     xl: 16,
     round: 9999,
   };
-  
+
   // Ombres
   const shadows = isDarkTheme 
     ? {
@@ -201,7 +201,7 @@ export const ThemeProvider = ({ children }) => {
           elevation: 6,
         },
       };
-  
+
   // Valeur fournie par le contexte
   const contextValue = {
     theme,
@@ -216,7 +216,7 @@ export const ThemeProvider = ({ children }) => {
     shadows,
     loaded,
   };
-  
+
   return (
     <ThemeContext.Provider value={contextValue}>
       {children}

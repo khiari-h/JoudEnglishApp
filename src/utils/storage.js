@@ -17,7 +17,7 @@ export const storeData = async (key, value) => {
     await AsyncStorage.setItem(key, jsonValue);
     return true;
   } catch (error) {
-    console.error('Error storing data:', error);
+
     return false;
   }
 };
@@ -32,7 +32,7 @@ export const getData = async (key) => {
     const jsonValue = await AsyncStorage.getItem(key);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (error) {
-    console.error('Error retrieving data:', error);
+
     return null;
   }
 };
@@ -47,7 +47,7 @@ export const removeData = async (key) => {
     await AsyncStorage.removeItem(key);
     return true;
   } catch (error) {
-    console.error('Error removing data:', error);
+
     return false;
   }
 };
@@ -62,7 +62,7 @@ export const hasKey = async (key) => {
     const keys = await AsyncStorage.getAllKeys();
     return keys.includes(key);
   } catch (error) {
-    console.error('Error checking key:', error);
+
     return false;
   }
 };
@@ -80,7 +80,7 @@ export const getMultipleData = async (keys) => {
       return result;
     }, {});
   } catch (error) {
-    console.error('Error retrieving multiple data:', error);
+
     return {};
   }
 };
@@ -96,11 +96,11 @@ export const storeMultipleData = async (keyValuePairs) => {
       key, 
       JSON.stringify(value)
     ]);
-    
+
     await AsyncStorage.multiSet(pairs);
     return true;
   } catch (error) {
-    console.error('Error storing multiple data:', error);
+
     return false;
   }
 };
@@ -115,7 +115,7 @@ export const removeMultipleData = async (keys) => {
     await AsyncStorage.multiRemove(keys);
     return true;
   } catch (error) {
-    console.error('Error removing multiple data:', error);
+
     return false;
   }
 };
@@ -129,7 +129,7 @@ export const clearAllData = async () => {
     await AsyncStorage.clear();
     return true;
   } catch (error) {
-    console.error('Error clearing all data:', error);
+
     return false;
   }
 };
@@ -143,7 +143,7 @@ export const getAllKeys = async () => {
     const keys = await AsyncStorage.getAllKeys();
     return keys;
   } catch (error) {
-    console.error('Error getting all keys:', error);
+
     return [];
   }
 };
@@ -156,28 +156,28 @@ export const getAllKeys = async () => {
 export const getDataWithExpiry = async (key) => {
   try {
     const jsonValue = await AsyncStorage.getItem(key);
-    
+
     if (!jsonValue) {
       return null;
     }
-    
+
     const item = JSON.parse(jsonValue);
-    
+
     // Vérifier si l'élément a une date d'expiration
     if (!item.expiry) {
       return item.value;
     }
-    
+
     // Vérifier si l'élément a expiré
     if (new Date().getTime() > item.expiry) {
       // Supprimer l'élément expiré
       await AsyncStorage.removeItem(key);
       return null;
     }
-    
+
     return item.value;
   } catch (error) {
-    console.error('Error retrieving data with expiry:', error);
+
     return null;
   }
 };
@@ -195,11 +195,11 @@ export const storeDataWithExpiry = async (key, value, ttl) => {
       value,
       expiry: new Date().getTime() + ttl,
     };
-    
+
     await AsyncStorage.setItem(key, JSON.stringify(item));
     return true;
   } catch (error) {
-    console.error('Error storing data with expiry:', error);
+
     return false;
   }
 };
@@ -217,55 +217,55 @@ export const storageService = {
     STREAK_DATA: 'streakData',
     COMPLETED_EXERCISES: 'completedExercises',
   },
-  
+
   // Sauvegarder la progression de l'utilisateur
   saveProgress: async (progressData) => {
     return storeData(storageService.keys.USER_PROGRESS, progressData);
   },
-  
+
   // Récupérer la progression de l'utilisateur
   getProgress: async () => {
     return getData(storageService.keys.USER_PROGRESS);
   },
-  
+
   // Sauvegarder les paramètres de l'utilisateur
   saveSettings: async (settings) => {
     return storeData(storageService.keys.USER_SETTINGS, settings);
   },
-  
+
   // Récupérer les paramètres de l'utilisateur
   getSettings: async () => {
     return getData(storageService.keys.USER_SETTINGS);
   },
-  
+
   // Marquer un exercice comme complété
   markExerciseCompleted: async (exerciseId, level, score) => {
     try {
       // Récupérer les exercices déjà complétés
       const completedExercises = await getData(storageService.keys.COMPLETED_EXERCISES) || {};
-      
+
       // Ajouter le nouvel exercice complété
       completedExercises[exerciseId] = {
         level,
         score,
         completedAt: new Date().toISOString(),
       };
-      
+
       // Sauvegarder la liste mise à jour
       await storeData(storageService.keys.COMPLETED_EXERCISES, completedExercises);
       return true;
     } catch (error) {
-      console.error('Error marking exercise as completed:', error);
+
       return false;
     }
   },
-  
+
   // Vérifier si un exercice a été complété
   isExerciseCompleted: async (exerciseId) => {
     const completedExercises = await getData(storageService.keys.COMPLETED_EXERCISES) || {};
     return Boolean(completedExercises[exerciseId]);
   },
-  
+
   // Mettre à jour la streak de l'utilisateur
   updateStreak: async () => {
     try {
@@ -275,10 +275,10 @@ export const storageService = {
         lastLoginDate: null,
         maxStreak: 0,
       };
-      
+
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-      
+
       // Si c'est la première connexion
       if (!streakData.lastLoginDate) {
         streakData.currentStreak = 1;
@@ -287,7 +287,7 @@ export const storageService = {
       } else {
         const lastLogin = new Date(streakData.lastLoginDate).getTime();
         const oneDayMs = 24 * 60 * 60 * 1000;
-        
+
         // Si la dernière connexion était hier, on incrémente la streak
         if (today - lastLogin === oneDayMs) {
           streakData.currentStreak += 1;
@@ -304,16 +304,16 @@ export const storageService = {
           streakData.lastLoginDate = today;
         }
       }
-      
+
       // Sauvegarder les données de streak mises à jour
       await storeData(storageService.keys.STREAK_DATA, streakData);
       return streakData;
     } catch (error) {
-      console.error('Error updating streak:', error);
+
       return null;
     }
   },
-  
+
   // Récupérer les données de streak
   getStreak: async () => {
     return getData(storageService.keys.STREAK_DATA) || {
@@ -322,7 +322,7 @@ export const storageService = {
       maxStreak: 0,
     };
   },
-  
+
   // Réinitialiser toutes les données de l'application
   resetAllData: async () => {
     return clearAllData();

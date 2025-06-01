@@ -118,12 +118,12 @@ const useProgress = () => {
     const loadProgress = async () => {
       try {
         const storedProgress = await AsyncStorage.getItem('userProgress');
-        
+
         if (storedProgress) {
           setProgress(JSON.parse(storedProgress));
         }
       } catch (error) {
-        console.error('Error loading progress:', error);
+
       }
     };
 
@@ -136,7 +136,7 @@ const useProgress = () => {
       try {
         await AsyncStorage.setItem('userProgress', JSON.stringify(progress));
       } catch (error) {
-        console.error('Error saving progress:', error);
+
       }
     };
 
@@ -148,7 +148,7 @@ const useProgress = () => {
     setProgress(prevProgress => {
       // Copie pour éviter de modifier directement l'état
       const newProgress = { ...prevProgress };
-      
+
       // Mise à jour de la progression de l'exercice spécifique
       if (newProgress.exercises[exerciseType]?.[level]) {
         newProgress.exercises[exerciseType][level] = { 
@@ -156,34 +156,34 @@ const useProgress = () => {
           total 
         };
       }
-      
+
       // Recalcul de la progression globale du niveau
       const levelExercises = Object.keys(newProgress.exercises)
         .filter(type => newProgress.exercises[type][level])
         .map(type => newProgress.exercises[type][level]);
-      
+
       if (levelExercises.length > 0) {
         const totalCompleted = levelExercises.reduce(
           (sum, exercise) => sum + exercise.completed, 0
         );
-        
+
         const totalPossible = levelExercises.reduce(
           (sum, exercise) => sum + exercise.total, 0
         );
-        
+
         newProgress.levels[level] = {
           completed: Math.round((totalCompleted / totalPossible) * 100),
           total: 100
         };
       }
-      
+
       // Mise à jour de la dernière activité
       newProgress.lastActivity = {
         type: exerciseType,
         level,
         timestamp: new Date().toISOString(),
       };
-      
+
       return newProgress;
     });
   }, []);
@@ -238,7 +238,7 @@ const useProgress = () => {
         },
       });
     } catch (error) {
-      console.error('Error resetting progress:', error);
+
     }
   }, []);
 

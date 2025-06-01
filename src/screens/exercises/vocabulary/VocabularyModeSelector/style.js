@@ -239,11 +239,11 @@ const styles = StyleSheet.create({
     modeCard: {
       padding: 20,
     },
-    
+
     headerTitle: {
       fontSize: 24,
     },
-    
+
     modeTitle: {
       fontSize: 18,
     },

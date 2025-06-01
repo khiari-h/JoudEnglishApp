@@ -171,5 +171,5 @@ const gettingDirectionsDetailed = {
       ]
     }
   };
-  
+
   export default gettingDirectionsDetailed;

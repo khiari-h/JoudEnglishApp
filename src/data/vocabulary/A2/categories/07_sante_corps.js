@@ -23,33 +23,32 @@ export const vocab = {
     { word: "thumb", translation: "pouce", example: "I hit my thumb with the hammer." },
     { word: "ankle", translation: "cheville", example: "I sprained my ankle while jogging." },
     { word: "heel", translation: "talon", example: "She wore shoes with high heels." },
-    
+
     { word: "muscle", translation: "muscle", example: "Exercise helps strengthen your muscles." },
-    
+
     { word: "joint", translation: "articulation", example: "She has pain in her knee joint." },
-    
+
     // Symptômes courants
     { word: "fever", translation: "fièvre", example: "He has a high fever and should see a doctor." },
     { word: "sore throat", translation: "mal de gorge", example: "I have a sore throat and it hurts to swallow." },
     { word: "cough", translation: "toux", example: "She's had a persistent cough for two weeks." },
     { word: "runny nose", translation: "nez qui coule", example: "A runny nose is a common symptom of a cold." },
     { word: "sneezing", translation: "éternuement", example: "His sneezing got worse during allergy season." },
-    
-    
+
     { word: "nausea", translation: "nausée", example: "The smell made him feel nausea." },
     { word: "dizziness", translation: "vertige", example: "She experienced dizziness when she stood up too quickly." },
     { word: "fatigue", translation: "fatigue", example: "Chronic fatigue can be a symptom of several conditions." },
     { word: "insomnia", translation: "insomnie", example: "She suffers from insomnia and can't sleep at night." },
-    
+
     { word: "ache", translation: "douleur sourde", example: "I have an ache in my muscles after exercising." },
     { word: "swelling", translation: "gonflement", example: "The swelling in his ankle got worse after walking." },
     { word: "rash", translation: "éruption cutanée", example: "She developed a rash after using the new soap." },
     { word: "itching", translation: "démangeaison", example: "The mosquito bite caused severe itching." },
     { word: "bleeding", translation: "saignement", example: "Apply pressure to stop the bleeding." },
     { word: "vomiting", translation: "vomissement", example: "The food poisoning caused vomiting." },
-    
+
     // Maladies fréquentes
-    
+
     { word: "flu", translation: "grippe", example: "The flu kept her in bed for a week." },
     { word: "allergy", translation: "allergie", example: "I have an allergy to peanuts." },
     { word: "infection", translation: "infection", example: "He's on antibiotics for a throat infection." },
@@ -67,7 +66,7 @@ export const vocab = {
     { word: "sprain", translation: "entorse", example: "I have a sprain in my ankle from playing soccer." },
     { word: "fracture", translation: "fracture", example: "The X-ray confirmed that he had a fracture in his arm." },
     { word: "concussion", translation: "commotion cérébrale", example: "The helmet prevented a serious concussion." },
-    
+
     // Professionnels de santé
     { word: "general practitioner", translation: "médecin généraliste", example: "See your general practitioner before consulting a specialist." },
     { word: "specialist", translation: "spécialiste", example: "She was referred to a specialist for her heart condition." },
@@ -80,11 +79,11 @@ export const vocab = {
     { word: "pharmacist", translation: "pharmacien", example: "Ask the pharmacist for advice on over-the-counter medications." },
     { word: "optician", translation: "opticien", example: "The optician helped me choose new glasses." },
     { word: "paramedic", translation: "ambulancier", example: "The paramedics arrived quickly after the accident." },
-    
+
     { word: "midwife", translation: "sage-femme", example: "A midwife assisted with the birth of their baby." },
     { word: "radiologist", translation: "radiologue", example: "The radiologist analyzed the X-ray images." },
     { word: "therapist", translation: "thérapeute", example: "He sees a therapist to help manage stress." },
-    
+
     // Médicaments de base
     { word: "painkiller", translation: "analgésique", example: "Take a painkiller if the headache persists." },
     { word: "antibiotic", translation: "antibiotique", example: "The doctor prescribed antibiotics for the infection." },
@@ -101,7 +100,7 @@ export const vocab = {
     { word: "tablet", translation: "comprimé", example: "Dissolve the tablet in water before taking it." },
     { word: "capsule", translation: "gélule", example: "Swallow the capsule whole with water." },
     { word: "prescription", translation: "ordonnance", example: "You need a prescription to get these medications." },
-    
+
     // Premiers soins simples
     { word: "first aid", translation: "premiers secours", example: "He took a first aid course at work." },
     { word: "bandage", translation: "bandage", example: "Apply a bandage to stop the bleeding." },
@@ -118,17 +117,17 @@ export const vocab = {
     { word: "recovery position", translation: "position latérale de sécurité", example: "She put the unconscious person in the recovery position." },
     { word: "to faint", translation: "s'évanouir", example: "She fainted due to the heat." },
     { word: "to choke", translation: "s'étouffer", example: "He started to choke on a piece of food." },
-    
+
     // Hygiène approfondie
     { word: "hygiene", translation: "hygiène", example: "Good hygiene is important for preventing illness." },
-    
+
     { word: "to disinfect", translation: "désinfecter", example: "Disinfect surfaces that are touched frequently." },
     { word: "to sterilize", translation: "stériliser", example: "You need to sterilize baby bottles before use." },
     { word: "hand sanitizer", translation: "gel hydroalcoolique", example: "Use hand sanitizer when soap and water aren't available." },
     { word: "antibacterial", translation: "antibactérien", example: "This soap has antibacterial properties." },
     { word: "dental floss", translation: "fil dentaire", example: "Use dental floss daily for good oral hygiene." },
     { word: "mouthwash", translation: "bain de bouche", example: "Rinse with mouthwash after brushing your teeth." },
-    
+
     { word: "nail clipper", translation: "coupe-ongles", example: "Keep your nails trimmed with a nail clipper." },
     { word: "lotion", translation: "lotion", example: "Apply lotion to keep your skin moisturized." },
     { word: "exfoliate", translation: "exfolier", example: "Exfoliate your skin once a week." },

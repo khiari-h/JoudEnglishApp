@@ -171,5 +171,5 @@ const environmentalIssues = {
       ]
     }
   };
-  
+
   export default environmentalIssues;

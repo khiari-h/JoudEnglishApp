@@ -199,5 +199,5 @@ const corporateStrategy = {
       ]
     }
   };
-  
+
   export default corporateStrategy;

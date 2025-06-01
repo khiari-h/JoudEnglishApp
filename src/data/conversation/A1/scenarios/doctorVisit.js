@@ -153,5 +153,5 @@ const doctorVisit = {
       ]
     }
   };
-  
+
   export default doctorVisit;

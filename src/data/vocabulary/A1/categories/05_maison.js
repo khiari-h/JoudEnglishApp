@@ -1,4 +1,4 @@
-ï»¿export const vocab = {
+export const vocab = {
   title: "Maison & Environnement Quotidien",
   words: [
     // Types de logement
@@ -12,19 +12,19 @@
     { word: "bungalow", translation: "bungalow", example: "My grandparents live in a bungalow." },
     { word: "villa", translation: "villa", example: "We rented a villa for our vacation." },
     { word: "dormitory", translation: "dortoir", example: "Students live in the university dormitory." },
-    { word: "floor", translation: "Ã©tage", example: "I live on the third floor." },
-    { word: "ground floor", translation: "rez-de-chaussÃ©e", example: "The restaurant is on the ground floor." },
-    { word: "upstairs", translation: "Ã  l'Ã©tage", example: "My bedroom is upstairs." },
+    { word: "floor", translation: "étage", example: "I live on the third floor." },
+    { word: "ground floor", translation: "rez-de-chaussée", example: "The restaurant is on the ground floor." },
+    { word: "upstairs", translation: "à l'étage", example: "My bedroom is upstairs." },
     { word: "downstairs", translation: "en bas", example: "The kitchen is downstairs." },
-    
-    // PiÃ¨ces
+
+    // Pièces
     { word: "kitchen", translation: "cuisine", example: "I'm cooking in the kitchen." },
     { word: "bedroom", translation: "chambre", example: "My bedroom is small but comfortable." },
     { word: "bathroom", translation: "salle de bain", example: "The bathroom has a shower." },
     { word: "living room", translation: "salon", example: "We watch TV in the living room." },
-    { word: "dining room", translation: "salle Ã  manger", example: "We eat in the dining room." },
+    { word: "dining room", translation: "salle à manger", example: "We eat in the dining room." },
     { word: "toilet", translation: "toilettes", example: "The toilet is next to the bathroom." },
-    { word: "hall", translation: "entrÃ©e/couloir", example: "The hall connects all the rooms." },
+    { word: "hall", translation: "entrée/couloir", example: "The hall connects all the rooms." },
     { word: "study", translation: "bureau", example: "He works in his study." },
     { word: "garage", translation: "garage", example: "I park my car in the garage." },
     { word: "garden", translation: "jardin", example: "We have flowers in our garden." },
@@ -34,27 +34,27 @@
     { word: "stairs", translation: "escalier", example: "Be careful on the stairs." },
     { word: "wall", translation: "mur", example: "The walls in my room are white." },
     { word: "ceiling", translation: "plafond", example: "The ceiling is very high." },
-    
+
     { word: "door", translation: "porte", example: "Please close the door." },
-    { word: "window", translation: "fenÃªtre", example: "Open the window, please." },
-    
+    { word: "window", translation: "fenêtre", example: "Open the window, please." },
+
     // Meubles essentiels
     { word: "bed", translation: "lit", example: "I sleep in a comfortable bed." },
     { word: "chair", translation: "chaise", example: "Sit on this chair, please." },
     { word: "table", translation: "table", example: "We eat at the kitchen table." },
     { word: "desk", translation: "bureau", example: "I study at my desk." },
-    { word: "sofa", translation: "canapÃ©", example: "We sit on the sofa to watch TV." },
-    { word: "couch", translation: "canapÃ©", example: "The couch is very comfortable." },
+    { word: "sofa", translation: "canapé", example: "We sit on the sofa to watch TV." },
+    { word: "couch", translation: "canapé", example: "The couch is very comfortable." },
     { word: "armchair", translation: "fauteuil", example: "My grandfather sits in his armchair to read." },
-    { word: "shelf", translation: "Ã©tagÃ¨re", example: "I put my books on the shelf." },
-    { word: "bookshelf", translation: "bibliothÃ¨que", example: "She has many books on her bookshelf." },
+    { word: "shelf", translation: "étagère", example: "I put my books on the shelf." },
+    { word: "bookshelf", translation: "bibliothèque", example: "She has many books on her bookshelf." },
     { word: "wardrobe", translation: "armoire", example: "My clothes are in the wardrobe." },
     { word: "cupboard", translation: "placard", example: "The plates are in the cupboard." },
     { word: "drawer", translation: "tiroir", example: "My socks are in the drawer." },
     { word: "mirror", translation: "miroir", example: "I look at myself in the mirror." },
     { word: "lamp", translation: "lampe", example: "Turn on the lamp, please." },
     { word: "curtains", translation: "rideaux", example: "Close the curtains, please." },
-    
+
     // Objets domestiques
     { word: "plate", translation: "assiette", example: "Put the food on the plate." },
     { word: "glass", translation: "verre", example: "Fill the glass with water, please." },
@@ -62,40 +62,40 @@
     { word: "mug", translation: "grande tasse", example: "I prefer tea in a mug." },
     { word: "knife", translation: "couteau", example: "Cut the bread with a knife." },
     { word: "fork", translation: "fourchette", example: "Use your fork to eat pasta." },
-    { word: "spoon", translation: "cuillÃ¨re", example: "I eat soup with a spoon." },
+    { word: "spoon", translation: "cuillère", example: "I eat soup with a spoon." },
     { word: "bowl", translation: "bol", example: "I eat cereal from a bowl." },
     { word: "pot", translation: "casserole", example: "Cook the soup in a pot." },
-    { word: "pan", translation: "poÃªle", example: "Fry the eggs in a pan." },
+    { word: "pan", translation: "poêle", example: "Fry the eggs in a pan." },
     { word: "kettle", translation: "bouilloire", example: "Boil water in the kettle." },
     { word: "blanket", translation: "couverture", example: "Use a blanket if you're cold." },
     { word: "pillow", translation: "oreiller", example: "I sleep on a soft pillow." },
     { word: "towel", translation: "serviette", example: "Dry your hands with a towel." },
     { word: "soap", translation: "savon", example: "Wash your hands with soap." },
-    
-    // Ã‰quipements basiques
-    { word: "television", translation: "tÃ©lÃ©vision", example: "We watch television in the evening." },
-    { word: "TV", translation: "tÃ©lÃ©", example: "What's on TV tonight?" },
-    { word: "refrigerator", translation: "rÃ©frigÃ©rateur", example: "Put the milk in the refrigerator." },
+
+    // Équipements basiques
+    { word: "television", translation: "télévision", example: "We watch television in the evening." },
+    { word: "TV", translation: "télé", example: "What's on TV tonight?" },
+    { word: "refrigerator", translation: "réfrigérateur", example: "Put the milk in the refrigerator." },
     { word: "fridge", translation: "frigo", example: "The fridge is full of food." },
     { word: "oven", translation: "four", example: "Bake the cake in the oven." },
     { word: "microwave", translation: "micro-ondes", example: "Heat the food in the microwave." },
     { word: "dishwasher", translation: "lave-vaisselle", example: "Put the plates in the dishwasher." },
-    { word: "washing machine", translation: "machine Ã  laver", example: "Wash your clothes in the washing machine." },
-    { word: "dryer", translation: "sÃ¨che-linge", example: "Dry your clothes in the dryer." },
+    { word: "washing machine", translation: "machine à laver", example: "Wash your clothes in the washing machine." },
+    { word: "dryer", translation: "sèche-linge", example: "Dry your clothes in the dryer." },
     { word: "vacuum cleaner", translation: "aspirateur", example: "Clean the floor with a vacuum cleaner." },
     { word: "shower", translation: "douche", example: "I take a shower every morning." },
     { word: "bath", translation: "bain", example: "The children like to take a bath." },
-    { word: "sink", translation: "Ã©vier/lavabo", example: "Wash the dishes in the sink." },
-    { word: "light", translation: "lumiÃ¨re", example: "Turn on the light, please." },
+    { word: "sink", translation: "évier/lavabo", example: "Wash the dishes in the sink." },
+    { word: "light", translation: "lumière", example: "Turn on the light, please." },
     { word: "heater", translation: "chauffage", example: "Turn on the heater, it's cold." },
     { word: "air conditioner", translation: "climatiseur", example: "We use the air conditioner in summer." },
-    
-    // TÃ¢ches mÃ©nagÃ¨res simples
+
+    // Tâches ménagères simples
     { word: "to clean", translation: "nettoyer", example: "I clean my room every week." },
     { word: "to wash", translation: "laver", example: "She washes the dishes after dinner." },
     { word: "to cook", translation: "cuisiner", example: "I like to cook dinner." },
     { word: "to sweep", translation: "balayer", example: "Sweep the floor, please." },
-    { word: "to dust", translation: "Ã©pousseter", example: "I dust the furniture once a week." },
+    { word: "to dust", translation: "épousseter", example: "I dust the furniture once a week." },
     { word: "to iron", translation: "repasser", example: "I iron my shirts for work." },
     { word: "to vacuum", translation: "passer l'aspirateur", example: "I vacuum the carpets on Saturdays." },
     { word: "to tidy up", translation: "ranger", example: "Please tidy up your room." },
@@ -107,6 +107,6 @@
     { word: "to open", translation: "ouvrir", example: "Can you open the window?" },
     { word: "to close", translation: "fermer", example: "Close the door when you leave." },
     { word: "to turn on", translation: "allumer", example: "Turn on the lights." },
-    { word: "to turn off", translation: "Ã©teindre", example: "Turn off the TV before going to bed." }
+    { word: "to turn off", translation: "éteindre", example: "Turn off the TV before going to bed." }
   ]
 };

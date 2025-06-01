@@ -138,5 +138,5 @@ const askingDirections = {
       ]
     }
   };
-  
+
   export default askingDirections;

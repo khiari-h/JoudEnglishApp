@@ -7,12 +7,12 @@ import readingQuestionsB1 from './categories/readingQuestionsB1.js';
 const combineTextWithQuestions = (textId) => {
   const text = readingTextsB1.find(t => t.id === textId);
   const questions = readingQuestionsB1.find(q => q.textId === textId);
-  
+
   if (!text || !questions) {
-    console.warn(`Text or questions not found for ID: ${textId}`);
+
     return null;
   }
-  
+
   return {
     ...text,
     questions: questions.questions
@@ -58,13 +58,13 @@ const b1Metadata = {
 const readingB1Data = {
   metadata: b1Metadata,
   exercises: getAllB1Exercises(),
-  
+
   // Fonctions utilitaires
   getAll: getAllB1Exercises,
   getById: getB1ExerciseById,
   getByDifficulty: getB1ExercisesByDifficulty,
   getByTopic: getB1ExercisesByTopic,
-  
+
   // Accès séparé aux données brutes
   texts: readingTextsB1,
   questions: readingQuestionsB1

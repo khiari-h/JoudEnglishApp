@@ -22,17 +22,17 @@ const usePhrasesProgress = (level) => {
         const savedCompletedPhrases = savedCompletedPhrasesJson 
           ? JSON.parse(savedCompletedPhrasesJson) 
           : {};
-        
+
         const savedPositionJson = await AsyncStorage.getItem(LAST_POSITION_KEY);
         const savedPosition = savedPositionJson 
           ? JSON.parse(savedPositionJson) 
           : { categoryIndex: 0, phraseIndex: 0 };
-        
+
         setCompletedPhrases(savedCompletedPhrases);
         setLastPosition(savedPosition);
         setLoaded(true);
       } catch (error) {
-        console.error('Erreur lors du chargement des données de progression:', error);
+
         setLoaded(true);
       }
     };
@@ -51,7 +51,7 @@ const usePhrasesProgress = (level) => {
       setLastPosition(newPosition);
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
     } catch (error) {
-      console.error('Erreur lors de la sauvegarde de la position:', error);
+
     }
   }, []);
 
@@ -59,19 +59,19 @@ const usePhrasesProgress = (level) => {
   const markPhraseAsCompleted = useCallback(async (categoryIndex, phraseIndex, phrase) => {
     try {
       const updatedCompletedPhrases = { ...completedPhrases };
-      
+
       if (!updatedCompletedPhrases[categoryIndex]) {
         updatedCompletedPhrases[categoryIndex] = [];
       }
 
       if (!updatedCompletedPhrases[categoryIndex].includes(phraseIndex)) {
         updatedCompletedPhrases[categoryIndex].push(phraseIndex);
-        
+
         setCompletedPhrases(updatedCompletedPhrases);
         await AsyncStorage.setItem(COMPLETED_PHRASES_KEY, JSON.stringify(updatedCompletedPhrases));
       }
     } catch (error) {
-      console.error('Erreur lors du marquage de la phrase comme complétée:', error);
+
     }
   }, [completedPhrases]);
 
@@ -79,7 +79,7 @@ const usePhrasesProgress = (level) => {
   const calculateOverallProgress = useCallback(() => {
     const totalCategories = Object.keys(completedPhrases).length;
     if (totalCategories === 0) return 0;
-    
+
     const completedCategories = Object.values(completedPhrases).filter(phrases => phrases.length > 0).length;
     return (completedCategories / totalCategories) * 100;
   }, [completedPhrases]);

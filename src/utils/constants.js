@@ -390,3 +390,4 @@ export default {
   ANIMATION_DURATIONS,
   COLORS,
 };
+

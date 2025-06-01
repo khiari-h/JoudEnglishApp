@@ -14,7 +14,7 @@ const ConversationSuggestions = ({ suggestions, onPressSuggestion, levelColor })
   if (!suggestions || suggestions.length === 0) {
     return null;
   }
-  
+
   return (
     <ScrollView
       horizontal

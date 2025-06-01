@@ -16,10 +16,10 @@ const useConversationExerciseState = (level, scenarios = []) => {
   const [suggestions, setSuggestions] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
   const [completionProgress, setCompletionProgress] = useState(0);
-  
+
   // Ref pour suivre l'initialisation
   const isInitialized = useRef(false);
-  
+
   // Réinitialiser la conversation lorsque le scénario change
   useEffect(() => {
     if (scenarios.length > 0 && !isInitialized.current) {
@@ -27,20 +27,20 @@ const useConversationExerciseState = (level, scenarios = []) => {
       isInitialized.current = true;
     }
   }, [scenarios, scenarioIndex]);
-  
+
   // Démarrer une nouvelle conversation
   const startConversation = useCallback(() => {
     if (scenarios.length === 0 || !scenarios[scenarioIndex]) return;
-    
+
     // Réinitialiser l'état
     setConversation([]);
     setCurrentStep(0);
     setCompletionProgress(0);
-    
+
     // Lancer la conversation avec un délai pour simuler le chargement
     setTimeout(() => {
       setIsTyping(true);
-      
+
       setTimeout(() => {
         const currentScenario = scenarios[scenarioIndex];
         if (currentScenario.steps && currentScenario.steps.length > 0) {
@@ -53,7 +53,7 @@ const useConversationExerciseState = (level, scenarios = []) => {
               minute: '2-digit',
             }),
           };
-          
+
           setConversation([newMessage]);
           setSuggestions(currentScenario.steps[0].suggestions || []);
           setIsTyping(false);
@@ -62,23 +62,23 @@ const useConversationExerciseState = (level, scenarios = []) => {
       }, 1500);
     }, 500);
   }, [scenarios, scenarioIndex]);
-  
+
   // Mettre à jour la progression
   const updateProgress = useCallback(() => {
     if (!scenarios[scenarioIndex] || !scenarios[scenarioIndex].steps) return;
-    
+
     const totalSteps = scenarios[scenarioIndex].steps.length;
     const progress = (currentStep / totalSteps) * 100;
     setCompletionProgress(progress);
   }, [currentStep, scenarioIndex, scenarios]);
-  
+
   // Envoyer un message
   const sendMessage = useCallback((text) => {
     if (!text.trim() || !scenarios[scenarioIndex]) return;
-    
+
     const currentScenario = scenarios[scenarioIndex];
     if (!currentScenario.steps) return;
-    
+
     // Ajouter le message de l'utilisateur
     const userMessage = {
       id: conversation.length + 1,
@@ -89,19 +89,19 @@ const useConversationExerciseState = (level, scenarios = []) => {
         minute: '2-digit',
       }),
     };
-    
+
     setConversation(prev => [...prev, userMessage]);
     setMessage(''); // Effacer l'input
     setSuggestions([]); // Effacer les suggestions
-    
+
     // Vérifier s'il reste des étapes dans le scénario
     if (currentStep < currentScenario.steps.length - 1) {
       const nextStep = currentStep + 1;
       setCurrentStep(nextStep);
-      
+
       // Simuler la frappe du bot
       setIsTyping(true);
-      
+
       setTimeout(() => {
         // Réponse du bot
         const botResponse = {
@@ -113,7 +113,7 @@ const useConversationExerciseState = (level, scenarios = []) => {
             minute: '2-digit',
           }),
         };
-        
+
         setConversation(prev => [...prev, botResponse]);
         setSuggestions(currentScenario.steps[nextStep].suggestions || []);
         setIsTyping(false);
@@ -124,7 +124,7 @@ const useConversationExerciseState = (level, scenarios = []) => {
       setCompletionProgress(100);
     }
   }, [conversation, currentStep, scenarioIndex, scenarios, updateProgress]);
-  
+
   // Changer de scénario
   const changeScenario = useCallback((index) => {
     if (index !== scenarioIndex && index >= 0 && index < scenarios.length) {
@@ -135,22 +135,22 @@ const useConversationExerciseState = (level, scenarios = []) => {
       setIsTyping(false);
       setSuggestions([]);
       setMessage('');
-      
+
       // Réinitialiser le flag pour forcer une nouvelle initialisation
       isInitialized.current = false;
     }
   }, [scenarioIndex, scenarios]);
-  
+
   // Basculer l'affichage de l'aide
   const toggleHelp = useCallback(() => {
     setShowHelp(prev => !prev);
   }, []);
-  
+
   // Utiliser une suggestion
   const useSuggestion = useCallback((suggestion) => {
     setMessage(suggestion);
   }, []);
-  
+
   return {
     conversation,
     scenarioIndex,

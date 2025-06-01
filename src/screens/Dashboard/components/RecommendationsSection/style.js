@@ -16,17 +16,17 @@ export default StyleSheet.create({
     borderRadius: 16,
     overflow: 'hidden',
   },
-  
+
   // Contenu pour recommandation de démarrage
   startRecommendationContent: {
     padding: 20,
   },
-  
+
   // Contenu pour recommandation normale
   recommendationContent: {
     padding: 20,
   },
-  
+
   // Header avec icône et titre
   messageHeader: {
     flexDirection: 'row',
@@ -43,7 +43,7 @@ export default StyleSheet.create({
     color: '#1F2937',
     flex: 1,
   },
-  
+
   // Message principal
   messageText: {
     fontSize: 15,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
     lineHeight: 22,
     marginBottom: 16,
   },
-  
+
   // Info sur le temps passé
   timeInfo: {
     marginBottom: 16,
@@ -76,7 +76,7 @@ export default StyleSheet.create({
     color: '#6B7280',
     fontWeight: '500',
   },
-  
+
   // Aperçu de l'exercice recommandé
   exercisePreview: {
     backgroundColor: '#FAFBFC',
@@ -128,7 +128,7 @@ export default StyleSheet.create({
     fontWeight: '700',
     color: 'white',
   },
-  
+
   // Bouton d'action
   recommendationButton: {
     marginTop: 4,

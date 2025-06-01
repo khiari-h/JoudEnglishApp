@@ -24,7 +24,7 @@ allExercises.sort((a, b) => {
 const errorCorrectionB2 = {
   level: "B2",
   totalExercises: allExercises.length,
-  
+
   // Statistics by type
   statistics: {
     full: errorCorrectionB2Full.length,
@@ -157,23 +157,23 @@ const errorCorrectionB2 = {
   validateStructure: () => {
     const requiredFields = ['categoryId', 'type', 'text', 'correctedText', 'hint', 'explanation'];
     const validTypes = ['full', 'identify', 'multiple_choice'];
-    
+
     return allExercises.every(exercise => {
       // Check required fields
       const hasRequiredFields = requiredFields.every(field => 
         exercise.hasOwnProperty(field) && exercise[field] !== undefined
       );
-      
+
       // Check valid type
       const hasValidType = validTypes.includes(exercise.type);
-      
+
       // Check valid category (1-5 for B2)
       const hasValidCategory = exercise.categoryId >= 1 && exercise.categoryId <= 5;
-      
+
       // Check B2 level complexity (minimum text length and sophistication)
       const hasMinimumComplexity = exercise.text.split(' ').length >= 8;
       const hasAdvancedVocabulary = exercise.text.length > 50; // More sophisticated texts
-      
+
       // Check type-specific fields with B2 standards
       let hasTypeSpecificFields = true;
       if (exercise.type === 'multiple_choice') {
@@ -186,7 +186,7 @@ const errorCorrectionB2 = {
       } else {
         hasTypeSpecificFields = exercise.errorPositions && Array.isArray(exercise.errorPositions);
       }
-      
+
       return hasRequiredFields && hasValidType && hasValidCategory && 
              hasMinimumComplexity && hasAdvancedVocabulary && hasTypeSpecificFields;
     });
@@ -197,11 +197,11 @@ const errorCorrectionB2 = {
     const totalErrorPositions = allExercises
       .filter(ex => ex.errorPositions)
       .reduce((sum, ex) => sum + ex.errorPositions.length, 0);
-    
+
     const totalTextLength = allExercises.reduce((sum, ex) => sum + ex.text.length, 0);
     const complexExercises = errorCorrectionB2.getAdvancedExercises().length;
     const formalExercises = errorCorrectionB2.getFormalRegisterExercises().length;
-    
+
     return {
       level: "B2",
       totalExercises: allExercises.length,
@@ -235,9 +235,9 @@ const errorCorrectionB2 = {
 
 // Validate structure on export
 if (!errorCorrectionB2.validateStructure()) {
-  console.warn('Error Correction B2: Some exercises have invalid structure');
+
 } else {
-  console.log(`Error Correction B2: Successfully loaded ${allExercises.length} advanced exercises`);
+
 }
 
 export default errorCorrectionB2;

@@ -7,12 +7,12 @@ import readingQuestionsC2 from './categories/readingQuestionsC2.js';
 const combineTextWithQuestions = (textId) => {
   const text = readingTextsC2.find(t => t.id === textId);
   const questions = readingQuestionsC2.find(q => q.textId === textId);
-  
+
   if (!text || !questions) {
-    console.warn(`Text or questions not found for ID: ${textId}`);
+
     return null;
   }
-  
+
   return {
     ...text,
     questions: questions.questions
@@ -58,13 +58,13 @@ const c2Metadata = {
 const readingC2Data = {
   metadata: c2Metadata,
   exercises: getAllC2Exercises(),
-  
+
   // Fonctions utilitaires
   getAll: getAllC2Exercises,
   getById: getC2ExerciseById,
   getByDifficulty: getC2ExercisesByDifficulty,
   getByTopic: getC2ExercisesByTopic,
-  
+
   // Accès séparé aux données brutes
   texts: readingTextsC2,
   questions: readingQuestionsC2

@@ -14,3 +14,4 @@ export const ROUTES = {
   SPELLING_EXERCISE: "SpellingExercise",
   ASSESSMENT_EXERCISE: "LevelAssessment",
 };
+

@@ -26,7 +26,7 @@ const ConversationScenarioDescription = ({
           {description || "Practice your writing skills in this conversation."}
         </Text>
       </View>
-      
+
       <ConversationHelpPanel
         helpText={helpText}
         isVisible={showHelp}

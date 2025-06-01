@@ -30,11 +30,11 @@ const useSpellingProgress = (level, exerciseType) => {
         const savedCompletedExercises = savedCompletedExercisesJson 
           ? JSON.parse(savedCompletedExercisesJson) 
           : [];
-        
+
         // Récupérer la dernière position
         const savedPositionJson = await AsyncStorage.getItem(LAST_POSITION_KEY);
         let savedPosition;
-        
+
         try {
           // Tenter de parser comme un objet (nouveau format)
           const parsedPosition = JSON.parse(savedPositionJson);
@@ -45,19 +45,19 @@ const useSpellingProgress = (level, exerciseType) => {
           // Fallback au cas où c'est juste un nombre (ancien format)
           savedPosition = Number(savedPositionJson) || 0;
         }
-        
+
         // Récupérer les réponses de l'utilisateur
         const savedAnswersJson = await AsyncStorage.getItem(USER_ANSWERS_KEY);
         const savedAnswers = savedAnswersJson 
           ? JSON.parse(savedAnswersJson) 
           : [];
-        
+
         setCompletedExercises(savedCompletedExercises);
         setLastPosition(savedPosition);
         setUserAnswers(savedAnswers);
         setLoaded(true);
       } catch (error) {
-        console.error('Erreur lors du chargement des données de progression:', error);
+
         setCompletedExercises([]);
         setLastPosition(0);
         setUserAnswers([]);
@@ -72,17 +72,17 @@ const useSpellingProgress = (level, exerciseType) => {
   const saveLastPosition = useCallback(async (exerciseIndex) => {
     try {
       setLastPosition(exerciseIndex);
-      
+
       // Stocker comme un objet avec timestamp au lieu d'un simple nombre
       const positionData = {
         exerciseIndex,
         exerciseType,
         timestamp: Date.now()
       };
-      
+
       await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(positionData));
     } catch (error) {
-      console.error('Erreur lors de la sauvegarde de la position:', error);
+
     }
   }, [LAST_POSITION_KEY, exerciseType]);
 
@@ -91,13 +91,13 @@ const useSpellingProgress = (level, exerciseType) => {
     try {
       // Mettre à jour les exercices complétés
       const updatedCompletedExercises = [...completedExercises];
-      
+
       if (!updatedCompletedExercises.includes(exerciseIndex)) {
         updatedCompletedExercises.push(exerciseIndex);
         setCompletedExercises(updatedCompletedExercises);
         await AsyncStorage.setItem(COMPLETED_EXERCISES_KEY, JSON.stringify(updatedCompletedExercises));
       }
-      
+
       // Sauvegarder la réponse de l'utilisateur
       const newAnswer = {
         exerciseIndex,
@@ -108,13 +108,13 @@ const useSpellingProgress = (level, exerciseType) => {
         timestamp: Date.now(),
         ...additionalData // ✨ Pour données spécifiques (ex: choix disponibles pour homophones)
       };
-      
+
       const updatedUserAnswers = [...userAnswers, newAnswer];
       setUserAnswers(updatedUserAnswers);
       await AsyncStorage.setItem(USER_ANSWERS_KEY, JSON.stringify(updatedUserAnswers));
-      
+
     } catch (error) {
-      console.error('Erreur lors du marquage de l\'exercice comme complété:', error);
+
     }
   }, [completedExercises, userAnswers, COMPLETED_EXERCISES_KEY, USER_ANSWERS_KEY, exerciseType]);
 
@@ -141,7 +141,7 @@ const useSpellingProgress = (level, exerciseType) => {
     const typeAnswers = userAnswers.filter(answer => answer.exerciseType === exerciseType);
     const correct = typeAnswers.filter(answer => answer.isCorrect).length;
     const total = typeAnswers.length;
-    
+
     return {
       correct,
       total,

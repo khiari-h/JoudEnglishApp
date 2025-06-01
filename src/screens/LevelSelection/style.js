@@ -10,7 +10,7 @@ export default StyleSheet.create({
     paddingBottom: 30,
     paddingTop: 16,
   },
-  
+
   // Styles pour la section d'introduction
   introSection: {
     marginBottom: 24,
@@ -21,7 +21,7 @@ export default StyleSheet.create({
     lineHeight: 22,
     textAlign: 'center',
   },
-  
+
   // Styles pour les cartes de niveau
   levelsContainer: {
     marginBottom: 20,
@@ -50,12 +50,12 @@ export default StyleSheet.create({
     lineHeight: 20,
     marginBottom: 16,
   },
-  
+
   // Styles pour la barre de progression
   progressBar: {
     marginBottom: 16,
   },
-  
+
   // Styles pour le bouton
   startButton: {
     marginTop: 4,

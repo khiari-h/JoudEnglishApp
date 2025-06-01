@@ -193,5 +193,5 @@ const technicalExplanation = {
       ]
     }
   };
-  
+
   export default technicalExplanation;

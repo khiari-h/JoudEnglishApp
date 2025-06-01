@@ -33,3 +33,4 @@ export default {
     actualites_evenements
   ],
 };
+

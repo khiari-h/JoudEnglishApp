@@ -171,5 +171,5 @@ const discussingMovies = {
       ]
     }
   };
-  
+
   export default discussingMovies;

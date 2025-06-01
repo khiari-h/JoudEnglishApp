@@ -19,7 +19,7 @@ const readingTextsA1 = [
     difficulty: 2,
     topics: ["food", "restaurant", "ordering"],
     text: "Tom and Lisa are at a restaurant. It is Friday evening. They are hungry. A waiter comes to their table. 'Good evening,' says the waiter. 'What would you like to order?' Tom looks at the menu. 'I would like a hamburger and fries, please,' says Tom. 'And I would like a salad,' says Lisa. 'What would you like to drink?' asks the waiter. 'A glass of water for me,' says Lisa. 'And I would like a soda,' says Tom. The waiter brings their food and drinks. The hamburger and salad are delicious. After dinner, they pay the bill. They leave the restaurant at 9:00.",
- 
+
   },
   {
     id: "a1_text_003",

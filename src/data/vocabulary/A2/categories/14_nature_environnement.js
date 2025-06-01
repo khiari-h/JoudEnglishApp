@@ -5,9 +5,9 @@ export const vocab = {
     { word: "mammal", translation: "mammifère", example: "Dolphins are marine mammals." },
     { word: "reptile", translation: "reptile", example: "Snakes and lizards are reptiles." },
     { word: "amphibian", translation: "amphibien", example: "Frogs and toads are amphibians." },
-    
+
     { word: "insect", translation: "insecte", example: "Bees are important insects for pollination." },
-    
+
     { word: "predator", translation: "prédateur", example: "Lions are predators at the top of the food chain." },
     { word: "prey", translation: "proie", example: "Rabbits are prey for many different animals." },
     { word: "endangered species", translation: "espèce menacée", example: "The panda is an endangered species." },
@@ -18,7 +18,7 @@ export const vocab = {
     { word: "flock", translation: "volée/troupeau", example: "A flock of birds flew overhead." },
     { word: "pack", translation: "meute", example: "Wolves hunt in packs." },
     { word: "habitat", translation: "habitat", example: "The forest is a natural habitat for many species." },
-    
+
     // Plantes courantes
     { word: "tree", translation: "arbre", example: "Oak trees can live for hundreds of years." },
     { word: "flower", translation: "fleur", example: "Sunflowers turn to face the sun." },
@@ -26,34 +26,32 @@ export const vocab = {
     { word: "bush", translation: "buisson", example: "There are some berries growing on that bush." },
     { word: "shrub", translation: "arbuste", example: "We planted some flowering shrubs in the garden." },
     { word: "weed", translation: "mauvaise herbe", example: "I spent all day pulling weeds from the garden." },
-    
+
     { word: "root", translation: "racine", example: "The roots of the tree go deep into the ground." },
     { word: "leaf/leaves", translation: "feuille/feuilles", example: "The leaves change color in autumn." },
-    
+
     { word: "trunk", translation: "tronc", example: "The trunk of this tree is very thick." },
     { word: "blossom", translation: "fleur (d'arbre)", example: "Cherry blossom is beautiful in spring." },
     { word: "evergreen", translation: "à feuilles persistantes", example: "Pine trees are evergreen." },
     { word: "deciduous", translation: "à feuilles caduques", example: "Oak is a deciduous tree that loses its leaves in autumn." },
     { word: "vegetation", translation: "végétation", example: "The region has dense vegetation." },
-    
+
     // Paysages naturels
-    
-    
+
     { word: "hill", translation: "colline", example: "Their house is on top of a hill." },
     { word: "valley", translation: "vallée", example: "The river flows through the valley." },
-    
-    
+
     { word: "waterfall", translation: "cascade", example: "We took photos of the waterfall." },
     { word: "stream", translation: "ruisseau", example: "A small stream runs through our garden." },
     { word: "coast", translation: "côte", example: "They live on the west coast." },
-    
+
     { word: "cliff", translation: "falaise", example: "Be careful near the cliff edge." },
     { word: "cave", translation: "grotte", example: "The cave contained prehistoric paintings." },
-    
+
     { word: "jungle", translation: "jungle", example: "The Amazon jungle is home to countless species." },
-    
+
     { word: "landscape", translation: "paysage", example: "The landscape is beautiful in this region." },
-    
+
     // Écosystèmes simples
     { word: "ecosystem", translation: "écosystème", example: "A pond is a small but complex ecosystem." },
     { word: "rainforest", translation: "forêt tropicale", example: "Rainforests are being destroyed at an alarming rate." },
@@ -67,11 +65,11 @@ export const vocab = {
     { word: "food chain", translation: "chaîne alimentaire", example: "Every organism has a place in the food chain." },
     { word: "species", translation: "espèce", example: "Many species are threatened with extinction." },
     { word: "population", translation: "population", example: "The elephant population is decreasing." },
-    
+
     // Problèmes environnementaux basiques
-    
+
     { word: "global warming", translation: "réchauffement climatique", example: "Global warming is causing sea levels to rise." },
-    
+
     { word: "deforestation", translation: "déforestation", example: "Deforestation is a major cause of habitat loss." },
     { word: "extinction", translation: "extinction", example: "Human activities have caused the extinction of many species." },
     { word: "endangered", translation: "en voie de disparition", example: "Pandas are an endangered species." },
@@ -85,23 +83,15 @@ export const vocab = {
     { word: "ozone layer", translation: "couche d'ozone", example: "The ozone layer protects us from harmful UV radiation." },
     { word: "greenhouse gas", translation: "gaz à effet de serre", example: "Carbon dioxide is a greenhouse gas." },
     { word: "carbon footprint", translation: "empreinte carbone", example: "We should all try to reduce our carbon footprint." },
-    
+
     // Phénomènes naturels
-    
-    
-    
-    
-    
-    
+
     { word: "volcanic eruption", translation: "éruption volcanique", example: "The volcanic eruption caused flights to be canceled." },
     { word: "tsunami", translation: "tsunami", example: "The earthquake triggered a tsunami." },
-    
-    
+
     { word: "hurricane", translation: "ouragan", example: "The hurricane caused extensive damage to coastal areas." },
     { word: "tornado", translation: "tornade", example: "Tornadoes are common in some parts of the United States." },
-    
-    
-    
+
     { word: "current", translation: "courant", example: "The river current is very strong after rain." },
     { word: "wave", translation: "vague", example: "The waves were too big for swimming." },
     { word: "erosion", translation: "érosion", example: "The cliff is gradually disappearing due to erosion." }
