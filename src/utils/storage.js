@@ -263,7 +263,7 @@ export const storageService = {
   // Vérifier si un exercice a été complété
   isExerciseCompleted: async (exerciseId) => {
     const completedExercises = await getData(storageService.keys.COMPLETED_EXERCISES) || {};
-    return !!completedExercises[exerciseId];
+    return Boolean(completedExercises[exerciseId]);
   },
   
   // Mettre à jour la streak de l'utilisateur
