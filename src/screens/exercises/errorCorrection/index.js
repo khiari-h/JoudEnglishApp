@@ -1,7 +1,7 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionExercise/index.js
-import React, { useState, useEffect, useMemo } from "react";
-import { SafeAreaView, View } from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { SafeAreaView, View, ActivityIndicator, Text, Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Composants spécifiques à la correction d'erreurs
 import ErrorCorrectionHeader from "./ErrorCorrectionHeader";
@@ -16,8 +16,9 @@ import IdentifyErrorsMode from "./modes/IdentifyErrorsMode";
 import MultipleChoiceMode from "./modes/MultipleChoiceMode";
 import ErrorCorrectionResultsCard from "./ErrorCorrectionResultsCard";
 
-// Hook pour la gestion de l'état
+// Hooks personnalisés (les deux maintenant !)
 import useErrorCorrectionExerciseState from "./hooks/useErrorCorrectionExerciseState";
+import useErrorCorrectionProgress from "./hooks/useErrorCorrectionProgress";
 
 // Utilitaires et helpers
 import {
@@ -30,20 +31,23 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice de correction d'erreurs
+ * Version recodée : intégration des deux hooks + logique propre de progression
  */
 const ErrorCorrectionExercise = ({ route }) => {
-  // Hooks de navigation
+  // ========== NAVIGATION ET PARAMÈTRES ==========
   const navigation = useNavigation();
   const { level = "A1" } = route.params || {};
-
-  // Initialisation des données
+  
+  // Couleur et données du niveau
   const levelColor = getLevelColor(level);
   const exercisesData = useMemo(() => getErrorsData(level), [level]);
 
-  // Vue active (browse, exercise, results)
-  const [viewMode, setViewMode] = useState("browse");
+  // ========== ÉTATS LOCAUX ==========
+  const [viewMode, setViewMode] = useState("browse"); // "browse", "exercise", "results"
 
-  // État des exercices via notre hook personnalisé
+  // ========== HOOKS D'ÉTAT ==========
+  
+  // Hook d'état des exercices (sans progression)
   const {
     selectedCategory,
     currentExerciseIndex,
@@ -57,7 +61,6 @@ const ErrorCorrectionExercise = ({ route }) => {
     showResults,
     score,
     showHint,
-    completionProgress,
     setUserCorrection,
     setSelectedCategory,
     changeCategory,
@@ -69,57 +72,160 @@ const ErrorCorrectionExercise = ({ route }) => {
     resetExerciseState,
     setShowHint,
     setShowResults,
+    hasValidData,
+    currentCategory,
+    totalExercises
   } = useErrorCorrectionExerciseState(level, exercisesData);
 
-  // Gestion du retour à la navigation
-  const handleBack = () => {
+  // Hook de progression (seule source de vérité pour la progression)
+  const {
+    completedExercises,
+    lastPosition,
+    loaded,
+    saveLastPosition,
+    markExerciseAsCompleted,
+    getCategoryProgress,
+    calculateOverallProgress,
+    isExerciseCompleted,
+    getCompletedCountInCategory
+  } = useErrorCorrectionProgress(level);
+
+  // ========== DONNÉES CALCULÉES ==========
+  
+  // Progression de la catégorie actuelle
+  const currentCategoryProgress = selectedCategory 
+    ? getCategoryProgress(selectedCategory, totalExercises)
+    : 0;
+    
+  // Nombre d'exercices complétés dans la catégorie actuelle
+  const completedInCurrentCategory = selectedCategory 
+    ? getCompletedCountInCategory(selectedCategory)
+    : 0;
+
+  // ========== INITIALISATION ==========
+  
+  // Restaurer la dernière position
+  useEffect(() => {
+    if (loaded && lastPosition.categoryId && exercisesData && hasValidData) {
+      console.log("🔄 Restauration position:", lastPosition);
+      
+      // Changer la catégorie si différente
+      if (lastPosition.categoryId !== selectedCategory) {
+        changeCategory(lastPosition.categoryId);
+      }
+      
+      // Note: currentExerciseIndex sera géré par le hook d'état
+    }
+  }, [loaded, lastPosition, exercisesData, hasValidData, selectedCategory, changeCategory]);
+
+  // ========== GESTIONNAIRES D'ÉVÉNEMENTS ==========
+  
+  // Retour navigation
+  const handleBack = useCallback(() => {
     if (viewMode === "exercise") {
       setViewMode("browse");
+      console.log("🔙 Retour au mode browse");
     } else {
+      console.log("🔙 Retour navigation");
       navigation.goBack();
     }
-  };
+  }, [viewMode, navigation]);
 
-  // Démarrer l'exercice avec un mode spécifique
-  const handleStartExercise = (mode) => {
+  // Démarrer un exercice avec un mode spécifique
+  const handleStartExercise = useCallback((mode) => {
+    console.log(`🎯 Démarrage exercice mode: ${mode}`);
     startExercise(mode);
     setViewMode("exercise");
-  };
+  }, [startExercise]);
 
-  // Vérifier la réponse ou passer au suivant
-  const handleNextAction = () => {
+  // Action principal : vérifier réponse ou passer au suivant
+  const handleNextAction = useCallback(() => {
     if (showFeedback) {
+      // Marquer l'exercice comme complété avant de passer au suivant
+      if (selectedCategory !== null) {
+        markExerciseAsCompleted(
+          selectedCategory, 
+          currentExerciseIndex, 
+          isCorrect, 
+          getCurrentUserAnswer(),
+          {
+            mode: correctionMode,
+            timestamp: Date.now()
+          }
+        );
+      }
+      
       goToNextExercise();
+      
+      // Sauvegarder la position
+      if (currentExerciseIndex < totalExercises - 1) {
+        saveLastPosition(selectedCategory, currentExerciseIndex + 1);
+      }
     } else {
       checkAnswer();
     }
-  };
+  }, [
+    showFeedback, 
+    selectedCategory, 
+    currentExerciseIndex, 
+    isCorrect, 
+    correctionMode, 
+    markExerciseAsCompleted, 
+    goToNextExercise, 
+    checkAnswer, 
+    saveLastPosition, 
+    totalExercises
+  ]);
+
+  // Obtenir la réponse utilisateur actuelle selon le mode
+  const getCurrentUserAnswer = useCallback(() => {
+    switch(correctionMode) {
+      case 'full':
+        return userCorrection;
+      case 'identify':
+        return JSON.stringify(selectedErrorIndices);
+      case 'multiple_choice':
+        return String(selectedChoiceIndex);
+      default:
+        return '';
+    }
+  }, [correctionMode, userCorrection, selectedErrorIndices, selectedChoiceIndex]);
 
   // Gérer la soumission
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     if (showResults) {
-      // Si on est en mode résultats, on revient à la navigation
+      // Retour au mode browse depuis les résultats
       setViewMode("browse");
       setShowResults(false);
+      console.log("📊 Retour browse depuis résultats");
     } else {
-      // Sinon on vérifie la réponse
       handleNextAction();
     }
-  };
+  }, [showResults, handleNextAction, setShowResults]);
 
   // Réessayer les exercices
-  const handleRetry = () => {
-    resetExerciseState(exercises.length);
+  const handleRetry = useCallback(() => {
+    console.log("🔄 Retry exercices");
+    resetExerciseState();
     setShowResults(false);
-  };
+  }, [resetExerciseState, setShowResults]);
 
-  // Rendu du mode parcourir
+  // Changement de catégorie
+  const handleCategoryChange = useCallback((categoryId) => {
+    console.log(`📂 Changement catégorie: ${selectedCategory} → ${categoryId}`);
+    changeCategory(categoryId);
+    saveLastPosition(categoryId, 0);
+  }, [changeCategory, saveLastPosition, selectedCategory]);
+
+  // ========== RENDU MODES ==========
+  
+  // Mode parcourir (sélection catégorie + mode)
   const renderBrowseMode = () => (
     <>
       <ErrorCorrectionCategorySelector
         categories={exercisesData.categories || []}
         selectedCategory={selectedCategory}
-        onSelectCategory={changeCategory}
+        onSelectCategory={handleCategoryChange}
         levelColor={levelColor}
       />
 
@@ -128,13 +234,26 @@ const ErrorCorrectionExercise = ({ route }) => {
         disabled={exercises.length === 0}
         levelColor={levelColor}
       />
+      
+      {/* Info progression pour la catégorie sélectionnée */}
+      {selectedCategory && (
+        <View style={styles.categoryProgressInfo}>
+          <Text style={styles.categoryProgressText}>
+            Progression: {completedInCurrentCategory}/{totalExercises} exercices ({currentCategoryProgress}%)
+          </Text>
+        </View>
+      )}
     </>
   );
 
-  // Rendu du mode exercice
+  // Mode exercice
   const renderExerciseMode = () => {
     if (exercises.length === 0 || currentExerciseIndex >= exercises.length) {
-      return null;
+      return (
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorText}>Aucun exercice disponible</Text>
+        </View>
+      );
     }
 
     const currentExercise = exercises[currentExerciseIndex];
@@ -172,16 +291,20 @@ const ErrorCorrectionExercise = ({ route }) => {
           />
         );
       default:
-        return null;
+        return (
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorText}>Mode de correction inconnu: {correctionMode}</Text>
+          </View>
+        );
     }
   };
 
-  // Rendu du mode résultats
+  // Mode résultats
   const renderResultsMode = () => (
     <ErrorCorrectionResultsCard
       score={score}
       totalExercises={exercises.length}
-      userAttempts={[]} // À implémenter avec les données du hook
+      userAttempts={[]} // À implémenter si nécessaire
       exercises={exercises}
       level={level}
       levelColor={levelColor}
@@ -191,6 +314,32 @@ const ErrorCorrectionExercise = ({ route }) => {
     />
   );
 
+  // ========== GESTION CHARGEMENT ==========
+  
+  if (!loaded || !hasValidData) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color={levelColor} />
+          <Text style={styles.loadingText}>Chargement des exercices...</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  // ========== LOGS DEBUG ==========
+  console.log("📊 DEBUG ErrorCorrection:", {
+    viewMode,
+    selectedCategory,
+    currentExerciseIndex,
+    totalExercises,
+    completedInCurrentCategory,
+    currentCategoryProgress,
+    correctionMode,
+    showResults
+  });
+
+  // ========== RENDU PRINCIPAL ==========
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* En-tête */}
@@ -205,8 +354,9 @@ const ErrorCorrectionExercise = ({ route }) => {
       {/* Barre de progression (seulement en mode exercice) */}
       {viewMode === "exercise" && !showResults && (
         <ErrorCorrectionProgressBar
-          currentExerciseIndex={currentExerciseIndex}
-          totalExercises={exercises.length}
+          currentIndex={currentExerciseIndex + 1}
+          totalCount={totalExercises}
+          completedCount={completedInCurrentCategory}
           levelColor={levelColor}
         />
       )}
@@ -228,10 +378,8 @@ const ErrorCorrectionExercise = ({ route }) => {
           totalCount={exercises.length}
           disableNext={
             (correctionMode === "full" && userCorrection.trim() === "") ||
-            (correctionMode === "identify" &&
-              selectedErrorIndices.length === 0) ||
-            (correctionMode === "multiple_choice" &&
-              selectedChoiceIndex === null)
+            (correctionMode === "identify" && selectedErrorIndices.length === 0) ||
+            (correctionMode === "multiple_choice" && selectedChoiceIndex === null)
           }
           isLastExercise={currentExerciseIndex === exercises.length - 1}
           showFeedback={showFeedback}

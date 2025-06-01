@@ -1,6 +1,6 @@
 // src/screens/exercises/spelling/index.js
 import React, { useEffect } from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Composants spécifiques à l'exercice d'orthographe
@@ -21,24 +21,22 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice d'orthographe (Spelling)
- * @param {Object} props - Les propriétés du composant
- * @param {Object} props.route - L'objet route de React Navigation contenant les paramètres
+ * Version nettoyée avec une seule logique de progression
  */
 const SpellingExercise = ({ route }) => {
-  // Hooks de navigation
+  // ========== NAVIGATION ET PARAMÈTRES ==========
   const navigation = useNavigation();
   const { level = "A1", exerciseType = "correction" } = route.params || {};
-
-  // Initialisation des couleurs
   const levelColor = getLevelColor(level);
 
-  // Utilisation du hook personnalisé pour gérer l'état de l'exercice
+  // ========== HOOKS D'ÉTAT ==========
+  
+  // État des exercices (sans progression - supprimée)
   const {
     exercises,
     currentExerciseIndex,
     currentExercise,
     totalExercises,
-    progress,
     userInput,
     showHint,
     showFeedback,
@@ -51,7 +49,7 @@ const SpellingExercise = ({ route }) => {
     setCurrentExerciseIndex
   } = useSpellingExerciseState(level, exerciseType);
 
-  // Utilisation du hook de progression pour la persistance
+  // Gestion de la progression (seule source de vérité)
   const {
     completedExercises,
     lastPosition,
@@ -62,64 +60,106 @@ const SpellingExercise = ({ route }) => {
     isExerciseCompleted
   } = useSpellingProgress(level, exerciseType);
 
-  // Initialiser les exercices et la progression
+  // ========== INITIALISATION ==========
+  
+  // Initialiser les exercices et restaurer la position
   useEffect(() => {
     if (exercises.length > 0 && loaded) {
+      console.log("🎯 Initialisation Spelling:", {
+        exercisesCount: exercises.length,
+        lastPosition,
+        completedCount: completedExercises.length
+      });
+
       initializeProgress(exercises);
       
-      // Restaurer la dernière position de l'utilisateur si elle existe
+      // Restaurer la dernière position si valide
       if (lastPosition > 0 && lastPosition < exercises.length) {
         setCurrentExerciseIndex(lastPosition);
+        console.log(`📚 Position restaurée: ${lastPosition}`);
       }
     }
-  }, [exercises, loaded, lastPosition, initializeProgress, setCurrentExerciseIndex]);
+  }, [exercises, loaded, lastPosition, initializeProgress, setCurrentExerciseIndex, completedExercises.length]);
 
-  // Fonction pour gérer la vérification de la réponse
+  // ========== GESTIONNAIRES D'ÉVÉNEMENTS ==========
+  
+  // Vérification de la réponse
   const handleCheckAnswer = () => {
     const result = checkAnswer();
     
     if (result && currentExercise) {
-      // Marquer l'exercice comme complété et sauvegarder la réponse
+      console.log(`✅ Exercice ${currentExerciseIndex} complété correctement`);
+      
+      // Marquer comme complété avec toutes les données
       markExerciseAsCompleted(
         currentExerciseIndex,
         result,
         userInput,
-        currentExercise.correctAnswer
+        currentExercise.correctAnswer,
+        {
+          exerciseType: currentExercise.type,
+          hint: currentExercise.hint,
+          timestamp: Date.now()
+        }
       );
+    } else {
+      console.log(`❌ Exercice ${currentExerciseIndex} incorrect`);
     }
   };
 
-  // Fonction pour passer à l'exercice suivant
+  // Passage à l'exercice suivant
   const handleNextExercise = () => {
-    // Sauvegarder la position pour la prochaine session
     const nextIndex = currentExerciseIndex + 1;
+    
+    console.log(`➡️ Passage à l'exercice ${nextIndex}`);
+    
+    // Sauvegarder la position pour persistance
     if (nextIndex < totalExercises) {
       saveLastPosition(nextIndex);
+    } else {
+      console.log("🎉 Tous les exercices terminés !");
+      // Optionnel: navigation vers écran de résultats
     }
     
     nextExercise();
   };
 
+  // Retour en arrière
+  const handleBackPress = () => {
+    console.log("🔙 Retour depuis Spelling");
+    navigation.goBack();
+  };
+
+  // ========== LOGS DEBUG ==========
+  console.log("📊 DEBUG Spelling Exercise:", {
+    currentIndex: currentExerciseIndex,
+    totalExercises,
+    completedCount: completedExercises.length,
+    progressPercent: totalExercises > 0 ? Math.round((completedExercises.length / totalExercises) * 100) : 0,
+    isCurrentCompleted: isExerciseCompleted(currentExerciseIndex),
+    currentExerciseType: currentExercise?.type
+  });
+
+  // ========== RENDU ==========
   return (
     <SafeAreaView style={styles.container}>
-      {/* En-tête */}
+      {/* En-tête avec niveau et couleur */}
       <SpellingHeader 
         level={level} 
         exerciseType={exerciseType}
         levelColor={levelColor} 
-        onBackPress={() => navigation.goBack()} 
+        onBackPress={handleBackPress} 
       />
       
-      {/* Barre de progression */}
+      {/* Barre de progression basée sur les exercices complétés */}
       <SpellingProgressBar 
-        progress={progress}
         currentIndex={currentExerciseIndex + 1}
         totalCount={totalExercises}
         completedCount={completedExercises.length}
         levelColor={levelColor}
       />
       
-      {/* Carte principale */}
+      {/* Carte d'exercice principale */}
       <SpellingCard 
         exercise={currentExercise}
         userInput={userInput}
@@ -133,18 +173,18 @@ const SpellingExercise = ({ route }) => {
       />
       
       {/* Boutons d'action */}
-<SpellingActions 
-  showFeedback={showFeedback}
-  isCorrect={isCorrect}
-  userInput={userInput}
-  isLastExercise={currentExerciseIndex === totalExercises - 1}
-  isCompleted={isExerciseCompleted(currentExerciseIndex)}
-  exerciseType={exerciseType} 
-  levelColor={levelColor}
-  onCheck={handleCheckAnswer}
-  onNext={handleNextExercise}
-  onRetry={retryExercise}
-/>
+      <SpellingActions 
+        showFeedback={showFeedback}
+        isCorrect={isCorrect}
+        userInput={userInput}
+        isLastExercise={currentExerciseIndex === totalExercises - 1}
+        isCompleted={isExerciseCompleted(currentExerciseIndex)}
+        exerciseType={exerciseType} 
+        levelColor={levelColor}
+        onCheck={handleCheckAnswer}
+        onNext={handleNextExercise}
+        onRetry={retryExercise}
+      />
     </SafeAreaView>
   );
 };

@@ -4,6 +4,7 @@ import { getSpellingData } from '../../../../utils/spelling/spellingDataHelper';
 
 /**
  * Hook personnalisé pour gérer l'état des exercices d'orthographe
+ * Version nettoyée : suppression de la logique de progression (comme ErrorCorrection)
  * 
  * @param {string} level - Niveau de langue (A1, A2, etc.)
  * @param {string} exerciseType - Type d'exercice (correction, rules, homophones)
@@ -16,23 +17,19 @@ const useSpellingExerciseState = (level, exerciseType) => {
   const [showHint, setShowHint] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [progress, setProgress] = useState(0);
+
+  // ❌ SUPPRIMÉ : const [progress, setProgress] = useState(0);
 
   // Charger les données d'exercice
   useEffect(() => {
     const data = getSpellingData(level, exerciseType);
     if (data && data.exercises) {
       setExercises(data.exercises);
+      console.log(`📚 ${data.exercises.length} exercices chargés pour ${exerciseType} niveau ${level}`);
     }
   }, [level, exerciseType]);
 
-  // Mettre à jour la progression
-  useEffect(() => {
-    if (exercises.length > 0) {
-      const newProgress = ((currentExerciseIndex) / exercises.length) * 100;
-      setProgress(newProgress);
-    }
-  }, [currentExerciseIndex, exercises.length]);
+  // ❌ SUPPRIMÉ : useEffect pour calculer progress basé sur position
 
   // Obtenir l'exercice actuel
   const getCurrentExercise = useCallback(() => {
@@ -72,24 +69,26 @@ const useSpellingExerciseState = (level, exerciseType) => {
     setIsCorrect(correct);
     setShowFeedback(true);
     
+    console.log(`${correct ? '✅' : '❌'} Exercice ${currentExerciseIndex}: ${correct ? 'correct' : 'incorrect'}`);
     return correct;
-  }, [userInput, getCurrentExercise]);
+  }, [userInput, getCurrentExercise, currentExerciseIndex]);
 
   // Passer à l'exercice suivant
   const nextExercise = useCallback(() => {
     if (currentExerciseIndex < exercises.length - 1) {
       setCurrentExerciseIndex(currentExerciseIndex + 1);
       resetExerciseState();
+      console.log(`➡️ Passage exercice ${currentExerciseIndex + 2}/${exercises.length}`);
     } else {
-      // Tous les exercices sont terminés
-      console.log('All exercises completed!');
+      console.log('🎉 Tous les exercices terminés !');
     }
   }, [currentExerciseIndex, exercises.length]);
 
   // Réessayer l'exercice actuel
   const retryExercise = useCallback(() => {
+    console.log(`🔄 Retry exercice ${currentExerciseIndex + 1}`);
     resetExerciseState();
-  }, []);
+  }, [currentExerciseIndex]);
 
   // Réinitialiser l'état pour un nouvel exercice
   const resetExerciseState = useCallback(() => {
@@ -105,7 +104,7 @@ const useSpellingExerciseState = (level, exerciseType) => {
     setCurrentExerciseIndex,
     currentExercise: getCurrentExercise(),
     totalExercises: exercises.length,
-    progress,
+    // ❌ SUPPRIMÉ : progress,
     userInput,
     showHint,
     showFeedback,
