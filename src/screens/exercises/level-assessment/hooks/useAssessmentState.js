@@ -1,17 +1,17 @@
 // src/screens/exercises/levelAssessment/hooks/useAssessmentState.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // Utilitaires
-import { 
-  getAssessmentData, 
-  getAssessmentSections, 
-  isLastQuestionInSection 
-} from '../../../../utils/assessment/assessmentDataHelper';
+import {
+  getAssessmentData,
+  getAssessmentSections,
+  isLastQuestionInSection,
+} from "../../../../utils/assessment/assessmentDataHelper";
 
 /**
  * Hook personnalisé pour gérer l'état de l'évaluation de niveau
  * VERSION SIMPLIFIÉE POUR DEBUG
- * 
+ *
  * @param {string} level - Niveau de langue (A1, A2, etc.)
  */
 const useAssessmentState = (level) => {
@@ -26,15 +26,9 @@ const useAssessmentState = (level) => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [testCompleted, setTestCompleted] = useState(false);
 
-  // Debug - Log tous les changements d'état
-  useEffect(() => {
-
-  }, [currentSection, currentQuestionIndex, selectedAnswer, showFeedback, testCompleted]);
-
   // Initialisation du test
   useEffect(() => {
     if (!currentSection && sections.length > 0) {
-
       setCurrentSection(sections[0]);
     }
   }, [currentSection, sections]);
@@ -42,19 +36,16 @@ const useAssessmentState = (level) => {
   // Obtenir la question actuelle
   const getCurrentQuestion = () => {
     if (!currentSection || !assessmentData[currentSection]) {
-
       return null;
     }
-    const question = assessmentData[currentSection].questions[currentQuestionIndex];
-     + '...');
+    const question =
+      assessmentData[currentSection].questions[currentQuestionIndex];
     return question;
   };
 
   // Gestion de la sélection de réponse (VERSION SIMPLIFIÉE)
   const handleSelectAnswer = (answerIndex) => {
-
     if (showFeedback) {
-
       return;
     }
 
@@ -63,9 +54,7 @@ const useAssessmentState = (level) => {
 
   // Vérification de la réponse (VERSION SIMPLIFIÉE)
   const validateAnswer = () => {
-
     if (selectedAnswer === null || showFeedback) {
-
       return;
     }
 
@@ -74,7 +63,6 @@ const useAssessmentState = (level) => {
 
   // Passer à la question suivante
   const goToNextQuestion = () => {
-
     if (!currentSection) return;
 
     const currentSectionData = assessmentData[currentSection];
@@ -82,7 +70,6 @@ const useAssessmentState = (level) => {
 
     if (currentQuestionIndex < currentSectionData.questions.length - 1) {
       // Passer à la question suivante dans la section
-
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setSelectedAnswer(null);
       setShowFeedback(false);
@@ -90,14 +77,12 @@ const useAssessmentState = (level) => {
       // Passer à la section suivante
       const currentSectionIndex = sections.indexOf(currentSection);
       if (currentSectionIndex < sections.length - 1) {
-
         setCurrentSection(sections[currentSectionIndex + 1]);
         setCurrentQuestionIndex(0);
         setSelectedAnswer(null);
         setShowFeedback(false);
       } else {
         // Test terminé
-
         setTestCompleted(true);
       }
     }
@@ -105,14 +90,12 @@ const useAssessmentState = (level) => {
 
   // Réessayer la question actuelle
   const tryAgain = () => {
-
     setSelectedAnswer(null);
     setShowFeedback(false);
   };
 
   // Fonctions simplifiées pour la compatibilité
   const changeSection = (sectionKey) => {
-
     if (sections.includes(sectionKey)) {
       setCurrentSection(sectionKey);
       setCurrentQuestionIndex(0);
@@ -122,11 +105,14 @@ const useAssessmentState = (level) => {
   };
 
   const changeQuestion = (questionIndex) => {
-
     if (!currentSection) return;
 
     const currentSectionData = assessmentData[currentSection];
-    if (currentSectionData && questionIndex >= 0 && questionIndex < currentSectionData.questions.length) {
+    if (
+      currentSectionData &&
+      questionIndex >= 0 &&
+      questionIndex < currentSectionData.questions.length
+    ) {
       setCurrentQuestionIndex(questionIndex);
       setSelectedAnswer(null);
       setShowFeedback(false);
@@ -135,23 +121,32 @@ const useAssessmentState = (level) => {
 
   // Restaurer l'état complet (section + question) avec protection anti-boucle
   const restoreState = (sectionIndex, questionIndex) => {
-
     // Vérifier si on a vraiment besoin de restaurer (éviter les boucles)
     const targetSection = sections[sectionIndex];
     const currentSectionIndex = sections.indexOf(currentSection);
 
-    if (currentSectionIndex === sectionIndex && currentQuestionIndex === questionIndex) {
-
+    if (
+      currentSectionIndex === sectionIndex &&
+      currentQuestionIndex === questionIndex
+    ) {
       return;
     }
 
-    if (typeof sectionIndex === 'number' && sectionIndex >= 0 && sectionIndex < sections.length) {
+    if (
+      typeof sectionIndex === "number" &&
+      sectionIndex >= 0 &&
+      sectionIndex < sections.length
+    ) {
       const sectionKey = sections[sectionIndex];
 
       setCurrentSection(sectionKey);
 
-      if (assessmentData[sectionKey] && typeof questionIndex === 'number' && 
-          questionIndex >= 0 && questionIndex < assessmentData[sectionKey].questions.length) {
+      if (
+        assessmentData[sectionKey] &&
+        typeof questionIndex === "number" &&
+        questionIndex >= 0 &&
+        questionIndex < assessmentData[sectionKey].questions.length
+      ) {
         setCurrentQuestionIndex(questionIndex);
       } else {
         setCurrentQuestionIndex(0);
@@ -183,8 +178,8 @@ const useAssessmentState = (level) => {
     setTestCompleted,
 
     // Utilitaires
-    isLastQuestionInSection: (questionIndex, section) => 
-      isLastQuestionInSection(questionIndex, section, assessmentData)
+    isLastQuestionInSection: (questionIndex, section) =>
+      isLastQuestionInSection(questionIndex, section, assessmentData),
   };
 };
 

@@ -1,17 +1,20 @@
 // src/screens/exercises/levelAssessment/hooks/useAssessmentProgress.js
-import { useState, useEffect, useCallback } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState, useEffect, useCallback } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 /**
  * Hook personnalisé pour gérer la progression dans les évaluations de niveau
  * Permet de sauvegarder la progression et la dernière position pour le suivi des activités
- * 
+ *
  * @param {string} level - Niveau de langue (A1, A2, B1, B2, C1, C2)
  */
 const useAssessmentProgress = (level) => {
   // États pour suivre la progression
   const [assessmentResults, setAssessmentResults] = useState({});
-  const [lastPosition, setLastPosition] = useState({ sectionIndex: 0, questionIndex: 0 });
+  const [lastPosition, setLastPosition] = useState({
+    sectionIndex: 0,
+    questionIndex: 0,
+  });
   const [userAnswers, setUserAnswers] = useState({});
   const [loaded, setLoaded] = useState(false);
 
@@ -24,35 +27,31 @@ const useAssessmentProgress = (level) => {
   useEffect(() => {
     const loadSavedData = async () => {
       try {
-
         // Récupérer les résultats d'évaluation
-        const savedResultsJson = await AsyncStorage.getItem(ASSESSMENT_RESULTS_KEY);
-        const savedResults = savedResultsJson 
-          ? JSON.parse(savedResultsJson) 
+        const savedResultsJson = await AsyncStorage.getItem(
+          ASSESSMENT_RESULTS_KEY
+        );
+        const savedResults = savedResultsJson
+          ? JSON.parse(savedResultsJson)
           : {};
 
         // Récupérer la dernière position
         const savedPositionJson = await AsyncStorage.getItem(LAST_POSITION_KEY);
-        const savedPosition = savedPositionJson 
-          ? JSON.parse(savedPositionJson) 
+        const savedPosition = savedPositionJson
+          ? JSON.parse(savedPositionJson)
           : { sectionIndex: 0, questionIndex: 0 };
 
         // Récupérer les réponses de l'utilisateur
         const savedAnswersJson = await AsyncStorage.getItem(USER_ANSWERS_KEY);
-        const savedAnswers = savedAnswersJson 
-          ? JSON.parse(savedAnswersJson) 
+        const savedAnswers = savedAnswersJson
+          ? JSON.parse(savedAnswersJson)
           : {};
-
-        .length,
-          answersCount: Object.keys(savedAnswers).length
-        });
 
         setAssessmentResults(savedResults);
         setLastPosition(savedPosition);
         setUserAnswers(savedAnswers);
         setLoaded(true);
       } catch (error) {
-
         setAssessmentResults({});
         setLastPosition({ sectionIndex: 0, questionIndex: 0 });
         setUserAnswers({});
@@ -64,65 +63,76 @@ const useAssessmentProgress = (level) => {
   }, [level]);
 
   // Sauvegarder la dernière position
-  const saveLastPosition = useCallback(async (sectionIndex, questionIndex) => {
-    try {
-
-      const newPosition = { 
-        sectionIndex, 
-        questionIndex,
-        timestamp: Date.now() // Important pour le tracking dans useLastActivity
-      };
-      setLastPosition(newPosition);
-      await AsyncStorage.setItem(LAST_POSITION_KEY, JSON.stringify(newPosition));
-
-      .toISOString()}`);
-    } catch (error) {
-
-    }
-  }, [LAST_POSITION_KEY]);
+  const saveLastPosition = useCallback(
+    async (sectionIndex, questionIndex) => {
+      try {
+        const newPosition = {
+          sectionIndex,
+          questionIndex,
+          timestamp: Date.now(), // Important pour le tracking dans useLastActivity
+        };
+        setLastPosition(newPosition);
+        await AsyncStorage.setItem(
+          LAST_POSITION_KEY,
+          JSON.stringify(newPosition)
+        );
+      } catch (error) {
+        // Silencieux
+      }
+    },
+    [LAST_POSITION_KEY]
+  );
 
   // Enregistrer une réponse de l'utilisateur
-  const saveUserAnswer = useCallback(async (sectionKey, questionIndex, selectedAnswer, isCorrect) => {
-    try {
+  const saveUserAnswer = useCallback(
+    async (sectionKey, questionIndex, selectedAnswer, isCorrect) => {
+      try {
+        // Mettre à jour les réponses de l'utilisateur
+        const updatedAnswers = { ...userAnswers };
 
-      // Mettre à jour les réponses de l'utilisateur
-      const updatedAnswers = { ...userAnswers };
+        if (!updatedAnswers[sectionKey]) {
+          updatedAnswers[sectionKey] = {};
+        }
 
-      if (!updatedAnswers[sectionKey]) {
-        updatedAnswers[sectionKey] = {};
+        updatedAnswers[sectionKey][questionIndex] = {
+          selectedAnswer,
+          isCorrect,
+          timestamp: Date.now(),
+        };
+
+        setUserAnswers(updatedAnswers);
+        await AsyncStorage.setItem(
+          USER_ANSWERS_KEY,
+          JSON.stringify(updatedAnswers)
+        );
+      } catch (error) {
+        // Silencieux
       }
-
-      updatedAnswers[sectionKey][questionIndex] = {
-        selectedAnswer,
-        isCorrect,
-        timestamp: Date.now()
-      };
-
-      setUserAnswers(updatedAnswers);
-      await AsyncStorage.setItem(USER_ANSWERS_KEY, JSON.stringify(updatedAnswers));
-
-    } catch (error) {
-
-    }
-  }, [userAnswers, USER_ANSWERS_KEY]);
+    },
+    [userAnswers, USER_ANSWERS_KEY]
+  );
 
   // Sauvegarder les résultats complets de l'évaluation
-  const saveAssessmentResults = useCallback(async (results) => {
-    try {
+  const saveAssessmentResults = useCallback(
+    async (results) => {
+      try {
+        const resultsWithTimestamp = {
+          ...results,
+          completedAt: new Date().toISOString(),
+          timestamp: Date.now(),
+        };
 
-      const resultsWithTimestamp = {
-        ...results,
-        completedAt: new Date().toISOString(),
-        timestamp: Date.now()
-      };
-
-      setAssessmentResults(resultsWithTimestamp);
-      await AsyncStorage.setItem(ASSESSMENT_RESULTS_KEY, JSON.stringify(resultsWithTimestamp));
-
-    } catch (error) {
-
-    }
-  }, [ASSESSMENT_RESULTS_KEY]);
+        setAssessmentResults(resultsWithTimestamp);
+        await AsyncStorage.setItem(
+          ASSESSMENT_RESULTS_KEY,
+          JSON.stringify(resultsWithTimestamp)
+        );
+      } catch (error) {
+        // Silencieux
+      }
+    },
+    [ASSESSMENT_RESULTS_KEY]
+  );
 
   // Obtenir les résultats d'évaluation
   const getAssessmentResults = useCallback(() => {
@@ -134,8 +144,8 @@ const useAssessmentProgress = (level) => {
     let correctAnswers = 0;
     let totalQuestions = 0;
 
-    Object.values(userAnswers).forEach(section => {
-      Object.values(section).forEach(answer => {
+    Object.values(userAnswers).forEach((section) => {
+      Object.values(section).forEach((answer) => {
         totalQuestions++;
         if (answer.isCorrect) {
           correctAnswers++;
@@ -146,7 +156,8 @@ const useAssessmentProgress = (level) => {
     return {
       correctAnswers,
       totalQuestions,
-      percentage: totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0
+      percentage:
+        totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0,
     };
   }, [userAnswers]);
 
@@ -158,19 +169,17 @@ const useAssessmentProgress = (level) => {
   // Réinitialiser toutes les données d'évaluation
   const resetAssessment = useCallback(async () => {
     try {
-
       await AsyncStorage.multiRemove([
         ASSESSMENT_RESULTS_KEY,
         LAST_POSITION_KEY,
-        USER_ANSWERS_KEY
+        USER_ANSWERS_KEY,
       ]);
 
       setAssessmentResults({});
       setLastPosition({ sectionIndex: 0, questionIndex: 0 });
       setUserAnswers({});
-
     } catch (error) {
-
+      // Silencieux
     }
   }, [ASSESSMENT_RESULTS_KEY, LAST_POSITION_KEY, USER_ANSWERS_KEY]);
 
@@ -185,7 +194,7 @@ const useAssessmentProgress = (level) => {
     getAssessmentResults,
     calculateUserScore,
     isAssessmentCompleted,
-    resetAssessment
+    resetAssessment,
   };
 };
 

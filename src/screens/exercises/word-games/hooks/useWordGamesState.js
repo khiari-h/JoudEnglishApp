@@ -1,11 +1,11 @@
 // src/screens/exercises/wordGames/hooks/useWordGamesState.js
-import { useState, useEffect, useCallback } from 'react';
-import useGameAnimation from './useGameAnimation';
+import { useState, useEffect, useCallback } from "react";
+import useGameAnimation from "./useGameAnimation";
 
 /**
  * Hook personnalisé pour gérer l'état des jeux de mots
  * Version simplifiée - Matching et Categorization uniquement
- * 
+ *
  * @param {Array} initialGames - Liste des jeux disponibles
  * @param {string} level - Niveau de langue (A1, A2, etc.)
  */
@@ -23,7 +23,8 @@ const useWordGamesState = (initialGames = [], level) => {
   const [shuffledOptions, setShuffledOptions] = useState([]);
 
   // Hook pour les animations
-  const { fadeAnim, bounceAnim, animateFeedback, animateBounce } = useGameAnimation();
+  const { fadeAnim, bounceAnim, animateFeedback, animateBounce } =
+    useGameAnimation();
 
   // Jeu actuel
   const currentGame = games[currentGameIndex] || null;
@@ -33,7 +34,11 @@ const useWordGamesState = (initialGames = [], level) => {
     if (initialGames && initialGames.length > 0) {
       setGames(initialGames);
       setGameResults(
-        Array(initialGames.length).fill({ score: 0, maxScore: 0, completed: false })
+        Array(initialGames.length).fill({
+          score: 0,
+          maxScore: 0,
+          completed: false,
+        })
       );
     }
   }, [initialGames]);
@@ -71,18 +76,21 @@ const useWordGamesState = (initialGames = [], level) => {
   };
 
   // Gérer la sélection d'un item
-  const handleSelectItem = useCallback((item, index) => {
-    if (showFeedback) return;
+  const handleSelectItem = useCallback(
+    (item, index) => {
+      if (showFeedback) return;
 
-    // Animation de rebond au clic
-    animateBounce();
+      // Animation de rebond au clic
+      animateBounce();
 
-    if (currentGame.type === "matching") {
-      handleMatchingSelection(item, index);
-    } else if (currentGame.type === "categorization") {
-      handleCategorizationSelection(item, index);
-    }
-  }, [currentGame, selectedItems, matchedItems, showFeedback]);
+      if (currentGame.type === "matching") {
+        handleMatchingSelection(item, index);
+      } else if (currentGame.type === "categorization") {
+        handleCategorizationSelection(item, index);
+      }
+    },
+    [currentGame, selectedItems, matchedItems, showFeedback]
+  );
 
   // Gérer la sélection pour les jeux de matching
   const handleMatchingSelection = (item, index) => {
@@ -137,7 +145,9 @@ const useWordGamesState = (initialGames = [], level) => {
 
       // Calculer et ajouter le score
       const maxPossibleScore = currentGame.maxScore || 10;
-      const scorePerPair = Math.floor(maxPossibleScore / currentGame.pairs.length);
+      const scorePerPair = Math.floor(
+        maxPossibleScore / currentGame.pairs.length
+      );
       setScore((prev) => prev + scorePerPair);
 
       // Réinitialiser la sélection
@@ -192,20 +202,23 @@ const useWordGamesState = (initialGames = [], level) => {
   }, [currentGame, selectedItems, showFeedback]);
 
   // Gérer la fin d'un jeu (pour matching auto-complete)
-  const handleGameComplete = useCallback((isSuccessful) => {
-    const earnedScore = isSuccessful ? currentGame.maxScore || 10 : 0;
-    const maxPossibleScore = currentGame.maxScore || 10;
+  const handleGameComplete = useCallback(
+    (isSuccessful) => {
+      const earnedScore = isSuccessful ? currentGame.maxScore || 10 : 0;
+      const maxPossibleScore = currentGame.maxScore || 10;
 
-    // Mettre à jour les résultats
-    updateGameResults(earnedScore, maxPossibleScore);
+      // Mettre à jour les résultats
+      updateGameResults(earnedScore, maxPossibleScore);
 
-    // Montrer le feedback
-    setIsCorrect(isSuccessful);
-    setShowFeedback(true);
+      // Montrer le feedback
+      setIsCorrect(isSuccessful);
+      setShowFeedback(true);
 
-    // Animation pour le feedback
-    animateFeedback(isSuccessful);
-  }, [currentGame]);
+      // Animation pour le feedback
+      animateFeedback(isSuccessful);
+    },
+    [currentGame]
+  );
 
   // Mettre à jour les résultats d'un jeu
   const updateGameResults = (score, maxScore) => {

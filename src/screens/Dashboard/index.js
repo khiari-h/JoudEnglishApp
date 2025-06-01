@@ -1,4 +1,4 @@
-// src/screens/Dashboard/index.js - REFACTORISÉ
+// src/screens/Dashboard/index.js - VERSION FINALE CLEAN
 import React, { useContext, useEffect, useCallback } from "react";
 import { View, ScrollView, StatusBar, RefreshControl } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
@@ -15,7 +15,7 @@ import { useDashboardState } from "./hooks/useDashboardState";
 
 // Hooks existants
 import useLastActivity from "../../hooks/useLastActivity";
-import useStreak from "./hooks/useStreak"; // Hook existant
+import useStreak from "./hooks/useStreak";
 import useExerciseTimeTracking from "../../hooks/useExerciceTimeTracking";
 
 // Composants Dashboard
@@ -24,7 +24,6 @@ import ContinueLearningSection from "./components/ContinueLearningSection";
 import DailyGoalSection from "./components/DailyGoalSection";
 import RecommendationsSection from "./components/RecommendationsSection";
 import LearningPathCompact from "./components/LearningPathCompact";
-import BottomNavigation from "./components/BottomNavigation";
 import LevelProgressModal from "./components/LevelProgressModal";
 
 import styles from "./style";
@@ -47,7 +46,7 @@ const Dashboard = ({ route }) => {
     formatProgressSubtitle,
   } = useLastActivity();
 
-  const { currentStreak, updateStreak } = useStreak(); // Hook existant
+  const { currentStreak, updateStreak } = useStreak();
   const { isTracking, stopAndSave, startTracking } = useExerciseTimeTracking();
 
   // ========== HOOKS PERSONNALISÉS DASHBOARD ==========
@@ -73,8 +72,6 @@ const Dashboard = ({ route }) => {
     openLevelProgressModal,
     closeLevelProgressModal,
     refreshing,
-    activeTab,
-    setActiveTab,
     onRefresh,
   } = useDashboardState(loadLastActivities);
 
@@ -84,19 +81,16 @@ const Dashboard = ({ route }) => {
   // ========== EFFETS OPTIMISÉS ==========
   useEffect(() => {
     loadLastActivities();
-  }, []); // Une seule fois au montage
+  }, []);
 
-  // useFocusEffect optimisé - évite les boucles infinies
   useFocusEffect(
     useCallback(() => {
       loadLastActivities();
 
-      // Arrêter le tracking si en cours (retour au Dashboard)
       if (isTracking) {
         const timeSpent = stopAndSave();
-        // Supprimé le console.log pour optimiser
       }
-    }, []) // Dépendances vides pour éviter les re-exécutions
+    }, [])
   );
 
   // ========== GESTIONNAIRES OPTIMISÉS ==========
@@ -135,7 +129,10 @@ const Dashboard = ({ route }) => {
       {/* Contenu scrollable avec RefreshControl */}
       <ScrollView
         style={styles.scrollView}
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[
+          styles.scrollContent,
+          { paddingBottom: 100 }, // Espace pour les onglets Expo Router
+        ]}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl
@@ -145,7 +142,7 @@ const Dashboard = ({ route }) => {
           />
         }
       >
-        {/* 1. Continue Learning - Données mémorisées */}
+        {/* 1. Continue Learning */}
         <ContinueLearningSection
           lastActivity={dashboardData.lastActivity}
           onPress={navigateToExercise}
@@ -154,7 +151,7 @@ const Dashboard = ({ route }) => {
           isLoading={isActivityLoading}
         />
 
-        {/* 2. Défi du jour - Handlers optimisés */}
+        {/* 2. Défi du jour */}
         <DailyGoalSection
           currentLevel={currentLevel}
           progress={dashboardData.progress}
@@ -163,7 +160,7 @@ const Dashboard = ({ route }) => {
           onStartEvaluation={handleEvaluationStart}
         />
 
-        {/* 3. Suggestions intelligentes - Stats mémorisées */}
+        {/* 3. Suggestions intelligentes */}
         <RecommendationsSection
           lastActivity={dashboardData.lastActivity}
           exerciseTimeStats={dashboardData.exerciseTimeStats}
@@ -172,7 +169,7 @@ const Dashboard = ({ route }) => {
           accentColor={levelColor}
         />
 
-        {/* 4. Parcours d'apprentissage - Niveaux mémorisés */}
+        {/* 4. Parcours d'apprentissage */}
         <LearningPathCompact
           globalProgress={dashboardData.globalProgress}
           levels={dashboardData.allLevels}
@@ -181,19 +178,9 @@ const Dashboard = ({ route }) => {
           onViewProgress={openLevelProgressModal}
           primaryColor={levelColor}
         />
-
-        <View style={styles.bottomSpacer} />
       </ScrollView>
 
-      {/* Navigation bottom */}
-      <BottomNavigation
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        accentColor={levelColor}
-        currentLevel={currentLevel}
-      />
-
-      {/* Modal progression niveaux - Données mémorisées */}
+      {/* Modal progression niveaux */}
       <LevelProgressModal
         visible={showLevelProgress}
         levels={dashboardData.getAllLearningLevels}
@@ -205,4 +192,3 @@ const Dashboard = ({ route }) => {
 };
 
 export default Dashboard;
-
