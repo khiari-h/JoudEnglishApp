@@ -1,6 +1,6 @@
 // src/screens/exercises/reading/hooks/useReadingExerciseState.js
 import { useState, useRef, useEffect } from 'react';
-import { Animated } from 'react-native';
+import { Animated, Alert } from 'react-native';
 
 /**
  * Hook personnalisé pour gérer l'état de l'exercice de lecture
@@ -160,6 +160,52 @@ const useReadingExerciseState = (exercises = [], level) => {
     setSelectedAnswer(null);
   };
 
+  // Afficher une alerte de félicitations pour tous les exercices terminés
+  const showAllExercisesCompletedAlert = () => {
+    Alert.alert(
+      "Félicitations ! 🎉",
+      "Tous les exercices de lecture sont terminés !",
+      [
+        {
+          text: "Super !",
+          style: "default"
+        }
+      ]
+    );
+  };
+
+  // Demander confirmation pour passer à l'exercice suivant
+  const askToMoveToNextExercise = (nextExerciseIndex) => {
+    const nextExerciseTitle = allExercises[nextExerciseIndex]?.title || "l'exercice suivant";
+    
+    Alert.alert(
+      "Texte terminé ! 🎯",
+      `Bravo ! Souhaitez-vous passer à "${nextExerciseTitle}" ?`,
+      [
+        {
+          text: "Non, rester ici",
+          style: "cancel",
+          onPress: () => {
+            // Réinitialiser la progression pour cet exercice
+            const updatedCompletedQuestions = { ...completedQuestions };
+            updatedCompletedQuestions[selectedExerciseIndex] = [];
+            setCompletedQuestions(updatedCompletedQuestions);
+
+            // Réinitialiser à la première question
+            setCurrentQuestionIndex(0);
+            setSelectedAnswer(null);
+            setAttempts(0);
+          }
+        },
+        {
+          text: "Oui, continuer",
+          style: "default",
+          onPress: () => setSelectedExerciseIndex(nextExerciseIndex)
+        }
+      ]
+    );
+  };
+
   // Gérer la navigation vers la question suivante
   const handleNextQuestion = () => {
     if (!currentExercise) return;
@@ -195,8 +241,7 @@ const useReadingExerciseState = (exercises = [], level) => {
 
       if (allCompleted) {
         // Tous les exercices sont terminés
-        alert("All reading exercises completed!");
-        // Possibilité de naviguer en arrière ou de réinitialiser
+        showAllExercisesCompletedAlert();
       } else {
         // Suggérer de passer à l'exercice suivant
         let nextExerciseIndex =
@@ -213,26 +258,10 @@ const useReadingExerciseState = (exercises = [], level) => {
 
         if (nextExerciseIndex === selectedExerciseIndex) {
           // Si on revient à l'exercice actuel, tout est terminé
-          alert("All reading exercises completed!");
+          showAllExercisesCompletedAlert();
         } else {
           // Demander à l'utilisateur s'il veut passer à l'exercice suivant
-          if (
-            confirm(
-              `You've completed this text! Move to ${allExercises[nextExerciseIndex].title}?`
-            )
-          ) {
-            setSelectedExerciseIndex(nextExerciseIndex);
-          } else {
-            // Réinitialiser la progression pour cet exercice
-            const updatedCompletedQuestions = { ...completedQuestions };
-            updatedCompletedQuestions[selectedExerciseIndex] = [];
-            setCompletedQuestions(updatedCompletedQuestions);
-
-            // Réinitialiser à la première question
-            setCurrentQuestionIndex(0);
-            setSelectedAnswer(null);
-            setAttempts(0);
-          }
+          askToMoveToNextExercise(nextExerciseIndex);
         }
       }
     }
@@ -289,6 +318,6 @@ const useReadingExerciseState = (exercises = [], level) => {
     setShowFeedback,
     setAttempts
   };
-}
+};
 
 export default useReadingExerciseState;
