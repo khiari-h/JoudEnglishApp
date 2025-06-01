@@ -1,4 +1,4 @@
-// src/hooks/useLastActivity.js
+// src/hooks/useLastActivity.js - FIXED
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -11,14 +11,14 @@ const useLastActivity = () => {
   const [lastActivities, setLastActivities] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  // Types d'exercices disponibles dans l'application
+  // Types d'exercices disponibles dans l'application - MÉMORISÉS
   const exerciseTypes = [
     { 
       key: 'vocabulary',
       title: 'Vocabulaire',
       icon: 'book-outline',
       positionKey: 'vocabulary_position_',
-      hasModes: true // NOUVEAU : vocabulary a des modes
+      hasModes: true
     },
     { 
       key: 'phrases',
@@ -70,7 +70,7 @@ const useLastActivity = () => {
     }
   ];
 
-  // Niveaux du nouveau système
+  // Niveaux du nouveau système - MÉMORISÉS
   const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
 
   // Charger les métadonnées de progression pour un exercice
@@ -80,7 +80,6 @@ const useLastActivity = () => {
 
     try {
       if (exerciseType.key === 'vocabulary') {
-        // NOUVEAU : gérer les modes vocabulary
         const progressKey = mode ? `${level}_${mode}` : level;
         const completedKey = `vocabulary_completed_${progressKey}`;
         const completedJson = await AsyncStorage.getItem(completedKey);
@@ -89,9 +88,8 @@ const useLastActivity = () => {
           const completed = JSON.parse(completedJson);
           metadata.category = position.categoryIndex || 0;
           metadata.word = position.wordIndex || 0;
-          metadata.mode = mode; // Ajouter le mode aux métadonnées
+          metadata.mode = mode;
           
-          // Calculer la progression approximative
           const totalCategories = Object.keys(completed).length;
           const completedCategories = Object.values(completed)
             .filter(arr => arr && arr.length > 0).length;
@@ -153,7 +151,7 @@ const useLastActivity = () => {
     return { progress, metadata };
   };
 
-  // NOUVEAU : Charger les activités vocabulary avec modes
+  // Charger les activités vocabulary avec modes
   const loadVocabularyActivities = async (level) => {
     const activities = [];
     const modes = ['fast', 'classic'];
@@ -166,13 +164,12 @@ const useLastActivity = () => {
         const position = JSON.parse(positionJson);
         const exerciseType = exerciseTypes.find(e => e.key === 'vocabulary');
         
-        // Charger les métadonnées avec le mode
         const { progress, metadata } = await loadProgressMetadata(exerciseType, level, position, mode);
 
         const activity = {
           type: 'vocabulary',
           level,
-          mode, // IMPORTANT : inclure le mode
+          mode,
           position,
           title: `${exerciseType.title} ${mode === 'fast' ? 'Fast' : 'Classique'}`,
           icon: exerciseType.icon,
@@ -189,7 +186,7 @@ const useLastActivity = () => {
     return activities;
   };
 
-  // Charger les dernières activités
+  // ✅ FIX PRINCIPAL : useCallback STABLE avec dépendances vides
   const loadLastActivities = useCallback(async () => {
     setIsLoading(true);
     console.log("🔄 Chargement des dernières activités...");
@@ -197,19 +194,15 @@ const useLastActivity = () => {
     try {
       const activitiesByLevel = {};
 
-      // Pour chaque niveau
       for (const level of levels) {
         activitiesByLevel[level] = [];
 
-        // Pour chaque type d'exercice
         for (const exerciseType of exerciseTypes) {
           
           if (exerciseType.hasModes && exerciseType.key === 'vocabulary') {
-            // NOUVEAU : Traitement spécial pour vocabulary avec modes
             const vocabularyActivities = await loadVocabularyActivities(level);
             activitiesByLevel[level].push(...vocabularyActivities);
           } else {
-            // Traitement normal pour les autres exercices
             const positionKey = exerciseType.positionKey + level;
             const positionJson = await AsyncStorage.getItem(positionKey);
             
@@ -234,7 +227,6 @@ const useLastActivity = () => {
           }
         }
 
-        // Trier les activités par timestamp (plus récent en premier)
         activitiesByLevel[level].sort((a, b) => b.timestamp - a.timestamp);
       }
 
@@ -245,12 +237,12 @@ const useLastActivity = () => {
       console.error('❌ Erreur lors du chargement des dernières activités:', error);
       setIsLoading(false);
     }
-  }, []);
+  }, []); // ✅ DÉPENDANCES VIDES = fonction stable !
 
-  // Charger les activités au montage
+  // ✅ FIX : useEffect avec dépendances vides
   useEffect(() => {
     loadLastActivities();
-  }, [loadLastActivities]);
+  }, []); // ✅ Se déclenche UNE SEULE FOIS au montage !
 
   // Formater une chaîne de temps relative
   const getTimeElapsed = useCallback((timestamp) => {
@@ -279,10 +271,8 @@ const useLastActivity = () => {
       return null;
     }
     
-    // L'activité la plus récente est déjà la première du tableau (trié)
     const activity = lastActivities[level][0];
     
-    // Mettre à jour le temps écoulé
     return {
       ...activity,
       timeElapsed: getTimeElapsed(activity.timestamp)
@@ -291,13 +281,12 @@ const useLastActivity = () => {
 
   // Obtenir la dernière activité, tous niveaux confondus
   const getLastActivity = useCallback(() => {
-    // Trouver l'activité la plus récente parmi tous les niveaux
     let mostRecentActivity = null;
     let mostRecentTimestamp = 0;
     
     Object.values(lastActivities).forEach(activitiesForLevel => {
       if (activitiesForLevel.length > 0) {
-        const activity = activitiesForLevel[0]; // Déjà trié, le premier est le plus récent
+        const activity = activitiesForLevel[0];
         
         if (activity.timestamp > mostRecentTimestamp) {
           mostRecentActivity = activity;
@@ -313,7 +302,6 @@ const useLastActivity = () => {
     
     console.log("✅ Dernière activité trouvée:", mostRecentActivity);
     
-    // Mettre à jour le temps écoulé
     return {
       ...mostRecentActivity,
       timeElapsed: getTimeElapsed(mostRecentActivity.timestamp)
@@ -345,7 +333,6 @@ const useLastActivity = () => {
       return `Section ${metadata.section + 1} • Niveau ${level}`;
     }
     
-    // Format par défaut
     return `Niveau ${level}`;
   }, []);
 
