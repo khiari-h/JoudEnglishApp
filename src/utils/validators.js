@@ -141,8 +141,8 @@ export const validateRequired = (value, message = 'Ce champ est obligatoire') =>
     
     // Normaliser les accents si ignore les accents
     if (ignoreAccents) {
-      normalizedUserAnswer = normalizedUserAnswer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      normalizedCorrectAnswer = normalizedCorrectAnswer.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      normalizedUserAnswer = normalizedUserAnswer.normalize("NFD").replace(/[\u0300-\u036f]/gu, "");
+      normalizedCorrectAnswer = normalizedCorrectAnswer.normalize("NFD").replace(/[\u0300-\u036f]/gu, "");
     }
     
     // Vérifier si les réponses correspondent
