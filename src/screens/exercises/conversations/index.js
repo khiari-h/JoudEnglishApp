@@ -106,8 +106,7 @@ const ConversationExercise = ({ route }) => {
 
       // Vérifier si le scénario a déjà été commencé
       if (
-        scenarioHistory &&
-        scenarioHistory.conversation &&
+        scenarioHistory?.conversation &&
         scenarioHistory.conversation.length > 0
       ) {
         console.log("[Conversation] Restauration de la conversation existante");
@@ -139,7 +138,7 @@ const ConversationExercise = ({ route }) => {
       setCurrentStep(initialStep);
 
       // Mettre à jour les suggestions
-      if (scenario.steps && scenario.steps[initialStep]) {
+      if (scenario.steps?.[initialStep]) {
         setSuggestions(scenario.steps[initialStep].suggestions || []);
       }
 
@@ -181,8 +180,7 @@ const ConversationExercise = ({ route }) => {
     // 3. Si le scénario est terminé, le marquer comme complété
     const scenario = scenarios[currentScenarioIndex];
     if (
-      scenario &&
-      scenario.steps &&
+      scenario?.steps &&
       currentStep >= scenario.steps.length - 1
     ) {
       markScenarioAsCompleted(currentScenarioIndex, conversation);

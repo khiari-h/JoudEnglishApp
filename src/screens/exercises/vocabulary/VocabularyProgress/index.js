@@ -71,7 +71,7 @@ const VocabularyProgress = ({
             <TouchableOpacity
               key={`category-${index}`}
               style={styles.categoryContainer}
-              onPress={() => onCategoryPress && onCategoryPress(index)}
+              onPress={() => onCategoryPress?.(index)}
               activeOpacity={0.7}
             >
               <View style={styles.categoryHeader}>

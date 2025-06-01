@@ -38,7 +38,7 @@ const getB1ExercisesByDifficulty = (difficulty) => {
 // Fonction pour obtenir des exercices par sujet
 const getB1ExercisesByTopic = (topic) => {
   const filteredTexts = readingTextsB1.filter(text => 
-    text.topics && text.topics.includes(topic)
+    text.topics?.includes(topic)
   );
   return filteredTexts.map(text => combineTextWithQuestions(text.id)).filter(Boolean);
 };

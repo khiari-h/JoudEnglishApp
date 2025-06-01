@@ -90,7 +90,7 @@ const LevelProgressModal = ({
                       backgroundColor: isActive ? `${level.color}08` : "white",
                     },
                   ]}
-                  onPress={() => onSelectLevel && onSelectLevel(level.id)}
+                  onPress={() => onSelectLevel?.(level.id)}
                 >
                   <View style={styles.levelCardContent}>
                     <View style={styles.levelHeader}>

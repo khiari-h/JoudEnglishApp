@@ -141,7 +141,7 @@ export const getErrorCorrectionStats = (level) => {
   try {
     const data = getErrorsData(level);
 
-    if (data && data.exercises) {
+    if (data?.exercises) {
       stats.exerciseCount = data.exercises.length;
       stats.totalQuestions = data.exercises.length; // Chaque exercice = 1 question
       stats.categoryCount = data.categories ? data.categories.length : 0;
@@ -246,7 +246,7 @@ export const getGlobalErrorCorrectionStats = () => {
  */
 export const getExercisesByCategory = (level, categoryId) => {
   const data = getErrorsData(level);
-  if (data && data.getExercisesByCategory) {
+  if (data?.getExercisesByCategory) {
     return data.getExercisesByCategory(categoryId);
   }
   return data?.exercises?.filter((ex) => ex.categoryId === categoryId) || [];
@@ -260,7 +260,7 @@ export const getExercisesByCategory = (level, categoryId) => {
  */
 export const getExercisesByType = (level, type) => {
   const data = getErrorsData(level);
-  if (data && data.getExercisesByType) {
+  if (data?.getExercisesByType) {
     return data.getExercisesByType(type);
   }
   return data?.exercises?.filter((ex) => ex.type === type) || [];
@@ -275,7 +275,7 @@ export const getExercisesByType = (level, type) => {
  */
 export const getExercisesByCategoryAndType = (level, categoryId, type) => {
   const data = getErrorsData(level);
-  if (data && data.getExercisesByCategoryAndType) {
+  if (data?.getExercisesByCategoryAndType) {
     return data.getExercisesByCategoryAndType(categoryId, type);
   }
   return (

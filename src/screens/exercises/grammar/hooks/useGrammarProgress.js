@@ -162,8 +162,7 @@ const useGrammarProgress = (level) => {
   const isExerciseCompleted = useCallback(
     (ruleIndex, exerciseIndex) => {
       return (
-        completedExercises[ruleIndex] &&
-        completedExercises[ruleIndex].includes(exerciseIndex)
+        completedExercises[ruleIndex]?.includes(exerciseIndex)
       );
     },
     [completedExercises]

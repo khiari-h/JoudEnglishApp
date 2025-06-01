@@ -150,7 +150,7 @@ const useProgress = () => {
       const newProgress = { ...prevProgress };
       
       // Mise à jour de la progression de l'exercice spécifique
-      if (newProgress.exercises[exerciseType] && newProgress.exercises[exerciseType][level]) {
+      if (newProgress.exercises[exerciseType]?.[level]) {
         newProgress.exercises[exerciseType][level] = { 
           completed, 
           total 

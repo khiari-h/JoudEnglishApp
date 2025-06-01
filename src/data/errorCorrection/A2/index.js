@@ -110,7 +110,7 @@ const errorCorrectionA2 = {
   getExercisesByTopic: (topic) => {
     return allExercises.filter(exercise => {
       const category = errorCorrectionA2.categories.find(cat => cat.id === exercise.categoryId);
-      return category && category.topics.includes(topic);
+      return category?.topics.includes(topic);
     });
   },
 

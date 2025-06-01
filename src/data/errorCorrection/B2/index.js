@@ -120,7 +120,7 @@ const errorCorrectionB2 = {
   getExercisesBySkill: (skill) => {
     return allExercises.filter(exercise => {
       const category = errorCorrectionB2.categories.find(cat => cat.id === exercise.categoryId);
-      return category && category.skillsTargeted.includes(skill);
+      return category?.skillsTargeted.includes(skill);
     });
   },
 

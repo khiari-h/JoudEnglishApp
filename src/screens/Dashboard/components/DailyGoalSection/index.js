@@ -84,7 +84,7 @@ const DailyGoalSection = ({
               title={statusMessage.buttons[0]}
               variant="filled"
               color={accentColor}
-              onPress={() => onStartEvaluation && onStartEvaluation(currentLevel)}
+              onPress={() => onStartEvaluation?.(currentLevel)}
               style={styles.evaluationButton}
             />
           )}

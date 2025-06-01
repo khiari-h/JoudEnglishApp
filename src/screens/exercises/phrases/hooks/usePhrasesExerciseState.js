@@ -19,8 +19,7 @@ const usePhrasesExerciseState = (level, phrasesData) => {
 
   // Vérifier si phrasesData est valide et a des catégories
   const hasValidData =
-    phrasesData &&
-    phrasesData.categories &&
+    phrasesData?.categories &&
     Array.isArray(phrasesData.categories) &&
     phrasesData.categories.length > 0;
 
