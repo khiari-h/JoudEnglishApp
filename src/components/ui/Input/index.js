@@ -416,7 +416,7 @@ const Input = forwardRef(
             secureTextEntry={
               showPasswordToggle ? !isPasswordVisible : secureTextEntry
             }
-            autoFocus={autoFocus}
+            
             editable={editable}
             returnKeyType={returnKeyType}
             onFocus={handleFocus}

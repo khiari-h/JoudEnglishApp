@@ -427,7 +427,7 @@ const Select = ({
                   placeholder={searchPlaceholder}
                   value={searchQuery}
                   onChangeText={handleSearch}
-                  autoFocus
+                  
                   clearButtonMode="while-editing"
                 />
               </View>
