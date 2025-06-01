@@ -42,7 +42,7 @@ const LevelProgressModal = ({
   return (
     <Modal
       visible={visible}
-      transparent={true}
+      transparent
       animationType="slide"
       onRequestClose={onClose}
     >

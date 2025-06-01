@@ -97,9 +97,9 @@ const PhrasesDetailsModal = ({
       title="Détails de la phrase"
       position="center"
       animationType="fade"
-      scrollable={true}
-      closeOnBackdropPress={true}
-      showCloseButton={true}
+      scrollable
+      closeOnBackdropPress
+      showCloseButton
       width="90%"
       maxHeight="80%"
       contentContainerStyle={styles.modalCustomContainer}

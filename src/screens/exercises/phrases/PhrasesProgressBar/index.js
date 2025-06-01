@@ -25,14 +25,14 @@ const PhrasesProgressBar = ({
     <View style={styles.container}>
       <ProgressBar
         progress={progress}
-        showPercentage={true}
-        showValue={true}
+        showPercentage
+        showValue
         total={totalPhrases}
         height={6}
         backgroundColor="#e2e8f0"
         fillColor={levelColor}
         borderRadius={3}
-        animated={true}
+        animated
         labelPosition="top"
         valueFormatter={(value, total) => `Phrase ${currentPhrase}/${total}`}
         percentageFormatter={(percentage) => `Completed: ${completedCount}/${totalPhrases} (${percentage}%)`}

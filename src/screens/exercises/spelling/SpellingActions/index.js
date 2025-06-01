@@ -50,7 +50,7 @@ const SpellingActions = ({
           onNext={onNext}
           currentIndex={isLastExercise ? 1 : 0} // Pour déterminer si c'est le dernier exercice
           totalCount={2} // Valeur arbitraire pour forcer l'affichage du label approprié
-          disablePrevious={true}
+          disablePrevious
           showSkip={false}
           primaryColor={levelColor}
           buttonLabels={{
@@ -71,7 +71,7 @@ const SpellingActions = ({
       <View style={styles.container}>
         <NavigationButtons
           onNext={onCheck}
-          disablePrevious={true}
+          disablePrevious
           disableNext={!canCheckAnswer()}
           showSkip={false}
           primaryColor={levelColor}
@@ -92,7 +92,7 @@ const SpellingActions = ({
       <View style={styles.container}>
         <NavigationButtons
           onNext={onNext}
-          disablePrevious={true}
+          disablePrevious
           showSkip={false}
           primaryColor={levelColor}
           currentIndex={isLastExercise ? 1 : 0}
