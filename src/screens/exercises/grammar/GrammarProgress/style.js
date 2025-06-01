@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: "#334155",
+    flex: 1,
+    marginRight: 8,
   },
   counter: {
     fontSize: 14,
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
     color: "#64748b",
   },
   progressBar: {
-    marginVertical: 4,
+    marginVertical: 0, // ProgressBar de base gère déjà les marges
   },
 });
 

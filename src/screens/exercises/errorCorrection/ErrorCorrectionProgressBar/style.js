@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#f1f5f9',
   },
+  progressBar: {
+    marginVertical: 4,
+  },
 });
 
 export default styles;

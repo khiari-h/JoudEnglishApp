@@ -1,22 +1,22 @@
 // src/components/screens/exercises/reading/ReadingExercise/index.js
-import React, { useEffect, useState } from "react";
-import { SafeAreaView, View, Text, ScrollView } from "react-native";
+import React, { useEffect, useState, useCallback } from "react";
+import { SafeAreaView, View, Text, ScrollView, ActivityIndicator, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Components communs
 import ExerciseHeader from "../../../components/exercise-common/ExerciseHeader";
-import ProgressBar from "../../../components/ui/ProgressBar";
 import ExerciseFeedback from "../../../components/exercise-common/ExerciseFeedback";
 import InstructionBox from "../../../components/exercise-common/InstructionBox";
-import ReadingNavigation from "./ReadingNavigation";
 
 // Components spécifiques à la lecture
+import ReadingProgressBar from "./ReadingProgressBar";
 import ReadingTextSelector from "./ReadingTextSelector";
 import ReadingText from "./ReadingText";
 import ReadingQuestion from "./ReadingQuestion";
 import QuestionIndicators from "./QuestionIndicators";
+import ReadingNavigation from "./ReadingNavigation";
 
-// Hooks
+// Hooks EXISTANTS (pas modifiés)
 import useReadingExerciseState from "./hooks/useReadingExerciseState";
 import useReadingProgress from "./hooks/useReadingProgress";
 
@@ -29,26 +29,27 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice de lecture
+ * Version recodée utilisant correctement les hooks existants + ProgressBar unifiée
  */
 const ReadingExercise = ({ route }) => {
-  // État local pour les exercices
-  const [exercisesData, setExercisesData] = useState([]);
-
-  // Hooks de navigation
+  // ========== NAVIGATION ET PARAMÈTRES ==========
   const navigation = useNavigation();
   const { level = "A1" } = route.params || {};
 
-  // Récupérer la couleur du niveau et les données
+  // Données et couleur du niveau
   const levelColor = getLevelColor(level);
   const readingData = getReadingData(level);
 
-  // Hooks d'état et de progression
+  // ========== HOOKS EXISTANTS (utilisés tels quels) ==========
+  
+  // Hook d'état UI (avec toute sa logique existante)
   const {
     allExercises,
     selectedExerciseIndex,
     currentExercise,
     currentQuestionIndex,
     selectedAnswer,
+    completedQuestions,  // Structure: {0: [0,1,2], 1: [0]}
     showFeedback,
     textExpanded,
     attempts,
@@ -59,20 +60,21 @@ const ReadingExercise = ({ route }) => {
     isCurrentQuestionCompleted,
     handleTextChange,
     handleSelectAnswer,
-    handleSubmitAnswer: checkAnswer,
-    retryExercise: retryQuestion,
-    handleNextQuestion: goToNextQuestion,
-    handlePreviousQuestion: goToPreviousQuestion,
+    handleSubmitAnswer,
+    retryExercise,
+    handleNextQuestion: originalHandleNextQuestion,
+    handlePreviousQuestion: originalHandlePreviousQuestion,
     toggleTextExpansion,
-    calculateProgress: calculateExerciseProgress,
+    calculateProgress,
     setCurrentQuestionIndex,
     setSelectedAnswer,
     setShowFeedback,
     setAttempts,
-  } = useReadingExerciseState(exercisesData, level);
+  } = useReadingExerciseState(readingData?.exercises || [], level);
 
+  // Hook de progression (avec toute sa logique existante)
   const {
-    completedExercises,
+    completedExercises,  // Structure: {exerciseIndex: {completedAt, completedQuestions: [0,1,2]}}
     lastPosition,
     loaded,
     saveLastPosition,
@@ -82,127 +84,180 @@ const ReadingExercise = ({ route }) => {
     calculateOverallProgress,
   } = useReadingProgress(level);
 
-  // Créer une structure de données completedQuestions compatible
-  const [completedQuestions, setCompletedQuestions] = useState({});
-
-  // Initialiser les exercices au chargement
+  // ========== INITIALISATION ==========
+  
+  // Initialiser la progression (hook existant)
   useEffect(() => {
-    if (readingData && readingData.exercises) {
-      // Mettre à jour notre état local des exercices
-      setExercisesData(readingData.exercises);
-
-      // Initialiser la progression
+    if (loaded && readingData) {
+      console.log("📚 Initialisation Reading progression");
       initializeProgress(readingData);
-
-      // Initialiser notre structure de données completedQuestions
-      const initialCompletedQuestions = {};
-      readingData.exercises.forEach((_, index) => {
-        initialCompletedQuestions[index] = [];
-      });
-      setCompletedQuestions(initialCompletedQuestions);
     }
-  }, [readingData, initializeProgress]);
+  }, [loaded, readingData, initializeProgress]);
 
-  // Obtenir la question courante
-  const getCurrentQuestion =
-    currentExercise && currentExercise.questions
-      ? currentExercise.questions[currentQuestionIndex]
-      : null;
-
-  // Vérifier si la réponse est correcte
-  const isCorrect =
-    currentExercise && getCurrentQuestion && selectedAnswer !== null
-      ? selectedAnswer === getCurrentQuestion.correctAnswer
-      : false;
-
-  // Vérifier si une question est complétée
-  const isQuestionCompleted = (exerciseIndex, questionIndex) => {
-    return completedQuestions[exerciseIndex]?.includes(questionIndex);
-  };
-
-  // Marquer une question comme complétée
-  const markQuestionAsCompleted = (exerciseIndex, questionIndex) => {
-    const updatedCompletedQuestions = { ...completedQuestions };
-    if (!updatedCompletedQuestions[exerciseIndex]) {
-      updatedCompletedQuestions[exerciseIndex] = [];
-    }
-    if (!updatedCompletedQuestions[exerciseIndex].includes(questionIndex)) {
-      updatedCompletedQuestions[exerciseIndex].push(questionIndex);
-      setCompletedQuestions(updatedCompletedQuestions);
-
-      // Mettre également à jour avec le hook de progression
-      updateExerciseProgress(
-        exerciseIndex,
-        updatedCompletedQuestions[exerciseIndex]
-      );
-    }
-  };
-
-  // Calculer la progression
-  const calculateProgress = (exerciseIndex, totalQuestions) => {
-    if (!completedQuestions[exerciseIndex] || totalQuestions === 0) return 0;
-    return (completedQuestions[exerciseIndex].length / totalQuestions) * 100;
-  };
-
-  // Vérifier si tous les exercices sont complétés
-  const areAllQuestionsCompleted = (exercises) => {
-    return exercises.every((exercise, index) => {
-      const questionsForExercise = completedQuestions[index] || [];
-      return questionsForExercise.length === exercise.questions.length;
-    });
-  };
-
-  // Gérer la navigation vers la question suivante
-  const handleNextQuestion = () => {
-    if (isCorrect) {
-      markQuestionAsCompleted(selectedExerciseIndex, currentQuestionIndex);
-    }
-    goToNextQuestion();
-
-    // Mettre à jour la position actuelle
-    saveLastPosition(selectedExerciseIndex, currentQuestionIndex + 1);
-
-    // Vérifier si tous les exercices sont complétés
-    if (currentQuestionIndex === currentExercise?.questions.length - 1) {
-      if (areAllQuestionsCompleted(allExercises)) {
-        alert("All reading exercises completed!");
-        navigation.goBack();
+  // Restaurer la dernière position (hook existant)
+  useEffect(() => {
+    if (loaded && lastPosition && allExercises.length > 0) {
+      console.log("🔄 Restauration position Reading:", lastPosition);
+      
+      // Restaurer l'exercice si différent
+      if (lastPosition.exerciseIndex !== selectedExerciseIndex) {
+        handleTextChange(lastPosition.exerciseIndex);
+      }
+      
+      // Restaurer la question si différente
+      if (lastPosition.questionIndex !== currentQuestionIndex) {
+        setCurrentQuestionIndex(lastPosition.questionIndex);
+        setSelectedAnswer(null);
+        setShowFeedback(false);
+        setAttempts(0);
       }
     }
-  };
+  }, [loaded, lastPosition, allExercises.length, selectedExerciseIndex, currentQuestionIndex, handleTextChange, setCurrentQuestionIndex, setSelectedAnswer, setShowFeedback, setAttempts]);
 
-  // Gérer la vérification de la réponse
-  const handleCheckAnswer = () => {
-    checkAnswer();
-  };
+  // ========== DONNÉES CALCULÉES (utilisant hooks existants) ==========
+  
+  // Question actuelle
+  const getCurrentQuestion = currentExercise?.questions?.[currentQuestionIndex] || null;
+  
+  // Vérification réponse
+  const isCorrect = getCurrentQuestion && selectedAnswer !== null
+    ? selectedAnswer === getCurrentQuestion.correctAnswer
+    : false;
 
-  // Gérer la navigation précédente
-  const handlePreviousQuestion = () => {
-    goToPreviousQuestion();
-    // Mettre à jour la position actuelle
-    saveLastPosition(
-      selectedExerciseIndex,
-      Math.max(0, currentQuestionIndex - 1)
-    );
-  };
+  // Comptage questions complétées dans exercice actuel (depuis hook existant)
+  const completedInCurrentExercise = completedQuestions[selectedExerciseIndex]?.length || 0;
 
-  // Gérer le changement d'exercice
-  const handleExerciseChange = (index) => {
-    handleTextChange(index);
-    saveLastPosition(index, 0);
-  };
+  // ========== GESTIONNAIRES PERSONNALISÉS ==========
+  
+  // Vérifier la réponse (utilise hook existant + sync avec progression)
+  const handleCheckAnswer = useCallback(() => {
+    if (selectedAnswer === null || !getCurrentQuestion) return;
 
-  // Si les données ne sont pas encore chargées
-  if (allExercises.length === 0 || !currentExercise) {
+    console.log(`📝 Vérification réponse: exercice ${selectedExerciseIndex}, question ${currentQuestionIndex}`);
+    
+    // Utiliser la fonction du hook existant
+    handleSubmitAnswer();
+    
+    // Si correct, synchroniser avec useReadingProgress
+    if (isCorrect) {
+      // Récupérer les questions complétées actuelles
+      const currentCompleted = completedQuestions[selectedExerciseIndex] || [];
+      
+      // Ajouter la question actuelle si pas déjà dans la liste
+      if (!currentCompleted.includes(currentQuestionIndex)) {
+        const updatedCompleted = [...currentCompleted, currentQuestionIndex];
+        
+        // Synchroniser avec useReadingProgress
+        updateExerciseProgress(selectedExerciseIndex, updatedCompleted);
+      }
+      
+      console.log(`✅ Question ${currentQuestionIndex} complétée`);
+    } else {
+      console.log(`❌ Question ${currentQuestionIndex} incorrecte`);
+    }
+  }, [selectedAnswer, getCurrentQuestion, selectedExerciseIndex, currentQuestionIndex, handleSubmitAnswer, isCorrect, completedQuestions, updateExerciseProgress]);
+
+  // Navigation question suivante (override du hook existant)
+  const handleNextQuestionClick = useCallback(() => {
+    const isLastQuestion = currentQuestionIndex === (currentExercise?.questions?.length || 0) - 1;
+    const isLastExercise = selectedExerciseIndex === allExercises.length - 1;
+
+    // Sauvegarder position avant navigation
+    if (isLastQuestion && !isLastExercise) {
+      // Passer à l'exercice suivant
+      saveLastPosition(selectedExerciseIndex + 1, 0);
+    } else if (!isLastQuestion) {
+      // Question suivante dans le même exercice
+      saveLastPosition(selectedExerciseIndex, currentQuestionIndex + 1);
+    }
+
+    // Si fin de tout, gérer spécialement
+    if (isLastQuestion && isLastExercise) {
+      Alert.alert(
+        "Félicitations !",
+        "Vous avez terminé tous les exercices de lecture !",
+        [{ text: "OK", onPress: () => navigation.goBack() }]
+      );
+      return;
+    }
+
+    // Utiliser la navigation du hook existant
+    originalHandleNextQuestion();
+
+    console.log(`➡️ Navigation: vers exercice ${selectedExerciseIndex}, question ${currentQuestionIndex + 1}`);
+  }, [currentQuestionIndex, currentExercise, selectedExerciseIndex, allExercises.length, saveLastPosition, originalHandleNextQuestion, navigation]);
+
+  // Navigation question précédente (override du hook existant)
+  const handlePreviousQuestionClick = useCallback(() => {
+    // Sauvegarder position avant navigation
+    const newQuestionIndex = Math.max(0, currentQuestionIndex - 1);
+    saveLastPosition(selectedExerciseIndex, newQuestionIndex);
+    
+    // Utiliser la navigation du hook existant
+    originalHandlePreviousQuestion();
+    
+    console.log(`⬅️ Navigation: vers exercice ${selectedExerciseIndex}, question ${newQuestionIndex}`);
+  }, [currentQuestionIndex, selectedExerciseIndex, saveLastPosition, originalHandlePreviousQuestion]);
+
+  // Changer d'exercice (utilise hook existant + sync position)
+  const handleExerciseChange = useCallback((exerciseIndex) => {
+    console.log(`📂 Changement exercice: ${selectedExerciseIndex} → ${exerciseIndex}`);
+    
+    // Utiliser le hook existant
+    handleTextChange(exerciseIndex);
+    
+    // Sauvegarder nouvelle position
+    saveLastPosition(exerciseIndex, 0);
+  }, [selectedExerciseIndex, handleTextChange, saveLastPosition]);
+
+  // Sélection directe de question (utilise hooks existants)
+  const handleQuestionSelect = useCallback((questionIndex) => {
+    console.log(`🎯 Sélection directe question ${questionIndex}`);
+    
+    // Utiliser les setters du hook existant
+    setCurrentQuestionIndex(questionIndex);
+    setSelectedAnswer(null);
+    setShowFeedback(false);
+    setAttempts(0);
+    
+    // Sauvegarder position
+    saveLastPosition(selectedExerciseIndex, questionIndex);
+  }, [setCurrentQuestionIndex, setSelectedAnswer, setShowFeedback, setAttempts, selectedExerciseIndex, saveLastPosition]);
+
+  // ========== GESTION CHARGEMENT ==========
+  
+  if (!loaded || allExercises.length === 0) {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.loadingContainer}>
-          <Text style={styles.loadingText}>Loading exercise...</Text>
+          <ActivityIndicator size="large" color={levelColor} />
+          <Text style={styles.loadingText}>Chargement des exercices...</Text>
         </View>
       </SafeAreaView>
     );
   }
 
+  if (!currentExercise) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loadingText}>Aucun exercice disponible</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  // ========== LOGS DEBUG ==========
+  console.log("📊 DEBUG Reading Exercise:", {
+    selectedExerciseIndex,
+    currentQuestionIndex,
+    completedInCurrentExercise,
+    totalQuestions: currentExercise?.questions?.length || 0,
+    showFeedback,
+    isCorrect
+  });
+
+  // ========== RENDU ==========
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* En-tête */}
@@ -213,7 +268,7 @@ const ReadingExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Sélecteur de textes */}
+      {/* Sélecteur de textes (utilise hook existant) */}
       <ReadingTextSelector
         exercises={allExercises}
         selectedIndex={selectedExerciseIndex}
@@ -222,25 +277,16 @@ const ReadingExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Barre de progression */}
-      <View style={styles.progressContainer}>
-        <ProgressBar
-          progress={calculateProgress(
-            selectedExerciseIndex,
-            currentExercise.questions.length
-          )}
-          showPercentage={false}
-          showValue={true}
-          total={currentExercise.questions.length}
-          valueFormatter={(value, total) =>
-            `${completedQuestions[selectedExerciseIndex]?.length || 0}/${total}`
-          }
-          height={6}
-          backgroundColor="#e2e8f0"
-          fillColor={levelColor}
-          borderRadius={3}
-        />
-      </View>
+      {/* ✅ NOUVELLE ProgressBar unifiée */}
+      <ReadingProgressBar
+        currentExercise={selectedExerciseIndex + 1}
+        totalExercises={allExercises.length}
+        currentQuestion={currentQuestionIndex + 1}
+        totalQuestions={currentExercise?.questions?.length || 0}
+        completedQuestionsInExercise={completedInCurrentExercise}
+        exerciseTitle={currentExercise?.title || `Exercise ${selectedExerciseIndex + 1}`}
+        levelColor={levelColor}
+      />
 
       {/* Contenu principal */}
       <ScrollView
@@ -257,7 +303,7 @@ const ReadingExercise = ({ route }) => {
           initiallyExpanded={false}
         />
 
-        {/* Texte de lecture */}
+        {/* Texte de lecture (utilise hook existant) */}
         <ReadingText
           exercise={currentExercise}
           textExpanded={textExpanded}
@@ -265,7 +311,7 @@ const ReadingExercise = ({ route }) => {
           levelColor={levelColor}
         />
 
-        {/* Question */}
+        {/* Question actuelle */}
         {getCurrentQuestion && (
           <ReadingQuestion
             question={getCurrentQuestion}
@@ -297,25 +343,17 @@ const ReadingExercise = ({ route }) => {
           />
         )}
 
-        {/* Indicateurs de questions */}
+        {/* Indicateurs de questions (utilise hook existant) */}
         <QuestionIndicators
           totalQuestions={currentExercise.questions.length}
           currentQuestionIndex={currentQuestionIndex}
           completedQuestions={completedQuestions[selectedExerciseIndex] || []}
-          onSelectQuestion={(index) => {
-            setCurrentQuestionIndex(index);
-            setSelectedAnswer(null);
-            setShowFeedback(false);
-            setAttempts(0);
-            fadeAnim.setValue(0);
-            slideAnim.setValue(50);
-            saveLastPosition(selectedExerciseIndex, index);
-          }}
+          onSelectQuestion={handleQuestionSelect}
           levelColor={levelColor}
         />
       </ScrollView>
 
-      {/* Navigation avec le nouveau composant */}
+      {/* Navigation */}
       <ReadingNavigation
         showFeedback={showFeedback}
         isCorrect={isCorrect}
@@ -324,9 +362,9 @@ const ReadingExercise = ({ route }) => {
         totalQuestions={currentExercise.questions.length}
         attempts={attempts}
         levelColor={levelColor}
-        onNext={showFeedback ? handleNextQuestion : handleCheckAnswer}
-        onPrevious={handlePreviousQuestion}
-        onRetry={retryQuestion}
+        onNext={showFeedback ? handleNextQuestionClick : handleCheckAnswer}
+        onPrevious={handlePreviousQuestionClick}
+        onRetry={retryExercise}
       />
     </SafeAreaView>
   );

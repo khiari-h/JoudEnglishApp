@@ -2,11 +2,18 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import ProgressBar from "../../../../components/ui/ProgressBar";
+import {
+  calculateTotalWords,
+  calculateCompletedWordsCount,
+  calculateTotalProgress,
+  calculateCategoryProgress,  // ✅ AJOUTÉ
+} from "../../../../utils/vocabulary/vocabularyStats";
 import styles from "./style";
 
 /**
  * Composant pour afficher la progression du vocabulaire
- * avec une barre globale et des barres par catégorie
+ * Version finale : utilise uniquement les fonctions de vocabularyStats.js
+ * Avec progression globale + détail par catégorie
  */
 const VocabularyProgress = ({
   vocabularyData,
@@ -16,62 +23,76 @@ const VocabularyProgress = ({
   onToggleExpand,
   onCategoryPress,
 }) => {
-  // Calcul des statistiques globales
-  const totalWordsCount = calculateTotalWords(vocabularyData?.exercises);
+  // ✅ TOUTES LES FONCTIONS VIENNENT DE vocabularyStats.js
+  const totalWordsCount = calculateTotalWords(vocabularyData?.exercises || []);
   const completedWordsCount = calculateCompletedWordsCount(completedWords);
-  const totalProgress = calculateTotalProgress(vocabularyData?.exercises, completedWords);
-  
-  // Calcul des statistiques par catégorie
-  const categoryProgressData = calculateCategoryProgress(vocabularyData?.exercises, completedWords);
+  const totalProgress = calculateTotalProgress(vocabularyData?.exercises || [], completedWords);
+  const categoryProgressData = calculateCategoryProgress(vocabularyData?.exercises || [], completedWords);
 
   return (
     <View style={styles.container}>
-      {/* Titre de la section */}
+      {/* Header avec toggle pour expansion */}
       <TouchableOpacity 
         style={styles.headerContainer}
         onPress={onToggleExpand}
+        activeOpacity={0.7}
       >
-        <Text style={styles.headerTitle}>Progression du vocabulaire</Text>
-        <Text style={styles.expandIcon}>{expanded ? "▼" : "▶"}</Text>
+        <Text style={styles.headerTitle}>Progression Vocabulaire</Text>
+        <View style={styles.headerRight}>
+          <Text style={styles.globalCount}>
+            {completedWordsCount}/{totalWordsCount} mots
+          </Text>
+          <Text style={styles.expandIcon}>{expanded ? "▼" : "▶"}</Text>
+        </View>
       </TouchableOpacity>
 
       {/* Barre de progression globale - toujours visible */}
       <View style={styles.globalProgressContainer}>
         <ProgressBar
           progress={totalProgress}
-          showValue={true}
-          total={totalWordsCount}
-          valueFormatter={(value, total) => `${value}/${total} mots`}
+          showValue={false}  // On affiche déjà dans le header
           showPercentage={true}
           fillColor={levelColor}
           height={10}
-          label="Progression globale"
-          labelPosition="top"
+          backgroundColor="#e2e8f0"
+          borderRadius={5}
+          animated={true}
+          labelPosition="none"
+          percentageFormatter={(percentage) => `${Math.round(percentage)}% complété`}
           style={styles.progressBar}
         />
       </View>
 
-      {/* Barres de progression par catégorie - visibles seulement si expanded=true */}
+      {/* Détail par catégorie - visible si expanded */}
       {expanded && (
         <View style={styles.categoriesContainer}>
+          <Text style={styles.categoriesTitle}>Détail par catégorie :</Text>
           {categoryProgressData.map((category, index) => (
             <TouchableOpacity
-              key={index}
+              key={`category-${index}`}
               style={styles.categoryContainer}
               onPress={() => onCategoryPress && onCategoryPress(index)}
+              activeOpacity={0.7}
             >
               <View style={styles.categoryHeader}>
-                <Text style={styles.categoryTitle}>{category.title}</Text>
+                <Text style={styles.categoryTitle} numberOfLines={1}>
+                  {category.title}
+                </Text>
                 <Text style={styles.categoryCount}>
                   {category.completedWords}/{category.totalWords}
                 </Text>
               </View>
               <ProgressBar
                 progress={category.progress}
-                showPercentage={false}
+                showPercentage={true}
+                showValue={false}
                 fillColor={levelColor}
+                backgroundColor="#f1f5f9"
                 height={6}
+                borderRadius={3}
                 animated={true}
+                labelPosition="none"
+                percentageFormatter={(percentage) => `${Math.round(percentage)}%`}
                 style={styles.categoryProgressBar}
               />
             </TouchableOpacity>
@@ -81,38 +102,5 @@ const VocabularyProgress = ({
     </View>
   );
 };
-
-// Fonctions utilitaires pour calculer les statistiques
-function calculateTotalWords(exercises) {
-  return exercises?.reduce((total, category) => total + (category.words?.length || 0), 0) || 0;
-}
-
-function calculateCompletedWordsCount(completedWords) {
-  return Object.values(completedWords).reduce(
-    (total, categoryCompletions) => total + (categoryCompletions?.length || 0),
-    0
-  );
-}
-
-function calculateTotalProgress(exercises, completedWords) {
-  const total = calculateTotalWords(exercises);
-  const completed = calculateCompletedWordsCount(completedWords);
-  return total > 0 ? (completed / total) * 100 : 0;
-}
-
-function calculateCategoryProgress(exercises, completedWords) {
-  return exercises?.map((category, index) => {
-    const totalInCategory = category.words?.length || 0;
-    const completedInCategory = completedWords[index]?.length || 0;
-    const progress = totalInCategory > 0 ? (completedInCategory / totalInCategory) * 100 : 0;
-    
-    return {
-      title: category.title,
-      totalWords: totalInCategory,
-      completedWords: completedInCategory,
-      progress: progress
-    };
-  }) || [];
-}
 
 export default VocabularyProgress;

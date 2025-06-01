@@ -24,6 +24,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     color: "#334155",
+    flex: 1,
+  },
+  headerRight: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  globalCount: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#64748b",
+    marginRight: 8,
   },
   expandIcon: {
     fontSize: 16,
@@ -40,6 +51,12 @@ const styles = StyleSheet.create({
     borderTopColor: "#f1f5f9",
     paddingTop: 10,
   },
+  categoriesTitle: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#475569",
+    marginBottom: 8,
+  },
   categoryContainer: {
     marginVertical: 8,
   },
@@ -53,6 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "500",
     color: "#475569",
+    flex: 1,
   },
   categoryCount: {
     fontSize: 12,

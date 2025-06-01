@@ -19,3 +19,21 @@ export const calculateTotalProgress = (exercises = [], completedWords = {}) => {
     ? Math.min(100, (totalCompleted / totalWords) * 100)
     : 0;
 };
+
+// ✅ NOUVELLE FONCTION - Calcul progression par catégorie
+export const calculateCategoryProgress = (exercises = [], completedWords = {}) => {
+  return exercises.map((category, index) => {
+    const totalInCategory = category.words?.length || 0;
+    const completedInCategory = completedWords[index]?.length || 0;
+    const progress = totalInCategory > 0 
+      ? Math.min(100, Math.round((completedInCategory / totalInCategory) * 100))
+      : 0;
+    
+    return {
+      title: category.title || `Catégorie ${index + 1}`,
+      totalWords: totalInCategory,
+      completedWords: completedInCategory,
+      progress: progress
+    };
+  });
+};
