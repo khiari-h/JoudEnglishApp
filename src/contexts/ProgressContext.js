@@ -201,7 +201,7 @@ export const ProgressProvider = ({ children }) => {
   
   // Vérifier si un exercice est complété
   const isExerciseCompleted = (exerciseId) => {
-    return !!progress.completedExercises[exerciseId];
+    return Boolean(progress.completedExercises[exerciseId]);
   };
   
   // Enregistrer les résultats d'exercice

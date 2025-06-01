@@ -56,7 +56,7 @@ const Card = ({
   const fillColor = progressColor || iconColor;
 
   // Déterminer si la carte est cliquable
-  const isClickable = !!onPress;
+  const isClickable = Boolean(onPress);
 
   // Composant wrapper (TouchableOpacity ou View)
   const WrapperComponent = isClickable ? TouchableOpacity : View;

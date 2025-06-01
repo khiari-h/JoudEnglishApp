@@ -204,7 +204,7 @@ const useDailyGoal = (currentLevel, progress) => {
     
     setDailyGoalData(prev => ({
       ...prev,
-      todayCompleted: !!todayExercise
+      todayCompleted: Boolean(todayExercise)
     }));
   };
 
