@@ -45,7 +45,7 @@ const useWordGamesProgress = (level) => {
           ? JSON.parse(savedScoresJson) 
           : [];
         
-        console.log(`[WordGames] Données chargées:`, { 
+        console.log("[WordGames] Données chargées:", { 
           position: savedPosition,
           completedGamesCount: Object.keys(savedCompletedGames).length,
           scoresCount: savedScores.length
@@ -137,7 +137,7 @@ const useWordGamesProgress = (level) => {
       setCompletedGames(newCompletedGames);
       setInitialized(true);
       
-      console.log(`[WordGames] Progression initialisée`);
+      console.log("[WordGames] Progression initialisée");
     }
   }, [completedGames, initialized, loaded]);
 
@@ -174,7 +174,7 @@ const useWordGamesProgress = (level) => {
   // Réinitialiser tous les scores et progressions (pour le débogage)
   const resetAllProgress = useCallback(async () => {
     try {
-      console.log(`[WordGames] Réinitialisation de toute la progression`);
+      console.log("[WordGames] Réinitialisation de toute la progression");
       
       await AsyncStorage.multiRemove([
         COMPLETED_GAMES_KEY,
@@ -187,7 +187,7 @@ const useWordGamesProgress = (level) => {
       setUserScores([]);
       setInitialized(false);
       
-      console.log(`[WordGames] Progression réinitialisée`);
+      console.log("[WordGames] Progression réinitialisée");
     } catch (error) {
       console.error('[WordGames] Erreur lors de la réinitialisation de la progression:', error);
     }

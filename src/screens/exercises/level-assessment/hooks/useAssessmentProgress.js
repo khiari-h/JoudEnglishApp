@@ -44,7 +44,7 @@ const useAssessmentProgress = (level) => {
           ? JSON.parse(savedAnswersJson) 
           : {};
         
-        console.log(`[Assessment] Données chargées:`, { 
+        console.log("[Assessment] Données chargées:", { 
           position: savedPosition,
           resultsCount: Object.keys(savedResults).length,
           answersCount: Object.keys(savedAnswers).length
@@ -106,7 +106,7 @@ const useAssessmentProgress = (level) => {
       setUserAnswers(updatedAnswers);
       await AsyncStorage.setItem(USER_ANSWERS_KEY, JSON.stringify(updatedAnswers));
       
-      console.log(`[Assessment] Réponse enregistrée`);
+      console.log("[Assessment] Réponse enregistrée");
     } catch (error) {
       console.error('[Assessment] Erreur lors de l\'enregistrement de la réponse:', error);
     }
@@ -115,7 +115,7 @@ const useAssessmentProgress = (level) => {
   // Sauvegarder les résultats complets de l'évaluation
   const saveAssessmentResults = useCallback(async (results) => {
     try {
-      console.log(`[Assessment] Sauvegarde des résultats complets`);
+      console.log("[Assessment] Sauvegarde des résultats complets");
       
       const resultsWithTimestamp = {
         ...results,
@@ -126,7 +126,7 @@ const useAssessmentProgress = (level) => {
       setAssessmentResults(resultsWithTimestamp);
       await AsyncStorage.setItem(ASSESSMENT_RESULTS_KEY, JSON.stringify(resultsWithTimestamp));
       
-      console.log(`[Assessment] Résultats sauvegardés`);
+      console.log("[Assessment] Résultats sauvegardés");
     } catch (error) {
       console.error('[Assessment] Erreur lors de la sauvegarde des résultats:', error);
     }
@@ -166,7 +166,7 @@ const useAssessmentProgress = (level) => {
   // Réinitialiser toutes les données d'évaluation
   const resetAssessment = useCallback(async () => {
     try {
-      console.log(`[Assessment] Réinitialisation de l'évaluation`);
+      console.log("[Assessment] Réinitialisation de l'évaluation");
       
       await AsyncStorage.multiRemove([
         ASSESSMENT_RESULTS_KEY,
@@ -178,7 +178,7 @@ const useAssessmentProgress = (level) => {
       setLastPosition({ sectionIndex: 0, questionIndex: 0 });
       setUserAnswers({});
       
-      console.log(`[Assessment] Évaluation réinitialisée`);
+      console.log("[Assessment] Évaluation réinitialisée");
     } catch (error) {
       console.error('[Assessment] Erreur lors de la réinitialisation de l\'évaluation:', error);
     }

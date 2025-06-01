@@ -28,7 +28,7 @@ const useAssessmentState = (level) => {
 
   // Debug - Log tous les changements d'état
   useEffect(() => {
-    console.log(`[Hook] État mis à jour:`, {
+    console.log("[Hook] État mis à jour:", {
       currentSection,
       currentQuestionIndex,
       selectedAnswer,
@@ -52,7 +52,7 @@ const useAssessmentState = (level) => {
       return null;
     }
     const question = assessmentData[currentSection].questions[currentQuestionIndex];
-    console.log(`[Hook] Question actuelle:`, question?.text?.slice(0, 50) + '...');
+    console.log("[Hook] Question actuelle:", question?.text?.slice(0, 50) + '...');
     return question;
   };
 
@@ -61,7 +61,7 @@ const useAssessmentState = (level) => {
     console.log(`[Hook] handleSelectAnswer appelé avec: ${answerIndex}, showFeedback: ${showFeedback}`);
     
     if (showFeedback) {
-      console.log(`[Hook] Sélection ignorée - feedback déjà affiché`);
+      console.log("[Hook] Sélection ignorée - feedback déjà affiché");
       return;
     }
     
@@ -74,17 +74,17 @@ const useAssessmentState = (level) => {
     console.log(`[Hook] validateAnswer appelé - selectedAnswer: ${selectedAnswer}, showFeedback: ${showFeedback}`);
     
     if (selectedAnswer === null || showFeedback) {
-      console.log(`[Hook] Validation ignorée`);
+      console.log("[Hook] Validation ignorée");
       return;
     }
     
-    console.log(`[Hook] Affichage du feedback`);
+    console.log("[Hook] Affichage du feedback");
     setShowFeedback(true);
   };
 
   // Passer à la question suivante
   const goToNextQuestion = () => {
-    console.log(`[Hook] goToNextQuestion appelé`);
+    console.log("[Hook] goToNextQuestion appelé");
     
     if (!currentSection) return;
 
@@ -93,7 +93,7 @@ const useAssessmentState = (level) => {
 
     if (currentQuestionIndex < currentSectionData.questions.length - 1) {
       // Passer à la question suivante dans la section
-      console.log(`[Hook] Passage à la question suivante`);
+      console.log("[Hook] Passage à la question suivante");
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setSelectedAnswer(null);
       setShowFeedback(false);
@@ -101,14 +101,14 @@ const useAssessmentState = (level) => {
       // Passer à la section suivante
       const currentSectionIndex = sections.indexOf(currentSection);
       if (currentSectionIndex < sections.length - 1) {
-        console.log(`[Hook] Passage à la section suivante`);
+        console.log("[Hook] Passage à la section suivante");
         setCurrentSection(sections[currentSectionIndex + 1]);
         setCurrentQuestionIndex(0);
         setSelectedAnswer(null);
         setShowFeedback(false);
       } else {
         // Test terminé
-        console.log(`[Hook] Test terminé`);
+        console.log("[Hook] Test terminé");
         setTestCompleted(true);
       }
     }
@@ -116,7 +116,7 @@ const useAssessmentState = (level) => {
 
   // Réessayer la question actuelle
   const tryAgain = () => {
-    console.log(`[Hook] tryAgain appelé`);
+    console.log("[Hook] tryAgain appelé");
     setSelectedAnswer(null);
     setShowFeedback(false);
   };
@@ -153,7 +153,7 @@ const useAssessmentState = (level) => {
     const currentSectionIndex = sections.indexOf(currentSection);
     
     if (currentSectionIndex === sectionIndex && currentQuestionIndex === questionIndex) {
-      console.log(`[Hook] Restauration ignorée - état déjà identique`);
+      console.log("[Hook] Restauration ignorée - état déjà identique");
       return;
     }
     

@@ -160,7 +160,7 @@ const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLe
     const timeSpent = getExerciseTime(lastExerciseType);
 
     console.log(`⏱️ Temps RÉEL passé sur ${lastExerciseType}: ${timeSpent}min (seuil: ${TIME_THRESHOLD}min)`);
-    console.log(`📋 Détail exerciseTimeStats:`, exerciseTimeStats);
+    console.log("📋 Détail exerciseTimeStats:", exerciseTimeStats);
 
     // 3. Si assez de temps passé → recommandation intelligente
     if (timeSpent >= TIME_THRESHOLD) {
