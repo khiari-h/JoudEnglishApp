@@ -25,14 +25,14 @@ const WordGamesProgressBar = ({
     <View style={styles.container}>
       <ProgressBar
         progress={progress}
-        showPercentage={true}
-        showValue={true}
+        showPercentage
+        showValue
         total={totalGames}
         height={6}
         backgroundColor="#e2e8f0"
         fillColor={levelColor}
         borderRadius={3}
-        animated={true}
+        animated
         labelPosition="top"
         valueFormatter={(value, total) => `Game ${currentGame}/${total}`}
         percentageFormatter={(percentage) => `Completed: ${completedCount}/${totalGames} (${percentage}%)`}

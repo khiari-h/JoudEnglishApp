@@ -24,13 +24,13 @@ const ConversationProgressBar = ({
       <ProgressBar
         progress={progress}
         showPercentage={false}
-        showValue={true}
+        showValue
         total={totalSteps}
         height={6}
         backgroundColor="#e2e8f0"
         fillColor={levelColor}
         borderRadius={3}
-        animated={true}
+        animated
         labelPosition="right"
         valueFormatter={(value, total) => `${currentStep}/${total}`}
         style={styles.progressBar}

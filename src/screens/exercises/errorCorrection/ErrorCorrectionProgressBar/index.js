@@ -28,14 +28,14 @@ const ErrorCorrectionProgressBar = ({
     <View style={styles.container}>
       <ProgressBar
         progress={realProgress}  // ✅ Basé sur completion, pas position !
-        showPercentage={true}
-        showValue={true}
+        showPercentage
+        showValue
         total={totalCount}
         height={6}
         backgroundColor="#e2e8f0"
         fillColor={levelColor}
         borderRadius={3}
-        animated={true}
+        animated
         labelPosition="top"
         valueFormatter={(value, total) => `Exercise ${currentIndex}/${total}`}
         percentageFormatter={(percentage) => `Completed: ${completedCount}/${totalCount} (${percentage}%)`}

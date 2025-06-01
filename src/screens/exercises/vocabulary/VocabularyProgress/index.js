@@ -51,12 +51,12 @@ const VocabularyProgress = ({
         <ProgressBar
           progress={totalProgress}
           showValue={false}  // On affiche déjà dans le header
-          showPercentage={true}
+          showPercentage
           fillColor={levelColor}
           height={10}
           backgroundColor="#e2e8f0"
           borderRadius={5}
-          animated={true}
+          animated
           labelPosition="none"
           percentageFormatter={(percentage) => `${Math.round(percentage)}% complété`}
           style={styles.progressBar}
@@ -84,13 +84,13 @@ const VocabularyProgress = ({
               </View>
               <ProgressBar
                 progress={category.progress}
-                showPercentage={true}
+                showPercentage
                 showValue={false}
                 fillColor={levelColor}
                 backgroundColor="#f1f5f9"
                 height={6}
                 borderRadius={3}
-                animated={true}
+                animated
                 labelPosition="none"
                 percentageFormatter={(percentage) => `${Math.round(percentage)}%`}
                 style={styles.categoryProgressBar}

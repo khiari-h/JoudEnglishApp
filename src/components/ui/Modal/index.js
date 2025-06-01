@@ -180,7 +180,7 @@ const Modal = ({
           <ScrollView
             style={[styles.scrollableBody, bodyStyle]}
             contentContainerStyle={styles.scrollableContent}
-            showsVerticalScrollIndicator={true}
+            showsVerticalScrollIndicator
           >
             {children}
           </ScrollView>

@@ -124,7 +124,7 @@ const HintButton = ({
 
       {/* Modal pour afficher l'indice */}
       <Modal
-        transparent={true}
+        transparent
         visible={modalVisible}
         animationType="fade"
         onRequestClose={closeModal}

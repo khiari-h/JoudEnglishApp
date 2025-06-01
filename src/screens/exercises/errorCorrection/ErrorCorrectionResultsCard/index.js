@@ -68,7 +68,7 @@ const ErrorCorrectionResultsCard = ({
         feedback={getFeedback()}
         onRetry={onRetry}
         onContinue={onContinue || onExit}
-        showDetailedResults={true}
+        showDetailedResults
         detailedResults={detailedResults}
       />
     </View>

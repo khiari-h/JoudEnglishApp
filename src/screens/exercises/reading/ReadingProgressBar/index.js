@@ -56,13 +56,13 @@ const ReadingProgressBar = ({
       {/* ProgressBar unifiée */}
       <ProgressBar
         progress={exerciseProgress}
-        showPercentage={true}
+        showPercentage
         showValue={false}  // On affiche déjà dans le header
         height={8}
         backgroundColor="#e2e8f0"
         fillColor={levelColor}
         borderRadius={4}
-        animated={true}
+        animated
         labelPosition="none"
         percentageFormatter={(percentage) => `${percentage}% of exercise completed`}
         style={styles.progressBar}
