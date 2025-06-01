@@ -1,7 +1,8 @@
+// app/(tabs)/conversationsExercise.tsx
 import { useRoute } from "@react-navigation/native";
-import ConversationExercice from  "@/src/screens/exercises/conversationExercise";
+import ConversationsExercise from "../../src/screens/exercises/conversations";
 
-export default function ConversationExerciseScreen() {
+export default function ConversationsExerciseScreen() {
   const route = useRoute();
-  return <ConversationExercise route={route} />;
+  return <ConversationsExercise route={route} />;
 }

@@ -65,9 +65,9 @@ export default function TabLayout() {
         }}
       />
 
-      {/* Onglet Conversation - Chatbot */}
+      {/* Onglet Conversation - conversationsExercise (nouveau nom) */}
       <Tabs.Screen
-        name="chatbotExercise"
+        name="conversationsExercise"
         options={{
           title: "Conversation",
           tabBarIcon: ({ color, size, focused }) => (
@@ -87,7 +87,6 @@ export default function TabLayout() {
       <Tabs.Screen name="grammarExercise" options={{ href: null }} />
       <Tabs.Screen name="readingExercise" options={{ href: null }} />
       <Tabs.Screen name="phrasesExercise" options={{ href: null }} />
-      <Tabs.Screen name="conversationsExercise" options={{ href: null }} />
       <Tabs.Screen name="spellingExercise" options={{ href: null }} />
       <Tabs.Screen name="errorCorrectionExercise" options={{ href: null }} />
       <Tabs.Screen name="wordGamesExercise" options={{ href: null }} />

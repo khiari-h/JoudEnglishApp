@@ -54,8 +54,8 @@ const AppNavigator = () => {
           component={GrammarExercise}
         />
         <Stack.Screen
-          name={ROUTES.CONVERSATIONS_EXERCISE}
-          component={ConversationsExercise} // Renommé de ChatbotExercise
+          name={ROUTES.CONVERSATION_EXERCISE}
+          component={ConversationExercise} // Renommé de ChatbotExercise
         />
         <Stack.Screen
           name={ROUTES.PHRASES_EXERCISE}
@@ -87,4 +87,3 @@ const AppNavigator = () => {
 };
 
 export default AppNavigator;
-
