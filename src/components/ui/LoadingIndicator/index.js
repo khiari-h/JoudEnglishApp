@@ -226,7 +226,7 @@ const LoadingIndicator = ({
   if (variant === "overlay" || variant === "fullscreen") {
     return (
       <Modal
-        transparent={true}
+        transparent
         visible={visible}
         onRequestClose={onRequestClose}
         animationType={overlayAnimation === "slide" ? "slide" : "none"}

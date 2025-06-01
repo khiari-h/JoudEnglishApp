@@ -61,13 +61,13 @@ const AssessmentProgressBar = ({
       {/* ProgressBar unifiée */}
       <ProgressBar
         progress={sectionProgress}
-        showPercentage={true}
+        showPercentage
         showValue={false}  // On affiche déjà dans le header
         height={8}
         backgroundColor="#e2e8f0"
         fillColor={levelColor}
         borderRadius={4}
-        animated={true}
+        animated
         labelPosition="none"
         percentageFormatter={(percentage) => `${percentage}% of section completed`}
         style={styles.progressBar}

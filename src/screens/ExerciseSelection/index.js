@@ -123,9 +123,9 @@ const ExerciseSelection = ({ route }) => {
       <Card
         key={exercise.id}
         style={styles.exerciseCard}
-        withShadow={true}
+        withShadow
         bordered={false}
-        withSideBorder={true}
+        withSideBorder
         sideBorderColor={exercise.color}
         onPress={() => handleExerciseSelect(exercise)}
         contentStyle={styles.cardContentStyle}
@@ -159,7 +159,7 @@ const ExerciseSelection = ({ route }) => {
             borderRadius={2}
             showPercentage={exercise.progress > 0}
             labelPosition="none"
-            animated={true}
+            animated
             animationDuration={600}
             style={styles.exerciseProgressBar}
           />
@@ -196,7 +196,7 @@ const ExerciseSelection = ({ route }) => {
         >
           <Header
             title={getLevelDisplayTitle()}
-            showBackButton={true}
+            showBackButton
             backgroundColor="transparent"
             textColor="white"
             withStatusBar={false}

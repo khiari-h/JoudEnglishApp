@@ -30,7 +30,7 @@ const GrammarNavigation = ({
         <NavigationButtons
           onNext={onCheckAnswer}
           disableNext={!canCheckAnswer}
-          disablePrevious={true}
+          disablePrevious
           showSkip={false}
           currentIndex={0}
           totalCount={1}
@@ -135,7 +135,7 @@ const GrammarNavigation = ({
           <TouchableOpacity
             style={tryAgainStyle}
             onPress={onRetryExercise}
-            accessible={true}
+            accessible
             accessibilityLabel="Try Again"
             accessibilityHint="Attempt the exercise again"
           >
@@ -152,7 +152,7 @@ const GrammarNavigation = ({
           <TouchableOpacity
             style={skipStyle}
             onPress={onSkipExercise}
-            accessible={true}
+            accessible
             accessibilityLabel="Skip"
             accessibilityHint="Skip this exercise and move to the next one"
           >

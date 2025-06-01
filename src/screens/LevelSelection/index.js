@@ -113,7 +113,7 @@ const LevelSelection = () => {
         >
           <Header
             title="Choisissez votre niveau"
-            showBackButton={true}
+            showBackButton
             backgroundColor="transparent"
             textColor="white"
             withStatusBar={false}
@@ -143,9 +143,9 @@ const LevelSelection = () => {
             <Card
               key={level.id}
               style={styles.levelCard}
-              withShadow={true}
+              withShadow
               bordered={false}
-              withSideBorder={true}
+              withSideBorder
               onPress={() => handleLevelSelect(level)}
               headerIconColor={level.color}
               contentStyle={styles.cardContentStyle}
