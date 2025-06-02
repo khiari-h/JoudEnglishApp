@@ -1,20 +1,20 @@
 // utils/vocabularyDataHelper.js
 
 // Import des données de vocabulaire par niveau (6 niveaux complets)
-import vocabularyA1Data from "../../data/vocabulary/A1";
-import vocabularyA2Data from "../../data/vocabulary/A2";
-import vocabularyB1Data from "../../data/vocabulary/B1";
-import vocabularyB2Data from "../../data/vocabulary/B2";
-import vocabularyC1Data from "../../data/vocabulary/C1";
-import vocabularyC2Data from "../../data/vocabulary/C2";
+import vocabulary1Data from "../../data/vocabulary/1";
+import vocabulary2Data from "../../data/vocabulary/2";
+import vocabulary3Data from "../../data/vocabulary/3";
+import vocabulary4Data from "../../data/vocabulary/4";
+import vocabulary5Data from "../../data/vocabulary/5";
+import vocabulary6Data from "../../data/vocabulary/6";
 
 // Import des données Fast Vocabulary (exports nommés, pas default)
-import { vocab as fastVocabA1 } from "../../data/fastVocabulary/A1";
-import { vocab as fastVocabA2 } from "../../data/fastVocabulary/A2";
-import { vocab as fastVocabB1 } from "../../data/fastVocabulary/B1";
-import { vocab as fastVocabB2 } from "../../data/fastVocabulary/B2";
-import { vocab as fastVocabC1 } from "../../data/fastVocabulary/C1";
-import { vocab as fastVocabC2 } from "../../data/fastVocabulary/C2";
+import { vocab as fastVocab1 } from "../../data/fastVocabulary/1";
+import { vocab as fastVocab2 } from "../../data/fastVocabulary/2";
+import { vocab as fastVocab3 } from "../../data/fastVocabulary/3";
+import { vocab as fastVocab4 } from "../../data/fastVocabulary/4";
+import { vocab as fastVocab5 } from "../../data/fastVocabulary/5";
+import { vocab as fastVocab6 } from "../../data/fastVocabulary/6";
 import { vocab as fastVocabBLevel } from "../../data/fastVocabulary/BLevel";
 
 // Fonction pour convertir la structure Fast vers la structure attendue
@@ -35,7 +35,7 @@ const convertFastVocabToExercises = (fastVocab) => {
 
 /**
  * Récupère les données de vocabulaire en fonction du niveau et du mode
- * @param {string} level - Le niveau de langue (A1, A2, B1, B2, C1, C2, BLevel)
+ * @param {string} level - Le niveau de langue (1, 2, 3, 4, 5, 6, bonus)
  * @param {string} mode - Le mode ('classic' ou 'fast')
  * @returns {Object} Les données de vocabulaire pour le niveau et mode spécifiés
  */
@@ -43,32 +43,30 @@ export const getVocabularyData = (level, mode = "classic") => {
 
   if (mode === "fast") {
     const fastDataMap = {
-      A1: convertFastVocabToExercises(fastVocabA1),
-      A2: convertFastVocabToExercises(fastVocabA2),
-      B1: convertFastVocabToExercises(fastVocabB1),
-      B2: convertFastVocabToExercises(fastVocabB2),
-      C1: convertFastVocabToExercises(fastVocabC1),
-      C2: convertFastVocabToExercises(fastVocabC2),
-      BLevel: convertFastVocabToExercises(fastVocabBLevel),
+      "1": convertFastVocabToExercises(fastVocab1),
+      "2": convertFastVocabToExercises(fastVocab2),
+      "3": convertFastVocabToExercises(fastVocab3),
+      "4": convertFastVocabToExercises(fastVocab4),
+      "5": convertFastVocabToExercises(fastVocab5),
+      "6": convertFastVocabToExercises(fastVocab6),
+      "bonus": convertFastVocabToExercises(fastVocabBLevel),
     };
 
-    const data = fastDataMap[level] || convertFastVocabToExercises(fastVocabA1);
-
+    const data = fastDataMap[level] || convertFastVocabToExercises(fastVocab1);
     return data;
   }
 
   // Mode classic (6 niveaux standards)
   const classicDataMap = {
-    A1: vocabularyA1Data,
-    A2: vocabularyA2Data,
-    B1: vocabularyB1Data,
-    B2: vocabularyB2Data,
-    C1: vocabularyC1Data,
-    C2: vocabularyC2Data,
+    "1": vocabulary1Data,
+    "2": vocabulary2Data,
+    "3": vocabulary3Data,
+    "4": vocabulary4Data,
+    "5": vocabulary5Data,
+    "6": vocabulary6Data,
   };
 
-  const data = classicDataMap[level] || vocabularyA1Data;
-
+  const data = classicDataMap[level] || vocabulary1Data;
   return data;
 };
 
@@ -79,25 +77,25 @@ export const getVocabularyData = (level, mode = "classic") => {
  */
 export const getAvailableLevels = (mode = "classic") => {
   if (mode === "fast") {
-    return ["A1", "A2", "B1", "B2", "C1", "C2", "BLevel"]; // 7 niveaux avec bonus
+    return ["1", "2", "3", "4", "5", "6", "bonus"]; // 7 niveaux avec bonus
   }
-  return ["A1", "A2", "B1", "B2", "C1", "C2"]; // 6 niveaux standards
+  return ["1", "2", "3", "4", "5", "6"]; // 6 niveaux standards
 };
 
 /**
  * Récupère la couleur associée à un niveau de langue
- * @param {string} level - Le niveau de langue (A1, A2, B1, B2, C1, C2, BLevel)
+ * @param {string} level - Le niveau de langue (1, 2, 3, 4, 5, 6, bonus)
  * @returns {string} Code couleur hexadécimal pour le niveau
  */
 export const getLevelColor = (level) => {
   const colors = {
-    A1: "#3b82f6", // Bleu
-    A2: "#16a34a", // Vert
-    B1: "#f97316", // Orange
-    B2: "#eab308", // Jaune doré
-    C1: "#ef4444", // Rouge
-    C2: "#8b5cf6", // Violet
-    BLevel: "#f59e0b", // Orange spécial pour le niveau bonus
+    "1": "#3b82f6", // Bleu - Débutant
+    "2": "#16a34a", // Vert - Élémentaire
+    "3": "#f97316", // Orange - Intermédiaire
+    "4": "#eab308", // Jaune doré - Intermédiaire+
+    "5": "#ef4444", // Rouge - Avancé
+    "6": "#8b5cf6", // Violet - Maîtrise
+    "bonus": "#f59e0b", // Orange spécial pour le niveau bonus
   };
   return colors[level] || "#5E60CE"; // Couleur par défaut
 };
@@ -109,15 +107,15 @@ export const getLevelColor = (level) => {
  */
 export const getLevelDisplayName = (level) => {
   const displayNames = {
-    A1: "Débutant",
-    A2: "Élémentaire",
-    B1: "Intermédiaire",
-    B2: "Intermédiaire+",
-    C1: "Avancé",
-    C2: "Maîtrise",
-    BLevel: "Bonus Level", // Niveau spécial
+    "1": "Débutant",
+    "2": "Élémentaire",
+    "3": "Intermédiaire",
+    "4": "Intermédiaire+",
+    "5": "Avancé",
+    "6": "Maîtrise",
+    "bonus": "Bonus Level", // Niveau spécial
   };
-  return displayNames[level] || level;
+  return displayNames[level] || `Niveau ${level}`;
 };
 
 /**
@@ -126,6 +124,5 @@ export const getLevelDisplayName = (level) => {
  * @returns {boolean} True si c'est un niveau bonus
  */
 export const isBonusLevel = (level) => {
-  return level === "BLevel";
+  return level === "bonus";
 };
-
