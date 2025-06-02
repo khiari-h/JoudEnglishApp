@@ -15,7 +15,7 @@ import { vocab as fastVocab3 } from "../../data/fastVocabulary/3";
 import { vocab as fastVocab4 } from "../../data/fastVocabulary/4";
 import { vocab as fastVocab5 } from "../../data/fastVocabulary/5";
 import { vocab as fastVocab6 } from "../../data/fastVocabulary/6";
-import { vocab as fastVocabBLevel } from "../../data/fastVocabulary/BLevel";
+import { vocab as fastVocabBonus } from "../../data/fastVocabulary/bonus";
 
 // Fonction pour convertir la structure Fast vers la structure attendue
 const convertFastVocabToExercises = (fastVocab) => {
@@ -49,7 +49,7 @@ export const getVocabularyData = (level, mode = "classic") => {
       "4": convertFastVocabToExercises(fastVocab4),
       "5": convertFastVocabToExercises(fastVocab5),
       "6": convertFastVocabToExercises(fastVocab6),
-      "bonus": convertFastVocabToExercises(fastVocabBLevel),
+      "bonus": convertFastVocabToExercises(fastVocabBonus),
     };
 
     const data = fastDataMap[level] || convertFastVocabToExercises(fastVocab1);
