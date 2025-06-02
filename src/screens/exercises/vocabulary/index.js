@@ -1,11 +1,11 @@
-import React, { useMemo, useEffect, useState, useCallback } from "react";
+import React, { useMemo, useState, useCallback } from "react";
 import { View, Text, ActivityIndicator, ScrollView, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Composants
 import VocabularyHeader from "./VocabularyHeader";
 import VocabularyNavigation from "./VocabularyNavigation";
-import VocabularyWordSection from "./components/VocabularyWordSection"; // 🔥 NOUVEAU COMPOSANT
+import VocabularyWordSection from "./components/VocabularyWordSection";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import VocabularyProgress from "./VocabularyProgress";
 import LearningTipCard from "./LearningTipCard";
@@ -17,15 +17,15 @@ import { getVocabularyData, isBonusLevel, getLevelColor } from "../../../utils/v
 // Hooks spécialisés
 import useVocabularyProgress from "./hooks/useVocabularyProgress";
 import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
-import useVocabularyNavigation from "./hooks/useVocabularyNavigation"; // 🔥 NOUVEAU HOOK
-import useVocabularyStats from "./hooks/useVocabularyStats"; // 🔥 NOUVEAU HOOK  
-import useVocabularyDisplay from "./hooks/useVocabularyDisplay"; // 🔥 NOUVEAU HOOK
+import useVocabularyNavigation from "./hooks/useVocabularyNavigation";
+import useVocabularyStats from "./hooks/useVocabularyStats";
+import useVocabularyDisplay from "./hooks/useVocabularyDisplay";
+import useVocabularyLoader from "./hooks/useVocabularyLoader"; // 
 
 const VocabularyExercise = ({ route }) => {
   const { level, mode: initialMode } = route.params;
   const [selectedMode, setSelectedMode] = useState(initialMode);
 
-  // === LOGIQUE D'ASSEMBLAGE ===
   const shouldShowModeSelector = !selectedMode && !isBonusLevel(level);
   const finalMode = selectedMode || (isBonusLevel(level) ? "fast" : "classic");
 
@@ -38,7 +38,7 @@ const VocabularyExercise = ({ route }) => {
   return <VocabularyExerciseContent level={level} mode={finalMode} />;
 };
 
-// 🎯 Composant principal ULTRA SIMPLIFIÉ - 80 lignes max !
+// 🎯 Composant principal OPTIMISÉ
 const VocabularyExerciseContent = ({ level, mode }) => {
   const navigation = useNavigation();
   const levelColor = getLevelColor(level);
@@ -68,7 +68,16 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     toggleTranslation 
   } = useVocabularyExerciseState(progressKey, 0, 0);
 
-  // === NOUVEAUX HOOKS SPÉCIALISÉS ===
+  // === HOOK DE CHARGEMENT - GÈRE TOUS LES EFFETS ===
+  const { isFullyLoaded } = useVocabularyLoader({
+    loaded,
+    vocabularyData,
+    lastPosition,
+    restoreState,
+    initializeProgress
+  });
+
+  // === HOOKS SPÉCIALISÉS ===
   const { 
     totalWords, 
     completedWordsCount, 
@@ -84,7 +93,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     handleToggleProgressDetails 
   } = useVocabularyDisplay(vocabularyData, categoryIndex, wordIndex, level, mode);
 
-  // === NAVIGATION AVEC HOOK SPÉCIALISÉ ===
+  // === NAVIGATION ===
   const handleComplete = useCallback((message) => {
     Alert.alert("Félicitations", message);
     navigation.goBack();
@@ -112,26 +121,13 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     onComplete: handleComplete,
   });
 
-  // === EFFETS DE CHARGEMENT ===
-  useEffect(() => {
-    if (loaded && lastPosition) {
-      restoreState(lastPosition.categoryIndex, lastPosition.wordIndex);
-    }
-  }, [loaded, lastPosition, restoreState]);
-
-  useEffect(() => {
-    if (loaded && vocabularyData) {
-      initializeProgress(vocabularyData);
-    }
-  }, [loaded, vocabularyData, initializeProgress]);
-
   // === HANDLERS UI ===
   const handleCategoryProgressPress = useCallback((index) => {
     handleCategoryChange(index);
   }, [handleCategoryChange]);
 
   // === LOADING STATE ===
-  if (!loaded || !vocabularyData) {
+  if (!isFullyLoaded) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color={levelColor} />
@@ -140,7 +136,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     );
   }
 
-  // === RENDU ULTRA SIMPLIFIÉ ===
+  // === RENDU OPTIMISÉ ===
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#f8fafc" }}>
       <VocabularyHeader
@@ -189,7 +185,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
       <VocabularyNavigation
         onNext={handleNext}
         onPrevious={handlePrevious}
-        canGoPrevious={canGoToPrevious()} // 🔥 PROBLÈME DE NAVIGATION RÉSOLU
+        canGoPrevious={canGoToPrevious()}
         isLast={isLastWordInExercise()}
         levelColor={levelColor}
       />
