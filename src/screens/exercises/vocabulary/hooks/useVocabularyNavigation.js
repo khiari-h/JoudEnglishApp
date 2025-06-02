@@ -25,6 +25,11 @@ const useVocabularyNavigation = ({
 
   // 🔥 FONCTION CLEF: Vérifier s'il y a un mot précédent (inter-catégories)
   const canGoToPrevious = useCallback(() => {
+    // Vérifier que les données sont chargées
+    if (!vocabularyData?.exercises || vocabularyData.exercises.length === 0) {
+      return false;
+    }
+    
     // Si on n'est pas au premier mot de la catégorie actuelle
     if (wordIndex > 0) {
       return true;
@@ -32,7 +37,7 @@ const useVocabularyNavigation = ({
     
     // Si on est au premier mot, vérifier s'il y a une catégorie précédente
     if (categoryIndex > 0) {
-      const previousCategory = vocabularyData?.exercises?.[categoryIndex - 1];
+      const previousCategory = vocabularyData.exercises[categoryIndex - 1];
       return previousCategory?.words && previousCategory.words.length > 0;
     }
     
@@ -42,18 +47,23 @@ const useVocabularyNavigation = ({
 
   // Vérifier si c'est le dernier mot de l'exercice  
   const isLastWordInExercise = useCallback(() => {
-    const category = vocabularyData?.exercises?.[categoryIndex];
-    return category?.words && wordIndex === category.words.length - 1;
+    if (!vocabularyData?.exercises?.[categoryIndex]) return false;
+    const category = vocabularyData.exercises[categoryIndex];
+    return wordIndex === (category.words?.length || 0) - 1;
   }, [vocabularyData, categoryIndex, wordIndex]);
 
   // Trouver la prochaine catégorie non terminée
   const findNextUncompletedCategory = useCallback(() => {
-    const totalCategories = vocabularyData?.exercises?.length || 0;
+    if (!vocabularyData?.exercises) return -1;
+    
+    const totalCategories = vocabularyData.exercises.length;
     for (let i = 1; i <= totalCategories; i++) {
       const nextIndex = (categoryIndex + i) % totalCategories;
       const category = vocabularyData.exercises[nextIndex];
       const completedInCategory = completedWords[nextIndex]?.length || 0;
-      if (completedInCategory < (category.words?.length || 0)) {
+      const totalInCategory = category.words?.length || 0;
+      
+      if (completedInCategory < totalInCategory) {
         return nextIndex;
       }
     }
@@ -62,21 +72,21 @@ const useVocabularyNavigation = ({
 
   // 🔥 FONCTION CLEF: Navigation suivante
   const handleNext = useCallback(() => {
+    if (!vocabularyData?.exercises?.[categoryIndex]) return;
+    
     const category = vocabularyData.exercises[categoryIndex];
-    if (!category) return;
-
+    
     markWordAsCompleted(categoryIndex, wordIndex);
 
-    if (wordIndex < category.words.length - 1) {
+    if (wordIndex < (category.words?.length || 0) - 1) {
       goToNextWord();
       saveLastPosition(categoryIndex, wordIndex + 1);
     } else {
       const nextCategoryIndex = findNextUncompletedCategory();
       if (nextCategoryIndex === -1) {
-        const completionMessage =
-          mode === "fast"
-            ? `Félicitations ! Vous avez terminé le Fast Vocabulary ${level} !`
-            : `Félicitations ! Vous avez terminé le vocabulaire ${level} !`;
+        const completionMessage = mode === "fast"
+          ? `Félicitations ! Vous avez terminé le Fast Vocabulary ${level} !`
+          : `Félicitations ! Vous avez terminé le vocabulaire ${level} !`;
         onComplete(completionMessage);
       } else {
         changeCategory(nextCategoryIndex);
@@ -99,7 +109,7 @@ const useVocabularyNavigation = ({
 
   // 🔥 FONCTION CLEF: Navigation précédente AVEC inter-catégories
   const handlePrevious = useCallback(() => {
-    // Cas 1: Reculer dans la même catégorie
+    // Cas 1: Pas au premier mot de la catégorie → mot précédent
     if (wordIndex > 0) {
       if (goToPreviousWord()) {
         saveLastPosition(categoryIndex, wordIndex - 1);
@@ -107,13 +117,15 @@ const useVocabularyNavigation = ({
       return;
     }
     
-    // Cas 2: Aller à la catégorie précédente (dernier mot)
+    // Cas 2: Premier mot de la catégorie → aller à la catégorie précédente
     if (categoryIndex > 0) {
       const previousCategoryIndex = categoryIndex - 1;
-      const previousCategory = vocabularyData?.exercises?.[previousCategoryIndex];
       
-      if (previousCategory?.words && previousCategory.words.length > 0) {
-        const lastWordIndex = previousCategory.words.length - 1;
+      if (vocabularyData?.exercises?.[previousCategoryIndex]) {
+        const previousCategory = vocabularyData.exercises[previousCategoryIndex];
+        const lastWordIndex = (previousCategory.words?.length || 1) - 1;
+        
+        // Aller au dernier mot de la catégorie précédente
         restoreState(previousCategoryIndex, lastWordIndex);
         saveLastPosition(previousCategoryIndex, lastWordIndex);
       }

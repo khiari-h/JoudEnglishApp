@@ -1,8 +1,8 @@
 // components/VocabularyWordSection.js
 import React, { memo } from "react";
 import { View, Text } from "react-native";
-import VocabularyWordCard from "./VocabularyWordCard";
-import { isBonusLevel } from "../../../utils/vocabulary/vocabularyDataHelper";
+import VocabularyWordCard from "../VocabularyWordCard";
+import { isBonusLevel } from "../../../../utils/vocabulary/vocabularyDataHelper";
 
 /**
  * Composant mémorisé pour afficher le compteur de mots + carte de vocabulaire

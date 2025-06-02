@@ -32,18 +32,32 @@ const NavigationButtons = ({
   // Label pour le bouton suivant (Suivant ou Terminer si dernier item)
   const nextButtonLabel = isLastItem ? buttonLabels.finish : buttonLabels.next;
 
+  // Générer les couleurs avec opacité
+  const primaryColorLight = `${primaryColor}10`; // 10% opacité
+  const primaryColorBorder = `${primaryColor}30`; // 30% opacité
+  const primaryColorCompact = `${primaryColor}15`; // 15% opacité
+  const primaryColorCompactBorder = `${primaryColor}25`; // 25% opacité
+
   // Rendu pour la version standard (boutons alignés)
   const renderStandard = () => (
     <View style={styles.standardContainer}>
-      {/* Bouton précédent (sauf si désactivé) */}
+      {/* Bouton précédent avec style amélioré */}
       {!disablePrevious && (
         <TouchableOpacity
-          style={styles.previousButton}
+          style={[
+            styles.previousButtonStyled,
+            {
+              backgroundColor: primaryColorLight,
+              borderColor: primaryColorBorder,
+            }
+          ]}
           onPress={onPrevious}
-          disabled={currentIndex === 0}
+          disabled={disablePrevious}
         >
-          <Ionicons name="chevron-back" size={20} color="#6B7280" />
-          <Text style={styles.previousButtonText}>{buttonLabels.previous}</Text>
+          <Ionicons name="chevron-back" size={20} color={primaryColor} />
+          <Text style={[styles.previousButtonTextStyled, { color: primaryColor }]}>
+            {buttonLabels.previous}
+          </Text>
         </TouchableOpacity>
       )}
 
@@ -78,16 +92,20 @@ const NavigationButtons = ({
   const renderCompact = () => (
     <View style={styles.compactContainer}>
       <View style={styles.compactButtonsRow}>
-        {/* Bouton précédent */}
+        {/* Bouton précédent avec style amélioré */}
         <TouchableOpacity
           style={[
-            styles.compactButton,
-            currentIndex === 0 && styles.disabledCompactButton,
+            styles.compactButtonStyled,
+            {
+              backgroundColor: primaryColorCompact,
+              borderColor: primaryColorCompactBorder,
+            },
+            disablePrevious && styles.disabledCompactButton,
           ]}
           onPress={onPrevious}
-          disabled={currentIndex === 0 || disablePrevious}
+          disabled={disablePrevious}
         >
-          <Ionicons name="chevron-back" size={24} color="#6B7280" />
+          <Ionicons name="chevron-back" size={24} color={primaryColor} />
         </TouchableOpacity>
 
         {/* Indicateur de progression */}
@@ -144,14 +162,20 @@ const NavigationButtons = ({
         />
       </TouchableOpacity>
 
-      {/* Bouton précédent (en dessous) */}
+      {/* Bouton précédent avec style amélioré (en dessous) */}
       {!disablePrevious && (
         <TouchableOpacity
-          style={styles.centeredPreviousButton}
+          style={[
+            styles.centeredPreviousButtonStyled,
+            {
+              backgroundColor: primaryColorLight,
+              borderColor: primaryColorBorder,
+            }
+          ]}
           onPress={onPrevious}
-          disabled={currentIndex === 0}
+          disabled={disablePrevious}
         >
-          <Text style={styles.centeredPreviousButtonText}>
+          <Text style={[styles.centeredPreviousButtonTextStyled, { color: primaryColor }]}>
             {buttonLabels.previous}
           </Text>
         </TouchableOpacity>
@@ -179,4 +203,3 @@ const NavigationButtons = ({
 };
 
 export default NavigationButtons;
-

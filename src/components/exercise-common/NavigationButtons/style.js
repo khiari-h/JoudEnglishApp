@@ -16,10 +16,25 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
   },
+  // 🔥 NOUVEAU: Style amélioré pour le bouton précédent
+  previousButtonStyled: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
   previousButtonText: {
     fontSize: 16,
     color: '#6B7280',
     marginLeft: 4,
+  },
+  // 🔥 NOUVEAU: Texte stylé pour le bouton précédent
+  previousButtonTextStyled: {
+    fontSize: 16,
+    marginLeft: 4,
+    fontWeight: '500',
   },
   skipButton: {
     paddingVertical: 8,
@@ -66,6 +81,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F3F4F6',
     marginHorizontal: 12,
+  },
+  // 🔥 NOUVEAU: Style amélioré pour le bouton compact précédent
+  compactButtonStyled: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 12,
+    borderWidth: 1,
   },
   disabledCompactButton: {
     opacity: 0.5,
@@ -115,9 +140,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     marginBottom: 8,
   },
+  // 🔥 NOUVEAU: Style amélioré pour le bouton centré précédent
+  centeredPreviousButtonStyled: {
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    marginBottom: 8,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
   centeredPreviousButtonText: {
     fontSize: 16,
     color: '#6B7280',
+  },
+  // 🔥 NOUVEAU: Texte stylé pour le bouton centré précédent  
+  centeredPreviousButtonTextStyled: {
+    fontSize: 16,
+    fontWeight: '500',
   },
   centeredSkipButton: {
     paddingVertical: 8,

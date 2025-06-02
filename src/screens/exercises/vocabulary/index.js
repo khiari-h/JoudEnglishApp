@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 // Composants
 import VocabularyHeader from "./VocabularyHeader";
 import VocabularyNavigation from "./VocabularyNavigation";
-import VocabularyWordSection from "./components/VocabularyWordSection";
+import VocabularyWordSection from "./VocabularyWordSection";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import VocabularyProgress from "./VocabularyProgress";
 import LearningTipCard from "./LearningTipCard";
@@ -20,7 +20,7 @@ import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
 import useVocabularyNavigation from "./hooks/useVocabularyNavigation";
 import useVocabularyStats from "./hooks/useVocabularyStats";
 import useVocabularyDisplay from "./hooks/useVocabularyDisplay";
-import useVocabularyLoader from "./hooks/useVocabularyLoader"; // 
+import useVocabularyLoader from "./hooks/useVocabularyLoader";  
 
 const VocabularyExercise = ({ route }) => {
   const { level, mode: initialMode } = route.params;
