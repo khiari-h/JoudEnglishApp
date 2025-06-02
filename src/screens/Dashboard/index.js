@@ -1,4 +1,4 @@
-// src/screens/Dashboard/index.js - VERSION FINALE CLEAN
+// src/screens/Dashboard/index.js - VERSION BEST PRACTICE
 import React, { useContext, useEffect, useCallback } from "react";
 import { View, ScrollView, StatusBar, RefreshControl } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
@@ -16,7 +16,7 @@ import { useDashboardState } from "./hooks/useDashboardState";
 // Hooks existants
 import useLastActivity from "../../hooks/useLastActivity";
 import useStreak from "./hooks/useStreak";
-import useExerciseTimeTracking from "../../hooks/useExerciceTimeTracking";
+import useExerciseTracking from "../../hooks/useExerciseTracking"; // ✅ NOUVEAU hook
 
 // Composants Dashboard
 import CompactHeader from "./components/CompactHeader";
@@ -47,7 +47,15 @@ const Dashboard = ({ route }) => {
   } = useLastActivity();
 
   const { currentStreak, updateStreak } = useStreak();
-  const { isTracking, stopAndSave, startTracking } = useExerciseTimeTracking();
+  
+  // ✅ NOUVEAU hook cohérent avec RecommendationsSection
+  const { 
+    isTracking, 
+    stopTracking, 
+    startTracking,
+    getFormattedStats,
+    isLoaded: isTimeTrackingLoaded 
+  } = useExerciseTracking();
 
   // ========== HOOKS PERSONNALISÉS DASHBOARD ==========
   const { currentLevel, handleChangeActiveLevel, levelColor } =
@@ -60,6 +68,8 @@ const Dashboard = ({ route }) => {
     handleEvaluationStart,
   } = useDashboardNavigation(updateStreak, startTracking);
 
+  // ✅ Plus besoin de passer exerciseTimeStats depuis dashboardData
+  // RecommendationsSection récupère ses données directement
   const dashboardData = useDashboardData(
     progressContext,
     currentLevel,
@@ -87,10 +97,15 @@ const Dashboard = ({ route }) => {
     useCallback(() => {
       loadLastActivities();
 
+      // ✅ Utiliser la nouvelle API stopTracking
       if (isTracking) {
-        const timeSpent = stopAndSave();
+        const result = stopTracking();
+        // result contient: { exerciseType, timeSpent, saved }
+        if (result.saved) {
+          console.log(`Session sauvée: ${result.timeSpent}s sur ${result.exerciseType}`);
+        }
       }
-    }, [])
+    }, [isTracking, stopTracking, loadLastActivities])
   );
 
   // ========== GESTIONNAIRES OPTIMISÉS ==========
@@ -115,6 +130,16 @@ const Dashboard = ({ route }) => {
   );
 
   // ========== RENDU OPTIMISÉ ==========
+  // ✅ Attendre que le tracking soit chargé pour éviter les props undefined
+  if (!isTimeTrackingLoaded) {
+    return (
+      <View style={[styles.container, { backgroundColor: colors.background }]}>
+        <StatusBar barStyle="light-content" />
+        {/* Loader ou skeleton screen ici si besoin */}
+      </View>
+    );
+  }
+
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StatusBar barStyle="light-content" />
@@ -161,12 +186,13 @@ const Dashboard = ({ route }) => {
         />
 
         {/* 3. Suggestions intelligentes */}
+        {/* ✅ PLUS de prop exerciseTimeStats - le composant récupère ses données */}
         <RecommendationsSection
           lastActivity={dashboardData.lastActivity}
-          exerciseTimeStats={dashboardData.exerciseTimeStats}
           currentLevel={currentLevel}
           onSelectExercise={navigateToExercise}
           accentColor={levelColor}
+          debugMode={__DEV__} // Voir les temps réels en développement
         />
 
         {/* 4. Parcours d'apprentissage */}
@@ -187,6 +213,27 @@ const Dashboard = ({ route }) => {
         onClose={closeLevelProgressModal}
         onSelectLevel={handleLevelProgressSelect}
       />
+
+      {/* ✅ Debug info temporaire en développement */}
+      {__DEV__ && (
+        <View style={{ 
+          position: 'absolute', 
+          top: 100, 
+          right: 10, 
+          backgroundColor: 'rgba(0,0,0,0.8)', 
+          padding: 8, 
+          borderRadius: 4 
+        }}>
+          <Text style={{ color: 'white', fontSize: 10 }}>
+            🐛 Time Tracking: {isTracking ? 'ON' : 'OFF'}
+          </Text>
+          {isTracking && (
+            <Text style={{ color: 'white', fontSize: 10 }}>
+              📊 Stats: {JSON.stringify(getFormattedStats())}
+            </Text>
+          )}
+        </View>
+      )}
     </View>
   );
 };

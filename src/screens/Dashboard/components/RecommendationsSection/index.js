@@ -9,25 +9,29 @@ import { View, Text, TouchableOpacity } from "react-native";
 import Card from "../../../../components/ui/Card";
 import Button from "../../../../components/ui/Button";
 import useSmartRecommendations from "../../../../hooks/useSmartRecommendations";
+import useExerciseTracking from "../../../../hooks/useExerciseTracking"; // ✅ Nouveau !
 import styles from "./style";
 
 const RecommendationsSection = ({
   lastActivity,
-  exerciseTimeStats = {},
   exerciseTypes,
   currentLevel,
   onSelectExercise,
   accentColor = "#3B82F6",
-  debugMode = false // Pour afficher les infos de debug en développement
+  debugMode = false
 }) => {
 
-  // Utiliser le hook de recommandations intelligentes
+  // ✅ Obtenir les VRAIS temps directement depuis le nouveau hook
+  const tracking = useExerciseTracking();
+  const exerciseTimeStats = tracking.getFormattedStats(); // En minutes, correctes !
+
+  // Utiliser le hook de recommandations intelligentes avec les VRAIS temps
   const { 
     smartRecommendation,
     getRecommendationStats 
   } = useSmartRecommendations(
     lastActivity, 
-    exerciseTimeStats,
+    exerciseTimeStats, // ✅ Maintenant c'est correct !
     currentLevel,
     exerciseTypes
   );

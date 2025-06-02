@@ -1,4 +1,4 @@
-// src/screens/Dashboard/hooks/useDashboardData.js
+// src/screens/Dashboard/hooks/useDashboardData.js - VERSION NETTOYÉE
 import { useMemo } from "react";
 import { LANGUAGE_LEVELS } from "../../../utils/constants";
 
@@ -43,21 +43,9 @@ export const useDashboardData = (
     }));
   }, [calculateLevelProgress, currentLevel]);
 
-  // Stats temps exercices - À remplacer par vraies données plus tard
-  const exerciseTimeStats = useMemo(
-    () => ({
-      vocabulary: 20,
-      phrases: 12,
-      grammar: 25,
-      reading: 8,
-      conversations: 18,
-      spelling: 0,
-      errorCorrection: 5,
-      wordGames: 0,
-      assessment: 0,
-    }),
-    []
-  );
+  // ✅ SUPPRIMÉ : Plus besoin d'exerciseTimeStats fake !
+  // RecommendationsSection récupère maintenant ses vraies données
+  // via useExerciseTracking directement
 
   return {
     progress,
@@ -65,9 +53,8 @@ export const useDashboardData = (
     levelProgress,
     allLevels,
     getAllLearningLevels,
-    exerciseTimeStats,
+    // exerciseTimeStats, ← SUPPRIMÉ !
     lastActivity,
     currentStreak,
   };
 };
-
