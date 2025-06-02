@@ -1,228 +1,209 @@
-// src/hooks/useSmartRecommendations.js - OPTIMISÉ
-import { useMemo, useCallback } from 'react';
-import { EXERCISE_TYPES } from '../utils/constants';
-
+// hooks/useSmartRecommendations.js
 /**
- * Hook pour générer des recommandations intelligentes basées sur :
- * - Temps passé sur chaque type d'exercice (VRAIES DONNÉES maintenant !)
- * - Parcours pédagogique optimal
- * - Messages bienveillants style "coach"
- * 
- * OPTIMISÉ - Plus de console.log, calculs mémorisés pour éviter les boucles infinies
+ * Hook pour générer des recommandations intelligentes
+ * Responsabilité unique : logique de recommandation
  */
-const useSmartRecommendations = (lastActivity, exerciseTimeStats = {}, currentLevel) => {
 
-  // Parcours pédagogique optimal - MÉMORISÉ
-  const LEARNING_PATH = useMemo(() => ({
-    vocabulary: 'phrases',
-    phrases: 'grammar', 
-    grammar: 'reading',
-    reading: 'conversations',
-    conversations: 'assessment',
-    assessment: 'vocabulary', // Cycle vers niveau suivant
-    // Exercices de renforcement
-    spelling: 'vocabulary', // Retour au vocab
-    errorCorrection: 'reading', // Retour à la lecture
-    wordGames: 'vocabulary', // Retour au vocab
-  }), []);
+import { useMemo, useCallback } from 'react';
+import { 
+  RECOMMENDATION_CONFIG, 
+  RECOMMENDATION_MESSAGES,
+  EXERCISE_TYPES 
+} from '../utils/timeConstants.js';
+import { secondsToMinutes } from '../utils/timeUtils.js';
 
-  // Messages coach bienveillant - MÉMORISÉS
-  const RECOMMENDATION_MESSAGES = useMemo(() => ({
-    'vocabulary->phrases': {
-      icon: '🎉',
-      title: 'Belle progression !',
-      message: 'Tu as bien enrichi ton vocabulaire ! Que dirais-tu de mettre ces mots en pratique avec des expressions ?',
-      button: 'Pratiquer les expressions'
-    },
-
-    'phrases->grammar': {
-      icon: '💪', 
-      title: 'Bien joué !',
-      message: 'Tu progresses bien avec les expressions ! Pour être encore plus précis, on travaille la grammaire ?',
-      button: 'Renforcer la grammaire'
-    },
-
-    'grammar->reading': {
-      icon: '🎯',
-      title: 'Tu avances bien !', 
-      message: 'Tu progresses en grammaire ! Pour voir tout en action, que dirais-tu de lire des textes complets ?',
-      button: 'Passer à la lecture'
-    },
-
-    'reading->conversations': {
-      icon: '🗣️',
-      title: 'Super entraînement !',
-      message: 'Tu progresses bien en lecture ! Prêt à compléter avec de la pratique orale ?',
-      button: 'Essayer les dialogues'
-    },
-
-    'conversations->assessment': {
-      icon: '🏆',
-      title: 'Excellent parcours !',
-      message: 'Tu as bien travaillé les dialogues ! Que dirais-tu de tester tes progrès globaux ?',
-      button: 'Faire le bilan'
-    },
-
-    'assessment->vocabulary': {
-      icon: '🚀',
-      title: 'Bravo pour ce niveau !',
-      message: 'Tu as validé tes acquis ! Prêt à découvrir du nouveau vocabulaire ?',
-      button: 'Nouveau vocabulaire'
-    },
-
-    // Messages de retour pour exercices de renforcement
-    'spelling->vocabulary': {
-      icon: '✨',
-      title: 'Orthographe au top !',
-      message: 'Tu écris mieux ! Que dirais-tu d\'apprendre de nouveaux mots ?',
-      button: 'Enrichir le vocabulaire'
-    },
-
-    'errorCorrection->reading': {
-      icon: '🔍',
-      title: 'Précision améliorée !',
-      message: 'Tu corriges bien les erreurs ! Prêt à lire des textes complets ?',
-      button: 'Reprendre la lecture'
-    },
-
-    'wordGames->vocabulary': {
-      icon: '🎮',
-      title: 'Bien révisé !',
-      message: 'Tu t\'es bien amusé ! Que dirais-tu d\'apprendre de nouveaux mots ?',
-      button: 'Nouveau vocabulaire'
+const useSmartRecommendations = (lastActivity, exerciseStats, currentLevel, exerciseTypes) => {
+  
+  // Fonction pour obtenir le temps en minutes d'un exercice
+  const getExerciseTimeInMinutes = useCallback((exerciseType) => {
+    if (!exerciseStats || !exerciseStats[exerciseType]) {
+      return 0;
     }
-  }), []);
-
-  // Seuil de temps pour déclencher une recommandation (en minutes)
-  const TIME_THRESHOLD = 3;
-
-  // Fonction pour vérifier le temps vocabulary avec modes - MÉMORISÉE
-  const getVocabularyTime = useCallback(() => {
-    return exerciseTimeStats.vocabulary || 0;
-  }, [exerciseTimeStats.vocabulary]);
-
-  // Fonction pour vérifier le temps d'un exercice - MÉMORISÉE
-  const getExerciseTime = useCallback((exerciseType) => {
-    if (exerciseType === 'vocabulary') {
-      return getVocabularyTime();
+    
+    // exerciseStats contient déjà les temps en minutes (via getFormattedStats)
+    return exerciseStats[exerciseType];
+  }, [exerciseStats]);
+  
+  // Fonction pour vérifier si un exercice peut être recommandé
+  const canRecommendNext = useCallback((exerciseType) => {
+    const timeSpent = getExerciseTimeInMinutes(exerciseType);
+    return timeSpent >= RECOMMENDATION_CONFIG.THRESHOLD_MINUTES;
+  }, [getExerciseTimeInMinutes]);
+  
+  // Fonction pour créer une recommandation
+  const createRecommendation = useCallback((
+    exerciseType, 
+    messageKey = null, 
+    timeSpent = null, 
+    fromExercise = null
+  ) => {
+    if (!exerciseTypes || !exerciseTypes[exerciseType]) {
+      return null;
     }
-    return exerciseTimeStats[exerciseType] || 0;
-  }, [exerciseTimeStats, getVocabularyTime]);
-
-  // Fonction pour recommandation vocabulary par défaut - MÉMORISÉE
-  const getDefaultVocabularyRecommendation = useCallback(() => {
-    return {
-      id: 'default_vocabulary',
-      title: EXERCISE_TYPES.vocabulary.title,
-      description: EXERCISE_TYPES.vocabulary.description,
-      type: 'vocabulary',
-      level: currentLevel,
-      icon: EXERCISE_TYPES.vocabulary.icon,
-      color: EXERCISE_TYPES.vocabulary.color,
-      isRecommendation: true,
-      recommendationData: {
+    
+    const exerciseInfo = exerciseTypes[exerciseType];
+    let recommendationData;
+    
+    if (messageKey && RECOMMENDATION_MESSAGES[messageKey]) {
+      // Recommandation intelligente avec message personnalisé
+      recommendationData = {
+        ...RECOMMENDATION_MESSAGES[messageKey],
+        timeSpent,
+        fromExercise
+      };
+    } else {
+      // Recommandation par défaut
+      recommendationData = {
         icon: '📚',
         title: 'Commençons par la base !',
         message: 'Le vocabulaire est la fondation de toute langue. Prêt à enrichir tes connaissances ?',
-        button: 'Apprendre du vocabulaire'
-      }
-    };
-  }, [currentLevel]);
-
-  // Fonction pour recommandation de démarrage - MÉMORISÉE
-  const getStartVocabularyRecommendation = useCallback(() => {
+        button: `Pratiquer ${exerciseInfo.title.toLowerCase()}`
+      };
+    }
+    
     return {
-      id: 'start_vocabulary',
-      title: EXERCISE_TYPES.vocabulary.title,
-      description: EXERCISE_TYPES.vocabulary.description,
-      type: 'vocabulary',
+      id: messageKey ? `smart_${exerciseType}` : `default_${exerciseType}`,
+      title: exerciseInfo.title,
+      description: exerciseInfo.description,
+      type: exerciseType,
       level: currentLevel,
-      icon: EXERCISE_TYPES.vocabulary.icon,
-      color: EXERCISE_TYPES.vocabulary.color,
+      icon: exerciseInfo.icon,
+      color: exerciseInfo.color,
       isRecommendation: true,
-      recommendationData: {
-        icon: '🚀',
-        title: 'Commençons !',
-        message: 'Prêt à débuter ton apprentissage ? Commençons par enrichir ton vocabulaire !',
-        button: 'Commencer le vocabulaire'
-      }
+      recommendationData
     };
-  }, [currentLevel]);
-
-  // Calculer la recommandation intelligente - OPTIMISÉE
+  }, [exerciseTypes, currentLevel]);
+  
+  // Fonction pour créer une recommandation de démarrage
+  const createStartRecommendation = useCallback(() => {
+    return createRecommendation(
+      EXERCISE_TYPES.VOCABULARY,
+      null,
+      null,
+      null
+    );
+  }, [createRecommendation]);
+  
+  // Calcul de la recommandation principale
   const smartRecommendation = useMemo(() => {
     // 1. Si pas d'activité récente → vocabulary pour débuter
     if (!lastActivity) {
-      return getStartVocabularyRecommendation();
+      return {
+        ...createStartRecommendation(),
+        id: 'start_vocabulary',
+        recommendationData: {
+          icon: '🚀',
+          title: 'Commençons !',
+          message: 'Prêt à débuter ton apprentissage ? Commençons par enrichir ton vocabulaire !',
+          button: 'Commencer le vocabulaire'
+        }
+      };
     }
-
+    
     // 2. Vérifier le temps passé sur le dernier type d'exercice
     const lastExerciseType = lastActivity.type;
-    const timeSpent = getExerciseTime(lastExerciseType);
-
+    const timeSpentInMinutes = getExerciseTimeInMinutes(lastExerciseType);
+    
     // 3. Si assez de temps passé → recommandation intelligente
-    if (timeSpent >= TIME_THRESHOLD) {
-      const nextExerciseType = LEARNING_PATH[lastExerciseType];
-
-      if (nextExerciseType && EXERCISE_TYPES[nextExerciseType]) {
+    if (timeSpentInMinutes >= RECOMMENDATION_CONFIG.THRESHOLD_MINUTES) {
+      const nextExerciseType = RECOMMENDATION_CONFIG.LEARNING_PATH[lastExerciseType];
+      
+      if (nextExerciseType && exerciseTypes && exerciseTypes[nextExerciseType]) {
         const messageKey = `${lastExerciseType}->${nextExerciseType}`;
-        const recommendationMessage = RECOMMENDATION_MESSAGES[messageKey];
-
-        if (recommendationMessage) {
-          return {
-            id: `recommendation_${nextExerciseType}`,
-            title: EXERCISE_TYPES[nextExerciseType].title,
-            description: EXERCISE_TYPES[nextExerciseType].description,
-            type: nextExerciseType,
-            level: currentLevel,
-            icon: EXERCISE_TYPES[nextExerciseType].icon,
-            color: EXERCISE_TYPES[nextExerciseType].color,
-            isRecommendation: true,
-            recommendationData: {
-              ...recommendationMessage,
-              timeSpent: Math.round(timeSpent),
-              fromExercise: lastExerciseType
-            }
-          };
+        
+        if (RECOMMENDATION_MESSAGES[messageKey]) {
+          return createRecommendation(
+            nextExerciseType,
+            messageKey,
+            timeSpentInMinutes,
+            lastExerciseType
+          );
         }
       }
     }
-
-    // 4. FALLBACK : Toujours proposer vocabulary par défaut
-    return getDefaultVocabularyRecommendation();
-
+    
+    // 4. FALLBACK : Recommandation par défaut (vocabulary)
+    return createRecommendation(EXERCISE_TYPES.VOCABULARY);
+    
   }, [
     lastActivity, 
-    getExerciseTime, 
-    LEARNING_PATH, 
-    RECOMMENDATION_MESSAGES, 
-    currentLevel,
-    getStartVocabularyRecommendation,
-    getDefaultVocabularyRecommendation
+    getExerciseTimeInMinutes, 
+    createRecommendation,
+    createStartRecommendation,
+    exerciseTypes
   ]);
-
-  // Fonction pour obtenir le temps passé sur un type d'exercice - MÉMORISÉE
-  const getTimeSpent = useCallback((exerciseType) => {
-    return exerciseTimeStats[exerciseType] || 0;
-  }, [exerciseTimeStats]);
-
-  // Fonction pour vérifier si un exercice peut être recommandé - MÉMORISÉE
-  const canRecommend = useCallback((exerciseType) => {
-    return getTimeSpent(exerciseType) >= TIME_THRESHOLD;
-  }, [getTimeSpent]);
-
-  // Fonction pour obtenir le prochain exercice recommandé - MÉMORISÉE
-  const getNextRecommendedExercise = useCallback((currentExerciseType) => {
-    return LEARNING_PATH[currentExerciseType] || null;
-  }, [LEARNING_PATH]);
-
+  
+  // Fonction pour obtenir toutes les recommandations possibles
+  const getAllRecommendations = useCallback(() => {
+    const recommendations = [];
+    
+    // Pour chaque exercice qui peut être recommandé
+    Object.entries(RECOMMENDATION_CONFIG.LEARNING_PATH).forEach(([fromType, toType]) => {
+      if (canRecommendNext(fromType) && exerciseTypes && exerciseTypes[toType]) {
+        const messageKey = `${fromType}->${toType}`;
+        const timeSpent = getExerciseTimeInMinutes(fromType);
+        
+        const recommendation = createRecommendation(
+          toType,
+          messageKey,
+          timeSpent,
+          fromType
+        );
+        
+        if (recommendation) {
+          recommendations.push(recommendation);
+        }
+      }
+    });
+    
+    return recommendations;
+  }, [canRecommendNext, exerciseTypes, getExerciseTimeInMinutes, createRecommendation]);
+  
+  // Fonction pour obtenir le prochain exercice recommandé
+  const getNextExercise = useCallback((currentExerciseType) => {
+    return RECOMMENDATION_CONFIG.LEARNING_PATH[currentExerciseType] || null;
+  }, []);
+  
+  // Statistiques pour debug
+  const getRecommendationStats = useCallback(() => {
+    const stats = {};
+    
+    Object.keys(EXERCISE_TYPES).forEach(exerciseType => {
+      const timeInMinutes = getExerciseTimeInMinutes(exerciseType);
+      const canRecommend = canRecommendNext(exerciseType);
+      const nextExercise = getNextExercise(exerciseType);
+      
+      stats[exerciseType] = {
+        timeSpent: timeInMinutes,
+        canRecommend,
+        nextExercise,
+        isAboveThreshold: timeInMinutes >= RECOMMENDATION_CONFIG.THRESHOLD_MINUTES
+      };
+    });
+    
+    return {
+      stats,
+      threshold: RECOMMENDATION_CONFIG.THRESHOLD_MINUTES,
+      smartRecommendation: smartRecommendation?.id || 'none'
+    };
+  }, [getExerciseTimeInMinutes, canRecommendNext, getNextExercise, smartRecommendation]);
+  
   return {
+    // Recommandation principale
     smartRecommendation,
-    getTimeSpent,
-    canRecommend,
-    getNextRecommendedExercise,
-    timeThreshold: TIME_THRESHOLD,
-    learningPath: LEARNING_PATH
+    
+    // Fonctions utilitaires
+    canRecommendNext,
+    getExerciseTimeInMinutes,
+    getNextExercise,
+    getAllRecommendations,
+    
+    // Configuration
+    threshold: RECOMMENDATION_CONFIG.THRESHOLD_MINUTES,
+    learningPath: RECOMMENDATION_CONFIG.LEARNING_PATH,
+    
+    // Debug
+    getRecommendationStats
   };
 };
 

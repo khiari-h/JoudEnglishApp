@@ -1,3 +1,9 @@
+// components/RecommendationsSection.jsx
+/**
+ * Composant pour afficher les recommandations intelligentes
+ * Version propre utilisant la nouvelle architecture modulaire
+ */
+
 import React, { useMemo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Card from "../../../../components/ui/Card";
@@ -5,32 +11,29 @@ import Button from "../../../../components/ui/Button";
 import useSmartRecommendations from "../../../../hooks/useSmartRecommendations";
 import styles from "./style";
 
-/**
- * Composant pour afficher UNE recommandation intelligente basée sur :
- * - Le temps passé sur chaque type d'exercice (VRAIES DONNÉES maintenant !)
- * - Un parcours pédagogique optimal
- * - Des messages bienveillants style "coach"
- * 
- * OPTIMISÉ - Plus de console.log, calculs mémorisés
- */
 const RecommendationsSection = ({
   lastActivity,
   exerciseTimeStats = {},
+  exerciseTypes,
   currentLevel,
   onSelectExercise,
   accentColor = "#3B82F6",
+  debugMode = false // Pour afficher les infos de debug en développement
 }) => {
 
-  // Utiliser le hook de recommandations intelligentes avec vraies données
-  const { smartRecommendation } = useSmartRecommendations(
+  // Utiliser le hook de recommandations intelligentes
+  const { 
+    smartRecommendation,
+    getRecommendationStats 
+  } = useSmartRecommendations(
     lastActivity, 
     exerciseTimeStats,
-    currentLevel
+    currentLevel,
+    exerciseTypes
   );
 
-  // Mémoriser le rendu pour éviter les re-calculs inutiles
+  // Contenu de la recommandation
   const recommendationContent = useMemo(() => {
-    // Le hook retourne TOUJOURS une recommandation maintenant
     if (!smartRecommendation) {
       return null;
     }
@@ -65,8 +68,8 @@ const RecommendationsSection = ({
       );
     }
 
-    // Message de recommandation par défaut (pas assez de temps)
-    if (smartRecommendation.id === 'default_vocabulary') {
+    // Message de recommandation par défaut
+    if (smartRecommendation.id.startsWith('default_')) {
       return (
         <Card style={styles.recommendationCard}>
           <View style={styles.startRecommendationContent}>
@@ -93,7 +96,7 @@ const RecommendationsSection = ({
       );
     }
 
-    // Message de recommandation intelligente (basée sur temps réel !)
+    // Message de recommandation intelligente
     return (
       <Card style={styles.recommendationCard}>
         <View style={styles.recommendationContent}>
@@ -108,8 +111,8 @@ const RecommendationsSection = ({
             {recommendationData.message}
           </Text>
 
-          {/* Info sur le temps passé RÉEL */}
-          {recommendationData.timeSpent && (
+          {/* Info sur le temps passé */}
+          {recommendationData.timeSpent > 0 && (
             <View style={styles.timeInfo}>
               <View style={styles.timeProgressContainer}>
                 <View style={styles.timeDot} />
@@ -164,14 +167,38 @@ const RecommendationsSection = ({
     );
   }, [smartRecommendation, accentColor, currentLevel, onSelectExercise]);
 
-  // Mémoriser le titre de section
+  // Titre de la section
   const sectionTitle = useMemo(() => {
     if (!smartRecommendation) return "Recommandations";
 
     if (smartRecommendation.id === 'start_vocabulary') return "Pour toi";
-    if (smartRecommendation.id === 'default_vocabulary') return "Recommandation";
+    if (smartRecommendation.id.startsWith('default_')) return "Recommandation";
     return "Suggestion pour toi";
   }, [smartRecommendation]);
+
+  // Debug info (seulement en mode debug)
+  const debugInfo = useMemo(() => {
+    if (!debugMode) return null;
+
+    const stats = getRecommendationStats();
+    
+    return (
+      <View style={styles.debugContainer}>
+        <Text style={styles.debugTitle}>🔍 Debug Recommandations</Text>
+        <Text style={styles.debugText}>
+          Recommandation: {stats.smartRecommendation}
+        </Text>
+        <Text style={styles.debugText}>
+          Seuil: {stats.threshold} min
+        </Text>
+        {Object.entries(exerciseTimeStats).map(([type, minutes]) => (
+          <Text key={type} style={styles.debugText}>
+            {type}: {minutes} min
+          </Text>
+        ))}
+      </View>
+    );
+  }, [debugMode, getRecommendationStats, exerciseTimeStats]);
 
   if (!recommendationContent) {
     return null;
@@ -181,6 +208,7 @@ const RecommendationsSection = ({
     <View style={styles.container}>
       <Text style={styles.sectionTitle}>{sectionTitle}</Text>
       {recommendationContent}
+      {debugInfo}
     </View>
   );
 };
