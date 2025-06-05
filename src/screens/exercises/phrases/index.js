@@ -1,8 +1,11 @@
-// PhrasesExercise/index.js - VERSION COMPLÈTE RECODÉE
+// PhrasesExercise/index.js - VERSION COMPLÈTE RECODÉE avec Container SafeArea
 
 import React, { useMemo, useCallback } from "react";
-import { SafeAreaView, View, Text, ActivityIndicator, Alert } from "react-native";
+import { View, Text, ActivityIndicator, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
 // Composants spécifiques
 import PhrasesHeader from "./PhrasesHeader";
@@ -26,7 +29,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice de Phrases & Expressions
- * Version recodée : PhraseCard au lieu de PhrasePhraseCard + Modal
+ * Version recodée avec Container SafeArea + PhraseCard au lieu de PhrasePhraseCard + Modal
  */
 const PhrasesExercise = ({ route }) => {
   const navigation = useNavigation();
@@ -143,23 +146,42 @@ const PhrasesExercise = ({ route }) => {
     }
   }, [categoryIndex, phraseIndex, loaded, hasValidData, saveLastPosition]);
 
-  // Afficher un indicateur de chargement si les données ne sont pas encore prêtes
+  // Gestionnaire retour navigation
+  const handleBackPress = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+
+  // ========== ÉCRAN DE CHARGEMENT ==========
   if (!loaded || !hasValidData) {
     return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={levelColor} />
-        <Text style={styles.loadingText}>Chargement des phrases...</Text>
-      </View>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color={levelColor} />
+          <Text style={styles.loadingText}>Chargement des phrases...</Text>
+        </View>
+      </Container>
     );
   }
 
-  // Si nous n'avons pas de phrases dans la catégorie actuelle
+  // ========== ÉTAT VIDE ==========
   if (currentPhrases.length === 0) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
         <PhrasesHeader
           level={level}
-          onBackPress={() => navigation.goBack()}
+          onBackPress={handleBackPress}
           levelColor={levelColor}
         />
         <View style={styles.emptyStateContainer}>
@@ -167,16 +189,17 @@ const PhrasesExercise = ({ route }) => {
             Aucune phrase disponible dans cette catégorie.
           </Text>
         </View>
-      </SafeAreaView>
+      </Container>
     );
   }
 
-  return (
-    <SafeAreaView style={styles.safeArea}>
+  // ========== CONTENU PRINCIPAL ==========
+  const renderMainContent = () => (
+    <>
       {/* En-tête */}
       <PhrasesHeader
         level={level}
-        onBackPress={() => navigation.goBack()}
+        onBackPress={handleBackPress}
         levelColor={levelColor}
       />
 
@@ -229,7 +252,21 @@ const PhrasesExercise = ({ route }) => {
       />
 
       {/* ✅ PLUS DE MODAL ! */}
-    </SafeAreaView>
+    </>
+  );
+
+  // ========== RENDU PRINCIPAL ==========
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      backgroundColor="#FAFBFC"
+      statusBarStyle="dark-content"
+      withPadding={false} // Pas de padding global, géré par les composants internes
+      style={styles.safeArea}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 

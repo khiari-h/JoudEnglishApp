@@ -1,7 +1,10 @@
 // src/screens/exercises/levelAssessment/index.js
 import React, { useEffect, useCallback } from "react";
-import { SafeAreaView, View, ScrollView, Alert } from "react-native";
+import { View, Alert, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
 // Composants spécifiques à l'évaluation de niveau
 import AssessmentHeader from "./AssessmentHeader";
@@ -25,7 +28,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'évaluation de niveau (Level Assessment)
- * Version recodée : hooks existants + ProgressBar unifiée + logique simplifiée
+ * Version recodée avec Container SafeArea + hooks existants + ProgressBar unifiée + logique simplifiée
  */
 const LevelAssessment = ({ route }) => {
   // ========== NAVIGATION ET PARAMÈTRES ==========
@@ -97,7 +100,6 @@ const LevelAssessment = ({ route }) => {
   // Restaurer la dernière position (logique existante)
   useEffect(() => {
     if (progressLoaded && lastPosition && !currentSection) {
-
       // Utiliser restoreState du hook existant
       if (restoreState) {
         restoreState(lastPosition.sectionIndex, lastPosition.questionIndex);
@@ -155,19 +157,16 @@ const LevelAssessment = ({ route }) => {
         selectedAnswer,
         isCorrect
       );
-
     }
   }, [selectedAnswer, currentSection, currentQuestionIndex, currentQuestion, validateAnswer, saveUserAnswer, isCorrect]);
 
   // Navigation question suivante (override du hook existant)
   const handleNextQuestion = useCallback(() => {
-
     // Vérifier si fin de l'évaluation
     const isLastSection = sections.indexOf(currentSection) === sections.length - 1;
     const isLastQuestion = currentQuestionIndex === (assessmentData[currentSection]?.questions?.length || 0) - 1;
 
     if (isLastSection && isLastQuestion && showFeedback) {
-
       // Calculer et sauvegarder les résultats finaux
       try {
         const userScore = calculateUserScore();
@@ -187,7 +186,6 @@ const LevelAssessment = ({ route }) => {
         setTestCompleted(true);
         return;
       } catch (error) {
-
         Alert.alert("Erreur", "Impossible de calculer le score final.");
         return;
       }
@@ -199,7 +197,6 @@ const LevelAssessment = ({ route }) => {
 
   // Recommencer l'évaluation
   const handleRetry = useCallback(async () => {
-
     try {
       await resetAssessment();
       setTestCompleted(false);
@@ -210,31 +207,33 @@ const LevelAssessment = ({ route }) => {
         changeQuestion(0);
       }
     } catch (error) {
-
       Alert.alert("Erreur", "Impossible de réinitialiser l'évaluation.");
     }
   }, [resetAssessment, setTestCompleted, sections, changeSection, changeQuestion]);
 
   // Retour navigation
   const handleBackPress = useCallback(() => {
-
     navigation.goBack();
   }, [navigation]);
 
   // Navigation vers Dashboard
   const handleContinue = useCallback(() => {
-
     navigation.navigate("Dashboard");
   }, [navigation]);
 
   // ========== GESTION RÉSULTATS ==========
-
   if (testCompleted) {
     try {
       const userScore = calculateUserScore();
 
       return (
-        <SafeAreaView style={styles.container}>
+        <Container
+          safeArea
+          safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+          backgroundColor="#FAFBFC"
+          statusBarStyle="dark-content"
+          style={styles.container}
+        >
           <AssessmentResults 
             level={level}
             levelColor={levelColor}
@@ -242,29 +241,39 @@ const LevelAssessment = ({ route }) => {
             onContinue={handleContinue}
             onRetry={handleRetry}
           />
-        </SafeAreaView>
+        </Container>
       );
     } catch (error) {
-
       // Affichage de fallback
       return (
-        <SafeAreaView style={styles.container}>
+        <Container
+          safeArea
+          safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+          backgroundColor="#FAFBFC"
+          statusBarStyle="dark-content"
+          style={styles.container}
+        >
           <AssessmentResults 
             level={level}
             levelColor={levelColor}
             onContinue={handleContinue}
             onRetry={handleRetry}
           />
-        </SafeAreaView>
+        </Container>
       );
     }
   }
 
   // ========== GESTION CHARGEMENT ==========
-
   if (!currentSection || !currentQuestion) {
     return (
-      <SafeAreaView style={styles.container}>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.container}
+      >
         <AssessmentHeader
           level={level}
           levelColor={levelColor}
@@ -273,15 +282,13 @@ const LevelAssessment = ({ route }) => {
         <View style={styles.loadingContainer}>
           <Text style={styles.loadingText}>Chargement de l'évaluation...</Text>
         </View>
-      </SafeAreaView>
+      </Container>
     );
   }
 
-  // ========== LOGS DEBUG ==========
-
-  // ========== RENDU PRINCIPAL ==========
-  return (
-    <SafeAreaView style={styles.container}>
+  // ========== CONTENU PRINCIPAL ==========
+  const renderMainContent = () => (
+    <>
       {/* En-tête avec niveau et bouton retour */}
       <AssessmentHeader
         level={level}
@@ -300,21 +307,15 @@ const LevelAssessment = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Zone de contenu principal */}
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={styles.scrollViewContent}
-        showsVerticalScrollIndicator={false}
-      >
-        <AssessmentQuestion
-          section={currentSection}
-          question={currentQuestion}
-          selectedAnswer={selectedAnswer}
-          showFeedback={showFeedback}
-          levelColor={levelColor}
-          onSelectAnswer={handleSelectAnswer}
-        />
-      </ScrollView>
+      {/* Question actuelle */}
+      <AssessmentQuestion
+        section={currentSection}
+        question={currentQuestion}
+        selectedAnswer={selectedAnswer}
+        showFeedback={showFeedback}
+        levelColor={levelColor}
+        onSelectAnswer={handleSelectAnswer}
+      />
 
       {/* Boutons d'action */}
       <AssessmentActions
@@ -327,7 +328,27 @@ const LevelAssessment = ({ route }) => {
         onTryAgain={tryAgain}
         onNextQuestion={handleNextQuestion}
       />
-    </SafeAreaView>
+    </>
+  );
+
+  // ========== RENDU PRINCIPAL ==========
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      withScrollView
+      backgroundColor="#FAFBFC"
+      statusBarStyle="dark-content"
+      withPadding={false} // Pas de padding global, géré par les composants internes
+      scrollViewProps={{
+        style: styles.scrollView,
+        contentContainerStyle: styles.scrollViewContent,
+        showsVerticalScrollIndicator: false,
+      }}
+      style={styles.container}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 

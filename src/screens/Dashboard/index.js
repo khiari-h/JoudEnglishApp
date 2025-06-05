@@ -1,6 +1,6 @@
 // src/screens/Dashboard/index.js
 import React, { useContext, useEffect, useCallback } from "react";
-import { View, ScrollView, StatusBar, RefreshControl, Text } from "react-native";
+import { RefreshControl, Text } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
 // Contextes
@@ -16,7 +16,10 @@ import { useDashboardState } from "./hooks/useDashboardState";
 // Hooks existants
 import useLastActivity from "../../hooks/useLastActivity";
 import useStreak from "./hooks/useStreak";
-import useExerciseTracking from "../../hooks/useExerciceTracking"; // ✅ Corrigé sans faute
+import useExerciseTracking from "../../hooks/useExerciceTracking";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 
 // Composants Dashboard
 import CompactHeader from "./components/CompactHeader";
@@ -47,8 +50,6 @@ const Dashboard = ({ route }) => {
   } = useLastActivity();
 
   const { currentStreak, updateStreak } = useStreak();
-  
-  // ✅ Hook de tracking corrigé
   const tracking = useExerciseTracking();
 
   // ========== HOOKS PERSONNALISÉS DASHBOARD ==========
@@ -127,46 +128,31 @@ const Dashboard = ({ route }) => {
     ]
   );
 
-  // ========== RENDU CONDITIONNEL ==========
-  
-  // Écran de chargement si le tracking n'est pas prêt
+  // ========== RENDU CONDITIONNEL CHARGEMENT ==========
   if (!tracking.isLoaded) {
     return (
-      <View style={[styles.container, { backgroundColor: colors.background }]}>
-        <StatusBar barStyle="light-content" />
-        <View style={{ 
-          flex: 1, 
-          justifyContent: 'center', 
-          alignItems: 'center',
-          paddingHorizontal: 20 
-        }}>
-          <Text style={{ 
-            color: colors.primary, 
-            fontSize: 16,
-            textAlign: 'center',
-            marginBottom: 8 
-          }}>
-            Chargement de votre progression...
+      <Container
+        safeArea
+        backgroundColor={colors.background}
+        statusBarStyle="light-content"
+        withPadding
+        style={styles.loadingContainer}
+      >
+        <Text style={[styles.loadingText, { color: colors.primary }]}>
+          Chargement de votre progression...
+        </Text>
+        {tracking.error && (
+          <Text style={styles.errorText}>
+            Erreur: {tracking.error}
           </Text>
-          {tracking.error && (
-            <Text style={{ 
-              color: '#EF4444', 
-              fontSize: 14,
-              textAlign: 'center' 
-            }}>
-              Erreur: {tracking.error}
-            </Text>
-          )}
-        </View>
-      </View>
+        )}
+      </Container>
     );
   }
 
-  // ========== RENDU PRINCIPAL ==========
-  return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <StatusBar barStyle="light-content" />
-
+  // ========== CONTENU PRINCIPAL ==========
+  const renderMainContent = () => (
+    <>
       {/* Header avec données utilisateur */}
       <CompactHeader
         level={currentLevel}
@@ -174,63 +160,41 @@ const Dashboard = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Contenu principal scrollable */}
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={[
-          styles.scrollContent,
-          { paddingBottom: 100 }, // Espace pour les onglets de navigation
-        ]}
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            colors={[colors.primary]}
-            tintColor={colors.primary}
-          />
-        }
-      >
-        {/* 1. Section Continuer l'apprentissage */}
-        <ContinueLearningSection
-          lastActivity={dashboardData.lastActivity}
-          onPress={navigateToExercise}
-          accentColor={levelColor}
-          formatProgressSubtitle={formatProgressSubtitle}
-          isLoading={isActivityLoading}
-        />
+      {/* 1. Section Continuer l'apprentissage */}
+      <ContinueLearningSection
+        lastActivity={dashboardData.lastActivity}
+        onPress={navigateToExercise}
+        accentColor={levelColor}
+        formatProgressSubtitle={formatProgressSubtitle}
+        isLoading={isActivityLoading}
+      />
 
-        {/* 2. Section Défi du jour */}
-        <DailyGoalSection
-          currentLevel={currentLevel}
-          progress={dashboardData.progress}
-          accentColor={levelColor}
-          onStartExercise={handleDailyChallengeStart}
-          onStartEvaluation={handleEvaluationStart}
-        />
+      {/* 2. Section Défi du jour */}
+      <DailyGoalSection
+        currentLevel={currentLevel}
+        progress={dashboardData.progress}
+        accentColor={levelColor}
+        onStartExercise={handleDailyChallengeStart}
+        onStartEvaluation={handleEvaluationStart}
+      />
 
-        {/* 3. Section Recommandations intelligentes */}
-        <RecommendationsSection
-          lastActivity={dashboardData.lastActivity}
-          currentLevel={currentLevel}
-          onSelectExercise={navigateToExercise}
-          accentColor={levelColor}
-          debugMode={false}
-        />
+      {/* 3. Section Recommandations intelligentes */}
+      <RecommendationsSection
+        lastActivity={dashboardData.lastActivity}
+        currentLevel={currentLevel}
+        onSelectExercise={navigateToExercise}
+        accentColor={levelColor}
+      />
 
-        {/* 4. Section Parcours d'apprentissage */}
-        <LearningPathCompact
-          globalProgress={dashboardData.globalProgress}
-          levels={dashboardData.allLevels}
-          currentLevel={currentLevel}
-          onSelectLevel={handleLevelSelectWithNavigation}
-          onViewProgress={openLevelProgressModal}
-          primaryColor={levelColor}
-        />
-
-        {/* Espacement final */}
-        <View style={styles.bottomSpacer} />
-      </ScrollView>
+      {/* 4. Section Parcours d'apprentissage */}
+      <LearningPathCompact
+        globalProgress={dashboardData.globalProgress}
+        levels={dashboardData.allLevels}
+        currentLevel={currentLevel}
+        onSelectLevel={handleLevelSelectWithNavigation}
+        onViewProgress={openLevelProgressModal}
+        primaryColor={levelColor}
+      />
 
       {/* Modal de progression des niveaux */}
       <LevelProgressModal
@@ -239,41 +203,37 @@ const Dashboard = ({ route }) => {
         onClose={closeLevelProgressModal}
         onSelectLevel={handleLevelProgressSelect}
       />
+    </>
+  );
 
-      {/* Debug overlay (seulement en développement) */}
-      {__DEV__ && (
-        <View style={{ 
-          position: 'absolute', 
-          top: 100, 
-          right: 10, 
-          backgroundColor: 'rgba(0,0,0,0.8)', 
-          padding: 8, 
-          borderRadius: 4,
-          maxWidth: 200
-        }}>
-          <Text style={{ color: 'white', fontSize: 10, marginBottom: 2 }}>
-            🐛 Debug Dashboard
-          </Text>
-          <Text style={{ color: 'white', fontSize: 9 }}>
-            Tracking: {tracking.isTracking ? 'ON' : 'OFF'}
-          </Text>
-          <Text style={{ color: 'white', fontSize: 9 }}>
-            Chargé: {tracking.isLoaded ? 'Oui' : 'Non'}
-          </Text>
-          {tracking.error && (
-            <Text style={{ color: '#FF6B6B', fontSize: 9 }}>
-              Erreur: {tracking.error}
-            </Text>
-          )}
-          <Text style={{ color: 'white', fontSize: 9 }}>
-            Niveau: {currentLevel}
-          </Text>
-          <Text style={{ color: 'white', fontSize: 9 }}>
-            Streak: {currentStreak}
-          </Text>
-        </View>
-      )}
-    </View>
+  // ========== RENDU PRINCIPAL ==========
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM} // Garde la navigation bottom
+      withScrollView
+      backgroundColor={colors.background}
+      statusBarStyle="light-content"
+      withPadding={false} // Le padding sera géré par les composants internes
+      scrollViewProps={{
+        style: styles.scrollView,
+        contentContainerStyle: [
+          styles.scrollContent,
+          { paddingBottom: 100 } // Espace pour les onglets de navigation
+        ],
+        showsVerticalScrollIndicator: false,
+        refreshControl: (
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={[colors.primary]}
+            tintColor={colors.primary}
+          />
+        ),
+      }}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 

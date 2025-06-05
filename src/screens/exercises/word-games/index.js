@@ -1,7 +1,10 @@
 // src/screens/exercises/wordGames/index.js
 import React, { useEffect } from "react";
-import { SafeAreaView, View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
 // Composants spécifiques aux jeux de mots
 import WordGamesHeader from "./WordGamesHeader";
@@ -25,7 +28,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour les exercices de jeux de mots (Word Games)
- * Version simplifiée - Focus sur matching et categorization uniquement
+ * Version recodée avec Container SafeArea + logique simplifiée - Focus sur matching et categorization uniquement
  */
 const WordGamesExercise = ({ route }) => {
   // Hooks de navigation
@@ -109,25 +112,42 @@ const WordGamesExercise = ({ route }) => {
     saveLastPosition(0);
   };
 
-  // État de chargement
+  // Retour navigation
+  const handleBackPress = () => {
+    navigation.goBack();
+  };
+
+  // ========== ÉTAT DE CHARGEMENT ==========
   if (!currentGame) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
         <View style={styles.loadingContainer}>
           <Text style={styles.loadingText}>Loading games...</Text>
         </View>
-      </SafeAreaView>
+      </Container>
     );
   }
 
-  // Aucun jeu disponible
+  // ========== AUCUN JEU DISPONIBLE ==========
   if (games.length === 0) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
         <WordGamesHeader
           level={level}
           levelColor={levelColor}
-          onBackPress={() => navigation.goBack()}
+          onBackPress={handleBackPress}
         />
         <View style={styles.emptyGamesContainer}>
           <Text style={styles.emptyGamesText}>
@@ -135,23 +155,29 @@ const WordGamesExercise = ({ route }) => {
           </Text>
           <TouchableOpacity
             style={[styles.emptyGamesButton, { backgroundColor: levelColor }]}
-            onPress={() => navigation.goBack()}
+            onPress={handleBackPress}
           >
             <Text style={styles.emptyGamesButtonText}>Back</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </Container>
     );
   }
 
-  // Écran des résultats finaux
+  // ========== ÉCRAN DES RÉSULTATS FINAUX ==========
   if (showResults) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
         <WordGamesHeader
           level={level}
           levelColor={levelColor}
-          onBackPress={() => navigation.goBack()}
+          onBackPress={handleBackPress}
         />
         <WordGamesResults
           games={games}
@@ -159,19 +185,19 @@ const WordGamesExercise = ({ route }) => {
           score={score}
           levelColor={levelColor}
           onPlayAgain={handleResetGames}
-          onExit={() => navigation.goBack()}
+          onExit={handleBackPress}
         />
-      </SafeAreaView>
+      </Container>
     );
   }
 
-  // Rendu principal
-  return (
-    <SafeAreaView style={styles.safeArea}>
+  // ========== CONTENU PRINCIPAL ==========
+  const renderMainContent = () => (
+    <>
       <WordGamesHeader
         level={level}
         levelColor={levelColor}
-        onBackPress={() => navigation.goBack()}
+        onBackPress={handleBackPress}
       />
 
       <WordGamesProgressBar
@@ -203,7 +229,21 @@ const WordGamesExercise = ({ route }) => {
         onCheckAnswer={() => checkAnswer()}
         onNextGame={handleGameAdvance}
       />
-    </SafeAreaView>
+    </>
+  );
+
+  // ========== RENDU PRINCIPAL ==========
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      backgroundColor="#FAFBFC"
+      statusBarStyle="dark-content"
+      withPadding={false} // Pas de padding global, géré par les composants internes
+      style={styles.safeArea}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 

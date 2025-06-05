@@ -1,7 +1,10 @@
 // src/components/screens/exercises/reading/ReadingExercise/index.js
 import React, { useEffect, useState, useCallback } from "react";
-import { SafeAreaView, View, Text, ScrollView, ActivityIndicator, Alert } from "react-native";
+import { View, Text, ActivityIndicator, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../../../../components/layout/Container";
 
 // Components communs
 import ExerciseHeader from "../../../components/exercise-common/ExerciseHeader";
@@ -29,7 +32,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice de lecture
- * Version recodée utilisant correctement les hooks existants + ProgressBar unifiée
+ * Version recodée avec Container SafeArea + hooks existants + ProgressBar unifiée
  */
 const ReadingExercise = ({ route }) => {
   // ========== NAVIGATION ET PARAMÈTRES ==========
@@ -89,7 +92,6 @@ const ReadingExercise = ({ route }) => {
   // Initialiser la progression (hook existant)
   useEffect(() => {
     if (loaded && readingData) {
-
       initializeProgress(readingData);
     }
   }, [loaded, readingData, initializeProgress]);
@@ -97,7 +99,6 @@ const ReadingExercise = ({ route }) => {
   // Restaurer la dernière position (hook existant)
   useEffect(() => {
     if (loaded && lastPosition && allExercises.length > 0) {
-
       // Restaurer l'exercice si différent
       if (lastPosition.exerciseIndex !== selectedExerciseIndex) {
         handleTextChange(lastPosition.exerciseIndex);
@@ -147,9 +148,6 @@ const ReadingExercise = ({ route }) => {
         // Synchroniser avec useReadingProgress
         updateExerciseProgress(selectedExerciseIndex, updatedCompleted);
       }
-
-    } else {
-
     }
   }, [selectedAnswer, getCurrentQuestion, selectedExerciseIndex, currentQuestionIndex, handleSubmitAnswer, isCorrect, completedQuestions, updateExerciseProgress]);
 
@@ -179,7 +177,6 @@ const ReadingExercise = ({ route }) => {
 
     // Utiliser la navigation du hook existant
     originalHandleNextQuestion();
-
   }, [currentQuestionIndex, currentExercise, selectedExerciseIndex, allExercises.length, saveLastPosition, originalHandleNextQuestion, navigation]);
 
   // Navigation question précédente (override du hook existant)
@@ -190,22 +187,19 @@ const ReadingExercise = ({ route }) => {
 
     // Utiliser la navigation du hook existant
     originalHandlePreviousQuestion();
-
   }, [currentQuestionIndex, selectedExerciseIndex, saveLastPosition, originalHandlePreviousQuestion]);
 
   // Changer d'exercice (utilise hook existant + sync position)
   const handleExerciseChange = useCallback((exerciseIndex) => {
-
     // Utiliser le hook existant
     handleTextChange(exerciseIndex);
 
     // Sauvegarder nouvelle position
     saveLastPosition(exerciseIndex, 0);
-  }, [selectedExerciseIndex, handleTextChange, saveLastPosition]);
+  }, [handleTextChange, saveLastPosition]);
 
   // Sélection directe de question (utilise hooks existants)
   const handleQuestionSelect = useCallback((questionIndex) => {
-
     // Utiliser les setters du hook existant
     setCurrentQuestionIndex(questionIndex);
     setSelectedAnswer(null);
@@ -216,39 +210,53 @@ const ReadingExercise = ({ route }) => {
     saveLastPosition(selectedExerciseIndex, questionIndex);
   }, [setCurrentQuestionIndex, setSelectedAnswer, setShowFeedback, setAttempts, selectedExerciseIndex, saveLastPosition]);
 
-  // ========== GESTION CHARGEMENT ==========
+  // Gestionnaire retour navigation
+  const handleBackPress = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
+  // ========== GESTION CHARGEMENT ==========
   if (!loaded || allExercises.length === 0) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={levelColor} />
           <Text style={styles.loadingText}>Chargement des exercices...</Text>
         </View>
-      </SafeAreaView>
+      </Container>
     );
   }
 
   if (!currentExercise) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
         <View style={styles.loadingContainer}>
           <Text style={styles.loadingText}>Aucun exercice disponible</Text>
         </View>
-      </SafeAreaView>
+      </Container>
     );
   }
 
-  // ========== LOGS DEBUG ==========
-
-  // ========== RENDU ==========
-  return (
-    <SafeAreaView style={styles.safeArea}>
+  // ========== CONTENU PRINCIPAL ==========
+  const renderMainContent = () => (
+    <>
       {/* En-tête */}
       <ExerciseHeader
         title="Reading"
         level={level}
-        onClose={() => navigation.goBack()}
+        onClose={handleBackPress}
         levelColor={levelColor}
       />
 
@@ -272,70 +280,63 @@ const ReadingExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Contenu principal */}
-      <ScrollView
-        ref={scrollViewRef}
-        style={styles.scrollView}
-        contentContainerStyle={styles.contentContainer}
-      >
-        {/* Instructions */}
-        <InstructionBox
-          title="Reading Exercise"
-          instructions="Read the text carefully and answer the questions."
-          variant="compact"
-          primaryColor={levelColor}
-          initiallyExpanded={false}
-        />
+      {/* Instructions */}
+      <InstructionBox
+        title="Reading Exercise"
+        instructions="Read the text carefully and answer the questions."
+        variant="compact"
+        primaryColor={levelColor}
+        initiallyExpanded={false}
+      />
 
-        {/* Texte de lecture (utilise hook existant) */}
-        <ReadingText
-          exercise={currentExercise}
-          textExpanded={textExpanded}
-          onToggleExpand={toggleTextExpansion}
+      {/* Texte de lecture (utilise hook existant) */}
+      <ReadingText
+        exercise={currentExercise}
+        textExpanded={textExpanded}
+        onToggleExpand={toggleTextExpansion}
+        levelColor={levelColor}
+      />
+
+      {/* Question actuelle */}
+      {getCurrentQuestion && (
+        <ReadingQuestion
+          question={getCurrentQuestion}
+          questionIndex={currentQuestionIndex}
+          selectedAnswer={selectedAnswer}
+          onSelectAnswer={handleSelectAnswer}
+          showFeedback={showFeedback}
+          fadeAnim={fadeAnim}
+          slideAnim={slideAnim}
           levelColor={levelColor}
         />
+      )}
 
-        {/* Question actuelle */}
-        {getCurrentQuestion && (
-          <ReadingQuestion
-            question={getCurrentQuestion}
-            questionIndex={currentQuestionIndex}
-            selectedAnswer={selectedAnswer}
-            onSelectAnswer={handleSelectAnswer}
-            showFeedback={showFeedback}
-            fadeAnim={fadeAnim}
-            slideAnim={slideAnim}
-            levelColor={levelColor}
-          />
-        )}
-
-        {/* Feedback */}
-        {showFeedback && getCurrentQuestion && (
-          <ExerciseFeedback
-            type={isCorrect ? "success" : "error"}
-            message={isCorrect ? "Correct!" : "Incorrect!"}
-            explanation={
-              isCorrect
-                ? getCurrentQuestion.explanation
-                : attempts > 1
-                ? `The correct answer is: ${
-                    getCurrentQuestion.options[getCurrentQuestion.correctAnswer]
-                  }`
-                : "Try again!"
-            }
-            showDismissButton={false}
-          />
-        )}
-
-        {/* Indicateurs de questions (utilise hook existant) */}
-        <QuestionIndicators
-          totalQuestions={currentExercise.questions.length}
-          currentQuestionIndex={currentQuestionIndex}
-          completedQuestions={completedQuestions[selectedExerciseIndex] || []}
-          onSelectQuestion={handleQuestionSelect}
-          levelColor={levelColor}
+      {/* Feedback */}
+      {showFeedback && getCurrentQuestion && (
+        <ExerciseFeedback
+          type={isCorrect ? "success" : "error"}
+          message={isCorrect ? "Correct!" : "Incorrect!"}
+          explanation={
+            isCorrect
+              ? getCurrentQuestion.explanation
+              : attempts > 1
+              ? `The correct answer is: ${
+                  getCurrentQuestion.options[getCurrentQuestion.correctAnswer]
+                }`
+              : "Try again!"
+          }
+          showDismissButton={false}
         />
-      </ScrollView>
+      )}
+
+      {/* Indicateurs de questions (utilise hook existant) */}
+      <QuestionIndicators
+        totalQuestions={currentExercise.questions.length}
+        currentQuestionIndex={currentQuestionIndex}
+        completedQuestions={completedQuestions[selectedExerciseIndex] || []}
+        onSelectQuestion={handleQuestionSelect}
+        levelColor={levelColor}
+      />
 
       {/* Navigation */}
       <ReadingNavigation
@@ -350,7 +351,28 @@ const ReadingExercise = ({ route }) => {
         onPrevious={handlePreviousQuestionClick}
         onRetry={retryExercise}
       />
-    </SafeAreaView>
+    </>
+  );
+
+  // ========== RENDU PRINCIPAL ==========
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      withScrollView
+      backgroundColor="#FAFBFC"
+      statusBarStyle="dark-content"
+      withPadding={false} // Pas de padding global, géré par les composants internes
+      scrollViewProps={{
+        ref: scrollViewRef,
+        style: styles.scrollView,
+        contentContainerStyle: styles.contentContainer,
+        showsVerticalScrollIndicator: false,
+      }}
+      style={styles.safeArea}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
+// src/screens/ExerciseSelection/index.js
 import React, { useContext, useMemo } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 
@@ -13,7 +14,7 @@ import Button from "../../components/ui/Button";
 import ProgressBar from "../../components/ui/ProgressBar";
 
 // Composants Layout
-import Container from "../../components/layout/Container";
+import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
 // Constantes et Helpers
@@ -177,14 +178,9 @@ const ExerciseSelection = ({ route }) => {
     );
   };
 
-  return (
-    <Container
-      safeArea
-      backgroundColor={colors.background}
-      withScrollView={false}
-      statusBarColor={levelColor}
-      statusBarStyle="light-content"
-    >
+  // Contenu principal de l'écran
+  const renderMainContent = () => (
+    <>
       {/* Header simplifié avec dégradé */}
       <View style={styles.headerContainer}>
         <LinearGradient
@@ -214,21 +210,37 @@ const ExerciseSelection = ({ route }) => {
         </LinearGradient>
       </View>
 
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        <Text style={styles.introText}>
-          {level === "bonus"
-            ? "Découvrez du contenu exclusif et avancé"
-            : "Sélectionnez une activité pour améliorer vos compétences"}
-        </Text>
+      <Text style={styles.introText}>
+        {level === "bonus"
+          ? "Découvrez du contenu exclusif et avancé"
+          : "Sélectionnez une activité pour améliorer vos compétences"}
+      </Text>
 
-        <View style={styles.exercisesContainer}>
-          {exercises.map(renderExerciseCard)}
-        </View>
-      </ScrollView>
+      <View style={styles.exercisesContainer}>
+        {exercises.map(renderExerciseCard)}
+      </View>
+    </>
+  );
+
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM} // Garde la navigation bottom
+      withScrollView
+      backgroundColor={colors.background}
+      statusBarColor={levelColor}
+      statusBarStyle="light-content"
+      withPadding={false} // Le padding sera géré par les composants internes
+      scrollViewProps={{
+        style: styles.scrollView,
+        contentContainerStyle: [
+          styles.scrollContent,
+          { paddingBottom: 100 } // Espace pour navigation
+        ],
+        showsVerticalScrollIndicator: false,
+      }}
+    >
+      {renderMainContent()}
     </Container>
   );
 };

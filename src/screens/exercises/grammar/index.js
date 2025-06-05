@@ -1,14 +1,15 @@
 // src/components/screens/exercises/grammar/GrammarExercise/index.js
 import React, { useMemo, useEffect } from "react";
 import {
-  SafeAreaView,
-  ScrollView,
   View,
   Alert,
   ActivityIndicator,
   Text,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../../../../components/layout/Container";
 
 // Import des composants
 import GrammarHeader from "./GrammarHeader";
@@ -33,7 +34,7 @@ import styles from "./style";
 
 /**
  * Écran principal pour les exercices de grammaire
- * Utilise les composants standardisés pour le header, la progression et la navigation
+ * Version recodée avec Container SafeArea + composants standardisés
  */
 const GrammarExercise = ({ route }) => {
   const navigation = useNavigation();
@@ -92,23 +93,13 @@ const GrammarExercise = ({ route }) => {
     }
   }, [loaded, grammarData, initializeProgress]);
 
-  // Affiche le spinner pendant le chargement des données
-  if (!loaded || !grammarData) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color={levelColor} />
-        <Text style={{ marginTop: 10 }}>Chargement...</Text>
-      </View>
-    );
-  }
-
   // Récupérer la règle et l'exercice actuels
-  const currentRule = grammarData[ruleIndex];
+  const currentRule = grammarData?.[ruleIndex];
   const currentExercise = currentRule?.exercises?.[exerciseIndex];
 
   // Calculs pour la navigation et la progression
   const isFirstExercise = exerciseIndex === 0;
-  const isLastExercise = exerciseIndex === currentRule?.exercises?.length - 1;
+  const isLastExercise = exerciseIndex === (currentRule?.exercises?.length || 0) - 1;
   const progress =
     ((exerciseIndex + (showFeedback && isCorrect ? 1 : 0)) /
       (currentRule?.exercises?.length || 1)) *
@@ -151,7 +142,7 @@ const GrammarExercise = ({ route }) => {
   // Passer à l'exercice suivant
   const handleNextExercise = () => {
     if (isLastExercise) {
-      if (ruleIndex < grammarData.length - 1) {
+      if (ruleIndex < (grammarData?.length || 0) - 1) {
         // Passer à la règle suivante
         handleRuleChange(ruleIndex + 1);
       } else {
@@ -175,10 +166,8 @@ const GrammarExercise = ({ route }) => {
     }
   };
 
-  // Réessayer l'exercice actuel - CORRECTION ICI
+  // Réessayer l'exercice actuel
   const handleRetryExercise = () => {
-    // Utiliser la fonction resetExerciseState fournie par le hook
-    // Cette fonction va gérer correctement la réinitialisation de tous les états
     resetExerciseState();
   };
 
@@ -198,12 +187,38 @@ const GrammarExercise = ({ route }) => {
     }
   };
 
-  return (
-    <SafeAreaView style={styles.safeArea}>
+  // Gérer le retour navigation
+  const handleBackPress = () => {
+    navigation.goBack();
+  };
+
+  // ========== ÉCRAN DE CHARGEMENT ==========
+  if (!loaded || !grammarData) {
+    return (
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+          <ActivityIndicator size="large" color={levelColor} />
+          <Text style={{ marginTop: 10, color: "#666", fontSize: 16 }}>
+            Chargement...
+          </Text>
+        </View>
+      </Container>
+    );
+  }
+
+  // ========== CONTENU PRINCIPAL ==========
+  const renderMainContent = () => (
+    <>
       {/* En-tête simplifié */}
       <GrammarHeader
         level={level}
-        onBackPress={() => navigation.goBack()}
+        onBackPress={handleBackPress}
         levelColor={levelColor}
       />
 
@@ -224,38 +239,32 @@ const GrammarExercise = ({ route }) => {
         ruleTitle={currentRule?.title}
       />
 
-      <ScrollView
-        style={[styles.scrollView, { backgroundColor: `${levelColor}05` }]}
-        contentContainerStyle={styles.contentContainer}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Contenu de la règle */}
-        <GrammarRuleContent rule={currentRule} />
+      {/* Contenu de la règle */}
+      <GrammarRuleContent rule={currentRule} />
 
-        {/* Exercice actuel - Ajout de key pour forcer le rafraîchissement */}
-        <View key={`exercise-container-${exerciseIndex}-${attempts}`}>
-          <GrammarExerciseRenderer
-            exercise={currentExercise}
-            selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
-            inputText={inputText}
-            setInputText={setInputText}
-            showFeedback={showFeedback}
-            isCorrect={isCorrect}
-            exerciseIndex={exerciseIndex}
-            attempts={attempts}
-          />
-        </View>
-
-        {/* Feedback après réponse */}
-        <GrammarFeedback
-          isVisible={showFeedback}
+      {/* Exercice actuel - Ajout de key pour forcer le rafraîchissement */}
+      <View key={`exercise-container-${exerciseIndex}-${attempts}`}>
+        <GrammarExerciseRenderer
+          exercise={currentExercise}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+          inputText={inputText}
+          setInputText={setInputText}
+          showFeedback={showFeedback}
           isCorrect={isCorrect}
-          explanation={currentExercise?.explanation}
-          correctAnswer={currentExercise?.answer}
+          exerciseIndex={exerciseIndex}
           attempts={attempts}
         />
-      </ScrollView>
+      </View>
+
+      {/* Feedback après réponse */}
+      <GrammarFeedback
+        isVisible={showFeedback}
+        isCorrect={isCorrect}
+        explanation={currentExercise?.explanation}
+        correctAnswer={currentExercise?.answer}
+        attempts={attempts}
+      />
 
       {/* Navigation unifiée */}
       <GrammarNavigation
@@ -272,9 +281,28 @@ const GrammarExercise = ({ route }) => {
         attempts={attempts}
         levelColor={levelColor}
       />
-    </SafeAreaView>
+    </>
+  );
+
+  // ========== RENDU PRINCIPAL ==========
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      withScrollView
+      backgroundColor={`${levelColor}05`} // Background avec légère teinte du niveau
+      statusBarStyle="dark-content"
+      withPadding={false} // Pas de padding global, géré par les composants internes
+      scrollViewProps={{
+        style: styles.scrollView,
+        contentContainerStyle: styles.contentContainer,
+        showsVerticalScrollIndicator: false,
+      }}
+      style={styles.safeArea}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 
 export default GrammarExercise;
-

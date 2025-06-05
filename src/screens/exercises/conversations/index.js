@@ -1,11 +1,14 @@
 // src/screens/exercises/conversation/index.js
 import React, { useState, useCallback, useMemo, useEffect } from "react";
-import { SafeAreaView, KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import {
   useNavigation,
   useRoute,
   useFocusEffect,
 } from "@react-navigation/native";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
 // Composants spécifiques au conversation
 import ConversationHeader from "./ConversationHeader";
@@ -30,7 +33,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice de Conversation Writing
- * Version optimisée avec enregistrement de progression à des moments stratégiques
+ * Version optimisée avec Container SafeArea et enregistrement de progression à des moments stratégiques
  */
 const ConversationExercise = ({ route }) => {
   // Hooks de navigation
@@ -79,7 +82,6 @@ const ConversationExercise = ({ route }) => {
   // Initialiser les données de progression
   useEffect(() => {
     if (progressLoaded && conversationData) {
-
       initializeProgress(conversationData);
 
       // Enregistrer la sélection initiale du scénario
@@ -109,7 +111,6 @@ const ConversationExercise = ({ route }) => {
         scenarioHistory?.conversation &&
         scenarioHistory.conversation.length > 0
       ) {
-
         setConversation(scenarioHistory.conversation);
 
         // Calculer l'étape actuelle en fonction des messages du bot
@@ -120,7 +121,6 @@ const ConversationExercise = ({ route }) => {
       } else {
         // Nouvelle conversation - initialiser avec le premier message du bot
         if (scenario.steps && scenario.steps.length > 0) {
-
           const initialBotMessage = {
             id: `bot-initial-${Date.now()}`,
             text: scenario.steps[0].botMessage,
@@ -150,7 +150,6 @@ const ConversationExercise = ({ route }) => {
       // Fonction de nettoyage exécutée lorsque l'utilisateur quitte la page
       return () => {
         if (progressLoaded && conversationChanged) {
-
           saveProgressState();
         }
       };
@@ -289,18 +288,22 @@ const ConversationExercise = ({ route }) => {
     setShowHelp((prev) => !prev);
   }, []);
 
-  return (
-    <SafeAreaView style={styles.safeArea}>
+  // Gérer le retour en arrière avec sauvegarde
+  const handleBackPress = useCallback(() => {
+    // Sauvegarder avant de quitter si nécessaire
+    if (conversationChanged) {
+      saveProgressState();
+    }
+    navigation.goBack();
+  }, [conversationChanged, saveProgressState, navigation]);
+
+  // Contenu principal de l'exercice
+  const renderMainContent = () => (
+    <>
       {/* En-tête du conversation */}
       <ConversationHeader
         level={level}
-        onBackPress={() => {
-          // Sauvegarder avant de quitter si nécessaire
-          if (conversationChanged) {
-            saveProgressState();
-          }
-          navigation.goBack();
-        }}
+        onBackPress={handleBackPress}
         levelColor={levelColor}
       />
 
@@ -331,7 +334,7 @@ const ConversationExercise = ({ route }) => {
         />
       )}
 
-      {/* Zone de conversation */}
+      {/* Zone de conversation avec gestion du clavier */}
       <KeyboardAvoidingView
         style={styles.chatContainer}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -359,9 +362,21 @@ const ConversationExercise = ({ route }) => {
           levelColor={levelColor}
         />
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </>
+  );
+
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      backgroundColor="#FAFBFC"
+      statusBarStyle="dark-content"
+      withPadding={false} // Pas de padding global, géré par les composants internes
+      style={styles.safeArea}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 
 export default ConversationExercise;
-

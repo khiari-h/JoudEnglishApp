@@ -1,7 +1,9 @@
 // src/screens/exercises/spelling/index.js
 import React, { useEffect } from "react";
-import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
 // Composants spécifiques à l'exercice d'orthographe
 import SpellingHeader from "./SpellingHeader";
@@ -21,7 +23,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice d'orthographe (Spelling)
- * Version nettoyée avec une seule logique de progression
+ * Version recodée avec Container SafeArea + logique de progression unifiée
  */
 const SpellingExercise = ({ route }) => {
   // ========== NAVIGATION ET PARAMÈTRES ==========
@@ -113,9 +115,9 @@ const SpellingExercise = ({ route }) => {
     navigation.goBack();
   };
 
-  // ========== RENDU ==========
-  return (
-    <SafeAreaView style={styles.container}>
+  // ========== CONTENU PRINCIPAL ==========
+  const renderMainContent = () => (
+    <>
       {/* En-tête avec niveau et couleur */}
       <SpellingHeader 
         level={level} 
@@ -158,7 +160,21 @@ const SpellingExercise = ({ route }) => {
         onNext={handleNextExercise}
         onRetry={retryExercise}
       />
-    </SafeAreaView>
+    </>
+  );
+
+  // ========== RENDU PRINCIPAL ==========
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      backgroundColor="#FAFBFC"
+      statusBarStyle="dark-content"
+      withPadding={false} // Pas de padding global, géré par les composants internes
+      style={styles.container}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 

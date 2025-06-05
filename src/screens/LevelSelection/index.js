@@ -1,5 +1,6 @@
+// src/screens/LevelSelection/index.js
 import React, { useContext } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 
@@ -13,7 +14,7 @@ import Button from "../../components/ui/Button";
 import ProgressBar from "../../components/ui/ProgressBar";
 
 // Composants Layout
-import Container from "../../components/layout/Container";
+import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
 // Constantes et Helpers
@@ -96,14 +97,9 @@ const LevelSelection = () => {
     );
   };
 
-  return (
-    <Container
-      safeArea
-      backgroundColor={colors.background}
-      withScrollView={false}
-      statusBarColor="#6366F1"
-      statusBarStyle="light-content"
-    >
+  // Contenu principal de l'écran
+  const renderMainContent = () => (
+    <>
       {/* Header avec chemin de niveaux compact */}
       <View style={styles.headerContainer}>
         <LinearGradient
@@ -127,79 +123,95 @@ const LevelSelection = () => {
         </LinearGradient>
       </View>
 
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        <View style={styles.introSection}>
-          <Text style={styles.introText}>
-            Nos niveaux structurés s'adaptent à votre progression. Commencez par
-            le niveau qui correspond le mieux à vos capacités linguistiques.
-          </Text>
-        </View>
+      <View style={styles.introSection}>
+        <Text style={styles.introText}>
+          Nos niveaux structurés s'adaptent à votre progression. Commencez par
+          le niveau qui correspond le mieux à vos capacités linguistiques.
+        </Text>
+      </View>
 
-        <View style={styles.levelsContainer}>
-          {levels.map((level) => (
-            <Card
-              key={level.id}
-              style={styles.levelCard}
-              withShadow
-              bordered={false}
-              withSideBorder
-              onPress={() => handleLevelSelect(level)}
-              headerIconColor={level.color}
-              contentStyle={styles.cardContentStyle}
-            >
-              {/* En-tête personnalisé pour la carte */}
-              <View style={styles.cardHeader}>
-                <View style={styles.titleBadgeContainer}>
-                  <View
-                    style={[
-                      styles.badge,
-                      { backgroundColor: `${level.color}15` },
-                    ]}
+      <View style={styles.levelsContainer}>
+        {levels.map((level) => (
+          <Card
+            key={level.id}
+            style={styles.levelCard}
+            withShadow
+            bordered={false}
+            withSideBorder
+            onPress={() => handleLevelSelect(level)}
+            headerIconColor={level.color}
+            contentStyle={styles.cardContentStyle}
+          >
+            {/* En-tête personnalisé pour la carte */}
+            <View style={styles.cardHeader}>
+              <View style={styles.titleBadgeContainer}>
+                <View
+                  style={[
+                    styles.badge,
+                    { backgroundColor: `${level.color}15` },
+                  ]}
+                >
+                  <Text
+                    style={[styles.badgeText, { color: level.color }]}
                   >
-                    <Text
-                      style={[styles.badgeText, { color: level.color }]}
-                    >
-                      {level.name}
-                    </Text>
-                  </View>
-                  <Text style={styles.levelTitle}>{level.title}</Text>
+                    {level.name}
+                  </Text>
                 </View>
-                <View style={styles.iconContainer}>
-                  <Text style={styles.iconText}>{level.icon}</Text>
-                </View>
+                <Text style={styles.levelTitle}>{level.title}</Text>
               </View>
+              <View style={styles.iconContainer}>
+                <Text style={styles.iconText}>{level.icon}</Text>
+              </View>
+            </View>
 
-              <Text style={styles.levelDescription}>{level.description}</Text>
+            <Text style={styles.levelDescription}>{level.description}</Text>
 
-              {level.progress > 0 && (
-                <ProgressBar
-                  progress={level.progress}
-                  fillColor={level.color}
-                  backgroundColor={`${level.color}15`}
-                  height={8}
-                  showPercentage
-                  label="Votre progression"
-                  style={styles.progressBar}
-                />
-              )}
-
-              <Button
-                title="Commencer l'apprentissage"
-                variant="filled"
-                color={level.color}
-                fullWidth
-                onPress={() => handleLevelSelect(level)}
-                style={styles.startButton}
-                rightIcon="arrow-forward-outline"
+            {level.progress > 0 && (
+              <ProgressBar
+                progress={level.progress}
+                fillColor={level.color}
+                backgroundColor={`${level.color}15`}
+                height={8}
+                showPercentage
+                label="Votre progression"
+                style={styles.progressBar}
               />
-            </Card>
-          ))}
-        </View>
-      </ScrollView>
+            )}
+
+            <Button
+              title="Commencer l'apprentissage"
+              variant="filled"
+              color={level.color}
+              fullWidth
+              onPress={() => handleLevelSelect(level)}
+              style={styles.startButton}
+              rightIcon="arrow-forward-outline"
+            />
+          </Card>
+        ))}
+      </View>
+    </>
+  );
+
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM} // Garde la navigation bottom
+      withScrollView
+      backgroundColor={colors.background}
+      statusBarColor="#6366F1"
+      statusBarStyle="light-content"
+      withPadding={false} // Le padding sera géré par les composants internes
+      scrollViewProps={{
+        style: styles.scrollView,
+        contentContainerStyle: [
+          styles.scrollContent,
+          { paddingBottom: 100 } // Espace pour navigation
+        ],
+        showsVerticalScrollIndicator: false,
+      }}
+    >
+      {renderMainContent()}
     </Container>
   );
 };

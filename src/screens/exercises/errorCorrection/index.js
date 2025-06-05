@@ -1,7 +1,10 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionExercise/index.js
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { SafeAreaView, View, ActivityIndicator, Text, Alert } from "react-native";
+import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+// Composants Layout
+import Container, { CONTAINER_SAFE_EDGES } from "../../../../../components/layout/Container";
 
 // Composants spécifiques à la correction d'erreurs
 import ErrorCorrectionHeader from "./ErrorCorrectionHeader";
@@ -31,7 +34,7 @@ import styles from "./style";
 
 /**
  * Composant principal pour l'exercice de correction d'erreurs
- * Version recodée : intégration des deux hooks + logique propre de progression
+ * Version recodée : intégration des deux hooks + logique propre de progression + Container SafeArea
  */
 const ErrorCorrectionExercise = ({ route }) => {
   // ========== NAVIGATION ET PARAMÈTRES ==========
@@ -107,7 +110,6 @@ const ErrorCorrectionExercise = ({ route }) => {
   // Restaurer la dernière position
   useEffect(() => {
     if (loaded && lastPosition.categoryId && exercisesData && hasValidData) {
-
       // Changer la catégorie si différente
       if (lastPosition.categoryId !== selectedCategory) {
         changeCategory(lastPosition.categoryId);
@@ -123,16 +125,13 @@ const ErrorCorrectionExercise = ({ route }) => {
   const handleBack = useCallback(() => {
     if (viewMode === "exercise") {
       setViewMode("browse");
-
     } else {
-
       navigation.goBack();
     }
   }, [viewMode, navigation]);
 
   // Démarrer un exercice avec un mode spécifique
   const handleStartExercise = useCallback((mode) => {
-
     startExercise(mode);
     setViewMode("exercise");
   }, [startExercise]);
@@ -196,7 +195,6 @@ const ErrorCorrectionExercise = ({ route }) => {
       // Retour au mode browse depuis les résultats
       setViewMode("browse");
       setShowResults(false);
-
     } else {
       handleNextAction();
     }
@@ -204,17 +202,15 @@ const ErrorCorrectionExercise = ({ route }) => {
 
   // Réessayer les exercices
   const handleRetry = useCallback(() => {
-
     resetExerciseState();
     setShowResults(false);
   }, [resetExerciseState, setShowResults]);
 
   // Changement de catégorie
   const handleCategoryChange = useCallback((categoryId) => {
-
     changeCategory(categoryId);
     saveLastPosition(categoryId, 0);
-  }, [changeCategory, saveLastPosition, selectedCategory]);
+  }, [changeCategory, saveLastPosition]);
 
   // ========== RENDU MODES ==========
 
@@ -313,24 +309,27 @@ const ErrorCorrectionExercise = ({ route }) => {
     />
   );
 
-  // ========== GESTION CHARGEMENT ==========
-
+  // ========== ÉCRAN DE CHARGEMENT ==========
   if (!loaded || !hasValidData) {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#FAFBFC"
+        statusBarStyle="dark-content"
+        style={styles.safeArea}
+      >
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={levelColor} />
           <Text style={styles.loadingText}>Chargement des exercices...</Text>
         </View>
-      </SafeAreaView>
+      </Container>
     );
   }
 
-  // ========== LOGS DEBUG ==========
-
-  // ========== RENDU PRINCIPAL ==========
-  return (
-    <SafeAreaView style={styles.safeArea}>
+  // ========== CONTENU PRINCIPAL ==========
+  const renderMainContent = () => (
+    <>
       {/* En-tête */}
       <ErrorCorrectionHeader
         level={level}
@@ -375,7 +374,21 @@ const ErrorCorrectionExercise = ({ route }) => {
           levelColor={levelColor}
         />
       )}
-    </SafeAreaView>
+    </>
+  );
+
+  // ========== RENDU PRINCIPAL ==========
+  return (
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      backgroundColor="#FAFBFC"
+      statusBarStyle="dark-content"
+      withPadding={false} // Pas de padding global, géré par les composants internes
+      style={styles.safeArea}
+    >
+      {renderMainContent()}
+    </Container>
   );
 };
 
