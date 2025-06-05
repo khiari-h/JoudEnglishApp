@@ -5,6 +5,9 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
+// ✅ AJOUT CRUCIAL pour SafeArea
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
 export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
@@ -12,23 +15,22 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync(); // Masque l'écran de démarrage une fois les polices chargées
+      SplashScreen.hideAsync();
     }
   }, [loaded]);
 
   if (!loaded) {
-    return null; // Attendre le chargement des polices avant de rendre le contenu
+    return null;
   }
 
   return (
-    <>
+    // ✅ WRAPPER GLOBAL pour toute l'app
+    <SafeAreaProvider>
       <Stack>
-        {/* Gère la navigation vers les onglets */}
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        {/* Écran Not Found */}
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
-    </>
+    </SafeAreaProvider>
   );
 }
