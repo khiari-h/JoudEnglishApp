@@ -1,5 +1,5 @@
 // src/hooks/useLocalStorage.js
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
@@ -19,6 +19,9 @@ const useLocalStorage = (key, initialValue) => {
   // Erreur éventuelle
   const [error, setError] = useState(null);
 
+  // Ref pour éviter les changements de initialValue
+  const initialValueRef = useRef(initialValue);
+  
   // Fonction pour charger la valeur depuis AsyncStorage
   const getStoredValue = useCallback(async () => {
     try {
@@ -26,18 +29,18 @@ const useLocalStorage = (key, initialValue) => {
       const item = await AsyncStorage.getItem(key);
 
       // Analyser la valeur stockée ou retourner initialValue
-      const value = item ? JSON.parse(item) : initialValue;
+      const value = item ? JSON.parse(item) : initialValueRef.current;
       setStoredValue(value);
       setLoaded(true);
       setError(null);
       return value;
     } catch (error) {
-
+      console.error('Error reading from AsyncStorage:', error);
       setError(error);
       setLoaded(true);
-      return initialValue;
+      return initialValueRef.current;
     }
-  }, [key, initialValue]);
+  }, [key]); // ← Seulement 'key' dans les dépendances
 
   // Fonction pour définir une valeur dans AsyncStorage et dans l'état
   const setValue = useCallback(async (value) => {
@@ -52,7 +55,7 @@ const useLocalStorage = (key, initialValue) => {
       await AsyncStorage.setItem(key, JSON.stringify(valueToStore));
       setError(null);
     } catch (error) {
-
+      console.error('Error writing to AsyncStorage:', error);
       setError(error);
     }
   }, [key, storedValue]);
@@ -61,18 +64,44 @@ const useLocalStorage = (key, initialValue) => {
   const removeValue = useCallback(async () => {
     try {
       await AsyncStorage.removeItem(key);
-      setStoredValue(initialValue);
+      setStoredValue(initialValueRef.current);
       setError(null);
     } catch (error) {
-
+      console.error('Error removing from AsyncStorage:', error);
       setError(error);
     }
-  }, [key, initialValue]);
+  }, [key]);
 
-  // Charger la valeur depuis AsyncStorage au montage
+  // Charger la valeur depuis AsyncStorage au montage SEULEMENT
   useEffect(() => {
-    getStoredValue();
-  }, [getStoredValue]);
+    let mounted = true;
+    
+    const loadInitialValue = async () => {
+      try {
+        const item = await AsyncStorage.getItem(key);
+        const value = item ? JSON.parse(item) : initialValueRef.current;
+        
+        if (mounted) {
+          setStoredValue(value);
+          setLoaded(true);
+          setError(null);
+        }
+      } catch (error) {
+        if (mounted) {
+          console.error('Error loading initial value:', error);
+          setError(error);
+          setLoaded(true);
+        }
+      }
+    };
+
+    loadInitialValue();
+
+    // Cleanup function
+    return () => {
+      mounted = false;
+    };
+  }, [key]); // ← Seulement 'key', pas getStoredValue !
 
   return {
     value: storedValue,

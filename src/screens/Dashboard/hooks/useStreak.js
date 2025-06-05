@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+// src/screens/Dashboard/hooks/useStreak.js - VERSION STABLE
+import { useState, useEffect, useCallback, useRef } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 /**
@@ -10,6 +11,9 @@ const useStreak = () => {
   const [longestStreak, setLongestStreak] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  // ✅ FIX : Utiliser useRef pour éviter les dépendances instables
+  const longestStreakRef = useRef(0);
+  
   const STREAK_STORAGE_KEY = "user_streak_data";
 
   // Obtenir la date du jour au format YYYY-MM-DD
@@ -56,23 +60,28 @@ const useStreak = () => {
           setCurrentStreak(0);
         }
 
-        setLongestStreak(streakData.longestStreak || 0);
+        const longest = streakData.longestStreak || 0;
+        setLongestStreak(longest);
+        longestStreakRef.current = longest; // ✅ Sync avec ref
       } else {
         // Première utilisation
         setCurrentStreak(0);
         setLongestStreak(0);
+        longestStreakRef.current = 0;
       }
 
       setIsLoading(false);
     } catch (error) {
+      console.error('Error loading streak data:', error);
       setCurrentStreak(0);
       setLongestStreak(0);
+      longestStreakRef.current = 0;
       setIsLoading(false);
     }
-  }, []);
+  }, []); // ✅ Pas de dépendances = fonction stable
 
   // Sauvegarder les données de streak
-  const saveStreakData = async (streak, lastDate, longest) => {
+  const saveStreakData = useCallback(async (streak, lastDate, longest) => {
     try {
       const streakData = {
         currentStreak: streak,
@@ -86,18 +95,18 @@ const useStreak = () => {
         JSON.stringify(streakData)
       );
     } catch (error) {
-      // Silencieux
+      console.error('Error saving streak data:', error);
     }
-  };
+  }, []); // ✅ Pas de dépendances = fonction stable
 
-  // Mettre à jour le streak (appelé à chaque activité)
+  // ✅ FIX : Mettre à jour le streak avec useRef pour éviter la dépendance instable
   const updateStreak = useCallback(async () => {
     try {
       const today = getTodayDate();
       const savedData = await AsyncStorage.getItem(STREAK_STORAGE_KEY);
 
       let newStreak = 1;
-      let newLongest = longestStreak;
+      let newLongest = longestStreakRef.current; // ✅ Utiliser ref au lieu de state
 
       if (savedData) {
         const streakData = JSON.parse(savedData);
@@ -130,10 +139,11 @@ const useStreak = () => {
       await saveStreakData(newStreak, today, newLongest);
       setCurrentStreak(newStreak);
       setLongestStreak(newLongest);
+      longestStreakRef.current = newLongest; // ✅ Sync avec ref
     } catch (error) {
-      // Silencieux
+      console.error('Error updating streak:', error);
     }
-  }, [longestStreak]);
+  }, []); // ✅ PLUS de dépendances = fonction toujours stable !
 
   // Obtenir les statistiques du streak
   const getStreakStats = useCallback(() => {
@@ -144,16 +154,28 @@ const useStreak = () => {
     };
   }, [currentStreak, longestStreak]);
 
-  // Charger au montage - UNE SEULE FOIS
+  // ✅ FIX : useEffect avec flag mounted pour éviter setState après démontage
   useEffect(() => {
-    loadStreakData();
-  }, []); // ✅ Dépendances vides pour éviter les boucles
+    let mounted = true;
+
+    const loadData = async () => {
+      if (mounted) {
+        await loadStreakData();
+      }
+    };
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, [loadStreakData]); // ✅ loadStreakData est maintenant stable
 
   return {
     currentStreak,
     longestStreak,
     isLoading,
-    updateStreak,
+    updateStreak, // ✅ Maintenant stable !
     getStreakStats,
     loadStreakData,
   };

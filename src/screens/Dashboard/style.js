@@ -1,3 +1,4 @@
+// src/screens/Dashboard/style.js
 import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({

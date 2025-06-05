@@ -1,6 +1,6 @@
 // src/contexts/ProgressContext.js
 import React, { createContext, useState, useEffect } from 'react';
-import { storageService } from '../utils/storage';
+import { storageService } from '../utils/storageUtils'; 
 import { LEVELS, EXERCISE_TYPES } from '../utils/constants';
 
 // Créer le contexte
@@ -66,37 +66,56 @@ export const ProgressProvider = ({ children }) => {
 
   // Charger la progression au démarrage
   useEffect(() => {
+    let mounted = true;
+
     const loadProgress = async () => {
       try {
         setIsLoading(true);
         const savedProgress = await storageService.getProgress();
 
-        if (savedProgress) {
+        if (mounted && savedProgress) {
           setProgress(savedProgress);
         }
       } catch (error) {
-
+        console.error('Error loading progress:', error);
       } finally {
-        setIsLoading(false);
+        if (mounted) {
+          setIsLoading(false);
+        }
       }
     };
 
     loadProgress();
-  }, []);
+
+    return () => {
+      mounted = false;
+    };
+  }, []); // ← Dépendances vides = une seule fois
 
   // Sauvegarder la progression lorsqu'elle change
   useEffect(() => {
+    let timeoutId;
+
     if (!isLoading) {
-      storageService.saveProgress(progress);
+      // Debounce pour éviter trop de sauvegardes
+      timeoutId = setTimeout(() => {
+        storageService.saveProgress(progress);
+      }, 500);
     }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, [progress, isLoading]);
 
   // Mettre à jour la progression d'un exercice spécifique
   const updateExerciseProgress = (exerciseType, level, completed, total = 100) => {
     setProgress(prevProgress => {
-      // Vérifier que l'exerciseType et le level existent
+      // Vérifier que l'exerciceType et le level existent
       if (!prevProgress.exercises[exerciseType] || !prevProgress.exercises[exerciseType][level]) {
-
+        console.warn(`Exercise type ${exerciseType} or level ${level} not found`);
         return prevProgress;
       }
 
@@ -163,7 +182,7 @@ export const ProgressProvider = ({ children }) => {
 
       return streakData?.currentStreak || 0;
     } catch (error) {
-
+      console.error('Error updating streak:', error);
       return 0;
     }
   };
@@ -194,7 +213,7 @@ export const ProgressProvider = ({ children }) => {
 
       return result;
     } catch (error) {
-
+      console.error('Error marking exercise completed:', error);
       return false;
     }
   };
@@ -240,7 +259,7 @@ export const ProgressProvider = ({ children }) => {
       setProgress(createInitialProgress());
       return true;
     } catch (error) {
-
+      console.error('Error resetting progress:', error);
       return false;
     }
   };

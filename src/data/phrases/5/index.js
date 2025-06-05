@@ -3,7 +3,6 @@
 // Importe toutes les catégories et les exporte comme un seul objet
 
 import { CATEGORIES, DIFFICULTY, CATEGORY_DESCRIPTIONS, USAGE_NOTES, LEVEL_INFO, CONTENT_STATS, LEARNING_SEQUENCE } from './metadata.js';
-import academicCommunication from './categories/academic-communication.js';
 import negotiationsPersuasion from './categories/negotiations-persuasion.js';
 import idiomaticExpressionsAdvanced from './categories/idiomatic-expressions-advanced.js';
 import opinionNuances from './categories/opinion-nuances.js';
@@ -15,7 +14,7 @@ import formalInformalDiscourse from './categories/formal-informal-discourse.js';
 import euphemismsDiplomaticLanguage from './categories/euphemisms-diplomatic-language.js';
 import certitudeDoubtExpressions from './categories/certitude-doubt-expressions.js';
 import literaryExpressions from './categories/literary-expressions.js';
-import ethicalPhilosophicalQuestions from './categories/ethical-philosophical-questions.js';
+
 import advancedTechnologyScience from './categories/advanced-technology-science.js';
 import internationalRelations from './categories/international-relations.js';
 
@@ -43,7 +42,7 @@ const phrasesC1 = {
   // Données principales
   categories: CATEGORIES,
   phrases: [
-    ...academicCommunication,
+    
     ...negotiationsPersuasion,
     ...idiomaticExpressionsAdvanced,
     ...opinionNuances,
@@ -55,7 +54,7 @@ const phrasesC1 = {
     ...euphemismsDiplomaticLanguage,
     ...certitudeDoubtExpressions,
     ...literaryExpressions,
-    ...ethicalPhilosophicalQuestions,
+
     ...advancedTechnologyScience,
     ...internationalRelations
   ]
@@ -66,7 +65,7 @@ export default phrasesC1;
 
 // Exports nommés pour permettre d'importer des catégories spécifiques
 export { 
-  academicCommunication,
+  
   negotiationsPersuasion,
   idiomaticExpressionsAdvanced,
   opinionNuances,
@@ -78,7 +77,7 @@ export {
   euphemismsDiplomaticLanguage,
   certitudeDoubtExpressions,
   literaryExpressions,
-  ethicalPhilosophicalQuestions,
+
   advancedTechnologyScience,
   internationalRelations,
   CATEGORIES,

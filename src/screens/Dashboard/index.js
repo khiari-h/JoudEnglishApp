@@ -1,6 +1,6 @@
-// src/screens/Dashboard/index.js - VERSION BEST PRACTICE
+// src/screens/Dashboard/index.js
 import React, { useContext, useEffect, useCallback } from "react";
-import { View, ScrollView, StatusBar, RefreshControl } from "react-native";
+import { View, ScrollView, StatusBar, RefreshControl, Text } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
 // Contextes
@@ -16,7 +16,7 @@ import { useDashboardState } from "./hooks/useDashboardState";
 // Hooks existants
 import useLastActivity from "../../hooks/useLastActivity";
 import useStreak from "./hooks/useStreak";
-import useExerciseTracking from "../../hooks/useExerciseTracking"; // ✅ NOUVEAU hook
+import useExerciseTracking from "../../hooks/useExerciceTracking"; // ✅ Corrigé sans faute
 
 // Composants Dashboard
 import CompactHeader from "./components/CompactHeader";
@@ -48,14 +48,8 @@ const Dashboard = ({ route }) => {
 
   const { currentStreak, updateStreak } = useStreak();
   
-  // ✅ NOUVEAU hook cohérent avec RecommendationsSection
-  const { 
-    isTracking, 
-    stopTracking, 
-    startTracking,
-    getFormattedStats,
-    isLoaded: isTimeTrackingLoaded 
-  } = useExerciseTracking();
+  // ✅ Hook de tracking corrigé
+  const tracking = useExerciseTracking();
 
   // ========== HOOKS PERSONNALISÉS DASHBOARD ==========
   const { currentLevel, handleChangeActiveLevel, levelColor } =
@@ -66,10 +60,8 @@ const Dashboard = ({ route }) => {
     handleLevelSelect,
     handleDailyChallengeStart,
     handleEvaluationStart,
-  } = useDashboardNavigation(updateStreak, startTracking);
+  } = useDashboardNavigation(updateStreak, tracking.startTracking);
 
-  // ✅ Plus besoin de passer exerciseTimeStats depuis dashboardData
-  // RecommendationsSection récupère ses données directement
   const dashboardData = useDashboardData(
     progressContext,
     currentLevel,
@@ -91,21 +83,27 @@ const Dashboard = ({ route }) => {
   // ========== EFFETS OPTIMISÉS ==========
   useEffect(() => {
     loadLastActivities();
-  }, []);
+  }, [loadLastActivities]);
 
   useFocusEffect(
     useCallback(() => {
       loadLastActivities();
 
-      // ✅ Utiliser la nouvelle API stopTracking
-      if (isTracking) {
-        const result = stopTracking();
-        // result contient: { exerciseType, timeSpent, saved }
-        if (result.saved) {
-          console.log(`Session sauvée: ${result.timeSpent}s sur ${result.exerciseType}`);
-        }
+      // Arrêter le tracking si nécessaire
+      if (tracking.isTracking) {
+        const handleStopTracking = async () => {
+          try {
+            const result = await tracking.stopTracking();
+            if (result.saved && result.timeSpent > 0) {
+              console.log(`Session sauvée: ${result.timeSpent}s sur ${result.exerciseType}`);
+            }
+          } catch (error) {
+            console.error('Erreur lors de l\'arrêt du tracking:', error);
+          }
+        };
+        handleStopTracking();
       }
-    }, [isTracking, stopTracking, loadLastActivities])
+    }, [tracking.isTracking, tracking.stopTracking, loadLastActivities])
   );
 
   // ========== GESTIONNAIRES OPTIMISÉS ==========
@@ -129,34 +127,59 @@ const Dashboard = ({ route }) => {
     ]
   );
 
-  // ========== RENDU OPTIMISÉ ==========
-  // ✅ Attendre que le tracking soit chargé pour éviter les props undefined
-  if (!isTimeTrackingLoaded) {
+  // ========== RENDU CONDITIONNEL ==========
+  
+  // Écran de chargement si le tracking n'est pas prêt
+  if (!tracking.isLoaded) {
     return (
       <View style={[styles.container, { backgroundColor: colors.background }]}>
         <StatusBar barStyle="light-content" />
-        {/* Loader ou skeleton screen ici si besoin */}
+        <View style={{ 
+          flex: 1, 
+          justifyContent: 'center', 
+          alignItems: 'center',
+          paddingHorizontal: 20 
+        }}>
+          <Text style={{ 
+            color: colors.primary, 
+            fontSize: 16,
+            textAlign: 'center',
+            marginBottom: 8 
+          }}>
+            Chargement de votre progression...
+          </Text>
+          {tracking.error && (
+            <Text style={{ 
+              color: '#EF4444', 
+              fontSize: 14,
+              textAlign: 'center' 
+            }}>
+              Erreur: {tracking.error}
+            </Text>
+          )}
+        </View>
       </View>
     );
   }
 
+  // ========== RENDU PRINCIPAL ==========
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StatusBar barStyle="light-content" />
 
-      {/* Header avec données optimisées */}
+      {/* Header avec données utilisateur */}
       <CompactHeader
         level={currentLevel}
         streak={currentStreak}
         levelColor={levelColor}
       />
 
-      {/* Contenu scrollable avec RefreshControl */}
+      {/* Contenu principal scrollable */}
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: 100 }, // Espace pour les onglets Expo Router
+          { paddingBottom: 100 }, // Espace pour les onglets de navigation
         ]}
         showsVerticalScrollIndicator={false}
         refreshControl={
@@ -164,10 +187,11 @@ const Dashboard = ({ route }) => {
             refreshing={refreshing}
             onRefresh={onRefresh}
             colors={[colors.primary]}
+            tintColor={colors.primary}
           />
         }
       >
-        {/* 1. Continue Learning */}
+        {/* 1. Section Continuer l'apprentissage */}
         <ContinueLearningSection
           lastActivity={dashboardData.lastActivity}
           onPress={navigateToExercise}
@@ -176,7 +200,7 @@ const Dashboard = ({ route }) => {
           isLoading={isActivityLoading}
         />
 
-        {/* 2. Défi du jour */}
+        {/* 2. Section Défi du jour */}
         <DailyGoalSection
           currentLevel={currentLevel}
           progress={dashboardData.progress}
@@ -185,17 +209,16 @@ const Dashboard = ({ route }) => {
           onStartEvaluation={handleEvaluationStart}
         />
 
-        {/* 3. Suggestions intelligentes */}
-        {/* ✅ PLUS de prop exerciseTimeStats - le composant récupère ses données */}
+        {/* 3. Section Recommandations intelligentes */}
         <RecommendationsSection
           lastActivity={dashboardData.lastActivity}
           currentLevel={currentLevel}
           onSelectExercise={navigateToExercise}
           accentColor={levelColor}
-          debugMode={__DEV__} // Voir les temps réels en développement
+          debugMode={false}
         />
 
-        {/* 4. Parcours d'apprentissage */}
+        {/* 4. Section Parcours d'apprentissage */}
         <LearningPathCompact
           globalProgress={dashboardData.globalProgress}
           levels={dashboardData.allLevels}
@@ -204,9 +227,12 @@ const Dashboard = ({ route }) => {
           onViewProgress={openLevelProgressModal}
           primaryColor={levelColor}
         />
+
+        {/* Espacement final */}
+        <View style={styles.bottomSpacer} />
       </ScrollView>
 
-      {/* Modal progression niveaux */}
+      {/* Modal de progression des niveaux */}
       <LevelProgressModal
         visible={showLevelProgress}
         levels={dashboardData.getAllLearningLevels}
@@ -214,7 +240,7 @@ const Dashboard = ({ route }) => {
         onSelectLevel={handleLevelProgressSelect}
       />
 
-      {/* ✅ Debug info temporaire en développement */}
+      {/* Debug overlay (seulement en développement) */}
       {__DEV__ && (
         <View style={{ 
           position: 'absolute', 
@@ -222,16 +248,29 @@ const Dashboard = ({ route }) => {
           right: 10, 
           backgroundColor: 'rgba(0,0,0,0.8)', 
           padding: 8, 
-          borderRadius: 4 
+          borderRadius: 4,
+          maxWidth: 200
         }}>
-          <Text style={{ color: 'white', fontSize: 10 }}>
-            🐛 Time Tracking: {isTracking ? 'ON' : 'OFF'}
+          <Text style={{ color: 'white', fontSize: 10, marginBottom: 2 }}>
+            🐛 Debug Dashboard
           </Text>
-          {isTracking && (
-            <Text style={{ color: 'white', fontSize: 10 }}>
-              📊 Stats: {JSON.stringify(getFormattedStats())}
+          <Text style={{ color: 'white', fontSize: 9 }}>
+            Tracking: {tracking.isTracking ? 'ON' : 'OFF'}
+          </Text>
+          <Text style={{ color: 'white', fontSize: 9 }}>
+            Chargé: {tracking.isLoaded ? 'Oui' : 'Non'}
+          </Text>
+          {tracking.error && (
+            <Text style={{ color: '#FF6B6B', fontSize: 9 }}>
+              Erreur: {tracking.error}
             </Text>
           )}
+          <Text style={{ color: 'white', fontSize: 9 }}>
+            Niveau: {currentLevel}
+          </Text>
+          <Text style={{ color: 'white', fontSize: 9 }}>
+            Streak: {currentStreak}
+          </Text>
         </View>
       )}
     </View>

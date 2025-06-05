@@ -9,7 +9,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import Card from "../../../../components/ui/Card";
 import Button from "../../../../components/ui/Button";
 import useSmartRecommendations from "../../../../hooks/useSmartRecommendations";
-import useExerciseTracking from "../../../../hooks/useExerciseTracking"; // ✅ Nouveau !
+import useExerciseTracking from "../../../../hooks/useExerciceTracking"; // ✅ Nouveau !
 import styles from "./style";
 
 const RecommendationsSection = ({

@@ -1,5 +1,5 @@
-// src/hooks/useLastActivity.js - CLEAN VERSION
-import { useState, useEffect, useCallback } from 'react';
+// src/hooks/useLastActivity.js - FIXED VERSION
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
@@ -11,8 +11,8 @@ const useLastActivity = () => {
   const [lastActivities, setLastActivities] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  // Types d'exercices disponibles dans l'application - MÉMORISÉS
-  const exerciseTypes = [
+  // ✅ FIX 1: Mémoriser exerciseTypes pour éviter la re-création
+  const exerciseTypes = useMemo(() => [
     { 
       key: 'vocabulary',
       title: 'Vocabulaire',
@@ -68,13 +68,13 @@ const useLastActivity = () => {
       icon: 'trophy-outline',
       positionKey: 'assessment_position_'
     }
-  ];
+  ], []); // ✅ Dépendances vides = créé UNE SEULE FOIS
 
-  // Niveaux du nouveau système - MÉMORISÉS
-  const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
+  // ✅ FIX 2: Mémoriser levels pour éviter la re-création
+  const levels = useMemo(() => ['1', '2', '3', '4', '5', '6', 'bonus'], []);
 
-  // Charger les métadonnées de progression pour un exercice
-  const loadProgressMetadata = async (exerciseType, level, position, mode = null) => {
+  // ✅ FIX 3: useCallback pour loadProgressMetadata
+  const loadProgressMetadata = useCallback(async (exerciseType, level, position, mode = null) => {
     let progress = 0;
     let metadata = {};
 
@@ -149,10 +149,10 @@ const useLastActivity = () => {
     }
 
     return { progress, metadata };
-  };
+  }, []); // ✅ Pas de dépendances externes
 
-  // Charger les activités vocabulary avec modes
-  const loadVocabularyActivities = async (level) => {
+  // ✅ FIX 4: useCallback pour loadVocabularyActivities
+  const loadVocabularyActivities = useCallback(async (level) => {
     const activities = [];
     const modes = ['fast', 'classic'];
 
@@ -184,9 +184,9 @@ const useLastActivity = () => {
     }
 
     return activities;
-  };
+  }, [exerciseTypes, loadProgressMetadata]); // ✅ Dépendances stables
 
-  // ✅ FIX PRINCIPAL : useCallback STABLE avec dépendances vides
+  // ✅ FIX 5: loadLastActivities avec dépendances stables
   const loadLastActivities = useCallback(async () => {
     setIsLoading(true);
 
@@ -197,7 +197,6 @@ const useLastActivity = () => {
         activitiesByLevel[level] = [];
 
         for (const exerciseType of exerciseTypes) {
-
           if (exerciseType.hasModes && exerciseType.key === 'vocabulary') {
             const vocabularyActivities = await loadVocabularyActivities(level);
             activitiesByLevel[level].push(...vocabularyActivities);
@@ -232,14 +231,27 @@ const useLastActivity = () => {
       setLastActivities(activitiesByLevel);
       setIsLoading(false);
     } catch (error) {
+      console.error('Error loading last activities:', error);
       setIsLoading(false);
     }
-  }, []); // ✅ DÉPENDANCES VIDES = fonction stable !
+  }, [levels, exerciseTypes, loadVocabularyActivities, loadProgressMetadata]); // ✅ Toutes dépendances stables !
 
-  // ✅ FIX : useEffect avec dépendances vides
+  // ✅ FIX 6: useEffect avec cleanup et flag mounted
   useEffect(() => {
-    loadLastActivities();
-  }, []); // ✅ Se déclenche UNE SEULE FOIS au montage !
+    let mounted = true;
+
+    const loadData = async () => {
+      if (mounted) {
+        await loadLastActivities();
+      }
+    };
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, [loadLastActivities]); // ✅ loadLastActivities est maintenant stable !
 
   // Formater une chaîne de temps relative
   const getTimeElapsed = useCallback((timestamp) => {

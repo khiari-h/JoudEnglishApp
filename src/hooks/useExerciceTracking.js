@@ -1,12 +1,12 @@
-// hooks/useExerciseTracking.js
+// hooks/useExerciseTracking.js - VERSION STABLE
 /**
  * Hook composé pour tracker le temps d'un exercice
  * Combine useTimer + useExerciseStorage
  */
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import useTimer from './useTimer.js';
-import useExerciseStorage from './useExerciseStorage.js';
+import useExerciseStorage from './useExerciceStorage.js'; // ✅ CORRIGÉ - sans faute
 import { TIMER_CONFIG } from '../utils/timeConstants.js';
 
 const useExerciseTracking = () => {
@@ -17,7 +17,10 @@ const useExerciseTracking = () => {
   const [currentExercise, setCurrentExercise] = useState(null);
   const [sessionStats, setSessionStats] = useState({});
   
-  // Démarrer le tracking d'un exercice
+  // ✅ FIX : Utiliser useRef pour éviter les dépendances instables
+  const currentExerciseRef = useRef(null);
+  
+  // ✅ FIX : Démarrer le tracking avec des dépendances stables
   const startTracking = useCallback((exerciseType) => {
     if (!storage.isValidExerciseType(exerciseType)) {
       console.error(`Invalid exercise type: ${exerciseType}`);
@@ -25,14 +28,19 @@ const useExerciseTracking = () => {
     }
     
     // Arrêter le tracking précédent s'il y en a un
-    if (currentExercise) {
-      stopTracking();
+    if (currentExerciseRef.current) {
+      // Utiliser une version simplifiée pour éviter la dépendance circulaire
+      const timeSpent = timer.stop();
+      if (timeSpent >= TIMER_CONFIG.MIN_SESSION_SECONDS) {
+        storage.addTime(currentExerciseRef.current, timeSpent);
+      }
     }
     
     // Démarrer le nouveau tracking
     const success = timer.start();
     if (success) {
       setCurrentExercise(exerciseType);
+      currentExerciseRef.current = exerciseType; // ✅ Sync avec ref
       setSessionStats(prev => ({
         ...prev,
         [exerciseType]: 0
@@ -40,11 +48,13 @@ const useExerciseTracking = () => {
     }
     
     return success;
-  }, [currentExercise, timer, storage]);
+  }, [timer.start, timer.stop, storage.isValidExerciseType, storage.addTime]); // ✅ Dépendances spécifiques et stables
   
-  // Arrêter et sauvegarder le tracking
-  const stopTracking = useCallback(() => {
-    if (!currentExercise) {
+  // ✅ FIX : Arrêter le tracking avec des dépendances stables
+  const stopTracking = useCallback(async () => {
+    const currentEx = currentExerciseRef.current; // ✅ Utiliser ref
+    
+    if (!currentEx) {
       return { exerciseType: null, timeSpent: 0, saved: false };
     }
     
@@ -53,46 +63,48 @@ const useExerciseTracking = () => {
     
     // Sauvegarder seulement si c'est significatif
     if (timeSpent >= TIMER_CONFIG.MIN_SESSION_SECONDS) {
-      saved = storage.addTime(currentExercise, timeSpent);
+      saved = await storage.addTime(currentEx, timeSpent);
       
       if (saved) {
         setSessionStats(prev => ({
           ...prev,
-          [currentExercise]: (prev[currentExercise] || 0) + timeSpent
+          [currentEx]: (prev[currentEx] || 0) + timeSpent
         }));
       }
     }
     
     const result = {
-      exerciseType: currentExercise,
+      exerciseType: currentEx,
       timeSpent,
       saved
     };
     
     setCurrentExercise(null);
+    currentExerciseRef.current = null; // ✅ Sync avec ref
     return result;
-  }, [currentExercise, timer, storage]);
+  }, [timer.stop, storage.addTime]); // ✅ Dépendances spécifiques et stables
   
-  // Pause le tracking (garde l'exercice actuel)
+  // ✅ FIX : Pause le tracking avec dépendances stables
   const pauseTracking = useCallback(() => {
     return timer.pause();
-  }, [timer]);
+  }, [timer.pause]);
   
-  // Reprendre le tracking
+  // ✅ FIX : Reprendre le tracking avec dépendances stables
   const resumeTracking = useCallback(() => {
     return timer.resume();
-  }, [timer]);
+  }, [timer.resume]);
   
-  // Auto-save périodique pour éviter la perte de données
+  // ✅ FIX : Auto-save périodique avec useRef
   useEffect(() => {
-    if (!currentExercise || !timer.isRunning) {
+    if (!currentExerciseRef.current || !timer.isRunning) {
       return;
     }
     
-    const autoSaveInterval = setInterval(() => {
-      if (timer.elapsedTime >= TIMER_CONFIG.MIN_SESSION_SECONDS) {
+    const autoSaveInterval = setInterval(async () => {
+      const currentEx = currentExerciseRef.current;
+      if (currentEx && timer.elapsedTime >= TIMER_CONFIG.MIN_SESSION_SECONDS) {
         // Sauvegarder le temps accumulé sans arrêter le timer
-        storage.addTime(currentExercise, timer.elapsedTime);
+        await storage.addTime(currentEx, timer.elapsedTime);
         // Reset le timer pour éviter la double comptabilisation
         const wasRunning = timer.isRunning;
         timer.reset();
@@ -103,7 +115,7 @@ const useExerciseTracking = () => {
     }, TIMER_CONFIG.AUTO_SAVE_INTERVAL_MS);
     
     return () => clearInterval(autoSaveInterval);
-  }, [currentExercise, timer, storage]);
+  }, [timer.isRunning, timer.elapsedTime, timer.reset, timer.start, storage.addTime]);
   
   // Obtenir les stats formatées pour l'affichage
   const getFormattedStats = useCallback(() => {
@@ -115,14 +127,14 @@ const useExerciseTracking = () => {
     });
     
     return formatted;
-  }, [storage]);
+  }, [storage.getAllStats]);
   
   // Obtenir le temps total d'un exercice (incluant la session en cours)
   const getTotalTime = useCallback((exerciseType) => {
     const storedTime = storage.getTime(exerciseType);
-    const sessionTime = currentExercise === exerciseType ? timer.elapsedTime : 0;
+    const sessionTime = currentExerciseRef.current === exerciseType ? timer.elapsedTime : 0;
     return storedTime + sessionTime;
-  }, [storage, currentExercise, timer.elapsedTime]);
+  }, [storage.getTime, timer.elapsedTime]);
   
   // Obtenir les infos de debug
   const getDebugInfo = useCallback(() => {
@@ -135,24 +147,30 @@ const useExerciseTracking = () => {
       },
       storage: storage.getDebugInfo(),
       tracking: {
-        currentExercise,
+        currentExercise: currentExerciseRef.current,
         sessionStats
       }
     };
-  }, [timer, storage, currentExercise, sessionStats]);
+  }, [timer.isRunning, timer.elapsedTime, timer.canStart, timer.canStop, storage.getDebugInfo, sessionStats]);
   
-  // Cleanup automatique à la destruction
+  // ✅ FIX : Cleanup automatique avec useRef
   useEffect(() => {
     return () => {
-      if (currentExercise && timer.isRunning) {
+      const currentEx = currentExerciseRef.current;
+      if (currentEx && timer.isRunning) {
         // Auto-save final
         const timeSpent = timer.elapsedTime;
         if (timeSpent >= TIMER_CONFIG.MIN_SESSION_SECONDS) {
-          storage.addTime(currentExercise, timeSpent);
+          storage.addTime(currentEx, timeSpent);
         }
       }
     };
-  }, [currentExercise, timer, storage]);
+  }, []); // ✅ Cleanup seulement au démontage
+  
+  // ✅ FIX : Sync entre state et ref
+  useEffect(() => {
+    currentExerciseRef.current = currentExercise;
+  }, [currentExercise]);
   
   return {
     // État du tracking
@@ -161,7 +179,7 @@ const useExerciseTracking = () => {
     currentSessionTime: timer.elapsedTime,
     isRunning: timer.isRunning,
     
-    // Actions de tracking
+    // Actions de tracking - ✅ Maintenant stables !
     startTracking,
     stopTracking,
     pauseTracking,

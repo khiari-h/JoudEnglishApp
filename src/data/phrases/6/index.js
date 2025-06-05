@@ -76,7 +76,6 @@ export {
   quotesCulturalReferences,
   complexAnalysisInterpretation,
   poeticFigurativeLanguage,
-  ceremonialFormalRegisters,
   advancedInterculturalCommunication,
   stylisticMasteryVariations,
   CATEGORIES,

@@ -19,7 +19,7 @@ import Header from "../../components/layout/Header";
 // Constantes et Helpers
 import { EXERCISE_TYPES, LANGUAGE_LEVELS, ROUTES } from "../../utils/constants";
 
-// Styles
+// Styles centralisés
 import styles from "./style";
 
 // Valeurs par défaut pour les contextes
@@ -234,4 +234,3 @@ const ExerciseSelection = ({ route }) => {
 };
 
 export default ExerciseSelection;
-

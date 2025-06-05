@@ -1,7 +1,7 @@
 // src/contexts/ThemeContext.js
 import React, { createContext, useState, useEffect } from 'react';
 import { useColorScheme } from 'react-native';
-import { getData, storeData } from '../utils/storage';
+import { getData, storeData } from '../utils/storageUtils'; // ← Import unifié
 import { COLORS } from '../utils/constants';
 
 // Créer le contexte
@@ -24,27 +24,48 @@ export const ThemeProvider = ({ children }) => {
 
   // Charger le thème sauvegardé au démarrage
   useEffect(() => {
+    let mounted = true;
+
     const loadTheme = async () => {
       try {
         const savedTheme = await getData('appTheme');
-        if (savedTheme) {
-          setTheme(savedTheme);
+        if (mounted) {
+          if (savedTheme) {
+            setTheme(savedTheme);
+          }
+          setLoaded(true);
         }
-        setLoaded(true);
       } catch (error) {
-
-        setLoaded(true);
+        console.error('Error loading theme:', error);
+        if (mounted) {
+          setLoaded(true);
+        }
       }
     };
 
     loadTheme();
-  }, []);
+
+    return () => {
+      mounted = false;
+    };
+  }, []); // ← Dépendances vides = une seule fois
 
   // Sauvegarder le thème lorsqu'il change
   useEffect(() => {
+    let timeoutId;
+
     if (loaded) {
-      storeData('appTheme', theme);
+      // Debounce pour éviter trop de sauvegardes
+      timeoutId = setTimeout(() => {
+        storeData('appTheme', theme);
+      }, 300);
     }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, [theme, loaded]);
 
   // Changer le thème

@@ -1,4 +1,4 @@
-// hooks/useExerciseStorage.js
+// hooks/useExerciseStorage.js - VERSION CORRIGÉE
 /**
  * Hook pour gérer le stockage des temps d'exercice
  * Responsabilité unique : persistance des données
@@ -24,7 +24,7 @@ const useExerciseStorage = () => {
     const loadData = async () => {
       try {
         setError(null);
-        const storageData = readFromStorage();
+        const storageData = await readFromStorage(); // ✅ CORRIGÉ - ajout await
         
         if (storageData?.data) {
           const sanitizedStats = sanitizeTimeStats(storageData.data);
@@ -37,6 +37,7 @@ const useExerciseStorage = () => {
         
         setIsLoaded(true);
       } catch (err) {
+        console.error('Error loading exercise storage:', err);
         setError(err.message);
         setStats(DEFAULT_STATS);
         setIsLoaded(true);
@@ -47,10 +48,10 @@ const useExerciseStorage = () => {
   }, []);
   
   // Sauvegarder les stats
-  const saveStats = useCallback((newStats) => {
+  const saveStats = useCallback(async (newStats) => {
     try {
       const sanitizedStats = sanitizeTimeStats(newStats);
-      const success = writeToStorage(undefined, sanitizedStats);
+      const success = await writeToStorage(undefined, sanitizedStats); // ✅ CORRIGÉ - ajout await
       
       if (success) {
         setStats(sanitizedStats);
@@ -60,13 +61,14 @@ const useExerciseStorage = () => {
         throw new Error('Failed to write to storage');
       }
     } catch (err) {
+      console.error('Error saving stats:', err);
       setError(err.message);
       return false;
     }
   }, []);
   
   // Ajouter du temps à un exercice
-  const addTime = useCallback((exerciseType, timeInSeconds) => {
+  const addTime = useCallback(async (exerciseType, timeInSeconds) => {
     // Validation des paramètres
     if (!Object.values(EXERCISE_TYPES).includes(exerciseType)) {
       setError(`Invalid exercise type: ${exerciseType}`);
@@ -87,7 +89,7 @@ const useExerciseStorage = () => {
       [exerciseType]: (stats[exerciseType] || 0) + timeInSeconds
     };
     
-    return saveStats(newStats);
+    return await saveStats(newStats); // ✅ CORRIGÉ - ajout await
   }, [stats, saveStats]);
   
   // Obtenir le temps pour un exercice (en secondes)
@@ -105,7 +107,7 @@ const useExerciseStorage = () => {
   }, [stats]);
   
   // Remettre à zéro un exercice
-  const resetExercise = useCallback((exerciseType) => {
+  const resetExercise = useCallback(async (exerciseType) => {
     if (!Object.values(EXERCISE_TYPES).includes(exerciseType)) {
       setError(`Invalid exercise type: ${exerciseType}`);
       return false;
@@ -116,13 +118,13 @@ const useExerciseStorage = () => {
       [exerciseType]: 0
     };
     
-    return saveStats(newStats);
+    return await saveStats(newStats); // ✅ CORRIGÉ - ajout await
   }, [stats, saveStats]);
   
   // Remettre à zéro toutes les stats
-  const resetAll = useCallback(() => {
+  const resetAll = useCallback(async () => {
     try {
-      const success = resetStorage();
+      const success = await resetStorage(); // ✅ CORRIGÉ - ajout await
       if (success) {
         setStats(DEFAULT_STATS);
         setError(null);
@@ -131,15 +133,17 @@ const useExerciseStorage = () => {
         throw new Error('Failed to reset storage');
       }
     } catch (err) {
+      console.error('Error resetting storage:', err);
       setError(err.message);
       return false;
     }
   }, []);
   
   // Obtenir les infos de debug
-  const getDebugInfo = useCallback(() => {
+  const getDebugInfo = useCallback(async () => {
+    const storageInfo = await getStorageInfo(); // ✅ CORRIGÉ - ajout await
     return {
-      ...getStorageInfo(),
+      ...storageInfo,
       currentStats: stats,
       error,
       isLoaded

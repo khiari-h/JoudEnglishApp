@@ -1,12 +1,13 @@
-// utils/vocabularyDataHelper.js
+// src/utils/vocabulary/vocabularyDataHelper.js
 
-// Import des données de vocabulaire par niveau (6 niveaux complets)
+// Import des données de vocabulaire par niveau (6 niveaux + bonus)
 import vocabulary1Data from "../../data/vocabulary/1";
 import vocabulary2Data from "../../data/vocabulary/2";
 import vocabulary3Data from "../../data/vocabulary/3";
 import vocabulary4Data from "../../data/vocabulary/4";
 import vocabulary5Data from "../../data/vocabulary/5";
 import vocabulary6Data from "../../data/vocabulary/6";
+import vocabularyBonusData from "../../data/vocabulary/bonus";
 
 // Import des données Fast Vocabulary (exports nommés, pas default)
 import { vocab as fastVocab1 } from "../../data/fastVocabulary/1";
@@ -17,7 +18,11 @@ import { vocab as fastVocab5 } from "../../data/fastVocabulary/5";
 import { vocab as fastVocab6 } from "../../data/fastVocabulary/6";
 import { vocab as fastVocabBonus } from "../../data/fastVocabulary/bonus";
 
-// Fonction pour convertir la structure Fast vers la structure attendue
+/**
+ * Fonction pour convertir la structure Fast vers la structure attendue
+ * @param {Object} fastVocab - Données fast vocabulary
+ * @returns {Object} Structure convertie pour l'app
+ */
 const convertFastVocabToExercises = (fastVocab) => {
   if (!fastVocab || !fastVocab.words) {
     return { exercises: [] };
@@ -40,7 +45,6 @@ const convertFastVocabToExercises = (fastVocab) => {
  * @returns {Object} Les données de vocabulaire pour le niveau et mode spécifiés
  */
 export const getVocabularyData = (level, mode = "classic") => {
-
   if (mode === "fast") {
     const fastDataMap = {
       "1": convertFastVocabToExercises(fastVocab1),
@@ -52,11 +56,10 @@ export const getVocabularyData = (level, mode = "classic") => {
       "bonus": convertFastVocabToExercises(fastVocabBonus),
     };
 
-    const data = fastDataMap[level] || convertFastVocabToExercises(fastVocab1);
-    return data;
+    return fastDataMap[level] || convertFastVocabToExercises(fastVocab1);
   }
 
-  // Mode classic (6 niveaux standards)
+  // Mode classic (6 niveaux standards + bonus)
   const classicDataMap = {
     "1": vocabulary1Data,
     "2": vocabulary2Data,
@@ -64,10 +67,10 @@ export const getVocabularyData = (level, mode = "classic") => {
     "4": vocabulary4Data,
     "5": vocabulary5Data,
     "6": vocabulary6Data,
+    "bonus": vocabularyBonusData,
   };
 
-  const data = classicDataMap[level] || vocabulary1Data;
-  return data;
+  return classicDataMap[level] || vocabulary1Data;
 };
 
 /**
@@ -76,10 +79,7 @@ export const getVocabularyData = (level, mode = "classic") => {
  * @returns {Array} Liste des niveaux disponibles
  */
 export const getAvailableLevels = (mode = "classic") => {
-  if (mode === "fast") {
-    return ["1", "2", "3", "4", "5", "6", "bonus"]; // 7 niveaux avec bonus
-  }
-  return ["1", "2", "3", "4", "5", "6"]; // 6 niveaux standards
+  return ["1", "2", "3", "4", "5", "6", "bonus"];
 };
 
 /**
@@ -89,13 +89,13 @@ export const getAvailableLevels = (mode = "classic") => {
  */
 export const getLevelColor = (level) => {
   const colors = {
-    "1": "#3b82f6", // Bleu - Débutant
-    "2": "#16a34a", // Vert - Élémentaire
-    "3": "#f97316", // Orange - Intermédiaire
-    "4": "#eab308", // Jaune doré - Intermédiaire+
-    "5": "#ef4444", // Rouge - Avancé
-    "6": "#8b5cf6", // Violet - Maîtrise
-    "bonus": "#f59e0b", // Orange spécial pour le niveau bonus
+    "1": "#3b82f6", // Bleu - Niveau 1
+    "2": "#8b5cf6", // Violet - Niveau 2
+    "3": "#10b981", // Vert - Niveau 3
+    "4": "#f59e0b", // Orange - Niveau 4
+    "5": "#ef4444", // Rouge - Niveau 5
+    "6": "#6366f1", // Indigo - Niveau 6
+    "bonus": "#9333EA", // Violet premium - Bonus
   };
   return colors[level] || "#5E60CE"; // Couleur par défaut
 };
@@ -107,15 +107,51 @@ export const getLevelColor = (level) => {
  */
 export const getLevelDisplayName = (level) => {
   const displayNames = {
-    "1": "Débutant",
-    "2": "Élémentaire",
-    "3": "Intermédiaire",
-    "4": "Intermédiaire+",
-    "5": "Avancé",
-    "6": "Maîtrise",
-    "bonus": "Bonus Level", // Niveau spécial
+    "1": "Niveau 1",
+    "2": "Niveau 2", 
+    "3": "Niveau 3",
+    "4": "Niveau 4",
+    "5": "Niveau 5",
+    "6": "Niveau 6",
+    "bonus": "Bonus",
   };
   return displayNames[level] || `Niveau ${level}`;
+};
+
+/**
+ * Récupère la description d'un niveau
+ * @param {string} level - Le niveau de langue
+ * @returns {string} Description du niveau
+ */
+export const getLevelDescription = (level) => {
+  const descriptions = {
+    "1": "Communication basique, expressions simples du quotidien",
+    "2": "Expressions simples, conversations courantes",
+    "3": "Communication claire sur des sujets familiers",
+    "4": "Communication complexe, discussions techniques",
+    "5": "Expression fluide, sujets complexes",
+    "6": "Niveau proche du locuteur natif, maîtrise de la langue",
+    "bonus": "Contenu exclusif et avancé",
+  };
+  return descriptions[level] || "Niveau de langue";
+};
+
+/**
+ * Récupère l'icône associée à un niveau
+ * @param {string} level - Le niveau de langue
+ * @returns {string} Emoji icône pour le niveau
+ */
+export const getLevelIcon = (level) => {
+  const icons = {
+    "1": "🌱",
+    "2": "🌿",
+    "3": "🌳",
+    "4": "🚀",
+    "5": "💎",
+    "6": "🏆",
+    "bonus": "🔥",
+  };
+  return icons[level] || "📚";
 };
 
 /**
@@ -125,4 +161,29 @@ export const getLevelDisplayName = (level) => {
  */
 export const isBonusLevel = (level) => {
   return level === "bonus";
+};
+
+/**
+ * Récupère les statistiques d'un niveau de vocabulaire
+ * @param {string} level - Le niveau de langue
+ * @param {string} mode - Le mode ('classic' ou 'fast')
+ * @returns {Object} Statistiques du niveau
+ */
+export const getVocabularyStats = (level, mode = "classic") => {
+  const data = getVocabularyData(level, mode);
+  
+  if (!data || !data.exercises) {
+    return { totalWords: 0, totalExercises: 0 };
+  }
+
+  const totalExercises = data.exercises.length;
+  const totalWords = data.exercises.reduce((sum, exercise) => {
+    return sum + (exercise.words ? exercise.words.length : 0);
+  }, 0);
+
+  return {
+    totalWords,
+    totalExercises,
+    averageWordsPerExercise: totalExercises > 0 ? Math.round(totalWords / totalExercises) : 0,
+  };
 };
