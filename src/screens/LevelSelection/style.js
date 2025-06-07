@@ -1,179 +1,15 @@
 // src/screens/LevelSelection/style.js
 import { StyleSheet, Platform } from 'react-native';
 
-export default StyleSheet.create({
-  // =================== HEADER SOPHISTIQUÉ ===================
+const styles = StyleSheet.create({
+  // =================== HEADER APP NATIVE (FULLWIDTH) ===================
   headerContainer: {
     overflow: "hidden",
-    // Ombre pour séparer visuellement
+    // Pas d'ombre excessive = plus app native
     ...Platform.select({
       ios: {
         shadowColor: "#000",
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.08,
-        shadowRadius: 10,
-      },
-      android: {
-        elevation: 5,
-      },
-    }),
-  },
-  headerGradient: {
-    borderBottomLeftRadius: 24, // Plus fluide qu'avant
-    borderBottomRightRadius: 24,
-    paddingBottom: 20,
-    // Dégradé plus riche visuellement
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: "600", // Moins agressif que bold
-    letterSpacing: -0.7, // Typographie moderne
-    color: "rgba(255, 255, 255, 0.98)",
-    lineHeight: 32,
-    textShadowColor: "rgba(0, 0, 0, 0.2)",
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 4,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
-  },
-
-  // =================== CHEMIN DE NIVEAUX RAFFINÉ ===================
-  compactPathContainer: {
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    alignItems: "center",
-  },
-  levelPath: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.08)", // Fond subtil
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: 20,
-    // Effet de verre dépoli
-    backdropFilter: "blur(10px)",
-  },
-  smallLevelDot: {
-    width: 34, // Plus grand pour être plus lisible
-    height: 34,
-    borderRadius: 17,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 4,
-    // Ombre plus sophistiquée
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.15,
-        shadowRadius: 4,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
-    // Bordure subtile pour plus de définition
-    borderWidth: 1.5,
-    borderColor: "rgba(255, 255, 255, 0.2)",
-  },
-  smallLevelDotText: {
-    color: "white",
-    fontSize: 13,
-    fontWeight: "700",
-    letterSpacing: 0.5,
-    textShadowColor: "rgba(0, 0, 0, 0.3)",
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 2,
-  },
-  smallLevelLine: {
-    height: 3, // Plus épais
-    width: 20, // Plus long
-    backgroundColor: "rgba(255, 255, 255, 0.4)",
-    borderRadius: 1.5,
-  },
-
-  // =================== CONTENU SCROLL ===================
-  scrollView: {
-    flex: 1,
-    backgroundColor: "#FAFBFC", // Cohérent avec ExerciseSelection
-  },
-  scrollContent: {
-    paddingHorizontal: 20,
-    paddingBottom: 32,
-    paddingTop: 20,
-  },
-
-  // =================== SECTION INTRO ===================
-  introSection: {
-    marginBottom: 32,
-    paddingHorizontal: 8,
-  },
-  introText: {
-    fontSize: 17,
-    color: "#64748B", // Cohérent avec ExerciseSelection
-    lineHeight: 25,
-    textAlign: "center",
-    letterSpacing: 0.1,
-    fontWeight: "400",
-  },
-
-  // =================== CONTENEUR NIVEAUX ===================
-  levelsContainer: {
-    gap: 20, // Plus d'espace entre les cartes
-  },
-
-  // =================== CARTES DE NIVEAU SOPHISTIQUÉES ===================
-  levelCard: {
-    marginBottom: 6,
-    borderRadius: 18, // Plus arrondi pour être premium
-    backgroundColor: "#FFFFFF",
-    // Ombre multicouche plus sophistiquée
-    ...Platform.select({
-      ios: {
-        shadowColor: "#1F2937",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.07,
-        shadowRadius: 16,
-      },
-      android: {
-        elevation: 4,
-      },
-    }),
-    // Bordure subtile
-    borderWidth: 0.5,
-    borderColor: "rgba(0, 0, 0, 0.04)",
-    // Effet de survol pour le futur
-    transform: [{ scale: 1 }],
-  },
-  cardContentStyle: {
-    padding: 24, // Plus d'air que les 16px de base
-  },
-
-  // =================== HEADER CARTE NIVEAU ===================
-  cardHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start", // Meilleur alignement
-    marginBottom: 16,
-  },
-  titleBadgeContainer: {
-    flexDirection: "column",
-    flex: 1,
-    marginRight: 16,
-  },
-  badge: {
-    alignSelf: "flex-start",
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 14, // Plus arrondi
-    marginBottom: 10,
-    minWidth: 36,
-    alignItems: "center",
-    // Ombre subtile sur le badge
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
       },
@@ -182,157 +18,255 @@ export default StyleSheet.create({
       },
     }),
   },
-  badgeText: {
-    fontSize: 15,
-    fontWeight: "700",
-    letterSpacing: 0.5,
+  headerGradient: {
+    // Pas de borderRadius = fullwidth app native
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    paddingBottom: 8, // Très réduit
+    paddingHorizontal: 0, // Supprimé pour fullwidth
   },
-  levelTitle: {
-    fontSize: 20,
-    fontWeight: "600", // Moins lourd que avant
-    color: "#1E293B", // Plus sophistiqué
+  headerTitle: {
+    fontSize: 20, // Plus adapté mobile
+    fontWeight: "600",
     letterSpacing: -0.3,
+    color: "rgba(255, 255, 255, 0.95)",
     lineHeight: 24,
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
   },
-  iconContainer: {
-    width: 50, // Légèrement plus grand
-    height: 50,
-    borderRadius: 25,
+
+  // =================== CHEMIN NIVEAUX APP NATIVE ===================
+  compactPathContainer: {
+    paddingVertical: 8, // Très compact
+    paddingHorizontal: 16, // Réduit
+    alignItems: "center",
+  },
+  levelPath: {
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.02)", // Fond très subtil
-    // Ombre douce
+    backgroundColor: "rgba(255, 255, 255, 0.15)", // Plus visible
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 12,
+  },
+  smallLevelDot: {
+    width: 24, // Plus petit = plus app native
+    height: 24,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 2,
+    // Ombre réduite
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.15,
+        shadowRadius: 2,
+      },
+      android: {
+        elevation: 1,
+      },
+    }),
+    borderWidth: 0.5,
+    borderColor: "rgba(255, 255, 255, 0.3)",
+  },
+  smallLevelDotText: {
+    color: "white",
+    fontSize: 10,
+    fontWeight: "700",
+    textShadowColor: "rgba(0, 0, 0, 0.3)",
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 1,
+  },
+  smallLevelLine: {
+    height: 1.5,
+    width: 12,
+    backgroundColor: "rgba(255, 255, 255, 0.4)",
+    borderRadius: 1,
+  },
+
+  // =================== CONTENU APP NATIVE ===================
+  scrollView: {
+    flex: 1,
+    backgroundColor: "#F8F9FA", // Légèrement différent pour app native
+  },
+  scrollContent: {
+    paddingHorizontal: 16, // Standard mobile
+    paddingBottom: 20,
+    paddingTop: 8, // Très réduit
+  },
+
+  // =================== INTRO ULTRA-COMPACTE ===================
+  introSection: {
+    marginBottom: 12, // Très réduit
+    paddingHorizontal: 4,
+  },
+  introText: {
+    fontSize: 14,
+    color: "#6B7280",
+    lineHeight: 18,
+    textAlign: "center",
+    fontWeight: "400",
+  },
+
+  // =================== CARDS APP NATIVE ===================
+  levelsContainer: {
+    gap: 10, // Espacement app native
+  },
+  levelCard: {
+    marginBottom: 2,
+    borderRadius: 12, // App native standard
+    backgroundColor: "#FFFFFF",
+    // Ombre app native (plus subtile)
     ...Platform.select({
       ios: {
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.06,
-        shadowRadius: 6,
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
       },
       android: {
         elevation: 2,
       },
     }),
+    borderWidth: 0.5,
+    borderColor: "rgba(0, 0, 0, 0.06)",
   },
-  iconText: {
-    fontSize: 30,
-  },
-
-  // =================== DESCRIPTION NIVEAU ===================
-  levelDescription: {
-    fontSize: 15,
-    color: "#64748B",
-    lineHeight: 22,
-    marginBottom: 20,
-    letterSpacing: 0.1,
+  cardContentStyle: {
+    padding: 14, // Compact mais respirable
   },
 
-  // =================== BARRE DE PROGRESSION ===================
-  progressBar: {
-    marginBottom: 20,
-    // Style pour une progression plus premium
-    borderRadius: 6,
-    overflow: "hidden",
+  // =================== HEADER CARD AVEC BADGE ===================
+  cardHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
   },
-
-  // =================== BOUTON DÉMARRAGE ===================
-  startButton: {
-    marginTop: 6,
-    borderRadius: 14, // Cohérent avec le design
-    // Ombre pour le bouton
+  levelTitleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  levelMainTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#1F2937",
+    marginRight: 8, // Espace avant badge
+  },
+  levelBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+    minWidth: 28,
+    alignItems: "center",
+    // Ombre badge
     ...Platform.select({
       ios: {
         shadowColor: "#000",
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.12,
-        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
       },
       android: {
-        elevation: 3,
+        elevation: 1,
       },
     }),
   },
-
-  // =================== ÉTATS INTERACTIFS ===================
-  // Pour les cartes pressées
-  levelCardPressed: {
-    transform: [{ scale: 0.97 }],
-    opacity: 0.95,
-  },
-
-  // =================== AMÉLIORATIONS BONUS ===================
-  // Badge de recommandation
-  recommendedBadge: {
-    position: "absolute",
-    top: 16,
-    right: 16,
-    backgroundColor: "#10B981",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 12,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-  },
-  recommendedBadgeText: {
-    color: "#FFFFFF",
+  levelBadgeText: {
     fontSize: 12,
-    fontWeight: "600",
-    letterSpacing: 0.3,
+    fontWeight: "700",
+    color: "white",
+  },
+  levelIcon: {
+    fontSize: 22, // Plus adapté mobile
   },
 
-  // Indicateur de difficulté par étoiles
-  difficultyStars: {
-    flexDirection: "row",
-    marginTop: 8,
-    gap: 3,
-  },
-  star: {
-    fontSize: 14,
-    color: "#FCD34D",
-  },
-  starEmpty: {
-    fontSize: 14,
-    color: "#E5E7EB",
+  // =================== DESCRIPTION COMPACTE ===================
+  levelDescription: {
+    fontSize: 13,
+    color: "#6B7280",
+    lineHeight: 18,
+    marginBottom: 12,
   },
 
-  // Badge de niveau débloqué
-  unlockedBadge: {
-    backgroundColor: "#3B82F6",
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 8,
-    alignSelf: "flex-start",
-    marginTop: 8,
+  // =================== PROGRESSION APP NATIVE ===================
+  progressContainer: {
+    marginBottom: 12,
   },
-  unlockedBadgeText: {
-    color: "#FFFFFF",
+  progressBar: {
+    height: 6,
+    backgroundColor: "#F1F5F9",
+    borderRadius: 3,
+    overflow: "hidden",
+    marginBottom: 4,
+  },
+  progressFill: {
+    height: 6,
+    borderRadius: 3,
+  },
+  progressText: {
     fontSize: 11,
-    fontWeight: "600",
-    letterSpacing: 0.5,
+    color: "#64748B",
+    textAlign: "right",
   },
 
-  // État de niveau verrouillé
+  // =================== BOUTON APP NATIVE ===================
+  startButton: {
+    paddingVertical: 10, // Plus compact
+    borderRadius: 8, // App native
+    // Ombre bouton réduite
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 1,
+      },
+    }),
+  },
+  startButtonText: {
+    fontSize: 14,
+    fontWeight: "600",
+  },
+
+  // =================== ÉTATS APP NATIVE ===================
+  levelCardPressed: {
+    transform: [{ scale: 0.99 }],
+    opacity: 0.9,
+  },
+  
+  // =================== NIVEAU VERROUILLÉ ===================
+  lockedCard: {
+    opacity: 0.6,
+    backgroundColor: "#F8F9FA",
+  },
   lockedOverlay: {
     position: "absolute",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
-    borderRadius: 18,
+    backgroundColor: "rgba(248, 249, 250, 0.8)",
+    borderRadius: 12,
     justifyContent: "center",
     alignItems: "center",
   },
   lockIcon: {
-    fontSize: 32,
+    fontSize: 24,
     color: "#9CA3AF",
-    marginBottom: 8,
+    marginBottom: 4,
   },
   lockedText: {
     color: "#6B7280",
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "500",
     textAlign: "center",
   },
 });
+
+export default styles;

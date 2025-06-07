@@ -10,15 +10,15 @@ export const LANGUAGE_LEVELS = {
     id: "1",
     name: "1",
     title: "Niveau 1",
-    description: "Communication basique, expressions simples du quotidien",
+    description: "Bases du quotidien", // Raccourci de "Communication basique, expressions simples du quotidien"
     color: "#3b82f6", // Bleu
     icon: "🌱",
   },
   2: {
     id: "2",
-    name: "2",
+    name: "2", 
     title: "Niveau 2",
-    description: "Expressions simples, conversations courantes",
+    description: "Conversations simples", // Raccourci de "Expressions simples, conversations courantes"
     color: "#8b5cf6", // Violet
     icon: "🌿",
   },
@@ -26,15 +26,15 @@ export const LANGUAGE_LEVELS = {
     id: "3",
     name: "3",
     title: "Niveau 3",
-    description: "Communication claire sur des sujets familiers",
+    description: "Sujets familiers", // Raccourci de "Communication claire sur des sujets familiers"
     color: "#10b981", // Vert
     icon: "🌳",
   },
   4: {
     id: "4",
     name: "4",
-    title: "Niveau 4",
-    description: "Communication complexe, discussions techniques",
+    title: "Niveau 4", 
+    description: "Discussions techniques", // Raccourci de "Communication complexe, discussions techniques"
     color: "#f59e0b", // Orange
     icon: "🚀",
   },
@@ -42,15 +42,15 @@ export const LANGUAGE_LEVELS = {
     id: "5",
     name: "5",
     title: "Niveau 5",
-    description: "Expression fluide, sujets complexes",
+    description: "Expression fluide", // Raccourci de "Expression fluide, sujets complexes"
     color: "#ef4444", // Rouge
     icon: "💎",
   },
   6: {
-    id: "6",
+    id: "6", 
     name: "6",
     title: "Niveau 6",
-    description: "Niveau proche du locuteur natif, maîtrise de la langue",
+    description: "Proche du natif", // Raccourci de "Niveau proche du locuteur natif, maîtrise de la langue"
     color: "#6366f1", // Indigo
     icon: "🏆",
   },
@@ -58,7 +58,7 @@ export const LANGUAGE_LEVELS = {
     id: "bonus",
     name: "B",
     title: "Bonus",
-    description: "Contenu exclusif et avancé",
+    description: "Contenu exclusif", // Raccourci de "Contenu exclusif et avancé"
     color: "#9333EA", // Violet premium
     icon: "🔥",
   },
@@ -66,6 +66,7 @@ export const LANGUAGE_LEVELS = {
 
 // Liste des niveaux de langue (pour les itérations)
 export const LEVELS = Object.keys(LANGUAGE_LEVELS);
+
 
 export const EXERCISE_TYPES = {
   vocabulary: {

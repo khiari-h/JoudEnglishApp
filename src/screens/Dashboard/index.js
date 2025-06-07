@@ -1,6 +1,6 @@
 // src/screens/Dashboard/index.js
 import React, { useContext, useEffect, useCallback } from "react";
-import { RefreshControl, Text } from "react-native";
+import { RefreshControl, Text, ScrollView, View } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
 // Contextes
@@ -59,7 +59,6 @@ const Dashboard = ({ route }) => {
   const {
     navigateToExercise,
     handleLevelSelect,
-    handleDailyChallengeStart,
     handleEvaluationStart,
   } = useDashboardNavigation(updateStreak, tracking.startTracking);
 
@@ -150,16 +149,9 @@ const Dashboard = ({ route }) => {
     );
   }
 
-  // ========== CONTENU PRINCIPAL ==========
-  const renderMainContent = () => (
+  // ========== CONTENU SCROLLABLE (sans header ni modal) ==========
+  const renderScrollableContent = () => (
     <>
-      {/* Header avec données utilisateur */}
-      <CompactHeader
-        level={currentLevel}
-        streak={currentStreak}
-        levelColor={levelColor}
-      />
-
       {/* 1. Section Continuer l'apprentissage */}
       <ContinueLearningSection
         lastActivity={dashboardData.lastActivity}
@@ -174,7 +166,6 @@ const Dashboard = ({ route }) => {
         currentLevel={currentLevel}
         progress={dashboardData.progress}
         accentColor={levelColor}
-        onStartExercise={handleDailyChallengeStart}
         onStartEvaluation={handleEvaluationStart}
       />
 
@@ -196,13 +187,8 @@ const Dashboard = ({ route }) => {
         primaryColor={levelColor}
       />
 
-      {/* Modal de progression des niveaux */}
-      <LevelProgressModal
-        visible={showLevelProgress}
-        levels={dashboardData.getAllLearningLevels}
-        onClose={closeLevelProgressModal}
-        onSelectLevel={handleLevelProgressSelect}
-      />
+      {/* Espacement final */}
+      <View style={styles.bottomSpacer} />
     </>
   );
 
@@ -211,28 +197,45 @@ const Dashboard = ({ route }) => {
     <Container
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM} // Garde la navigation bottom
-      withScrollView
+      withScrollView={false} // ✅ IMPORTANT : ScrollView manuel pour structure complexe
       backgroundColor={colors.background}
       statusBarStyle="light-content"
-      withPadding={false} // Le padding sera géré par les composants internes
-      scrollViewProps={{
-        style: styles.scrollView,
-        contentContainerStyle: [
+      withPadding={false}
+    >
+      {/* Header FIXE avec données utilisateur */}
+      <CompactHeader
+        level={currentLevel}
+        streak={currentStreak}
+        levelColor={levelColor}
+      />
+
+      {/* Contenu principal SCROLLABLE */}
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={[
           styles.scrollContent,
           { paddingBottom: 100 } // Espace pour les onglets de navigation
-        ],
-        showsVerticalScrollIndicator: false,
-        refreshControl: (
+        ]}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
           <RefreshControl
             refreshing={refreshing}
             onRefresh={onRefresh}
             colors={[colors.primary]}
             tintColor={colors.primary}
           />
-        ),
-      }}
-    >
-      {renderMainContent()}
+        }
+      >
+        {renderScrollableContent()}
+      </ScrollView>
+
+      {/* Modal de progression des niveaux - ABSOLUE */}
+      <LevelProgressModal
+        visible={showLevelProgress}
+        levels={dashboardData.getAllLearningLevels}
+        onClose={closeLevelProgressModal}
+        onSelectLevel={handleLevelProgressSelect}
+      />
     </Container>
   );
 };

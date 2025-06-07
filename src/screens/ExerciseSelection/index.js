@@ -1,6 +1,6 @@
-// src/screens/ExerciseSelection/index.js
+// src/screens/ExerciseSelection/index.js - COMPACT STYLE LEVELSELECTION
 import React, { useContext, useMemo } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 
@@ -9,18 +9,16 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { ProgressContext } from "../../contexts/ProgressContext";
 
 // Composants UI
-import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
-import ProgressBar from "../../components/ui/ProgressBar";
 
 // Composants Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
-// Constantes et Helpers
-import { EXERCISE_TYPES, LANGUAGE_LEVELS, ROUTES } from "../../utils/constants";
+// Constantes (tes constantes modifiées)
+import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../utils/constants";
 
-// Styles centralisés
+// Styles réutilisés de LevelSelection
 import styles from "./style";
 
 // Valeurs par défaut pour les contextes
@@ -61,8 +59,22 @@ const ExerciseSelection = ({ route }) => {
     );
   }, [level, colors.primary]);
 
-  // Couleur du niveau
   const levelColor = levelInfo.color;
+
+  // =================== BACKGROUND DYNAMIQUE ===================
+  
+  const getExerciseBackground = (levelColor) => {
+    const gradientStart = levelColor + "06"; // 2.5% opacity
+    const gradientMiddle = "#FFFFFF";        // Blanc pur
+    const gradientEnd = levelColor + "08";   // 3% opacity
+    
+    return {
+      gradientColors: [gradientStart, gradientMiddle, gradientEnd],
+      gradientLocations: [0, 0.4, 1]
+    };
+  };
+
+  const backgroundSystem = getExerciseBackground(levelColor);
 
   // Préparer les exercices disponibles selon le niveau
   const exercises = useMemo(() => {
@@ -112,135 +124,200 @@ const ExerciseSelection = ({ route }) => {
   // Obtenir le titre d'affichage du niveau
   const getLevelDisplayTitle = () => {
     if (level === "bonus") {
-      return "Niveau Bonus";
+      return "Bonus";
     }
     return `Niveau ${level}`;
   };
 
-  // Rendu d'une carte d'exercice
-  const renderExerciseCard = (exercise) => {
-    return (
-      <Card
-        key={exercise.id}
-        style={styles.exerciseCard}
-        withShadow
-        bordered={false}
-        withSideBorder
-        sideBorderColor={exercise.color}
-        onPress={() => handleExerciseSelect(exercise)}
-        contentStyle={styles.cardContentStyle}
+  // =================== HEADER COMPACT ===================
+  
+  const renderCompactHeader = () => (
+    <View style={styles.headerContainer}>
+      <LinearGradient
+        colors={[levelColor, levelColor + "DD"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.headerGradient}
       >
-        <View style={styles.exerciseHeader}>
-          <View style={styles.exerciseTitleContainer}>
-            <View
-              style={[
-                styles.iconContainer,
-                { backgroundColor: `${exercise.color}15` },
-              ]}
-            >
-              <Text style={styles.exerciseIcon}>{exercise.icon}</Text>
-            </View>
-            <View style={styles.exerciseInfo}>
-              <Text style={styles.exerciseTitle}>{exercise.title}</Text>
-              <Text style={styles.exerciseDescription}>
-                {exercise.description}
-              </Text>
-            </View>
+        <Header
+          title={getLevelDisplayTitle()}
+          showBackButton
+          backgroundColor="transparent"
+          textColor="white"
+          withStatusBar={false}
+          withShadow={false}
+          titleContainerStyle={styles.headerTitle}
+        />
+
+        {/* Indicateur exercices (style LevelSelection) */}
+        <View style={styles.compactPathContainer}>
+          <View style={styles.levelPath}>
+            <Text style={{
+              color: 'white',
+              fontSize: 13,
+              fontWeight: '600'
+            }}>
+              {exercises.length} exercices
+            </Text>
+            <Text style={{
+              color: 'rgba(255,255,255,0.8)',
+              fontSize: 11,
+              marginLeft: 8
+            }}>
+              • {exercises.filter(ex => ex.progress > 0).length} en cours
+            </Text>
           </View>
         </View>
 
-        {/* Barre de progression discrète */}
-        <View style={styles.progressSection}>
-          <ProgressBar
-            progress={exercise.progress}
-            height={4}
-            fillColor={exercise.color}
-            backgroundColor="#E5E7EB"
-            borderRadius={2}
-            showPercentage={exercise.progress > 0}
-            labelPosition="none"
-            animated
-            animationDuration={600}
-            style={styles.exerciseProgressBar}
+        {level === "bonus" && (
+          <View style={{ alignItems: "center", paddingBottom: 8 }}>
+            <Text style={{
+              color: "rgba(255, 255, 255, 0.88)",
+              fontSize: 12,
+              textAlign: "center",
+              fontWeight: "400",
+            }}>
+              Contenu exclusif débloqué !
+            </Text>
+          </View>
+        )}
+      </LinearGradient>
+    </View>
+  );
+
+  // =================== CARDS COMPACT STYLE LEVELSELECTION ===================
+  
+  const renderCompactExerciseCard = (exercise) => {
+    const hasProgress = exercise.progress > 0;
+    
+    return (
+      <TouchableOpacity
+        key={exercise.id}
+        style={[
+          styles.levelCard, // Même style que les niveaux !
+          hasProgress && {
+            borderWidth: 1,
+            borderColor: exercise.color + "30",
+            backgroundColor: exercise.color + "05"
+          }
+        ]}
+        onPress={() => handleExerciseSelect(exercise)}
+        activeOpacity={0.8}
+      >
+        <View style={styles.cardContentStyle}>
+          {/* Header avec titre + badge (layout LevelSelection) */}
+          <View style={styles.cardHeader}>
+            <View style={styles.levelTitleContainer}>
+              <Text style={styles.levelMainTitle}>{exercise.title}</Text>
+              <View style={[styles.levelBadge, { backgroundColor: exercise.color }]}>
+                <Text style={styles.levelBadgeText}>
+                  {exercise.progress > 0 ? `${exercise.progress}%` : '0%'}
+                </Text>
+              </View>
+              {hasProgress && (
+                <View style={{
+                  backgroundColor: '#10B981',
+                  paddingHorizontal: 6,
+                  paddingVertical: 2,
+                  borderRadius: 4,
+                  marginLeft: 8
+                }}>
+                  <Text style={{ color: 'white', fontSize: 9, fontWeight: '600' }}>
+                    EN COURS
+                  </Text>
+                </View>
+              )}
+            </View>
+            <Text style={styles.levelIcon}>{exercise.icon}</Text>
+          </View>
+
+          {/* Description compacte */}
+          <Text style={styles.levelDescription}>
+            {exercise.description}
+          </Text>
+
+          {/* Progression (si > 0) */}
+          {exercise.progress > 0 && (
+            <View style={styles.progressContainer}>
+              <View style={styles.progressBar}>
+                <View 
+                  style={[
+                    styles.progressFill,
+                    { 
+                      width: `${exercise.progress}%`,
+                      backgroundColor: exercise.color
+                    }
+                  ]} 
+                />
+              </View>
+              <Text style={styles.progressText}>{exercise.progress}%</Text>
+            </View>
+          )}
+
+          {/* Bouton d'action */}
+          <Button
+            title={hasProgress ? "Continuer" : "Commencer"}
+            variant="filled"
+            color={exercise.color}
+            fullWidth
+            onPress={() => handleExerciseSelect(exercise)}
+            style={styles.startButton}
+            rightIcon={hasProgress ? "play-outline" : "arrow-forward-outline"}
           />
         </View>
-
-        <Button
-          title="Commencer"
-          variant="filled"
-          color={exercise.color}
-          fullWidth
-          onPress={() => handleExerciseSelect(exercise)}
-          style={styles.startButton}
-          rightIcon="arrow-forward-outline"
-        />
-      </Card>
+      </TouchableOpacity>
     );
   };
 
-  // Contenu principal de l'écran
-  const renderMainContent = () => (
-    <>
-      {/* Header simplifié avec dégradé */}
-      <View style={styles.headerContainer}>
-        <LinearGradient
-          colors={[levelColor, levelColor + "DD"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.headerGradient}
-        >
-          <Header
-            title={getLevelDisplayTitle()}
-            showBackButton
-            backgroundColor="transparent"
-            textColor="white"
-            withStatusBar={false}
-            withShadow={false}
-            titleStyle={styles.headerTitleStyle}
-            style={styles.headerStyle}
-          />
-
-          {level === "bonus" && (
-            <View style={styles.bonusSubtitleContainer}>
-              <Text style={styles.bonusSubtitle}>
-                Contenu exclusif débloqué !
-              </Text>
-            </View>
-          )}
-        </LinearGradient>
+  // =================== INTRO COMPACTE ===================
+  
+  const renderCompactIntro = () => {
+    const completedCount = exercises.filter(ex => ex.progress > 0).length;
+    
+    return (
+      <View style={styles.introSection}>
+        <Text style={styles.introText}>
+          Choisissez votre exercice • {completedCount}/{exercises.length} en cours
+        </Text>
       </View>
+    );
+  };
 
-      <Text style={styles.introText}>
-        {level === "bonus"
-          ? "Découvrez du contenu exclusif et avancé"
-          : "Sélectionnez une activité pour améliorer vos compétences"}
-      </Text>
-
-      <View style={styles.exercisesContainer}>
-        {exercises.map(renderExerciseCard)}
-      </View>
-    </>
-  );
-
+  // =================== RENDU PRINCIPAL ===================
+  
   return (
     <Container
       safeArea
-      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM} // Garde la navigation bottom
-      withScrollView
-      backgroundColor={colors.background}
+      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM}
+      withScrollView={false}
+      backgroundColor="transparent"
       statusBarColor={levelColor}
       statusBarStyle="light-content"
-      withPadding={false} // Le padding sera géré par les composants internes
-      scrollViewProps={{
-        style: styles.scrollView,
-        contentContainerStyle: [
-          styles.scrollContent,
-          { paddingBottom: 100 } // Espace pour navigation
-        ],
-        showsVerticalScrollIndicator: false,
-      }}
+      withPadding={false}
     >
-      {renderMainContent()}
+      {/* Background Dynamique selon le niveau */}
+      <LinearGradient
+        colors={backgroundSystem.gradientColors}
+        locations={backgroundSystem.gradientLocations}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={{ flex: 1 }}
+      >
+        {renderCompactHeader()}
+        
+        <ScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={[styles.scrollContent, { paddingBottom: 60 }]}
+          showsVerticalScrollIndicator={false}
+        >
+          {renderCompactIntro()}
+          
+          {/* Liste des exercices (même layout que niveaux) */}
+          <View style={styles.levelsContainer}>
+            {exercises.map(renderCompactExerciseCard)}
+          </View>
+        </ScrollView>
+      </LinearGradient>
     </Container>
   );
 };

@@ -50,7 +50,7 @@ export default StyleSheet.create({
     fontSize: 14,
   },
 
-  // Exercice du jour
+  // Exercice du jour (sans TouchableOpacity)
   exerciseContainer: {
     borderRadius: 12,
     borderWidth: 1,
@@ -86,13 +86,31 @@ export default StyleSheet.create({
     fontSize: 13,
     color: '#6B7280',
     lineHeight: 18,
+    marginBottom: 4,
   },
-  actionIndicator: {
-    width: 32,
-    height: 32,
-    justifyContent: 'center',
-    alignItems: 'center',
+  // ✅ NOUVEAU : Texte explicatif de l'objectif
+  exerciseGoalText: {
+    fontSize: 12,
+    color: '#9CA3AF',
+    fontStyle: 'italic',
+    lineHeight: 16,
   },
+  
+  // ✅ NOUVEAU : Bouton pour marquer comme terminé
+  markCompleteButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'currentColor',
+    backgroundColor: 'rgba(59, 130, 246, 0.05)',
+  },
+  markCompleteText: {
+    fontSize: 12,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  
   completedIndicator: {
     width: 32,
     height: 32,

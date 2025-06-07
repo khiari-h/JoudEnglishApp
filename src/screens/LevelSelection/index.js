@@ -1,33 +1,31 @@
-// src/screens/LevelSelection/index.js
+// src/screens/LevelSelection/index.js - AVEC CONSTANTES PROPRES
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { ProgressContext } from "../../contexts/ProgressContext";
 
 // Composants UI
-import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
-import ProgressBar from "../../components/ui/ProgressBar";
 
 // Composants Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
-// Constantes et Helpers
+// Constantes (TES constantes !)
 import { LANGUAGE_LEVELS } from "../../utils/constants";
 
-// Styles centralisés
+// Styles
 import styles from "./style";
 
-// Valeurs par défaut pour les contextes
 const DEFAULT_THEME = {
   colors: {
-    background: "#F9FAFB",
-    primary: "#5E60CE",
+    background: "#F8F9FA",
+    primary: "#5E60CE", 
     text: "#1F2937",
   },
 };
@@ -38,180 +36,289 @@ const DEFAULT_PROGRESS = {
 };
 
 const LevelSelection = () => {
-  // Récupération sécurisée des contextes
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const progressContext = useContext(ProgressContext) || DEFAULT_PROGRESS;
 
   const { colors } = themeContext;
   const { progress, isLoading } = progressContext;
 
-  // Construire le tableau des niveaux avec la progression
+  // =================== LOGIQUE BACKGROUND INTELLIGENT ===================
+  
+  // Déterminer le niveau recommandé de l'utilisateur
+  const getCurrentUserLevel = () => {
+    // Logique : trouve le dernier niveau avec progression > 0
+    const levelsWithProgress = Object.keys(LANGUAGE_LEVELS)
+      .filter(key => key !== 'bonus')
+      .filter(key => progress?.levels?.[key]?.completed > 0);
+    
+    if (levelsWithProgress.length === 0) return 1; // Débutant par défaut
+    
+    const currentLevel = Math.max(...levelsWithProgress.map(Number));
+    return Math.min(currentLevel + 1, 6); // Niveau suivant ou max 6
+  };
+
+  const currentUserLevel = getCurrentUserLevel();
+  const currentLevelData = LANGUAGE_LEVELS[currentUserLevel];
+
+  // =================== BACKGROUND COLORS ÉDUCATIFS ===================
+  
+  const getEducationalBackground = (level) => {
+    const levelData = LANGUAGE_LEVELS[level];
+    const baseColor = levelData.color;
+    
+    // Couleur très pâle (3% opacity) pour background contextuel
+    const backgroundColor = baseColor + "08"; // 8 = ~3% en hex
+    
+    // Gradient vertical subtil pour profondeur (sans être agressif)
+    const gradientStart = baseColor + "05"; // 2%
+    const gradientEnd = baseColor + "0A";   // 4%
+    
+    return {
+      backgroundColor,
+      gradientColors: [gradientStart, "#FFFFFF", gradientEnd],
+      gradientLocations: [0, 0.5, 1]
+    };
+  };
+
+  const backgroundSystem = getEducationalBackground(currentUserLevel);
+
+  // =================== LEVELS DATA ===================
+  
   const levels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => {
     const levelInfo = LANGUAGE_LEVELS[levelKey];
+    const levelProgress = progress?.levels?.[levelKey]?.completed || 0;
+    
+    // Déterminer le type de niveau pour l'affichage
+    const getLevelType = (id) => {
+      if (['1', '2'].includes(id)) return 'beginner';
+      if (['3', '4'].includes(id)) return 'intermediate';
+      if (['5', '6'].includes(id)) return 'advanced';
+      if (id === 'bonus') return 'premium';
+      return 'beginner';
+    };
+    
     return {
       id: levelKey,
       name: levelInfo.name,
       title: levelInfo.title,
       description: levelInfo.description,
-      progress: progress?.levels?.[levelKey]?.completed || 0,
+      progress: levelProgress,
       color: levelInfo.color,
       icon: levelInfo.icon,
+      levelType: getLevelType(levelKey),
+      isLocked: false, // Tous accessibles !
     };
   });
 
-  // Naviguer vers la sélection d'exercice avec le niveau sélectionné
   const handleLevelSelect = (level) => {
+    // Libre accès à tous les niveaux !
     router.push({
       pathname: "/(tabs)/exerciseSelection",
       params: { level: level.id },
     });
   };
 
-  // Générer le chemin compact de tous les niveaux (1,2,3,4,5,6,B)
-  const renderCompactLevelPath = () => {
-    const allLevels = Object.keys(LANGUAGE_LEVELS);
+  // =================== HEADER ADAPTATIF ===================
+  
+  const renderAdaptiveHeader = () => (
+    <View style={styles.headerContainer}>
+      <LinearGradient
+        colors={["#6366F1", "#8B5CF6"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.headerGradient}
+      >
+        <Header
+          title="Niveaux"
+          showBackButton
+          backgroundColor="transparent"
+          textColor="white"
+          withStatusBar={false}
+          withShadow={false}
+          titleContainerStyle={styles.headerTitle}
+        />
 
-    return (
-      <View style={styles.compactPathContainer}>
-        <View style={styles.levelPath}>
-          {allLevels.map((level, index, array) => (
-            <React.Fragment key={level}>
-              <View
-                style={[
-                  styles.smallLevelDot,
-                  { backgroundColor: LANGUAGE_LEVELS[level].color },
-                ]}
-              >
-                <Text style={styles.smallLevelDotText}>
-                  {LANGUAGE_LEVELS[level].name}
-                </Text>
-              </View>
+        {/* Indicateur progression dans header */}
+        <View style={[styles.compactPathContainer, { paddingBottom: 12 }]}>
+          <View style={styles.levelPath}>
+            {Object.keys(LANGUAGE_LEVELS).map((levelKey, index, array) => (
+              <React.Fragment key={levelKey}>
+                <View
+                  style={[
+                    styles.smallLevelDot,
+                    { 
+                      backgroundColor: LANGUAGE_LEVELS[levelKey].color,
+                      opacity: Number(levelKey) <= currentUserLevel ? 1 : 0.4
+                    },
+                  ]}
+                >
+                  <Text style={styles.smallLevelDotText}>
+                    {LANGUAGE_LEVELS[levelKey].name}
+                  </Text>
+                </View>
 
-              {index < array.length - 1 && (
-                <View style={styles.smallLevelLine} />
-              )}
-            </React.Fragment>
-          ))}
+                {index < array.length - 1 && (
+                  <View style={[
+                    styles.smallLevelLine,
+                    { opacity: Number(levelKey) < currentUserLevel ? 1 : 0.3 }
+                  ]} />
+                )}
+              </React.Fragment>
+            ))}
+          </View>
+          
+          {/* Indicateur niveau recommandé */}
+          <Text style={{
+            color: 'rgba(255,255,255,0.8)',
+            fontSize: 11,
+            marginTop: 6,
+            textAlign: 'center'
+          }}>
+            Niveau recommandé : {currentLevelData.title} {currentLevelData.name}
+          </Text>
         </View>
-      </View>
+      </LinearGradient>
+    </View>
+  );
+
+  // =================== CARDS AVEC CONTEXTE ===================
+  
+  const renderContextualLevelCard = (level) => {
+    const isCurrentLevel = Number(level.id) === currentUserLevel;
+    
+    return (
+      <TouchableOpacity
+        key={level.id}
+        style={[
+          styles.levelCard,
+          isCurrentLevel && {
+            borderWidth: 1,
+            borderColor: level.color + "40", // Highlight niveau recommandé
+            backgroundColor: level.color + "05"
+          }
+        ]}
+        onPress={() => handleLevelSelect(level)}
+        activeOpacity={0.8}
+      >
+        <View style={styles.cardContentStyle}>
+          {/* Header avec badge contextuel */}
+          <View style={styles.cardHeader}>
+            <View style={styles.levelTitleContainer}>
+              <Text style={styles.levelMainTitle}>{level.title}</Text>
+              <View style={[styles.levelBadge, { backgroundColor: level.color }]}>
+                <Text style={styles.levelBadgeText}>{level.name}</Text>
+              </View>
+              {isCurrentLevel && (
+                <View style={{
+                  backgroundColor: '#10B981',
+                  paddingHorizontal: 6,
+                  paddingVertical: 2,
+                  borderRadius: 4,
+                  marginLeft: 8
+                }}>
+                  <Text style={{ color: 'white', fontSize: 9, fontWeight: '600' }}>
+                    RECOMMANDÉ
+                  </Text>
+                </View>
+              )}
+            </View>
+            <Text style={styles.levelIcon}>{level.icon}</Text>
+          </View>
+
+          {/* Description avec contexte éducatif */}
+          <Text style={styles.levelDescription}>
+            {level.description}
+            {level.levelType === 'beginner' && ' • Débutant'}
+            {level.levelType === 'intermediate' && ' • Intermédiaire'}  
+            {level.levelType === 'advanced' && ' • Avancé'}
+            {level.levelType === 'premium' && ' • Premium'}
+          </Text>
+
+          {/* Progression */}
+          {level.progress > 0 && (
+            <View style={styles.progressContainer}>
+              <View style={styles.progressBar}>
+                <View 
+                  style={[
+                    styles.progressFill,
+                    { 
+                      width: `${level.progress}%`,
+                      backgroundColor: level.color
+                    }
+                  ]} 
+                />
+              </View>
+              <Text style={styles.progressText}>{level.progress}%</Text>
+            </View>
+          )}
+
+          {/* Bouton adaptatif */}
+          <Button
+            title={
+              isCurrentLevel ? "Niveau recommandé" :
+              level.progress > 0 ? "Réviser" : "Commencer"
+            }
+            variant="filled"
+            color={level.color}
+            fullWidth
+            onPress={() => handleLevelSelect(level)}
+            style={styles.startButton}
+            rightIcon={
+              isCurrentLevel ? "rocket-outline" :
+              level.progress > 0 ? "refresh-outline" : "arrow-forward-outline"
+            }
+          />
+        </View>
+      </TouchableOpacity>
     );
   };
 
-  // Contenu principal de l'écran
-  const renderMainContent = () => (
-    <>
-      {/* Header avec chemin de niveaux compact */}
-      <View style={styles.headerContainer}>
-        <LinearGradient
-          colors={["#6366F1", "#8B5CF6"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.headerGradient}
-        >
-          <Header
-            title="Choisissez votre niveau"
-            showBackButton
-            backgroundColor="transparent"
-            textColor="white"
-            withStatusBar={false}
-            withShadow={false}
-            titleContainerStyle={styles.headerTitle}
-          />
-
-          {/* Chemin de niveaux compact */}
-          {renderCompactLevelPath()}
-        </LinearGradient>
-      </View>
-
-      <View style={styles.introSection}>
-        <Text style={styles.introText}>
-          Nos niveaux structurés s'adaptent à votre progression. Commencez par
-          le niveau qui correspond le mieux à vos capacités linguistiques.
-        </Text>
-      </View>
-
-      <View style={styles.levelsContainer}>
-        {levels.map((level) => (
-          <Card
-            key={level.id}
-            style={styles.levelCard}
-            withShadow
-            bordered={false}
-            withSideBorder
-            onPress={() => handleLevelSelect(level)}
-            headerIconColor={level.color}
-            contentStyle={styles.cardContentStyle}
-          >
-            {/* En-tête personnalisé pour la carte */}
-            <View style={styles.cardHeader}>
-              <View style={styles.titleBadgeContainer}>
-                <View
-                  style={[
-                    styles.badge,
-                    { backgroundColor: `${level.color}15` },
-                  ]}
-                >
-                  <Text
-                    style={[styles.badgeText, { color: level.color }]}
-                  >
-                    {level.name}
-                  </Text>
-                </View>
-                <Text style={styles.levelTitle}>{level.title}</Text>
-              </View>
-              <View style={styles.iconContainer}>
-                <Text style={styles.iconText}>{level.icon}</Text>
-              </View>
-            </View>
-
-            <Text style={styles.levelDescription}>{level.description}</Text>
-
-            {level.progress > 0 && (
-              <ProgressBar
-                progress={level.progress}
-                fillColor={level.color}
-                backgroundColor={`${level.color}15`}
-                height={8}
-                showPercentage
-                label="Votre progression"
-                style={styles.progressBar}
-              />
-            )}
-
-            <Button
-              title="Commencer l'apprentissage"
-              variant="filled"
-              color={level.color}
-              fullWidth
-              onPress={() => handleLevelSelect(level)}
-              style={styles.startButton}
-              rightIcon="arrow-forward-outline"
-            />
-          </Card>
-        ))}
-      </View>
-    </>
+  // =================== INTRO CONTEXTUELLE ===================
+  
+  const renderEducationalIntro = () => (
+    <View style={styles.introSection}>
+      <Text style={styles.introText}>
+        Choisissez librement votre niveau • Recommandé : {currentLevelData.title} {currentLevelData.name}
+      </Text>
+    </View>
   );
 
+  // =================== RENDU PRINCIPAL ===================
+  
   return (
     <Container
       safeArea
-      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM} // Garde la navigation bottom
-      withScrollView
-      backgroundColor={colors.background}
+      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM}
+      withScrollView={false} // On gère le scroll manuellement
+      backgroundColor="transparent" 
       statusBarColor="#6366F1"
       statusBarStyle="light-content"
-      withPadding={false} // Le padding sera géré par les composants internes
-      scrollViewProps={{
-        style: styles.scrollView,
-        contentContainerStyle: [
-          styles.scrollContent,
-          { paddingBottom: 100 } // Espace pour navigation
-        ],
-        showsVerticalScrollIndicator: false,
-      }}
+      withPadding={false}
     >
-      {renderMainContent()}
+      {/* Background Éducatif Intelligent */}
+      <LinearGradient
+        colors={backgroundSystem.gradientColors}
+        locations={backgroundSystem.gradientLocations}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={{ flex: 1 }}
+      >
+        {renderAdaptiveHeader()}
+        
+        {/* SCROLL VIEW MANUEL AJOUTÉ */}
+        <ScrollView 
+          style={{ flex: 1 }}
+          contentContainerStyle={[styles.scrollContent, { paddingBottom: 60 }]}
+          showsVerticalScrollIndicator={false}
+        >
+          {renderEducationalIntro()}
+          
+          {/* Liste des niveaux avec contexte éducatif */}
+          <View style={styles.levelsContainer}>
+            {levels.map(renderContextualLevelCard)}
+          </View>
+        </ScrollView>
+      </LinearGradient>
     </Container>
   );
 };

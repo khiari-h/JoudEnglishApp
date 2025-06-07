@@ -4,7 +4,7 @@ import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Composants Layout
-import Container, { CONTAINER_SAFE_EDGES } from "../../../../../components/layout/Container";
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
 // Composants spécifiques à la correction d'erreurs
 import ErrorCorrectionHeader from "./ErrorCorrectionHeader";

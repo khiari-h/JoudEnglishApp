@@ -4,7 +4,7 @@ import { View, Text, ActivityIndicator, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Composants Layout
-import Container, { CONTAINER_SAFE_EDGES } from "../../../../../components/layout/Container";
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
 // Components communs
 import ExerciseHeader from "../../../components/exercise-common/ExerciseHeader";

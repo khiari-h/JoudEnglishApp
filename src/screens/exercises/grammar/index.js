@@ -9,7 +9,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 // Composants Layout
-import Container, { CONTAINER_SAFE_EDGES } from "../../../../../components/layout/Container";
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
 // Import des composants
 import GrammarHeader from "./GrammarHeader";
