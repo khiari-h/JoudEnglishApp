@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import Card from "../../../../components/ui/Card";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
 import styles from "./style";
 
 /**
  * Composant pour continuer la dernière activité de l'utilisateur
- * Textes cohérents avec le nom du composant
+ * ✅ VERSION COMPACT : style.js statique + overrides minimaux ThemeContext
  */
 const ContinueLearningSection = ({
   lastActivity,
@@ -15,18 +15,30 @@ const ContinueLearningSection = ({
   formatProgressSubtitle,
   isLoading = false,
 }) => {
+  // ✅ ThemeContext avec valeurs par défaut pour éviter le crash
+  const themeContext = useContext(ThemeContext);
+  const colors = themeContext?.colors || {
+    surface: "#FFFFFF",
+    text: "#1F2937",
+    textSecondary: "#6B7280",
+  };
+
   // État de chargement
   if (isLoading) {
     return (
       <Card
         style={[
           styles.card,
-          { borderLeftColor: accentColor, borderLeftWidth: 4 },
+          { 
+            backgroundColor: colors.surface,
+            borderLeftColor: accentColor, 
+            borderLeftWidth: 4 
+          },
         ]}
       >
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="small" color={accentColor} />
-          <Text style={styles.loadingText}>
+          <Text style={[styles.loadingText, { color: colors.textSecondary }]}>
             Chargement de votre activité récente...
           </Text>
         </View>
@@ -34,27 +46,33 @@ const ContinueLearningSection = ({
     );
   }
 
-  // Si aucune activité n'est disponible, juste informer
+  // Si aucune activité n'est disponible
   if (!lastActivity) {
     return (
       <Card
         style={[
           styles.card,
-          { borderLeftColor: accentColor, borderLeftWidth: 4 },
+          { 
+            backgroundColor: colors.surface,
+            borderLeftColor: accentColor, 
+            borderLeftWidth: 4 
+          },
         ]}
       >
         <View style={styles.content}>
-          <View style={styles.header}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>Activité récente</Text>
-              <Text style={styles.emptyStateDescription}>
-                Aucune activité récente trouvée
-              </Text>
-            </View>
+          <View style={styles.titleRow}>
+            <Text style={styles.emoji}>📚</Text>
+            <Text style={[styles.title, { color: colors.text }]}>
+              Activité récente
+            </Text>
           </View>
 
+          <Text style={[styles.emptyStateDescription, { color: colors.textSecondary }]}>
+            Aucune activité récente trouvée
+          </Text>
+
           <View style={styles.emptyStateContainer}>
-            <Text style={styles.emptyStateHint}>
+            <Text style={[styles.emptyStateHint, { color: colors.textSecondary }]}>
               💡 Vos prochains exercices apparaîtront ici
             </Text>
           </View>
@@ -63,12 +81,12 @@ const ContinueLearningSection = ({
     );
   }
 
-  // Obtenir le sous-titre formaté pour afficher des détails précis sur la position
+  // Obtenir le sous-titre formaté
   const subtitle = formatProgressSubtitle
     ? formatProgressSubtitle(lastActivity)
     : `Niveau ${lastActivity.level}`;
 
-  // Extraire les infos pour le nouveau format
+  // Extraire les infos pour le format
   const levelNumber = lastActivity.level;
   const mode = lastActivity.metadata?.mode;
   const modeText = mode === 'fast' ? 'Fast' : mode === 'classic' ? 'Classique' : '';
@@ -93,19 +111,25 @@ const ContinueLearningSection = ({
     <Card
       style={[
         styles.card,
-        { borderLeftColor: accentColor, borderLeftWidth: 4 },
+        { 
+          backgroundColor: colors.surface,
+          borderLeftColor: accentColor, 
+          borderLeftWidth: 4 
+        },
       ]}
     >
       <View style={styles.content}>
         {/* Titre avec emoji */}
         <View style={styles.titleRow}>
           <Text style={styles.emoji}>📚</Text>
-          <Text style={styles.title}>Reprendre où vous vous êtes arrêté</Text>
+          <Text style={[styles.title, { color: colors.text }]}>
+            Reprendre où vous vous êtes arrêté
+          </Text>
         </View>
 
         {/* Ligne d'infos */}
         <View style={styles.infoRow}>
-          <Text style={styles.exerciseTitle}>
+          <Text style={[styles.exerciseTitle, { color: colors.text }]}>
             {lastActivity.title} {modeText && `${modeText} `}
           </Text>
 
@@ -114,11 +138,11 @@ const ContinueLearningSection = ({
             <Text style={styles.levelBadgeText}>{levelNumber}</Text>
           </View>
 
-          <Text style={styles.positionText}>
+          <Text style={[styles.positionText, { color: colors.textSecondary }]}>
             • Mot {wordIndex} ({categoryIndex}) • 
           </Text>
 
-          <Text style={styles.timeText}>
+          <Text style={[styles.timeText, { color: colors.textSecondary }]}>
             {formatShortTime(lastActivity.timeElapsed)}
           </Text>
         </View>

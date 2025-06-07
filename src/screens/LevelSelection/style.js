@@ -1,16 +1,26 @@
-// src/screens/LevelSelection/style.js
+// src/screens/LevelSelection/style.js - VERSION MODERNE ÉPURÉE
 import { StyleSheet, Platform } from 'react-native';
 
+// =================== FONCTION BACKGROUND DYNAMIQUE ===================
+export const getBackgroundGradient = (levelColor, backgroundColor) => ({
+  colors: [
+    levelColor + "03", // 1% - très subtil
+    backgroundColor,
+    levelColor + "05"  // 2% - très subtil
+  ],
+  locations: [0, 0.7, 1]
+});
+
 const styles = StyleSheet.create({
-  // =================== HEADER APP NATIVE (FULLWIDTH) ===================
+  // =================== HEADER MODERNE ÉPURÉ ===================
   headerContainer: {
     overflow: "hidden",
-    // Pas d'ombre excessive = plus app native
+    // Ombre très subtile
     ...Platform.select({
       ios: {
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.08,
         shadowRadius: 4,
       },
       android: {
@@ -19,14 +29,13 @@ const styles = StyleSheet.create({
     }),
   },
   headerGradient: {
-    // Pas de borderRadius = fullwidth app native
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    paddingBottom: 8, // Très réduit
-    paddingHorizontal: 0, // Supprimé pour fullwidth
+    paddingBottom: 12, // ✅ Réduit
+    paddingHorizontal: 0,
   },
   headerTitle: {
-    fontSize: 20, // Plus adapté mobile
+    fontSize: 20,
     fontWeight: "600",
     letterSpacing: -0.3,
     color: "rgba(255, 255, 255, 0.95)",
@@ -34,139 +43,131 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
   },
 
-  // =================== CHEMIN NIVEAUX APP NATIVE ===================
-  compactPathContainer: {
-    paddingVertical: 8, // Très compact
-    paddingHorizontal: 16, // Réduit
+  // =================== PROGRESSION SIMPLE ET ÉPURÉE ===================
+  progressIndicator: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     alignItems: "center",
   },
-  levelPath: {
+  levelDots: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.15)", // Plus visible
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 12,
+    gap: 8, // ✅ Espacement moderne
+    marginBottom: 8, // ✅ AJOUTÉ : Espace avant les infos
   },
-  smallLevelDot: {
-    width: 24, // Plus petit = plus app native
-    height: 24,
-    borderRadius: 12,
+  progressDot: {
+    width: 28, // ✅ Un peu plus grand pour mieux voir
+    height: 28,
+    borderRadius: 14,
     justifyContent: "center",
     alignItems: "center",
-    margin: 2,
-    // Ombre réduite
+    // Ombre très subtile
     ...Platform.select({
       ios: {
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.15,
+        shadowOpacity: 0.12,
         shadowRadius: 2,
       },
       android: {
         elevation: 1,
       },
     }),
-    borderWidth: 0.5,
-    borderColor: "rgba(255, 255, 255, 0.3)",
   },
-  smallLevelDotText: {
+  progressDotText: {
     color: "white",
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: "700",
     textShadowColor: "rgba(0, 0, 0, 0.3)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
-  smallLevelLine: {
-    height: 1.5,
-    width: 12,
-    backgroundColor: "rgba(255, 255, 255, 0.4)",
-    borderRadius: 1,
+  // ✅ AJOUTÉ : Style pour les infos de progression
+  progressInfo: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 12,
   },
 
-  // =================== CONTENU APP NATIVE ===================
-  scrollView: {
-    flex: 1,
-    backgroundColor: "#F8F9FA", // Légèrement différent pour app native
-  },
-  scrollContent: {
-    paddingHorizontal: 16, // Standard mobile
+  // =================== CONTENU MODERNE ===================
+  modernScrollContent: {
+    paddingHorizontal: 16,
     paddingBottom: 20,
-    paddingTop: 8, // Très réduit
+    paddingTop: 12, // ✅ Réduit
   },
 
-  // =================== INTRO ULTRA-COMPACTE ===================
-  introSection: {
-    marginBottom: 12, // Très réduit
-    paddingHorizontal: 4,
+  // =================== INTRO ÉPURÉE ===================
+  modernIntro: {
+    marginBottom: 16, // ✅ Réduit
+    alignItems: "center",
   },
-  introText: {
-    fontSize: 14,
-    color: "#6B7280",
-    lineHeight: 18,
-    textAlign: "center",
-    fontWeight: "400",
+  modernIntroText: {
+    fontSize: 15,
+    fontWeight: "500",
+    letterSpacing: -0.1,
   },
 
-  // =================== CARDS APP NATIVE ===================
-  levelsContainer: {
-    gap: 10, // Espacement app native
+  // =================== CARDS MODERNES ÉPURÉES ===================
+  modernLevelsContainer: {
+    gap: 12, // ✅ Espacement moderne
   },
-  levelCard: {
-    marginBottom: 2,
-    borderRadius: 12, // App native standard
+  modernCard: {
+    borderRadius: 16, // ✅ Plus arrondi = plus moderne
     backgroundColor: "#FFFFFF",
-    // Ombre app native (plus subtile)
+    // Ombre moderne subtile
     ...Platform.select({
       ios: {
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.08,
-        shadowRadius: 8,
+        shadowOpacity: 0.06,
+        shadowRadius: 12,
       },
       android: {
         elevation: 2,
       },
     }),
     borderWidth: 0.5,
-    borderColor: "rgba(0, 0, 0, 0.06)",
+    borderColor: "rgba(0, 0, 0, 0.04)",
   },
-  cardContentStyle: {
-    padding: 14, // Compact mais respirable
+  modernCardContent: {
+    padding: 16, // ✅ Padding généreux mais pas excessif
   },
 
-  // =================== HEADER CARD AVEC BADGE ===================
-  cardHeader: {
+  // =================== HEADER CARD MODERNE ===================
+  modernCardHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: 8, // ✅ Réduit
   },
-  levelTitleContainer: {
+  modernTitleContainer: {
     flexDirection: "row",
     alignItems: "center",
     flex: 1,
   },
-  levelMainTitle: {
-    fontSize: 16,
+  modernTitle: {
+    fontSize: 17, // ✅ Légèrement plus grand
     fontWeight: "600",
-    color: "#1F2937",
-    marginRight: 8, // Espace avant badge
+    marginRight: 10,
+    letterSpacing: -0.2,
   },
-  levelBadge: {
+  modernBadge: {
     paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
-    minWidth: 28,
+    paddingVertical: 4,
+    borderRadius: 10, // ✅ Plus arrondi
+    minWidth: 32,
     alignItems: "center",
-    // Ombre badge
+    // Ombre badge subtile
     ...Platform.select({
       ios: {
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.08,
         shadowRadius: 2,
       },
       android: {
@@ -174,98 +175,76 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  levelBadgeText: {
+  modernBadgeText: {
     fontSize: 12,
     fontWeight: "700",
     color: "white",
   },
-  levelIcon: {
-    fontSize: 22, // Plus adapté mobile
+  modernIcon: {
+    fontSize: 24, // ✅ Plus grand = plus visible
   },
 
-  // =================== DESCRIPTION COMPACTE ===================
-  levelDescription: {
-    fontSize: 13,
-    color: "#6B7280",
-    lineHeight: 18,
+  // =================== DESCRIPTION ÉPURÉE ===================
+  modernDescription: {
+    fontSize: 14, // ✅ Un peu plus grand pour lisibilité
+    lineHeight: 20,
     marginBottom: 12,
+    fontWeight: "400",
   },
 
-  // =================== PROGRESSION APP NATIVE ===================
-  progressContainer: {
+  // =================== PROGRESSION MODERNE ===================
+  modernProgressContainer: {
     marginBottom: 12,
   },
-  progressBar: {
-    height: 6,
+  modernProgressBar: {
+    height: 8, // ✅ Plus épais = plus visible
     backgroundColor: "#F1F5F9",
-    borderRadius: 3,
+    borderRadius: 4,
     overflow: "hidden",
-    marginBottom: 4,
+    marginBottom: 6,
   },
-  progressFill: {
-    height: 6,
-    borderRadius: 3,
+  modernProgressFill: {
+    height: 8,
+    borderRadius: 4,
   },
-  progressText: {
-    fontSize: 11,
-    color: "#64748B",
+  modernProgressText: {
+    fontSize: 12,
+    fontWeight: "500",
     textAlign: "right",
   },
 
-  // =================== BOUTON APP NATIVE ===================
-  startButton: {
-    paddingVertical: 10, // Plus compact
-    borderRadius: 8, // App native
-    // Ombre bouton réduite
+  // =================== BOUTON MODERNE ===================
+  modernButton: {
+    paddingVertical: 12, // ✅ Un peu plus de padding
+    borderRadius: 12, // ✅ Plus arrondi
+    // Ombre bouton moderne
     ...Platform.select({
       ios: {
         shadowColor: "#000",
-        shadowOffset: { width: 0, height: 1 },
+        shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
-        shadowRadius: 3,
+        shadowRadius: 4,
       },
       android: {
-        elevation: 1,
+        elevation: 2,
       },
     }),
   },
-  startButtonText: {
-    fontSize: 14,
-    fontWeight: "600",
-  },
 
-  // =================== ÉTATS APP NATIVE ===================
-  levelCardPressed: {
-    transform: [{ scale: 0.99 }],
+  // =================== ÉTATS INTERACTIFS ===================
+  modernCardPressed: {
+    transform: [{ scale: 0.98 }],
     opacity: 0.9,
   },
-  
-  // =================== NIVEAU VERROUILLÉ ===================
-  lockedCard: {
-    opacity: 0.6,
-    backgroundColor: "#F8F9FA",
-  },
-  lockedOverlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(248, 249, 250, 0.8)",
-    borderRadius: 12,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  lockIcon: {
-    fontSize: 24,
-    color: "#9CA3AF",
-    marginBottom: 4,
-  },
-  lockedText: {
-    color: "#6B7280",
-    fontSize: 12,
-    fontWeight: "500",
-    textAlign: "center",
+
+  // =================== RESPONSIVE ===================
+  '@media (max-height: 680)': {
+    modernCardContent: {
+      padding: 14,
+    },
+    modernScrollContent: {
+      paddingTop: 8,
+    },
   },
 });
 

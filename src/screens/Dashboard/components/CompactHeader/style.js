@@ -1,6 +1,7 @@
-import { StyleSheet } from "react-native";
+// src/screens/Dashboard/components/CompactHeader/style.js
+import { StyleSheet, Platform } from "react-native";
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     paddingTop: 16,
     paddingBottom: 16,
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  // Logo section avec emoji
+  // =================== LOGO SECTION ===================
   logoSection: {
     flexDirection: "row",
     alignItems: "center",
@@ -26,37 +27,40 @@ const styles = StyleSheet.create({
   logoText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "white",
   },
 
-  // Section droite : niveau + streak
+  // =================== SECTION DROITE ===================
   rightSection: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12, // Espace entre niveau et streak
+    gap: 12,
   },
 
-  // Badge niveau
+  // =================== BADGE NIVEAU ===================
   levelBadge: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
   levelText: {
     fontSize: 15,
     fontWeight: "bold",
-    // Couleur dynamique basée sur levelColor
   },
 
-  // Streak container
+  // =================== STREAK CONTAINER ===================
   streakContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -70,11 +74,7 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   streakText: {
-    color: "white",
     fontSize: 14,
     fontWeight: "600",
   },
 });
-
-export default styles;
-

@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Card from "../../../../components/ui/Card";
 import Button from "../../../../components/ui/Button";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
 import useDailyGoal from "../../../../hooks/useDailyGoal";
 import styles from "./style";
 
 /**
  * Composant intelligent pour les objectifs quotidiens avec validation simple
- * Version simplifiée : validation manuelle au lieu de navigation
+ * ✅ VERSION CLEAN : style.js statique + overrides minimaux ThemeContext
  */
 const DailyGoalSection = ({
   currentLevel,
@@ -16,6 +17,15 @@ const DailyGoalSection = ({
   accentColor = "#3B82F6",
   onStartEvaluation
 }) => {
+  // ✅ ThemeContext avec valeurs par défaut pour éviter le crash
+  const themeContext = useContext(ThemeContext);
+  const colors = themeContext?.colors || {
+    surface: "#FFFFFF",
+    text: "#1F2937", 
+    textSecondary: "#6B7280",
+    success: "#10B981",
+  };
+
   const {
     todayGoal,
     todayCompleted,
@@ -26,7 +36,6 @@ const DailyGoalSection = ({
     completeTodayGoal
   } = useDailyGoal(currentLevel, progress);
 
-  // ✅ NOUVELLE LOGIQUE : Marquer comme terminé au lieu de naviguer
   const handleMarkAsComplete = () => {
     if (todayCompleted) return;
 
@@ -42,7 +51,6 @@ const DailyGoalSection = ({
           text: "Oui, c'est fait ! ✅",
           onPress: () => {
             completeTodayGoal(todayGoal.type);
-            // Petit message de félicitation
             setTimeout(() => {
               Alert.alert(
                 "Bravo ! 🎉",
@@ -56,7 +64,6 @@ const DailyGoalSection = ({
     );
   };
 
-  // Gérer l'offre d'évaluation (inchangé)
   const handleEvaluationOffer = (accepted) => {
     const result = handleEvaluationResponse(accepted);
 
@@ -71,13 +78,17 @@ const DailyGoalSection = ({
     }
   };
 
-  // Affichage selon l'état du cycle (inchangé)
+  // Affichage selon l'état du cycle
   if (statusMessage) {
     return (
-      <Card style={styles.card}>
+      <Card style={[styles.card, { backgroundColor: colors.surface }]}>
         <View style={styles.specialStateContainer}>
-          <Text style={styles.specialTitle}>{statusMessage.title}</Text>
-          <Text style={styles.specialMessage}>{statusMessage.message}</Text>
+          <Text style={[styles.specialTitle, { color: colors.text }]}>
+            {statusMessage.title}
+          </Text>
+          <Text style={[styles.specialMessage, { color: colors.textSecondary }]}>
+            {statusMessage.message}
+          </Text>
 
           {statusMessage.type === 'evaluation_offer' && (
             <View style={styles.buttonContainer}>
@@ -122,22 +133,24 @@ const DailyGoalSection = ({
     );
   }
 
-  // Affichage normal : objectif quotidien avec validation simple
+  // Affichage normal : objectif quotidien
   if (!todayGoal) return null;
 
   return (
-    <Card style={styles.card}>
+    <Card style={[styles.card, { backgroundColor: colors.surface }]}>
       <View style={styles.header}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Défi du jour</Text>
+          <Text style={[styles.title, { color: colors.text }]}>
+            Défi du jour
+          </Text>
           <View style={styles.goalInfo}>
             <Ionicons 
               name="trophy-outline" 
               size={16} 
-              color="#6B7280" 
+              color={colors.textSecondary}
               style={styles.icon} 
             />
-            <Text style={styles.subtitle}>
+            <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
               {todayCompleted ? "Objectif atteint !" : todayGoal.message}
             </Text>
           </View>
@@ -147,7 +160,7 @@ const DailyGoalSection = ({
           style={[
             styles.badge, 
             { 
-              backgroundColor: todayCompleted ? "#10B981" : accentColor 
+              backgroundColor: todayCompleted ? (colors.success) : accentColor 
             }
           ]}
         >
@@ -157,13 +170,17 @@ const DailyGoalSection = ({
         </View>
       </View>
 
-      {/* ✅ NOUVEAU : Affichage de l'objectif avec validation */}
+      {/* Affichage de l'objectif avec validation */}
       <View
         style={[
           styles.exerciseContainer,
           { 
-            backgroundColor: todayCompleted ? "#F0FDF4" : `${todayGoal.color}08`,
-            borderColor: todayCompleted ? "#10B981" : todayGoal.color,
+            backgroundColor: todayCompleted ? 
+              (colors.success + "10") : 
+              `${todayGoal.color}08`,
+            borderColor: todayCompleted ? 
+              (colors.success) : 
+              todayGoal.color,
           }
         ]}
       >
@@ -178,12 +195,14 @@ const DailyGoalSection = ({
           </View>
 
           <View style={styles.exerciseInfo}>
-            <Text style={styles.exerciseTitle}>{todayGoal.title}</Text>
-            <Text style={styles.exerciseDescription}>
+            <Text style={[styles.exerciseTitle, { color: colors.text }]}>
+              {todayGoal.title}
+            </Text>
+            <Text style={[styles.exerciseDescription, { color: colors.textSecondary }]}>
               {todayGoal.description}
             </Text>
             {!todayCompleted && (
-              <Text style={styles.exerciseGoalText}>
+              <Text style={[styles.exerciseGoalText, { color: colors.textSecondary + "80" }]}>
                 🎯 Faites un exercice de {todayGoal.title.toLowerCase()} aujourd'hui
               </Text>
             )}
@@ -191,11 +210,18 @@ const DailyGoalSection = ({
 
           {todayCompleted ? (
             <View style={styles.completedIndicator}>
-              <Ionicons name="checkmark-circle" size={32} color="#10B981" />
+              <Ionicons 
+                name="checkmark-circle" 
+                size={28}
+                color={colors.success} 
+              />
             </View>
           ) : (
             <TouchableOpacity 
-              style={styles.markCompleteButton}
+              style={[
+                styles.markCompleteButton,
+                { borderColor: todayGoal.color }
+              ]}
               onPress={handleMarkAsComplete}
               activeOpacity={0.7}
             >
@@ -207,14 +233,14 @@ const DailyGoalSection = ({
         </View>
       </View>
 
-      {/* Message d'encouragement ou statut */}
+      {/* Message d'encouragement */}
       <View style={styles.statusContainer}>
         {todayCompleted ? (
-          <Text style={styles.encouragementText}>
+          <Text style={[styles.encouragementText, { color: colors.textSecondary }]}>
             🎉 Bien joué ! Rendez-vous demain pour un nouveau défi
           </Text>
         ) : (
-          <Text style={styles.encouragementText}>
+          <Text style={[styles.encouragementText, { color: colors.textSecondary }]}>
             💪 Un exercice par jour, c'est parti !
           </Text>
         )}

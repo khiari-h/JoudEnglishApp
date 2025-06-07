@@ -1,6 +1,6 @@
-// src/screens/Dashboard/index.js
-import React, { useContext, useEffect, useCallback } from "react";
+import React, { useContext, useEffect, useCallback, useMemo } from "react";
 import { RefreshControl, Text, ScrollView, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { useFocusEffect } from "@react-navigation/native";
 
 // Contextes
@@ -36,9 +36,14 @@ const Dashboard = ({ route }) => {
   const themeContext = useContext(ThemeContext);
   const progressContext = useContext(ProgressContext);
 
+  // ✅ FIX : Valeurs par défaut pour éviter le crash
   const colors = themeContext?.colors || {
     background: "#F9FAFB",
     primary: "#3B82F6",
+    surface: "#FFFFFF",
+    text: "#1F2937",
+    textSecondary: "#6B7280",
+    success: "#10B981",
   };
 
   // ========== HOOKS EXISTANTS ==========
@@ -77,6 +82,19 @@ const Dashboard = ({ route }) => {
     onRefresh,
   } = useDashboardState(loadLastActivities);
 
+  // ========== BACKGROUND INTELLIGENT (optimisé avec useMemo) ==========
+  const backgroundGradient = useMemo(() => {
+    // Gradient vertical subtil basé sur la couleur du niveau
+    const gradientStart = levelColor + "03"; // 1%
+    const gradientMiddle = colors.background; // ✅ Plus d'opérateur optionnel car on a la fallback
+    const gradientEnd = levelColor + "08"; // 3%
+    
+    return {
+      colors: [gradientStart, gradientMiddle, gradientEnd],
+      locations: [0, 0.6, 1],
+    };
+  }, [levelColor, colors.background]);
+
   // ========== DONNÉES ==========
   const { name = "Utilisateur" } = route?.params || {};
 
@@ -89,7 +107,6 @@ const Dashboard = ({ route }) => {
     useCallback(() => {
       loadLastActivities();
 
-      // Arrêter le tracking si nécessaire
       if (tracking.isTracking) {
         const handleStopTracking = async () => {
           try {
@@ -149,10 +166,9 @@ const Dashboard = ({ route }) => {
     );
   }
 
-  // ========== CONTENU SCROLLABLE (sans header ni modal) ==========
+  // ========== CONTENU SCROLLABLE ==========
   const renderScrollableContent = () => (
     <>
-      {/* 1. Section Continuer l'apprentissage */}
       <ContinueLearningSection
         lastActivity={dashboardData.lastActivity}
         onPress={navigateToExercise}
@@ -161,7 +177,6 @@ const Dashboard = ({ route }) => {
         isLoading={isActivityLoading}
       />
 
-      {/* 2. Section Défi du jour */}
       <DailyGoalSection
         currentLevel={currentLevel}
         progress={dashboardData.progress}
@@ -169,7 +184,6 @@ const Dashboard = ({ route }) => {
         onStartEvaluation={handleEvaluationStart}
       />
 
-      {/* 3. Section Recommandations intelligentes */}
       <RecommendationsSection
         lastActivity={dashboardData.lastActivity}
         currentLevel={currentLevel}
@@ -177,7 +191,6 @@ const Dashboard = ({ route }) => {
         accentColor={levelColor}
       />
 
-      {/* 4. Section Parcours d'apprentissage */}
       <LearningPathCompact
         globalProgress={dashboardData.globalProgress}
         levels={dashboardData.allLevels}
@@ -187,7 +200,6 @@ const Dashboard = ({ route }) => {
         primaryColor={levelColor}
       />
 
-      {/* Espacement final */}
       <View style={styles.bottomSpacer} />
     </>
   );
@@ -196,46 +208,55 @@ const Dashboard = ({ route }) => {
   return (
     <Container
       safeArea
-      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM} // Garde la navigation bottom
-      withScrollView={false} // ✅ IMPORTANT : ScrollView manuel pour structure complexe
-      backgroundColor={colors.background}
+      safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM}
+      withScrollView={false}
+      backgroundColor="transparent" // ✅ Pour le gradient
       statusBarStyle="light-content"
       withPadding={false}
     >
-      {/* Header FIXE avec données utilisateur */}
-      <CompactHeader
-        level={currentLevel}
-        streak={currentStreak}
-        levelColor={levelColor}
-      />
-
-      {/* Contenu principal SCROLLABLE */}
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={[
-          styles.scrollContent,
-          { paddingBottom: 100 } // Espace pour les onglets de navigation
-        ]}
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            colors={[colors.primary]}
-            tintColor={colors.primary}
-          />
-        }
+      {/* ✅ Background Intelligent avec Gradient */}
+      <LinearGradient
+        colors={backgroundGradient.colors}
+        locations={backgroundGradient.locations}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={styles.container}
       >
-        {renderScrollableContent()}
-      </ScrollView>
+        {/* Header FIXE */}
+        <CompactHeader
+          level={currentLevel}
+          streak={currentStreak}
+          levelColor={levelColor}
+        />
 
-      {/* Modal de progression des niveaux - ABSOLUE */}
-      <LevelProgressModal
-        visible={showLevelProgress}
-        levels={dashboardData.getAllLearningLevels}
-        onClose={closeLevelProgressModal}
-        onSelectLevel={handleLevelProgressSelect}
-      />
+        {/* Contenu principal SCROLLABLE */}
+        <ScrollView
+          style={styles.scrollView}
+          contentContainerStyle={[
+            styles.scrollContent,
+            { paddingBottom: 100 } // ✅ Override minimal pour navigation
+          ]}
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              colors={[levelColor]} // ✅ Couleur du niveau
+              tintColor={levelColor} // ✅ Couleur du niveau
+            />
+          }
+        >
+          {renderScrollableContent()}
+        </ScrollView>
+
+        {/* Modal de progression */}
+        <LevelProgressModal
+          visible={showLevelProgress}
+          levels={dashboardData.getAllLearningLevels}
+          onClose={closeLevelProgressModal}
+          onSelectLevel={handleLevelProgressSelect}
+        />
+      </LinearGradient>
     </Container>
   );
 };

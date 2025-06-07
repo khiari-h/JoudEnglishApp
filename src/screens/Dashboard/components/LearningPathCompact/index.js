@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Card from "../../../../components/ui/Card";
 import Button from "../../../../components/ui/Button";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
 import { LANGUAGE_LEVELS } from "../../../../utils/constants";
 import styles from "./style";
 
 /**
  * Parcours d'apprentissage - Système 1-6+Bonus
+ * ✅ VERSION COMPACT : style.js statique + overrides minimaux ThemeContext
  */
 const LearningPathCompact = ({
   levels = [],
@@ -16,6 +18,14 @@ const LearningPathCompact = ({
   primaryColor = "#3B82F6",
   globalProgress = 0,
 }) => {
+  // ✅ ThemeContext avec valeurs par défaut pour éviter le crash
+  const themeContext = useContext(ThemeContext);
+  const colors = themeContext?.colors || {
+    surface: "#FFFFFF",
+    text: "#1F2937",
+    textSecondary: "#6B7280",
+  };
+
   // Générer les niveaux par défaut si pas fournis
   const defaultLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
     id: levelKey,
@@ -44,7 +54,9 @@ const LearningPathCompact = ({
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.sectionTitle}>Avancement général</Text>
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>
+          Avancement général
+        </Text>
         <TouchableOpacity onPress={onViewProgress}>
           <Text style={[styles.actionText, { color: primaryColor }]}>
             Voir détails
@@ -56,7 +68,7 @@ const LearningPathCompact = ({
         {/* Progression globale et niveau actif */}
         <View style={styles.progressInfoContainer}>
           <View style={styles.globalProgressContainer}>
-            <Text style={styles.globalProgressLabel}>
+            <Text style={[styles.globalProgressLabel, { color: colors.text }]}>
               Progression globale :
             </Text>
             <Text style={[styles.globalProgressValue, { color: primaryColor }]}>
@@ -65,7 +77,9 @@ const LearningPathCompact = ({
           </View>
 
           <View style={styles.activeInfoContainer}>
-            <Text style={styles.activeInfoLabel}>Niveau actif :</Text>
+            <Text style={[styles.activeInfoLabel, { color: colors.textSecondary }]}>
+              Niveau actif :
+            </Text>
             <View
               style={[
                 styles.activeInfoBadge,
@@ -77,7 +91,7 @@ const LearningPathCompact = ({
           </View>
         </View>
 
-        <Text style={styles.levelDescription}>
+        <Text style={[styles.levelDescription, { color: colors.textSecondary }]}>
           {currentLevelInfo.description || "Continuez votre apprentissage"}
         </Text>
 
@@ -96,17 +110,17 @@ const LearningPathCompact = ({
                 { backgroundColor: level.color || primaryColor },
                 styles.activeLevelCircle,
               ];
-              textStyle = styles.activeLevelText;
+              textStyle = [styles.activeLevelText];
             } else if (isCompleted) {
               circleStyle = [
                 styles.levelCircle,
                 { backgroundColor: `${level.color || primaryColor}40` },
                 styles.completedLevelCircle,
               ];
-              textStyle = styles.completedLevelText;
+              textStyle = [styles.completedLevelText, { color: colors.textSecondary }];
             } else {
               circleStyle = [styles.levelCircle, styles.futureLevelCircle];
-              textStyle = styles.futureLevelText;
+              textStyle = [styles.futureLevelText, { color: colors.textSecondary + "60" }];
             }
 
             return (
@@ -140,4 +154,3 @@ const LearningPathCompact = ({
 };
 
 export default LearningPathCompact;
-

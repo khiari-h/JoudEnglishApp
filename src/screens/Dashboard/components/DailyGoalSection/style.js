@@ -1,30 +1,44 @@
 // src/screens/Dashboard/components/DailyGoalSection/style.js
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
+  // =================== CARD COMPACT APP NATIVE ===================
   card: {
     borderRadius: 12,
-    marginBottom: 16,
+    marginBottom: 10, // ✅ RÉDUIT de 16→10
     overflow: "hidden",
-    backgroundColor: "white",
-    padding: 16,
+    padding: 12, // ✅ RÉDUIT de 16→12
+    // Ombres app native légères
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.06,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
+    borderWidth: 0.5,
+    borderColor: "rgba(0, 0, 0, 0.04)",
   },
 
-  // Header normal
+  // =================== HEADER COMPACT ===================
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 10, // ✅ RÉDUIT de 16→10
   },
   titleContainer: {
     flex: 1,
   },
   title: {
-    fontSize: 16,
+    fontSize: 15, // ✅ RÉDUIT de 16→15
     fontWeight: "600",
-    color: "#1F2937",
-    marginBottom: 4,
+    marginBottom: 3, // ✅ RÉDUIT de 4→3
+    letterSpacing: -0.2,
   },
   goalInfo: {
     flexDirection: "row",
@@ -34,136 +48,130 @@ export default StyleSheet.create({
     marginRight: 6,
   },
   subtitle: {
-    fontSize: 13,
-    color: "#6B7280",
+    fontSize: 12, // ✅ RÉDUIT de 13→12
   },
   badge: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 16,
-    minWidth: 32,
+    paddingHorizontal: 8, // ✅ RÉDUIT de 10→8
+    paddingVertical: 3, // ✅ RÉDUIT de 4→3
+    borderRadius: 12, // ✅ RÉDUIT de 16→12
+    minWidth: 28, // ✅ RÉDUIT de 32→28
     alignItems: 'center',
   },
   badgeText: {
     color: "white",
     fontWeight: "600",
-    fontSize: 14,
+    fontSize: 13, // ✅ RÉDUIT de 14→13
   },
 
-  // Exercice du jour (sans TouchableOpacity)
+  // =================== EXERCICE CONTAINER OPTIMISÉ ===================
   exerciseContainer: {
-    borderRadius: 12,
+    borderRadius: 10, // ✅ RÉDUIT de 12→10
     borderWidth: 1,
-    marginBottom: 12,
+    marginBottom: 10, // ✅ RÉDUIT de 12→10
   },
   exerciseContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 16,
+    padding: 12, // ✅ RÉDUIT de 16→12
   },
   exerciseIconContainer: {
-    width: 48,
-    height: 48,
-    borderRadius: 12,
+    width: 42, // ✅ RÉDUIT de 48→42
+    height: 42, // ✅ RÉDUIT de 48→42
+    borderRadius: 10, // ✅ RÉDUIT de 12→10
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 12,
+    marginRight: 10, // ✅ RÉDUIT de 12→10
   },
   exerciseIcon: {
-    fontSize: 24,
+    fontSize: 22, // ✅ RÉDUIT de 24→22
   },
   exerciseInfo: {
     flex: 1,
-    marginRight: 12,
+    marginRight: 10, // ✅ RÉDUIT de 12→10
   },
   exerciseTitle: {
-    fontSize: 16,
+    fontSize: 15, // ✅ RÉDUIT de 16→15
     fontWeight: '600',
-    color: '#1F2937',
     marginBottom: 2,
+    letterSpacing: -0.1,
   },
   exerciseDescription: {
-    fontSize: 13,
-    color: '#6B7280',
-    lineHeight: 18,
-    marginBottom: 4,
+    fontSize: 12, // ✅ RÉDUIT de 13→12
+    lineHeight: 16, // ✅ RÉDUIT de 18→16
+    marginBottom: 3, // ✅ RÉDUIT de 4→3
   },
-  // ✅ NOUVEAU : Texte explicatif de l'objectif
   exerciseGoalText: {
-    fontSize: 12,
-    color: '#9CA3AF',
+    fontSize: 11, // ✅ RÉDUIT de 12→11
     fontStyle: 'italic',
-    lineHeight: 16,
+    lineHeight: 14, // ✅ RÉDUIT de 16→14
   },
   
-  // ✅ NOUVEAU : Bouton pour marquer comme terminé
+  // =================== BOUTON COMPACT ===================
   markCompleteButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 8,
+    paddingHorizontal: 10, // ✅ RÉDUIT de 12→10
+    paddingVertical: 5, // ✅ RÉDUIT de 6→5
+    borderRadius: 6, // ✅ RÉDUIT de 8→6
     borderWidth: 1,
-    borderColor: 'currentColor',
-    backgroundColor: 'rgba(59, 130, 246, 0.05)',
+    backgroundColor: 'rgba(59, 130, 246, 0.04)',
   },
   markCompleteText: {
-    fontSize: 12,
+    fontSize: 11, // ✅ RÉDUIT de 12→11
     fontWeight: '600',
     textAlign: 'center',
   },
   
   completedIndicator: {
-    width: 32,
-    height: 32,
+    width: 28, // ✅ RÉDUIT de 32→28
+    height: 28, // ✅ RÉDUIT de 32→28
     justifyContent: 'center',
     alignItems: 'center',
   },
 
-  // Messages d'encouragement
+  // =================== STATUS COMPACT ===================
   statusContainer: {
     alignItems: 'center',
+    marginTop: 4,
   },
   encouragementText: {
-    fontSize: 13,
-    color: '#6B7280',
+    fontSize: 12, // ✅ RÉDUIT de 13→12
     textAlign: 'center',
     fontStyle: 'italic',
   },
 
-  // États spéciaux (évaluations, accomplissements)
+  // =================== ÉTATS SPÉCIAUX COMPACTS ===================
   specialStateContainer: {
     alignItems: 'center',
-    paddingVertical: 8,
+    paddingVertical: 6, // ✅ RÉDUIT de 8→6
   },
   specialTitle: {
-    fontSize: 20,
+    fontSize: 18, // ✅ RÉDUIT de 20→18
     fontWeight: '700',
-    color: '#1F2937',
-    marginBottom: 8,
+    marginBottom: 6, // ✅ RÉDUIT de 8→6
     textAlign: 'center',
+    letterSpacing: -0.3,
   },
   specialMessage: {
-    fontSize: 15,
-    color: '#4B5563',
-    lineHeight: 22,
+    fontSize: 14, // ✅ RÉDUIT de 15→14
+    lineHeight: 20, // ✅ RÉDUIT de 22→20
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 16, // ✅ RÉDUIT de 20→16
   },
 
-  // Boutons pour évaluations
+  // =================== BOUTONS ÉVALUATIONS COMPACTS ===================
   buttonContainer: {
     width: '100%',
-    gap: 8,
+    gap: 6, // ✅ RÉDUIT de 8→6
   },
   acceptButton: {
-    marginBottom: 8,
+    marginBottom: 6, // ✅ RÉDUIT de 8→6
   },
   declineButton: {
     marginBottom: 0,
   },
   evaluationButton: {
-    marginTop: 4,
+    marginTop: 2, // ✅ RÉDUIT de 4→2
   },
   continueButton: {
-    marginTop: 4,
+    marginTop: 2, // ✅ RÉDUIT de 4→2
   },
 });

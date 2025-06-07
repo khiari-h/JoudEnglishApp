@@ -1,7 +1,7 @@
-// hooks/useSmartRecommendations.js
+// hooks/useSmartRecommendations.js - VERSION ROBUSTE
 /**
  * Hook pour générer des recommandations intelligentes
- * Responsabilité unique : logique de recommandation
+ * ✅ NOUVELLE VERSION : Ne retourne JAMAIS null, section toujours visible
  */
 
 import { useMemo, useCallback } from 'react';
@@ -10,9 +10,24 @@ import {
   RECOMMENDATION_MESSAGES,
   EXERCISE_TYPES 
 } from '../utils/timeConstants.js';
-import { secondsToMinutes } from '../utils/timeUtils.js';
 
 const useSmartRecommendations = (lastActivity, exerciseStats, currentLevel, exerciseTypes) => {
+  
+  // ✅ NOUVEAU : Fallback robuste pour exerciseTypes
+  const safeExerciseTypes = exerciseTypes || {
+    vocabulary: {
+      title: 'Vocabulaire',
+      description: 'Enrichissez votre vocabulaire',
+      icon: '📚',
+      color: '#3B82F6'
+    },
+    grammar: {
+      title: 'Grammaire', 
+      description: 'Maîtrisez les règles grammaticales',
+      icon: '📝',
+      color: '#10B981'
+    }
+  };
   
   // Fonction pour obtenir le temps en minutes d'un exercice
   const getExerciseTimeInMinutes = useCallback((exerciseType) => {
@@ -27,24 +42,47 @@ const useSmartRecommendations = (lastActivity, exerciseStats, currentLevel, exer
   // Fonction pour vérifier si un exercice peut être recommandé
   const canRecommendNext = useCallback((exerciseType) => {
     const timeSpent = getExerciseTimeInMinutes(exerciseType);
-    return timeSpent >= RECOMMENDATION_CONFIG.THRESHOLD_MINUTES;
+    const threshold = RECOMMENDATION_CONFIG?.THRESHOLD_MINUTES || 5;
+    return timeSpent >= threshold;
   }, [getExerciseTimeInMinutes]);
   
-  // Fonction pour créer une recommandation
+  // ✅ NOUVEAU : Fonction pour créer un fallback emergency
+  const createEmergencyFallback = useCallback(() => {
+    return {
+      id: 'emergency_vocabulary',
+      title: 'Vocabulaire',
+      description: 'Enrichissez votre vocabulaire, base de tout apprentissage',
+      type: 'vocabulary',
+      level: currentLevel || '1',
+      icon: '📚',
+      color: '#3B82F6',
+      isRecommendation: true,
+      recommendationData: {
+        icon: '📚',
+        title: 'Continuons à apprendre !',
+        message: 'Le vocabulaire est essentiel pour maîtriser une langue. Continuez à enrichir vos connaissances !',
+        button: 'Pratiquer le vocabulaire'
+      }
+    };
+  }, [currentLevel]);
+  
+  // ✅ AMÉLIORÉ : Fonction pour créer une recommandation (avec fallback)
   const createRecommendation = useCallback((
     exerciseType, 
     messageKey = null, 
     timeSpent = null, 
     fromExercise = null
   ) => {
-    if (!exerciseTypes || !exerciseTypes[exerciseType]) {
-      return null;
+    // ✅ Utiliser safeExerciseTypes au lieu de crasher
+    if (!safeExerciseTypes[exerciseType]) {
+      console.warn(`Exercise type ${exerciseType} not found, using emergency fallback`);
+      return createEmergencyFallback();
     }
     
-    const exerciseInfo = exerciseTypes[exerciseType];
+    const exerciseInfo = safeExerciseTypes[exerciseType];
     let recommendationData;
     
-    if (messageKey && RECOMMENDATION_MESSAGES[messageKey]) {
+    if (messageKey && RECOMMENDATION_MESSAGES && RECOMMENDATION_MESSAGES[messageKey]) {
       // Recommandation intelligente avec message personnalisé
       recommendationData = {
         ...RECOMMENDATION_MESSAGES[messageKey],
@@ -54,10 +92,10 @@ const useSmartRecommendations = (lastActivity, exerciseStats, currentLevel, exer
     } else {
       // Recommandation par défaut
       recommendationData = {
-        icon: '📚',
-        title: 'Commençons par la base !',
-        message: 'Le vocabulaire est la fondation de toute langue. Prêt à enrichir tes connaissances ?',
-        button: `Pratiquer ${exerciseInfo.title.toLowerCase()}`
+        icon: exerciseInfo.icon || '📚',
+        title: `Pratiquons ${exerciseInfo.title?.toLowerCase() || 'l\'exercice'} !`,
+        message: exerciseInfo.description || 'Continuez votre apprentissage avec cet exercice.',
+        button: `Pratiquer ${exerciseInfo.title?.toLowerCase() || 'l\'exercice'}`
       };
     }
     
@@ -66,80 +104,96 @@ const useSmartRecommendations = (lastActivity, exerciseStats, currentLevel, exer
       title: exerciseInfo.title,
       description: exerciseInfo.description,
       type: exerciseType,
-      level: currentLevel,
+      level: currentLevel || '1',
       icon: exerciseInfo.icon,
       color: exerciseInfo.color,
       isRecommendation: true,
       recommendationData
     };
-  }, [exerciseTypes, currentLevel]);
+  }, [safeExerciseTypes, currentLevel, createEmergencyFallback]);
   
-  // Fonction pour créer une recommandation de démarrage
-  const createStartRecommendation = useCallback(() => {
-    return createRecommendation(
-      EXERCISE_TYPES.VOCABULARY,
-      null,
-      null,
-      null
-    );
-  }, [createRecommendation]);
+  // ✅ NOUVEAU : Fonction pour créer une recommandation de progression (épurée)
+  const createProgressRecommendation = useCallback((exerciseType, timeSpent, threshold) => {
+    const exerciseInfo = safeExerciseTypes[exerciseType] || safeExerciseTypes.vocabulary;
+    const remaining = Math.max(0, threshold - timeSpent);
+    
+    return {
+      id: `progress_${exerciseType}`,
+      title: exerciseInfo.title,
+      description: exerciseInfo.description,
+      type: exerciseType,
+      level: currentLevel || '1',
+      icon: exerciseInfo.icon,
+      color: exerciseInfo.color,
+      isRecommendation: true,
+      isProgress: true, // ✅ Flag pour identifier les recommandations de progression
+      recommendationData: {
+        icon: '⏱️',
+        title: 'Objectif en cours', // ✅ ÉPURÉ : Plus court
+        message: '', // ✅ ÉPURÉ : Pas de message verbeux
+        button: 'Continuer', // ✅ ÉPURÉ : Bouton simple
+        timeSpent,
+        remaining,
+        progress: Math.round((timeSpent / threshold) * 100)
+      }
+    };
+  }, [safeExerciseTypes, currentLevel]);
   
-  // Calcul de la recommandation principale
+  // ✅ ROBUSTE : Calcul de la recommandation principale (JAMAIS null)
   const smartRecommendation = useMemo(() => {
+    const threshold = RECOMMENDATION_CONFIG?.THRESHOLD_MINUTES || 5;
+    
     // 1. Si pas d'activité récente → vocabulary pour débuter
     if (!lastActivity) {
-      return {
-        ...createStartRecommendation(),
-        id: 'start_vocabulary',
-        recommendationData: {
-          icon: '🚀',
-          title: 'Commençons !',
-          message: 'Prêt à débuter ton apprentissage ? Commençons par enrichir ton vocabulaire !',
-          button: 'Commencer le vocabulaire'
-        }
-      };
+      return createRecommendation('vocabulary', null, null, null) || createEmergencyFallback();
     }
     
     // 2. Vérifier le temps passé sur le dernier type d'exercice
-    const lastExerciseType = lastActivity.type;
+    const lastExerciseType = lastActivity.type || 'vocabulary';
     const timeSpentInMinutes = getExerciseTimeInMinutes(lastExerciseType);
     
-    // 3. Si assez de temps passé → recommandation intelligente
-    if (timeSpentInMinutes >= RECOMMENDATION_CONFIG.THRESHOLD_MINUTES) {
-      const nextExerciseType = RECOMMENDATION_CONFIG.LEARNING_PATH[lastExerciseType];
+    // 3. ✅ NOUVEAU : Si pas assez de temps → recommandation de progression
+    if (timeSpentInMinutes < threshold) {
+      return createProgressRecommendation(lastExerciseType, timeSpentInMinutes, threshold);
+    }
+    
+    // 4. Si assez de temps passé → recommandation intelligente
+    const learningPath = RECOMMENDATION_CONFIG?.LEARNING_PATH || {};
+    const nextExerciseType = learningPath[lastExerciseType];
+    
+    if (nextExerciseType && safeExerciseTypes[nextExerciseType]) {
+      const messageKey = `${lastExerciseType}->${nextExerciseType}`;
       
-      if (nextExerciseType && exerciseTypes && exerciseTypes[nextExerciseType]) {
-        const messageKey = `${lastExerciseType}->${nextExerciseType}`;
-        
-        if (RECOMMENDATION_MESSAGES[messageKey]) {
-          return createRecommendation(
-            nextExerciseType,
-            messageKey,
-            timeSpentInMinutes,
-            lastExerciseType
-          );
-        }
+      if (RECOMMENDATION_MESSAGES && RECOMMENDATION_MESSAGES[messageKey]) {
+        const recommendation = createRecommendation(
+          nextExerciseType,
+          messageKey,
+          timeSpentInMinutes,
+          lastExerciseType
+        );
+        if (recommendation) return recommendation;
       }
     }
     
-    // 4. FALLBACK : Recommandation par défaut (vocabulary)
-    return createRecommendation(EXERCISE_TYPES.VOCABULARY);
+    // 5. ✅ FALLBACK ROBUSTE : Toujours retourner quelque chose
+    return createRecommendation('vocabulary') || createEmergencyFallback();
     
   }, [
     lastActivity, 
     getExerciseTimeInMinutes, 
     createRecommendation,
-    createStartRecommendation,
-    exerciseTypes
+    createProgressRecommendation,
+    createEmergencyFallback
   ]);
   
   // Fonction pour obtenir toutes les recommandations possibles
   const getAllRecommendations = useCallback(() => {
     const recommendations = [];
+    const learningPath = RECOMMENDATION_CONFIG?.LEARNING_PATH || {};
     
     // Pour chaque exercice qui peut être recommandé
-    Object.entries(RECOMMENDATION_CONFIG.LEARNING_PATH).forEach(([fromType, toType]) => {
-      if (canRecommendNext(fromType) && exerciseTypes && exerciseTypes[toType]) {
+    Object.entries(learningPath).forEach(([fromType, toType]) => {
+      if (canRecommendNext(fromType) && safeExerciseTypes[toType]) {
         const messageKey = `${fromType}->${toType}`;
         const timeSpent = getExerciseTimeInMinutes(fromType);
         
@@ -157,18 +211,20 @@ const useSmartRecommendations = (lastActivity, exerciseStats, currentLevel, exer
     });
     
     return recommendations;
-  }, [canRecommendNext, exerciseTypes, getExerciseTimeInMinutes, createRecommendation]);
+  }, [canRecommendNext, getExerciseTimeInMinutes, createRecommendation]);
   
   // Fonction pour obtenir le prochain exercice recommandé
   const getNextExercise = useCallback((currentExerciseType) => {
-    return RECOMMENDATION_CONFIG.LEARNING_PATH[currentExerciseType] || null;
+    const learningPath = RECOMMENDATION_CONFIG?.LEARNING_PATH || {};
+    return learningPath[currentExerciseType] || null;
   }, []);
   
   // Statistiques pour debug
   const getRecommendationStats = useCallback(() => {
     const stats = {};
+    const threshold = RECOMMENDATION_CONFIG?.THRESHOLD_MINUTES || 5;
     
-    Object.keys(EXERCISE_TYPES).forEach(exerciseType => {
+    Object.keys(EXERCISE_TYPES || {}).forEach(exerciseType => {
       const timeInMinutes = getExerciseTimeInMinutes(exerciseType);
       const canRecommend = canRecommendNext(exerciseType);
       const nextExercise = getNextExercise(exerciseType);
@@ -177,19 +233,20 @@ const useSmartRecommendations = (lastActivity, exerciseStats, currentLevel, exer
         timeSpent: timeInMinutes,
         canRecommend,
         nextExercise,
-        isAboveThreshold: timeInMinutes >= RECOMMENDATION_CONFIG.THRESHOLD_MINUTES
+        isAboveThreshold: timeInMinutes >= threshold
       };
     });
     
     return {
       stats,
-      threshold: RECOMMENDATION_CONFIG.THRESHOLD_MINUTES,
-      smartRecommendation: smartRecommendation?.id || 'none'
+      threshold,
+      smartRecommendation: smartRecommendation?.id || 'none',
+      isProgress: smartRecommendation?.isProgress || false
     };
   }, [getExerciseTimeInMinutes, canRecommendNext, getNextExercise, smartRecommendation]);
   
   return {
-    // Recommandation principale
+    // ✅ Recommandation principale (JAMAIS null)
     smartRecommendation,
     
     // Fonctions utilitaires
@@ -199,8 +256,8 @@ const useSmartRecommendations = (lastActivity, exerciseStats, currentLevel, exer
     getAllRecommendations,
     
     // Configuration
-    threshold: RECOMMENDATION_CONFIG.THRESHOLD_MINUTES,
-    learningPath: RECOMMENDATION_CONFIG.LEARNING_PATH,
+    threshold: RECOMMENDATION_CONFIG?.THRESHOLD_MINUTES || 5,
+    learningPath: RECOMMENDATION_CONFIG?.LEARNING_PATH || {},
     
     // Debug
     getRecommendationStats
