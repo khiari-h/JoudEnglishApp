@@ -1,4 +1,4 @@
-// src/screens/ExerciseSelection/index.js - COMPACT STYLE LEVELSELECTION
+// src/screens/ExerciseSelection/index.js - VERSION SIMPLE SANS SÉLECTEUR
 import React, { useContext, useMemo } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -15,11 +15,11 @@ import Button from "../../components/ui/Button";
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
-// Constantes (tes constantes modifiées)
+// Constantes
 import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../utils/constants";
 
-// Styles réutilisés de LevelSelection
-import styles from "./style";
+// Styles
+import styles, { getBackgroundGradient } from "./style";
 
 // Valeurs par défaut pour les contextes
 const DEFAULT_THEME = {
@@ -27,6 +27,7 @@ const DEFAULT_THEME = {
     background: "#F9FAFB",
     primary: "#5E60CE",
     text: "#1F2937",
+    surface: "#FFFFFF",
   },
 };
 
@@ -60,65 +61,117 @@ const ExerciseSelection = ({ route }) => {
   }, [level, colors.primary]);
 
   const levelColor = levelInfo.color;
+  const backgroundGradient = getBackgroundGradient(levelColor, colors.background);
 
-  // =================== BACKGROUND DYNAMIQUE ===================
-  
-  const getExerciseBackground = (levelColor) => {
-    const gradientStart = levelColor + "06"; // 2.5% opacity
-    const gradientMiddle = "#FFFFFF";        // Blanc pur
-    const gradientEnd = levelColor + "08";   // 3% opacity
-    
-    return {
-      gradientColors: [gradientStart, gradientMiddle, gradientEnd],
-      gradientLocations: [0, 0.4, 1]
-    };
-  };
-
-  const backgroundSystem = getExerciseBackground(levelColor);
-
-  // Préparer les exercices disponibles selon le niveau
+  // 🎯 EXERCICES AVEC VOCABULAIRE CLASSIC + FAST SÉPARÉS
   const exercises = useMemo(() => {
-    return Object.keys(EXERCISE_TYPES)
-      .map((exerciseKey) => {
-        const exerciseInfo = EXERCISE_TYPES[exerciseKey];
+    const baseExercises = [];
 
-        // Si c'est le niveau bonus, filtrer seulement les exercices autorisés
-        if (level === "bonus" && !BONUS_EXERCISE_TYPES.includes(exerciseKey)) {
-          return null;
-        }
+    // === VOCABULAIRE CLASSIQUE (PRINCIPAL) ===
+    const vocabularyInfo = EXERCISE_TYPES.vocabulary;
+    if (level !== "bonus" || BONUS_EXERCISE_TYPES.includes("vocabulary")) {
+      // TODO: Récupérer la progression du mode CLASSIC
+      const vocabularyClassicProgress = 
+        progress?.exercises?.vocabulary?.[level]?.completed || 0;
 
-        // Utiliser la couleur spécifique à l'exercice ou celle du niveau par défaut
-        const exerciseColor = exerciseInfo.color || levelColor;
+      baseExercises.push({
+        ...vocabularyInfo,
+        id: "vocabulary_classic",
+        title: "Vocabulaire",
+        progress: vocabularyClassicProgress,
+        color: vocabularyInfo.color || levelColor,
+        hasProgress: vocabularyClassicProgress > 0,
+        mode: "classic", // ✅ Mode défini
+      });
+    }
 
-        // Récupérer la progression selon la structure: exercises[exerciseType][level]
-        const exerciseProgress =
-          progress?.exercises?.[exerciseKey]?.[level]?.completed || 0;
+    // === FAST VOCABULARY (BONUS) ===
+    if (level !== "bonus" || BONUS_EXERCISE_TYPES.includes("vocabulary")) {
+      // TODO: Récupérer la progression du mode FAST
+      const fastProgress = 0; // À calculer avec les hooks vocabulary
 
-        return {
-          ...exerciseInfo,
-          id: exerciseKey,
-          progress: exerciseProgress,
-          color: exerciseColor,
-        };
-      })
-      .filter(Boolean); // Enlever les null (exercices non disponibles pour le niveau bonus)
+      baseExercises.push({
+        id: "vocabulary_fast",
+        title: "Fast Vocabulary",
+        description: "Les 1000 mots les plus utilisés",
+        icon: "⚡",
+        progress: fastProgress,
+        color: "#F59E0B", // Couleur orange
+        hasProgress: fastProgress > 0,
+        mode: "fast", // ✅ Mode défini
+      });
+    }
+
+    // === AUTRES EXERCICES NORMAUX ===
+    Object.keys(EXERCISE_TYPES).forEach((exerciseKey) => {
+      // Skip vocabulary car déjà traité ci-dessus
+      if (exerciseKey === "vocabulary") return;
+
+      const exerciseInfo = EXERCISE_TYPES[exerciseKey];
+
+      // Filtrage niveau bonus
+      if (level === "bonus" && !BONUS_EXERCISE_TYPES.includes(exerciseKey)) {
+        return;
+      }
+
+      // Progression normale
+      const exerciseProgress =
+        progress?.exercises?.[exerciseKey]?.[level]?.completed || 0;
+
+      baseExercises.push({
+        ...exerciseInfo,
+        id: exerciseKey,
+        progress: exerciseProgress,
+        color: exerciseInfo.color || levelColor,
+        hasProgress: exerciseProgress > 0,
+      });
+    });
+
+    return baseExercises;
   }, [level, progress, levelColor]);
 
-  // Naviguer vers l'exercice sélectionné
+  // 🎯 NAVIGATION EXPO ROUTER - NOMS DE FICHIERS CORRECTS
   const handleExerciseSelect = (exercise) => {
-    const routePath = convertRouteToPath(exercise.route);
-    router.push({
-      pathname: routePath,
-      params: {
-        level,
-        exerciseType: exercise.id,
-      },
-    });
-  };
-
-  // Fonction pour convertir les noms de routes en chemins Expo Router
-  const convertRouteToPath = (routeName) => {
-    return `/(tabs)/${routeName.charAt(0).toLowerCase() + routeName.slice(1)}`;
+    if (exercise.id === "vocabulary_classic") {
+      // Navigation vers vocabulaire classic
+      router.push({
+        pathname: "/(tabs)/vocabularyExercise",
+        params: {
+          level,
+          mode: "classic",
+        },
+      });
+    } else if (exercise.id === "vocabulary_fast") {
+      // Navigation vers vocabulaire fast
+      router.push({
+        pathname: "/(tabs)/vocabularyExercise",
+        params: {
+          level,
+          mode: "fast", 
+        },
+      });
+    } else {
+      // Autres exercices - routes Expo Router CORRECTES
+      const routeMap = {
+        grammar: "/(tabs)/grammarExercise",
+        phrases: "/(tabs)/phrasesExercise", 
+        reading: "/(tabs)/readingExercise",
+        conversations: "/(tabs)/conversationsExercise",
+        spelling: "/(tabs)/spellingExercise",
+        errorCorrection: "/(tabs)/errorCorrectionExercise", 
+        wordGames: "/(tabs)/wordGamesExercise",
+        assessment: "/(tabs)/levelAssessment",
+      };
+      
+      const routePath = routeMap[exercise.id] || "/(tabs)/vocabularyExercise";
+      router.push({
+        pathname: routePath,
+        params: {
+          level,
+          exerciseType: exercise.id,
+        },
+      });
+    }
   };
 
   // Obtenir le titre d'affichage du niveau
@@ -129,9 +182,8 @@ const ExerciseSelection = ({ route }) => {
     return `Niveau ${level}`;
   };
 
-  // =================== HEADER COMPACT ===================
-  
-  const renderCompactHeader = () => (
+  // Header épuré
+  const renderCleanHeader = () => (
     <View style={styles.headerContainer}>
       <LinearGradient
         colors={[levelColor, levelColor + "DD"]}
@@ -149,28 +201,8 @@ const ExerciseSelection = ({ route }) => {
           titleContainerStyle={styles.headerTitle}
         />
 
-        {/* Indicateur exercices (style LevelSelection) */}
-        <View style={styles.compactPathContainer}>
-          <View style={styles.levelPath}>
-            <Text style={{
-              color: 'white',
-              fontSize: 13,
-              fontWeight: '600'
-            }}>
-              {exercises.length} exercices
-            </Text>
-            <Text style={{
-              color: 'rgba(255,255,255,0.8)',
-              fontSize: 11,
-              marginLeft: 8
-            }}>
-              • {exercises.filter(ex => ex.progress > 0).length} en cours
-            </Text>
-          </View>
-        </View>
-
         {level === "bonus" && (
-          <View style={{ alignItems: "center", paddingBottom: 8 }}>
+          <View style={{ alignItems: "center", paddingBottom: 12 }}>
             <Text style={{
               color: "rgba(255, 255, 255, 0.88)",
               fontSize: 12,
@@ -185,59 +217,44 @@ const ExerciseSelection = ({ route }) => {
     </View>
   );
 
-  // =================== CARDS COMPACT STYLE LEVELSELECTION ===================
-  
-  const renderCompactExerciseCard = (exercise) => {
-    const hasProgress = exercise.progress > 0;
-    
+  // Cards d'exercices
+  const renderCleanExerciseCard = (exercise) => {
     return (
       <TouchableOpacity
         key={exercise.id}
-        style={[
-          styles.levelCard, // Même style que les niveaux !
-          hasProgress && {
-            borderWidth: 1,
-            borderColor: exercise.color + "30",
-            backgroundColor: exercise.color + "05"
-          }
-        ]}
+        style={styles.levelCard}
         onPress={() => handleExerciseSelect(exercise)}
         activeOpacity={0.8}
       >
         <View style={styles.cardContentStyle}>
-          {/* Header avec titre + badge (layout LevelSelection) */}
+          {/* Header */}
           <View style={styles.cardHeader}>
             <View style={styles.levelTitleContainer}>
-              <Text style={styles.levelMainTitle}>{exercise.title}</Text>
+              <Text style={[styles.levelMainTitle, { color: colors.text }]}>
+                {exercise.title}
+              </Text>
               <View style={[styles.levelBadge, { backgroundColor: exercise.color }]}>
                 <Text style={styles.levelBadgeText}>
-                  {exercise.progress > 0 ? `${exercise.progress}%` : '0%'}
+                  {exercise.hasProgress ? `${exercise.progress}%` : '0%'}
                 </Text>
               </View>
-              {hasProgress && (
-                <View style={{
-                  backgroundColor: '#10B981',
-                  paddingHorizontal: 6,
-                  paddingVertical: 2,
-                  borderRadius: 4,
-                  marginLeft: 8
-                }}>
-                  <Text style={{ color: 'white', fontSize: 9, fontWeight: '600' }}>
-                    EN COURS
-                  </Text>
+              {/* Badge FAST pour identifier visuellement */}
+              {exercise.id === "vocabulary_fast" && (
+                <View style={[styles.levelBadge, { backgroundColor: "#FED7AA", marginLeft: 6 }]}>
+                  <Text style={[styles.levelBadgeText, { color: "#F59E0B" }]}>FAST</Text>
                 </View>
               )}
             </View>
             <Text style={styles.levelIcon}>{exercise.icon}</Text>
           </View>
 
-          {/* Description compacte */}
-          <Text style={styles.levelDescription}>
+          {/* Description */}
+          <Text style={[styles.levelDescription, { color: colors.textSecondary }]}>
             {exercise.description}
           </Text>
 
           {/* Progression (si > 0) */}
-          {exercise.progress > 0 && (
+          {exercise.hasProgress && (
             <View style={styles.progressContainer}>
               <View style={styles.progressBar}>
                 <View 
@@ -250,41 +267,36 @@ const ExerciseSelection = ({ route }) => {
                   ]} 
                 />
               </View>
-              <Text style={styles.progressText}>{exercise.progress}%</Text>
+              <Text style={[styles.progressText, { color: colors.textSecondary }]}>
+                {exercise.progress}%
+              </Text>
             </View>
           )}
 
-          {/* Bouton d'action */}
+          {/* Bouton intelligent */}
           <Button
-            title={hasProgress ? "Continuer" : "Commencer"}
+            title={exercise.hasProgress ? "Continuer" : "Commencer"}
             variant="filled"
             color={exercise.color}
             fullWidth
             onPress={() => handleExerciseSelect(exercise)}
             style={styles.startButton}
-            rightIcon={hasProgress ? "play-outline" : "arrow-forward-outline"}
+            rightIcon={exercise.hasProgress ? "play-outline" : "rocket-outline"}
           />
         </View>
       </TouchableOpacity>
     );
   };
 
-  // =================== INTRO COMPACTE ===================
-  
-  const renderCompactIntro = () => {
-    const completedCount = exercises.filter(ex => ex.progress > 0).length;
-    
-    return (
-      <View style={styles.introSection}>
-        <Text style={styles.introText}>
-          Choisissez votre exercice • {completedCount}/{exercises.length} en cours
-        </Text>
-      </View>
-    );
-  };
+  // Intro
+  const renderCleanIntro = () => (
+    <View style={styles.introSection}>
+      <Text style={[styles.introText, { color: colors.textSecondary }]}>
+        Choisissez votre exercice
+      </Text>
+    </View>
+  );
 
-  // =================== RENDU PRINCIPAL ===================
-  
   return (
     <Container
       safeArea
@@ -295,26 +307,24 @@ const ExerciseSelection = ({ route }) => {
       statusBarStyle="light-content"
       withPadding={false}
     >
-      {/* Background Dynamique selon le niveau */}
       <LinearGradient
-        colors={backgroundSystem.gradientColors}
-        locations={backgroundSystem.gradientLocations}
+        colors={backgroundGradient.colors}
+        locations={backgroundGradient.locations}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={{ flex: 1 }}
       >
-        {renderCompactHeader()}
+        {renderCleanHeader()}
         
         <ScrollView
           style={{ flex: 1 }}
           contentContainerStyle={[styles.scrollContent, { paddingBottom: 60 }]}
           showsVerticalScrollIndicator={false}
         >
-          {renderCompactIntro()}
+          {renderCleanIntro()}
           
-          {/* Liste des exercices (même layout que niveaux) */}
           <View style={styles.levelsContainer}>
-            {exercises.map(renderCompactExerciseCard)}
+            {exercises.map(renderCleanExerciseCard)}
           </View>
         </ScrollView>
       </LinearGradient>

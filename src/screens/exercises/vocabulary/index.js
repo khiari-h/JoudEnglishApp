@@ -1,5 +1,5 @@
-import React, { useMemo, useState, useCallback } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+import React, { useMemo, useCallback } from "react";
+import { View, Text, ActivityIndicator, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Composants Layout
@@ -12,7 +12,6 @@ import VocabularyWordSection from "./VocabularyWordSection";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import VocabularyProgress from "./VocabularyProgress";
 import LearningTipCard from "./LearningTipCard";
-import VocabularyModeSelector from "./VocabularyModeSelector";
 
 // Utils
 import { getVocabularyData, isBonusLevel, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
@@ -25,39 +24,20 @@ import useVocabularyStats from "./hooks/useVocabularyStats";
 import useVocabularyDisplay from "./hooks/useVocabularyDisplay";
 import useVocabularyLoader from "./hooks/useVocabularyLoader";
 
+// 🎯 COMPOSANT SIMPLIFIÉ - PAS DE SÉLECTEUR DE MODE
 const VocabularyExercise = ({ route }) => {
-  const { level, mode: initialMode } = route.params;
-  const [selectedMode, setSelectedMode] = useState(initialMode);
-
-  const shouldShowModeSelector = !selectedMode && !isBonusLevel(level);
-  const finalMode = selectedMode || (isBonusLevel(level) ? "fast" : "classic");
-
-  const handleModeSelect = useCallback((mode) => setSelectedMode(mode), []);
-
-  if (shouldShowModeSelector) {
-    return (
-      <Container
-        safeArea
-        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
-        statusBarStyle="dark-content"
-      >
-        <VocabularyModeSelector route={route} onModeSelect={handleModeSelect} />
-      </Container>
-    );
-  }
-
-  return <VocabularyExerciseContent level={level} mode={finalMode} />;
-};
-
-// 🎯 Composant principal OPTIMISÉ avec Container SafeArea
-const VocabularyExerciseContent = ({ level, mode }) => {
+  const { level, mode } = route.params;
   const navigation = useNavigation();
+
+  // 🎯 NOUVELLE LOGIQUE : Mode obligatoire depuis ExerciseSelection
+  // Si pas de mode, fallback sur classic (sécurité)
+  const finalMode = mode || (isBonusLevel(level) ? "fast" : "classic");
+  
   const levelColor = getLevelColor(level);
 
   // === DONNÉES DE BASE ===
-  const vocabularyData = useMemo(() => getVocabularyData(level, mode), [level, mode]);
-  const progressKey = useMemo(() => `${level}_${mode}`, [level, mode]);
+  const vocabularyData = useMemo(() => getVocabularyData(level, finalMode), [level, finalMode]);
+  const progressKey = useMemo(() => `${level}_${finalMode}`, [level, finalMode]);
 
   // === HOOKS EXISTANTS ===
   const { 
@@ -80,7 +60,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     toggleTranslation 
   } = useVocabularyExerciseState(progressKey, 0, 0);
 
-  // === HOOK DE CHARGEMENT - GÈRE TOUS LES EFFETS ===
+  // === HOOK DE CHARGEMENT ===
   const { isFullyLoaded } = useVocabularyLoader({
     loaded,
     vocabularyData,
@@ -103,7 +83,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     categories, 
     showDetailedProgress, 
     handleToggleProgressDetails 
-  } = useVocabularyDisplay(vocabularyData, categoryIndex, wordIndex, level, mode);
+  } = useVocabularyDisplay(vocabularyData, categoryIndex, wordIndex, level, finalMode);
 
   // === NAVIGATION ===
   const handleComplete = useCallback((message) => {
@@ -122,7 +102,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     categoryIndex, 
     wordIndex, 
     completedWords, 
-    mode, 
+    mode: finalMode, 
     level,
     markWordAsCompleted, 
     saveLastPosition, 
@@ -166,7 +146,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     <>
       <VocabularyHeader
         level={level}
-        mode={mode}
+        mode={finalMode}
         title={headerTitle}
         progress={totalProgress}
         completedWords={completedWordsCount}
@@ -194,7 +174,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
       <VocabularyWordSection
         currentWord={getCurrentWord}
         wordCounter={wordCounter}
-        mode={mode}
+        mode={finalMode}
         level={level}
         levelColor={levelColor}
         showTranslation={showTranslation}
@@ -203,7 +183,7 @@ const VocabularyExerciseContent = ({ level, mode }) => {
 
       <LearningTipCard 
         level={level} 
-        mode={mode} 
+        mode={finalMode} 
         levelColor={levelColor} 
       />
 
@@ -217,18 +197,18 @@ const VocabularyExerciseContent = ({ level, mode }) => {
     </>
   );
 
-  // === RENDU OPTIMISÉ AVEC CONTAINER SAFEAREA ===
+  // === RENDU PRINCIPAL ===
   return (
     <Container
       safeArea
-      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
       withScrollView
       backgroundColor="#f8fafc"
       statusBarStyle="dark-content"
-      withPadding={false} // Pas de padding global, géré par les composants internes
+      withPadding={false}
       scrollViewProps={{
         showsVerticalScrollIndicator: false,
-        contentContainerStyle: { paddingBottom: 100 } // Espace pour navigation
+        contentContainerStyle: { paddingBottom: 100 }
       }}
     >
       {renderMainContent()}

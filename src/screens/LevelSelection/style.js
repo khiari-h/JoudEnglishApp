@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
   },
 
-  // =================== PROGRESSION SIMPLE ET ÉPURÉE ===================
+  // =================== PROGRESSION ULTRA-SIMPLE ===================
   progressIndicator: {
     paddingVertical: 8,
     paddingHorizontal: 16,
@@ -53,11 +53,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8, // ✅ Espacement moderne
-    marginBottom: 8, // ✅ AJOUTÉ : Espace avant les infos
+    gap: 8,
   },
   progressDot: {
-    width: 28, // ✅ Un peu plus grand pour mieux voir
+    width: 28,
     height: 28,
     borderRadius: 14,
     justifyContent: "center",
@@ -82,16 +81,6 @@ const styles = StyleSheet.create({
     textShadowColor: "rgba(0, 0, 0, 0.3)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
-  },
-  // ✅ AJOUTÉ : Style pour les infos de progression
-  progressInfo: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.15)",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 12,
   },
 
   // =================== CONTENU MODERNE ===================

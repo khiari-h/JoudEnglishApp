@@ -122,7 +122,7 @@ const LevelSelection = () => {
           titleContainerStyle={styles.headerTitle}
         />
 
-        {/* ✅ PROGRESSION SIMPLE - Juste les cercles + infos comme ExerciseSelection */}
+        {/* ✅ PROGRESSION ÉPURÉE - Juste les cercles, point final */}
         <View style={styles.progressIndicator}>
           <View style={styles.levelDots}>
             {Object.keys(LANGUAGE_LEVELS).map((levelKey, index) => (
@@ -142,50 +142,27 @@ const LevelSelection = () => {
               </View>
             ))}
           </View>
-          
-          {/* ✅ AJOUTÉ : Infos de progression comme ExerciceSelection */}
-          <View style={styles.progressInfo}>
-            <Text style={{
-              color: 'white',
-              fontSize: 13,
-              fontWeight: '600'
-            }}>
-              {levels.length} niveaux
-            </Text>
-            <Text style={{
-              color: 'rgba(255,255,255,0.8)',
-              fontSize: 11,
-              marginLeft: 8
-            }}>
-              • {levels.filter(level => level.progress > 0).length} en cours
-            </Text>
-          </View>
+          {/* ✅ SUPPRIMÉ : Infos "X niveaux • Y en cours" - header plus propre */}
         </View>
       </LinearGradient>
     </View>
   );
 
-  // =================== CARDS MODERNES ÉPURÉES ===================
+  // =================== CARDS MODERNES ULTRA-ÉPURÉES ===================
   
   const renderModernLevelCard = (level) => {
+    // ✅ LOGIQUE DÉTECTION : Si progress > 0 = niveau déjà commencé
     const hasProgress = level.progress > 0;
     
     return (
       <TouchableOpacity
         key={level.id}
-        style={[
-          styles.modernCard,
-          hasProgress && {
-            borderWidth: 1,
-            borderColor: level.color + "30",
-            backgroundColor: level.color + "03"
-          }
-        ]} // ✅ AJOUTÉ : Surbrillance si progression comme ExerciseSelection
+        style={styles.modernCard} // ✅ SIMPLIFIÉ : Plus de surbrillance conditionnelle
         onPress={() => handleLevelSelect(level)}
         activeOpacity={0.8}
       >
         <View style={styles.modernCardContent}>
-          {/* ✅ HEADER SIMPLE AVEC POURCENTAGES */}
+          {/* ✅ HEADER SIMPLE AVEC POURCENTAGES ÉPURÉ */}
           <View style={styles.modernCardHeader}>
             <View style={styles.modernTitleContainer}>
               <Text style={[styles.modernTitle, { color: colors.text }]}>
@@ -196,19 +173,7 @@ const LevelSelection = () => {
                   {hasProgress ? `${level.progress}%` : '0%'}
                 </Text>
               </View>
-              {hasProgress && (
-                <View style={{
-                  backgroundColor: '#10B981',
-                  paddingHorizontal: 6,
-                  paddingVertical: 2,
-                  borderRadius: 4,
-                  marginLeft: 8
-                }}>
-                  <Text style={{ color: 'white', fontSize: 9, fontWeight: '600' }}>
-                    EN COURS
-                  </Text>
-                </View>
-              )}
+              {/* ✅ SUPPRIMÉ : Badge "EN COURS" - trop de bruit visuel */}
             </View>
             <Text style={styles.modernIcon}>{level.icon}</Text>
           </View>
@@ -238,7 +203,7 @@ const LevelSelection = () => {
             </View>
           )}
 
-          {/* ✅ BOUTON AVEC FUSÉE */}
+          {/* ✅ BOUTON INTELLIGENT - Commencer vs Continuer */}
           <Button
             title={hasProgress ? "Continuer" : "Commencer"}
             variant="filled"
@@ -246,26 +211,22 @@ const LevelSelection = () => {
             fullWidth
             onPress={() => handleLevelSelect(level)}
             style={styles.modernButton}
-            rightIcon="rocket-outline" // ✅ Icône fusée Ionicons
+            rightIcon={hasProgress ? "play-outline" : "rocket-outline"} // ✅ Icône adaptative
           />
         </View>
       </TouchableOpacity>
     );
   };
 
-  // =================== INTRO ULTRA-ÉPURÉE ===================
+  // =================== INTRO ULTRA-SIMPLE ===================
   
-  const renderSimpleIntro = () => {
-    const levelsInProgress = levels.filter(level => level.progress > 0).length;
-    
-    return (
-      <View style={styles.modernIntro}>
-        <Text style={[styles.modernIntroText, { color: colors.textSecondary }]}>
-          À vous de choisir ! • {levelsInProgress}/{levels.length} en cours
-        </Text>
-      </View>
-    );
-  };
+  const renderSimpleIntro = () => (
+    <View style={styles.modernIntro}>
+      <Text style={[styles.modernIntroText, { color: colors.textSecondary }]}>
+        À vous de choisir !
+      </Text>
+    </View>
+  );
 
   // =================== RENDU PRINCIPAL ===================
   
