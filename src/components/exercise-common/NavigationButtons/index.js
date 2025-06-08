@@ -1,12 +1,17 @@
 // src/components/exercise-common/NavigationButtons/index.js
-import React from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import React, { useState } from "react";
+import { View, TouchableOpacity, Text, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import styles from "./style";
+import { LinearGradient } from "expo-linear-gradient";
+import createStyles from "./style";
 
 /**
- * Boutons de navigation pour passer d'un exercice à l'autre
- * dans une série d'exercices
+ * 🏆 NavigationButtons - Design Niveau LDC (Paris Saint-Germain)
+ * - Glassmorphism effects premium
+ * - Animations fluides et micro-interactions
+ * - États disabled élégants
+ * - Typography moderne et cohérente
+ * - Focus sur l'essentiel : navigation parfaite
  */
 const NavigationButtons = ({
   onNext,
@@ -16,7 +21,7 @@ const NavigationButtons = ({
   totalCount,
   disablePrevious = false,
   disableNext = false,
-  showSkip = true,
+  showSkip = false, // Généralement false pour mode épuré
   primaryColor = "#5E60CE",
   buttonLabels = {
     previous: "Précédent",
@@ -24,178 +29,217 @@ const NavigationButtons = ({
     skip: "Passer",
     finish: "Terminer",
   },
-  variant = "standard", // 'standard', 'compact', 'centered'
+  variant = "standard",
 }) => {
+  const styles = createStyles(primaryColor);
+  
+  // Animations pour les micro-interactions
+  const [prevButtonScale] = useState(new Animated.Value(1));
+  const [nextButtonScale] = useState(new Animated.Value(1));
+
   // Déterminer si on est sur le dernier exercice
   const isLastItem = currentIndex === totalCount - 1;
-
-  // Label pour le bouton suivant (Suivant ou Terminer si dernier item)
   const nextButtonLabel = isLastItem ? buttonLabels.finish : buttonLabels.next;
 
-  // Générer les couleurs avec opacité
-  const primaryColorLight = `${primaryColor}10`; // 10% opacité
-  const primaryColorBorder = `${primaryColor}30`; // 30% opacité
-  const primaryColorCompact = `${primaryColor}15`; // 15% opacité
-  const primaryColorCompactBorder = `${primaryColor}25`; // 25% opacité
+  // Animation de press pour bouton précédent
+  const handlePrevPress = () => {
+    if (disablePrevious) return;
+    
+    Animated.sequence([
+      Animated.timing(prevButtonScale, { 
+        toValue: 0.95, 
+        duration: 100, 
+        useNativeDriver: true 
+      }),
+      Animated.timing(prevButtonScale, { 
+        toValue: 1, 
+        duration: 100, 
+        useNativeDriver: true 
+      })
+    ]).start();
+    
+    setTimeout(() => onPrevious(), 50);
+  };
 
-  // Rendu pour la version standard (boutons alignés)
+  // Animation de press pour bouton suivant
+  const handleNextPress = () => {
+    if (disableNext) return;
+    
+    Animated.sequence([
+      Animated.timing(nextButtonScale, { 
+        toValue: 0.95, 
+        duration: 100, 
+        useNativeDriver: true 
+      }),
+      Animated.timing(nextButtonScale, { 
+        toValue: 1, 
+        duration: 100, 
+        useNativeDriver: true 
+      })
+    ]).start();
+    
+    setTimeout(() => onNext(), 50);
+  };
+
+  // Rendu version standard (recommandée pour LDC)
   const renderStandard = () => (
-    <View style={styles.standardContainer}>
-      {/* Bouton précédent avec style amélioré */}
-      {!disablePrevious && (
-        <TouchableOpacity
-          style={[
-            styles.previousButtonStyled,
-            {
-              backgroundColor: primaryColorLight,
-              borderColor: primaryColorBorder,
-            }
-          ]}
-          onPress={onPrevious}
-          disabled={disablePrevious}
-        >
-          <Ionicons name="chevron-back" size={20} color={primaryColor} />
-          <Text style={[styles.previousButtonTextStyled, { color: primaryColor }]}>
-            {buttonLabels.previous}
-          </Text>
-        </TouchableOpacity>
-      )}
-
-      {/* Bouton passer (si activé) */}
-      {showSkip && onSkip && !isLastItem && (
-        <TouchableOpacity style={styles.skipButton} onPress={onSkip}>
-          <Text style={styles.skipButtonText}>{buttonLabels.skip}</Text>
-        </TouchableOpacity>
-      )}
-
-      {/* Bouton suivant */}
-      <TouchableOpacity
-        style={[
-          styles.nextButton,
-          { backgroundColor: primaryColor },
-          disableNext && styles.disabledButton,
-        ]}
-        onPress={onNext}
-        disabled={disableNext}
+    <View style={styles.container}>
+      {/* 🎨 Background gradient subtil */}
+      <LinearGradient
+        colors={[`${primaryColor}02`, 'transparent', `${primaryColor}02`]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.backgroundGradient}
       >
-        <Text style={styles.nextButtonText}>{nextButtonLabel}</Text>
-        <Ionicons
-          name={isLastItem ? "checkmark" : "chevron-forward"}
-          size={20}
-          color="white"
-        />
-      </TouchableOpacity>
+        <View style={styles.buttonsContainer}>
+          {/* 🔙 BOUTON PRÉCÉDENT - Glassmorphism */}
+          {!disablePrevious && (
+            <Animated.View style={{ transform: [{ scale: prevButtonScale }] }}>
+              <TouchableOpacity
+                style={[
+                  styles.previousButton,
+                  disablePrevious && styles.disabledButton
+                ]}
+                onPress={handlePrevPress}
+                disabled={disablePrevious}
+                activeOpacity={0.8}
+              >
+                <View style={[styles.previousButtonInner, { backgroundColor: `${primaryColor}10` }]}>
+                  <View style={[styles.previousIconContainer, { backgroundColor: `${primaryColor}15` }]}>
+                    <Ionicons name="chevron-back" size={18} color={primaryColor} />
+                  </View>
+                  <Text style={[styles.previousButtonText, { color: primaryColor }]}>
+                    {buttonLabels.previous}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </Animated.View>
+          )}
+
+          {/* ⏭️ BOUTON SUIVANT/TERMINER - Hero CTA */}
+          <Animated.View style={{ transform: [{ scale: nextButtonScale }] }}>
+            <TouchableOpacity
+              style={[
+                styles.nextButtonContainer,
+                disableNext && styles.disabledButtonContainer
+              ]}
+              onPress={handleNextPress}
+              disabled={disableNext}
+              activeOpacity={0.9}
+            >
+              <LinearGradient
+                colors={
+                  isLastItem 
+                    ? ['#10B981', '#059669', '#047857'] // Vert pour terminer
+                    : [primaryColor, `${primaryColor}E6`, `${primaryColor}CC`] // Couleur normale
+                }
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.nextButton}
+              >
+                {/* Effet glassmorphism sur le bouton next */}
+                <View style={styles.nextButtonInner}>
+                  <Text style={styles.nextButtonText}>
+                    {nextButtonLabel}
+                  </Text>
+                  <View style={styles.nextIconContainer}>
+                    <Ionicons
+                      name={isLastItem ? "checkmark-circle" : "chevron-forward"}
+                      size={20}
+                      color="white"
+                    />
+                  </View>
+                  {isLastItem && (
+                    <View style={styles.finishSparkle}>
+                      <Text style={styles.sparkleText}>✨</Text>
+                    </View>
+                  )}
+                </View>
+              </LinearGradient>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
+
+        {/* 📊 INDICATEUR DE PROGRESSION DISCRET */}
+        <View style={styles.progressContainer}>
+          <View style={[styles.progressDot, { backgroundColor: `${primaryColor}20` }]} />
+          <Text style={[styles.progressText, { color: primaryColor }]}>
+            {currentIndex + 1} / {totalCount}
+          </Text>
+          <View style={[styles.progressDot, { backgroundColor: `${primaryColor}20` }]} />
+        </View>
+      </LinearGradient>
     </View>
   );
 
-  // Rendu pour la version compacte (juste des icônes)
+  // Rendu version compacte - aussi au niveau LDC
   const renderCompact = () => (
     <View style={styles.compactContainer}>
-      <View style={styles.compactButtonsRow}>
-        {/* Bouton précédent avec style amélioré */}
-        <TouchableOpacity
-          style={[
-            styles.compactButtonStyled,
-            {
-              backgroundColor: primaryColorCompact,
-              borderColor: primaryColorCompactBorder,
-            },
-            disablePrevious && styles.disabledCompactButton,
-          ]}
-          onPress={onPrevious}
-          disabled={disablePrevious}
-        >
-          <Ionicons name="chevron-back" size={24} color={primaryColor} />
-        </TouchableOpacity>
-
-        {/* Indicateur de progression */}
-        <Text style={styles.progressIndicator}>
-          {currentIndex + 1}/{totalCount}
-        </Text>
-
-        {/* Bouton suivant */}
-        <TouchableOpacity
-          style={[
-            styles.compactButton,
-            { backgroundColor: primaryColor },
-            disableNext && styles.disabledCompactButton,
-          ]}
-          onPress={onNext}
-          disabled={disableNext}
-        >
-          <Ionicons
-            name={isLastItem ? "checkmark" : "chevron-forward"}
-            size={24}
-            color="white"
-          />
-        </TouchableOpacity>
-      </View>
-
-      {/* Bouton passer */}
-      {showSkip && onSkip && !isLastItem && (
-        <TouchableOpacity style={styles.compactSkipButton} onPress={onSkip}>
-          <Text style={styles.compactSkipButtonText}>{buttonLabels.skip}</Text>
-          <Ionicons name="play-skip-forward" size={16} color="#6B7280" />
-        </TouchableOpacity>
-      )}
-    </View>
-  );
-
-  // Rendu pour la version centrée (boutons alignés verticalement)
-  const renderCentered = () => (
-    <View style={styles.centeredContainer}>
-      {/* Bouton suivant (au-dessus) */}
-      <TouchableOpacity
-        style={[
-          styles.centeredNextButton,
-          { backgroundColor: primaryColor },
-          disableNext && styles.disabledButton,
-        ]}
-        onPress={onNext}
-        disabled={disableNext}
+      <LinearGradient
+        colors={[`${primaryColor}04`, 'transparent']}
+        style={styles.compactGradient}
       >
-        <Text style={styles.centeredNextButtonText}>{nextButtonLabel}</Text>
-        <Ionicons
-          name={isLastItem ? "checkmark" : "chevron-forward"}
-          size={20}
-          color="white"
-        />
-      </TouchableOpacity>
+        <View style={styles.compactButtonsRow}>
+          {/* Bouton précédent compact */}
+          <Animated.View style={{ transform: [{ scale: prevButtonScale }] }}>
+            <TouchableOpacity
+              style={[
+                styles.compactPreviousButton,
+                { backgroundColor: `${primaryColor}12` },
+                disablePrevious && styles.disabledCompactButton,
+              ]}
+              onPress={handlePrevPress}
+              disabled={disablePrevious}
+              activeOpacity={0.8}
+            >
+              <View style={[styles.compactButtonInner, { borderColor: `${primaryColor}20` }]}>
+                <Ionicons name="chevron-back" size={22} color={primaryColor} />
+              </View>
+            </TouchableOpacity>
+          </Animated.View>
 
-      {/* Bouton précédent avec style amélioré (en dessous) */}
-      {!disablePrevious && (
-        <TouchableOpacity
-          style={[
-            styles.centeredPreviousButtonStyled,
-            {
-              backgroundColor: primaryColorLight,
-              borderColor: primaryColorBorder,
-            }
-          ]}
-          onPress={onPrevious}
-          disabled={disablePrevious}
-        >
-          <Text style={[styles.centeredPreviousButtonTextStyled, { color: primaryColor }]}>
-            {buttonLabels.previous}
-          </Text>
-        </TouchableOpacity>
-      )}
+          {/* Indicateur central stylé */}
+          <View style={[styles.compactProgressContainer, { backgroundColor: `${primaryColor}08` }]}>
+            <Text style={[styles.compactProgressText, { color: primaryColor }]}>
+              {currentIndex + 1}/{totalCount}
+            </Text>
+          </View>
 
-      {/* Bouton passer */}
-      {showSkip && onSkip && !isLastItem && (
-        <TouchableOpacity style={styles.centeredSkipButton} onPress={onSkip}>
-          <Text style={styles.centeredSkipButtonText}>{buttonLabels.skip}</Text>
-        </TouchableOpacity>
-      )}
+          {/* Bouton suivant compact */}
+          <Animated.View style={{ transform: [{ scale: nextButtonScale }] }}>
+            <TouchableOpacity
+              style={styles.compactNextButtonContainer}
+              onPress={handleNextPress}
+              disabled={disableNext}
+              activeOpacity={0.9}
+            >
+              <LinearGradient
+                colors={
+                  isLastItem 
+                    ? ['#10B981', '#059669'] 
+                    : [primaryColor, `${primaryColor}E6`]
+                }
+                style={styles.compactNextButton}
+              >
+                <View style={styles.compactNextInner}>
+                  <Ionicons
+                    name={isLastItem ? "checkmark-circle" : "chevron-forward"}
+                    size={22}
+                    color="white"
+                  />
+                </View>
+              </LinearGradient>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
+      </LinearGradient>
     </View>
   );
 
-  // Choisir le rendu en fonction de la variante
+  // Choisir le rendu selon la variante
   switch (variant) {
     case "compact":
       return renderCompact();
-    case "centered":
-      return renderCentered();
     case "standard":
     default:
       return renderStandard();

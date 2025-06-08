@@ -1,20 +1,26 @@
-// 7. VocabularyHeader - MIS À JOUR (avec support mode)
+// VocabularyHeader - Version épurée mobile-first
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
+/**
+ * 🎯 VocabularyHeader - Version Mobile-First Épurée
+ * - Titres courts et clairs
+ * - Cohérence avec ExerciseSelection
+ * - Focus sur l'essentiel
+ * - Pas de redondance
+ */
 const VocabularyHeader = ({ level, mode, onBackPress }) => {
-  // Titre adapté selon le mode
+  // 🎯 TITRES ÉPURÉS - Mobile-first
   const getTitle = () => {
-    if (mode === 'fast') return 'Vocabulaire Fast';
-    if (mode === 'classic') return 'Vocabulaire Classique';
-    return 'Vocabulaire';
+    if (mode === 'fast') return 'Fast'; // Simple et clair ⚡
+    return 'Vocabulaire'; // Par défaut pour classic
   };
 
   return (
     <ExerciseHeader
       title={getTitle()}
       level={level}
-      exerciseType="vocabulary" // ✅ NOUVEAU
+      exerciseType="vocabulary" // Même type, seul le mode change
       onClose={onBackPress}
       backIcon="arrow-back"
     />

@@ -1,111 +1,260 @@
 // VocabularyExercise/VocabularyWordCard/style.js
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 
-// Fonction qui génère les styles avec la couleur du niveau
+const { width } = Dimensions.get('window');
+
+/**
+ * 🏆 Styles niveau LDC (Paris Saint-Germain) pour VocabularyWordCard
+ * - Hero section spectaculaire
+ * - Glassmorphism effects  
+ * - Typography hiérarchisée
+ * - Breathing room généreux
+ * - Ombres et gradients modernes
+ */
 const createStyles = (levelColor = "#5E60CE") =>
   StyleSheet.create({
-    card: {
-      overflow: "hidden",
-      marginBottom: 20,
+    // =================== CONTAINER PRINCIPAL ===================
+    container: {
       marginHorizontal: 16,
+      marginVertical: 8,
     },
-    cardContent: {
-      padding: 0,
+
+    // =================== HERO SECTION - LE MOT PRINCIPAL ===================
+    heroSection: {
+      marginBottom: 24, // Breathing room généreux
+      borderRadius: 24,
+      overflow: 'hidden',
+      // Ombre spectaculaire pour la hero section
+      ...Platform.select({
+        ios: {
+          shadowColor: levelColor,
+          shadowOffset: { width: 0, height: 8 },
+          shadowOpacity: 0.2,
+          shadowRadius: 16,
+        },
+        android: {
+          elevation: 8,
+        },
+      }),
     },
-    wordHeader: {
-      paddingVertical: 20,
-      paddingHorizontal: 20,
-      alignItems: "center",
-      justifyContent: "center",
-      width: "100%",
-      backgroundColor: `${levelColor}15`,
+    heroGradient: {
+      paddingVertical: 48, // Plus d'espace vertical
+      paddingHorizontal: 32,
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'relative',
+      minHeight: 140, // Hauteur minimum spectaculaire
+    },
+
+    // =================== CERCLES DÉCORATIFS ===================
+    decorativeCircle: {
+      position: 'absolute',
+      borderRadius: 999,
+    },
+    circle1: {
+      width: 120,
+      height: 120,
+      top: -60,
+      right: -40,
+      opacity: 0.3,
+    },
+    circle2: {
+      width: 80,
+      height: 80,
+      bottom: -40,
+      left: -20,
+      opacity: 0.2,
+    },
+
+    // =================== LE MOT - STAR ABSOLUE ===================
+    wordContainer: {
+      alignItems: 'center',
+      zIndex: 2, // Au-dessus des cercles décoratifs
     },
     wordText: {
-      fontSize: 30,
-      fontWeight: "bold",
-      color: levelColor, // Utilise la couleur du niveau
-      textAlign: "center",
+      fontSize: 42, // Taille spectaculaire
+      fontWeight: '800', // Ultra bold
+      letterSpacing: 1.2, // Espacement élégant
+      textAlign: 'center',
+      marginBottom: 8,
+      // Ombre pour le texte
+      ...Platform.select({
+        ios: {
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 4,
+        },
+      }),
     },
-    translationSection: {
-      padding: 20,
-      borderTopWidth: 1,
-      borderBottomWidth: 1,
-      borderColor: "#f3f4f6",
-      alignItems: "center",
+    wordUnderline: {
+      width: 60,
+      height: 4,
+      borderRadius: 2,
+      opacity: 0.6,
     },
-    translationContainer: {
-      alignItems: "center",
-      width: "100%",
+
+    // =================== CARD TRADUCTION ===================
+    translationCard: {
+      marginBottom: 20,
+      backgroundColor: 'white',
+      // Ombre moderne
+      ...Platform.select({
+        ios: {
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.08,
+          shadowRadius: 12,
+        },
+        android: {
+          elevation: 4,
+        },
+      }),
     },
-    translation: {
-      fontSize: 24,
-      fontWeight: "bold",
-      marginBottom: 16,
-      color: levelColor, // Utilise la couleur du niveau
+    translationContent: {
+      padding: 24, // Padding généreux
     },
+
+    // =================== TRADUCTION VISIBLE ===================
+    translationVisible: {
+      alignItems: 'center',
+    },
+    translationWrapper: {
+      alignItems: 'center',
+      marginBottom: 20,
+      position: 'relative',
+    },
+    translationText: {
+      fontSize: 32, // Augmenté pour rester dominant
+      fontWeight: '700',
+      textAlign: 'center',
+      marginBottom: 20, // Plus d'espace
+      lineHeight: 40,
+    },
+    translationDot: {
+      width: 8,
+      height: 8,
+      borderRadius: 4,
+    },
+
+    // =================== BOUTON HIDE - VERSION DISCRÈTE ===================
     hideButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      paddingVertical: 8,
-      paddingHorizontal: 16,
-      borderWidth: 1,
-      borderRadius: 20,
-      borderColor: levelColor, // Utilise la couleur du niveau
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: 10, // Légèrement réduit
+      paddingHorizontal: 16, // Légèrement réduit
+      borderWidth: 1.5,
+      borderRadius: 20, // Plus petit
+      backgroundColor: 'white',
+      alignSelf: 'center', // Centré
+    },
+    hideButtonIcon: {
+      width: 28,
+      height: 28,
+      borderRadius: 14,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginRight: 10,
     },
     hideButtonText: {
-      fontSize: 14,
-      fontWeight: "500",
-      color: levelColor, // Utilise la couleur du niveau
+      fontSize: 15,
+      fontWeight: '600',
+      letterSpacing: 0.3,
+    },
+
+    // =================== BOUTON REVEAL - VERSION DISCRÈTE ===================
+    revealButtonContainer: {
+      borderRadius: 20, // Plus petit
+      overflow: 'hidden',
+      alignSelf: 'center',
+      maxWidth: '70%', // Limite la largeur
+      // Ombre réduite pour moins d'impact
+      ...Platform.select({
+        ios: {
+          shadowColor: levelColor,
+          shadowOffset: { width: 0, height: 3 }, // Réduit
+          shadowOpacity: 0.15, // Réduit
+          shadowRadius: 8, // Réduit
+        },
+        android: {
+          elevation: 3, // Réduit
+        },
+      }),
     },
     revealButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      paddingVertical: 12,
-      paddingHorizontal: 24,
-      borderRadius: 25,
-      width: "80%",
-      backgroundColor: levelColor, // Utilise la couleur du niveau
+      borderRadius: 20,
+      overflow: 'hidden',
+    },
+    glassEffect: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      borderRadius: 16,
+      paddingVertical: 12, // Réduit de 18 à 12
+      paddingHorizontal: 20, // Réduit de 32 à 20
+      borderWidth: 1,
+      borderColor: 'rgba(255, 255, 255, 0.2)',
+    },
+    revealIcon: {
+      marginRight: 8, // Réduit
     },
     revealButtonText: {
-      color: "white",
-      fontSize: 16,
-      fontWeight: "600",
+      color: 'white',
+      fontSize: 15, // Réduit de 18 à 15
+      fontWeight: '600', // Réduit de 700 à 600
+      letterSpacing: 0.3, // Réduit
     },
-    buttonIcon: {
-      marginRight: 8,
+    sparkle: {
+      marginLeft: 6, // Réduit
+      fontSize: 14, // Réduit
     },
-    contentSection: {
+
+    // =================== CARD EXEMPLE ===================
+    exampleCard: {
+      backgroundColor: '#FAFBFC', // Background légèrement différent
+      borderWidth: 1,
+      borderColor: '#F1F3F4',
+    },
+    exampleContent: {
       padding: 20,
-      borderBottomWidth: 1,
-      borderBottomColor: "#f3f4f6",
     },
-    sectionHeader: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginBottom: 12,
+
+    // =================== HEADER EXEMPLE ===================
+    exampleHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 16,
     },
-    sectionDot: {
+    exampleDot: {
       width: 10,
       height: 10,
       borderRadius: 5,
-      marginRight: 10,
-      backgroundColor: levelColor, // Utilise la couleur du niveau
+      marginRight: 12,
     },
-    sectionTitle: {
+    exampleTitle: {
       fontSize: 16,
-      fontWeight: "bold",
-      color: "#374151",
+      fontWeight: '700',
+      color: '#374151',
+      letterSpacing: 0.3,
     },
-    sectionText: {
-      fontSize: 16,
-      color: "#4b5563",
-      lineHeight: 24,
+    exampleLine: {
+      flex: 1,
+      height: 1,
+      backgroundColor: '#E5E7EB',
+      marginLeft: 12,
     },
+
+    // =================== TEXTE EXEMPLE ===================
     exampleText: {
-      fontStyle: "italic",
+      fontSize: 16,
+      color: '#4B5563',
+      lineHeight: 26, // Line height généreux pour la lisibilité
+    },
+    exampleItalic: {
+      fontStyle: 'italic',
+      fontWeight: '500',
     },
   });
 
 export default createStyles;
-

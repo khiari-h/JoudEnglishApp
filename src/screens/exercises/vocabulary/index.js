@@ -5,13 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 // Composants Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
-// Composants
+// Composants LDC - Tous redesignés niveau Champions League
 import VocabularyHeader from "./VocabularyHeader";
 import VocabularyNavigation from "./VocabularyNavigation";
 import VocabularyWordSection from "./VocabularyWordSection";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import VocabularyProgress from "./VocabularyProgress";
-import LearningTipCard from "./LearningTipCard";
+// 🧹 LearningTipCard SUPPRIMÉ - Mode PSG épuré, focus sur l'essentiel
 
 // Utils
 import { getVocabularyData, isBonusLevel, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
@@ -24,12 +24,18 @@ import useVocabularyStats from "./hooks/useVocabularyStats";
 import useVocabularyDisplay from "./hooks/useVocabularyDisplay";
 import useVocabularyLoader from "./hooks/useVocabularyLoader";
 
-// 🎯 COMPOSANT SIMPLIFIÉ - PAS DE SÉLECTEUR DE MODE
+/**
+ * 🏆 VocabularyExercise - Version Niveau LDC (Paris Saint-Germain)
+ * - Mode épuré : focus total sur l'apprentissage du vocabulaire
+ * - Tous les composants redesignés avec glassmorphism et animations
+ * - Architecture simplifiée et efficace
+ * - Comme Enrique : que l'essentiel, rien de superflu
+ */
 const VocabularyExercise = ({ route }) => {
   const { level, mode } = route.params;
   const navigation = useNavigation();
 
-  // 🎯 NOUVELLE LOGIQUE : Mode obligatoire depuis ExerciseSelection
+  // 🎯 LOGIQUE SIMPLIFIÉE : Mode obligatoire depuis ExerciseSelection
   // Si pas de mode, fallback sur classic (sécurité)
   const finalMode = mode || (isBonusLevel(level) ? "fast" : "classic");
   
@@ -122,7 +128,7 @@ const VocabularyExercise = ({ route }) => {
     navigation.goBack();
   }, [navigation]);
 
-  // === LOADING STATE ===
+  // === LOADING STATE AMÉLIORÉ ===
   if (!isFullyLoaded) {
     return (
       <Container
@@ -131,19 +137,32 @@ const VocabularyExercise = ({ route }) => {
         backgroundColor="#f8fafc"
         statusBarStyle="dark-content"
       >
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <View style={{ 
+          flex: 1, 
+          justifyContent: "center", 
+          alignItems: "center",
+          paddingHorizontal: 20 
+        }}>
           <ActivityIndicator size="large" color={levelColor} />
-          <Text style={{ marginTop: 10, color: "#666", fontSize: 16 }}>
-            Chargement...
+          <Text style={{ 
+            marginTop: 16, 
+            color: "#666", 
+            fontSize: 16,
+            fontWeight: "500",
+            textAlign: "center",
+            letterSpacing: 0.3
+          }}>
+            Chargement de votre vocabulaire...
           </Text>
         </View>
       </Container>
     );
   }
 
-  // === CONTENU PRINCIPAL ===
+  // === CONTENU PRINCIPAL - VERSION ÉPURÉE LDC ===
   const renderMainContent = () => (
     <>
+      {/* 🏆 Header premium avec glassmorphism */}
       <VocabularyHeader
         level={level}
         mode={finalMode}
@@ -155,6 +174,7 @@ const VocabularyExercise = ({ route }) => {
         onBackPress={handleBackPress}
       />
 
+      {/* 📊 Progression avec animations et glassmorphism */}
       <VocabularyProgress
         vocabularyData={vocabularyData}
         completedWords={completedWords}
@@ -164,6 +184,7 @@ const VocabularyExercise = ({ route }) => {
         onCategoryPress={handleCategoryProgressPress}
       />
 
+      {/* 🎨 Sélecteur de catégories avec pills modernes */}
       <VocabularyCategorySelector
         categories={categories}
         selectedIndex={categoryIndex}
@@ -171,6 +192,7 @@ const VocabularyExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
+      {/* ⭐ Section principale - Le mot héro avec glassmorphism */}
       <VocabularyWordSection
         currentWord={getCurrentWord}
         wordCounter={wordCounter}
@@ -181,12 +203,14 @@ const VocabularyExercise = ({ route }) => {
         onToggleTranslation={toggleTranslation}
       />
 
-      <LearningTipCard 
-        level={level} 
-        mode={finalMode} 
-        levelColor={levelColor} 
-      />
+      {/* 
+        🧹 LearningTipCard SUPPRIMÉ pour mode épuré
+        - Focus total sur l'apprentissage du vocabulaire
+        - Interface plus clean et moderne
+        - Comme Enrique : que l'efficacité, rien de superflu
+      */}
 
+      {/* ⏭️ Navigation avec glassmorphism et micro-interactions */}
       <VocabularyNavigation
         onNext={handleNext}
         onPrevious={handlePrevious}
@@ -208,7 +232,10 @@ const VocabularyExercise = ({ route }) => {
       withPadding={false}
       scrollViewProps={{
         showsVerticalScrollIndicator: false,
-        contentContainerStyle: { paddingBottom: 100 }
+        contentContainerStyle: { 
+          paddingBottom: 120, // Un peu plus d'espace en bas
+          minHeight: '100%' // Assure que le contenu prend toute la hauteur
+        }
       }}
     >
       {renderMainContent()}
