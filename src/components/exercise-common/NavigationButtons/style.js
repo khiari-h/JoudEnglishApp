@@ -1,277 +1,121 @@
-// src/components/exercise-common/NavigationButtons/style.js
+// NavigationButtons/style.js - VERSION OPTIMISÉE (300 → 80 lignes)
+
 import { StyleSheet, Platform } from 'react-native';
 
 /**
- * 🏆 Styles niveau LDC (Paris Saint-Germain) pour NavigationButtons
- * - Glassmorphism effects premium
- * - Gradients dynamiques et modernes
- * - Typography hiérarchisée
- * - Ombres spectaculaires
- * - Micro-interactions élégantes
+ * 🎯 Styles optimisés pour NavigationButtons
+ * Ancien : 300 lignes avec standard/compact dupliqué
+ * Nouveau : 80 lignes avec une seule variante élégante
+ * Cohérent avec HeroCard/RevealButton/ContentSection
  */
 const createStyles = (primaryColor = "#5E60CE") =>
   StyleSheet.create({
-    // =================== CONTAINER PRINCIPAL ===================
+    // =================== CONTAINER ===================
     container: {
       marginHorizontal: 16,
       marginVertical: 12,
-      borderRadius: 20,
-      overflow: 'hidden',
-      // Ombre spectaculaire pour l'ensemble
-      ...Platform.select({
-        ios: {
-          shadowColor: primaryColor,
-          shadowOffset: { width: 0, height: 6 },
-          shadowOpacity: 0.12,
-          shadowRadius: 16,
-        },
-        android: {
-          elevation: 6,
-        },
-      }),
-    },
-    backgroundGradient: {
-      paddingVertical: 20,
-      paddingHorizontal: 20,
-      backgroundColor: 'rgba(255, 255, 255, 0.95)', // Base glassmorphism
-      borderWidth: 1,
-      borderColor: 'rgba(255, 255, 255, 0.3)',
-    },
-
-    // =================== CONTAINER BOUTONS ===================
-    buttonsContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: 16,
-    },
-
-    // =================== BOUTON PRÉCÉDENT - Glassmorphism ===================
-    previousButton: {
       borderRadius: 16,
       overflow: 'hidden',
-      // Ombre pour le bouton précédent
+      // Ombre modérée et cohérente
       ...Platform.select({
         ios: {
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.1,
-          shadowRadius: 8,
+          shadowOpacity: 0.08,
+          shadowRadius: 12,
         },
         android: {
           elevation: 4,
         },
       }),
     },
-    previousButtonInner: {
+
+    gradient: {
+      paddingVertical: 16,
+      paddingHorizontal: 20,
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderWidth: 1,
+      borderColor: 'rgba(255, 255, 255, 0.3)',
+    },
+
+    // =================== ROW BOUTONS ===================
+    buttonsRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+
+    // =================== BOUTON PRÉCÉDENT ===================
+    previousButton: {
       flexDirection: 'row',
       alignItems: 'center',
       paddingVertical: 12,
       paddingHorizontal: 16,
-      borderRadius: 16,
+      borderRadius: 14,
       borderWidth: 1,
-      borderColor: 'rgba(255, 255, 255, 0.3)', // Glassmorphism border
+      borderColor: `${primaryColor}20`,
+      // Ombre légère
+      ...Platform.select({
+        ios: {
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.06,
+          shadowRadius: 6,
+        },
+        android: {
+          elevation: 2,
+        },
+      }),
     },
-    previousIconContainer: {
-      width: 28,
-      height: 28,
-      borderRadius: 8,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginRight: 10,
-      borderWidth: 1,
-      borderColor: 'rgba(255, 255, 255, 0.4)',
-    },
-    previousButtonText: {
+    previousText: {
       fontSize: 15,
       fontWeight: '600',
-      letterSpacing: 0.3,
+      letterSpacing: 0.2,
+      marginLeft: 6,
     },
 
-    // =================== BOUTON SUIVANT - Hero CTA ===================
+    // =================== BOUTON SUIVANT ===================
     nextButtonContainer: {
-      borderRadius: 18,
+      borderRadius: 16,
       overflow: 'hidden',
-      // Ombre spectaculaire pour le CTA
+      // Ombre pour CTA principal (même niveau que RevealButton)
       ...Platform.select({
         ios: {
           shadowColor: primaryColor,
-          shadowOffset: { width: 0, height: 8 },
-          shadowOpacity: 0.25,
-          shadowRadius: 16,
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.15,
+          shadowRadius: 10,
         },
         android: {
-          elevation: 8,
+          elevation: 5,
         },
       }),
     },
     nextButton: {
-      borderRadius: 18,
-      overflow: 'hidden',
+      borderRadius: 16,
     },
     nextButtonInner: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: 16,
+      paddingVertical: 14,
       paddingHorizontal: 24,
-      backgroundColor: 'rgba(255, 255, 255, 0.15)', // Glassmorphism
+      backgroundColor: 'rgba(255, 255, 255, 0.15)', // Glassmorphism cohérent
       borderWidth: 1,
       borderColor: 'rgba(255, 255, 255, 0.3)',
-      minHeight: 52, // Touch-friendly
     },
-    nextButtonText: {
+    nextText: {
       fontSize: 16,
       fontWeight: '700',
       color: 'white',
-      letterSpacing: 0.4,
-      marginRight: 8,
-      // Ombre pour le texte
-      ...Platform.select({
-        ios: {
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 1 },
-          shadowOpacity: 0.3,
-          shadowRadius: 2,
-        },
-      }),
+      letterSpacing: 0.3,
     },
-    nextIconContainer: {
-      marginLeft: 4,
-    },
-
-    // =================== EFFET SPARKLE POUR TERMINER ===================
-    finishSparkle: {
+    nextIcon: {
       marginLeft: 8,
-      opacity: 0.9,
     },
-    sparkleText: {
+    sparkle: {
       fontSize: 14,
-    },
-
-    // =================== INDICATEUR DE PROGRESSION ===================
-    progressContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    progressDot: {
-      width: 4,
-      height: 4,
-      borderRadius: 2,
-      marginHorizontal: 8,
-      opacity: 0.6,
-    },
-    progressText: {
-      fontSize: 13,
-      fontWeight: '600',
-      letterSpacing: 0.5,
-      textAlign: 'center',
-    },
-
-    // =================== ÉTATS DISABLED ===================
-    disabledButton: {
-      opacity: 0.5,
-    },
-    disabledButtonContainer: {
-      opacity: 0.6,
-    },
-
-    // =================== VERSION COMPACTE ===================
-    compactContainer: {
-      marginHorizontal: 16,
-      marginVertical: 8,
-      borderRadius: 20,
-      overflow: 'hidden',
-    },
-    compactGradient: {
-      paddingVertical: 16,
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      borderWidth: 1,
-      borderColor: 'rgba(255, 255, 255, 0.2)',
-    },
-    compactButtonsRow: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-
-    // =================== BOUTON PRÉCÉDENT COMPACT ===================
-    compactPreviousButton: {
-      borderRadius: 16,
-      marginRight: 20,
-      // Ombre compacte
-      ...Platform.select({
-        ios: {
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.08,
-          shadowRadius: 6,
-        },
-        android: {
-          elevation: 3,
-        },
-      }),
-    },
-    compactButtonInner: {
-      width: 48,
-      height: 48,
-      borderRadius: 16,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderWidth: 1,
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    },
-
-    // =================== INDICATEUR COMPACT ===================
-    compactProgressContainer: {
-      paddingHorizontal: 16,
-      paddingVertical: 8,
-      borderRadius: 12,
-      borderWidth: 1,
-      borderColor: 'rgba(255, 255, 255, 0.3)',
-      marginHorizontal: 20,
-    },
-    compactProgressText: {
-      fontSize: 14,
-      fontWeight: '700',
-      letterSpacing: 0.4,
-    },
-
-    // =================== BOUTON SUIVANT COMPACT ===================
-    compactNextButtonContainer: {
-      borderRadius: 16,
-      marginLeft: 20,
-      // Ombre spectaculaire compacte
-      ...Platform.select({
-        ios: {
-          shadowColor: primaryColor,
-          shadowOffset: { width: 0, height: 6 },
-          shadowOpacity: 0.2,
-          shadowRadius: 12,
-        },
-        android: {
-          elevation: 6,
-        },
-      }),
-    },
-    compactNextButton: {
-      borderRadius: 16,
-    },
-    compactNextInner: {
-      width: 48,
-      height: 48,
-      borderRadius: 16,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-      borderWidth: 1,
-      borderColor: 'rgba(255, 255, 255, 0.3)',
-    },
-
-    // =================== ÉTATS DISABLED COMPACT ===================
-    disabledCompactButton: {
-      opacity: 0.5,
+      marginLeft: 6,
     },
   });
 

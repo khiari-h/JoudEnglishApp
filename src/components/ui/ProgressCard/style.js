@@ -1,16 +1,13 @@
-// src/components/screens/exercises/vocabulary/VocabularyProgress/style.js
+// src/components/ui/ProgressCard/style.js
 import { StyleSheet, Platform } from "react-native";
 
 /**
- * 🎯 Styles Corrects pour VocabularyProgress
- * - Sans icône rouge
- * - Avec expansion pour catégories
- * - Sans labels progression inutiles
- * - Mobile-first et épuré
+ * 📊 Styles génériques pour ProgressCard
+ * Glassmorphism et expansion pour tous les exercices
  */
 const createStyles = (levelColor = "#5E60CE") =>
   StyleSheet.create({
-    // =================== CONTAINER PRINCIPAL ===================
+    // =================== CONTAINER ===================
     container: {
       marginHorizontal: 16,
       marginVertical: 8,
@@ -37,7 +34,7 @@ const createStyles = (levelColor = "#5E60CE") =>
       }),
     },
 
-    // =================== HEADER SANS ICÔNE ===================
+    // =================== HEADER ===================
     header: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -60,6 +57,13 @@ const createStyles = (levelColor = "#5E60CE") =>
       fontWeight: '600',
       color: '#1F2937',
       letterSpacing: 0.2,
+    },
+    subtitle: {
+      fontSize: 13,
+      fontWeight: '500',
+      color: '#6B7280',
+      letterSpacing: 0.1,
+      marginTop: 2,
     },
     statsCount: {
       fontSize: 15,
@@ -85,7 +89,7 @@ const createStyles = (levelColor = "#5E60CE") =>
       paddingBottom: 16,
     },
     progressBar: {
-      // Simple
+      // ProgressBar gère ses propres styles
     },
 
     // =================== WRAPPER CATÉGORIES ===================
@@ -161,7 +165,7 @@ const createStyles = (levelColor = "#5E60CE") =>
       letterSpacing: 0.2,
     },
     categoryProgress: {
-      // Minimal
+      // ProgressBar gère ses propres styles
     },
   });
 
