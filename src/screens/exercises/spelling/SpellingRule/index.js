@@ -2,13 +2,14 @@
 
 import React from "react";
 import { View } from "react-native";
-import HeroCard from "../../../../../components/ui/HeroCard";
-import ContentSection from "../../../../../components/ui/ContentSection";
+import HeroCard from "../../../../components/ui/HeroCard";
+import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
 
 /**
  * 📚 SpellingRule - Version Refactorisée avec composants génériques
- * Remplace le composant custom par HeroCard + ContentSection
+ * Utilise HeroCard pour la règle + ContentSection pour les instructions
+ * Pattern cohérent avec SpellingCorrection
  * 
  * @param {string} rule - Règle d'orthographe à apprendre
  * @param {string} instruction - Instruction pour l'exercice
@@ -23,14 +24,13 @@ const SpellingRule = ({
 
   return (
     <View style={styles.container}>
-      {/* 📚 SECTION RÈGLE - Mise en avant */}
-      <ContentSection
-        title="Règle d'orthographe"
+      {/* 🎯 HERO SECTION - Règle d'orthographe mise en avant */}
+      <HeroCard 
         content={rule}
+        fontSize={18}
         levelColor={levelColor}
-        backgroundColor="#F0F9FF"
-        style={styles.ruleSection}
-        isHighlighted={true}
+        showUnderline={false}
+        style={styles.heroCard}
       />
       
       {/* 📝 SECTION INSTRUCTIONS */}

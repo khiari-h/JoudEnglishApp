@@ -1,12 +1,15 @@
-// src/components/ui/HeroCard/index.js
+// src/components/ui/HeroCard/index.js - VERSION MOBILE-FRIENDLY
 import React from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import createStyles from "./style";
 
 /**
- * 🎯 HeroCard - Composant générique pour contenu principal
- * Usage : Vocabulary, Phrases, Grammar, Reading, etc.
+ * 🎯 HeroCard - Version Mobile-Friendly Premium
+ * - Backgrounds solides pour lisibilité mobile
+ * - Ombres neutres (pas colorées)
+ * - Contrastes optimisés (WCAG AA)
+ * - Cross-platform cohérent
  * 
  * @param {string} content - Contenu principal à afficher
  * @param {number} fontSize - Taille du texte (42 pour mots, 28 pour phrases, etc.)
@@ -33,14 +36,18 @@ const HeroCard = ({
   return (
     <View style={[styles.heroSection, containerStyle]}>
       <LinearGradient
-        colors={[`${levelColor}12`, `${levelColor}08`, `${levelColor}04`]}
+        colors={[
+          'white',
+          `${levelColor}08`, // Gradient très subtil vers couleur
+          `${levelColor}12`   // Légèrement plus visible
+        ]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.heroGradient}
       >
-        {/* Cercles décoratifs */}
-        <View style={[styles.decorativeCircle, styles.circle1, { backgroundColor: `${levelColor}08` }]} />
-        <View style={[styles.decorativeCircle, styles.circle2, { backgroundColor: `${levelColor}06` }]} />
+        {/* Cercles décoratifs - plus visibles */}
+        <View style={[styles.decorativeCircle, styles.circle1, { backgroundColor: `${levelColor}15` }]} />
+        <View style={[styles.decorativeCircle, styles.circle2, { backgroundColor: `${levelColor}10` }]} />
         
         {/* Contenu principal */}
         <View style={styles.contentContainer}>

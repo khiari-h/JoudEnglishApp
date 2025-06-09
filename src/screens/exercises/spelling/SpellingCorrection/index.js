@@ -2,8 +2,8 @@
 
 import React from "react";
 import { View } from "react-native";
-import HeroCard from "../../../../../components/ui/HeroCard";
-import ContentSection from "../../../../../components/ui/ContentSection";
+import HeroCard from "../../../../components/ui/HeroCard";
+import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
 
 /**

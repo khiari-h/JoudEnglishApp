@@ -1,17 +1,17 @@
-// src/components/ui/ProgressCard/index.js
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Animated } from "react-native";
+// src/components/ui/ProgressCard/index.js - VERSION SANS TREMBLEMENT
+import React, { useState, useRef, useEffect } from "react";
+import { View, Text, TouchableOpacity, LayoutAnimation, Platform } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import ProgressBar from "../ProgressBar";
 import createStyles from "./style";
 
 /**
- * 📊 ProgressCard - Composant générique pour progression avec expansion
- * Usage : Vocabulary, Phrases, Grammar, Reading, etc.
+ * 📊 ProgressCard - Version Sans Tremblement
+ * Fix du bug d'animation : LayoutAnimation au lieu d'Animated.View conflictuel
  * 
- * @param {string} title - Titre principal (ex: "Progression", "Phrases Progress")
- * @param {string} subtitle - Sous-titre (ex: "Phrase 1 of 20")
+ * @param {string} title - Titre principal
+ * @param {string} subtitle - Sous-titre
  * @param {number} progress - Pourcentage de progression (0-100)
  * @param {number} completed - Nombre d'items complétés
  * @param {number} total - Nombre total d'items
@@ -38,33 +38,39 @@ const ProgressCard = ({
   onCategoryPress,
 }) => {
   const styles = createStyles(levelColor);
-  const [expandAnim] = useState(new Animated.Value(expanded ? 1 : 0));
 
-  // Animation d'expansion
+  // Configuration LayoutAnimation pour smooth transition
+  const configureLayoutAnimation = () => {
+    if (Platform.OS === 'ios') {
+      LayoutAnimation.configureNext({
+        duration: 300,
+        create: {
+          type: LayoutAnimation.Types.easeInEaseOut,
+          property: LayoutAnimation.Properties.opacity,
+        },
+        update: {
+          type: LayoutAnimation.Types.easeInEaseOut,
+          property: LayoutAnimation.Properties.scaleXY,
+        },
+        delete: {
+          type: LayoutAnimation.Types.easeInEaseOut,
+          property: LayoutAnimation.Properties.opacity,
+        },
+      });
+    } else {
+      // Android - animation plus simple
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    }
+  };
+
+  // Toggle expansion avec LayoutAnimation smooth
   const toggleExpanded = () => {
     if (!expandable) return;
     
-    const toValue = expanded ? 0 : 1;
-    Animated.spring(expandAnim, {
-      toValue,
-      useNativeDriver: false,
-      tension: 100,
-      friction: 8,
-    }).start();
+    // Déclencher l'animation layout AVANT le changement d'état
+    configureLayoutAnimation();
     onToggleExpand?.();
   };
-
-  // Hauteur animée pour les catégories
-  const categoriesHeight = expandAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, categoryData.length * 70 + 40],
-  });
-
-  // Rotation de la flèche
-  const iconRotation = expandAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '180deg'],
-  });
 
   return (
     <View style={styles.container}>
@@ -96,11 +102,14 @@ const ProgressCard = ({
             <Text style={[styles.statsPercentage, { color: levelColor }]}>
               {Math.round(progress)}%
             </Text>
-            {/* Flèche d'expansion */}
+            {/* Flèche d'expansion - rotation simple */}
             {expandable && (
-              <Animated.View style={{ transform: [{ rotate: iconRotation }] }}>
+              <View style={[
+                styles.chevronContainer,
+                expanded && styles.chevronExpanded
+              ]}>
                 <Ionicons name="chevron-down" size={16} color={levelColor} />
-              </Animated.View>
+              </View>
             )}
           </View>
         </TouchableOpacity>
@@ -120,17 +129,9 @@ const ProgressCard = ({
         </View>
       </LinearGradient>
 
-      {/* Section expansion pour catégories */}
-      {expandable && categoryData.length > 0 && (
-        <Animated.View 
-          style={[
-            styles.categoriesWrapper,
-            { 
-              height: categoriesHeight,
-              opacity: expandAnim,
-            }
-          ]}
-        >
+      {/* Section expansion - Affichage conditionnel SIMPLE */}
+      {expandable && expanded && categoryData.length > 0 && (
+        <View style={styles.categoriesWrapper}>
           <View style={styles.categoriesContainer}>
             <View style={styles.categoriesHeader}>
               <View style={[styles.categoryDivider, { backgroundColor: `${levelColor}20` }]} />
@@ -170,7 +171,7 @@ const ProgressCard = ({
               </TouchableOpacity>
             ))}
           </View>
-        </Animated.View>
+        </View>
       )}
     </View>
   );

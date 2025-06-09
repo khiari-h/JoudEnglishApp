@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 
 /**
  * 🎯 Styles ultra-simplifiés pour SpellingRule
- * La majorité des styles est dans ContentSection
+ * HeroCard pour la règle + ContentSection pour les instructions
  */
 const createStyles = (levelColor = "#3b82f6") =>
   StyleSheet.create({
@@ -14,10 +14,12 @@ const createStyles = (levelColor = "#3b82f6") =>
       marginVertical: 8,
     },
 
-    // =================== SECTIONS ===================
-    ruleSection: {
+    // =================== HERO CARD ===================
+    heroCard: {
       marginBottom: 16,
     },
+
+    // =================== SECTIONS ===================
     instructionSection: {
       marginBottom: 16,
     },

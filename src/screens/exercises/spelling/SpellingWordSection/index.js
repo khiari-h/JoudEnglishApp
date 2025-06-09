@@ -3,8 +3,8 @@
 import React, { memo } from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import SpellingCorrection from "../exercises/SpellingCorrection";
-import SpellingRule from "../exercises/SpellingRule";
+import SpellingCorrection from "../SpellingCorrection";
+import SpellingRule from "../SpellingRule";
 import SpellingInput from "../SpellingInput";
 import SpellingHint from "../SpellingHint";
 import SpellingFeedback from "../SpellingFeedback";
