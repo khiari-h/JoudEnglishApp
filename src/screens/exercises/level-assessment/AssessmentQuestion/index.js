@@ -1,62 +1,80 @@
-// src/screens/exercises/levelAssessment/AssessmentQuestion/index.js
+// AssessmentQuestion/index.js - VERSION REFACTORISÉE avec composants génériques
+
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import AssessmentFeedback from "../AssessmentFeedback";
-import styles from "./style";
+import { View, TouchableOpacity, Text } from "react-native";
+import HeroCard from "../../../../components/ui/HeroCard";
+import ContentSection from "../../../../components/ui/ContentSection";
+import createStyles from "./style";
 
 /**
- * Composant pour afficher une question d'évaluation
- * Version corrigée sans animation pour éviter le tremblement
- *
- * @param {string} section - Section actuelle de l'évaluation
- * @param {Object} question - Question actuelle avec ses options
+ * 🎯 AssessmentQuestion - Version Refactorisée avec composants génériques
+ * Utilise HeroCard pour la question + ContentSection pour le feedback
+ * 
+ * @param {object} question - Question avec text, options, correctAnswer, explanation
  * @param {number} selectedAnswer - Index de la réponse sélectionnée
- * @param {boolean} showFeedback - Indique si le feedback doit être affiché
- * @param {string} levelColor - Couleur associée au niveau
- * @param {Object} fadeAnim - Animation de fondu (non utilisée dans cette version)
- * @param {Function} onSelectAnswer - Fonction appelée lors de la sélection d'une réponse
+ * @param {boolean} showFeedback - Afficher le feedback ou non
+ * @param {string} levelColor - Couleur du niveau
+ * @param {function} onSelectAnswer - Callback sélection réponse
  */
 const AssessmentQuestion = ({
-  section,
   question,
   selectedAnswer,
   showFeedback,
-  levelColor,
-  fadeAnim, // Gardé pour la compatibilité mais non utilisé
+  levelColor = "#3b82f6",
   onSelectAnswer,
 }) => {
+  const styles = createStyles(levelColor);
+
+  if (!question || !question.options) {
+    return null;
+  }
+
+  // Déterminer le feedback à afficher
+  const isCorrect = selectedAnswer === question.correctAnswer;
+  const feedbackText = isCorrect 
+    ? "✅ Correct! Great job." 
+    : "❌ Oops! The correct answer is different.";
+
   return (
-    <View style={styles.questionCard}>
-      <Text style={styles.sectionTitle}>
-        {section.replace("_", " ").toUpperCase()}
-      </Text>
-
-      <Text style={styles.questionText}>{question.text}</Text>
-
-      <View style={styles.answerOptions}>
+    <View style={styles.container}>
+      {/* 🎯 QUESTION PRINCIPALE - HeroCard */}
+      <HeroCard 
+        content={question.text}
+        fontSize={20}
+        levelColor={levelColor}
+        showUnderline={false}
+        backgroundColor="white"
+        padding={24}
+      />
+      
+      {/* 📝 OPTIONS DE RÉPONSE */}
+      <View style={styles.optionsContainer}>
         {question.options.map((option, index) => (
           <TouchableOpacity
             key={index}
             style={[
-              styles.answerOption,
+              styles.optionButton,
               selectedAnswer === index && [
-                styles.selectedAnswerOption,
-                { borderColor: levelColor },
+                styles.selectedOption,
+                { borderColor: levelColor, backgroundColor: `${levelColor}08` }
               ],
-              showFeedback &&
-                index === question.correctAnswer &&
-                styles.correctAnswerOption,
+              showFeedback && index === question.correctAnswer && [
+                styles.correctOption,
+                { borderColor: '#10b981', backgroundColor: '#f0fdf4' }
+              ],
             ]}
             onPress={() => onSelectAnswer(index)}
             disabled={showFeedback}
+            activeOpacity={0.7}
           >
             <Text
               style={[
-                styles.answerOptionText,
-                selectedAnswer === index && { color: levelColor },
-                showFeedback &&
-                  index === question.correctAnswer &&
-                  styles.correctAnswerText,
+                styles.optionText,
+                selectedAnswer === index && { color: levelColor, fontWeight: '600' },
+                showFeedback && index === question.correctAnswer && { 
+                  color: '#10b981', 
+                  fontWeight: '600' 
+                },
               ]}
             >
               {option}
@@ -65,10 +83,25 @@ const AssessmentQuestion = ({
         ))}
       </View>
 
+      {/* 📖 FEEDBACK - ContentSection */}
       {showFeedback && (
-        <AssessmentFeedback
-          isCorrect={selectedAnswer === question.correctAnswer}
-          explanation={question.explanation}
+        <ContentSection
+          title="Feedback"
+          content={feedbackText}
+          levelColor={isCorrect ? '#10b981' : '#ef4444'}
+          backgroundColor={isCorrect ? '#f0fdf4' : '#fef2f2'}
+          icon={isCorrect ? '✅' : '❌'}
+        />
+      )}
+
+      {/* 📝 EXPLICATION - ContentSection (si disponible) */}
+      {showFeedback && question.explanation && (
+        <ContentSection
+          title="Explanation"
+          content={question.explanation}
+          levelColor="#6366f1"
+          backgroundColor="#f8fafc"
+          isItalic={true}
         />
       )}
     </View>
@@ -76,4 +109,3 @@ const AssessmentQuestion = ({
 };
 
 export default AssessmentQuestion;
-

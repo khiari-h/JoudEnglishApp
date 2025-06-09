@@ -1,44 +1,29 @@
-// src/screens/exercises/wordGames/style.js
+// src/screens/exercises/wordGames/style.js - VERSION ÉPURÉE
+
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  loadingText: {
-    fontSize: 18,
-    color: "#64748b",
-  },
-  emptyGamesContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "#f8fafc",
-  },
-  emptyGamesText: {
-    fontSize: 18,
-    color: "#475569",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  emptyGamesButton: {
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 12,
-    alignItems: "center",
-  },
-  emptyGamesButtonText: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "white",
-  },
-});
+/**
+ * 🎯 Styles ultra-simplifiés pour WordGamesExercise
+ * Pattern identique à VocabularyExercise et LevelAssessment
+ * La majorité des styles est déléguée aux composants génériques
+ */
+const createStyles = () =>
+  StyleSheet.create({
+    // =================== LOADING STATE ===================
+    loadingContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingHorizontal: 20,
+    },
 
-export default styles;
+    // =================== EMPTY STATE ===================
+    emptyContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingHorizontal: 20,
+    },
+  });
+
+export default createStyles;

@@ -1,5 +1,5 @@
-// src/components/ui/ProgressCard/index.js - VERSION SANS TREMBLEMENT
-import React, { useState, useRef, useEffect } from "react";
+// src/components/ui/ProgressCard/index.js - VERSION ÉPURÉE SANS DOTS
+import React from "react";
 import { View, Text, TouchableOpacity, LayoutAnimation, Platform } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
@@ -7,8 +7,10 @@ import ProgressBar from "../ProgressBar";
 import createStyles from "./style";
 
 /**
- * 📊 ProgressCard - Version Sans Tremblement
- * Fix du bug d'animation : LayoutAnimation au lieu d'Animated.View conflictuel
+ * 📊 ProgressCard - Version Épurée Sans Dots
+ * ✨ Design clean et moderne
+ * 🚫 Suppression des categoryDot qui polluent l'interface
+ * 🎯 Focus sur l'information, pas la décoration
  * 
  * @param {string} title - Titre principal
  * @param {string} subtitle - Sous-titre
@@ -58,7 +60,6 @@ const ProgressCard = ({
         },
       });
     } else {
-      // Android - animation plus simple
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     }
   };
@@ -66,22 +67,20 @@ const ProgressCard = ({
   // Toggle expansion avec LayoutAnimation smooth
   const toggleExpanded = () => {
     if (!expandable) return;
-    
-    // Déclencher l'animation layout AVANT le changement d'état
     configureLayoutAnimation();
     onToggleExpand?.();
   };
 
   return (
     <View style={styles.container}>
-      {/* Card principale avec gradient */}
+      {/* =================== CARD PRINCIPALE =================== */}
       <LinearGradient
         colors={[`${levelColor}06`, `${levelColor}03`, 'transparent']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.cardGradient}
       >
-        {/* Header */}
+        {/* Header avec stats */}
         <TouchableOpacity 
           style={styles.header}
           onPress={toggleExpanded}
@@ -95,14 +94,17 @@ const ProgressCard = ({
           </View>
 
           <View style={styles.headerRight}>
-            <Text style={[styles.statsCount, { color: levelColor }]}>
-              {completed}
-            </Text>
-            <Text style={styles.statsTotal}>/ {total} {unit}</Text>
+            <View style={styles.statsContainer}>
+              <Text style={[styles.statsCount, { color: levelColor }]}>
+                {completed}
+              </Text>
+              <Text style={styles.statsTotal}>/ {total}</Text>
+            </View>
             <Text style={[styles.statsPercentage, { color: levelColor }]}>
               {Math.round(progress)}%
             </Text>
-            {/* Flèche d'expansion - rotation simple */}
+            
+            {/* Flèche d'expansion */}
             {expandable && (
               <View style={[
                 styles.chevronContainer,
@@ -114,7 +116,7 @@ const ProgressCard = ({
           </View>
         </TouchableOpacity>
 
-        {/* Barre de progression */}
+        {/* Barre de progression principale */}
         <View style={styles.progressSection}>
           <ProgressBar
             progress={progress}
@@ -124,52 +126,59 @@ const ProgressCard = ({
             backgroundColor={`${levelColor}15`}
             borderRadius={3}
             animated
-            style={styles.progressBar}
           />
         </View>
       </LinearGradient>
 
-      {/* Section expansion - Affichage conditionnel SIMPLE */}
+      {/* =================== SECTION EXPANSION ÉPURÉE =================== */}
       {expandable && expanded && categoryData.length > 0 && (
-        <View style={styles.categoriesWrapper}>
-          <View style={styles.categoriesContainer}>
-            <View style={styles.categoriesHeader}>
-              <View style={[styles.categoryDivider, { backgroundColor: `${levelColor}20` }]} />
-              <Text style={styles.categoriesTitle}>By category</Text>
-              <View style={[styles.categoryDivider, { backgroundColor: `${levelColor}20` }]} />
+        <View style={styles.expansionWrapper}>
+          <View style={styles.expansionContainer}>
+            {/* Header des catégories épuré */}
+            <View style={styles.expansionHeader}>
+              <Text style={styles.expansionTitle}>Par catégorie</Text>
+              <Text style={styles.expansionSubtitle}>
+                {categoryData.length} {categoryData.length > 1 ? 'catégories' : 'catégorie'}
+              </Text>
             </View>
             
-            {categoryData.map((category, index) => (
-              <TouchableOpacity
-                key={`category-${index}`}
-                style={styles.categoryItem}
-                onPress={() => onCategoryPress?.(index)}
-                activeOpacity={0.7}
-              >
-                <View style={styles.categoryRow}>
-                  <View style={styles.categoryLeft}>
-                    <View style={[styles.categoryDot, { backgroundColor: levelColor }]} />
-                    <Text style={styles.categoryTitle} numberOfLines={1}>
-                      {category.title}
+            {/* Liste des catégories - DESIGN ÉPURÉ SANS DOTS */}
+            <View style={styles.categoriesList}>
+              {categoryData.map((category, index) => (
+                <TouchableOpacity
+                  key={`category-${index}`}
+                  style={styles.categoryItem}
+                  onPress={() => onCategoryPress?.(index)}
+                  activeOpacity={0.7}
+                >
+                  {/* Row principale avec titre et stats */}
+                  <View style={styles.categoryRow}>
+                    <View style={styles.categoryLeft}>
+                      {/* 🚫 categoryDot SUPPRIMÉ - c'était ça les ronds ! */}
+                      <Text style={styles.categoryTitle} numberOfLines={1}>
+                        {category.title}
+                      </Text>
+                    </View>
+                    <Text style={[styles.categoryStats, { color: levelColor }]}>
+                      {category.completed}/{category.total}
                     </Text>
                   </View>
-                  <Text style={[styles.categoryStats, { color: levelColor }]}>
-                    {category.completed}/{category.total}
-                  </Text>
-                </View>
-                
-                <ProgressBar
-                  progress={category.progress}
-                  showPercentage={false}
-                  fillColor={levelColor}
-                  backgroundColor={`${levelColor}10`}
-                  height={4}
-                  borderRadius={2}
-                  animated
-                  style={styles.categoryProgress}
-                />
-              </TouchableOpacity>
-            ))}
+                  
+                  {/* Barre de progression de la catégorie */}
+                  <View style={styles.categoryProgressContainer}>
+                    <ProgressBar
+                      progress={category.progress}
+                      showPercentage={false}
+                      fillColor={levelColor}
+                      backgroundColor={`${levelColor}10`}
+                      height={3}
+                      borderRadius={2}
+                      animated
+                    />
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
           </View>
         </View>
       )}

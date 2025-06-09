@@ -1,5 +1,5 @@
-// PhrasesExercise/index.js - VERSION CLEAN & SIMPLE
-import React, { useMemo, useState } from "react";
+// PhrasesExercise/index.js - VERSION NETTOYÉE ET RÉORGANISÉE
+import React, { useMemo } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -19,9 +19,10 @@ import { getPhrasesData, getLevelColor } from "../../../utils/phrases/phrasesDat
 import createStyles from "./style";
 
 /**
- * 🎯 PhrasesExercise - VERSION CLEAN & SIMPLE
- * 200+ lignes → 130 lignes (-35% de code)
- * 3 hooks → 1 hook, logique claire, maintenable
+ * 🎯 PhrasesExercise - VERSION NETTOYÉE
+ * - Ordre des composants comme les autres exercices
+ * - Variables non utilisées supprimées
+ * - Structure optimisée
  */
 const PhrasesExercise = ({ route }) => {
   const navigation = useNavigation();
@@ -32,7 +33,7 @@ const PhrasesExercise = ({ route }) => {
   const levelColor = getLevelColor(level);
   const phrasesData = useMemo(() => getPhrasesData(level), [level]);
 
-  // Hook unifié
+  // Hook unifié - Garde seulement les variables utilisées
   const {
     categoryIndex,
     phraseIndex,
@@ -41,9 +42,7 @@ const PhrasesExercise = ({ route }) => {
     loaded,
     showDetailedProgress,
     currentPhrase,
-    currentCategory,
     currentPhrases,
-    totalCategories,
     totalPhrasesInCategory,
     hasValidData,
     changeCategory,
@@ -128,15 +127,7 @@ const PhrasesExercise = ({ route }) => {
         onBackPress={handleBackPress}
       />
 
-      {/* Category Selector */}
-      <PhrasesCategorySelector
-        categories={display.categories}
-        selectedIndex={categoryIndex}
-        onSelectCategory={handleCategoryChange}
-        levelColor={levelColor}
-      />
-
-      {/* Progress */}
+      {/* Progress - MAINTENANT COLLÉ AU HEADER */}
       <PhrasesProgress
         progress={stats.completionProgress}
         currentPhrase={phraseIndex + 1}
@@ -148,6 +139,14 @@ const PhrasesExercise = ({ route }) => {
         expanded={showDetailedProgress}
         onToggleExpand={handleToggleProgressDetails}
         onCategoryPress={handleCategoryChange}
+      />
+
+      {/* Category Selector - APRÈS PROGRESS comme les autres exercices */}
+      <PhrasesCategorySelector
+        categories={display.categories}
+        selectedIndex={categoryIndex}
+        onSelectCategory={handleCategoryChange}
+        levelColor={levelColor}
       />
 
       {/* Phrase Card */}

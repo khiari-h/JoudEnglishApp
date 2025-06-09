@@ -1,13 +1,15 @@
-// src/components/ui/ProgressCard/style.js
+// src/components/ui/ProgressCard/style.js - VERSION ÉPURÉE SANS DOTS
 import { StyleSheet, Platform } from "react-native";
 
 /**
- * 📊 Styles génériques pour ProgressCard
- * Glassmorphism et expansion pour tous les exercices
+ * 📊 Styles Épurés pour ProgressCard
+ * ✨ Design moderne et clean
+ * 🚫 Suppression des categoryDot et éléments visuels superflus
+ * 🎯 Focus sur la lisibilité et la simplicité
  */
 const createStyles = (levelColor = "#5E60CE") =>
   StyleSheet.create({
-    // =================== CONTAINER ===================
+    // =================== CONTAINER PRINCIPAL ===================
     container: {
       marginHorizontal: 16,
       marginVertical: 8,
@@ -48,7 +50,7 @@ const createStyles = (levelColor = "#5E60CE") =>
     headerRight: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: 4,
+      gap: 12,
     },
 
     // =================== TYPOGRAPHY ===================
@@ -65,8 +67,14 @@ const createStyles = (levelColor = "#5E60CE") =>
       letterSpacing: 0.1,
       marginTop: 2,
     },
+
+    // =================== STATS ÉPURÉES ===================
+    statsContainer: {
+      flexDirection: 'row',
+      alignItems: 'baseline',
+    },
     statsCount: {
-      fontSize: 15,
+      fontSize: 16,
       fontWeight: '700',
       letterSpacing: 0.3,
     },
@@ -79,8 +87,20 @@ const createStyles = (levelColor = "#5E60CE") =>
       fontSize: 14,
       fontWeight: '700',
       letterSpacing: 0.3,
-      marginLeft: 8,
-      marginRight: 8,
+    },
+
+    // =================== CHEVRON D'EXPANSION ===================
+    chevronContainer: {
+      width: 24,
+      height: 24,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 12,
+      backgroundColor: `${levelColor}10`,
+      transform: [{ rotate: '0deg' }],
+    },
+    chevronExpanded: {
+      transform: [{ rotate: '180deg' }],
     },
 
     // =================== SECTION PROGRESSION ===================
@@ -88,84 +108,91 @@ const createStyles = (levelColor = "#5E60CE") =>
       paddingHorizontal: 16,
       paddingBottom: 16,
     },
-    progressBar: {
-      // ProgressBar gère ses propres styles
-    },
 
-    // =================== WRAPPER CATÉGORIES ===================
-    categoriesWrapper: {
-      overflow: 'hidden',
-      backgroundColor: '#FAFBFC',
+    // =================== EXPANSION ÉPURÉE ===================
+    expansionWrapper: {
       marginTop: 8,
+      backgroundColor: '#FAFBFC',
       borderRadius: 12,
       borderWidth: 1,
       borderColor: '#F1F5F9',
+      overflow: 'hidden',
     },
-    categoriesContainer: {
+    expansionContainer: {
       padding: 16,
     },
 
-    // =================== HEADER CATÉGORIES ===================
-    categoriesHeader: {
+    // =================== HEADER EXPANSION ===================
+    expansionHeader: {
       flexDirection: 'row',
+      justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: 12,
+      marginBottom: 16,
+      paddingBottom: 12,
+      borderBottomWidth: 1,
+      borderBottomColor: '#E5E7EB',
     },
-    categoryDivider: {
-      flex: 1,
-      height: 1,
-      opacity: 0.6,
-    },
-    categoriesTitle: {
-      fontSize: 13,
+    expansionTitle: {
+      fontSize: 14,
       fontWeight: '600',
+      color: '#374151',
+      letterSpacing: 0.2,
+    },
+    expansionSubtitle: {
+      fontSize: 12,
+      fontWeight: '500',
       color: '#6B7280',
-      marginHorizontal: 12,
-      textTransform: 'uppercase',
-      letterSpacing: 0.5,
     },
 
-    // =================== ITEM CATÉGORIE ===================
+    // =================== LISTE DES CATÉGORIES ===================
+    categoriesList: {
+      gap: 12,
+    },
+
+    // =================== ITEM CATÉGORIE ÉPURÉ ===================
     categoryItem: {
-      marginBottom: 12,
-      paddingVertical: 8,
-      paddingHorizontal: 12,
+      padding: 12,
       backgroundColor: 'white',
       borderRadius: 10,
       borderWidth: 1,
       borderColor: '#F3F4F6',
+      // Ombre très subtile
+      ...Platform.select({
+        ios: {
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 1 },
+          shadowOpacity: 0.03,
+          shadowRadius: 2,
+        },
+        android: {
+          elevation: 1,
+        },
+      }),
     },
+
+    // =================== ROW CATÉGORIE ===================
     categoryRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       marginBottom: 8,
     },
-    categoryLeft: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      flex: 1,
-    },
-    categoryDot: {
-      width: 6,
-      height: 6,
-      borderRadius: 3,
-      marginRight: 10,
-      opacity: 0.8,
-    },
     categoryTitle: {
       fontSize: 14,
       fontWeight: '500',
       color: '#374151',
       flex: 1,
+      letterSpacing: 0.1,
     },
     categoryStats: {
       fontSize: 13,
       fontWeight: '600',
       letterSpacing: 0.2,
     },
-    categoryProgress: {
-      // ProgressBar gère ses propres styles
+
+    // =================== PROGRESS CATÉGORIE ===================
+    categoryProgressContainer: {
+      // Le ProgressBar gère ses propres styles
     },
   });
 

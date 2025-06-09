@@ -3,10 +3,12 @@ import { useRef } from 'react';
 import { Animated } from 'react-native';
 
 /**
- * Hook personnalisé pour gérer les animations des jeux
+ * 🎮 Hook personnalisé pour gérer les animations des Word Games
+ * Animations spécialisées pour le gameplay (feedback, rebond, etc.)
+ * Hook séparé car logique d'animation spécifique aux jeux
  */
 const useGameAnimation = () => {
-  // Référence pour les animations
+  // Références pour les animations
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const bounceAnim = useRef(new Animated.Value(1)).current;
 

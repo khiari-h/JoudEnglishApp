@@ -1,4 +1,3 @@
-// 4. AssessmentHeader - CONVERTI VERS ExerciseHeader
 import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
