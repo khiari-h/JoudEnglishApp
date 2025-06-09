@@ -47,6 +47,7 @@ const GrammarExercise = ({ route }) => {
     attempts,
     completedExercises,
     loaded,
+    showDetailedProgress,
     currentRule,
     currentExercise,
     totalExercises,
@@ -59,6 +60,7 @@ const GrammarExercise = ({ route }) => {
     nextExercise,
     previousExercise,
     retryExercise,
+    toggleDetailedProgress,
   } = useGrammar(grammarData, level);
 
   // Handlers
@@ -82,6 +84,8 @@ const GrammarExercise = ({ route }) => {
   const handleRuleChange = (index) => changeRule(index);
 
   const handleRuleProgressPress = (index) => changeRule(index);
+
+  const handleToggleProgressDetails = () => toggleDetailedProgress();
 
   // Loading state
   if (!loaded || !grammarData.length) {
@@ -131,8 +135,8 @@ const GrammarExercise = ({ route }) => {
         grammarData={grammarData}
         completedExercises={completedExercises}
         levelColor={levelColor}
-        expanded={false}
-        onToggleExpand={() => {}}
+        expanded={showDetailedProgress}
+        onToggleExpand={handleToggleProgressDetails}
         onRulePress={handleRuleProgressPress}
       />
 

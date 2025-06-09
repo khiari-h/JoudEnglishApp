@@ -1,11 +1,26 @@
-// src/screens/exercises/spelling/style.js
+// SpellingExercise/style.js - VERSION REFACTORISÉE (ultra-simplifié)
+
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-});
+/**
+ * 🎯 Styles ultra-simplifiés pour SpellingExercise
+ * La majorité des styles est dans les composants génériques
+ */
+const createStyles = () =>
+  StyleSheet.create({
+    // =================== CONTAINER ===================
+    container: {
+      flex: 1,
+      backgroundColor: "white",
+    },
 
-export default styles;
+    // =================== LOADING STATE ===================
+    loadingContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingHorizontal: 20,
+    },
+  });
+
+export default createStyles;

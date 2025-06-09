@@ -1,10 +1,13 @@
-// src/screens/exercises/spelling/SpellingFeedback/index.js
+// SpellingFeedback/index.js - VERSION REFACTORISÉE (ContentSection avec couleurs)
+
 import React from "react";
-import { View, Text } from "react-native";
-import styles from "./style";
+import { View } from "react-native";
+import ContentSection from "../../../../components/ui/ContentSection";
+import createStyles from "./style";
 
 /**
- * Composant pour afficher le feedback après une réponse
+ * 💬 SpellingFeedback - Version Refactorisée avec ContentSection
+ * Remplace le feedback custom par ContentSection avec couleurs dynamiques
  * 
  * @param {boolean} isCorrect - Indique si la réponse est correcte
  * @param {string} correctAnswer - La réponse correcte
@@ -15,30 +18,36 @@ const SpellingFeedback = ({
   isCorrect, 
   correctAnswer, 
   explanation,
-  levelColor 
+  levelColor = "#3b82f6" 
 }) => {
+  const styles = createStyles(levelColor);
+
+  const feedbackColor = isCorrect ? "#10b981" : "#ef4444";
+  const backgroundColor = isCorrect ? "#f0fdf4" : "#fef2f2";
+  const resultTitle = isCorrect ? "Correct !" : "Incorrect !";
+
+  // Construire le contenu du feedback
+  let feedbackContent = "";
+  
+  if (!isCorrect && correctAnswer) {
+    feedbackContent = `La bonne réponse est : "${correctAnswer}"`;
+    if (explanation) {
+      feedbackContent += `\n\n${explanation}`;
+    }
+  } else if (explanation) {
+    feedbackContent = explanation;
+  }
+
   return (
-    <View style={[
-      styles.container, 
-      isCorrect 
-        ? [styles.correctContainer, { borderLeftColor: "#10b981" }]
-        : [styles.incorrectContainer, { borderLeftColor: "#ef4444" }]
-    ]}>
-      <Text style={styles.resultText}>
-        {isCorrect ? "Correct!" : "Incorrect!"}
-      </Text>
-
-      {!isCorrect && (
-        <Text style={styles.correctAnswerText}>
-          The correct answer is: <Text style={styles.answerHighlight}>{correctAnswer}</Text>
-        </Text>
-      )}
-
-      {explanation && (
-        <Text style={styles.explanationText}>
-          {explanation}
-        </Text>
-      )}
+    <View style={styles.container}>
+      <ContentSection
+        title={resultTitle}
+        content={feedbackContent || (isCorrect ? "Bien joué !" : "Réessayez !")}
+        levelColor={feedbackColor}
+        backgroundColor={backgroundColor}
+        style={styles.feedbackSection}
+        isHighlighted={true}
+      />
     </View>
   );
 };

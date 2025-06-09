@@ -1,9 +1,11 @@
+// ConversationMessage/index.js - VERSION CLEAN SANS TIMESTAMP
 import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './style';
 
 /**
  * Composant pour afficher un message dans le Conversation
+ * VERSION CLEAN : Timestamp inutile supprimé ✅
  * 
  * @param {Object} message - Objet contenant les informations du message
  * @param {string} levelColor - Couleur associée au niveau courant
@@ -30,16 +32,10 @@ const ConversationMessage = ({ message, levelColor }) => {
         {message.text}
       </Text>
 
-      <Text
-        style={[
-          styles.messageTime,
-          isBotMessage
-            ? { color: '#6b7280' }
-            : { color: 'rgba(255,255,255,0.7)' },
-        ]}
-      >
+      {/* ❌ SUPPRIMÉ : Timestamp inutile */}
+      {/* <Text style={styles.messageTime}>
         {message.timestamp}
-      </Text>
+      </Text> */}
     </View>
   );
 };

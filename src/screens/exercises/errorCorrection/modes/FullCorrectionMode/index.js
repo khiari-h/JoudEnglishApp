@@ -1,11 +1,21 @@
-// src/components/screens/exercises/errorCorrection/modes/FullCorrectionMode/index.js
+// FullCorrectionMode/index.js - VERSION REFACTORISÉE (HeroCard + ContentSection)
+
 import React from "react";
-import { View, Text, TextInput } from "react-native";
-import Card from "../../../../../components/ui/Card";
-import styles from "./style";
+import { View, TextInput } from "react-native";
+import HeroCard from "../../../../../components/ui/HeroCard";
+import ContentSection from "../../../../../components/ui/ContentSection";
+import createStyles from "./style";
 
 /**
- * Composant pour le mode de correction complète
+ * 🔧 FullCorrectionMode - Version Refactorisée avec composants génériques
+ * Remplace Card par HeroCard + ContentSection
+ * 
+ * @param {Object} exercise - Exercice actuel
+ * @param {string} userCorrection - Texte corrigé par l'utilisateur
+ * @param {function} onChangeUserCorrection - Callback pour changer le texte
+ * @param {boolean} showFeedback - Afficher le feedback
+ * @param {boolean} isCorrect - Réponse correcte ou non
+ * @param {string} levelColor - Couleur du niveau
  */
 const FullCorrectionMode = ({
   exercise,
@@ -15,36 +25,58 @@ const FullCorrectionMode = ({
   isCorrect = false,
   levelColor = "#5E60CE",
 }) => {
+  const styles = createStyles(levelColor);
+
   if (!exercise) return null;
 
   return (
-    <Card
-      title="Correction complète"
-      headerIcon="create-outline"
-      headerIconColor={levelColor}
-      style={styles.card}
-    >
-      <View style={styles.originalTextContainer}>
-        <Text style={styles.originalTextLabel}>Texte original :</Text>
-        <Text style={styles.originalText}>{exercise.text}</Text>
+    <View style={styles.container}>
+      {/* 🎯 HERO SECTION - Texte original */}
+      <HeroCard 
+        content={exercise.text}
+        fontSize={24}
+        levelColor={levelColor}
+        showUnderline={false}
+        style={styles.heroCard}
+      />
+      
+      {/* 📝 SECTION INSTRUCTIONS */}
+      <ContentSection
+        title="Instructions"
+        content="Corrigez toutes les erreurs dans le texte ci-dessus en réécrivant la phrase complète."
+        levelColor={levelColor}
+        backgroundColor="#F8F9FA"
+        style={styles.instructionSection}
+      />
+
+      {/* ✏️ ZONE DE CORRECTION */}
+      <View style={styles.correctionContainer}>
+        <TextInput
+          style={[
+            styles.correctionInput,
+            showFeedback && (isCorrect ? styles.correctInput : styles.incorrectInput),
+          ]}
+          value={userCorrection}
+          onChangeText={onChangeUserCorrection}
+          multiline
+          placeholder="Tapez le texte corrigé ici..."
+          placeholderTextColor="#94a3b8"
+          editable={!showFeedback}
+        />
       </View>
 
-      <TextInput
-        style={[
-          styles.correctionInput,
-          showFeedback &&
-            (isCorrect ? styles.correctInput : styles.incorrectInput),
-        ]}
-        value={userCorrection}
-        onChangeText={onChangeUserCorrection}
-        multiline
-        placeholder="Tapez le texte corrigé ici..."
-        placeholderTextColor="#94a3b8"
-        editable={!showFeedback}
-      />
-    </Card>
+      {/* 💡 FEEDBACK SI NÉCESSAIRE */}
+      {showFeedback && exercise.explanation && (
+        <ContentSection
+          title={isCorrect ? "Correct !" : "Explication"}
+          content={exercise.explanation}
+          levelColor={isCorrect ? "#10b981" : "#ef4444"}
+          backgroundColor={isCorrect ? "#f0fdf4" : "#fef2f2"}
+          style={styles.feedbackSection}
+        />
+      )}
+    </View>
   );
 };
 
 export default FullCorrectionMode;
-

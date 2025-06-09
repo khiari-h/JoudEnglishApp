@@ -20,6 +20,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
   const [attempts, setAttempts] = useState(0);
   const [completedExercises, setCompletedExercises] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
   // =================== REFS ===================
   const isInitialized = useRef(false);
@@ -217,6 +218,10 @@ const useGrammar = (grammarData = [], level = "A1") => {
     resetExerciseState();
   }, [resetExerciseState]);
 
+  const toggleDetailedProgress = useCallback(() => {
+    setShowDetailedProgress(prev => !prev);
+  }, []);
+
   // =================== COMPUTED PROGRESS ===================
   const getProgress = useCallback(() => {
     const completedInCurrentRule = completedExercises[ruleIndex]?.length || 0;
@@ -264,6 +269,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
     attempts,
     completedExercises,
     loaded,
+    showDetailedProgress,
     
     // Data
     currentRule,
@@ -278,6 +284,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
     previousExercise,
     retryExercise,
     resetExerciseState,
+    toggleDetailedProgress,
     
     // Computed
     canCheckAnswer: canCheckAnswer(),

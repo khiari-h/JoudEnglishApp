@@ -16,6 +16,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
   const [showTranslation, setShowTranslation] = useState(false);
   const [completedWords, setCompletedWords] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
   // =================== REFS ===================
   const isInitialized = useRef(false);
@@ -111,6 +112,10 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
 
   const toggleTranslation = useCallback(() => {
     setShowTranslation(prev => !prev);
+  }, []);
+
+  const toggleDetailedProgress = useCallback(() => {
+    setShowDetailedProgress(prev => !prev);
   }, []);
 
   // =================== COMPLETION LOGIC ===================
@@ -237,6 +242,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     showTranslation,
     completedWords,
     loaded,
+    showDetailedProgress,
     
     // Data
     currentWord,
@@ -247,6 +253,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     // Actions
     changeCategory,
     toggleTranslation,
+    toggleDetailedProgress,
     handleNext,
     handlePrevious,
     

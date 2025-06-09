@@ -19,6 +19,7 @@ const useReading = (exercises = [], level = "A1") => {
   const [attempts, setAttempts] = useState(0);
   const [completedQuestions, setCompletedQuestions] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
   // =================== REFS & ANIMATIONS ===================
   const scrollViewRef = useRef(null);
@@ -158,6 +159,10 @@ const useReading = (exercises = [], level = "A1") => {
     setTextExpanded(prev => !prev);
   }, []);
 
+  const toggleDetailedProgress = useCallback(() => {
+    setShowDetailedProgress(prev => !prev);
+  }, []);
+
   // =================== COMPUTED PROGRESS ===================
   const getProgress = useCallback(() => {
     const completedInCurrentExercise = completedQuestions[selectedExerciseIndex]?.length || 0;
@@ -194,6 +199,7 @@ const useReading = (exercises = [], level = "A1") => {
     attempts,
     completedQuestions,
     loaded,
+    showDetailedProgress,
     
     // Data
     currentExercise,
@@ -210,6 +216,7 @@ const useReading = (exercises = [], level = "A1") => {
     previousQuestion,
     retryQuestion,
     toggleTextExpansion,
+    toggleDetailedProgress,
     
     // Computed
     isCorrect,

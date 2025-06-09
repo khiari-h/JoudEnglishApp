@@ -1,24 +1,28 @@
-// src/screens/exercises/spelling/exercises/SpellingCorrection/style.js
+// SpellingCorrection/style.js - VERSION REFACTORISÉE (styles minimaux)
+
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  instruction: {
-    fontSize: 16,
-    color: "#475569",
-    marginBottom: 16,
-    textAlign: "center",
-  },
-  wordToCorrect: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#1e293b",
-    marginBottom: 16,
-    textAlign: "center",
-  },
-});
+/**
+ * 🎯 Styles ultra-simplifiés pour SpellingCorrection
+ * La majorité des styles est dans HeroCard et ContentSection
+ */
+const createStyles = (levelColor = "#3b82f6") =>
+  StyleSheet.create({
+    // =================== CONTAINER ===================
+    container: {
+      marginHorizontal: 16,
+      marginVertical: 8,
+    },
 
-export default styles;
+    // =================== HERO CARD ===================
+    heroCard: {
+      marginBottom: 16,
+    },
+
+    // =================== SECTIONS ===================
+    instructionSection: {
+      marginBottom: 16,
+    },
+  });
+
+export default createStyles;

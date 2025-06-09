@@ -47,6 +47,7 @@ const ReadingExercise = ({ route }) => {
     attempts,
     completedQuestions,
     loaded,
+    showDetailedProgress,
     currentExercise,
     currentQuestion,
     totalQuestions,
@@ -60,6 +61,7 @@ const ReadingExercise = ({ route }) => {
     previousQuestion,
     retryQuestion,
     toggleTextExpansion,
+    toggleDetailedProgress,
     scrollViewRef,
     textsScrollViewRef,
     fadeAnim,
@@ -79,6 +81,10 @@ const ReadingExercise = ({ route }) => {
 
   const handleExerciseProgressPress = (index) => {
     changeExercise(index);
+  };
+
+  const handleToggleProgressDetails = () => {
+    toggleDetailedProgress();
   };
 
   // Loading state
@@ -122,8 +128,8 @@ const ReadingExercise = ({ route }) => {
         readingData={readingData}
         completedQuestions={completedQuestions}
         levelColor={levelColor}
-        expanded={false}
-        onToggleExpand={() => {}}
+        expanded={showDetailedProgress}
+        onToggleExpand={handleToggleProgressDetails}
         onExercisePress={handleExerciseProgressPress}
       />
 

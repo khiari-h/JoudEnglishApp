@@ -1,32 +1,22 @@
-// src/screens/exercises/spelling/SpellingHint/style.js
+// SpellingHint/style.js - VERSION REFACTORISÉE (styles minimaux)
+
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
-    marginBottom: 16,
-  },
-  toggleButton: {
-    alignSelf: "flex-start",
-    paddingVertical: 6,
-    paddingHorizontal: 2,
-    marginBottom: 8,
-  },
-  toggleButtonText: {
-    fontSize: 14,
-    fontWeight: "500",
-  },
-  hintContainer: {
-    padding: 12,
-    backgroundColor: "#f8fafc",
-    borderRadius: 10,
-    borderLeftWidth: 3,
-  },
-  hintText: {
-    fontSize: 14,
-    color: "#64748b",
-    fontStyle: "italic",
-    lineHeight: 20,
-  },
-});
+/**
+ * 🎯 Styles ultra-simplifiés pour SpellingHint
+ * La majorité des styles est dans RevealButton
+ */
+const createStyles = (levelColor = "#3b82f6") =>
+  StyleSheet.create({
+    // =================== CONTAINER ===================
+    container: {
+      marginVertical: 12,
+    },
 
-export default styles;
+    // =================== REVEAL BUTTON ===================
+    revealButton: {
+      // RevealButton gère ses propres styles
+    },
+  });
+
+export default createStyles;

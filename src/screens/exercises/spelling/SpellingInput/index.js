@@ -1,13 +1,15 @@
-// src/screens/exercises/spelling/SpellingInput/index.js
+// SpellingInput/index.js - VERSION SIMPLIFIÉE (nettoyage styles)
+
 import React from "react";
 import { View, TextInput, Text } from "react-native";
-import styles from "./style";
+import createStyles from "./style";
 
 /**
- * Composant pour la saisie de la réponse dans les exercices d'orthographe
+ * ✏️ SpellingInput - Version Simplifiée  
+ * Garde la logique mais simplifie les styles
  * 
  * @param {string} value - La valeur actuelle de l'input
- * @param {Function} onChangeText - Fonction appelée lors de la modification du texte
+ * @param {function} onChangeText - Fonction appelée lors de la modification du texte
  * @param {boolean} disabled - Indique si l'input est désactivé
  * @param {string} levelColor - Couleur associée au niveau
  */
@@ -15,20 +17,21 @@ const SpellingInput = ({
   value, 
   onChangeText, 
   disabled = false, 
-  levelColor 
+  levelColor = "#3b82f6" 
 }) => {
+  const styles = createStyles(levelColor);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Your answer:</Text>
+      <Text style={styles.label}>Votre réponse :</Text>
       <TextInput
         style={[
           styles.input,
-          { borderColor: levelColor },
           disabled && styles.disabledInput
         ]}
         value={value}
         onChangeText={onChangeText}
-        placeholder="Type your answer here"
+        placeholder="Tapez votre réponse ici"
         placeholderTextColor="#94a3b8"
         autoCapitalize="none"
         autoCorrect={false}

@@ -33,9 +33,6 @@ const VocabularyExercise = ({ route }) => {
   const levelColor = getLevelColor(level);
   const vocabularyData = useMemo(() => getVocabularyData(level, finalMode), [level, finalMode]);
 
-  // Progress display state
-  const [showDetailedProgress, setShowDetailedProgress] = useState(false);
-
   // Hook unifié
   const {
     categoryIndex,
@@ -43,12 +40,14 @@ const VocabularyExercise = ({ route }) => {
     showTranslation,
     completedWords,
     loaded,
+    showDetailedProgress,
     currentWord,
     currentCategory,
     totalCategories,
     totalWordsInCategory,
     changeCategory,
     toggleTranslation,
+    toggleDetailedProgress,
     handleNext,
     handlePrevious,
     canGoToPrevious,
@@ -64,9 +63,7 @@ const VocabularyExercise = ({ route }) => {
 
   const handleCategoryProgressPress = (index) => changeCategory(index);
 
-  const handleToggleProgressDetails = () => {
-    setShowDetailedProgress(prev => !prev);
-  };
+  const handleToggleProgressDetails = () => toggleDetailedProgress();
 
   const handleNextWord = () => {
     const result = handleNext();
