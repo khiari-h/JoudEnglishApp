@@ -1,45 +1,64 @@
-// GrammarProgress/index.js - VERSION REFACTORISÉE avec ProgressCard (42 → 10 lignes)
+// GrammarProgress/index.js - VERSION SIMPLIFIÉE (identique à VocabularyProgress)
 
 import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import {
+  calculateTotalExercises,
+  calculateCompletedExercisesCount,
+  calculateTotalProgress,
+  calculateRuleProgress,
+} from "../../../../utils/grammar/grammarStats";
 
 /**
- * 📊 GrammarProgress - Version Refactorisée avec ProgressCard générique
- * 42 lignes → 10 lignes (-76% de code)
- * Même qualité visuelle, architecture optimisée
- * Cohérent avec VocabularyProgress refactorisé
+ * 📊 GrammarProgress - Version Simplifiée avec ProgressCard générique
+ * API identique à VocabularyProgress et PhrasesProgress
+ * Pattern uniforme sur tous les exercices
  * 
- * @param {number} progress - Pourcentage de progression (0-100)
- * @param {number} currentExercise - Exercice actuel (1-based)
- * @param {number} totalExercises - Nombre total d'exercices
+ * @param {object} grammarData - Données de grammaire
+ * @param {object} completedExercises - Exercices complétés par règle
  * @param {string} levelColor - Couleur du niveau
- * @param {object} style - Style personnalisé (optionnel)
+ * @param {boolean} expanded - État d'expansion
+ * @param {function} onToggleExpand - Fonction pour toggle expansion
+ * @param {function} onRulePress - Fonction appelée lors du clic sur règle
  */
 const GrammarProgress = ({
-  progress = 0,
-  currentExercise = 1,
-  totalExercises = 0,
-  levelColor = "#3b82f6",
-  style = {},
+  grammarData,
+  completedExercises,
+  levelColor,
+  expanded = false,
+  onToggleExpand,
+  onRulePress,
 }) => {
-  // Calculer les exercices complétés basé sur la progression
-  const completedCount = Math.floor((currentExercise - 1) + (progress / 100));
+  
+  // Calculs des statistiques (utilise des utilitaires externes comme Vocabulary)
+  const totalExercisesCount = calculateTotalExercises(grammarData || []);
+  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+  const totalProgress = calculateTotalProgress(grammarData || [], completedExercises);
+  
+  // Données des règles pour l'expansion
+  const ruleProgressData = calculateRuleProgress(grammarData || [], completedExercises);
+
+  // Transformation pour le format ProgressCard (identique à Vocabulary)
+  const formattedRuleData = ruleProgressData.map((rule, index) => ({
+    title: rule.title,
+    completed: rule.completedExercises,
+    total: rule.totalExercises,
+    progress: rule.progress,
+  }));
 
   return (
     <ProgressCard
       title="Grammar Progress"
-      subtitle={`Exercise ${currentExercise} of ${totalExercises}`}
-      progress={progress}
-      completed={completedCount}
-      total={totalExercises}
-      unit="exercices"
+      progress={totalProgress}
+      completed={completedExercisesCount}
+      total={totalExercisesCount}
+      unit="exercises"
       levelColor={levelColor}
-      expandable={false} // Pas de catégories pour Grammar
-      expanded={false}
-      onToggleExpand={null}
-      categoryData={[]}
-      onCategoryPress={null}
-      containerStyle={style}
+      expandable={true}
+      expanded={expanded}
+      onToggleExpand={onToggleExpand}
+      categoryData={formattedRuleData}
+      onCategoryPress={onRulePress}
     />
   );
 };

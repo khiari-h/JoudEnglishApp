@@ -1,4 +1,4 @@
-// PhrasesExercise/index.js - VERSION COMPLÈTE RECODÉE avec Container SafeArea
+// PhrasesExercise/index.js - VERSION avec PhrasesProgress (cohérence nomenclature)
 
 import React, { useMemo, useCallback } from "react";
 import { View, Text, ActivityIndicator, Alert } from "react-native";
@@ -7,16 +7,17 @@ import { useNavigation } from "@react-navigation/native";
 // Composants Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
-// Composants spécifiques
+// Composants refactorisés
 import PhrasesHeader from "./PhrasesHeader";
 import PhrasesCategorySelector from "./PhrasesCategorySelector";
-import PhrasesProgressBar from "./PhrasesProgressBar";
-import PhraseCard from "./PhraseCard";  // ✅ NOUVEAU - remplace PhrasePhraseCard + Modal
+import PhrasesProgress from "./PhrasesProgress"; // ← Renommé pour cohérence
+import PhraseCard from "./PhraseCard";
 import PhrasesNavigation from "./PhrasesNavigation";
 
 // Hooks personnalisés
 import usePhrasesExerciseState from "./hooks/usePhrasesExerciseState";
 import usePhrasesProgress from "./hooks/usePhrasesProgress";
+import usePhrasesDisplay from "./hooks/usePhrasesDisplay"; // ← Pattern identique à Vocabulary
 
 // Utilitaires
 import {
@@ -25,21 +26,24 @@ import {
 } from "../../../utils/phrases/phrasesDataHelper";
 
 // Styles
-import styles from "./style";
+import createStyles from "./style";
 
 /**
- * Composant principal pour l'exercice de Phrases & Expressions
- * Version recodée avec Container SafeArea + PhraseCard au lieu de PhrasePhraseCard + Modal
+ * 🏆 PhrasesExercise - Architecture identique à VocabularyExercise
+ * - Utilise usePhrasesDisplay pour la logique d'affichage
+ * - Pattern cohérent avec VocabularyExercise et ReadingExercise
+ * - Gestion d'état centralisée dans les hooks
  */
 const PhrasesExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
+  const styles = createStyles();
 
   // Récupérer les données et la couleur du niveau
   const levelColor = getLevelColor(level);
   const phrasesData = useMemo(() => getPhrasesData(level), [level]);
 
-  // Hook de progression (inchangé)
+  // Hooks existants (logique métier)
   const { 
     completedPhrases,
     lastPosition,
@@ -48,37 +52,39 @@ const PhrasesExercise = ({ route }) => {
     markPhraseAsCompleted 
   } = usePhrasesProgress(level);
 
-  // Hook d'état modifié (avec showTranslation au lieu de showDetails)
   const {
     categoryIndex,
     phraseIndex,
-    showTranslation,        // ✅ NOUVEAU - remplace selectedPhrase/showDetails
+    showTranslation,
     completionProgress,
     changeCategory,
     goToNextPhrase,
     goToPreviousPhrase,
-    toggleTranslation,      // ✅ NOUVEAU - remplace openPhraseDetails/closePhraseDetails
-    currentCategory,
-    currentPhrases,
-    hasValidData,
+    toggleTranslation,
   } = usePhrasesExerciseState(level, phrasesData);
 
-  // Restaurer la position sauvegardée
+  // ✅ Hook d'affichage (pattern identique à VocabularyExercise)
+  const {
+    getCurrentPhrase,
+    phraseCounter,
+    headerTitle,
+    categories,
+    currentCategory,
+    currentPhrases,
+    showDetailedProgress,
+    handleToggleProgressDetails,
+  } = usePhrasesDisplay(phrasesData, categoryIndex, phraseIndex, level);
+
+  // Effets et logique métier (inchangés)
   React.useEffect(() => {
     if (loaded && lastPosition && phrasesData) {
-      // Utiliser changeCategory qui reset déjà phraseIndex à 0
       if (lastPosition.categoryIndex !== categoryIndex) {
         changeCategory(lastPosition.categoryIndex);
       }
-      // Puis ajuster phraseIndex si nécessaire
-      if (lastPosition.phraseIndex !== phraseIndex) {
-        // On ne peut pas directement setter phraseIndex, il faudrait l'exposer du hook
-        // Pour l'instant on garde la logique simple
-      }
     }
-  }, [loaded, lastPosition, phrasesData]);
+  }, [loaded, lastPosition, phrasesData, categoryIndex, changeCategory]);
 
-  // Fonction pour trouver la prochaine catégorie incomplète
+  // Fonction pour trouver la prochaine catégorie incomplète (inchangée)
   const findNextUncompletedCategory = useCallback(() => {
     const totalCategories = phrasesData?.categories?.length || 0;
     for (let i = 1; i <= totalCategories; i++) {
@@ -93,16 +99,14 @@ const PhrasesExercise = ({ route }) => {
     return -1;
   }, [phrasesData, categoryIndex, completedPhrases]);
 
-  // Gestionnaires d'événements
+  // Gestionnaires d'événements (inchangés)
   const handleNext = useCallback(() => {
-    // Marquer la phrase actuelle comme complétée
     markPhraseAsCompleted(categoryIndex, phraseIndex, currentPhrases[phraseIndex]);
 
     if (phraseIndex < currentPhrases.length - 1) {
       goToNextPhrase();
       saveLastPosition(categoryIndex, phraseIndex + 1);
     } else {
-      // Passer à la catégorie suivante ou terminer
       const nextCategoryIndex = findNextUncompletedCategory();
       if (nextCategoryIndex === -1) {
         Alert.alert(
@@ -139,31 +143,34 @@ const PhrasesExercise = ({ route }) => {
     saveLastPosition(newIndex, 0);
   }, [changeCategory, saveLastPosition]);
 
-  // Effet pour sauvegarder la position actuelle
   React.useEffect(() => {
-    if (loaded && hasValidData) {
+    if (loaded && currentPhrases.length > 0) {
       saveLastPosition(categoryIndex, phraseIndex);
     }
-  }, [categoryIndex, phraseIndex, loaded, hasValidData, saveLastPosition]);
+  }, [categoryIndex, phraseIndex, loaded, currentPhrases.length, saveLastPosition]);
 
-  // Gestionnaire retour navigation
   const handleBackPress = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
 
+  // Calculer les statistiques pour ProgressCard
+  const completedCount = Object.values(completedPhrases).reduce((acc, phrases) => acc + phrases.length, 0);
+  const totalCount = phrasesData?.phrases?.length || 0;
+
   // ========== ÉCRAN DE CHARGEMENT ==========
-  if (!loaded || !hasValidData) {
+  if (!loaded || !phrasesData) {
     return (
       <Container
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#FAFBFC"
+        backgroundColor="#f8fafc"
         statusBarStyle="dark-content"
-        style={styles.safeArea}
       >
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={levelColor} />
-          <Text style={styles.loadingText}>Chargement des phrases...</Text>
+          <Text style={[styles.loadingText, { color: levelColor }]}>
+            Loading phrases...
+          </Text>
         </View>
       </Container>
     );
@@ -175,18 +182,16 @@ const PhrasesExercise = ({ route }) => {
       <Container
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#FAFBFC"
+        backgroundColor="#f8fafc"
         statusBarStyle="dark-content"
-        style={styles.safeArea}
       >
         <PhrasesHeader
           level={level}
           onBackPress={handleBackPress}
-          levelColor={levelColor}
         />
         <View style={styles.emptyStateContainer}>
           <Text style={styles.emptyStateText}>
-            Aucune phrase disponible dans cette catégorie.
+            No phrases available in this category.
           </Text>
         </View>
       </Container>
@@ -196,48 +201,52 @@ const PhrasesExercise = ({ route }) => {
   // ========== CONTENU PRINCIPAL ==========
   const renderMainContent = () => (
     <>
-      {/* En-tête */}
+      {/* Header */}
       <PhrasesHeader
         level={level}
         onBackPress={handleBackPress}
-        levelColor={levelColor}
       />
 
-      {/* Sélecteur de catégories */}
+      {/* Category Selector */}
       <PhrasesCategorySelector
-        categories={phrasesData?.categories || []}
+        categories={categories}
         selectedIndex={categoryIndex}
         onSelectCategory={handleCategoryChange}
         levelColor={levelColor}
       />
 
-      {/* Barre de progression */}
-      <PhrasesProgressBar
+      {/* Progress - Avec état géré par usePhrasesDisplay */}
+      <PhrasesProgress
         progress={completionProgress}
         currentPhrase={phraseIndex + 1}
         totalPhrases={currentPhrases.length}
+        completedCount={completedCount}
         levelColor={levelColor}
+        phrasesData={phrasesData}
+        completedPhrases={completedPhrases}
+        expanded={showDetailedProgress} // ← Du hook usePhrasesDisplay
+        onToggleExpand={handleToggleProgressDetails} // ← Du hook usePhrasesDisplay
+        onCategoryPress={handleCategoryChange}
       />
 
-      {/* Contenu de la phrase */}
+      {/* Phrase Card */}
       <View style={styles.contentContainer}>
         <View style={styles.categoryTitleContainer}>
           <Text style={styles.categoryTitle}>
-            {currentCategory?.name || "Catégorie"}
+            {currentCategory?.name || "Category"}
           </Text>
         </View>
 
-        {/* ✅ NOUVELLE CARTE UNIQUE - Remplace PhrasePhraseCard + Modal */}
-        {currentPhrases[phraseIndex] ? (
+        {getCurrentPhrase ? (
           <PhraseCard
-            phraseData={currentPhrases[phraseIndex]}  // Vos données existantes
+            phraseData={getCurrentPhrase} // ← Du hook usePhrasesDisplay
             showTranslation={showTranslation}
             onToggleTranslation={toggleTranslation}
             levelColor={levelColor}
           />
         ) : (
           <View style={styles.phrasePlaceholder}>
-            <Text>Phrase non disponible</Text>
+            <Text>Phrase not available</Text>
           </View>
         )}
       </View>
@@ -248,22 +257,24 @@ const PhrasesExercise = ({ route }) => {
         onNext={handleNext}
         disablePrevious={phraseIndex === 0}
         disableNext={phraseIndex === currentPhrases.length - 1}
+        isLast={phraseIndex === currentPhrases.length - 1}
         levelColor={levelColor}
       />
-
-      {/* ✅ PLUS DE MODAL ! */}
     </>
   );
 
-  // ========== RENDU PRINCIPAL ==========
   return (
     <Container
       safeArea
-      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL} // SafeArea complète pour les exercices
-      backgroundColor="#FAFBFC"
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+      withScrollView
+      backgroundColor="#f8fafc"
       statusBarStyle="dark-content"
-      withPadding={false} // Pas de padding global, géré par les composants internes
-      style={styles.safeArea}
+      withPadding={false}
+      scrollViewProps={{
+        showsVerticalScrollIndicator: false,
+        contentContainerStyle: styles.scrollContent,
+      }}
     >
       {renderMainContent()}
     </Container>

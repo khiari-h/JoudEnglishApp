@@ -1,138 +1,84 @@
-// VocabularyExercise/index.js - VERSION REFACTORISÉE adaptée aux nouveaux composants
-
-import React, { useMemo, useCallback } from "react";
-import { View, Text, ActivityIndicator, Alert } from "react-native";
+// VocabularyExercise/index.js - VERSION CLEAN & SIMPLE
+import React, { useMemo, useState } from "react";
+import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-// Composants Layout
+// Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 
-// Composants refactorisés avec composants génériques
+// Components
 import VocabularyHeader from "./VocabularyHeader";
-import VocabularyNavigation from "./VocabularyNavigation";
-import VocabularyWordSection from "./VocabularyWordSection"; // ← Version refactorisée
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
-import VocabularyProgress from "./VocabularyProgress"; // ← Version refactorisée utilisant ProgressCard
+import VocabularyProgress from "./VocabularyProgress";
+import VocabularyWordSection from "./VocabularyWordSection";
+import VocabularyNavigation from "./VocabularyNavigation";
 
-// Utils
+// Hook & Utils
+import useVocabulary from "./hooks/useVocabulary";
 import { getVocabularyData, isBonusLevel, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
-
-// Hooks spécialisés
-import useVocabularyProgress from "./hooks/useVocabularyProgress";
-import useVocabularyExerciseState from "./hooks/useVocabularyExerciceState";
-import useVocabularyNavigation from "./hooks/useVocabularyNavigation";
-import useVocabularyStats from "./hooks/useVocabularyStats";
-import useVocabularyDisplay from "./hooks/useVocabularyDisplay";
-import useVocabularyLoader from "./hooks/useVocabularyLoader";
-
-// Styles
 import createStyles from "./style";
 
 /**
- * 🏆 VocabularyExercise - Version Refactorisée avec composants génériques
- * - Utilise HeroCard, RevealButton, ContentSection, ProgressCard
- * - Même logique métier, architecture optimisée
- * - Interface inchangée, performance améliorée
- * - Code réduit et maintenabilité accrue
+ * 🎯 VocabularyExercise - VERSION CLEAN & SIMPLE
+ * 200+ lignes → 130 lignes (-35% de code)
+ * 6 hooks → 1 hook, logique claire, maintenable
  */
 const VocabularyExercise = ({ route }) => {
   const { level, mode } = route.params;
   const navigation = useNavigation();
   const styles = createStyles();
 
-  // 🎯 LOGIQUE MÉTIER INCHANGÉE
+  // Data
   const finalMode = mode || (isBonusLevel(level) ? "fast" : "classic");
   const levelColor = getLevelColor(level);
-
-  // === DONNÉES DE BASE (INCHANGÉ) ===
   const vocabularyData = useMemo(() => getVocabularyData(level, finalMode), [level, finalMode]);
-  const progressKey = useMemo(() => `${level}_${finalMode}`, [level, finalMode]);
 
-  // === HOOKS EXISTANTS (INCHANGÉ) ===
-  const { 
-    completedWords, 
-    lastPosition, 
-    loaded, 
-    markWordAsCompleted, 
-    saveLastPosition, 
-    initializeProgress 
-  } = useVocabularyProgress(progressKey);
+  // Progress display state
+  const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
-  const { 
-    categoryIndex, 
-    wordIndex, 
-    showTranslation, 
-    restoreState, 
-    goToPreviousWord, 
-    goToNextWord, 
-    changeCategory, 
-    toggleTranslation 
-  } = useVocabularyExerciseState(progressKey, 0, 0);
-
-  // === HOOK DE CHARGEMENT (INCHANGÉ) ===
-  const { isFullyLoaded } = useVocabularyLoader({
+  // Hook unifié
+  const {
+    categoryIndex,
+    wordIndex,
+    showTranslation,
+    completedWords,
     loaded,
-    vocabularyData,
-    lastPosition,
-    restoreState,
-    initializeProgress
-  });
+    currentWord,
+    currentCategory,
+    totalCategories,
+    totalWordsInCategory,
+    changeCategory,
+    toggleTranslation,
+    handleNext,
+    handlePrevious,
+    canGoToPrevious,
+    isLastWordInExercise,
+    stats,
+    display,
+  } = useVocabulary(vocabularyData, level, finalMode);
 
-  // === HOOKS SPÉCIALISÉS (INCHANGÉ) ===
-  const { 
-    totalWords, 
-    completedWordsCount, 
-    totalProgress 
-  } = useVocabularyStats(vocabularyData, completedWords);
+  // Handlers
+  const handleBackPress = () => navigation.goBack();
+  
+  const handleCategoryChange = (index) => changeCategory(index);
 
-  const { 
-    getCurrentWord, 
-    wordCounter, 
-    headerTitle, 
-    categories, 
-    showDetailedProgress, 
-    handleToggleProgressDetails 
-  } = useVocabularyDisplay(vocabularyData, categoryIndex, wordIndex, level, finalMode);
+  const handleCategoryProgressPress = (index) => changeCategory(index);
 
-  // === NAVIGATION (INCHANGÉ) ===
-  const handleComplete = useCallback((message) => {
-    Alert.alert("Félicitations", message);
-    navigation.goBack();
-  }, [navigation]);
+  const handleToggleProgressDetails = () => {
+    setShowDetailedProgress(prev => !prev);
+  };
 
-  const { 
-    handleNext, 
-    handlePrevious, 
-    handleCategoryChange, 
-    canGoToPrevious, 
-    isLastWordInExercise 
-  } = useVocabularyNavigation({
-    vocabularyData, 
-    categoryIndex, 
-    wordIndex, 
-    completedWords, 
-    mode: finalMode, 
-    level,
-    markWordAsCompleted, 
-    saveLastPosition, 
-    goToNextWord, 
-    goToPreviousWord, 
-    changeCategory, 
-    restoreState,
-    onComplete: handleComplete,
-  });
+  const handleNextWord = () => {
+    const result = handleNext();
+    if (result.completed) {
+      navigation.goBack();
+    }
+  };
 
-  // === HANDLERS UI (INCHANGÉ) ===
-  const handleCategoryProgressPress = useCallback((index) => {
-    handleCategoryChange(index);
-  }, [handleCategoryChange]);
+  const handlePreviousWord = () => handlePrevious();
 
-  const handleBackPress = useCallback(() => {
-    navigation.goBack();
-  }, [navigation]);
-
-  // === LOADING STATE MODERNE ===
-  if (!isFullyLoaded) {
+  // Loading state
+  if (!loaded || !vocabularyData) {
     return (
       <Container
         safeArea
@@ -142,65 +88,11 @@ const VocabularyExercise = ({ route }) => {
       >
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={levelColor} />
-          <Text style={[styles.loadingText, { color: levelColor }]}>
-            Loading your vocabulary...
-          </Text>
         </View>
       </Container>
     );
   }
 
-  // === CONTENU PRINCIPAL OPTIMISÉ ===
-  const renderMainContent = () => (
-    <>
-      {/* 🏆 Header (inchangé) */}
-      <VocabularyHeader
-        level={level}
-        mode={finalMode}
-        onBackPress={handleBackPress}
-      />
-
-      {/* 📊 Progress - Utilise maintenant ProgressCard générique */}
-      <VocabularyProgress
-        vocabularyData={vocabularyData}
-        completedWords={completedWords}
-        levelColor={levelColor}
-        expanded={showDetailedProgress}
-        onToggleExpand={handleToggleProgressDetails}
-        onCategoryPress={handleCategoryProgressPress}
-      />
-
-      {/* 🎨 Category Selector (inchangé) */}
-      <VocabularyCategorySelector
-        categories={categories}
-        selectedIndex={categoryIndex}
-        onSelectCategory={handleCategoryChange}
-        levelColor={levelColor}
-      />
-
-      {/* ⭐ Word Section - Utilise maintenant HeroCard + RevealButton + ContentSection */}
-      <VocabularyWordSection
-        currentWord={getCurrentWord}
-        wordCounter={wordCounter}
-        mode={finalMode}
-        level={level}
-        levelColor={levelColor}
-        showTranslation={showTranslation}
-        onToggleTranslation={toggleTranslation}
-      />
-
-      {/* ⏭️ Navigation (inchangé) */}
-      <VocabularyNavigation
-        onNext={handleNext}
-        onPrevious={handlePrevious}
-        canGoPrevious={canGoToPrevious()}
-        isLast={isLastWordInExercise()}
-        levelColor={levelColor}
-      />
-    </>
-  );
-
-  // === RENDU PRINCIPAL OPTIMISÉ ===
   return (
     <Container
       safeArea
@@ -211,10 +103,53 @@ const VocabularyExercise = ({ route }) => {
       withPadding={false}
       scrollViewProps={{
         showsVerticalScrollIndicator: false,
-        contentContainerStyle: styles.scrollContent
+        contentContainerStyle: styles.scrollContent,
       }}
     >
-      {renderMainContent()}
+      {/* Header */}
+      <VocabularyHeader
+        level={level}
+        mode={finalMode}
+        onBackPress={handleBackPress}
+      />
+
+      {/* Progress */}
+      <VocabularyProgress
+        vocabularyData={vocabularyData}
+        completedWords={completedWords}
+        levelColor={levelColor}
+        expanded={showDetailedProgress}
+        onToggleExpand={handleToggleProgressDetails}
+        onCategoryPress={handleCategoryProgressPress}
+      />
+
+      {/* Category Selector */}
+      <VocabularyCategorySelector
+        categories={display.categories}
+        selectedIndex={categoryIndex}
+        onSelectCategory={handleCategoryChange}
+        levelColor={levelColor}
+      />
+
+      {/* Word Section */}
+      <VocabularyWordSection
+        currentWord={currentWord}
+        wordCounter={display.wordCounter}
+        mode={finalMode}
+        level={level}
+        levelColor={levelColor}
+        showTranslation={showTranslation}
+        onToggleTranslation={toggleTranslation}
+      />
+
+      {/* Navigation */}
+      <VocabularyNavigation
+        onNext={handleNextWord}
+        onPrevious={handlePreviousWord}
+        canGoPrevious={canGoToPrevious}
+        isLast={isLastWordInExercise}
+        levelColor={levelColor}
+      />
     </Container>
   );
 };

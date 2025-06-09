@@ -1,50 +1,39 @@
-// src/screens/exercises/phrases/PhrasesNavigation/index.js
+// PhrasesNavigation/index.js - VERSION OPTIMISÉE (plus de "1/2" redondant)
+
 import React from "react";
-import { View } from "react-native";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
-import styles from "./style";
 
 /**
- * Composant de navigation pour les phrases
- * Utilise le composant NavigationButtons générique
- * 
- * @param {function} onPrevious - Fonction appelée pour aller à la phrase précédente
- * @param {function} onNext - Fonction appelée pour aller à la phrase suivante
- * @param {boolean} disablePrevious - Désactive le bouton précédent
- * @param {boolean} disableNext - Désactive le bouton suivant
- * @param {number} currentIndex - Index de la phrase actuelle
- * @param {number} totalCount - Nombre total de phrases
- * @param {string} levelColor - Couleur du niveau
+ * ⏭️ PhrasesNavigation - Version Optimisée
+ * - Plus d'indicateur "1/2" redondant 
+ * - Utilise le NavigationButtons optimisé
+ * - Interface cohérente avec VocabularyNavigation et GrammarNavigation
+ * - Props simplifiées
  */
 const PhrasesNavigation = ({ 
   onPrevious, 
   onNext, 
   disablePrevious = false, 
   disableNext = false,
-  currentIndex = 0,
-  totalCount = 0,
-  levelColor 
+  levelColor = "#5E60CE",
+  isLast = false, // Nouveau prop simple pour "Terminer"
 }) => {
   return (
-    <View style={styles.container}>
-      <NavigationButtons
-        onNext={onNext}
-        onPrevious={onPrevious}
-        currentIndex={currentIndex}
-        totalCount={totalCount}
-        disablePrevious={disablePrevious}
-        disableNext={disableNext}
-        showSkip={false}
-        primaryColor={levelColor}
-        buttonLabels={{
-          next: "Suivant",
-          previous: "Précédent",
-          skip: "",
-          finish: "Terminer"
-        }}
-        variant="standard"
-      />
-    </View>
+    <NavigationButtons
+      onNext={onNext}
+      onPrevious={onPrevious}
+      disablePrevious={disablePrevious}
+      disableNext={disableNext}
+      primaryColor={levelColor}
+      isLast={isLast}
+      buttonLabels={{
+        next: "Suivant",
+        previous: "Précédent", 
+        finish: "Terminer"
+      }}
+      // 🧹 SUPPRIMÉ : currentIndex, totalCount, showSkip, variant, wrapper View
+      // Plus de "1/2" redondant !
+    />
   );
 };
 

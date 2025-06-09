@@ -1,42 +1,49 @@
-// src/components/screens/exercises/reading/ReadingText/style.js
-import { StyleSheet } from "react-native";
+// ReadingText/style.js - VERSION SIMPLIFIÉE
+import { StyleSheet, Platform } from "react-native";
 
-const styles = StyleSheet.create({
-  textContainer: {
-    paddingVertical: 12,
-  },
+/**
+ * 🎯 Styles simples pour ReadingText
+ * Pas de complexité inutile, juste l'essentiel
+ */
+const createStyles = (levelColor = "#3b82f6") =>
+  StyleSheet.create({
+    // =================== CONTAINER ===================
+    container: {
+      marginHorizontal: 16,
+      marginVertical: 8,
+    },
 
-  // Nouveau style pour le texte complet (remplace le système word par word)
-  fullText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: "#374151",
-    textAlign: "justify",
-  },
+    // =================== INFO SECTION ===================
+    infoContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      backgroundColor: 'white',
+      borderRadius: 12,
+      padding: 12,
+      marginVertical: 10,
+      ...Platform.select({
+        ios: {
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 1 },
+          shadowOpacity: 0.05,
+          shadowRadius: 4,
+        },
+        android: {
+          elevation: 1,
+        },
+      }),
+    },
+    
+    infoItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    
+    infoText: {
+      fontSize: 14,
+      fontWeight: '600',
+      marginLeft: 6,
+    },
+  });
 
-  collapsedText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: "#6b7280",
-    fontStyle: "italic",
-  },
-
-  expandButton: {
-    marginTop: 12,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderWidth: 1,
-    borderRadius: 8,
-    alignSelf: "center",
-    backgroundColor: "transparent",
-  },
-
-  expandButtonText: {
-    fontSize: 14,
-    fontWeight: "600",
-    textAlign: "center",
-  },
-});
-
-export default styles;
-
+export default createStyles;
