@@ -1,3 +1,4 @@
+// src/screens/Dashboard/index.js - VERSION REFONTE COMPLÈTE
 import React, { useContext, useEffect, useCallback, useMemo } from "react";
 import { RefreshControl, Text, ScrollView, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -7,13 +8,13 @@ import { useFocusEffect } from "@react-navigation/native";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { ProgressContext } from "../../contexts/ProgressContext";
 
-// Hooks personnalisés Dashboard
+// Hooks personnalisés (simplifiés)
 import { useDashboardLevel } from "./hooks/useDashboardLevel";
 import { useDashboardNavigation } from "./hooks/useDashboardNavigation";
 import { useDashboardData } from "./hooks/useDashboardData";
 import { useDashboardState } from "./hooks/useDashboardState";
 
-// Hooks existants
+// Hooks existants (gardés)
 import useLastActivity from "../../hooks/useLastActivity";
 import useStreak from "./hooks/useStreak";
 import useExerciseTracking from "../../hooks/useExerciceTracking";
@@ -21,13 +22,11 @@ import useExerciseTracking from "../../hooks/useExerciceTracking";
 // Composants Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 
-// Composants Dashboard
-import CompactHeader from "./components/CompactHeader";
-import ContinueLearningSection from "./components/ContinueLearningSection";
-import DailyGoalSection from "./components/DailyGoalSection";
-import RecommendationsSection from "./components/RecommendationsSection";
-import LearningPathCompact from "./components/LearningPathCompact";
-import LevelProgressModal from "./components/LevelProgressModal";
+// Composants refactorisés
+import ModernHeader from "./components/ModernHeader";
+import HeroContinueSection from "./components/HeroContinueSection";
+import SimpleMetrics from "./components/SimpleMetrics";
+import LearningProgress from "./components/LearningProgress";
 
 import styles from "./style";
 
@@ -36,9 +35,9 @@ const Dashboard = ({ route }) => {
   const themeContext = useContext(ThemeContext);
   const progressContext = useContext(ProgressContext);
 
-  // ✅ FIX : Valeurs par défaut pour éviter le crash
+  // Valeurs par défaut
   const colors = themeContext?.colors || {
-    background: "#F9FAFB",
+    background: "#F8FAFC",
     primary: "#3B82F6",
     surface: "#FFFFFF",
     text: "#1F2937",
@@ -57,14 +56,13 @@ const Dashboard = ({ route }) => {
   const { currentStreak, updateStreak } = useStreak();
   const tracking = useExerciseTracking();
 
-  // ========== HOOKS PERSONNALISÉS DASHBOARD ==========
+  // ========== HOOKS DASHBOARD ==========
   const { currentLevel, handleChangeActiveLevel, levelColor } =
     useDashboardLevel(progressContext);
 
   const {
     navigateToExercise,
     handleLevelSelect,
-    handleEvaluationStart,
   } = useDashboardNavigation(updateStreak, tracking.startTracking);
 
   const dashboardData = useDashboardData(
@@ -75,19 +73,15 @@ const Dashboard = ({ route }) => {
   );
 
   const {
-    showLevelProgress,
-    openLevelProgressModal,
-    closeLevelProgressModal,
     refreshing,
     onRefresh,
   } = useDashboardState(loadLastActivities);
 
-  // ========== BACKGROUND INTELLIGENT (optimisé avec useMemo) ==========
+  // ========== BACKGROUND GRADIENT ==========
   const backgroundGradient = useMemo(() => {
-    // Gradient vertical subtil basé sur la couleur du niveau
-    const gradientStart = levelColor + "03"; // 1%
-    const gradientMiddle = colors.background; // ✅ Plus d'opérateur optionnel car on a la fallback
-    const gradientEnd = levelColor + "08"; // 3%
+    const gradientStart = levelColor + "03";
+    const gradientMiddle = colors.background;
+    const gradientEnd = levelColor + "08";
     
     return {
       colors: [gradientStart, gradientMiddle, gradientEnd],
@@ -95,10 +89,52 @@ const Dashboard = ({ route }) => {
     };
   }, [levelColor, colors.background]);
 
-  // ========== DONNÉES ==========
+  // ========== DONNÉES USER ==========
   const { name = "Utilisateur" } = route?.params || {};
 
-  // ========== EFFETS OPTIMISÉS ==========
+  // ========== MÉTRIQUES INTELLIGENTES ==========
+  const simpleMetrics = useMemo(() => {
+    const todayStats = tracking.getTodayStats?.();
+    const totalWords = dashboardData.totalWordsLearned;
+    
+    const metrics = [];
+    
+    // Seulement SI on a vraiment les données
+    if (todayStats?.timeSpent > 0) {
+      metrics.push({
+        id: 'time',
+        icon: '⏱️',
+        value: `${todayStats.timeSpent} min`,
+        label: 'Temps aujourd\'hui',
+        trend: todayStats.timeTrend || null
+      });
+    }
+    
+    if (totalWords > 0) {
+      metrics.push({
+        id: 'words',
+        icon: '📚',
+        value: totalWords.toString(),
+        label: 'Mots appris',
+        trend: dashboardData.wordsThisWeek ? `+${dashboardData.wordsThisWeek}` : null
+      });
+    }
+    
+    if (todayStats?.exercisesCompleted > 0) {
+      metrics.push({
+        id: 'exercises',
+        icon: '✅',
+        value: todayStats.exercisesCompleted.toString(),
+        label: 'Exercices terminés',
+        trend: null
+      });
+    }
+    
+    // Retourne [] si pas de données = SimpleMetrics ne s'affiche pas
+    return metrics;
+  }, [tracking, dashboardData]);
+
+  // ========== EFFETS ==========
   useEffect(() => {
     loadLastActivities();
   }, [loadLastActivities]);
@@ -123,7 +159,7 @@ const Dashboard = ({ route }) => {
     }, [tracking.isTracking, tracking.stopTracking, loadLastActivities])
   );
 
-  // ========== GESTIONNAIRES OPTIMISÉS ==========
+  // ========== GESTIONNAIRES ==========
   const handleLevelSelectWithNavigation = useCallback(
     (level) => {
       handleLevelSelect(level, handleChangeActiveLevel);
@@ -131,20 +167,7 @@ const Dashboard = ({ route }) => {
     [handleLevelSelect, handleChangeActiveLevel]
   );
 
-  const handleLevelProgressSelect = useCallback(
-    (level) => {
-      handleChangeActiveLevel(level);
-      closeLevelProgressModal();
-      handleLevelSelectWithNavigation(level);
-    },
-    [
-      handleChangeActiveLevel,
-      closeLevelProgressModal,
-      handleLevelSelectWithNavigation,
-    ]
-  );
-
-  // ========== RENDU CONDITIONNEL CHARGEMENT ==========
+  // ========== LOADING STATE ==========
   if (!tracking.isLoaded) {
     return (
       <Container
@@ -166,55 +189,16 @@ const Dashboard = ({ route }) => {
     );
   }
 
-  // ========== CONTENU SCROLLABLE ==========
-  const renderScrollableContent = () => (
-    <>
-      <ContinueLearningSection
-        lastActivity={dashboardData.lastActivity}
-        onPress={navigateToExercise}
-        accentColor={levelColor}
-        formatProgressSubtitle={formatProgressSubtitle}
-        isLoading={isActivityLoading}
-      />
-
-      <DailyGoalSection
-        currentLevel={currentLevel}
-        progress={dashboardData.progress}
-        accentColor={levelColor}
-        onStartEvaluation={handleEvaluationStart}
-      />
-
-      <RecommendationsSection
-        lastActivity={dashboardData.lastActivity}
-        currentLevel={currentLevel}
-        onSelectExercise={navigateToExercise}
-        accentColor={levelColor}
-      />
-
-      <LearningPathCompact
-        globalProgress={dashboardData.globalProgress}
-        levels={dashboardData.allLevels}
-        currentLevel={currentLevel}
-        onSelectLevel={handleLevelSelectWithNavigation}
-        onViewProgress={openLevelProgressModal}
-        primaryColor={levelColor}
-      />
-
-      <View style={styles.bottomSpacer} />
-    </>
-  );
-
   // ========== RENDU PRINCIPAL ==========
   return (
     <Container
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM}
       withScrollView={false}
-      backgroundColor="transparent" // ✅ Pour le gradient
+      backgroundColor="transparent"
       statusBarStyle="light-content"
       withPadding={false}
     >
-      {/* ✅ Background Intelligent avec Gradient */}
       <LinearGradient
         colors={backgroundGradient.colors}
         locations={backgroundGradient.locations}
@@ -222,43 +206,58 @@ const Dashboard = ({ route }) => {
         end={{ x: 0, y: 1 }}
         style={styles.container}
       >
-        {/* Header FIXE */}
-        <CompactHeader
+        {/* 1. HEADER MODERNE */}
+        <ModernHeader
           level={currentLevel}
           streak={currentStreak}
           levelColor={levelColor}
+          userName={name || "Utilisateur"}
         />
 
-        {/* Contenu principal SCROLLABLE */}
+        {/* 2. CONTENU SCROLLABLE */}
         <ScrollView
           style={styles.scrollView}
-          contentContainerStyle={[
-            styles.scrollContent,
-            { paddingBottom: 100 } // ✅ Override minimal pour navigation
-          ]}
+          contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}
               onRefresh={onRefresh}
-              colors={[levelColor]} // ✅ Couleur du niveau
-              tintColor={levelColor} // ✅ Couleur du niveau
+              colors={[levelColor]}
+              tintColor={levelColor}
             />
           }
         >
-          {renderScrollableContent()}
-        </ScrollView>
+          {/* 3. HERO SECTION - Continue Learning */}
+          <HeroContinueSection
+            lastActivity={dashboardData.lastActivity}
+            onPress={navigateToExercise}
+            accentColor={levelColor}
+            formatProgressSubtitle={formatProgressSubtitle}
+            isLoading={isActivityLoading}
+          />
 
-        {/* Modal de progression */}
-        <LevelProgressModal
-          visible={showLevelProgress}
-          levels={dashboardData.getAllLearningLevels}
-          onClose={closeLevelProgressModal}
-          onSelectLevel={handleLevelProgressSelect}
-        />
+          {/* 4. MÉTRIQUES SIMPLES */}
+          <SimpleMetrics
+            metrics={simpleMetrics}
+            accentColor={levelColor}
+          />
+
+          {/* 5. PROGRESSION APPRENTISSAGE */}
+          <LearningProgress
+            globalProgress={dashboardData.globalProgress}
+            levels={dashboardData.allLevels}
+            currentLevel={currentLevel}
+            onSelectLevel={handleLevelSelectWithNavigation}
+            primaryColor={levelColor}
+          />
+
+          <View style={styles.bottomSpacer} />
+        </ScrollView>
       </LinearGradient>
     </Container>
   );
 };
+
 
 export default Dashboard;

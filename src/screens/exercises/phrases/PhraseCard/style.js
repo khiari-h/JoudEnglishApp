@@ -1,27 +1,33 @@
-// PhraseCard/style.js - VERSION REFACTORISÉE (300 → 15 lignes)
-
+// PhraseCard/style.js - VERSION ULTRA-NETTOYÉE
 import { StyleSheet } from "react-native";
 
 /**
- * 🎯 Styles ultra-simplifiés pour PhraseCard
- * Ancien : 300 lignes avec hero + glassmorphism + sections custom
- * Nouveau : 15 lignes - les composants génériques gèrent tout
+ * 🧹 CSS Ultra-Simplifié pour PhraseCard
  * 
- * Plus besoin de :
- * - heroSection, heroGradient, decorativeCircle → dans HeroCard
- * - revealButton, glassEffect, translationCard → dans RevealButton
- * - exampleCard, contextCard, headers → dans ContentSection
- * - Platform.select, shadows → centralisés dans les composants génériques
+ * AVANT : 300+ lignes avec :
+ * - heroSection, heroGradient, decorativeCircle
+ * - revealButton, glassEffect, translationCard  
+ * - exampleCard, contextCard, headers, shadows
+ * 
+ * MAINTENANT : 10 lignes
+ * - Tout est géré par HeroCard et RevealButton
+ * - On garde SEULEMENT le container
  */
 const createStyles = (levelColor = "#5E60CE") =>
   StyleSheet.create({
-    // =================== CONTAINER SIMPLE ===================
+    // =================== CONTAINER SEULEMENT ===================
     container: {
-      marginHorizontal: 16,
-      marginVertical: 8,
+      marginHorizontal: 16, // Espacement horizontal
+      marginVertical: 8,    // Espacement vertical entre les composants
     },
-
-    // 🧹 SUPPRIMÉ : 285 lignes de styles maintenant dans les composants génériques !
+    
+    // 🗑️ SUPPRIMÉ : 290+ lignes de styles maintenant gérés par les composants génériques !
+    // Plus besoin de styles pour :
+    // - Hero section (dans HeroCard)
+    // - Reveal button (dans RevealButton) 
+    // - Example section (supprimé)
+    // - Context section (supprimé)
+    // - Toutes les animations, shadows, glassmorphism, etc.
   });
 
 export default createStyles;
