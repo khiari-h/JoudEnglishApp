@@ -4,14 +4,14 @@ import { StyleSheet, Platform } from "react-native";
 export default StyleSheet.create({
   container: {
     paddingTop: 16,
-    paddingBottom: 20, // +4px pour plus de respiration
-    paddingHorizontal: 20, // +4px pour plus d'espace
+    paddingBottom: 20,
+    paddingHorizontal: 20,
     borderBottomLeftRadius: 16,
     borderBottomRightRadius: 16,
     position: 'relative',
     overflow: 'hidden',
   },
-  
+
   // Pattern décoratif subtil
   backgroundPattern: {
     position: 'absolute',
@@ -22,7 +22,7 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 40,
   },
-  
+
   content: {
     flexDirection: "row",
     alignItems: "center",
@@ -31,122 +31,125 @@ export default StyleSheet.create({
     zIndex: 2,
   },
 
-  // =================== SECTION GAUCHE AMÉLIORÉE ===================
+  // =================== SECTION GAUCHE ===================
   leftSection: {
     flex: 1,
   },
-  
+
   logoContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 4, // Réduit car plus de levelContext (était 8)
+    marginBottom: 8,
   },
-  
+
   logoEmoji: {
-    fontSize: 24, // +2px pour plus d'impact
-    marginRight: 10, // +2px
+    fontSize: 24,
+    marginRight: 10,
   },
-  
+
   logoText: {
-    fontSize: 22, // +2px pour plus d'impact (était 20px)
-    fontWeight: "800", // Plus bold
-    letterSpacing: -0.5, // Meilleure lisibilité
+    fontSize: 22,
+    fontWeight: "800",
+    letterSpacing: -0.5,
   },
-  
-  // Context utilisateur
+
+  // Context utilisateur élargi
   userContext: {
     marginLeft: 34, // Aligné avec le texte JOUD
   },
-  
+
   welcomeText: {
     fontSize: 14,
     fontWeight: "500",
     opacity: 0.9,
-    // Supprimé marginBottom car plus de levelContext
+    marginBottom: 2,
   },
 
-  // =================== SECTION DROITE AMÉLIORÉE ===================
+  // NOUVEAU : Contexte niveau
+  levelContext: {
+    fontSize: 12,
+    fontWeight: "400",
+    opacity: 0.7,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+
+  // =================== SECTION DROITE SIMPLIFIÉE ===================
   rightSection: {
-    flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
-    gap: 16, // +4px pour plus de respiration
   },
 
-  // Badge niveau amélioré
+  // Badge niveau (plus gros car seul élément)
   levelBadge: {
-    width: 36, // +4px pour plus de présence
-    height: 36, // +4px
-    borderRadius: 18,
+    width: 40, // +4px car plus de streak
+    height: 40, // +4px
+    borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
     ...Platform.select({
       ios: {
         shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 }, // +1px shadow
-        shadowOpacity: 0.15, // +0.05 pour plus de depth
-        shadowRadius: 3, // +1px
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.15,
+        shadowRadius: 3,
       },
       android: {
-        elevation: 3, // +1 pour plus de depth
+        elevation: 3,
       },
     }),
   },
-  
+
   levelText: {
-    fontSize: 16, // +1px pour meilleure lisibilité (était 15px)
-    fontWeight: "800", // Plus bold
+    fontSize: 17, // +1px car plus de place
+    fontWeight: "800",
     letterSpacing: -0.2,
   },
 
-  // Streak container amélioré
-  streakContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.25)", // +0.05 opacity
-    borderRadius: 18, // +2px pour plus moderne
-    paddingHorizontal: 12, // +2px
-    paddingVertical: 8, // +2px
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 1,
-      },
-    }),
-  },
-  
-  streakEmoji: {
-    fontSize: 16,
-    marginRight: 6, // +2px
-  },
-  
-  streakText: {
-    fontSize: 15, // +1px pour meilleure lisibilité (était 14px)
-    fontWeight: "700", // Plus bold
-    letterSpacing: -0.2,
-  },
-  
-  // =================== RESPONSIVE AMÉLIORATIONS ===================
+  // =================== RESPONSIVE ===================
   '@media (max-width: 350)': {
     container: {
       paddingHorizontal: 16,
     },
-    
+
     logoText: {
       fontSize: 20,
     },
-    
+
     levelBadge: {
-      width: 32,
-      height: 32,
+      width: 36,
+      height: 36,
+      borderRadius: 18,
     },
-    
+
+    levelText: {
+      fontSize: 16,
+    },
+
     userContext: {
       marginLeft: 30,
     },
+
+    welcomeText: {
+      fontSize: 13,
+    },
+
+    levelContext: {
+      fontSize: 11,
+    },
+  },
+
+  // =================== ACCESSIBILITY ===================
+  focusable: {
+    // Outline sera géré par le système natif
+  },
+
+  // =================== ANIMATIONS ===================
+  fadeIn: {
+    opacity: 1,
+  },
+
+  scaleNormal: {
+    transform: [{ scale: 1 }],
   },
 });

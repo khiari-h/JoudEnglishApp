@@ -7,13 +7,15 @@ import { LANGUAGE_LEVELS } from "../../../../utils/constants";
 import styles from "./style";
 
 /**
- * Progression d'apprentissage simplifiée
- * ✅ Focus sur l'essentiel : progression globale + niveaux + action
+ * Progression d'apprentissage avec comportement UX correct
+ * ✅ Clic cercle = change niveau actif visuel seulement
+ * ✅ Bouton Explorer = navigation vers exercices
  */
 const LearningProgress = ({
   levels = [],
   currentLevel = "1",
-  onSelectLevel,
+  onSelectLevel, // Pour navigation vers exerciceSelection
+  onChangeLevelVisual, // Pour changer niveau actif visuel seulement  
   primaryColor = "#3B82F6",
   globalProgress = 0,
 }) => {
@@ -49,6 +51,23 @@ const LearningProgress = ({
   const currentLevelInfo = getCurrentLevelInfo();
   const currentLevelDisplay = getLevelDisplay(currentLevel);
 
+  // ========== GESTION DES CLICS ==========
+  
+  // Clic sur cercle niveau = change juste visuel (pas de navigation)
+  const handleLevelCirclePress = (levelId) => {
+    if (onChangeLevelVisual) {
+      onChangeLevelVisual(levelId);
+    }
+    // ❌ Pas de navigation ici !
+  };
+
+  // Clic sur bouton Explorer = navigation vers exercices
+  const handleExplorePress = () => {
+    if (onSelectLevel) {
+      onSelectLevel(currentLevel);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={[styles.sectionTitle, { color: colors.text }]}>
@@ -66,7 +85,7 @@ const LearningProgress = ({
               {currentLevelInfo.description || "Continuez votre apprentissage"}
             </Text>
           </View>
-          
+
           <View style={styles.progressBadge}>
             <Text style={[styles.progressPercentage, { color: primaryColor }]}>
               {globalProgress}%
@@ -92,7 +111,7 @@ const LearningProgress = ({
           </Text>
         </View>
 
-        {/* Niveaux en cercles */}
+        {/* Niveaux en cercles - COMPORTEMENT CORRIGÉ */}
         <View style={styles.levelsContainer}>
           {displayLevels.map((level, index) => {
             const isActive = level.id === currentLevel || level.isActive;
@@ -125,14 +144,14 @@ const LearningProgress = ({
               <TouchableOpacity
                 key={level.id}
                 style={styles.levelButton}
-                onPress={() => onSelectLevel?.(level.id)}
+                onPress={() => handleLevelCirclePress(level.id)} // ✅ Change visuel seulement
                 activeOpacity={0.7}
-                disabled={!isCompleted && !isActive} // Disable future levels
+                // ✅ SUPPRIMÉ disabled - tous les niveaux cliquables pour navigation visuelle
               >
                 <View style={circleStyle}>
                   <Text style={textStyle}>{getLevelDisplay(level.id)}</Text>
                 </View>
-                
+
                 {/* Indicateur niveau actuel */}
                 {isActive && (
                   <View style={styles.currentIndicator}>
@@ -146,10 +165,10 @@ const LearningProgress = ({
           })}
         </View>
 
-        {/* Action button */}
+        {/* Action button - SEULE NAVIGATION RÉELLE */}
         <TouchableOpacity
           style={[styles.actionButton, { borderColor: primaryColor }]}
-          onPress={() => onSelectLevel?.(currentLevel)}
+          onPress={handleExplorePress} // ✅ Navigation vers exerciceSelection
           activeOpacity={0.7}
         >
           <Text style={[styles.actionButtonText, { color: primaryColor }]}>

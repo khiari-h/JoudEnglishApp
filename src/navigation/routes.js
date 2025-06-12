@@ -5,6 +5,7 @@ export const ROUTES = {
 
   // Routes dynamiques d'exercices
   VOCABULARY_EXERCISE: "VocabularyExercise",
+  VOCABULARY_REVISION: "VocabularyRevision", // ✅ AJOUT
   GRAMMAR_EXERCISE: "GrammarExercise",
   CONVERSATION_EXERCISE: "ConversationExercise",
   READING_EXERCISE: "ReadingExercise",

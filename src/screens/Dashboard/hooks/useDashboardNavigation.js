@@ -1,8 +1,11 @@
 // src/screens/Dashboard/hooks/useDashboardNavigation.js
 import { useCallback } from "react";
-import { router } from "expo-router";
+import { useNavigation } from "@react-navigation/native"; // ✅ CHANGÉ
+import { ROUTES } from "../../../navigation/routes"; // ✅ AJOUT
 
 export const useDashboardNavigation = (updateStreak, startTracking) => {
+  const navigation = useNavigation(); // ✅ CHANGÉ
+
   const navigateToExercise = useCallback(
     (activity) => {
       if (!activity) return;
@@ -12,23 +15,23 @@ export const useDashboardNavigation = (updateStreak, startTracking) => {
         updateStreak();
 
         if (activity === "levelSelection") {
-          router.push("/(tabs)/levelSelection");
+          navigation.navigate(ROUTES.LEVEL_SELECTION); // ✅ CHANGÉ
           return;
         }
 
         const { type, level, mode } = activity;
         const routes = {
-          vocabulary: "/(tabs)/vocabularyExercise",
-          grammar: "/(tabs)/grammarExercise",
-          reading: "/(tabs)/readingExercise",
-          conversations: "/(tabs)/conversationsExercise",
-          phrases: "/(tabs)/phrasesExercise",
-          spelling: "/(tabs)/spellingExercise",
-          wordGames: "/(tabs)/wordGamesExercise",
-          assessment: "/(tabs)/levelAssessment",
+          vocabulary: ROUTES.VOCABULARY_EXERCISE,
+          grammar: ROUTES.GRAMMAR_EXERCISE,
+          reading: ROUTES.READING_EXERCISE,
+          conversations: ROUTES.CONVERSATION_EXERCISE,
+          phrases: ROUTES.PHRASES_EXERCISE,
+          spelling: ROUTES.SPELLING_EXERCISE,
+          wordGames: ROUTES.WORD_GAMES_EXERCISE,
+          assessment: ROUTES.ASSESSMENT_EXERCISE,
         };
 
-        const pathname = routes[type] || "/(tabs)/levelSelection";
+        const routeName = routes[type] || ROUTES.LEVEL_SELECTION;
         const params = { level };
 
         // Passer le mode pour vocabulary
@@ -36,21 +39,18 @@ export const useDashboardNavigation = (updateStreak, startTracking) => {
           params.mode = mode;
         }
 
-        router.push({ pathname, params });
+        navigation.navigate(routeName, params); // ✅ CHANGÉ
       } catch (error) {
-
+        console.error('Erreur navigation:', error);
       }
     },
-    [updateStreak]
+    [updateStreak, navigation]
   );
 
   const handleLevelSelect = useCallback((level, handleChangeActiveLevel) => {
     handleChangeActiveLevel(level);
-    router.push({
-      pathname: "/(tabs)/exerciseSelection",
-      params: { level },
-    });
-  }, []);
+    navigation.navigate(ROUTES.EXERCISE_SELECTION, { level }); // ✅ CHANGÉ
+  }, [navigation]);
 
   const handleDailyChallengeStart = useCallback(
     (type, level) => {
@@ -76,12 +76,9 @@ export const useDashboardNavigation = (updateStreak, startTracking) => {
       updateStreak();
       startTracking("assessment");
 
-      router.push({
-        pathname: "/(tabs)/levelAssessment",
-        params: { level },
-      });
+      navigation.navigate(ROUTES.ASSESSMENT_EXERCISE, { level }); // ✅ CHANGÉ
     },
-    [updateStreak, startTracking]
+    [updateStreak, startTracking, navigation]
   );
 
   return {
@@ -91,4 +88,3 @@ export const useDashboardNavigation = (updateStreak, startTracking) => {
     handleEvaluationStart,
   };
 };
-

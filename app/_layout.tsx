@@ -1,12 +1,12 @@
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
+import { Stack } from "expo-router"; // ✅ Expo Router
 import "react-native-reanimated";
 
-// ✅ AJOUT CRUCIAL pour SafeArea
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ProgressProvider } from "../src/contexts/ProgressContext";
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -24,13 +24,11 @@ export default function RootLayout() {
   }
 
   return (
-    // ✅ WRAPPER GLOBAL pour toute l'app
     <SafeAreaProvider>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
+      <ProgressProvider>
+        <Stack screenOptions={{ headerShown: false }} />
+        <StatusBar style="auto" />
+      </ProgressProvider>
     </SafeAreaProvider>
   );
 }
