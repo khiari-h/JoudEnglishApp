@@ -24,6 +24,17 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     justifyContent: 'center',
     alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
   },
 
   closeButton: {
@@ -33,6 +44,17 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     justifyContent: 'center',
     alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
   },
 
   buttonIcon: {
@@ -55,6 +77,7 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontWeight: '700',
+    letterSpacing: -0.3,
   },
 
   // =================== PROGRESS SECTION ===================
@@ -93,6 +116,27 @@ export default StyleSheet.create({
     height: 6,
     backgroundColor: 'white',
     borderRadius: 3,
+    ...Platform.select({
+      ios: {
+        shadowColor: "#fff",
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+      },
+    }),
+  },
+
+  // =================== REVISION INFO ===================
+  revisionInfo: {
+    alignItems: 'center',
+    marginTop: 8,
+  },
+
+  revisionInfoText: {
+    color: 'rgba(255, 255, 255, 0.8)',
+    fontSize: 12,
+    fontWeight: '500',
+    textAlign: 'center',
   },
 
   // =================== CONTENT ===================
@@ -111,16 +155,16 @@ export default StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.12,
+        shadowRadius: 20,
       },
       android: {
-        elevation: 8,
+        elevation: 12,
       },
     }),
     borderWidth: 0.5,
-    borderColor: "rgba(0, 0, 0, 0.04)",
+    borderColor: "rgba(0, 0, 0, 0.06)",
   },
 
   questionType: {
@@ -137,12 +181,23 @@ export default StyleSheet.create({
     marginBottom: 8,
     letterSpacing: -0.5,
     textAlign: 'center',
+    lineHeight: 38,
   },
 
   questionInstruction: {
     fontSize: 16,
     fontWeight: '500',
     textAlign: 'center',
+    marginBottom: 4,
+  },
+
+  questionSource: {
+    fontSize: 11,
+    fontWeight: '500',
+    marginTop: 8,
+    opacity: 0.7,
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
 
   // =================== CHOICES GRID ===================
@@ -176,16 +231,49 @@ export default StyleSheet.create({
   choiceSelected: {
     borderColor: '#8B5CF6',
     backgroundColor: 'rgba(139, 92, 246, 0.05)',
+    ...Platform.select({
+      ios: {
+        shadowColor: "#8B5CF6",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 6,
+      },
+    }),
   },
 
   choiceCorrect: {
     borderColor: '#10B981',
     backgroundColor: 'rgba(16, 185, 129, 0.05)',
+    ...Platform.select({
+      ios: {
+        shadowColor: "#10B981",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 6,
+      },
+    }),
   },
 
   choiceWrong: {
     borderColor: '#EF4444',
     backgroundColor: 'rgba(239, 68, 68, 0.05)',
+    ...Platform.select({
+      ios: {
+        shadowColor: "#EF4444",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 6,
+      },
+    }),
   },
 
   choiceLetter: {
@@ -231,6 +319,7 @@ export default StyleSheet.create({
     flex: 1,
     fontSize: 18,
     fontWeight: '600',
+    lineHeight: 24,
   },
 
   feedbackIcon: {
@@ -250,12 +339,12 @@ export default StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.25,
+        shadowRadius: 20,
       },
       android: {
-        elevation: 6,
+        elevation: 8,
       },
     }),
   },
@@ -279,6 +368,16 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
+    letterSpacing: -0.2,
+  },
+
+  loadingSubtext: {
+    fontSize: 14,
+    fontWeight: '500',
+    textAlign: 'center',
+    marginTop: 8,
+    opacity: 0.8,
+    lineHeight: 20,
   },
 
   // =================== FINISH SCREEN ===================
@@ -292,6 +391,7 @@ export default StyleSheet.create({
   finishEmoji: {
     fontSize: 64,
     marginBottom: 24,
+    textAlign: 'center',
   },
 
   finishTitle: {
@@ -309,6 +409,7 @@ export default StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
     marginBottom: 32,
+    lineHeight: 24,
   },
 
   scoreContainer: {
@@ -316,8 +417,19 @@ export default StyleSheet.create({
     borderRadius: 16,
     padding: 24,
     alignItems: 'center',
-    marginBottom: 32,
+    marginBottom: 16,
     minWidth: 160,
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
   },
 
   scoreText: {
@@ -332,6 +444,34 @@ export default StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.8)',
     fontSize: 18,
     fontWeight: '600',
+  },
+
+  // =================== SOURCE INFO ===================
+  sourceInfo: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginBottom: 16,
+    alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
+  },
+
+  sourceText: {
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: 12,
+    fontWeight: '500',
+    textAlign: 'center',
   },
 
   finishButton: {
@@ -359,9 +499,10 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     textAlign: 'center',
+    letterSpacing: -0.2,
   },
 
-  // =================== RESPONSIVE ===================
+  // =================== RESPONSIVE DESIGN ===================
   '@media (max-width: 350)': {
     content: {
       paddingHorizontal: 16,
@@ -395,6 +536,54 @@ export default StyleSheet.create({
     scoreText: {
       fontSize: 32,
     },
+
+    loadingText: {
+      fontSize: 15,
+    },
+
+    loadingSubtext: {
+      fontSize: 13,
+    },
+
+    sourceText: {
+      fontSize: 11,
+    },
+
+    revisionInfoText: {
+      fontSize: 11,
+    },
+
+    questionSource: {
+      fontSize: 10,
+    },
+  },
+
+  '@media (max-height: 700)': {
+    progressSection: {
+      paddingBottom: 20,
+    },
+
+    questionCard: {
+      padding: 24,
+      marginBottom: 20,
+    },
+
+    choicesGrid: {
+      marginBottom: 20,
+    },
+
+    finishContainer: {
+      paddingHorizontal: 24,
+    },
+
+    scoreContainer: {
+      marginBottom: 12,
+      padding: 20,
+    },
+
+    sourceInfo: {
+      marginBottom: 12,
+    },
   },
 
   // =================== ANIMATIONS ===================
@@ -406,5 +595,22 @@ export default StyleSheet.create({
   slideOut: {
     opacity: 0,
     transform: [{ translateY: 20 }],
+  },
+
+  fadeIn: {
+    opacity: 1,
+  },
+
+  fadeOut: {
+    opacity: 0,
+  },
+
+  // =================== ACCESSIBILITY ===================
+  accessibleButton: {
+    // Géré automatiquement par React Native
+  },
+
+  focusable: {
+    // Géré automatiquement par React Native
   },
 });

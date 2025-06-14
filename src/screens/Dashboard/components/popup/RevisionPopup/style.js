@@ -11,6 +11,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
+    paddingVertical: 40, // Ajout padding vertical
   },
 
   // =================== CONFETTI ANIMATION ===================
@@ -32,7 +33,9 @@ export default StyleSheet.create({
   // =================== POPUP CONTAINER ===================
   popupContainer: {
     width: width * 0.9,
-    maxWidth: 400,
+    maxWidth: 420,
+    maxHeight: height * 0.9, // ✅ Ajout contrainte hauteur
+    minHeight: height * 0.5, // ✅ Hauteur minimum
     borderRadius: 24,
     overflow: 'hidden',
     ...Platform.select({
@@ -50,6 +53,7 @@ export default StyleSheet.create({
 
   gradientBackground: {
     borderRadius: 24,
+    flex: 1, // ✅ Ajout flex pour occuper tout l'espace
   },
 
   // =================== HEADER SECTION ===================
@@ -58,6 +62,7 @@ export default StyleSheet.create({
     paddingTop: 32,
     paddingBottom: 24,
     paddingHorizontal: 24,
+    flexShrink: 0, // ✅ Empêche le header de se compresser
   },
 
   emojiContainer: {
@@ -107,6 +112,13 @@ export default StyleSheet.create({
     borderTopRightRadius: 24,
     padding: 24,
     marginTop: 8,
+    flex: 1, // ✅ Prend l'espace disponible
+    justifyContent: 'space-between', // ✅ Distribue l'espace
+  },
+
+  // ✅ Container scrollable pour le contenu
+  scrollableContent: {
+    flex: 1,
   },
 
   motivationText: {
@@ -158,6 +170,7 @@ export default StyleSheet.create({
   // =================== BENEFITS LIST ===================
   benefitsList: {
     marginBottom: 32,
+    flexShrink: 0, // ✅ Empêche la compression
   },
 
   benefitItem: {
@@ -181,9 +194,11 @@ export default StyleSheet.create({
     lineHeight: 20,
   },
 
-  // =================== BUTTONS ===================
+  // =================== BUTTONS CONTAINER ===================
   buttonsContainer: {
     gap: 16,
+    flexShrink: 0, // ✅ Les boutons gardent leur taille
+    paddingTop: 16, // ✅ Espace au dessus des boutons
   },
 
   primaryButton: {
@@ -212,32 +227,88 @@ export default StyleSheet.create({
     letterSpacing: -0.3,
   },
 
-  secondaryButtons: {
+  // =================== DELAY BUTTONS GRID ===================
+  delayButtons: {
     flexDirection: 'row',
-    gap: 12,
+    flexWrap: 'wrap',
+    gap: 8,
   },
 
-  secondaryButton: {
+  delayButton: {
     flex: 1,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
+    minWidth: '48%',
+    paddingVertical: 12,
+    paddingHorizontal: 8,
     borderRadius: 12,
-    borderWidth: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'transparent',
+    borderWidth: 1.5,
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
 
-  secondaryButtonText: {
-    fontSize: 14,
+  delayButtonSnooze: {
+    backgroundColor: '#FEF3C7',
+    borderColor: '#F59E0B',
+  },
+
+  delayButtonPostpone: {
+    backgroundColor: '#DBEAFE',
+    borderColor: '#3B82F6',
+  },
+
+  delayButtonIgnore: {
+    backgroundColor: '#FEE2E2',
+    borderColor: '#EF4444',
+  },
+
+  delayButtonClose: {
+    backgroundColor: '#F3F4F6',
+    borderColor: '#6B7280',
+  },
+
+  delayButtonIcon: {
+    fontSize: 16,
+    marginBottom: 4,
+  },
+
+  delayButtonText: {
+    fontSize: 12,
     fontWeight: '600',
-    letterSpacing: -0.1,
+    color: '#1F2937',
+    marginBottom: 2,
+    textAlign: 'center',
   },
 
-  // =================== RESPONSIVE ===================
+  delayButtonSubtext: {
+    fontSize: 10,
+    color: '#6B7280',
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+
+  // =================== RESPONSIVE DESIGN ===================
+  // ✅ Petits écrans
   '@media (max-width: 350)': {
+    overlay: {
+      paddingHorizontal: 16,
+      paddingVertical: 30,
+    },
+
     popupContainer: {
       width: width * 0.95,
+      maxWidth: 350,
+      maxHeight: height * 0.92,
+      minHeight: height * 0.6,
     },
 
     header: {
@@ -256,71 +327,195 @@ export default StyleSheet.create({
 
     motivationText: {
       fontSize: 16,
+      marginBottom: 20,
     },
 
     statsContainer: {
       padding: 16,
+      marginBottom: 20,
     },
 
     statNumber: {
       fontSize: 20,
     },
 
-    primaryButton: {
-      paddingVertical: 16,
-    },
-
-    secondaryButton: {
-      paddingVertical: 12,
-    },
-  },
-
-  '@media (max-height: 700)': {
-    header: {
-      paddingTop: 24,
-      paddingBottom: 16,
-    },
-
-    content: {
-      padding: 20,
-    },
-
     benefitsList: {
       marginBottom: 24,
     },
 
-    statsContainer: {
-      marginBottom: 20,
+    primaryButton: {
+      paddingVertical: 16,
+    },
+
+    delayButton: {
+      paddingVertical: 10,
+      paddingHorizontal: 6,
+    },
+
+    delayButtonText: {
+      fontSize: 11,
+    },
+
+    delayButtonSubtext: {
+      fontSize: 9,
     },
   },
 
-  // =================== ANIMATIONS HELPERS ===================
-  fadeIn: {
-    opacity: 1,
+  // ✅ Écrans courts (hauteur limitée)
+  '@media (max-height: 700)': {
+    overlay: {
+      paddingVertical: 20,
+    },
+
+    popupContainer: {
+      maxHeight: height * 0.95,
+      minHeight: height * 0.7,
+    },
+
+    header: {
+      paddingTop: 20,
+      paddingBottom: 16,
+    },
+
+    content: {
+      padding: 16,
+    },
+
+    motivationText: {
+      fontSize: 16,
+      marginBottom: 16,
+    },
+
+    benefitsList: {
+      marginBottom: 20,
+    },
+
+    statsContainer: {
+      marginBottom: 16,
+      padding: 16,
+    },
+
+    buttonsContainer: {
+      gap: 12,
+      paddingTop: 12,
+    },
+
+    delayButton: {
+      paddingVertical: 8,
+    },
+
+    delayButtonText: {
+      fontSize: 11,
+    },
+
+    delayButtonSubtext: {
+      fontSize: 9,
+    },
   },
 
-  fadeOut: {
-    opacity: 0,
-  },
+  // ✅ Très petits écrans (hauteur critique)
+  '@media (max-height: 600)': {
+    overlay: {
+      paddingVertical: 10,
+    },
 
-  scaleIn: {
-    transform: [{ scale: 1 }],
-  },
+    popupContainer: {
+      maxHeight: height * 0.98,
+      minHeight: height * 0.8,
+    },
 
-  scaleOut: {
-    transform: [{ scale: 0.8 }],
-  },
+    header: {
+      paddingTop: 16,
+      paddingBottom: 12,
+    },
 
-  // =================== ACCESSIBILITY ===================
-  accessibleButton: {
-    // Sera géré par React Native automatiquement
+    congratsTitle: {
+      fontSize: 22,
+      marginBottom: 6,
+    },
+
+    achievementText: {
+      fontSize: 14,
+    },
+
+    content: {
+      padding: 12,
+    },
+
+    motivationText: {
+      fontSize: 15,
+      marginBottom: 12,
+    },
+
+    statsContainer: {
+      padding: 12,
+      marginBottom: 12,
+    },
+
+    statNumber: {
+      fontSize: 18,
+    },
+
+    statLabel: {
+      fontSize: 10,
+    },
+
+    benefitsList: {
+      marginBottom: 16,
+    },
+
+    benefitItem: {
+      marginBottom: 8,
+    },
+
+    benefitText: {
+      fontSize: 12,
+    },
+
+    buttonsContainer: {
+      gap: 8,
+      paddingTop: 8,
+    },
+
+    primaryButton: {
+      paddingVertical: 12,
+    },
+
+    primaryButtonText: {
+      fontSize: 15,
+    },
+
+    delayButton: {
+      paddingVertical: 6,
+      paddingHorizontal: 4,
+    },
+
+    delayButtonIcon: {
+      fontSize: 14,
+      marginBottom: 2,
+    },
+
+    delayButtonText: {
+      fontSize: 10,
+      marginBottom: 1,
+    },
+
+    delayButtonSubtext: {
+      fontSize: 8,
+    },
   },
 
   // =================== LANDSCAPE MODE ===================
   '@media (orientation: landscape)': {
+    overlay: {
+      paddingVertical: 20,
+    },
+
     popupContainer: {
-      width: width * 0.7,
+      width: width * 0.8,
       maxWidth: 500,
+      maxHeight: height * 0.9,
+      minHeight: height * 0.7,
     },
 
     header: {
@@ -339,5 +534,27 @@ export default StyleSheet.create({
     benefitsList: {
       marginBottom: 20,
     },
+  },
+
+  // =================== ACCESSIBILITY ===================
+  accessibleButton: {
+    // Géré automatiquement par React Native
+  },
+
+  // =================== ANIMATIONS HELPERS ===================
+  fadeIn: {
+    opacity: 1,
+  },
+
+  fadeOut: {
+    opacity: 0,
+  },
+
+  scaleIn: {
+    transform: [{ scale: 1 }],
+  },
+
+  scaleOut: {
+    transform: [{ scale: 0.8 }],
   },
 });

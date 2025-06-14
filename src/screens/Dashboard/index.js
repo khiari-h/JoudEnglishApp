@@ -1,8 +1,9 @@
-// src/screens/Dashboard/index.js - VERSION CORRIGÉE GESTION PROGRESSCONTEXT
-import React, { useContext, useEffect, useCallback, useMemo } from "react";
+// src/screens/Dashboard/index.js - VERSION AVEC SYSTÈME UNIFIÉ
+import React, { useContext, useEffect, useCallback, useMemo, useState } from "react";
 import { RefreshControl, Text, ScrollView, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useFocusEffect } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -18,7 +19,9 @@ import { useDashboardState } from "./hooks/useDashboardState";
 import useLastActivity from "../../hooks/useLastActivity";
 import useStreak from "./hooks/useStreak";
 import useExerciseTracking from "../../hooks/useExerciceTracking";
-import useRevisionTrigger from "../../hooks/useRevisionTrigger";
+
+// 🆕 NOUVEAU SYSTÈME UNIFIÉ
+import useUnifiedRevisionSystem from "../../hooks/useUnifiedRevisionSystem";
 
 // Composants Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
@@ -30,46 +33,82 @@ import QuickActions from "./components/QuickActions";
 import SimpleMetrics from "./components/SimpleMetrics";
 import LearningProgress from "./components/LearningProgress";
 
-// Composants popup
+// 🆕 NOUVEAUX COMPOSANTS
 import RevisionPopup from "./components/popup/RevisionPopup";
+import RevisionPreferencesModal from "./components/QuickActions/RevisionPreferencesModal";
 
 import styles from "./style";
+
+// ========== COMPTAGE RÉEL DES MOTS (COMME QUICKACTIONS) ==========
+
+/**
+ * Compte les vrais mots appris depuis AsyncStorage
+ * Même logique que QuickActions pour cohérence
+ */
+const countRealWordsLearned = async () => {
+  try {
+    console.log("🔍 Dashboard - Comptage mots réels...");
+    
+    let totalWords = 0;
+    const levelDetails = {};
+    const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
+    const modes = ['classic', 'fast'];
+
+    for (const level of levels) {
+      let levelTotal = 0;
+      const levelModes = {};
+
+      for (const mode of modes) {
+        const storageKey = `vocabulary_${level}_${mode}`;
+        
+        try {
+          const stored = await AsyncStorage.getItem(storageKey);
+          if (stored) {
+            const data = JSON.parse(stored);
+            const completedWords = data.completedWords || {};
+            
+            const wordsCount = Object.values(completedWords).reduce((sum, categoryWords) => {
+              return sum + (Array.isArray(categoryWords) ? categoryWords.length : 0);
+            }, 0);
+
+            levelModes[mode] = { completedWords: wordsCount };
+            levelTotal += wordsCount;
+            totalWords += wordsCount;
+          } else {
+            levelModes[mode] = { completedWords: 0 };
+          }
+        } catch (error) {
+          levelModes[mode] = { completedWords: 0, error: error.message };
+        }
+      }
+
+      levelDetails[level] = {
+        total: levelTotal,
+        modes: levelModes
+      };
+    }
+
+    return {
+      totalWordsLearned: totalWords,
+      levelDetails
+    };
+  } catch (error) {
+    console.error("🔍 Dashboard - Erreur comptage:", error);
+    return {
+      totalWordsLearned: 0,
+      levelDetails: {}
+    };
+  }
+};
 
 // ========== FONCTIONS HELPER POUR MÉTRIQUES ==========
 
 /**
- * Calcule le total des mots appris depuis ProgressContext + données vocabulary
- */
-const calculateTotalLearnedWords = (progress) => {
-  // ✅ CORRECTION: Vérification défensive
-  if (!progress?.exercises?.vocabulary) return 0;
-  
-  let total = 0;
-  
-  // Pour chaque niveau (1, 2, 3, 4, 5, 6, bonus)
-  ['1', '2', '3', '4', '5', '6', 'bonus'].forEach(level => {
-    // Mode classic - progression en pourcentage
-    const classicProgress = progress.exercises.vocabulary[level]?.completed || 0;
-    
-    if (classicProgress > 0) {
-      // Estimer le nombre de mots basé sur la progression
-      // En moyenne ~100 mots par niveau (17 catégories × ~6 mots)
-      const estimatedWordsPerLevel = 100;
-      total += Math.round((classicProgress / 100) * estimatedWordsPerLevel);
-    }
-  });
-  
-  return total;
-};
-
-/**
- * Calcule les mots appris cette semaine
+ * Calcule les mots appris cette semaine (estimé)
  */
 const calculateWordsThisWeek = (progress) => {
-  // ✅ CORRECTION: Vérification défensive
   if (!progress?.stats?.exercisesCompleted) return 0;
   
-  // Estimer basé sur exercices complétés récemment
   const recentExercises = progress.stats.exercisesCompleted || 0;
   return Math.min(recentExercises * 3, 20); // Max 20 mots cette semaine
 };
@@ -77,8 +116,7 @@ const calculateWordsThisWeek = (progress) => {
 /**
  * Calcule les métriques du dashboard
  */
-const calculateDashboardMetrics = (progressContext, tracking, currentStreak) => {
-  // ✅ CORRECTION: Vérification défensive
+const calculateDashboardMetrics = (progressContext, tracking, currentStreak, realWordsCount) => {
   if (!progressContext?.progress) return [];
   
   const { progress } = progressContext;
@@ -113,9 +151,8 @@ const calculateDashboardMetrics = (progressContext, tracking, currentStreak) => 
     });
   }
 
-  // 3. MOTS APPRIS TOTAUX (calculé depuis les données)
-  const totalWordsLearned = calculateTotalLearnedWords(progress);
-  if (totalWordsLearned > 0) {
+  // 3. MOTS APPRIS TOTAUX (comptage réel)
+  if (realWordsCount > 0) {
     const wordsThisWeek = calculateWordsThisWeek(progress);
     let trend = null;
     if (wordsThisWeek > 0) {
@@ -125,7 +162,7 @@ const calculateDashboardMetrics = (progressContext, tracking, currentStreak) => 
     metrics.push({
       id: 'words',
       icon: '📚',
-      value: totalWordsLearned.toString(),
+      value: realWordsCount.toString(),
       label: 'Mots appris',
       trend,
       priority: 3
@@ -186,6 +223,13 @@ const Dashboard = ({ route }) => {
     success: "#10B981",
   };
 
+  // ========== ÉTAT COMPTAGE MOTS RÉELS ==========
+  const [realWordsData, setRealWordsData] = useState({
+    totalWordsLearned: 0,
+    isLoading: true,
+    levelDetails: {}
+  });
+
   // ========== HOOKS EXISTANTS ==========
   const {
     getLastActivity,
@@ -223,26 +267,63 @@ const Dashboard = ({ route }) => {
     onRefresh,
   } = useDashboardState(loadLastActivities);
 
+  // ========== 🆕 NOUVEAU SYSTÈME UNIFIÉ DE RÉVISION ==========
+  const {
+    revisionData,
+    revisionSettings,
+    showPreferencesModal,
+    handlePreferencesChoice,
+    handleStartRevision,
+    handleSnoozeLater,
+    handlePostpone,
+    handleIgnore,
+    resetRevisionSystem,
+    isAvailable: isRevisionAvailable,
+    debugInfo: revisionDebugInfo
+  } = useUnifiedRevisionSystem(realWordsData.totalWordsLearned);
+
+  // ========== ÉTAT POPUP RÉVISION ==========
+  const [showRevisionPopup, setShowRevisionPopup] = useState(false);
+
+  // ========== CHARGEMENT COMPTAGE MOTS ==========
+  useEffect(() => {
+    const loadWordsData = async () => {
+      setRealWordsData(prev => ({ ...prev, isLoading: true }));
+      const data = await countRealWordsLearned();
+      setRealWordsData({
+        ...data,
+        isLoading: false
+      });
+    };
+    loadWordsData();
+  }, [currentLevel]); // Recharger si niveau change
+
+  // ========== DÉCLENCHEMENT POPUP INTELLIGENT ==========
+  useEffect(() => {
+    if (isRevisionAvailable && revisionData.triggerType === 'scheduled') {
+      // Cooldown: ne pas montrer le popup plus d'une fois par heure
+      const now = Date.now();
+      const lastShown = revisionData.lastPopupShown || 0;
+      
+      if ((now - lastShown) > 3600000) { // 1 heure
+        console.log("📢 Déclenchement popup révision:", revisionData);
+        setShowRevisionPopup(true);
+      } else {
+        const timeLeft = Math.ceil((3600000 - (now - lastShown)) / (60 * 1000));
+        console.log(`⏰ Popup en cooldown: ${timeLeft}min restantes`);
+      }
+    }
+  }, [isRevisionAvailable, revisionData]);
+
   // ========== MÉTRIQUES CALCULÉES ==========
   const dashboardMetrics = useMemo(() => {
-    return calculateDashboardMetrics(progressContext, tracking, currentStreak);
-  }, [progressContext, tracking, currentStreak]);
-
-  // ========== TOTAL MOTS APPRIS POUR RÉVISION ==========
-  const totalWordsLearned = useMemo(() => {
-    // ✅ CORRECTION: Vérification défensive
-    if (!progressContext?.progress) return 0;
-    return calculateTotalLearnedWords(progressContext.progress);
-  }, [progressContext?.progress]);
-
-  // ========== SYSTÈME RÉVISION AUTOMATIQUE ==========
-  const {
-    showRevisionPopup,
-    handleReviseNow,
-    handleSnoozeLater,
-    handleDismiss,
-    getRevisionInfo,
-  } = useRevisionTrigger(totalWordsLearned);
+    return calculateDashboardMetrics(
+      progressContext, 
+      tracking, 
+      currentStreak, 
+      realWordsData.totalWordsLearned
+    );
+  }, [progressContext, tracking, currentStreak, realWordsData.totalWordsLearned]);
 
   // ========== BACKGROUND GRADIENT ==========
   const backgroundGradient = useMemo(() => {
@@ -258,6 +339,38 @@ const Dashboard = ({ route }) => {
 
   // ========== DONNÉES USER ET ROUTE ==========
   const { name = "Utilisateur", level: routeLevel } = route?.params || {};
+
+  // ========== GESTIONNAIRES RÉVISION ==========
+
+  // Démarrer révision depuis popup
+  const handlePopupReviseNow = async () => {
+    setShowRevisionPopup(false);
+    const revisionParams = await handleStartRevision();
+    return revisionParams;
+  };
+
+  // Plus tard (+10 mots)
+  const handlePopupSnoozeLater = async () => {
+    await handleSnoozeLater();
+    setShowRevisionPopup(false);
+  };
+
+  // Reporter (+15 mots)
+  const handlePopupPostpone = async () => {
+    await handlePostpone();
+    setShowRevisionPopup(false);
+  };
+
+  // Ignorer cette fois
+  const handlePopupIgnore = async () => {
+    await handleIgnore();
+    setShowRevisionPopup(false);
+  };
+
+  // Fermer popup sans action
+  const handlePopupDismiss = () => {
+    setShowRevisionPopup(false);
+  };
 
   // ========== EFFETS ==========
   useEffect(() => {
@@ -284,10 +397,9 @@ const Dashboard = ({ route }) => {
     }, [tracking?.isTracking, tracking?.stopTracking, loadLastActivities])
   );
 
-  // ========== GESTIONNAIRES ==========
+  // ========== GESTIONNAIRES NAVIGATION ==========
   const handleLevelSelectWithNavigation = useCallback(
     (level) => {
-      // Navigation vers exerciceSelection
       handleLevelSelect(level, handleChangeActiveLevel);
     },
     [handleLevelSelect, handleChangeActiveLevel]
@@ -295,14 +407,13 @@ const Dashboard = ({ route }) => {
 
   const handleLevelVisualChange = useCallback(
     (level) => {
-      // Change juste le niveau actif visuel, pas de navigation
       handleChangeActiveLevel(level);
     },
     [handleChangeActiveLevel]
   );
 
   // ========== LOADING STATE ==========
-  if (!tracking?.isLoaded) {
+  if (!tracking?.isLoaded || realWordsData.isLoading) {
     return (
       <Container
         safeArea
@@ -357,7 +468,7 @@ const Dashboard = ({ route }) => {
         end={{ x: 0, y: 1 }}
         style={styles.container}
       >
-        {/* 1. HEADER MODERNE SIMPLIFIÉ (sans streak) */}
+        {/* 1. HEADER MODERNE */}
         <ModernHeader
           level={currentLevel}
           levelColor={levelColor}
@@ -387,14 +498,14 @@ const Dashboard = ({ route }) => {
             isLoading={isActivityLoading}
           />
 
-          {/* 4. QUICK ACTIONS - VERSION FINALE */}
+          {/* 4. QUICK ACTIONS - AVEC SYSTÈME UNIFIÉ */}
           <QuickActions
             currentLevel={currentLevel}
             progressContext={progressContext}
             accentColor={levelColor}
           />
 
-          {/* 5. MÉTRIQUES SIMPLES (avec streak migré) */}
+          {/* 5. MÉTRIQUES AVEC COMPTAGE RÉEL */}
           <SimpleMetrics
             metrics={dashboardMetrics}
             accentColor={levelColor}
@@ -405,22 +516,55 @@ const Dashboard = ({ route }) => {
             globalProgress={dashboardData.globalProgress}
             levels={dashboardData.allLevels}
             currentLevel={currentLevel}
-            onSelectLevel={handleLevelSelectWithNavigation} // Navigation vers exercices
-            onChangeLevelVisual={handleLevelVisualChange} // Change visuel seulement
+            onSelectLevel={handleLevelSelectWithNavigation}
+            onChangeLevelVisual={handleLevelVisualChange}
             primaryColor={levelColor}
           />
+
+          {/* 🆕 DEBUG SYSTÈME UNIFIÉ */}
+          {__DEV__ && (
+            <View style={styles.debugSection}>
+              <Text style={styles.debugTitle}>🎯 Debug Système Unifié (Dashboard)</Text>
+              <Text style={styles.debugText}>
+                📊 Mots réels: {realWordsData.totalWordsLearned}
+              </Text>
+              <Text style={styles.debugText}>
+                🎨 Style: {revisionSettings.styleId} ({revisionSettings.frequency} mots)
+              </Text>
+              <Text style={styles.debugText}>
+                🔔 Disponible: {isRevisionAvailable ? 'OUI' : 'NON'}
+              </Text>
+              <Text style={styles.debugText}>
+                📝 Raison: {revisionData.reason}
+              </Text>
+              <Text style={styles.debugText}>
+                🚀 Trigger: {revisionData.triggerType}
+              </Text>
+            </View>
+          )}
 
           <View style={styles.bottomSpacer} />
         </ScrollView>
 
-        {/* ========== POPUP RÉVISION AUTOMATIQUE ========== */}
+        {/* ========== 🆕 POPUP RÉVISION INTELLIGENT ========== */}
         <RevisionPopup
           visible={showRevisionPopup}
-          wordsToReview={(getRevisionInfo()?.totalRevisionsTriggered || 0) * 10} // 10 mots par cycle
-          currentLevel={currentLevel}
-          onReviseNow={handleReviseNow}
-          onSnoozeLater={handleSnoozeLater}
-          onDismiss={handleDismiss}
+          wordsToReview={revisionData.questionsCount}
+          questionsCount={revisionData.questionsCount}
+          currentLevel="mixed"
+          styleTitle={revisionSettings.styleId}
+          onReviseNow={handlePopupReviseNow}
+          onSnoozeLater={handlePopupSnoozeLater}
+          onPostpone={handlePopupPostpone}
+          onIgnore={handlePopupIgnore}
+          onDismiss={handlePopupDismiss}
+        />
+
+        {/* ========== 🆕 MODAL CHOIX PRÉFÉRENCES ========== */}
+        <RevisionPreferencesModal
+          visible={showPreferencesModal}
+          onChoice={handlePreferencesChoice}
+          onSkip={(freq, count, style) => handlePreferencesChoice(freq, count, style)}
         />
       </LinearGradient>
     </Container>

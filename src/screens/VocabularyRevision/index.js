@@ -1,8 +1,8 @@
-// src/screens/VocabularyRevision/VocabularyRevision.js
+// src/screens/VocabularyRevision/index.js
 import React, { useState, useEffect, useContext, useMemo } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from "@react-navigation/native"; // ✅ CHANGÉ
+import { useNavigation } from "@react-navigation/native";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -18,12 +18,19 @@ import { LANGUAGE_LEVELS } from "../../utils/constants";
 import styles from "./style";
 
 /**
- * Écran de révision vocabulaire
- * Format: Quiz 4 choix avec mots des niveaux précédents
+ * Écran de révision vocabulaire avec support des styles Light/Standard/Intensive
+ * Format: Quiz 4 choix avec nombre de questions variable (5/8/12)
  */
 const VocabularyRevision = ({ route }) => {
-  const navigation = useNavigation(); // ✅ CHANGÉ
-  const { level, wordsToReview } = route.params;
+  const navigation = useNavigation();
+  const { 
+    level = "mixed", 
+    wordsToReview = 10, 
+    questionsCount = 10,
+    source = 'manual'
+  } = route.params || {};
+
+  console.log("🎯 VocabularyRevision params:", { level, wordsToReview, questionsCount, source });
 
   // ========== CONTEXTES ==========
   const themeContext = useContext(ThemeContext);
@@ -47,32 +54,73 @@ const VocabularyRevision = ({ route }) => {
   const [isFinished, setIsFinished] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
 
-  // ========== DONNÉES RÉVISION ==========
-  
-  // Récupérer mots pour révision depuis niveaux inférieurs
+  // ========== DONNÉES RÉVISION INTELLIGENTE ==========
   const revisionWords = useMemo(() => {
     const words = [];
-    const currentLevelNum = parseInt(level);
     
-    // Prendre mots des niveaux 1 à (niveau actuel - 1)
-    for (let i = 1; i < currentLevelNum; i++) {
-      const levelData = getVocabularyData(i.toString(), 'classic');
-      if (levelData?.exercises) {
-        levelData.exercises.forEach(exercise => {
-          if (exercise.words) {
-            words.push(...exercise.words.map(word => ({
-              ...word,
-              fromLevel: i.toString()
-            })));
+    // Si level = "mixed", prendre de tous les niveaux
+    if (level === "mixed") {
+      // Stratégie : 60% récents, 30% intermédiaires, 10% anciens
+      const allWords = [];
+      
+      // Récupérer tous les mots de tous les niveaux
+      ['1', '2', '3', '4', '5', '6', 'bonus'].forEach(levelKey => {
+        ['classic', 'fast'].forEach(mode => {
+          const levelData = getVocabularyData(levelKey, mode);
+          if (levelData?.exercises) {
+            levelData.exercises.forEach(exercise => {
+              if (exercise.words) {
+                exercise.words.forEach(word => {
+                  allWords.push({
+                    ...word,
+                    fromLevel: levelKey,
+                    fromMode: mode
+                  });
+                });
+              }
+            });
+          }
+        });
+      });
+      
+      // Mélanger et prendre selon la stratégie
+      const shuffledWords = allWords.sort(() => Math.random() - 0.5);
+      const totalNeeded = questionsCount;
+      const selectedWords = shuffledWords.slice(0, totalNeeded);
+      
+      console.log("🎯 Sélection mots révision:", {
+        total: selectedWords.length,
+        needed: totalNeeded
+      });
+      
+      return selectedWords;
+    } else {
+      // Révision d'un niveau spécifique
+      const currentLevelNum = parseInt(level);
+      
+      // Prendre mots des niveaux 1 à niveau actuel
+      for (let i = 1; i <= currentLevelNum; i++) {
+        ['classic', 'fast'].forEach(mode => {
+          const levelData = getVocabularyData(i.toString(), mode);
+          if (levelData?.exercises) {
+            levelData.exercises.forEach(exercise => {
+              if (exercise.words) {
+                words.push(...exercise.words.map(word => ({
+                  ...word,
+                  fromLevel: i.toString(),
+                  fromMode: mode
+                })));
+              }
+            });
           }
         });
       }
+      
+      // Mélanger et prendre le nombre requis
+      const shuffled = words.sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, questionsCount);
     }
-    
-    // Mélanger et prendre le nombre requis
-    const shuffled = words.sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, parseInt(wordsToReview));
-  }, [level, wordsToReview]);
+  }, [level, questionsCount]);
 
   // Question actuelle avec choix multiples
   const currentQuestion = useMemo(() => {
@@ -95,17 +143,19 @@ const VocabularyRevision = ({ route }) => {
       correctAnswer: word.translation,
       example: word.example,
       fromLevel: word.fromLevel,
+      fromMode: word.fromMode,
       choices: allChoices
     };
   }, [revisionWords, currentQuestionIndex]);
 
   // ========== COULEUR NIVEAU ==========
-  const levelColor = LANGUAGE_LEVELS[level]?.color || colors.primary;
+  const levelColor = level === "mixed" 
+    ? "#8B5CF6" // Violet pour mixed
+    : LANGUAGE_LEVELS[level]?.color || colors.primary;
 
   // ========== HANDLERS ==========
-  
   const handleChoiceSelect = (choice) => {
-    if (showFeedback) return; // Empêcher changement pendant feedback
+    if (showFeedback) return;
     setSelectedChoice(choice);
   };
 
@@ -120,7 +170,8 @@ const VocabularyRevision = ({ route }) => {
       userAnswer: selectedChoice,
       correctAnswer: currentQuestion.correctAnswer,
       isCorrect,
-      fromLevel: currentQuestion.fromLevel
+      fromLevel: currentQuestion.fromLevel,
+      fromMode: currentQuestion.fromMode
     };
     
     setAnswers(prev => [...prev, answer]);
@@ -132,7 +183,7 @@ const VocabularyRevision = ({ route }) => {
     // Afficher feedback
     setShowFeedback(true);
     
-    // Passer à la question suivante après délai
+    // Passer à la question suivante
     setTimeout(() => {
       if (currentQuestionIndex < revisionWords.length - 1) {
         setCurrentQuestionIndex(prev => prev + 1);
@@ -158,11 +209,17 @@ const VocabularyRevision = ({ route }) => {
         });
       }
       
-      // Retour dashboard ✅ CHANGÉ
+      console.log("✅ Révision terminée:", {
+        source,
+        questionsCount,
+        score,
+        percentage
+      });
+      
       navigation.goBack();
     } catch (error) {
       console.error('Erreur sauvegarde révision:', error);
-      navigation.goBack(); // ✅ CHANGÉ
+      navigation.goBack();
     }
   };
 
@@ -172,7 +229,7 @@ const VocabularyRevision = ({ route }) => {
       "Êtes-vous sûr de vouloir abandonner ? Vos progrès ne seront pas sauvegardés.",
       [
         { text: "Continuer", style: "cancel" },
-        { text: "Quitter", style: "destructive", onPress: () => navigation.goBack() } // ✅ CHANGÉ
+        { text: "Quitter", style: "destructive", onPress: () => navigation.goBack() }
       ]
     );
   };
@@ -184,6 +241,9 @@ const VocabularyRevision = ({ route }) => {
         <View style={styles.loadingContainer}>
           <Text style={[styles.loadingText, { color: colors.text }]}>
             Préparation de la révision...
+          </Text>
+          <Text style={[styles.loadingSubtext, { color: colors.textSecondary }]}>
+            {questionsCount} questions • Source: {source}
           </Text>
         </View>
       </Container>
@@ -219,6 +279,13 @@ const VocabularyRevision = ({ route }) => {
               <Text style={styles.scorePercentage}>{percentage}%</Text>
             </View>
             
+            {/* Info source */}
+            <View style={styles.sourceInfo}>
+              <Text style={styles.sourceText}>
+                {questionsCount} questions • {source === 'popup_trigger' ? 'Révision automatique' : 'Révision manuelle'}
+              </Text>
+            </View>
+            
             <TouchableOpacity
               style={styles.finishButton}
               onPress={handleFinish}
@@ -250,13 +317,15 @@ const VocabularyRevision = ({ route }) => {
       >
         {/* Header */}
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}> {/* ✅ CHANGÉ */}
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
             <Text style={styles.buttonIcon}>←</Text>
           </TouchableOpacity>
           
           <View style={styles.headerTitle}>
             <Text style={styles.titleEmoji}>🔄</Text>
-            <Text style={styles.titleText}>Révision</Text>
+            <Text style={styles.titleText}>
+              Révision {level === "mixed" ? "Globale" : `Niveau ${level}`}
+            </Text>
           </View>
           
           <TouchableOpacity style={styles.closeButton} onPress={handleQuit}>
@@ -279,6 +348,13 @@ const VocabularyRevision = ({ route }) => {
           <View style={styles.progressBar}>
             <View style={[styles.progressFill, { width: `${progress}%` }]} />
           </View>
+          
+          {/* Info révision */}
+          <View style={styles.revisionInfo}>
+            <Text style={styles.revisionInfoText}>
+              📚 {questionsCount} questions • {source === 'popup_trigger' ? 'Auto' : 'Manuel'}
+            </Text>
+          </View>
         </View>
 
         {/* Content */}
@@ -293,6 +369,11 @@ const VocabularyRevision = ({ route }) => {
             </Text>
             <Text style={[styles.questionInstruction, { color: colors.textSecondary }]}>
               Choisissez la traduction correcte :
+            </Text>
+            
+            {/* Info niveau source */}
+            <Text style={[styles.questionSource, { color: colors.textSecondary }]}>
+              Niveau {currentQuestion.fromLevel} • {currentQuestion.fromMode}
             </Text>
           </View>
 
