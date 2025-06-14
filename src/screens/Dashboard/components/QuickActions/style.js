@@ -1,4 +1,4 @@
-// src/screens/Dashboard/components/QuickActions/style.js - VERSION AVEC DEBUG
+// src/screens/Dashboard/components/QuickActions/style.js
 import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
@@ -78,6 +78,13 @@ export default StyleSheet.create({
     marginBottom: 4,
   },
 
+  debugInfoText: {
+    fontSize: 12,
+    color: '#047857',
+    marginBottom: 4,
+    fontStyle: 'italic',
+  },
+
   debugAvailableText: {
     fontSize: 13,
     fontWeight: '600',
@@ -87,6 +94,7 @@ export default StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 6,
     alignSelf: 'flex-start',
+    marginTop: 6,
   },
 
   debugUnavailableText: {
@@ -98,6 +106,7 @@ export default StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 6,
     alignSelf: 'flex-start',
+    marginTop: 6,
   },
 
   // Debug Loading
@@ -137,28 +146,21 @@ export default StyleSheet.create({
     fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
   },
 
-  // Debug Comparison
-  debugComparison: {
-    backgroundColor: '#EDE9FE',
+  // Debug Reset Button
+  debugResetButton: {
+    backgroundColor: '#FEE2E2',
     borderRadius: 8,
     padding: 10,
     marginTop: 8,
-    borderLeftWidth: 3,
-    borderLeftColor: '#8B5CF6',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#FECACA',
   },
 
-  debugComparisonTitle: {
+  debugResetText: {
     fontSize: 12,
-    fontWeight: '700',
-    color: '#6B21A8',
-    marginBottom: 6,
-  },
-
-  debugComparisonText: {
-    fontSize: 11,
-    color: '#7C3AED',
-    marginBottom: 2,
-    fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
+    fontWeight: '600',
+    color: '#DC2626',
   },
 
   // =================== ACTIONS LAYOUT ===================

@@ -7,14 +7,13 @@ import {
   Modal, 
   Animated, 
   Dimensions,
-  ScrollView  // ✅ Ajout ScrollView
+  ScrollView
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+import { router } from 'expo-router'; // ✅ Expo Router au lieu de React Navigation
 
 // Contextes
 import { ThemeContext } from '../../../../../contexts/ThemeContext';
-import { ROUTES } from '../../../../../navigation/routes';
 import styles from './style';
 
 const { width, height } = Dimensions.get('window');
@@ -37,7 +36,6 @@ const RevisionPopup = ({
   onIgnore,      // Cycle suivant
   onDismiss,
 }) => {
-  const navigation = useNavigation();
   const themeContext = useContext(ThemeContext);
   const colors = themeContext?.colors || {
     background: "#F8FAFC",
@@ -112,19 +110,30 @@ const RevisionPopup = ({
   // Gérer "Réviser maintenant" avec navigation
   const handleReviseNow = async () => {
     try {
-      const revisionData = await onReviseNow?.();
+      // D'abord fermer le popup
+      onDismiss?.();
       
-      if (revisionData) {
-        navigation.navigate(ROUTES.VOCABULARY_REVISION, {
-          level: currentLevel,
-          wordsToReview: revisionData.questionsCount || questionsCount,
-          questionsCount: revisionData.questionsCount || questionsCount,
-          source: 'popup_trigger'
-        });
+      // Exécuter la callback si elle existe
+      if (onReviseNow) {
+        await onReviseNow();
       }
+      
+      // Navigation vers l'écran de révision
+      navigation.navigate(ROUTES.VOCABULARY_REVISION, {
+        level: currentLevel,
+        wordsToReview: questionsCount,
+        questionsCount: questionsCount,
+        source: 'popup_trigger',
+        style: styleTitle
+      });
+      
     } catch (error) {
       console.error('Erreur navigation révision:', error);
-      onDismiss?.();
+      // En cas d'erreur, essayer une navigation de base
+      navigation.navigate('VocabularyRevision', {
+        questionsCount: questionsCount,
+        source: 'popup_trigger'
+      });
     }
   };
 
