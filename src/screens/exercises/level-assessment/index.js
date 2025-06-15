@@ -1,5 +1,5 @@
-// src/screens/exercises/levelAssessment/index.js - VERSION REFACTORISÉE
-import React, { useMemo } from "react";
+// src/screens/exercises/levelAssessment/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
+import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -15,19 +15,20 @@ import AssessmentResults from "./AssessmentResults";
 
 // Hook & Utils
 import useAssessment from "./hooks/useAssessment";
+import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
 import { getLevelColor } from "../../../utils/assessment/assessmentDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 LevelAssessment - VERSION REFACTORISÉE
- * 300+ lignes → 130 lignes (-57% de code)
- * 2 hooks → 1 hook unifié
- * Pattern identique à VocabularyExercise
+ * 🎯 LevelAssessment - VERSION AVEC SAUVEGARDE ACTIVITÉ
  */
 const LevelAssessment = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
+
+  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
@@ -56,6 +57,24 @@ const LevelAssessment = ({ route }) => {
     stats,
     display,
   } = useAssessment(level);
+
+  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de section/question (pas si test terminé)
+  useEffect(() => {
+    if (loaded && currentSection && currentQuestion && !testCompleted) {
+      saveActivity({
+        title: "Évaluation",
+        level: level,
+        type: "assessment",
+        metadata: {
+          section: display?.currentSectionIndex || 0,
+          question: currentQuestionIndex,
+          totalQuestions: totalQuestionsInSection,
+          sectionTitle: display?.sectionTitle || `Section ${(display?.currentSectionIndex || 0) + 1}`,
+          totalSections: totalSections
+        }
+      });
+    }
+  }, [loaded, currentSection, currentQuestion, testCompleted, display?.currentSectionIndex, currentQuestionIndex, totalQuestionsInSection, display?.sectionTitle, totalSections, level, saveActivity]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();

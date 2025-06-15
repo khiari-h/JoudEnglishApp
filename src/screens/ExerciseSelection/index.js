@@ -1,4 +1,4 @@
-// src/screens/ExerciseSelection/index.js - VERSION SIMPLE SANS SÉLECTEUR
+// src/screens/ExerciseSelection/index.js - VERSION RÉPARÉE
 import React, { useContext, useMemo } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -15,13 +15,12 @@ import Button from "../../components/ui/Button";
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
-// Constantes
-import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../utils/constants";
+// Constantes SIMPLIFIÉES
+import { EXERCISES, LANGUAGE_LEVELS, BONUS_EXERCISES } from "../../utils/constants";
 
 // Styles
 import styles, { getBackgroundGradient } from "./style";
 
-// Valeurs par défaut pour les contextes
 const DEFAULT_THEME = {
   colors: {
     background: "#F9FAFB",
@@ -36,154 +35,76 @@ const DEFAULT_PROGRESS = {
   isLoading: false,
 };
 
-// Exercices qui ont accès au niveau bonus
-const BONUS_EXERCISE_TYPES = ["reading", "vocabulary", "phrases"];
-
 const ExerciseSelection = ({ route }) => {
   const { level } = route.params;
 
-  // Récupération sécurisée des contextes
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const progressContext = useContext(ProgressContext) || DEFAULT_PROGRESS;
 
   const { colors } = themeContext;
   const { progress } = progressContext;
 
-  // Récupérer les infos du niveau
+  // Infos du niveau
   const levelInfo = useMemo(() => {
-    return (
-      LANGUAGE_LEVELS[level] || {
-        color: colors.primary,
-        title: `Niveau ${level}`,
-        icon: level === "bonus" ? "⭐" : "📚",
-      }
-    );
+    return LANGUAGE_LEVELS[level] || {
+      color: colors.primary,
+      title: `Niveau ${level}`,
+      icon: level === "bonus" ? "⭐" : "📚",
+    };
   }, [level, colors.primary]);
 
   const levelColor = levelInfo.color;
   const backgroundGradient = getBackgroundGradient(levelColor, colors.background);
 
-  // 🎯 EXERCICES AVEC VOCABULAIRE CLASSIC + FAST SÉPARÉS
+  // ========== EXERCICES AVEC NOUVELLES CONSTANTES ==========
   const exercises = useMemo(() => {
-    const baseExercises = [];
+    const exercisesList = [];
 
-    // === VOCABULAIRE CLASSIQUE (PRINCIPAL) ===
-    const vocabularyInfo = EXERCISE_TYPES.vocabulary;
-    if (level !== "bonus" || BONUS_EXERCISE_TYPES.includes("vocabulary")) {
-      // TODO: Récupérer la progression du mode CLASSIC
-      const vocabularyClassicProgress = 
-        progress?.exercises?.vocabulary?.[level]?.completed || 0;
-
-      baseExercises.push({
-        ...vocabularyInfo,
-        id: "vocabulary_classic",
-        title: "Vocabulaire",
-        progress: vocabularyClassicProgress,
-        color: vocabularyInfo.color || levelColor,
-        hasProgress: vocabularyClassicProgress > 0,
-        mode: "classic", // ✅ Mode défini
-      });
-    }
-
-    // === FAST VOCABULARY (BONUS) ===
-    if (level !== "bonus" || BONUS_EXERCISE_TYPES.includes("vocabulary")) {
-      // TODO: Récupérer la progression du mode FAST
-      const fastProgress = 0; // À calculer avec les hooks vocabulary
-
-      baseExercises.push({
-        id: "vocabulary_fast",
-        title: "Fast Vocabulary",
-        description: "Les 1000 mots les plus utilisés",
-        icon: "⚡",
-        progress: fastProgress,
-        color: "#F59E0B", // Couleur orange
-        hasProgress: fastProgress > 0,
-        mode: "fast", // ✅ Mode défini
-      });
-    }
-
-    // === AUTRES EXERCICES NORMAUX ===
-    Object.keys(EXERCISE_TYPES).forEach((exerciseKey) => {
-      // Skip vocabulary car déjà traité ci-dessus
-      if (exerciseKey === "vocabulary") return;
-
-      const exerciseInfo = EXERCISE_TYPES[exerciseKey];
-
-      // Filtrage niveau bonus
-      if (level === "bonus" && !BONUS_EXERCISE_TYPES.includes(exerciseKey)) {
+    Object.values(EXERCISES).forEach((exercise) => {
+      // Filtrer niveau bonus
+      if (level === "bonus" && !BONUS_EXERCISES.includes(exercise.id)) {
         return;
       }
 
-      // Progression normale
-      const exerciseProgress =
-        progress?.exercises?.[exerciseKey]?.[level]?.completed || 0;
+      // Récupérer progression (TODO: brancher sur vraies données)
+      let exerciseProgress = 0;
+      if (exercise.id === 'vocabulary') {
+        exerciseProgress = progress?.exercises?.vocabulary?.[level]?.classic || 0;
+      } else if (exercise.id === 'vocabulary_fast') {
+        exerciseProgress = progress?.exercises?.vocabulary?.[level]?.fast || 0;
+      } else {
+        exerciseProgress = progress?.exercises?.[exercise.id]?.[level]?.completed || 0;
+      }
 
-      baseExercises.push({
-        ...exerciseInfo,
-        id: exerciseKey,
+      exercisesList.push({
+        ...exercise,
         progress: exerciseProgress,
-        color: exerciseInfo.color || levelColor,
         hasProgress: exerciseProgress > 0,
       });
     });
 
-    return baseExercises;
-  }, [level, progress, levelColor]);
+    return exercisesList;
+  }, [level, progress]);
 
-  // 🎯 NAVIGATION EXPO ROUTER - NOMS DE FICHIERS CORRECTS
+  // ========== NAVIGATION EXPO ROUTER SIMPLIFIÉE ==========
   const handleExerciseSelect = (exercise) => {
-    if (exercise.id === "vocabulary_classic") {
-      // Navigation vers vocabulaire classic
-      router.push({
-        pathname: "/(tabs)/vocabularyExercise",
-        params: {
-          level,
-          mode: "classic",
-        },
-      });
-    } else if (exercise.id === "vocabulary_fast") {
-      // Navigation vers vocabulaire fast
-      router.push({
-        pathname: "/(tabs)/vocabularyExercise",
-        params: {
-          level,
-          mode: "fast", 
-        },
-      });
-    } else {
-      // Autres exercices - routes Expo Router CORRECTES
-      const routeMap = {
-        grammar: "/(tabs)/grammarExercise",
-        phrases: "/(tabs)/phrasesExercise", 
-        reading: "/(tabs)/readingExercise",
-        conversations: "/(tabs)/conversationsExercise",
-        spelling: "/(tabs)/spellingExercise",
-        errorCorrection: "/(tabs)/errorCorrectionExercise", 
-        wordGames: "/(tabs)/wordGamesExercise",
-        assessment: "/(tabs)/levelAssessment",
-      };
-      
-      const routePath = routeMap[exercise.id] || "/(tabs)/vocabularyExercise";
-      router.push({
-        pathname: routePath,
-        params: {
-          level,
-          exerciseType: exercise.id,
-        },
-      });
+    const params = { level };
+    
+    // Ajouter le mode pour vocabulary
+    if (exercise.id === 'vocabulary') {
+      params.mode = 'classic';
+    } else if (exercise.id === 'vocabulary_fast') {
+      params.mode = 'fast';
     }
+    
+    router.push({
+      pathname: exercise.route,
+      params
+    });
   };
 
-  // Obtenir le titre d'affichage du niveau
-  const getLevelDisplayTitle = () => {
-    if (level === "bonus") {
-      return "Bonus";
-    }
-    return `Niveau ${level}`;
-  };
-
-  // Header épuré
-  const renderCleanHeader = () => (
+  // ========== RENDU ==========
+  const renderHeader = () => (
     <View style={styles.headerContainer}>
       <LinearGradient
         colors={[levelColor, levelColor + "DD"]}
@@ -192,7 +113,7 @@ const ExerciseSelection = ({ route }) => {
         style={styles.headerGradient}
       >
         <Header
-          title={getLevelDisplayTitle()}
+          title={levelInfo.title}
           showBackButton
           backgroundColor="transparent"
           textColor="white"
@@ -203,12 +124,7 @@ const ExerciseSelection = ({ route }) => {
 
         {level === "bonus" && (
           <View style={{ alignItems: "center", paddingBottom: 12 }}>
-            <Text style={{
-              color: "rgba(255, 255, 255, 0.88)",
-              fontSize: 12,
-              textAlign: "center",
-              fontWeight: "400",
-            }}>
+            <Text style={styles.bonusText}>
               Contenu exclusif débloqué !
             </Text>
           </View>
@@ -217,8 +133,7 @@ const ExerciseSelection = ({ route }) => {
     </View>
   );
 
-  // Cards d'exercices
-  const renderCleanExerciseCard = (exercise) => {
+  const renderExerciseCard = (exercise) => {
     return (
       <TouchableOpacity
         key={exercise.id}
@@ -238,22 +153,17 @@ const ExerciseSelection = ({ route }) => {
                   {exercise.hasProgress ? `${exercise.progress}%` : '0%'}
                 </Text>
               </View>
-              {/* Badge FAST pour identifier visuellement */}
+              {/* Badge FAST */}
               {exercise.id === "vocabulary_fast" && (
-                <View style={[styles.levelBadge, { backgroundColor: "#FED7AA", marginLeft: 6 }]}>
-                  <Text style={[styles.levelBadgeText, { color: "#F59E0B" }]}>FAST</Text>
+                <View style={[styles.levelBadge, styles.fastBadge]}>
+                  <Text style={[styles.levelBadgeText, styles.fastBadgeText]}>FAST</Text>
                 </View>
               )}
             </View>
             <Text style={styles.levelIcon}>{exercise.icon}</Text>
           </View>
 
-          {/* Description */}
-          <Text style={[styles.levelDescription, { color: colors.textSecondary }]}>
-            {exercise.description}
-          </Text>
-
-          {/* Progression (si > 0) */}
+          {/* Progression */}
           {exercise.hasProgress && (
             <View style={styles.progressContainer}>
               <View style={styles.progressBar}>
@@ -273,7 +183,7 @@ const ExerciseSelection = ({ route }) => {
             </View>
           )}
 
-          {/* Bouton intelligent */}
+          {/* Bouton */}
           <Button
             title={exercise.hasProgress ? "Continuer" : "Commencer"}
             variant="filled"
@@ -287,15 +197,6 @@ const ExerciseSelection = ({ route }) => {
       </TouchableOpacity>
     );
   };
-
-  // Intro
-  const renderCleanIntro = () => (
-    <View style={styles.introSection}>
-      <Text style={[styles.introText, { color: colors.textSecondary }]}>
-        Choisissez votre exercice
-      </Text>
-    </View>
-  );
 
   return (
     <Container
@@ -314,17 +215,21 @@ const ExerciseSelection = ({ route }) => {
         end={{ x: 0, y: 1 }}
         style={{ flex: 1 }}
       >
-        {renderCleanHeader()}
+        {renderHeader()}
         
         <ScrollView
           style={{ flex: 1 }}
           contentContainerStyle={[styles.scrollContent, { paddingBottom: 60 }]}
           showsVerticalScrollIndicator={false}
         >
-          {renderCleanIntro()}
+          <View style={styles.introSection}>
+            <Text style={[styles.introText, { color: colors.textSecondary }]}>
+              Choisissez votre exercice
+            </Text>
+          </View>
           
           <View style={styles.levelsContainer}>
-            {exercises.map(renderCleanExerciseCard)}
+            {exercises.map(renderExerciseCard)}
           </View>
         </ScrollView>
       </LinearGradient>

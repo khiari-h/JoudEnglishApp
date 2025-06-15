@@ -1,9 +1,10 @@
-// src/screens/Dashboard/components/QuickActions/index.js
+// src/screens/Dashboard/components/QuickActions/index.js - VERSION RÉPARÉE
 import React, { useContext, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { router } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from "../../../../contexts/ThemeContext";
+import { EXERCISES } from "../../../../utils/constants";
 import styles from "./style";
 
 const QuickActions = ({ currentLevel = "1", accentColor = "#3B82F6" }) => {
@@ -51,10 +52,10 @@ const QuickActions = ({ currentLevel = "1", accentColor = "#3B82F6" }) => {
     loadData();
   }, [currentLevel]);
 
-  // ========== NAVIGATION HANDLERS ==========
+  // ========== NAVIGATION AVEC NOUVELLES CONSTANTES ==========
   const navigateToVocabulary = () => {
     router.push({
-      pathname: "/(tabs)/vocabularyExercise",
+      pathname: EXERCISES.vocabulary.route,
       params: { level: currentLevel, mode: "classic" }
     });
   };
@@ -77,20 +78,20 @@ const QuickActions = ({ currentLevel = "1", accentColor = "#3B82F6" }) => {
 
   const navigateToTest = () => {
     router.push({
-      pathname: "/(tabs)/levelAssessment",
+      pathname: EXERCISES.assessment.route,
       params: { level: currentLevel }
     });
   };
 
-  // ========== CONFIGURATION ACTIONS ==========
+  // ========== ACTIONS AVEC NOUVELLES CONSTANTES ==========
   const actions = [
     {
       id: 'vocabulary',
-      icon: '📖',
-      label: 'Vocabulaire',
+      icon: EXERCISES.vocabulary.icon,
+      label: EXERCISES.vocabulary.title,
       subtitle: 'Apprendre de nouveaux mots',
       action: navigateToVocabulary,
-      color: '#10B981'
+      color: EXERCISES.vocabulary.color
     },
     {
       id: 'revision',
@@ -103,11 +104,11 @@ const QuickActions = ({ currentLevel = "1", accentColor = "#3B82F6" }) => {
     },
     {
       id: 'test',
-      icon: '🎯',
-      label: 'Test de niveau',
+      icon: EXERCISES.assessment.icon,
+      label: EXERCISES.assessment.title,
       subtitle: 'Évaluer vos connaissances',
       action: navigateToTest,
-      color: '#F59E0B'
+      color: EXERCISES.assessment.color
     }
   ];
 

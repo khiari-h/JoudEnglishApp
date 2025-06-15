@@ -1,6 +1,6 @@
-// ErrorCorrectionExercise/index.js - VERSION REFACTORISÉE (200+ → 130 lignes)
+// ErrorCorrectionExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -18,18 +18,20 @@ import ErrorCorrectionResultsCard from "./ErrorCorrectionResultsCard";
 
 // Hook unifié & Utils
 import useErrorCorrection from "./hooks/useErrorCorrection";
+import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
 import { getErrorsData, getLevelColor } from "../../../utils/errorCorrection/errorCorrectionDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 ErrorCorrectionExercise - VERSION REFACTORISÉE 
- * 200+ lignes → 130 lignes (-35% de code)
- * 2 hooks → 1 hook unifié, logique claire, maintenable
+ * 🎯 ErrorCorrectionExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
  */
 const ErrorCorrectionExercise = ({ route }) => {
   const { level = "A1" } = route.params || {};
   const navigation = useNavigation();
   const styles = createStyles();
+
+  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
@@ -73,6 +75,26 @@ const ErrorCorrectionExercise = ({ route }) => {
 
   // États locaux
   const [viewMode, setViewMode] = useState("browse"); // "browse", "exercise", "results"
+
+  // ✅ AJOUTÉ : Sauvegarder l'activité en mode exercice
+  useEffect(() => {
+    if (loaded && hasValidData && viewMode === "exercise" && currentExercise && !showResults) {
+      const currentCategoryName = errorCorrectionData?.categories?.find(cat => cat.id === selectedCategory)?.name || "Général";
+      
+      saveActivity({
+        title: "Correction d'erreurs",
+        level: level,
+        type: "errorCorrection",
+        metadata: {
+          exercise: currentExerciseIndex,
+          totalExercises: exercises.length,
+          category: currentCategoryName,
+          mode: correctionMode,
+          categoryId: selectedCategory
+        }
+      });
+    }
+  }, [loaded, hasValidData, viewMode, currentExercise, showResults, currentExerciseIndex, exercises.length, selectedCategory, correctionMode, level, errorCorrectionData, saveActivity]);
 
   // Handlers
   const handleBackPress = () => {

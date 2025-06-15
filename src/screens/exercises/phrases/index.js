@@ -1,5 +1,5 @@
-// PhrasesExercise/index.js - VERSION NETTOYÉE ET RÉORGANISÉE
-import React, { useMemo } from "react";
+// PhrasesExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
+import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -15,19 +15,20 @@ import PhrasesNavigation from "./PhrasesNavigation";
 
 // Hook & Utils
 import usePhrases from "./hooks/usePhrases";
+import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
 import { getPhrasesData, getLevelColor } from "../../../utils/phrases/phrasesDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 PhrasesExercise - VERSION NETTOYÉE
- * - Ordre des composants comme les autres exercices
- * - Variables non utilisées supprimées
- * - Structure optimisée
+ * 🎯 PhrasesExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
  */
 const PhrasesExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
+
+  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
@@ -55,6 +56,40 @@ const PhrasesExercise = ({ route }) => {
     stats,
     display,
   } = usePhrases(phrasesData, level);
+
+  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de phrase/catégorie
+  useEffect(() => {
+    console.log("🔍 DEBUG PhrasesExercise:", { 
+      loaded, 
+      hasValidData, 
+      hasCurrentPhrase: !!currentPhrase,
+      currentPhrasesLength: currentPhrases.length,
+      phraseIndex,
+      totalPhrasesInCategory,
+      categoryIndex,
+      phrasesDataStructure: phrasesData ? Object.keys(phrasesData) : "none"
+    });
+
+    if (loaded && hasValidData && currentPhrase && currentPhrases.length > 0 && phraseIndex < 100) { // ✅ Protection boucle
+      const currentCategory = phrasesData?.categories?.[categoryIndex];
+      
+      const activityData = {
+        title: "Expressions",
+        level: level,
+        type: "phrases",
+        metadata: {
+          phrase: phraseIndex,
+          totalPhrases: totalPhrasesInCategory || currentPhrases.length, // ✅ Fallback
+          category: currentCategory?.name || "Général",
+          categoryIndex: categoryIndex,
+          totalCategories: phrasesData?.categories?.length || 1
+        }
+      };
+
+      console.log("✅ Phrases activity saved:", `${activityData.title} - Phrase ${phraseIndex + 1}/${activityData.metadata.totalPhrases}`);
+      saveActivity(activityData);
+    }
+  }, [loaded, hasValidData, currentPhrase, currentPhrases.length, phraseIndex, totalPhrasesInCategory, categoryIndex, level, phrasesData]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();

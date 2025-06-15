@@ -1,5 +1,5 @@
-// src/screens/exercises/wordGames/index.js - VERSION REFACTORISÉE
-import React, { useMemo } from "react";
+// src/screens/exercises/wordGames/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
+import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -15,19 +15,20 @@ import WordGamesResults from "./WordGamesResults";
 
 // Hook & Utils
 import useWordGames from "./hooks/useWordGames";
+import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
 import { getWordGamesData, getLevelColor } from "../../../utils/wordGames/wordGamesDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 WordGamesExercise - VERSION REFACTORISÉE
- * 200+ lignes → 130 lignes (-35% de code)
- * 2 hooks → 1 hook unifié
- * Pattern identique à VocabularyExercise et LevelAssessment
+ * 🎯 WordGamesExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
  */
 const WordGamesExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
+
+  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
@@ -60,6 +61,24 @@ const WordGamesExercise = ({ route }) => {
     stats,
     display,
   } = useWordGames(wordGamesData, level);
+
+  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de jeu (pas en mode résultats)
+  useEffect(() => {
+    if (loaded && games.length > 0 && currentGame && !showResults) {
+      saveActivity({
+        title: "Jeux de mots",
+        level: level,
+        type: "wordGames",
+        metadata: {
+          game: currentGameIndex,
+          totalGames: totalGames,
+          gameType: currentGame.type || "matching",
+          gameTitle: currentGame.title || `Jeu ${currentGameIndex + 1}`,
+          score: stats?.score || 0
+        }
+      });
+    }
+  }, [loaded, games.length, currentGame, showResults, currentGameIndex, totalGames, level, stats?.score, saveActivity]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();

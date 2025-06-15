@@ -1,4 +1,4 @@
-// VocabularyProgress/index.js - VERSION REFACTORISÉE (180 → 30 lignes)
+// VocabularyProgress/index.js - VERSION CORRIGÉE POUR LES 2 STRUCTURES
 
 import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
@@ -10,9 +10,8 @@ import {
 } from "../../../../utils/vocabulary/vocabularyStats";
 
 /**
- * 📊 VocabularyProgress - Version Refactorisée avec ProgressCard générique
- * 180 lignes → 30 lignes (-83% de code)
- * Même qualité visuelle et fonctionnalités, architecture optimisée
+ * 📊 VocabularyProgress - Version Corrigée pour gérer categories ET exercises
+ * ✅ Gère mode classique (categories) ET mode fast (exercises)
  * 
  * @param {object} vocabularyData - Données du vocabulaire
  * @param {object} completedWords - Mots complétés par catégorie
@@ -30,13 +29,27 @@ const VocabularyProgress = ({
   onCategoryPress,
 }) => {
   
-  // Calculs des statistiques (garde la logique métier existante)
-  const totalWordsCount = calculateTotalWords(vocabularyData?.exercises || []);
+  // ✅ CORRIGÉ : Détecte la vraie structure
+  const getDataArray = () => {
+    if (vocabularyData?.categories && Array.isArray(vocabularyData.categories)) {
+      // Mode classique : { categories: [...] }
+      return vocabularyData.categories;
+    } else if (vocabularyData?.exercises && Array.isArray(vocabularyData.exercises)) {
+      // Mode fast : { exercises: [...] }
+      return vocabularyData.exercises;
+    }
+    return [];
+  };
+
+  const dataArray = getDataArray();
+  
+  // ✅ CORRIGÉ : Utilise la vraie structure détectée
+  const totalWordsCount = calculateTotalWords(dataArray);
   const completedWordsCount = calculateCompletedWordsCount(completedWords);
-  const totalProgress = calculateTotalProgress(vocabularyData?.exercises || [], completedWords);
+  const totalProgress = calculateTotalProgress(dataArray, completedWords);
   
   // Données des catégories pour l'expansion
-  const categoryProgressData = calculateCategoryProgress(vocabularyData?.exercises || [], completedWords);
+  const categoryProgressData = calculateCategoryProgress(dataArray, completedWords);
 
   // Transformation pour le format ProgressCard
   const formattedCategoryData = categoryProgressData.map((category, index) => ({
@@ -45,6 +58,15 @@ const VocabularyProgress = ({
     total: category.totalWords,
     progress: category.progress,
   }));
+
+  console.log("🔍 VocabularyProgress Debug:", {
+    hasCategories: !!vocabularyData?.categories,
+    hasExercises: !!vocabularyData?.exercises,
+    dataArrayLength: dataArray.length,
+    totalWordsCount,
+    completedWordsCount,
+    totalProgress
+  });
 
   return (
     <ProgressCard

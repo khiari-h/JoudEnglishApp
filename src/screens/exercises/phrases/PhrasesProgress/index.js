@@ -1,30 +1,35 @@
-// PhrasesProgress/index.js - VERSION REFACTORISÉE avec ProgressCard (200 → 30 lignes)
+// PhrasesProgress/index.js - VERSION CORRIGÉE AVEC PHRASESTATS
 
 import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import {
+  calculateTotalPhrases,
+  calculateCompletedPhrasesCount,
+  calculateTotalPhrasesProgress,
+  calculateCategoryPhrasesProgress,
+} from "../../../../utils/phrases/phrasesStats";
 
 /**
- * 📊 PhrasesProgress - Version Refactorisée avec ProgressCard générique
- * 200 lignes → 30 lignes (-85% de code)
- * Même qualité visuelle que VocabularyProgress refactorisé
- * Cohérent avec VocabularyProgress et ReadingProgress
+ * 📊 PhrasesProgress - Version Corrigée avec phrasesStats
+ * ✅ Utilise les vraies fonctions de calcul
+ * ✅ Gère correctement la structure des données phrases
  * 
- * @param {number} progress - Pourcentage de progression (0-100)
- * @param {number} currentPhrase - Phrase actuelle (1-based)
- * @param {number} totalPhrases - Nombre total de phrases
- * @param {number} completedCount - Nombre de phrases complétées
+ * @param {number} progress - Pourcentage de progression (0-100) [IGNORÉ - recalculé]
+ * @param {number} currentPhrase - Phrase actuelle (1-based) [IGNORÉ - recalculé]
+ * @param {number} totalPhrases - Nombre total de phrases [IGNORÉ - recalculé]
+ * @param {number} completedCount - Nombre de phrases complétées [IGNORÉ - recalculé]
  * @param {string} levelColor - Couleur du niveau
- * @param {object} phrasesData - Données des phrases (pour expansion optionnelle)
+ * @param {object} phrasesData - Données des phrases
  * @param {object} completedPhrases - Phrases complétées par catégorie
  * @param {boolean} expanded - État d'expansion
  * @param {function} onToggleExpand - Fonction pour toggle expansion
  * @param {function} onCategoryPress - Fonction appelée lors du clic sur catégorie
  */
 const PhrasesProgress = ({
-  progress = 0,
-  currentPhrase = 1,
-  totalPhrases = 0,
-  completedCount = 0,
+  progress: ignoredProgress, // ✅ On ignore ces props car on recalcule
+  currentPhrase: ignoredCurrentPhrase,
+  totalPhrases: ignoredTotalPhrases,
+  completedCount: ignoredCompletedCount,
   levelColor = "#5E60CE",
   phrasesData = null,
   completedPhrases = {},
@@ -33,39 +38,46 @@ const PhrasesProgress = ({
   onCategoryPress = () => {},
 }) => {
   
-  // Calculer les données des catégories pour l'expansion (optionnel)
-  const calculateCategoryData = () => {
-    if (!phrasesData?.categories || !phrasesData?.phrases) return [];
-    
-    return phrasesData.categories.map((category, index) => {
-      const categoryPhrases = phrasesData.phrases.filter(p => p.categoryId === category.id);
-      const completedInCategory = completedPhrases[index]?.length || 0;
-      const totalInCategory = categoryPhrases.length;
-      const categoryProgress = totalInCategory > 0 ? (completedInCategory / totalInCategory) * 100 : 0;
-      
-      return {
-        title: category.name,
-        completed: completedInCategory,
-        total: totalInCategory,
-        progress: categoryProgress,
-      };
-    });
-  };
+  // ✅ CORRECTION : Utilise les vraies fonctions de calcul
+  const categories = phrasesData?.categories || [];
+  const phrases = phrasesData?.phrases || [];
+  
+  const totalPhrasesCount = calculateTotalPhrases(categories, phrases);
+  const completedPhrasesCount = calculateCompletedPhrasesCount(completedPhrases);
+  const totalProgress = calculateTotalPhrasesProgress(categories, phrases, completedPhrases);
+  const categoryProgressData = calculateCategoryPhrasesProgress(categories, phrases, completedPhrases);
 
-  const categoryData = calculateCategoryData();
+  // Transformation pour le format ProgressCard
+  const formattedCategoryData = categoryProgressData.map((category, index) => ({
+    title: category.title,
+    completed: category.completedPhrases,
+    total: category.totalPhrases,
+    progress: category.progress,
+  }));
+
+  console.log("🔍 PhrasesProgress Debug:", {
+    hasCategories: categories.length > 0,
+    hasPhrases: phrases.length > 0,
+    categoriesLength: categories.length,
+    phrasesLength: phrases.length,
+    totalPhrasesCount,
+    completedPhrasesCount,
+    totalProgress,
+    phrasesDataKeys: phrasesData ? Object.keys(phrasesData) : "null"
+  });
 
   return (
     <ProgressCard
-      title="Progression" // ← MÊME TITRE que Vocabulary (cohérence)
-      progress={progress}
-      completed={completedCount}
-      total={totalPhrases}
+      title="Progression"
+      progress={totalProgress} // ✅ Utilise le calcul correct
+      completed={completedPhrasesCount} // ✅ Utilise le calcul correct
+      total={totalPhrasesCount} // ✅ Utilise le calcul correct
       unit="phrases"
       levelColor={levelColor}
-      expandable={categoryData.length > 0} // Expansion si catégories disponibles
+      expandable={categoryProgressData.length > 0}
       expanded={expanded}
       onToggleExpand={onToggleExpand}
-      categoryData={categoryData}
+      categoryData={formattedCategoryData}
       onCategoryPress={onCategoryPress}
     />
   );

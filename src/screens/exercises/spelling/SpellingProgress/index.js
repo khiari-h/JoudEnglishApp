@@ -1,4 +1,4 @@
-// SpellingProgress/index.js - VERSION REFACTORISÉE (utilise ProgressCard)
+// SpellingProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
 
 import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
@@ -10,15 +10,9 @@ import {
 } from "../../../../utils/spelling/spellingStats";
 
 /**
- * 📊 SpellingProgress - Version Refactorisée avec ProgressCard générique
- * Pattern identique à VocabularyProgress et ErrorCorrectionProgress
- * 
- * @param {Array} exercises - Liste de tous les exercices
- * @param {Array} completedExercises - Liste des indices d'exercices complétés
- * @param {string} levelColor - Couleur du niveau
- * @param {boolean} expanded - État d'expansion
- * @param {function} onToggleExpand - Fonction pour toggle expansion
- * @param {function} onTypePress - Fonction appelée lors du clic sur type
+ * 📊 SpellingProgress - Version Corrigée avec détection automatique
+ * ✅ Détecte automatiquement la structure des données
+ * ✅ Gère différentes structures d'exercices
  */
 const SpellingProgress = ({
   exercises = [],
@@ -29,13 +23,31 @@ const SpellingProgress = ({
   onTypePress,
 }) => {
   
-  // Calculs des statistiques (utilise les nouveaux utilitaires)
-  const totalExercisesCount = calculateTotalExercises(exercises);
-  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
-  const totalProgress = calculateTotalProgress(exercises, completedExercises);
+  // ✅ DÉTECTION AUTOMATIQUE : Assure qu'on a les bonnes données
+  const getValidExercises = () => {
+    // Si c'est déjà un tableau d'exercices
+    if (Array.isArray(exercises) && exercises.length > 0) {
+      return exercises;
+    }
+    
+    // Si c'est un objet avec des exercices
+    if (exercises && typeof exercises === 'object') {
+      return exercises.exercises || 
+             exercises.items || 
+             exercises.spelling || 
+             [];
+    }
+    
+    return [];
+  };
+
+  const validExercises = getValidExercises();
   
-  // Données des types pour l'expansion
-  const typeProgressData = calculateStatsByType(exercises, completedExercises);
+  // ✅ UTILISE la vraie structure détectée
+  const totalExercisesCount = calculateTotalExercises(validExercises);
+  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+  const totalProgress = calculateTotalProgress(validExercises, completedExercises);
+  const typeProgressData = calculateStatsByType(validExercises, completedExercises);
 
   // Transformation pour le format ProgressCard
   const formattedTypeData = Object.keys(typeProgressData).map((type) => {
@@ -53,6 +65,16 @@ const SpellingProgress = ({
       progress: typeData.progress,
     };
   }).filter(item => item.total > 0); // Afficher seulement les types avec des exercices
+
+  console.log("🔍 SpellingProgress Debug:", {
+    originalExercisesType: Array.isArray(exercises) ? 'array' : typeof exercises,
+    originalExercisesLength: Array.isArray(exercises) ? exercises.length : 0,
+    validExercisesLength: validExercises.length,
+    totalExercisesCount,
+    completedExercisesCount,
+    totalProgress,
+    exercisesKeys: exercises && typeof exercises === 'object' && !Array.isArray(exercises) ? Object.keys(exercises) : "not object"
+  });
 
   return (
     <ProgressCard

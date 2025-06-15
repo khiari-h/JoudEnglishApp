@@ -1,176 +1,64 @@
-// src/screens/ExerciseSelection/style.js - VERSION ÉPURÉE
+// src/screens/ExerciseSelection/style.js - VERSION COMPLÈTE SIMPLE
 import { StyleSheet, Platform } from 'react-native';
 
-// =================== FONCTION BACKGROUND DYNAMIQUE ===================
-export const getBackgroundGradient = (levelColor, backgroundColor) => ({
-  colors: [
-    levelColor + "06", // 2.5% opacity
-    backgroundColor,   // Blanc pur
-    levelColor + "08"  // 3% opacity
-  ],
-  locations: [0, 0.4, 1]
-});
+// Helper pour les gradients
+export const getBackgroundGradient = (primaryColor, backgroundColor) => {
+  return {
+    colors: [
+      primaryColor + '10', // Très transparent en haut
+      backgroundColor,     // Couleur normale en bas
+    ],
+    locations: [0, 0.3],
+  };
+};
 
-const styles = StyleSheet.create({
-  // =================== HEADER ÉPURÉ ===================
+export default StyleSheet.create({
+  // =================== HEADER ===================
   headerContainer: {
-    overflow: "hidden",
-    // Ombre très subtile
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.08,
-        shadowRadius: 4,
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
+    // Container du header avec gradient
   },
+
   headerGradient: {
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    paddingBottom: 8,
-    paddingHorizontal: 0,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    letterSpacing: -0.3,
-    color: "rgba(255, 255, 255, 0.95)",
-    lineHeight: 24,
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
-  },
-
-  // =================== CONTENU MODERNE ===================
-  scrollContent: {
-    paddingHorizontal: 16,
     paddingBottom: 20,
-    paddingTop: 12, // ✅ Réduit
   },
 
-  // =================== INTRO ÉPURÉE ===================
-  introSection: {
-    marginBottom: 16, // ✅ Réduit
-    alignItems: "center",
-  },
-  introText: {
-    fontSize: 15,
-    fontWeight: "500",
-    letterSpacing: -0.1,
-    // ✅ SUPPRIMÉ : color hardcodée - maintenant injectée via ThemeContext
+  headerTitle: {
+    // Style du titre dans le header
   },
 
-  // =================== CARDS MODERNES ÉPURÉES ===================
-  levelsContainer: {
-    gap: 12, // ✅ Espacement moderne
-  },
-  levelCard: {
-    borderRadius: 16, // ✅ Plus arrondi = plus moderne
-    backgroundColor: "#FFFFFF",
-    // Ombre moderne subtile
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.06,
-        shadowRadius: 12,
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
-    borderWidth: 0.5,
-    borderColor: "rgba(0, 0, 0, 0.04)",
-  },
-  cardContentStyle: {
-    padding: 16, // ✅ Padding généreux mais pas excessif
-  },
-
-  // =================== HEADER CARD MODERNE ===================
-  cardHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 8, // ✅ Réduit
-  },
-  levelTitleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
-  },
-  levelMainTitle: {
-    fontSize: 17, // ✅ Légèrement plus grand
-    fontWeight: "600",
-    marginRight: 10,
-    letterSpacing: -0.2,
-    // ✅ SUPPRIMÉ : color hardcodée - maintenant injectée via ThemeContext
-  },
-  levelBadge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 10, // ✅ Plus arrondi
-    minWidth: 32,
-    alignItems: "center",
-    // Ombre badge subtile
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.08,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 1,
-      },
-    }),
-  },
-  levelBadgeText: {
+  bonusText: {
+    color: "rgba(255, 255, 255, 0.88)",
     fontSize: 12,
-    fontWeight: "700",
-    color: "white",
-  },
-  levelIcon: {
-    fontSize: 24, // ✅ Plus grand = plus visible
-  },
-
-  // =================== DESCRIPTION ÉPURÉE ===================
-  levelDescription: {
-    fontSize: 14, // ✅ Un peu plus grand pour lisibilité
-    lineHeight: 20,
-    marginBottom: 12,
+    textAlign: "center",
     fontWeight: "400",
-    // ✅ SUPPRIMÉ : color hardcodée - maintenant injectée via ThemeContext
   },
 
-  // =================== PROGRESSION MODERNE ===================
-  progressContainer: {
-    marginBottom: 12,
+  // =================== SCROLL CONTENT ===================
+  scrollContent: {
+    paddingTop: 20,
   },
-  progressBar: {
-    height: 8, // ✅ Plus épais = plus visible
-    backgroundColor: "#F1F5F9",
-    borderRadius: 4,
-    overflow: "hidden",
-    marginBottom: 6,
+
+  introSection: {
+    paddingHorizontal: 20,
+    paddingVertical: 16,
   },
-  progressFill: {
-    height: 8,
-    borderRadius: 4,
-  },
-  progressText: {
-    fontSize: 12,
+
+  introText: {
+    fontSize: 16,
     fontWeight: "500",
-    textAlign: "right",
-    // ✅ SUPPRIMÉ : color hardcodée - maintenant injectée via ThemeContext
+    textAlign: "center",
   },
 
-  // =================== BOUTON MODERNE ===================
-  startButton: {
-    paddingVertical: 12, // ✅ Un peu plus de padding
-    borderRadius: 12, // ✅ Plus arrondi
-    // Ombre bouton moderne
+  // =================== NIVEAUX CONTAINER ===================
+  levelsContainer: {
+    paddingHorizontal: 20,
+  },
+
+  // =================== CARDS D'EXERCICES ===================
+  levelCard: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    marginBottom: 16,
     ...Platform.select({
       ios: {
         shadowColor: "#000",
@@ -184,21 +72,84 @@ const styles = StyleSheet.create({
     }),
   },
 
-  // =================== ÉTATS INTERACTIFS ===================
-  levelCardPressed: {
-    transform: [{ scale: 0.98 }],
-    opacity: 0.9,
+  cardContentStyle: {
+    padding: 20,
   },
 
-  // =================== RESPONSIVE ===================
-  '@media (max-height: 680)': {
-    cardContentStyle: {
-      padding: 14,
-    },
-    scrollContent: {
-      paddingTop: 8,
-    },
+  // =================== HEADER DE CARD ===================
+  cardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+
+  levelTitleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+
+  levelMainTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginRight: 12,
+  },
+
+  levelBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+
+  levelBadgeText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+
+  fastBadge: {
+    backgroundColor: "#FED7AA",
+    marginLeft: 6,
+  },
+
+  fastBadgeText: {
+    color: "#F59E0B",
+  },
+
+  levelIcon: {
+    fontSize: 24,
+  },
+
+  // =================== PROGRESSION ===================
+  progressContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+    gap: 12,
+  },
+
+  progressBar: {
+    flex: 1,
+    height: 6,
+    backgroundColor: '#F3F4F6',
+    borderRadius: 3,
+    overflow: 'hidden',
+  },
+
+  progressFill: {
+    height: 6,
+    borderRadius: 3,
+  },
+
+  progressText: {
+    fontSize: 12,
+    fontWeight: '500',
+    minWidth: 30,
+  },
+
+  // =================== BOUTON ===================
+  startButton: {
+    marginTop: 4,
   },
 });
-
-export default styles;

@@ -1,5 +1,5 @@
-// ReadingExercise/index.js - VERSION CLEAN & SIMPLE
-import React, { useMemo } from "react";
+// ReadingExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
+import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -19,18 +19,20 @@ import InstructionBox from "../../../components/exercise-common/InstructionBox";
 
 // Hook & Utils
 import useReading from "./hooks/useReading";
+import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
 import { getReadingData, getLevelColor } from "../../../utils/reading/readingDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 ReadingExercise - VERSION CLEAN & SIMPLE
- * 300 lignes → 120 lignes (-60% de code)
- * 1 hook au lieu de 3, logique claire, maintenable
+ * 🎯 ReadingExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
  */
 const ReadingExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
+
+  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
@@ -67,6 +69,24 @@ const ReadingExercise = ({ route }) => {
     fadeAnim,
     slideAnim,
   } = useReading(exercises, level);
+
+  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement d'exercice/question
+  useEffect(() => {
+    if (loaded && exercises.length > 0 && currentExercise && currentQuestion) {
+      saveActivity({
+        title: "Lecture",
+        level: level,
+        type: "reading",
+        metadata: {
+          exercise: selectedExerciseIndex,
+          question: currentQuestionIndex,
+          totalQuestions: totalQuestions,
+          exerciseTitle: currentExercise.title || `Texte ${selectedExerciseIndex + 1}`,
+          totalExercises: exercises.length
+        }
+      });
+    }
+  }, [loaded, exercises.length, currentExercise, currentQuestion, selectedExerciseIndex, currentQuestionIndex, totalQuestions, level, saveActivity]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();

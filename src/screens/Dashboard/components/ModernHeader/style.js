@@ -39,7 +39,6 @@ export default StyleSheet.create({
   logoContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 8,
   },
 
   logoEmoji: {
@@ -53,37 +52,16 @@ export default StyleSheet.create({
     letterSpacing: -0.5,
   },
 
-  // Context utilisateur élargi
-  userContext: {
-    marginLeft: 34, // Aligné avec le texte JOUD
-  },
-
-  welcomeText: {
-    fontSize: 14,
-    fontWeight: "500",
-    opacity: 0.9,
-    marginBottom: 2,
-  },
-
-  // NOUVEAU : Contexte niveau
-  levelContext: {
-    fontSize: 12,
-    fontWeight: "400",
-    opacity: 0.7,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-  },
-
-  // =================== SECTION DROITE SIMPLIFIÉE ===================
+  // =================== SECTION DROITE ===================
   rightSection: {
     justifyContent: "center",
     alignItems: "center",
   },
 
-  // Badge niveau (plus gros car seul élément)
+  // Badge niveau
   levelBadge: {
-    width: 40, // +4px car plus de streak
-    height: 40, // +4px
+    width: 40,
+    height: 40,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -101,7 +79,7 @@ export default StyleSheet.create({
   },
 
   levelText: {
-    fontSize: 17, // +1px car plus de place
+    fontSize: 17,
     fontWeight: "800",
     letterSpacing: -0.2,
   },
@@ -124,18 +102,6 @@ export default StyleSheet.create({
 
     levelText: {
       fontSize: 16,
-    },
-
-    userContext: {
-      marginLeft: 30,
-    },
-
-    welcomeText: {
-      fontSize: 13,
-    },
-
-    levelContext: {
-      fontSize: 11,
     },
   },
 

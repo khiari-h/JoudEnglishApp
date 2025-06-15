@@ -1,5 +1,5 @@
-// ConversationExercise/index.js - VERSION CLEAN & SIMPLE
-import React, { useMemo } from "react";
+// ConversationExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
+import React, { useMemo, useEffect } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -17,17 +17,19 @@ import ConversationInput from "./ConversationInput";
 
 // Hook & Utils
 import useConversation from "./hooks/useConversation";
+import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
 import { getConversationData, getLevelColor } from "../../../utils/conversation/conversationDataHelper";
 import styles from "./style";
 
 /**
- * 🎯 ConversationExercise - VERSION CLEAN & SIMPLE
- * 300+ lignes → 130 lignes (-60% de code)
- * 2 hooks + 9 états → 1 hook, logique claire, maintenable
+ * 🎯 ConversationExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
  */
 const ConversationExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1", initialScenarioIndex = 0, initialStepIndex = 0 } = route?.params || {};
+
+  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
@@ -61,6 +63,24 @@ const ConversationExercise = ({ route }) => {
     stats,
     display,
   } = useConversation(conversationData, level);
+
+  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de scenario/étape
+  useEffect(() => {
+    if (loaded && hasValidData && currentScenario && isConversationStarted) {
+      saveActivity({
+        title: "Conversations",
+        level: level,
+        type: "conversations",
+        metadata: {
+          scenario: currentScenarioIndex,
+          step: stats.currentStep || 0,
+          totalSteps: stats.totalSteps || 1,
+          scenarioName: currentScenario.title || `Scénario ${currentScenarioIndex + 1}`,
+          totalScenarios: totalScenarios
+        }
+      });
+    }
+  }, [loaded, hasValidData, currentScenario, isConversationStarted, currentScenarioIndex, stats.currentStep, stats.totalSteps, level, totalScenarios, saveActivity]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();

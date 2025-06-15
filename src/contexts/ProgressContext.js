@@ -1,152 +1,144 @@
-// src/contexts/ProgressContext.js
-import React, { createContext, useState, useEffect } from 'react';
-import { storageService } from '../utils/storageUtils'; 
-import { LEVELS, EXERCISE_TYPES } from '../utils/constants';
+// src/contexts/ProgressContext.js - VERSION SIMPLE
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { STORAGE_KEYS } from '../utils/constants';
 
 // Créer le contexte
 export const ProgressContext = createContext();
 
-/**
- * Structure initiale de la progression
- */
-const createInitialProgress = () => {
-  // Créer un objet pour tous les niveaux
-  const levels = {};
-  LEVELS.forEach(level => {
-    levels[level] = { completed: 0, total: 100 };
-  });
-
-  // Créer un objet pour tous les types d'exercices
-  const exercises = {};
-  Object.keys(EXERCISE_TYPES).forEach(type => {
-    exercises[type] = {};
-
-    // Pour chaque niveau dans ce type d'exercice
-    LEVELS.forEach(level => {
-      exercises[type][level] = { completed: 0, total: 100 };
-    });
-  });
-
-  return {
-    // Progression globale par niveau
-    levels,
-
-    // Progression par type d'exercice et niveau
-    exercises,
-
-    // Dernière activité
-    lastActivity: {
-      type: null,
-      level: null,
-      timestamp: null,
+// Données initiales simples
+const createInitialProgress = () => ({
+  // Progression par niveau (0-100%)
+  levels: {
+    '1': { completed: 0, total: 100 },
+    '2': { completed: 0, total: 100 },
+    '3': { completed: 0, total: 100 },
+    '4': { completed: 0, total: 100 },
+    '5': { completed: 0, total: 100 },
+    '6': { completed: 0, total: 100 },
+    'bonus': { completed: 0, total: 100 },
+  },
+  
+  // Progression par exercice et niveau
+  exercises: {
+    vocabulary: {
+      '1': { completed: 0, total: 100 },
+      '2': { completed: 0, total: 100 },
+      '3': { completed: 0, total: 100 },
+      '4': { completed: 0, total: 100 },
+      '5': { completed: 0, total: 100 },
+      '6': { completed: 0, total: 100 },
+      'bonus': { completed: 0, total: 100 },
     },
-
-    // Statistiques
-    stats: {
-      streak: 0,
-      totalTimeSpent: 0,
-      correctAnswers: 0,
-      totalAnswers: 0,
-      exercisesCompleted: 0,
-      lastLogin: null,
+    phrases: {
+      '1': { completed: 0, total: 100 },
+      '2': { completed: 0, total: 100 },
+      '3': { completed: 0, total: 100 },
+      '4': { completed: 0, total: 100 },
+      '5': { completed: 0, total: 100 },
+      '6': { completed: 0, total: 100 },
+      'bonus': { completed: 0, total: 100 },
     },
+    grammar: {
+      '1': { completed: 0, total: 100 },
+      '2': { completed: 0, total: 100 },
+      '3': { completed: 0, total: 100 },
+      '4': { completed: 0, total: 100 },
+      '5': { completed: 0, total: 100 },
+      '6': { completed: 0, total: 100 },
+    },
+    // ... autres exercices peuvent être ajoutés au besoin
+  },
 
-    // Exercices complétés (identifiants)
-    completedExercises: {},
-  };
-};
+  // Stats globales
+  stats: {
+    streak: 0,
+    totalTimeSpent: 0,
+    correctAnswers: 0,
+    totalAnswers: 0,
+    exercisesCompleted: 0,
+    lastLogin: null,
+  },
 
-/**
- * Fournisseur de contexte pour gérer la progression de l'utilisateur
- */
+  // Dernière activité
+  lastActivity: {
+    type: null,
+    level: null,
+    timestamp: null,
+  },
+});
+
+// Fournisseur du contexte
 export const ProgressProvider = ({ children }) => {
-  // État
   const [progress, setProgress] = useState(createInitialProgress());
   const [isLoading, setIsLoading] = useState(true);
 
-  // Charger la progression au démarrage
+  // ========== CHARGEMENT INITIAL ==========
   useEffect(() => {
-    let mounted = true;
-
     const loadProgress = async () => {
       try {
-        setIsLoading(true);
-        const savedProgress = await storageService.getProgress();
-
-        if (mounted && savedProgress) {
-          setProgress(savedProgress);
+        const stored = await AsyncStorage.getItem(STORAGE_KEYS.USER_PROGRESS);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          setProgress(parsed);
         }
       } catch (error) {
-        console.error('Error loading progress:', error);
+        console.error('Erreur chargement progression:', error);
       } finally {
-        if (mounted) {
-          setIsLoading(false);
-        }
+        setIsLoading(false);
       }
     };
 
     loadProgress();
+  }, []);
 
-    return () => {
-      mounted = false;
-    };
-  }, []); // ← Dépendances vides = une seule fois
-
-  // Sauvegarder la progression lorsqu'elle change
+  // ========== SAUVEGARDE AUTO ==========
   useEffect(() => {
-    let timeoutId;
-
     if (!isLoading) {
-      // Debounce pour éviter trop de sauvegardes
-      timeoutId = setTimeout(() => {
-        storageService.saveProgress(progress);
-      }, 500);
-    }
+      const saveProgress = async () => {
+        try {
+          await AsyncStorage.setItem(STORAGE_KEYS.USER_PROGRESS, JSON.stringify(progress));
+        } catch (error) {
+          console.error('Erreur sauvegarde progression:', error);
+        }
+      };
 
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
+      // Debounce pour éviter trop de sauvegardes
+      const timeoutId = setTimeout(saveProgress, 500);
+      return () => clearTimeout(timeoutId);
+    }
   }, [progress, isLoading]);
 
-  // Mettre à jour la progression d'un exercice spécifique
-  const updateExerciseProgress = (exerciseType, level, completed, total = 100) => {
-    setProgress(prevProgress => {
-      // Vérifier que l'exerciceType et le level existent
-      if (!prevProgress.exercises[exerciseType] || !prevProgress.exercises[exerciseType][level]) {
-        console.warn(`Exercise type ${exerciseType} or level ${level} not found`);
-        return prevProgress;
+  // ========== MÉTHODES ==========
+
+  // Mettre à jour progression d'un exercice
+  const updateExerciseProgress = (exerciseType, level, completed) => {
+    setProgress(prev => {
+      const newProgress = { ...prev };
+      
+      // Vérifier que l'exercice existe
+      if (!newProgress.exercises[exerciseType]) {
+        newProgress.exercises[exerciseType] = {};
+      }
+      
+      if (!newProgress.exercises[exerciseType][level]) {
+        newProgress.exercises[exerciseType][level] = { completed: 0, total: 100 };
       }
 
-      // Copie pour éviter de modifier directement l'état
-      const newProgress = { ...prevProgress };
+      // Mettre à jour l'exercice
+      newProgress.exercises[exerciseType][level].completed = Math.min(Math.max(0, completed), 100);
 
-      // Mise à jour de la progression de l'exercice spécifique
-      newProgress.exercises[exerciseType][level] = { 
-        completed: Math.min(Math.max(0, completed), total), // Entre 0 et total
-        total
-      };
+      // Recalculer progression du niveau (moyenne des exercices)
+      const levelExercises = Object.keys(newProgress.exercises).map(type => 
+        newProgress.exercises[type][level]?.completed || 0
+      ).filter(val => val > 0);
 
-      // Recalcul de la progression globale du niveau
-      const levelExercises = Object.keys(newProgress.exercises).map(
-        type => newProgress.exercises[type][level]
-      );
+      if (levelExercises.length > 0) {
+        const averageProgress = levelExercises.reduce((sum, val) => sum + val, 0) / levelExercises.length;
+        newProgress.levels[level].completed = Math.round(averageProgress);
+      }
 
-      const totalCompleted = levelExercises.reduce(
-        (sum, exercise) => sum + exercise.completed, 0
-      );
-
-      const totalPossible = levelExercises.reduce(
-        (sum, exercise) => sum + exercise.total, 0
-      );
-
-      newProgress.levels[level] = {
-        completed: Math.round((totalCompleted / totalPossible) * 100),
-        total: 100
-      };
-
-      // Mise à jour de la dernière activité
+      // Mettre à jour dernière activité
       newProgress.lastActivity = {
         type: exerciseType,
         level,
@@ -157,124 +149,49 @@ export const ProgressProvider = ({ children }) => {
     });
   };
 
-  // Mettre à jour les statistiques
+  // Mettre à jour les stats
   const updateStats = (newStats) => {
-    setProgress(prevProgress => ({
-      ...prevProgress,
-      stats: {
-        ...prevProgress.stats,
-        ...newStats
-      }
+    setProgress(prev => ({
+      ...prev,
+      stats: { ...prev.stats, ...newStats }
     }));
   };
 
-  // Mettre à jour le streak
-  const updateStreak = async () => {
-    try {
-      const streakData = await storageService.updateStreak();
-
-      if (streakData) {
-        updateStats({
-          streak: streakData.currentStreak,
-          lastLogin: streakData.lastLoginDate
-        });
-      }
-
-      return streakData?.currentStreak || 0;
-    } catch (error) {
-      console.error('Error updating streak:', error);
-      return 0;
-    }
+  // Calculer progression globale
+  const calculateGlobalProgress = () => {
+    const levels = Object.values(progress.levels);
+    if (levels.length === 0) return 0;
+    
+    const total = levels.reduce((sum, level) => sum + level.completed, 0);
+    return Math.round(total / levels.length);
   };
 
-  // Marquer un exercice comme complété
-  const markExerciseCompleted = async (exerciseId, level, score, metadata = {}) => {
-    try {
-      const result = await storageService.markExerciseCompleted(exerciseId, level, score);
-
-      if (result) {
-        setProgress(prevProgress => {
-          const newProgress = { ...prevProgress };
-
-          // Ajouter l'exercice aux exercices complétés
-          newProgress.completedExercises[exerciseId] = {
-            level,
-            score,
-            completedAt: new Date().toISOString(),
-            ...metadata
-          };
-
-          // Incrémenter le compteur d'exercices complétés
-          newProgress.stats.exercisesCompleted += 1;
-
-          return newProgress;
-        });
-      }
-
-      return result;
-    } catch (error) {
-      console.error('Error marking exercise completed:', error);
-      return false;
-    }
+  // Calculer progression d'un niveau
+  const calculateLevelProgress = (level) => {
+    return progress.levels[level]?.completed || 0;
   };
 
-  // Vérifier si un exercice est complété
-  const isExerciseCompleted = (exerciseId) => {
-    return Boolean(progress.completedExercises[exerciseId]);
-  };
-
-  // Enregistrer les résultats d'exercice
-  const saveExerciseResults = (exerciseType, level, results) => {
-    if (!results) return;
-
-    // Mise à jour des statistiques globales
-    updateStats({
-      correctAnswers: progress.stats.correctAnswers + results.correct,
-      totalAnswers: progress.stats.totalAnswers + results.total,
-      totalTimeSpent: progress.stats.totalTimeSpent + (results.timeSpent || 0),
-    });
-
-    // Calculer la progression en pourcentage
-    const completedPercentage = Math.round((results.correct / results.total) * 100);
-
-    // Mettre à jour la progression de l'exercice
-    updateExerciseProgress(exerciseType, level, completedPercentage);
-
-    // Si l'exercice a un ID, le marquer comme complété
-    if (results.exerciseId) {
-      markExerciseCompleted(results.exerciseId, level, completedPercentage, {
-        correct: results.correct,
-        total: results.total,
-        timeSpent: results.timeSpent,
-      });
-    }
-
-    return completedPercentage;
-  };
-
-  // Réinitialiser toute la progression
+  // Reset complet
   const resetProgress = async () => {
     try {
-      await storageService.resetAllData();
+      await AsyncStorage.removeItem(STORAGE_KEYS.USER_PROGRESS);
       setProgress(createInitialProgress());
       return true;
     } catch (error) {
-      console.error('Error resetting progress:', error);
+      console.error('Erreur reset progression:', error);
       return false;
     }
   };
 
-  // Valeur fournie par le contexte
+  // ========== VALEUR DU CONTEXTE ==========
   const contextValue = {
     progress,
+    isLoading,
     updateExerciseProgress,
     updateStats,
-    updateStreak,
-    markExerciseCompleted,
-    isExerciseCompleted,
-    saveExerciseResults,
+    calculateGlobalProgress,
+    calculateLevelProgress,
     resetProgress,
-    isLoading,
   };
 
   return (
@@ -282,6 +199,15 @@ export const ProgressProvider = ({ children }) => {
       {children}
     </ProgressContext.Provider>
   );
+};
+
+// Hook pour utiliser le contexte
+export const useProgress = () => {
+  const context = useContext(ProgressContext);
+  if (!context) {
+    throw new Error('useProgress must be used within a ProgressProvider');
+  }
+  return context;
 };
 
 export default ProgressContext;

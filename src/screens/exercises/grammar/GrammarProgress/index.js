@@ -1,4 +1,4 @@
-// GrammarProgress/index.js - VERSION SIMPLIFIÉE (identique à VocabularyProgress)
+// GrammarProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
 
 import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
@@ -10,16 +10,9 @@ import {
 } from "../../../../utils/grammar/grammarStats";
 
 /**
- * 📊 GrammarProgress - Version Simplifiée avec ProgressCard générique
- * API identique à VocabularyProgress et PhrasesProgress
- * Pattern uniforme sur tous les exercices
- * 
- * @param {object} grammarData - Données de grammaire
- * @param {object} completedExercises - Exercices complétés par règle
- * @param {string} levelColor - Couleur du niveau
- * @param {boolean} expanded - État d'expansion
- * @param {function} onToggleExpand - Fonction pour toggle expansion
- * @param {function} onRulePress - Fonction appelée lors du clic sur règle
+ * 📊 GrammarProgress - Version Corrigée avec détection automatique
+ * ✅ Détecte automatiquement la structure des données
+ * ✅ Gère rules, exercises, categories, etc.
  */
 const GrammarProgress = ({
   grammarData,
@@ -30,15 +23,37 @@ const GrammarProgress = ({
   onRulePress,
 }) => {
   
-  // Calculs des statistiques (utilise des utilitaires externes comme Vocabulary)
-  const totalExercisesCount = calculateTotalExercises(grammarData || []);
-  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
-  const totalProgress = calculateTotalProgress(grammarData || [], completedExercises);
-  
-  // Données des règles pour l'expansion
-  const ruleProgressData = calculateRuleProgress(grammarData || [], completedExercises);
+  // ✅ DÉTECTION AUTOMATIQUE de la structure
+  const getDataArray = () => {
+    if (!grammarData) return [];
+    
+    // Si c'est déjà un tableau (liste de rules)
+    if (Array.isArray(grammarData)) {
+      return grammarData;
+    }
+    
+    // Si c'est un objet avec différentes propriétés possibles
+    if (typeof grammarData === 'object') {
+      return grammarData.rules || 
+             grammarData.categories || 
+             grammarData.exercises || 
+             grammarData.grammar || 
+             grammarData.items || 
+             [];
+    }
+    
+    return [];
+  };
 
-  // Transformation pour le format ProgressCard (identique à Vocabulary)
+  const dataArray = getDataArray();
+  
+  // ✅ UTILISE la vraie structure détectée
+  const totalExercisesCount = calculateTotalExercises(dataArray);
+  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+  const totalProgress = calculateTotalProgress(dataArray, completedExercises);
+  const ruleProgressData = calculateRuleProgress(dataArray, completedExercises);
+
+  // Transformation pour le format ProgressCard
   const formattedRuleData = ruleProgressData.map((rule, index) => ({
     title: rule.title,
     completed: rule.completedExercises,
@@ -46,13 +61,25 @@ const GrammarProgress = ({
     progress: rule.progress,
   }));
 
+  console.log("🔍 GrammarProgress Debug:", {
+    isGrammarDataArray: Array.isArray(grammarData),
+    hasRules: !!(grammarData?.rules),
+    hasCategories: !!(grammarData?.categories),
+    hasExercises: !!(grammarData?.exercises),
+    dataArrayLength: dataArray.length,
+    totalExercisesCount,
+    completedExercisesCount,
+    totalProgress,
+    grammarDataKeys: grammarData && typeof grammarData === 'object' ? Object.keys(grammarData) : "not object or null"
+  });
+
   return (
     <ProgressCard
-      title="Grammar Progress"
+      title="Progression" // ✅ Titre uniforme
       progress={totalProgress}
       completed={completedExercisesCount}
       total={totalExercisesCount}
-      unit="exercises"
+      unit="exercices"
       levelColor={levelColor}
       expandable={true}
       expanded={expanded}

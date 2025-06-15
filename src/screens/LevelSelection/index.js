@@ -1,3 +1,4 @@
+// src/screens/LevelSelection/index.js - VERSION RÉPARÉE
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -14,8 +15,8 @@ import Button from "../../components/ui/Button";
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
-// Constantes
-import { LANGUAGE_LEVELS } from "../../utils/constants";
+// Constantes SIMPLIFIÉES
+import { LANGUAGE_LEVELS, LEVELS_LIST } from "../../utils/constants";
 
 // Styles
 import styles, { getBackgroundGradient } from "./style";
@@ -41,10 +42,9 @@ const LevelSelection = () => {
   const { colors } = themeContext;
   const { progress, isLoading } = progressContext;
 
-  // =================== LOGIQUE PROGRESSION SIMPLE ===================
-  
+  // ========== PROGRESSION SIMPLE ==========
   const getCurrentUserLevel = () => {
-    const levelsWithProgress = Object.keys(LANGUAGE_LEVELS)
+    const levelsWithProgress = LEVELS_LIST
       .filter(key => key !== 'bonus')
       .filter(key => progress?.levels?.[key]?.completed > 0);
     
@@ -57,44 +57,28 @@ const LevelSelection = () => {
   const currentUserLevel = getCurrentUserLevel();
   const currentLevelData = LANGUAGE_LEVELS[currentUserLevel];
 
-  // =================== BACKGROUND INTELLIGENT SIMPLE ===================
-  
+  // Background
   const backgroundGradient = getBackgroundGradient(
     currentLevelData.color, 
     colors.background
   );
 
-  // =================== DONNÉES NIVEAUX ÉPURÉES ===================
-  
-  const levels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => {
+  // ========== DONNÉES NIVEAUX AVEC NOUVELLES CONSTANTES ==========
+  const levels = LEVELS_LIST.map((levelKey) => {
     const levelInfo = LANGUAGE_LEVELS[levelKey];
     const levelProgress = progress?.levels?.[levelKey]?.completed || 0;
     
-    // ✅ DESCRIPTIONS COURTES ET ENGAGEANTES (max 2-3 mots)
-    const getShortDescription = (id, title) => {
-      const shortDescriptions = {
-        '1': 'Premiers mots',
-        '2': 'Phrases utiles', 
-        '3': 'Vraies conversations',
-        '4': 'Sujets du quotidien',
-        '5': 'Discussions fluides',
-        '6': 'Expertise complète',
-        'bonus': 'Défis exclusifs'
-      };
-      return shortDescriptions[id] || title;
-    };
-    
     return {
       id: levelKey,
-      name: levelInfo.name,
       title: levelInfo.title,
-      description: getShortDescription(levelKey, levelInfo.title),
-      progress: levelProgress, // ✅ Progression en pourcentage
+      progress: levelProgress,
       color: levelInfo.color,
       icon: levelInfo.icon,
+      hasProgress: levelProgress > 0,
     };
   });
 
+  // ========== NAVIGATION EXPO ROUTER ==========
   const handleLevelSelect = (level) => {
     router.push({
       pathname: "/(tabs)/exerciseSelection",
@@ -102,9 +86,8 @@ const LevelSelection = () => {
     });
   };
 
-  // =================== HEADER MODERNE ÉPURÉ ===================
-  
-  const renderModernHeader = () => (
+  // ========== RENDU ==========
+  const renderHeader = () => (
     <View style={styles.headerContainer}>
       <LinearGradient
         colors={["#6366F1", "#8B5CF6"]}
@@ -121,48 +104,20 @@ const LevelSelection = () => {
           withShadow={false}
           titleContainerStyle={styles.headerTitle}
         />
-
-        {/* ✅ PROGRESSION ÉPURÉE - Juste les cercles, point final */}
-        <View style={styles.progressIndicator}>
-          <View style={styles.levelDots}>
-            {Object.keys(LANGUAGE_LEVELS).map((levelKey, index) => (
-              <View
-                key={levelKey}
-                style={[
-                  styles.progressDot,
-                  { 
-                    backgroundColor: LANGUAGE_LEVELS[levelKey].color,
-                    opacity: Number(levelKey) <= currentUserLevel ? 1 : 0.3
-                  },
-                ]}
-              >
-                <Text style={styles.progressDotText}>
-                  {levelKey === 'bonus' ? 'B' : levelKey}
-                </Text>
-              </View>
-            ))}
-          </View>
-          {/* ✅ SUPPRIMÉ : Infos "X niveaux • Y en cours" - header plus propre */}
-        </View>
       </LinearGradient>
     </View>
   );
 
-  // =================== CARDS MODERNES ULTRA-ÉPURÉES ===================
-  
-  const renderModernLevelCard = (level) => {
-    // ✅ LOGIQUE DÉTECTION : Si progress > 0 = niveau déjà commencé
-    const hasProgress = level.progress > 0;
-    
+  const renderLevelCard = (level) => {
     return (
       <TouchableOpacity
         key={level.id}
-        style={styles.modernCard} // ✅ SIMPLIFIÉ : Plus de surbrillance conditionnelle
+        style={styles.modernCard}
         onPress={() => handleLevelSelect(level)}
         activeOpacity={0.8}
       >
         <View style={styles.modernCardContent}>
-          {/* ✅ HEADER SIMPLE AVEC POURCENTAGES ÉPURÉ */}
+          {/* Header */}
           <View style={styles.modernCardHeader}>
             <View style={styles.modernTitleContainer}>
               <Text style={[styles.modernTitle, { color: colors.text }]}>
@@ -170,21 +125,15 @@ const LevelSelection = () => {
               </Text>
               <View style={[styles.modernBadge, { backgroundColor: level.color }]}>
                 <Text style={styles.modernBadgeText}>
-                  {hasProgress ? `${level.progress}%` : '0%'}
+                  {level.hasProgress ? `${level.progress}%` : '0%'}
                 </Text>
               </View>
-              {/* ✅ SUPPRIMÉ : Badge "EN COURS" - trop de bruit visuel */}
             </View>
             <Text style={styles.modernIcon}>{level.icon}</Text>
           </View>
 
-          {/* ✅ DESCRIPTION COURTE */}
-          <Text style={[styles.modernDescription, { color: colors.textSecondary }]}>
-            {level.description}
-          </Text>
-
-          {/* ✅ PROGRESSION (si existante) comme ExerciseSelection */}
-          {hasProgress && (
+          {/* Progression */}
+          {level.hasProgress && (
             <View style={styles.modernProgressContainer}>
               <View style={styles.modernProgressBar}>
                 <View 
@@ -203,33 +152,21 @@ const LevelSelection = () => {
             </View>
           )}
 
-          {/* ✅ BOUTON INTELLIGENT - Commencer vs Continuer */}
+          {/* Bouton */}
           <Button
-            title={hasProgress ? "Continuer" : "Commencer"}
+            title={level.hasProgress ? "Continuer" : "Commencer"}
             variant="filled"
             color={level.color}
             fullWidth
             onPress={() => handleLevelSelect(level)}
             style={styles.modernButton}
-            rightIcon={hasProgress ? "play-outline" : "rocket-outline"} // ✅ Icône adaptative
+            rightIcon={level.hasProgress ? "play-outline" : "rocket-outline"}
           />
         </View>
       </TouchableOpacity>
     );
   };
 
-  // =================== INTRO ULTRA-SIMPLE ===================
-  
-  const renderSimpleIntro = () => (
-    <View style={styles.modernIntro}>
-      <Text style={[styles.modernIntroText, { color: colors.textSecondary }]}>
-        À vous de choisir !
-      </Text>
-    </View>
-  );
-
-  // =================== RENDU PRINCIPAL ===================
-  
   return (
     <Container
       safeArea
@@ -240,7 +177,6 @@ const LevelSelection = () => {
       statusBarStyle="light-content"
       withPadding={false}
     >
-      {/* ✅ Background subtil */}
       <LinearGradient
         colors={backgroundGradient.colors}
         locations={backgroundGradient.locations}
@@ -248,18 +184,21 @@ const LevelSelection = () => {
         end={{ x: 0, y: 1 }}
         style={{ flex: 1 }}
       >
-        {renderModernHeader()}
+        {renderHeader()}
         
         <ScrollView 
           style={{ flex: 1 }}
           contentContainerStyle={[styles.modernScrollContent, { paddingBottom: 60 }]}
           showsVerticalScrollIndicator={false}
         >
-          {renderSimpleIntro()}
+          <View style={styles.modernIntro}>
+            <Text style={[styles.modernIntroText, { color: colors.textSecondary }]}>
+              À vous de choisir !
+            </Text>
+          </View>
           
-          {/* ✅ Liste épurée */}
           <View style={styles.modernLevelsContainer}>
-            {levels.map(renderModernLevelCard)}
+            {levels.map(renderLevelCard)}
           </View>
         </ScrollView>
       </LinearGradient>

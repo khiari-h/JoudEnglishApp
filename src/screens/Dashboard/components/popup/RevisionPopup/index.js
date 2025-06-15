@@ -1,140 +1,46 @@
-// src/components/popups/RevisionPopup/index.js
-import React, { useContext, useEffect, useRef } from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
-  Modal, 
-  Animated, 
-  Dimensions,
-  ScrollView
-} from 'react-native';
+// src/components/popups/RevisionPopup/index.js - VERSION ULTRA-SIMPLE
+import React, { useContext } from 'react';
+import { View, Text, TouchableOpacity, Modal } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { router } from 'expo-router'; // ✅ Expo Router au lieu de React Navigation
+import { router } from 'expo-router';
 
 // Contextes
-import { ThemeContext } from '../../../../../contexts/ThemeContext';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 import styles from './style';
 
-const { width, height } = Dimensions.get('window');
-
-/**
- * Popup de révision intelligent avec options anti-spam
- * ✅ 4 options : Réviser / Plus tard / Reporter / Ignorer
- * ✅ Système de délais pour éviter le spam
- * ✅ Adaptatif à toutes les tailles d'écran
- */
 const RevisionPopup = ({
   visible = false,
-  wordsToReview = 5,
   questionsCount = 5,
   currentLevel = "mixed",
-  styleTitle = "Standard",
   onReviseNow,
-  onSnoozeLater, // +10 mots
-  onPostpone,    // +15 mots  
-  onIgnore,      // Cycle suivant
+  onSnoozeLater,
   onDismiss,
 }) => {
   const themeContext = useContext(ThemeContext);
   const colors = themeContext?.colors || {
-    background: "#F8FAFC",
     primary: "#8B5CF6",
     surface: "#FFFFFF",
     text: "#1F2937",
     textSecondary: "#6B7280",
-    success: "#10B981",
   };
 
-  // Animations
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const scaleAnim = useRef(new Animated.Value(0.8)).current;
-  const bounceAnim = useRef(new Animated.Value(0)).current;
-  const confettiAnim = useRef(new Animated.Value(0)).current;
-
-  // ========== ANIMATIONS ==========
-  useEffect(() => {
-    if (visible) {
-      // Animation principal
-      Animated.parallel([
-        Animated.timing(fadeAnim, {
-          toValue: 1,
-          duration: 400,
-          useNativeDriver: true,
-        }),
-        Animated.spring(scaleAnim, {
-          toValue: 1,
-          tension: 50,
-          friction: 7,
-          useNativeDriver: true,
-        }),
-      ]).start();
-
-      // Animation émojis bounce
-      setTimeout(() => {
-        Animated.loop(
-          Animated.sequence([
-            Animated.timing(bounceAnim, {
-              toValue: 1,
-              duration: 600,
-              useNativeDriver: true,
-            }),
-            Animated.timing(bounceAnim, {
-              toValue: 0,
-              duration: 600,
-              useNativeDriver: true,
-            }),
-          ])
-        ).start();
-      }, 500);
-
-      // Animation confetti
-      setTimeout(() => {
-        Animated.timing(confettiAnim, {
-          toValue: 1,
-          duration: 800,
-          useNativeDriver: true,
-        }).start();
-      }, 200);
-    } else {
-      // Reset animations
-      fadeAnim.setValue(0);
-      scaleAnim.setValue(0.8);
-      bounceAnim.setValue(0);
-      confettiAnim.setValue(0);
-    }
-  }, [visible]);
-
-  // ========== GESTIONNAIRES ==========
-
-  // Gérer "Réviser maintenant" avec navigation
+  // ========== HANDLERS SIMPLES ==========
   const handleReviseNow = async () => {
-    try {
-      // D'abord fermer le popup
-      onDismiss?.();
-      
-      // Exécuter la callback si elle existe
-      if (onReviseNow) {
-        await onReviseNow();
-      }
-      
-      // Navigation vers l'écran de révision
-      navigation.navigate(ROUTES.VOCABULARY_REVISION, {
-        level: currentLevel,
-        wordsToReview: questionsCount,
-        questionsCount: questionsCount,
-        source: 'popup_trigger',
-        style: styleTitle
-      });
-      
-    } catch (error) {
-      console.error('Erreur navigation révision:', error);
-      // En cas d'erreur, essayer une navigation de base
-      navigation.navigate('VocabularyRevision', {
-        questionsCount: questionsCount,
-        source: 'popup_trigger'
-      });
+    onDismiss?.();
+    
+    if (onReviseNow) {
+      await onReviseNow();
     }
+    
+    // Navigation simple vers révision
+    router.push({
+      pathname: "/(tabs)/vocabularyRevision",
+      params: {
+        level: currentLevel,
+        questionsCount,
+        source: 'popup_trigger'
+      }
+    });
   };
 
   const handleSnoozeLater = async () => {
@@ -142,215 +48,91 @@ const RevisionPopup = ({
     onDismiss?.();
   };
 
-  const handlePostpone = async () => {
-    await onPostpone?.();
-    onDismiss?.();
-  };
-
-  const handleIgnore = async () => {
-    await onIgnore?.();
-    onDismiss?.();
-  };
-
-  // ========== UTILS ==========
-
-  const getMotivationalMessage = () => {
-    const messages = [
-      "Temps de renforcer votre mémoire !",
-      "Ancrez ces mots pour de bon !",
-      "Quelques minutes pour un boost mémoriel !",
-      "Votre cerveau vous remerciera !"
-    ];
-    return messages[Math.floor(Math.random() * messages.length)];
-  };
-
-  const getEstimatedDuration = () => {
-    if (questionsCount <= 5) return "~2min";
-    if (questionsCount <= 8) return "~3min";
-    return "~5min";
-  };
-
-  // Animation interpolations
-  const bounceTransform = bounceAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, -10],
-  });
-
-  const confettiTransform = confettiAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [-50, height + 50],
-  });
-
   if (!visible) return null;
 
   return (
     <Modal
       transparent
       visible={visible}
-      animationType="none"
+      animationType="fade"
       onRequestClose={onDismiss}
-      statusBarTranslucent
     >
-      {/* Overlay avec fade */}
-      <Animated.View style={[styles.overlay, { opacity: fadeAnim }]}>
-        {/* Confetti animation */}
-        <Animated.View
-          style={[
-            styles.confettiContainer,
-            { transform: [{ translateY: confettiTransform }] }
-          ]}
-        >
-          <Text style={[styles.confettiEmoji, { left: width * 0.1 }]}>🎉</Text>
-          <Text style={[styles.confettiEmoji, { left: width * 0.3 }]}>✨</Text>
-          <Text style={[styles.confettiEmoji, { left: width * 0.5 }]}>🏆</Text>
-          <Text style={[styles.confettiEmoji, { left: width * 0.7 }]}>🎊</Text>
-          <Text style={[styles.confettiEmoji, { left: width * 0.9 }]}>💎</Text>
-        </Animated.View>
-
-        {/* Popup principal */}
-        <Animated.View
-          style={[
-            styles.popupContainer,
-            {
-              opacity: fadeAnim,
-              transform: [{ scale: scaleAnim }]
-            }
-          ]}
-        >
+      <View style={styles.overlay}>
+        <View style={styles.popupContainer}>
           <LinearGradient
-            colors={['#8B5CF6', '#A855F7', '#C084FC']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
+            colors={['#8B5CF6', '#A855F7']}
             style={styles.gradientBackground}
           >
             {/* Header */}
             <View style={styles.header}>
-              <Animated.View
-                style={[
-                  styles.emojiContainer,
-                  { transform: [{ translateY: bounceTransform }] }
-                ]}
-              >
-                <Text style={styles.mainEmoji}>🧠</Text>
-                <Text style={styles.sideEmoji}>✨</Text>
-              </Animated.View>
-              
-              <Text style={styles.congratsTitle}>Il est temps de réviser !</Text>
+              <Text style={styles.mainEmoji}>🧠</Text>
+              <Text style={styles.congratsTitle}>Temps de réviser !</Text>
               <Text style={styles.achievementText}>
-                Révision {styleTitle} disponible
+                {questionsCount} questions vous attendent
               </Text>
             </View>
 
-            {/* Content avec ScrollView adaptatif */}
+            {/* Content */}
             <View style={[styles.content, { backgroundColor: colors.surface }]}>
-              <ScrollView
-                style={styles.scrollableContent}
-                contentContainerStyle={{ flexGrow: 1 }}
-                showsVerticalScrollIndicator={false}
-                bounces={false}
-              >
-                <Text style={[styles.motivationText, { color: colors.text }]}>
-                  {getMotivationalMessage()}
-                </Text>
+              <Text style={[styles.motivationText, { color: colors.text }]}>
+                Renforcez votre mémoire en quelques minutes !
+              </Text>
+              
+              {/* Stats simples */}
+              <View style={styles.statsContainer}>
+                <View style={styles.statItem}>
+                  <Text style={[styles.statNumber, { color: colors.primary }]}>
+                    {questionsCount}
+                  </Text>
+                  <Text style={[styles.statLabel, { color: colors.textSecondary }]}>
+                    questions
+                  </Text>
+                </View>
                 
-                {/* Stats */}
-                <View style={styles.statsContainer}>
-                  <View style={styles.statItem}>
-                    <Text style={[styles.statNumber, { color: colors.primary }]}>
-                      {questionsCount}
-                    </Text>
-                    <Text style={[styles.statLabel, { color: colors.textSecondary }]}>
-                      questions
-                    </Text>
-                  </View>
-                  
-                  <View style={styles.statDivider} />
-                  
-                  <View style={styles.statItem}>
-                    <Text style={[styles.statNumber, { color: colors.success }]}>
-                      {getEstimatedDuration()}
-                    </Text>
-                    <Text style={[styles.statLabel, { color: colors.textSecondary }]}>
-                      durée estimée
-                    </Text>
-                  </View>
+                <View style={styles.statDivider} />
+                
+                <View style={styles.statItem}>
+                  <Text style={[styles.statNumber, { color: '#10B981' }]}>
+                    ~3min
+                  </Text>
+                  <Text style={[styles.statLabel, { color: colors.textSecondary }]}>
+                    durée
+                  </Text>
                 </View>
+              </View>
 
-                {/* Benefits */}
-                <View style={styles.benefitsList}>
-                  <View style={styles.benefitItem}>
-                    <Text style={styles.benefitIcon}>🚀</Text>
-                    <Text style={[styles.benefitText, { color: colors.textSecondary }]}>
-                      +75% de rétention mémoire
-                    </Text>
-                  </View>
-                  <View style={styles.benefitItem}>
-                    <Text style={styles.benefitIcon}>🎯</Text>
-                    <Text style={[styles.benefitText, { color: colors.textSecondary }]}>
-                      Révision {styleTitle} personnalisée
-                    </Text>
-                  </View>
-                </View>
-              </ScrollView>
-
-              {/* Buttons - Toujours visibles en bas */}
+              {/* Boutons simples */}
               <View style={styles.buttonsContainer}>
-                {/* Bouton principal */}
                 <TouchableOpacity
                   style={[styles.primaryButton, { backgroundColor: colors.primary }]}
                   onPress={handleReviseNow}
                   activeOpacity={0.8}
                 >
-                  <Text style={styles.primaryButtonText}>🔥 Réviser maintenant</Text>
+                  <Text style={styles.primaryButtonText}>Réviser maintenant</Text>
                 </TouchableOpacity>
 
-                {/* Boutons de délai */}
                 <View style={styles.delayButtons}>
                   <TouchableOpacity
                     style={[styles.delayButton, styles.delayButtonSnooze]}
                     onPress={handleSnoozeLater}
                     activeOpacity={0.7}
                   >
-                    <Text style={styles.delayButtonIcon}>⏰</Text>
                     <Text style={styles.delayButtonText}>Plus tard</Text>
-                    <Text style={styles.delayButtonSubtext}>+10 mots</Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    style={[styles.delayButton, styles.delayButtonPostpone]}
-                    onPress={handlePostpone}
-                    activeOpacity={0.7}
-                  >
-                    <Text style={styles.delayButtonIcon}>😴</Text>
-                    <Text style={styles.delayButtonText}>Reporter</Text>
-                    <Text style={styles.delayButtonSubtext}>+15 mots</Text>
                   </TouchableOpacity>
 
                   <TouchableOpacity
                     style={[styles.delayButton, styles.delayButtonIgnore]}
-                    onPress={handleIgnore}
-                    activeOpacity={0.7}
-                  >
-                    <Text style={styles.delayButtonIcon}>❌</Text>
-                    <Text style={styles.delayButtonText}>Ignorer</Text>
-                    <Text style={styles.delayButtonSubtext}>Cette fois</Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    style={[styles.delayButton, styles.delayButtonClose]}
                     onPress={onDismiss}
                     activeOpacity={0.7}
                   >
-                    <Text style={styles.delayButtonIcon}>✕</Text>
                     <Text style={styles.delayButtonText}>Fermer</Text>
-                    <Text style={styles.delayButtonSubtext}>Sans action</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </View>
           </LinearGradient>
-        </Animated.View>
-      </Animated.View>
+        </View>
+      </View>
     </Modal>
   );
 };

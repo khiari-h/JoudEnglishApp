@@ -1,4 +1,4 @@
-// ErrorCorrectionProgress/index.js - VERSION REFACTORISÉE (utilise ProgressCard)
+// ErrorCorrectionProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
 
 import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
@@ -10,16 +10,9 @@ import {
 } from "../../../../utils/errorCorrection/errorCorrectionStats";
 
 /**
- * 📊 ErrorCorrectionProgress - Version Refactorisée avec ProgressCard générique
- * Pattern identique à VocabularyProgress
- * 
- * @param {Array} categories - Liste des catégories
- * @param {Array} exercises - Liste de tous les exercices
- * @param {Object} completedExercises - Exercices complétés par catégorie
- * @param {string} levelColor - Couleur du niveau
- * @param {boolean} expanded - État d'expansion
- * @param {function} onToggleExpand - Fonction pour toggle expansion
- * @param {function} onCategoryPress - Fonction appelée lors du clic sur catégorie
+ * 📊 ErrorCorrectionProgress - Version Corrigée avec détection automatique
+ * ✅ Détecte automatiquement la structure des données
+ * ✅ Gère différentes structures de données
  */
 const ErrorCorrectionProgress = ({
   categories = [],
@@ -31,13 +24,54 @@ const ErrorCorrectionProgress = ({
   onCategoryPress,
 }) => {
   
-  // Calculs des statistiques (utilise les nouveaux utilitaires)
-  const totalExercisesCount = calculateTotalExercises(categories, exercises);
-  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
-  const totalProgress = calculateTotalProgress(categories, exercises, completedExercises);
+  // ✅ DÉTECTION AUTOMATIQUE : Assure qu'on a les bonnes données
+  const getValidCategories = () => {
+    if (Array.isArray(categories) && categories.length > 0) {
+      return categories;
+    }
+    // Fallback si pas de catégories mais qu'on a des exercices
+    if (Array.isArray(exercises) && exercises.length > 0) {
+      // Créer des catégories virtuelles basées sur les exercices
+      const categoriesFromExercises = exercises.reduce((cats, ex, index) => {
+        const categoryId = ex.categoryId || ex.category || 'general';
+        if (!cats.find(c => c.id === categoryId)) {
+          cats.push({
+            id: categoryId,
+            name: ex.categoryName || `Catégorie ${categoryId}`,
+            exercises: exercises.filter(e => (e.categoryId || e.category || 'general') === categoryId)
+          });
+        }
+        return cats;
+      }, []);
+      return categoriesFromExercises;
+    }
+    return [];
+  };
+
+  const getValidExercises = () => {
+    if (Array.isArray(exercises) && exercises.length > 0) {
+      return exercises;
+    }
+    // Si pas d'exercices directement, extraire des catégories
+    if (Array.isArray(categories) && categories.length > 0) {
+      return categories.reduce((exs, cat) => {
+        if (cat.exercises && Array.isArray(cat.exercises)) {
+          return [...exs, ...cat.exercises];
+        }
+        return exs;
+      }, []);
+    }
+    return [];
+  };
+
+  const validCategories = getValidCategories();
+  const validExercises = getValidExercises();
   
-  // Données des catégories pour l'expansion
-  const categoryProgressData = calculateCategoryProgress(categories, exercises, completedExercises);
+  // ✅ UTILISE la vraie structure détectée
+  const totalExercisesCount = calculateTotalExercises(validCategories, validExercises);
+  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+  const totalProgress = calculateTotalProgress(validCategories, validExercises, completedExercises);
+  const categoryProgressData = calculateCategoryProgress(validCategories, validExercises, completedExercises);
 
   // Transformation pour le format ProgressCard
   const formattedCategoryData = categoryProgressData.map((category, index) => ({
@@ -46,6 +80,16 @@ const ErrorCorrectionProgress = ({
     total: category.totalExercises,
     progress: category.progress,
   }));
+
+  console.log("🔍 ErrorCorrectionProgress Debug:", {
+    originalCategoriesLength: categories.length,
+    originalExercisesLength: exercises.length,
+    validCategoriesLength: validCategories.length,
+    validExercisesLength: validExercises.length,
+    totalExercisesCount,
+    completedExercisesCount,
+    totalProgress
+  });
 
   return (
     <ProgressCard

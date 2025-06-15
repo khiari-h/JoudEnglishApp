@@ -1,5 +1,5 @@
-// GrammarExercise/index.js - VERSION CLEAN & SIMPLE
-import React, { useMemo } from "react";
+// GrammarExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
+import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -17,18 +17,20 @@ import GrammarNavigation from "./GrammarNavigation";
 
 // Hook & Utils
 import useGrammar from "./hooks/useGrammar";
+import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
 import { getGrammarData, getLevelColor } from "../../../utils/grammar/grammarDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 GrammarExercise - VERSION CLEAN & SIMPLE
- * 200+ lignes → 130 lignes (-35% de code)
- * 1 hook au lieu de 3, logique claire, maintenable
+ * 🎯 GrammarExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
  */
 const GrammarExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
+
+  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
@@ -62,6 +64,24 @@ const GrammarExercise = ({ route }) => {
     retryExercise,
     toggleDetailedProgress,
   } = useGrammar(grammarData, level);
+
+  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de règle/exercice
+  useEffect(() => {
+    if (loaded && grammarData.length > 0 && currentRule && currentExercise) {
+      saveActivity({
+        title: "Grammaire",
+        level: level,
+        type: "grammar",
+        metadata: {
+          rule: ruleIndex,
+          exercise: exerciseIndex,
+          totalExercises: totalExercises,
+          ruleName: currentRule.title || `Règle ${ruleIndex + 1}`,
+          totalRules: grammarData.length
+        }
+      });
+    }
+  }, [loaded, grammarData.length, currentRule, currentExercise, ruleIndex, exerciseIndex, totalExercises, level, saveActivity]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();

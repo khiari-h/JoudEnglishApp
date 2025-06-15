@@ -1,4 +1,4 @@
-// WordGamesProgress/index.js - VERSION REFACTORISÉE avec ProgressCard
+// WordGamesProgress/index.js - VERSION AVEC LOGS DEBUG
 
 import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
@@ -6,17 +6,9 @@ import { calculateGameTypeProgress } from "../../../../utils/wordGames/wordGames
 import { getWordGamesData } from "../../../../utils/wordGames/wordGamesDataHelper";
 
 /**
- * 📊 WordGamesProgress - Version Refactorisée avec ProgressCard générique
- * Réutilise le composant ProgressCard comme les autres exercices
- * ⚠️ EXPANSION DÉSACTIVÉE - Word Games suit une logique séquentielle (comme Assessment)
- * 
- * @param {number} currentGame - Jeu actuel (1-based)
- * @param {number} totalGames - Nombre total de jeux
- * @param {string} gameTitle - Titre du jeu actuel
- * @param {number} completedGames - Nombre de jeux complétés
- * @param {string} levelColor - Couleur du niveau
- * @param {array} gameResults - Résultats de tous les jeux
- * @param {string} level - Niveau pour récupérer les données
+ * 📊 WordGamesProgress - Version avec logs debug
+ * ✅ Déjà bien structuré (expandable=false)
+ * ✅ Juste ajout de logs pour diagnostiquer
  */
 const WordGamesProgress = ({
   currentGame = 1,
@@ -33,14 +25,28 @@ const WordGamesProgress = ({
     ? Math.round((completedGames / totalGames) * 100)
     : 0;
 
+  // ✅ DÉTECTION des données pour debug
+  const wordGamesData = getWordGamesData(level);
+
+  console.log("🔍 WordGamesProgress Debug:", {
+    currentGame,
+    totalGames,
+    completedGames,
+    globalProgress,
+    gameResultsLength: gameResults.length,
+    hasWordGamesData: !!wordGamesData,
+    wordGamesDataKeys: wordGamesData && typeof wordGamesData === 'object' ? Object.keys(wordGamesData) : "not object or null",
+    gameTitle
+  });
+
   return (
     <ProgressCard
-      title="Games Progress"
-      subtitle={`${gameTitle} • Game ${currentGame}/${totalGames}`}
+      title="Progression" // ✅ Titre uniforme
+      subtitle={`${gameTitle} • Jeu ${currentGame}/${totalGames}`}
       progress={globalProgress}
       completed={completedGames}
       total={totalGames}
-      unit="games"
+      unit="jeux"
       levelColor={levelColor}
       expandable={false} // ✅ DÉSACTIVÉ pour Word Games - logique séquentielle
       expanded={false}

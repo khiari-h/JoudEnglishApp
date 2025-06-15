@@ -1,6 +1,6 @@
-// SpellingExercise/index.js - VERSION REFACTORISÉE (200+ → 130 lignes)
+// SpellingExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
 
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -15,18 +15,20 @@ import SpellingActions from "./SpellingActions";
 
 // Hook unifié & Utils
 import useSpelling from "./hooks/useSpelling";
+import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
 import { getSpellingData, getLevelColor } from "../../../utils/spelling/spellingDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 SpellingExercise - VERSION REFACTORISÉE 
- * 200+ lignes → 130 lignes (-35% de code)
- * 2 hooks → 1 hook unifié, logique claire, maintenable
+ * 🎯 SpellingExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
  */
 const SpellingExercise = ({ route }) => {
   const { level = "A1", exerciseType = "correction" } = route.params || {};
   const navigation = useNavigation();
   const styles = createStyles();
+
+  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
@@ -61,6 +63,25 @@ const SpellingExercise = ({ route }) => {
     stats,
     display,
   } = useSpelling(spellingData, level, exerciseType);
+
+  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement d'exercice
+  useEffect(() => {
+    if (loaded && hasValidData && currentExercise && exercises.length > 0) {
+      const exerciseTypeName = exerciseType === "correction" ? "Correction" : "Dictée";
+      
+      saveActivity({
+        title: `Orthographe ${exerciseTypeName}`,
+        level: level,
+        type: "spelling",
+        metadata: {
+          exercise: currentExerciseIndex,
+          totalExercises: totalExercises,
+          exerciseType: exerciseType,
+          word: currentExercise.word || `Exercice ${currentExerciseIndex + 1}`
+        }
+      });
+    }
+  }, [loaded, hasValidData, currentExercise, exercises.length, currentExerciseIndex, totalExercises, exerciseType, level, saveActivity]);
 
   // Handlers
   const handleBackPress = () => {

@@ -6,13 +6,12 @@ import { ThemeContext } from "../../../../contexts/ThemeContext";
 import styles from "./style";
 
 /**
- * Header moderne pour le Dashboard - Version simplifiée
- * ✅ Logo + User + Badge niveau uniquement (streak migré vers metrics)
+ * Header moderne pour le Dashboard - Version nettoyée
+ * ✅ Logo + Badge niveau uniquement (textes utilisateur supprimés)
  */
 const ModernHeader = ({ 
   level = "1", 
-  levelColor = "#3B82F6",
-  userName = "Utilisateur"
+  levelColor = "#3B82F6"
 }) => {
   const themeContext = useContext(ThemeContext);
   const colors = themeContext?.colors || {
@@ -33,22 +32,12 @@ const ModernHeader = ({
       <View style={styles.backgroundPattern} />
 
       <View style={styles.content}>
-        {/* Section gauche : Logo + context user */}
+        {/* Section gauche : Logo uniquement */}
         <View style={styles.leftSection}>
           <View style={styles.logoContainer}>
             <Text style={styles.logoEmoji}>🎓</Text>
             <Text style={[styles.logoText, { color: colors.surface }]}>
               JOUD
-            </Text>
-          </View>
-
-          {/* Context utilisateur - SIMPLIFIÉ */}
-          <View style={styles.userContext}>
-            <Text style={[styles.welcomeText, { color: colors.surface }]}>
-              Salut {userName}
-            </Text>
-            <Text style={[styles.levelContext, { color: colors.surface }]}>
-              Niveau {displayLevel}
             </Text>
           </View>
         </View>

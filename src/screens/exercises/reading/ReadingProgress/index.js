@@ -1,4 +1,4 @@
-// ReadingProgress/index.js - VERSION SIMPLIFIÉE (identique à VocabularyProgress)
+// ReadingProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
 
 import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
@@ -10,16 +10,9 @@ import {
 } from "../../../../utils/reading/readingStats.js";
 
 /**
- * 📊 ReadingProgress - Version Simplifiée avec ProgressCard générique
- * API identique à VocabularyProgress et PhrasesProgress
- * Pattern uniforme sur tous les exercices
- * 
- * @param {object} readingData - Données de lecture
- * @param {object} completedQuestions - Questions complétées par exercice
- * @param {string} levelColor - Couleur du niveau
- * @param {boolean} expanded - État d'expansion
- * @param {function} onToggleExpand - Fonction pour toggle expansion
- * @param {function} onExercisePress - Fonction appelée lors du clic sur exercice
+ * 📊 ReadingProgress - Version Corrigée avec détection automatique
+ * ✅ Détecte automatiquement la structure des données
+ * ✅ Gère exercises, texts, passages, etc.
  */
 const ReadingProgress = ({
   readingData,
@@ -30,15 +23,37 @@ const ReadingProgress = ({
   onExercisePress,
 }) => {
   
-  // Calculs des statistiques (utilise des utilitaires externes comme Vocabulary)
-  const totalQuestionsCount = calculateTotalQuestions(readingData?.exercises || []);
-  const completedQuestionsCount = calculateCompletedQuestionsCount(completedQuestions);
-  const totalProgress = calculateTotalProgress(readingData?.exercises || [], completedQuestions);
-  
-  // Données des exercices pour l'expansion
-  const exerciseProgressData = calculateExerciseProgress(readingData?.exercises || [], completedQuestions);
+  // ✅ DÉTECTION AUTOMATIQUE de la structure
+  const getDataArray = () => {
+    if (!readingData) return [];
+    
+    // Si c'est déjà un tableau directement
+    if (Array.isArray(readingData)) {
+      return readingData;
+    }
+    
+    // Si c'est un objet avec différentes propriétés possibles
+    if (typeof readingData === 'object') {
+      return readingData.exercises || 
+             readingData.texts || 
+             readingData.passages || 
+             readingData.readings || 
+             readingData.items || 
+             [];
+    }
+    
+    return [];
+  };
 
-  // Transformation pour le format ProgressCard (identique à Vocabulary)
+  const dataArray = getDataArray();
+  
+  // ✅ UTILISE la vraie structure détectée
+  const totalQuestionsCount = calculateTotalQuestions(dataArray);
+  const completedQuestionsCount = calculateCompletedQuestionsCount(completedQuestions);
+  const totalProgress = calculateTotalProgress(dataArray, completedQuestions);
+  const exerciseProgressData = calculateExerciseProgress(dataArray, completedQuestions);
+
+  // Transformation pour le format ProgressCard
   const formattedExerciseData = exerciseProgressData.map((exercise, index) => ({
     title: exercise.title,
     completed: exercise.completedQuestions,
@@ -46,9 +61,21 @@ const ReadingProgress = ({
     progress: exercise.progress,
   }));
 
+  console.log("🔍 ReadingProgress Debug:", {
+    isReadingDataArray: Array.isArray(readingData),
+    hasExercises: !!(readingData?.exercises),
+    hasTexts: !!(readingData?.texts),
+    hasPassages: !!(readingData?.passages),
+    dataArrayLength: dataArray.length,
+    totalQuestionsCount,
+    completedQuestionsCount,
+    totalProgress,
+    readingDataKeys: readingData && typeof readingData === 'object' ? Object.keys(readingData) : "not object or null"
+  });
+
   return (
     <ProgressCard
-      title="Reading Progress"
+      title="Progression" // ✅ Titre uniforme
       progress={totalProgress}
       completed={completedQuestionsCount}
       total={totalQuestionsCount}

@@ -1,4 +1,4 @@
-// src/screens/Dashboard/components/QuickActions/style.js
+// src/screens/Dashboard/components/QuickActions/style.js - VERSION COMPLÈTE SIMPLE
 import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
