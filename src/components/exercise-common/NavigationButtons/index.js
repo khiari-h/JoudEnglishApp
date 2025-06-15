@@ -1,17 +1,16 @@
-// NavigationButtons/index.js - VERSION OPTIMISÉE (300 → 80 lignes)
+// NavigationButtons/index.js - SIMPLE & EFFICACE 🎯
 
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { View, TouchableOpacity, Text, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import createStyles from "./style";
 
 /**
- * 🎯 NavigationButtons - Version Optimisée et Cohérente
- * - Une seule variante (finies les versions standard/compact)
- * - Pas d'indicateur redondant "1/2" 
- * - Styles cohérents avec HeroCard/RevealButton
- * - Glassmorphism dosé et élégant
+ * 🎯 NavigationButtons - Coupe au gel sur le côté
+ * - Simple mais léché
+ * - Pas de délire glassmorphism
+ * - Juste propre et moderne
  */
 const NavigationButtons = ({
   onNext,
@@ -24,120 +23,112 @@ const NavigationButtons = ({
     next: "Suivant",
     finish: "Terminer",
   },
-  isLast = false, // Nouveau prop simple pour finish
+  isLast = false,
 }) => {
   const styles = createStyles(primaryColor);
   
-  // Animations pour micro-interactions
-  const [prevButtonScale] = useState(new Animated.Value(1));
-  const [nextButtonScale] = useState(new Animated.Value(1));
+  // Animations subtiles - pas de délire
+  const prevScale = useRef(new Animated.Value(1)).current;
+  const nextScale = useRef(new Animated.Value(1)).current;
 
-  // Déterminer le label du bouton suivant
   const nextButtonLabel = isLast ? buttonLabels.finish : buttonLabels.next;
 
-  // Animation de press pour bouton précédent
+  // Animation simple pour précédent
   const handlePrevPress = () => {
     if (disablePrevious) return;
     
     Animated.sequence([
-      Animated.timing(prevButtonScale, { 
-        toValue: 0.95, 
-        duration: 100, 
+      Animated.spring(prevScale, { 
+        toValue: 0.96, 
+        tension: 400,
+        friction: 10,
         useNativeDriver: true 
       }),
-      Animated.timing(prevButtonScale, { 
+      Animated.spring(prevScale, { 
         toValue: 1, 
-        duration: 100, 
+        tension: 300,
+        friction: 8,
         useNativeDriver: true 
       })
     ]).start();
     
-    setTimeout(() => onPrevious(), 50);
+    setTimeout(() => onPrevious(), 60);
   };
 
-  // Animation de press pour bouton suivant
+  // Animation simple pour suivant
   const handleNextPress = () => {
     if (disableNext) return;
     
     Animated.sequence([
-      Animated.timing(nextButtonScale, { 
-        toValue: 0.95, 
-        duration: 100, 
+      Animated.spring(nextScale, { 
+        toValue: 0.96, 
+        tension: 400,
+        friction: 10,
         useNativeDriver: true 
       }),
-      Animated.timing(nextButtonScale, { 
+      Animated.spring(nextScale, { 
         toValue: 1, 
-        duration: 100, 
+        tension: 300,
+        friction: 8,
         useNativeDriver: true 
       })
     ]).start();
     
-    setTimeout(() => onNext(), 50);
+    setTimeout(() => onNext(), 60);
   };
 
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={[`${primaryColor}04`, 'transparent', `${primaryColor}04`]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={styles.gradient}
-      >
-        <View style={styles.buttonsRow}>
-          {/* 🔙 BOUTON PRÉCÉDENT */}
-          {!disablePrevious && (
-            <Animated.View style={{ transform: [{ scale: prevButtonScale }] }}>
-              <TouchableOpacity
-                style={[styles.previousButton, { backgroundColor: `${primaryColor}10` }]}
-                onPress={handlePrevPress}
-                disabled={disablePrevious}
-                activeOpacity={0.8}
-              >
-                <Ionicons name="chevron-back" size={20} color={primaryColor} />
-                <Text style={[styles.previousText, { color: primaryColor }]}>
-                  {buttonLabels.previous}
-                </Text>
-              </TouchableOpacity>
-            </Animated.View>
-          )}
-
-          {/* ⏭️ BOUTON SUIVANT/TERMINER */}
-          <Animated.View style={{ transform: [{ scale: nextButtonScale }] }}>
+      <View style={styles.buttonsRow}>
+        
+        {/* 🔙 BOUTON PRÉCÉDENT - Ghost propre */}
+        {!disablePrevious && (
+          <Animated.View style={{ transform: [{ scale: prevScale }] }}>
             <TouchableOpacity
-              style={styles.nextButtonContainer}
-              onPress={handleNextPress}
-              disabled={disableNext}
-              activeOpacity={0.9}
+              style={styles.previousButton}
+              onPress={handlePrevPress}
+              disabled={disablePrevious}
+              activeOpacity={0.8}
             >
-              <LinearGradient
-                colors={
-                  isLast 
-                    ? ['#10B981', '#059669'] // Vert pour terminer
-                    : [primaryColor, `${primaryColor}E6`] // Couleur normale
-                }
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={styles.nextButton}
-              >
-                <View style={styles.nextButtonInner}>
-                  <Text style={styles.nextText}>
-                    {nextButtonLabel}
-                  </Text>
-                  <Ionicons
-                    name={isLast ? "checkmark-circle" : "chevron-forward"}
-                    size={20}
-                    color="white"
-                    style={styles.nextIcon}
-                  />
-                  {isLast && <Text style={styles.sparkle}>✨</Text>}
-                </View>
-              </LinearGradient>
+              <Ionicons name="chevron-back" size={18} color={primaryColor} />
+              <Text style={[styles.previousText, { color: primaryColor }]}>
+                {buttonLabels.previous}
+              </Text>
             </TouchableOpacity>
           </Animated.View>
-        </View>
+        )}
 
-        {/* 🧹 SUPPRIMÉ : Indicateur de progression "1/2" redondant */}
-      </LinearGradient>
+        {/* ⏭️ BOUTON SUIVANT - Gradient propre */}
+        <Animated.View style={{ transform: [{ scale: nextScale }] }}>
+          <TouchableOpacity
+            style={styles.nextButtonContainer}
+            onPress={handleNextPress}
+            disabled={disableNext}
+            activeOpacity={0.9}
+          >
+            <LinearGradient
+              colors={
+                isLast 
+                  ? ['#10B981', '#059669'] // Vert simple
+                  : [primaryColor, `${primaryColor}E6`] // Gradient léger
+              }
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.nextButton}
+            >
+              <Text style={styles.nextText}>
+                {nextButtonLabel}
+              </Text>
+              <Ionicons
+                name={isLast ? "checkmark" : "chevron-forward"}
+                size={18}
+                color="white"
+                style={styles.nextIcon}
+              />
+            </LinearGradient>
+          </TouchableOpacity>
+        </Animated.View>
+      </View>
     </View>
   );
 };

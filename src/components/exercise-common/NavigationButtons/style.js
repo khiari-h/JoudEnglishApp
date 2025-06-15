@@ -1,41 +1,20 @@
-// NavigationButtons/style.js - VERSION OPTIMISÉE (300 → 80 lignes)
+// NavigationButtons/style.js - PROPRE & EFFICACE 🎯
 
 import { StyleSheet, Platform } from 'react-native';
 
 /**
- * 🎯 Styles optimisés pour NavigationButtons
- * Ancien : 300 lignes avec standard/compact dupliqué
- * Nouveau : 80 lignes avec une seule variante élégante
- * Cohérent avec HeroCard/RevealButton/ContentSection
+ * 🎯 Styles Navigation - Simple mais léché
+ * - Pas de délire glassmorphism 
+ * - Juste propre et moderne
+ * - Cohérent avec les cartes existantes
  */
 const createStyles = (primaryColor = "#5E60CE") =>
   StyleSheet.create({
-    // =================== CONTAINER ===================
+    
+    // =================== CONTAINER SIMPLE ===================
     container: {
       marginHorizontal: 16,
-      marginVertical: 12,
-      borderRadius: 16,
-      overflow: 'hidden',
-      // Ombre modérée et cohérente
-      ...Platform.select({
-        ios: {
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.08,
-          shadowRadius: 12,
-        },
-        android: {
-          elevation: 4,
-        },
-      }),
-    },
-
-    gradient: {
-      paddingVertical: 16,
-      paddingHorizontal: 20,
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      borderWidth: 1,
-      borderColor: 'rgba(255, 255, 255, 0.3)',
+      marginVertical: 16,
     },
 
     // =================== ROW BOUTONS ===================
@@ -43,79 +22,83 @@ const createStyles = (primaryColor = "#5E60CE") =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
+      paddingHorizontal: 4, // Petit padding pour éviter les bords
     },
 
-    // =================== BOUTON PRÉCÉDENT ===================
+    // =================== BOUTON PRÉCÉDENT - GHOST PROPRE ===================
     previousButton: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 16,
-      borderRadius: 14,
-      borderWidth: 1,
-      borderColor: `${primaryColor}20`,
-      // Ombre légère
+      paddingVertical: 14,
+      paddingHorizontal: 20,
+      backgroundColor: 'white',
+      borderRadius: 16,
+      borderWidth: 1.5,
+      borderColor: `${primaryColor}25`,
+      
+      // Ombre subtile mais présente
       ...Platform.select({
         ios: {
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.06,
-          shadowRadius: 6,
+          shadowOpacity: 0.08,
+          shadowRadius: 8,
         },
         android: {
-          elevation: 2,
+          elevation: 3,
         },
       }),
     },
+
     previousText: {
       fontSize: 15,
       fontWeight: '600',
       letterSpacing: 0.2,
-      marginLeft: 6,
+      marginLeft: 8,
     },
 
-    // =================== BOUTON SUIVANT ===================
+    // =================== BOUTON SUIVANT - GRADIENT PROPRE ===================
     nextButtonContainer: {
       borderRadius: 16,
       overflow: 'hidden',
-      // Ombre pour CTA principal (même niveau que RevealButton)
+      
+      // Ombre colorée pour le CTA
       ...Platform.select({
         ios: {
           shadowColor: primaryColor,
           shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.15,
-          shadowRadius: 10,
+          shadowOpacity: 0.2,
+          shadowRadius: 12,
         },
         android: {
-          elevation: 5,
+          elevation: 6,
         },
       }),
     },
+
     nextButton: {
-      borderRadius: 16,
-    },
-    nextButtonInner: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: 14,
-      paddingHorizontal: 24,
-      backgroundColor: 'rgba(255, 255, 255, 0.15)', // Glassmorphism cohérent
-      borderWidth: 1,
-      borderColor: 'rgba(255, 255, 255, 0.3)',
+      paddingVertical: 16,
+      paddingHorizontal: 28,
+      borderRadius: 16,
     },
+
     nextText: {
       fontSize: 16,
       fontWeight: '700',
       color: 'white',
       letterSpacing: 0.3,
     },
+
     nextIcon: {
       marginLeft: 8,
     },
-    sparkle: {
-      fontSize: 14,
-      marginLeft: 6,
+
+    // =================== ÉTATS DISABLED ===================
+    disabled: {
+      opacity: 0.6,
     },
   });
 
