@@ -1,32 +1,14 @@
-// SpellingWordSection/index.js - WRAPPER INTELLIGENT (pattern VocabularyWordSection)
+// SpellingWordSection/index.js - VERSION SIMPLE ET PROPRE
 
 import React, { memo } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import SpellingCorrection from "../SpellingCorrection";
-import SpellingRule from "../SpellingRule";
-import SpellingInput from "../SpellingInput";
-import SpellingHint from "../SpellingHint";
-import SpellingFeedback from "../SpellingFeedback";
-import HomophoneChoices from "../HomophoneChoices";
+import HeroCard from "../../../../components/ui/HeroCard";
 import createStyles from "./style";
 
 /**
- * ⚡ SpellingWordSection - Wrapper intelligent
- * Remplace SpellingCard complexe par un wrapper simple
- * Pattern identique à VocabularyWordSection et ErrorCorrectionWordSection
- * 
- * @param {Object} currentExercise - Exercice actuel avec ses propriétés
- * @param {string} exerciseCounter - Compteur stylé (ex: "5 / 20")
- * @param {string} level - Niveau actuel
- * @param {string} levelColor - Couleur du niveau
- * @param {string} userInput - Réponse utilisateur
- * @param {boolean} showHint - Afficher l'indice
- * @param {boolean} showFeedback - Afficher le feedback
- * @param {boolean} isCorrect - Réponse correcte
- * @param {boolean} isCompleted - Exercice déjà complété
- * @param {function} onChangeText - Callback pour changer le texte
- * @param {function} onToggleHint - Callback pour toggle l'indice
+ * ⚡ SpellingWordSection - Version Simple
+ * Fini les complications, ça marche direct !
  */
 const SpellingWordSection = memo(({
   currentExercise,
@@ -42,12 +24,12 @@ const SpellingWordSection = memo(({
   onToggleHint,
 }) => {
   const styles = createStyles(levelColor);
-  
+
   if (!currentExercise) return null;
 
   return (
     <View style={styles.container}>
-      {/* 🎯 COMPTEUR STYLÉ - Pattern identique aux autres exercices */}
+      {/* COMPTEUR */}
       <View style={styles.counterSection}>
         <LinearGradient
           colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
@@ -55,14 +37,12 @@ const SpellingWordSection = memo(({
           end={{ x: 1, y: 1 }}
           style={styles.counterGradient}
         >
-          {/* Badge complété */}
           {isCompleted && (
             <View style={styles.completedBadge}>
               <Text style={styles.completedText}>✓ Complété</Text>
             </View>
           )}
 
-          {/* Compteur principal */}
           <View style={[styles.counterBadge, { borderColor: `${levelColor}20` }]}>
             <Text style={[styles.counterText, { color: levelColor }]}>
               {exerciseCounter}
@@ -71,70 +51,136 @@ const SpellingWordSection = memo(({
         </LinearGradient>
       </View>
 
-      {/* 🎨 CONTENU EXERCICE - Switch selon le type */}
-      <View style={styles.exerciseContent}>
-        {/* CORRECTION MODE */}
-        {currentExercise.type === 'correction' && (
-          <SpellingCorrection
-            wordToCorrect={currentExercise.wordToCorrect}
-            instruction={currentExercise.instruction}
+      {/* CONTENU */}
+      <View style={styles.content}>
+        
+        {/* INSTRUCTION */}
+        {currentExercise.instruction && (
+          <Text style={styles.instruction}>
+            {currentExercise.instruction}
+          </Text>
+        )}
+
+        {/* MOT À CORRIGER */}
+        {currentExercise.wordToCorrect && (
+          <HeroCard 
+            content={currentExercise.wordToCorrect}
+            fontSize={32}
             levelColor={levelColor}
+            showUnderline={true}
           />
         )}
 
-        {/* SPELLING RULE MODE */}
-        {currentExercise.type === 'spelling_rule' && (
-          <SpellingRule
-            rule={currentExercise.rule}
-            instruction={currentExercise.instruction}
-            levelColor={levelColor}
-          />
-        )}
-
-        {/* HOMOPHONES MODE */}
-        {currentExercise.type === 'homophones' && (
-          <View style={styles.homophoneContainer}>
-            <Text style={styles.instruction}>{currentExercise.instruction}</Text>
+        {/* RÈGLE D'ORTHOGRAPHE */}
+        {currentExercise.rule && (
+          <View style={styles.ruleContainer}>
+            <Text style={styles.ruleTitle}>📝 Règle :</Text>
+            <Text style={styles.ruleText}>{currentExercise.rule}</Text>
           </View>
         )}
 
-        {/* ZONE DE SAISIE - Switch selon le type */}
-        {currentExercise.type === 'homophones' ? (
-          <HomophoneChoices
-            sentence={currentExercise.sentence}
-            choices={currentExercise.choices}
-            selectedChoice={userInput}
-            onSelectChoice={onChangeText}
-            disabled={showFeedback}
-            levelColor={levelColor}
-          />
+        {/* PHRASE AVEC BLANC (pour homophones) */}
+        {currentExercise.sentence && (
+          <View style={styles.sentenceContainer}>
+            <Text style={styles.sentenceText}>{currentExercise.sentence}</Text>
+          </View>
+        )}
+
+        {/* CHOIX MULTIPLES (homophones) */}
+        {currentExercise.choices && currentExercise.choices.length > 0 ? (
+          <View style={styles.choicesContainer}>
+            <Text style={styles.choicesLabel}>Choisissez le mot correct :</Text>
+            {currentExercise.choices.map((choice, index) => {
+              const isSelected = userInput === choice;
+              
+              return (
+                <View
+                  key={index}
+                  style={[
+                    styles.choiceButton,
+                    isSelected && styles.choiceSelected,
+                    { borderColor: isSelected ? levelColor : '#e2e8f0' }
+                  ]}
+                  onPress={() => !showFeedback && onChangeText(choice)}
+                >
+                  <Text style={[
+                    styles.choiceText,
+                    isSelected && { color: levelColor, fontWeight: '700' }
+                  ]}>
+                    {String.fromCharCode(65 + index)}. {choice}
+                  </Text>
+                </View>
+              );
+            })}
+          </View>
         ) : (
-          <SpellingInput
-            value={userInput}
-            onChangeText={onChangeText}
-            disabled={showFeedback}
-            levelColor={levelColor}
-          />
+          /* INPUT TEXTE (pour correction et règles) */
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Votre réponse :</Text>
+            <TextInput
+              style={[
+                styles.textInput,
+                { borderColor: levelColor },
+                showFeedback && styles.disabledInput
+              ]}
+              value={userInput}
+              onChangeText={onChangeText}
+              placeholder="Tapez votre réponse ici..."
+              placeholderTextColor="#94a3b8"
+              autoCapitalize="none"
+              autoCorrect={false}
+              editable={!showFeedback}
+            />
+          </View>
         )}
 
         {/* INDICE */}
         {currentExercise.hint && (
-          <SpellingHint
-            hint={currentExercise.hint}
-            showHint={showHint}
-            onToggle={onToggleHint}
-            levelColor={levelColor}
-          />
+          <View style={styles.hintContainer}>
+            <View
+              style={[styles.hintButton, { borderColor: levelColor }]}
+              onPress={onToggleHint}
+            >
+              <Text style={[styles.hintButtonText, { color: levelColor }]}>
+                💡 {showHint ? 'Masquer' : 'Voir'} l'indice
+              </Text>
+            </View>
+            
+            {showHint && (
+              <View style={[styles.hintContent, { backgroundColor: `${levelColor}10` }]}>
+                <Text style={styles.hintText}>{currentExercise.hint}</Text>
+              </View>
+            )}
+          </View>
         )}
 
         {/* FEEDBACK */}
         {showFeedback && (
-          <SpellingFeedback
-            isCorrect={isCorrect}
-            correctAnswer={currentExercise.correctAnswer}
-            explanation={currentExercise.explanation}
-            levelColor={levelColor}
-          />
+          <View style={[
+            styles.feedbackContainer,
+            { backgroundColor: isCorrect ? '#dcfce7' : '#fef2f2' }
+          ]}>
+            <Text style={[
+              styles.feedbackTitle,
+              { color: isCorrect ? '#16a34a' : '#dc2626' }
+            ]}>
+              {isCorrect ? '✅ Correct !' : '❌ Incorrect'}
+            </Text>
+            
+            {!isCorrect && (
+              <Text style={styles.correctAnswer}>
+                Bonne réponse : <Text style={{ fontWeight: '700' }}>
+                  {currentExercise.correctAnswer}
+                </Text>
+              </Text>
+            )}
+            
+            {currentExercise.explanation && (
+              <Text style={styles.explanation}>
+                {currentExercise.explanation}
+              </Text>
+            )}
+          </View>
         )}
       </View>
     </View>
