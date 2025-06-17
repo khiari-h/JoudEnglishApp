@@ -1,14 +1,14 @@
-// AssessmentProgress/index.js - VERSION AVEC LOGS DEBUG
+// AssessmentProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React from "react";
+import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import { calculateSectionProgressData } from "../../../../utils/assessment/assessmentStats";
 import { getAssessmentData, getAssessmentSections } from "../../../../utils/assessment/assessmentDataHelper";
 
 /**
- * 📊 AssessmentProgress - Version avec logs debug
- * ✅ Déjà bien structuré (expandable=false)
- * ✅ Juste ajout de logs pour diagnostiquer
+ * 📊 AssessmentProgress - Version corrigée avec mémorisation
+ * ✅ Évite les boucles infinies avec useMemo
+ * ✅ Performance optimisée
  */
 const AssessmentProgress = ({
   currentSection = 1,
@@ -25,49 +25,71 @@ const AssessmentProgress = ({
   onSectionPress,
 }) => {
   
-  // Calculer la progression de la section actuelle
-  const sectionProgress = totalQuestions > 0 
-    ? Math.round((answeredQuestionsInSection / totalQuestions) * 100)
-    : 0;
+  // ✅ MÉMORISER le calcul de progression de section
+  const sectionProgress = useMemo(() => {
+    return totalQuestions > 0 
+      ? Math.round((answeredQuestionsInSection / totalQuestions) * 100)
+      : 0;
+  }, [answeredQuestionsInSection, totalQuestions]);
 
-  // Données pour l'expansion (optionnel)
-  const assessmentData = getAssessmentData(level);
-  const sections = getAssessmentSections();
-  const sectionProgressData = calculateSectionProgressData(assessmentData, sections, userAnswers);
+  // ✅ MÉMORISER les données d'assessment
+  const assessmentData = useMemo(() => {
+    return getAssessmentData(level);
+  }, [level]);
 
-  // Transformation pour le format ProgressCard
-  const formattedSectionData = sectionProgressData.map((section, index) => ({
-    title: section.title,
-    completed: section.answeredQuestions,
-    total: section.totalQuestions,
-    progress: section.progress,
-  }));
+  // ✅ MÉMORISER les sections
+  const sections = useMemo(() => {
+    return getAssessmentSections();
+  }, []);
 
-  console.log("🔍 AssessmentProgress Debug:", {
-    currentSection,
-    totalSections,
-    currentQuestion,
-    totalQuestions,
-    answeredQuestionsInSection,
-    sectionProgress,
-    hasAssessmentData: !!assessmentData,
-    sectionsLength: sections.length,
-    assessmentDataKeys: assessmentData && typeof assessmentData === 'object' ? Object.keys(assessmentData) : "not object or null"
-  });
+  // ✅ MÉMORISER le calcul de progression des sections
+  const sectionProgressData = useMemo(() => {
+    return calculateSectionProgressData(assessmentData, sections, userAnswers);
+  }, [assessmentData, sections, userAnswers]);
+
+  // ✅ MÉMORISER la transformation des données
+  const formattedSectionData = useMemo(() => {
+    return sectionProgressData.map((section, index) => ({
+      title: section.title,
+      completed: section.answeredQuestions,
+      total: section.totalQuestions,
+      progress: section.progress,
+    }));
+  }, [sectionProgressData]);
+
+  // ✅ MÉMORISER les données de debug (seulement en dev)
+  const debugData = useMemo(() => {
+    if (process.env.NODE_ENV !== 'development') return null;
+    
+    return {
+      currentSection,
+      totalSections,
+      currentQuestion,
+      totalQuestions,
+      answeredQuestionsInSection,
+      sectionProgress,
+      hasAssessmentData: !!assessmentData,
+      sectionsLength: sections.length,
+      assessmentDataKeys: assessmentData && typeof assessmentData === 'object' ? Object.keys(assessmentData) : "not object or null"
+    };
+  }, [currentSection, totalSections, currentQuestion, totalQuestions, answeredQuestionsInSection, sectionProgress, assessmentData, sections.length]);
+
+  // ✅ CORRECTION FINALE : Pas de log dans le render !
+  // Le log était dans le render, il se déclenchait à chaque fois
 
   return (
     <ProgressCard
-      title="Progression" // ✅ Titre uniforme
+      title="Progression"
       subtitle={`Section ${currentSection}/${totalSections} • Question ${currentQuestion}/${totalQuestions}`}
       progress={sectionProgress}
       completed={answeredQuestionsInSection}
       total={totalQuestions}
       unit="questions"
       levelColor={levelColor}
-      expandable={false} // ✅ DÉSACTIVÉ pour Assessment - pas de navigation libre
+      expandable={false}
       expanded={false}
       onToggleExpand={undefined}
-      categoryData={[]} // ✅ Pas de données d'expansion
+      categoryData={[]}
       onCategoryPress={undefined}
     />
   );

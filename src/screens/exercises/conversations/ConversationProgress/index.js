@@ -1,6 +1,6 @@
-// ConversationProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
+// ConversationProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React from "react";
+import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalScenarios,
@@ -10,9 +10,9 @@ import {
 } from "../../../../utils/conversation/conversationStats";
 
 /**
- * 📊 ConversationProgress - Version Corrigée avec détection automatique
+ * 📊 ConversationProgress - Version corrigée avec mémorisation
+ * ✅ Évite les boucles infinies avec useMemo
  * ✅ Détecte automatiquement la structure des données
- * ✅ Gère exercises, scenarios, conversations, etc.
  */
 const ConversationProgress = ({
   progress = 0,
@@ -27,8 +27,8 @@ const ConversationProgress = ({
   onScenarioPress = () => {},
 }) => {
   
-  // ✅ DÉTECTION AUTOMATIQUE de la structure
-  const getDataArray = () => {
+  // ✅ MÉMORISER la détection de structure
+  const dataArray = useMemo(() => {
     // Si c'est un tableau directement
     if (Array.isArray(conversationData)) {
       return conversationData;
@@ -45,42 +45,58 @@ const ConversationProgress = ({
     }
     
     return [];
-  };
-
-  const dataArray = getDataArray();
+  }, [conversationData]);
   
-  // ✅ UTILISE la vraie structure détectée
-  const totalScenariosCount = calculateTotalScenarios(dataArray);
-  const completedScenariosCount = calculateCompletedScenariosCount(completedScenarios);
-  const totalProgress = calculateTotalProgress(dataArray, completedScenarios);
-  const scenarioProgressData = calculateScenarioProgress(dataArray, completedScenarios, conversationHistory);
+  // ✅ MÉMORISER tous les calculs
+  const statsData = useMemo(() => {
+    const totalScenariosCount = calculateTotalScenarios(dataArray);
+    const completedScenariosCount = calculateCompletedScenariosCount(completedScenarios);
+    const totalProgress = calculateTotalProgress(dataArray, completedScenarios);
+    const scenarioProgressData = calculateScenarioProgress(dataArray, completedScenarios, conversationHistory);
 
-  // Transformation pour le format ProgressCard
-  const formattedScenarioData = scenarioProgressData.map((scenario, index) => ({
-    title: scenario.title,
-    completed: scenario.completedSteps,
-    total: scenario.totalSteps,
-    progress: scenario.progress,
-  }));
+    return {
+      totalScenariosCount,
+      completedScenariosCount,
+      totalProgress,
+      scenarioProgressData
+    };
+  }, [dataArray, completedScenarios, conversationHistory]);
 
-  console.log("🔍 ConversationProgress Debug:", {
-    isArray: Array.isArray(conversationData),
-    hasScenarios: !!(conversationData?.scenarios),
-    hasExercises: !!(conversationData?.exercises),
-    hasConversations: !!(conversationData?.conversations),
-    dataArrayLength: dataArray.length,
-    totalScenariosCount,
-    completedScenariosCount,
-    totalProgress,
-    conversationDataKeys: conversationData && typeof conversationData === 'object' ? Object.keys(conversationData) : "not object"
-  });
+  // ✅ MÉMORISER la transformation des données
+  const formattedScenarioData = useMemo(() => {
+    return statsData.scenarioProgressData.map((scenario, index) => ({
+      title: scenario.title,
+      completed: scenario.completedSteps,
+      total: scenario.totalSteps,
+      progress: scenario.progress,
+    }));
+  }, [statsData.scenarioProgressData]);
+
+  // ✅ MÉMORISER les données de debug (seulement en dev)
+  const debugData = useMemo(() => {
+    if (process.env.NODE_ENV !== 'development') return null;
+    
+    return {
+      isArray: Array.isArray(conversationData),
+      hasScenarios: !!(conversationData?.scenarios),
+      hasExercises: !!(conversationData?.exercises),
+      hasConversations: !!(conversationData?.conversations),
+      dataArrayLength: dataArray.length,
+      totalScenariosCount: statsData.totalScenariosCount,
+      completedScenariosCount: statsData.completedScenariosCount,
+      totalProgress: statsData.totalProgress,
+      conversationDataKeys: conversationData && typeof conversationData === 'object' ? Object.keys(conversationData) : "not object"
+    };
+  }, [conversationData, dataArray.length, statsData]);
+
+  // ✅ CORRECTION FINALE : Pas de log dans le render !
 
   return (
     <ProgressCard
-      title="Progression" // ✅ Titre uniforme
-      progress={totalProgress}
-      completed={completedScenariosCount}
-      total={totalScenariosCount}
+      title="Progression"
+      progress={statsData.totalProgress}
+      completed={statsData.completedScenariosCount}
+      total={statsData.totalScenariosCount}
       unit="scénarios"
       levelColor={levelColor}
       expandable={formattedScenarioData.length > 0}

@@ -1,51 +1,114 @@
-// src/screens/Dashboard/components/SimpleMetrics/style.js
+// src/screens/Dashboard/components/SimpleMetrics/style.js - STYLES COMPLETS
+
 import { StyleSheet, Platform } from 'react-native';
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   // =================== CONTAINER ===================
   container: {
-    paddingHorizontal: 20,
-    marginBottom: 24,
-  },
-  
-  sectionTitle: {
-    fontSize: 20, // +2px pour plus d'impact (était 18px)
-    fontWeight: '700',
-    marginBottom: 16,
-    letterSpacing: -0.3,
+    marginHorizontal: 16,
+    marginVertical: 12,
   },
 
-  // =================== GRID LAYOUT ===================
-  metricsGrid: {
+  // =================== LOADING STATE ===================
+  loadingContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-    justifyContent: 'space-between',
-  },
-
-  // =================== METRIC CARD ===================
-  metricCard: {
-    flex: 1,
-    minWidth: 100, // Largeur minimum
-    maxWidth: '48%', // 2 cartes par ligne max
-    borderRadius: 12,
-    padding: 16,
-    position: 'relative',
-    // Ombres subtiles
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+    backgroundColor: 'white',
+    borderRadius: 16,
     ...Platform.select({
       ios: {
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.06,
-        shadowRadius: 4,
+        shadowRadius: 8,
       },
       android: {
         elevation: 2,
       },
     }),
-    borderWidth: 0.5,
-    borderColor: "rgba(0, 0, 0, 0.04)",
+  },
+
+  loadingText: {
+    fontSize: 14,
+    fontWeight: '500',
+    marginLeft: 12,
+  },
+
+  // =================== EMPTY STATE ===================
+  emptyState: {
     alignItems: 'center',
+    paddingVertical: 32,
+    paddingHorizontal: 16,
+    backgroundColor: 'white',
+    borderRadius: 16,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
+  },
+
+  emptyIcon: {
+    fontSize: 32,
+    marginBottom: 12,
+  },
+
+  emptyTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 6,
+    textAlign: 'center',
+  },
+
+  emptySubtitle: {
+    fontSize: 14,
+    textAlign: 'center',
+    lineHeight: 20,
+  },
+
+  // =================== HEADER ===================
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 16,
+    paddingHorizontal: 4,
+  },
+
+  // =================== METRICS GRID ===================
+  metricsGrid: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+
+  // =================== METRIC CARD ===================
+  metricCard: {
+    flex: 1,
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 16,
+    alignItems: 'center',
+    position: 'relative',
+    minHeight: 100,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
 
   // =================== TREND INDICATOR ===================
@@ -54,59 +117,36 @@ export default StyleSheet.create({
     top: 8,
     right: 8,
     paddingHorizontal: 6,
-    paddingVertical: 2,
+    paddingVertical: 3,
     borderRadius: 8,
-    minWidth: 32,
-    alignItems: 'center',
+    minWidth: 20,
   },
-  
+
   trendText: {
     fontSize: 10,
     fontWeight: '600',
-    letterSpacing: 0.2,
+    textAlign: 'center',
   },
 
   // =================== METRIC CONTENT ===================
   metricIcon: {
     fontSize: 24,
     marginBottom: 8,
-    marginTop: 4, // Espace pour trend indicator
   },
-  
+
   metricValue: {
     fontSize: 20,
     fontWeight: '700',
     marginBottom: 4,
-    letterSpacing: -0.3,
     textAlign: 'center',
-  },
-  
-  metricLabel: {
-    fontSize: 11,
-    fontWeight: '500',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    textAlign: 'center',
-    lineHeight: 14,
   },
 
-  // =================== RESPONSIVE ===================
-  '@media (max-width: 350)': {
-    metricsGrid: {
-      gap: 8,
-    },
-    
-    metricCard: {
-      padding: 12,
-      minWidth: 90,
-    },
-    
-    metricValue: {
-      fontSize: 18,
-    },
-    
-    metricIcon: {
-      fontSize: 20,
-    },
+  metricLabel: {
+    fontSize: 12,
+    fontWeight: '500',
+    textAlign: 'center',
+    lineHeight: 16,
   },
 });
+
+export default styles;

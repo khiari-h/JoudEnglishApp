@@ -1,16 +1,11 @@
-// hooks/useReading.js - HOOK UNIFIÉ SIMPLE
+// hooks/useReading.js - BOUCLES INFINIES CORRIGÉES
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Animated, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-/**
- * 🎯 Hook unifié pour Reading Exercise
- * Remplace useReadingExerciseState + useReadingProgress + useReadingDisplay
- * Simple, efficace, maintenable
- */
 const useReading = (exercises = [], level = "A1") => {
   
-  // =================== CORE STATE ===================
   const [selectedExerciseIndex, setSelectedExerciseIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -26,6 +21,7 @@ const useReading = (exercises = [], level = "A1") => {
   const textsScrollViewRef = useRef(null);
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const slideAnim = useRef(new Animated.Value(0)).current;
+  const isInitialized = useRef(false);
 
   // =================== COMPUTED VALUES ===================
   const currentExercise = exercises[selectedExerciseIndex] || { title: "", text: "", questions: [] };
@@ -33,51 +29,44 @@ const useReading = (exercises = [], level = "A1") => {
   const totalExercises = exercises.length;
   const totalQuestions = currentExercise.questions?.length || 0;
   
-  // =================== PERSISTENCE ===================
+  // =================== STORAGE KEY STABLE ===================
   const STORAGE_KEY = `reading_${level}`;
 
-  // Load data from storage
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const saved = await AsyncStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          const { completedQuestions: saved_completed, lastPosition } = JSON.parse(saved);
-          setCompletedQuestions(saved_completed || {});
-          if (lastPosition) {
-            setSelectedExerciseIndex(lastPosition.exerciseIndex || 0);
-            setCurrentQuestionIndex(lastPosition.questionIndex || 0);
-          }
-        }
-      } catch (error) {
-        console.log('Error loading reading data:', error);
-      } finally {
-        setLoaded(true);
-      }
-    };
-    loadData();
-  }, [level]);
-
-  // Save data to storage
-  const saveData = useCallback(async () => {
+  // ✅ FONCTION STABLE - Load data from storage
+  const loadData = useCallback(async () => {
     try {
-      const dataToSave = {
-        completedQuestions,
-        lastPosition: {
-          exerciseIndex: selectedExerciseIndex,
-          questionIndex: currentQuestionIndex
+      const saved = await AsyncStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const { completedQuestions: saved_completed, lastPosition } = JSON.parse(saved);
+        setCompletedQuestions(saved_completed || {});
+        if (lastPosition) {
+          setSelectedExerciseIndex(lastPosition.exerciseIndex || 0);
+          setCurrentQuestionIndex(lastPosition.questionIndex || 0);
         }
-      };
+      }
+    } catch (error) {
+      console.log('Error loading reading data:', error);
+    } finally {
+      setLoaded(true);
+    }
+  }, [STORAGE_KEY]);
+
+  // ✅ EFFET SIMPLIFIÉ - une seule fois
+  useEffect(() => {
+    if (!isInitialized.current) {
+      loadData();
+      isInitialized.current = true;
+    }
+  }, [loadData]);
+
+  // ✅ SAVE FONCTION STABLE
+  const saveToStorage = useCallback(async (dataToSave) => {
+    try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
       console.log('Error saving reading data:', error);
     }
-  }, [completedQuestions, selectedExerciseIndex, currentQuestionIndex, STORAGE_KEY]);
-
-  // Auto-save when data changes
-  useEffect(() => {
-    if (loaded) saveData();
-  }, [saveData, loaded]);
+  }, [STORAGE_KEY]);
 
   // =================== NAVIGATION ACTIONS ===================
   const changeExercise = useCallback((exerciseIndex) => {
@@ -113,15 +102,27 @@ const useReading = (exercises = [], level = "A1") => {
       setCompletedQuestions(prev => {
         const exerciseCompleted = prev[selectedExerciseIndex] || [];
         if (!exerciseCompleted.includes(currentQuestionIndex)) {
-          return {
+          const newCompleted = {
             ...prev,
             [selectedExerciseIndex]: [...exerciseCompleted, currentQuestionIndex]
           };
+          
+          // ✅ Sauvegarde directe
+          const dataToSave = {
+            completedQuestions: newCompleted,
+            lastPosition: {
+              exerciseIndex: selectedExerciseIndex,
+              questionIndex: currentQuestionIndex
+            }
+          };
+          saveToStorage(dataToSave);
+          
+          return newCompleted;
         }
         return prev;
       });
     }
-  }, [selectedAnswer, currentQuestion, selectedExerciseIndex, currentQuestionIndex]);
+  }, [selectedAnswer, currentQuestion, selectedExerciseIndex, currentQuestionIndex, saveToStorage]);
 
   const nextQuestion = useCallback(() => {
     const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
@@ -190,7 +191,6 @@ const useReading = (exercises = [], level = "A1") => {
   const isQuestionCompleted = completedQuestions[selectedExerciseIndex]?.includes(currentQuestionIndex) || false;
 
   return {
-    // State
     selectedExerciseIndex,
     currentQuestionIndex,
     selectedAnswer,
@@ -200,14 +200,10 @@ const useReading = (exercises = [], level = "A1") => {
     completedQuestions,
     loaded,
     showDetailedProgress,
-    
-    // Data
     currentExercise,
     currentQuestion,
     totalExercises,
     totalQuestions,
-    
-    // Actions
     changeExercise,
     changeQuestion,
     selectAnswer,
@@ -217,13 +213,9 @@ const useReading = (exercises = [], level = "A1") => {
     retryQuestion,
     toggleTextExpansion,
     toggleDetailedProgress,
-    
-    // Computed
     isCorrect,
     isQuestionCompleted,
     progress: getProgress(),
-    
-    // Refs
     scrollViewRef,
     textsScrollViewRef,
     fadeAnim,

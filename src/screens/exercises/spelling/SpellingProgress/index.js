@@ -1,95 +1,84 @@
-// SpellingProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
+// SpellingProgress/index.js - VERSION ULTRA-SIMPLE
 
-import React from "react";
-import ProgressCard from "../../../../components/ui/ProgressCard";
-import {
-  calculateTotalExercises,
-  calculateCompletedExercisesCount,
-  calculateTotalProgress,
-  calculateStatsByType,
-} from "../../../../utils/spelling/spellingStats";
+import React, { useMemo } from "react";
+import { View, Text } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import createStyles from "./style";
 
 /**
- * 📊 SpellingProgress - Version Corrigée avec détection automatique
- * ✅ Détecte automatiquement la structure des données
- * ✅ Gère différentes structures d'exercices
+ * 📊 SpellingProgress - VERSION ULTRA-SIMPLE
+ * ✅ Juste une progress bar basique
+ * ❌ Enlevé : expandable, détails par type, complexité
+ * 
+ * AFFICHE :
+ * - Progress bar visuelle
+ * - "X / Y exercices"
+ * - Pourcentage
  */
 const SpellingProgress = ({
   exercises = [],
   completedExercises = [],
-  levelColor,
-  expanded = false,
-  onToggleExpand,
-  onTypePress,
+  levelColor = "#3b82f6",
 }) => {
-  
-  // ✅ DÉTECTION AUTOMATIQUE : Assure qu'on a les bonnes données
-  const getValidExercises = () => {
-    // Si c'est déjà un tableau d'exercices
-    if (Array.isArray(exercises) && exercises.length > 0) {
-      return exercises;
-    }
-    
-    // Si c'est un objet avec des exercices
-    if (exercises && typeof exercises === 'object') {
-      return exercises.exercises || 
-             exercises.items || 
-             exercises.spelling || 
-             [];
-    }
-    
-    return [];
-  };
+  const styles = createStyles(levelColor);
 
-  const validExercises = getValidExercises();
+  // =================== CALCULS SIMPLES ===================
   
-  // ✅ UTILISE la vraie structure détectée
-  const totalExercisesCount = calculateTotalExercises(validExercises);
-  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
-  const totalProgress = calculateTotalProgress(validExercises, completedExercises);
-  const typeProgressData = calculateStatsByType(validExercises, completedExercises);
+  const progressData = useMemo(() => {
+    const totalExercises = exercises.length;
+    const completedCount = completedExercises.length;
+    const progress = totalExercises > 0 ? Math.round((completedCount / totalExercises) * 100) : 0;
 
-  // Transformation pour le format ProgressCard
-  const formattedTypeData = Object.keys(typeProgressData).map((type) => {
-    const typeData = typeProgressData[type];
-    const typeNames = {
-      correction: 'Correction',
-      spelling_rule: 'Règles',
-      homophones: 'Homophones'
-    };
-    
     return {
-      title: typeNames[type] || type,
-      completed: typeData.completed,
-      total: typeData.total,
-      progress: typeData.progress,
+      totalExercises,
+      completedCount,
+      progress
     };
-  }).filter(item => item.total > 0); // Afficher seulement les types avec des exercices
+  }, [exercises, completedExercises]);
 
-  console.log("🔍 SpellingProgress Debug:", {
-    originalExercisesType: Array.isArray(exercises) ? 'array' : typeof exercises,
-    originalExercisesLength: Array.isArray(exercises) ? exercises.length : 0,
-    validExercisesLength: validExercises.length,
-    totalExercisesCount,
-    completedExercisesCount,
-    totalProgress,
-    exercisesKeys: exercises && typeof exercises === 'object' && !Array.isArray(exercises) ? Object.keys(exercises) : "not object"
-  });
+  const { totalExercises, completedCount, progress } = progressData;
 
+  // =================== RENDER ===================
+  
   return (
-    <ProgressCard
-      title="Progression"
-      progress={totalProgress}
-      completed={completedExercisesCount}
-      total={totalExercisesCount}
-      unit="exercices"
-      levelColor={levelColor}
-      expandable={formattedTypeData.length > 0}
-      expanded={expanded}
-      onToggleExpand={onToggleExpand}
-      categoryData={formattedTypeData}
-      onCategoryPress={onTypePress}
-    />
+    <View style={styles.container}>
+      <LinearGradient
+        colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.gradient}
+      >
+        
+        {/* Header avec titre et stats */}
+        <View style={styles.header}>
+          <Text style={styles.title}>Progression</Text>
+          <Text style={[styles.stats, { color: levelColor }]}>
+            {completedCount} / {totalExercises} exercices
+          </Text>
+        </View>
+
+        {/* Progress bar */}
+        <View style={styles.progressBarContainer}>
+          <View style={[styles.progressBarTrack, { backgroundColor: `${levelColor}20` }]}>
+            <View 
+              style={[
+                styles.progressBarFill,
+                { 
+                  backgroundColor: levelColor,
+                  width: `${progress}%`
+                }
+              ]}
+            />
+          </View>
+          
+          {/* Pourcentage */}
+          <Text style={[styles.percentage, { color: levelColor }]}>
+            {progress}%
+          </Text>
+        </View>
+
+      </LinearGradient>
+    </View>
   );
 };
 

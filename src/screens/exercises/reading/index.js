@@ -1,12 +1,10 @@
-// ReadingExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
+// ReadingExercise/index.js - SANS BOUCLES INFINIES
+
 import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-// Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
-
-// Components
 import ReadingHeader from "./ReadingHeader";
 import ReadingTextSelector from "./ReadingTextSelector";
 import ReadingProgress from "./ReadingProgress";
@@ -17,21 +15,15 @@ import ReadingNavigation from "./ReadingNavigation";
 import ExerciseFeedback from "../../../components/exercise-common/ExerciseFeedback";
 import InstructionBox from "../../../components/exercise-common/InstructionBox";
 
-// Hook & Utils
 import useReading from "./hooks/useReading";
-import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
+import useLastActivity from "../../../hooks/useLastActivity";
 import { getReadingData, getLevelColor } from "../../../utils/reading/readingDataHelper";
 import createStyles from "./style";
 
-/**
- * 🎯 ReadingExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
- */
 const ReadingExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
-
-  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();
 
   // Data
@@ -70,14 +62,18 @@ const ReadingExercise = ({ route }) => {
     slideAnim,
   } = useReading(exercises, level);
 
-  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement d'exercice/question
+  // ✅ SAUVEGARDE SIMPLIFIÉE - seulement quand exercice/question change
   useEffect(() => {
-    if (loaded && exercises.length > 0 && currentExercise && currentQuestion) {
+    if (!loaded || exercises.length === 0 || !currentExercise || !currentQuestion) return;
+
+    try {
       saveActivity({
         title: "Lecture",
         level: level,
         type: "reading",
         metadata: {
+          word: selectedExerciseIndex, // ✅ Pour cohérence avec autres exercices
+          totalWords: exercises.length, // ✅ Pour cohérence
           exercise: selectedExerciseIndex,
           question: currentQuestionIndex,
           totalQuestions: totalQuestions,
@@ -85,8 +81,10 @@ const ReadingExercise = ({ route }) => {
           totalExercises: exercises.length
         }
       });
+    } catch (error) {
+      console.error('Error saving activity:', error);
     }
-  }, [loaded, exercises.length, currentExercise, currentQuestion, selectedExerciseIndex, currentQuestionIndex, totalQuestions, level, saveActivity]);
+  }, [selectedExerciseIndex, currentQuestionIndex]); // ✅ SEULEMENT ces 2 dépendances !
 
   // Handlers
   const handleBackPress = () => navigation.goBack();
@@ -107,7 +105,7 @@ const ReadingExercise = ({ route }) => {
     toggleDetailedProgress();
   };
 
-  // Loading state
+  // =================== LOADING STATE ===================
   if (!loaded || !exercises.length) {
     return (
       <Container
@@ -123,6 +121,7 @@ const ReadingExercise = ({ route }) => {
     );
   }
 
+  // =================== MAIN RENDER ===================
   return (
     <Container
       safeArea
@@ -137,13 +136,11 @@ const ReadingExercise = ({ route }) => {
         contentContainerStyle: styles.scrollContent,
       }}
     >
-      {/* Header */}
       <ReadingHeader
         level={level}
         onBackPress={handleBackPress}
       />
 
-      {/* Progress */}
       <ReadingProgress
         readingData={readingData}
         completedQuestions={completedQuestions}
@@ -153,7 +150,6 @@ const ReadingExercise = ({ route }) => {
         onExercisePress={handleExerciseProgressPress}
       />
 
-      {/* Exercise Selector */}
       <ReadingTextSelector
         exercises={exercises}
         selectedIndex={selectedExerciseIndex}
@@ -162,7 +158,6 @@ const ReadingExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Instructions */}
       <InstructionBox
         title="📖 Reading Exercise"
         instructions="Read the text carefully and answer the questions."
@@ -171,7 +166,6 @@ const ReadingExercise = ({ route }) => {
         initiallyExpanded={false}
       />
 
-      {/* Reading Text */}
       <ReadingText
         exercise={currentExercise}
         textExpanded={textExpanded}
@@ -179,7 +173,6 @@ const ReadingExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Question */}
       {currentQuestion && (
         <ReadingQuestionCard
           question={currentQuestion}
@@ -193,7 +186,6 @@ const ReadingExercise = ({ route }) => {
         />
       )}
 
-      {/* Feedback */}
       {showFeedback && currentQuestion && (
         <ExerciseFeedback
           type={isCorrect ? "success" : "error"}
@@ -209,7 +201,6 @@ const ReadingExercise = ({ route }) => {
         />
       )}
 
-      {/* Question Indicators */}
       <QuestionIndicators
         totalQuestions={totalQuestions}
         currentQuestionIndex={currentQuestionIndex}
@@ -218,7 +209,6 @@ const ReadingExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Navigation */}
       <ReadingNavigation
         showFeedback={showFeedback}
         isCorrect={isCorrect}

@@ -1,6 +1,6 @@
-// GrammarProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
+// GrammarProgress/index.js - VERSION TOTALEMENT RECODÉE AVEC useMemo
 
-import React from "react";
+import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalExercises,
@@ -10,9 +10,10 @@ import {
 } from "../../../../utils/grammar/grammarStats";
 
 /**
- * 📊 GrammarProgress - Version Corrigée avec détection automatique
+ * 📊 GrammarProgress - Version totalement recodée avec mémorisation complète
+ * ✅ Évite les boucles infinies avec useMemo partout
  * ✅ Détecte automatiquement la structure des données
- * ✅ Gère rules, exercises, categories, etc.
+ * ✅ Logs conditionnels en développement uniquement
  */
 const GrammarProgress = ({
   grammarData,
@@ -23,8 +24,8 @@ const GrammarProgress = ({
   onRulePress,
 }) => {
   
-  // ✅ DÉTECTION AUTOMATIQUE de la structure
-  const getDataArray = () => {
+  // ✅ MÉMORISER la détection automatique de la structure
+  const dataArray = useMemo(() => {
     if (!grammarData) return [];
     
     // Si c'est déjà un tableau (liste de rules)
@@ -43,42 +44,60 @@ const GrammarProgress = ({
     }
     
     return [];
-  };
-
-  const dataArray = getDataArray();
+  }, [grammarData]);
   
-  // ✅ UTILISE la vraie structure détectée
-  const totalExercisesCount = calculateTotalExercises(dataArray);
-  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
-  const totalProgress = calculateTotalProgress(dataArray, completedExercises);
-  const ruleProgressData = calculateRuleProgress(dataArray, completedExercises);
+  // ✅ MÉMORISER tous les calculs statistiques
+  const statsData = useMemo(() => {
+    const totalExercisesCount = calculateTotalExercises(dataArray);
+    const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+    const totalProgress = calculateTotalProgress(dataArray, completedExercises);
+    const ruleProgressData = calculateRuleProgress(dataArray, completedExercises);
 
-  // Transformation pour le format ProgressCard
-  const formattedRuleData = ruleProgressData.map((rule, index) => ({
-    title: rule.title,
-    completed: rule.completedExercises,
-    total: rule.totalExercises,
-    progress: rule.progress,
-  }));
+    return {
+      totalExercisesCount,
+      completedExercisesCount,
+      totalProgress,
+      ruleProgressData
+    };
+  }, [dataArray, completedExercises]);
 
-  console.log("🔍 GrammarProgress Debug:", {
-    isGrammarDataArray: Array.isArray(grammarData),
-    hasRules: !!(grammarData?.rules),
-    hasCategories: !!(grammarData?.categories),
-    hasExercises: !!(grammarData?.exercises),
-    dataArrayLength: dataArray.length,
-    totalExercisesCount,
-    completedExercisesCount,
-    totalProgress,
-    grammarDataKeys: grammarData && typeof grammarData === 'object' ? Object.keys(grammarData) : "not object or null"
-  });
+  // ✅ MÉMORISER la transformation pour ProgressCard
+  const formattedRuleData = useMemo(() => {
+    return statsData.ruleProgressData.map((rule, index) => ({
+      title: rule.title,
+      completed: rule.completedExercises,
+      total: rule.totalExercises,
+      progress: rule.progress,
+    }));
+  }, [statsData.ruleProgressData]);
+
+  // ✅ MÉMORISER les données de debug (seulement en développement)
+  const debugData = useMemo(() => {
+    if (process.env.NODE_ENV !== 'development') return null;
+    
+    return {
+      isGrammarDataArray: Array.isArray(grammarData),
+      hasRules: !!(grammarData?.rules),
+      hasCategories: !!(grammarData?.categories),
+      hasExercises: !!(grammarData?.exercises),
+      dataArrayLength: dataArray.length,
+      totalExercisesCount: statsData.totalExercisesCount,
+      completedExercisesCount: statsData.completedExercisesCount,
+      totalProgress: statsData.totalProgress,
+      grammarDataKeys: grammarData && typeof grammarData === 'object' ? Object.keys(grammarData) : "not object or null"
+    };
+  }, [grammarData, dataArray.length, statsData]);
+
+  // ✅ CORRECTION FINALE : Pas de log dans le render !
+  // Le log était dans le render, il se déclenchait à chaque fois
+  // On peut l'ajouter dans un useEffect si vraiment nécessaire
 
   return (
     <ProgressCard
-      title="Progression" // ✅ Titre uniforme
-      progress={totalProgress}
-      completed={completedExercisesCount}
-      total={totalExercisesCount}
+      title="Progression"
+      progress={statsData.totalProgress}
+      completed={statsData.completedExercisesCount}
+      total={statsData.totalExercisesCount}
       unit="exercices"
       levelColor={levelColor}
       expandable={true}

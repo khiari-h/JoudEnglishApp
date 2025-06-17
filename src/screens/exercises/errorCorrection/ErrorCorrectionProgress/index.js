@@ -1,6 +1,6 @@
-// ErrorCorrectionProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
+// ErrorCorrectionProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React from "react";
+import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalExercises,
@@ -10,9 +10,9 @@ import {
 } from "../../../../utils/errorCorrection/errorCorrectionStats";
 
 /**
- * 📊 ErrorCorrectionProgress - Version Corrigée avec détection automatique
+ * 📊 ErrorCorrectionProgress - Version corrigée avec mémorisation
+ * ✅ Évite les boucles infinies avec useMemo
  * ✅ Détecte automatiquement la structure des données
- * ✅ Gère différentes structures de données
  */
 const ErrorCorrectionProgress = ({
   categories = [],
@@ -24,8 +24,8 @@ const ErrorCorrectionProgress = ({
   onCategoryPress,
 }) => {
   
-  // ✅ DÉTECTION AUTOMATIQUE : Assure qu'on a les bonnes données
-  const getValidCategories = () => {
+  // ✅ MÉMORISER la validation des catégories
+  const validCategories = useMemo(() => {
     if (Array.isArray(categories) && categories.length > 0) {
       return categories;
     }
@@ -46,9 +46,10 @@ const ErrorCorrectionProgress = ({
       return categoriesFromExercises;
     }
     return [];
-  };
+  }, [categories, exercises]);
 
-  const getValidExercises = () => {
+  // ✅ MÉMORISER la validation des exercices
+  const validExercises = useMemo(() => {
     if (Array.isArray(exercises) && exercises.length > 0) {
       return exercises;
     }
@@ -62,41 +63,56 @@ const ErrorCorrectionProgress = ({
       }, []);
     }
     return [];
-  };
-
-  const validCategories = getValidCategories();
-  const validExercises = getValidExercises();
+  }, [categories, exercises]);
   
-  // ✅ UTILISE la vraie structure détectée
-  const totalExercisesCount = calculateTotalExercises(validCategories, validExercises);
-  const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
-  const totalProgress = calculateTotalProgress(validCategories, validExercises, completedExercises);
-  const categoryProgressData = calculateCategoryProgress(validCategories, validExercises, completedExercises);
+  // ✅ MÉMORISER tous les calculs
+  const statsData = useMemo(() => {
+    const totalExercisesCount = calculateTotalExercises(validCategories, validExercises);
+    const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+    const totalProgress = calculateTotalProgress(validCategories, validExercises, completedExercises);
+    const categoryProgressData = calculateCategoryProgress(validCategories, validExercises, completedExercises);
 
-  // Transformation pour le format ProgressCard
-  const formattedCategoryData = categoryProgressData.map((category, index) => ({
-    title: category.title,
-    completed: category.completedExercises,
-    total: category.totalExercises,
-    progress: category.progress,
-  }));
+    return {
+      totalExercisesCount,
+      completedExercisesCount,
+      totalProgress,
+      categoryProgressData
+    };
+  }, [validCategories, validExercises, completedExercises]);
 
-  console.log("🔍 ErrorCorrectionProgress Debug:", {
-    originalCategoriesLength: categories.length,
-    originalExercisesLength: exercises.length,
-    validCategoriesLength: validCategories.length,
-    validExercisesLength: validExercises.length,
-    totalExercisesCount,
-    completedExercisesCount,
-    totalProgress
-  });
+  // ✅ MÉMORISER la transformation des données
+  const formattedCategoryData = useMemo(() => {
+    return statsData.categoryProgressData.map((category, index) => ({
+      title: category.title,
+      completed: category.completedExercises,
+      total: category.totalExercises,
+      progress: category.progress,
+    }));
+  }, [statsData.categoryProgressData]);
+
+  // ✅ MÉMORISER les données de debug (seulement en dev)
+  const debugData = useMemo(() => {
+    if (process.env.NODE_ENV !== 'development') return null;
+    
+    return {
+      originalCategoriesLength: categories.length,
+      originalExercisesLength: exercises.length,
+      validCategoriesLength: validCategories.length,
+      validExercisesLength: validExercises.length,
+      totalExercisesCount: statsData.totalExercisesCount,
+      completedExercisesCount: statsData.completedExercisesCount,
+      totalProgress: statsData.totalProgress
+    };
+  }, [categories.length, exercises.length, validCategories.length, validExercises.length, statsData]);
+
+  // ✅ CORRECTION FINALE : Pas de log dans le render !
 
   return (
     <ProgressCard
       title="Progression"
-      progress={totalProgress}
-      completed={completedExercisesCount}
-      total={totalExercisesCount}
+      progress={statsData.totalProgress}
+      completed={statsData.completedExercisesCount}
+      total={statsData.totalExercisesCount}
       unit="exercices"
       levelColor={levelColor}
       expandable={true}

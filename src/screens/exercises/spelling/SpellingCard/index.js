@@ -1,27 +1,16 @@
-// src/screens/exercises/spelling/SpellingCard/index.js
+// SpellingCard/index.js - VERSION PROPRE
+
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
+
+import HeroCard from "../../../../components/ui/HeroCard";
+import RevealButton from "../../../../components/ui/RevealButton";
 import SpellingInput from "../SpellingInput";
-import SpellingHint from "../SpellingHint";
-import SpellingFeedback from "../SpellingFeedback";
-import SpellingCorrection from "../SpellingCorrection";
-import SpellingRule from "../SpellingRule";
 import HomophoneChoices from "../HomophoneChoices";
+import SpellingFeedback from "../SpellingFeedback";
+
 import styles from "./style";
 
-/**
- * Carte principale pour afficher un exercice d'orthographe
- *
- * @param {Object} exercise - L'exercice actuel
- * @param {string} userInput - La réponse saisie par l'utilisateur
- * @param {boolean} showHint - Indique si l'indice doit être affiché
- * @param {boolean} showFeedback - Indique si le feedback doit être affiché
- * @param {boolean} isCorrect - Indique si la réponse est correcte
- * @param {boolean} isCompleted - Indique si l'exercice a déjà été complété
- * @param {Function} onChangeText - Fonction appelée lors de la modification du texte
- * @param {Function} onToggleHint - Fonction pour afficher/masquer l'indice
- * @param {string} levelColor - Couleur associée au niveau
- */
 const SpellingCard = ({
   exercise,
   userInput,
@@ -33,43 +22,63 @@ const SpellingCard = ({
   onToggleHint,
   levelColor,
 }) => {
-  if (!exercise) return null;
+  
+  if (!exercise) {
+    return (
+      <View style={styles.card}>
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorText}>Exercice non trouvé</Text>
+        </View>
+      </View>
+    );
+  }
 
-  // Afficher le bon composant selon le type d'exercice
   const renderExerciseContent = () => {
     switch (exercise.type) {
       case "correction":
         return (
-          <SpellingCorrection
-            wordToCorrect={exercise.wordToCorrect}
-            instruction={exercise.instruction}
+          <HeroCard 
+            content={exercise.wordToCorrect}
+            fontSize={32}
+            levelColor={levelColor}
+            showUnderline={true}
           />
         );
+        
       case "spelling_rule":
         return (
-          <SpellingRule
-            rule={exercise.rule}
-            instruction={exercise.instruction}
+          <HeroCard 
+            content={exercise.rule}
+            fontSize={18}
+            levelColor={levelColor}
+            showUnderline={false}
           />
         );
+        
       case "homophones":
         return (
-          <View style={styles.homophoneContainer}>
+          <View style={styles.homophoneHeader}>
             <Text style={styles.instruction}>{exercise.instruction}</Text>
           </View>
         );
+        
       default:
-        return null;
+        return (
+          <View style={styles.fallbackContainer}>
+            <Text style={styles.instruction}>
+              {exercise.instruction || "Instructions non disponibles"}
+            </Text>
+          </View>
+        );
     }
   };
 
-  // Afficher la zone de saisie appropriée selon le type
   const renderInputArea = () => {
     if (exercise.type === "homophones") {
       return (
         <HomophoneChoices
           sentence={exercise.sentence}
-          choices={exercise.choices}
+          choices={exercise.choices || []}
           selectedChoice={userInput}
           onSelectChoice={onChangeText}
           disabled={showFeedback}
@@ -89,43 +98,48 @@ const SpellingCard = ({
   };
 
   return (
-    <ScrollView style={styles.scrollView}>
-      <View
-        style={[
-          styles.card,
-          isCompleted && { borderLeftWidth: 4, borderLeftColor: "#10b981" },
-        ]}
-      >
+    <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <View style={[
+        styles.card,
+        isCompleted && styles.completedCard
+      ]}>
+        
         {isCompleted && (
           <View style={styles.completedBadge}>
-            <Text style={styles.completedText}>Completed</Text>
+            <Text style={styles.completedText}>✓ Complété</Text>
           </View>
         )}
 
-        {/* Contenu de l'exercice */}
-        {renderExerciseContent()}
+        <View style={styles.exerciseContent}>
+          {renderExerciseContent()}
+        </View>
 
-        {/* Zone de saisie (TextInput ou HomophoneChoices) */}
-        {renderInputArea()}
+        <View style={styles.inputSection}>
+          {renderInputArea()}
+        </View>
 
-        {/* Indice */}
-        {exercise.hasHint && (
-          <SpellingHint
-            hint={exercise.hint}
-            showHint={showHint}
-            onToggle={onToggleHint}
-            levelColor={levelColor}
-          />
+        {exercise.hint && (
+          <View style={styles.hintSection}>
+            <RevealButton
+              isRevealed={showHint}
+              revealedContent={exercise.hint}
+              revealText="Afficher l'indice"
+              hideText="Masquer l'indice"
+              onToggle={onToggleHint}
+              levelColor={levelColor}
+            />
+          </View>
         )}
 
-        {/* Feedback */}
         {showFeedback && (
-          <SpellingFeedback
-            isCorrect={isCorrect}
-            correctAnswer={exercise.correctAnswer}
-            explanation={exercise.explanation}
-            levelColor={levelColor}
-          />
+          <View style={styles.feedbackSection}>
+            <SpellingFeedback
+              isCorrect={isCorrect}
+              correctAnswer={exercise.correctAnswer}
+              explanation={exercise.explanation}
+              levelColor={levelColor}
+            />
+          </View>
         )}
       </View>
     </ScrollView>

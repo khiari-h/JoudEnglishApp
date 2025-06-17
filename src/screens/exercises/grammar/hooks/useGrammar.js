@@ -1,12 +1,13 @@
-// hooks/useGrammar.js - HOOK UNIFIÉ SIMPLE
-import { useState, useEffect, useCallback, useRef } from 'react';
+// hooks/useGrammar.js - VERSION FINALE SANS BOUCLE INFINIE
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
- * 🎯 Hook unifié pour Grammar Exercise
- * Remplace useGrammarExerciseState + useGrammarProgress + useGrammarDisplay
- * Simple, efficace, maintenable
+ * 🎯 Hook unifié pour Grammar Exercise - VERSION FINALE CORRIGÉE
+ * ✅ Suppression complète des boucles infinies
+ * ✅ Sauvegarde simplifiée et optimisée
+ * ✅ Performance maximale
  */
 const useGrammar = (grammarData = [], level = "A1") => {
   
@@ -23,18 +24,24 @@ const useGrammar = (grammarData = [], level = "A1") => {
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
   // =================== REFS ===================
-  const isInitialized = useRef(false);
-
-  // =================== COMPUTED VALUES ===================
-  const currentRule = grammarData[ruleIndex] || { title: "", explanation: "", examples: [], exercises: [] };
-  const currentExercise = currentRule.exercises?.[exerciseIndex] || null;
-  const totalRules = grammarData.length;
-  const totalExercises = currentRule.exercises?.length || 0;
-  
-  // =================== PERSISTENCE ===================
+  const saveDataTimeoutRef = useRef(null);
   const STORAGE_KEY = `grammar_${level}`;
 
-  // Load data from storage
+  // =================== COMPUTED VALUES MEMOIZED ===================
+  const currentRule = useMemo(() => {
+    return grammarData[ruleIndex] || { title: "", explanation: "", examples: [], exercises: [] };
+  }, [grammarData, ruleIndex]);
+
+  const currentExercise = useMemo(() => {
+    return currentRule.exercises?.[exerciseIndex] || null;
+  }, [currentRule.exercises, exerciseIndex]);
+
+  const totalRules = useMemo(() => grammarData.length, [grammarData.length]);
+  const totalExercises = useMemo(() => currentRule.exercises?.length || 0, [currentRule.exercises?.length]);
+  
+  // =================== PERSISTENCE SIMPLIFIÉE ===================
+  
+  // Load data from storage (une seule fois)
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -54,11 +61,28 @@ const useGrammar = (grammarData = [], level = "A1") => {
       }
     };
     loadData();
-  }, [level]);
+  }, [STORAGE_KEY]); // ✅ CORRIGÉ : Seulement STORAGE_KEY
 
-  // Save data to storage
-  const saveData = useCallback(async () => {
+  // ✅ CORRECTION MAJEURE : Sauvegarde simplifiée sans boucle
+  const saveDataToStorage = useCallback(async (dataToSave) => {
     try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+    } catch (error) {
+      console.log('Error saving grammar data:', error);
+    }
+  }, [STORAGE_KEY]);
+
+  // ✅ CORRECTION : useEffect séparé pour sauvegarde avec debounce approprié
+  useEffect(() => {
+    if (!loaded) return; // Ne pas sauvegarder avant le chargement
+    
+    // Clear previous timeout
+    if (saveDataTimeoutRef.current) {
+      clearTimeout(saveDataTimeoutRef.current);
+    }
+    
+    // Set new timeout for debounced save
+    saveDataTimeoutRef.current = setTimeout(() => {
       const dataToSave = {
         completedExercises,
         lastPosition: {
@@ -66,16 +90,16 @@ const useGrammar = (grammarData = [], level = "A1") => {
           exerciseIndex
         }
       };
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
-    } catch (error) {
-      console.log('Error saving grammar data:', error);
-    }
-  }, [completedExercises, ruleIndex, exerciseIndex, STORAGE_KEY]);
+      saveDataToStorage(dataToSave);
+    }, 500); // Augmenté à 500ms pour plus de stabilité
 
-  // Auto-save when data changes
-  useEffect(() => {
-    if (loaded) saveData();
-  }, [saveData, loaded]);
+    // Cleanup timeout
+    return () => {
+      if (saveDataTimeoutRef.current) {
+        clearTimeout(saveDataTimeoutRef.current);
+      }
+    };
+  }, [completedExercises, ruleIndex, exerciseIndex, loaded, saveDataToStorage]);
 
   // =================== ANSWER CHECKING ===================
   const checkAnswer = useCallback((userAnswer, correctAnswer) => {
@@ -222,8 +246,8 @@ const useGrammar = (grammarData = [], level = "A1") => {
     setShowDetailedProgress(prev => !prev);
   }, []);
 
-  // =================== COMPUTED PROGRESS ===================
-  const getProgress = useCallback(() => {
+  // =================== COMPUTED PROGRESS MEMOIZED ===================
+  const progress = useMemo(() => {
     const completedInCurrentRule = completedExercises[ruleIndex]?.length || 0;
     const progressPercent = totalExercises > 0 ? (completedInCurrentRule / totalExercises) * 100 : 0;
     
@@ -241,8 +265,8 @@ const useGrammar = (grammarData = [], level = "A1") => {
     };
   }, [completedExercises, ruleIndex, totalExercises, grammarData]);
 
-  // =================== VALIDATION ===================
-  const canCheckAnswer = useCallback(() => {
+  // =================== VALIDATION MEMOIZED ===================
+  const canCheckAnswer = useMemo(() => {
     if (!currentExercise) return false;
     
     if (currentExercise.type === "fillInTheBlank" && currentExercise.options) {
@@ -254,7 +278,9 @@ const useGrammar = (grammarData = [], level = "A1") => {
 
   const isFirstExercise = exerciseIndex === 0;
   const isLastExercise = exerciseIndex === totalExercises - 1;
-  const isExerciseCompleted = completedExercises[ruleIndex]?.includes(exerciseIndex) || false;
+  const isExerciseCompleted = useMemo(() => {
+    return completedExercises[ruleIndex]?.includes(exerciseIndex) || false;
+  }, [completedExercises, ruleIndex, exerciseIndex]);
 
   return {
     // State
@@ -271,7 +297,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
     loaded,
     showDetailedProgress,
     
-    // Data
+    // Data (memoized)
     currentRule,
     currentExercise,
     totalRules,
@@ -286,12 +312,12 @@ const useGrammar = (grammarData = [], level = "A1") => {
     resetExerciseState,
     toggleDetailedProgress,
     
-    // Computed
-    canCheckAnswer: canCheckAnswer(),
+    // Computed (memoized)
+    canCheckAnswer,
     isFirstExercise,
     isLastExercise,
     isExerciseCompleted,
-    progress: getProgress(),
+    progress,
   };
 };
 

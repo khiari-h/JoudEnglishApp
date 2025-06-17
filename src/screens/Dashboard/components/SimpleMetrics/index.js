@@ -1,17 +1,20 @@
-// src/screens/Dashboard/components/SimpleMetrics/index.js
+// src/screens/Dashboard/components/SimpleMetrics/index.js - COMPOSANT AUTONOME
+
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
+import useActivityMetrics from "../../../../hooks/useActivityMetrics";
+import useDailyWords from "../../../../hooks/useDailyWords";
 import styles from "./style";
 
 /**
- * Métriques simples et utiles
- * ✅ 2-3 métriques max, données réelles uniquement
+ * 📊 SimpleMetrics - COMPOSANT AUTONOME
+ * ✅ Gère TOUTE la logique des métriques
+ * ✅ Appelle ses propres hooks
+ * ✅ Gère son loading
+ * ✅ Réutilisable partout
  */
-const SimpleMetrics = ({
-  metrics = [],
-  accentColor = "#3B82F6"
-}) => {
+const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
   const themeContext = useContext(ThemeContext);
   const colors = themeContext?.colors || {
     surface: "#FFFFFF",
@@ -19,14 +22,78 @@ const SimpleMetrics = ({
     textSecondary: "#6B7280",
   };
 
-  // Si pas de métriques OU toutes à 0, ne rien afficher
-  if (!metrics || metrics.length === 0) {
-    return null;
+  // =================== HOOKS AUTONOMES ===================
+  const { 
+    currentStreak, 
+    streakTrend, 
+    formattedTime 
+  } = useActivityMetrics();
+
+  const { 
+    wordsToday, 
+    trend: wordsTrend,
+    isLoading: wordsLoading 
+  } = useDailyWords();
+
+  // =================== LOADING STATE ===================
+  if (wordsLoading) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="small" color={accentColor} />
+          <Text style={[styles.loadingText, { color: colors.textSecondary }]}>
+            Chargement des métriques...
+          </Text>
+        </View>
+      </View>
+    );
   }
 
-  // Limiter à 3 métriques max pour éviter surcharge
-  const displayMetrics = metrics.slice(0, 3);
+  // =================== DONNÉES DES MÉTRIQUES ===================
+  const metrics = [
+    {
+      id: 'streak',
+      icon: '🔥',
+      value: (currentStreak || 0).toString(),
+      label: 'Jours de suite',
+      trend: streakTrend,
+    },
+    {
+      id: 'words',
+      icon: '📚',
+      value: (wordsToday || 0).toString(),
+      label: 'Mots aujourd\'hui',
+      trend: wordsTrend,
+    },
+    {
+      id: 'time',
+      icon: '⏱️',
+      value: formattedTime || '0min',
+      label: 'Temps total',
+      trend: null,
+    }
+  ];
 
+  // Masquer si toutes les métriques sont à 0
+  const hasActivity = currentStreak > 0 || wordsToday > 0 || (formattedTime && formattedTime !== '0min');
+  
+  if (!hasActivity) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.emptyState}>
+          <Text style={styles.emptyIcon}>🎯</Text>
+          <Text style={[styles.emptyTitle, { color: colors.text }]}>
+            Commencez votre première session !
+          </Text>
+          <Text style={[styles.emptySubtitle, { color: colors.textSecondary }]}>
+            Vos statistiques apparaîtront ici
+          </Text>
+        </View>
+      </View>
+    );
+  }
+
+  // =================== RENDER PRINCIPAL ===================
   return (
     <View style={styles.container}>
       <Text style={[styles.sectionTitle, { color: colors.text }]}>
@@ -34,7 +101,7 @@ const SimpleMetrics = ({
       </Text>
       
       <View style={styles.metricsGrid}>
-        {displayMetrics.map((metric) => (
+        {metrics.map((metric) => (
           <MetricCard
             key={metric.id}
             metric={metric}
@@ -48,13 +115,13 @@ const SimpleMetrics = ({
 };
 
 /**
- * Carte métrique individuelle
+ * 📈 Carte métrique individuelle
  */
 const MetricCard = ({ metric, colors, accentColor }) => {
   const getTrendStyle = (trend) => {
     if (!trend) return null;
     
-    const isPositive = trend.includes('+');
+    const isPositive = trend.includes('+') || trend.includes('🏆') || trend.includes('💪') || trend.includes('🔥');
     const isNegative = trend.includes('-');
     
     if (isPositive) {

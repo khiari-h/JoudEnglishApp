@@ -1,16 +1,11 @@
-// hooks/useVocabulary.js - HOOK UNIFIÉ SIMPLE
+// hooks/useVocabulary.js - AVEC TIMESTAMPS POUR COMPTAGE QUOTIDIEN
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-/**
- * 🎯 Hook unifié pour Vocabulary Exercise
- * Remplace 6 hooks (useVocabularyProgress + useVocabularyExerciseState + useVocabularyNavigation + useVocabularyStats + useVocabularyDisplay + useVocabularyLoader)
- * Simple, efficace, maintenable - pattern identique à useReading et useGrammar
- */
 const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => {
   
-  // =================== CORE STATE ===================
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
@@ -18,17 +13,14 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
   const [loaded, setLoaded] = useState(false);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
-  // =================== REFS ===================
   const isInitialized = useRef(false);
 
-  // =================== COMPUTED VALUES ===================
   const exercises = vocabularyData?.exercises || [];
   const currentCategory = exercises[categoryIndex] || { title: "", words: [] };
   const currentWord = currentCategory.words?.[wordIndex] || { word: "", translation: "", definition: "", example: "" };
   const totalCategories = exercises.length;
   const totalWordsInCategory = currentCategory.words?.length || 0;
   
-  // =================== PERSISTENCE ===================
   const progressKey = `${level}_${mode}`;
   const STORAGE_KEY = `vocabulary_${progressKey}`;
 
@@ -46,7 +38,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
           }
         }
       } catch (error) {
-        console.log('Error loading vocabulary data:', error);
+        // Silently fail
       } finally {
         setLoaded(true);
       }
@@ -66,7 +58,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      console.log('Error saving vocabulary data:', error);
+      // Silently fail
     }
   }, [completedWords, categoryIndex, wordIndex, STORAGE_KEY]);
 
@@ -89,7 +81,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     }
   }, [loaded, vocabularyData, exercises, completedWords]);
 
-  // =================== NAVIGATION ACTIONS ===================
+  // Navigation actions
   const changeCategory = useCallback((newCategoryIndex) => {
     setCategoryIndex(newCategoryIndex);
     setWordIndex(0);
@@ -118,14 +110,29 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     setShowDetailedProgress(prev => !prev);
   }, []);
 
-  // =================== COMPLETION LOGIC ===================
+  // =================== COMPLETION AVEC TIMESTAMP ===================
+  
   const markWordAsCompleted = useCallback((catIndex, wIndex) => {
     setCompletedWords(prev => {
       const categoryCompleted = prev[catIndex] || [];
-      if (!categoryCompleted.includes(wIndex)) {
+      
+      // Vérifier si le mot n'est pas déjà complété
+      const isAlreadyCompleted = categoryCompleted.find(word => 
+        (typeof word === 'number' && word === wIndex) || 
+        (typeof word === 'object' && word.wordIndex === wIndex)
+      );
+      
+      if (!isAlreadyCompleted) {
+        // ✅ NOUVEAU FORMAT avec timestamp
+        const newWordEntry = {
+          wordIndex: wIndex,
+          timestamp: Date.now(),
+          date: new Date().toDateString() // Pour debug
+        };
+        
         return {
           ...prev,
-          [catIndex]: [...categoryCompleted, wIndex]
+          [catIndex]: [...categoryCompleted, newWordEntry]
         };
       }
       return prev;
@@ -148,19 +155,15 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     return -1;
   }, [exercises, categoryIndex, completedWords]);
 
-  // =================== MAIN NAVIGATION ===================
+  // Main navigation
   const handleNext = useCallback(() => {
-    // Mark current word as completed
     markWordAsCompleted(categoryIndex, wordIndex);
 
-    // Check if there are more words in current category
     if (wordIndex < totalWordsInCategory - 1) {
       goToNextWord();
     } else {
-      // End of category - find next uncompleted category
       const nextCategoryIndex = findNextUncompletedCategory();
       if (nextCategoryIndex === -1) {
-        // All done!
         const completionMessage = mode === "fast"
           ? `Félicitations ! Vous avez terminé le Fast Vocabulary ${level} !`
           : `Félicitations ! Vous avez terminé le vocabulaire ${level} !`;
@@ -175,13 +178,11 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
   }, [categoryIndex, wordIndex, totalWordsInCategory, markWordAsCompleted, goToNextWord, findNextUncompletedCategory, changeCategory, mode, level]);
 
   const handlePrevious = useCallback(() => {
-    // Case 1: Not first word in category
     if (wordIndex > 0) {
       goToPreviousWord();
       return;
     }
     
-    // Case 2: First word in category - go to previous category
     if (categoryIndex > 0) {
       const previousCategoryIndex = categoryIndex - 1;
       const previousCategory = exercises[previousCategoryIndex];
@@ -193,10 +194,17 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     }
   }, [wordIndex, categoryIndex, exercises, goToPreviousWord]);
 
-  // =================== COMPUTED STATS ===================
+  // =================== STATS AVEC COMPATIBILITÉ ===================
+  
   const getStats = useCallback(() => {
     const totalWords = exercises.reduce((sum, cat) => sum + (cat.words?.length || 0), 0);
-    const completedWordsCount = Object.values(completedWords).reduce((sum, completed) => sum + (completed?.length || 0), 0);
+    
+    // ✅ COMPATIBILITÉ : Gérer ancien format (number) et nouveau format (object)
+    const completedWordsCount = Object.values(completedWords).reduce((sum, completed) => {
+      const categoryCount = (completed || []).length;
+      return sum + categoryCount;
+    }, 0);
+    
     const totalProgress = totalWords > 0 ? Math.round((completedWordsCount / totalWords) * 100) : 0;
 
     return {
@@ -208,7 +216,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     };
   }, [exercises, completedWords, categoryIndex, totalWordsInCategory]);
 
-  // =================== COMPUTED DISPLAY ===================
+  // Display data
   const getDisplayData = useCallback(() => {
     const wordCounter = `${wordIndex + 1} / ${totalWordsInCategory}`;
     const categories = exercises.map(cat => cat.title);
@@ -221,7 +229,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     };
   }, [wordIndex, totalWordsInCategory, exercises, currentWord, currentCategory]);
 
-  // =================== VALIDATION ===================
+  // Validation
   const canGoToPrevious = useCallback(() => {
     if (wordIndex > 0) return true;
     if (categoryIndex > 0) {
@@ -236,28 +244,21 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
   }, [wordIndex, totalWordsInCategory]);
 
   return {
-    // State
     categoryIndex,
     wordIndex,
     showTranslation,
     completedWords,
     loaded,
     showDetailedProgress,
-    
-    // Data
     currentWord,
     currentCategory,
     totalCategories,
     totalWordsInCategory,
-    
-    // Actions
     changeCategory,
     toggleTranslation,
     toggleDetailedProgress,
     handleNext,
     handlePrevious,
-    
-    // Computed
     canGoToPrevious: canGoToPrevious(),
     isLastWordInExercise: isLastWordInExercise(),
     stats: getStats(),

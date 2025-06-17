@@ -1,16 +1,11 @@
-// hooks/useSpelling.js - HOOK UNIFIÉ SIMPLE
+// hooks/useSpelling.js - BOUCLES INFINIES CORRIGÉES
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-/**
- * 🎯 Hook unifié pour Spelling Exercise
- * Remplace useSpellingExerciseState + useSpellingProgress
- * Simple, efficace, maintenable - pattern identique à useVocabulary et useErrorCorrection
- */
-const useSpelling = (spellingData = null, level = "A1", exerciseType = "correction") => {
-  
-  // =================== CORE STATE ===================
+const useSpelling = (spellingData = null, level = "1", exerciseType = "correction") => {
+
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [userInput, setUserInput] = useState('');
   const [showHint, setShowHint] = useState(false);
@@ -19,90 +14,64 @@ const useSpelling = (spellingData = null, level = "A1", exerciseType = "correcti
   const [completedExercises, setCompletedExercises] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
-  // =================== REFS ===================
   const isInitialized = useRef(false);
 
-  // =================== COMPUTED VALUES ===================
   const exercises = spellingData?.exercises || [];
-  const currentExercise = exercises[currentExerciseIndex] || { 
-    type: 'correction', 
-    instruction: '', 
-    correctAnswer: '', 
-    wordToCorrect: '',
-    rule: '',
-    sentence: '',
-    choices: [],
-    hint: '',
-    explanation: ''
-  };
   const totalExercises = exercises.length;
   
-  // =================== PERSISTENCE ===================
-  const progressKey = `${level}_${exerciseType}`;
-  const STORAGE_KEY = `spelling_${progressKey}`;
+  const hasValidData = !!(
+    spellingData && 
+    spellingData.exercises && 
+    Array.isArray(spellingData.exercises) && 
+    spellingData.exercises.length > 0
+  );
 
-  // Load data from storage
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const saved = await AsyncStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          const { 
-            completedExercises: savedCompleted, 
-            userAnswers: savedAnswers,
-            lastPosition 
-          } = JSON.parse(saved);
-          
-          setCompletedExercises(savedCompleted || []);
-          setUserAnswers(savedAnswers || []);
-          
-          if (lastPosition && lastPosition.exerciseIndex !== undefined) {
-            setCurrentExerciseIndex(lastPosition.exerciseIndex || 0);
-          }
-        }
-      } catch (error) {
-        console.log('Error loading spelling data:', error);
-      } finally {
-        setLoaded(true);
-      }
-    };
-    loadData();
-  }, [progressKey]);
+  const currentExercise = exercises[currentExerciseIndex] || null;
+  
+  // ✅ STORAGE_KEY STABLE
+  const STORAGE_KEY = `spelling_${level}_${exerciseType}`;
 
-  // Save data to storage
-  const saveData = useCallback(async () => {
+  // ✅ FONCTION STABLE avec useCallback et dépendances fixes
+  const loadStoredData = useCallback(async () => {
     try {
-      const dataToSave = {
-        completedExercises,
-        userAnswers,
-        lastPosition: {
-          exerciseIndex: currentExerciseIndex,
-          exerciseType,
-          timestamp: Date.now()
+      const saved = await AsyncStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const data = JSON.parse(saved);
+        
+        setCompletedExercises(data.completedExercises || []);
+        setUserAnswers(data.userAnswers || []);
+        
+        if (data.lastPosition?.exerciseIndex !== undefined && 
+            data.lastPosition.exerciseIndex >= 0 && 
+            data.lastPosition.exerciseIndex < totalExercises) {
+          setCurrentExerciseIndex(data.lastPosition.exerciseIndex);
         }
-      };
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+      }
     } catch (error) {
-      console.log('Error saving spelling data:', error);
+      // Silently fail
+    } finally {
+      setLoaded(true);
     }
-  }, [completedExercises, userAnswers, currentExerciseIndex, exerciseType, STORAGE_KEY]);
+  }, [STORAGE_KEY]); // ✅ SEULEMENT STORAGE_KEY
 
-  // Auto-save when data changes
+  // ✅ EFFET SIMPLIFIÉ - une seule fois
   useEffect(() => {
-    if (loaded) saveData();
-  }, [saveData, loaded]);
-
-  // Initialize progress for new exercises
-  useEffect(() => {
-    if (loaded && spellingData && !isInitialized.current) {
-      // Initialization can happen here if needed
+    if (!isInitialized.current) {
+      loadStoredData();
       isInitialized.current = true;
     }
-  }, [loaded, spellingData]);
+  }, [loadStoredData]);
 
-  // =================== EXERCISE ACTIONS ===================
+  // ✅ SAVE FONCTION STABLE
+  const saveToStorage = useCallback(async (dataToSave) => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+    } catch (error) {
+      // Silently fail
+    }
+  }, [STORAGE_KEY]);
+
   const resetExerciseState = useCallback(() => {
     setUserInput('');
     setShowHint(false);
@@ -114,180 +83,121 @@ const useSpelling = (spellingData = null, level = "A1", exerciseType = "correcti
     setShowHint(prev => !prev);
   }, []);
 
-  const toggleDetailedProgress = useCallback(() => {
-    setShowDetailedProgress(prev => !prev);
-  }, []);
-
-  // =================== ANSWER CHECKING ===================
   const checkAnswer = useCallback(() => {
-    if (!currentExercise) return false;
-
-    let correct = false;
-
-    switch (currentExercise.type) {
-      case 'homophones':
-        // Pour les homophones, vérifier le choix sélectionné
-        if (!userInput) return false;
-        correct = userInput === currentExercise.correctAnswer;
-        break;
-
-      case 'correction':
-      case 'spelling_rule':
-      default:
-        // Pour les autres types, vérifier le texte saisi
-        if (!userInput.trim()) return false;
-        const userAnswer = userInput.trim().toLowerCase();
-        const correctAnswer = currentExercise.correctAnswer.toLowerCase();
-        correct = userAnswer === correctAnswer;
-        break;
+    if (!currentExercise?.correctAnswer) {
+      Alert.alert('Erreur', 'Réponse correcte non définie');
+      return false;
     }
 
-    setIsCorrect(correct);
-    setShowFeedback(true);
+    try {
+      let correct = false;
 
-    return correct;
+      switch (currentExercise.type) {
+        case 'homophones':
+          correct = userInput === currentExercise.correctAnswer;
+          break;
+        case 'correction':
+        case 'spelling_rule':
+        default:
+          const userAnswer = String(userInput).trim().toLowerCase();
+          const correctAnswer = String(currentExercise.correctAnswer).trim().toLowerCase();
+          correct = userAnswer === correctAnswer;
+          break;
+      }
+
+      setIsCorrect(correct);
+      setShowFeedback(true);
+      return correct;
+
+    } catch (error) {
+      setIsCorrect(false);
+      setShowFeedback(true);
+      return false;
+    }
   }, [userInput, currentExercise]);
 
-  // =================== COMPLETION LOGIC ===================
-  const markExerciseAsCompleted = useCallback((exerciseIndex, isCorrect, userAnswer, additionalData = {}) => {
+  const handleNext = useCallback(() => {
     // Marquer comme complété
-    setCompletedExercises(prev => {
-      if (!prev.includes(exerciseIndex)) {
-        return [...prev, exerciseIndex];
-      }
-      return prev;
-    });
+    const newCompleted = completedExercises.includes(currentExerciseIndex) 
+      ? completedExercises 
+      : [...completedExercises, currentExerciseIndex];
 
-    // Sauvegarder la réponse
     const newAnswer = {
-      exerciseIndex,
-      isCorrect,
-      userAnswer,
-      correctAnswer: currentExercise.correctAnswer,
-      exerciseType: currentExercise.type,
-      timestamp: Date.now(),
-      ...additionalData
+      exerciseIndex: currentExerciseIndex,
+      isCorrect: isCorrect,
+      userAnswer: userInput,
+      correctAnswer: currentExercise?.correctAnswer || '',
+      exerciseType: currentExercise?.type || 'correction',
+      timestamp: Date.now()
     };
 
-    setUserAnswers(prev => [...prev, newAnswer]);
-  }, [currentExercise]);
+    const newAnswers = [...userAnswers, newAnswer];
 
-  // Find next uncompleted exercise
-  const findNextUncompletedExercise = useCallback(() => {
-    const totalExercises = exercises.length;
-    
-    // Chercher à partir de l'index suivant
-    for (let i = currentExerciseIndex + 1; i < totalExercises; i++) {
-      if (!completedExercises.includes(i)) {
-        return i;
+    // Sauvegarder immédiatement
+    const dataToSave = {
+      completedExercises: newCompleted,
+      userAnswers: newAnswers,
+      lastPosition: {
+        exerciseIndex: currentExerciseIndex < totalExercises - 1 ? currentExerciseIndex + 1 : currentExerciseIndex,
+        exerciseType,
+        timestamp: Date.now()
       }
-    }
-    
-    // Chercher depuis le début si rien trouvé
-    for (let i = 0; i <= currentExerciseIndex; i++) {
-      if (!completedExercises.includes(i)) {
-        return i;
-      }
-    }
-    
-    return -1; // Tous complétés
-  }, [exercises, currentExerciseIndex, completedExercises]);
+    };
 
-  // =================== MAIN NAVIGATION ===================
-  const handleNext = useCallback(() => {
-    // Mark current exercise as completed
-    markExerciseAsCompleted(currentExerciseIndex, isCorrect, userInput);
+    saveToStorage(dataToSave);
 
-    // Check if there are more exercises
+    // Mettre à jour les states
+    setCompletedExercises(newCompleted);
+    setUserAnswers(newAnswers);
+
     if (currentExerciseIndex < totalExercises - 1) {
-      const nextIndex = currentExerciseIndex + 1;
-      setCurrentExerciseIndex(nextIndex);
+      setCurrentExerciseIndex(prev => prev + 1);
       resetExerciseState();
     } else {
-      // End of exercises
-      const nextUncompletedIndex = findNextUncompletedExercise();
-      if (nextUncompletedIndex === -1) {
-        // All done!
-        const completionMessage = `Félicitations ! Vous avez terminé tous les exercices d'orthographe ${exerciseType} du niveau ${level} !`;
-        Alert.alert("Félicitations", completionMessage);
-        return { completed: true };
-      } else {
-        setCurrentExerciseIndex(nextUncompletedIndex);
-        resetExerciseState();
-      }
+      Alert.alert(
+        "Félicitations", 
+        `Vous avez terminé tous les exercices d'orthographe ${exerciseType} du niveau ${level} !`
+      );
+      return { completed: true };
     }
+    
     return { completed: false };
-  }, [currentExerciseIndex, totalExercises, markExerciseAsCompleted, isCorrect, userInput, 
-      resetExerciseState, findNextUncompletedExercise, exerciseType, level]);
-
-  const handlePrevious = useCallback(() => {
-    if (currentExerciseIndex > 0) {
-      setCurrentExerciseIndex(prev => prev - 1);
-      resetExerciseState();
-    }
-  }, [currentExerciseIndex, resetExerciseState]);
+  }, [
+    currentExerciseIndex, 
+    totalExercises, 
+    isCorrect, 
+    userInput, 
+    currentExercise, 
+    completedExercises, 
+    userAnswers, 
+    saveToStorage, 
+    resetExerciseState, 
+    exerciseType, 
+    level
+  ]);
 
   const retryExercise = useCallback(() => {
     resetExerciseState();
   }, [resetExerciseState]);
 
-  // =================== COMPUTED STATS ===================
-  const getStats = useCallback(() => {
-    const totalExercises = exercises.length;
-    const completedExercisesCount = completedExercises.length;
-    const totalProgress = totalExercises > 0 ? Math.round((completedExercisesCount / totalExercises) * 100) : 0;
+  const stats = {
+    totalExercises,
+    completedExercisesCount: completedExercises.length,
+    totalProgress: totalExercises > 0 ? Math.round((completedExercises.length / totalExercises) * 100) : 0,
+    remainingExercises: totalExercises - completedExercises.length,
+    performance: {
+      total: userAnswers.length,
+      correct: userAnswers.filter(answer => answer.isCorrect).length,
+      incorrect: userAnswers.filter(answer => !answer.isCorrect).length,
+      accuracy: userAnswers.length > 0 ? Math.round((userAnswers.filter(answer => answer.isCorrect).length / userAnswers.length) * 100) : 0
+    },
+    completedExercises,
+    userAnswers
+  };
 
-    // Performance stats
-    const total = userAnswers.length;
-    const correct = userAnswers.filter(answer => answer.isCorrect).length;
-    const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
-
-    return {
-      totalExercises,
-      completedExercisesCount,
-      totalProgress,
-      remainingExercises: totalExercises - completedExercisesCount,
-      performance: {
-        total,
-        correct,
-        incorrect: total - correct,
-        accuracy
-      },
-      completedExercises,
-      userAnswers
-    };
-  }, [exercises, completedExercises, userAnswers]);
-
-  // =================== COMPUTED DISPLAY ===================
-  const getDisplayData = useCallback(() => {
-    const exerciseCounter = `${currentExerciseIndex + 1} / ${totalExercises}`;
-    
-    return {
-      exerciseCounter,
-      currentExercise,
-      exerciseType: currentExercise.type
-    };
-  }, [currentExerciseIndex, totalExercises, currentExercise]);
-
-  // =================== VALIDATION ===================
-  const canGoToPrevious = useCallback(() => {
-    return currentExerciseIndex > 0;
-  }, [currentExerciseIndex]);
-
-  const isLastExercise = useCallback(() => {
-    return currentExerciseIndex === totalExercises - 1;
-  }, [currentExerciseIndex, totalExercises]);
-
-  const isExerciseCompleted = useCallback((exerciseIndex) => {
-    return completedExercises.includes(exerciseIndex);
-  }, [completedExercises]);
-
-  const hasValidData = spellingData?.exercises && 
-                      Array.isArray(spellingData.exercises) && 
-                      spellingData.exercises.length > 0;
+  const isLastExercise = currentExerciseIndex === totalExercises - 1;
 
   return {
-    // State
     currentExerciseIndex,
     userInput,
     showHint,
@@ -296,31 +206,18 @@ const useSpelling = (spellingData = null, level = "A1", exerciseType = "correcti
     completedExercises,
     userAnswers,
     loaded,
-    showDetailedProgress,
-    
-    // Data
     currentExercise,
     totalExercises,
     exercises,
-    
-    // Actions
-    setCurrentExerciseIndex,
     setUserInput,
     toggleHint,
-    toggleDetailedProgress,
     checkAnswer,
     handleNext,
-    handlePrevious,
     retryExercise,
     resetExerciseState,
-    
-    // Computed
-    canGoToPrevious: canGoToPrevious(),
-    isLastExercise: isLastExercise(),
-    isExerciseCompleted,
+    isLastExercise,
     hasValidData,
-    stats: getStats(),
-    display: getDisplayData(),
+    stats,
   };
 };
 

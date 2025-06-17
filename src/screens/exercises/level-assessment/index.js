@@ -1,5 +1,5 @@
-// src/screens/exercises/levelAssessment/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
-import React, { useMemo, useEffect } from "react";
+// src/screens/exercises/levelAssessment/index.js - VERSION CORRIGÉE
+import React, { useMemo, useEffect, useCallback } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -15,25 +15,25 @@ import AssessmentResults from "./AssessmentResults";
 
 // Hook & Utils
 import useAssessment from "./hooks/useAssessment";
-import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
+import useLastActivity from "../../../hooks/useLastActivity";
 import { getLevelColor } from "../../../utils/assessment/assessmentDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 LevelAssessment - VERSION AVEC SAUVEGARDE ACTIVITÉ
+ * 🎯 LevelAssessment - VERSION CORRIGÉE
  */
 const LevelAssessment = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
 
-  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  // Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
 
-  // Hook unifié - Remplace useAssessmentState + useAssessmentProgress
+  // Hook unifié
   const {
     currentSection,
     currentQuestionIndex,
@@ -58,23 +58,31 @@ const LevelAssessment = ({ route }) => {
     display,
   } = useAssessment(level);
 
-  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de section/question (pas si test terminé)
-  useEffect(() => {
+  // ✅ CORRECTION : Mémoriser les métadonnées
+  const activityMetadata = useMemo(() => ({
+    section: display?.currentSectionIndex || 0,
+    question: currentQuestionIndex,
+    totalQuestions: totalQuestionsInSection,
+    sectionTitle: display?.sectionTitle || `Section ${(display?.currentSectionIndex || 0) + 1}`,
+    totalSections: totalSections
+  }), [display?.currentSectionIndex, currentQuestionIndex, totalQuestionsInSection, display?.sectionTitle, totalSections]);
+
+  // ✅ CORRECTION : Callback mémorisé pour saveActivity
+  const handleSaveActivity = useCallback(() => {
     if (loaded && currentSection && currentQuestion && !testCompleted) {
       saveActivity({
         title: "Évaluation",
         level: level,
         type: "assessment",
-        metadata: {
-          section: display?.currentSectionIndex || 0,
-          question: currentQuestionIndex,
-          totalQuestions: totalQuestionsInSection,
-          sectionTitle: display?.sectionTitle || `Section ${(display?.currentSectionIndex || 0) + 1}`,
-          totalSections: totalSections
-        }
+        metadata: activityMetadata
       });
     }
-  }, [loaded, currentSection, currentQuestion, testCompleted, display?.currentSectionIndex, currentQuestionIndex, totalQuestionsInSection, display?.sectionTitle, totalSections, level, saveActivity]);
+  }, [loaded, currentSection, currentQuestion, testCompleted, level, saveActivity, activityMetadata]);
+
+  // ✅ CORRECTION : useEffect optimisé
+  useEffect(() => {
+    handleSaveActivity();
+  }, [handleSaveActivity]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();
@@ -166,7 +174,7 @@ const LevelAssessment = ({ route }) => {
         onBackPress={handleBackPress}
       />
 
-      {/* Progress - Utilise ProgressCard générique */}
+      {/* Progress */}
       <AssessmentProgress
         currentSection={display.currentSectionIndex}
         totalSections={totalSections}
@@ -179,7 +187,7 @@ const LevelAssessment = ({ route }) => {
         level={level}
       />
 
-      {/* Question - Utilise HeroCard + RevealButton + ContentSection */}
+      {/* Question */}
       <AssessmentQuestion
         question={currentQuestion}
         selectedAnswer={selectedAnswer}
@@ -188,7 +196,7 @@ const LevelAssessment = ({ route }) => {
         onSelectAnswer={handleSelectAnswer}
       />
 
-      {/* Navigation - Utilise NavigationButtons générique */}
+      {/* Navigation */}
       <AssessmentNavigation
         showFeedback={showFeedback}
         selectedAnswer={selectedAnswer}

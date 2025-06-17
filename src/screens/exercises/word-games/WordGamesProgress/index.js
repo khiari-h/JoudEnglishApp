@@ -1,14 +1,14 @@
-// WordGamesProgress/index.js - VERSION AVEC LOGS DEBUG
+// WordGamesProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React from "react";
+import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import { calculateGameTypeProgress } from "../../../../utils/wordGames/wordGamesStats";
 import { getWordGamesData } from "../../../../utils/wordGames/wordGamesDataHelper";
 
 /**
- * 📊 WordGamesProgress - Version avec logs debug
- * ✅ Déjà bien structuré (expandable=false)
- * ✅ Juste ajout de logs pour diagnostiquer
+ * 📊 WordGamesProgress - Version corrigée avec mémorisation
+ * ✅ Évite les boucles infinies avec useMemo
+ * ✅ Performance optimisée
  */
 const WordGamesProgress = ({
   currentGame = 1,
@@ -20,38 +20,49 @@ const WordGamesProgress = ({
   level = "A1",
 }) => {
   
-  // Calculer la progression globale
-  const globalProgress = totalGames > 0 
-    ? Math.round((completedGames / totalGames) * 100)
-    : 0;
+  // ✅ MÉMORISER le calcul de progression globale
+  const globalProgress = useMemo(() => {
+    return totalGames > 0 
+      ? Math.round((completedGames / totalGames) * 100)
+      : 0;
+  }, [completedGames, totalGames]);
 
-  // ✅ DÉTECTION des données pour debug
-  const wordGamesData = getWordGamesData(level);
+  // ✅ MÉMORISER les données Word Games
+  const wordGamesData = useMemo(() => {
+    return getWordGamesData(level);
+  }, [level]);
 
-  console.log("🔍 WordGamesProgress Debug:", {
-    currentGame,
-    totalGames,
-    completedGames,
-    globalProgress,
-    gameResultsLength: gameResults.length,
-    hasWordGamesData: !!wordGamesData,
-    wordGamesDataKeys: wordGamesData && typeof wordGamesData === 'object' ? Object.keys(wordGamesData) : "not object or null",
-    gameTitle
-  });
+  // ✅ MÉMORISER les données de debug (seulement en dev)
+  const debugData = useMemo(() => {
+    if (process.env.NODE_ENV !== 'development') return null;
+    
+    return {
+      currentGame,
+      totalGames,
+      completedGames,
+      globalProgress,
+      gameResultsLength: gameResults.length,
+      hasWordGamesData: !!wordGamesData,
+      wordGamesDataKeys: wordGamesData && typeof wordGamesData === 'object' ? Object.keys(wordGamesData) : "not object or null",
+      gameTitle
+    };
+  }, [currentGame, totalGames, completedGames, globalProgress, gameResults.length, wordGamesData, gameTitle]);
+
+  // ✅ CORRECTION FINALE : Pas de log dans le render !
 
   return (
     <ProgressCard
-      title="Progression" // ✅ Titre uniforme
+      title="Progression"
       subtitle={`${gameTitle} • Jeu ${currentGame}/${totalGames}`}
       progress={globalProgress}
       completed={completedGames}
       total={totalGames}
       unit="jeux"
       levelColor={levelColor}
-      expandable={false} // ✅ DÉSACTIVÉ pour Word Games - logique séquentielle
+      expandable={false}
       expanded={false}
       onToggleExpand={undefined}
-      categoryData={[]} // ✅ Pas de données d'expansion
+      categoryData={[]}
       onCategoryPress={undefined}
     />
   );

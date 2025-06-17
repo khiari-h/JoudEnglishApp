@@ -1,5 +1,5 @@
-// ConversationExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
-import React, { useMemo, useEffect } from "react";
+// ConversationExercise/index.js - VERSION CORRIGÉE
+import React, { useMemo, useEffect, useCallback } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -17,18 +17,18 @@ import ConversationInput from "./ConversationInput";
 
 // Hook & Utils
 import useConversation from "./hooks/useConversation";
-import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
+import useLastActivity from "../../../hooks/useLastActivity";
 import { getConversationData, getLevelColor } from "../../../utils/conversation/conversationDataHelper";
 import styles from "./style";
 
 /**
- * 🎯 ConversationExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
+ * 🎯 ConversationExercise - VERSION CORRIGÉE
  */
 const ConversationExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1", initialScenarioIndex = 0, initialStepIndex = 0 } = route?.params || {};
 
-  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  // Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();
 
   // Data
@@ -64,23 +64,31 @@ const ConversationExercise = ({ route }) => {
     display,
   } = useConversation(conversationData, level);
 
-  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de scenario/étape
-  useEffect(() => {
+  // ✅ CORRECTION : Mémoriser les métadonnées
+  const activityMetadata = useMemo(() => ({
+    scenario: currentScenarioIndex,
+    step: stats.currentStep || 0,
+    totalSteps: stats.totalSteps || 1,
+    scenarioName: currentScenario?.title || `Scénario ${currentScenarioIndex + 1}`,
+    totalScenarios: totalScenarios
+  }), [currentScenarioIndex, stats.currentStep, stats.totalSteps, currentScenario?.title, totalScenarios]);
+
+  // ✅ CORRECTION : Callback mémorisé pour saveActivity
+  const handleSaveActivity = useCallback(() => {
     if (loaded && hasValidData && currentScenario && isConversationStarted) {
       saveActivity({
         title: "Conversations",
         level: level,
         type: "conversations",
-        metadata: {
-          scenario: currentScenarioIndex,
-          step: stats.currentStep || 0,
-          totalSteps: stats.totalSteps || 1,
-          scenarioName: currentScenario.title || `Scénario ${currentScenarioIndex + 1}`,
-          totalScenarios: totalScenarios
-        }
+        metadata: activityMetadata
       });
     }
-  }, [loaded, hasValidData, currentScenario, isConversationStarted, currentScenarioIndex, stats.currentStep, stats.totalSteps, level, totalScenarios, saveActivity]);
+  }, [loaded, hasValidData, currentScenario, isConversationStarted, level, saveActivity, activityMetadata]);
+
+  // ✅ CORRECTION : useEffect optimisé
+  useEffect(() => {
+    handleSaveActivity();
+  }, [handleSaveActivity]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();

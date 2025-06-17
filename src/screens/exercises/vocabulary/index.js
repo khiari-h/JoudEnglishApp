@@ -1,33 +1,25 @@
-// VocabularyExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
-import React, { useMemo, useState, useEffect } from "react";
+// VocabularyExercise/index.js - BOUCLE INFINIE CORRIGÉE
+
+import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-// Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
-
-// Components
 import VocabularyHeader from "./VocabularyHeader";
 import VocabularyCategorySelector from "./VocabularyCategorySelector";
 import VocabularyProgress from "./VocabularyProgress";
 import VocabularyWordSection from "./VocabularyWordSection";
 import VocabularyNavigation from "./VocabularyNavigation";
 
-// Hook & Utils
 import useVocabulary from "./hooks/useVocabulary";
-import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
+import useLastActivity from "../../../hooks/useLastActivity";
 import { getVocabularyData, isBonusLevel, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
 import createStyles from "./style";
 
-/**
- * 🎯 VocabularyExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
- */
 const VocabularyExercise = ({ route }) => {
   const { level, mode } = route.params;
   const navigation = useNavigation();
   const styles = createStyles();
-
-  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();
 
   // Data
@@ -58,59 +50,49 @@ const VocabularyExercise = ({ route }) => {
     display,
   } = useVocabulary(vocabularyData, level, finalMode);
 
-  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de mot
+  // =================== SAUVEGARDE ACTIVITÉ SIMPLIFIÉE ===================
+  
   useEffect(() => {
-    // ✅ CONDITION SIMPLIFIÉE : Pas besoin de categories obligatoire
-    if (loaded && vocabularyData && currentWord && wordIndex < 100) { // ✅ Protection contre boucle
-      // ✅ CORRIGÉ : Gère les 3 structures de données
-      let totalWords = 15; // fallback par défaut
-      
-      if (vocabularyData.categories && Array.isArray(vocabularyData.categories)) {
-        // Mode classic : { categories: [...] }
-        totalWords = vocabularyData.categories.reduce((total, cat) => total + (cat.words?.length || 0), 0);
-      } else if (vocabularyData.exercises && Array.isArray(vocabularyData.exercises)) {
-        // Mode fast : { exercises: [...] }  
-        totalWords = vocabularyData.exercises.reduce((total, ex) => total + (ex.words?.length || 0), 0);
-      } else if (vocabularyData.words && Array.isArray(vocabularyData.words)) {
-        // Structure directe : { words: [...] }
-        totalWords = vocabularyData.words.length;
-      }
+    // ✅ CONDITION SIMPLIFIÉE pour éviter boucle infinie
+    if (!loaded || !vocabularyData || !currentWord) return;
 
-      const currentWordNumber = wordIndex + 1;
-
-      const activityData = {
-        title: `Vocabulaire ${finalMode === "fast" ? "Fast" : ""}`,
-        level: level,
-        type: "vocabulary",
-        mode: finalMode,
-        metadata: {
-          word: Math.max(0, currentWordNumber - 1), // Index pour la progression
-          totalWords: totalWords, // ✅ Maintenant correct !
-          category: currentCategory?.name || "Général",
-          categoryIndex: categoryIndex,
-          wordIndex: wordIndex
-        }
-      };
-
-      console.log("✅ Activity saved:", `${activityData.title} - Mot ${currentWordNumber}/${totalWords}`); // ✅ Devrait afficher 80 maintenant
-      saveActivity(activityData);
+    // ✅ DÉPENDANCES LIMITÉES - seulement wordIndex change
+    let totalWords = 15; // fallback
+    
+    if (vocabularyData.categories && Array.isArray(vocabularyData.categories)) {
+      totalWords = vocabularyData.categories.reduce((total, cat) => total + (cat.words?.length || 0), 0);
+    } else if (vocabularyData.exercises && Array.isArray(vocabularyData.exercises)) {
+      totalWords = vocabularyData.exercises.reduce((total, ex) => total + (ex.words?.length || 0), 0);
+    } else if (vocabularyData.words && Array.isArray(vocabularyData.words)) {
+      totalWords = vocabularyData.words.length;
     }
-  }, [loaded, vocabularyData, currentWord, wordIndex, categoryIndex, level, finalMode, currentCategory]); // ✅ ENLEVÉ saveActivity des dépendances
+
+    const activityData = {
+      title: `Vocabulaire ${finalMode === "fast" ? "Fast" : ""}`,
+      level: level,
+      type: "vocabulary",
+      mode: finalMode,
+      metadata: {
+        word: wordIndex, // ✅ Index pour progression (0-based)
+        totalWords: totalWords,
+        category: currentCategory?.name || "Général",
+        categoryIndex: categoryIndex,
+        wordIndex: wordIndex
+      }
+    };
+
+    saveActivity(activityData);
+  }, [wordIndex]); // ✅ SEULEMENT wordIndex - plus de boucle !
 
   // Handlers
   const handleBackPress = () => navigation.goBack();
-  
   const handleCategoryChange = (index) => changeCategory(index);
-
   const handleCategoryProgressPress = (index) => changeCategory(index);
-
   const handleToggleProgressDetails = () => toggleDetailedProgress();
 
   const handleNextWord = () => {
     const result = handleNext();
     if (result.completed) {
-      // ✅ AJOUTÉ : Nettoyer l'activité quand terminé
-      // Note: Tu peux garder l'activité ou la supprimer selon tes besoins
       navigation.goBack();
     }
   };
@@ -146,14 +128,12 @@ const VocabularyExercise = ({ route }) => {
         contentContainerStyle: styles.scrollContent,
       }}
     >
-      {/* Header */}
       <VocabularyHeader
         level={level}
         mode={finalMode}
         onBackPress={handleBackPress}
       />
 
-      {/* Progress */}
       <VocabularyProgress
         vocabularyData={vocabularyData}
         completedWords={completedWords}
@@ -163,7 +143,6 @@ const VocabularyExercise = ({ route }) => {
         onCategoryPress={handleCategoryProgressPress}
       />
 
-      {/* Category Selector */}
       <VocabularyCategorySelector
         categories={display.categories}
         selectedIndex={categoryIndex}
@@ -171,7 +150,6 @@ const VocabularyExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      {/* Word Section */}
       <VocabularyWordSection
         currentWord={currentWord}
         wordCounter={display.wordCounter}
@@ -182,7 +160,6 @@ const VocabularyExercise = ({ route }) => {
         onToggleTranslation={toggleTranslation}
       />
 
-      {/* Navigation */}
       <VocabularyNavigation
         onNext={handleNextWord}
         onPrevious={handlePreviousWord}

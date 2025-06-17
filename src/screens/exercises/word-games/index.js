@@ -1,5 +1,5 @@
-// src/screens/exercises/wordGames/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
-import React, { useMemo, useEffect } from "react";
+// src/screens/exercises/wordGames/index.js - VERSION CORRIGÉE
+import React, { useMemo, useEffect, useCallback } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -15,26 +15,26 @@ import WordGamesResults from "./WordGamesResults";
 
 // Hook & Utils
 import useWordGames from "./hooks/useWordGames";
-import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
+import useLastActivity from "../../../hooks/useLastActivity";
 import { getWordGamesData, getLevelColor } from "../../../utils/wordGames/wordGamesDataHelper";
 import createStyles from "./style";
 
 /**
- * 🎯 WordGamesExercise - VERSION AVEC SAUVEGARDE ACTIVITÉ
+ * 🎯 WordGamesExercise - VERSION CORRIGÉE
  */
 const WordGamesExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
 
-  // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
+  // Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();
 
   // Data
   const levelColor = getLevelColor(level);
   const wordGamesData = useMemo(() => getWordGamesData(level), [level]);
 
-  // Hook unifié - Remplace useWordGamesState + useWordGamesProgress
+  // Hook unifié
   const {
     currentGameIndex,
     selectedItems,
@@ -62,23 +62,31 @@ const WordGamesExercise = ({ route }) => {
     display,
   } = useWordGames(wordGamesData, level);
 
-  // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de jeu (pas en mode résultats)
-  useEffect(() => {
+  // ✅ CORRECTION : Mémoriser les métadonnées
+  const activityMetadata = useMemo(() => ({
+    game: currentGameIndex,
+    totalGames: totalGames,
+    gameType: currentGame?.type || "matching",
+    gameTitle: currentGame?.title || `Jeu ${currentGameIndex + 1}`,
+    score: stats?.score || 0
+  }), [currentGameIndex, totalGames, currentGame?.type, currentGame?.title, stats?.score]);
+
+  // ✅ CORRECTION : Callback mémorisé pour saveActivity
+  const handleSaveActivity = useCallback(() => {
     if (loaded && games.length > 0 && currentGame && !showResults) {
       saveActivity({
         title: "Jeux de mots",
         level: level,
         type: "wordGames",
-        metadata: {
-          game: currentGameIndex,
-          totalGames: totalGames,
-          gameType: currentGame.type || "matching",
-          gameTitle: currentGame.title || `Jeu ${currentGameIndex + 1}`,
-          score: stats?.score || 0
-        }
+        metadata: activityMetadata
       });
     }
-  }, [loaded, games.length, currentGame, showResults, currentGameIndex, totalGames, level, stats?.score, saveActivity]);
+  }, [loaded, games.length, currentGame, showResults, level, saveActivity, activityMetadata]);
+
+  // ✅ CORRECTION : useEffect optimisé
+  useEffect(() => {
+    handleSaveActivity();
+  }, [handleSaveActivity]);
 
   // Handlers
   const handleBackPress = () => navigation.goBack();
@@ -171,7 +179,7 @@ const WordGamesExercise = ({ route }) => {
         onBackPress={handleBackPress}
       />
 
-      {/* Progress - Utilise ProgressCard générique */}
+      {/* Progress */}
       <WordGamesProgress
         currentGame={display.currentGameIndex}
         totalGames={totalGames}
@@ -182,7 +190,7 @@ const WordGamesExercise = ({ route }) => {
         level={level}
       />
 
-      {/* Game Card - Logique métier conservée */}
+      {/* Game Card */}
       <WordGamesCard
         currentGame={currentGame}
         selectedItems={selectedItems}
@@ -196,7 +204,7 @@ const WordGamesExercise = ({ route }) => {
         onSelectItem={handleSelectItem}
       />
 
-      {/* Navigation - Utilise NavigationButtons + logique custom */}
+      {/* Navigation */}
       <WordGamesNavigation
         currentGame={currentGame}
         showFeedback={showFeedback}
