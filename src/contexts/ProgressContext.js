@@ -1,5 +1,5 @@
-// src/contexts/ProgressContext.js - VERSION SIMPLE
-import React, { createContext, useState, useEffect, useContext } from 'react';
+// src/contexts/ProgressContext.js - VERSION CORRIGÉE SANS BOUCLE
+import React, { createContext, useState, useEffect, useContext, useCallback, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS } from '../utils/constants';
 
@@ -72,6 +72,10 @@ const createInitialProgress = () => ({
 export const ProgressProvider = ({ children }) => {
   const [progress, setProgress] = useState(createInitialProgress());
   const [isLoading, setIsLoading] = useState(true);
+  
+  // ✅ CORRECTION : Ref pour éviter la boucle de sauvegarde
+  const saveTimeoutRef = useRef(null);
+  const isInitialLoad = useRef(true);
 
   // ========== CHARGEMENT INITIAL ==========
   useEffect(() => {
@@ -86,33 +90,46 @@ export const ProgressProvider = ({ children }) => {
         console.error('Erreur chargement progression:', error);
       } finally {
         setIsLoading(false);
+        isInitialLoad.current = false; // ✅ Marquer que le chargement initial est fini
       }
     };
 
     loadProgress();
-  }, []);
+  }, []); // ✅ CORRIGÉ : Aucune dépendance
 
-  // ========== SAUVEGARDE AUTO ==========
+  // ========== SAUVEGARDE AUTO CORRIGÉE ==========
   useEffect(() => {
-    if (!isLoading) {
-      const saveProgress = async () => {
-        try {
-          await AsyncStorage.setItem(STORAGE_KEYS.USER_PROGRESS, JSON.stringify(progress));
-        } catch (error) {
-          console.error('Erreur sauvegarde progression:', error);
-        }
-      };
-
-      // Debounce pour éviter trop de sauvegardes
-      const timeoutId = setTimeout(saveProgress, 500);
-      return () => clearTimeout(timeoutId);
+    // ✅ CORRECTION : Ne pas sauvegarder pendant le chargement initial
+    if (isLoading || isInitialLoad.current) {
+      return;
     }
-  }, [progress, isLoading]);
 
-  // ========== MÉTHODES ==========
+    // Clear previous timeout
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current);
+    }
 
-  // Mettre à jour progression d'un exercice
-  const updateExerciseProgress = (exerciseType, level, completed) => {
+    // Set new timeout for debounced save
+    saveTimeoutRef.current = setTimeout(async () => {
+      try {
+        await AsyncStorage.setItem(STORAGE_KEYS.USER_PROGRESS, JSON.stringify(progress));
+      } catch (error) {
+        console.error('Erreur sauvegarde progression:', error);
+      }
+    }, 500);
+
+    // Cleanup timeout
+    return () => {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+      }
+    };
+  }, [progress]); // ✅ CORRIGÉ : Seulement progress, pas isLoading
+
+  // ========== MÉTHODES MÉMORISÉES ==========
+
+  // ✅ CORRECTION : Mémoriser toutes les fonctions
+  const updateExerciseProgress = useCallback((exerciseType, level, completed) => {
     setProgress(prev => {
       const newProgress = { ...prev };
       
@@ -147,32 +164,28 @@ export const ProgressProvider = ({ children }) => {
 
       return newProgress;
     });
-  };
+  }, []);
 
-  // Mettre à jour les stats
-  const updateStats = (newStats) => {
+  const updateStats = useCallback((newStats) => {
     setProgress(prev => ({
       ...prev,
       stats: { ...prev.stats, ...newStats }
     }));
-  };
+  }, []);
 
-  // Calculer progression globale
-  const calculateGlobalProgress = () => {
+  const calculateGlobalProgress = useCallback(() => {
     const levels = Object.values(progress.levels);
     if (levels.length === 0) return 0;
     
     const total = levels.reduce((sum, level) => sum + level.completed, 0);
     return Math.round(total / levels.length);
-  };
+  }, [progress.levels]);
 
-  // Calculer progression d'un niveau
-  const calculateLevelProgress = (level) => {
+  const calculateLevelProgress = useCallback((level) => {
     return progress.levels[level]?.completed || 0;
-  };
+  }, [progress.levels]);
 
-  // Reset complet
-  const resetProgress = async () => {
+  const resetProgress = useCallback(async () => {
     try {
       await AsyncStorage.removeItem(STORAGE_KEYS.USER_PROGRESS);
       setProgress(createInitialProgress());
@@ -181,10 +194,10 @@ export const ProgressProvider = ({ children }) => {
       console.error('Erreur reset progression:', error);
       return false;
     }
-  };
+  }, []);
 
-  // ========== VALEUR DU CONTEXTE ==========
-  const contextValue = {
+  // ========== VALEUR DU CONTEXTE MÉMORISÉE ==========
+  const contextValue = useCallback(() => ({
     progress,
     isLoading,
     updateExerciseProgress,
@@ -192,10 +205,10 @@ export const ProgressProvider = ({ children }) => {
     calculateGlobalProgress,
     calculateLevelProgress,
     resetProgress,
-  };
+  }), [progress, isLoading, updateExerciseProgress, updateStats, calculateGlobalProgress, calculateLevelProgress, resetProgress]);
 
   return (
-    <ProgressContext.Provider value={contextValue}>
+    <ProgressContext.Provider value={contextValue()}>
       {children}
     </ProgressContext.Provider>
   );
