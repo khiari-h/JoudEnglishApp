@@ -1,5 +1,5 @@
-// src/hooks/useLastActivity.js - VERSION SIMPLE
-import { useState, useEffect } from 'react';
+// src/hooks/useLastActivity.js - VERSION CORRIGÉE AVEC useCallback
+import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS } from '../utils/constants';
 
@@ -8,7 +8,7 @@ const useLastActivity = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // ========== CHARGEMENT ==========
-  const loadLastActivity = async () => {
+  const loadLastActivity = useCallback(async () => {
     try {
       setIsLoading(true);
       const stored = await AsyncStorage.getItem(STORAGE_KEYS.LAST_ACTIVITY);
@@ -44,10 +44,10 @@ const useLastActivity = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []); // ✅ Aucune dépendance - stable
 
-  // ========== SAUVEGARDE ==========
-  const saveActivity = async (activityData) => {
+  // ========== SAUVEGARDE MÉMORISÉE ==========
+  const saveActivity = useCallback(async (activityData) => {
     try {
       const activity = {
         ...activityData,
@@ -64,29 +64,29 @@ const useLastActivity = () => {
     } catch (error) {
       console.error('Erreur sauvegarde activité:', error);
     }
-  };
+  }, []); // ✅ CRUCIAL : Aucune dépendance - fonction stable
 
-  // ========== SUPPRESSION ==========
-  const clearActivity = async () => {
+  // ========== SUPPRESSION MÉMORISÉE ==========
+  const clearActivity = useCallback(async () => {
     try {
       await AsyncStorage.removeItem(STORAGE_KEYS.LAST_ACTIVITY);
       setLastActivity(null);
     } catch (error) {
       console.error('Erreur suppression activité:', error);
     }
-  };
+  }, []); // ✅ Fonction stable
 
   // ========== CHARGEMENT INITIAL ==========
   useEffect(() => {
     loadLastActivity();
-  }, []);
+  }, [loadLastActivity]);
 
   return {
     lastActivity,
     isLoading,
-    saveActivity,
-    clearActivity,
-    reload: loadLastActivity
+    saveActivity, // ✅ Maintenant stable entre les renders
+    clearActivity, // ✅ Maintenant stable
+    reload: loadLastActivity // ✅ Maintenant stable
   };
 };
 
