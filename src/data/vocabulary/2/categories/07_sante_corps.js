@@ -1,0 +1,138 @@
+export const vocab = {
+  title: "Santé & Corps Humain",
+  words: [
+    // Parties du corps détaillées
+    { word: "forehead", translation: "front", example: "He hit his forehead on the low doorway." },
+    { word: "cheek", translation: "joue", example: "The baby has cute chubby cheeks." },
+    { word: "chin", translation: "menton", example: "He has a dimple on his chin." },
+    { word: "eyebrow", translation: "sourcil", example: "She raises her eyebrows when she's surprised." },
+    { word: "eyelid", translation: "paupière", example: "Her eyelids were heavy with tiredness." },
+    { word: "eyelash", translation: "cil", example: "She has long, dark eyelashes." },
+    { word: "nostril", translation: "narine", example: "The cold air made his nostrils freeze." },
+    { word: "jaw", translation: "mâchoire", example: "His jaw was clenched in anger." },
+    { word: "gum", translation: "gencive", example: "Her gums started bleeding when she brushed her teeth." },
+    { word: "tongue", translation: "langue", example: "She burnt her tongue on the hot soup." },
+    { word: "throat", translation: "gorge", example: "I have a sore throat today." },
+    { word: "shoulder blade", translation: "omoplate", example: "I pulled a muscle in my shoulder blade." },
+    { word: "collarbone", translation: "clavicule", example: "She broke her collarbone in the accident." },
+    { word: "rib", translation: "côte", example: "He cracked two ribs when he fell." },
+    { word: "spine", translation: "colonne vertébrale", example: "Good posture keeps your spine aligned." },
+    { word: "wrist", translation: "poignet", example: "She wears a bracelet on her wrist." },
+    { word: "knuckle", translation: "articulation des doigts", example: "His knuckles turned white as he gripped the steering wheel." },
+    { word: "palm", translation: "paume", example: "She read the lines on his palm." },
+    { word: "thumb", translation: "pouce", example: "I hit my thumb with the hammer." },
+    { word: "ankle", translation: "cheville", example: "I sprained my ankle while jogging." },
+    { word: "heel", translation: "talon", example: "She wore shoes with high heels." },
+
+    { word: "muscle", translation: "muscle", example: "Exercise helps strengthen your muscles." },
+
+    { word: "joint", translation: "articulation", example: "She has pain in her knee joint." },
+
+    // Symptômes courants
+    { word: "fever", translation: "fièvre", example: "He has a high fever and should see a doctor." },
+    { word: "sore throat", translation: "mal de gorge", example: "I have a sore throat and it hurts to swallow." },
+    { word: "cough", translation: "toux", example: "She's had a persistent cough for two weeks." },
+    { word: "runny nose", translation: "nez qui coule", example: "A runny nose is a common symptom of a cold." },
+    { word: "sneezing", translation: "éternuement", example: "His sneezing got worse during allergy season." },
+
+    { word: "nausea", translation: "nausée", example: "The smell made him feel nausea." },
+    { word: "dizziness", translation: "vertige", example: "She experienced dizziness when she stood up too quickly." },
+    { word: "fatigue", translation: "fatigue", example: "Chronic fatigue can be a symptom of several conditions." },
+    { word: "insomnia", translation: "insomnie", example: "She suffers from insomnia and can't sleep at night." },
+
+    { word: "ache", translation: "douleur sourde", example: "I have an ache in my muscles after exercising." },
+    { word: "swelling", translation: "gonflement", example: "The swelling in his ankle got worse after walking." },
+    { word: "rash", translation: "éruption cutanée", example: "She developed a rash after using the new soap." },
+    { word: "itching", translation: "démangeaison", example: "The mosquito bite caused severe itching." },
+    { word: "bleeding", translation: "saignement", example: "Apply pressure to stop the bleeding." },
+    { word: "vomiting", translation: "vomissement", example: "The food poisoning caused vomiting." },
+
+    // Maladies fréquentes
+
+    { word: "flu", translation: "grippe", example: "The flu kept her in bed for a week." },
+    { word: "allergy", translation: "allergie", example: "I have an allergy to peanuts." },
+    { word: "infection", translation: "infection", example: "He's on antibiotics for a throat infection." },
+    { word: "virus", translation: "virus", example: "A virus is causing her symptoms." },
+    { word: "bacteria", translation: "bactérie", example: "Some bacteria can cause serious illnesses." },
+    { word: "migraine", translation: "migraine", example: "She gets migraines when she's stressed." },
+    { word: "bronchitis", translation: "bronchite", example: "The doctor diagnosed him with bronchitis." },
+    { word: "pneumonia", translation: "pneumonie", example: "She was hospitalized with pneumonia." },
+    { word: "appendicitis", translation: "appendicite", example: "He had surgery for appendicitis." },
+    { word: "diabetes", translation: "diabète", example: "He manages his diabetes with insulin." },
+    { word: "asthma", translation: "asthme", example: "She uses an inhaler for her asthma." },
+    { word: "eczema", translation: "eczéma", example: "The cream helps with his eczema." },
+    { word: "food poisoning", translation: "intoxication alimentaire", example: "They got food poisoning from the restaurant." },
+    { word: "sunburn", translation: "coup de soleil", example: "She got a bad sunburn at the beach." },
+    { word: "sprain", translation: "entorse", example: "I have a sprain in my ankle from playing soccer." },
+    { word: "fracture", translation: "fracture", example: "The X-ray confirmed that he had a fracture in his arm." },
+    { word: "concussion", translation: "commotion cérébrale", example: "The helmet prevented a serious concussion." },
+
+    // Professionnels de santé
+    { word: "general practitioner", translation: "médecin généraliste", example: "See your general practitioner before consulting a specialist." },
+    { word: "specialist", translation: "spécialiste", example: "She was referred to a specialist for her heart condition." },
+    { word: "surgeon", translation: "chirurgien", example: "The surgeon performed the operation." },
+    { word: "pediatrician", translation: "pédiatre", example: "Take your child to a pediatrician if symptoms persist." },
+    { word: "dentist", translation: "dentiste", example: "I have an appointment with the dentist tomorrow." },
+    { word: "dermatologist", translation: "dermatologue", example: "The dermatologist prescribed a cream for my rash." },
+    { word: "physiotherapist", translation: "kinésithérapeute", example: "After his injury, he saw a physiotherapist." },
+    { word: "psychologist", translation: "psychologue", example: "She's been seeing a psychologist to help with anxiety." },
+    { word: "pharmacist", translation: "pharmacien", example: "Ask the pharmacist for advice on over-the-counter medications." },
+    { word: "optician", translation: "opticien", example: "The optician helped me choose new glasses." },
+    { word: "paramedic", translation: "ambulancier", example: "The paramedics arrived quickly after the accident." },
+
+    { word: "midwife", translation: "sage-femme", example: "A midwife assisted with the birth of their baby." },
+    { word: "radiologist", translation: "radiologue", example: "The radiologist analyzed the X-ray images." },
+    { word: "therapist", translation: "thérapeute", example: "He sees a therapist to help manage stress." },
+
+    // Médicaments de base
+    { word: "painkiller", translation: "analgésique", example: "Take a painkiller if the headache persists." },
+    { word: "antibiotic", translation: "antibiotique", example: "The doctor prescribed antibiotics for the infection." },
+    { word: "antiseptic", translation: "antiseptique", example: "Clean the wound with antiseptic." },
+    { word: "antidepressant", translation: "antidépresseur", example: "He's been on antidepressants for six months." },
+    { word: "antihistamine", translation: "antihistaminique", example: "Take an antihistamine for your allergic reaction." },
+    { word: "cough syrup", translation: "sirop pour la toux", example: "The cough syrup helped me sleep better." },
+    { word: "decongestant", translation: "décongestionnant", example: "A decongestant can help clear a stuffy nose." },
+    { word: "ointment", translation: "pommade", example: "Apply this ointment to the affected area twice a day." },
+    { word: "cream", translation: "crème", example: "Use this cream for your dry skin." },
+    { word: "drops", translation: "gouttes", example: "Put two drops in each eye." },
+    { word: "inhaler", translation: "inhalateur", example: "Always carry your inhaler if you have asthma." },
+    { word: "pill", translation: "pilule/comprimé", example: "Take one pill three times a day with meals." },
+    { word: "tablet", translation: "comprimé", example: "Dissolve the tablet in water before taking it." },
+    { word: "capsule", translation: "gélule", example: "Swallow the capsule whole with water." },
+    { word: "prescription", translation: "ordonnance", example: "You need a prescription to get these medications." },
+
+    // Premiers soins simples
+    { word: "first aid", translation: "premiers secours", example: "He took a first aid course at work." },
+    { word: "bandage", translation: "bandage", example: "Apply a bandage to stop the bleeding." },
+    { word: "plaster", translation: "pansement", example: "Put a plaster on the cut." },
+    { word: "gauze", translation: "gaze", example: "Clean the wound with gauze." },
+    { word: "disinfectant", translation: "désinfectant", example: "Use disinfectant to clean the cut." },
+    { word: "compress", translation: "compresse", example: "Apply a cold compress to reduce swelling." },
+    { word: "tweezers", translation: "pince à épiler", example: "Use tweezers to remove the splinter." },
+    { word: "thermometer", translation: "thermomètre", example: "Check your temperature with a thermometer." },
+    { word: "ice pack", translation: "poche de glace", example: "Put an ice pack on your sprained ankle." },
+    { word: "heat pad", translation: "coussin chauffant", example: "A heat pad can help with muscle pain." },
+    { word: "emergency", translation: "urgence", example: "Call emergency services immediately." },
+    { word: "CPR", translation: "réanimation cardio-pulmonaire", example: "He learned CPR in his first aid class." },
+    { word: "recovery position", translation: "position latérale de sécurité", example: "She put the unconscious person in the recovery position." },
+    { word: "to faint", translation: "s'évanouir", example: "She fainted due to the heat." },
+    { word: "to choke", translation: "s'étouffer", example: "He started to choke on a piece of food." },
+
+    // Hygiène approfondie
+    { word: "hygiene", translation: "hygiène", example: "Good hygiene is important for preventing illness." },
+
+    { word: "to disinfect", translation: "désinfecter", example: "Disinfect surfaces that are touched frequently." },
+    { word: "to sterilize", translation: "stériliser", example: "You need to sterilize baby bottles before use." },
+    { word: "hand sanitizer", translation: "gel hydroalcoolique", example: "Use hand sanitizer when soap and water aren't available." },
+    { word: "antibacterial", translation: "antibactérien", example: "This soap has antibacterial properties." },
+    { word: "dental floss", translation: "fil dentaire", example: "Use dental floss daily for good oral hygiene." },
+    { word: "mouthwash", translation: "bain de bouche", example: "Rinse with mouthwash after brushing your teeth." },
+
+    { word: "nail clipper", translation: "coupe-ongles", example: "Keep your nails trimmed with a nail clipper." },
+    { word: "lotion", translation: "lotion", example: "Apply lotion to keep your skin moisturized." },
+    { word: "exfoliate", translation: "exfolier", example: "Exfoliate your skin once a week." },
+    { word: "moisturize", translation: "hydrater", example: "Moisturize your skin after bathing." },
+    { word: "sanitary", translation: "hygiénique", example: "Maintain sanitary conditions in food preparation areas." },
+    { word: "disposable", translation: "jetable", example: "Use disposable gloves when cleaning wounds." }
+  ]
+};

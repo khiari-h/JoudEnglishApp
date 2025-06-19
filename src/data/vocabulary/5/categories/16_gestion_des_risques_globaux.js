@@ -1,0 +1,154 @@
+export const vocab = {
+  title: "Gestion des Risques Globaux",
+  words: [
+    // Concepts et théorie des risques (50 mots)
+
+    { word: "risk management framework", translation: "cadre de gestion des risques", example: "The organization implemented an integrated risk management framework aligned with international standards." },
+
+    { word: "risk mitigation", translation: "atténuation des risques", example: "Their risk mitigation strategy combines preventive controls with contingency planning." },
+    { word: "risk appetite", translation: "appétence au risque", example: "The board defined the organization's risk appetite through quantitative thresholds and qualitative statements." },
+    { word: "risk tolerance", translation: "tolérance au risque", example: "Market volatility exceeded the firm's risk tolerance, triggering automatic position reductions." },
+    { word: "risk identification", translation: "identification des risques", example: "Effective risk identification combines historical analysis with forward-looking scenarios." },
+    { word: "risk analysis", translation: "analyse des risques", example: "Quantitative risk analysis assigns probabilities and impact values to identified threats." },
+    { word: "risk evaluation", translation: "évaluation des risques", example: "Risk evaluation determines which risks require treatment based on established criteria." },
+    { word: "inherent risk", translation: "risque inhérent", example: "The inherent risk before controls represents the worst-case exposure scenario." },
+    { word: "residual risk", translation: "risque résiduel", example: "Residual risk remaining after controls may require additional mitigation or acceptance." },
+    { word: "risk profile", translation: "profil de risque", example: "The organization's risk profile shifted following geographic expansion and technological investments." },
+    { word: "risk matrix", translation: "matrice de risques", example: "The risk matrix visualizes threats according to likelihood and potential impact." },
+    { word: "risk register", translation: "registre des risques", example: "The risk register documents identified risks, assessments, owners, and treatment plans." },
+    { word: "uncertainty", translation: "incertitude", example: "Strategic planning must acknowledge fundamental uncertainty in long-term technological trends." },
+
+    { word: "proximity risk", translation: "risque de proximité", example: "Proximity risk considers not only probability and impact but timeframe for potential manifestation." },
+    { word: "velocity of risk", translation: "vélocité du risque", example: "Digital risks demonstrate high velocity, potentially materializing within hours rather than months." },
+    { word: "risk aggregation", translation: "agrégation des risques", example: "Risk aggregation identifies how separate threats may compound rather than simply coexist." },
+    { word: "risk interdependencies", translation: "interdépendances des risques", example: "Complex risk interdependencies often remain hidden until systems experience stress." },
+    { word: "threat vector", translation: "vecteur de menace", example: "The security team monitors emerging threat vectors including supply chain compromises." },
+    { word: "key risk indicator", translation: "indicateur clé de risque", example: "Key risk indicators provide early warning signals of changing threat conditions." },
+    { word: "black swan event", translation: "événement cygne noir", example: "By definition, black swan events lie outside the realm of normal expectations and modeling." },
+    { word: "gray rhino", translation: "rhinocéros gris", example: "Unlike black swans, gray rhino threats are visible but nevertheless often neglected." },
+    { word: "risk concentration", translation: "concentration des risques", example: "Geographic risk concentration became apparent following the regional natural disaster." },
+    { word: "risk accountability", translation: "responsabilité des risques", example: "Clear risk accountability assigns ownership for monitoring and mitigation actions." },
+    { word: "risk governance", translation: "gouvernance des risques", example: "Effective risk governance establishes oversight responsibilities at board and management levels." },
+    { word: "risk culture", translation: "culture du risque", example: "A strong risk culture encourages transparent reporting without fear of blame." },
+    { word: "risk intelligence", translation: "intelligence des risques", example: "Risk intelligence transforms threat information into actionable insights for decision-makers." },
+    { word: "risk quantification", translation: "quantification des risques", example: "Risk quantification methodologies translate threats into financial exposure estimates." },
+    { word: "risk scenario analysis", translation: "analyse de scénarios de risque", example: "Risk scenario analysis examines how multiple variables might interact under stress conditions." },
+    { word: "stress testing", translation: "test de résistance", example: "The financial institution conducts regular stress testing against severe but plausible scenarios." },
+    { word: "monte carlo simulation", translation: "simulation de Monte-Carlo", example: "Monte Carlo simulation generates thousands of possible outcomes to understand risk distributions." },
+    { word: "value at risk", translation: "valeur à risque", example: "The portfolio's value at risk quantifies potential losses at a specific confidence interval." },
+    { word: "risk-adjusted return", translation: "rendement ajusté au risque", example: "Evaluating investments on risk-adjusted return prevents misleading performance comparisons." },
+    { word: "risk transfer", translation: "transfert de risque", example: "Insurance represents a common risk transfer mechanism for specific threat categories." },
+    { word: "risk financing", translation: "financement du risque", example: "Risk financing strategies determine how potential losses will be funded if realized." },
+    { word: "contingent liability", translation: "passif éventuel", example: "Regulatory investigations created significant contingent liability for the organization." },
+    { word: "tail risk", translation: "risque extrême", example: "The investment strategy specifically addresses tail risk through protective options positions." },
+    { word: "correlation risk", translation: "risque de corrélation", example: "Market stress often reveals hidden correlation risk as diverse assets move in tandem." },
+    { word: "enterprise risk management", translation: "gestion des risques d'entreprise", example: "Enterprise risk management provides a holistic approach across organizational silos." },
+    { word: "operational risk", translation: "risque opérationnel", example: "Operational risk encompasses potential failures in people, processes, systems, or external events." },
+    { word: "strategic risk", translation: "risque stratégique", example: "Emerging technologies pose strategic risk to established business models and competitive positions." },
+    { word: "risk taxonomy", translation: "taxonomie des risques", example: "The risk taxonomy provides a standardized classification system for threat categorization." },
+    { word: "risk capacity", translation: "capacité de risque", example: "The organization's risk capacity represents the maximum level of exposure it can absorb." },
+    { word: "risk diversification", translation: "diversification des risques", example: "Risk diversification distributes exposure across multiple uncorrelated factors." },
+    { word: "contagion risk", translation: "risque de contagion", example: "Financial markets exhibit contagion risk as crises spread across previously unrelated sectors." },
+    { word: "compliance risk", translation: "risque de conformité", example: "Expanding into new jurisdictions introduces additional compliance risk requiring specialized expertise." },
+    { word: "reputational risk", translation: "risque réputationnel", example: "Social media amplifies reputational risk through rapid information dissemination." },
+
+    // Risques mondiaux et gestion de crise (50 mots)
+
+    { word: "political risk analysis", translation: "analyse du risque politique", example: "Political risk analysis considers factors including institutional stability and policy predictability." },
+    { word: "country risk assessment", translation: "évaluation du risque pays", example: "The country risk assessment examined regulatory, economic, and security dimensions." },
+    { word: "sovereign risk", translation: "risque souverain", example: "Bond investors evaluate sovereign risk when purchasing government debt securities." },
+    { word: "expropriation risk", translation: "risque d'expropriation", example: "Natural resource investments face expropriation risk as political attitudes shift." },
+    { word: "currency risk", translation: "risque de change", example: "Multinational operations expose organizations to currency risk from exchange rate fluctuations." },
+    { word: "regulatory risk", translation: "risque réglementaire", example: "The pharmaceutical industry faces significant regulatory risk during product development and approval." },
+    { word: "sanctions risk", translation: "risque de sanctions", example: "International businesses must navigate increasingly complex sanctions risk landscapes." },
+    { word: "pandemic risk", translation: "risque de pandémie", example: "Few organizations adequately assessed pandemic risk before experiencing its operational impact." },
+    { word: "climate risk", translation: "risque climatique", example: "Investors increasingly evaluate companies' exposure to and management of climate risk." },
+    { word: "physical climate risk", translation: "risque climatique physique", example: "Coastal real estate faces physical climate risk from rising sea levels and storm intensity." },
+    { word: "transition risk", translation: "risque de transition", example: "Carbon-intensive industries face transition risk as economies shift toward sustainability." },
+    { word: "natural catastrophe risk", translation: "risque de catastrophe naturelle", example: "Insurance premiums reflect increasing natural catastrophe risk in vulnerable regions." },
+    { word: "environmental liability", translation: "responsabilité environnementale", example: "Stricter regulations expand potential environmental liability for industrial activities." },
+    { word: "biodiversity risk", translation: "risque lié à la biodiversité", example: "Agricultural businesses face biodiversity risk through pollinator decline and ecosystem degradation." },
+    { word: "water stress risk", translation: "risque de stress hydrique", example: "Manufacturing facilities in water-stressed regions face operational and regulatory challenges." },
+    { word: "cyber risk", translation: "cyber-risque", example: "Digital transformation initiatives fundamentally alter organizations' cyber risk profiles." },
+
+    { word: "ransomware attack", translation: "attaque par rançongiciel", example: "The ransomware attack encrypted critical systems, halting production for two weeks." },
+    { word: "supply chain risk", translation: "risque de chaîne d'approvisionnement", example: "Just-in-time manufacturing increases efficiency but elevates supply chain risk exposure." },
+    { word: "critical infrastructure", translation: "infrastructure critique", example: "Protecting critical infrastructure requires public-private collaboration and information sharing." },
+    { word: "single point of failure", translation: "point de défaillance unique", example: "The system architecture eliminated single points of failure through redundant components." },
+    { word: "technology dependency", translation: "dépendance technologique", example: "Operational resilience requires understanding and managing technology dependency across processes." },
+
+    { word: "food security risk", translation: "risque pour la sécurité alimentaire", example: "Climate change exacerbates food security risk in regions with subsistence agriculture." },
+
+    { word: "population displacement", translation: "déplacement de population", example: "Climate projections predict significant population displacement from vulnerable regions." },
+    { word: "social unrest", translation: "troubles sociaux", example: "Economic inequality increases social unrest risk across both developed and emerging markets." },
+    { word: "terrorism risk", translation: "risque terroriste", example: "Soft targets face elevated terrorism risk requiring proportionate security measures." },
+    { word: "crisis management", translation: "gestion de crise", example: "Effective crisis management combines preparation, response capability, and recovery planning." },
+    { word: "crisis response", translation: "réponse aux crises", example: "Crisis response protocols establish clear decision authorities and communication channels." },
+
+    { word: "contingency planning", translation: "planification d'urgence", example: "Contingency planning addresses specific scenarios with predetermined response frameworks." },
+    { word: "business continuity", translation: "continuité des activités", example: "Business continuity planning identifies critical functions requiring priority restoration." },
+    { word: "disaster recovery", translation: "reprise après sinistre", example: "The disaster recovery site provides redundant systems and data backup capabilities." },
+
+    { word: "situational awareness", translation: "conscience situationnelle", example: "Effective response requires maintaining situational awareness through reliable information channels." },
+
+    { word: "tabletop exercise", translation: "exercice sur table", example: "The tabletop exercise tested decision-making processes without physical deployment." },
+    { word: "business impact analysis", translation: "analyse d'impact sur l'activité", example: "Business impact analysis quantifies operational and financial consequences of disruptions." },
+    { word: "mission-critical function", translation: "fonction critique pour la mission", example: "The organization identified and prioritized resources for mission-critical functions." },
+    { word: "recovery time objective", translation: "objectif de temps de reprise", example: "Systems met their recovery time objectives during the disaster simulation exercise." },
+    { word: "severity assessment", translation: "évaluation de la gravité", example: "The incident severity assessment determines appropriate escalation and resource allocation." },
+    { word: "critical event management", translation: "gestion d'événements critiques", example: "The platform provides integrated critical event management across global operations." },
+    { word: "mass notification", translation: "notification de masse", example: "The mass notification system alerts employees across multiple communication channels." },
+    { word: "incident response team", translation: "équipe d'intervention en cas d'incident", example: "The incident response team includes representatives from security, legal, and communications." },
+    { word: "war room", translation: "cellule de crise", example: "Senior leadership assembled in the war room to coordinate the breach response strategy." },
+    { word: "critical decision point", translation: "point de décision critique", example: "The response plan identifies critical decision points requiring executive authorization." },
+
+    // Résilience et stratégies de gestion (50 mots)
+    { word: "organizational resilience", translation: "résilience organisationnelle", example: "Organizational resilience encompasses adaptive capacity, robust systems, and situational awareness." },
+
+    { word: "absorptive capacity", translation: "capacité d'absorption", example: "Financial reserves provide absorptive capacity for weathering economic downturns." },
+
+    { word: "robustness", translation: "robustesse", example: "System robustness refers to maintaining functionality despite operating under stress." },
+
+    { word: "resourcefulness", translation: "ingéniosité", example: "Crisis response demonstrates resourcefulness through creative problem-solving under constraints." },
+    { word: "system interdependency", translation: "interdépendance des systèmes", example: "Complex operations require mapping system interdependency to understand cascade failure risks." },
+    { word: "risk-informed decision making", translation: "prise de décision éclairée par les risques", example: "Risk-informed decision making integrates threat assessment into strategic planning." },
+    { word: "risk response planning", translation: "planification de la réponse aux risques", example: "Risk response planning develops specific strategies for identified high-priority threats." },
+    { word: "risk prioritization", translation: "priorisation des risques", example: "Risk prioritization directs resources toward threats with highest potential impact." },
+    { word: "risk monitoring", translation: "surveillance des risques", example: "Continuous risk monitoring identifies changing threat conditions requiring response." },
+
+    { word: "risk appetite statement", translation: "déclaration d'appétence au risque", example: "The risk appetite statement articulates acceptable exposure levels across different categories." },
+    { word: "risk threshold", translation: "seuil de risque", example: "Exceeding risk thresholds triggers escalation and reevaluation of control effectiveness." },
+    { word: "risk control self-assessment", translation: "auto-évaluation du contrôle des risques", example: "Departments conduct risk control self-assessments to evaluate their specific threat landscapes." },
+    { word: "risk treatment", translation: "traitement du risque", example: "Risk treatment options include acceptance, avoidance, transfer, and mitigation strategies." },
+    { word: "risk acceptance", translation: "acceptation du risque", example: "Formal risk acceptance requires executive approval and documentation of decision rationale." },
+    { word: "risk avoidance", translation: "évitement du risque", example: "The company implemented risk avoidance by exiting certain high-threat markets entirely." },
+    { word: "risk-based approach", translation: "approche fondée sur les risques", example: "Regulatory compliance increasingly adopts risk-based approaches focusing on material threats." },
+    { word: "risk oversight", translation: "surveillance des risques", example: "Board risk oversight requires both expertise and independence to be effective." },
+    { word: "three lines of defense", translation: "trois lignes de défense", example: "The three lines of defense model clarifies risk management roles across business, risk, and audit functions." },
+
+    { word: "risk committee", translation: "comité des risques", example: "The board risk committee meets quarterly to review the organization's threat landscape." },
+    { word: "chief risk officer", translation: "directeur des risques", example: "The chief risk officer reports directly to the CEO to maintain independence and authority." },
+    { word: "integrated risk management", translation: "gestion intégrée des risques", example: "Integrated risk management eliminates siloed approaches to threat assessment and response." },
+    { word: "prudent risk-taking", translation: "prise de risque prudente", example: "The culture encourages prudent risk-taking aligned with strategic objectives and risk appetite." },
+    { word: "risk-reward balance", translation: "équilibre risque-récompense", example: "Investment decisions explicitly evaluate the risk-reward balance through quantitative analysis." },
+
+    { word: "environmental scanning", translation: "veille environnementale", example: "Environmental scanning monitors political, economic, social, and technological developments." },
+    { word: "foresight analysis", translation: "analyse prospective", example: "Foresight analysis examines potential future scenarios to identify strategic implications." },
+
+    { word: "strategic intelligence", translation: "intelligence stratégique", example: "Strategic intelligence supports long-term planning through analysis of competitive landscapes." },
+    { word: "competitive intelligence", translation: "intelligence concurrentielle", example: "Competitive intelligence monitors rival capabilities, strategies, and market positions." },
+    { word: "vulnerability analysis", translation: "analyse de vulnérabilité", example: "Vulnerability analysis identifies weaknesses in systems, processes, and defenses." },
+    { word: "scenario stress testing", translation: "test de résistance par scénarios", example: "Scenario stress testing evaluates performance under specific adverse conditions." },
+    { word: "reverse stress testing", translation: "test de résistance inversé", example: "Reverse stress testing identifies what conditions would cause business failure, then evaluates likelihood." },
+    { word: "lessons learned process", translation: "processus de leçons apprises", example: "The lessons learned process captures insights from incidents to improve future responses." },
+    { word: "risk-adjusted performance", translation: "performance ajustée au risque", example: "Executive compensation incorporates risk-adjusted performance metrics to avoid incentivizing excessive exposure." },
+    { word: "risk rating", translation: "notation de risque", example: "The risk rating combines probability and impact assessments into a single evaluation metric." },
+    { word: "strategic foresight", translation: "prospective stratégique", example: "Strategic foresight capabilities help organizations anticipate disruptions rather than merely react." },
+
+    { word: "strategic adaptation", translation: "adaptation stratégique", example: "Rather than rigid plans, strategic adaptation responds dynamically to emerging conditions." },
+
+    { word: "resilient leadership", translation: "leadership résilient", example: "Resilient leadership maintains strategic focus while adapting to changing circumstances." },
+
+    { word: "opportunity risk", translation: "risque d'opportunité", example: "Organizations must balance threat avoidance against opportunity risk from excess caution." }
+  ]
+};

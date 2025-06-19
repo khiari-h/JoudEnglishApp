@@ -1,0 +1,257 @@
+export const vocab = {
+  title: "Marchés Financiers et Investissements",
+  words: [
+    // Marchés de capitaux (25 mots)
+    { word: "capital market", translation: "marché des capitaux", example: "Capital markets connect investors with entities needing funding." },
+    { word: "securities market", translation: "marché des valeurs mobilières", example: "Securities markets include both stock and bond exchanges." },
+
+    { word: "market liquidity", translation: "liquidité du marché", example: "Market liquidity deteriorated rapidly during the financial crisis." },
+
+    { word: "market depth", translation: "profondeur du marché", example: "Market depth indicates the market's ability to absorb large orders." },
+    { word: "market structure", translation: "structure du marché", example: "Electronic trading has transformed market structure in recent decades." },
+    { word: "market maker", translation: "teneur de marché", example: "Market makers provide continuous bid and ask quotes." },
+    { word: "order book", translation: "carnet d'ordres", example: "The order book displays pending buy and sell orders." },
+    { word: "bid-ask spread", translation: "écart acheteur-vendeur", example: "Narrow bid-ask spreads indicate highly liquid markets." },
+    { word: "market microstructure", translation: "microstructure de marché", example: "Market microstructure studies trading mechanisms and price formation." },
+    { word: "market fragmentation", translation: "fragmentation du marché", example: "Market fragmentation divides trading across multiple venues." },
+    { word: "dark pool", translation: "pool opaque", example: "Dark pools execute trades without displaying quotes publicly." },
+    { word: "high-frequency trading", translation: "trading haute fréquence", example: "High-frequency trading uses algorithms to execute orders in milliseconds." },
+
+    { word: "market infrastructure", translation: "infrastructure de marché", example: "Market infrastructure includes exchanges, clearinghouses, and settlement systems." },
+    { word: "order flow", translation: "flux d'ordres", example: "Brokers may receive payments for directing order flow to specific venues." },
+    { word: "price discovery", translation: "découverte des prix", example: "Efficient markets facilitate accurate price discovery." },
+
+    { word: "crossing network", translation: "réseau de croisement", example: "Crossing networks match buy and sell orders internally." },
+    { word: "listing requirements", translation: "conditions d'admission", example: "Exchanges establish listing requirements for traded companies." },
+    { word: "trading venue", translation: "plateforme de négociation", example: "Alternative trading venues compete with traditional exchanges." },
+    { word: "market surveillance", translation: "surveillance du marché", example: "Market surveillance systems detect potential manipulation or abuse." },
+
+    // Analyse des investissements (25 mots)
+    { word: "investment analysis", translation: "analyse d'investissement", example: "Investment analysis evaluates potential returns and risks." },
+    { word: "fundamental analysis", translation: "analyse fondamentale", example: "Fundamental analysis examines financial statements and economic factors." },
+
+    { word: "quantitative analysis", translation: "analyse quantitative", example: "Quantitative analysis uses mathematical models to evaluate securities." },
+
+    { word: "intrinsic value", translation: "valeur intrinsèque", example: "The stock traded well below its estimated intrinsic value." },
+    { word: "valuation multiple", translation: "multiple de valorisation", example: "The company's valuation multiple exceeded industry averages." },
+    { word: "comparative analysis", translation: "analyse comparative", example: "Comparative analysis benchmarks performance against peer companies." },
+    { word: "industry analysis", translation: "analyse sectorielle", example: "Industry analysis evaluates competitive dynamics and growth potential." },
+
+    { word: "equity valuation", translation: "évaluation des actions", example: "Equity valuation methodologies include DCF, multiples, and asset-based approaches." },
+    { word: "growth rate assumption", translation: "hypothèse de taux de croissance", example: "Growth rate assumptions significantly impact valuation outcomes." },
+    { word: "terminal value", translation: "valeur terminale", example: "Terminal value often represents the majority of a DCF valuation." },
+
+    { word: "margin expansion", translation: "expansion des marges", example: "Their investment thesis relies on significant margin expansion." },
+    { word: "earnings quality", translation: "qualité des bénéfices", example: "Earnings quality assessment examines accounting policies and reporting." },
+    { word: "normalized earnings", translation: "bénéfices normalisés", example: "Normalized earnings adjust for one-time or unusual items." },
+
+    { word: "relative valuation", translation: "évaluation relative", example: "Relative valuation compares metrics across similar companies." },
+    { word: "private market value", translation: "valeur de marché privé", example: "Private market value estimates worth in an acquisition scenario." },
+    { word: "sum-of-the-parts analysis", translation: "analyse par somme des parties", example: "Sum-of-the-parts analysis values each business segment separately." },
+
+    // Gestion de portefeuille (25 mots)
+    { word: "portfolio management", translation: "gestion de portefeuille", example: "Portfolio management balances return objectives with risk constraints." },
+
+    { word: "portfolio construction", translation: "construction de portefeuille", example: "Portfolio construction implements the investment strategy." },
+    { word: "portfolio rebalancing", translation: "rééquilibrage de portefeuille", example: "Regular portfolio rebalancing maintains the target asset allocation." },
+    { word: "performance attribution", translation: "attribution de performance", example: "Performance attribution identifies sources of investment returns." },
+    { word: "benchmark", translation: "indice de référence", example: "The fund outperformed its benchmark by 200 basis points." },
+    { word: "tracking error", translation: "erreur de suivi", example: "The strategy's tracking error measures deviation from the benchmark." },
+
+    { word: "investment mandate", translation: "mandat d'investissement", example: "The investment mandate specifies allowable investments and constraints." },
+    { word: "active management", translation: "gestion active", example: "Active management seeks to outperform market benchmarks." },
+    { word: "passive management", translation: "gestion passive", example: "Passive management aims to replicate index performance at low cost." },
+    { word: "strategic asset allocation", translation: "allocation stratégique d'actifs", example: "Strategic asset allocation focuses on long-term investment goals." },
+    { word: "tactical asset allocation", translation: "allocation tactique d'actifs", example: "Tactical asset allocation adjusts positions based on short-term views." },
+    { word: "portfolio optimization", translation: "optimisation de portefeuille", example: "Portfolio optimization seeks the highest return for a given risk level." },
+    { word: "portfolio turnover", translation: "rotation du portefeuille", example: "High portfolio turnover increases transaction costs and tax implications." },
+    { word: "efficient frontier", translation: "frontière efficiente", example: "The efficient frontier represents optimal portfolios with maximum returns for given risk levels." },
+    { word: "factor investing", translation: "investissement factoriel", example: "Factor investing targets specific drivers of returns such as value or momentum." },
+    { word: "style drift", translation: "dérive de style", example: "Style drift occurs when managers deviate from their stated investment approach." },
+    { word: "active share", translation: "part active", example: "Active share measures how different a portfolio is from its benchmark." },
+    { word: "portfolio concentration", translation: "concentration du portefeuille", example: "Portfolio concentration focuses investments in high-conviction positions." },
+    { word: "core-satellite approach", translation: "approche noyau-satellite", example: "The core-satellite approach combines index funds with specialized strategies." },
+    { word: "investment horizon", translation: "horizon d'investissement", example: "Long-term investment horizons allow greater exposure to illiquid assets." },
+    { word: "alpha generation", translation: "génération d'alpha", example: "Alpha generation represents returns beyond what market exposure explains." },
+    { word: "beta exposure", translation: "exposition au bêta", example: "Beta exposure indicates sensitivity to overall market movements." },
+
+    // Gestion des risques financiers (25 mots)
+    { word: "financial risk management", translation: "gestion des risques financiers", example: "Financial risk management identifies and mitigates investment threats." },
+    { word: "market risk", translation: "risque de marché", example: "Market risk arises from price movements in stocks, bonds, and currencies." },
+    { word: "credit risk", translation: "risque de crédit", example: "Credit risk assessment evaluates the probability of default." },
+    { word: "liquidity risk", translation: "risque de liquidité", example: "Liquidity risk increases during market stress conditions." },
+
+    { word: "counterparty risk", translation: "risque de contrepartie", example: "Derivative transactions expose investors to counterparty risk." },
+    { word: "risk exposure", translation: "exposition au risque", example: "The portfolio's risk exposure to emerging markets exceeded targets." },
+
+    { word: "risk decomposition", translation: "décomposition du risque", example: "Risk decomposition identifies the sources of portfolio volatility." },
+
+    { word: "risk parity", translation: "parité des risques", example: "Risk parity allocates based on risk contribution rather than capital." },
+
+    { word: "risk limit", translation: "limite de risque", example: "Investment mandates establish risk limits for various exposures." },
+
+    { word: "volatility targeting", translation: "ciblage de volatilité", example: "Volatility targeting adjusts exposure to maintain consistent risk levels." },
+    { word: "conditional value at risk", translation: "valeur à risque conditionnelle", example: "Conditional value at risk measures expected losses in extreme scenarios." },
+
+    { word: "risk-reward ratio", translation: "ratio risque-rendement", example: "Investment decisions evaluate the risk-reward ratio of each opportunity." },
+
+    { word: "idiosyncratic risk", translation: "risque idiosyncratique", example: "Idiosyncratic risk relates to specific investments rather than markets." },
+    { word: "model risk", translation: "risque de modèle", example: "Model risk acknowledges potential flaws in quantitative approaches." },
+    { word: "risk attribution", translation: "attribution du risque", example: "Risk attribution identifies sources of portfolio volatility." },
+
+    // Instruments financiers (25 mots)
+    { word: "financial instrument", translation: "instrument financier", example: "Financial instruments include equities, fixed income, and derivatives." },
+    { word: "equity security", translation: "titre de participation", example: "Common stock is the most basic equity security." },
+    { word: "fixed income security", translation: "titre à revenu fixe", example: "Fixed income securities provide regular interest payments." },
+    { word: "derivative instrument", translation: "instrument dérivé", example: "Derivative instruments derive value from underlying assets." },
+    { word: "futures contract", translation: "contrat à terme", example: "Futures contracts obligate buyers to purchase assets at predetermined prices." },
+    { word: "options contract", translation: "contrat d'option", example: "Options contracts provide the right but not obligation to trade." },
+    { word: "swap agreement", translation: "contrat d'échange", example: "Interest rate swaps exchange fixed payments for floating payments." },
+
+    { word: "structured product", translation: "produit structuré", example: "Structured products combine securities with derivatives." },
+    { word: "alternative investment", translation: "investissement alternatif", example: "Alternative investments include real estate, private equity, and hedge funds." },
+    { word: "convertible bond", translation: "obligation convertible", example: "Convertible bonds can be exchanged for company shares." },
+    { word: "asset-backed security", translation: "titre adossé à des actifs", example: "Asset-backed securities derive value from underlying loan pools." },
+    { word: "mortgage-backed security", translation: "titre adossé à des hypothèques", example: "Mortgage-backed securities bundle residential mortgage loans." },
+    { word: "collateralized debt obligation", translation: "obligation adossée à des dettes", example: "Collateralized debt obligations repackage various debt instruments." },
+    { word: "credit default swap", translation: "swap de défaut de crédit", example: "Credit default swaps provide insurance against bond defaults." },
+    { word: "forward contract", translation: "contrat à terme de gré à gré", example: "Forward contracts are customized agreements traded over-the-counter." },
+    { word: "depository receipt", translation: "certificat de dépôt", example: "Depository receipts represent foreign shares trading domestically." },
+    { word: "preferred stock", translation: "action privilégiée", example: "Preferred stock combines equity and debt characteristics." },
+
+    { word: "rights issue", translation: "émission de droits", example: "Rights issues allow existing shareholders to purchase additional shares." },
+    { word: "index fund", translation: "fonds indiciel", example: "Index funds passively track market benchmarks." },
+
+    { word: "closed-end fund", translation: "fonds d'investissement à capital fixe", example: "Closed-end funds issue fixed numbers of shares trading on exchanges." },
+    { word: "real estate investment trust", translation: "société d'investissement immobilier cotée", example: "Real estate investment trusts own and manage income-producing properties." },
+    { word: "exchange-traded note", translation: "billet négocié en bourse", example: "Exchange-traded notes are unsecured debt securities tracking indexes." },
+
+    // Marchés obligataires (25 mots)
+
+    { word: "yield curve", translation: "courbe des taux", example: "An inverted yield curve often precedes economic recessions." },
+    { word: "credit spread", translation: "écart de crédit", example: "Credit spreads widened during the financial uncertainty." },
+    { word: "fixed income analysis", translation: "analyse des titres à revenu fixe", example: "Fixed income analysis evaluates interest rate and credit risks." },
+    { word: "bond duration", translation: "duration obligataire", example: "Bond duration measures price sensitivity to interest rate changes." },
+    { word: "bond convexity", translation: "convexité obligataire", example: "Bond convexity captures non-linear price-yield relationships." },
+    { word: "yield to maturity", translation: "rendement à l'échéance", example: "Yield to maturity considers coupon payments and price appreciation." },
+    { word: "credit rating", translation: "notation de crédit", example: "Credit ratings assess the issuer's ability to meet debt obligations." },
+    { word: "bond covenant", translation: "clause obligataire", example: "Bond covenants restrict issuers' actions to protect bondholders." },
+    { word: "fixed income portfolio", translation: "portefeuille à revenu fixe", example: "The fixed income portfolio emphasized corporate bonds." },
+    { word: "corporate bond", translation: "obligation d'entreprise", example: "Corporate bonds finance business operations and expansions." },
+    { word: "government bond", translation: "obligation d'État", example: "Government bonds are considered the safest fixed income investments." },
+    { word: "municipal bond", translation: "obligation municipale", example: "Municipal bonds finance local government infrastructure projects." },
+    { word: "high-yield bond", translation: "obligation à haut rendement", example: "High-yield bonds offer greater returns with increased default risk." },
+    { word: "investment-grade bond", translation: "obligation de qualité investissement", example: "Investment-grade bonds have lower default risk than speculative issues." },
+    { word: "zero-coupon bond", translation: "obligation zéro-coupon", example: "Zero-coupon bonds pay no interest but trade at discounts to face value." },
+    { word: "floating-rate note", translation: "titre à taux variable", example: "Floating-rate notes adjust interest payments based on reference rates." },
+    { word: "bond liquidity", translation: "liquidité obligataire", example: "Bond liquidity varies significantly across market segments." },
+    { word: "bond auction", translation: "adjudication d'obligations", example: "Treasury bonds are issued through regular bond auctions." },
+    { word: "call provision", translation: "clause de remboursement anticipé", example: "Call provisions allow issuers to redeem bonds before maturity." },
+    { word: "yield spread", translation: "écart de rendement", example: "Yield spreads measure the difference between two bond yields." },
+    { word: "term premium", translation: "prime de terme", example: "Term premiums compensate investors for longer maturity exposures." },
+    { word: "interest rate risk", translation: "risque de taux d'intérêt", example: "Interest rate risk increases with bond duration." },
+    { word: "default risk", translation: "risque de défaut", example: "Default risk assessment evaluates the issuer's financial stability." },
+    { word: "yield to call", translation: "rendement à l'option", example: "Yield to call calculates returns if bonds are redeemed early." },
+
+    // Marchés d'actions (25 mots)
+    { word: "equity market", translation: "marché des actions", example: "Equity markets reflect economic growth expectations." },
+
+    { word: "price-to-earnings ratio", translation: "ratio cours/bénéfice", example: "A high price-to-earnings ratio indicates growth expectations." },
+    { word: "dividend yield", translation: "rendement du dividende", example: "Dividend yield provides income while awaiting capital appreciation." },
+    { word: "earnings per share", translation: "bénéfice par action", example: "Earnings per share growth drives long-term stock performance." },
+    { word: "market sentiment", translation: "sentiment du marché", example: "Market sentiment shifted from pessimism to optimism." },
+
+    { word: "growth stock", translation: "action de croissance", example: "Growth stocks offer above-average revenue and earnings increases." },
+    { word: "value stock", translation: "action de valeur", example: "Value stocks trade below their intrinsic worth." },
+    { word: "market breadth", translation: "ampleur du marché", example: "Market breadth indicators track the number of advancing versus declining stocks." },
+
+    { word: "share buyback", translation: "rachat d'actions", example: "Share buybacks reduce outstanding stock and increase earnings per share." },
+
+    { word: "secondary offering", translation: "offre secondaire", example: "The secondary offering allowed early investors to sell their shares." },
+    { word: "price momentum", translation: "momentum de prix", example: "Price momentum strategies buy rising stocks and sell falling ones." },
+    { word: "contrarian investing", translation: "investissement à contre-courant", example: "Contrarian investing takes positions opposite to prevailing sentiment." },
+    { word: "market timing", translation: "market timing", example: "Market timing attempts to predict major market movements." },
+    { word: "earnings surprise", translation: "surprise de bénéfices", example: "The earnings surprise triggered a 15% increase in the stock price." },
+    { word: "equity research", translation: "recherche actions", example: "Equity research analysts provide investment recommendations and analysis." },
+    { word: "sector rotation", translation: "rotation sectorielle", example: "Sector rotation strategies shift between industries based on economic cycles." },
+
+    { word: "market rally", translation: "rebond du marché", example: "The market rally recovered half of the previous losses." },
+
+    // Marchés de devises (25 mots)
+
+    { word: "currency pair", translation: "paire de devises", example: "EUR/USD is the most actively traded currency pair." },
+
+    { word: "spot market", translation: "marché au comptant", example: "Spot market transactions settle within two business days." },
+
+    { word: "currency swap", translation: "swap de devises", example: "Currency swaps exchange principal and interest payments in different currencies." },
+
+    { word: "currency hedging", translation: "couverture de change", example: "Currency hedging protects against adverse exchange rate movements." },
+    { word: "central bank intervention", translation: "intervention de la banque centrale", example: "Central bank intervention attempts to stabilize currency values." },
+    { word: "currency volatility", translation: "volatilité des devises", example: "Political uncertainty increased currency volatility." },
+
+    { word: "currency option", translation: "option sur devise", example: "Currency options provide flexible hedging solutions." },
+    { word: "foreign exchange dealer", translation: "courtier en devises", example: "Foreign exchange dealers provide liquidity to the market." },
+    { word: "interbank market", translation: "marché interbancaire", example: "The interbank market handles the majority of currency transactions." },
+    { word: "currency futures", translation: "contrats à terme sur devises", example: "Currency futures standardize foreign exchange contracts on exchanges." },
+    { word: "carry trade", translation: "opération de portage", example: "Carry trades exploit interest rate differentials between currencies." },
+    { word: "currency correlation", translation: "corrélation de devises", example: "Currency correlation patterns shift during market stress periods." },
+    { word: "exchange rate regime", translation: "régime de taux de change", example: "Countries adopt various exchange rate regimes from fixed to floating." },
+    { word: "revaluation", translation: "réévaluation", example: "Currency revaluation increases purchasing power for imports." },
+    { word: "devaluation", translation: "dévaluation", example: "Currency devaluation aims to boost export competitiveness." },
+    { word: "purchasing power parity", translation: "parité de pouvoir d'achat", example: "Purchasing power parity theory suggests exchange rates should equalize price levels." },
+    { word: "interest rate differential", translation: "différentiel de taux d'intérêt", example: "Interest rate differentials influence currency movements." },
+    { word: "foreign exchange liquidity", translation: "liquidité du marché des changes", example: "Major currency pairs offer the highest foreign exchange liquidity." },
+    { word: "currency basket", translation: "panier de devises", example: "Some countries manage their currency against a weighted currency basket." },
+    { word: "currency manipulation", translation: "manipulation de devise", example: "Currency manipulation accusations arise when countries artificially influence exchange rates." },
+
+    // Investissement institutionnel (25 mots)
+    { word: "institutional investor", translation: "investisseur institutionnel", example: "Institutional investors include pension funds, endowments, and insurers." },
+
+    { word: "endowment fund", translation: "fonds de dotation", example: "University endowment funds support educational missions." },
+    { word: "insurance investment", translation: "investissement d'assurance", example: "Insurance investment portfolios match assets with liability profiles." },
+    { word: "asset-liability management", translation: "gestion actif-passif", example: "Asset-liability management coordinates investment horizon with obligations." },
+    { word: "fiduciary responsibility", translation: "responsabilité fiduciaire", example: "Institutional managers have fiduciary responsibilities to beneficiaries." },
+    { word: "investment policy statement", translation: "déclaration de politique d'investissement", example: "The investment policy statement defines objectives and constraints." },
+    { word: "liability driven investment", translation: "investissement guidé par le passif", example: "Liability driven investment strategies focus on funding specific obligations." },
+    { word: "proxy voting", translation: "vote par procuration", example: "Institutional investors exercise governance through proxy voting." },
+    { word: "investment committee", translation: "comité d'investissement", example: "The investment committee oversees portfolio strategy and manager selection." },
+    { word: "manager selection", translation: "sélection de gestionnaires", example: "Manager selection processes evaluate both quantitative performance and qualitative factors." },
+    { word: "investment consultant", translation: "consultant en investissement", example: "Investment consultants advise institutions on portfolio strategy and implementation." },
+    { word: "defined benefit plan", translation: "régime à prestations définies", example: "Defined benefit plans guarantee specific retirement payments to participants." },
+    { word: "defined contribution plan", translation: "régime à cotisations définies", example: "Defined contribution plans depend on investment performance for retirement benefits." },
+    { word: "actuarial assumption", translation: "hypothèse actuarielle", example: "Actuarial assumptions about longevity and returns drive pension investments." },
+    { word: "funded status", translation: "niveau de capitalisation", example: "The pension plan's funded status improved with strong investment returns." },
+    { word: "environmental, social, governance", translation: "environnemental, social, gouvernance", example: "Institutional investors increasingly consider environmental, social, and governance factors." },
+
+    { word: "active ownership", translation: "actionnariat actif", example: "Active ownership engages with companies to improve practices and performance." },
+    { word: "investment outsourcing", translation: "externalisation des investissements", example: "Investment outsourcing delegates portfolio management to specialized firms." },
+    { word: "investment beliefs", translation: "convictions d'investissement", example: "Investment beliefs document an institution's core principles and philosophy." },
+
+    { word: "investment stewardship", translation: "gestion responsable des investissements", example: "Investment stewardship promotes long-term value creation and sustainability." },
+    { word: "multi-asset portfolio", translation: "portefeuille multi-actifs", example: "Institutional investors typically maintain multi-asset portfolios for diversification." },
+
+    // Analyse macroéconomique (25 mots)
+    { word: "macroeconomic analysis", translation: "analyse macroéconomique", example: "Macroeconomic analysis evaluates economic trends affecting investments." },
+
+    { word: "economic cycle", translation: "cycle économique", example: "Asset allocation strategies adapt to different economic cycle phases." },
+
+    { word: "economic growth forecast", translation: "prévision de croissance économique", example: "Economic growth forecasts drive equity market sentiment." },
+    { word: "economic uncertainty", translation: "incertitude économique", example: "Economic uncertainty typically increases market volatility." },
+
+    { word: "global macro strategy", translation: "stratégie macro globale", example: "Global macro strategies position investments based on economic trends." },
+
+    { word: "economic output gap", translation: "écart de production économique", example: "The economic output gap measures actual versus potential GDP." },
+
+    { word: "economic expansion", translation: "expansion économique", example: "The economic expansion lasted over ten years before recession." },
+    { word: "interest rate forecast", translation: "prévision de taux d'intérêt", example: "Interest rate forecasts influence fixed income positioning." },
+    { word: "unemployment rate", translation: "taux de chômage", example: "The unemployment rate is a lagging indicator of economic health." },
+    { word: "consumer confidence", translation: "confiance des consommateurs", example: "Consumer confidence measures household optimism about economic conditions." },
+    { word: "purchasing managers index", translation: "indice des directeurs d'achat", example: "The purchasing managers index tracks manufacturing sector activity." },
+    { word: "central bank policy", translation: "politique de la banque centrale", example: "Central bank policy decisions influence all financial markets." },
+    { word: "economic surprise index", translation: "indice de surprise économique", example: "The economic surprise index tracks data relative to expectations." },
+    { word: "yield curve analysis", translation: "analyse de la courbe des taux", example: "Yield curve analysis provides insights into future economic conditions." },
+    { word: "Phillips curve", translation: "courbe de Phillips", example: "The Phillips curve describes the relationship between inflation and unemployment." },
+    { word: "inflationary pressure", translation: "pression inflationniste", example: "Commodity price increases created inflationary pressure in the economy." },
+    { word: "economic contraction", translation: "contraction économique", example: "The economic contraction reduced corporate earnings significantly." }
+  ]
+};

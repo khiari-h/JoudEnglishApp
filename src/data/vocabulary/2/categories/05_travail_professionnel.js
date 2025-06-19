@@ -1,0 +1,129 @@
+export const vocab = {
+  title: "Travail & Vie Professionnelle",
+  words: [
+    // Professions courantes
+    { word: "doctor", translation: "médecin", example: "My sister is a doctor at the local hospital." },
+    { word: "nurse", translation: "infirmier/ère", example: "The nurse took my temperature." },
+
+    { word: "lawyer", translation: "avocat/e", example: "She's a lawyer specializing in family law." },
+    { word: "engineer", translation: "ingénieur/e", example: "He works as an engineer for a construction company." },
+    { word: "architect", translation: "architecte", example: "The architect designed our new house." },
+    { word: "accountant", translation: "comptable", example: "Our accountant helps us with our taxes." },
+    { word: "journalist", translation: "journaliste", example: "She's a journalist for a local newspaper." },
+    { word: "chef", translation: "chef cuisinier", example: "He's a chef in a famous restaurant." },
+    { word: "waiter/waitress", translation: "serveur/serveuse", example: "The waitress brought our food." },
+    { word: "receptionist", translation: "réceptionniste", example: "The receptionist welcomed us at the hotel." },
+    { word: "police officer", translation: "policier/ère", example: "The police officer helped find my lost bag." },
+    { word: "firefighter", translation: "pompier", example: "Firefighters are very brave." },
+    { word: "scientist", translation: "scientifique", example: "My uncle is a scientist researching climate change." },
+    { word: "artist", translation: "artiste", example: "She's an artist who paints landscapes." },
+    { word: "musician", translation: "musicien/ne", example: "He's a musician in a jazz band." },
+
+    { word: "carpenter", translation: "charpentier/menuisier", example: "The carpenter built our new bookshelf." },
+    { word: "factory worker", translation: "ouvrier d'usine", example: "My father was a factory worker for 30 years." },
+
+    // Lieux de travail
+    { word: "office", translation: "bureau", example: "I work in an office in the city center." },
+    { word: "factory", translation: "usine", example: "The factory produces car parts." },
+
+    { word: "workshop", translation: "atelier", example: "The carpenter has a workshop downtown." },
+
+    { word: "construction site", translation: "chantier", example: "He works on a construction site." },
+
+    { word: "headquarters", translation: "siège social", example: "The company's headquarters are in London." },
+    { word: "branch", translation: "succursale", example: "The bank has branches in every major city." },
+
+    // Activités professionnelles
+
+    { word: "to meet", translation: "rencontrer/réunir", example: "We meet with clients every week." },
+    { word: "to discuss", translation: "discuter", example: "We need to discuss the project details." },
+    { word: "to present", translation: "présenter", example: "She will present the new product tomorrow." },
+    { word: "to organize", translation: "organiser", example: "My job is to organize events for the company." },
+    { word: "to manage", translation: "gérer", example: "He manages a team of ten people." },
+    { word: "to supervise", translation: "superviser", example: "She supervises the new employees." },
+    { word: "to train", translation: "former", example: "They train new staff members." },
+
+    { word: "to promote", translation: "promouvoir", example: "She was promoted to manager last month." },
+    { word: "to report to", translation: "rendre des comptes à", example: "I report to the marketing director." },
+
+    { word: "to communicate", translation: "communiquer", example: "It's important to communicate clearly with colleagues." },
+    { word: "to lead", translation: "diriger", example: "She leads the marketing team." },
+    { word: "to negotiate", translation: "négocier", example: "We're negotiating a new contract with suppliers." },
+    { word: "to analyze", translation: "analyser", example: "His job is to analyze market trends." },
+    { word: "to develop", translation: "développer", example: "They develop new software for businesses." },
+    { word: "to research", translation: "rechercher", example: "Scientists research new treatments for cancer." },
+    { word: "to create", translation: "créer", example: "Designers create new products for the company." },
+
+    // Matériel de bureau
+    { word: "computer", translation: "ordinateur", example: "I use a computer every day for work." },
+    { word: "laptop", translation: "ordinateur portable", example: "I often take my laptop to meetings." },
+    { word: "printer", translation: "imprimante", example: "The printer is out of paper." },
+    { word: "photocopier", translation: "photocopieur", example: "The photocopier is broken." },
+    { word: "scanner", translation: "scanner", example: "Use the scanner to digitize these documents." },
+
+    { word: "filing cabinet", translation: "classeur", example: "The documents are in the filing cabinet." },
+    { word: "stapler", translation: "agrafeuse", example: "Can I borrow your stapler?" },
+    { word: "paper clip", translation: "trombone", example: "I need a paper clip to attach these documents." },
+    { word: "sticky notes", translation: "post-it", example: "I write reminders on sticky notes." },
+    { word: "folder", translation: "dossier", example: "Put these documents in the blue folder." },
+    { word: "whiteboard", translation: "tableau blanc", example: "We use the whiteboard during meetings." },
+    { word: "projector", translation: "projecteur", example: "Connect your laptop to the projector." },
+    { word: "headset", translation: "casque audio", example: "I use a headset for video calls." },
+
+    // Recherche d'emploi simple
+    { word: "job", translation: "emploi", example: "I'm looking for a new job." },
+    { word: "position", translation: "poste", example: "There's an open position in the marketing department." },
+    { word: "vacancy", translation: "poste vacant", example: "The company has several vacancies." },
+    { word: "application", translation: "candidature", example: "I submitted my application yesterday." },
+    { word: "resume/CV", translation: "CV", example: "You need to update your resume." },
+    { word: "cover letter", translation: "lettre de motivation", example: "Write a cover letter to explain why you want the job." },
+    { word: "job interview", translation: "entretien d'embauche", example: "I have a job interview next week." },
+    { word: "reference", translation: "référence", example: "My previous employer gave me a good reference." },
+    { word: "qualification", translation: "qualification", example: "Do you have the necessary qualifications for this position?" },
+    { word: "experience", translation: "expérience", example: "I have five years of experience in marketing." },
+
+    { word: "job offer", translation: "offre d'emploi", example: "I received a job offer from two companies." },
+    { word: "recruitment", translation: "recrutement", example: "The recruitment process takes several weeks." },
+    { word: "job search", translation: "recherche d'emploi", example: "My job search has been difficult." },
+    { word: "career", translation: "carrière", example: "She's had a successful career in finance." },
+
+    // Horaires & conditions de travail
+    { word: "full-time", translation: "à temps plein", example: "I have a full-time job." },
+    { word: "part-time", translation: "à temps partiel", example: "She works part-time while studying." },
+    { word: "flexible hours", translation: "horaires flexibles", example: "I appreciate having flexible hours." },
+    { word: "fixed hours", translation: "horaires fixes", example: "The store has fixed hours from 9 to 5." },
+    { word: "shift work", translation: "travail posté", example: "Nurses often do shift work." },
+    { word: "night shift", translation: "travail de nuit", example: "He works the night shift at the factory." },
+    { word: "overtime", translation: "heures supplémentaires", example: "I did a lot of overtime last month." },
+    { word: "break", translation: "pause", example: "We get a 30-minute lunch break." },
+    { word: "leave", translation: "congé", example: "I'm taking leave next week." },
+    { word: "sick leave", translation: "congé maladie", example: "She's on sick leave for two weeks." },
+    { word: "maternity leave", translation: "congé maternité", example: "She's going on maternity leave next month." },
+    { word: "holiday", translation: "vacances", example: "I have two weeks of holiday per year." },
+    { word: "workload", translation: "charge de travail", example: "My workload has increased recently." },
+    { word: "deadline", translation: "date limite", example: "The project deadline is next Friday." },
+    { word: "pressure", translation: "pression", example: "There's a lot of pressure at work right now." },
+    { word: "stress", translation: "stress", example: "This job involves a lot of stress." },
+    { word: "contract", translation: "contrat", example: "I signed a one-year contract." },
+    { word: "permanent position", translation: "poste permanent", example: "After six months, I was offered a permanent position." },
+    { word: "temporary job", translation: "emploi temporaire", example: "This is just a temporary job until I find something better." },
+    { word: "probation period", translation: "période d'essai", example: "All new employees have a three-month probation period." },
+
+    // Rémunération basique
+    { word: "salary", translation: "salaire", example: "The job offers a competitive salary." },
+    { word: "wage", translation: "salaire (horaire)", example: "The minimum wage has increased." },
+    { word: "pay", translation: "paie", example: "I get my pay at the end of each month." },
+    { word: "bonus", translation: "prime", example: "We receive a bonus at Christmas." },
+    { word: "commission", translation: "commission", example: "Salespeople earn commission on what they sell." },
+    { word: "raise", translation: "augmentation", example: "I asked for a raise last month." },
+    { word: "income", translation: "revenu", example: "What's your annual income?" },
+    { word: "tax", translation: "impôt", example: "A large part of my salary goes to tax." },
+    { word: "pension", translation: "retraite", example: "The company contributes to my pension." },
+    { word: "benefit", translation: "avantage", example: "The job offers many benefits." },
+    { word: "health insurance", translation: "assurance maladie", example: "The company provides health insurance." },
+    { word: "pay slip", translation: "fiche de paie", example: "Check your pay slip to see the breakdown of your salary." },
+    { word: "net salary", translation: "salaire net", example: "Your net salary is what you receive after deductions." },
+    { word: "gross salary", translation: "salaire brut", example: "The job advertisement shows the gross salary." },
+    { word: "minimum wage", translation: "salaire minimum", example: "The government has increased the minimum wage." }
+  ]
+};
