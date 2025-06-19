@@ -25,7 +25,7 @@ import SimpleMetrics from "./components/SimpleMetrics"; // ✅ COMPOSANT AUTONOM
 import LearningProgress from "./components/LearningProgress";
 
 // 🚀 RÉVISION - Composant d'orchestration
-import RevisionOrchestrator from "../VocabularyRevision/RevisionOrchestrator"
+import RevisionOrchestrator from "../../components/revision/RevisionOrchestrator";
 
 // Constantes
 import { EXERCISES, LANGUAGE_LEVELS } from "../../utils/constants";
