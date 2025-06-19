@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, Modal, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ThemeContext } from '../../../contexts/ThemeContext';
+import { ThemeContext } from '../../../../../contexts/ThemeContext';
 import styles from './style';
 
 const RevisionPopup = ({

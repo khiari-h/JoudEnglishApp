@@ -1,12 +1,10 @@
-// src/screens/VocabularyRevision/index.js - VERSION PROPRE ET MODERNE
-import React, { useState, useMemo, useContext } from 'react';
+// src/screens/VocabularyRevision/index.js - VERSION AVEC HOOK DÉDIÉ
+import React, { useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, Animated, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import useRevisionManager from '../../hooks/useRevisionManager';
-
-// Utils
-import { getVocabularyData } from "../../utils/vocabulary/vocabularyDataHelper";
+import useRevisionData from '../../hooks/useRevisionData'; // ← NOUVEAU HOOK
 
 import styles from './style';
 
@@ -18,8 +16,7 @@ const VocabularyRevision = ({ route }) => {
   const { 
     level = "mixed", 
     questionsCount = 10,
-    source = 'manual',
-    revisionWords = null
+    source = 'manual'
   } = route?.params || {};
 
   const colors = themeContext?.colors || {
@@ -30,7 +27,17 @@ const VocabularyRevision = ({ route }) => {
     primary: "#3B82F6"
   };
 
-  // ========== ÉTATS ==========
+  // ========== HOOK RÉVISION DÉDIÉ ==========
+  const {
+    revisionQuestions,
+    isLoading,
+    error,
+    stats,
+    hasEnoughWords,
+    canGenerateQuestions
+  } = useRevisionData(level, questionsCount);
+
+  // ========== ÉTATS DU QUIZ ==========
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [score, setScore] = useState(0);
@@ -38,77 +45,54 @@ const VocabularyRevision = ({ route }) => {
   const [isFinished, setIsFinished] = useState(false);
   const [fadeAnim] = useState(new Animated.Value(1));
 
-  // ========== RÉCUPÉRATION DES MOTS ==========
-  const parsedRevisionWords = useMemo(() => {
-    if (revisionWords && typeof revisionWords === 'string') {
-      try {
-        return JSON.parse(revisionWords);
-      } catch (error) {
-        return null;
-      }
-    }
-    return revisionWords;
-  }, [revisionWords]);
+  const currentQuestion = revisionQuestions[currentIndex];
+  const progress = revisionQuestions.length > 0 ? ((currentIndex + 1) / revisionQuestions.length) * 100 : 0;
 
-  const questions = useMemo(() => {
-    let wordsToUse = [];
+  // ========== ÉCRAN DE CHARGEMENT ==========
+  if (isLoading) {
+    return (
+      <View style={[styles.container, { backgroundColor: colors.background }]}>
+        <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyEmoji}>🔄</Text>
+          <Text style={[styles.emptyTitle, { color: colors.text }]}>
+            Chargement...
+          </Text>
+          <Text style={[styles.emptyMessage, { color: colors.textSecondary }]}>
+            Récupération de vos mots appris
+          </Text>
+        </View>
+      </View>
+    );
+  }
 
-    if (parsedRevisionWords && parsedRevisionWords.length > 0) {
-      wordsToUse = parsedRevisionWords;
-    } else {
-      // Fallback système
-      const words = [];
-      const levels = level === "mixed" ? ['1', '2', '3', '4', '5', '6', 'bonus'] : [level];
-      
-      levels.forEach(levelKey => {
-        ['classic', 'fast'].forEach(mode => {
-          const levelData = getVocabularyData(levelKey, mode);
-          if (levelData?.exercises) {
-            levelData.exercises.forEach(exercise => {
-              if (exercise.words) {
-                words.push(...exercise.words.map(word => ({
-                  ...word,
-                  fromLevel: levelKey,
-                  fromMode: mode
-                })));
-              }
-            });
-          }
-        });
-      });
-      
-      const shuffled = words.sort(() => Math.random() - 0.5);
-      wordsToUse = shuffled.slice(0, questionsCount);
-    }
-    
-    // ========== GÉNÉRATION INTELLIGENTE DES CHOIX ==========
-    return wordsToUse.map((word, idx) => {
-      // Pool de tous les autres mots pour les mauvaises réponses
-      const otherWords = wordsToUse.filter((_, i) => i !== idx);
-      
-      // Prendre 3 mauvaises réponses aléatoires
-      const wrongAnswers = otherWords
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3)
-        .map(w => w.translation);
-      
-      // Mélanger toutes les réponses
-      const choices = [word.translation, ...wrongAnswers]
-        .sort(() => Math.random() - 0.5);
-      
-      return {
-        ...word,
-        choices,
-        correctAnswer: word.translation
-      };
-    });
-  }, [level, questionsCount, parsedRevisionWords]);
+  // ========== ÉCRAN D'ERREUR ==========
+  if (error) {
+    return (
+      <View style={[styles.container, { backgroundColor: colors.background }]}>
+        <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyEmoji}>⚠️</Text>
+          <Text style={[styles.emptyTitle, { color: colors.text }]}>
+            Erreur
+          </Text>
+          <Text style={[styles.emptyMessage, { color: colors.textSecondary }]}>
+            {error}
+          </Text>
+          <TouchableOpacity 
+            style={[styles.emptyButton, { backgroundColor: colors.primary }]} 
+            onPress={() => navigation.goBack()}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.emptyButtonText}>Retour</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
 
-  const currentQuestion = questions[currentIndex];
-  const progress = ((currentIndex + 1) / questions.length) * 100;
-
-  // ========== VÉRIFICATION ==========
-  if (!questions.length) {
+  // ========== ÉCRAN VIDE ==========
+  if (!hasEnoughWords || !canGenerateQuestions) {
     return (
       <View style={[styles.container, { backgroundColor: colors.background }]}>
         <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
@@ -118,7 +102,8 @@ const VocabularyRevision = ({ route }) => {
             Aucun mot disponible
           </Text>
           <Text style={[styles.emptyMessage, { color: colors.textSecondary }]}>
-            Apprenez quelques mots avant de réviser !
+            Apprenez quelques mots avant de réviser !{'\n'}
+            {stats.totalLearned > 0 && `Vous avez ${stats.totalLearned} mots appris`}
           </Text>
           <TouchableOpacity 
             style={[styles.emptyButton, { backgroundColor: colors.primary }]} 
@@ -139,7 +124,7 @@ const VocabularyRevision = ({ route }) => {
       duration: 200,
       useNativeDriver: true,
     }).start(() => {
-      if (currentIndex < questions.length - 1) {
+      if (currentIndex < revisionQuestions.length - 1) {
         setCurrentIndex(currentIndex + 1);
         setSelectedAnswer(null);
         setShowResult(false);
@@ -180,14 +165,14 @@ const VocabularyRevision = ({ route }) => {
 
   const handleFinish = async () => {
     if (markRevisionCompleted) {
-      await markRevisionCompleted(questions, score, questions.length);
+      await markRevisionCompleted(revisionQuestions, score, revisionQuestions.length);
     }
     navigation.goBack();
   };
 
-  // ========== ÉCRAN FINAL MODERNE ==========
+  // ========== ÉCRAN FINAL ==========
   if (isFinished) {
-    const percentage = Math.round((score / questions.length) * 100);
+    const percentage = Math.round((score / revisionQuestions.length) * 100);
     
     let resultConfig = {
       emoji: "😊",
@@ -224,10 +209,8 @@ const VocabularyRevision = ({ route }) => {
         <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
         
         <View style={styles.resultContainer}>
-          {/* Émoji principal */}
           <Text style={styles.resultEmoji}>{resultConfig.emoji}</Text>
           
-          {/* Titre et message */}
           <Text style={[styles.resultTitle, { color: colors.text }]}>
             {resultConfig.title}
           </Text>
@@ -235,18 +218,16 @@ const VocabularyRevision = ({ route }) => {
             {resultConfig.message}
           </Text>
           
-          {/* Score moderne */}
           <View style={[styles.scoreCard, { backgroundColor: colors.surface }]}>
             <View style={styles.scoreRow}>
               <Text style={[styles.scoreNumber, { color: resultConfig.color }]}>
                 {score}
               </Text>
               <Text style={[styles.scoreSlash, { color: colors.textSecondary }]}>
-                /{questions.length}
+                /{revisionQuestions.length}
               </Text>
             </View>
             
-            {/* Barre de progression moderne */}
             <View style={[styles.progressBar, { backgroundColor: '#F3F4F6' }]}>
               <View 
                 style={[
@@ -264,14 +245,27 @@ const VocabularyRevision = ({ route }) => {
             </Text>
           </View>
           
-          {/* Source info */}
+          {/* Stats détaillées */}
+          <View style={[styles.statsContainer, { backgroundColor: colors.surface }]}>
+            <Text style={[styles.statsTitle, { color: colors.text }]}>
+              📊 Statistiques
+            </Text>
+            <Text style={[styles.statsText, { color: colors.textSecondary }]}>
+              {stats.totalLearned} mots appris au total
+            </Text>
+            {Object.entries(stats.byLevel).map(([lvl, count]) => (
+              <Text key={lvl} style={[styles.statsText, { color: colors.textSecondary }]}>
+                Niveau {lvl}: {count} mots
+              </Text>
+            ))}
+          </View>
+          
           {source && (
             <Text style={[styles.sourceText, { color: colors.textSecondary }]}>
               {source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'}
             </Text>
           )}
           
-          {/* Boutons modernes */}
           <View style={styles.buttonsContainer}>
             <TouchableOpacity 
               style={[styles.restartButton, { backgroundColor: colors.surface }]} 
@@ -304,12 +298,12 @@ const VocabularyRevision = ({ route }) => {
     );
   }
 
-  // ========== ÉCRAN QUIZ MODERNE ==========
+  // ========== ÉCRAN QUIZ ==========
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
       
-      {/* Header propre */}
+      {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity 
           onPress={() => navigation.goBack()} 
@@ -323,7 +317,7 @@ const VocabularyRevision = ({ route }) => {
             Question {currentIndex + 1}
           </Text>
           <Text style={[styles.totalQuestions, { color: colors.textSecondary }]}>
-            sur {questions.length}
+            sur {revisionQuestions.length}
           </Text>
         </View>
         
@@ -332,7 +326,7 @@ const VocabularyRevision = ({ route }) => {
         </View>
       </View>
 
-      {/* Progress bar propre */}
+      {/* Progress bar */}
       <View style={styles.progressSection}>
         <View style={[styles.progressTrack, { backgroundColor: '#F3F4F6' }]}>
           <View 
@@ -359,13 +353,13 @@ const VocabularyRevision = ({ route }) => {
           </Text>
           {currentQuestion.fromLevel && (
             <Text style={[styles.levelInfo, { color: colors.textSecondary }]}>
-              Niveau {currentQuestion.fromLevel}
+              Niveau {currentQuestion.fromLevel} ({currentQuestion.fromMode})
             </Text>
           )}
         </View>
       </Animated.View>
 
-      {/* Choix modernes */}
+      {/* Choix */}
       <View style={styles.choicesSection}>
         {currentQuestion.choices.map((choice, index) => {
           const isSelected = selectedAnswer === choice;
