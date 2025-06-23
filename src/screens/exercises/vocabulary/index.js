@@ -3,6 +3,7 @@
 import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import VocabularyHeader from "./VocabularyHeader";
@@ -85,7 +86,12 @@ const VocabularyExercise = ({ route }) => {
   }, [wordIndex]); // ✅ SEULEMENT wordIndex - plus de boucle !
 
   // Handlers
-  const handleBackPress = () => navigation.goBack();
+ const handleBackPress = () => {
+  router.push({
+    pathname: "/(tabs)/exerciseSelection",
+    params: { level }
+  });
+};
   const handleCategoryChange = (index) => changeCategory(index);
   const handleCategoryProgressPress = (index) => changeCategory(index);
   const handleToggleProgressDetails = () => toggleDetailedProgress();

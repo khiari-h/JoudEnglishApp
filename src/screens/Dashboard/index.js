@@ -1,4 +1,4 @@
-// src/screens/Dashboard/index.js - VERSION CORRIGÉE AVEC RÉVISION INTÉGRÉE
+// src/screens/Dashboard/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
 
 import React, { useContext, useCallback } from "react";
 import { RefreshControl, Text, ScrollView, View } from "react-native";
@@ -9,6 +9,9 @@ import { router } from "expo-router";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useProgress } from "../../contexts/ProgressContext";
 
+// 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES VRAIS CHIFFRES
+import useRealTimeProgress from "../../hooks/useRealTimeProgress";
+
 // Hooks
 import { useDashboardLevel } from "./hooks/useDashboardLevel";
 import { useDashboardState } from "./hooks/useDashboardState";
@@ -17,11 +20,11 @@ import useLastActivity from "../../hooks/useLastActivity";
 // Composants Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 
-// Composants Dashboard
+// Composants Dashboard - TES COMPOSANTS ORIGINAUX
 import ModernHeader from "./components/ModernHeader";
 import HeroContinueSection from "./components/HeroContinueSection";
 import QuickActions from "./components/QuickActions";
-import SimpleMetrics from "./components/SimpleMetrics"; // ✅ COMPOSANT AUTONOME
+import SimpleMetrics from "./components/SimpleMetrics";
 import LearningProgress from "./components/LearningProgress";
 
 // 🚀 RÉVISION - Composant d'orchestration
@@ -37,6 +40,9 @@ const Dashboard = ({ route }) => {
   const themeContext = useContext(ThemeContext);
   const progressData = useProgress();
 
+  // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
+  const { getLevelProgress, refresh: refreshProgress } = useRealTimeProgress();
+
   const colors = themeContext?.colors || {
     background: "#F8FAFC",
     primary: "#3B82F6", 
@@ -45,15 +51,24 @@ const Dashboard = ({ route }) => {
     textSecondary: "#6B7280",
   };
 
-  // =================== HOOKS DASHBOARD ===================
+  // =================== HOOKS DASHBOARD - TES HOOKS ORIGINAUX ===================
   const { currentLevel, handleChangeActiveLevel, levelColor } = useDashboardLevel({ 
     progress: progressData.progress 
   });
   
   const { lastActivity, isLoading: isActivityLoading, reload: reloadActivity } = useLastActivity();
-  const { refreshing, onRefresh } = useDashboardState(reloadActivity);
+  
+  // ✅ REFRESH AMÉLIORÉ - Inclut la progression temps réel
+  const { refreshing, onRefresh: originalOnRefresh } = useDashboardState(reloadActivity);
 
-  // =================== NAVIGATION ===================
+  const onRefresh = useCallback(async () => {
+    await Promise.all([
+      originalOnRefresh(),
+      refreshProgress() // ✅ Refresh aussi la progression temps réel
+    ]);
+  }, [originalOnRefresh, refreshProgress]);
+
+  // =================== NAVIGATION - TES FONCTIONS ORIGINALES ===================
   
   const handleContinue = useCallback((activity) => {
     if (activity === "levelSelection") {
@@ -83,17 +98,25 @@ const Dashboard = ({ route }) => {
     router.push(`/(tabs)/exerciseSelection?level=${level}`);
   }, []);
 
-  // =================== NIVEAUX AVEC PROGRESSION ===================
+  // =================== NIVEAUX AVEC VRAIE PROGRESSION ===================
   
   const allLevels = Object.keys(LANGUAGE_LEVELS).map(key => ({
     id: key,
     title: LANGUAGE_LEVELS[key].title,
     color: LANGUAGE_LEVELS[key].color,
     icon: LANGUAGE_LEVELS[key].icon,
-    progress: progressData.calculateLevelProgress(key),
+    progress: getLevelProgress(key), // ✅ SEUL CHANGEMENT : vrai chiffre
     isActive: key === currentLevel,
-    isCompleted: progressData.calculateLevelProgress(key) >= 100,
+    isCompleted: getLevelProgress(key) >= 100, // ✅ Vraie completion
   }));
+
+  // ✅ PROGRESSION GLOBALE TEMPS RÉEL
+  const globalProgress = () => {
+    const validLevels = allLevels.filter(level => level.id !== 'bonus');
+    if (validLevels.length === 0) return 0;
+    const totalProgress = validLevels.reduce((sum, level) => sum + level.progress, 0);
+    return Math.round(totalProgress / validLevels.length);
+  };
 
   // =================== LOADING GLOBAL ===================
   
@@ -116,7 +139,7 @@ const Dashboard = ({ route }) => {
     locations: [0, 0.6, 1],
   };
 
-  // =================== RENDER PRINCIPAL ===================
+  // =================== RENDER PRINCIPAL - TON DESIGN ORIGINAL ===================
   
   return (
     <Container
@@ -134,7 +157,7 @@ const Dashboard = ({ route }) => {
         end={{ x: 0, y: 1 }}
         style={styles.container}
       >
-        {/* Header */}
+        {/* Header - TON COMPOSANT ORIGINAL */}
         <ModernHeader
           level={currentLevel}
           levelColor={levelColor}
@@ -148,13 +171,13 @@ const Dashboard = ({ route }) => {
           refreshControl={
             <RefreshControl
               refreshing={refreshing}
-              onRefresh={onRefresh}
+              onRefresh={onRefresh} // ✅ Refresh amélioré
               colors={[levelColor]}
               tintColor={levelColor}
             />
           }
         >
-          {/* Section Continue */}
+          {/* Section Continue - TON COMPOSANT ORIGINAL */}
           <HeroContinueSection
             lastActivity={lastActivity}
             onPress={handleContinue}
@@ -162,20 +185,20 @@ const Dashboard = ({ route }) => {
             isLoading={isActivityLoading}
           />
 
-          {/* Actions rapides */}
+          {/* Actions rapides - TON COMPOSANT ORIGINAL */}
           <QuickActions
             currentLevel={currentLevel}
             progressContext={progressData}
             accentColor={levelColor}
           />
 
-          {/* ✅ MÉTRIQUES AUTONOMES - Simple et Clean */}
+          {/* Métriques - TON COMPOSANT ORIGINAL */}
           <SimpleMetrics accentColor={levelColor} />
 
-          {/* Progression par niveaux */}
+          {/* ✅ PROGRESSION AVEC VRAIES DONNÉES - TON COMPOSANT ORIGINAL */}
           <LearningProgress
-            globalProgress={progressData.calculateGlobalProgress()}
-            levels={allLevels}
+            globalProgress={globalProgress()} // ✅ Calculé depuis vraies données
+            levels={allLevels} // ✅ Avec vraie progression dans chaque niveau
             currentLevel={currentLevel}
             onSelectLevel={handleLevelSelect}
             onChangeLevelVisual={handleChangeLevelVisual}
@@ -186,7 +209,7 @@ const Dashboard = ({ route }) => {
           <View style={styles.bottomSpacer} />
         </ScrollView>
 
-        {/* 🚀 SYSTÈME DE RÉVISION INTELLIGENT - UNE SEULE LIGNE ! */}
+        {/* 🚀 SYSTÈME DE RÉVISION INTELLIGENT */}
         <RevisionOrchestrator currentLevel={currentLevel} />
       </LinearGradient>
     </Container>

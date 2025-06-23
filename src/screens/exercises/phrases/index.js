@@ -2,6 +2,7 @@
 import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
 // Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
@@ -92,7 +93,12 @@ const PhrasesExercise = ({ route }) => {
   }, [loaded, hasValidData, currentPhrase, currentPhrases.length, phraseIndex, totalPhrasesInCategory, categoryIndex, level, phrasesData]);
 
   // Handlers
-  const handleBackPress = () => navigation.goBack();
+ const handleBackPress = () => {
+  router.push({
+    pathname: "/(tabs)/exerciseSelection",
+    params: { level }
+  });
+};
   
   const handleCategoryChange = (index) => changeCategory(index);
 

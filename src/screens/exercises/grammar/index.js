@@ -3,6 +3,7 @@
 import React, { useMemo, useEffect, useCallback } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
 // Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
@@ -76,9 +77,12 @@ const GrammarExercise = ({ route }) => {
   // comme quand on change de règle ou termine un exercice
 
   // ✅ TOUS LES HANDLERS MÉMORISÉS pour éviter les re-renders
-  const handleBackPress = useCallback(() => {
-    navigation.goBack();
-  }, [navigation]);
+const handleBackPress = useCallback(() => {
+  router.push({
+    pathname: "/(tabs)/exerciseSelection",
+    params: { level }
+  });
+}, [level]);
   
   const handleCheckAnswer = useCallback(() => {
     submitAnswer();

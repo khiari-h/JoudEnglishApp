@@ -1,4 +1,4 @@
-// src/screens/ExerciseSelection/index.js - VERSION RÉPARÉE
+// src/screens/ExerciseSelection/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
 import React, { useContext, useMemo } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -6,7 +6,9 @@ import { router } from "expo-router";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { ProgressContext } from "../../contexts/ProgressContext";
+
+// 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES CHIFFRES
+import useRealTimeProgress from "../../hooks/useRealTimeProgress";
 
 // Composants UI
 import Button from "../../components/ui/Button";
@@ -15,7 +17,7 @@ import Button from "../../components/ui/Button";
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
-// Constantes SIMPLIFIÉES
+// Constantes
 import { EXERCISES, LANGUAGE_LEVELS, BONUS_EXERCISES } from "../../utils/constants";
 
 // Styles
@@ -26,23 +28,18 @@ const DEFAULT_THEME = {
     background: "#F9FAFB",
     primary: "#5E60CE",
     text: "#1F2937",
+    textSecondary: "#6B7280",
     surface: "#FFFFFF",
   },
 };
 
-const DEFAULT_PROGRESS = {
-  exercises: {},
-  isLoading: false,
-};
-
 const ExerciseSelection = ({ route }) => {
   const { level } = route.params;
-
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
-  const progressContext = useContext(ProgressContext) || DEFAULT_PROGRESS;
-
   const { colors } = themeContext;
-  const { progress } = progressContext;
+
+  // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
+  const { getExerciseProgress, hasProgress } = useRealTimeProgress();
 
   // Infos du niveau
   const levelInfo = useMemo(() => {
@@ -56,7 +53,7 @@ const ExerciseSelection = ({ route }) => {
   const levelColor = levelInfo.color;
   const backgroundGradient = getBackgroundGradient(levelColor, colors.background);
 
-  // ========== EXERCICES AVEC NOUVELLES CONSTANTES ==========
+  // ✅ EXERCICES - TON DESIGN ORIGINAL + VRAIES DONNÉES
   const exercises = useMemo(() => {
     const exercisesList = [];
 
@@ -66,31 +63,38 @@ const ExerciseSelection = ({ route }) => {
         return;
       }
 
-      // Récupérer progression (TODO: brancher sur vraies données)
-      let exerciseProgress = 0;
-      if (exercise.id === 'vocabulary') {
-        exerciseProgress = progress?.exercises?.vocabulary?.[level]?.classic || 0;
-      } else if (exercise.id === 'vocabulary_fast') {
-        exerciseProgress = progress?.exercises?.vocabulary?.[level]?.fast || 0;
-      } else {
-        exerciseProgress = progress?.exercises?.[exercise.id]?.[level]?.completed || 0;
+      // ✅ FAST VOCABULARY - A SON PROPRE POURCENTAGE
+      if (exercise.id === 'vocabulary_fast') {
+        const fastProgress = getExerciseProgress('vocabulary_fast', level); // ✅ Vraie progression Fast
+        
+        exercisesList.push({
+          ...exercise,
+          progress: fastProgress, // ✅ Son vrai %
+          hasProgress: fastProgress > 0,
+          isFast: true,
+        });
+        return;
       }
+
+      // ✅ EXERCICES NORMAUX avec VRAIE PROGRESSION
+      const exerciseProgress = getExerciseProgress(exercise.id, level);
+      const exerciseHasProgress = hasProgress(exercise.id, level);
 
       exercisesList.push({
         ...exercise,
-        progress: exerciseProgress,
-        hasProgress: exerciseProgress > 0,
+        progress: exerciseProgress, // ✅ Vrai chiffre
+        hasProgress: exerciseHasProgress, // ✅ Vraie détection
+        isFast: false,
       });
     });
 
     return exercisesList;
-  }, [level, progress]);
+  }, [level, getExerciseProgress, hasProgress]);
 
-  // ========== NAVIGATION EXPO ROUTER SIMPLIFIÉE ==========
+  // Navigation
   const handleExerciseSelect = (exercise) => {
     const params = { level };
     
-    // Ajouter le mode pour vocabulary
     if (exercise.id === 'vocabulary') {
       params.mode = 'classic';
     } else if (exercise.id === 'vocabulary_fast') {
@@ -103,7 +107,7 @@ const ExerciseSelection = ({ route }) => {
     });
   };
 
-  // ========== RENDU ==========
+  // ========== RENDU - TON DESIGN ORIGINAL ==========
   const renderHeader = () => (
     <View style={styles.headerContainer}>
       <LinearGradient
@@ -134,6 +138,17 @@ const ExerciseSelection = ({ route }) => {
   );
 
   const renderExerciseCard = (exercise) => {
+    // ✅ LOGIQUE BOUTON SIMPLE
+    const getButtonText = () => {
+      if (exercise.hasProgress) return "Continuer"; // Dès qu'on a commencé = Continuer
+      return "Commencer";
+    };
+
+    const getButtonIcon = () => {
+      if (exercise.hasProgress) return "play-outline";
+      return "rocket-outline";
+    };
+
     return (
       <TouchableOpacity
         key={exercise.id}
@@ -142,18 +157,21 @@ const ExerciseSelection = ({ route }) => {
         activeOpacity={0.8}
       >
         <View style={styles.cardContentStyle}>
-          {/* Header */}
+          {/* Header - TON DESIGN ORIGINAL */}
           <View style={styles.cardHeader}>
             <View style={styles.levelTitleContainer}>
               <Text style={[styles.levelMainTitle, { color: colors.text }]}>
                 {exercise.title}
               </Text>
+              
+              {/* ✅ TON BADGE ORIGINAL avec VRAI CHIFFRE */}
               <View style={[styles.levelBadge, { backgroundColor: exercise.color }]}>
                 <Text style={styles.levelBadgeText}>
-                  {exercise.hasProgress ? `${exercise.progress}%` : '0%'}
+                  {exercise.progress}% {/* ✅ VRAI CHIFFRE (même Fast aura le sien) */}
                 </Text>
               </View>
-              {/* Badge FAST */}
+              
+              {/* Badge FAST - TON DESIGN ORIGINAL */}
               {exercise.id === "vocabulary_fast" && (
                 <View style={[styles.levelBadge, styles.fastBadge]}>
                   <Text style={[styles.levelBadgeText, styles.fastBadgeText]}>FAST</Text>
@@ -163,7 +181,7 @@ const ExerciseSelection = ({ route }) => {
             <Text style={styles.levelIcon}>{exercise.icon}</Text>
           </View>
 
-          {/* Progression */}
+          {/* Progression - TON DESIGN ORIGINAL */}
           {exercise.hasProgress && (
             <View style={styles.progressContainer}>
               <View style={styles.progressBar}>
@@ -171,27 +189,27 @@ const ExerciseSelection = ({ route }) => {
                   style={[
                     styles.progressFill,
                     { 
-                      width: `${exercise.progress}%`,
+                      width: `${exercise.progress}%`, // ✅ Vrai chiffre
                       backgroundColor: exercise.color
                     }
                   ]} 
                 />
               </View>
               <Text style={[styles.progressText, { color: colors.textSecondary }]}>
-                {exercise.progress}%
+                {exercise.progress}% {/* ✅ Vrai chiffre */}
               </Text>
             </View>
           )}
 
-          {/* Bouton */}
+          {/* Bouton - TON DESIGN ORIGINAL */}
           <Button
-            title={exercise.hasProgress ? "Continuer" : "Commencer"}
+            title={getButtonText()} // ✅ Logique simple
             variant="filled"
             color={exercise.color}
             fullWidth
             onPress={() => handleExerciseSelect(exercise)}
             style={styles.startButton}
-            rightIcon={exercise.hasProgress ? "play-outline" : "rocket-outline"}
+            rightIcon={getButtonIcon()}
           />
         </View>
       </TouchableOpacity>

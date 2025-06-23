@@ -3,6 +3,7 @@
 import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import SpellingHeader from "./SpellingHeader";
@@ -74,7 +75,12 @@ const SpellingExercise = ({ route }) => {
     }
   }, [loaded, hasValidData, currentExercise, currentExerciseIndex, totalExercises, exerciseType, level, saveActivity]);
 
-  const handleBackPress = () => navigation.goBack();
+ const handleBackPress = () => {
+  router.push({
+    pathname: "/(tabs)/exerciseSelection",
+    params: { level }
+  });
+};
 
   const handleCheckAnswer = () => {
     try {

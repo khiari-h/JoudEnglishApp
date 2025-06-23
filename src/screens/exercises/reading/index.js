@@ -3,6 +3,7 @@
 import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import ReadingHeader from "./ReadingHeader";
@@ -87,8 +88,13 @@ const ReadingExercise = ({ route }) => {
   }, [selectedExerciseIndex, currentQuestionIndex]); // ✅ SEULEMENT ces 2 dépendances !
 
   // Handlers
-  const handleBackPress = () => navigation.goBack();
-  
+ const handleBackPress = () => {
+  router.push({
+    pathname: "/(tabs)/exerciseSelection",
+    params: { level }
+  });
+};
+
   const handleNext = () => {
     if (showFeedback) {
       nextQuestion();
