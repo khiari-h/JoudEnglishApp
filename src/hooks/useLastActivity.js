@@ -56,6 +56,8 @@ const useLastActivity = () => {
       
       await AsyncStorage.setItem(STORAGE_KEYS.LAST_ACTIVITY, JSON.stringify(activity));
       
+      // Event bus : notifier la progression
+      try { require('../utils/eventBus').emit('progress-updated', activity); } catch(e) {}
       // Mettre à jour l'état local avec temps écoulé
       setLastActivity({
         ...activity,

@@ -54,6 +54,7 @@ const ExerciseHeader = ({
             onPress={handleClose}
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
             activeOpacity={0.6}
+          accessibilityRole="button"
           >
             <Ionicons name={backIcon} size={22} color="#64748b" />
           </TouchableOpacity>

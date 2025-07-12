@@ -2,7 +2,7 @@
 import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
-  // =================== CONTAINER ===================
+  // =================== CONTAINER PRINCIPAL ===================
   container: {
     paddingHorizontal: 20,
     marginBottom: 24,
@@ -15,7 +15,7 @@ export default StyleSheet.create({
     letterSpacing: -0.3,
   },
   
-  // =================== CARD ===================
+  // =================== CARTE PRINCIPALE ===================
   card: {
     padding: 20,
     borderRadius: 16,
@@ -90,7 +90,6 @@ export default StyleSheet.create({
   globalProgressFill: {
     height: 8,
     borderRadius: 4,
-    // Effet subtil
     ...Platform.select({
       ios: {
         shadowColor: "#3B82F6",
@@ -110,16 +109,19 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
 
-  // =================== NIVEAUX SIMPLIFIÉ ===================
+  // =================== NIVEAUX - SOLUTION SIMPLE ET FIABLE ===================
   levelsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around', // ✅ SIMPLE : space-around fonctionne mieux
+    alignItems: 'center',
     marginBottom: 20,
-    paddingHorizontal: 4,
+    paddingHorizontal: 10, // ✅ Marge interne pour éviter les débordements
   },
   
   levelButton: {
     alignItems: 'center',
+    justifyContent: 'center',
+    // ✅ PAS de width fixe - laisse React Native gérer
   },
   
   levelCircle: {
@@ -130,9 +132,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   
-  // États des niveaux - SIMPLIFIÉ
+  // =================== ÉTATS DES NIVEAUX ===================
   activeLevelCircle: {
-    // Ombre pour niveau actuel
     ...Platform.select({
       ios: {
         shadowColor: "#000",
@@ -152,7 +153,7 @@ export default StyleSheet.create({
     borderColor: '#E5E7EB',
   },
   
-  // Textes des niveaux
+  // =================== TEXTES DES NIVEAUX ===================
   levelText: {
     fontSize: 16,
     fontWeight: '700',
@@ -166,9 +167,7 @@ export default StyleSheet.create({
     // Couleur définie dans le composant
   },
 
-  // ❌ SUPPRIMÉ : currentIndicator et currentText (plus d'indicateur "Actuel")
-
-  // =================== ACTION BUTTON ===================
+  // =================== BOUTON D'ACTION ===================
   actionButton: {
     borderWidth: 1.5,
     borderRadius: 12,
@@ -202,6 +201,10 @@ export default StyleSheet.create({
     
     progressTitle: {
       fontSize: 16,
+    },
+    
+    levelsContainer: {
+      paddingHorizontal: 8, // Moins de marge sur petits écrans
     },
   },
 });

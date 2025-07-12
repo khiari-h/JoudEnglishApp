@@ -106,6 +106,7 @@ const LevelSelection = () => {
         <Header
           title="Niveaux"
           showBackButton
+          onBackPress={() => router.push("/(tabs)/dashboard")}
           backgroundColor="transparent"
           textColor="white"
           withStatusBar={false}

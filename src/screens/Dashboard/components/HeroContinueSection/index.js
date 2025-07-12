@@ -80,8 +80,10 @@ const HeroContinueSection = ({
             {lastActivity.title}
           </Text>
 
-          <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
-            Niveau {lastActivity.level || 1} • Mot {currentWord}/{totalWords}
+          <Text style={[styles.subtitle, { color: colors.textSecondary }]}> 
+            Niv {lastActivity.level || 1}
+            {typeof lastActivity.metadata?.categoryIndex === 'number' ? ` • Catégorie ${lastActivity.metadata.categoryIndex + 1}` : ''}
+            • Mot {currentWord}/{totalWords}
           </Text>
 
           {/* Barre de progression */}

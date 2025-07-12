@@ -1,4 +1,4 @@
-// src/screens/Dashboard/components/QuickActions/style.js - VERSION COMPLÈTE SIMPLE
+// src/screens/Dashboard/components/QuickActions/style.js - STYLE CORRIGÉ COMME SIMPLEMETRICS
 import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
@@ -7,14 +7,14 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 24,
   },
-
+  
   sectionTitle: {
     fontSize: 20,
     fontWeight: '700',
     marginBottom: 16,
     letterSpacing: -0.3,
   },
-
+  
   loadingText: {
     fontSize: 14,
     fontWeight: '500',
@@ -27,18 +27,20 @@ export default StyleSheet.create({
     gap: 12,
   },
 
-  // =================== ACTION BUTTON ===================
+  // =================== ACTION BUTTON - MÊME STYLE QUE SIMPLEMETRICS ===================
   actionButton: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
     borderRadius: 12,
+    // ✅ AJOUT : Même style que metricCard de SimpleMetrics
+    backgroundColor: 'white',
     ...Platform.select({
       ios: {
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.06,
-        shadowRadius: 4,
+        shadowRadius: 8,
       },
       android: {
         elevation: 2,

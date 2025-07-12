@@ -1,3 +1,14 @@
+/**
+ * Formate une liste de mots pour garantir la présence des clés word et translation
+ * @param {Array} data
+ * @returns {Array}
+ */
+export const formatVocabularyList = (data = []) => {
+  return data.map(entry => ({
+    word: entry.word,
+    translation: entry.translation
+  }));
+};
 // src/utils/vocabulary/vocabularyDataHelper.js
 
 // Import des données de vocabulaire par niveau (6 niveaux + bonus)

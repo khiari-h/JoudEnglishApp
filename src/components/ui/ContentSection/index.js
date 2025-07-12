@@ -24,11 +24,12 @@ const ContentSection = ({
   isItalic = false,
   showIcon = true,
   containerStyle = {},
+  children,
 }) => {
   const styles = createStyles(levelColor, backgroundColor);
 
-  // Ne pas rendre si pas de contenu
-  if (!content) return null;
+  // Ne pas rendre si pas de contenu et pas d'enfants
+  if (!content && !children) return null;
 
   return (
     <Card
@@ -47,9 +48,12 @@ const ContentSection = ({
       </View>
       
       {/* Contenu */}
-      <Text style={[styles.contentText, isItalic && styles.italicText]}>
-        {content}
-      </Text>
+      {content ? (
+        <Text style={[styles.contentText, isItalic && styles.italicText]}>
+          {content}
+        </Text>
+      ) : null}
+      {children}
     </Card>
   );
 };

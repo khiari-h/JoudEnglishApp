@@ -26,6 +26,7 @@ const ProgressBar = ({
   style,
   valueFormatter = (value, total) => `${value}/${total}`,
   percentageFormatter = (percentage) => `${Math.round(percentage)}%`,
+  testID,
 }) => {
   const styles = createStyles(fillColor, height, borderRadius);
   
@@ -93,7 +94,7 @@ const ProgressBar = ({
   };
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style]} testID={testID}>
       {/* Contenu au-dessus */}
       {renderTopContent()}
 

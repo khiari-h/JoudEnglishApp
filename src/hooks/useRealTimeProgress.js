@@ -1,19 +1,15 @@
-// src/hooks/useRealTimeProgress.js - LECTURE VRAIES DONNÉES
+// src/hooks/useRealTimeProgress.js - CORRIGÉ - Juste les vraies données
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getVocabularyData } from '../utils/vocabulary/vocabularyDataHelper';
 
-/**
- * Hook pour récupérer la progression en temps réel
- * Compatible avec TOUS tes systèmes de stockage existants
- */
 const useRealTimeProgress = () => {
-  const [levelProgress, setLevelProgress] = useState({}); // % par niveau
-  const [exerciseProgress, setExerciseProgress] = useState({}); // % par exercice/niveau
+  const [levelProgress, setLevelProgress] = useState({});
+  const [exerciseProgress, setExerciseProgress] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  // =================== CALCULS PROGRESSION PAR EXERCICE ===================
+  // =================== VOCABULAIRE - CORRECTION PRINCIPALE ===================
   
-  // VOCABULARY (classic seulement)
   const calculateVocabularyProgress = async (level) => {
     try {
       const storageKey = `vocabulary_${level}_classic`;
@@ -24,19 +20,61 @@ const useRealTimeProgress = () => {
       const data = JSON.parse(savedData);
       const completedWords = data.completedWords || {};
       
-      // Compter mots complétés (compatibilité ancien/nouveau format)
-      let totalCompleted = 0;
+      // ✅ FIX : Récupérer les VRAIES données comme useVocabulary.js
+      const vocabularyData = getVocabularyData(level, 'classic');
+      if (!vocabularyData?.exercises) return 0;
+      
+      // ✅ FIX : Calcul réel du total comme ligne 168 de useVocabulary.js
+      const totalWords = vocabularyData.exercises.reduce((sum, cat) => 
+        sum + (cat.words?.length || 0), 0
+      );
+      
+      // Compter mots complétés
+      let completedCount = 0;
       Object.values(completedWords).forEach(categoryWords => {
         if (Array.isArray(categoryWords)) {
-          totalCompleted += categoryWords.length;
+          completedCount += categoryWords.length;
         }
       });
       
-      // Estimation basée sur 50 mots par niveau (tu peux ajuster)
-      const WORDS_PER_LEVEL = 50;
-      const progression = Math.min((totalCompleted / WORDS_PER_LEVEL) * 100, 100);
+      // ✅ FIX : Calcul correct au lieu de constante bidon
+      const percentage = totalWords > 0 ? (completedCount / totalWords) * 100 : 0;
+      return Math.min(Math.round(percentage), 100);
       
-      return Math.round(progression);
+    } catch (error) {
+      return 0;
+    }
+  };
+
+  // VOCABULARY FAST
+  const calculateVocabularyFastProgress = async (level) => {
+    try {
+      const storageKey = `vocabulary_${level}_fast`;
+      const savedData = await AsyncStorage.getItem(storageKey);
+      
+      if (!savedData) return 0;
+      
+      const data = JSON.parse(savedData);
+      const completedWords = data.completedWords || {};
+      
+      // ✅ Même fix pour fast
+      const vocabularyData = getVocabularyData(level, 'fast');
+      if (!vocabularyData?.exercises) return 0;
+      
+      const totalWords = vocabularyData.exercises.reduce((sum, cat) => 
+        sum + (cat.words?.length || 0), 0
+      );
+      
+      let completedCount = 0;
+      Object.values(completedWords).forEach(categoryWords => {
+        if (Array.isArray(categoryWords)) {
+          completedCount += categoryWords.length;
+        }
+      });
+      
+      const percentage = totalWords > 0 ? (completedCount / totalWords) * 100 : 0;
+      return Math.min(Math.round(percentage), 100);
+      
     } catch (error) {
       return 0;
     }
@@ -53,19 +91,18 @@ const useRealTimeProgress = () => {
       const data = JSON.parse(savedData);
       const completedExercises = data.completedExercises || {};
       
-      // Compter exercices complétés
-      let totalCompleted = 0;
+      let completedCount = 0;
       Object.values(completedExercises).forEach(exerciseIndices => {
         if (Array.isArray(exerciseIndices)) {
-          totalCompleted += exerciseIndices.length;
+          completedCount += exerciseIndices.length;
         }
       });
       
-      // Estimation : 20 exercices par niveau
+      // Estimation réaliste (à ajuster selon vos vraies données)
       const EXERCISES_PER_LEVEL = 20;
-      const progression = Math.min((totalCompleted / EXERCISES_PER_LEVEL) * 100, 100);
+      const percentage = (completedCount / EXERCISES_PER_LEVEL) * 100;
+      return Math.min(Math.round(percentage), 100);
       
-      return Math.round(progression);
     } catch (error) {
       return 0;
     }
@@ -82,19 +119,17 @@ const useRealTimeProgress = () => {
       const data = JSON.parse(savedData);
       const completedQuestions = data.completedQuestions || {};
       
-      // Compter questions complétées
-      let totalCompleted = 0;
+      let completedCount = 0;
       Object.values(completedQuestions).forEach(questionIndices => {
         if (Array.isArray(questionIndices)) {
-          totalCompleted += questionIndices.length;
+          completedCount += questionIndices.length;
         }
       });
       
-      // Estimation : 15 questions par niveau
       const QUESTIONS_PER_LEVEL = 15;
-      const progression = Math.min((totalCompleted / QUESTIONS_PER_LEVEL) * 100, 100);
+      const percentage = (completedCount / QUESTIONS_PER_LEVEL) * 100;
+      return Math.min(Math.round(percentage), 100);
       
-      return Math.round(progression);
     } catch (error) {
       return 0;
     }
@@ -103,7 +138,7 @@ const useRealTimeProgress = () => {
   // SPELLING
   const calculateSpellingProgress = async (level) => {
     try {
-      const storageKey = `spelling_${level}_correction`; // Type par défaut
+      const storageKey = `spelling_${level}_correction`;
       const savedData = await AsyncStorage.getItem(storageKey);
       
       if (!savedData) return 0;
@@ -111,11 +146,10 @@ const useRealTimeProgress = () => {
       const data = JSON.parse(savedData);
       const completedExercises = data.completedExercises || [];
       
-      // Estimation : 25 exercices par niveau
       const EXERCISES_PER_LEVEL = 25;
-      const progression = Math.min((completedExercises.length / EXERCISES_PER_LEVEL) * 100, 100);
+      const percentage = (completedExercises.length / EXERCISES_PER_LEVEL) * 100;
+      return Math.min(Math.round(percentage), 100);
       
-      return Math.round(progression);
     } catch (error) {
       return 0;
     }
@@ -132,19 +166,17 @@ const useRealTimeProgress = () => {
       const data = JSON.parse(savedData);
       const completedPhrases = data.completedPhrases || {};
       
-      // Compter phrases complétées
-      let totalCompleted = 0;
+      let completedCount = 0;
       Object.values(completedPhrases).forEach(phraseIndices => {
         if (Array.isArray(phraseIndices)) {
-          totalCompleted += phraseIndices.length;
+          completedCount += phraseIndices.length;
         }
       });
       
-      // Estimation : 30 phrases par niveau
       const PHRASES_PER_LEVEL = 30;
-      const progression = Math.min((totalCompleted / PHRASES_PER_LEVEL) * 100, 100);
+      const percentage = (completedCount / PHRASES_PER_LEVEL) * 100;
+      return Math.min(Math.round(percentage), 100);
       
-      return Math.round(progression);
     } catch (error) {
       return 0;
     }
@@ -161,16 +193,14 @@ const useRealTimeProgress = () => {
       const data = JSON.parse(savedData);
       const completedScenarios = data.completedScenarios || {};
       
-      // Compter scénarios complétés
       const completedCount = Object.values(completedScenarios).filter(scenario => 
         scenario && (scenario.completed || scenario.completedAt)
       ).length;
       
-      // Estimation : 8 conversations par niveau
       const CONVERSATIONS_PER_LEVEL = 8;
-      const progression = Math.min((completedCount / CONVERSATIONS_PER_LEVEL) * 100, 100);
+      const percentage = (completedCount / CONVERSATIONS_PER_LEVEL) * 100;
+      return Math.min(Math.round(percentage), 100);
       
-      return Math.round(progression);
     } catch (error) {
       return 0;
     }
@@ -187,19 +217,17 @@ const useRealTimeProgress = () => {
       const data = JSON.parse(savedData);
       const completedExercises = data.completedExercises || {};
       
-      // Compter exercices complétés
-      let totalCompleted = 0;
+      let completedCount = 0;
       Object.values(completedExercises).forEach(exerciseIndices => {
         if (Array.isArray(exerciseIndices)) {
-          totalCompleted += exerciseIndices.length;
+          completedCount += exerciseIndices.length;
         }
       });
       
-      // Estimation : 20 exercices par niveau
       const EXERCISES_PER_LEVEL = 20;
-      const progression = Math.min((totalCompleted / EXERCISES_PER_LEVEL) * 100, 100);
+      const percentage = (completedCount / EXERCISES_PER_LEVEL) * 100;
+      return Math.min(Math.round(percentage), 100);
       
-      return Math.round(progression);
     } catch (error) {
       return 0;
     }
@@ -215,16 +243,14 @@ const useRealTimeProgress = () => {
       
       const data = JSON.parse(savedData);
       
-      // Compter jeux complétés
       const completedCount = Object.values(data).filter(game => 
         game && game.completed
       ).length;
       
-      // Estimation : 10 jeux par niveau
       const GAMES_PER_LEVEL = 10;
-      const progression = Math.min((completedCount / GAMES_PER_LEVEL) * 100, 100);
+      const percentage = (completedCount / GAMES_PER_LEVEL) * 100;
+      return Math.min(Math.round(percentage), 100);
       
-      return Math.round(progression);
     } catch (error) {
       return 0;
     }
@@ -239,19 +265,14 @@ const useRealTimeProgress = () => {
       if (!savedData) return 0;
       
       const data = JSON.parse(savedData);
+      return data.completedAt ? 100 : 0;
       
-      // Si l'évaluation est complétée, retourner 100%
-      if (data.completedAt) {
-        return 100;
-      }
-      
-      return 0;
     } catch (error) {
       return 0;
     }
   };
 
-  // =================== CALCUL PROGRESSION GLOBALE ===================
+  // =================== CALCUL GLOBAL ===================
   const calculateProgress = useCallback(async () => {
     try {
       setIsLoading(true);
@@ -259,16 +280,12 @@ const useRealTimeProgress = () => {
       const newLevelProgress = {};
       const newExerciseProgress = {};
 
-      // Pour chaque niveau (1-6 + bonus)
       const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
       
       for (const level of levels) {
-        let levelTotal = 0;
-        let levelCompleted = 0;
-        
-        // Mapping des exercices et leurs fonctions de calcul
         const exerciseCalculators = {
           vocabulary: calculateVocabularyProgress,
+          vocabulary_fast: calculateVocabularyFastProgress,
           grammar: calculateGrammarProgress,
           reading: calculateReadingProgress,
           spelling: calculateSpellingProgress,
@@ -279,23 +296,23 @@ const useRealTimeProgress = () => {
           assessment: calculateAssessmentProgress,
         };
 
-        // Exercices disponibles selon le niveau
         const availableExercises = level === 'bonus' 
-          ? ['reading', 'vocabulary', 'phrases'] // Seulement pour bonus
-          : Object.keys(exerciseCalculators); // Tous pour niveaux normaux
+          ? ['reading', 'vocabulary', 'phrases']
+          : Object.keys(exerciseCalculators);
+
+        let levelTotal = 0;
+        let levelCompleted = 0;
 
         for (const exerciseType of availableExercises) {
           try {
             const calculator = exerciseCalculators[exerciseType];
             const exerciseProgress = await calculator(level);
 
-            // Stocker progression exercice
             if (!newExerciseProgress[exerciseType]) {
               newExerciseProgress[exerciseType] = {};
             }
             newExerciseProgress[exerciseType][level] = exerciseProgress;
 
-            // Ajouter au total du niveau (chaque exercice = 100%)
             levelTotal += 100;
             levelCompleted += exerciseProgress;
             
@@ -304,7 +321,6 @@ const useRealTimeProgress = () => {
           }
         }
 
-        // Calculer pourcentage niveau
         newLevelProgress[level] = levelTotal > 0 
           ? Math.round((levelCompleted / levelTotal) * 100)
           : 0;
@@ -320,64 +336,48 @@ const useRealTimeProgress = () => {
     }
   }, []);
 
-  // =================== GETTERS FACILES ===================
+  // =================== GETTERS ===================
   
-  // Progression d'un niveau (pour LevelSelection)
   const getLevelProgress = useCallback((level) => {
     return levelProgress[level] || 0;
   }, [levelProgress]);
 
-  // Progression d'un exercice à un niveau (pour ExerciseSelection)
   const getExerciseProgress = useCallback((exerciseType, level) => {
     return exerciseProgress[exerciseType]?.[level] || 0;
   }, [exerciseProgress]);
 
-  // Vérifier si un exercice a de la progression
   const hasProgress = useCallback((exerciseType, level) => {
     return getExerciseProgress(exerciseType, level) > 0;
   }, [getExerciseProgress]);
 
-  // Vérifier si vocabulary classique a été commencé (pour vocabulary_fast)
   const hasVocabularyStarted = useCallback((level) => {
     return hasProgress('vocabulary', level);
   }, [hasProgress]);
 
-  // =================== CHARGEMENT ET REFRESH ===================
+  const hasVocabularyFastStarted = useCallback((level) => {
+    return hasProgress('vocabulary_fast', level);
+  }, [hasProgress]);
+
+  // =================== INIT ===================
   
   useEffect(() => {
     calculateProgress();
   }, [calculateProgress]);
 
-  // Refresh manuel
   const refresh = useCallback(() => {
     calculateProgress();
   }, [calculateProgress]);
 
-  // =================== DEBUG INFO ===================
-  const getDebugInfo = useCallback(() => {
-    return {
-      levelProgress,
-      exerciseProgress,
-      isLoading,
-      timestamp: new Date().toISOString(),
-    };
-  }, [levelProgress, exerciseProgress, isLoading]);
-
   return {
-    // Données
     levelProgress,
     exerciseProgress,
     isLoading,
-
-    // Getters faciles
     getLevelProgress,
     getExerciseProgress,
     hasProgress,
-    hasVocabularyStarted, // Spécial pour vocabulary_fast
-
-    // Actions
+    hasVocabularyStarted,
+    hasVocabularyFastStarted,
     refresh,
-    getDebugInfo,
   };
 };
 

@@ -6,15 +6,15 @@ import { Stack } from "expo-router";
 import "react-native-reanimated";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ProgressProvider } from "../src/contexts/ProgressContext";
-import useRouteActivityTracker from "../src/hooks/useRouteActivityTracking"; // ← AJOUT
+import AppProvider from "../src/contexts/AppProvider"; // ← CHANGÉ: AppProvider au lieu de ProgressProvider
+import useRouteActivityTracker from "../src/hooks/useRouteActivityTracker";
 
 export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
-  useRouteActivityTracker(); // ← AJOUT - Une seule ligne !
+  useRouteActivityTracker();
 
   useEffect(() => {
     if (loaded) {
@@ -28,10 +28,11 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <ProgressProvider>
+      <AppProvider>
+        {/* ← CHANGÉ: AppProvider qui inclut ThemeProvider + SettingsProvider + ProgressProvider */}
         <Stack screenOptions={{ headerShown: false }} />
         <StatusBar style="auto" />
-      </ProgressProvider>
+      </AppProvider>
     </SafeAreaProvider>
   );
 }

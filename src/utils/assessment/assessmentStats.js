@@ -1,3 +1,11 @@
+/**
+ * Calcule la moyenne des scores d'un tableau d'objets { score }
+ */
+export const calculateAverageScore = (data = []) => {
+  if (!Array.isArray(data) || data.length === 0) return 0;
+  const total = data.reduce((sum, item) => sum + (item.score || 0), 0);
+  return total / data.length;
+};
 // utils/assessment/assessmentStats.js
 
 /**

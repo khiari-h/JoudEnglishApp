@@ -18,49 +18,49 @@ export const EXERCISES = {
     title: "Vocabulaire", 
     icon: "📚", 
     color: "#3b82f6",
-    route: "/(tabs)/vocabularyExercise"
+    route: "/tabs/vocabularyExercise"
   },
   vocabulary_fast: { 
     id: "vocabulary_fast", 
     title: "Fast Vocabulary", 
     icon: "⚡", 
     color: "#f59e0b",
-    route: "/(tabs)/vocabularyExercise" 
+    route: "/tabs/vocabularyExercise" 
   },
   phrases: { 
     id: "phrases", 
     title: "Expressions", 
     icon: "🗣️", 
     color: "#10b981",
-    route: "/(tabs)/phrasesExercise"
+    route: "/tabs/phrasesExercise"
   },
   grammar: { 
     id: "grammar", 
     title: "Grammaire", 
     icon: "📝", 
     color: "#f59e0b",
-    route: "/(tabs)/grammarExercise"
+    route: "/tabs/grammarExercise"
   },
   spelling: { 
     id: "spelling", 
     title: "Orthographe", 
     icon: "🔤", 
     color: "#8b5cf6",
-    route: "/(tabs)/spellingExercise"
+    route: "/tabs/spellingExercise"
   },
   reading: { 
     id: "reading", 
     title: "Lecture", 
     icon: "📖", 
     color: "#ef4444",
-    route: "/(tabs)/readingExercise"
+    route: "/tabs/readingExercise"
   },
   errorCorrection: { 
     id: "errorCorrection", 
     title: "Correction d'erreurs", 
     icon: "✏️", 
     color: "#6366f1",
-    route: "/(tabs)/errorCorrectionExercise"
+    route: "/tabs/errorCorrectionExercise"
   },
   conversations: { 
     id: "conversations", 

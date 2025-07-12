@@ -27,6 +27,7 @@ const HeroCard = ({
   textAlign = "center",
   showUnderline = true,
   containerStyle = {},
+  children,
 }) => {
   const styles = createStyles(levelColor);
   
@@ -51,20 +52,22 @@ const HeroCard = ({
         
         {/* Contenu principal */}
         <View style={styles.contentContainer}>
-          <Text 
-            style={[
-              styles.contentText, 
-              { 
-                color: levelColor,
-                fontSize,
-                lineHeight: calculatedLineHeight,
-                textAlign,
-              }
-            ]}
-          >
-            {content}
-          </Text>
-          
+          {content ? (
+            <Text 
+              style={[
+                styles.contentText, 
+                { 
+                  color: levelColor,
+                  fontSize,
+                  lineHeight: calculatedLineHeight,
+                  textAlign,
+                }
+              ]}
+            >
+              {content}
+            </Text>
+          ) : null}
+          {children}
           {/* Ligne décorative */}
           {showUnderline && (
             <View style={[styles.underline, { backgroundColor: levelColor }]} />

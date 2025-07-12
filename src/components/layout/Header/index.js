@@ -67,6 +67,7 @@ const Header = ({
           onPress={handleBackPress}
           style={styles.backButton}
           hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          accessibilityRole="button"
         >
           <Ionicons name="chevron-back" size={24} color={textColor} />
         </TouchableOpacity>

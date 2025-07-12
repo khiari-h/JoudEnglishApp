@@ -1,4 +1,4 @@
-// src/screens/Dashboard/components/SimpleMetrics/index.js - COMPOSANT AUTONOME
+// src/screens/Dashboard/components/SimpleMetrics/index.js - MÉTRIQUES CORRIGÉES
 
 import React, { useContext } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
@@ -8,11 +8,10 @@ import useDailyWords from "../../../../hooks/useDailyWords";
 import styles from "./style";
 
 /**
- * 📊 SimpleMetrics - COMPOSANT AUTONOME
- * ✅ Gère TOUTE la logique des métriques
- * ✅ Appelle ses propres hooks
- * ✅ Gère son loading
- * ✅ Réutilisable partout
+ * 📊 SimpleMetrics - CORRIGÉ
+ * ✅ Temps quotidien (pas total)
+ * ✅ Mots sans trend
+ * ✅ Plus de confusion quotidien/cumulatif
  */
 const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
   const themeContext = useContext(ThemeContext);
@@ -22,17 +21,17 @@ const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
     textSecondary: "#6B7280",
   };
 
-  // =================== HOOKS AUTONOMES ===================
+  // =================== HOOKS CORRIGÉS ===================
   const { 
     currentStreak, 
     streakTrend, 
-    formattedTime 
+    formattedTime // ✅ Maintenant quotidien
   } = useActivityMetrics();
 
   const { 
-    wordsToday, 
-    trend: wordsTrend,
+    wordsToday,
     isLoading: wordsLoading 
+    // ✅ Plus de trend
   } = useDailyWords();
 
   // =================== LOADING STATE ===================
@@ -49,27 +48,27 @@ const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
     );
   }
 
-  // =================== DONNÉES DES MÉTRIQUES ===================
+  // =================== DONNÉES DES MÉTRIQUES CORRIGÉES ===================
   const metrics = [
     {
       id: 'streak',
       icon: '🔥',
       value: (currentStreak || 0).toString(),
       label: 'Jours de suite',
-      trend: streakTrend,
+      trend: streakTrend, // ✅ Gardé pour streak
     },
     {
       id: 'words',
       icon: '📚',
       value: (wordsToday || 0).toString(),
       label: 'Mots aujourd\'hui',
-      trend: wordsTrend,
+      trend: null, // ✅ SUPPRIMÉ : plus de trend trompeur
     },
     {
       id: 'time',
       icon: '⏱️',
       value: formattedTime || '0min',
-      label: 'Temps total',
+      label: 'Temps aujourd\'hui', // ✅ CHANGÉ : quotidien
       trend: null,
     }
   ];
@@ -115,7 +114,7 @@ const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
 };
 
 /**
- * 📈 Carte métrique individuelle
+ * 📈 Carte métrique individuelle - INCHANGÉE
  */
 const MetricCard = ({ metric, colors, accentColor }) => {
   const getTrendStyle = (trend) => {

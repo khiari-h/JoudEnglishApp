@@ -114,6 +114,7 @@ const RevealButton = ({
               style={styles.hideButton}
               onPress={handleHidePress}
               activeOpacity={0.8}
+              accessibilityRole="button"
             >
               <Text style={[styles.hideButtonText, { color: levelColor }]}>
                 {hideText}
@@ -128,6 +129,7 @@ const RevealButton = ({
             style={styles.revealButtonContainer}
             onPress={handleRevealPress}
             activeOpacity={0.9}
+            accessibilityRole="button"
           >
             <LinearGradient
               colors={[levelColor, `${levelColor}E6`]}
