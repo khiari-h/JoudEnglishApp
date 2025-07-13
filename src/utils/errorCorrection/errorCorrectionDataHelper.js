@@ -387,7 +387,7 @@ export const validateErrorCorrectionData = (level) => {
       );
     } else {
       // Comptage par type
-      if (results.typeDistribution.hasOwnProperty(exercise.type)) {
+      if (Object.prototype.hasOwnProperty.call(results.typeDistribution, exercise.type)) {
         results.typeDistribution[exercise.type]++;
       }
     }
