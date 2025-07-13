@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { render } from '@testing-library/react-native';
-import Card from '../../../src/components/ui/Card';
-import { Text } from 'react-native';
+
+
 
 describe('Card', () => {
   it('rend les enfants', () => {

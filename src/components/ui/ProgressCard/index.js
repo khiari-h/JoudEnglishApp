@@ -1,9 +1,9 @@
 // src/components/ui/ProgressCard/index.js - VERSION ÉPURÉE SANS DOTS
-import React from "react";
-import { View, Text, TouchableOpacity, LayoutAnimation, Platform } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons } from "@expo/vector-icons";
-import ProgressBar from "../ProgressBar";
+
+
+
+
+
 import createStyles from "./style";
 
 /**

@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { render } from '@testing-library/react-native';
-import Modal from '../../../src/components/ui/Modal';
-import { Text } from 'react-native';
+
+
 
 jest.mock('@expo/vector-icons', () => ({
   Ionicons: () => null,

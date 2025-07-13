@@ -1,9 +1,9 @@
 // src/components/ui/Card/index.js - Enhanced pour mobile badges
-import React, { useContext } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+
+
+
 import { ThemeContext } from "../../../contexts/ThemeContext";
-import ProgressBar from "../ProgressBar";
+
 import styles from "./style";
 
 /**
@@ -80,7 +80,7 @@ const Card = ({
 
   // Déterminer si la carte est cliquable
   const isClickable = Boolean(onPress);
-  const WrapperComponent = isClickable ? TouchableOpacity : View;
+
   const wrapperProps = isClickable ? { activeOpacity: 0.7, onPress } : {};
 
   // Déterminer si un header doit être affiché

@@ -1,7 +1,7 @@
 // src/screens/Settings/index.js
-import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import RevisionSettings from '../../components/setting/RevisionSettings';
+
+
+
 
 const SettingsScreen = () => {
   return (

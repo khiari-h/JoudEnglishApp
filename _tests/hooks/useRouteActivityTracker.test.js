@@ -18,7 +18,7 @@ import useRouteActivityTracker from '../../src/hooks/useRouteActivityTracker';
 
 describe('useRouteActivityTracker', () => {
   it('ne plante pas même sans contexte de navigation', () => {
-    const { result, error } = renderHook(() => useRouteActivityTracker());
+
     expect(error).toBeUndefined();
     // On accepte que result.current soit undefined si le contexte n'est pas mocké
   });

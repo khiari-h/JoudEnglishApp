@@ -1,5 +1,5 @@
 
-import { renderHook, act } from '@testing-library/react';
+
 import useRealTimeProgress from '../../src/hooks/useRealTimeProgress';
 
 describe('useRealTimeProgress', () => {

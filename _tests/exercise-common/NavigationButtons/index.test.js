@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { render, fireEvent } from '@testing-library/react-native';
-import NavigationButtons from '../../../src/components/exercise-common/NavigationButtons';
+
 
 // Mock Ionicons (expo)
 jest.mock('@expo/vector-icons', () => ({

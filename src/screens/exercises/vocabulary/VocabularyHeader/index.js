@@ -1,6 +1,6 @@
 // VocabularyHeader - Version épurée mobile-first
-import React from "react";
-import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+
+
 
 /**
  * 🎯 VocabularyHeader - Version Mobile-First Épurée

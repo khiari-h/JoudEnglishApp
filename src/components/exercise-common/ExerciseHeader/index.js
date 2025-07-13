@@ -1,7 +1,7 @@
 // components/exercise-common/ExerciseHeader/index.js - VERSION HUMAINE & ÉPURÉE
-import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+
+
+
 import { useNavigation } from "@react-navigation/native";
 import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../../utils/constants";
 import styles from "./style";

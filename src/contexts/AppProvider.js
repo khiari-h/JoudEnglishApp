@@ -1,8 +1,8 @@
 // src/contexts/AppProvider.js
-import React from 'react';
-import { ThemeProvider } from './ThemeContext';
-import { ProgressProvider } from './ProgressContext';
-import { SettingsProvider } from './SettingContext';
+
+
+
+
 
 /**
  * Fournisseur global qui combine tous les contextes de l'application

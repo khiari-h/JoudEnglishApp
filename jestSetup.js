@@ -4,7 +4,7 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 );
 // Mock global pour @expo/vector-icons afin d'éviter les erreurs liées à expo-font dans les tests Jest.
 jest.mock('@expo/vector-icons', () => {
-  const View = require('react-native').View;
+
   return new Proxy({}, {
     get: (target, prop) => () => <View />
   });

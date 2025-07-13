@@ -1,13 +1,13 @@
 // SpellingExercise/index.js - VERSION PROPRE
 
-import React, { useMemo, useEffect } from "react";
-import { View, ActivityIndicator, Text } from "react-native";
+
+
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
-import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
-import SpellingHeader from "./SpellingHeader";
-import SpellingProgress from "./SpellingProgress";
+
+
+
 import SpellingCard from "./SpellingCard";
 import SpellingActions from "./SpellingActions";
 

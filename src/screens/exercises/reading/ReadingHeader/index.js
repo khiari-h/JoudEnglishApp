@@ -1,6 +1,6 @@
 // ReadingHeader/index.js - VERSION CORRIGÉE
-import React from "react";
-import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+
+
 
 /**
  * 🏆 ReadingHeader - Version corrigée avec exerciseType reading

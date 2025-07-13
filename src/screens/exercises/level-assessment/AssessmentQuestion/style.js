@@ -6,7 +6,7 @@ import { StyleSheet, Platform } from "react-native";
  * 🎯 Styles simplifiés pour AssessmentQuestion
  * La plupart des styles sont dans HeroCard et ContentSection
  */
-const createStyles = (levelColor = "#3b82f6") =>
+
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

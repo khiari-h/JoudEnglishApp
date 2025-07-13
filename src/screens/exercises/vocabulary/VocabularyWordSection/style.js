@@ -6,7 +6,7 @@ import { StyleSheet, Platform } from "react-native";
  * ⚡ Styles pour VocabularyWordSection
  * Garde les styles du compteur, le reste est dans VocabularyWordCard refactorisé
  */
-const createStyles = (levelColor = "#5E60CE") =>
+
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { render, fireEvent } from '@testing-library/react-native';
-import InstructionBox from '../../../src/components/exercise-common/InstructionBox';
+
 
 // Mock Ionicons (expo)
 jest.mock('@expo/vector-icons', () => ({

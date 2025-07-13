@@ -1,5 +1,5 @@
-import React from "react";
-import CategorySelector from "../../../../components/exercise-common/CategorySelector";
+
+
 
 /**
  * Sélecteur de règles grammaticales réutilisant le CategorySelector générique

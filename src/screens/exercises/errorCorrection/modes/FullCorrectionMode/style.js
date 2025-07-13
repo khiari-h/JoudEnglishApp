@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
  * 🎯 Styles ultra-simplifiés pour FullCorrectionMode
  * La majorité des styles est dans HeroCard et ContentSection
  */
-const createStyles = (levelColor = "#5E60CE") =>
+
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

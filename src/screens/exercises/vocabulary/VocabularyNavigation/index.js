@@ -1,7 +1,7 @@
 // VocabularyNavigation/index.js - VERSION OPTIMISÉE (plus de "1/2" redondant)
 
-import React from "react";
-import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
+
+
 
 /**
  * 🎯 VocabularyNavigation - Version Ultra-Simplifiée

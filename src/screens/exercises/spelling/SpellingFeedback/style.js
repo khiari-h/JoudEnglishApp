@@ -6,7 +6,7 @@ import { StyleSheet } from "react-native";
  * 🎯 Styles ultra-simplifiés pour SpellingFeedback
  * La majorité des styles est dans ContentSection
  */
-const createStyles = (levelColor = "#3b82f6") =>
+
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

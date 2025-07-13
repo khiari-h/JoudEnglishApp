@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
  * 📝 Styles génériques pour ContentSection
  * Adaptables selon le type de contenu
  */
-const createStyles = (levelColor = "#5E60CE", backgroundColor) =>
+
   StyleSheet.create({
     // =================== CARD ===================
     card: {

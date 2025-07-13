@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, TouchableOpacity, Text } from 'react-native';
+
+
 import styles from './style';
 
 /**

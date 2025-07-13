@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+
+
 const { checkWordExists } = require('./vocabulary_manager'); // Importe la fonction de vérification
 
 // Mots à vérifier

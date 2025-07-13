@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { render, fireEvent } from '@testing-library/react-native';
-import CategorySelector from '../../../src/components/exercise-common/CategorySelector';
+
 
 // Mock LinearGradient (expo)
 jest.mock('expo-linear-gradient', () => {

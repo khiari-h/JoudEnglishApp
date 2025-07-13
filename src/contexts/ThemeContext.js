@@ -1,5 +1,5 @@
 // src/contexts/ThemeContext.js - VERSION CORRIGÉE SANS BOUCLE
-import React, { createContext, useState, useEffect, useCallback, useMemo } from 'react';
+
 import { useColorScheme } from 'react-native';
 import { getData, storeData } from '../utils/storageUtils';
 import { COLORS } from '../utils/constants';

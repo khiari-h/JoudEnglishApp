@@ -1,5 +1,5 @@
 // src/components/modals/RevisionPreferencesModal/index.js
-import React, { useState } from 'react';
+
 import { 
   View, 
   Text, 
@@ -7,7 +7,7 @@ import {
   Modal,
   ScrollView  // Ajout de l'import ScrollView manquant
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+
 import styles from './style';
 
 /**

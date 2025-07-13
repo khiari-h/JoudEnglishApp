@@ -1,7 +1,7 @@
 // src/components/layout/Header/styles.js
 import { StyleSheet, Platform, StatusBar, Dimensions } from "react-native";
 
-const { width } = Dimensions.get("window");
+
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 44 : StatusBar.currentHeight;
 const HEADER_HEIGHT = Platform.OS === "ios" ? 44 : 56;
 

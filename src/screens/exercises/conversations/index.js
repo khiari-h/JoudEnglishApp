@@ -1,11 +1,11 @@
 // ConversationExercise/index.js - VERSION CORRIGÉE
-import React, { useMemo, useEffect, useCallback } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+
+
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
 // Layout
-import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
+
 
 // Components
 import ConversationHeader from "./ConversationHeader";
@@ -26,8 +26,8 @@ import styles from "./style";
  * 🎯 ConversationExercise - VERSION CORRIGÉE
  */
 const ConversationExercise = ({ route }) => {
-  const navigation = useNavigation();
-  const { level = "A1", initialScenarioIndex = 0, initialStepIndex = 0 } = route?.params || {};
+
+
 
   // Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import PhrasesExerciseScreen from '../../../src/screens/exercises/phrases';
+
+
 
 describe('PhrasesExerciseScreen', () => {
   it('renders without crashing', () => {

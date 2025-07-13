@@ -1,6 +1,6 @@
 // src/components/layout/Container/index.js
-import React from "react";
-import { View, StatusBar, ScrollView } from "react-native";
+
+
 // ✅ CHANGEMENT : Utiliser SafeAreaView moderne au lieu du basique
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./style";
@@ -25,7 +25,7 @@ const Container = ({
   ...props
 }) => {
   // Déterminer le composant wrapper principal
-  const WrapperComponent = safeArea ? SafeAreaView : View;
+
 
   // Déterminer les styles principaux du conteneur
   const containerStyle = [

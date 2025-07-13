@@ -1,11 +1,11 @@
 // src/screens/exercises/wordGames/index.js - VERSION CORRIGÉE
-import React, { useMemo, useEffect, useCallback } from "react";
-import { View, ActivityIndicator } from "react-native";
+
+
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
 // Layout
-import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
+
 
 // Components
 import WordGamesHeader from "./WordGamesHeader";
@@ -100,7 +100,7 @@ const handleBackPress = () => {
   const handleCheckAnswer = () => checkAnswer();
 
   const handleNextGame = () => {
-    const result = handleNext();
+
     // Navigation automatique quand tous les jeux sont terminés
   };
 

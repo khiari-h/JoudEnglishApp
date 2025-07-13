@@ -1,12 +1,12 @@
 // ErrorCorrectionExercise/index.js - VERSION CORRIGÉE
 
-import React, { useMemo, useState, useEffect, useCallback } from "react";
-import { View, ActivityIndicator } from "react-native";
+
+
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
 // Layout
-import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
+
 
 // Composants refactorisés
 import ErrorCorrectionHeader from "./ErrorCorrectionHeader";
@@ -28,7 +28,7 @@ import createStyles from "./style";
  */
 const ErrorCorrectionExercise = ({ route }) => {
   const { level = "A1" } = route.params || {};
-  const navigation = useNavigation();
+
   const styles = createStyles();
 
   // Hook pour sauvegarder l'activité

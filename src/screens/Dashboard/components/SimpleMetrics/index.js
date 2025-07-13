@@ -1,7 +1,7 @@
 // src/screens/Dashboard/components/SimpleMetrics/index.js - MÉTRIQUES CORRIGÉES
 
-import React, { useContext } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+
+
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import useActivityMetrics from "../../../../hooks/useActivityMetrics";
 import useDailyWords from "../../../../hooks/useDailyWords";
@@ -116,7 +116,7 @@ const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
 /**
  * 📈 Carte métrique individuelle - INCHANGÉE
  */
-const MetricCard = ({ metric, colors, accentColor }) => {
+
   const getTrendStyle = (trend) => {
     if (!trend) return null;
     

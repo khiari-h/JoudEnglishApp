@@ -1,8 +1,8 @@
 // AssessmentNavigation/index.js - VERSION REFACTORISÉE avec NavigationButtons
 
-import React from "react";
-import { View, TouchableOpacity, Text } from "react-native";
-import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
+
+
+
 import createStyles from "./style";
 
 /**

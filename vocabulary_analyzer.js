@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const readline = require('readline');
+
 
 // Fonction pour extraire tous les mots d'un niveau
 async function extractLevelVocabulary(level) {

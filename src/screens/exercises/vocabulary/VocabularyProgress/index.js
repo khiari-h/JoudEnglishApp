@@ -1,7 +1,7 @@
 // VocabularyProgress/index.js - VERSION CORRIGÉE POUR LES 2 STRUCTURES
 
-import React from "react";
-import ProgressCard from "../../../../components/ui/ProgressCard";
+
+
 import {
   calculateTotalWords,
   calculateCompletedWordsCount,

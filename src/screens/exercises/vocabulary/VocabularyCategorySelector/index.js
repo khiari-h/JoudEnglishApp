@@ -1,6 +1,6 @@
 // VocabularyExercise/VocabularyCategorySelector.js
-import React from "react";
-import CategorySelector from "../../../../components/exercise-common/CategorySelector";
+
+
 
 /**
  * Adaptateur pour le sélecteur de catégories de vocabulaire

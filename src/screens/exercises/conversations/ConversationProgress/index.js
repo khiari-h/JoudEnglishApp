@@ -1,7 +1,7 @@
 // ConversationProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React, { useMemo } from "react";
-import ProgressCard from "../../../../components/ui/ProgressCard";
+
+
 import {
   calculateTotalScenarios,
   calculateCompletedScenariosCount,
@@ -73,7 +73,7 @@ const ConversationProgress = ({
   }, [statsData.scenarioProgressData]);
 
   // ✅ MÉMORISER les données de debug (seulement en dev)
-  const debugData = useMemo(() => {
+
     if (process.env.NODE_ENV !== 'development') return null;
     
     return {

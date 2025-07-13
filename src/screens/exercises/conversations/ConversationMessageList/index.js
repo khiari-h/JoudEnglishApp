@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from 'react';
-import { ScrollView } from 'react-native';
-import ConversationMessage from '../ConversationMessage';
-import ConversationTypingIndicator from '../ConversationTypingIndicator';
+
+
+
+
 import styles from './style';
 
 /**

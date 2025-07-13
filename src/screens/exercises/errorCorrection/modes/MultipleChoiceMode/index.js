@@ -1,9 +1,9 @@
 // MultipleChoiceMode/index.js - VERSION REFACTORISÉE (HeroCard + ContentSection)
 
-import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import HeroCard from "../../../../../components/ui/HeroCard";
-import ContentSection from "../../../../../components/ui/ContentSection";
+
+
+
+
 import createStyles from "./style";
 
 /**

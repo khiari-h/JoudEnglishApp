@@ -1,6 +1,6 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionExerciseCard/index.js
-import React from "react";
-import ExerciseCard from "../../../../components/exercise-common/ExerciseCard";
+
+
 
 /**
  * Carte représentant un exercice de correction d'erreurs dans la liste des exercices

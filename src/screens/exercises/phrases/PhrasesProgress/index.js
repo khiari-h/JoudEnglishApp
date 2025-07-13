@@ -1,7 +1,7 @@
 // PhrasesProgress/index.js - VERSION CORRIGÉE AVEC PHRASESTATS
 
-import React from "react";
-import ProgressCard from "../../../../components/ui/ProgressCard";
+
+
 import {
   calculateTotalPhrases,
   calculateCompletedPhrasesCount,

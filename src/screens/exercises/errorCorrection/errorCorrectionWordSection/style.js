@@ -6,7 +6,7 @@ import { StyleSheet, Platform } from "react-native";
  * ⚡ Styles pour ErrorCorrectionWordSection
  * Garde les styles du compteur, le reste est dans les modes refactorisés
  */
-const createStyles = (levelColor = "#5E60CE") =>
+
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

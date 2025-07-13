@@ -1,11 +1,11 @@
 // ErrorCorrectionWordSection/index.js - WRAPPER INTELLIGENT (pattern VocabularyWordSection)
 
-import React, { memo } from "react";
-import { View, Text } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import FullCorrectionMode from "../modes/FullCorrectionMode";
-import IdentifyErrorsMode from "../modes/IdentifyErrorsMode";
-import MultipleChoiceMode from "../modes/MultipleChoiceMode";
+
+
+
+
+
+
 import createStyles from "./style";
 
 /**

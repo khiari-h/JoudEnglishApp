@@ -1,6 +1,6 @@
 // 1. ErrorCorrectionHeader - MIS À JOUR
-import React from "react";
-import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+
+
 
 const ErrorCorrectionHeader = ({ level, onBackPress }) => {
   return (

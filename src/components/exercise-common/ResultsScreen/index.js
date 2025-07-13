@@ -1,5 +1,5 @@
 // src/components/exercise-common/ResultsScreen/index.js
-import React, { useEffect, useRef } from "react";
+
 import {
   View,
   Text,
@@ -33,7 +33,7 @@ const ResultsScreen = ({
   showDetailedResults = false,
   detailedResults = [],
 }) => {
-  const navigation = useNavigation();
+
 
   // Animations
   const fadeAnim = useRef(new Animated.Value(0)).current;

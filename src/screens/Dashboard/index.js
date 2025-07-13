@@ -1,9 +1,9 @@
 // src/screens/Dashboard/index.js - VERSION CORRIGÉE - MÊME LOGIQUE QUE LEVELSELECTION
 
-import React, { useContext, useCallback, useEffect } from "react";
-import { subscribe } from '../../utils/eventBus';
-import { RefreshControl, Text, ScrollView, View } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+
+
+
+
 import { router } from "expo-router";
 
 // Contextes
@@ -42,7 +42,7 @@ const Dashboard = ({ route }) => {
   const progressData = useProgress();
 
   // 🚀 PROGRESSION TEMPS RÉEL
-  const { getLevelProgress, getExerciseProgress, refresh: refreshProgress } = useRealTimeProgress();
+
 
   const colors = themeContext?.colors || {
     background: "#F8FAFC",

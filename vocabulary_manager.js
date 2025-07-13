@@ -18,7 +18,7 @@ function extractWordsFromFile(filePath) {
     // Extraire tous les objets de mots du fichier
     // Cette regex capture l'objet complet avec ses propriétés
     const wordObjects = [];
-    let currentPos = 0;
+
     const wordsArrayContent = wordsArrayMatch[1];
     
     // Regex pour capturer chaque objet de mot complet
@@ -225,7 +225,7 @@ async function removeDuplicates() {
     }
     
     // Faire une sauvegarde du fichier original
-    const fileInfo = path.parse(filePath);
+
     const backupPath = path.join(backupDir, `${fileData.level}_${fileData.category}`);
     fs.writeFileSync(backupPath, fileData.content);
     

@@ -1,7 +1,7 @@
 // src/screens/ExerciseSelection/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
-import React, { useContext, useMemo } from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+
+
+
 import { router } from "expo-router";
 
 // Contextes

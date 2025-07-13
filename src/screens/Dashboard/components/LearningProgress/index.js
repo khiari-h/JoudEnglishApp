@@ -1,7 +1,7 @@
 // src/screens/Dashboard/components/LearningProgress/index.js
-import React, { useContext } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import Card from "../../../../components/ui/Card";
+
+
+
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import { LANGUAGE_LEVELS } from "../../../../utils/constants";
 import styles from "./style";

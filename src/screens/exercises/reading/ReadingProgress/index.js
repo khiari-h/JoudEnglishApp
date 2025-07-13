@@ -1,7 +1,7 @@
 // ReadingProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
 
-import React from "react";
-import ProgressCard from "../../../../components/ui/ProgressCard";
+
+
 import {
   calculateTotalQuestions,
   calculateCompletedQuestionsCount,

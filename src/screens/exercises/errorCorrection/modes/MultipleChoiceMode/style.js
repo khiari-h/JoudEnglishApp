@@ -6,7 +6,7 @@ import { StyleSheet, Platform } from 'react-native';
  * 🎯 Styles ultra-simplifiés pour MultipleChoiceMode
  * Focus sur les choix multiples avec indicateurs
  */
-const createStyles = (levelColor = "#5E60CE") =>
+
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

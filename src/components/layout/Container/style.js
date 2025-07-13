@@ -1,5 +1,5 @@
 // src/components/layout/Container/styles.js
-import { StyleSheet, Platform } from 'react-native';
+
 
 const styles = StyleSheet.create({
   container: {

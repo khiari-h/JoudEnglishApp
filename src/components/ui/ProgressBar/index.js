@@ -1,6 +1,6 @@
 // src/components/ui/ProgressBar/index.js - Version Mobile-First Simple
-import React, { useEffect, useRef } from "react";
-import { View, Text, Animated } from "react-native";
+
+
 import createStyles from "./style";
 
 /**

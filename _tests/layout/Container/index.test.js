@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { render } from '@testing-library/react-native';
-import { Text } from 'react-native';
-import Container from '../../../src/components/layout/Container';
+
+
 
 // Mock SafeAreaView
 jest.mock('react-native-safe-area-context', () => ({

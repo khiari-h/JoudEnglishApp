@@ -1,6 +1,6 @@
 // src/screens/exercises/wordGames/components/FeedbackMessage/index.js
-import React from "react";
-import { View, Text } from "react-native";
+
+
 import styles from "./style";
 
 /**

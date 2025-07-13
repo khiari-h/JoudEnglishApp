@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { View, Text, TouchableOpacity, Modal, Animated, Platform } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
-import { Ionicons } from '@expo/vector-icons';
+
+
+
+
+
 import { ThemeContext } from '../../../../../contexts/ThemeContext';
 import styles from './style';
 

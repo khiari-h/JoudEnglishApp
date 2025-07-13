@@ -1,13 +1,13 @@
 // SpellingCard/index.js - VERSION PROPRE
 
-import React from "react";
-import { View, Text, ScrollView } from "react-native";
 
-import HeroCard from "../../../../components/ui/HeroCard";
-import RevealButton from "../../../../components/ui/RevealButton";
-import SpellingInput from "../SpellingInput";
-import HomophoneChoices from "../HomophoneChoices";
-import SpellingFeedback from "../SpellingFeedback";
+
+
+
+
+
+
+
 
 import styles from "./style";
 

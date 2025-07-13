@@ -1,8 +1,8 @@
 // SpellingActions/index.js - VERSION PROPRE
 
-import React from "react";
-import { View } from "react-native";
-import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
+
+
+
 import styles from "./style";
 
 const SpellingActions = ({

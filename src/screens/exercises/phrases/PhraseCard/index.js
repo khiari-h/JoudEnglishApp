@@ -1,8 +1,8 @@
 // PhraseCard/index.js - VERSION ULTRA-NETTOYÉE
-import React from "react";
-import { View } from "react-native";
-import HeroCard from "../../../../components/ui/HeroCard";
-import RevealButton from "../../../../components/ui/RevealButton";
+
+
+
+
 import createStyles from "./style";
 
 /**

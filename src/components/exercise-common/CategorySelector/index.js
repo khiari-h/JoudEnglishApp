@@ -1,7 +1,7 @@
 // src/components/exercise-common/CategorySelector/index.js
-import React, { useState, useRef } from "react";
-import { View, ScrollView, TouchableOpacity, Text, Animated } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+
+
+
 import createStyles from "./style";
 
 /**

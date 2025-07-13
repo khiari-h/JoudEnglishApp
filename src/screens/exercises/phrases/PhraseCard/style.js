@@ -13,7 +13,7 @@ import { StyleSheet } from "react-native";
  * - Tout est géré par HeroCard et RevealButton
  * - On garde SEULEMENT le container
  */
-const createStyles = (levelColor = "#5E60CE") =>
+
   StyleSheet.create({
     // =================== CONTAINER SEULEMENT ===================
     container: {

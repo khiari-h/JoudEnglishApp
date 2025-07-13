@@ -1,7 +1,7 @@
 // ErrorCorrectionProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React, { useMemo } from "react";
-import ProgressCard from "../../../../components/ui/ProgressCard";
+
+
 import {
   calculateTotalExercises,
   calculateCompletedExercisesCount,
@@ -91,7 +91,7 @@ const ErrorCorrectionProgress = ({
   }, [statsData.categoryProgressData]);
 
   // ✅ MÉMORISER les données de debug (seulement en dev)
-  const debugData = useMemo(() => {
+
     if (process.env.NODE_ENV !== 'development') return null;
     
     return {

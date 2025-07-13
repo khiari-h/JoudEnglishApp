@@ -1,8 +1,8 @@
 // SpellingProgress/index.js - VERSION ULTRA-SIMPLE
 
-import React, { useMemo } from "react";
-import { View, Text } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+
+
+
 import createStyles from "./style";
 
 /**

@@ -1,8 +1,8 @@
 
-import React from 'react';
+
 import { render } from '@testing-library/react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import ConversationsExerciseScreen from '../../app/tabs/conversationsExercise';
+
+
 jest.mock('@expo/vector-icons', () => ({
   ...jest.requireActual('@expo/vector-icons'),
   createIconSet: () => 'Icon',

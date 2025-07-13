@@ -1,9 +1,9 @@
 // ReadingQuestionCard/index.js - VERSION SIMPLE
-import React from "react";
-import { View, Text, TouchableOpacity, Animated } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import HeroCard from "../../../../components/ui/HeroCard";
-import ContentSection from "../../../../components/ui/ContentSection";
+
+
+
+
+
 import createStyles from "./style";
 
 /**

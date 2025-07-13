@@ -1,13 +1,13 @@
 // VocabularyExercise/index.js - BOUCLE INFINIE CORRIGÉE
 
-import React, { useMemo, useEffect } from "react";
-import { View, ActivityIndicator } from "react-native";
+
+
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
-import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
-import VocabularyHeader from "./VocabularyHeader";
-import VocabularyCategorySelector from "./VocabularyCategorySelector";
+
+
+
 import VocabularyProgress from "./VocabularyProgress";
 import VocabularyWordSection from "./VocabularyWordSection";
 import VocabularyNavigation from "./VocabularyNavigation";

@@ -1,11 +1,11 @@
 // PhrasesExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
-import React, { useMemo, useEffect } from "react";
-import { View, ActivityIndicator } from "react-native";
+
+
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
 // Layout
-import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
+
 
 // Components
 import PhrasesHeader from "./PhrasesHeader";

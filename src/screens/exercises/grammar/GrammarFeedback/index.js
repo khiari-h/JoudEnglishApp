@@ -1,7 +1,7 @@
 // GrammarFeedback/index.js - VERSION REFACTORISÉE avec ContentSection (75 → 15 lignes)
 
-import React from "react";
-import ContentSection from "../../../../components/ui/ContentSection";
+
+
 
 /**
  * 💬 GrammarFeedback - Version Refactorisée avec ContentSection générique

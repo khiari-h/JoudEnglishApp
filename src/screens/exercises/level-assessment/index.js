@@ -1,11 +1,11 @@
 // src/screens/exercises/levelAssessment/index.js - VERSION CORRIGÉE
-import React, { useMemo, useEffect, useCallback } from "react";
-import { View, ActivityIndicator } from "react-native";
+
+
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
 // Layout
-import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
+
 
 // Components
 import AssessmentHeader from "./AssessmentHeader";

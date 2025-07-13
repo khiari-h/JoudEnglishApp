@@ -1,6 +1,6 @@
 // src/screens/exercises/wordGames/components/GameInstructions/index.js
-import React from "react";
-import { Text } from "react-native";
+
+
 import styles from "./style";
 
 /**

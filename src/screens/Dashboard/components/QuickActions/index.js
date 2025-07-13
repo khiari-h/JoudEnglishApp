@@ -1,13 +1,13 @@
 // src/screens/Dashboard/components/QuickActions/index.js - VERSION RÉPARÉE
-import React, { useContext, useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+
+
 import { router } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import { EXERCISES } from "../../../../utils/constants";
 import styles from "./style";
 
-const QuickActions = ({ currentLevel = "1", accentColor = "#3B82F6" }) => {
+
   const themeContext = useContext(ThemeContext);
   const colors = themeContext?.colors || {
     surface: "#FFFFFF",

@@ -1,7 +1,7 @@
 // AssessmentProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React, { useMemo } from "react";
-import ProgressCard from "../../../../components/ui/ProgressCard";
+
+
 import { calculateSectionProgressData } from "../../../../utils/assessment/assessmentStats";
 import { getAssessmentData, getAssessmentSections } from "../../../../utils/assessment/assessmentDataHelper";
 
@@ -48,7 +48,7 @@ const AssessmentProgress = ({
   }, [assessmentData, sections, userAnswers]);
 
   // ✅ MÉMORISER la transformation des données
-  const formattedSectionData = useMemo(() => {
+
     return sectionProgressData.map((section, index) => ({
       title: section.title,
       completed: section.answeredQuestions,
@@ -58,7 +58,7 @@ const AssessmentProgress = ({
   }, [sectionProgressData]);
 
   // ✅ MÉMORISER les données de debug (seulement en dev)
-  const debugData = useMemo(() => {
+
     if (process.env.NODE_ENV !== 'development') return null;
     
     return {

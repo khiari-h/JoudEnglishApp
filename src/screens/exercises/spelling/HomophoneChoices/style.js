@@ -6,7 +6,7 @@ import { StyleSheet, Platform } from "react-native";
  * 🎯 Styles nettoyés pour HomophoneChoices
  * Design cohérent avec les autres composants
  */
-const createStyles = (levelColor = "#3b82f6") =>
+
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

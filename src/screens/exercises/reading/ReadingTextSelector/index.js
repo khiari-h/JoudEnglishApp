@@ -1,7 +1,7 @@
 // ReadingTextSelector/index.js - VERSION REFACTORISÉE avec CategorySelector générique
 
-import React from "react";
-import CategorySelector from "../../../../components/exercise-common/CategorySelector";
+
+
 
 /**
  * 🎨 ReadingTextSelector - Version Refactorisée avec CategorySelector générique

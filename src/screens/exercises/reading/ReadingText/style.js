@@ -5,7 +5,7 @@ import { StyleSheet, Platform } from "react-native";
  * 🎯 Styles simples pour ReadingText
  * Pas de complexité inutile, juste l'essentiel
  */
-const createStyles = (levelColor = "#3b82f6") =>
+
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

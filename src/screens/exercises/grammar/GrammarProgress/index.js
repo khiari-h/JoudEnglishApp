@@ -1,7 +1,7 @@
 // GrammarProgress/index.js - VERSION TOTALEMENT RECODÉE AVEC useMemo
 
-import React, { useMemo } from "react";
-import ProgressCard from "../../../../components/ui/ProgressCard";
+
+
 import {
   calculateTotalExercises,
   calculateCompletedExercisesCount,
@@ -72,7 +72,7 @@ const GrammarProgress = ({
   }, [statsData.ruleProgressData]);
 
   // ✅ MÉMORISER les données de debug (seulement en développement)
-  const debugData = useMemo(() => {
+
     if (process.env.NODE_ENV !== 'development') return null;
     
     return {

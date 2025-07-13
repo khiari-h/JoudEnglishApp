@@ -11,7 +11,7 @@ import { sanitizeTimeStats } from './timeUtils.js';
 /**
  * Structure attendue des données stockées
  */
-const STORAGE_SCHEMA = {
+
   version: 'string',
   data: 'object',
   lastModified: 'number'
