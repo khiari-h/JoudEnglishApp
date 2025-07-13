@@ -14,8 +14,8 @@ const ReadingTextSelector = ({
   exercises = [],
   selectedIndex = 0,
   onSelectExercise,
-  scrollViewRef, // Pas utilisé par CategorySelector, mais gardé pour compatibilité
   levelColor,
+  ...props
 }) => {
   // Transformation du format des exercices pour correspondre au composant générique
   const formattedExercises = exercises.map((exercise, index) => ({

@@ -54,7 +54,7 @@ const ReadingProgress = ({
   const exerciseProgressData = calculateExerciseProgress(dataArray, completedQuestions);
 
   // Transformation pour le format ProgressCard
-  const formattedExerciseData = exerciseProgressData.map((exercise, index) => ({
+  const formattedExerciseData = exerciseProgressData.map((exercise) => ({
     title: exercise.title,
     completed: exercise.completedQuestions,
     total: exercise.totalQuestions,

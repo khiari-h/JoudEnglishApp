@@ -52,7 +52,7 @@ const VocabularyProgress = ({
   const categoryProgressData = calculateCategoryProgress(dataArray, completedWords);
 
   // Transformation pour le format ProgressCard
-  const formattedCategoryData = categoryProgressData.map((category, index) => ({
+  const formattedCategoryData = categoryProgressData.map((category) => ({
     title: category.title,
     completed: category.completedWords,
     total: category.totalWords,

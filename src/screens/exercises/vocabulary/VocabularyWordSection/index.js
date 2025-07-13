@@ -23,11 +23,10 @@ import createStyles from "./style";
 const VocabularyWordSection = memo(({
   currentWord,
   wordCounter,
-  mode,
-  level,
   levelColor,
   showTranslation,
   onToggleTranslation,
+  ...props
 }) => {
   const styles = createStyles(levelColor);
   

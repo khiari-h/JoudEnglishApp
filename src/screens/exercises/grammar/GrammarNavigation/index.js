@@ -22,7 +22,6 @@ const GrammarNavigation = ({
   onSkipExercise,
   isFirstExercise,
   isLastExercise,
-  attempts,
   levelColor = "#3b82f6",
 }) => {
 

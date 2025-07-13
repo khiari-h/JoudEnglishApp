@@ -26,16 +26,10 @@ import {
  * @param {function} onCategoryPress - Fonction appelée lors du clic sur catégorie
  */
 const PhrasesProgress = ({
-  progress: ignoredProgress, // ✅ On ignore ces props car on recalcule
-  currentPhrase: ignoredCurrentPhrase,
-  totalPhrases: ignoredTotalPhrases,
-  completedCount: ignoredCompletedCount,
   levelColor = "#5E60CE",
   phrasesData = null,
   completedPhrases = {},
-  expanded = false,
-  onToggleExpand = () => {},
-  onCategoryPress = () => {},
+  onCategoryPress,
 }) => {
   
   // ✅ CORRECTION : Utilise les vraies fonctions de calcul
@@ -48,7 +42,7 @@ const PhrasesProgress = ({
   const categoryProgressData = calculateCategoryPhrasesProgress(categories, phrases, completedPhrases);
 
   // Transformation pour le format ProgressCard
-  const formattedCategoryData = categoryProgressData.map((category, index) => ({
+  const formattedCategoryData = categoryProgressData.map((category) => ({
     title: category.title,
     completed: category.completedPhrases,
     total: category.totalPhrases,

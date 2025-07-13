@@ -13,8 +13,6 @@ jest.mock('../../src/hooks/useActivityMetrics', () => ({
     updateStreak: jest.fn(),
   }),
 }));
-import { renderHook } from '@testing-library/react';
-import useRouteActivityTracker from '../../src/hooks/useRouteActivityTracker';
 
 describe('useRouteActivityTracker', () => {
   it('ne plante pas même sans contexte de navigation', () => {
