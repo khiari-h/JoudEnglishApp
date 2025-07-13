@@ -1,8 +1,9 @@
-
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import DashboardScreen from '../../app/tabs/dashboard';
+import { ProgressProvider } from '../../src/contexts/ProgressContext'; // <-- adapte ce chemin selon ton projet
+
 jest.mock('@expo/vector-icons', () => ({
   ...jest.requireActual('@expo/vector-icons'),
   createIconSet: () => 'Icon',
@@ -10,6 +11,7 @@ jest.mock('@expo/vector-icons', () => ({
   MaterialIcons: 'Icon',
   FontAwesome: 'Icon',
 }));
+
 jest.mock('@react-navigation/native', () => {
   const actualNav = jest.requireActual('@react-navigation/native');
   return {
@@ -21,9 +23,11 @@ jest.mock('@react-navigation/native', () => {
 describe('Dashboard Screen', () => {
   it('renders sans crash (mock route)', () => {
     render(
-      <NavigationContainer>
-        <DashboardScreen />
-      </NavigationContainer>
+      <ProgressProvider>
+        <NavigationContainer>
+          <DashboardScreen />
+        </NavigationContainer>
+      </ProgressProvider>
     );
   });
 

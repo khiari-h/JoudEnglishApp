@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SettingsScreen from '../../app/tabs/settings';
+
 jest.mock('@expo/vector-icons', () => ({
   ...jest.requireActual('@expo/vector-icons'),
   createIconSet: () => 'Icon',
@@ -10,6 +10,7 @@ jest.mock('@expo/vector-icons', () => ({
   MaterialIcons: 'Icon',
   FontAwesome: 'Icon',
 }));
+
 jest.mock('@react-navigation/native', () => {
   const actualNav = jest.requireActual('@react-navigation/native');
   return {
@@ -20,11 +21,12 @@ jest.mock('@react-navigation/native', () => {
 
 describe('Settings Screen', () => {
   it('renders sans crash (mock route)', () => {
-    const { getByTestId } = render(
+    const { getByText } = render(
       <NavigationContainer>
         <SettingsScreen />
       </NavigationContainer>
     );
-    expect(getByTestId('settings-root')).toBeTruthy();
+    // On vérifie que le titre "Paramètres" est présent, preuve que le composant a rendu
+    expect(getByText('Paramètres')).toBeTruthy();
   });
 });
