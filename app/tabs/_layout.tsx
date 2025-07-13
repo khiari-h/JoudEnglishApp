@@ -48,19 +48,19 @@ export default function TabLayout() {
       <Tabs.Screen
         name="levelSelection"
         options={{
-          title: "Exercices",
+          title: "Niveaux",
           tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons name={focused ? "book" : "book-outline"} color={color} size={size} />
+            <Ionicons name={focused ? "layers" : "layers-outline"} color={color} size={size} />
           ),
         }}
       />
 
       <Tabs.Screen
-        name="conversationsExercise"
+        name="exerciseSelection"
         options={{
-          title: "Conversation",
+          title: "Exercices",
           tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons name={focused ? "chatbubble" : "chatbubble-outline"} color={color} size={size} />
+            <Ionicons name={focused ? "list" : "list-outline"} color={color} size={size} />
           ),
         }}
       />
@@ -77,7 +77,7 @@ export default function TabLayout() {
 
       {/* Écrans masqués */}
       <Tabs.Screen name="vocabularyRevision" options={{ href: null }} />
-      <Tabs.Screen name="exerciseSelection" options={{ href: null }} />
+      <Tabs.Screen name="conversationsExercise" options={{ href: null }} />
       <Tabs.Screen name="levelAssessment" options={{ href: null }} />
       <Tabs.Screen name="vocabularyExercise" options={{ href: null }} />
       <Tabs.Screen name="grammarExercise" options={{ href: null }} />

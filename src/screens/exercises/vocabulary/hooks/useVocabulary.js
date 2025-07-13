@@ -115,13 +115,12 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
   const markWordAsCompleted = useCallback((catIndex, wIndex) => {
     setCompletedWords(prev => {
       const categoryCompleted = prev[catIndex] || [];
-      
-      // Vérifier si le mot n'est pas déjà complété
-      const isAlreadyCompleted = categoryCompleted.find(word => 
-        (typeof word === 'number' && word === wIndex) || 
-        (typeof word === 'object' && word.wordIndex === wIndex)
-      );
-      
+      // Vérifier si le mot n'est pas déjà complété (numérique ou objet)
+      const isAlreadyCompleted = categoryCompleted.some(word => {
+        if (typeof word === 'number') return word === wIndex;
+        if (typeof word === 'object' && word !== null) return word.wordIndex === wIndex;
+        return false;
+      });
       if (!isAlreadyCompleted) {
         // ✅ NOUVEAU FORMAT avec timestamp
         const newWordEntry = {
@@ -129,7 +128,6 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
           timestamp: Date.now(),
           date: new Date().toDateString() // Pour debug
         };
-        
         return {
           ...prev,
           [catIndex]: [...categoryCompleted, newWordEntry]

@@ -89,7 +89,7 @@ const LevelSelection = () => {
   // Navigation
   const handleLevelSelect = (level) => {
     router.push({
-      pathname: "/(tabs)/exerciseSelection",
+      pathname: "/tabs/exerciseSelection",
       params: { level: level.id },
     });
   };

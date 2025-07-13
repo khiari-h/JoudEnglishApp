@@ -67,21 +67,21 @@ export const EXERCISES = {
     title: "Conversations", 
     icon: "💬", 
     color: "#10b981",
-    route: "/(tabs)/conversationsExercise"
+    route: "/tabs/conversationsExercise"
   },
   wordGames: { 
     id: "wordGames", 
     title: "Jeux de mots", 
     icon: "🎮", 
     color: "#f59e0b",
-    route: "/(tabs)/wordGamesExercise"
+    route: "/tabs/wordGamesExercise"
   },
   assessment: { 
     id: "assessment", 
     title: "Évaluation", 
     icon: "🏆", 
     color: "#ef4444",
-    route: "/(tabs)/levelAssessment"
+    route: "/tabs/levelAssessment"
   },
 };
 

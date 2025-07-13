@@ -6,15 +6,20 @@ export const calculateTotalWords = (exercises = []) =>
     0
   );
 
-export const calculateCompletedWordsCount = (completedWords = {}) =>
-  Object.keys(completedWords).reduce(
+export const calculateCompletedWordsCount = (completedWords = {}, totalWords = null) => {
+  let count = Object.keys(completedWords).reduce(
     (count, key) => count + (completedWords[key]?.length || 0),
     0
   );
+  if (typeof totalWords === 'number' && totalWords > 0) {
+    count = Math.min(count, totalWords);
+  }
+  return count;
+};
 
 export const calculateTotalProgress = (exercises = [], completedWords = {}) => {
   const totalWords = calculateTotalWords(exercises);
-  const totalCompleted = calculateCompletedWordsCount(completedWords);
+  const totalCompleted = calculateCompletedWordsCount(completedWords, totalWords);
   return totalWords > 0
     ? Math.min(100, (totalCompleted / totalWords) * 100)
     : 0;

@@ -10,6 +10,9 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 // 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES CHIFFRES
 import useRealTimeProgress from "../../hooks/useRealTimeProgress";
 
+// 🚀 HOOK NIVEAU ACTUEL SIMPLE
+import { useCurrentLevel } from "../../hooks/useCurrentLevel";
+
 // Composants UI
 import Button from "../../components/ui/Button";
 
@@ -34,9 +37,14 @@ const DEFAULT_THEME = {
 };
 
 const ExerciseSelection = ({ route }) => {
-  const { level } = route.params;
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
+
+  // 🚀 RÉCUPÉRER LE NIVEAU ACTUEL
+  const currentLevel = useCurrentLevel();
+  
+  // Utiliser le niveau des paramètres ou le niveau actuel
+  const level = route.params?.level || currentLevel;
 
   // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
   const { getExerciseProgress, hasProgress } = useRealTimeProgress();

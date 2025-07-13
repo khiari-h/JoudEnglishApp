@@ -51,6 +51,11 @@ const VocabularyExercise = ({ route }) => {
     display,
   } = useVocabulary(vocabularyData, level, finalMode);
 
+  // =================== CORRECTION PROGRESSION FAST ===================
+  // En mode fast, la barre de progression doit afficher le mot courant (wordIndex + 1)
+  // au lieu du nombre de mots complétés pour être synchronisée avec le compteur central
+  const overrideCompleted = finalMode === "fast" ? wordIndex + 1 : null;
+
   // =================== SAUVEGARDE ACTIVITÉ SIMPLIFIÉE ===================
   
   useEffect(() => {
@@ -88,7 +93,7 @@ const VocabularyExercise = ({ route }) => {
   // Handlers
  const handleBackPress = () => {
   router.push({
-    pathname: "/(tabs)/exerciseSelection",
+    pathname: "/tabs/exerciseSelection",
     params: { level }
   });
 };
@@ -147,6 +152,8 @@ const VocabularyExercise = ({ route }) => {
         expanded={showDetailedProgress}
         onToggleExpand={handleToggleProgressDetails}
         onCategoryPress={handleCategoryProgressPress}
+        mode={finalMode} // ✅ AJOUTÉ : passer le mode
+        overrideCompleted={overrideCompleted} // ✅ AJOUTÉ : correction progression fast
       />
 
       <VocabularyCategorySelector

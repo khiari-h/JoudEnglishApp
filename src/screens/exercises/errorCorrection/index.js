@@ -114,7 +114,7 @@ const handleBackPress = () => {
     setViewMode("browse"); // ✅ Reste pareil
   } else {
     router.push({
-      pathname: "/(tabs)/exerciseSelection",
+      pathname: "/tabs/exerciseSelection",
       params: { level }
     }); // ✅ Remplace navigation.goBack()
   }

@@ -1,5 +1,5 @@
 
 
 export default function Index() {
-  return <Redirect href="/dashboard" />;
+  return <Redirect href="/tabs/dashboard" />;
 }

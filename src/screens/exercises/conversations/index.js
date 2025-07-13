@@ -94,7 +94,7 @@ const ConversationExercise = ({ route }) => {
   // Handlers
    const handleBackPress = () => {
     router.push({
-      pathname: "/(tabs)/exerciseSelection",
+      pathname: "/tabs/exerciseSelection",
       params: { level }
     });
   };

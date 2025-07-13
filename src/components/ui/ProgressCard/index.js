@@ -23,6 +23,8 @@ import createStyles from "./style";
  * @param {function} onToggleExpand - Fonction pour toggle expansion
  * @param {array} categoryData - Données des catégories pour l'expansion
  * @param {function} onCategoryPress - Fonction appelée lors du clic sur catégorie
+ * @param {string} mode - Mode d'exercice (classic/fast) - pour les tests
+ * @param {number} overrideCompleted - Valeur forcée pour completed - pour les tests
  */
 const ProgressCard = ({
   title = "Progress",
@@ -36,6 +38,8 @@ const ProgressCard = ({
   onToggleExpand,
   categoryData = [],
   onCategoryPress,
+  mode, // ✅ AJOUTÉ : pour les tests
+  overrideCompleted, // ✅ AJOUTÉ : pour les tests
 }) => {
   const styles = createStyles(levelColor);
 
