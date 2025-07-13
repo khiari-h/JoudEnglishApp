@@ -2,7 +2,6 @@
 
 
 // ✅ CHANGEMENT : Utiliser SafeAreaView moderne au lieu du basique
-import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./style";
 
 /**

@@ -50,7 +50,7 @@ const CategorySelector = ({
   };
 
   // Rendu d'une pill de catégorie
-  const renderCategoryPill = (category, index) => {
+  const renderCategoryPill = (category) => {
     const isSelected = selectedCategory === category.id;
     const animation = animations[category.id] || new Animated.Value(0);
 
@@ -143,7 +143,7 @@ const CategorySelector = ({
           contentContainerStyle={styles.scrollContent}
           style={styles.scrollView}
         >
-          {categories.map((category, index) => renderCategoryPill(category, index))}
+          {categories.map((category) => renderCategoryPill(category))}
         </ScrollView>
       </LinearGradient>
     </View>

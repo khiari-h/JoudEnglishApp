@@ -1,13 +1,5 @@
 // src/components/layout/Header/index.js
 
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-  Platform,
-} from "react-native";
-
 import { useNavigation } from "@react-navigation/native";
 import styles from "./style";
 

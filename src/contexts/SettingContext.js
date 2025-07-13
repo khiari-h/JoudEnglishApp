@@ -25,7 +25,7 @@ export const SettingsProvider = ({ children }) => {
           // Fusionner avec les paramètres par défaut pour s'assurer que tous les champs sont présents
           setSettings({ ...DEFAULT_SETTINGS, ...savedSettings });
         }
-      } catch (error) {
+      } catch {
 
       } finally {
         setIsLoading(false);

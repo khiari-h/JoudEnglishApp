@@ -1,18 +1,10 @@
 // src/components/ui/Modal/index.js
 import React from "react";
 import {
-  Modal as RNModal,
-  View,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
   Animated,
   Dimensions,
-  ScrollView,
-  KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
 
 /**
@@ -34,7 +26,6 @@ const Modal = ({
   fullScreen = false,
   transparent = true,
   backdropColor = "rgba(0, 0, 0, 0.5)",
-  backdropOpacity = 0.5,
   contentContainerStyle,
   headerStyle,
   footerStyle,

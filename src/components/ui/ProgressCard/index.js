@@ -17,7 +17,6 @@ import createStyles from "./style";
  * @param {number} progress - Pourcentage de progression (0-100)
  * @param {number} completed - Nombre d'items complétés
  * @param {number} total - Nombre total d'items
- * @param {string} unit - Unité (ex: "mots", "phrases", "règles")
  * @param {string} levelColor - Couleur du niveau
  * @param {boolean} expandable - Peut être étendu pour voir détails
  * @param {boolean} expanded - État d'expansion
@@ -31,7 +30,6 @@ const ProgressCard = ({
   progress = 0,
   completed = 0,
   total = 0,
-  unit = "items",
   levelColor = "#5E60CE",
   expandable = false,
   expanded = false,

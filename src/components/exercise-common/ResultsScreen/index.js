@@ -7,10 +7,9 @@ import {
   TouchableOpacity,
   Animated,
   Share,
-  Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useEffect, useRef } from "react";
 import styles from "./style";
 
 /**
@@ -18,7 +17,6 @@ import styles from "./style";
  * à la fin d'une série d'exercices
  */
 const ResultsScreen = ({
-  score = 0,
   totalQuestions = 0,
   correctAnswers = 0,
   incorrectAnswers = 0,
