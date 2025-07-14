@@ -1,6 +1,6 @@
 // GrammarRuleContent/index.js - VERSION REFACTORISÉE avec ContentSection (90 → 50 lignes)
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';

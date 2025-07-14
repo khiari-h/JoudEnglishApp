@@ -1,4 +1,3 @@
-import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
 const AssessmentHeader = ({ level, onBackPress }) => {

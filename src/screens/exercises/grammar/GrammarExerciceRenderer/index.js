@@ -1,6 +1,5 @@
 // GrammarExerciseRenderer/index.js - VERSION REFACTORISÉE avec HeroCard (71 → 50 lignes)
 
-import React from "react";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";

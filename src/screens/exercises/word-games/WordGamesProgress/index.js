@@ -1,7 +1,6 @@
 // WordGamesProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
 import ProgressCard from "../../../../components/ui/ProgressCard";
-import { getWordGamesData } from "../../../../utils/wordGames/wordGamesDataHelper";
 
 /**
  * 📊 WordGamesProgress - Version corrigée avec mémorisation
@@ -15,7 +14,7 @@ const WordGamesProgress = ({
   completedGames = 0,
   levelColor = "#3b82f6",
   // gameResults = [], // supprimé car inutilisé
-  level = "A1",
+  // level = "A1", // supprimé car inutilisé
 }) => {
   
   // ✅ MÉMORISER le calcul de progression globale

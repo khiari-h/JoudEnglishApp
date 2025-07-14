@@ -43,14 +43,14 @@ const AssessmentProgress = ({
   }, [assessmentData, sections, userAnswers]);
 
   // ✅ MÉMORISER la transformation des données
-  const formattedSectionData = useMemo(() => {
-    return sectionProgressData.map((section, index) => ({
-      title: section.title,
-      completed: section.answeredQuestions,
-      total: section.totalQuestions,
-      progress: section.progress,
-    }));
-  }, [sectionProgressData]);
+  // const formattedSectionData = useMemo(() => {
+  //   return sectionProgressData.map((section) => ({
+  //     title: section.title,
+  //     completed: section.answeredQuestions,
+  //     total: section.totalQuestions,
+  //     progress: section.progress,
+  //   }));
+  // }, [sectionProgressData]);
 
   // ✅ MÉMORISER les données de debug (seulement en dev)
   // const debugData = useMemo(() => {

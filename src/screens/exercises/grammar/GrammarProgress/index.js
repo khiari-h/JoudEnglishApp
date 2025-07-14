@@ -1,6 +1,5 @@
 // GrammarProgress/index.js - VERSION TOTALEMENT RECODÉE AVEC useMemo
 
-import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalExercises,
@@ -63,30 +62,13 @@ const GrammarProgress = ({
 
   // ✅ MÉMORISER la transformation pour ProgressCard
   const formattedRuleData = useMemo(() => {
-    return statsData.ruleProgressData.map((rule, index) => ({
+    return statsData.ruleProgressData.map((rule) => ({
       title: rule.title,
       completed: rule.completedExercises,
       total: rule.totalExercises,
       progress: rule.progress,
     }));
   }, [statsData.ruleProgressData]);
-
-  // ✅ MÉMORISER les données de debug (seulement en développement)
-  const debugData = useMemo(() => {
-    if (process.env.NODE_ENV !== 'development') return null;
-    
-    return {
-      isGrammarDataArray: Array.isArray(grammarData),
-      hasRules: !!(grammarData?.rules),
-      hasCategories: !!(grammarData?.categories),
-      hasExercises: !!(grammarData?.exercises),
-      dataArrayLength: dataArray.length,
-      totalExercisesCount: statsData.totalExercisesCount,
-      completedExercisesCount: statsData.completedExercisesCount,
-      totalProgress: statsData.totalProgress,
-      grammarDataKeys: grammarData && typeof grammarData === 'object' ? Object.keys(grammarData) : "not object or null"
-    };
-  }, [grammarData, dataArray.length, statsData]);
 
   // ✅ CORRECTION FINALE : Pas de log dans le render !
   // Le log était dans le render, il se déclenchait à chaque fois

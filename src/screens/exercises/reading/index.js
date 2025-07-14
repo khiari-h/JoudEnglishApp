@@ -1,7 +1,6 @@
 // ReadingExercise/index.js - SANS BOUCLES INFINIES
 
 import { View, ActivityIndicator } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";

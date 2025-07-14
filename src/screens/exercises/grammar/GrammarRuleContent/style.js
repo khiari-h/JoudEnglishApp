@@ -8,7 +8,7 @@ import { StyleSheet, Platform } from 'react-native';
  * Nouveau : 80 lignes - ContentSection gère explication, exemples, règles
  * Focus sur le header collapsible unique à Grammar
  */
-const createStyles = (levelColor = "#3b82f6") =>
+const createStyles = () =>
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

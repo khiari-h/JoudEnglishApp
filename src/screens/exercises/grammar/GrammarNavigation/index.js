@@ -1,5 +1,4 @@
 // src/components/screens/exercises/grammar/GrammarNavigation/index.js
-import React from "react";
 import { View } from "react-native";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";
@@ -22,7 +21,6 @@ const GrammarNavigation = ({
   onSkipExercise,
   isFirstExercise,
   isLastExercise,
-  attempts,
   levelColor = "#3b82f6",
 }) => {
 

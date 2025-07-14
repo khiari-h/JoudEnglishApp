@@ -1,6 +1,6 @@
 // GrammarExercise/index.js - VERSION TOTALEMENT RECODÉE
 
-import React, { useMemo, useEffect, useCallback } from "react";
+import { useMemo, useCallback } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -36,7 +36,7 @@ const GrammarExercise = ({ route }) => {
   const styles = createStyles();
 
   // Hook pour sauvegarder l'activité
-  const { saveActivity } = useLastActivity();
+  // const { saveActivity } = useLastActivity(); // supprimé car inutilisé
 
   // ✅ MÉMORISER les données principales
   const levelColor = useMemo(() => getLevelColor(level), [level]);
@@ -58,11 +58,9 @@ const GrammarExercise = ({ route }) => {
     showDetailedProgress,
     currentRule,
     currentExercise,
-    totalExercises,
     canCheckAnswer,
     isFirstExercise,
     isLastExercise,
-    progress,
     changeRule,
     submitAnswer,
     nextExercise,
