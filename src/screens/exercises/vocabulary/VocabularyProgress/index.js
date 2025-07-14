@@ -59,15 +59,6 @@ const VocabularyProgress = ({
     progress: category.progress,
   }));
 
-  console.log("🔍 VocabularyProgress Debug:", {
-    hasCategories: !!vocabularyData?.categories,
-    hasExercises: !!vocabularyData?.exercises,
-    dataArrayLength: dataArray.length,
-    totalWordsCount,
-    completedWordsCount,
-    totalProgress
-  });
-
   return (
     <ProgressCard
       title="Progression"

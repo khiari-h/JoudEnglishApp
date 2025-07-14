@@ -50,7 +50,7 @@ const useConversation = (conversationData = null, level = "A1") => {
           }
         }
       } catch (error) {
-        console.log('Error loading conversation data:', error);
+        console.error('Error loading conversation data:', error);
       } finally {
         setLoaded(true);
       }
@@ -71,7 +71,7 @@ const useConversation = (conversationData = null, level = "A1") => {
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      console.log('Error saving conversation data:', error);
+      console.error('Error saving conversation data:', error);
     }
   }, [completedScenarios, conversationHistory, currentScenarioIndex, currentStep, STORAGE_KEY]);
 

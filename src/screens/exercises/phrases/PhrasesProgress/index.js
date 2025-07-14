@@ -55,17 +55,6 @@ const PhrasesProgress = ({
     progress: category.progress,
   }));
 
-  console.log("🔍 PhrasesProgress Debug:", {
-    hasCategories: categories.length > 0,
-    hasPhrases: phrases.length > 0,
-    categoriesLength: categories.length,
-    phrasesLength: phrases.length,
-    totalPhrasesCount,
-    completedPhrasesCount,
-    totalProgress,
-    phrasesDataKeys: phrasesData ? Object.keys(phrasesData) : "null"
-  });
-
   return (
     <ProgressCard
       title="Progression"

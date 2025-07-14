@@ -55,7 +55,6 @@ const useGrammar = (grammarData = [], level = "A1") => {
           }
         }
       } catch (error) {
-        console.log('Error loading grammar data:', error);
       } finally {
         setLoaded(true);
       }
@@ -68,7 +67,6 @@ const useGrammar = (grammarData = [], level = "A1") => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      console.log('Error saving grammar data:', error);
     }
   }, [STORAGE_KEY]);
 

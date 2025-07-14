@@ -54,7 +54,6 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
         const prefs = JSON.parse(saved);
         setNextRevisionAt(prefs.nextRevisionAt || 50);
         setIsDisabled(prefs.isDisabled || false); // ✅ VRAI FLAG
-        console.log("🔄 Loaded revision prefs:", prefs);
       } else {
         // ✅ Valeurs par défaut
         setNextRevisionAt(50);
@@ -78,7 +77,6 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
       };
       
       await AsyncStorage.setItem(REVISION_STORAGE_KEY, JSON.stringify(prefs));
-      console.log("💾 Saved revision prefs:", prefs);
       
       setNextRevisionAt(newNextAt);
       setIsDisabled(newIsDisabled);
@@ -109,14 +107,6 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
                       !showPopup && 
                       !popupShownRef.current;
 
-    console.log("🔍 Revision check:", {
-      isDisabled,
-      totalWords,
-      nextRevisionAt,
-      shouldShow,
-      popupAlreadyShown: popupShownRef.current
-    });
-
     if (shouldShow) {
       // ✅ PROTECTION double-popup
       popupShownRef.current = true;
@@ -126,7 +116,6 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
 
   // ========== HANDLERS CORRIGÉS ==========
   const handleChoice = async (choice) => {
-    console.log("🎯 Révision choice:", choice);
     setShowPopup(false);
     popupShownRef.current = false; // ✅ Reset protection
     

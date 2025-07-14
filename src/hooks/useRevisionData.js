@@ -11,7 +11,6 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
   // ========== RÉCUPÉRATION DES MOTS APPRIS ==========
   useEffect(() => {
     const loadLearnedWords = async () => {
-      console.log('🚀 === useRevisionData: DÉBUT RÉCUPÉRATION ===');
       
       try {
         setIsLoading(true);
@@ -24,12 +23,10 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
         for (const levelKey of levels) {
           for (const mode of modes) {
             const storageKey = `vocabulary_${levelKey}_${mode}`;
-            console.log(`📚 Vérification: ${storageKey}`);
             
             try {
               const stored = await AsyncStorage.getItem(storageKey);
               if (!stored) {
-                console.log(`❌ ${storageKey}: pas de données`);
                 continue;
               }
 
@@ -37,17 +34,14 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
               const completedWordsRefs = data.completedWords || {};
               
               if (Object.keys(completedWordsRefs).length === 0) {
-                console.log(`❌ ${storageKey}: aucun mot complété`);
                 continue;
               }
-
-              console.log(`✅ ${storageKey} trouvé:`, Object.keys(completedWordsRefs).length, 'catégories');
               
               // Récupérer les données originales du vocabulaire
               const originalData = getVocabularyData(levelKey, mode);
               if (!originalData?.exercises) {
-                console.warn(`❌ Pas de données originales pour ${levelKey}/${mode}`);
-                continue;
+                // Pas de données originales pour ce niveau/mode
+                return;
               }
               
               // Traiter chaque catégorie
@@ -58,11 +52,9 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
                 const category = originalData.exercises[catIndex];
                 
                 if (!category?.words) {
-                  console.warn(`❌ Catégorie ${catIndex} introuvable dans ${levelKey}/${mode}`);
+                  // Catégorie introuvable dans ce niveau/mode
                   return;
                 }
-                
-                console.log(`  📖 Catégorie ${catIndex}: ${wordRefs.length} mots appris`);
                 
                 // Récupérer chaque mot appris
                 wordRefs.forEach((wordRef) => {
@@ -105,9 +97,9 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
                       uniqueId: `${levelKey}_${mode}_${catIndex}_${wordIndex}`
                     });
                     
-                    console.log(`    ✅ ${realWord.word} → ${realWord.translation}`);
                   } else {
-                    console.warn(`    ❌ WordIndex ${wordIndex} introuvable dans catégorie ${catIndex}`);
+                    // WordIndex introuvable dans la catégorie
+                    return;
                   }
                 });
               });
@@ -123,7 +115,6 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
           index === self.findIndex(w => w.uniqueId === word.uniqueId)
         );
         
-        console.log(`📊 Total mots récupérés: ${uniqueWords.length}`);
         setAllLearnedWords(uniqueWords);
         
       } catch (error) {
@@ -132,7 +123,6 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
         setAllLearnedWords([]);
       } finally {
         setIsLoading(false);
-        console.log('🚀 === useRevisionData: FIN RÉCUPÉRATION ===\n');
       }
     };
 
@@ -142,8 +132,6 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
   // ========== GÉNÉRATION DES QUESTIONS ==========
   const revisionQuestions = useMemo(() => {
     if (allLearnedWords.length === 0) return [];
-
-    console.log(`🎯 Génération de ${Math.min(questionsCount, allLearnedWords.length)} questions`);
 
     // Mélanger et sélectionner
     const shuffledWords = [...allLearnedWords].sort(() => Math.random() - 0.5);
@@ -179,8 +167,6 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
       const choices = [word.translation, ...wrongAnswers.slice(0, 3)]
         .sort(() => Math.random() - 0.5);
       
-      console.log(`  🎲 Q${idx + 1}: ${word.word} → ${word.translation} (${word.fromLevel}/${word.fromMode})`);
-      
       return {
         ...word,
         choices,
@@ -188,7 +174,6 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
       };
     });
 
-    console.log(`✅ ${questionsWithChoices.length} questions générées`);
     return questionsWithChoices;
     
   }, [allLearnedWords, questionsCount]);

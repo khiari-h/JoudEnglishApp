@@ -60,17 +60,6 @@ const PhrasesExercise = ({ route }) => {
 
   // ✅ AJOUTÉ : Sauvegarder l'activité à chaque changement de phrase/catégorie
   useEffect(() => {
-    console.log("🔍 DEBUG PhrasesExercise:", { 
-      loaded, 
-      hasValidData, 
-      hasCurrentPhrase: !!currentPhrase,
-      currentPhrasesLength: currentPhrases.length,
-      phraseIndex,
-      totalPhrasesInCategory,
-      categoryIndex,
-      phrasesDataStructure: phrasesData ? Object.keys(phrasesData) : "none"
-    });
-
     if (loaded && hasValidData && currentPhrase && currentPhrases.length > 0 && phraseIndex < 100) { // ✅ Protection boucle
       const currentCategory = phrasesData?.categories?.[categoryIndex];
       
@@ -87,7 +76,6 @@ const PhrasesExercise = ({ route }) => {
         }
       };
 
-      console.log("✅ Phrases activity saved:", `${activityData.title} - Phrase ${phraseIndex + 1}/${activityData.metadata.totalPhrases}`);
       saveActivity(activityData);
     }
   }, [loaded, hasValidData, currentPhrase, currentPhrases.length, phraseIndex, totalPhrasesInCategory, categoryIndex, level, phrasesData]);

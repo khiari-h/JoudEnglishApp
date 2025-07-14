@@ -65,7 +65,6 @@ const useAssessment = (level = "A1") => {
           }
         }
       } catch (error) {
-        console.log('Error loading assessment data:', error);
       } finally {
         setLoaded(true);
       }
@@ -87,7 +86,6 @@ const useAssessment = (level = "A1") => {
       // Sauvegarder réponses
       await AsyncStorage.setItem(ANSWERS_KEY, JSON.stringify(userAnswers));
     } catch (error) {
-      console.log('Error saving assessment data:', error);
     }
   }, [currentSection, currentQuestionIndex, userAnswers, sections, STORAGE_KEY, ANSWERS_KEY]);
 
@@ -223,7 +221,6 @@ const useAssessment = (level = "A1") => {
       setAssessmentResults(resultsWithTimestamp);
       await AsyncStorage.setItem(RESULTS_KEY, JSON.stringify(resultsWithTimestamp));
     } catch (error) {
-      console.log('Error saving assessment results:', error);
     }
   }, [RESULTS_KEY]);
 
@@ -239,7 +236,6 @@ const useAssessment = (level = "A1") => {
       setAssessmentResults({});
       setLastPosition({ sectionIndex: 0, questionIndex: 0 });
     } catch (error) {
-      console.log('Error resetting assessment:', error);
     }
   }, [STORAGE_KEY, RESULTS_KEY, ANSWERS_KEY, sections]);
 

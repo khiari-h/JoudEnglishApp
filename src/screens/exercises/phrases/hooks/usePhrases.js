@@ -49,7 +49,6 @@ const usePhrases = (phrasesData = null, level = "A1") => {
           }
         }
       } catch (error) {
-        console.log('Error loading phrases data:', error);
       } finally {
         setLoaded(true);
       }
@@ -69,7 +68,6 @@ const usePhrases = (phrasesData = null, level = "A1") => {
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      console.log('Error saving phrases data:', error);
     }
   }, [completedPhrases, categoryIndex, phraseIndex, STORAGE_KEY]);
 

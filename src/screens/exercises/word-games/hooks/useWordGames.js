@@ -67,7 +67,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
           }));
         }
       } catch (error) {
-        console.log('Error loading word games data:', error);
       } finally {
         setLoaded(true);
       }
@@ -88,7 +87,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
       // Sauvegarder jeux complétés
       await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(completedGames));
     } catch (error) {
-      console.log('Error saving word games data:', error);
     }
   }, [currentGameIndex, completedGames, STORAGE_KEY, COMPLETED_KEY]);
 
@@ -280,7 +278,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
       };
       setCompletedGames(updatedCompletedGames);
     } catch (error) {
-      console.log('Error marking game as completed:', error);
     }
   }, [completedGames]);
 
@@ -331,7 +328,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
         shuffleGameOptions(games[0]);
       }
     } catch (error) {
-      console.log('Error resetting word games:', error);
     }
   }, [STORAGE_KEY, COMPLETED_KEY, SCORES_KEY, games]);
 

@@ -61,18 +61,6 @@ const ReadingProgress = ({
     progress: exercise.progress,
   }));
 
-  console.log("🔍 ReadingProgress Debug:", {
-    isReadingDataArray: Array.isArray(readingData),
-    hasExercises: !!(readingData?.exercises),
-    hasTexts: !!(readingData?.texts),
-    hasPassages: !!(readingData?.passages),
-    dataArrayLength: dataArray.length,
-    totalQuestionsCount,
-    completedQuestionsCount,
-    totalProgress,
-    readingDataKeys: readingData && typeof readingData === 'object' ? Object.keys(readingData) : "not object or null"
-  });
-
   return (
     <ProgressCard
       title="Progression" // ✅ Titre uniforme

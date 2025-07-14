@@ -59,7 +59,6 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
           }
         }
       } catch (error) {
-        console.log('Error loading error correction data:', error);
       } finally {
         setLoaded(true);
       }
@@ -79,7 +78,6 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      console.log('Error saving error correction data:', error);
     }
   }, [completedExercises, selectedCategory, currentExerciseIndex, STORAGE_KEY]);
 

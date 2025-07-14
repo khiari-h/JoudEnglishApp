@@ -45,7 +45,6 @@ export const useRevisionSettings = () => {
       setPreferences(updatedPrefs);
       // Événement de mise à jour des settings
       try { require('../utils/eventBus').emit('settings-updated', updatedPrefs); } catch(e) {}
-      console.log("💾 Updated revision settings:", updatedPrefs);
       return true;
     } catch (error) {
       console.error('Error saving revision settings:', error);
@@ -55,7 +54,6 @@ export const useRevisionSettings = () => {
 
   // ========== ACTIONS SPÉCIFIQUES ==========
   const enableRevisions = async (frequency = 50, questionsCount = 10) => {
-    console.log("✅ Enabling revisions with frequency:", frequency);
     return await updatePreferences({
       isDisabled: false,
       frequency,
@@ -65,12 +63,10 @@ export const useRevisionSettings = () => {
   };
 
   const disableRevisions = async () => {
-    console.log("❌ Disabling revisions");
     return await updatePreferences({ isDisabled: true });
   };
 
   const updateFrequency = async (newFrequency) => {
-    console.log("🔄 Updating frequency to:", newFrequency);
     return await updatePreferences({ 
       frequency: newFrequency,
       nextRevisionAt: newFrequency // Reset target

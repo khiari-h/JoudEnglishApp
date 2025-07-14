@@ -115,7 +115,6 @@ const LevelAssessment = ({ route }) => {
     try {
       await resetAssessment();
     } catch (error) {
-      console.log('Error retrying assessment:', error);
     }
   };
 
