@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { View, Text, TouchableOpacity, Modal, Animated, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
@@ -10,7 +10,6 @@ const RevisionPopup = ({
   visible = false,
   totalWordsLearned = 50,
   questionsCount = 10,
-  currentLevel = "mixed",
   onChoice,
   onDismiss,
 }) => {

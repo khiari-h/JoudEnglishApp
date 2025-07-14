@@ -1,5 +1,5 @@
 // src/screens/Dashboard/components/ModernHeader/index.js
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { ThemeContext } from "../../../../contexts/ThemeContext";

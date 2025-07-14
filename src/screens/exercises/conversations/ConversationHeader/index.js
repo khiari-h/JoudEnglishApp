@@ -1,5 +1,4 @@
 // 2. ChatbotHeader - MIS À JOUR  
-import React from "react";
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
 
 const ChatbotHeader = ({ level, onBackPress }) => {

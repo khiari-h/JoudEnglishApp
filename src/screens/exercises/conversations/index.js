@@ -1,6 +1,6 @@
 // ConversationExercise/index.js - VERSION CORRIGÉE
+import { useMemo, useEffect, useCallback } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
 // Layout
@@ -51,7 +51,6 @@ const ConversationExercise = ({ route }) => {
     showDetailedProgress,
     currentScenario,
     totalScenarios,
-    totalSteps,
     hasValidData,
     changeScenario,
     sendMessage,

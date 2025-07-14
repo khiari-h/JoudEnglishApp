@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import styles from './style';
 

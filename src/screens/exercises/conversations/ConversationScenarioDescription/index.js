@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text } from 'react-native';
 import ConversationHelpPanel from '../ConversationHelpPanel';
 import styles from './style';

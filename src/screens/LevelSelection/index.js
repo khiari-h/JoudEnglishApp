@@ -1,5 +1,5 @@
 // src/screens/LevelSelection/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -38,7 +38,7 @@ const LevelSelection = () => {
   const { colors } = themeContext;
   
   // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
-  const { getLevelProgress, hasProgress, hasVocabularyStarted, hasVocabularyFastStarted } = useRealTimeProgress();
+  const { getLevelProgress, hasProgress } = useRealTimeProgress();
 
   // Niveau actuel simplifié
   const getCurrentUserLevel = () => {

@@ -1,7 +1,7 @@
 // AssessmentProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
+import { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
-import { calculateSectionProgressData } from "../../../../utils/assessment/assessmentStats";
 import { getAssessmentData, getAssessmentSections } from "../../../../utils/assessment/assessmentDataHelper";
 
 /**
@@ -16,7 +16,6 @@ const AssessmentProgress = ({
   totalQuestions = 0,
   answeredQuestionsInSection = 0,
   levelColor = "#3b82f6",
-  userAnswers = {},
   level = "A1",
 }) => {
   

@@ -1,5 +1,5 @@
 // src/screens/VocabularyRevision/index.js - VERSION AVEC HOOK DÉDIÉ
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, Animated, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ThemeContext } from '../../contexts/ThemeContext';

@@ -1,7 +1,6 @@
 // src/screens/Dashboard/index.js - VERSION CORRIGÉE - MÊME LOGIQUE QUE LEVELSELECTION
 
-import React, { useContext, useCallback, useEffect } from "react";
-import { subscribe } from '../../utils/eventBus';
+import { useContext, useCallback } from "react";
 import { RefreshControl, Text, ScrollView, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -11,7 +10,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { useProgress } from "../../contexts/ProgressContext";
 import { useCurrentLevel } from '../../contexts/CurrentLevelContext';
 
-// 🚀 HOOK PROGRESSION TEMPS RÉEL
+// 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES CHIFFRES
 import useRealTimeProgress from "../../hooks/useRealTimeProgress";
 
 // Hooks
@@ -36,14 +35,14 @@ import RevisionOrchestrator from "../VocabularyRevision/RevisionOrchestrator";
 import { EXERCISES, LANGUAGE_LEVELS } from "../../utils/constants";
 import styles from "./style";
 
-const Dashboard = ({ route }) => {
+const Dashboard = () => {
   
   // =================== CONTEXTES ===================
   const themeContext = useContext(ThemeContext);
   const progressData = useProgress();
 
   // 🚀 PROGRESSION TEMPS RÉEL
-  const { getLevelProgress, getExerciseProgress, refresh: refreshProgress } = useRealTimeProgress();
+  const { getLevelProgress, refresh: refreshProgress } = useRealTimeProgress();
 
   const colors = themeContext?.colors || {
     background: "#F8FAFC",

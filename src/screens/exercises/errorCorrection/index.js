@@ -1,8 +1,7 @@
 // ErrorCorrectionExercise/index.js - VERSION CORRIGÉE
 
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
 import { View, ActivityIndicator } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
 // Layout

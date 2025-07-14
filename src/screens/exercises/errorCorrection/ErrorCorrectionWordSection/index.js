@@ -1,6 +1,6 @@
 // ErrorCorrectionWordSection/index.js - WRAPPER INTELLIGENT (pattern VocabularyWordSection)
 
-import React, { memo } from "react";
+import { memo } from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import FullCorrectionMode from "../modes/FullCorrectionMode";
@@ -16,7 +16,6 @@ import createStyles from "./style";
  * @param {Object} currentExercise - Exercice actuel avec ses propriétés
  * @param {string} exerciseCounter - Compteur stylé (ex: "5 / 20")
  * @param {string} correctionMode - Mode de correction (full/identify/multiple_choice)
- * @param {string} level - Niveau actuel
  * @param {string} levelColor - Couleur du niveau
  * @param {boolean} showFeedback - État d'affichage du feedback
  * @param {boolean} isCorrect - Réponse correcte ou non
@@ -31,7 +30,6 @@ const ErrorCorrectionWordSection = memo(({
   currentExercise,
   exerciseCounter,
   correctionMode,
-  level,
   levelColor,
   showFeedback,
   isCorrect,
@@ -43,7 +41,7 @@ const ErrorCorrectionWordSection = memo(({
   onToggleErrorIndex,
   onSelectChoice,
 }) => {
-  const styles = createStyles(levelColor);
+  const styles = createStyles();
   
   return (
     <View style={styles.container}>
