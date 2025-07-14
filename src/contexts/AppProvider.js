@@ -3,6 +3,7 @@ import React from 'react';
 import { ThemeProvider } from './ThemeContext';
 import { ProgressProvider } from './ProgressContext';
 import { SettingsProvider } from './SettingContext';
+import { CurrentLevelProvider } from './CurrentLevelContext';
 
 /**
  * Fournisseur global qui combine tous les contextes de l'application
@@ -13,7 +14,9 @@ const AppProvider = ({ children }) => {
     <ThemeProvider>
       <SettingsProvider>
         <ProgressProvider>
-          {children}
+          <CurrentLevelProvider>
+            {children}
+          </CurrentLevelProvider>
         </ProgressProvider>
       </SettingsProvider>
     </ThemeProvider>
