@@ -9,6 +9,7 @@ import { router } from "expo-router";
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useProgress } from "../../contexts/ProgressContext";
+import { useCurrentLevel } from '../../contexts/CurrentLevelContext';
 
 // 🚀 HOOK PROGRESSION TEMPS RÉEL
 import useRealTimeProgress from "../../hooks/useRealTimeProgress";
@@ -56,6 +57,7 @@ const Dashboard = ({ route }) => {
   const { currentLevel, handleChangeActiveLevel, levelColor } = useDashboardLevel({ 
     progress: progressData.progress 
   });
+  const { setCurrentLevel } = useCurrentLevel();
   
   const { lastActivity, isLoading: isActivityLoading, reload: reloadActivity } = useLastActivity();
   
@@ -92,11 +94,13 @@ const Dashboard = ({ route }) => {
 
   const handleChangeLevelVisual = useCallback((levelId) => {
     handleChangeActiveLevel(levelId);
-  }, [handleChangeActiveLevel]);
+    setCurrentLevel(levelId); // Synchronise le contexte global
+  }, [handleChangeActiveLevel, setCurrentLevel]);
 
   const handleLevelSelect = useCallback((level) => {
+    setCurrentLevel(level); // Synchronise le contexte global
     router.push(`/tabs/exerciseSelection?level=${level}`);
-  }, []);
+  }, [setCurrentLevel]);
 
   // =================== NIVEAUX - MÊME LOGIQUE QUE LEVELSELECTION ===================
   
