@@ -79,7 +79,7 @@ const GrammarExercise = ({ route }) => {
   // ✅ TOUS LES HANDLERS MÉMORISÉS pour éviter les re-renders
 const handleBackPress = useCallback(() => {
   router.push({
-    pathname: "/(tabs)/exerciseSelection",
+    pathname: "/tabs/exerciseSelection",
     params: { level }
   });
 }, [level]);

@@ -95,7 +95,7 @@ const Dashboard = ({ route }) => {
   }, [handleChangeActiveLevel]);
 
   const handleLevelSelect = useCallback((level) => {
-    router.push(`/(tabs)/exerciseSelection?level=${level}`);
+    router.push(`/tabs/exerciseSelection?level=${level}`);
   }, []);
 
   // =================== NIVEAUX - MÊME LOGIQUE QUE LEVELSELECTION ===================

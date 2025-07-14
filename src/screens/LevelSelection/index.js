@@ -89,7 +89,7 @@ const LevelSelection = () => {
   // Navigation
   const handleLevelSelect = (level) => {
     router.push({
-      pathname: "/(tabs)/exerciseSelection",
+      pathname: "/tabs/exerciseSelection",
       params: { level: level.id },
     });
   };
@@ -106,7 +106,7 @@ const LevelSelection = () => {
         <Header
           title="Niveaux"
           showBackButton
-          onBackPress={() => router.push("/(tabs)/dashboard")}
+          onBackPress={() => router.push("/tabs/dashboard")}
           backgroundColor="transparent"
           textColor="white"
           withStatusBar={false}
