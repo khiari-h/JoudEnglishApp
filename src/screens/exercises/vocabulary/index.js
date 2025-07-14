@@ -3,6 +3,7 @@
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
+import { useEffect } from "react";
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import VocabularyHeader from "./VocabularyHeader";
@@ -13,7 +14,7 @@ import VocabularyNavigation from "./VocabularyNavigation";
 
 import useVocabulary from "./hooks/useVocabulary";
 import useLastActivity from "../../../hooks/useLastActivity";
-import { isBonusLevel, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
+import { isBonusLevel, getLevelColor, getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 import createStyles from "./style";
 
 const VocabularyExercise = ({ route }) => {
@@ -25,7 +26,7 @@ const VocabularyExercise = ({ route }) => {
   // Data
   const finalMode = mode || (isBonusLevel(level) ? "fast" : "classic");
   const levelColor = getLevelColor(level);
-  const vocabularyData = useVocabulary(vocabularyData, level, finalMode);
+  const vocabularyData = getVocabularyData(level, finalMode);
 
   // Hook unifié
   const {
