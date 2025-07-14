@@ -1,6 +1,5 @@
 // PhrasesProgress/index.js - VERSION CORRIGÉE AVEC PHRASESTATS
 
-import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalPhrases,
@@ -26,10 +25,6 @@ import {
  * @param {function} onCategoryPress - Fonction appelée lors du clic sur catégorie
  */
 const PhrasesProgress = ({
-  progress: ignoredProgress, // ✅ On ignore ces props car on recalcule
-  currentPhrase: ignoredCurrentPhrase,
-  totalPhrases: ignoredTotalPhrases,
-  completedCount: ignoredCompletedCount,
   levelColor = "#5E60CE",
   phrasesData = null,
   completedPhrases = {},
@@ -48,7 +43,7 @@ const PhrasesProgress = ({
   const categoryProgressData = calculateCategoryPhrasesProgress(categories, phrases, completedPhrases);
 
   // Transformation pour le format ProgressCard
-  const formattedCategoryData = categoryProgressData.map((category, index) => ({
+  const formattedCategoryData = categoryProgressData.map((category) => ({
     title: category.title,
     completed: category.completedPhrases,
     total: category.totalPhrases,

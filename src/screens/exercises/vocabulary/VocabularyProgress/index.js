@@ -1,6 +1,5 @@
 // VocabularyProgress/index.js - VERSION CORRIGÉE POUR LES 2 STRUCTURES
 
-import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalWords,
@@ -52,7 +51,7 @@ const VocabularyProgress = ({
   const categoryProgressData = calculateCategoryProgress(dataArray, completedWords);
 
   // Transformation pour le format ProgressCard
-  const formattedCategoryData = categoryProgressData.map((category, index) => ({
+  const formattedCategoryData = categoryProgressData.map((category) => ({
     title: category.title,
     completed: category.completedWords,
     total: category.totalWords,

@@ -1,6 +1,5 @@
 // ReadingProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
 
-import React from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalQuestions,
@@ -54,7 +53,7 @@ const ReadingProgress = ({
   const exerciseProgressData = calculateExerciseProgress(dataArray, completedQuestions);
 
   // Transformation pour le format ProgressCard
-  const formattedExerciseData = exerciseProgressData.map((exercise, index) => ({
+  const formattedExerciseData = exerciseProgressData.map((exercise) => ({
     title: exercise.title,
     completed: exercise.completedQuestions,
     total: exercise.totalQuestions,

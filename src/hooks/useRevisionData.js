@@ -138,7 +138,7 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
     const selectedWords = shuffledWords.slice(0, Math.min(questionsCount, allLearnedWords.length));
     
     // Générer les choix pour chaque question
-    const questionsWithChoices = selectedWords.map((word, idx) => {
+    const questionsWithChoices = selectedWords.map((word) => {
       // Pool des autres mots pour les mauvaises réponses
       const otherWords = allLearnedWords.filter(w => w.uniqueId !== word.uniqueId);
       
