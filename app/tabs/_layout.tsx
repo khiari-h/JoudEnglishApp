@@ -12,6 +12,7 @@ const hiddenScreens = [
   "spellingExercise",
   "errorCorrectionExercise",
   "wordGamesExercise",
+  "conversationsExercise", 
 ];
 
 export default function TabLayout() {
