@@ -31,8 +31,6 @@ const ResultsScreen = ({
   showDetailedResults = false,
   detailedResults = [],
 }) => {
-  const navigation = useNavigation();
-
   // Animations
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scaleAnim = useRef(new Animated.Value(0.8)).current;

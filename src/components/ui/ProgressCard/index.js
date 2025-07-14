@@ -36,7 +36,6 @@ const ProgressCard = ({
   onToggleExpand,
   categoryData = [],
   onCategoryPress,
-  secondaryInfo = "",
 }) => {
   const styles = createStyles(levelColor);
 

@@ -2,7 +2,6 @@
 
 import { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
-import { getAssessmentData, getAssessmentSections } from "../../../../utils/assessment/assessmentDataHelper";
 
 /**
  * 📊 AssessmentProgress - Version corrigée avec mémorisation
@@ -16,7 +15,6 @@ const AssessmentProgress = ({
   totalQuestions = 0,
   answeredQuestionsInSection = 0,
   levelColor = "#3b82f6",
-  level = "A1",
 }) => {
   
   // ✅ MÉMORISER le calcul de progression de section
