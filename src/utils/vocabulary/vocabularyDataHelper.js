@@ -89,7 +89,7 @@ export const getVocabularyData = (level, mode = "classic") => {
  * @param {string} mode - Le mode ('classic' ou 'fast')
  * @returns {Array} Liste des niveaux disponibles
  */
-export const getAvailableLevels = (mode = "classic") => {
+export const getAvailableLevels = () => {
   return ["1", "2", "3", "4", "5", "6", "bonus"];
 };
 

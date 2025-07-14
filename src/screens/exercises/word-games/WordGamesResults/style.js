@@ -7,7 +7,7 @@ import { StyleSheet } from "react-native";
  * 150+ lignes → 25 lignes (-83% de code)
  * La majorité des styles est déléguée aux composants génériques
  */
-const createStyles = (levelColor = "#3b82f6") =>
+const createStyles = () =>
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

@@ -6,7 +6,7 @@ import { StyleSheet, Platform } from "react-native";
  * 🎯 Styles pour WordGamesNavigation
  * Mélange bouton Check Answer custom + NavigationButtons générique
  */
-const createStyles = (levelColor = "#3b82f6") =>
+const createStyles = () =>
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

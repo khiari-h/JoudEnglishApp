@@ -11,7 +11,7 @@
  * @param {Array} exercises - Liste de tous les exercices
  * @returns {number} Nombre total d'exercices
  */
-export const calculateTotalExercises = (categories = [], exercises = []) => {
+export const calculateTotalExercises = (exercises = []) => {
   return exercises.length;
 };
 
@@ -45,7 +45,7 @@ export const calculateCompletedExercisesCount = (completedExercises = {}) => {
  * @returns {number} Pourcentage de progression (0-100)
  */
 export const calculateTotalProgress = (categories = [], exercises = [], completedExercises = {}) => {
-  const totalExercises = calculateTotalExercises(categories, exercises);
+  const totalExercises = calculateTotalExercises(exercises);
   const totalCompleted = calculateCompletedExercisesCount(completedExercises);
   
   return totalExercises > 0
@@ -125,7 +125,7 @@ export const getCategoryStats = (categoryId, categories = [], exercises = [], co
  * @returns {Object} Statistiques globales
  */
 export const calculateGlobalStats = (categories = [], exercises = [], completedExercises = {}) => {
-  const totalExercises = calculateTotalExercises(categories, exercises);
+  const totalExercises = calculateTotalExercises(exercises);
   const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
   const totalProgress = calculateTotalProgress(categories, exercises, completedExercises);
   
@@ -180,7 +180,7 @@ export const getRecommendedCategory = (categories = [], exercises = [], complete
  * @returns {boolean} True si tout est terminé
  */
 export const isAllCompleted = (categories = [], exercises = [], completedExercises = {}) => {
-  const totalExercises = calculateTotalExercises(categories, exercises);
+  const totalExercises = calculateTotalExercises(exercises);
   const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
   
   return totalExercises > 0 && completedExercisesCount >= totalExercises;

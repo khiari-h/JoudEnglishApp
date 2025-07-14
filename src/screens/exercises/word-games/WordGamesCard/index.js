@@ -1,5 +1,4 @@
 // src/screens/exercises/wordGames/WordGamesCard/index.js
-import React from "react";
 import { View, Text, ScrollView, Animated } from "react-native";
 import MatchingGame from "../MatchingGame";
 import CategorizationGame from "../CategorizationGame";

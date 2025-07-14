@@ -1,6 +1,5 @@
 // VocabularyExercise/index.js - BOUCLE INFINIE CORRIGÉE
 
-import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -26,7 +25,7 @@ const VocabularyExercise = ({ route }) => {
   // Data
   const finalMode = mode || (isBonusLevel(level) ? "fast" : "classic");
   const levelColor = getLevelColor(level);
-  const vocabularyData = useMemo(() => getVocabularyData(level, finalMode), [level, finalMode]);
+  const vocabularyData = useVocabulary(vocabularyData, level, finalMode);
 
   // Hook unifié
   const {
@@ -38,8 +37,6 @@ const VocabularyExercise = ({ route }) => {
     showDetailedProgress,
     currentWord,
     currentCategory,
-    totalCategories,
-    totalWordsInCategory,
     changeCategory,
     toggleTranslation,
     toggleDetailedProgress,
@@ -47,7 +44,6 @@ const VocabularyExercise = ({ route }) => {
     handlePrevious,
     canGoToPrevious,
     isLastWordInExercise,
-    stats,
     display,
   } = useVocabulary(vocabularyData, level, finalMode);
 

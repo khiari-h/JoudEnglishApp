@@ -1,5 +1,4 @@
 // src/screens/exercises/wordGames/games/CategorizationGame/index.js
-import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import GameInstructions from "../GameInstructions";
 import styles from "./style";

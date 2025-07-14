@@ -43,7 +43,6 @@ const WordGamesExercise = ({ route }) => {
     showFeedback,
     isCorrect,
     showResults,
-    score,
     gameResults,
     shuffledOptions,
     loaded,
@@ -100,7 +99,7 @@ const handleBackPress = () => {
   const handleCheckAnswer = () => checkAnswer();
 
   const handleNextGame = () => {
-    const result = handleNext();
+    handleNext();
     // Navigation automatique quand tous les jeux sont terminés
   };
 

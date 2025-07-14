@@ -1,8 +1,6 @@
 // WordGamesProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
-import { calculateGameTypeProgress } from "../../../../utils/wordGames/wordGamesStats";
 import { getWordGamesData } from "../../../../utils/wordGames/wordGamesDataHelper";
 
 /**

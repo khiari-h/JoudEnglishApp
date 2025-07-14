@@ -8,15 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_CONFIG, DEFAULT_STATS } from './timeConstants.js';
 import { sanitizeTimeStats } from './timeUtils.js';
 
-/**
- * Structure attendue des données stockées
- */
-const STORAGE_SCHEMA = {
-  version: 'string',
-  data: 'object',
-  lastModified: 'number'
-};
-
 // =================== UTILITAIRES GÉNÉRIQUES ===================
 
 /**

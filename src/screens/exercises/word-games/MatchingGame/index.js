@@ -1,5 +1,4 @@
 // src/screens/exercises/wordGames/games/MatchingGame/index.js
-import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import GameInstructions from "../GameInstructions";
 import styles from "./style";

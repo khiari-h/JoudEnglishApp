@@ -24,7 +24,6 @@ const VocabularyWordSection = memo(({
   currentWord,
   wordCounter,
   mode,
-  level,
   levelColor,
   showTranslation,
   onToggleTranslation,
