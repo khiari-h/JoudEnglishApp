@@ -1,5 +1,4 @@
 // src/components/screens/exercises/reading/ReadingNavigation/index.js
-import React from "react";
 import { View } from "react-native";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";

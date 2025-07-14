@@ -1,6 +1,5 @@
 // ReadingExercise/index.js - SANS BOUCLES INFINIES
 
-import React, { useMemo, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -22,7 +21,6 @@ import { getReadingData, getLevelColor } from "../../../utils/reading/readingDat
 import createStyles from "./style";
 
 const ReadingExercise = ({ route }) => {
-  const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
   const { saveActivity } = useLastActivity();
@@ -47,7 +45,6 @@ const ReadingExercise = ({ route }) => {
     currentQuestion,
     totalQuestions,
     isCorrect,
-    progress,
     changeExercise,
     changeQuestion,
     selectAnswer,

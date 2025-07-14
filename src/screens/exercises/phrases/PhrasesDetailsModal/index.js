@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text } from 'react-native';
 import Modal from '../../../../components/ui/Modal';
 import styles from './style';
@@ -78,15 +77,6 @@ const PhrasesDetailsModal = ({
           <Text style={styles.detailText}>{phrase.notes}</Text>
         </View>
       )}
-    </View>
-  );
-
-  // Pied de page du modal (bouton de fermeture)
-  const renderFooter = () => (
-    <View style={[styles.modalFooter, { borderTopColor: levelColor }]}>
-      <Text style={[styles.modalFooterText, { color: levelColor }]}>
-        Appuyez n'importe où pour fermer
-      </Text>
     </View>
   );
 

@@ -1,6 +1,5 @@
 // AssessmentProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import { calculateSectionProgressData } from "../../../../utils/assessment/assessmentStats";
 import { getAssessmentData, getAssessmentSections } from "../../../../utils/assessment/assessmentDataHelper";
@@ -13,16 +12,12 @@ import { getAssessmentData, getAssessmentSections } from "../../../../utils/asse
 const AssessmentProgress = ({
   currentSection = 1,
   totalSections = 0,
-  sectionTitle = "",
   currentQuestion = 1,
   totalQuestions = 0,
   answeredQuestionsInSection = 0,
   levelColor = "#3b82f6",
   userAnswers = {},
   level = "A1",
-  expanded = false,
-  onToggleExpand,
-  onSectionPress,
 }) => {
   
   // ✅ MÉMORISER le calcul de progression de section
@@ -58,21 +53,21 @@ const AssessmentProgress = ({
   }, [sectionProgressData]);
 
   // ✅ MÉMORISER les données de debug (seulement en dev)
-  const debugData = useMemo(() => {
-    if (process.env.NODE_ENV !== 'development') return null;
-    
-    return {
-      currentSection,
-      totalSections,
-      currentQuestion,
-      totalQuestions,
-      answeredQuestionsInSection,
-      sectionProgress,
-      hasAssessmentData: !!assessmentData,
-      sectionsLength: sections.length,
-      assessmentDataKeys: assessmentData && typeof assessmentData === 'object' ? Object.keys(assessmentData) : "not object or null"
-    };
-  }, [currentSection, totalSections, currentQuestion, totalQuestions, answeredQuestionsInSection, sectionProgress, assessmentData, sections.length]);
+  // const debugData = useMemo(() => {
+  //   if (process.env.NODE_ENV !== 'development') return null;
+  //   
+  //   return {
+  //     currentSection,
+  //     totalSections,
+  //     currentQuestion,
+  //     totalQuestions,
+  //     answeredQuestionsInSection,
+  //     sectionProgress,
+  //     hasAssessmentData: !!assessmentData,
+  //     sectionsLength: sections.length,
+  //     assessmentDataKeys: assessmentData && typeof assessmentData === 'object' ? Object.keys(assessmentData) : "not object or null"
+  //   };
+  // }, [currentSection, totalSections, currentQuestion, totalQuestions, answeredQuestionsInSection, sectionProgress, assessmentData, sections.length]);
 
   // ✅ CORRECTION FINALE : Pas de log dans le render !
   // Le log était dans le render, il se déclenchait à chaque fois

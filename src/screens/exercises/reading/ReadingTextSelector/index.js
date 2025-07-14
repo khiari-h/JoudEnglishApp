@@ -1,6 +1,5 @@
 // ReadingTextSelector/index.js - VERSION REFACTORISÉE avec CategorySelector générique
 
-import React from "react";
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 
 /**
@@ -14,7 +13,7 @@ const ReadingTextSelector = ({
   exercises = [],
   selectedIndex = 0,
   onSelectExercise,
-  scrollViewRef, // Pas utilisé par CategorySelector, mais gardé pour compatibilité
+  // scrollViewRef, // Pas utilisé par CategorySelector, mais gardé pour compatibilité
   levelColor,
 }) => {
   // Transformation du format des exercices pour correspondre au composant générique

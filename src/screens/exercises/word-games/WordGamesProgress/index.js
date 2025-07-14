@@ -14,7 +14,7 @@ const WordGamesProgress = ({
   gameTitle = "",
   completedGames = 0,
   levelColor = "#3b82f6",
-  gameResults = [],
+  // gameResults = [], // supprimé car inutilisé
   level = "A1",
 }) => {
   
@@ -26,9 +26,9 @@ const WordGamesProgress = ({
   }, [completedGames, totalGames]);
 
   // ✅ MÉMORISER les données Word Games
-  const wordGamesData = useMemo(() => {
-    return getWordGamesData(level);
-  }, [level]);
+  // const wordGamesData = useMemo(() => {
+  //   return getWordGamesData(level);
+  // }, [level]);
 
   // ✅ MÉMORISER les données de debug (seulement en dev)
   // const debugData = useMemo(() => {

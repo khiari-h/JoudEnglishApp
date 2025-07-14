@@ -1,6 +1,5 @@
 // AssessmentResults/index.js - VERSION REFACTORISÉE avec composants génériques
 
-import React from "react";
 import { View, ScrollView } from "react-native";
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";

@@ -1,5 +1,4 @@
 // src/screens/exercises/phrases/PhrasesCategorySelector/index.js - VERSION FIXÉE
-import React from "react";
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 
 const PhrasesCategorySelector = ({

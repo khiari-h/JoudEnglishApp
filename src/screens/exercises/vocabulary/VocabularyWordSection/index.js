@@ -1,5 +1,6 @@
 // VocabularyWordSection/index.js - VERSION AJUSTÉE (garde la logique, utilise le nouveau VocabularyWordCard)
 
+import React, { memo } from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import VocabularyWordCard from "../VocabularyWordCard"; // ← Utilise la version refactorisée

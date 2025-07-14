@@ -1,6 +1,5 @@
 // hooks/useAssessment.js - HOOK UNIFIÉ SIMPLE
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAssessmentData, getAssessmentSections } from '../../../../utils/assessment/assessmentDataHelper';
 

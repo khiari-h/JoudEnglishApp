@@ -1,6 +1,5 @@
 // AssessmentQuestion/index.js - VERSION REFACTORISÉE avec composants génériques
 
-import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";

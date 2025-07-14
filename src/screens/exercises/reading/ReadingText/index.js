@@ -1,5 +1,4 @@
 // ReadingText/index.js - VERSION SIMPLIFIÉE
-import React from "react";
 import { View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import HeroCard from "../../../../components/ui/HeroCard";
