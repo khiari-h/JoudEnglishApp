@@ -6,6 +6,7 @@ import { router } from "expo-router";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { useCurrentLevel } from '../../contexts/CurrentLevelContext';
 
 // 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES CHIFFRES
 import useRealTimeProgress from "../../hooks/useRealTimeProgress";
@@ -33,8 +34,11 @@ const DEFAULT_THEME = {
   },
 };
 
-const ExerciseSelection = ({ route }) => {
-  const { level } = route.params;
+const ExerciseSelection = ({ level }) => {
+  if (!level) {
+    return null;
+  }
+
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
 
