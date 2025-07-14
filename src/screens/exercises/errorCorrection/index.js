@@ -28,7 +28,7 @@ import createStyles from "./style";
  */
 const ErrorCorrectionExercise = ({ route }) => {
   const { level = "A1" } = route.params || {};
-  const navigation = useNavigation();
+  // const navigation = useNavigation(); // supprimé car inutilisé
   const styles = createStyles();
 
   // Hook pour sauvegarder l'activité
@@ -67,7 +67,6 @@ const ErrorCorrectionExercise = ({ route }) => {
     setUserCorrection,
     setShowResults,
     // Computed
-    canGoToPrevious,
     isLastExerciseInCategory,
     hasValidData,
     stats,

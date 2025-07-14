@@ -19,7 +19,6 @@ import GrammarNavigation from "./GrammarNavigation";
 
 // Hook & Utils
 import useGrammar from "./hooks/useGrammar";
-import useLastActivity from "../../../hooks/useLastActivity";
 import { getGrammarData, getLevelColor } from "../../../utils/grammar/grammarDataHelper";
 import createStyles from "./style";
 

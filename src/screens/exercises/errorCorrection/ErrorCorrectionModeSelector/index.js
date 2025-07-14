@@ -1,6 +1,5 @@
 // ErrorCorrectionModeSelector/index.js - VERSION SIMPLIFIÉE (80 → 35 lignes)
 
-import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import createStyles from "./style";

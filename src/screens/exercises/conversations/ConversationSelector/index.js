@@ -1,5 +1,4 @@
 // src/screens/exercises/Conversation/ConversationConversationSelector/index.js
-import React from "react";
 import { View } from "react-native";
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 import styles from "./style";

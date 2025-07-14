@@ -38,9 +38,9 @@ const AssessmentProgress = ({
   }, []);
 
   // ✅ MÉMORISER le calcul de progression des sections
-  const sectionProgressData = useMemo(() => {
-    return calculateSectionProgressData(assessmentData, sections, userAnswers);
-  }, [assessmentData, sections, userAnswers]);
+  // const sectionProgressData = useMemo(() => {
+  //   return calculateSectionProgressData(assessmentData, sections, userAnswers);
+  // }, [assessmentData, sections, userAnswers]);
 
   // ✅ MÉMORISER la transformation des données
   // const formattedSectionData = useMemo(() => {

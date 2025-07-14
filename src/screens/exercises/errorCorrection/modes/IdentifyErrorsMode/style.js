@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
  * 🎯 Styles ultra-simplifiés pour IdentifyErrorsMode
  * Focus sur la logique de sélection des mots
  */
-const createStyles = (levelColor = "#5E60CE") =>
+const createStyles = () =>
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

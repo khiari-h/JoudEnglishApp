@@ -1,5 +1,4 @@
 // ConversationExercise/index.js - VERSION CORRIGÉE
-import React, { useMemo, useEffect, useCallback } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -26,8 +25,8 @@ import styles from "./style";
  * 🎯 ConversationExercise - VERSION CORRIGÉE
  */
 const ConversationExercise = ({ route }) => {
-  const navigation = useNavigation();
-  const { level = "A1", initialScenarioIndex = 0, initialStepIndex = 0 } = route?.params || {};
+  // const navigation = useNavigation(); // supprimé car inutilisé
+  const { level = "A1" } = route?.params || {};
 
   // Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();
@@ -59,7 +58,6 @@ const ConversationExercise = ({ route }) => {
     useSuggestion,
     toggleHelp,
     toggleDetailedProgress,
-    isLastStep,
     isConversationStarted,
     stats,
     display,

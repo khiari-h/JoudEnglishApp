@@ -1,5 +1,4 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionExerciseCard/index.js
-import React from "react";
 import ExerciseCard from "../../../../components/exercise-common/ExerciseCard";
 
 

@@ -1,6 +1,5 @@
 // ErrorCorrectionProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
-import React, { useMemo } from "react";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalExercises,
@@ -32,7 +31,7 @@ const ErrorCorrectionProgress = ({
     // Fallback si pas de catégories mais qu'on a des exercices
     if (Array.isArray(exercises) && exercises.length > 0) {
       // Créer des catégories virtuelles basées sur les exercices
-      const categoriesFromExercises = exercises.reduce((cats, ex, index) => {
+      const categoriesFromExercises = exercises.reduce((cats, ex) => {
         const categoryId = ex.categoryId || ex.category || 'general';
         if (!cats.find(c => c.id === categoryId)) {
           cats.push({
@@ -82,28 +81,13 @@ const ErrorCorrectionProgress = ({
 
   // ✅ MÉMORISER la transformation des données
   const formattedCategoryData = useMemo(() => {
-    return statsData.categoryProgressData.map((category, index) => ({
+    return statsData.categoryProgressData.map((category) => ({
       title: category.title,
       completed: category.completedExercises,
       total: category.totalExercises,
       progress: category.progress,
     }));
   }, [statsData.categoryProgressData]);
-
-  // ✅ MÉMORISER les données de debug (seulement en dev)
-  const debugData = useMemo(() => {
-    if (process.env.NODE_ENV !== 'development') return null;
-    
-    return {
-      originalCategoriesLength: categories.length,
-      originalExercisesLength: exercises.length,
-      validCategoriesLength: validCategories.length,
-      validExercisesLength: validExercises.length,
-      totalExercisesCount: statsData.totalExercisesCount,
-      completedExercisesCount: statsData.completedExercisesCount,
-      totalProgress: statsData.totalProgress
-    };
-  }, [categories.length, exercises.length, validCategories.length, validExercises.length, statsData]);
 
   // ✅ CORRECTION FINALE : Pas de log dans le render !
 

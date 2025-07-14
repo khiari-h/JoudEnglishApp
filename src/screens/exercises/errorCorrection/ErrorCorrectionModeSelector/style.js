@@ -6,7 +6,7 @@ import { StyleSheet, Platform } from 'react-native';
  * 🎯 Styles ultra-simplifiés pour ErrorCorrectionModeSelector  
  * Focus sur l'essentiel, suppression des redondances
  */
-const createStyles = (levelColor = "#5E60CE") =>
+const createStyles = () =>
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

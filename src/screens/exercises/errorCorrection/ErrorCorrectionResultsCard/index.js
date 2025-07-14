@@ -1,5 +1,4 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionResultsCard/index.js
-import React from "react";
 import { View } from "react-native";
 import ResultsScreen from "../../../../components/exercise-common/ResultsScreen";
 import styles from "./style";
