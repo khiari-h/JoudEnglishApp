@@ -2,12 +2,24 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 
+const hiddenScreens = [
+  "vocabularyRevision",
+  "levelAssessment",
+  "vocabularyExercise",
+  "grammarExercise",
+  "readingExercise",
+  "phrasesExercise",
+  "spellingExercise",
+  "errorCorrectionExercise",
+  "wordGamesExercise",
+];
+
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarShowLabel: true, // Garde les labels visibles
+        tabBarShowLabel: true,
         tabBarActiveTintColor: "#007AFF",
         tabBarInactiveTintColor: "#8E8E93",
         tabBarStyle: {
@@ -22,15 +34,15 @@ export default function TabLayout() {
           shadowOpacity: 0.1,
           shadowRadius: 3,
           elevation: 5,
-          overflow: "hidden", // évite les flèches ou débordements
+          overflow: "hidden",
         },
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: "500",
-          marginTop: 0, // Important pour éviter les flèches
+          marginTop: 0,
         },
         tabBarIconStyle: {
-          marginBottom: 0, // Alignement propre
+          marginBottom: 0,
         },
       }}
     >
@@ -44,7 +56,6 @@ export default function TabLayout() {
           ),
         }}
       />
-
       <Tabs.Screen
         name="levelSelection"
         options={{
@@ -54,7 +65,6 @@ export default function TabLayout() {
           ),
         }}
       />
-
       <Tabs.Screen
         name="exerciseSelection"
         options={{
@@ -64,7 +74,6 @@ export default function TabLayout() {
           ),
         }}
       />
-
       <Tabs.Screen
         name="settings"
         options={{
@@ -76,15 +85,9 @@ export default function TabLayout() {
       />
 
       {/* Écrans masqués */}
-      <Tabs.Screen name="vocabularyRevision" options={{ href: null }} />
-      <Tabs.Screen name="levelAssessment" options={{ href: null }} />
-      <Tabs.Screen name="vocabularyExercise" options={{ href: null }} />
-      <Tabs.Screen name="grammarExercise" options={{ href: null }} />
-      <Tabs.Screen name="readingExercise" options={{ href: null }} />
-      <Tabs.Screen name="phrasesExercise" options={{ href: null }} />
-      <Tabs.Screen name="spellingExercise" options={{ href: null }} />
-      <Tabs.Screen name="errorCorrectionExercise" options={{ href: null }} />
-      <Tabs.Screen name="wordGamesExercise" options={{ href: null }} />
+      {hiddenScreens.map((screenName) => (
+        <Tabs.Screen key={screenName} name={screenName} options={{ href: null }} />
+      ))}
     </Tabs>
   );
 }
