@@ -39,12 +39,11 @@ export const calculateCompletedExercisesCount = (completedExercises = {}) => {
 
 /**
  * Calcule la progression totale (tous exercices confondus)
- * @param {Array} categories - Liste des catégories
  * @param {Array} exercises - Liste de tous les exercices  
  * @param {Object} completedExercises - Exercices complétés par catégorie
  * @returns {number} Pourcentage de progression (0-100)
  */
-export const calculateTotalProgress = (categories = [], exercises = [], completedExercises = {}) => {
+export const calculateTotalProgress = (exercises = [], completedExercises = {}) => {
   const totalExercises = calculateTotalExercises(exercises);
   const totalCompleted = calculateCompletedExercisesCount(completedExercises);
   
@@ -127,7 +126,7 @@ export const getCategoryStats = (categoryId, categories = [], exercises = [], co
 export const calculateGlobalStats = (categories = [], exercises = [], completedExercises = {}) => {
   const totalExercises = calculateTotalExercises(exercises);
   const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
-  const totalProgress = calculateTotalProgress(categories, exercises, completedExercises);
+  const totalProgress = calculateTotalProgress(exercises, completedExercises);
   
   // Calcul des exercices par type
   const exercisesByType = exercises.reduce((acc, exercise) => {
@@ -174,12 +173,11 @@ export const getRecommendedCategory = (categories = [], exercises = [], complete
 
 /**
  * Vérifie si tous les exercices sont terminés
- * @param {Array} categories - Liste des catégories
  * @param {Array} exercises - Liste de tous les exercices
  * @param {Object} completedExercises - Exercices complétés par catégorie
  * @returns {boolean} True si tout est terminé
  */
-export const isAllCompleted = (categories = [], exercises = [], completedExercises = {}) => {
+export const isAllCompleted = (exercises = [], completedExercises = {}) => {
   const totalExercises = calculateTotalExercises(exercises);
   const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
   

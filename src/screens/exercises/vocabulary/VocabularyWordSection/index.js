@@ -1,10 +1,8 @@
 // VocabularyWordSection/index.js - VERSION AJUSTÉE (garde la logique, utilise le nouveau VocabularyWordCard)
 
-import React, { memo } from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import VocabularyWordCard from "../VocabularyWordCard"; // ← Utilise la version refactorisée
-import { isBonusLevel } from "../../../../utils/vocabulary/vocabularyDataHelper";
 import createStyles from "./style";
 
 /**
@@ -14,7 +12,6 @@ import createStyles from "./style";
  * 
  * @param {object} currentWord - Mot actuel avec ses propriétés
  * @param {string} wordCounter - Compteur stylé (ex: "34 / 80")
- * @param {string} mode - Mode d'exercice (classic/fast)
  * @param {string} level - Niveau actuel
  * @param {string} levelColor - Couleur du niveau
  * @param {boolean} showTranslation - État d'affichage de la traduction
@@ -23,7 +20,6 @@ import createStyles from "./style";
 const VocabularyWordSection = memo(({
   currentWord,
   wordCounter,
-  mode,
   levelColor,
   showTranslation,
   onToggleTranslation,

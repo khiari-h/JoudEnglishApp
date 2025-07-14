@@ -1,6 +1,5 @@
 // SpellingCard/index.js - VERSION PROPRE
 
-import React from "react";
 import { View, Text, ScrollView } from "react-native";
 
 import HeroCard from "../../../../components/ui/HeroCard";

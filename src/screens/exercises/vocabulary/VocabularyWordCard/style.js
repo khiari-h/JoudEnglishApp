@@ -7,7 +7,7 @@ import { StyleSheet } from "react-native";
  * La majorité des styles est dans les composants génériques
  * Plus besoin de glassmorphism, Platform.select, etc.
  */
-const createStyles = (levelColor = "#5E60CE") =>
+const createStyles = () =>
   StyleSheet.create({
     // =================== CONTAINER SIMPLE ===================
     container: {

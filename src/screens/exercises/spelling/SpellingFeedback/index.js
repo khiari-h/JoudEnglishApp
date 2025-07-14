@@ -1,6 +1,5 @@
 // SpellingFeedback/index.js - VERSION REFACTORISÉE (ContentSection avec couleurs)
 
-import React from "react";
 import { View } from "react-native";
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";

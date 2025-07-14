@@ -1,6 +1,5 @@
 // VocabularyWordCard/index.js - VERSION REFACTORISÉE (280 → 50 lignes)
 
-import React from "react";
 import { View } from "react-native";
 import HeroCard from "../../../../components/ui/HeroCard";
 import RevealButton from "../../../../components/ui/RevealButton";

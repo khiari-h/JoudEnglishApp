@@ -1,6 +1,5 @@
 // SpellingInput/index.js - VERSION SANS DEBUG
 
-import React from "react";
 import { View, TextInput, Text } from "react-native";
 import createStyles from "./style";
 

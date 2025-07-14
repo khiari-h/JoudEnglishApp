@@ -1,6 +1,6 @@
 // SpellingExercise/index.js - VERSION PROPRE
 
-import React, { useMemo, useEffect } from "react";
+import { useMemo, useEffect } from "react";
 import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";

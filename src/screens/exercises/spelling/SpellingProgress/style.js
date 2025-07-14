@@ -1,8 +1,8 @@
 // SpellingProgress/style.js - VERSION ULTRA-SIMPLE
 
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 
-const createStyles = (levelColor = "#3b82f6") =>
+const createStyles = () =>
   StyleSheet.create({
     // =================== CONTAINER ===================
     container: {

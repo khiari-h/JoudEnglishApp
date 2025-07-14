@@ -31,20 +31,20 @@ const WordGamesProgress = ({
   }, [level]);
 
   // ✅ MÉMORISER les données de debug (seulement en dev)
-  const debugData = useMemo(() => {
-    if (process.env.NODE_ENV !== 'development') return null;
-    
-    return {
-      currentGame,
-      totalGames,
-      completedGames,
-      globalProgress,
-      gameResultsLength: gameResults.length,
-      hasWordGamesData: !!wordGamesData,
-      wordGamesDataKeys: wordGamesData && typeof wordGamesData === 'object' ? Object.keys(wordGamesData) : "not object or null",
-      gameTitle
-    };
-  }, [currentGame, totalGames, completedGames, globalProgress, gameResults.length, wordGamesData, gameTitle]);
+  // const debugData = useMemo(() => {
+  //   if (process.env.NODE_ENV !== 'development') return null;
+  //   
+  //   return {
+  //     currentGame,
+  //     totalGames,
+  //     completedGames,
+  //     globalProgress,
+  //     gameResultsLength: gameResults.length,
+  //     hasWordGamesData: !!wordGamesData,
+  //     wordGamesDataKeys: wordGamesData && typeof wordGamesData === 'object' ? Object.keys(wordGamesData) : "not object or null",
+  //     gameTitle
+  //   };
+  // }, [currentGame, totalGames, completedGames, globalProgress, gameResults.length, wordGamesData, gameTitle]);
 
   // ✅ CORRECTION FINALE : Pas de log dans le render !
 

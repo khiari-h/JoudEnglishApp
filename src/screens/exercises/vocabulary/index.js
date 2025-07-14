@@ -13,7 +13,7 @@ import VocabularyNavigation from "./VocabularyNavigation";
 
 import useVocabulary from "./hooks/useVocabulary";
 import useLastActivity from "../../../hooks/useLastActivity";
-import { getVocabularyData, isBonusLevel, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
+import { isBonusLevel, getLevelColor } from "../../../utils/vocabulary/vocabularyDataHelper";
 import createStyles from "./style";
 
 const VocabularyExercise = ({ route }) => {
