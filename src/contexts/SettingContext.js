@@ -1,5 +1,5 @@
 // src/contexts/SettingsContext.js
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { storeData, getData } from '../utils/storageUtils';
 import { DEFAULT_SETTINGS } from '../utils/constants';
 

@@ -1,5 +1,5 @@
 // src/components/ui/Card/index.js - Enhanced pour mobile badges
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemeContext } from "../../../contexts/ThemeContext";

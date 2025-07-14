@@ -1,5 +1,4 @@
 // src/components/ui/HeroCard/index.js - VERSION MOBILE-FRIENDLY
-import React from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import createStyles from "./style";

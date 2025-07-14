@@ -1,5 +1,4 @@
 // src/components/ui/ProgressCard/index.js - VERSION ÉPURÉE SANS DOTS
-import React from "react";
 import { View, Text, TouchableOpacity, LayoutAnimation, Platform } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
@@ -26,18 +25,18 @@ import createStyles from "./style";
  * @param {function} onCategoryPress - Fonction appelée lors du clic sur catégorie
  */
 const ProgressCard = ({
-  title = "Progress",
-  subtitle,
+  title = "Progression",
+  subtitle = "",
   progress = 0,
   completed = 0,
   total = 0,
-  unit = "items",
   levelColor = "#5E60CE",
   expandable = false,
   expanded = false,
   onToggleExpand,
   categoryData = [],
   onCategoryPress,
+  secondaryInfo = "",
 }) => {
   const styles = createStyles(levelColor);
 

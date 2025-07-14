@@ -1,6 +1,6 @@
 // NavigationButtons/index.js - SIMPLE & EFFICACE 🎯
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { View, TouchableOpacity, Text, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";

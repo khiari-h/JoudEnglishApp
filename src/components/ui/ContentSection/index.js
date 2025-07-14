@@ -1,5 +1,4 @@
 // src/components/ui/ContentSection/index.js
-import React from "react";
 import { View, Text } from "react-native";
 import Card from "../Card";
 import createStyles from "./style";

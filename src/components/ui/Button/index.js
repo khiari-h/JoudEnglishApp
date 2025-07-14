@@ -1,5 +1,4 @@
 // src/components/ui/Button/index.js
-import React from "react";
 import { Pressable, Text, ActivityIndicator, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";

@@ -1,6 +1,6 @@
 // chatbot/C1/scenarios/academicPresentation.js
 
-const academicPresentation = {
+export default {
   id: 7,
   title: "Academic Presentation",
   level: "C1",

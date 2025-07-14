@@ -26,51 +26,6 @@ const AssessmentProgress = ({
       : 0;
   }, [answeredQuestionsInSection, totalQuestions]);
 
-  // ✅ MÉMORISER les données d'assessment
-  const assessmentData = useMemo(() => {
-    return getAssessmentData(level);
-  }, [level]);
-
-  // ✅ MÉMORISER les sections
-  const sections = useMemo(() => {
-    return getAssessmentSections();
-  }, []);
-
-  // ✅ MÉMORISER le calcul de progression des sections
-  // const sectionProgressData = useMemo(() => {
-  //   return calculateSectionProgressData(assessmentData, sections, userAnswers);
-  // }, [assessmentData, sections, userAnswers]);
-
-  // ✅ MÉMORISER la transformation des données
-  // const formattedSectionData = useMemo(() => {
-  //   return sectionProgressData.map((section) => ({
-  //     title: section.title,
-  //     completed: section.answeredQuestions,
-  //     total: section.totalQuestions,
-  //     progress: section.progress,
-  //   }));
-  // }, [sectionProgressData]);
-
-  // ✅ MÉMORISER les données de debug (seulement en dev)
-  // const debugData = useMemo(() => {
-  //   if (process.env.NODE_ENV !== 'development') return null;
-  //   
-  //   return {
-  //     currentSection,
-  //     totalSections,
-  //     currentQuestion,
-  //     totalQuestions,
-  //     answeredQuestionsInSection,
-  //     sectionProgress,
-  //     hasAssessmentData: !!assessmentData,
-  //     sectionsLength: sections.length,
-  //     assessmentDataKeys: assessmentData && typeof assessmentData === 'object' ? Object.keys(assessmentData) : "not object or null"
-  //   };
-  // }, [currentSection, totalSections, currentQuestion, totalQuestions, answeredQuestionsInSection, sectionProgress, assessmentData, sections.length]);
-
-  // ✅ CORRECTION FINALE : Pas de log dans le render !
-  // Le log était dans le render, il se déclenchait à chaque fois
-
   return (
     <ProgressCard
       title="Progression"

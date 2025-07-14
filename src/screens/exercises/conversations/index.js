@@ -39,7 +39,6 @@ const ConversationExercise = ({ route }) => {
   const {
     currentScenarioIndex,
     conversation,
-    currentStep,
     message,
     setMessage,
     isTyping,

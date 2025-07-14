@@ -1,5 +1,4 @@
 // src/contexts/AppProvider.js
-import React from 'react';
 import { ThemeProvider } from './ThemeContext';
 import { ProgressProvider } from './ProgressContext';
 import { SettingsProvider } from './SettingContext';

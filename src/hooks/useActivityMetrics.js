@@ -44,7 +44,7 @@ const useActivityMetrics = () => {
   };
 
   // =================== SESSION TIMER ===================
-  const startSession = useCallback((exerciseType) => {
+  const startSession = useCallback(() => {
     setSessionStart(Date.now());
   }, []);
 

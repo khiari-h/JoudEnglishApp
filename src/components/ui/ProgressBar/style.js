@@ -2,12 +2,11 @@
 import { StyleSheet } from 'react-native';
 
 /**
- * 🎯 Styles Mobile-First Ultra-Simples pour ProgressBar
- * - Pas de surcharge : que l'essentiel
+ * 📊 ProgressBar - Styles optimisés pour mobile
  * - Lisibilité optimale sur mobile
  * - Animation fluide et subtile
  */
-const createStyles = (fillColor = "#5E60CE", height = 8, borderRadius = 4) =>
+const createStyles = (height = 8, borderRadius = 4) =>
   StyleSheet.create({
     // =================== CONTAINER SIMPLE ===================
     container: {

@@ -16,8 +16,6 @@ import {
  * ✅ Détecte automatiquement la structure des données
  */
 const ConversationProgress = ({
-  currentStep = 1,
-  totalSteps = 0,
   levelColor = "#5E60CE",
   conversationData = [],
   completedScenarios = {},

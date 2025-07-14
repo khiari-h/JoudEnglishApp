@@ -1,5 +1,5 @@
 // src/screens/Dashboard/components/HeroContinueSection/index.js
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import Card from "../../../../components/ui/Card";
 import { ThemeContext } from "../../../../contexts/ThemeContext";

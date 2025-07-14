@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Animated } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "../Card";
 import createStyles from "./style";

@@ -1,5 +1,5 @@
 // src/contexts/ProgressContext.js - VERSION CORRIGÉE SANS BOUCLE
-import React, { createContext, useState, useEffect, useContext, useCallback, useRef, useMemo } from 'react';
+import { createContext, useState, useEffect, useContext, useCallback, useRef, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS } from '../utils/constants';
 

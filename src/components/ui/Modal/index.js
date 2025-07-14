@@ -34,7 +34,6 @@ const Modal = ({
   fullScreen = false,
   transparent = true,
   backdropColor = "rgba(0, 0, 0, 0.5)",
-  backdropOpacity = 0.5,
   contentContainerStyle,
   headerStyle,
   footerStyle,

@@ -1,6 +1,5 @@
 // src/components/settings/RevisionSettings/index.js - INTERFACE SETTINGS
-import React from 'react';
-import { View, Text, TouchableOpacity, Switch, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Switch } from 'react-native';
 import { useRevisionSettings } from '../../../hooks/useRevisionSettings';
 import styles from './style';
 
