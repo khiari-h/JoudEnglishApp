@@ -201,7 +201,7 @@ export const getReadingExercisesByTopic = (level, topic) => {
   if (!data.exercises) return [];
   
   return data.exercises.filter(exercise => 
-    exercise.topics && exercise.topics.includes(topic)
+    exercise.topics?.includes(topic)
   );
 };
 

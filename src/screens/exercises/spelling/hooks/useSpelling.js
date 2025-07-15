@@ -21,8 +21,7 @@ const useSpelling = (spellingData = null, level = "1", exerciseType = "correctio
   const totalExercises = exercises.length;
   
   const hasValidData = !!(
-    spellingData && 
-    spellingData.exercises && 
+    spellingData?.exercises && 
     Array.isArray(spellingData.exercises) && 
     spellingData.exercises.length > 0
   );
