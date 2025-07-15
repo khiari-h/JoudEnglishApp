@@ -48,8 +48,6 @@ export const useRevisionSettings = () => {
       return true;
     } catch (error) {
       // Ignored on purpose
-      console.error('Error saving revision settings:', error);
-      return false;
     }
   };
 
