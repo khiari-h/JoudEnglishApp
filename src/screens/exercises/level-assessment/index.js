@@ -115,6 +115,7 @@ const LevelAssessment = ({ route }) => {
     try {
       await resetAssessment();
     } catch (error) {
+      // Ignored on purpose
     }
   };
 

@@ -66,6 +66,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
           }));
         }
       } catch (error) {
+        // Ignored on purpose
       } finally {
         setLoaded(true);
       }
@@ -86,6 +87,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
       // Sauvegarder jeux complétés
       await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(completedGames));
     } catch (error) {
+      // Ignored on purpose
     }
   }, [currentGameIndex, completedGames, STORAGE_KEY, COMPLETED_KEY]);
 
@@ -277,6 +279,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
       };
       setCompletedGames(updatedCompletedGames);
     } catch (error) {
+      // Ignored on purpose
     }
   }, [completedGames]);
 
@@ -327,6 +330,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
         shuffleGameOptions(games[0]);
       }
     } catch (error) {
+      // Ignored on purpose
     }
   }, [STORAGE_KEY, COMPLETED_KEY, SCORES_KEY, games]);
 

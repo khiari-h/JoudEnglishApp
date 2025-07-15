@@ -81,7 +81,7 @@ const ResultsScreen = ({
         title: "Mes résultats d'apprentissage",
       });
     } catch (error) {
-
+      // Ignored on purpose
     }
   };
 

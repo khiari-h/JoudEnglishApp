@@ -26,7 +26,7 @@ export const SettingsProvider = ({ children }) => {
           setSettings({ ...DEFAULT_SETTINGS, ...savedSettings });
         }
       } catch (error) {
-
+        // Ignored on purpose
       } finally {
         setIsLoading(false);
       }

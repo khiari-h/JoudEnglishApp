@@ -182,7 +182,7 @@ export const getErrorCorrectionStats = (level) => {
         .reduce((total, ex) => total + ex.errorPositions.length, 0);
     }
   } catch (error) {
-
+    // Ignored on purpose
   }
 
   return stats;

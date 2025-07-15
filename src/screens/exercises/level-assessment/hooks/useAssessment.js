@@ -64,6 +64,7 @@ const useAssessment = (level = "A1") => {
           }
         }
       } catch (error) {
+        // Ignored on purpose
       } finally {
         setLoaded(true);
       }
@@ -85,6 +86,7 @@ const useAssessment = (level = "A1") => {
       // Sauvegarder réponses
       await AsyncStorage.setItem(ANSWERS_KEY, JSON.stringify(userAnswers));
     } catch (error) {
+      // Ignored on purpose
     }
   }, [currentSection, currentQuestionIndex, userAnswers, sections, STORAGE_KEY, ANSWERS_KEY]);
 
@@ -220,6 +222,7 @@ const useAssessment = (level = "A1") => {
       setAssessmentResults(resultsWithTimestamp);
       await AsyncStorage.setItem(RESULTS_KEY, JSON.stringify(resultsWithTimestamp));
     } catch (error) {
+      // Ignored on purpose
     }
   }, [RESULTS_KEY]);
 
@@ -235,6 +238,7 @@ const useAssessment = (level = "A1") => {
       setAssessmentResults({});
       setLastPosition({ sectionIndex: 0, questionIndex: 0 });
     } catch (error) {
+      // Ignored on purpose
     }
   }, [STORAGE_KEY, RESULTS_KEY, ANSWERS_KEY, sections]);
 
