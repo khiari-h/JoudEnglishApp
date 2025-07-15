@@ -13,11 +13,6 @@ export const useRevisionSettings = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
 
-  // ========== CHARGEMENT ==========
-  useEffect(() => {
-    loadPreferences();
-  }, []);
-
   const loadPreferences = async () => {
     try {
       const saved = await AsyncStorage.getItem(REVISION_STORAGE_KEY);
@@ -31,11 +26,16 @@ export const useRevisionSettings = () => {
         });
       }
     } catch (error) {
-      console.error('Error loading revision settings:', error);
+      // Ignored on purpose
     } finally {
       setIsLoading(false);
     }
   };
+
+  // ========== CHARGEMENT ==========
+  useEffect(() => {
+    loadPreferences();
+  }, []);
 
   // ========== SAUVEGARDE ==========
   const updatePreferences = async (newPrefs) => {

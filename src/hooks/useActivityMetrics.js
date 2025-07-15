@@ -11,37 +11,24 @@ const useActivityMetrics = () => {
   // =================== DATES HELPER ===================
   const getTodayString = () => new Date().toDateString();
 
+  const loadMetrics = async () => {
+    try {
+      setIsLoading(true);
+      const stored = await AsyncStorage.getItem(METRICS_STORAGE_KEY);
+      if (stored) {
+        setMetrics(JSON.parse(stored));
+      }
+    } catch (error) {
+      // Ignored on purpose
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // =================== CHARGEMENT INITIAL ===================
   useEffect(() => {
     loadMetrics();
   }, []);
-
-  const loadMetrics = async () => {
-    try {
-      const today = getTodayString();
-      
-      const [streakData, timeData, lastDateData] = await Promise.all([
-        AsyncStorage.getItem('current_streak'),
-        AsyncStorage.getItem('today_minutes'),
-        AsyncStorage.getItem('last_time_date')
-      ]);
-
-      setCurrentStreak(parseInt(streakData || '0'));
-      
-      // ✅ CORRECTION : Vérifier si c'est aujourd'hui
-      const lastDate = lastDateData;
-      if (lastDate === today) {
-        setTodayMinutes(parseInt(timeData || '0'));
-      } else {
-        // Nouveau jour = reset
-        setTodayMinutes(0);
-        await AsyncStorage.setItem('today_minutes', '0');
-        await AsyncStorage.setItem('last_time_date', today);
-      }
-    } catch (error) {
-      // Silently fail
-    }
-  };
 
   // =================== SESSION TIMER ===================
   const startSession = useCallback(() => {

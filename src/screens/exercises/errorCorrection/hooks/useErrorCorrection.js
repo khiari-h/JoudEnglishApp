@@ -110,20 +110,19 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
   }, [loaded, categories, selectedCategory]);
 
   // =================== NAVIGATION ACTIONS ===================
+  const resetExerciseState = useCallback(() => {
+    setSelectedErrorIndices([]);
+    setShowFeedback(false);
+    setIsCorrect(false);
+    setShowHint(false);
+    setUserCorrection('');
+  }, []);
+
   const changeCategory = useCallback((newCategoryId) => {
     setSelectedCategory(newCategoryId);
     setCurrentExerciseIndex(0);
     resetExerciseState();
-  }, []);
-
-  const resetExerciseState = useCallback(() => {
-    setUserCorrection('');
-    setSelectedErrorIndices([]);
-    setSelectedChoiceIndex(null);
-    setShowFeedback(false);
-    setIsCorrect(false);
-    setShowHint(false);
-  }, []);
+  }, [resetExerciseState]);
 
   const startExercise = useCallback((mode = 'full') => {
     setCorrectionMode(mode);

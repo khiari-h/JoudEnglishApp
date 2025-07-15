@@ -121,7 +121,7 @@ const Button = ({
   };
 
   // Déterminer les styles en fonction de la taille
-  const getSizeStyles = () => {
+  const getSizeStyles = (size) => {
     switch (size) {
       case "small":
         return {
@@ -148,7 +148,7 @@ const Button = ({
     }
   };
 
-  const sizeStyles = getSizeStyles();
+  const sizeStyles = getSizeStyles(size);
   const variantStyles = getVariantStyles();
   const iconSize = sizeStyles.iconSize;
 

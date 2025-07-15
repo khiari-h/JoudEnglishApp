@@ -132,7 +132,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
 
   // =================== GAME LOGIC ===================
   
-  // Mélanger les options du jeu
+  // Déclaration des fonctions utilitaires avant leur utilisation
   const shuffleGameOptions = (game) => {
     let optionsToShuffle = [];
 
@@ -146,20 +146,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     setShuffledOptions(optionsToShuffle);
   };
 
-  // Gérer la sélection d'un item
-  const handleSelectItem = useCallback((item, index) => {
-    if (showFeedback) return;
-
-    animateBounce();
-
-    if (currentGame.type === "matching") {
-      handleMatchingSelection(item, index);
-    } else if (currentGame.type === "categorization") {
-      handleCategorizationSelection(item, index);
-    }
-  }, [currentGame, selectedItems, matchedItems, showFeedback, animateBounce]);
-
-  // Gérer la sélection pour matching
   const handleMatchingSelection = (item, index) => {
     let newSelectedItems = [...selectedItems];
 
@@ -175,7 +161,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     }
   };
 
-  // Gérer la sélection pour categorization
   const handleCategorizationSelection = (item, index) => {
     let newSelectedItems = [...selectedItems];
     const itemIndex = newSelectedItems.findIndex((i) => i.value === item);
@@ -189,7 +174,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     setSelectedItems(newSelectedItems);
   };
 
-  // Vérifier une paire dans matching
   const checkMatchingPair = (items) => {
     const isPair = currentGame.pairs.some(
       (pair) =>
@@ -217,33 +201,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     }
   };
 
-  // Vérifier la réponse pour categorization
-  const checkAnswer = useCallback(() => {
-    if (showFeedback || currentGame.type !== "categorization") return;
-
-    const selectedWords = selectedItems.map((item) => item.value);
-    const expectedWords = currentGame.categories[currentGame.currentCategory];
-
-    const correct =
-      selectedWords.length === expectedWords.length &&
-      selectedWords.every((word) => expectedWords.includes(word)) &&
-      expectedWords.every((word) => selectedWords.includes(word));
-
-    const maxPossibleScore = currentGame.maxScore || 10;
-    const earnedScore = correct ? maxPossibleScore : 0;
-
-    if (earnedScore > 0) {
-      setScore(prevScore => prevScore + earnedScore);
-    }
-
-    updateGameResults(earnedScore, maxPossibleScore);
-    setIsCorrect(correct);
-    setShowFeedback(true);
-    animateFeedback(correct);
-  }, [currentGame, selectedItems, showFeedback, animateFeedback]);
-
-  // Gérer la fin d'un jeu
-  const handleGameComplete = useCallback((isSuccessful) => {
+  const handleGameComplete = (isSuccessful) => {
     const earnedScore = isSuccessful ? currentGame.maxScore || 10 : 0;
     const maxPossibleScore = currentGame.maxScore || 10;
 
@@ -251,9 +209,8 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     setIsCorrect(isSuccessful);
     setShowFeedback(true);
     animateFeedback(isSuccessful);
-  }, [currentGame, animateFeedback]);
+  };
 
-  // Mettre à jour les résultats d'un jeu
   const updateGameResults = (earnedScore, maxScore) => {
     const newGameResults = [...gameResults];
     newGameResults[currentGameIndex] = {
@@ -267,7 +224,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     markGameAsCompleted(currentGameIndex, earnedScore, maxScore);
   };
 
-  // Marquer un jeu comme complété
   const markGameAsCompleted = useCallback(async (gameIndex, gameScore, maxScore) => {
     try {
       const updatedCompletedGames = { ...completedGames };

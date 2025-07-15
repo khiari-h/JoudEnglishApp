@@ -193,36 +193,8 @@ export const readFromStorage = async (key = STORAGE_CONFIG.KEY) => {
 /**
  * Écrit les données avec validation
  */
-export const writeToStorage = async (key = STORAGE_CONFIG.KEY, data) => {
-  const available = await isStorageAvailable();
-  if (!available) {
-    return false;
-  }
-  
-  try {
-    const sanitizedData = sanitizeTimeStats(data);
-    const storageData = {
-      version: STORAGE_CONFIG.VERSION,
-      data: sanitizedData,
-      lastModified: Date.now()
-    };
-    
-    const serialized = JSON.stringify(storageData);
-    
-    if (key === STORAGE_CONFIG.KEY) {
-      const existing = await AsyncStorage.getItem(key);
-      if (existing) {
-        await AsyncStorage.setItem(STORAGE_CONFIG.BACKUP_KEY, existing);
-      }
-    }
-    
-    await AsyncStorage.setItem(key, serialized);
-    return true;
-    
-  } catch (error) {
-    console.error(`Error writing to storage (${key}):`, error);
-    return false;
-  }
+const writeToStorage = async (key, data) => {
+  await AsyncStorage.setItem(key, JSON.stringify(data));
 };
 
 /**

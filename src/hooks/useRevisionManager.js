@@ -20,11 +20,6 @@ const useRevisionManager = () => {
   // Ref pour éviter les calculs trop fréquents
   const lastCalculationRef = useRef(0);
 
-  // ========== CHARGEMENT INITIAL ==========
-  useEffect(() => {
-    loadRevisionData();
-  }, []);
-
   const loadRevisionData = async () => {
     try {
       const stored = await AsyncStorage.getItem(REVISION_CONFIG.STORAGE_KEY);
@@ -41,6 +36,11 @@ const useRevisionManager = () => {
       setIsLoading(false);
     }
   };
+
+  // ========== CHARGEMENT INITIAL ==========
+  useEffect(() => {
+    loadRevisionData();
+  }, []);
 
   // ========== SAUVEGARDE AUTO ==========
   const saveRevisionData = useCallback(async () => {
