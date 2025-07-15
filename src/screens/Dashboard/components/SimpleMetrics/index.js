@@ -95,9 +95,7 @@ const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
   // =================== RENDER PRINCIPAL ===================
   return (
     <View style={styles.container}>
-      <Text style={[styles.sectionTitle, { color: colors.text }]}>
-        📊 Aujourd'hui
-      </Text>
+      <Text style={[styles.sectionTitle, { color: colors.text }]}>📊 Aujourd&apos;hui</Text>
       
       <View style={styles.metricsGrid}>
         {metrics.map((metric) => (

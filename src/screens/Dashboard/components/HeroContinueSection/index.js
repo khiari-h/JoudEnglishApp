@@ -40,12 +40,8 @@ const HeroContinueSection = ({
         <Card style={[styles.card, { backgroundColor: colors.surface }]}>
           <View style={styles.content}>
             <Text style={styles.emoji}>🚀</Text>
-            <Text style={[styles.title, { color: colors.text }]}>
-              Commencer l'apprentissage
-            </Text>
-            <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
-              Choisissez votre premier exercice
-            </Text>
+            <Text style={[styles.title, { color: colors.text }]}>Commencer l&apos;apprentissage</Text>
+            <Text style={[styles.subtitle, { color: colors.textSecondary }]}>Choisissez votre premier exercice</Text>
             
             <TouchableOpacity
               style={[styles.button, { backgroundColor: accentColor }]}
