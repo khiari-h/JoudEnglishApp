@@ -213,11 +213,12 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
                        (currentExercise.correctedText || '').trim().toLowerCase();
         break;
 
-      case 'identify':
+      case 'identify': {
         const errorPositions = currentExercise.errorPositions || [];
         answerCorrect = selectedErrorIndices.length === errorPositions.length &&
           selectedErrorIndices.every(index => errorPositions.includes(index));
         break;
+      }
 
       case 'multiple_choice':
         answerCorrect = selectedChoiceIndex === currentExercise.correctChoiceIndex;

@@ -95,11 +95,12 @@ const useSpelling = (spellingData = null, level = "1", exerciseType = "correctio
           break;
         case 'correction':
         case 'spelling_rule':
-        default:
+        default: {
           const userAnswer = String(userInput).trim().toLowerCase();
           const correctAnswer = String(currentExercise.correctAnswer).trim().toLowerCase();
           correct = userAnswer === correctAnswer;
           break;
+        }
       }
 
       setIsCorrect(correct);

@@ -86,28 +86,22 @@ const Button = ({
             backgroundColor: `${baseColor}25`,
           },
         };
-      case "icon":
+      case "icon": {
         const iconSizeValue = sizeStyles?.iconSize || 24;
         return {
           button: {
             backgroundColor: disabled ? "#F3F4F6" : "transparent",
             borderWidth: 0,
-            borderRadius: iconSizeValue + 16,
-            paddingVertical: 8,
-            paddingHorizontal: 8,
-            minWidth: iconSizeValue + 16,
-            minHeight: iconSizeValue + 16,
-            justifyContent: "center",
-            alignItems: "center",
+            padding: 0,
+            minWidth: 0,
+            minHeight: 0,
           },
-          text: {
-            color: disabled ? "#9CA3AF" : baseColor,
-          },
-          icon: disabled ? "#9CA3AF" : baseColor,
-          pressed: {
-            backgroundColor: `${baseColor}10`,
+          icon: {
+            fontSize: iconSizeValue,
+            color: disabled ? "#A1A1AA" : color,
           },
         };
+      }
       case "filled":
       default:
         return {

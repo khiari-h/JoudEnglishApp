@@ -209,15 +209,16 @@ const useRevisionManager = () => {
           questionsCount: REVISION_CONFIG.QUESTIONS_COUNT
         };
         
-      case 'later_50':
+      case 'later_50': {
         const newTarget50 = totalWordsLearned + 50;
         setNextRevisionAt(newTarget50);
         return { action: 'postponed', nextAt: newTarget50 };
-        
-      case 'later_100':
+      }
+      case 'later_100': {
         const newTarget100 = totalWordsLearned + 100;
         setNextRevisionAt(newTarget100);
         return { action: 'postponed', nextAt: newTarget100 };
+      }
         
       case 'disable':
         setIsRevisionDisabled(true);

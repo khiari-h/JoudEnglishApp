@@ -120,11 +120,10 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
     popupShownRef.current = false; // ✅ Reset protection
     
     switch (choice) {
-      case 'now':
+      case 'now': {
         // ✅ Programmer prochaine révision AVANT navigation
         const nextTarget = totalWords + 50;
         await saveRevisionPreferences(nextTarget, false);
-        
         // Navigation
         router.push({
           pathname: "/(tabs)/vocabularyRevision",
@@ -135,27 +134,28 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
           }
         });
         break;
-        
-      case 'later_50':
+      }
+      case 'later_50': {
         const next50 = totalWords + 50;
         await saveRevisionPreferences(next50, false);
         break;
-        
-      case 'later_100':
+      }
+      case 'later_100': {
         const next100 = totalWords + 100;
         await saveRevisionPreferences(next100, false);
         break;
-        
-      case 'disable':
+      }
+      case 'disable': {
         // ✅ VRAIE DÉSACTIVATION
         await saveRevisionPreferences(nextRevisionAt, true); // ✅ isDisabled = true
         break;
-        
-      default:
+      }
+      default: {
         // Fermeture = later_50 par défaut
         const defaultNext = totalWords + 50;
         await saveRevisionPreferences(defaultNext, false);
         break;
+      }
     }
   };
 
