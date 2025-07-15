@@ -148,7 +148,6 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
         
       case 'disable':
         // ✅ VRAIE DÉSACTIVATION
-        console.log("❌ Révisions désactivées par l'utilisateur");
         await saveRevisionPreferences(nextRevisionAt, true); // ✅ isDisabled = true
         break;
         
@@ -162,7 +161,6 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
 
   // ✅ NE PAS RENDRE SI DISABLED
   if (isDisabled) {
-    console.log("❌ Révisions désactivées - pas d'affichage");
     return null;
   }
 
