@@ -99,7 +99,7 @@ const ErrorCorrectionProgress = ({
       total={statsData.totalExercisesCount}
       unit="exercices"
       levelColor={levelColor}
-      expandable={true}
+      expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedCategoryData}

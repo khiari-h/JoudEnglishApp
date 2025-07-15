@@ -244,7 +244,7 @@ const useRealTimeProgress = () => {
       const data = JSON.parse(savedData);
       
       const completedCount = Object.values(data).filter(game => 
-        game && game.completed
+        game?.completed
       ).length;
       
       const GAMES_PER_LEVEL = 10;

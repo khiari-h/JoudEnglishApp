@@ -262,12 +262,12 @@ export const getStorageInfo = async () => {
   try {
     const data = await readFromStorage();
     const backupData = await AsyncStorage.getItem(STORAGE_CONFIG.BACKUP_KEY);
-    const hasBackup = !!backupData;
+    const hasBackup = Boolean(backupData);
     const mainData = await AsyncStorage.getItem(STORAGE_CONFIG.KEY);
     
     return {
       available: true,
-      hasData: !!data,
+      hasData: Boolean(data),
       hasBackup,
       version: data?.version || 'unknown',
       lastModified: data?.lastModified ? new Date(data.lastModified) : null,

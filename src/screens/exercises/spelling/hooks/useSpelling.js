@@ -20,12 +20,9 @@ const useSpelling = (spellingData = null, level = "1", exerciseType = "correctio
   const exercises = spellingData?.exercises || [];
   const totalExercises = exercises.length;
   
-  const hasValidData = !!(
-    spellingData && 
-    spellingData.exercises && 
+  const hasValidData = Boolean(spellingData?.exercises && 
     Array.isArray(spellingData.exercises) && 
-    spellingData.exercises.length > 0
-  );
+    spellingData.exercises.length > 0);
 
   const currentExercise = exercises[currentExerciseIndex] || null;
   

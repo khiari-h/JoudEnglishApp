@@ -38,7 +38,7 @@ const WordGamesResults = ({
           content="Games Complete!"
           fontSize={24}
           levelColor={levelColor}
-          showUnderline={true}
+          showUnderline
           backgroundColor="white"
         />
 
@@ -54,10 +54,10 @@ const WordGamesResults = ({
         <View style={styles.navigationContainer}>
           <NavigationButtons
             onNext={onContinue}
-            disablePrevious={true}
+            disablePrevious
             disableNext={false}
             primaryColor={levelColor}
-            isLast={true}
+            isLast
             buttonLabels={{
               next: "Continue",
               finish: "Continue"
@@ -110,7 +110,7 @@ const WordGamesResults = ({
           }).join('\n')}
           levelColor="#6366f1"
           backgroundColor="white"
-          isMonospace={true}
+          isMonospace
         />
       )}
 
@@ -123,7 +123,7 @@ const WordGamesResults = ({
           ).join('\n')}
           levelColor="#8b5cf6"
           backgroundColor="#f8fafc"
-          isItalic={true}
+          isItalic
         />
       )}
 
@@ -144,7 +144,7 @@ const WordGamesResults = ({
           <View style={styles.playAgainContainer}>
             <NavigationButtons
               onNext={onPlayAgain}
-              disablePrevious={true}
+              disablePrevious
               disableNext={false}
               primaryColor={performance.color}
               isLast={false}
@@ -158,10 +158,10 @@ const WordGamesResults = ({
         {/* Bouton principal Continue */}
         <NavigationButtons
           onNext={onContinue}
-          disablePrevious={true}
+          disablePrevious
           disableNext={false}
           primaryColor={levelColor}
-          isLast={true}
+          isLast
           buttonLabels={{
             next: "Continue",
             finish: "Continue"
