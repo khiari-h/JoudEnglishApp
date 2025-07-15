@@ -83,11 +83,12 @@ const useRevisionManager = () => {
             const completedWords = data.completedWords || {};
             
             // Compter tous les mots appris
-            Object.values(completedWords).forEach(words => {
+            total += Object.values(completedWords).reduce((acc, words) => {
               if (Array.isArray(words)) {
-                total += words.length;
+                return acc + words.length;
               }
-            });
+              return acc;
+            }, 0);
           }
         }
       }

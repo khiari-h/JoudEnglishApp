@@ -36,25 +36,18 @@ const useDailyWords = () => {
             const data = JSON.parse(savedData);
             const completedWords = data.completedWords || {};
 
-            // Parcourir chaque catégorie
-            Object.keys(completedWords).forEach(categoryIndex => {
+            todayCount += Object.keys(completedWords).reduce((acc, categoryIndex) => {
               const wordsInCategory = completedWords[categoryIndex] || [];
-              
-              wordsInCategory.forEach(word => {
-                // ✅ COMPATIBILITÉ : Ancien format (number) vs nouveau format (object)
+              return acc + wordsInCategory.reduce((catAcc, word) => {
                 if (typeof word === 'object' && word.timestamp) {
-                  // Nouveau format avec timestamp
                   const wordDate = new Date(word.timestamp).toDateString();
-                  
                   if (wordDate === today) {
-                    todayCount++;
+                    return catAcc + 1;
                   }
-                } else {
-                  // Ancien format (number) - on ne peut pas savoir la date
-                  // Pour compatibilité, on les ignore dans le comptage quotidien
                 }
-              });
-            });
+                return catAcc;
+              }, 0);
+            }, 0);
           }
         } catch (error) {
           // Continue avec les autres niveaux si erreur

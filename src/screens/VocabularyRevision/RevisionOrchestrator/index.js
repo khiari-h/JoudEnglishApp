@@ -29,12 +29,12 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
           if (stored) {
             const data = JSON.parse(stored);
             const completedWords = data.completedWords || {};
-            
-            Object.values(completedWords).forEach(words => {
+            total += Object.values(completedWords).reduce((acc, words) => {
               if (Array.isArray(words)) {
-                total += words.length;
+                return acc + words.length;
               }
-            });
+              return acc;
+            }, 0);
           }
         }
       }
