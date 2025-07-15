@@ -1,6 +1,7 @@
 // WordGamesProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import { useMemo } from 'react';
 
 /**
  * 📊 WordGamesProgress - Version corrigée avec mémorisation

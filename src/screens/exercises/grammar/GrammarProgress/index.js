@@ -7,6 +7,7 @@ import {
   calculateTotalProgress,
   calculateRuleProgress,
 } from "../../../../utils/grammar/grammarStats";
+import { useMemo } from 'react';
 
 /**
  * 📊 GrammarProgress - Version totalement recodée avec mémorisation complète

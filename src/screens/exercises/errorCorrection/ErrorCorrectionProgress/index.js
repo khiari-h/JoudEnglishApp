@@ -7,6 +7,7 @@ import {
   calculateTotalProgress,
   calculateCategoryProgress,
 } from "../../../../utils/errorCorrection/errorCorrectionStats";
+import { useMemo } from 'react';
 
 /**
  * 📊 ErrorCorrectionProgress - Version corrigée avec mémorisation
