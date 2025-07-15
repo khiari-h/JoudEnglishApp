@@ -167,9 +167,9 @@ const errorCorrectionA2 = {
 
 // Validate structure on export
 if (!errorCorrectionA2.validateStructure()) {
-
+  // empty: structure invalid, handle if needed
 } else {
-
+  // empty: structure valid, nothing to do
 }
 
 export default errorCorrectionA2;

@@ -235,9 +235,9 @@ const errorCorrectionB2 = {
 
 // Validate structure on export
 if (!errorCorrectionB2.validateStructure()) {
-
+  // empty: structure invalid, handle if needed
 } else {
-
+  // empty: structure valid, nothing to do
 }
 
 export default errorCorrectionB2;

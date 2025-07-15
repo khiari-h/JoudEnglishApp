@@ -130,7 +130,7 @@ const errorCorrectionA1 = {
 
 // Validate structure on export
 if (!errorCorrectionA1.validateStructure()) {
-
+  // empty: structure invalid, handle if needed
 }
 
 export default errorCorrectionA1;
