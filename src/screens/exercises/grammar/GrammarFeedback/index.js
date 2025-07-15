@@ -67,7 +67,7 @@ const GrammarFeedback = ({
       content={getContent()}
       levelColor={levelColor}
       backgroundColor={backgroundColor}
-      showIcon={true}
+      showIcon
       isItalic={false}
     />
   );

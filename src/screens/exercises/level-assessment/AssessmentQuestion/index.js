@@ -100,7 +100,7 @@ const AssessmentQuestion = ({
           content={question.explanation}
           levelColor="#6366f1"
           backgroundColor="#f8fafc"
-          isItalic={true}
+          isItalic
         />
       )}
     </View>

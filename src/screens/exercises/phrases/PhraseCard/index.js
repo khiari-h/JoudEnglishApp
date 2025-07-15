@@ -42,7 +42,7 @@ const PhraseCard = ({
         content={phrase}
         fontSize={28} // Adapté pour phrases (plus longues que mots)
         levelColor={levelColor}
-        showUnderline={true}
+        showUnderline
         lineHeight={36} // Pour phrases multi-lignes
       />
       

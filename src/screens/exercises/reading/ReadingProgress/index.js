@@ -68,7 +68,7 @@ const ReadingProgress = ({
       total={totalQuestionsCount}
       unit="questions"
       levelColor={levelColor}
-      expandable={true}
+      expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedExerciseData}

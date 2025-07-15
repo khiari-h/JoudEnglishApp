@@ -66,7 +66,7 @@ const VocabularyProgress = ({
       total={totalWordsCount}
       unit="mots"
       levelColor={levelColor}
-      expandable={true}
+      expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedCategoryData}

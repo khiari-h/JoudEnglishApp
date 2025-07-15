@@ -35,7 +35,7 @@ const AssessmentResults = ({
           content="Évaluation Terminée"
           fontSize={24}
           levelColor={levelColor}
-          showUnderline={true}
+          showUnderline
           backgroundColor="white"
         />
 
@@ -51,10 +51,10 @@ const AssessmentResults = ({
         <View style={styles.navigationContainer}>
           <NavigationButtons
             onNext={onContinue}
-            disablePrevious={true}
+            disablePrevious
             disableNext={false}
             primaryColor={levelColor}
-            isLast={true}
+            isLast
             buttonLabels={{
               next: "Continuer",
               finish: "Continuer"
@@ -131,7 +131,7 @@ const AssessmentResults = ({
         content={`✅ ${userScore.correctAnswers} correctes\n❌ ${wrongAnswers} incorrectes\n📊 ${userScore.totalQuestions} questions au total`}
         levelColor="#6366f1"
         backgroundColor="white"
-        isMonospace={true}
+        isMonospace
       />
 
       {/* 🎭 MESSAGE DE PERFORMANCE */}
@@ -149,7 +149,7 @@ const AssessmentResults = ({
         content="Évaluation terminée avec succès !"
         levelColor={levelColor}
         backgroundColor="#f1f5f9"
-        isItalic={true}
+        isItalic
       />
 
       {/* 🚀 NAVIGATION - Boutons d'action */}
@@ -159,7 +159,7 @@ const AssessmentResults = ({
           <View style={styles.retryContainer}>
             <NavigationButtons
               onNext={onRetry}
-              disablePrevious={true}
+              disablePrevious
               disableNext={false}
               primaryColor={performance.color}
               isLast={false}
@@ -173,10 +173,10 @@ const AssessmentResults = ({
         {/* Bouton principal Continue */}
         <NavigationButtons
           onNext={onContinue}
-          disablePrevious={true}
+          disablePrevious
           disableNext={false}
           primaryColor={levelColor}
-          isLast={true}
+          isLast
           buttonLabels={{
             next: "Continuer",
             finish: "Continuer"

@@ -45,7 +45,7 @@ const SpellingFeedback = ({
         levelColor={feedbackColor}
         backgroundColor={backgroundColor}
         style={styles.feedbackSection}
-        isHighlighted={true}
+        isHighlighted
       />
     </View>
   );

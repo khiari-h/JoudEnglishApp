@@ -52,7 +52,7 @@ const SpellingActions = ({
       <View style={styles.container}>
         <NavigationButtons
           onNext={handleCheckAnswer}
-          disablePrevious={true}
+          disablePrevious
           disableNext={!canCheckAnswer()}
           primaryColor={levelColor}
           buttonLabels={{
@@ -69,7 +69,7 @@ const SpellingActions = ({
       <View style={styles.container}>
         <NavigationButtons
           onNext={handleNext}
-          disablePrevious={true}
+          disablePrevious
           disableNext={false}
           primaryColor={levelColor}
           buttonLabels={{
