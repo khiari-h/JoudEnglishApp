@@ -7,6 +7,7 @@ const useActivityMetrics = () => {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [todayMinutes, setTodayMinutes] = useState(0); // ✅ CHANGÉ : quotidien
   const [sessionStart, setSessionStart] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // =================== DATES HELPER ===================
   const getTodayString = () => new Date().toDateString();
@@ -110,10 +111,9 @@ const useActivityMetrics = () => {
     startSession,
     endSession,
     updateStreak,
-    
+    isLoading,
     currentStreak: currentStreak || 0,
     todayMinutes: todayMinutes || 0, // ✅ CHANGÉ : quotidien
-    
     streakTrend: getStreakTrend(),
     formattedTime: getFormattedTime() || '0min',
   };
