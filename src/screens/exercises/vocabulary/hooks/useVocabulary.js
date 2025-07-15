@@ -141,9 +141,9 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
 
   // Find next uncompleted category
   const findNextUncompletedCategory = useCallback(() => {
-    const totalCategories = exercises.length;
-    for (let i = 1; i <= totalCategories; i++) {
-      const nextIndex = (categoryIndex + i) % totalCategories;
+    const numCategories = exercises.length;
+    for (let i = 1; i <= numCategories; i++) {
+      const nextIndex = (categoryIndex + i) % numCategories;
       const category = exercises[nextIndex];
       const completedInCategory = completedWords[nextIndex]?.length || 0;
       const totalInCategory = category.words?.length || 0;

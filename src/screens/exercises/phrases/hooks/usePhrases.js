@@ -141,9 +141,9 @@ const usePhrases = (phrasesData = null, level = "A1") => {
 
   // Find next uncompleted category
   const findNextUncompletedCategory = useCallback(() => {
-    const totalCategories = categories.length;
-    for (let i = 1; i <= totalCategories; i++) {
-      const nextIndex = (categoryIndex + i) % totalCategories;
+    const numCategories = categories.length;
+    for (let i = 1; i <= numCategories; i++) {
+      const nextIndex = (categoryIndex + i) % numCategories;
       const category = categories[nextIndex];
       const categoryPhrases = allPhrases.filter(p => p.categoryId === category.id);
       const completedInCategory = completedPhrases[nextIndex]?.length || 0;

@@ -184,9 +184,9 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
 
   // Find next uncompleted category
   const findNextUncompletedCategory = useCallback(() => {
-    const totalCategories = categories.length;
-    for (let i = 1; i <= totalCategories; i++) {
-      const nextIndex = (categories.findIndex(cat => cat.id === selectedCategory) + i) % totalCategories;
+    const numCategories = categories.length;
+    for (let i = 1; i <= numCategories; i++) {
+      const nextIndex = (categories.findIndex(cat => cat.id === selectedCategory) + i) % numCategories;
       const nextCategory = categories[nextIndex];
       const exercisesInCategory = errorCorrectionData?.exercises?.filter(
         ex => ex.categoryId === nextCategory.id

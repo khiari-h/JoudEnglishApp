@@ -103,8 +103,8 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
                 });
               });
               
-            } catch (error) {
-              console.error(`❌ Erreur traitement ${storageKey}:`, error);
+            } catch (storageError) {
+              console.error(`❌ Erreur traitement ${storageKey}:`, storageError);
             }
           }
         }
@@ -116,9 +116,9 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
         
         setAllLearnedWords(uniqueWords);
         
-      } catch (error) {
-        console.error('❌ Erreur générale useRevisionData:', error);
-        setError(error.message);
+      } catch (mainError) {
+        console.error('❌ Erreur générale useRevisionData:', mainError);
+        setError(mainError.message);
         setAllLearnedWords([]);
       } finally {
         setIsLoading(false);

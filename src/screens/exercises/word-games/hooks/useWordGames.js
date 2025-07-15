@@ -268,20 +268,20 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   };
 
   // Marquer un jeu comme complété
-  const markGameAsCompleted = useCallback(async (gameIndex, score, maxScore) => {
+  const markGameAsCompleted = useCallback(async (gameIndex, gameScore, maxScore) => {
     try {
       const updatedCompletedGames = { ...completedGames };
       updatedCompletedGames[gameIndex] = {
         completed: true,
-        completedAt: new Date().toISOString(),
-        score,
+        score: gameScore,
         maxScore,
       };
       setCompletedGames(updatedCompletedGames);
+      await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(updatedCompletedGames));
     } catch (error) {
       // Ignored on purpose
     }
-  }, [completedGames]);
+  }, [completedGames, COMPLETED_KEY]);
 
   // =================== MAIN NAVIGATION ===================
   

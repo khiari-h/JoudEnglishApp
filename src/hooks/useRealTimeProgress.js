@@ -306,15 +306,15 @@ const useRealTimeProgress = () => {
         for (const exerciseType of availableExercises) {
           try {
             const calculator = exerciseCalculators[exerciseType];
-            const exerciseProgress = await calculator(level);
+            const progressForExercise = await calculator(level);
 
             if (!newExerciseProgress[exerciseType]) {
               newExerciseProgress[exerciseType] = {};
             }
-            newExerciseProgress[exerciseType][level] = exerciseProgress;
+            newExerciseProgress[exerciseType] = progressForExercise;
 
             levelTotal += 100;
-            levelCompleted += exerciseProgress;
+            levelCompleted += progressForExercise;
             
           } catch (error) {
             console.warn(`Erreur calcul ${exerciseType} niveau ${level}:`, error);

@@ -24,7 +24,7 @@ const ProgressBar = ({
   label,
   labelPosition = "top",
   style,
-  valueFormatter = (value, total) => `${value}/${total}`,
+  valueFormatter = (value, totalValue) => `${value}/${totalValue}`,
   percentageFormatter = (percentage) => `${Math.round(percentage)}%`,
   testID,
 }) => {
