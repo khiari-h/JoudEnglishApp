@@ -40,7 +40,7 @@ const SpellingCard = ({
             content={exercise.wordToCorrect}
             fontSize={32}
             levelColor={levelColor}
-            showUnderline={true}
+            showUnderline
           />
         );
         

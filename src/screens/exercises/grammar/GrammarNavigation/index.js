@@ -33,7 +33,7 @@ const GrammarNavigation = ({
         <NavigationButtons
           onNext={onCheckAnswer}
           disableNext={!canCheckAnswer}
-          disablePrevious={true} // Pas de Previous pendant check
+          disablePrevious // Pas de Previous pendant check
           showSkip={false}
           currentIndex={0}
           totalCount={1}

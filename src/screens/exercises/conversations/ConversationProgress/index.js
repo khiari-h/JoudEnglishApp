@@ -68,7 +68,7 @@ const ConversationProgress = ({
       total={statsData.totalStepsCount}
       unit="étapes"
       levelColor={levelColor}
-      expandable={true}
+      expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedScenarioData}

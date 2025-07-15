@@ -37,7 +37,7 @@ const GrammarExerciseRenderer = ({
         content={exercise.question}
         fontSize={24} // Adapté pour questions Grammar
         levelColor={levelColor}
-        showUnderline={true}
+        showUnderline
       />
 
       {/* 📝 PHRASE EXEMPLE avec ContentSection */}
@@ -47,7 +47,7 @@ const GrammarExerciseRenderer = ({
           content={exercise.sentence.replace("___", "______")}
           levelColor={levelColor}
           backgroundColor="#F8FAFC"
-          isItalic={true}
+          isItalic
           showIcon={false}
         />
       )}
@@ -120,7 +120,7 @@ const GrammarExerciseRenderer = ({
         content={exercise.question}
         fontSize={24}
         levelColor={levelColor}
-        showUnderline={true}
+        showUnderline
       />
 
       {/* 📝 PHRASE AVEC INPUT intégré */}
@@ -163,7 +163,7 @@ const GrammarExerciseRenderer = ({
         content={exercise.question}
         fontSize={24}
         levelColor={levelColor}
-        showUnderline={true}
+        showUnderline
       />
 
       {/* 📝 PHRASE ORIGINALE */}
@@ -173,7 +173,7 @@ const GrammarExerciseRenderer = ({
           content={exercise.sentence}
           levelColor={levelColor}
           backgroundColor="#F8FAFC"
-          isItalic={true}
+          isItalic
           showIcon={false}
         />
       )}

@@ -37,7 +37,7 @@ const VocabularyWordCard = ({
         content={word}
         fontSize={42}  // Taille spectaculaire pour mots
         levelColor={levelColor}
-        showUnderline={true}
+        showUnderline
       />
       
       {/* 🔘 BOUTON REVEAL/HIDE avec glassmorphism */}
@@ -56,7 +56,7 @@ const VocabularyWordCard = ({
           title="Example"
           content={example}
           levelColor={levelColor}
-          isItalic={true}
+          isItalic
           backgroundColor="#FAFBFC"
         />
       )}

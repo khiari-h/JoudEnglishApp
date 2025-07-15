@@ -98,7 +98,7 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
             content={rule.explanation}
             levelColor={levelColor}
             backgroundColor="white"
-            showIcon={true}
+            showIcon
           />
 
           {/* 📝 EXEMPLES avec ContentSection */}
@@ -110,7 +110,7 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
               ).join('\n\n')}
               levelColor={levelColor}
               backgroundColor="#F8FAFC"
-              showIcon={true}
+              showIcon
               isItalic={false}
             />
           )}
@@ -124,7 +124,7 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
               ).join('\n\n')}
               levelColor={levelColor}
               backgroundColor="#F1F5F9"
-              showIcon={true}
+              showIcon
               isItalic={false}
             />
           )}
