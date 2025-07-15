@@ -12,7 +12,7 @@ export const useDashboardState = (loadLastActivities) => {
     try {
       await loadLastActivities();
     } catch (error) {
-
+      // Ignored on purpose
     } finally {
       setRefreshing(false);
     }

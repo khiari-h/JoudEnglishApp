@@ -59,6 +59,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
           }
         }
       } catch (error) {
+        // Ignored on purpose
       } finally {
         setLoaded(true);
       }
@@ -78,6 +79,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
+      // Ignored on purpose
     }
   }, [completedExercises, selectedCategory, currentExerciseIndex, STORAGE_KEY]);
 

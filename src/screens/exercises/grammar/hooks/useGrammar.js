@@ -55,6 +55,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
           }
         }
       } catch (error) {
+        // Ignored on purpose
       } finally {
         setLoaded(true);
       }
@@ -67,6 +68,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
+      // Ignored on purpose
     }
   }, [STORAGE_KEY]);
 

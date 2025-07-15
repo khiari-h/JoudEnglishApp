@@ -49,6 +49,7 @@ const usePhrases = (phrasesData = null, level = "A1") => {
           }
         }
       } catch (error) {
+        // Ignored on purpose
       } finally {
         setLoaded(true);
       }
@@ -68,6 +69,7 @@ const usePhrases = (phrasesData = null, level = "A1") => {
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
+      // Ignored on purpose
     }
   }, [completedPhrases, categoryIndex, phraseIndex, STORAGE_KEY]);
 
