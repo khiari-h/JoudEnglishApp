@@ -247,7 +247,7 @@ export const removeFromStorage = async (key = STORAGE_CONFIG.KEY) => {
  * Remet les données à zéro
  */
 export const resetStorage = async () => {
-  return await writeToStorage(STORAGE_CONFIG.KEY, DEFAULT_STATS);
+  return writeToStorage(STORAGE_CONFIG.KEY, DEFAULT_STATS);
 };
 
 /**

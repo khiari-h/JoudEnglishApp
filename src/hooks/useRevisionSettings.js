@@ -54,7 +54,7 @@ export const useRevisionSettings = () => {
 
   // ========== ACTIONS SPÉCIFIQUES ==========
   const enableRevisions = async (frequency = 50, questionsCount = 10) => {
-    return await updatePreferences({
+    return updatePreferences({
       isDisabled: false,
       frequency,
       questionsCount,
@@ -63,11 +63,11 @@ export const useRevisionSettings = () => {
   };
 
   const disableRevisions = async () => {
-    return await updatePreferences({ isDisabled: true });
+    return updatePreferences({ isDisabled: true });
   };
 
   const updateFrequency = async (newFrequency) => {
-    return await updatePreferences({ 
+    return updatePreferences({ 
       frequency: newFrequency,
       nextRevisionAt: newFrequency // Reset target
     });
@@ -75,7 +75,7 @@ export const useRevisionSettings = () => {
 
   const resetToNextTarget = async (wordsLearned) => {
     const newTarget = wordsLearned + preferences.frequency;
-    return await updatePreferences({ nextRevisionAt: newTarget });
+    return updatePreferences({ nextRevisionAt: newTarget });
   };
 
   return {
