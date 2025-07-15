@@ -1,5 +1,5 @@
 // src/components/ui/ProgressCard/index.js - VERSION ÉPURÉE SANS DOTS
-import { View, Text, TouchableOpacity, LayoutAnimation, Platform } from "react-native";
+import { View, Text, TouchableOpacity, LayoutAnimation, Platform, useCallback } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import ProgressBar from "../ProgressBar";
@@ -68,6 +68,8 @@ const ProgressCard = ({
     configureLayoutAnimation();
     onToggleExpand?.();
   };
+
+  const handleCategoryPress = useCallback((idx) => () => onCategoryPress?.(idx), [onCategoryPress]);
 
   return (
     <View style={styles.container}>
@@ -146,7 +148,7 @@ const ProgressCard = ({
                 <TouchableOpacity
                   key={`category-${index}`}
                   style={styles.categoryItem}
-                  onPress={() => onCategoryPress?.(index)}
+                  onPress={handleCategoryPress(index)}
                   activeOpacity={0.7}
                 >
                   {/* Row principale avec titre et stats */}

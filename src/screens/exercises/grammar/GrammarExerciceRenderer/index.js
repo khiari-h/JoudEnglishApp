@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
+import { useCallback } from 'react';
 
 /**
  * 🎯 GrammarExerciseRenderer - Version Refactorisée avec composants génériques
@@ -28,6 +29,19 @@ const GrammarExerciseRenderer = ({
 
   const styles = createStyles();
   const levelColor = "#3b82f6"; // Couleur Grammar
+
+  // Remplace les fonctions fléchées inline par des callbacks mémorisés
+  const handleChangeText1 = useCallback((text) => {
+    if (!showFeedback) setInputText(text);
+  }, [showFeedback, setInputText]);
+
+  const handleChangeText2 = useCallback((text) => {
+    if (!showFeedback) setInputText(text);
+  }, [showFeedback, setInputText]);
+
+  const handleOptionPress = useCallback((index) => {
+    if (!showFeedback) setSelectedOption(index);
+  }, [showFeedback, setSelectedOption]);
 
   // Render pour un exercice à choix multiples
   const renderMultipleChoiceExercise = () => (
@@ -62,7 +76,7 @@ const GrammarExerciseRenderer = ({
             <TouchableOpacity
               key={`option-${index}-${attempts}`}
               style={styles.optionContainer}
-              onPress={() => !showFeedback && setSelectedOption(index)}
+              onPress={() => handleOptionPress(index)}
               disabled={showFeedback && isCorrect}
               activeOpacity={0.8}
             >
@@ -145,7 +159,7 @@ const GrammarExerciseRenderer = ({
               : styles.neutralInput,
           ]}
           value={inputText}
-          onChangeText={(text) => !showFeedback && setInputText(text)}
+          onChangeText={handleChangeText1}
           placeholder="Type your answer..."
           editable={!showFeedback || !isCorrect}
           autoCapitalize="none"
@@ -191,7 +205,7 @@ const GrammarExerciseRenderer = ({
               : styles.neutralInput,
           ]}
           value={inputText}
-          onChangeText={(text) => !showFeedback && setInputText(text)}
+          onChangeText={handleChangeText2}
           placeholder="Write your transformed sentence..."
           editable={!showFeedback || !isCorrect}
           multiline

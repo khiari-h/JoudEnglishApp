@@ -4,6 +4,7 @@ import { View, TouchableOpacity, Text } from "react-native";
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
+import { useCallback } from 'react';
 
 /**
  * 🎯 AssessmentQuestion - Version Refactorisée avec composants génériques
@@ -27,6 +28,8 @@ const AssessmentQuestion = ({
   if (!question || !question.options) {
     return null;
   }
+
+  const handlePress = useCallback((idx) => () => onSelectAnswer(idx), [onSelectAnswer]);
 
   // Déterminer le feedback à afficher
   const isCorrect = selectedAnswer === question.correctAnswer;
@@ -62,7 +65,7 @@ const AssessmentQuestion = ({
                 { borderColor: '#10b981', backgroundColor: '#f0fdf4' }
               ],
             ]}
-            onPress={() => onSelectAnswer(index)}
+            onPress={handlePress(index)}
             disabled={showFeedback}
             activeOpacity={0.7}
           >

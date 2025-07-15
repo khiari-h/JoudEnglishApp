@@ -1,5 +1,5 @@
 // src/components/revision/RevisionOrchestrator/index.js - VERSION CORRIGÉE
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RevisionPopup from '../../Dashboard/components/popup/RevisionPopup';
@@ -159,6 +159,8 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
     }
   };
 
+  const handleDismiss = useCallback(() => handleChoice('later_50'), [handleChoice]);
+
   // ✅ NE PAS RENDRE SI DISABLED
   if (isDisabled) {
     return null;
@@ -171,7 +173,7 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
       questionsCount={10}
       currentLevel={currentLevel}
       onChoice={handleChoice}
-      onDismiss={() => handleChoice('later_50')}
+      onDismiss={handleDismiss}
     />
   );
 };

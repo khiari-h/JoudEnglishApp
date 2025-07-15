@@ -105,6 +105,12 @@ const ConversationExercise = ({ route }) => {
 
   const handleToggleProgressDetails = () => toggleDetailedProgress();
 
+  // Callbacks mémorisés pour éviter les arrow functions dans le JSX
+  const handleScenarioChangeCb = useCallback((...args) => handleScenarioChange(...args), [handleScenarioChange]);
+  const handleToggleProgressDetailsCb = useCallback(() => handleToggleProgressDetails(), [handleToggleProgressDetails]);
+  const handleToggleHelpCb = useCallback(() => handleToggleHelp(), [handleToggleHelp]);
+  const handleBackPressCb = useCallback(() => handleBackPress(), [handleBackPress]);
+
   // Loading state
   if (!loaded || !hasValidData) {
     return (
@@ -131,7 +137,7 @@ const ConversationExercise = ({ route }) => {
       {/* Header */}
       <ConversationHeader
         level={level}
-        onBackPress={handleBackPress}
+        onBackPress={handleBackPressCb}
         levelColor={levelColor}
       />
 
@@ -139,7 +145,7 @@ const ConversationExercise = ({ route }) => {
       <ConversationSelector
         scenarios={conversationData.exercises}
         selectedIndex={currentScenarioIndex}
-        onSelectScenario={handleScenarioChange}
+        onSelectScenario={handleScenarioChangeCb}
         levelColor={levelColor}
       />
 
@@ -153,8 +159,8 @@ const ConversationExercise = ({ route }) => {
         completedScenarios={completedScenarios}
         conversationHistory={conversationHistory}
         expanded={showDetailedProgress}
-        onToggleExpand={handleToggleProgressDetails}
-        onScenarioPress={handleScenarioChange}
+        onToggleExpand={handleToggleProgressDetailsCb}
+        onScenarioPress={handleScenarioChangeCb}
       />
 
       {/* Scenario Description */}
@@ -162,7 +168,7 @@ const ConversationExercise = ({ route }) => {
         description={currentScenario.description}
         helpText={display.currentHelp}
         showHelp={showHelp}
-        toggleHelp={handleToggleHelp}
+        toggleHelp={handleToggleHelpCb}
         levelColor={levelColor}
       />
 
