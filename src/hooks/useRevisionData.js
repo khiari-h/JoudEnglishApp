@@ -99,7 +99,6 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
                     
                   } else {
                     // WordIndex introuvable dans la catégorie
-                    return;
                   }
                 });
               });

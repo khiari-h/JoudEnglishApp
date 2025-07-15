@@ -39,7 +39,7 @@ export const getConversationData = (level) => {
 
   };
 
-  return dataMap[level] || dataMap["A1"]; // Par défaut, retourne A1 si le niveau n'existe pas
+  return dataMap[level] || dataMap.A1; // Par défaut, retourne A1 si le niveau n'existe pas
 };
 
 /**

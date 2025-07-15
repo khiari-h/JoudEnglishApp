@@ -47,6 +47,7 @@ export const useRevisionSettings = () => {
       try { require('../utils/eventBus').emit('settings-updated', updatedPrefs); } catch(e) {}
       return true;
     } catch (error) {
+      // Ignored on purpose
       console.error('Error saving revision settings:', error);
       return false;
     }
