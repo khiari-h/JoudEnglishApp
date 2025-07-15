@@ -173,7 +173,7 @@ const errorCorrectionC2 = {
     return allExercises.every(exercise => {
       // Check required fields
       const hasRequiredFields = requiredFields.every(field => 
-        exercise.hasOwnProperty(field) && exercise[field] !== undefined
+        Object.prototype.hasOwnProperty.call(exercise, field) && exercise[field] !== undefined
       );
 
       // Check valid type

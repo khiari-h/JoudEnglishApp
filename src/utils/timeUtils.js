@@ -139,7 +139,7 @@ export const isValidStatsStructure = (stats) => {
   // Vérifier que tous les types d'exercices requis sont présents
   const requiredTypes = Object.values(EXERCISE_TYPES);
   const hasAllTypes = requiredTypes.every(type => 
-    stats.hasOwnProperty(type) && isValidTimeInSeconds(stats[type])
+    Object.prototype.hasOwnProperty.call(stats, type) && isValidTimeInSeconds(stats[type])
   );
 
   return hasAllTypes;
