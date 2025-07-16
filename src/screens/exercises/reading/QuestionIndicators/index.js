@@ -1,5 +1,6 @@
 // src/components/screens/exercises/reading/QuestionIndicators/index.js
 import { View, TouchableOpacity } from "react-native";
+import React, { useCallback } from "react";
 import styles from "./style";
 
 /**
@@ -12,12 +13,20 @@ const QuestionIndicators = ({
   onSelectQuestion,
   levelColor,
 }) => {
+  // Handler stable pour la sélection d'une question
+  const handleSelectQuestion = useCallback(
+    (index) => () => {
+      onSelectQuestion(index);
+    },
+    [onSelectQuestion]
+  );
+
   return (
     <View style={styles.container}>
       {Array.from({ length: totalQuestions }).map((_, index) => (
         <TouchableOpacity
           key={`indicator-${index}`}
-          onPress={() => onSelectQuestion(index)}
+          onPress={handleSelectQuestion(index)}
         >
           <View
             style={[

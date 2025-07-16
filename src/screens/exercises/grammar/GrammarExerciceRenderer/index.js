@@ -43,6 +43,12 @@ const GrammarExerciseRenderer = ({
     if (!showFeedback) setSelectedOption(index);
   }, [showFeedback, setSelectedOption]);
 
+  // Handler stable pour chaque option
+  const getOptionPressHandler = useCallback(
+    (index) => () => handleOptionPress(index),
+    [handleOptionPress]
+  );
+
   // Render pour un exercice à choix multiples
   const renderMultipleChoiceExercise = () => (
     <View style={styles.container}>
@@ -76,7 +82,7 @@ const GrammarExerciseRenderer = ({
             <TouchableOpacity
               key={option}
               style={styles.optionContainer}
-              onPress={() => handleOptionPress(index)}
+              onPress={getOptionPressHandler(index)}
               disabled={showFeedback && isCorrect}
               activeOpacity={0.8}
             >

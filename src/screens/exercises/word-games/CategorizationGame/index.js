@@ -1,5 +1,6 @@
 // src/screens/exercises/wordGames/games/CategorizationGame/index.js
 import { View, Text, TouchableOpacity } from "react-native";
+import React, { useCallback } from "react";
 import GameInstructions from "../GameInstructions";
 import styles from "./style";
 
@@ -21,6 +22,16 @@ const CategorizationGame = ({
   levelColor,
   onSelectItem,
 }) => {
+  // Handler stable pour la sélection d'un mot
+  const handleSelectItem = useCallback(
+    (word, index) => () => {
+      if (!showFeedback) {
+        onSelectItem(word, index);
+      }
+    },
+    [onSelectItem, showFeedback]
+  );
+
   return (
     <View style={styles.gameContainer}>
       <GameInstructions instructions={game.instructions} />
@@ -52,7 +63,7 @@ const CategorizationGame = ({
                   },
                 ],
               ]}
-              onPress={() => onSelectItem(word, index)}
+              onPress={handleSelectItem(word, index)}
               disabled={showFeedback}
             >
               <Text

@@ -1,5 +1,6 @@
 // ReadingQuestionCard/index.js - VERSION SIMPLE
 import { View, Text, TouchableOpacity, Animated } from "react-native";
+import React, { useCallback } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";
@@ -42,11 +43,15 @@ const ReadingQuestionCard = ({
     return 'default';
   };
 
-  // Handle option press
-  const handleOptionPress = (optionIndex) => {
-    if (showFeedback) return;
-    onSelectAnswer(optionIndex);
-  };
+  // Handler stable pour la sélection d'une option
+  const handleOptionPressCallback = useCallback(
+    (optionIndex) => () => {
+      if (!showFeedback) {
+        onSelectAnswer(optionIndex);
+      }
+    },
+    [onSelectAnswer, showFeedback]
+  );
 
   return (
     <Animated.View
@@ -104,7 +109,7 @@ const ReadingQuestionCard = ({
                 optionState === 'correct' && styles.optionCorrect,
                 optionState === 'incorrect' && styles.optionIncorrect,
               ]}
-              onPress={() => handleOptionPress(index)}
+              onPress={handleOptionPressCallback(index)}
               disabled={showFeedback}
               activeOpacity={0.8}
             >

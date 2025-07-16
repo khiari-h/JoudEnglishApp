@@ -1,5 +1,6 @@
 // src/screens/exercises/wordGames/games/MatchingGame/index.js
 import { View, Text, TouchableOpacity } from "react-native";
+import React, { useCallback } from "react";
 import GameInstructions from "../GameInstructions";
 import styles from "./style";
 
@@ -23,6 +24,16 @@ const MatchingGame = ({
   levelColor,
   onSelectItem,
 }) => {
+  // Handler stable pour la sélection d'un item
+  const handleSelectItem = useCallback(
+    (item, index, isMatched, showFeedback) => () => {
+      if (!isMatched && !showFeedback) {
+        onSelectItem(item, index);
+      }
+    },
+    [onSelectItem]
+  );
+
   return (
     <View style={styles.gameContainer}>
       <GameInstructions instructions={game.instructions} />
@@ -48,7 +59,7 @@ const MatchingGame = ({
                   { backgroundColor: `${levelColor}20` },
                 ],
               ]}
-              onPress={() => onSelectItem(item, index)}
+              onPress={handleSelectItem(item, index, isMatched, showFeedback)}
               disabled={isMatched || showFeedback}
             >
               <Text

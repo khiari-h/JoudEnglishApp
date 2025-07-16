@@ -1,6 +1,7 @@
 // HomophoneChoices/index.js - VERSION NETTOYÉE (logique simplifiée)
 
 import { View, Text, TouchableOpacity } from "react-native";
+import React, { useCallback } from "react";
 import HeroCard from "../../../../components/ui/HeroCard";
 import createStyles from "./style";
 
@@ -24,6 +25,16 @@ const HomophoneChoices = ({
   levelColor = "#3b82f6",
 }) => {
   const styles = createStyles(levelColor);
+
+  // Handler stable pour la sélection d'un choix
+  const handleSelectChoice = useCallback(
+    (choice) => () => {
+      if (!disabled) {
+        onSelectChoice(choice);
+      }
+    },
+    [onSelectChoice, disabled]
+  );
 
   return (
     <View style={styles.container}>
@@ -54,7 +65,7 @@ const HomophoneChoices = ({
                 },
                 disabled && styles.disabledChoice
               ]}
-              onPress={() => !disabled && onSelectChoice(choice)}
+              onPress={handleSelectChoice(choice)}
               disabled={disabled}
             >
               <View style={styles.choiceContent}>
