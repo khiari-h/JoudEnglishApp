@@ -3,11 +3,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const METRICS_STORAGE_KEY = 'activity_metrics';
+
 const useActivityMetrics = () => {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [todayMinutes, setTodayMinutes] = useState(0); // ✅ CHANGÉ : quotidien
   const [sessionStart, setSessionStart] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [metrics, setMetrics] = useState({});
 
   // =================== DATES HELPER ===================
   const getTodayString = () => new Date().toDateString();
@@ -112,6 +115,7 @@ const useActivityMetrics = () => {
     endSession,
     updateStreak,
     isLoading,
+    metrics,
     currentStreak: currentStreak || 0,
     todayMinutes: todayMinutes || 0, // ✅ CHANGÉ : quotidien
     streakTrend: getStreakTrend(),

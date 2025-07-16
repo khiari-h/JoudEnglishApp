@@ -146,33 +146,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     setShuffledOptions(optionsToShuffle);
   };
 
-  const checkMatchingPair = (items) => {
-    const isPair = currentGame.pairs.some(
-      (pair) =>
-        (items[0].value === pair.word && items[1].value === pair.match) ||
-        (items[0].value === pair.match && items[1].value === pair.word)
-    );
-
-    if (isPair) {
-      animateFeedback(true);
-      const newMatchedItems = [...matchedItems, items[0].value, items[1].value];
-      setMatchedItems(newMatchedItems);
-
-      const maxPossibleScore = currentGame.maxScore || 10;
-      const scorePerPair = Math.floor(maxPossibleScore / currentGame.pairs.length);
-      setScore(prev => prev + scorePerPair);
-
-      setSelectedItems([]);
-
-      if (newMatchedItems.length === currentGame.pairs.length * 2) {
-        setTimeout(() => handleGameComplete(true), 500);
-      }
-    } else {
-      animateFeedback(false);
-      setTimeout(() => setSelectedItems([]), 1000);
-    }
-  };
-
   const handleGameComplete = (isSuccessful) => {
     const earnedScore = isSuccessful ? currentGame.maxScore || 10 : 0;
     const maxPossibleScore = currentGame.maxScore || 10;
@@ -327,8 +300,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     bounceAnim,
     
     // Actions
-    handleSelectItem,
-    checkAnswer,
     handleNext,
     handlePrevious,
     resetGames,
