@@ -146,16 +146,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     setShuffledOptions(optionsToShuffle);
   };
 
-  const handleGameComplete = (isSuccessful) => {
-    const earnedScore = isSuccessful ? currentGame.maxScore || 10 : 0;
-    const maxPossibleScore = currentGame.maxScore || 10;
-
-    updateGameResults(earnedScore, maxPossibleScore);
-    setIsCorrect(isSuccessful);
-    setShowFeedback(true);
-    animateFeedback(isSuccessful);
-  };
-
   const updateGameResults = (earnedScore, maxScore) => {
     const newGameResults = [...gameResults];
     newGameResults[currentGameIndex] = {
