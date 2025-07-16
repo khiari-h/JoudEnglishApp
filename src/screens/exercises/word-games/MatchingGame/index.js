@@ -36,7 +36,7 @@ const MatchingGame = ({
 
           return (
             <TouchableOpacity
-              key={`matching-${index}`}
+              key={item}
               style={[
                 styles.matchingTile,
                 isSelected && [

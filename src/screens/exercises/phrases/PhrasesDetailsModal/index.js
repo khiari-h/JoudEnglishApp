@@ -56,7 +56,7 @@ const PhrasesDetailsModal = ({
             Exemples :
           </Text>
           {phrase.examples.map((example, index) => (
-            <View key={index} style={styles.exampleItem}>
+            <View key={example.english} style={styles.exampleItem}>
               <Text style={styles.exampleText}>
                 {example.english}
               </Text>

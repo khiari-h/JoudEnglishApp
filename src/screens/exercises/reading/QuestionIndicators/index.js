@@ -16,7 +16,7 @@ const QuestionIndicators = ({
     <View style={styles.container}>
       {Array.from({ length: totalQuestions }).map((_, index) => (
         <TouchableOpacity
-          key={index}
+          key={`indicator-${index}`}
           onPress={() => onSelectQuestion(index)}
         >
           <View

@@ -45,7 +45,7 @@ const HomophoneChoices = ({
 
           return (
             <TouchableOpacity
-              key={index}
+              key={choice}
               style={[
                 styles.choiceButton,
                 isSelected && {

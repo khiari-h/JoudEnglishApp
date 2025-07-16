@@ -53,7 +53,7 @@ const AssessmentQuestion = ({
       <View style={styles.optionsContainer}>
         {question.options.map((option, index) => (
           <TouchableOpacity
-            key={index}
+            key={option}
             style={[
               styles.optionButton,
               selectedAnswer === index && [

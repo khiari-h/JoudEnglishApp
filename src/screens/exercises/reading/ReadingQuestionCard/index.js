@@ -94,7 +94,7 @@ const ReadingQuestionCard = ({
           
           return (
             <TouchableOpacity
-              key={index}
+              key={option}
               style={[
                 styles.optionButton,
                 optionState === 'selected' && { 

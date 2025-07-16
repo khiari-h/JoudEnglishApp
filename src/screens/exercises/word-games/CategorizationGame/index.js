@@ -41,7 +41,7 @@ const CategorizationGame = ({
 
           return (
             <TouchableOpacity
-              key={`word-${index}`}
+              key={word}
               style={[
                 styles.wordTile,
                 isSelected && [

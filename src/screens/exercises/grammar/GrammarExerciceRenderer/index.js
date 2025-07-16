@@ -74,7 +74,7 @@ const GrammarExerciseRenderer = ({
           
           return (
             <TouchableOpacity
-              key={`option-${index}-${attempts}`}
+              key={option}
               style={styles.optionContainer}
               onPress={() => handleOptionPress(index)}
               disabled={showFeedback && isCorrect}
