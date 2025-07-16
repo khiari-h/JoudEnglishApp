@@ -28,7 +28,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   const isInitialized = useRef(false);
 
   // =================== ANIMATIONS ===================
-  const { fadeAnim, bounceAnim, animateFeedback } = useGameAnimation();
+  const { fadeAnim, bounceAnim } = useGameAnimation();
 
   // =================== COMPUTED VALUES ===================
   const games = wordGamesData?.games || [];
@@ -144,19 +144,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     }
 
     setShuffledOptions(optionsToShuffle);
-  };
-
-  const updateGameResults = (earnedScore, maxScore) => {
-    const newGameResults = [...gameResults];
-    newGameResults[currentGameIndex] = {
-      score: earnedScore,
-      maxScore,
-      completed: true,
-    };
-    setGameResults(newGameResults);
-
-    // Marquer le jeu comme complété
-    markGameAsCompleted(currentGameIndex, earnedScore, maxScore);
   };
 
   const markGameAsCompleted = useCallback(async (gameIndex, gameScore, maxScore) => {
