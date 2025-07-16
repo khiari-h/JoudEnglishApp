@@ -270,22 +270,22 @@ export const storageService = {
   },
 
   // Sauvegarder la progression
-  saveProgress: async (progressData) => {
+  saveProgress: (progressData) => {
     return storeData(storageService.keys.USER_PROGRESS, progressData);
   },
 
   // Récupérer la progression
-  getProgress: async () => {
+  getProgress: () => {
     return getData(storageService.keys.USER_PROGRESS);
   },
 
   // Sauvegarder les paramètres
-  saveSettings: async (settings) => {
+  saveSettings: (settings) => {
     return storeData(storageService.keys.USER_SETTINGS, settings);
   },
 
   // Récupérer les paramètres
-  getSettings: async () => {
+  getSettings: () => {
     return getData(storageService.keys.USER_SETTINGS);
   },
 
@@ -355,7 +355,7 @@ export const storageService = {
   },
 
   // Récupérer les données de streak
-  getStreak: async () => {
+  getStreak: () => {
     return getData(storageService.keys.STREAK_DATA) || {
       currentStreak: 0,
       lastLoginDate: null,
@@ -364,7 +364,7 @@ export const storageService = {
   },
 
   // Réinitialiser toutes les données
-  resetAllData: async () => {
+  resetAllData: () => {
     return clearAllData();
   },
 };

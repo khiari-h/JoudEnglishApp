@@ -52,7 +52,7 @@ export const useRevisionSettings = () => {
   };
 
   // ========== ACTIONS SPÉCIFIQUES ==========
-  const enableRevisions = async (frequency = 50, questionsCount = 10) => {
+  const enableRevisions = (frequency = 50, questionsCount = 10) => {
     return updatePreferences({
       isDisabled: false,
       frequency,
@@ -61,18 +61,18 @@ export const useRevisionSettings = () => {
     });
   };
 
-  const disableRevisions = async () => {
+  const disableRevisions = () => {
     return updatePreferences({ isDisabled: true });
   };
 
-  const updateFrequency = async (newFrequency) => {
+  const updateFrequency = (newFrequency) => {
     return updatePreferences({ 
       frequency: newFrequency,
       nextRevisionAt: newFrequency // Reset target
     });
   };
 
-  const resetToNextTarget = async (wordsLearned) => {
+  const resetToNextTarget = (wordsLearned) => {
     const newTarget = wordsLearned + preferences.frequency;
     return updatePreferences({ nextRevisionAt: newTarget });
   };

@@ -230,7 +230,7 @@ const useRevisionManager = () => {
   }, [totalWordsLearned, selectRevisionWords]);
 
   // ========== COMPLETION D'UNE RÉVISION ==========
-  const markRevisionCompleted = useCallback(async (completedWords, score, questionsCount) => {
+  const markRevisionCompleted = useCallback((completedWords, score, questionsCount) => {
     try {
       // Enregistrer l'historique
       const revisionRecord = {
