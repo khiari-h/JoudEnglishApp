@@ -28,7 +28,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   const isInitialized = useRef(false);
 
   // =================== ANIMATIONS ===================
-  const { fadeAnim, bounceAnim, animateFeedback, animateBounce } = useGameAnimation();
+  const { fadeAnim, bounceAnim, animateFeedback } = useGameAnimation();
 
   // =================== COMPUTED VALUES ===================
   const games = wordGamesData?.games || [];
@@ -144,34 +144,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     }
 
     setShuffledOptions(optionsToShuffle);
-  };
-
-  const handleMatchingSelection = (item, index) => {
-    let newSelectedItems = [...selectedItems];
-
-    if (newSelectedItems.length < 2) {
-      if (matchedItems.includes(item)) return;
-
-      newSelectedItems.push({ value: item, index });
-      setSelectedItems(newSelectedItems);
-
-      if (newSelectedItems.length === 2) {
-        setTimeout(() => checkMatchingPair(newSelectedItems), 300);
-      }
-    }
-  };
-
-  const handleCategorizationSelection = (item, index) => {
-    let newSelectedItems = [...selectedItems];
-    const itemIndex = newSelectedItems.findIndex((i) => i.value === item);
-
-    if (itemIndex !== -1) {
-      newSelectedItems.splice(itemIndex, 1);
-    } else {
-      newSelectedItems.push({ value: item, index });
-    }
-
-    setSelectedItems(newSelectedItems);
   };
 
   const checkMatchingPair = (items) => {
