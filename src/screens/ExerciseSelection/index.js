@@ -222,7 +222,7 @@ const ExerciseSelection = ({ level }) => {
         </View>
       </TouchableOpacity>
     );
-  }, [handleExercisePress, colors.text, styles, getButtonText, getButtonIcon]);
+  }, [handleExercisePress, colors.text, styles]);
 
   return (
     <Container

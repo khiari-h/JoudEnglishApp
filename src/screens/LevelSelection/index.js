@@ -191,7 +191,7 @@ const LevelSelection = () => {
         </View>
       </TouchableOpacity>
     );
-  }, [handleLevelPress, colors.text, styles, getButtonText, getButtonIcon]);
+  }, [handleLevelPress, colors.text, styles]);
 
   return (
     <Container
