@@ -116,20 +116,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     }
   }, [loaded, games, lastPosition, completedGames]);
 
-  // Setup current game
-  useEffect(() => {
-    if (currentGame) {
-      // Réinitialiser les états pour le jeu actuel
-      setSelectedItems([]);
-      setMatchedItems([]);
-      setShowFeedback(false);
-      setIsCorrect(false);
-
-      // Mélanger les options selon le type de jeu
-      shuffleGameOptions(currentGame);
-    }
-  }, [currentGameIndex, currentGame]);
-
   // Déclaration des fonctions utilitaires avant leur utilisation
   const shuffleGameOptions = (game) => {
     let optionsToShuffle = [];
@@ -143,6 +129,20 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
 
     setShuffledOptions(optionsToShuffle);
   };
+
+  // Setup current game
+  useEffect(() => {
+    if (currentGame) {
+      // Réinitialiser les états pour le jeu actuel
+      setSelectedItems([]);
+      setMatchedItems([]);
+      setShowFeedback(false);
+      setIsCorrect(false);
+
+      // Mélanger les options selon le type de jeu
+      shuffleGameOptions(currentGame);
+    }
+  }, [currentGameIndex, currentGame]);
 
   // =================== GAME LOGIC ===================
   
