@@ -49,14 +49,14 @@ const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, lo
 const HeroEmptyCardContent = ({ accentColor, colors, handleLevelSelection, localStyles }) => (
   <View style={localStyles.content}>
     <Text style={localStyles.emoji}>🚀</Text>
-    <Text style={[localStyles.title, { color: colors.text }]}>Commencer l'apprentissage</Text>
+    <Text style={[localStyles.title, { color: colors.text }]}>Commencer l&apos;apprentissage</Text>
     <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}>Choisissez votre premier exercice</Text>
     <TouchableOpacity
       style={[localStyles.button, { backgroundColor: accentColor }]}
       onPress={handleLevelSelection}
       activeOpacity={0.8}
     >
-      <Text style={localStyles.buttonText}>Commencer ▶️</Text>
+      <Text style={localStyles.buttonText}>Commencer {'>'}</Text>
     </TouchableOpacity>
   </View>
 );
