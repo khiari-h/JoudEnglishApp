@@ -26,8 +26,8 @@ const MatchingGame = ({
 }) => {
   // Handler stable pour la sélection d'un item
   const handleSelectItem = useCallback(
-    (item, index, isMatched, showFeedback) => () => {
-      if (!isMatched && !showFeedback) {
+    (item, index, isMatched, feedbackVisible) => () => {
+      if (!isMatched && !feedbackVisible) {
         onSelectItem(item, index);
       }
     },
