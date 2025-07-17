@@ -31,8 +31,6 @@ const NavigationButtons = ({
   const prevScale = useRef(new Animated.Value(1)).current;
   const nextScale = useRef(new Animated.Value(1)).current;
 
-  const nextButtonLabel = isLast ? buttonLabels.finish : buttonLabels.next;
-
   // Animation simple pour précédent
   const handlePrevPress = useCallback(() => {
     if (disablePrevious) return;

@@ -60,7 +60,7 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
 };
 
 // Sous-composant CollapsibleHeader
-const CollapsibleHeader = ({ expanded, toggleExpanded, expandAnim, iconRotation, rule, levelColor, styles }) => (
+const CollapsibleHeader = ({ expanded, toggleExpanded, iconRotation, rule, levelColor, styles }) => (
   <TouchableOpacity
     style={styles.headerContainer}
     onPress={toggleExpanded}

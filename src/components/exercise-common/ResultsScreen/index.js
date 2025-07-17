@@ -174,7 +174,6 @@ const ResultsScreen = ({
           incorrectAnswers={incorrectAnswers}
           skippedAnswers={skippedAnswers}
           timeTaken={timeTaken}
-          color={color}
           styles={styles}
         />
         <FeedbackSection feedback={feedback} styles={styles} />
@@ -189,7 +188,7 @@ const ResultsScreen = ({
   );
 };
 
-const StatsSection = ({ correctAnswers, incorrectAnswers, skippedAnswers, timeTaken, color, styles }) => (
+const StatsSection = ({ correctAnswers, incorrectAnswers, skippedAnswers, timeTaken, styles }) => (
   <View style={styles.statsContainer}>
     <View style={styles.statItem}>
       <View

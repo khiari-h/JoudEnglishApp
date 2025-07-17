@@ -1,11 +1,10 @@
 // SpellingExercise/index.js - VERSION PROPRE
 
-import { useMemo, useEffect, useCallback } from "react";
+import { useMemo, useEffect } from "react";
 import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { router } from "expo-router";
 
-import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
+import Container from "../../../components/layout/Container";
 import SpellingHeader from "./SpellingHeader";
 import SpellingProgress from "./SpellingProgress";
 import SpellingCard from "./SpellingCard";
@@ -41,7 +40,6 @@ const SpellingExercise = ({ route }) => {
     loaded,
     currentExercise,
     totalExercises,
-    exercises,
     setUserInput,
     toggleHint,
     checkAnswer,
@@ -49,7 +47,6 @@ const SpellingExercise = ({ route }) => {
     retryExercise,
     isLastExercise,
     hasValidData,
-    stats,
   } = useSpelling(spellingData, level, exerciseType);
 
   useEffect(() => {
