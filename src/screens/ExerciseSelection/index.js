@@ -34,59 +34,59 @@ const DEFAULT_THEME = {
 };
 
 // Sous-composant CardHeader
-const CardHeader = ({ exercise, colors, styles }) => (
-  <View style={styles.cardHeader}>
-    <View style={styles.levelTitleContainer}>
-      <Text style={[styles.levelMainTitle, { color: colors.text }]}>{exercise.title}</Text>
-      <View style={[styles.levelBadge, { backgroundColor: exercise.color }]}>
-        <Text style={styles.levelBadgeText}>{exercise.progress}%</Text>
+const CardHeader = ({ exercise, colors, localStyles }) => (
+  <View style={localStyles.cardHeader}>
+    <View style={localStyles.levelTitleContainer}>
+      <Text style={[localStyles.levelMainTitle, { color: colors.text }]}>{exercise.title}</Text>
+      <View style={[localStyles.levelBadge, { backgroundColor: exercise.color }]}>
+        <Text style={localStyles.levelBadgeText}>{exercise.progress}%</Text>
       </View>
       {exercise.id === "vocabulary_fast" && (
-        <View style={[styles.levelBadge, styles.fastBadge]}>
-          <Text style={[styles.levelBadgeText, styles.fastBadgeText]}>FAST</Text>
+        <View style={[localStyles.levelBadge, localStyles.fastBadge]}>
+          <Text style={[localStyles.levelBadgeText, localStyles.fastBadgeText]}>FAST</Text>
         </View>
       )}
     </View>
-    <Text style={styles.levelIcon}>{exercise.icon}</Text>
+    <Text style={localStyles.levelIcon}>{exercise.icon}</Text>
   </View>
 );
 
 // Sous-composant Progression
-const Progression = ({ exercise, colors, styles }) => (
+const Progression = ({ exercise, colors, localStyles }) => (
   exercise.hasProgress && (
-    <View style={styles.progressContainer}>
-      <View style={styles.progressBar}>
+    <View style={localStyles.progressContainer}>
+      <View style={localStyles.progressBar}>
         <View 
           style={[
-            styles.progressFill,
+            localStyles.progressFill,
             { width: `${exercise.progress}%`, backgroundColor: exercise.color }
           ]} 
         />
       </View>
-      <Text style={[styles.progressText, { color: colors.textSecondary }]}>{exercise.progress}%</Text>
+      <Text style={[localStyles.progressText, { color: colors.textSecondary }]}>{exercise.progress}%</Text>
     </View>
   )
 );
 
 // Sous-composant CardButton
-const CardButton = ({ exercise, handleExercisePress, styles }) => (
+const CardButton = ({ exercise, handleExercisePress, localStyles }) => (
   <Button
     title={exercise.hasProgress ? "Continuer" : "Commencer"}
     variant="filled"
     color={exercise.color}
     fullWidth
     onPress={handleExercisePress(exercise)}
-    style={styles.startButton}
+    style={localStyles.startButton}
     rightIcon={exercise.hasProgress ? "play-outline" : "rocket-outline"}
   />
 );
 
 // Refactor ExerciseCardContent pour utiliser les sous-composants
-const ExerciseCardContent = ({ exercise, colors, styles, handleExercisePress }) => (
-  <View style={styles.cardContentStyle}>
-    <CardHeader exercise={exercise} colors={colors} styles={styles} />
-    <Progression exercise={exercise} colors={colors} styles={styles} />
-    <CardButton exercise={exercise} handleExercisePress={handleExercisePress} styles={styles} />
+const ExerciseCardContent = ({ exercise, colors, localStyles, handleExercisePress }) => (
+  <View style={localStyles.cardContentStyle}>
+    <CardHeader exercise={exercise} colors={colors} localStyles={localStyles} />
+    <Progression exercise={exercise} colors={colors} localStyles={localStyles} />
+    <CardButton exercise={exercise} handleExercisePress={handleExercisePress} localStyles={localStyles} />
   </View>
 );
 
@@ -210,7 +210,7 @@ const ExerciseSelection = ({ level }) => {
         onPress={handleExercisePress(exercise)}
         activeOpacity={0.8}
       >
-        <ExerciseCardContent exercise={exercise} colors={colors} styles={styles} handleExercisePress={handleExercisePress} />
+        <ExerciseCardContent exercise={exercise} colors={colors} localStyles={styles} handleExercisePress={handleExercisePress} />
       </TouchableOpacity>
     );
   }, [handleExercisePress, colors.text, styles]);

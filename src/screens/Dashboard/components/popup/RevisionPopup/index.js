@@ -6,31 +6,31 @@ import { Ionicons } from '@expo/vector-icons';
 import { ThemeContext } from '../../../../../contexts/ThemeContext';
 import styles from './style';
 
-const RevisionChoicesList = ({ choices, handleChoicePress, styles }) => (
-  <View style={styles.choicesContainer}>
+const RevisionChoicesList = ({ choices, handleChoicePress, localStyles }) => (
+  <View style={localStyles.choicesContainer}>
     {choices.map((choice, idx) => (
       <TouchableOpacity
         key={choice.id}
         style={[
-          styles.choiceButton,
+          localStyles.choiceButton,
           choice.primary
-            ? styles.choiceButtonPrimary
-            : styles.choiceButtonSecondary,
+            ? localStyles.choiceButtonPrimary
+            : localStyles.choiceButtonSecondary,
           { marginTop: idx === 0 ? 0 : 14, borderColor: choice.color }
         ]}
         onPress={handleChoicePress(choice.id)}
         activeOpacity={0.85}
       >
-        <View style={styles.choiceContent}>
+        <View style={localStyles.choiceContent}>
           {choice.icon}
-          <View style={styles.choiceTexts}>
+          <View style={localStyles.choiceTexts}>
             <Text style={[
-              styles.choiceLabel,
-              choice.primary ? styles.choiceLabelPrimary : styles.choiceLabelSecondary
+              localStyles.choiceLabel,
+              choice.primary ? localStyles.choiceLabelPrimary : localStyles.choiceLabelSecondary
             ]}>
               {choice.label}
             </Text>
-            <Text style={styles.choiceSubtitle}>{choice.subtitle}</Text>
+            <Text style={localStyles.choiceSubtitle}>{choice.subtitle}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -39,25 +39,25 @@ const RevisionChoicesList = ({ choices, handleChoicePress, styles }) => (
 );
 
 // Sous-composant PopupHeader
-const PopupHeader = ({ colors, totalWordsLearned, styles }) => (
+const PopupHeader = ({ colors, totalWordsLearned, localStyles }) => (
   <LinearGradient
     colors={[colors.primary, colors.accent]}
     start={{ x: 0, y: 0 }}
     end={{ x: 1, y: 1 }}
-    style={styles.header}
+    style={localStyles.header}
   >
-    <Text style={styles.celebration}>🏆</Text>
-    <Text style={styles.mainTitle}>Prêt pour une révision ?</Text>
-    <Text style={styles.wordsCounter}>{totalWordsLearned} mots appris</Text>
-    <Text style={styles.motivation}>Consolidez vos acquis !</Text>
+    <Text style={localStyles.celebration}>🏆</Text>
+    <Text style={localStyles.mainTitle}>Prêt pour une révision ?</Text>
+    <Text style={localStyles.wordsCounter}>{totalWordsLearned} mots appris</Text>
+    <Text style={localStyles.motivation}>Consolidez vos acquis !</Text>
   </LinearGradient>
 );
 
 // Sous-composant PopupFooter
-const PopupFooter = ({ colors, styles }) => (
-  <View style={styles.footerNote}>
+const PopupFooter = ({ colors, localStyles }) => (
+  <View style={localStyles.footerNote}>
     <Ionicons name="settings-outline" size={16} color={colors.textSecondary} style={{ marginRight: 4 }} />
-    <Text style={styles.noteText}>
+    <Text style={localStyles.noteText}>
       Vous pouvez modifier vos préférences à tout moment
     </Text>
   </View>
@@ -126,13 +126,13 @@ const RevisionPopup = ({
       <View style={styles.overlay}>
         <Animated.View style={styles.animatedPopup}>
           <BlurView intensity={Platform.OS === 'ios' ? 60 : 40} tint="light" style={styles.blurCard}>
-            <PopupHeader colors={colors} totalWordsLearned={totalWordsLearned} styles={styles} />
+            <PopupHeader colors={colors} totalWordsLearned={totalWordsLearned} localStyles={styles} />
             <RevisionChoicesList
               choices={choices}
               handleChoicePress={handleChoicePress}
-              styles={styles}
+              localStyles={styles}
             />
-            <PopupFooter colors={colors} styles={styles} />
+            <PopupFooter colors={colors} localStyles={styles} />
           </BlurView>
         </Animated.View>
       </View>

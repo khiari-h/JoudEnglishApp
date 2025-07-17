@@ -9,125 +9,112 @@ import useRevisionData from '../../hooks/useRevisionData'; // ← NOUVEAU HOOK
 import styles from './style';
 
 // Sous-composant ScoreCard
-const ScoreCard = ({ score, revisionQuestions, percentage, resultConfig, colors, styles }) => (
-  <View style={[styles.scoreCard, { backgroundColor: colors.surface }]}> 
-    <View style={styles.scoreRow}>
-      <Text style={[styles.scoreNumber, { color: resultConfig.color }]}>
+const ScoreCard = ({ score, revisionQuestions, percentage, resultConfig, colors, localStyles }) => (
+  <View style={[localStyles.scoreCard, { backgroundColor: colors.surface }]}> 
+    <View style={localStyles.scoreRow}>
+      <Text style={[localStyles.scoreNumber, { color: resultConfig.color }]}>
         {score}
       </Text>
-      <Text style={[styles.scoreSlash, { color: colors.textSecondary }]}>/{revisionQuestions.length}</Text>
+      <Text style={[localStyles.scoreSlash, { color: colors.textSecondary }]}>/{revisionQuestions.length}</Text>
     </View>
-    <View style={[styles.progressBar, { backgroundColor: '#F3F4F6' }]}> 
+    <View style={[localStyles.progressBar, { backgroundColor: '#F3F4F6' }]}> 
       <View 
         style={[
-          styles.progressFill, 
+          localStyles.progressFill, 
           { backgroundColor: resultConfig.color, width: `${percentage}%` }
         ]} 
       />
     </View>
-    <Text style={[styles.percentageText, { color: resultConfig.color }]}> {percentage}% de réussite </Text>
+    <Text style={[localStyles.percentageText, { color: resultConfig.color }]}> {percentage}% de réussite </Text>
   </View>
 );
 
 // Sous-composant StatsDetails
-const StatsDetails = ({ stats, colors, styles }) => (
-  <View style={[styles.statsContainer, { backgroundColor: colors.surface }]}> 
-    <Text style={[styles.statsTitle, { color: colors.text }]}>📊 Statistiques</Text>
-    <Text style={[styles.statsText, { color: colors.textSecondary }]}> {stats.totalLearned} mots appris au total </Text>
+const StatsDetails = ({ stats, colors, localStyles }) => (
+  <View style={[localStyles.statsContainer, { backgroundColor: colors.surface }]}> 
+    <Text style={[localStyles.statsTitle, { color: colors.text }]}>📊 Statistiques</Text>
+    <Text style={[localStyles.statsText, { color: colors.textSecondary }]}> {stats.totalLearned} mots appris au total </Text>
     {Object.entries(stats.byLevel).map(([lvl, count]) => (
-      <Text key={lvl} style={[styles.statsText, { color: colors.textSecondary }]}> Niveau {lvl}: {count} mots </Text>
+      <Text key={lvl} style={[localStyles.statsText, { color: colors.textSecondary }]}> Niveau {lvl}: {count} mots </Text>
     ))}
   </View>
 );
 
 // Sous-composant ResultButtons
-const ResultButtons = ({ colors, resultConfig, handleRestartPress, handleFinishPress, styles }) => (
-  <View style={styles.buttonsContainer}>
+const ResultButtons = ({ colors, resultConfig, handleRestartPress, handleFinishPress, localStyles }) => (
+  <View style={localStyles.buttonsContainer}>
     <TouchableOpacity 
-      style={[styles.restartButton, { backgroundColor: colors.surface }]} 
+      style={[localStyles.restartButton, { backgroundColor: colors.surface }]} 
       onPress={handleRestartPress}
       activeOpacity={0.8}
     >
-      <View style={styles.buttonContent}>
-        <Text style={styles.restartIcon}>🔄</Text>
-        <Text style={[styles.restartText, { color: colors.text }]}>Rejouer</Text>
+      <View style={localStyles.buttonContent}>
+        <Text style={localStyles.restartIcon}>🔄</Text>
+        <Text style={[localStyles.restartText, { color: colors.text }]}>Rejouer</Text>
       </View>
     </TouchableOpacity>
     <TouchableOpacity 
-      style={[styles.finishButton, { backgroundColor: resultConfig.color }]} 
+      style={[localStyles.finishButton, { backgroundColor: resultConfig.color }]} 
       onPress={handleFinishPress}
       activeOpacity={0.8}
     >
-      <View style={styles.buttonContent}>
-        <Text style={styles.finishIcon}>✓</Text>
-        <Text style={styles.finishText}>Terminer</Text>
+      <View style={localStyles.buttonContent}>
+        <Text style={localStyles.finishIcon}>✓</Text>
+        <Text style={localStyles.finishText}>Terminer</Text>
       </View>
     </TouchableOpacity>
   </View>
 );
 
 // Refactor ResultScreenContent pour utiliser les sous-composants
-const ResultScreenContent = ({ resultConfig, score, revisionQuestions, percentage, stats, source, colors, handleRestartPress, handleFinishPress, styles }) => (
-  <View style={styles.resultContainer}>
-    <Text style={styles.resultEmoji}>{resultConfig.emoji}</Text>
-    <Text style={[styles.resultTitle, { color: colors.text }]}>{resultConfig.title}</Text>
-    <Text style={[styles.resultMessage, { color: colors.textSecondary }]}>{resultConfig.message}</Text>
-    <ScoreCard
-      score={score}
-      revisionQuestions={revisionQuestions}
-      percentage={percentage}
-      resultConfig={resultConfig}
-      colors={colors}
-      styles={styles}
-    />
-    <StatsDetails stats={stats} colors={colors} styles={styles} />
+const ResultScreenContent = ({ resultConfig, score, revisionQuestions, percentage, stats, source, colors, handleRestartPress, handleFinishPress, localStyles }) => (
+  <View style={localStyles.resultContainer}>
+    <Text style={localStyles.resultEmoji}>{resultConfig.emoji}</Text>
+    <Text style={[localStyles.resultTitle, { color: colors.text }]}>{resultConfig.title}</Text>
+    <Text style={[localStyles.resultMessage, { color: colors.textSecondary }]}>{resultConfig.message}</Text>
+    <ScoreCard score={score} revisionQuestions={revisionQuestions} percentage={percentage} resultConfig={resultConfig} colors={colors} localStyles={localStyles} />
+    <StatsDetails stats={stats} colors={colors} localStyles={localStyles} />
     {source && (
-      <Text style={[styles.sourceText, { color: colors.textSecondary }]}> {source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'} </Text>
+      <Text style={[localStyles.sourceText, { color: colors.textSecondary }]}> {source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'} </Text>
     )}
-    <ResultButtons
-      colors={colors}
-      resultConfig={resultConfig}
-      handleRestartPress={handleRestartPress}
-      handleFinishPress={handleFinishPress}
-      styles={styles}
-    />
+    <ResultButtons colors={colors} resultConfig={resultConfig} handleRestartPress={handleRestartPress} handleFinishPress={handleFinishPress} localStyles={localStyles} />
   </View>
 );
 
-const QuestionCard = ({ currentQuestion, colors, styles }) => (
-  <View style={[styles.questionCard, { backgroundColor: colors.surface }]}>
-    <Text style={styles.questionLabel}>Traduisez :</Text>
-    <Text style={[styles.wordToTranslate, { color: colors.text }]}>
+const QuestionCard = ({ currentQuestion, colors, localStyles }) => (
+  <View style={[localStyles.questionCard, { backgroundColor: colors.surface }]}>
+    <Text style={localStyles.questionLabel}>Traduisez :</Text>
+    <Text style={[localStyles.wordToTranslate, { color: colors.text }]}>
       {currentQuestion.word}
     </Text>
     {currentQuestion.fromLevel && (
-      <Text style={[styles.levelInfo, { color: colors.textSecondary }]}>
+      <Text style={[localStyles.levelInfo, { color: colors.textSecondary }]}>
         Niveau {currentQuestion.fromLevel} ({currentQuestion.fromMode})
       </Text>
     )}
   </View>
 );
 
-const ChoicesSection = ({ currentQuestion, selectedAnswer, showResult, handleAnswerPress, colors, styles }) => (
-  <View style={styles.choicesSection}>
+const ChoicesSection = ({ currentQuestion, selectedAnswer, showResult, handleAnswerPress, colors, localStyles }) => (
+  <View style={localStyles.choicesSection}>
     {currentQuestion.choices.map((choice) => {
       const isSelected = selectedAnswer === choice;
       const isCorrect = choice === currentQuestion.correctAnswer;
       const isWrong = showResult && isSelected && !isCorrect;
       const shouldHighlight = showResult && isCorrect;
       
-      const buttonStyle = [styles.choiceButton, { backgroundColor: colors.surface }];
-      const textStyle = [styles.choiceText, { color: colors.text }];
+      const buttonStyle = [localStyles.choiceButton, { backgroundColor: colors.surface }];
+      const textStyle = [localStyles.choiceText, { color: colors.text }];
       let icon = null;
       
       if (shouldHighlight) {
-        buttonStyle.push(styles.choiceCorrect);
-        textStyle.push(styles.choiceTextCorrect);
-        icon = <Text style={styles.choiceIcon}>✓</Text>;
+        buttonStyle.push(localStyles.choiceCorrect);
+        textStyle.push(localStyles.choiceTextCorrect);
+        icon = <Text style={localStyles.choiceIcon}>✓</Text>;
       } else if (isWrong) {
-        buttonStyle.push(styles.choiceWrong);
-        textStyle.push(styles.choiceTextWrong);
-        icon = <Text style={styles.choiceIcon}>✗</Text>;
+        buttonStyle.push(localStyles.choiceWrong);
+        textStyle.push(localStyles.choiceTextWrong);
+        icon = <Text style={localStyles.choiceIcon}>✗</Text>;
       } else if (isSelected) {
         buttonStyle.push({ borderColor: colors.primary, borderWidth: 2 });
       }
@@ -361,7 +348,7 @@ const VocabularyRevision = ({ route }) => {
         colors={colors}
         handleRestartPress={handleRestartPress}
         handleFinishPress={handleFinishPress}
-        styles={styles}
+        localStyles={styles}
       />
     );
   }
@@ -417,7 +404,7 @@ const VocabularyRevision = ({ route }) => {
         <QuestionCard
           currentQuestion={currentQuestion}
           colors={colors}
-          styles={styles}
+          localStyles={styles}
         />
       </Animated.View>
 
@@ -428,7 +415,7 @@ const VocabularyRevision = ({ route }) => {
         showResult={showResult}
         handleAnswerPress={handleAnswerPress}
         colors={colors}
-        styles={styles}
+        localStyles={styles}
       />
     </View>
   );

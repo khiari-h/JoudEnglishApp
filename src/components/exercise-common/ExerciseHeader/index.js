@@ -53,24 +53,24 @@ const ExerciseHeader = ({
           exerciseIcon={exerciseIcon}
           title={title}
           exerciseColor={exerciseColor}
-          styles={styles}
+          localStyles={styles}
         />
 
         {/* =================== BADGE NIVEAU - Minimal =================== */}
         <LevelBadge
           displayLevel={displayLevel}
           levelColor={levelColor}
-          styles={styles}
+          localStyles={styles}
         />
       </View>
     </View>
   );
 };
 
-const HeaderLeftSection = ({ handleClose, backIcon, exerciseIcon, title, exerciseColor, styles }) => (
-  <View style={styles.leftSection}>
+const HeaderLeftSection = ({ handleClose, backIcon, exerciseIcon, title, exerciseColor, localStyles }) => (
+  <View style={localStyles.leftSection}>
     <TouchableOpacity
-      style={styles.backButton}
+      style={localStyles.backButton}
       onPress={handleClose}
       hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
       activeOpacity={0.6}
@@ -78,16 +78,16 @@ const HeaderLeftSection = ({ handleClose, backIcon, exerciseIcon, title, exercis
     >
       <Ionicons name={backIcon} size={22} color="#64748b" />
     </TouchableOpacity>
-    <View style={styles.titleSection}>
-      <Text style={styles.exerciseIcon}>{exerciseIcon}</Text>
-      <Text style={[styles.title, { color: exerciseColor }]}>{title}</Text>
+    <View style={localStyles.titleSection}>
+      <Text style={localStyles.exerciseIcon}>{exerciseIcon}</Text>
+      <Text style={[localStyles.title, { color: exerciseColor }]}>{title}</Text>
     </View>
   </View>
 );
 
-const LevelBadge = ({ displayLevel, levelColor, styles }) => (
-  <View style={[styles.levelBadge, { backgroundColor: levelColor }]}> 
-    <Text style={styles.levelText}>{displayLevel}</Text>
+const LevelBadge = ({ displayLevel, levelColor, localStyles }) => (
+  <View style={[localStyles.levelBadge, { backgroundColor: levelColor }]}> 
+    <Text style={localStyles.levelText}>{displayLevel}</Text>
   </View>
 );
 

@@ -16,56 +16,56 @@ import styles from "./style";
  * à la fin d'une série d'exercices
  */
 // Sous-composant ResultsHeader
-const ResultsHeader = ({ level, levelColor, exerciseType, styles }) => (
-  <View style={styles.header}>
-    <View style={[styles.levelBadge, { backgroundColor: levelColor }]}>
-      <Text style={styles.levelText}>{level}</Text>
+const ResultsHeader = ({ level, levelColor, exerciseType, localStyles }) => (
+  <View style={localStyles.header}>
+    <View style={[localStyles.levelBadge, { backgroundColor: levelColor }]}>
+      <Text style={localStyles.levelText}>{level}</Text>
     </View>
-    <Text style={styles.exerciseType}>{exerciseType}</Text>
+    <Text style={localStyles.exerciseType}>{exerciseType}</Text>
   </View>
 );
 
 // Sous-composant ScoreSection
-const ScoreSection = ({ color, icon, successPercentage, correctAnswers, totalQuestions, title, message, styles }) => (
-  <View style={styles.scoreSection}>
-    <View style={[styles.scoreCircle, { borderColor: color }]}>
+const ScoreSection = ({ color, icon, successPercentage, correctAnswers, totalQuestions, title, message, localStyles }) => (
+  <View style={localStyles.scoreSection}>
+    <View style={[localStyles.scoreCircle, { borderColor: color }]}>
       <Ionicons name={icon} size={36} color={color} />
-      <Text style={[styles.scorePercentage, { color }]}>{successPercentage}%</Text>
-      <Text style={styles.scoreRatio}>{correctAnswers}/{totalQuestions}</Text>
+      <Text style={[localStyles.scorePercentage, { color }]}>{successPercentage}%</Text>
+      <Text style={localStyles.scoreRatio}>{correctAnswers}/{totalQuestions}</Text>
     </View>
-    <View style={styles.scoreSummary}>
-      <Text style={styles.scoreTitle}>{title}</Text>
-      <Text style={styles.scoreMessage}>{message}</Text>
+    <View style={localStyles.scoreSummary}>
+      <Text style={localStyles.scoreTitle}>{title}</Text>
+      <Text style={localStyles.scoreMessage}>{message}</Text>
     </View>
   </View>
 );
 
 // Sous-composant FeedbackSection
-const FeedbackSection = ({ feedback, styles }) => (
+const FeedbackSection = ({ feedback, localStyles }) => (
   feedback ? (
-    <View style={styles.feedbackContainer}>
-      <Text style={styles.feedbackTitle}>Conseils pour progresser</Text>
-      <Text style={styles.feedbackText}>{feedback}</Text>
+    <View style={localStyles.feedbackContainer}>
+      <Text style={localStyles.feedbackTitle}>Conseils pour progresser</Text>
+      <Text style={localStyles.feedbackText}>{feedback}</Text>
     </View>
   ) : null
 );
 
 // Sous-composant ResultsButtons
-const ResultsButtons = ({ shareResults, onRetry, onContinue, levelColor, styles }) => (
+const ResultsButtons = ({ shareResults, onRetry, onContinue, levelColor, localStyles }) => (
   <>
-    <TouchableOpacity style={styles.shareButton} onPress={shareResults}>
+    <TouchableOpacity style={localStyles.shareButton} onPress={shareResults}>
       <Ionicons name="share-social" size={20} color="#6B7280" />
-      <Text style={styles.shareButtonText}>Partager</Text>
+      <Text style={localStyles.shareButtonText}>Partager</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={styles.retryButton} onPress={onRetry}>
+    <TouchableOpacity style={localStyles.retryButton} onPress={onRetry}>
       <Ionicons name="refresh" size={20} color="#6B7280" />
-      <Text style={styles.retryButtonText}>Réessayer</Text>
+      <Text style={localStyles.retryButtonText}>Réessayer</Text>
     </TouchableOpacity>
     <TouchableOpacity
-      style={[styles.continueButton, { backgroundColor: levelColor }]}
+      style={[localStyles.continueButton, { backgroundColor: levelColor }]}
       onPress={onContinue}
     >
-      <Text style={styles.continueButtonText}>Continuer</Text>
+      <Text style={localStyles.continueButtonText}>Continuer</Text>
       <Ionicons name="arrow-forward" size={20} color="white" />
     </TouchableOpacity>
   </>
@@ -167,80 +167,70 @@ const ResultsScreen = ({
           { opacity: fadeAnim, transform: [{ scale: scaleAnim }] },
         ]}
       >
-        <ResultsHeader level={level} levelColor={levelColor} exerciseType={exerciseType} styles={styles} />
-        <ScoreSection color={color} icon={icon} successPercentage={successPercentage} correctAnswers={correctAnswers} totalQuestions={totalQuestions} title={title} message={message} styles={styles} />
-        <StatsSection
-          correctAnswers={correctAnswers}
-          incorrectAnswers={incorrectAnswers}
-          skippedAnswers={skippedAnswers}
-          timeTaken={timeTaken}
-          styles={styles}
-        />
-        <FeedbackSection feedback={feedback} styles={styles} />
-        <DetailedResultsSection
-          showDetailedResults={showDetailedResults}
-          detailedResults={detailedResults}
-          styles={styles}
-        />
-        <ResultsButtons shareResults={shareResults} onRetry={onRetry} onContinue={onContinue} levelColor={levelColor} styles={styles} />
+        <ResultsHeader level={level} levelColor={levelColor} exerciseType={exerciseType} localStyles={styles} />
+        <ScoreSection color={color} icon={icon} successPercentage={successPercentage} correctAnswers={correctAnswers} totalQuestions={totalQuestions} title={title} message={message} localStyles={styles} />
+        <StatsSection correctAnswers={correctAnswers} incorrectAnswers={incorrectAnswers} skippedAnswers={skippedAnswers} timeTaken={timeTaken} localStyles={styles} />
+        <FeedbackSection feedback={feedback} localStyles={styles} />
+        <DetailedResultsSection showDetailedResults={showDetailedResults} detailedResults={detailedResults} localStyles={styles} />
+        <ResultsButtons shareResults={shareResults} onRetry={onRetry} onContinue={onContinue} levelColor={levelColor} localStyles={styles} />
       </Animated.View>
     </ScrollView>
   );
 };
 
-const StatsSection = ({ correctAnswers, incorrectAnswers, skippedAnswers, timeTaken, styles }) => (
-  <View style={styles.statsContainer}>
-    <View style={styles.statItem}>
+const StatsSection = ({ correctAnswers, incorrectAnswers, skippedAnswers, timeTaken, localStyles }) => (
+  <View style={localStyles.statsContainer}>
+    <View style={localStyles.statItem}>
       <View
-        style={[styles.statIconContainer, { backgroundColor: "#ECFDF5" }]}
+        style={[localStyles.statIconContainer, { backgroundColor: "#ECFDF5" }]}
       >
         <Ionicons name="checkmark-circle" size={24} color="#10B981" />
       </View>
-      <Text style={styles.statLabel}>Correctes</Text>
-      <Text style={styles.statValue}>{correctAnswers}</Text>
+      <Text style={localStyles.statLabel}>Correctes</Text>
+      <Text style={localStyles.statValue}>{correctAnswers}</Text>
     </View>
 
-    <View style={styles.statItem}>
+    <View style={localStyles.statItem}>
       <View
-        style={[styles.statIconContainer, { backgroundColor: "#FEF2F2" }]}
+        style={[localStyles.statIconContainer, { backgroundColor: "#FEF2F2" }]}
       >
         <Ionicons name="close-circle" size={24} color="#EF4444" />
       </View>
-      <Text style={styles.statLabel}>Incorrectes</Text>
-      <Text style={styles.statValue}>{incorrectAnswers}</Text>
+      <Text style={localStyles.statLabel}>Incorrectes</Text>
+      <Text style={localStyles.statValue}>{incorrectAnswers}</Text>
     </View>
 
-    <View style={styles.statItem}>
+    <View style={localStyles.statItem}>
       <View
-        style={[styles.statIconContainer, { backgroundColor: "#F3F4F6" }]}
+        style={[localStyles.statIconContainer, { backgroundColor: "#F3F4F6" }]}
       >
         <Ionicons name="play-skip-forward" size={24} color="#6B7280" />
       </View>
-      <Text style={styles.statLabel}>Passées</Text>
-      <Text style={styles.statValue}>{skippedAnswers}</Text>
+      <Text style={localStyles.statLabel}>Passées</Text>
+      <Text style={localStyles.statValue}>{skippedAnswers}</Text>
     </View>
 
-    <View style={styles.statItem}>
+    <View style={localStyles.statItem}>
       <View
-        style={[styles.statIconContainer, { backgroundColor: "#EFF6FF" }]}
+        style={[localStyles.statIconContainer, { backgroundColor: "#EFF6FF" }]}
       >
         <Ionicons name="time" size={24} color="#3B82F6" />
       </View>
-      <Text style={styles.statLabel}>Temps</Text>
-      <Text style={styles.statValue}>{timeTaken}</Text>
+      <Text style={localStyles.statLabel}>Temps</Text>
+      <Text style={localStyles.statValue}>{timeTaken}</Text>
     </View>
   </View>
 );
 
-const DetailedResultsSection = ({ showDetailedResults, detailedResults, styles }) => (
+const DetailedResultsSection = ({ showDetailedResults, detailedResults, localStyles }) => (
   showDetailedResults && detailedResults.length > 0 && (
-    <View style={styles.detailedResultsContainer}>
-      <Text style={styles.detailedResultsTitle}>Détail des réponses</Text>
+    <View style={localStyles.detailedResultsContainer}>
+      <Text style={localStyles.detailedResultsTitle}>Détail des réponses</Text>
 
       {detailedResults.map((result) => (
-        <View key={result.question} style={styles.detailedResultItem}>
-          <View style={styles.questionHeader}>
-            <Text style={styles.questionNumber}>
+        <View key={result.question} style={localStyles.detailedResultItem}>
+          <View style={localStyles.questionHeader}>
+            <Text style={localStyles.questionNumber}>
               Question {detailedResults.indexOf(result) + 1}
             </Text>
             <Ionicons
@@ -262,19 +252,19 @@ const DetailedResultsSection = ({ showDetailedResults, detailedResults, styles }
             />
           </View>
 
-          <Text style={styles.questionText}>{result.question}</Text>
+          <Text style={localStyles.questionText}>{result.question}</Text>
 
-          <View style={styles.answersContainer}>
-            <View style={styles.answerRow}>
-              <Text style={styles.answerLabel}>Votre réponse:</Text>
+          <View style={localStyles.answersContainer}>
+            <View style={localStyles.answerRow}>
+              <Text style={localStyles.answerLabel}>Votre réponse:</Text>
               <Text
                 style={[
-                  styles.answerValue,
+                  localStyles.answerValue,
                   result.isCorrect
-                    ? styles.correctAnswer
+                    ? localStyles.correctAnswer
                     : result.isSkipped
-                    ? styles.skippedAnswer
-                    : styles.incorrectAnswer,
+                    ? localStyles.skippedAnswer
+                    : localStyles.incorrectAnswer,
                 ]}
               >
                 {result.isSkipped ? "Passée" : result.userAnswer}
@@ -282,9 +272,9 @@ const DetailedResultsSection = ({ showDetailedResults, detailedResults, styles }
             </View>
 
             {!result.isCorrect && !result.isSkipped && (
-              <View style={styles.answerRow}>
-                <Text style={styles.answerLabel}>Réponse correcte:</Text>
-                <Text style={[styles.answerValue, styles.correctAnswer]}>
+              <View style={localStyles.answerRow}>
+                <Text style={localStyles.answerLabel}>Réponse correcte:</Text>
+                <Text style={[localStyles.answerValue, localStyles.correctAnswer]}>
                   {result.correctAnswer}
                 </Text>
               </View>

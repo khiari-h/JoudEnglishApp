@@ -5,27 +5,27 @@ import Card from "../../../../components/ui/Card";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import styles from "./style";
 
-const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, styles }) => {
+const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, localStyles }) => {
   const currentWord = (lastActivity.metadata?.word || 0) + 1;
   const totalWords = lastActivity.metadata?.totalWords || 15;
   const percentage = Math.round((currentWord / totalWords) * 100);
   return (
-    <View style={styles.content}>
-      <View style={styles.header}>
-        <Text style={styles.emoji}>📚</Text>
-        <Text style={[styles.label, { color: colors.textSecondary }]}>Reprendre</Text>
+    <View style={localStyles.content}>
+      <View style={localStyles.header}>
+        <Text style={localStyles.emoji}>📚</Text>
+        <Text style={[localStyles.label, { color: colors.textSecondary }]}>Reprendre</Text>
       </View>
-      <Text style={[styles.title, { color: colors.text }]}>{lastActivity.title}</Text>
-      <Text style={[styles.subtitle, { color: colors.textSecondary }]}> 
+      <Text style={[localStyles.title, { color: colors.text }]}>{lastActivity.title}</Text>
+      <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}> 
         Niv {lastActivity.level || 1}
         {typeof lastActivity.metadata?.categoryIndex === 'number' ? ` • Catégorie ${lastActivity.metadata.categoryIndex + 1}` : ''}
         • Mot {currentWord}/{totalWords}
       </Text>
-      <View style={styles.progressContainer}>
-        <View style={[styles.progressTrack, { backgroundColor: `${accentColor}15` }]}> 
+      <View style={localStyles.progressContainer}>
+        <View style={[localStyles.progressTrack, { backgroundColor: `${accentColor}15` }]}> 
           <View 
             style={[
-              styles.progressFill,
+              localStyles.progressFill,
               { 
                 width: `${Math.min(percentage, 100)}%`,
                 backgroundColor: accentColor
@@ -33,30 +33,30 @@ const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, st
             ]} 
           />
         </View>
-        <Text style={[styles.progressText, { color: accentColor }]}>{percentage}%</Text>
+        <Text style={[localStyles.progressText, { color: accentColor }]}>{percentage}%</Text>
       </View>
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: accentColor }]}
+        style={[localStyles.button, { backgroundColor: accentColor }]}
         onPress={handleContinue}
         activeOpacity={0.8}
       >
-        <Text style={styles.buttonText}>Continuer ▶️</Text>
+        <Text style={localStyles.buttonText}>Continuer ▶️</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-const HeroEmptyCardContent = ({ accentColor, colors, handleLevelSelection, styles }) => (
-  <View style={styles.content}>
-    <Text style={styles.emoji}>🚀</Text>
-    <Text style={[styles.title, { color: colors.text }]}>Commencer l'apprentissage</Text>
-    <Text style={[styles.subtitle, { color: colors.textSecondary }]}>Choisissez votre premier exercice</Text>
+const HeroEmptyCardContent = ({ accentColor, colors, handleLevelSelection, localStyles }) => (
+  <View style={localStyles.content}>
+    <Text style={localStyles.emoji}>🚀</Text>
+    <Text style={[localStyles.title, { color: colors.text }]}>Commencer l'apprentissage</Text>
+    <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}>Choisissez votre premier exercice</Text>
     <TouchableOpacity
-      style={[styles.button, { backgroundColor: accentColor }]}
+      style={[localStyles.button, { backgroundColor: accentColor }]}
       onPress={handleLevelSelection}
       activeOpacity={0.8}
     >
-      <Text style={styles.buttonText}>Commencer ▶️</Text>
+      <Text style={localStyles.buttonText}>Commencer ▶️</Text>
     </TouchableOpacity>
   </View>
 );
@@ -101,7 +101,7 @@ const HeroContinueSection = ({
             accentColor={accentColor}
             colors={colors}
             handleLevelSelection={handleLevelSelection}
-            styles={styles}
+            localStyles={styles}
           />
         </Card>
       </View>
@@ -116,7 +116,7 @@ const HeroContinueSection = ({
           accentColor={accentColor}
           colors={colors}
           handleContinue={handleContinue}
-          styles={styles}
+          localStyles={styles}
         />
       </Card>
     </View>

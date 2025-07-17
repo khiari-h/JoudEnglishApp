@@ -73,25 +73,25 @@ const ProgressCard = ({
   const handleCategoryPress = useCallback((idx) => () => onCategoryPress?.(idx), [onCategoryPress]);
 
   // Sous-composant CardHeader
-  const CardHeader = ({ title, subtitle, completed, total, progress, levelColor, expandable, expanded, toggleExpanded, styles }) => (
+  const CardHeader = ({ headerTitle, headerSubtitle, headerCompleted, headerTotal, headerProgress, headerLevelColor, headerExpandable, headerExpanded, headerToggleExpanded, headerStyles }) => (
     <TouchableOpacity 
-      style={styles.header}
-      onPress={toggleExpanded}
-      activeOpacity={expandable ? 0.8 : 1}
+      style={headerStyles.header}
+      onPress={headerToggleExpanded}
+      activeOpacity={headerExpandable ? 0.8 : 1}
     >
-      <View style={styles.headerLeft}>
-        <Text style={styles.title}>{title}</Text>
-        {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+      <View style={headerStyles.headerLeft}>
+        <Text style={headerStyles.title}>{headerTitle}</Text>
+        {headerSubtitle && <Text style={headerStyles.subtitle}>{headerSubtitle}</Text>}
       </View>
-      <View style={styles.headerRight}>
-        <View style={styles.statsContainer}>
-          <Text style={[styles.statsCount, { color: levelColor }]}>{completed}</Text>
-          <Text style={styles.statsTotal}>/ {total}</Text>
+      <View style={headerStyles.headerRight}>
+        <View style={headerStyles.statsContainer}>
+          <Text style={[headerStyles.statsCount, { color: headerLevelColor }]}>{headerCompleted}</Text>
+          <Text style={headerStyles.statsTotal}>/ {headerTotal}</Text>
         </View>
-        <Text style={[styles.statsPercentage, { color: levelColor }]}>{Math.round(progress)}%</Text>
-        {expandable && (
-          <View style={[styles.chevronContainer, expanded && styles.chevronExpanded]}>
-            <Ionicons name="chevron-down" size={16} color={levelColor} />
+        <Text style={[headerStyles.statsPercentage, { color: headerLevelColor }]}>{Math.round(headerProgress)}%</Text>
+        {headerExpandable && (
+          <View style={[headerStyles.chevronContainer, headerExpanded && headerStyles.chevronExpanded]}>
+            <Ionicons name="chevron-down" size={16} color={headerLevelColor} />
           </View>
         )}
       </View>
@@ -99,32 +99,32 @@ const ProgressCard = ({
   );
 
   // Sous-composant MainProgressBar
-  const MainProgressBar = ({ progress, levelColor, styles }) => (
-    <View style={styles.progressSection}>
+  const MainProgressBar = ({ mainProgress, mainLevelColor, mainStyles }) => (
+    <View style={mainStyles.progressSection}>
       <ProgressBar
-        progress={progress}
+        progress={mainProgress}
         showPercentage={false}
-        fillColor={levelColor}
+        fillColor={mainLevelColor}
         height={6}
-        backgroundColor={`${levelColor}15`}
-        borderRadius={3}
-        animated
+      backgroundColor={`${mainLevelColor}15`}
+      borderRadius={3}
+      animated
       />
     </View>
   );
 
   // Sous-composant Expansion
-  const Expansion = ({ expandable, expanded, categoryData, handleCategoryPress, levelColor, styles }) => (
-    expandable && expanded && categoryData.length > 0 && (
-      <View style={styles.expansionWrapper}>
-        <View style={styles.expansionContainer}>
-          <View style={styles.expansionHeader}>
-            <Text style={styles.expansionTitle}>Par catégorie</Text>
-            <Text style={styles.expansionSubtitle}>
-              {categoryData.length} {categoryData.length > 1 ? 'catégories' : 'catégorie'}
+  const Expansion = ({ expandable: localExpandable, expanded: localExpanded, categoryData: localCategoryData, handleCategoryPress: localHandleCategoryPress, levelColor: localLevelColor, localStyles }) => (
+    localExpandable && localExpanded && localCategoryData.length > 0 && (
+      <View style={localStyles.expansionWrapper}>
+        <View style={localStyles.expansionContainer}>
+          <View style={localStyles.expansionHeader}>
+            <Text style={localStyles.expansionTitle}>Par catégorie</Text>
+            <Text style={localStyles.expansionSubtitle}>
+              {localCategoryData.length} {localCategoryData.length > 1 ? 'catégories' : 'catégorie'}
             </Text>
           </View>
-          <CategoryList categoryData={categoryData} handleCategoryPress={handleCategoryPress} levelColor={levelColor} styles={styles} />
+          <CategoryList categoryData={localCategoryData} handleCategoryPress={localHandleCategoryPress} levelColor={localLevelColor} styles={localStyles} />
         </View>
       </View>
     )
@@ -139,18 +139,18 @@ const ProgressCard = ({
         style={styles.cardGradient}
       >
         <CardHeader
-          title={title}
-          subtitle={subtitle}
-          completed={completed}
-          total={total}
-          progress={progress}
-          levelColor={levelColor}
-          expandable={expandable}
-          expanded={expanded}
-          toggleExpanded={toggleExpanded}
-          styles={styles}
+          headerTitle={title}
+          headerSubtitle={subtitle}
+          headerCompleted={completed}
+          headerTotal={total}
+          headerProgress={progress}
+          headerLevelColor={levelColor}
+          headerExpandable={expandable}
+          headerExpanded={expanded}
+          headerToggleExpanded={toggleExpanded}
+          headerStyles={styles}
         />
-        <MainProgressBar progress={progress} levelColor={levelColor} styles={styles} />
+        <MainProgressBar mainProgress={progress} mainLevelColor={levelColor} mainStyles={styles} />
       </LinearGradient>
       <Expansion
         expandable={expandable}

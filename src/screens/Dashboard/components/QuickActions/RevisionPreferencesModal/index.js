@@ -88,7 +88,7 @@ const RevisionPreferencesModal = ({
     >
       <View style={styles.overlay}>
         <View style={styles.modalContainer}>
-          <ModalHeader onSkip={onSkip} styles={styles} />
+          <ModalHeader onSkip={onSkip} localStyles={styles} />
           <ScrollView 
             style={styles.scrollContainer}
             contentContainerStyle={styles.scrollContent}
@@ -103,20 +103,20 @@ const RevisionPreferencesModal = ({
                 revisionStyles={revisionStyles} 
                 selectedStyle={selectedStyle} 
                 handleStylePress={handleStylePress} 
-                styles={styles} 
+                localStyles={styles} 
               />
             </View>
             <SummarySection 
               selectedStyle={selectedStyle} 
               revisionStyles={revisionStyles} 
-              styles={styles} 
+              localStyles={styles} 
             />
             <ModalButtons
               revisionStyles={revisionStyles}
               selectedStyle={selectedStyle}
               handleConfirm={handleConfirm}
               handleSkip={handleSkip}
-              styles={styles}
+              localStyles={styles}
             />
           </ScrollView>
         </View>
@@ -126,62 +126,62 @@ const RevisionPreferencesModal = ({
 };
 
 // Sous-composant ModalHeader
-const ModalHeader = ({ onSkip, styles }) => (
+const ModalHeader = ({ onSkip, localStyles }) => (
   <LinearGradient
     colors={['#8B5CF6', '#A855F7']}
     start={{ x: 0, y: 0 }}
     end={{ x: 1, y: 1 }}
-    style={styles.header}
+    style={localStyles.header}
   >
     <TouchableOpacity
-      style={styles.closeButton}
+      style={localStyles.closeButton}
       onPress={onSkip}
       activeOpacity={0.7}
     >
-      <Text style={styles.closeButtonText}>×</Text>
+      <Text style={localStyles.closeButtonText}>×</Text>
     </TouchableOpacity>
-    <Text style={styles.headerIcon}>🎉</Text>
-    <Text style={styles.headerTitle}>Félicitations !</Text>
-    <Text style={styles.headerSubtitle}>
+    <Text style={localStyles.headerIcon}>🎉</Text>
+    <Text style={localStyles.headerTitle}>Félicitations !</Text>
+    <Text style={localStyles.headerSubtitle}>
       25 mots appris ! Choisissez votre style de révision :
     </Text>
   </LinearGradient>
 );
 
 // Sous-composant ModalButtons
-const ModalButtons = ({ revisionStyles, selectedStyle, handleConfirm, handleSkip, styles }) => (
+const ModalButtons = ({ revisionStyles, selectedStyle, handleConfirm, handleSkip, localStyles }) => (
   <>
     <TouchableOpacity
       style={[
-        styles.confirmButton,
+        localStyles.confirmButton,
         { backgroundColor: revisionStyles.find(s => s.id === selectedStyle)?.color || '#8B5CF6' }
       ]}
       onPress={handleConfirm}
       activeOpacity={0.8}
     >
-      <Text style={styles.confirmButtonText}>
+      <Text style={localStyles.confirmButtonText}>
         ✅ Confirmer mon choix
       </Text>
     </TouchableOpacity>
     <TouchableOpacity
-      style={styles.skipButton}
+      style={localStyles.skipButton}
       onPress={handleSkip}
       activeOpacity={0.7}
     >
-      <Text style={styles.skipButtonText}>
+      <Text style={localStyles.skipButtonText}>
         ⏭️ Utiliser Standard par défaut
       </Text>
     </TouchableOpacity>
   </>
 );
 
-const RevisionStylesList = ({ revisionStyles, selectedStyle, handleStylePress, styles }) => (
-  <View style={styles.stylesContainer}>
+const RevisionStylesList = ({ revisionStyles, selectedStyle, handleStylePress, localStyles }) => (
+  <View style={localStyles.stylesContainer}>
     {revisionStyles.map((style) => (
       <TouchableOpacity
         key={style.id}
         style={[
-          styles.styleCard,
+          localStyles.styleCard,
           selectedStyle === style.id && {
             borderColor: style.color,
             backgroundColor: `${style.color}10`
@@ -190,28 +190,22 @@ const RevisionStylesList = ({ revisionStyles, selectedStyle, handleStylePress, s
         onPress={handleStylePress(style.id)}
         activeOpacity={0.7}
       >
-        <View style={styles.styleHeader}>
-          <Text style={styles.styleIcon}>{style.icon}</Text>
-          <View style={styles.styleInfo}>
+        <View style={localStyles.styleHeader}>
+          <Text style={localStyles.styleIcon}>{style.icon}</Text>
+          <View style={localStyles.styleInfo}>
             <Text style={[
-              styles.styleTitle,
+              localStyles.styleTitle,
               selectedStyle === style.id && { color: style.color }
             ]}>
               {style.title}
             </Text>
-            <Text style={styles.styleSubtitle}>
-              {style.subtitle}
-            </Text>
+            <Text style={localStyles.styleSubtitle}>{style.subtitle}</Text>
           </View>
         </View>
-        
-        <Text style={styles.styleDescription}>
-          {style.description}
-        </Text>
-        
+        <Text style={localStyles.styleDescription}>{style.description}</Text>
         {selectedStyle === style.id && (
-          <View style={[styles.selectedBadge, { backgroundColor: style.color }]}>
-            <Text style={styles.selectedText}>✓</Text>
+          <View style={[localStyles.selectedBadge, { backgroundColor: style.color }]}>
+            <Text style={localStyles.selectedText}>✓</Text>
           </View>
         )}
       </TouchableOpacity>
@@ -219,41 +213,41 @@ const RevisionStylesList = ({ revisionStyles, selectedStyle, handleStylePress, s
   </View>
 );
 
-const SummarySection = ({ selectedStyle, revisionStyles, styles }) => (
+const SummarySection = ({ selectedStyle, revisionStyles, localStyles }) => (
   selectedStyle !== 'none' ? (
-    <View style={styles.summary}>
-      <Text style={styles.summaryTitle}>📋 Votre configuration :</Text>
-      <Text style={styles.summaryText}>
-        • Style : <Text style={styles.summaryHighlight}>
+    <View style={localStyles.summary}>
+      <Text style={localStyles.summaryTitle}>📋 Votre configuration :</Text>
+      <Text style={localStyles.summaryText}>
+        • Style : <Text style={localStyles.summaryHighlight}>
           {revisionStyles.find(s => s.id === selectedStyle)?.title}
         </Text>
       </Text>
-      <Text style={styles.summaryText}>
-        • Révision tous les <Text style={styles.summaryHighlight}>
+      <Text style={localStyles.summaryText}>
+        • Révision tous les <Text style={localStyles.summaryHighlight}>
           {revisionStyles.find(s => s.id === selectedStyle)?.frequency} mots
         </Text>
       </Text>
-      <Text style={styles.summaryText}>
-        • <Text style={styles.summaryHighlight}>
+      <Text style={localStyles.summaryText}>
+        • <Text style={localStyles.summaryHighlight}>
           {revisionStyles.find(s => s.id === selectedStyle)?.questionsCount} questions
         </Text> par session
       </Text>
-      <Text style={styles.summaryNote}>
+      <Text style={localStyles.summaryNote}>
         💡 Vous pourrez modifier ces paramètres plus tard
       </Text>
     </View>
   ) : (
-    <View style={[styles.summary, styles.summaryWarning]}>
-      <Text style={[styles.summaryTitle, styles.summaryTitleWarning]}>
+    <View style={[localStyles.summary, localStyles.summaryWarning]}>
+      <Text style={[localStyles.summaryTitle, localStyles.summaryTitleWarning]}>
         ⚠️ Révision désactivée
       </Text>
-      <Text style={[styles.summaryText, styles.summaryTextWarning]}>
+      <Text style={[localStyles.summaryText, localStyles.summaryTextWarning]}>
         • Aucune révision automatique
       </Text>
-      <Text style={[styles.summaryText, styles.summaryTextWarning]}>
+      <Text style={[localStyles.summaryText, localStyles.summaryTextWarning]}>
         • Bouton révision manuelle disponible
       </Text>
-      <Text style={[styles.summaryNote, styles.summaryNoteWarning]}>
+      <Text style={[localStyles.summaryNote, localStyles.summaryNoteWarning]}>
         💡 Réactivable à tout moment
       </Text>
     </View>

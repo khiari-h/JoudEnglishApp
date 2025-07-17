@@ -33,28 +33,28 @@ const ModernHeader = ({
 
       <View style={styles.content}>
         {/* Section gauche : Logo uniquement */}
-        <HeaderLeftSection colors={colors} styles={styles} />
+        <HeaderLeftSection colors={colors} localStyles={styles} />
 
         {/* Section droite : Badge niveau uniquement */}
-        <HeaderRightSection displayLevel={displayLevel} levelColor={levelColor} colors={colors} styles={styles} />
+        <HeaderRightSection displayLevel={displayLevel} levelColor={levelColor} colors={colors} localStyles={styles} />
       </View>
     </LinearGradient>
   );
 };
 
-const HeaderLeftSection = ({ colors, styles }) => (
-  <View style={styles.leftSection}>
-    <View style={styles.logoContainer}>
-      <Text style={styles.logoEmoji}>🎓</Text>
-      <Text style={[styles.logoText, { color: colors.surface }]}>JOUD</Text>
+const HeaderLeftSection = ({ colors, localStyles }) => (
+  <View style={localStyles.leftSection}>
+    <View style={localStyles.logoContainer}>
+      <Text style={localStyles.logoEmoji}>🎓</Text>
+      <Text style={[localStyles.logoText, { color: colors.surface }]}>JOUD</Text>
     </View>
   </View>
 );
 
-const HeaderRightSection = ({ displayLevel, levelColor, colors, styles }) => (
-  <View style={styles.rightSection}>
-    <View style={[styles.levelBadge, { backgroundColor: colors.surface }]}> 
-      <Text style={[styles.levelText, { color: levelColor }]}>{displayLevel}</Text>
+const HeaderRightSection = ({ displayLevel, levelColor, colors, localStyles }) => (
+  <View style={localStyles.rightSection}>
+    <View style={[localStyles.levelBadge, { backgroundColor: colors.surface }]}> 
+      <Text style={[localStyles.levelText, { color: levelColor }]}>{displayLevel}</Text>
     </View>
   </View>
 );

@@ -34,58 +34,54 @@ const DEFAULT_THEME = {
 };
 
 // Sous-composant ModernCardHeader
-const ModernCardHeader = ({ level, colors, styles }) => (
-  <View style={styles.modernCardHeader}>
-    <View style={styles.modernTitleContainer}>
-      <Text style={[styles.modernTitle, { color: colors.text }]}>
-        {level.title}
-      </Text>
-      <View style={[styles.modernBadge, { backgroundColor: level.color }]}>
-        <Text style={styles.modernBadgeText}>{level.progress}%</Text>
+const ModernCardHeader = ({ level, colors, localStyles }) => (
+  <View style={localStyles.modernCardHeader}>
+    <View style={localStyles.modernTitleContainer}>
+      <Text style={[localStyles.modernTitle, { color: colors.text }]}>{level.title}</Text>
+      <View style={[localStyles.modernBadge, { backgroundColor: level.color }]}>
+        <Text style={localStyles.modernBadgeText}>{level.progress}%</Text>
       </View>
     </View>
-    <Text style={styles.modernIcon}>{level.icon}</Text>
+    <Text style={localStyles.modernIcon}>{level.icon}</Text>
   </View>
 );
 
 // Sous-composant ModernProgress
-const ModernProgress = ({ level, colors, styles }) => (
+const ModernProgress = ({ level, colors, localStyles }) => (
   level.hasProgress && (
-    <View style={styles.modernProgressContainer}>
-      <View style={styles.modernProgressBar}>
+    <View style={localStyles.modernProgressContainer}>
+      <View style={localStyles.modernProgressBar}>
         <View 
           style={[
-            styles.modernProgressFill,
+            localStyles.modernProgressFill,
             { width: `${level.progress}%`, backgroundColor: level.color }
           ]} 
         />
       </View>
-      <Text style={[styles.modernProgressText, { color: colors.textSecondary }]}>
-        {level.progress}%
-      </Text>
+      <Text style={[localStyles.modernProgressText, { color: colors.textSecondary }]}> {level.progress}% </Text>
     </View>
   )
 );
 
 // Sous-composant ModernCardButton
-const ModernCardButton = ({ level, handleLevelPress, styles }) => (
+const ModernCardButton = ({ level, handleLevelPress, localStyles }) => (
   <Button
     title={level.hasStarted ? "Continuer" : "Commencer"}
     variant="filled"
     color={level.color}
     fullWidth
     onPress={handleLevelPress(level)}
-    style={styles.modernButton}
+    style={localStyles.modernButton}
     rightIcon={level.hasStarted ? "play-outline" : "rocket-outline"}
   />
 );
 
 // Refactor LevelCardContent pour utiliser les sous-composants
-const LevelCardContent = ({ level, colors, styles, handleLevelPress }) => (
-  <View style={styles.modernCardContent}>
-    <ModernCardHeader level={level} colors={colors} styles={styles} />
-    <ModernProgress level={level} colors={colors} styles={styles} />
-    <ModernCardButton level={level} handleLevelPress={handleLevelPress} styles={styles} />
+const LevelCardContent = ({ level, colors, localStyles, handleLevelPress }) => (
+  <View style={localStyles.modernCardContent}>
+    <ModernCardHeader level={level} colors={colors} localStyles={localStyles} />
+    <ModernProgress level={level} colors={colors} localStyles={localStyles} />
+    <ModernCardButton level={level} handleLevelPress={handleLevelPress} localStyles={localStyles} />
   </View>
 );
 
@@ -186,7 +182,7 @@ const LevelSelection = () => {
         onPress={handleLevelPress(level)}
         activeOpacity={0.8}
       >
-        <LevelCardContent level={level} colors={colors} styles={styles} handleLevelPress={handleLevelPress} />
+        <LevelCardContent level={level} colors={colors} localStyles={styles} handleLevelPress={handleLevelPress} />
       </TouchableOpacity>
     );
   }, [handleLevelPress, colors.text, styles]);

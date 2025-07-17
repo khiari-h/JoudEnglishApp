@@ -12,26 +12,26 @@ import styles from "./style";
  * ✅ Seul le niveau en cours est coloré
  * ✅ Bouton Explorer = navigation vers exercices
  */
-const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLevelDisplay, colors, primaryColor, styles }) => (
-  <View style={styles.levelsContainer}>
+const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLevelDisplay, colors, primaryColor, localStyles }) => (
+  <View style={localStyles.levelsContainer}>
     {displayLevels.map((level) => {
       const isActive = level.id === currentLevel;
-      const circleStyle = [styles.levelCircle];
-      const textStyle = [styles.levelText];
+      const circleStyle = [localStyles.levelCircle];
+      const textStyle = [localStyles.levelText];
       if (isActive) {
         circleStyle.push([
-          styles.activeLevelCircle,
+          localStyles.activeLevelCircle,
           { backgroundColor: level.color || primaryColor }
         ]);
-        textStyle.push(styles.activeLevelText);
+        textStyle.push(localStyles.activeLevelText);
       } else {
-        circleStyle.push(styles.futureLevelCircle);
-        textStyle.push([styles.futureLevelText, { color: colors.textSecondary }]);
+        circleStyle.push(localStyles.futureLevelCircle);
+        textStyle.push([localStyles.futureLevelText, { color: colors.textSecondary }]);
       }
       return (
         <TouchableOpacity
           key={level.id}
-          style={styles.levelButton}
+          style={localStyles.levelButton}
           onPress={handleLevelPress(level.id)}
           activeOpacity={0.7}
         >
@@ -44,12 +44,12 @@ const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLev
   </View>
 );
 
-const GlobalProgressBar = ({ globalProgress, primaryColor, styles, colors }) => (
-  <View style={styles.globalProgressContainer}>
-    <View style={[styles.globalProgressTrack, { backgroundColor: `${primaryColor}15` }]}> 
+const GlobalProgressBar = ({ globalProgress, primaryColor, localStyles, colors }) => (
+  <View style={localStyles.globalProgressContainer}>
+    <View style={[localStyles.globalProgressTrack, { backgroundColor: `${primaryColor}15` }]}> 
       <View 
         style={[
-          styles.globalProgressFill,
+          localStyles.globalProgressFill,
           { 
             width: `${Math.min(globalProgress, 100)}%`,
             backgroundColor: primaryColor
@@ -57,23 +57,23 @@ const GlobalProgressBar = ({ globalProgress, primaryColor, styles, colors }) => 
         ]} 
       />
     </View>
-    <Text style={[styles.progressLabel, { color: colors.textSecondary }]}>Progression globale</Text>
+    <Text style={[localStyles.progressLabel, { color: colors.textSecondary }]}>Progression globale</Text>
   </View>
 );
 
 // Sous-composant ProgressHeader
-const ProgressHeader = ({ currentLevelInfo, currentLevelDisplay, globalProgress, primaryColor, colors, styles }) => (
-  <View style={styles.header}>
-    <View style={styles.progressInfo}>
-      <Text style={[styles.progressTitle, { color: colors.text }]}>
+const ProgressHeader = ({ currentLevelInfo, currentLevelDisplay, globalProgress, primaryColor, colors, localStyles }) => (
+  <View style={localStyles.header}>
+    <View style={localStyles.progressInfo}>
+      <Text style={[localStyles.progressTitle, { color: colors.text }]}>
         {currentLevelInfo.title || `Niveau ${currentLevelDisplay}`}
       </Text>
-      <Text style={[styles.progressSubtitle, { color: colors.textSecondary }]}>
+      <Text style={[localStyles.progressSubtitle, { color: colors.textSecondary }]}>
         Continuez votre apprentissage {currentLevelInfo.icon}
       </Text>
     </View>
-    <View style={styles.progressBadge}>
-      <Text style={[styles.progressPercentage, { color: primaryColor }]}>
+    <View style={localStyles.progressBadge}>
+      <Text style={[localStyles.progressPercentage, { color: primaryColor }]}>
         {globalProgress}%
       </Text>
     </View>
@@ -137,9 +137,9 @@ const LearningProgress = ({
     <View style={styles.container}>
       <Text style={[styles.sectionTitle, { color: colors.text }]}>🏆 Progression générale</Text>
       <Card style={[styles.card, { backgroundColor: colors.surface }]}>
-        <ProgressHeader currentLevelInfo={currentLevelInfo} currentLevelDisplay={currentLevelDisplay} globalProgress={globalProgress} primaryColor={primaryColor} colors={colors} styles={styles} />
-        <GlobalProgressBar globalProgress={globalProgress} primaryColor={primaryColor} styles={styles} colors={colors} />
-        <LevelsCircleRow displayLevels={displayLevels} currentLevel={currentLevel} handleLevelPress={handleLevelPress} getLevelDisplay={getLevelDisplay} colors={colors} primaryColor={primaryColor} styles={styles} />
+        <ProgressHeader currentLevelInfo={currentLevelInfo} currentLevelDisplay={currentLevelDisplay} globalProgress={globalProgress} primaryColor={primaryColor} colors={colors} localStyles={styles} />
+        <GlobalProgressBar globalProgress={globalProgress} primaryColor={primaryColor} localStyles={styles} colors={colors} />
+        <LevelsCircleRow displayLevels={displayLevels} currentLevel={currentLevel} handleLevelPress={handleLevelPress} getLevelDisplay={getLevelDisplay} colors={colors} primaryColor={primaryColor} localStyles={styles} />
         <TouchableOpacity
           style={[styles.actionButton, { borderColor: primaryColor }]}
           onPress={handleExplorePress}
