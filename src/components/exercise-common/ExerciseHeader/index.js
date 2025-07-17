@@ -2,6 +2,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useCallback } from "react";
 import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../../utils/constants";
 import styles from "./style";
 
@@ -34,13 +35,13 @@ const ExerciseHeader = ({
   // Affichage du niveau
   const displayLevel = level === "bonus" ? "B" : level;
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     if (onClose) {
       onClose();
     } else {
       navigation.goBack();
     }
-  };
+  }, [onClose, navigation]);
 
   return (
     <View style={styles.container}>

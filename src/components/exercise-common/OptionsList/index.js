@@ -2,6 +2,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
+import { useCallback } from "react";
 
 /**
  * Liste d'options sélectionnables pour les exercices à choix multiples
@@ -64,6 +65,11 @@ const OptionsList = ({
     return styles.optionText;
   };
 
+  // Factory de handler pour éviter la création de fonctions inline
+  const handleOptionPress = useCallback((optionId) => () => {
+    if (!disabled) onSelectOption(optionId);
+  }, [onSelectOption, disabled]);
+
   // Rendu pour la mise en page verticale
   const renderVerticalOptions = () => (
     <View style={styles.verticalContainer}>
@@ -71,7 +77,7 @@ const OptionsList = ({
         <TouchableOpacity
           key={option.id}
           style={[styles.optionItem, getOptionStyle(option.id)]}
-          onPress={() => !disabled && onSelectOption(option.id)}
+          onPress={handleOptionPress(option.id)}
           disabled={disabled}
         >
           <Text style={[styles.optionItemText, getOptionTextStyle(option.id)]}>
@@ -110,7 +116,7 @@ const OptionsList = ({
             getOptionStyle(option.id),
             { width: `${100 / Math.min(options.length, 2) - 2}%` },
           ]}
-          onPress={() => !disabled && onSelectOption(option.id)}
+          onPress={handleOptionPress(option.id)}
           disabled={disabled}
         >
           <Text style={[styles.gridOptionText, getOptionTextStyle(option.id)]}>

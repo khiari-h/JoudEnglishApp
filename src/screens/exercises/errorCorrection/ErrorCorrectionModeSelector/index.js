@@ -3,6 +3,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import createStyles from "./style";
+import { useCallback } from "react";
 
 /**
  * 🎯 ErrorCorrectionModeSelector - Version Ultra-Simplifiée
@@ -37,6 +38,9 @@ const ErrorCorrectionModeSelector = ({
     },
   ];
 
+  // Factory de handler pour éviter la création de fonctions inline
+  const handleModePress = useCallback((modeId) => () => onSelectMode(modeId), [onSelectMode]);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Choisir un mode :</Text>
@@ -45,7 +49,7 @@ const ErrorCorrectionModeSelector = ({
         <TouchableOpacity
           key={mode.id}
           style={[styles.modeCard, disabled && styles.disabledCard]}
-          onPress={() => onSelectMode(mode.id)}
+          onPress={handleModePress(mode.id)}
           disabled={disabled}
         >
           <Ionicons

@@ -1,6 +1,7 @@
 // SpellingInput/index.js - VERSION SANS DEBUG
 
 import { View, TextInput, Text } from "react-native";
+import { useCallback } from "react";
 import createStyles from "./style";
 
 const SpellingInput = ({ 
@@ -23,9 +24,9 @@ const SpellingInput = ({
     );
   }
 
-  const handleChangeText = (text) => {
+  const handleChangeText = useCallback((text) => {
     onChangeText(text);
-  };
+  }, [onChangeText]);
 
   return (
     <View style={styles.container}>

@@ -89,25 +89,25 @@ const WordGamesExercise = ({ route }) => {
   }, [handleSaveActivity]);
 
   // Handlers
-const handleBackPress = () => {
-  router.push({
-    pathname: "/tabs/exerciseSelection",
-    params: { level }
-  });
-};
+  const handleBackPress = useCallback(() => {
+    router.push({
+      pathname: "/tabs/exerciseSelection",
+      params: { level }
+    });
+  }, [level]);
 
-  const handleCheckAnswer = () => checkAnswer();
+  const handleCheckAnswer = useCallback(() => checkAnswer(), [checkAnswer]);
 
-  const handleNextGame = () => {
+  const handleNextGame = useCallback(() => {
     handleNext();
     // Navigation automatique quand tous les jeux sont terminés
-  };
+  }, [handleNext]);
 
-  const handlePreviousGame = () => handlePrevious();
+  const handlePreviousGame = useCallback(() => handlePrevious(), [handlePrevious]);
 
-  const handleResetGames = () => resetGames();
+  const handleResetGames = useCallback(() => resetGames(), [resetGames]);
 
-  const handleContinue = () => navigation.goBack();
+  const handleContinue = useCallback(() => navigation.goBack(), [navigation]);
 
   // Loading state
   if (!loaded || !currentGame) {

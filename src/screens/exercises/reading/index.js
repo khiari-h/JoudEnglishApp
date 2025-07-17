@@ -18,7 +18,7 @@ import useReading from "./hooks/useReading";
 import useLastActivity from "../../../hooks/useLastActivity";
 import { getReadingData, getLevelColor } from "../../../utils/reading/readingDataHelper";
 import createStyles from "./style";
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 
 const ReadingExercise = ({ route }) => {
   const { level = "A1" } = route?.params || {};
@@ -85,28 +85,28 @@ const ReadingExercise = ({ route }) => {
   }, [selectedExerciseIndex, currentQuestionIndex]); // ✅ SEULEMENT ces 2 dépendances !
 
   // Handlers
- const handleBackPress = () => {
-  router.push({
-    pathname: "/tabs/exerciseSelection",
-    params: { level }
-  });
-};
+  const handleBackPress = useCallback(() => {
+    router.push({
+      pathname: "/tabs/exerciseSelection",
+      params: { level }
+    });
+  }, [level]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (showFeedback) {
       nextQuestion();
     } else {
       submitAnswer();
     }
-  };
+  }, [showFeedback, nextQuestion, submitAnswer]);
 
-  const handleExerciseProgressPress = (index) => {
+  const handleExerciseProgressPress = useCallback((index) => {
     changeExercise(index);
-  };
+  }, [changeExercise]);
 
-  const handleToggleProgressDetails = () => {
+  const handleToggleProgressDetails = useCallback(() => {
     toggleDetailedProgress();
-  };
+  }, [toggleDetailedProgress]);
 
   // =================== LOADING STATE ===================
   if (!loaded || !exercises.length) {

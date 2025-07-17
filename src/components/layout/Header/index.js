@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useCallback } from "react";
 import styles from "./style";
 
 /**
@@ -46,13 +47,13 @@ const Header = ({
   const navigation = useNavigation();
 
   // Fonction pour le bouton retour
-  const handleBackPress = () => {
+  const handleBackPress = useCallback(() => {
     if (onBackPress) {
       onBackPress();
     } else if (navigation.canGoBack()) {
       navigation.goBack();
     }
-  };
+  }, [onBackPress, navigation]);
 
   // Rendu du contenu standard du header
   const renderStandardContent = () => (

@@ -3,7 +3,7 @@
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import VocabularyHeader from "./VocabularyHeader";
@@ -83,24 +83,25 @@ const VocabularyExercise = ({ route }) => {
   }, [wordIndex]); // ✅ SEULEMENT wordIndex - plus de boucle !
 
   // Handlers
- const handleBackPress = () => {
-  router.push({
-    pathname: "/tabs/exerciseSelection",
-    params: { level }
-  });
-};
-  const handleCategoryChange = (index) => changeCategory(index);
-  const handleCategoryProgressPress = (index) => changeCategory(index);
-  const handleToggleProgressDetails = () => toggleDetailedProgress();
+  const handleBackPress = useCallback(() => {
+    router.push({
+      pathname: "/tabs/exerciseSelection",
+      params: { level }
+    });
+  }, [level]);
 
-  const handleNextWord = () => {
+  const handleCategoryChange = useCallback((index) => changeCategory(index), [changeCategory]);
+  const handleCategoryProgressPress = useCallback((index) => changeCategory(index), [changeCategory]);
+  const handleToggleProgressDetails = useCallback(() => toggleDetailedProgress(), [toggleDetailedProgress]);
+
+  const handleNextWord = useCallback(() => {
     const result = handleNext();
     if (result.completed) {
       navigation.goBack();
     }
-  };
+  }, [handleNext, navigation]);
 
-  const handlePreviousWord = () => handlePrevious();
+  const handlePreviousWord = useCallback(() => handlePrevious(), [handlePrevious]);
 
   // Loading state
   if (!loaded || !vocabularyData) {

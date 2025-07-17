@@ -1,5 +1,6 @@
 // VocabularyExercise/VocabularyCategorySelector.js
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
+import { useCallback } from "react";
 
 /**
  * Adaptateur pour le sélecteur de catégories de vocabulaire
@@ -19,14 +20,14 @@ const VocabularyCategorySelector = ({
 
   // Fonction de callback adaptée - notre composant utilise des indices,
   // le composant générique utilise des IDs
-  const handleCategorySelect = (categoryId) => {
+  const handleCategorySelect = useCallback((categoryId) => {
     // Si l'option "Tous" est sélectionnée (null), nous sélectionnons la première catégorie
     if (categoryId === null) {
       onSelectCategory(0);
     } else {
       onSelectCategory(categoryId);
     }
-  };
+  }, [onSelectCategory]);
 
   return (
     <CategorySelector

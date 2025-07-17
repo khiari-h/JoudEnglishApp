@@ -1,6 +1,6 @@
 // SpellingExercise/index.js - VERSION PROPRE
 
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, useCallback } from "react";
 import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -75,22 +75,22 @@ const SpellingExercise = ({ route }) => {
     }
   }, [loaded, hasValidData, currentExercise, currentExerciseIndex, totalExercises, exerciseType, level, saveActivity]);
 
- const handleBackPress = () => {
+ const handleBackPress = useCallback(() => {
   router.push({
     pathname: "/tabs/exerciseSelection",
     params: { level }
   });
-};
+}, [level]);
 
-  const handleCheckAnswer = () => {
+  const handleCheckAnswer = useCallback(() => {
     try {
       checkAnswer();
     } catch (error) {
       // Silently fail
     }
-  };
+  }, [checkAnswer]);
 
-  const handleNextExercise = () => {
+  const handleNextExercise = useCallback(() => {
     try {
       const result = handleNext();
       if (result?.completed) {
@@ -99,15 +99,15 @@ const SpellingExercise = ({ route }) => {
     } catch (error) {
       // Silently fail
     }
-  };
+  }, [handleNext, navigation]);
 
-  const handleRetryExercise = () => {
+  const handleRetryExercise = useCallback(() => {
     try {
       retryExercise();
     } catch (error) {
       // Silently fail
     }
-  };
+  }, [retryExercise]);
 
   if (!loaded) {
     return (

@@ -1,6 +1,6 @@
 // NavigationButtons/index.js - SIMPLE & EFFICACE 🎯
 
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { View, TouchableOpacity, Text, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -34,7 +34,7 @@ const NavigationButtons = ({
   const nextButtonLabel = isLast ? buttonLabels.finish : buttonLabels.next;
 
   // Animation simple pour précédent
-  const handlePrevPress = () => {
+  const handlePrevPress = useCallback(() => {
     if (disablePrevious) return;
     
     Animated.sequence([
@@ -53,10 +53,10 @@ const NavigationButtons = ({
     ]).start();
     
     setTimeout(() => onPrevious(), 60);
-  };
+  }, [disablePrevious, prevScale, onPrevious]);
 
   // Animation simple pour suivant
-  const handleNextPress = () => {
+  const handleNextPress = useCallback(() => {
     if (disableNext) return;
     
     Animated.sequence([
@@ -75,7 +75,7 @@ const NavigationButtons = ({
     ]).start();
     
     setTimeout(() => onNext(), 60);
-  };
+  }, [disableNext, nextScale, onNext]);
 
   return (
     <View style={styles.container}>

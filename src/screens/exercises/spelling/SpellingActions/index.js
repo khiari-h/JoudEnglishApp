@@ -1,6 +1,6 @@
 // SpellingActions/index.js - VERSION PROPRE
 
-import { View } from "react-native";
+import { View, useCallback } from "react-native";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";
 
@@ -16,36 +16,36 @@ const SpellingActions = ({
   onRetry
 }) => {
 
-  const canCheckAnswer = () => {
+  const canCheckAnswer = useCallback(() => {
     if (exerciseType === "homophones") {
       return userInput !== "" && userInput !== null && userInput !== undefined;
     }
     return userInput && userInput.trim() !== "";
-  };
+  }, [exerciseType, userInput]);
 
-  const handleCheckAnswer = () => {
+  const handleCheckAnswer = useCallback(() => {
     try {
       onCheck();
     } catch (error) {
       // Silently fail
     }
-  };
+  }, [onCheck]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     try {
       onNext();
     } catch (error) {
       // Silently fail
     }
-  };
+  }, [onNext]);
 
-  const handleRetry = () => {
+  const handleRetry = useCallback(() => {
     try {
       onRetry();
     } catch (error) {
       // Silently fail
     }
-  };
+  }, [onRetry]);
 
   if (!showFeedback) {
     return (

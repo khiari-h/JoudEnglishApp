@@ -2,6 +2,7 @@
 import { View } from "react-native";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";
+import { useCallback } from "react";
 
 /**
  * Composant de navigation pour l'exercice de lecture
@@ -20,7 +21,7 @@ const ReadingNavigation = ({
   onRetry
 }) => {
   // Déterminer quelle action effectuer pour les boutons
-  const handleNavigation = (action) => {
+  const handleNavigation = useCallback((action) => {
     if (action === "next") {
       showFeedback ? onNext() : onNext("check");
     } else if (action === "previous") {
@@ -28,15 +29,20 @@ const ReadingNavigation = ({
     } else if (action === "retry") {
       onRetry();
     }
-  };
+  }, [showFeedback, onNext, onPrevious, onRetry]);
+
+  // Handlers pour NavigationButtons
+  const handleNext = useCallback(() => handleNavigation("next"), [handleNavigation]);
+  const handlePrevious = useCallback(() => handleNavigation("previous"), [handleNavigation]);
+  const handleRetryOrNext = useCallback(() => (attempts > 1 ? handleNavigation("next") : handleNavigation("retry")), [attempts, handleNavigation]);
 
   // État initial - pas encore de feedback
   if (!showFeedback) {
     return (
       <View style={styles.container}>
         <NavigationButtons
-          onNext={() => handleNavigation("next")}
-          onPrevious={() => handleNavigation("previous")}
+          onNext={handleNext}
+          onPrevious={handlePrevious}
           currentIndex={currentQuestionIndex}
           totalCount={totalQuestions}
           disableNext={selectedAnswer === null}
@@ -59,8 +65,8 @@ const ReadingNavigation = ({
     return (
       <View style={styles.container}>
         <NavigationButtons
-          onNext={() => handleNavigation("next")}
-          onPrevious={() => handleNavigation("previous")}
+          onNext={handleNext}
+          onPrevious={handlePrevious}
           currentIndex={currentQuestionIndex}
           totalCount={totalQuestions}
           disablePrevious={currentQuestionIndex === 0}
@@ -81,8 +87,8 @@ const ReadingNavigation = ({
     return (
       <View style={styles.container}>
         <NavigationButtons
-          onNext={attempts > 1 ? () => handleNavigation("next") : () => handleNavigation("retry")}
-          onPrevious={() => handleNavigation("previous")}
+          onNext={handleRetryOrNext}
+          onPrevious={handlePrevious}
           currentIndex={currentQuestionIndex}
           totalCount={totalQuestions}
           disablePrevious={currentQuestionIndex === 0}

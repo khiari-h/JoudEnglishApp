@@ -1,5 +1,5 @@
 // src/components/exercise-common/CategorySelector/index.js
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { View, ScrollView, TouchableOpacity, Text, Animated } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import createStyles from "./style";
@@ -49,6 +49,9 @@ const CategorySelector = ({
     onSelectCategory(categoryId);
   };
 
+  // Factory de handler pour éviter la création de fonctions inline
+  const handleCategoryPress = useCallback((categoryId) => () => animateSelection(categoryId), [animateSelection]);
+
   // Rendu d'une pill de catégorie
   const renderCategoryPill = (category) => {
     const isSelected = selectedCategory === category.id;
@@ -82,7 +85,7 @@ const CategorySelector = ({
       >
         <TouchableOpacity
           style={styles.categoryTouchable}
-          onPress={() => animateSelection(category.id)}
+          onPress={handleCategoryPress(category.id)}
           activeOpacity={0.8}
         >
           {isSelected ? (

@@ -107,52 +107,60 @@ const ErrorCorrectionExercise = ({ route }) => {
   }, [handleSaveActivity]);
 
   // Handlers
-const handleBackPress = () => {
+const handleBackPress = useCallback(() => {
   if (viewMode === "exercise") {
-    setViewMode("browse"); // ✅ Reste pareil
+    setViewMode("browse");
   } else {
     router.push({
       pathname: "/tabs/exerciseSelection",
       params: { level }
-    }); // ✅ Remplace navigation.goBack()
+    });
   }
-};
+}, [viewMode, level]);
 
-  const handleStartExercise = (mode) => {
-    startExercise(mode);
-    setViewMode("exercise");
-  };
+const handleStartExercise = useCallback((mode) => {
+  startExercise(mode);
+  setViewMode("exercise");
+}, [startExercise]);
 
-  const handleCategoryChange = (categoryId) => {
-    changeCategory(categoryId);
-  };
+const handleCategoryChange = useCallback((categoryId) => {
+  changeCategory(categoryId);
+}, [changeCategory]);
 
-  const handleCategoryProgressPress = (index) => {
-    // Conversion index vers categoryId si nécessaire
-    const category = errorCorrectionData?.categories?.[index];
-    if (category) {
-      changeCategory(category.id);
+const handleCategoryProgressPress = useCallback((index) => {
+  const category = errorCorrectionData?.categories?.[index];
+  if (category) {
+    changeCategory(category.id);
+  }
+}, [errorCorrectionData?.categories, changeCategory]);
+
+const handleToggleProgressDetails = useCallback(() => {
+  toggleDetailedProgress();
+}, [toggleDetailedProgress]);
+
+const handleNextAction = useCallback(() => {
+  if (showFeedback) {
+    const result = handleNext();
+    if (result.completed) {
+      setViewMode("browse");
     }
-  };
+  } else {
+    checkAnswer();
+  }
+}, [showFeedback, handleNext, checkAnswer]);
 
-  const handleToggleProgressDetails = () => {
-    toggleDetailedProgress();
-  };
+const handlePreviousAction = useCallback(() => {
+  handlePrevious();
+}, [handlePrevious]);
 
-  const handleNextAction = () => {
-    if (showFeedback) {
-      const result = handleNext();
-      if (result.completed) {
-        setViewMode("browse");
-      }
-    } else {
-      checkAnswer();
-    }
-  };
+const handleRetryResults = useCallback(() => {
+  setShowResults(false);
+  setViewMode("exercise");
+}, []);
 
-  const handlePreviousAction = () => {
-    handlePrevious();
-  };
+const handleContinueResults = useCallback(() => {
+  setViewMode("browse");
+}, []);
 
   // Loading state
   if (!loaded || !hasValidData) {
@@ -250,11 +258,8 @@ const handleBackPress = () => {
           totalExercises={exercises.length}
           level={level}
           levelColor={levelColor}
-          onRetry={() => {
-            setShowResults(false);
-            setViewMode("exercise");
-          }}
-          onContinue={() => setViewMode("browse")}
+          onRetry={handleRetryResults}
+          onContinue={handleContinueResults}
           onExit={handleBackPress}
         />
       )}

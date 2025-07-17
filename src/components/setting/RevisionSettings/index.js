@@ -1,6 +1,7 @@
 // src/components/settings/RevisionSettings/index.js - INTERFACE SETTINGS
 import { View, Text, TouchableOpacity, Switch } from 'react-native';
 import { useRevisionSettings } from '../../../hooks/useRevisionSettings';
+import { useCallback } from 'react';
 import styles from './style';
 
 const RevisionSettings = () => {
@@ -21,6 +22,8 @@ const RevisionSettings = () => {
       await disableRevisions();
     }
   };
+
+  const handleFrequencyPress = useCallback((value) => () => updateFrequency(value), [updateFrequency]);
 
   const frequencyOptions = [
     { value: 25, label: "Tous les 25 mots (léger)" },
@@ -67,7 +70,7 @@ const RevisionSettings = () => {
                   ? styles.frequencyOptionSelected 
                   : styles.frequencyOptionDefault
               ]}
-              onPress={() => updateFrequency(option.value)}
+              onPress={handleFrequencyPress(option.value)}
             >
               <Text style={[
                 styles.frequencyText,

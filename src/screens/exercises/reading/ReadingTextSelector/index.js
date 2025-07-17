@@ -1,6 +1,7 @@
 // ReadingTextSelector/index.js - VERSION REFACTORISÉE avec CategorySelector générique
 
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
+import { useCallback } from "react";
 
 /**
  * 🎨 ReadingTextSelector - Version Refactorisée avec CategorySelector générique
@@ -24,14 +25,14 @@ const ReadingTextSelector = ({
 
   // Fonction de callback adaptée - notre composant utilise des indices,
   // le composant générique utilise des IDs
-  const handleExerciseSelect = (exerciseId) => {
+  const handleExerciseSelect = useCallback((exerciseId) => {
     // Si l'option "Tous" est sélectionnée (null), nous sélectionnons le premier exercice
     if (exerciseId === null) {
       onSelectExercise(0);
     } else {
       onSelectExercise(exerciseId);
     }
-  };
+  }, [onSelectExercise]);
 
   return (
     <CategorySelector

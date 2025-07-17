@@ -1,5 +1,5 @@
 // src/components/exercise-common/InstructionBox/index.js
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
@@ -24,7 +24,7 @@ const InstructionBox = ({
   const [animation] = useState(new Animated.Value(initiallyExpanded ? 1 : 0));
 
   // Toggle l'expansion
-  const toggleExpanded = () => {
+  const toggleExpanded = useCallback(() => {
     const toValue = expanded ? 0 : 1;
 
     Animated.timing(animation, {
@@ -33,8 +33,8 @@ const InstructionBox = ({
       useNativeDriver: false,
     }).start();
 
-    setExpanded(!expanded);
-  };
+    setExpanded((prev) => !prev);
+  }, [expanded, animation]);
 
   // Déterminer le style en fonction de la variante
   const getVariantStyle = () => {

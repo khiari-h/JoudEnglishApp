@@ -1,5 +1,5 @@
 // src/components/exercise-common/ResultsScreen/index.js
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import {
   View,
   Text,
@@ -74,7 +74,7 @@ const ResultsScreen = ({
   const { title, message, color, icon } = getPerformanceData();
 
   // Partager les résultats
-  const shareResults = async () => {
+  const shareResults = useCallback(async () => {
     try {
       await Share.share({
         message: `J'ai obtenu ${correctAnswers}/${totalQuestions} (${successPercentage}%) dans mon exercice de ${exerciseType} niveau ${level} sur l'application JOUD English!`,
@@ -83,7 +83,7 @@ const ResultsScreen = ({
     } catch (error) {
       // Ignored on purpose
     }
-  };
+  }, [correctAnswers, totalQuestions, successPercentage, exerciseType, level]);
 
   // Effet pour lancer les animations
   useEffect(() => {

@@ -1,5 +1,5 @@
 // src/components/exercise-common/ExerciseFeedback/index.js
-import React from "react";
+import React, { useCallback } from "react";
 import { View, Text, TouchableOpacity, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
@@ -73,7 +73,7 @@ const ExerciseFeedback = ({
   const { containerStyle, icon, iconColor } = getTypeStyles();
 
   // Handler pour fermer le feedback
-  const handleDismiss = () => {
+  const handleDismiss = useCallback(() => {
     if (process.env.NODE_ENV === 'test') {
       if (onDismiss) onDismiss();
       return;
@@ -87,7 +87,7 @@ const ExerciseFeedback = ({
         onDismiss();
       }
     });
-  };
+  }, [onDismiss, fadeAnim]);
 
   return (
     <Animated.View
