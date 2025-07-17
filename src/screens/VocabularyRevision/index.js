@@ -81,7 +81,7 @@ const VocabularyRevision = ({ route }) => {
           </Text>
           <TouchableOpacity 
             style={[styles.emptyButton, { backgroundColor: colors.primary }]} 
-            onPress={() => navigation.goBack()}
+            onPress={handleGoBackPress}
             activeOpacity={0.8}
           >
             <Text style={styles.emptyButtonText}>Retour</Text>
@@ -107,7 +107,7 @@ const VocabularyRevision = ({ route }) => {
           </Text>
           <TouchableOpacity 
             style={[styles.emptyButton, { backgroundColor: colors.primary }]} 
-            onPress={() => navigation.goBack()}
+            onPress={handleGoBackPress}
             activeOpacity={0.8}
           >
             <Text style={styles.emptyButtonText}>Retour</Text>
