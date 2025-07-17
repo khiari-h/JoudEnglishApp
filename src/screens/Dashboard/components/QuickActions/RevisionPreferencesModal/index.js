@@ -1,5 +1,5 @@
 // src/components/modals/RevisionPreferencesModal/index.js
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { 
   View, 
   Text, 
@@ -75,6 +75,8 @@ const RevisionPreferencesModal = ({
     onSkip?.(defaultStyle.frequency, defaultStyle.questionsCount, 'standard');
   };
 
+  const handleStylePress = useCallback((id) => () => setSelectedStyle(id), []);
+
   if (!visible) return null;
 
   return (
@@ -133,7 +135,7 @@ const RevisionPreferencesModal = ({
                           backgroundColor: `${style.color}10`
                         }
                       ]}
-                      onPress={() => setSelectedStyle(style.id)}
+                      onPress={handleStylePress(style.id)}
                       activeOpacity={0.7}
                     >
                       <View style={styles.styleHeader}>

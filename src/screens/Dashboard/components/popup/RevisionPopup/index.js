@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Modal, Animated, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
@@ -23,6 +23,8 @@ const RevisionPopup = ({
   };
 
   if (!visible) return null;
+
+  const handleChoicePress = useCallback((id) => () => onChoice?.(id), [onChoice]);
 
   const choices = [
     {
@@ -89,7 +91,7 @@ const RevisionPopup = ({
                       : styles.choiceButtonSecondary,
                     { marginTop: idx === 0 ? 0 : 14, borderColor: choice.color }
                   ]}
-                  onPress={() => onChoice?.(choice.id)}
+                  onPress={handleChoicePress(choice.id)}
                   activeOpacity={0.85}
                 >
                   <View style={styles.choiceContent}>

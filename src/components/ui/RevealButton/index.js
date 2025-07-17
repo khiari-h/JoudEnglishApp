@@ -1,6 +1,6 @@
 // src/components/ui/RevealButton/index.js - DESIGN BABBEL 2025 🎯
 
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, Animated } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "../Card";
@@ -42,7 +42,7 @@ const RevealButton = ({
   }, [isRevealed, contentOpacity]);
 
   // Animation press simple pour reveal
-  const handleRevealPress = () => {
+  const handleRevealPress = useCallback(() => {
     Animated.sequence([
       Animated.spring(buttonScale, { 
         toValue: 0.96, 
@@ -57,12 +57,11 @@ const RevealButton = ({
         useNativeDriver: true 
       })
     ]).start();
-    
     setTimeout(() => onToggle(), 60);
-  };
+  }, [buttonScale, onToggle]);
 
   // Animation press simple pour hide
-  const handleHidePress = () => {
+  const handleHidePress = useCallback(() => {
     Animated.sequence([
       Animated.spring(buttonScale, { 
         toValue: 0.96, 
@@ -77,9 +76,8 @@ const RevealButton = ({
         useNativeDriver: true 
       })
     ]).start();
-    
     setTimeout(() => onToggle(), 60);
-  };
+  }, [buttonScale, onToggle]);
 
   return (
     <Card

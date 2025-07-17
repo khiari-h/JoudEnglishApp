@@ -1,6 +1,6 @@
 // GrammarRuleContent/index.js - VERSION REFACTORISÉE avec ContentSection (90 → 50 lignes)
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
@@ -22,7 +22,7 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
   if (!rule) return null;
 
   // Animation d'expansion (garde la logique custom)
-  const toggleExpanded = () => {
+  const toggleExpanded = useCallback(() => {
     const toValue = expanded ? 0 : 1;
     Animated.spring(expandAnim, {
       toValue,
@@ -30,8 +30,8 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
       tension: 100,
       friction: 8,
     }).start();
-    setExpanded(!expanded);
-  };
+    setExpanded((prev) => !prev);
+  }, [expanded, expandAnim]);
 
   // Hauteur animée pour le contenu
   const contentHeight = expandAnim.interpolate({

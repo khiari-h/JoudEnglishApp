@@ -1,5 +1,5 @@
 // src/screens/Dashboard/components/HeroContinueSection/index.js
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import Card from "../../../../components/ui/Card";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
@@ -17,6 +17,9 @@ const HeroContinueSection = ({
     text: "#1F2937",
     textSecondary: "#6B7280",
   };
+
+  const handleLevelSelection = useCallback(() => onPress?.('levelSelection'), [onPress]);
+  const handleContinue = useCallback(() => onPress?.(lastActivity), [onPress, lastActivity]);
 
   if (isLoading) {
     return (
@@ -45,7 +48,7 @@ const HeroContinueSection = ({
             
             <TouchableOpacity
               style={[styles.button, { backgroundColor: accentColor }]}
-              onPress={() => onPress?.('levelSelection')}
+              onPress={handleLevelSelection}
               activeOpacity={0.8}
             >
               <Text style={styles.buttonText}>Commencer ▶️</Text>
@@ -102,7 +105,7 @@ const HeroContinueSection = ({
 
           <TouchableOpacity
             style={[styles.button, { backgroundColor: accentColor }]}
-            onPress={() => onPress?.(lastActivity)}
+            onPress={handleContinue}
             activeOpacity={0.8}
           >
             <Text style={styles.buttonText}>Continuer ▶️</Text>

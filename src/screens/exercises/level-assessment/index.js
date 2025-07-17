@@ -86,19 +86,18 @@ const LevelAssessment = ({ route }) => {
   }, [handleSaveActivity]);
 
   // Handlers
- const handleBackPress = () => {
-  router.push({
-    pathname: "/tabs/exerciseSelection",
-    params: { level }
-  });
-};
+  const handleBackPress = useCallback(() => {
+    router.push({
+      pathname: "/tabs/exerciseSelection",
+      params: { level }
+    });
+  }, [level]);
 
-  const handleValidateAnswer = () => validateAnswer();
+  const handleValidateAnswer = useCallback(() => validateAnswer(), [validateAnswer]);
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = useCallback(() => {
     const result = handleNext();
     if (result.completed) {
-      // Calculer et sauvegarder les résultats finaux
       const finalResults = {
         level,
         userScore: stats,
@@ -107,19 +106,19 @@ const LevelAssessment = ({ route }) => {
       };
       saveAssessmentResults(finalResults);
     }
-  };
+  }, [handleNext, level, stats, saveAssessmentResults]);
 
-  const handlePreviousQuestion = () => handlePrevious();
+  const handlePreviousQuestion = useCallback(() => handlePrevious(), [handlePrevious]);
 
-  const handleRetry = async () => {
+  const handleRetry = useCallback(async () => {
     try {
       await resetAssessment();
     } catch (error) {
       // Ignored on purpose
     }
-  };
+  }, [resetAssessment]);
 
-  const handleContinue = () => navigation.navigate("Dashboard");
+  const handleContinue = useCallback(() => navigation.navigate("Dashboard"), [navigation]);
 
   // Loading state
   if (!loaded || !currentSection || !currentQuestion) {

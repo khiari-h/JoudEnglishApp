@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import HeroCard from "../../../../../components/ui/HeroCard";
 import ContentSection from "../../../../../components/ui/ContentSection";
 import createStyles from "./style";
+import { useCallback } from "react";
 
 /**
  * 🔍 IdentifyErrorsMode - Version Refactorisée avec composants génériques
@@ -29,6 +30,10 @@ const IdentifyErrorsMode = ({
   // Diviser le texte en mots
   const words = exercise.text.split(" ");
   const expectedErrors = exercise.errorPositions?.length || 0;
+
+  const handleWordPress = useCallback((index) => () => {
+    if (!showFeedback) onToggleErrorIndex(index);
+  }, [onToggleErrorIndex, showFeedback]);
 
   return (
     <View style={styles.container}>
@@ -57,7 +62,7 @@ const IdentifyErrorsMode = ({
             return (
               <TouchableOpacity
                 key={index}
-                onPress={() => !showFeedback && onToggleErrorIndex(index)}
+                onPress={handleWordPress(index)}
                 disabled={showFeedback}
                 style={[
                   styles.word,

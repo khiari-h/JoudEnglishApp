@@ -88,22 +88,22 @@ const ConversationExercise = ({ route }) => {
   }, [handleSaveActivity]);
 
   // Handlers
-   const handleBackPress = () => {
+  const handleBackPress = useCallback(() => {
     router.push({
       pathname: "/(tabs)/exerciseSelection",
       params: { level }
     });
-  };
-  
-  const handleScenarioChange = (index) => changeScenario(index);
+  }, [level]);
 
-  const handleSendMessage = () => sendMessage();
+  const handleScenarioChange = useCallback((index) => changeScenario(index), [changeScenario]);
 
-  const handleUseSuggestion = (suggestion) => useSuggestion(suggestion);
+  const handleSendMessage = useCallback(() => sendMessage(), [sendMessage]);
 
-  const handleToggleHelp = () => toggleHelp();
+  const handleUseSuggestion = useCallback((suggestion) => useSuggestion(suggestion), [useSuggestion]);
 
-  const handleToggleProgressDetails = () => toggleDetailedProgress();
+  const handleToggleHelp = useCallback(() => toggleHelp(), [toggleHelp]);
+
+  const handleToggleProgressDetails = useCallback(() => toggleDetailedProgress(), [toggleDetailedProgress]);
 
   // Callbacks mémorisés pour éviter les arrow functions dans le JSX
   const handleScenarioChangeCb = useCallback((...args) => handleScenarioChange(...args), [handleScenarioChange]);

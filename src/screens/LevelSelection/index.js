@@ -1,5 +1,5 @@
 // src/screens/LevelSelection/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -87,15 +87,15 @@ const LevelSelection = () => {
   });
 
   // Navigation
-  const handleLevelSelect = (level) => {
+  const handleLevelSelect = useCallback((level) => {
     router.push({
       pathname: "/tabs/exerciseSelection",
       params: { level: level.id },
     });
-  };
+  }, []);
 
   // ========== RENDU - TON DESIGN ORIGINAL ==========
-  const renderHeader = () => (
+  const renderHeader = useCallback(() => (
     <View style={styles.headerContainer}>
       <LinearGradient
         colors={["#6366F1", "#8B5CF6"]}
@@ -106,7 +106,7 @@ const LevelSelection = () => {
         <Header
           title="Niveaux"
           showBackButton
-          onBackPress={() => router.push("/tabs/dashboard")}
+          onBackPress={useCallback(() => router.push("/tabs/dashboard"), [])}
           backgroundColor="transparent"
           textColor="white"
           withStatusBar={false}
@@ -115,9 +115,9 @@ const LevelSelection = () => {
         />
       </LinearGradient>
     </View>
-  );
+  ), []);
 
-  const renderLevelCard = (level) => {
+  const renderLevelCard = useCallback((level) => {
     // ✅ LOGIQUE BOUTON SIMPLE
     const getButtonText = () => {
       if (level.hasStarted) return "Continuer"; // Dès qu'on a commencé = Continuer
@@ -186,7 +186,7 @@ const LevelSelection = () => {
         </View>
       </TouchableOpacity>
     );
-  };
+  }, [handleLevelSelect]);
 
   return (
     <Container

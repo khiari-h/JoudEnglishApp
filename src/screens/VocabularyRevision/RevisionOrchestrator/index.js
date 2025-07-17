@@ -115,7 +115,7 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
   }, [isLoaded, isDisabled, totalWords, nextRevisionAt, showPopup]);
 
   // ========== HANDLERS CORRIGÉS ==========
-  const handleChoice = async (choice) => {
+  const handleChoice = useCallback(async (choice) => {
     setShowPopup(false);
     popupShownRef.current = false; // ✅ Reset protection
     
@@ -157,7 +157,7 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
         break;
       }
     }
-  };
+  }, [totalWords, saveRevisionPreferences, currentLevel, nextRevisionAt]);
 
   const handleDismiss = useCallback(() => handleChoice('later_50'), [handleChoice]);
 

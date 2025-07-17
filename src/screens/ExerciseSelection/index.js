@@ -1,5 +1,5 @@
 // src/screens/ExerciseSelection/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
-import { useContext, useMemo } from "react";
+import { useContext, useMemo, useCallback } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -95,7 +95,7 @@ const ExerciseSelection = ({ level }) => {
   }, [level, getExerciseProgress, hasProgress]);
 
   // Navigation
-  const handleExerciseSelect = (exercise) => {
+  const handleExerciseSelect = useCallback((exercise) => {
     const params = { level };
     
     if (exercise.id === 'vocabulary') {
@@ -108,7 +108,7 @@ const ExerciseSelection = ({ level }) => {
       pathname: exercise.route,
       params
     });
-  };
+  }, [level]);
 
   // ========== RENDU - TON DESIGN ORIGINAL ==========
   const renderHeader = () => (
@@ -140,7 +140,7 @@ const ExerciseSelection = ({ level }) => {
     </View>
   );
 
-  const renderExerciseCard = (exercise) => {
+  const renderExerciseCard = useCallback((exercise) => {
     // ✅ LOGIQUE BOUTON SIMPLE
     const getButtonText = () => {
       if (exercise.hasProgress) return "Continuer"; // Dès qu'on a commencé = Continuer
@@ -217,7 +217,7 @@ const ExerciseSelection = ({ level }) => {
         </View>
       </TouchableOpacity>
     );
-  };
+  }, [handleExerciseSelect]);
 
   return (
     <Container

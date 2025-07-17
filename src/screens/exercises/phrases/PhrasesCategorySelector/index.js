@@ -1,5 +1,6 @@
 // src/screens/exercises/phrases/PhrasesCategorySelector/index.js - VERSION FIXÉE
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
+import { useCallback } from "react";
 
 const PhrasesCategorySelector = ({
   categories,
@@ -15,10 +16,9 @@ const PhrasesCategorySelector = ({
   }));
 
   // 🎯 FIX : Utiliser selectedIndex directement (pas de transformation)
-  const handleCategorySelect = (categoryId) => {
-    // categoryId est maintenant l'index, on peut l'utiliser directement
+  const handleCategorySelect = useCallback((categoryId) => {
     onSelectCategory(categoryId);
-  };
+  }, [onSelectCategory]);
 
   return (
     <CategorySelector

@@ -1,5 +1,5 @@
 // src/screens/Dashboard/components/LearningProgress/index.js
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Card from "../../../../components/ui/Card";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
@@ -51,18 +51,18 @@ const LearningProgress = ({
   // ========== GESTION SIMPLE ==========
   
   // Clic sur cercle niveau = change affichage visuel seulement
-  const handleLevelPress = (levelId) => {
+  const handleLevelPress = useCallback((levelId) => () => {
     if (onChangeLevelVisual) {
       onChangeLevelVisual(levelId);
     }
-  };
+  }, [onChangeLevelVisual]);
 
   // Clic sur bouton Explorer = navigation vers exercices du niveau courant
-  const handleExplorePress = () => {
+  const handleExplorePress = useCallback(() => {
     if (onSelectLevel) {
       onSelectLevel(currentLevel);
     }
-  };
+  }, [onSelectLevel, currentLevel]);
 
   return (
     <View style={styles.container}>
@@ -133,7 +133,7 @@ const LearningProgress = ({
               <TouchableOpacity
                 key={level.id}
                 style={styles.levelButton}
-                onPress={() => handleLevelPress(level.id)} // ✅ Change visuel seulement
+                onPress={handleLevelPress(level.id)}
                 activeOpacity={0.7}
               >
                 <View style={circleStyle}>

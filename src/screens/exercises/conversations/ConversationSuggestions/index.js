@@ -1,5 +1,6 @@
 import { ScrollView, TouchableOpacity, Text } from 'react-native';
 import styles from './style';
+import { useCallback } from 'react';
 
 /**
  * Composant qui affiche les suggestions de messages que l'utilisateur peut envoyer
@@ -14,6 +15,8 @@ const ConversationSuggestions = ({ suggestions, onPressSuggestion, levelColor })
     return null;
   }
 
+  const handleSuggestionPress = useCallback((suggestion) => () => onPressSuggestion(suggestion), [onPressSuggestion]);
+
   return (
     <ScrollView
       horizontal
@@ -25,7 +28,7 @@ const ConversationSuggestions = ({ suggestions, onPressSuggestion, levelColor })
         <TouchableOpacity
           key={index}
           style={[styles.suggestionBubble, { borderColor: levelColor }]}
-          onPress={() => onPressSuggestion(suggestion)}
+          onPress={handleSuggestionPress(suggestion)}
         >
           <Text style={[styles.suggestionText, { color: levelColor }]}>
             {suggestion}

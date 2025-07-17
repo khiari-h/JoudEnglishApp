@@ -1,5 +1,6 @@
 import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import styles from './style';
+import { useCallback } from 'react';
 
 /**
  * Composant pour la saisie de messages dans le Conversation
@@ -14,11 +15,11 @@ const ConversationInput = ({ message, onChangeMessage, onSendMessage, levelColor
   const isButtonEnabled = message.trim() !== '';
 
   // Gérer l'envoi du message
-  const handleSend = () => {
+  const handleSend = useCallback(() => {
     if (isButtonEnabled) {
       onSendMessage();
     }
-  };
+  }, [isButtonEnabled, onSendMessage]);
 
   return (
     <View style={styles.container}>

@@ -1,5 +1,5 @@
 // src/screens/VocabularyRevision/index.js - VERSION AVEC HOOK DÉDIÉ
-import { useState, useContext } from 'react';
+import { useState, useContext, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Animated, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ThemeContext } from '../../contexts/ThemeContext';
@@ -170,6 +170,11 @@ const VocabularyRevision = ({ route }) => {
     navigation.goBack();
   };
 
+  const handleAnswerPress = useCallback((choice) => () => handleAnswer(choice), [handleAnswer]);
+  const handleRestartPress = useCallback(() => handleRestart(), [handleRestart]);
+  const handleFinishPress = useCallback(() => handleFinish(), [handleFinish]);
+  const handleGoBackPress = useCallback(() => navigation.goBack(), [navigation]);
+
   // ========== ÉCRAN FINAL ==========
   if (isFinished) {
     const percentage = Math.round((score / revisionQuestions.length) * 100);
@@ -269,7 +274,7 @@ const VocabularyRevision = ({ route }) => {
           <View style={styles.buttonsContainer}>
             <TouchableOpacity 
               style={[styles.restartButton, { backgroundColor: colors.surface }]} 
-              onPress={handleRestart}
+              onPress={handleRestartPress}
               activeOpacity={0.8}
             >
               <View style={styles.buttonContent}>
@@ -282,7 +287,7 @@ const VocabularyRevision = ({ route }) => {
             
             <TouchableOpacity 
               style={[styles.finishButton, { backgroundColor: resultConfig.color }]} 
-              onPress={handleFinish}
+              onPress={handleFinishPress}
               activeOpacity={0.8}
             >
               <View style={styles.buttonContent}>
@@ -306,7 +311,7 @@ const VocabularyRevision = ({ route }) => {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity 
-          onPress={() => navigation.goBack()} 
+          onPress={handleGoBackPress} 
           style={[styles.backButton, { backgroundColor: colors.surface }]}
         >
           <Text style={[styles.backButtonText, { color: colors.text }]}>←</Text>
@@ -387,7 +392,7 @@ const VocabularyRevision = ({ route }) => {
             <TouchableOpacity
               key={index}
               style={buttonStyle}
-              onPress={() => handleAnswer(choice)}
+              onPress={handleAnswerPress(choice)}
               disabled={showResult}
               activeOpacity={0.7}
             >

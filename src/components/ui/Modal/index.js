@@ -1,5 +1,5 @@
 // src/components/ui/Modal/index.js
-import React from "react";
+import React, { useCallback } from "react";
 import {
   Modal as RNModal,
   View,
@@ -57,11 +57,11 @@ const Modal = ({
   }, [visible, animationType, customAnimation]);
 
   // Gérer le clic sur l'arrière-plan
-  const handleBackdropPress = () => {
+  const handleBackdropPress = useCallback(() => {
     if (closeOnBackdropPress && onClose) {
       onClose();
     }
-  };
+  }, [closeOnBackdropPress, onClose]);
 
   // Calcul de la largeur de la modal
   const getModalWidth = () => {

@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import HeroCard from "../../../../../components/ui/HeroCard";
 import ContentSection from "../../../../../components/ui/ContentSection";
 import createStyles from "./style";
+import { useCallback } from "react";
 
 /**
  * ✅ MultipleChoiceMode - Version Refactorisée avec composants génériques
@@ -28,6 +29,10 @@ const MultipleChoiceMode = ({
 
   const choices = exercise.choices || [];
   const correctChoiceIndex = exercise.correctChoiceIndex;
+
+  const handleChoicePress = useCallback((index) => () => {
+    if (!showFeedback) onSelectChoice(index);
+  }, [onSelectChoice, showFeedback]);
 
   return (
     <View style={styles.container}>
@@ -68,7 +73,7 @@ const MultipleChoiceMode = ({
                 isCorrect && styles.correctChoice,
                 isIncorrect && styles.incorrectChoice,
               ]}
-              onPress={() => !showFeedback && onSelectChoice(index)}
+              onPress={handleChoicePress(index)}
               disabled={showFeedback}
             >
               <View style={styles.choiceContent}>
