@@ -1,5 +1,5 @@
 // PhrasesExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, useCallback } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -81,25 +81,25 @@ const PhrasesExercise = ({ route }) => {
   }, [loaded, hasValidData, currentPhrase, currentPhrases.length, phraseIndex, totalPhrasesInCategory, categoryIndex, level, phrasesData]);
 
   // Handlers
- const handleBackPress = () => {
-  router.push({
-    pathname: "/(tabs)/exerciseSelection",
-    params: { level }
-  });
-};
-  
-  const handleCategoryChange = (index) => changeCategory(index);
+  const handleBackPress = useCallback(() => {
+    router.push({
+      pathname: "/(tabs)/exerciseSelection",
+      params: { level }
+    });
+  }, [level]);
 
-  const handleToggleProgressDetails = () => toggleDetailedProgress();
+  const handleCategoryChange = useCallback((index) => changeCategory(index), [changeCategory]);
 
-  const handleNextPhrase = () => {
+  const handleToggleProgressDetails = useCallback(() => toggleDetailedProgress(), [toggleDetailedProgress]);
+
+  const handleNextPhrase = useCallback(() => {
     const result = handleNext();
     if (result.completed) {
       navigation.goBack();
     }
-  };
+  }, [handleNext, navigation]);
 
-  const handlePreviousPhrase = () => handlePrevious();
+  const handlePreviousPhrase = useCallback(() => handlePrevious(), [handlePrevious]);
 
   // Loading state
   if (!loaded || !hasValidData) {

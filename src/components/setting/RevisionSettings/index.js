@@ -13,7 +13,7 @@ const RevisionSettings = () => {
     updateFrequency 
   } = useRevisionSettings();
 
-  const handleToggleRevisions = async (enabled) => {
+  const handleToggleRevisions = useCallback(async (enabled) => {
     if (enabled) {
       // Activation simple, garder la fréquence actuelle
       await enableRevisions(preferences.frequency, preferences.questionsCount);
@@ -21,7 +21,7 @@ const RevisionSettings = () => {
       // Désactivation simple
       await disableRevisions();
     }
-  };
+  }, [enableRevisions, disableRevisions, preferences.frequency, preferences.questionsCount]);
 
   const handleFrequencyPress = useCallback((value) => () => updateFrequency(value), [updateFrequency]);
 
