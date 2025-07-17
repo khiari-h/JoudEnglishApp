@@ -55,7 +55,7 @@ const PhrasesDetailsModal = ({
           <Text style={[styles.detailLabel, { color: levelColor }]}>
             Exemples :
           </Text>
-          {phrase.examples.map((example, index) => (
+          {phrase.examples.map((example) => (
             <View key={example.english} style={styles.exampleItem}>
               <Text style={styles.exampleText}>
                 {example.english}

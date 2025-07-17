@@ -1,7 +1,7 @@
 // HomophoneChoices/index.js - VERSION NETTOYÉE (logique simplifiée)
 
 import { View, Text, TouchableOpacity } from "react-native";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import HeroCard from "../../../../components/ui/HeroCard";
 import createStyles from "./style";
 

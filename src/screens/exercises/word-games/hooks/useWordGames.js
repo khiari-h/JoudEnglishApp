@@ -146,21 +146,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     setShuffledOptions(optionsToShuffle);
   };
 
-  const markGameAsCompleted = useCallback(async (gameIndex, gameScore, maxScore) => {
-    try {
-      const updatedCompletedGames = { ...completedGames };
-      updatedCompletedGames[gameIndex] = {
-        completed: true,
-        score: gameScore,
-        maxScore,
-      };
-      setCompletedGames(updatedCompletedGames);
-      await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(updatedCompletedGames));
-    } catch (error) {
-      // Ignored on purpose
-    }
-  }, [completedGames, COMPLETED_KEY]);
-
   // =================== MAIN NAVIGATION ===================
   
   const handleNext = useCallback(() => {

@@ -1,6 +1,6 @@
 // src/components/screens/exercises/reading/QuestionIndicators/index.js
 import { View, TouchableOpacity } from "react-native";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import styles from "./style";
 
 /**
