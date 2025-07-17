@@ -8,6 +8,137 @@ import useRevisionData from '../../hooks/useRevisionData'; // ← NOUVEAU HOOK
 
 import styles from './style';
 
+const ResultScreenContent = ({ resultConfig, score, revisionQuestions, percentage, stats, source, colors, handleRestartPress, handleFinishPress, styles }) => (
+  <View style={styles.resultContainer}>
+    <Text style={styles.resultEmoji}>{resultConfig.emoji}</Text>
+    <Text style={[styles.resultTitle, { color: colors.text }]}>{resultConfig.title}</Text>
+    <Text style={[styles.resultMessage, { color: colors.textSecondary }]}>{resultConfig.message}</Text>
+    <View style={[styles.scoreCard, { backgroundColor: colors.surface }]}>
+      <View style={styles.scoreRow}>
+        <Text style={[styles.scoreNumber, { color: resultConfig.color }]}>
+          {score}
+        </Text>
+        <Text style={[styles.scoreSlash, { color: colors.textSecondary }]}>
+          /{revisionQuestions.length}
+        </Text>
+      </View>
+      <View style={[styles.progressBar, { backgroundColor: '#F3F4F6' }]}>
+        <View 
+          style={[
+            styles.progressFill, 
+            { 
+              backgroundColor: resultConfig.color,
+              width: `${percentage}%` 
+            }
+          ]} 
+        />
+      </View>
+      <Text style={[styles.percentageText, { color: resultConfig.color }]}>
+        {percentage}% de réussite
+      </Text>
+    </View>
+    {/* Stats détaillées */}
+    <View style={[styles.statsContainer, { backgroundColor: colors.surface }]}>
+      <Text style={[styles.statsTitle, { color: colors.text }]}>
+        📊 Statistiques
+      </Text>
+      <Text style={[styles.statsText, { color: colors.textSecondary }]}>
+        {stats.totalLearned} mots appris au total
+      </Text>
+      {Object.entries(stats.byLevel).map(([lvl, count]) => (
+        <Text key={lvl} style={[styles.statsText, { color: colors.textSecondary }]}>
+          Niveau {lvl}: {count} mots
+        </Text>
+      ))}
+    </View>
+    {source && (
+      <Text style={[styles.sourceText, { color: colors.textSecondary }]}>
+        {source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'}
+      </Text>
+    )}
+    <View style={styles.buttonsContainer}>
+      <TouchableOpacity 
+        style={[styles.restartButton, { backgroundColor: colors.surface }]} 
+        onPress={handleRestartPress}
+        activeOpacity={0.8}
+      >
+        <View style={styles.buttonContent}>
+          <Text style={styles.restartIcon}>🔄</Text>
+          <Text style={[styles.restartText, { color: colors.text }]}>
+            Rejouer
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity 
+        style={[styles.finishButton, { backgroundColor: resultConfig.color }]} 
+        onPress={handleFinishPress}
+        activeOpacity={0.8}
+      >
+        <View style={styles.buttonContent}>
+          <Text style={styles.finishIcon}>✓</Text>
+          <Text style={styles.finishText}>
+            Terminer
+          </Text>
+        </View>
+      </TouchableOpacity>
+    </View>
+  </View>
+);
+
+const QuestionCard = ({ currentQuestion, colors, styles }) => (
+  <View style={[styles.questionCard, { backgroundColor: colors.surface }]}>
+    <Text style={styles.questionLabel}>Traduisez :</Text>
+    <Text style={[styles.wordToTranslate, { color: colors.text }]}>
+      {currentQuestion.word}
+    </Text>
+    {currentQuestion.fromLevel && (
+      <Text style={[styles.levelInfo, { color: colors.textSecondary }]}>
+        Niveau {currentQuestion.fromLevel} ({currentQuestion.fromMode})
+      </Text>
+    )}
+  </View>
+);
+
+const ChoicesSection = ({ currentQuestion, selectedAnswer, showResult, handleAnswerPress, colors, styles }) => (
+  <View style={styles.choicesSection}>
+    {currentQuestion.choices.map((choice) => {
+      const isSelected = selectedAnswer === choice;
+      const isCorrect = choice === currentQuestion.correctAnswer;
+      const isWrong = showResult && isSelected && !isCorrect;
+      const shouldHighlight = showResult && isCorrect;
+      
+      let buttonStyle = [styles.choiceButton, { backgroundColor: colors.surface }];
+      let textStyle = [styles.choiceText, { color: colors.text }];
+      let icon = null;
+      
+      if (shouldHighlight) {
+        buttonStyle.push(styles.choiceCorrect);
+        textStyle.push(styles.choiceTextCorrect);
+        icon = <Text style={styles.choiceIcon}>✓</Text>;
+      } else if (isWrong) {
+        buttonStyle.push(styles.choiceWrong);
+        textStyle.push(styles.choiceTextWrong);
+        icon = <Text style={styles.choiceIcon}>✗</Text>;
+      } else if (isSelected) {
+        buttonStyle.push({ borderColor: colors.primary, borderWidth: 2 });
+      }
+      
+      return (
+        <TouchableOpacity
+          key={choice}
+          style={buttonStyle}
+          onPress={handleAnswerPress(choice)}
+          disabled={showResult}
+          activeOpacity={0.7}
+        >
+          <Text style={textStyle}>{choice}</Text>
+          {icon}
+        </TouchableOpacity>
+      );
+    })}
+  </View>
+);
+
 const VocabularyRevision = ({ route }) => {
   const navigation = useNavigation();
   const themeContext = useContext(ThemeContext);
@@ -211,96 +342,18 @@ const VocabularyRevision = ({ route }) => {
     }
     
     return (
-      <View style={[styles.container, { backgroundColor: colors.background }]}>
-        <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
-        
-        <View style={styles.resultContainer}>
-          <Text style={styles.resultEmoji}>{resultConfig.emoji}</Text>
-          
-          <Text style={[styles.resultTitle, { color: colors.text }]}>
-            {resultConfig.title}
-          </Text>
-          <Text style={[styles.resultMessage, { color: colors.textSecondary }]}>
-            {resultConfig.message}
-          </Text>
-          
-          <View style={[styles.scoreCard, { backgroundColor: colors.surface }]}>
-            <View style={styles.scoreRow}>
-              <Text style={[styles.scoreNumber, { color: resultConfig.color }]}>
-                {score}
-              </Text>
-              <Text style={[styles.scoreSlash, { color: colors.textSecondary }]}>
-                /{revisionQuestions.length}
-              </Text>
-            </View>
-            
-            <View style={[styles.progressBar, { backgroundColor: '#F3F4F6' }]}>
-              <View 
-                style={[
-                  styles.progressFill, 
-                  { 
-                    backgroundColor: resultConfig.color,
-                    width: `${percentage}%` 
-                  }
-                ]} 
-              />
-            </View>
-            
-            <Text style={[styles.percentageText, { color: resultConfig.color }]}>
-              {percentage}% de réussite
-            </Text>
-          </View>
-          
-          {/* Stats détaillées */}
-          <View style={[styles.statsContainer, { backgroundColor: colors.surface }]}>
-            <Text style={[styles.statsTitle, { color: colors.text }]}>
-              📊 Statistiques
-            </Text>
-            <Text style={[styles.statsText, { color: colors.textSecondary }]}>
-              {stats.totalLearned} mots appris au total
-            </Text>
-            {Object.entries(stats.byLevel).map(([lvl, count]) => (
-              <Text key={lvl} style={[styles.statsText, { color: colors.textSecondary }]}>
-                Niveau {lvl}: {count} mots
-              </Text>
-            ))}
-          </View>
-          
-          {source && (
-            <Text style={[styles.sourceText, { color: colors.textSecondary }]}>
-              {source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'}
-            </Text>
-          )}
-          
-          <View style={styles.buttonsContainer}>
-            <TouchableOpacity 
-              style={[styles.restartButton, { backgroundColor: colors.surface }]} 
-              onPress={handleRestartPress}
-              activeOpacity={0.8}
-            >
-              <View style={styles.buttonContent}>
-                <Text style={styles.restartIcon}>🔄</Text>
-                <Text style={[styles.restartText, { color: colors.text }]}>
-                  Rejouer
-                </Text>
-              </View>
-            </TouchableOpacity>
-            
-            <TouchableOpacity 
-              style={[styles.finishButton, { backgroundColor: resultConfig.color }]} 
-              onPress={handleFinishPress}
-              activeOpacity={0.8}
-            >
-              <View style={styles.buttonContent}>
-                <Text style={styles.finishIcon}>✓</Text>
-                <Text style={styles.finishText}>
-                  Terminer
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
+      <ResultScreenContent
+        resultConfig={resultConfig}
+        score={score}
+        revisionQuestions={revisionQuestions}
+        percentage={percentage}
+        stats={stats}
+        source={source}
+        colors={colors}
+        handleRestartPress={handleRestartPress}
+        handleFinishPress={handleFinishPress}
+        styles={styles}
+      />
     );
   }
 
@@ -352,57 +405,22 @@ const VocabularyRevision = ({ route }) => {
 
       {/* Question card */}
       <Animated.View style={[styles.questionSection, { opacity: fadeAnim }]}>
-        <View style={[styles.questionCard, { backgroundColor: colors.surface }]}>
-          <Text style={styles.questionLabel}>Traduisez :</Text>
-          <Text style={[styles.wordToTranslate, { color: colors.text }]}>
-            {currentQuestion.word}
-          </Text>
-          {currentQuestion.fromLevel && (
-            <Text style={[styles.levelInfo, { color: colors.textSecondary }]}>
-              Niveau {currentQuestion.fromLevel} ({currentQuestion.fromMode})
-            </Text>
-          )}
-        </View>
+        <QuestionCard
+          currentQuestion={currentQuestion}
+          colors={colors}
+          styles={styles}
+        />
       </Animated.View>
 
       {/* Choix */}
-      <View style={styles.choicesSection}>
-        {currentQuestion.choices.map((choice) => {
-          const isSelected = selectedAnswer === choice;
-          const isCorrect = choice === currentQuestion.correctAnswer;
-          const isWrong = showResult && isSelected && !isCorrect;
-          const shouldHighlight = showResult && isCorrect;
-          
-          let buttonStyle = [styles.choiceButton, { backgroundColor: colors.surface }];
-          let textStyle = [styles.choiceText, { color: colors.text }];
-          let icon = null;
-          
-          if (shouldHighlight) {
-            buttonStyle.push(styles.choiceCorrect);
-            textStyle.push(styles.choiceTextCorrect);
-            icon = <Text style={styles.choiceIcon}>✓</Text>;
-          } else if (isWrong) {
-            buttonStyle.push(styles.choiceWrong);
-            textStyle.push(styles.choiceTextWrong);
-            icon = <Text style={styles.choiceIcon}>✗</Text>;
-          } else if (isSelected) {
-            buttonStyle.push({ borderColor: colors.primary, borderWidth: 2 });
-          }
-          
-          return (
-            <TouchableOpacity
-              key={choice}
-              style={buttonStyle}
-              onPress={handleAnswerPress(choice)}
-              disabled={showResult}
-              activeOpacity={0.7}
-            >
-              <Text style={textStyle}>{choice}</Text>
-              {icon}
-            </TouchableOpacity>
-          );
-        })}
-      </View>
+      <ChoicesSection
+        currentQuestion={currentQuestion}
+        selectedAnswer={selectedAnswer}
+        showResult={showResult}
+        handleAnswerPress={handleAnswerPress}
+        colors={colors}
+        styles={styles}
+      />
     </View>
   );
 };

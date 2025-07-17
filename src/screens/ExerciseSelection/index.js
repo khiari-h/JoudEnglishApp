@@ -33,6 +33,63 @@ const DEFAULT_THEME = {
   },
 };
 
+const ExerciseCardContent = ({ exercise, colors, styles, handleExercisePress }) => (
+  <View style={styles.cardContentStyle}>
+    {/* Header - TON DESIGN ORIGINAL */}
+    <View style={styles.cardHeader}>
+      <View style={styles.levelTitleContainer}>
+        <Text style={[styles.levelMainTitle, { color: colors.text }]}>
+          {exercise.title}
+        </Text>
+        {/* ✅ TON BADGE ORIGINAL avec VRAI CHIFFRE */}
+        <View style={[styles.levelBadge, { backgroundColor: exercise.color }]}>
+          <Text style={styles.levelBadgeText}>
+            {exercise.progress}% {/* ✅ VRAI CHIFFRE (même Fast aura le sien) */}
+          </Text>
+        </View>
+        {/* Badge FAST - TON DESIGN ORIGINAL */}
+        {exercise.id === "vocabulary_fast" && (
+          <View style={[styles.levelBadge, styles.fastBadge]}>
+            <Text style={[styles.levelBadgeText, styles.fastBadgeText]}>FAST</Text>
+          </View>
+        )}
+      </View>
+      <Text style={styles.levelIcon}>{exercise.icon}</Text>
+    </View>
+
+    {/* Progression - TON DESIGN ORIGINAL */}
+    {exercise.hasProgress && (
+      <View style={styles.progressContainer}>
+        <View style={styles.progressBar}>
+          <View 
+            style={[
+              styles.progressFill,
+              { 
+                width: `${exercise.progress}%`, // ✅ Vrai chiffre
+                backgroundColor: exercise.color
+              }
+            ]} 
+          />
+        </View>
+        <Text style={[styles.progressText, { color: colors.textSecondary }]}>
+          {exercise.progress}% {/* ✅ Vrai chiffre */}
+        </Text>
+      </View>
+    )}
+
+    {/* Bouton - TON DESIGN ORIGINAL */}
+    <Button
+      title={exercise.hasProgress ? "Continuer" : "Commencer"}
+      variant="filled"
+      color={exercise.color}
+      fullWidth
+      onPress={handleExercisePress(exercise)}
+      style={styles.startButton}
+      rightIcon={exercise.hasProgress ? "play-outline" : "rocket-outline"}
+    />
+  </View>
+);
+
 const ExerciseSelection = ({ level }) => {
   if (!level) {
     return null;
@@ -146,17 +203,6 @@ const ExerciseSelection = ({ level }) => {
   );
 
   const renderExerciseCard = useCallback((exercise) => {
-    // ✅ LOGIQUE BOUTON SIMPLE
-    const getButtonText = () => {
-      if (exercise.hasProgress) return "Continuer"; // Dès qu'on a commencé = Continuer
-      return "Commencer";
-    };
-
-    const getButtonIcon = () => {
-      if (exercise.hasProgress) return "play-outline";
-      return "rocket-outline";
-    };
-
     return (
       <TouchableOpacity
         key={exercise.id}
@@ -164,62 +210,7 @@ const ExerciseSelection = ({ level }) => {
         onPress={handleExercisePress(exercise)}
         activeOpacity={0.8}
       >
-        <View style={styles.cardContentStyle}>
-          {/* Header - TON DESIGN ORIGINAL */}
-          <View style={styles.cardHeader}>
-            <View style={styles.levelTitleContainer}>
-              <Text style={[styles.levelMainTitle, { color: colors.text }]}>
-                {exercise.title}
-              </Text>
-              
-              {/* ✅ TON BADGE ORIGINAL avec VRAI CHIFFRE */}
-              <View style={[styles.levelBadge, { backgroundColor: exercise.color }]}>
-                <Text style={styles.levelBadgeText}>
-                  {exercise.progress}% {/* ✅ VRAI CHIFFRE (même Fast aura le sien) */}
-                </Text>
-              </View>
-              
-              {/* Badge FAST - TON DESIGN ORIGINAL */}
-              {exercise.id === "vocabulary_fast" && (
-                <View style={[styles.levelBadge, styles.fastBadge]}>
-                  <Text style={[styles.levelBadgeText, styles.fastBadgeText]}>FAST</Text>
-                </View>
-              )}
-            </View>
-            <Text style={styles.levelIcon}>{exercise.icon}</Text>
-          </View>
-
-          {/* Progression - TON DESIGN ORIGINAL */}
-          {exercise.hasProgress && (
-            <View style={styles.progressContainer}>
-              <View style={styles.progressBar}>
-                <View 
-                  style={[
-                    styles.progressFill,
-                    { 
-                      width: `${exercise.progress}%`, // ✅ Vrai chiffre
-                      backgroundColor: exercise.color
-                    }
-                  ]} 
-                />
-              </View>
-              <Text style={[styles.progressText, { color: colors.textSecondary }]}>
-                {exercise.progress}% {/* ✅ Vrai chiffre */}
-              </Text>
-            </View>
-          )}
-
-          {/* Bouton - TON DESIGN ORIGINAL */}
-          <Button
-            title={getButtonText()} // ✅ Logique simple
-            variant="filled"
-            color={exercise.color}
-            fullWidth
-            onPress={handleExercisePress(exercise)}
-            style={styles.startButton}
-            rightIcon={getButtonIcon()}
-          />
-        </View>
+        <ExerciseCardContent exercise={exercise} colors={colors} styles={styles} handleExercisePress={handleExercisePress} />
       </TouchableOpacity>
     );
   }, [handleExercisePress, colors.text, styles]);

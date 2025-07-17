@@ -5,6 +5,62 @@ import Card from "../../../../components/ui/Card";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import styles from "./style";
 
+const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, styles }) => {
+  const currentWord = (lastActivity.metadata?.word || 0) + 1;
+  const totalWords = lastActivity.metadata?.totalWords || 15;
+  const percentage = Math.round((currentWord / totalWords) * 100);
+  return (
+    <View style={styles.content}>
+      <View style={styles.header}>
+        <Text style={styles.emoji}>📚</Text>
+        <Text style={[styles.label, { color: colors.textSecondary }]}>Reprendre</Text>
+      </View>
+      <Text style={[styles.title, { color: colors.text }]}>{lastActivity.title}</Text>
+      <Text style={[styles.subtitle, { color: colors.textSecondary }]}> 
+        Niv {lastActivity.level || 1}
+        {typeof lastActivity.metadata?.categoryIndex === 'number' ? ` • Catégorie ${lastActivity.metadata.categoryIndex + 1}` : ''}
+        • Mot {currentWord}/{totalWords}
+      </Text>
+      <View style={styles.progressContainer}>
+        <View style={[styles.progressTrack, { backgroundColor: `${accentColor}15` }]}> 
+          <View 
+            style={[
+              styles.progressFill,
+              { 
+                width: `${Math.min(percentage, 100)}%`,
+                backgroundColor: accentColor
+              }
+            ]} 
+          />
+        </View>
+        <Text style={[styles.progressText, { color: accentColor }]}>{percentage}%</Text>
+      </View>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: accentColor }]}
+        onPress={handleContinue}
+        activeOpacity={0.8}
+      >
+        <Text style={styles.buttonText}>Continuer ▶️</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const HeroEmptyCardContent = ({ accentColor, colors, handleLevelSelection, styles }) => (
+  <View style={styles.content}>
+    <Text style={styles.emoji}>🚀</Text>
+    <Text style={[styles.title, { color: colors.text }]}>Commencer l'apprentissage</Text>
+    <Text style={[styles.subtitle, { color: colors.textSecondary }]}>Choisissez votre premier exercice</Text>
+    <TouchableOpacity
+      style={[styles.button, { backgroundColor: accentColor }]}
+      onPress={handleLevelSelection}
+      activeOpacity={0.8}
+    >
+      <Text style={styles.buttonText}>Commencer ▶️</Text>
+    </TouchableOpacity>
+  </View>
+);
+
 const HeroContinueSection = ({
   lastActivity,
   onPress,
@@ -41,76 +97,27 @@ const HeroContinueSection = ({
     return (
       <View style={styles.container}>
         <Card style={[styles.card, { backgroundColor: colors.surface }]}>
-          <View style={styles.content}>
-            <Text style={styles.emoji}>🚀</Text>
-            <Text style={[styles.title, { color: colors.text }]}>Commencer l&apos;apprentissage</Text>
-            <Text style={[styles.subtitle, { color: colors.textSecondary }]}>Choisissez votre premier exercice</Text>
-            
-            <TouchableOpacity
-              style={[styles.button, { backgroundColor: accentColor }]}
-              onPress={handleLevelSelection}
-              activeOpacity={0.8}
-            >
-              <Text style={styles.buttonText}>Commencer ▶️</Text>
-            </TouchableOpacity>
-          </View>
+          <HeroEmptyCardContent
+            accentColor={accentColor}
+            colors={colors}
+            handleLevelSelection={handleLevelSelection}
+            styles={styles}
+          />
         </Card>
       </View>
     );
   }
 
-  // Calculer progression simple
-  const currentWord = (lastActivity.metadata?.word || 0) + 1;
-  const totalWords = lastActivity.metadata?.totalWords || 15;
-  const percentage = Math.round((currentWord / totalWords) * 100);
-
   return (
     <View style={styles.container}>
       <Card style={[styles.card, { backgroundColor: colors.surface }]}>
-        <View style={styles.content}>
-          <View style={styles.header}>
-            <Text style={styles.emoji}>📚</Text>
-            <Text style={[styles.label, { color: colors.textSecondary }]}>
-              Reprendre
-            </Text>
-          </View>
-
-          <Text style={[styles.title, { color: colors.text }]}>
-            {lastActivity.title}
-          </Text>
-
-          <Text style={[styles.subtitle, { color: colors.textSecondary }]}> 
-            Niv {lastActivity.level || 1}
-            {typeof lastActivity.metadata?.categoryIndex === 'number' ? ` • Catégorie ${lastActivity.metadata.categoryIndex + 1}` : ''}
-            • Mot {currentWord}/{totalWords}
-          </Text>
-
-          {/* Barre de progression */}
-          <View style={styles.progressContainer}>
-            <View style={[styles.progressTrack, { backgroundColor: `${accentColor}15` }]}>
-              <View 
-                style={[
-                  styles.progressFill,
-                  { 
-                    width: `${Math.min(percentage, 100)}%`,
-                    backgroundColor: accentColor
-                  }
-                ]} 
-              />
-            </View>
-            <Text style={[styles.progressText, { color: accentColor }]}>
-              {percentage}%
-            </Text>
-          </View>
-
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: accentColor }]}
-            onPress={handleContinue}
-            activeOpacity={0.8}
-          >
-            <Text style={styles.buttonText}>Continuer ▶️</Text>
-          </TouchableOpacity>
-        </View>
+        <HeroCardContent
+          lastActivity={lastActivity}
+          accentColor={accentColor}
+          colors={colors}
+          handleContinue={handleContinue}
+          styles={styles}
+        />
       </Card>
     </View>
   );

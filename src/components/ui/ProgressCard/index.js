@@ -143,48 +143,49 @@ const ProgressCard = ({
               </Text>
             </View>
             
-            {/* Liste des catégories - DESIGN ÉPURÉ SANS DOTS */}
-            <View style={styles.categoriesList}>
-              {categoryData.map((category) => (
-                <TouchableOpacity
-                  key={category.id || category.title}
-                  style={styles.categoryItem}
-                  onPress={handleCategoryPress(index)}
-                  activeOpacity={0.7}
-                >
-                  {/* Row principale avec titre et stats */}
-                  <View style={styles.categoryRow}>
-                    <View style={styles.categoryLeft}>
-                      {/* 🚫 categoryDot SUPPRIMÉ - c'était ça les ronds ! */}
-                      <Text style={styles.categoryTitle} numberOfLines={1}>
-                        {category.title}
-                      </Text>
-                    </View>
-                    <Text style={[styles.categoryStats, { color: levelColor }]}>
-                      {category.completed}/{category.total}
-                    </Text>
-                  </View>
-                  
-                  {/* Barre de progression de la catégorie */}
-                  <View style={styles.categoryProgressContainer}>
-                    <ProgressBar
-                      progress={category.progress}
-                      showPercentage={false}
-                      fillColor={levelColor}
-                      backgroundColor={`${levelColor}10`}
-                      height={3}
-                      borderRadius={2}
-                      animated
-                    />
-                  </View>
-                </TouchableOpacity>
-              ))}
-            </View>
+            <CategoryList categoryData={categoryData} handleCategoryPress={handleCategoryPress} levelColor={levelColor} styles={styles} />
           </View>
         </View>
       )}
     </View>
   );
 };
+
+const CategoryList = ({ categoryData, handleCategoryPress, levelColor, styles }) => (
+  <View style={styles.categoriesList}>
+    {categoryData.map((category, index) => (
+      <TouchableOpacity
+        key={category.id || category.title}
+        style={styles.categoryItem}
+        onPress={handleCategoryPress(index)}
+        activeOpacity={0.7}
+      >
+        {/* Row principale avec titre et stats */}
+        <View style={styles.categoryRow}>
+          <View style={styles.categoryLeft}>
+            <Text style={styles.categoryTitle} numberOfLines={1}>
+              {category.title}
+            </Text>
+          </View>
+          <Text style={[styles.categoryStats, { color: levelColor }]}>
+            {category.completed}/{category.total}
+          </Text>
+        </View>
+        {/* Barre de progression de la catégorie */}
+        <View style={styles.categoryProgressContainer}>
+          <ProgressBar
+            progress={category.progress}
+            showPercentage={false}
+            fillColor={levelColor}
+            backgroundColor={`${levelColor}10`}
+            height={3}
+            borderRadius={2}
+            animated
+          />
+        </View>
+      </TouchableOpacity>
+    ))}
+  </View>
+);
 
 export default ProgressCard;

@@ -46,21 +46,7 @@ const ErrorCorrectionWordSection = memo(({
   return (
     <View style={styles.container}>
       {/* 🎯 COMPTEUR STYLÉ - Garde la logique existante */}
-      <View style={styles.counterSection}>
-        <LinearGradient
-          colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.counterGradient}
-        >
-          {/* Compteur principal */}
-          <View style={[styles.counterBadge, { borderColor: `${levelColor}20` }]}>
-            <Text style={[styles.counterText, { color: levelColor }]}>
-              {exerciseCounter}
-            </Text>
-          </View>
-        </LinearGradient>
-      </View>
+      <CounterSection exerciseCounter={exerciseCounter} levelColor={levelColor} styles={styles} />
 
       {/* 🎨 MODE SWITCHING - Affiche le bon composant selon le mode */}
       {correctionMode === 'full' && (
@@ -109,3 +95,21 @@ const ErrorCorrectionWordSection = memo(({
 ErrorCorrectionWordSection.displayName = "ErrorCorrectionWordSection";
 
 export default ErrorCorrectionWordSection;
+
+const CounterSection = ({ exerciseCounter, levelColor, styles }) => (
+  <View style={styles.counterSection}>
+    <LinearGradient
+      colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.counterGradient}
+    >
+      {/* Compteur principal */}
+      <View style={[styles.counterBadge, { borderColor: `${levelColor}20` }]}> 
+        <Text style={[styles.counterText, { color: levelColor }]}> 
+          {exerciseCounter}
+        </Text>
+      </View>
+    </LinearGradient>
+  </View>
+);

@@ -134,47 +134,14 @@ const ResultsScreen = ({
           </View>
         </View>
 
-        <View style={styles.statsContainer}>
-          <View style={styles.statItem}>
-            <View
-              style={[styles.statIconContainer, { backgroundColor: "#ECFDF5" }]}
-            >
-              <Ionicons name="checkmark-circle" size={24} color="#10B981" />
-            </View>
-            <Text style={styles.statLabel}>Correctes</Text>
-            <Text style={styles.statValue}>{correctAnswers}</Text>
-          </View>
-
-          <View style={styles.statItem}>
-            <View
-              style={[styles.statIconContainer, { backgroundColor: "#FEF2F2" }]}
-            >
-              <Ionicons name="close-circle" size={24} color="#EF4444" />
-            </View>
-            <Text style={styles.statLabel}>Incorrectes</Text>
-            <Text style={styles.statValue}>{incorrectAnswers}</Text>
-          </View>
-
-          <View style={styles.statItem}>
-            <View
-              style={[styles.statIconContainer, { backgroundColor: "#F3F4F6" }]}
-            >
-              <Ionicons name="play-skip-forward" size={24} color="#6B7280" />
-            </View>
-            <Text style={styles.statLabel}>Passées</Text>
-            <Text style={styles.statValue}>{skippedAnswers}</Text>
-          </View>
-
-          <View style={styles.statItem}>
-            <View
-              style={[styles.statIconContainer, { backgroundColor: "#EFF6FF" }]}
-            >
-              <Ionicons name="time" size={24} color="#3B82F6" />
-            </View>
-            <Text style={styles.statLabel}>Temps</Text>
-            <Text style={styles.statValue}>{timeTaken}</Text>
-          </View>
-        </View>
+        <StatsSection
+          correctAnswers={correctAnswers}
+          incorrectAnswers={incorrectAnswers}
+          skippedAnswers={skippedAnswers}
+          timeTaken={timeTaken}
+          color={color}
+          styles={styles}
+        />
 
         {feedback ? (
           <View style={styles.feedbackContainer}>
@@ -183,67 +150,11 @@ const ResultsScreen = ({
           </View>
         ) : null}
 
-        {showDetailedResults && detailedResults.length > 0 && (
-          <View style={styles.detailedResultsContainer}>
-            <Text style={styles.detailedResultsTitle}>Détail des réponses</Text>
-
-            {detailedResults.map((result) => (
-              <View key={result.question} style={styles.detailedResultItem}>
-                <View style={styles.questionHeader}>
-                  <Text style={styles.questionNumber}>
-                    Question {detailedResults.indexOf(result) + 1}
-                  </Text>
-                  <Ionicons
-                    name={
-                      result.isCorrect
-                        ? "checkmark-circle"
-                        : result.isSkipped
-                        ? "play-skip-forward"
-                        : "close-circle"
-                    }
-                    size={20}
-                    color={
-                      result.isCorrect
-                        ? "#10B981"
-                        : result.isSkipped
-                        ? "#6B7280"
-                        : "#EF4444"
-                    }
-                  />
-                </View>
-
-                <Text style={styles.questionText}>{result.question}</Text>
-
-                <View style={styles.answersContainer}>
-                  <View style={styles.answerRow}>
-                    <Text style={styles.answerLabel}>Votre réponse:</Text>
-                    <Text
-                      style={[
-                        styles.answerValue,
-                        result.isCorrect
-                          ? styles.correctAnswer
-                          : result.isSkipped
-                          ? styles.skippedAnswer
-                          : styles.incorrectAnswer,
-                      ]}
-                    >
-                      {result.isSkipped ? "Passée" : result.userAnswer}
-                    </Text>
-                  </View>
-
-                  {!result.isCorrect && !result.isSkipped && (
-                    <View style={styles.answerRow}>
-                      <Text style={styles.answerLabel}>Réponse correcte:</Text>
-                      <Text style={[styles.answerValue, styles.correctAnswer]}>
-                        {result.correctAnswer}
-                      </Text>
-                    </View>
-                  )}
-                </View>
-              </View>
-            ))}
-          </View>
-        )}
+        <DetailedResultsSection
+          showDetailedResults={showDetailedResults}
+          detailedResults={detailedResults}
+          styles={styles}
+        />
 
         <View style={styles.buttonsContainer}>
           <TouchableOpacity style={styles.shareButton} onPress={shareResults}>
@@ -268,6 +179,114 @@ const ResultsScreen = ({
     </ScrollView>
   );
 };
+
+const StatsSection = ({ correctAnswers, incorrectAnswers, skippedAnswers, timeTaken, color, styles }) => (
+  <View style={styles.statsContainer}>
+    <View style={styles.statItem}>
+      <View
+        style={[styles.statIconContainer, { backgroundColor: "#ECFDF5" }]}
+      >
+        <Ionicons name="checkmark-circle" size={24} color="#10B981" />
+      </View>
+      <Text style={styles.statLabel}>Correctes</Text>
+      <Text style={styles.statValue}>{correctAnswers}</Text>
+    </View>
+
+    <View style={styles.statItem}>
+      <View
+        style={[styles.statIconContainer, { backgroundColor: "#FEF2F2" }]}
+      >
+        <Ionicons name="close-circle" size={24} color="#EF4444" />
+      </View>
+      <Text style={styles.statLabel}>Incorrectes</Text>
+      <Text style={styles.statValue}>{incorrectAnswers}</Text>
+    </View>
+
+    <View style={styles.statItem}>
+      <View
+        style={[styles.statIconContainer, { backgroundColor: "#F3F4F6" }]}
+      >
+        <Ionicons name="play-skip-forward" size={24} color="#6B7280" />
+      </View>
+      <Text style={styles.statLabel}>Passées</Text>
+      <Text style={styles.statValue}>{skippedAnswers}</Text>
+    </View>
+
+    <View style={styles.statItem}>
+      <View
+        style={[styles.statIconContainer, { backgroundColor: "#EFF6FF" }]}
+      >
+        <Ionicons name="time" size={24} color="#3B82F6" />
+      </View>
+      <Text style={styles.statLabel}>Temps</Text>
+      <Text style={styles.statValue}>{timeTaken}</Text>
+    </View>
+  </View>
+);
+
+const DetailedResultsSection = ({ showDetailedResults, detailedResults, styles }) => (
+  showDetailedResults && detailedResults.length > 0 && (
+    <View style={styles.detailedResultsContainer}>
+      <Text style={styles.detailedResultsTitle}>Détail des réponses</Text>
+
+      {detailedResults.map((result) => (
+        <View key={result.question} style={styles.detailedResultItem}>
+          <View style={styles.questionHeader}>
+            <Text style={styles.questionNumber}>
+              Question {detailedResults.indexOf(result) + 1}
+            </Text>
+            <Ionicons
+              name={
+                result.isCorrect
+                  ? "checkmark-circle"
+                  : result.isSkipped
+                  ? "play-skip-forward"
+                  : "close-circle"
+              }
+              size={20}
+              color={
+                result.isCorrect
+                  ? "#10B981"
+                  : result.isSkipped
+                  ? "#6B7280"
+                  : "#EF4444"
+              }
+            />
+          </View>
+
+          <Text style={styles.questionText}>{result.question}</Text>
+
+          <View style={styles.answersContainer}>
+            <View style={styles.answerRow}>
+              <Text style={styles.answerLabel}>Votre réponse:</Text>
+              <Text
+                style={[
+                  styles.answerValue,
+                  result.isCorrect
+                    ? styles.correctAnswer
+                    : result.isSkipped
+                    ? styles.skippedAnswer
+                    : styles.incorrectAnswer,
+                ]}
+              >
+                {result.isSkipped ? "Passée" : result.userAnswer}
+              </Text>
+            </View>
+
+            {!result.isCorrect && !result.isSkipped && (
+              <View style={styles.answerRow}>
+                <Text style={styles.answerLabel}>Réponse correcte:</Text>
+                <Text style={[styles.answerValue, styles.correctAnswer]}>
+                  {result.correctAnswer}
+                </Text>
+              </View>
+            )}
+          </View>
+        </View>
+      ))}
+    </View>
+  )
+);
 
 export default ResultsScreen;
 

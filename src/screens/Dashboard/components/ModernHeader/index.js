@@ -33,26 +33,30 @@ const ModernHeader = ({
 
       <View style={styles.content}>
         {/* Section gauche : Logo uniquement */}
-        <View style={styles.leftSection}>
-          <View style={styles.logoContainer}>
-            <Text style={styles.logoEmoji}>🎓</Text>
-            <Text style={[styles.logoText, { color: colors.surface }]}>
-              JOUD
-            </Text>
-          </View>
-        </View>
+        <HeaderLeftSection colors={colors} styles={styles} />
 
         {/* Section droite : Badge niveau uniquement */}
-        <View style={styles.rightSection}>
-          <View style={[styles.levelBadge, { backgroundColor: colors.surface }]}>
-            <Text style={[styles.levelText, { color: levelColor }]}>
-              {displayLevel}
-            </Text>
-          </View>
-        </View>
+        <HeaderRightSection displayLevel={displayLevel} levelColor={levelColor} colors={colors} styles={styles} />
       </View>
     </LinearGradient>
   );
 };
+
+const HeaderLeftSection = ({ colors, styles }) => (
+  <View style={styles.leftSection}>
+    <View style={styles.logoContainer}>
+      <Text style={styles.logoEmoji}>🎓</Text>
+      <Text style={[styles.logoText, { color: colors.surface }]}>JOUD</Text>
+    </View>
+  </View>
+);
+
+const HeaderRightSection = ({ displayLevel, levelColor, colors, styles }) => (
+  <View style={styles.rightSection}>
+    <View style={[styles.levelBadge, { backgroundColor: colors.surface }]}> 
+      <Text style={[styles.levelText, { color: levelColor }]}>{displayLevel}</Text>
+    </View>
+  </View>
+);
 
 export default ModernHeader;

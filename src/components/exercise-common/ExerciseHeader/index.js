@@ -47,37 +47,48 @@ const ExerciseHeader = ({
     <View style={styles.container}>
       <View style={styles.content}>
         {/* =================== SECTION GAUCHE =================== */}
-        <View style={styles.leftSection}>
-          {/* Bouton retour - ultra-simple */}
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={handleClose}
-            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-            activeOpacity={0.6}
-          accessibilityRole="button"
-          >
-            <Ionicons name={backIcon} size={22} color="#64748b" />
-          </TouchableOpacity>
-
-          {/* Titre avec icône - design épuré */}
-          <View style={styles.titleSection}>
-            {/* Icône d'exercice simple */}
-            <Text style={styles.exerciseIcon}>{exerciseIcon}</Text>
-            
-            {/* Titre épuré */}
-            <Text style={[styles.title, { color: exerciseColor }]}>
-              {title}
-            </Text>
-          </View>
-        </View>
+        <HeaderLeftSection
+          handleClose={handleClose}
+          backIcon={backIcon}
+          exerciseIcon={exerciseIcon}
+          title={title}
+          exerciseColor={exerciseColor}
+          styles={styles}
+        />
 
         {/* =================== BADGE NIVEAU - Minimal =================== */}
-        <View style={[styles.levelBadge, { backgroundColor: levelColor }]}>
-          <Text style={styles.levelText}>{displayLevel}</Text>
-        </View>
+        <LevelBadge
+          displayLevel={displayLevel}
+          levelColor={levelColor}
+          styles={styles}
+        />
       </View>
     </View>
   );
 };
+
+const HeaderLeftSection = ({ handleClose, backIcon, exerciseIcon, title, exerciseColor, styles }) => (
+  <View style={styles.leftSection}>
+    <TouchableOpacity
+      style={styles.backButton}
+      onPress={handleClose}
+      hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+      activeOpacity={0.6}
+      accessibilityRole="button"
+    >
+      <Ionicons name={backIcon} size={22} color="#64748b" />
+    </TouchableOpacity>
+    <View style={styles.titleSection}>
+      <Text style={styles.exerciseIcon}>{exerciseIcon}</Text>
+      <Text style={[styles.title, { color: exerciseColor }]}>{title}</Text>
+    </View>
+  </View>
+);
+
+const LevelBadge = ({ displayLevel, levelColor, styles }) => (
+  <View style={[styles.levelBadge, { backgroundColor: levelColor }]}> 
+    <Text style={styles.levelText}>{displayLevel}</Text>
+  </View>
+);
 
 export default ExerciseHeader;

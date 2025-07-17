@@ -124,90 +124,20 @@ const RevisionPreferencesModal = ({
                   Sélectionnez la fréquence qui vous convient le mieux
                 </Text>
 
-                <View style={styles.stylesContainer}>
-                  {revisionStyles.map((style) => (
-                    <TouchableOpacity
-                      key={style.id}
-                      style={[
-                        styles.styleCard,
-                        selectedStyle === style.id && {
-                          borderColor: style.color,
-                          backgroundColor: `${style.color}10`
-                        }
-                      ]}
-                      onPress={handleStylePress(style.id)}
-                      activeOpacity={0.7}
-                    >
-                      <View style={styles.styleHeader}>
-                        <Text style={styles.styleIcon}>{style.icon}</Text>
-                        <View style={styles.styleInfo}>
-                          <Text style={[
-                            styles.styleTitle,
-                            selectedStyle === style.id && { color: style.color }
-                          ]}>
-                            {style.title}
-                          </Text>
-                          <Text style={styles.styleSubtitle}>
-                            {style.subtitle}
-                          </Text>
-                        </View>
-                      </View>
-                      
-                      <Text style={styles.styleDescription}>
-                        {style.description}
-                      </Text>
-                      
-                      {selectedStyle === style.id && (
-                        <View style={[styles.selectedBadge, { backgroundColor: style.color }]}>
-                          <Text style={styles.selectedText}>✓</Text>
-                        </View>
-                      )}
-                    </TouchableOpacity>
-                  ))}
-                </View>
+                <RevisionStylesList 
+                  revisionStyles={revisionStyles} 
+                  selectedStyle={selectedStyle} 
+                  handleStylePress={handleStylePress} 
+                  styles={styles} 
+                />
               </View>
 
               {/* Résumé du choix */}
-              {selectedStyle !== 'none' && (
-                <View style={styles.summary}>
-                  <Text style={styles.summaryTitle}>📋 Votre configuration :</Text>
-                  <Text style={styles.summaryText}>
-                    • Style : <Text style={styles.summaryHighlight}>
-                      {revisionStyles.find(s => s.id === selectedStyle)?.title}
-                    </Text>
-                  </Text>
-                  <Text style={styles.summaryText}>
-                    • Révision tous les <Text style={styles.summaryHighlight}>
-                      {revisionStyles.find(s => s.id === selectedStyle)?.frequency} mots
-                    </Text>
-                  </Text>
-                  <Text style={styles.summaryText}>
-                    • <Text style={styles.summaryHighlight}>
-                      {revisionStyles.find(s => s.id === selectedStyle)?.questionsCount} questions
-                    </Text> par session
-                  </Text>
-                  <Text style={styles.summaryNote}>
-                    💡 Vous pourrez modifier ces paramètres plus tard
-                  </Text>
-                </View>
-              )}
-
-              {selectedStyle === 'none' && (
-                <View style={[styles.summary, styles.summaryWarning]}>
-                  <Text style={[styles.summaryTitle, styles.summaryTitleWarning]}>
-                    ⚠️ Révision désactivée
-                  </Text>
-                  <Text style={[styles.summaryText, styles.summaryTextWarning]}>
-                    • Aucune révision automatique
-                  </Text>
-                  <Text style={[styles.summaryText, styles.summaryTextWarning]}>
-                    • Bouton révision manuelle disponible
-                  </Text>
-                  <Text style={[styles.summaryNote, styles.summaryNoteWarning]}>
-                    💡 Réactivable à tout moment
-                  </Text>
-                </View>
-              )}
+              <SummarySection 
+                selectedStyle={selectedStyle} 
+                revisionStyles={revisionStyles} 
+                styles={styles} 
+              />
 
               {/* Boutons */}
               <View style={styles.buttons}>
@@ -241,5 +171,90 @@ const RevisionPreferencesModal = ({
     </Modal>
   );
 };
+
+const RevisionStylesList = ({ revisionStyles, selectedStyle, handleStylePress, styles }) => (
+  <View style={styles.stylesContainer}>
+    {revisionStyles.map((style) => (
+      <TouchableOpacity
+        key={style.id}
+        style={[
+          styles.styleCard,
+          selectedStyle === style.id && {
+            borderColor: style.color,
+            backgroundColor: `${style.color}10`
+          }
+        ]}
+        onPress={handleStylePress(style.id)}
+        activeOpacity={0.7}
+      >
+        <View style={styles.styleHeader}>
+          <Text style={styles.styleIcon}>{style.icon}</Text>
+          <View style={styles.styleInfo}>
+            <Text style={[
+              styles.styleTitle,
+              selectedStyle === style.id && { color: style.color }
+            ]}>
+              {style.title}
+            </Text>
+            <Text style={styles.styleSubtitle}>
+              {style.subtitle}
+            </Text>
+          </View>
+        </View>
+        
+        <Text style={styles.styleDescription}>
+          {style.description}
+        </Text>
+        
+        {selectedStyle === style.id && (
+          <View style={[styles.selectedBadge, { backgroundColor: style.color }]}>
+            <Text style={styles.selectedText}>✓</Text>
+          </View>
+        )}
+      </TouchableOpacity>
+    ))}
+  </View>
+);
+
+const SummarySection = ({ selectedStyle, revisionStyles, styles }) => (
+  selectedStyle !== 'none' ? (
+    <View style={styles.summary}>
+      <Text style={styles.summaryTitle}>📋 Votre configuration :</Text>
+      <Text style={styles.summaryText}>
+        • Style : <Text style={styles.summaryHighlight}>
+          {revisionStyles.find(s => s.id === selectedStyle)?.title}
+        </Text>
+      </Text>
+      <Text style={styles.summaryText}>
+        • Révision tous les <Text style={styles.summaryHighlight}>
+          {revisionStyles.find(s => s.id === selectedStyle)?.frequency} mots
+        </Text>
+      </Text>
+      <Text style={styles.summaryText}>
+        • <Text style={styles.summaryHighlight}>
+          {revisionStyles.find(s => s.id === selectedStyle)?.questionsCount} questions
+        </Text> par session
+      </Text>
+      <Text style={styles.summaryNote}>
+        💡 Vous pourrez modifier ces paramètres plus tard
+      </Text>
+    </View>
+  ) : (
+    <View style={[styles.summary, styles.summaryWarning]}>
+      <Text style={[styles.summaryTitle, styles.summaryTitleWarning]}>
+        ⚠️ Révision désactivée
+      </Text>
+      <Text style={[styles.summaryText, styles.summaryTextWarning]}>
+        • Aucune révision automatique
+      </Text>
+      <Text style={[styles.summaryText, styles.summaryTextWarning]}>
+        • Bouton révision manuelle disponible
+      </Text>
+      <Text style={[styles.summaryNote, styles.summaryNoteWarning]}>
+        💡 Réactivable à tout moment
+      </Text>
+    </View>
+  )
+);
 
 export default RevisionPreferencesModal;

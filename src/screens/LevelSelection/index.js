@@ -33,6 +33,57 @@ const DEFAULT_THEME = {
   },
 };
 
+const LevelCardContent = ({ level, colors, styles, handleLevelPress }) => (
+  <View style={styles.modernCardContent}>
+    {/* Header - TON DESIGN ORIGINAL */}
+    <View style={styles.modernCardHeader}>
+      <View style={styles.modernTitleContainer}>
+        <Text style={[styles.modernTitle, { color: colors.text }]}>
+          {level.title}
+        </Text>
+        {/* ✅ TON BADGE ORIGINAL avec VRAI CHIFFRE */}
+        <View style={[styles.modernBadge, { backgroundColor: level.color }]}>
+          <Text style={styles.modernBadgeText}>
+            {level.progress}% {/* ✅ SEUL CHANGEMENT : vrai chiffre */}
+          </Text>
+        </View>
+      </View>
+      <Text style={styles.modernIcon}>{level.icon}</Text>
+    </View>
+
+    {/* Progression - TON DESIGN ORIGINAL */}
+    {level.hasProgress && (
+      <View style={styles.modernProgressContainer}>
+        <View style={styles.modernProgressBar}>
+          <View 
+            style={[
+              styles.modernProgressFill,
+              { 
+                width: `${level.progress}%`, // ✅ Vrai chiffre
+                backgroundColor: level.color
+              }
+            ]} 
+          />
+        </View>
+        <Text style={[styles.modernProgressText, { color: colors.textSecondary }]}>
+          {level.progress}% {/* ✅ Vrai chiffre */}
+        </Text>
+      </View>
+    )}
+
+    {/* Bouton - TON DESIGN ORIGINAL */}
+    <Button
+      title={level.hasStarted ? "Continuer" : "Commencer"}
+      variant="filled"
+      color={level.color}
+      fullWidth
+      onPress={handleLevelPress(level)}
+      style={styles.modernButton}
+      rightIcon={level.hasStarted ? "play-outline" : "rocket-outline"}
+    />
+  </View>
+);
+
 const LevelSelection = () => {
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
@@ -123,17 +174,6 @@ const LevelSelection = () => {
   ), []);
 
   const renderLevelCard = useCallback((level) => {
-    // ✅ LOGIQUE BOUTON SIMPLE
-    const getButtonText = () => {
-      if (level.hasStarted) return "Continuer"; // Dès qu'on a commencé = Continuer
-      return "Commencer";
-    };
-
-    const getButtonIcon = () => {
-      if (level.hasStarted) return "play-outline";
-      return "rocket-outline";
-    };
-
     return (
       <TouchableOpacity
         key={level.id}
@@ -141,54 +181,7 @@ const LevelSelection = () => {
         onPress={handleLevelPress(level)}
         activeOpacity={0.8}
       >
-        <View style={styles.modernCardContent}>
-          {/* Header - TON DESIGN ORIGINAL */}
-          <View style={styles.modernCardHeader}>
-            <View style={styles.modernTitleContainer}>
-              <Text style={[styles.modernTitle, { color: colors.text }]}>
-                {level.title}
-              </Text>
-              {/* ✅ TON BADGE ORIGINAL avec VRAI CHIFFRE */}
-              <View style={[styles.modernBadge, { backgroundColor: level.color }]}>
-                <Text style={styles.modernBadgeText}>
-                  {level.progress}% {/* ✅ SEUL CHANGEMENT : vrai chiffre */}
-                </Text>
-              </View>
-            </View>
-            <Text style={styles.modernIcon}>{level.icon}</Text>
-          </View>
-
-          {/* Progression - TON DESIGN ORIGINAL */}
-          {level.hasProgress && (
-            <View style={styles.modernProgressContainer}>
-              <View style={styles.modernProgressBar}>
-                <View 
-                  style={[
-                    styles.modernProgressFill,
-                    { 
-                      width: `${level.progress}%`, // ✅ Vrai chiffre
-                      backgroundColor: level.color
-                    }
-                  ]} 
-                />
-              </View>
-              <Text style={[styles.modernProgressText, { color: colors.textSecondary }]}>
-                {level.progress}% {/* ✅ Vrai chiffre */}
-              </Text>
-            </View>
-          )}
-
-          {/* Bouton - TON DESIGN ORIGINAL */}
-          <Button
-            title={getButtonText()} // ✅ Logique simple
-            variant="filled"
-            color={level.color}
-            fullWidth
-            onPress={handleLevelPress(level)}
-            style={styles.modernButton}
-            rightIcon={getButtonIcon()}
-          />
-        </View>
+        <LevelCardContent level={level} colors={colors} styles={styles} handleLevelPress={handleLevelPress} />
       </TouchableOpacity>
     );
   }, [handleLevelPress, colors.text, styles]);

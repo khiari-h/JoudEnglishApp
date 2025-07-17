@@ -30,21 +30,7 @@ const VocabularyWordSection = memo(({
   return (
     <View style={styles.container}>
       {/* 🎯 COMPTEUR STYLÉ - Garde la logique existante */}
-      <View style={styles.counterSection}>
-        <LinearGradient
-          colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.counterGradient}
-        >
-          {/* Compteur principal */}
-          <View style={[styles.counterBadge, { borderColor: `${levelColor}20` }]}>
-            <Text style={[styles.counterText, { color: levelColor }]}>
-              {wordCounter}
-            </Text>
-          </View>
-        </LinearGradient>
-      </View>
+      <CounterSection wordCounter={wordCounter} levelColor={levelColor} styles={styles} />
 
       {/* 🎨 NOUVELLE CARTE DU MOT - Utilise la version refactorisée */}
       <VocabularyWordCard
@@ -59,6 +45,24 @@ const VocabularyWordSection = memo(({
     </View>
   );
 });
+
+const CounterSection = ({ wordCounter, levelColor, styles }) => (
+  <View style={styles.counterSection}>
+    <LinearGradient
+      colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.counterGradient}
+    >
+      {/* Compteur principal */}
+      <View style={[styles.counterBadge, { borderColor: `${levelColor}20` }]}> 
+        <Text style={[styles.counterText, { color: levelColor }]}> 
+          {wordCounter}
+        </Text>
+      </View>
+    </LinearGradient>
+  </View>
+);
 
 VocabularyWordSection.displayName = "VocabularyWordSection";
 

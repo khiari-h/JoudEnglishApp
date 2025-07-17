@@ -12,6 +12,55 @@ import styles from "./style";
  * ✅ Seul le niveau en cours est coloré
  * ✅ Bouton Explorer = navigation vers exercices
  */
+const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLevelDisplay, colors, primaryColor, styles }) => (
+  <View style={styles.levelsContainer}>
+    {displayLevels.map((level) => {
+      const isActive = level.id === currentLevel;
+      let circleStyle = [styles.levelCircle];
+      let textStyle = [styles.levelText];
+      if (isActive) {
+        circleStyle.push([
+          styles.activeLevelCircle,
+          { backgroundColor: level.color || primaryColor }
+        ]);
+        textStyle.push(styles.activeLevelText);
+      } else {
+        circleStyle.push(styles.futureLevelCircle);
+        textStyle.push([styles.futureLevelText, { color: colors.textSecondary }]);
+      }
+      return (
+        <TouchableOpacity
+          key={level.id}
+          style={styles.levelButton}
+          onPress={handleLevelPress(level.id)}
+          activeOpacity={0.7}
+        >
+          <View style={circleStyle}>
+            <Text style={textStyle}>{getLevelDisplay(level.id)}</Text>
+          </View>
+        </TouchableOpacity>
+      );
+    })}
+  </View>
+);
+
+const GlobalProgressBar = ({ globalProgress, primaryColor, styles, colors }) => (
+  <View style={styles.globalProgressContainer}>
+    <View style={[styles.globalProgressTrack, { backgroundColor: `${primaryColor}15` }]}> 
+      <View 
+        style={[
+          styles.globalProgressFill,
+          { 
+            width: `${Math.min(globalProgress, 100)}%`,
+            backgroundColor: primaryColor
+          }
+        ]} 
+      />
+    </View>
+    <Text style={[styles.progressLabel, { color: colors.textSecondary }]}>Progression globale</Text>
+  </View>
+);
+
 const LearningProgress = ({
   levels = [],
   currentLevel = "1",
@@ -90,61 +139,10 @@ const LearningProgress = ({
         </View>
 
         {/* Barre de progression globale */}
-        <View style={styles.globalProgressContainer}>
-          <View style={[styles.globalProgressTrack, { backgroundColor: `${primaryColor}15` }]}>
-            <View 
-              style={[
-                styles.globalProgressFill,
-                { 
-                  width: `${Math.min(globalProgress, 100)}%`,
-                  backgroundColor: primaryColor
-                }
-              ]} 
-            />
-          </View>
-          <Text style={[styles.progressLabel, { color: colors.textSecondary }]}>
-            Progression globale
-          </Text>
-        </View>
+        <GlobalProgressBar globalProgress={globalProgress} primaryColor={primaryColor} styles={styles} colors={colors} />
 
         {/* Niveaux en cercles - VERSION SIMPLE */}
-        <View style={styles.levelsContainer}>
-          {displayLevels.map((level) => {
-            // ✅ SIMPLE : Seul le niveau en cours est actif
-            const isActive = level.id === currentLevel;
-
-            let circleStyle = [styles.levelCircle];
-            let textStyle = [styles.levelText];
-
-            if (isActive) {
-              // ✅ Niveau en cours = coloré
-              circleStyle.push([
-                styles.activeLevelCircle,
-                { backgroundColor: level.color || primaryColor }
-              ]);
-              textStyle.push(styles.activeLevelText);
-            } else {
-              // ❌ Autres niveaux = gris
-              circleStyle.push(styles.futureLevelCircle);
-              textStyle.push([styles.futureLevelText, { color: colors.textSecondary }]);
-            }
-
-            return (
-              <TouchableOpacity
-                key={level.id}
-                style={styles.levelButton}
-                onPress={handleLevelPress(level.id)}
-                activeOpacity={0.7}
-              >
-                <View style={circleStyle}>
-                  <Text style={textStyle}>{getLevelDisplay(level.id)}</Text>
-                </View>
-
-                {/* ❌ SUPPRIMÉ : Indicateur "Actuel" inutile */}
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+        <LevelsCircleRow displayLevels={displayLevels} currentLevel={currentLevel} handleLevelPress={handleLevelPress} getLevelDisplay={getLevelDisplay} colors={colors} primaryColor={primaryColor} styles={styles} />
 
         {/* Action button - SEULE NAVIGATION */}
         <TouchableOpacity

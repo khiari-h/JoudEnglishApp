@@ -6,6 +6,38 @@ import { Ionicons } from '@expo/vector-icons';
 import { ThemeContext } from '../../../../../contexts/ThemeContext';
 import styles from './style';
 
+const RevisionChoicesList = ({ choices, handleChoicePress, styles }) => (
+  <View style={styles.choicesContainer}>
+    {choices.map((choice, idx) => (
+      <TouchableOpacity
+        key={choice.id}
+        style={[
+          styles.choiceButton,
+          choice.primary
+            ? styles.choiceButtonPrimary
+            : styles.choiceButtonSecondary,
+          { marginTop: idx === 0 ? 0 : 14, borderColor: choice.color }
+        ]}
+        onPress={handleChoicePress(choice.id)}
+        activeOpacity={0.85}
+      >
+        <View style={styles.choiceContent}>
+          {choice.icon}
+          <View style={styles.choiceTexts}>
+            <Text style={[
+              styles.choiceLabel,
+              choice.primary ? styles.choiceLabelPrimary : styles.choiceLabelSecondary
+            ]}>
+              {choice.label}
+            </Text>
+            <Text style={styles.choiceSubtitle}>{choice.subtitle}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    ))}
+  </View>
+);
+
 const RevisionPopup = ({
   visible = false,
   totalWordsLearned = 50,
@@ -80,35 +112,11 @@ const RevisionPopup = ({
               <Text style={styles.motivation}>Consolidez vos acquis !</Text>
             </LinearGradient>
 
-            <View style={styles.choicesContainer}>
-              {choices.map((choice, idx) => (
-                <TouchableOpacity
-                  key={choice.id}
-                  style={[
-                    styles.choiceButton,
-                    choice.primary
-                      ? styles.choiceButtonPrimary
-                      : styles.choiceButtonSecondary,
-                    { marginTop: idx === 0 ? 0 : 14, borderColor: choice.color }
-                  ]}
-                  onPress={handleChoicePress(choice.id)}
-                  activeOpacity={0.85}
-                >
-                  <View style={styles.choiceContent}>
-                    {choice.icon}
-                    <View style={styles.choiceTexts}>
-                      <Text style={[
-                        styles.choiceLabel,
-                        choice.primary ? styles.choiceLabelPrimary : styles.choiceLabelSecondary
-                      ]}>
-                        {choice.label}
-                      </Text>
-                      <Text style={styles.choiceSubtitle}>{choice.subtitle}</Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              ))}
-            </View>
+            <RevisionChoicesList
+              choices={choices}
+              handleChoicePress={handleChoicePress}
+              styles={styles}
+            />
 
             <View style={styles.footerNote}>
               <Ionicons name="settings-outline" size={16} color={colors.textSecondary} style={{ marginRight: 4 }} />

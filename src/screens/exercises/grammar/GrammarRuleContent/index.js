@@ -82,16 +82,28 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
       </TouchableOpacity>
 
       {/* 📚 CONTENU EXPANSIBLE avec ContentSection */}
-      <Animated.View 
-        style={[
-          styles.contentWrapper,
-          { 
-            height: contentHeight,
-            opacity: expandAnim,
-          }
-        ]}
-      >
-        <View style={styles.contentContainer}>
+      <RuleContentSection
+        expandAnim={expandAnim}
+        contentHeight={contentHeight}
+        rule={rule}
+        levelColor={levelColor}
+        styles={styles}
+      />
+    </View>
+  );
+};
+
+const RuleContentSection = ({ expandAnim, contentHeight, rule, levelColor, styles }) => (
+  <Animated.View 
+    style={[
+      styles.contentWrapper,
+      { 
+        height: contentHeight,
+        opacity: expandAnim,
+      }
+    ]}
+  >
+    <View style={styles.contentContainer}>
           {/* 💡 EXPLICATION avec ContentSection */}
           <ContentSection
             title="Explanation"
@@ -130,8 +142,6 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
           )}
         </View>
       </Animated.View>
-    </View>
-  );
-};
+);
 
 export default GrammarRuleContent;
