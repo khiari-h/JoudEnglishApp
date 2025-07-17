@@ -94,6 +94,11 @@ const LevelSelection = () => {
     });
   }, []);
 
+  const handleLevelPress = useCallback(
+    (level) => () => handleLevelSelect(level),
+    [handleLevelSelect]
+  );
+
   // ========== RENDU - TON DESIGN ORIGINAL ==========
   const renderHeader = useCallback(() => (
     <View style={styles.headerContainer}>
@@ -133,7 +138,7 @@ const LevelSelection = () => {
       <TouchableOpacity
         key={level.id}
         style={styles.modernCard}
-        onPress={() => handleLevelSelect(level)}
+        onPress={handleLevelPress(level)}
         activeOpacity={0.8}
       >
         <View style={styles.modernCardContent}>
@@ -179,14 +184,14 @@ const LevelSelection = () => {
             variant="filled"
             color={level.color}
             fullWidth
-            onPress={() => handleLevelSelect(level)}
+            onPress={handleLevelPress(level)}
             style={styles.modernButton}
             rightIcon={getButtonIcon()}
           />
         </View>
       </TouchableOpacity>
     );
-  }, [handleLevelSelect]);
+  }, [handleLevelPress, colors.text, styles, getButtonText, getButtonIcon]);
 
   return (
     <Container

@@ -65,15 +65,15 @@ const RevisionPreferencesModal = ({
     }
   ];
 
-  const handleConfirm = () => {
+  const handleConfirm = useCallback(() => {
     const style = revisionStyles.find(s => s.id === selectedStyle);
     onChoice?.(style.frequency, style.questionsCount, selectedStyle);
-  };
+  }, [onChoice, revisionStyles, selectedStyle]);
 
-  const handleSkip = () => {
+  const handleSkip = useCallback(() => {
     const defaultStyle = revisionStyles.find(s => s.id === 'standard');
     onSkip?.(defaultStyle.frequency, defaultStyle.questionsCount, 'standard');
-  };
+  }, [onSkip, revisionStyles]);
 
   const handleStylePress = useCallback((id) => () => setSelectedStyle(id), []);
 

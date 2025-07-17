@@ -64,11 +64,11 @@ const ProgressCard = ({
   };
 
   // Toggle expansion avec LayoutAnimation smooth
-  const toggleExpanded = () => {
+  const toggleExpanded = useCallback(() => {
     if (!expandable) return;
     configureLayoutAnimation();
     onToggleExpand?.();
-  };
+  }, [expandable, configureLayoutAnimation, onToggleExpand]);
 
   const handleCategoryPress = useCallback((idx) => () => onCategoryPress?.(idx), [onCategoryPress]);
 

@@ -110,6 +110,11 @@ const ExerciseSelection = ({ level }) => {
     });
   }, [level]);
 
+  const handleExercisePress = useCallback(
+    (exercise) => () => handleExerciseSelect(exercise),
+    [handleExerciseSelect]
+  );
+
   // ========== RENDU - TON DESIGN ORIGINAL ==========
   const renderHeader = () => (
     <View style={styles.headerContainer}>
@@ -156,7 +161,7 @@ const ExerciseSelection = ({ level }) => {
       <TouchableOpacity
         key={exercise.id}
         style={styles.levelCard}
-        onPress={() => handleExerciseSelect(exercise)}
+        onPress={handleExercisePress(exercise)}
         activeOpacity={0.8}
       >
         <View style={styles.cardContentStyle}>
@@ -210,14 +215,14 @@ const ExerciseSelection = ({ level }) => {
             variant="filled"
             color={exercise.color}
             fullWidth
-            onPress={() => handleExerciseSelect(exercise)}
+            onPress={handleExercisePress(exercise)}
             style={styles.startButton}
             rightIcon={getButtonIcon()}
           />
         </View>
       </TouchableOpacity>
     );
-  }, [handleExerciseSelect]);
+  }, [handleExercisePress, colors.text, styles, getButtonText, getButtonIcon]);
 
   return (
     <Container
