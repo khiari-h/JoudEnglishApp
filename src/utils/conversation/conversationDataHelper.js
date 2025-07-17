@@ -103,7 +103,7 @@ export const getConversationLevelStats = (level) => {
 
   return {
     scenarios: totalScenarios,
-    totalSteps: totalSteps,
+    totalSteps,
     averageStepsPerScenario:
       totalScenarios > 0 ? totalSteps / totalScenarios : 0,
   };

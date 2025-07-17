@@ -71,7 +71,7 @@ export const calculateCategoryProgress = (categories = [], exercises = [], compl
       title: category.name || `Catégorie ${category.id}`,
       totalExercises: exercisesInCategory,
       completedExercises: completedInCategory,
-      progress: progress
+      progress
     };
   });
 };

@@ -233,7 +233,7 @@ const errorCorrectionC2 = {
       complexity: {
         averageTextLength: Math.round(totalTextLength / allExercises.length),
         averageWordCount: Math.round(allExercises.reduce((sum, ex) => sum + ex.text.split(' ').length, 0) / allExercises.length),
-        totalErrorPositions: totalErrorPositions,
+        totalErrorPositions,
         averageErrorsPerExercise: Math.round(totalErrorPositions / allExercises.filter(ex => ex.errorPositions).length * 10) / 10,
         masteryExercisesPercentage: Math.round((masteryExercises / allExercises.length) * 100),
         literaryFocusPercentage: Math.round((literaryExercises / allExercises.length) * 100),

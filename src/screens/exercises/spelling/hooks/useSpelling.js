@@ -122,7 +122,7 @@ const useSpelling = (spellingData = null, level = "1", exerciseType = "correctio
 
     const newAnswer = {
       exerciseIndex: currentExerciseIndex,
-      isCorrect: isCorrect,
+      isCorrect,
       userAnswer: userInput,
       correctAnswer: currentExercise?.correctAnswer || '',
       exerciseType: currentExercise?.type || 'correction',

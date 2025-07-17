@@ -81,7 +81,7 @@ export const calculateSectionProgressData = (assessmentData = {}, sections = [],
       totalQuestions: totalInSection,
       answeredQuestions: answeredInSection,
       correctAnswers: correctInSection,
-      progress: progress,
+      progress,
       accuracy: answeredInSection > 0 ? (correctInSection / answeredInSection) * 100 : 0
     };
   });

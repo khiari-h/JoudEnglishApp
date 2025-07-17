@@ -152,7 +152,7 @@ const Modal = ({
           {
             width: getModalWidth(),
             height: getModalHeight(),
-            maxHeight: maxHeight,
+            maxHeight,
           },
           animationType === "custom" && getCustomAnimationStyle(),
           contentContainerStyle,

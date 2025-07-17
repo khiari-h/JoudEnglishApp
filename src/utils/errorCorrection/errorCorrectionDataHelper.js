@@ -225,7 +225,7 @@ export const getGlobalErrorCorrectionStats = () => {
 
       // Progression des niveaux
       globalStats.progression.push({
-        level: level,
+        level,
         exercises: levelStats.exerciseCount,
         difficulty: getLevelCharacteristics(level).difficulty,
       });
@@ -443,7 +443,7 @@ export const getRandomErrorCorrectionExercise = (
     ...filteredExercises[randomIndex],
     index: randomIndex,
     totalCount: filteredExercises.length,
-    level: level,
+    level,
   };
 };
 

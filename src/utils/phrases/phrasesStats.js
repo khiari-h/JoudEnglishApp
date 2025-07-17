@@ -66,7 +66,7 @@ export const calculateCategoryPhrasesProgress = (categories = [], phrases = [], 
       title: category.name || `Catégorie ${index + 1}`,
       totalPhrases: totalInCategory,
       completedPhrases: completedInCategory,
-      progress: progress
+      progress
     };
   });
 };

@@ -217,7 +217,7 @@ const errorCorrectionB2 = {
       complexity: {
         averageTextLength: Math.round(totalTextLength / allExercises.length),
         averageWordCount: Math.round(allExercises.reduce((sum, ex) => sum + ex.text.split(' ').length, 0) / allExercises.length),
-        totalErrorPositions: totalErrorPositions,
+        totalErrorPositions,
         averageErrorsPerExercise: Math.round(totalErrorPositions / allExercises.filter(ex => ex.errorPositions).length * 10) / 10,
         complexExercisesPercentage: Math.round((complexExercises / allExercises.length) * 100),
         formalRegisterFocus: Math.round((formalExercises / allExercises.length) * 100)

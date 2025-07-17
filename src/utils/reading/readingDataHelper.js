@@ -226,7 +226,7 @@ export const getAvailableTopics = (level) => {
 export const getReadingMetadata = (level) => {
   const data = getReadingData(level);
   return data.metadata || {
-    level: level,
+    level,
     totalTexts: 0,
     totalQuestions: 0,
     averageWordCount: 0,

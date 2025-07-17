@@ -90,8 +90,8 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
                       fromLevel: levelKey,
                       fromMode: mode,
                       categoryIndex: catIndex,
-                      wordIndex: wordIndex,
-                      timestamp: timestamp,
+                      wordIndex,
+                      timestamp,
                       
                       // ID unique pour éviter doublons
                       uniqueId: `${levelKey}_${mode}_${catIndex}_${wordIndex}`

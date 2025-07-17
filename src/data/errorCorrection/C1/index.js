@@ -219,7 +219,7 @@ const errorCorrectionC1 = {
       complexity: {
         averageTextLength: Math.round(totalTextLength / allExercises.length),
         averageWordCount: Math.round(allExercises.reduce((sum, ex) => sum + ex.text.split(' ').length, 0) / allExercises.length),
-        totalErrorPositions: totalErrorPositions,
+        totalErrorPositions,
         averageErrorsPerExercise: Math.round(totalErrorPositions / allExercises.filter(ex => ex.errorPositions).length * 10) / 10,
         expertExercisesPercentage: Math.round((expertExercises / allExercises.length) * 100),
         culturalReferencePercentage: Math.round((culturalExercises / allExercises.length) * 100),
