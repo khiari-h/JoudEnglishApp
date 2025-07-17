@@ -72,81 +72,94 @@ const ProgressCard = ({
 
   const handleCategoryPress = useCallback((idx) => () => onCategoryPress?.(idx), [onCategoryPress]);
 
+  // Sous-composant CardHeader
+  const CardHeader = ({ title, subtitle, completed, total, progress, levelColor, expandable, expanded, toggleExpanded, styles }) => (
+    <TouchableOpacity 
+      style={styles.header}
+      onPress={toggleExpanded}
+      activeOpacity={expandable ? 0.8 : 1}
+    >
+      <View style={styles.headerLeft}>
+        <Text style={styles.title}>{title}</Text>
+        {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+      </View>
+      <View style={styles.headerRight}>
+        <View style={styles.statsContainer}>
+          <Text style={[styles.statsCount, { color: levelColor }]}>{completed}</Text>
+          <Text style={styles.statsTotal}>/ {total}</Text>
+        </View>
+        <Text style={[styles.statsPercentage, { color: levelColor }]}>{Math.round(progress)}%</Text>
+        {expandable && (
+          <View style={[styles.chevronContainer, expanded && styles.chevronExpanded]}>
+            <Ionicons name="chevron-down" size={16} color={levelColor} />
+          </View>
+        )}
+      </View>
+    </TouchableOpacity>
+  );
+
+  // Sous-composant MainProgressBar
+  const MainProgressBar = ({ progress, levelColor, styles }) => (
+    <View style={styles.progressSection}>
+      <ProgressBar
+        progress={progress}
+        showPercentage={false}
+        fillColor={levelColor}
+        height={6}
+        backgroundColor={`${levelColor}15`}
+        borderRadius={3}
+        animated
+      />
+    </View>
+  );
+
+  // Sous-composant Expansion
+  const Expansion = ({ expandable, expanded, categoryData, handleCategoryPress, levelColor, styles }) => (
+    expandable && expanded && categoryData.length > 0 && (
+      <View style={styles.expansionWrapper}>
+        <View style={styles.expansionContainer}>
+          <View style={styles.expansionHeader}>
+            <Text style={styles.expansionTitle}>Par catégorie</Text>
+            <Text style={styles.expansionSubtitle}>
+              {categoryData.length} {categoryData.length > 1 ? 'catégories' : 'catégorie'}
+            </Text>
+          </View>
+          <CategoryList categoryData={categoryData} handleCategoryPress={handleCategoryPress} levelColor={levelColor} styles={styles} />
+        </View>
+      </View>
+    )
+  );
+
   return (
     <View style={styles.container}>
-      {/* =================== CARD PRINCIPALE =================== */}
       <LinearGradient
         colors={[`${levelColor}06`, `${levelColor}03`, 'transparent']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.cardGradient}
       >
-        {/* Header avec stats */}
-        <TouchableOpacity 
-          style={styles.header}
-          onPress={toggleExpanded}
-          activeOpacity={expandable ? 0.8 : 1}
-        >
-          <View style={styles.headerLeft}>
-            <Text style={styles.title}>{title}</Text>
-            {subtitle && (
-              <Text style={styles.subtitle}>{subtitle}</Text>
-            )}
-          </View>
-
-          <View style={styles.headerRight}>
-            <View style={styles.statsContainer}>
-              <Text style={[styles.statsCount, { color: levelColor }]}>
-                {completed}
-              </Text>
-              <Text style={styles.statsTotal}>/ {total}</Text>
-            </View>
-            <Text style={[styles.statsPercentage, { color: levelColor }]}>
-              {Math.round(progress)}%
-            </Text>
-            
-            {/* Flèche d'expansion */}
-            {expandable && (
-              <View style={[
-                styles.chevronContainer,
-                expanded && styles.chevronExpanded
-              ]}>
-                <Ionicons name="chevron-down" size={16} color={levelColor} />
-              </View>
-            )}
-          </View>
-        </TouchableOpacity>
-
-        {/* Barre de progression principale */}
-        <View style={styles.progressSection}>
-          <ProgressBar
-            progress={progress}
-            showPercentage={false}
-            fillColor={levelColor}
-            height={6}
-            backgroundColor={`${levelColor}15`}
-            borderRadius={3}
-            animated
-          />
-        </View>
+        <CardHeader
+          title={title}
+          subtitle={subtitle}
+          completed={completed}
+          total={total}
+          progress={progress}
+          levelColor={levelColor}
+          expandable={expandable}
+          expanded={expanded}
+          toggleExpanded={toggleExpanded}
+          styles={styles}
+        />
+        <MainProgressBar progress={progress} levelColor={levelColor} styles={styles} />
       </LinearGradient>
-
-      {/* =================== SECTION EXPANSION ÉPURÉE =================== */}
-      {expandable && expanded && categoryData.length > 0 && (
-        <View style={styles.expansionWrapper}>
-          <View style={styles.expansionContainer}>
-            {/* Header des catégories épuré */}
-            <View style={styles.expansionHeader}>
-              <Text style={styles.expansionTitle}>Par catégorie</Text>
-              <Text style={styles.expansionSubtitle}>
-                {categoryData.length} {categoryData.length > 1 ? 'catégories' : 'catégorie'}
-              </Text>
-            </View>
-            
-            <CategoryList categoryData={categoryData} handleCategoryPress={handleCategoryPress} levelColor={levelColor} styles={styles} />
-          </View>
-        </View>
-      )}
+      <Expansion
+        expandable={expandable}
+        expanded={expanded}
+        categoryData={categoryData}
+        handleCategoryPress={handleCategoryPress}
+        levelColor={levelColor}
+        styles={styles}
+      />
     </View>
   );
 };

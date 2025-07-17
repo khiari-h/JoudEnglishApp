@@ -33,54 +33,59 @@ const DEFAULT_THEME = {
   },
 };
 
+// Sous-composant ModernCardHeader
+const ModernCardHeader = ({ level, colors, styles }) => (
+  <View style={styles.modernCardHeader}>
+    <View style={styles.modernTitleContainer}>
+      <Text style={[styles.modernTitle, { color: colors.text }]}>
+        {level.title}
+      </Text>
+      <View style={[styles.modernBadge, { backgroundColor: level.color }]}>
+        <Text style={styles.modernBadgeText}>{level.progress}%</Text>
+      </View>
+    </View>
+    <Text style={styles.modernIcon}>{level.icon}</Text>
+  </View>
+);
+
+// Sous-composant ModernProgress
+const ModernProgress = ({ level, colors, styles }) => (
+  level.hasProgress && (
+    <View style={styles.modernProgressContainer}>
+      <View style={styles.modernProgressBar}>
+        <View 
+          style={[
+            styles.modernProgressFill,
+            { width: `${level.progress}%`, backgroundColor: level.color }
+          ]} 
+        />
+      </View>
+      <Text style={[styles.modernProgressText, { color: colors.textSecondary }]}>
+        {level.progress}%
+      </Text>
+    </View>
+  )
+);
+
+// Sous-composant ModernCardButton
+const ModernCardButton = ({ level, handleLevelPress, styles }) => (
+  <Button
+    title={level.hasStarted ? "Continuer" : "Commencer"}
+    variant="filled"
+    color={level.color}
+    fullWidth
+    onPress={handleLevelPress(level)}
+    style={styles.modernButton}
+    rightIcon={level.hasStarted ? "play-outline" : "rocket-outline"}
+  />
+);
+
+// Refactor LevelCardContent pour utiliser les sous-composants
 const LevelCardContent = ({ level, colors, styles, handleLevelPress }) => (
   <View style={styles.modernCardContent}>
-    {/* Header - TON DESIGN ORIGINAL */}
-    <View style={styles.modernCardHeader}>
-      <View style={styles.modernTitleContainer}>
-        <Text style={[styles.modernTitle, { color: colors.text }]}>
-          {level.title}
-        </Text>
-        {/* ✅ TON BADGE ORIGINAL avec VRAI CHIFFRE */}
-        <View style={[styles.modernBadge, { backgroundColor: level.color }]}>
-          <Text style={styles.modernBadgeText}>
-            {level.progress}% {/* ✅ SEUL CHANGEMENT : vrai chiffre */}
-          </Text>
-        </View>
-      </View>
-      <Text style={styles.modernIcon}>{level.icon}</Text>
-    </View>
-
-    {/* Progression - TON DESIGN ORIGINAL */}
-    {level.hasProgress && (
-      <View style={styles.modernProgressContainer}>
-        <View style={styles.modernProgressBar}>
-          <View 
-            style={[
-              styles.modernProgressFill,
-              { 
-                width: `${level.progress}%`, // ✅ Vrai chiffre
-                backgroundColor: level.color
-              }
-            ]} 
-          />
-        </View>
-        <Text style={[styles.modernProgressText, { color: colors.textSecondary }]}>
-          {level.progress}% {/* ✅ Vrai chiffre */}
-        </Text>
-      </View>
-    )}
-
-    {/* Bouton - TON DESIGN ORIGINAL */}
-    <Button
-      title={level.hasStarted ? "Continuer" : "Commencer"}
-      variant="filled"
-      color={level.color}
-      fullWidth
-      onPress={handleLevelPress(level)}
-      style={styles.modernButton}
-      rightIcon={level.hasStarted ? "play-outline" : "rocket-outline"}
-    />
+    <ModernCardHeader level={level} colors={colors} styles={styles} />
+    <ModernProgress level={level} colors={colors} styles={styles} />
+    <ModernCardButton level={level} handleLevelPress={handleLevelPress} styles={styles} />
   </View>
 );
 

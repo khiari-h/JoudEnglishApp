@@ -47,41 +47,7 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
 
   return (
     <View style={styles.container}>
-      {/* 📖 HEADER COLLAPSIBLE - Garde le design custom */}
-      <TouchableOpacity
-        style={styles.headerContainer}
-        onPress={toggleExpanded}
-        activeOpacity={0.8}
-      >
-        <LinearGradient
-          colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.headerGradient}
-        >
-          <View style={styles.headerContent}>
-            <View style={styles.headerLeft}>
-              <View style={[styles.ruleIcon, { backgroundColor: `${levelColor}15` }]}>
-                <Ionicons name="book-outline" size={16} color={levelColor} />
-              </View>
-              <Text style={styles.ruleTitle} numberOfLines={1}>
-                {rule.title}
-              </Text>
-            </View>
-
-            <View style={styles.headerRight}>
-              <Text style={[styles.hintText, { color: levelColor }]}>
-                {expanded ? 'Hide' : 'Show'} rule
-              </Text>
-              <Animated.View style={{ transform: [{ rotate: iconRotation }] }}>
-                <Ionicons name="chevron-down" size={16} color={levelColor} />
-              </Animated.View>
-            </View>
-          </View>
-        </LinearGradient>
-      </TouchableOpacity>
-
-      {/* 📚 CONTENU EXPANSIBLE avec ContentSection */}
+      <CollapsibleHeader expanded={expanded} toggleExpanded={toggleExpanded} expandAnim={expandAnim} iconRotation={iconRotation} rule={rule} levelColor={levelColor} styles={styles} />
       <RuleContentSection
         expandAnim={expandAnim}
         contentHeight={contentHeight}
@@ -92,6 +58,37 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
     </View>
   );
 };
+
+// Sous-composant CollapsibleHeader
+const CollapsibleHeader = ({ expanded, toggleExpanded, expandAnim, iconRotation, rule, levelColor, styles }) => (
+  <TouchableOpacity
+    style={styles.headerContainer}
+    onPress={toggleExpanded}
+    activeOpacity={0.8}
+  >
+    <LinearGradient
+      colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.headerGradient}
+    >
+      <View style={styles.headerContent}>
+        <View style={styles.headerLeft}>
+          <View style={[styles.ruleIcon, { backgroundColor: `${levelColor}15` }]}> 
+            <Ionicons name="book-outline" size={16} color={levelColor} />
+          </View>
+          <Text style={styles.ruleTitle} numberOfLines={1}>{rule.title}</Text>
+        </View>
+        <View style={styles.headerRight}>
+          <Text style={[styles.hintText, { color: levelColor }]}>{expanded ? 'Hide' : 'Show'} rule</Text>
+          <Animated.View style={{ transform: [{ rotate: iconRotation }] }}>
+            <Ionicons name="chevron-down" size={16} color={levelColor} />
+          </Animated.View>
+        </View>
+      </View>
+    </LinearGradient>
+  </TouchableOpacity>
+);
 
 const RuleContentSection = ({ expandAnim, contentHeight, rule, levelColor, styles }) => (
   <Animated.View 

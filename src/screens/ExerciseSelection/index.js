@@ -33,60 +33,60 @@ const DEFAULT_THEME = {
   },
 };
 
+// Sous-composant CardHeader
+const CardHeader = ({ exercise, colors, styles }) => (
+  <View style={styles.cardHeader}>
+    <View style={styles.levelTitleContainer}>
+      <Text style={[styles.levelMainTitle, { color: colors.text }]}>{exercise.title}</Text>
+      <View style={[styles.levelBadge, { backgroundColor: exercise.color }]}>
+        <Text style={styles.levelBadgeText}>{exercise.progress}%</Text>
+      </View>
+      {exercise.id === "vocabulary_fast" && (
+        <View style={[styles.levelBadge, styles.fastBadge]}>
+          <Text style={[styles.levelBadgeText, styles.fastBadgeText]}>FAST</Text>
+        </View>
+      )}
+    </View>
+    <Text style={styles.levelIcon}>{exercise.icon}</Text>
+  </View>
+);
+
+// Sous-composant Progression
+const Progression = ({ exercise, colors, styles }) => (
+  exercise.hasProgress && (
+    <View style={styles.progressContainer}>
+      <View style={styles.progressBar}>
+        <View 
+          style={[
+            styles.progressFill,
+            { width: `${exercise.progress}%`, backgroundColor: exercise.color }
+          ]} 
+        />
+      </View>
+      <Text style={[styles.progressText, { color: colors.textSecondary }]}>{exercise.progress}%</Text>
+    </View>
+  )
+);
+
+// Sous-composant CardButton
+const CardButton = ({ exercise, handleExercisePress, styles }) => (
+  <Button
+    title={exercise.hasProgress ? "Continuer" : "Commencer"}
+    variant="filled"
+    color={exercise.color}
+    fullWidth
+    onPress={handleExercisePress(exercise)}
+    style={styles.startButton}
+    rightIcon={exercise.hasProgress ? "play-outline" : "rocket-outline"}
+  />
+);
+
+// Refactor ExerciseCardContent pour utiliser les sous-composants
 const ExerciseCardContent = ({ exercise, colors, styles, handleExercisePress }) => (
   <View style={styles.cardContentStyle}>
-    {/* Header - TON DESIGN ORIGINAL */}
-    <View style={styles.cardHeader}>
-      <View style={styles.levelTitleContainer}>
-        <Text style={[styles.levelMainTitle, { color: colors.text }]}>
-          {exercise.title}
-        </Text>
-        {/* ✅ TON BADGE ORIGINAL avec VRAI CHIFFRE */}
-        <View style={[styles.levelBadge, { backgroundColor: exercise.color }]}>
-          <Text style={styles.levelBadgeText}>
-            {exercise.progress}% {/* ✅ VRAI CHIFFRE (même Fast aura le sien) */}
-          </Text>
-        </View>
-        {/* Badge FAST - TON DESIGN ORIGINAL */}
-        {exercise.id === "vocabulary_fast" && (
-          <View style={[styles.levelBadge, styles.fastBadge]}>
-            <Text style={[styles.levelBadgeText, styles.fastBadgeText]}>FAST</Text>
-          </View>
-        )}
-      </View>
-      <Text style={styles.levelIcon}>{exercise.icon}</Text>
-    </View>
-
-    {/* Progression - TON DESIGN ORIGINAL */}
-    {exercise.hasProgress && (
-      <View style={styles.progressContainer}>
-        <View style={styles.progressBar}>
-          <View 
-            style={[
-              styles.progressFill,
-              { 
-                width: `${exercise.progress}%`, // ✅ Vrai chiffre
-                backgroundColor: exercise.color
-              }
-            ]} 
-          />
-        </View>
-        <Text style={[styles.progressText, { color: colors.textSecondary }]}>
-          {exercise.progress}% {/* ✅ Vrai chiffre */}
-        </Text>
-      </View>
-    )}
-
-    {/* Bouton - TON DESIGN ORIGINAL */}
-    <Button
-      title={exercise.hasProgress ? "Continuer" : "Commencer"}
-      variant="filled"
-      color={exercise.color}
-      fullWidth
-      onPress={handleExercisePress(exercise)}
-      style={styles.startButton}
-      rightIcon={exercise.hasProgress ? "play-outline" : "rocket-outline"}
-    />
+    <CardHeader exercise={exercise} colors={colors} styles={styles} />
+    <Progression exercise={exercise} colors={colors} styles={styles} />
+    <CardButton exercise={exercise} handleExercisePress={handleExercisePress} styles={styles} />
   </View>
 );
 

@@ -15,6 +15,63 @@ import styles from "./style";
  * Écran de résultats pour afficher le score et les statistiques
  * à la fin d'une série d'exercices
  */
+// Sous-composant ResultsHeader
+const ResultsHeader = ({ level, levelColor, exerciseType, styles }) => (
+  <View style={styles.header}>
+    <View style={[styles.levelBadge, { backgroundColor: levelColor }]}>
+      <Text style={styles.levelText}>{level}</Text>
+    </View>
+    <Text style={styles.exerciseType}>{exerciseType}</Text>
+  </View>
+);
+
+// Sous-composant ScoreSection
+const ScoreSection = ({ color, icon, successPercentage, correctAnswers, totalQuestions, title, message, styles }) => (
+  <View style={styles.scoreSection}>
+    <View style={[styles.scoreCircle, { borderColor: color }]}>
+      <Ionicons name={icon} size={36} color={color} />
+      <Text style={[styles.scorePercentage, { color }]}>{successPercentage}%</Text>
+      <Text style={styles.scoreRatio}>{correctAnswers}/{totalQuestions}</Text>
+    </View>
+    <View style={styles.scoreSummary}>
+      <Text style={styles.scoreTitle}>{title}</Text>
+      <Text style={styles.scoreMessage}>{message}</Text>
+    </View>
+  </View>
+);
+
+// Sous-composant FeedbackSection
+const FeedbackSection = ({ feedback, styles }) => (
+  feedback ? (
+    <View style={styles.feedbackContainer}>
+      <Text style={styles.feedbackTitle}>Conseils pour progresser</Text>
+      <Text style={styles.feedbackText}>{feedback}</Text>
+    </View>
+  ) : null
+);
+
+// Sous-composant ResultsButtons
+const ResultsButtons = ({ shareResults, onRetry, onContinue, levelColor, styles }) => (
+  <>
+    <TouchableOpacity style={styles.shareButton} onPress={shareResults}>
+      <Ionicons name="share-social" size={20} color="#6B7280" />
+      <Text style={styles.shareButtonText}>Partager</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.retryButton} onPress={onRetry}>
+      <Ionicons name="refresh" size={20} color="#6B7280" />
+      <Text style={styles.retryButtonText}>Réessayer</Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      style={[styles.continueButton, { backgroundColor: levelColor }]}
+      onPress={onContinue}
+    >
+      <Text style={styles.continueButtonText}>Continuer</Text>
+      <Ionicons name="arrow-forward" size={20} color="white" />
+    </TouchableOpacity>
+  </>
+);
+
+// Refactor ResultsScreen pour utiliser les sous-composants
 const ResultsScreen = ({
   totalQuestions = 0,
   correctAnswers = 0,
@@ -110,30 +167,8 @@ const ResultsScreen = ({
           { opacity: fadeAnim, transform: [{ scale: scaleAnim }] },
         ]}
       >
-        <View style={styles.header}>
-          <View style={[styles.levelBadge, { backgroundColor: levelColor }]}>
-            <Text style={styles.levelText}>{level}</Text>
-          </View>
-          <Text style={styles.exerciseType}>{exerciseType}</Text>
-        </View>
-
-        <View style={styles.scoreSection}>
-          <View style={[styles.scoreCircle, { borderColor: color }]}>
-            <Ionicons name={icon} size={36} color={color} />
-            <Text style={[styles.scorePercentage, { color }]}>
-              {successPercentage}%
-            </Text>
-            <Text style={styles.scoreRatio}>
-              {correctAnswers}/{totalQuestions}
-            </Text>
-          </View>
-
-          <View style={styles.scoreSummary}>
-            <Text style={styles.scoreTitle}>{title}</Text>
-            <Text style={styles.scoreMessage}>{message}</Text>
-          </View>
-        </View>
-
+        <ResultsHeader level={level} levelColor={levelColor} exerciseType={exerciseType} styles={styles} />
+        <ScoreSection color={color} icon={icon} successPercentage={successPercentage} correctAnswers={correctAnswers} totalQuestions={totalQuestions} title={title} message={message} styles={styles} />
         <StatsSection
           correctAnswers={correctAnswers}
           incorrectAnswers={incorrectAnswers}
@@ -142,39 +177,13 @@ const ResultsScreen = ({
           color={color}
           styles={styles}
         />
-
-        {feedback ? (
-          <View style={styles.feedbackContainer}>
-            <Text style={styles.feedbackTitle}>Conseils pour progresser</Text>
-            <Text style={styles.feedbackText}>{feedback}</Text>
-          </View>
-        ) : null}
-
+        <FeedbackSection feedback={feedback} styles={styles} />
         <DetailedResultsSection
           showDetailedResults={showDetailedResults}
           detailedResults={detailedResults}
           styles={styles}
         />
-
-        <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.shareButton} onPress={shareResults}>
-            <Ionicons name="share-social" size={20} color="#6B7280" />
-            <Text style={styles.shareButtonText}>Partager</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.retryButton} onPress={onRetry}>
-            <Ionicons name="refresh" size={20} color="#6B7280" />
-            <Text style={styles.retryButtonText}>Réessayer</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.continueButton, { backgroundColor: levelColor }]}
-            onPress={onContinue}
-          >
-            <Text style={styles.continueButtonText}>Continuer</Text>
-            <Ionicons name="arrow-forward" size={20} color="white" />
-          </TouchableOpacity>
-        </View>
+        <ResultsButtons shareResults={shareResults} onRetry={onRetry} onContinue={onContinue} levelColor={levelColor} styles={styles} />
       </Animated.View>
     </ScrollView>
   );

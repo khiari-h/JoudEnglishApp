@@ -8,80 +8,89 @@ import useRevisionData from '../../hooks/useRevisionData'; // ← NOUVEAU HOOK
 
 import styles from './style';
 
+// Sous-composant ScoreCard
+const ScoreCard = ({ score, revisionQuestions, percentage, resultConfig, colors, styles }) => (
+  <View style={[styles.scoreCard, { backgroundColor: colors.surface }]}> 
+    <View style={styles.scoreRow}>
+      <Text style={[styles.scoreNumber, { color: resultConfig.color }]}>
+        {score}
+      </Text>
+      <Text style={[styles.scoreSlash, { color: colors.textSecondary }]}>/{revisionQuestions.length}</Text>
+    </View>
+    <View style={[styles.progressBar, { backgroundColor: '#F3F4F6' }]}> 
+      <View 
+        style={[
+          styles.progressFill, 
+          { backgroundColor: resultConfig.color, width: `${percentage}%` }
+        ]} 
+      />
+    </View>
+    <Text style={[styles.percentageText, { color: resultConfig.color }]}> {percentage}% de réussite </Text>
+  </View>
+);
+
+// Sous-composant StatsDetails
+const StatsDetails = ({ stats, colors, styles }) => (
+  <View style={[styles.statsContainer, { backgroundColor: colors.surface }]}> 
+    <Text style={[styles.statsTitle, { color: colors.text }]}>📊 Statistiques</Text>
+    <Text style={[styles.statsText, { color: colors.textSecondary }]}> {stats.totalLearned} mots appris au total </Text>
+    {Object.entries(stats.byLevel).map(([lvl, count]) => (
+      <Text key={lvl} style={[styles.statsText, { color: colors.textSecondary }]}> Niveau {lvl}: {count} mots </Text>
+    ))}
+  </View>
+);
+
+// Sous-composant ResultButtons
+const ResultButtons = ({ colors, resultConfig, handleRestartPress, handleFinishPress, styles }) => (
+  <View style={styles.buttonsContainer}>
+    <TouchableOpacity 
+      style={[styles.restartButton, { backgroundColor: colors.surface }]} 
+      onPress={handleRestartPress}
+      activeOpacity={0.8}
+    >
+      <View style={styles.buttonContent}>
+        <Text style={styles.restartIcon}>🔄</Text>
+        <Text style={[styles.restartText, { color: colors.text }]}>Rejouer</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity 
+      style={[styles.finishButton, { backgroundColor: resultConfig.color }]} 
+      onPress={handleFinishPress}
+      activeOpacity={0.8}
+    >
+      <View style={styles.buttonContent}>
+        <Text style={styles.finishIcon}>✓</Text>
+        <Text style={styles.finishText}>Terminer</Text>
+      </View>
+    </TouchableOpacity>
+  </View>
+);
+
+// Refactor ResultScreenContent pour utiliser les sous-composants
 const ResultScreenContent = ({ resultConfig, score, revisionQuestions, percentage, stats, source, colors, handleRestartPress, handleFinishPress, styles }) => (
   <View style={styles.resultContainer}>
     <Text style={styles.resultEmoji}>{resultConfig.emoji}</Text>
     <Text style={[styles.resultTitle, { color: colors.text }]}>{resultConfig.title}</Text>
     <Text style={[styles.resultMessage, { color: colors.textSecondary }]}>{resultConfig.message}</Text>
-    <View style={[styles.scoreCard, { backgroundColor: colors.surface }]}>
-      <View style={styles.scoreRow}>
-        <Text style={[styles.scoreNumber, { color: resultConfig.color }]}>
-          {score}
-        </Text>
-        <Text style={[styles.scoreSlash, { color: colors.textSecondary }]}>
-          /{revisionQuestions.length}
-        </Text>
-      </View>
-      <View style={[styles.progressBar, { backgroundColor: '#F3F4F6' }]}>
-        <View 
-          style={[
-            styles.progressFill, 
-            { 
-              backgroundColor: resultConfig.color,
-              width: `${percentage}%` 
-            }
-          ]} 
-        />
-      </View>
-      <Text style={[styles.percentageText, { color: resultConfig.color }]}>
-        {percentage}% de réussite
-      </Text>
-    </View>
-    {/* Stats détaillées */}
-    <View style={[styles.statsContainer, { backgroundColor: colors.surface }]}>
-      <Text style={[styles.statsTitle, { color: colors.text }]}>
-        📊 Statistiques
-      </Text>
-      <Text style={[styles.statsText, { color: colors.textSecondary }]}>
-        {stats.totalLearned} mots appris au total
-      </Text>
-      {Object.entries(stats.byLevel).map(([lvl, count]) => (
-        <Text key={lvl} style={[styles.statsText, { color: colors.textSecondary }]}>
-          Niveau {lvl}: {count} mots
-        </Text>
-      ))}
-    </View>
+    <ScoreCard
+      score={score}
+      revisionQuestions={revisionQuestions}
+      percentage={percentage}
+      resultConfig={resultConfig}
+      colors={colors}
+      styles={styles}
+    />
+    <StatsDetails stats={stats} colors={colors} styles={styles} />
     {source && (
-      <Text style={[styles.sourceText, { color: colors.textSecondary }]}>
-        {source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'}
-      </Text>
+      <Text style={[styles.sourceText, { color: colors.textSecondary }]}> {source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'} </Text>
     )}
-    <View style={styles.buttonsContainer}>
-      <TouchableOpacity 
-        style={[styles.restartButton, { backgroundColor: colors.surface }]} 
-        onPress={handleRestartPress}
-        activeOpacity={0.8}
-      >
-        <View style={styles.buttonContent}>
-          <Text style={styles.restartIcon}>🔄</Text>
-          <Text style={[styles.restartText, { color: colors.text }]}>
-            Rejouer
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity 
-        style={[styles.finishButton, { backgroundColor: resultConfig.color }]} 
-        onPress={handleFinishPress}
-        activeOpacity={0.8}
-      >
-        <View style={styles.buttonContent}>
-          <Text style={styles.finishIcon}>✓</Text>
-          <Text style={styles.finishText}>
-            Terminer
-          </Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+    <ResultButtons
+      colors={colors}
+      resultConfig={resultConfig}
+      handleRestartPress={handleRestartPress}
+      handleFinishPress={handleFinishPress}
+      styles={styles}
+    />
   </View>
 );
 

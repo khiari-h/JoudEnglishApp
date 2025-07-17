@@ -61,6 +61,26 @@ const GlobalProgressBar = ({ globalProgress, primaryColor, styles, colors }) => 
   </View>
 );
 
+// Sous-composant ProgressHeader
+const ProgressHeader = ({ currentLevelInfo, currentLevelDisplay, globalProgress, primaryColor, colors, styles }) => (
+  <View style={styles.header}>
+    <View style={styles.progressInfo}>
+      <Text style={[styles.progressTitle, { color: colors.text }]}>
+        {currentLevelInfo.title || `Niveau ${currentLevelDisplay}`}
+      </Text>
+      <Text style={[styles.progressSubtitle, { color: colors.textSecondary }]}>
+        Continuez votre apprentissage {currentLevelInfo.icon}
+      </Text>
+    </View>
+    <View style={styles.progressBadge}>
+      <Text style={[styles.progressPercentage, { color: primaryColor }]}>
+        {globalProgress}%
+      </Text>
+    </View>
+  </View>
+);
+
+// Refactor LearningProgress pour utiliser les sous-composants
 const LearningProgress = ({
   levels = [],
   currentLevel = "1",
@@ -115,44 +135,17 @@ const LearningProgress = ({
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.sectionTitle, { color: colors.text }]}>
-        🎯 Progression générale
-      </Text>
-
+      <Text style={[styles.sectionTitle, { color: colors.text }]}>🏆 Progression générale</Text>
       <Card style={[styles.card, { backgroundColor: colors.surface }]}>
-        {/* Header avec progression globale */}
-        <View style={styles.header}>
-          <View style={styles.progressInfo}>
-            <Text style={[styles.progressTitle, { color: colors.text }]}>
-              {currentLevelInfo.title || `Niveau ${currentLevelDisplay}`}
-            </Text>
-            <Text style={[styles.progressSubtitle, { color: colors.textSecondary }]}>
-              Continuez votre apprentissage {currentLevelInfo.icon}
-            </Text>
-          </View>
-
-          <View style={styles.progressBadge}>
-            <Text style={[styles.progressPercentage, { color: primaryColor }]}>
-              {globalProgress}%
-            </Text>
-          </View>
-        </View>
-
-        {/* Barre de progression globale */}
+        <ProgressHeader currentLevelInfo={currentLevelInfo} currentLevelDisplay={currentLevelDisplay} globalProgress={globalProgress} primaryColor={primaryColor} colors={colors} styles={styles} />
         <GlobalProgressBar globalProgress={globalProgress} primaryColor={primaryColor} styles={styles} colors={colors} />
-
-        {/* Niveaux en cercles - VERSION SIMPLE */}
         <LevelsCircleRow displayLevels={displayLevels} currentLevel={currentLevel} handleLevelPress={handleLevelPress} getLevelDisplay={getLevelDisplay} colors={colors} primaryColor={primaryColor} styles={styles} />
-
-        {/* Action button - SEULE NAVIGATION */}
         <TouchableOpacity
           style={[styles.actionButton, { borderColor: primaryColor }]}
           onPress={handleExplorePress}
           activeOpacity={0.7}
         >
-          <Text style={[styles.actionButtonText, { color: primaryColor }]}>
-            Explorer le niveau {currentLevelDisplay}
-          </Text>
+          <Text style={[styles.actionButtonText, { color: primaryColor }]}>Explorer le niveau {currentLevelDisplay}</Text>
         </TouchableOpacity>
       </Card>
     </View>

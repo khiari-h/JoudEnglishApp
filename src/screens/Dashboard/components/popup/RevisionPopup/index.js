@@ -38,6 +38,32 @@ const RevisionChoicesList = ({ choices, handleChoicePress, styles }) => (
   </View>
 );
 
+// Sous-composant PopupHeader
+const PopupHeader = ({ colors, totalWordsLearned, styles }) => (
+  <LinearGradient
+    colors={[colors.primary, colors.accent]}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    style={styles.header}
+  >
+    <Text style={styles.celebration}>🏆</Text>
+    <Text style={styles.mainTitle}>Prêt pour une révision ?</Text>
+    <Text style={styles.wordsCounter}>{totalWordsLearned} mots appris</Text>
+    <Text style={styles.motivation}>Consolidez vos acquis !</Text>
+  </LinearGradient>
+);
+
+// Sous-composant PopupFooter
+const PopupFooter = ({ colors, styles }) => (
+  <View style={styles.footerNote}>
+    <Ionicons name="settings-outline" size={16} color={colors.textSecondary} style={{ marginRight: 4 }} />
+    <Text style={styles.noteText}>
+      Vous pouvez modifier vos préférences à tout moment
+    </Text>
+  </View>
+);
+
+// Refactor RevisionPopup pour utiliser les sous-composants
 const RevisionPopup = ({
   visible = false,
   totalWordsLearned = 50,
@@ -100,30 +126,13 @@ const RevisionPopup = ({
       <View style={styles.overlay}>
         <Animated.View style={styles.animatedPopup}>
           <BlurView intensity={Platform.OS === 'ios' ? 60 : 40} tint="light" style={styles.blurCard}>
-            <LinearGradient
-              colors={[colors.primary, colors.accent]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.header}
-            >
-              <Text style={styles.celebration}>🎯</Text>
-              <Text style={styles.mainTitle}>Prêt pour une révision ?</Text>
-              <Text style={styles.wordsCounter}>{totalWordsLearned} mots appris</Text>
-              <Text style={styles.motivation}>Consolidez vos acquis !</Text>
-            </LinearGradient>
-
+            <PopupHeader colors={colors} totalWordsLearned={totalWordsLearned} styles={styles} />
             <RevisionChoicesList
               choices={choices}
               handleChoicePress={handleChoicePress}
               styles={styles}
             />
-
-            <View style={styles.footerNote}>
-              <Ionicons name="settings-outline" size={16} color={colors.textSecondary} style={{ marginRight: 4 }} />
-              <Text style={styles.noteText}>
-                Vous pouvez modifier vos préférences à tout moment
-              </Text>
-            </View>
+            <PopupFooter colors={colors} styles={styles} />
           </BlurView>
         </Animated.View>
       </View>

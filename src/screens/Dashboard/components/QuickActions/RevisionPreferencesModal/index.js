@@ -88,89 +88,92 @@ const RevisionPreferencesModal = ({
     >
       <View style={styles.overlay}>
         <View style={styles.modalContainer}>
-          {/* Header */}
-          <LinearGradient
-            colors={['#8B5CF6', '#A855F7']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={styles.header}
+          <ModalHeader onSkip={onSkip} styles={styles} />
+          <ScrollView 
+            style={styles.scrollContainer}
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}
           >
-            {/* Bouton close */}
-            <TouchableOpacity
-              style={styles.closeButton}
-              onPress={onSkip}
-              activeOpacity={0.7}
-            >
-              <Text style={styles.closeButtonText}>×</Text>
-            </TouchableOpacity>
-
-            <Text style={styles.headerIcon}>🎉</Text>
-            <Text style={styles.headerTitle}>Félicitations !</Text>
-            <Text style={styles.headerSubtitle}>
-              25 mots appris ! Choisissez votre style de révision :
-            </Text>
-          </LinearGradient>
-
-          <View style={styles.content}>
-            <ScrollView 
-              style={styles.scrollContainer}
-              contentContainerStyle={styles.scrollContent}
-              showsVerticalScrollIndicator={false}
-            >
-              {/* Section Styles */}
-              <View style={styles.section}>
-                <Text style={styles.sectionTitle}>🎯 Choisissez votre style</Text>
-                <Text style={styles.sectionDescription}>
-                  Sélectionnez la fréquence qui vous convient le mieux
-                </Text>
-
-                <RevisionStylesList 
-                  revisionStyles={revisionStyles} 
-                  selectedStyle={selectedStyle} 
-                  handleStylePress={handleStylePress} 
-                  styles={styles} 
-                />
-              </View>
-
-              {/* Résumé du choix */}
-              <SummarySection 
-                selectedStyle={selectedStyle} 
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>🏆 Choisissez votre style</Text>
+              <Text style={styles.sectionDescription}>
+                Sélectionnez la fréquence qui vous convient le mieux
+              </Text>
+              <RevisionStylesList 
                 revisionStyles={revisionStyles} 
+                selectedStyle={selectedStyle} 
+                handleStylePress={handleStylePress} 
                 styles={styles} 
               />
-
-              {/* Boutons */}
-              <View style={styles.buttons}>
-                <TouchableOpacity
-                  style={[
-                    styles.confirmButton,
-                    { backgroundColor: revisionStyles.find(s => s.id === selectedStyle)?.color || '#8B5CF6' }
-                  ]}
-                  onPress={handleConfirm}
-                  activeOpacity={0.8}
-                >
-                  <Text style={styles.confirmButtonText}>
-                    ✅ Confirmer mon choix
-                  </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={styles.skipButton}
-                  onPress={handleSkip}
-                  activeOpacity={0.7}
-                >
-                  <Text style={styles.skipButtonText}>
-                    ⏭️ Utiliser Standard par défaut
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </ScrollView>
-          </View>
+            </View>
+            <SummarySection 
+              selectedStyle={selectedStyle} 
+              revisionStyles={revisionStyles} 
+              styles={styles} 
+            />
+            <ModalButtons
+              revisionStyles={revisionStyles}
+              selectedStyle={selectedStyle}
+              handleConfirm={handleConfirm}
+              handleSkip={handleSkip}
+              styles={styles}
+            />
+          </ScrollView>
         </View>
       </View>
     </Modal>
   );
 };
+
+// Sous-composant ModalHeader
+const ModalHeader = ({ onSkip, styles }) => (
+  <LinearGradient
+    colors={['#8B5CF6', '#A855F7']}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    style={styles.header}
+  >
+    <TouchableOpacity
+      style={styles.closeButton}
+      onPress={onSkip}
+      activeOpacity={0.7}
+    >
+      <Text style={styles.closeButtonText}>×</Text>
+    </TouchableOpacity>
+    <Text style={styles.headerIcon}>🎉</Text>
+    <Text style={styles.headerTitle}>Félicitations !</Text>
+    <Text style={styles.headerSubtitle}>
+      25 mots appris ! Choisissez votre style de révision :
+    </Text>
+  </LinearGradient>
+);
+
+// Sous-composant ModalButtons
+const ModalButtons = ({ revisionStyles, selectedStyle, handleConfirm, handleSkip, styles }) => (
+  <>
+    <TouchableOpacity
+      style={[
+        styles.confirmButton,
+        { backgroundColor: revisionStyles.find(s => s.id === selectedStyle)?.color || '#8B5CF6' }
+      ]}
+      onPress={handleConfirm}
+      activeOpacity={0.8}
+    >
+      <Text style={styles.confirmButtonText}>
+        ✅ Confirmer mon choix
+      </Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      style={styles.skipButton}
+      onPress={handleSkip}
+      activeOpacity={0.7}
+    >
+      <Text style={styles.skipButtonText}>
+        ⏭️ Utiliser Standard par défaut
+      </Text>
+    </TouchableOpacity>
+  </>
+);
 
 const RevisionStylesList = ({ revisionStyles, selectedStyle, handleStylePress, styles }) => (
   <View style={styles.stylesContainer}>
