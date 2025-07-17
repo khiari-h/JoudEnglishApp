@@ -162,6 +162,10 @@ const handleContinueResults = useCallback(() => {
   setViewMode("browse");
 }, []);
 
+const handleExitExercise = useCallback(() => {
+  setViewMode("browse");
+}, []);
+
   // Loading state
   if (!loaded || !hasValidData) {
     return (
@@ -269,7 +273,7 @@ const handleContinueResults = useCallback(() => {
         <ErrorCorrectionNavigation
           onNext={handleNextAction}
           onPrevious={handlePreviousAction}
-          onExit={() => setViewMode("browse")}
+          onExit={handleExitExercise}
           currentIndex={currentExerciseIndex}
           totalCount={exercises.length}
           disableNext={
