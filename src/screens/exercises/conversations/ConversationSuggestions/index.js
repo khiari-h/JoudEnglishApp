@@ -24,9 +24,9 @@ const ConversationSuggestions = ({ suggestions, onPressSuggestion, levelColor })
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
     >
-      {suggestions.map((suggestion, index) => (
+      {suggestions.map((suggestion) => (
         <TouchableOpacity
-          key={index}
+          key={suggestion}
           style={[styles.suggestionBubble, { borderColor: levelColor }]}
           onPress={handleSuggestionPress(suggestion)}
         >

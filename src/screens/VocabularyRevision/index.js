@@ -367,7 +367,7 @@ const VocabularyRevision = ({ route }) => {
 
       {/* Choix */}
       <View style={styles.choicesSection}>
-        {currentQuestion.choices.map((choice, index) => {
+        {currentQuestion.choices.map((choice) => {
           const isSelected = selectedAnswer === choice;
           const isCorrect = choice === currentQuestion.correctAnswer;
           const isWrong = showResult && isSelected && !isCorrect;
@@ -391,7 +391,7 @@ const VocabularyRevision = ({ route }) => {
           
           return (
             <TouchableOpacity
-              key={index}
+              key={choice}
               style={buttonStyle}
               onPress={handleAnswerPress(choice)}
               disabled={showResult}

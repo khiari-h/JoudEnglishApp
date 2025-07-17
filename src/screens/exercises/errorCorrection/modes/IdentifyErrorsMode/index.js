@@ -61,7 +61,7 @@ const IdentifyErrorsMode = ({
 
             return (
               <TouchableOpacity
-                key={index}
+                key={word + '-' + index}
                 onPress={handleWordPress(index)}
                 disabled={showFeedback}
                 style={[

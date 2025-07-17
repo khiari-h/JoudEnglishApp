@@ -92,8 +92,8 @@ const InstructionBox = ({
           {examples.length > 0 && (
             <View style={styles.examplesContainer}>
               <Text style={styles.sectionTitle}>Exemples:</Text>
-              {examples.map((example, index) => (
-                <View key={index} style={styles.exampleItem}>
+              {examples.map((example) => (
+                <View key={example} style={styles.exampleItem}>
                   <Text style={styles.exampleText}>{example}</Text>
                 </View>
               ))}
@@ -103,8 +103,8 @@ const InstructionBox = ({
           {tips.length > 0 && (
             <View style={styles.tipsContainer}>
               <Text style={styles.sectionTitle}>Astuces:</Text>
-              {tips.map((tip, index) => (
-                <View key={index} style={styles.tipItem}>
+              {tips.map((tip) => (
+                <View key={tip} style={styles.tipItem}>
                   <Ionicons
                     name="bulb-outline"
                     size={16}

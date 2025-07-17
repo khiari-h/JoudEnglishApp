@@ -145,9 +145,9 @@ const ProgressCard = ({
             
             {/* Liste des catégories - DESIGN ÉPURÉ SANS DOTS */}
             <View style={styles.categoriesList}>
-              {categoryData.map((category, index) => (
+              {categoryData.map((category) => (
                 <TouchableOpacity
-                  key={`category-${index}`}
+                  key={category.id || category.title}
                   style={styles.categoryItem}
                   onPress={handleCategoryPress(index)}
                   activeOpacity={0.7}

@@ -187,11 +187,11 @@ const ResultsScreen = ({
           <View style={styles.detailedResultsContainer}>
             <Text style={styles.detailedResultsTitle}>Détail des réponses</Text>
 
-            {detailedResults.map((result, index) => (
-              <View key={index} style={styles.detailedResultItem}>
+            {detailedResults.map((result) => (
+              <View key={result.question} style={styles.detailedResultItem}>
                 <View style={styles.questionHeader}>
                   <Text style={styles.questionNumber}>
-                    Question {index + 1}
+                    Question {detailedResults.indexOf(result) + 1}
                   </Text>
                   <Ionicons
                     name={

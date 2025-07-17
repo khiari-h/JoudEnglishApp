@@ -63,7 +63,7 @@ const MultipleChoiceMode = ({
 
           return (
             <TouchableOpacity
-              key={index}
+              key={choice}
               style={[
                 styles.choiceOption,
                 isSelected && !showFeedback && {
