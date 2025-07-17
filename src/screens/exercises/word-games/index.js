@@ -65,7 +65,7 @@ const WordGamesExercise = ({ route }) => {
   // ✅ CORRECTION : Mémoriser les métadonnées
   const activityMetadata = useMemo(() => ({
     game: currentGameIndex,
-    totalGames: totalGames,
+    totalGames,
     gameType: currentGame?.type || "matching",
     gameTitle: currentGame?.title || `Jeu ${currentGameIndex + 1}`,
     score: stats?.score || 0
@@ -76,7 +76,7 @@ const WordGamesExercise = ({ route }) => {
     if (loaded && games.length > 0 && currentGame && !showResults) {
       saveActivity({
         title: "Jeux de mots",
-        level: level,
+        level,
         type: "wordGames",
         metadata: activityMetadata
       });

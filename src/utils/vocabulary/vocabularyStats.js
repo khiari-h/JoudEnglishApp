@@ -33,7 +33,7 @@ export const calculateCategoryProgress = (exercises = [], completedWords = {}) =
       title: category.title || `Catégorie ${index + 1}`,
       totalWords: totalInCategory,
       completedWords: completedInCategory,
-      progress: progress
+      progress
     };
   });
 };

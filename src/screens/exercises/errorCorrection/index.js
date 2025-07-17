@@ -94,7 +94,7 @@ const ErrorCorrectionExercise = ({ route }) => {
     if (loaded && hasValidData && viewMode === "exercise" && currentExercise && !showResults) {
       saveActivity({
         title: "Correction d'erreurs",
-        level: level,
+        level,
         type: "errorCorrection",
         metadata: activityMetadata
       });

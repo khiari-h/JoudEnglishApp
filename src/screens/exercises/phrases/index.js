@@ -65,13 +65,13 @@ const PhrasesExercise = ({ route }) => {
       
       const activityData = {
         title: "Expressions",
-        level: level,
+        level,
         type: "phrases",
         metadata: {
           phrase: phraseIndex,
           totalPhrases: totalPhrasesInCategory || currentPhrases.length, // ✅ Fallback
           category: currentCategory?.name || "Général",
-          categoryIndex: categoryIndex,
+          categoryIndex,
           totalCategories: phrasesData?.categories?.length || 1
         }
       };

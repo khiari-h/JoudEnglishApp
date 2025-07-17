@@ -60,63 +60,30 @@ const SpellingExercise = ({ route }) => {
       try {
         saveActivity({
           title: `Orthographe ${exerciseTypeName}`,
-          level: level,
+          level,
           type: "spelling",
           metadata: {
             word: currentExerciseIndex,           // ✅ Index actuel (pour progression)
             totalWords: totalExercises,           // ✅ Total (pour progression)
-            exerciseType: exerciseType,
+            exerciseType,
             content: currentExercise.wordToCorrect || `Exercice ${currentExerciseIndex + 1}` // ✅ Contenu de l'exercice
           }
         });
       } catch (error) {
-        // Silently fail
+        console.error("Error saving activity:", error);
       }
     }
-  }, [loaded, hasValidData, currentExercise, currentExerciseIndex, totalExercises, exerciseType, level, saveActivity]);
-
- const handleBackPress = useCallback(() => {
-  router.push({
-    pathname: "/tabs/exerciseSelection",
-    params: { level }
-  });
-}, [level]);
-
-  const handleCheckAnswer = useCallback(() => {
-    try {
-      checkAnswer();
-    } catch (error) {
-      // Silently fail
-    }
-  }, [checkAnswer]);
-
-  const handleNextExercise = useCallback(() => {
-    try {
-      const result = handleNext();
-      if (result?.completed) {
-        navigation.goBack();
-      }
-    } catch (error) {
-      // Silently fail
-    }
-  }, [handleNext, navigation]);
-
-  const handleRetryExercise = useCallback(() => {
-    try {
-      retryExercise();
-    } catch (error) {
-      // Silently fail
-    }
-  }, [retryExercise]);
+  }, [loaded, hasValidData, currentExercise, level, exerciseType, currentExerciseIndex, totalExercises, saveActivity]);
 
   if (!loaded) {
     return (
-      <Container
-        safeArea
-        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
-        statusBarStyle="dark-content"
-      >
+      <Container>
+        <SpellingHeader
+          title={`Orthographe ${exerciseTypeName}`}
+          level={level}
+          levelColor={levelColor}
+          onBack={() => navigation.goBack()}
+        />
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={levelColor} />
           <Text style={styles.loadingText}>Chargement des exercices...</Text>
@@ -125,73 +92,56 @@ const SpellingExercise = ({ route }) => {
     );
   }
 
-  if (!hasValidData || !spellingData) {
+  if (!hasValidData) {
     return (
-      <Container
-        safeArea
-        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
-        statusBarStyle="dark-content"
-      >
-        <SpellingHeader 
-          level={level} 
-          exerciseType={exerciseType}
-          onBackPress={handleBackPress} 
+      <Container>
+        <SpellingHeader
+          title={`Orthographe ${exerciseTypeName}`}
+          level={level}
+          levelColor={levelColor}
+          onBack={() => navigation.goBack()}
         />
         <View style={styles.errorContainer}>
-          <Text style={styles.errorTitle}>Erreur</Text>
-          <Text style={styles.errorMessage}>
-            Aucun exercice trouvé pour le niveau {level} - {exerciseType}
-          </Text>
+          <Text style={styles.errorText}>Aucune donnée trouvée pour ce niveau.</Text>
+          <Text style={styles.errorText}>Veuillez réessayer plus tard.</Text>
         </View>
       </Container>
     );
   }
 
   return (
-    <Container
-      safeArea
-      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-      withScrollView={false}
-      backgroundColor="#f8fafc"
-      statusBarStyle="dark-content"
-      withPadding={false}
-      style={styles.container}
-    >
-      <SpellingHeader 
-        level={level} 
-        exerciseType={exerciseType}
-        onBackPress={handleBackPress} 
+    <Container>
+      <SpellingHeader
+        title={`Orthographe ${exerciseTypeName}`}
+        level={level}
+        levelColor={levelColor}
+        onBack={() => navigation.goBack()}
       />
-
-      <SpellingProgress 
-        exercises={exercises}
-        completedExercises={stats.completedExercises || []}
+      <SpellingProgress
+        currentExerciseIndex={currentExerciseIndex + 1}
+        totalExercises={totalExercises}
         levelColor={levelColor}
       />
-
-      <SpellingCard 
-        exercise={currentExercise}
+      <SpellingCard
+        currentExercise={currentExercise}
         userInput={userInput}
         showHint={showHint}
         showFeedback={showFeedback}
         isCorrect={isCorrect}
-        isCompleted={stats.completedExercises?.includes(currentExerciseIndex)}
-        onChangeText={setUserInput}
-        onToggleHint={toggleHint}
+        onUserInputChange={setUserInput}
+        onHintToggle={toggleHint}
+        onCheckAnswer={checkAnswer}
+        onNext={handleNext}
+        onRetry={retryExercise}
+        isLastExercise={isLastExercise}
         levelColor={levelColor}
       />
-
-      <SpellingActions 
-        showFeedback={showFeedback}
+      <SpellingActions
         isCorrect={isCorrect}
-        userInput={userInput}
+        onNext={handleNext}
+        onRetry={retryExercise}
         isLastExercise={isLastExercise}
-        exerciseType={exerciseType} 
         levelColor={levelColor}
-        onCheck={handleCheckAnswer}
-        onNext={handleNextExercise}
-        onRetry={handleRetryExercise}
       />
     </Container>
   );

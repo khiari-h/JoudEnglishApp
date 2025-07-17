@@ -65,7 +65,7 @@ const LevelAssessment = ({ route }) => {
     question: currentQuestionIndex,
     totalQuestions: totalQuestionsInSection,
     sectionTitle: display?.sectionTitle || `Section ${(display?.currentSectionIndex || 0) + 1}`,
-    totalSections: totalSections
+    totalSections
   }), [display?.currentSectionIndex, currentQuestionIndex, totalQuestionsInSection, display?.sectionTitle, totalSections]);
 
   // ✅ CORRECTION : Callback mémorisé pour saveActivity
@@ -73,7 +73,7 @@ const LevelAssessment = ({ route }) => {
     if (loaded && currentSection && currentQuestion && !testCompleted) {
       saveActivity({
         title: "Évaluation",
-        level: level,
+        level,
         type: "assessment",
         metadata: activityMetadata
       });

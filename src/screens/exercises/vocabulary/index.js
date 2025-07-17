@@ -67,15 +67,15 @@ const VocabularyExercise = ({ route }) => {
 
     const activityData = {
       title: `Vocabulaire ${finalMode === "fast" ? "Fast" : ""}`,
-      level: level,
+      level,
       type: "vocabulary",
       mode: finalMode,
       metadata: {
         word: wordIndex, // ✅ Index pour progression (0-based)
-        totalWords: totalWords,
+        totalWords,
         category: currentCategory?.name || "Général",
-        categoryIndex: categoryIndex,
-        wordIndex: wordIndex
+        categoryIndex,
+        wordIndex
       }
     };
 

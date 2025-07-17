@@ -130,7 +130,7 @@ const useRevisionManager = () => {
                   } else if (typeof word === 'string') {
                     // Ancien format - on fait de notre mieux
                     allWords.push({
-                      word: word,
+                      word,
                       translation: '?', // Sera récupéré depuis les données originales
                       fromLevel: level,
                       fromMode: mode,

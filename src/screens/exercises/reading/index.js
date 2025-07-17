@@ -67,14 +67,14 @@ const ReadingExercise = ({ route }) => {
     try {
       saveActivity({
         title: "Lecture",
-        level: level,
+        level,
         type: "reading",
         metadata: {
           word: selectedExerciseIndex, // ✅ Pour cohérence avec autres exercices
           totalWords: exercises.length, // ✅ Pour cohérence
           exercise: selectedExerciseIndex,
           question: currentQuestionIndex,
-          totalQuestions: totalQuestions,
+          totalQuestions,
           exerciseTitle: currentExercise.title || `Texte ${selectedExerciseIndex + 1}`,
           totalExercises: exercises.length
         }

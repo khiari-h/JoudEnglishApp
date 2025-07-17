@@ -67,7 +67,7 @@ const ConversationExercise = ({ route }) => {
     step: stats.currentStep || 0,
     totalSteps: stats.totalSteps || 1,
     scenarioName: currentScenario?.title || `Scénario ${currentScenarioIndex + 1}`,
-    totalScenarios: totalScenarios
+    totalScenarios
   }), [currentScenarioIndex, stats.currentStep, stats.totalSteps, currentScenario?.title, totalScenarios]);
 
   // ✅ CORRECTION : Callback mémorisé pour saveActivity
@@ -75,7 +75,7 @@ const ConversationExercise = ({ route }) => {
     if (loaded && hasValidData && currentScenario && isConversationStarted) {
       saveActivity({
         title: "Conversations",
-        level: level,
+        level,
         type: "conversations",
         metadata: activityMetadata
       });
