@@ -104,8 +104,8 @@ const useGrammar = (grammarData = [], level = "A1") => {
   // =================== ANSWER CHECKING ===================
   const checkAnswer = useCallback((userAnswer, correctAnswer) => {
     // Clean answers
-    let cleanUserAnswer = (userAnswer || "").toString().trim().toLowerCase();
-    let cleanCorrectAnswer = (correctAnswer || "").toString().trim().toLowerCase();
+    const cleanUserAnswer = (userAnswer || "").toString().trim().toLowerCase();
+    const cleanCorrectAnswer = (correctAnswer || "").toString().trim().toLowerCase();
 
     let correct = false;
 

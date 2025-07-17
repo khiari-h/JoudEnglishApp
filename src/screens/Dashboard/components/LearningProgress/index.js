@@ -16,8 +16,8 @@ const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLev
   <View style={styles.levelsContainer}>
     {displayLevels.map((level) => {
       const isActive = level.id === currentLevel;
-      let circleStyle = [styles.levelCircle];
-      let textStyle = [styles.levelText];
+      const circleStyle = [styles.levelCircle];
+      const textStyle = [styles.levelText];
       if (isActive) {
         circleStyle.push([
           styles.activeLevelCircle,

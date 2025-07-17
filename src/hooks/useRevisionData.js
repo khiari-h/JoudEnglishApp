@@ -15,7 +15,7 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
       try {
         setIsLoading(true);
         setError(null);
-        let learnedWords = [];
+        const learnedWords = [];
         
         const levels = level === "mixed" ? ['1', '2', '3', '4', '5', '6', 'bonus'] : [level];
         const modes = ['classic', 'fast'];

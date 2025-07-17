@@ -116,8 +116,8 @@ const ChoicesSection = ({ currentQuestion, selectedAnswer, showResult, handleAns
       const isWrong = showResult && isSelected && !isCorrect;
       const shouldHighlight = showResult && isCorrect;
       
-      let buttonStyle = [styles.choiceButton, { backgroundColor: colors.surface }];
-      let textStyle = [styles.choiceText, { color: colors.text }];
+      const buttonStyle = [styles.choiceButton, { backgroundColor: colors.surface }];
+      const textStyle = [styles.choiceText, { color: colors.text }];
       let icon = null;
       
       if (shouldHighlight) {

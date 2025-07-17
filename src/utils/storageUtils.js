@@ -128,7 +128,7 @@ const migrateOldData = (oldData) => {
     return oldData;
   }
   
-  let migratedData = { ...DEFAULT_STATS };
+  const migratedData = { ...DEFAULT_STATS };
   
   if (oldData && typeof oldData === 'object') {
     if (oldData.vocabulary_classic || oldData.vocabulary_fast) {
