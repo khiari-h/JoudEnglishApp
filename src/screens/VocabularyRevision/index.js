@@ -48,6 +48,8 @@ const VocabularyRevision = ({ route }) => {
   const currentQuestion = revisionQuestions[currentIndex];
   const progress = revisionQuestions.length > 0 ? ((currentIndex + 1) / revisionQuestions.length) * 100 : 0;
 
+  const handleGoBackPress = useCallback(() => navigation.goBack(), [navigation]);
+
   // ========== ÉCRAN DE CHARGEMENT ==========
   if (isLoading) {
     return (
@@ -173,7 +175,6 @@ const VocabularyRevision = ({ route }) => {
   const handleAnswerPress = useCallback((choice) => () => handleAnswer(choice), [handleAnswer]);
   const handleRestartPress = useCallback(() => handleRestart(), [handleRestart]);
   const handleFinishPress = useCallback(() => handleFinish(), [handleFinish]);
-  const handleGoBackPress = useCallback(() => navigation.goBack(), [navigation]);
 
   // ========== ÉCRAN FINAL ==========
   if (isFinished) {

@@ -39,6 +39,36 @@ const Button = ({
   // Couleur de base pour ce bouton
   const baseColor = colors[color] || colors.primary;
 
+  // Déterminer les styles en fonction de la taille
+  const getSizeStyles = (buttonSize) => {
+    switch (buttonSize) {
+      case "small":
+        return {
+          button: styles.smallButton,
+          text: styles.smallText,
+          iconSize: 16,
+          loaderSize: "small",
+        };
+      case "large":
+        return {
+          button: styles.largeButton,
+          text: styles.largeText,
+          iconSize: 24,
+          loaderSize: "large",
+        };
+      case "medium":
+      default:
+        return {
+          button: styles.mediumButton,
+          text: styles.mediumText,
+          iconSize: 20,
+          loaderSize: "small",
+        };
+    }
+  };
+
+  const sizeStyles = getSizeStyles(size);
+
   // Déterminer les styles en fonction de la variante
   const getVariantStyles = () => {
     switch (variant) {
@@ -120,35 +150,6 @@ const Button = ({
     }
   };
 
-  // Déterminer les styles en fonction de la taille
-  const getSizeStyles = (buttonSize) => {
-    switch (buttonSize) {
-      case "small":
-        return {
-          button: styles.smallButton,
-          text: styles.smallText,
-          iconSize: 16,
-          loaderSize: "small",
-        };
-      case "large":
-        return {
-          button: styles.largeButton,
-          text: styles.largeText,
-          iconSize: 24,
-          loaderSize: "large",
-        };
-      case "medium":
-      default:
-        return {
-          button: styles.mediumButton,
-          text: styles.mediumText,
-          iconSize: 20,
-          loaderSize: "small",
-        };
-    }
-  };
-
-  const sizeStyles = getSizeStyles(size);
   const variantStyles = getVariantStyles();
   const iconSize = sizeStyles.iconSize;
 

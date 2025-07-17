@@ -130,8 +130,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     }
   }, [currentGameIndex, currentGame]);
 
-  // =================== GAME LOGIC ===================
-  
   // Déclaration des fonctions utilitaires avant leur utilisation
   const shuffleGameOptions = (game) => {
     let optionsToShuffle = [];
@@ -146,6 +144,8 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     setShuffledOptions(optionsToShuffle);
   };
 
+  // =================== GAME LOGIC ===================
+  
   // =================== MAIN NAVIGATION ===================
   
   const handleNext = useCallback(() => {

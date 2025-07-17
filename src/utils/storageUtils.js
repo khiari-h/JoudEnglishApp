@@ -152,6 +152,13 @@ const migrateOldData = (oldData) => {
 };
 
 /**
+ * Écrit les données avec validation
+ */
+const writeToStorage = async (key, data) => {
+  await AsyncStorage.setItem(key, JSON.stringify(data));
+};
+
+/**
  * Lit les données avec validation et migration
  */
 export const readFromStorage = async (key = STORAGE_CONFIG.KEY) => {
@@ -188,13 +195,6 @@ export const readFromStorage = async (key = STORAGE_CONFIG.KEY) => {
     
     return null;
   }
-};
-
-/**
- * Écrit les données avec validation
- */
-const writeToStorage = async (key, data) => {
-  await AsyncStorage.setItem(key, JSON.stringify(data));
 };
 
 /**
