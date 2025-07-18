@@ -191,16 +191,16 @@ const Card = ({
   };
 
   // Sous-composant pour le badge
-  const CardBadge = ({ badge, iconColor, badgeStyle, badgeTextStyle }) => {
-    if (!badge) return null;
+  const CardBadge = ({ badge: cardBadge, iconColor: cardIconColor, badgeStyle: cardBadgeStyle, badgeTextStyle: cardBadgeTextStyle }) => {
+    if (!cardBadge) return null;
     return (
       <View style={[
         styles.cardBadge,
-        { backgroundColor: `${iconColor}15` },
-        badgeStyle,
+        { backgroundColor: `${cardIconColor}15` },
+        cardBadgeStyle,
       ]}>
-        <Text style={[styles.badgeText, { color: iconColor }, badgeTextStyle]}>
-          {badge}
+        <Text style={[styles.badgeText, { color: cardIconColor }, cardBadgeTextStyle]}>
+          {cardBadge}
         </Text>
       </View>
     );
@@ -208,37 +208,37 @@ const Card = ({
 
   // Sous-composant pour le contenu principal (inclut la progress bar)
   const CardContent = ({
-    children,
-    padding,
-    compactMode,
-    contentStyle,
-    showProgressBar,
-    progress,
-    fillColor,
-    progressHeight,
-    showPercentage,
-    percentageFormatter,
-    progressStyle
+    children: cardChildren,
+    padding: cardPadding,
+    compactMode: cardCompactMode,
+    contentStyle: cardContentStyle,
+    showProgressBar: cardShowProgressBar,
+    progress: cardProgress,
+    fillColor: cardFillColor,
+    progressHeight: cardProgressHeight,
+    showPercentage: cardShowPercentage,
+    percentageFormatter: cardPercentageFormatter,
+    progressStyle: cardProgressStyle
   }) => (
     <View style={[
       styles.content,
-      padding && styles.contentPadding,
-      compactMode && styles.contentCompact,
-      contentStyle
+      cardPadding && styles.contentPadding,
+      cardCompactMode && styles.contentCompact,
+      cardContentStyle
     ]}>
-      {children}
-      {showProgressBar && (
+      {cardChildren}
+      {cardShowProgressBar && (
         <ProgressBar
-          progress={progress}
-          fillColor={fillColor}
-          height={progressHeight}
-          backgroundColor={`${fillColor}15`}
-          borderRadius={Math.floor(progressHeight / 2)}
-          showPercentage={showPercentage}
-          percentageFormatter={percentageFormatter}
+          progress={cardProgress}
+          fillColor={cardFillColor}
+          height={cardProgressHeight}
+          backgroundColor={`${cardFillColor}15`}
+          borderRadius={Math.floor(cardProgressHeight / 2)}
+          showPercentage={cardShowPercentage}
+          percentageFormatter={cardPercentageFormatter}
           style={[
-            { marginTop: compactMode ? 8 : 12, marginBottom: compactMode ? 4 : 8 },
-            progressStyle
+            { marginTop: cardCompactMode ? 8 : 12, marginBottom: cardCompactMode ? 4 : 8 },
+            cardProgressStyle
           ]}
         />
       )}
@@ -246,15 +246,15 @@ const Card = ({
   );
 
   // Sous-composant pour le footer
-  const CardFooter = ({ footer, footerStyle }) => {
-    if (!footer) return null;
-    return <View style={[styles.footer, footerStyle]}>{footer}</View>;
+  const CardFooter = ({ footer: localFooter, footerStyle: localFooterStyle }) => {
+    if (!localFooter) return null;
+    return <View style={[styles.footer, localFooterStyle]}>{localFooter}</View>;
   };
 
   // Sous-composant pour l'overlay
-  const CardOverlay = ({ showOverlay, overlayContent, overlayStyle }) => {
-    if (!showOverlay) return null;
-    return <View style={[styles.overlay, overlayStyle]}>{overlayContent}</View>;
+  const CardOverlay = ({ showOverlay: localShowOverlay, overlayContent: localOverlayContent, overlayStyle: localOverlayStyle }) => {
+    if (!localShowOverlay) return null;
+    return <View style={[styles.overlay, localOverlayStyle]}>{localOverlayContent}</View>;
   };
 
   return (
