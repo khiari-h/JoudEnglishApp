@@ -46,6 +46,7 @@ const VocabularyExercise = ({ route }) => {
     canGoToPrevious,
     isLastWordInExercise,
     display,
+    saveData, // Ajouté ici
   } = useVocabulary(vocabularyData, level, finalMode);
 
   // =================== SAUVEGARDE ACTIVITÉ SIMPLIFIÉE ===================
@@ -94,12 +95,16 @@ const VocabularyExercise = ({ route }) => {
   const handleCategoryProgressPress = useCallback((index) => changeCategory(index), [changeCategory]);
   const handleToggleProgressDetails = useCallback(() => toggleDetailedProgress(), [toggleDetailedProgress]);
 
-  const handleNextWord = useCallback(() => {
+  const handleNextWord = useCallback(async () => {
     const result = handleNext();
+    // Attendre la sauvegarde avant de naviguer
+    if (typeof saveData === 'function') {
+      await saveData();
+    }
     if (result.completed) {
       navigation.goBack();
     }
-  }, [handleNext, navigation]);
+  }, [handleNext, navigation, saveData]);
 
   const handlePreviousWord = useCallback(() => handlePrevious(), [handlePrevious]);
 

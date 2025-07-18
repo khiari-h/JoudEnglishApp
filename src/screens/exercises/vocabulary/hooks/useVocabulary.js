@@ -263,6 +263,7 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
     isLastWordInExercise: isLastWordInExercise(),
     stats: getStats(),
     display: getDisplayData(),
+    saveData,
   };
 };
 
