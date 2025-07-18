@@ -22,6 +22,10 @@ const SpellingExercise = ({ route }) => {
   const { saveActivity } = useLastActivity();
 
   const levelColor = getLevelColor(level);
+
+  // Définir exerciseTypeName pour tout le composant
+  const exerciseTypeName = exerciseType === "correction" ? "Correction" : 
+                          exerciseType === "rules" ? "Règles" : "Homophones";
   
   const spellingData = useMemo(() => {
     try {
@@ -51,9 +55,6 @@ const SpellingExercise = ({ route }) => {
 
   useEffect(() => {
     if (loaded && hasValidData && currentExercise) {
-      const exerciseTypeName = exerciseType === "correction" ? "Correction" : 
-                              exerciseType === "rules" ? "Règles" : "Homophones";
-      
       try {
         saveActivity({
           title: `Orthographe ${exerciseTypeName}`,
