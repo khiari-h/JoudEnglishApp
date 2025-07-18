@@ -72,22 +72,27 @@ const CollapsibleHeader = ({ expanded, toggleExpanded, iconRotation, rule, level
       end={{ x: 1, y: 1 }}
       style={styles.headerGradient}
     >
-      <View style={styles.headerContent}>
-        <View style={styles.headerLeft}>
-          <View style={[styles.ruleIcon, { backgroundColor: `${levelColor}15` }]}> 
-            <Ionicons name="book-outline" size={16} color={levelColor} />
-          </View>
-          <Text style={styles.ruleTitle} numberOfLines={1}>{rule.title}</Text>
-        </View>
-        <View style={styles.headerRight}>
-          <Text style={[styles.hintText, { color: levelColor }]}>{expanded ? 'Hide' : 'Show'} rule</Text>
-          <Animated.View style={{ transform: [{ rotate: iconRotation }] }}>
-            <Ionicons name="chevron-down" size={16} color={levelColor} />
-          </Animated.View>
-        </View>
-      </View>
+      <HeaderContentSection expanded={expanded} iconRotation={iconRotation} rule={rule} levelColor={levelColor} styles={styles} />
     </LinearGradient>
   </TouchableOpacity>
+);
+
+// Sous-composant pour le contenu du header
+const HeaderContentSection = ({ expanded, iconRotation, rule, levelColor, styles }) => (
+  <View style={styles.headerContent}>
+    <View style={styles.headerLeft}>
+      <View style={[styles.ruleIcon, { backgroundColor: `${levelColor}15` }]}> 
+        <Ionicons name="book-outline" size={16} color={levelColor} />
+      </View>
+      <Text style={styles.ruleTitle} numberOfLines={1}>{rule.title}</Text>
+    </View>
+    <View style={styles.headerRight}>
+      <Text style={[styles.hintText, { color: levelColor }]}>{expanded ? 'Hide' : 'Show'} rule</Text>
+      <Animated.View style={{ transform: [{ rotate: iconRotation }] }}>
+        <Ionicons name="chevron-down" size={16} color={levelColor} />
+      </Animated.View>
+    </View>
+  </View>
 );
 
 const RuleContentSection = ({ expandAnim, contentHeight, rule, levelColor, styles }) => (
