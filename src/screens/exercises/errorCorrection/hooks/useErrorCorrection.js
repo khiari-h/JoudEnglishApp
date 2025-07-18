@@ -143,6 +143,9 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
         case 'multiple_choice':
           setSelectedChoiceIndex(null);
           break;
+        default:
+          // No default action needed
+          break;
       }
     }
   }, [exercises, resetExerciseState]);
@@ -260,6 +263,9 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
         case 'multiple_choice':
           setSelectedChoiceIndex(null);
           break;
+        default:
+          // No default action needed
+          break;
       }
     } else {
       // End of category - find next uncompleted category
@@ -295,6 +301,9 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
           break;
         case 'multiple_choice':
           setSelectedChoiceIndex(null);
+          break;
+        default:
+          // No default action needed
           break;
       }
       return;
