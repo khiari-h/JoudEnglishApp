@@ -26,7 +26,7 @@ export const useRevisionSettings = () => {
         });
       }
     } catch (error) {
-      // Ignored on purpose
+      // Ignored on purpose: empty block to suppress error
     } finally {
       setIsLoading(false);
     }
@@ -44,10 +44,10 @@ export const useRevisionSettings = () => {
       await AsyncStorage.setItem(REVISION_STORAGE_KEY, JSON.stringify(updatedPrefs));
       setPreferences(updatedPrefs);
       // Événement de mise à jour des settings
-      try { require('../utils/eventBus').emit('settings-updated', updatedPrefs); } catch(e) {}
+      try { require('../utils/eventBus').emit('settings-updated', updatedPrefs); } catch(e) { /* empty: eventBus not critical */ }
       return true;
     } catch (error) {
-      // Ignored on purpose
+      // Ignored on purpose: empty block to suppress error
       return null;
     }
   };

@@ -45,7 +45,7 @@ const useReading = (exercises = [], level = "A1") => {
         }
       }
     } catch (error) {
-      // Ignored on purpose
+      // Ignored on purpose: empty block to suppress error
     } finally {
       setLoaded(true);
     }
