@@ -90,7 +90,7 @@ const RevisionPreferencesModal = ({
         <View style={styles.modalContainer}>
           <ModalHeader onSkip={onSkip} localStyles={styles} />
           <ModalContentSection
-            styles={styles}
+            localStyles={styles}
             revisionStyles={revisionStyles}
             selectedStyle={selectedStyle}
             handleStylePress={handleStylePress}
@@ -233,35 +233,35 @@ const SummarySection = ({ selectedStyle, revisionStyles, localStyles }) => (
 );
 
 // Sous-composant pour le contenu du modal (ScrollView)
-const ModalContentSection = ({ styles, revisionStyles, selectedStyle, handleStylePress, handleConfirm, handleSkip }) => (
+const ModalContentSection = ({ localStyles, revisionStyles, selectedStyle, handleStylePress, handleConfirm, handleSkip }) => (
   <ScrollView 
-    style={styles.scrollContainer}
-    contentContainerStyle={styles.scrollContent}
+    style={localStyles.scrollContainer}
+    contentContainerStyle={localStyles.scrollContent}
     showsVerticalScrollIndicator={false}
   >
-    <View style={styles.section}>
-      <Text style={styles.sectionTitle}>🏆 Choisissez votre style</Text>
-      <Text style={styles.sectionDescription}>
+    <View style={localStyles.section}>
+      <Text style={localStyles.sectionTitle}>🏆 Choisissez votre style</Text>
+      <Text style={localStyles.sectionDescription}>
         Sélectionnez la fréquence qui vous convient le mieux
       </Text>
       <RevisionStylesList 
         revisionStyles={revisionStyles} 
         selectedStyle={selectedStyle} 
         handleStylePress={handleStylePress} 
-        localStyles={styles} 
+        localStyles={localStyles} 
       />
     </View>
     <SummarySection 
       selectedStyle={selectedStyle} 
       revisionStyles={revisionStyles} 
-      localStyles={styles} 
+      localStyles={localStyles} 
     />
     <ModalButtons
       revisionStyles={revisionStyles}
       selectedStyle={selectedStyle}
       handleConfirm={handleConfirm}
       handleSkip={handleSkip}
-      localStyles={styles}
+      localStyles={localStyles}
     />
   </ScrollView>
 );

@@ -86,16 +86,16 @@ const LevelCardContent = ({ level, colors, localStyles, handleLevelPress }) => (
 );
 
 // Sous-composant pour la section liste de niveaux
-const LevelListSection = ({ colors, styles, levels, renderLevelCard }) => (
+const LevelListSection = ({ colors, localStyles, levels, renderLevelCard }) => (
   <ScrollView
     style={{ flex: 1 }}
-    contentContainerStyle={[styles.modernScrollContent, { paddingBottom: 60 }]}
+    contentContainerStyle={[localStyles.modernScrollContent, { paddingBottom: 60 }]}
     showsVerticalScrollIndicator={false}
   >
-    <View className={styles.modernIntro}>
-      <Text style={[styles.modernIntroText, { color: colors.textSecondary }]}>À vous de choisir !</Text>
+    <View className={localStyles.modernIntro}>
+      <Text style={[localStyles.modernIntroText, { color: colors.textSecondary }]}>À vous de choisir !</Text>
     </View>
-    <View style={styles.modernLevelsContainer}>
+    <View style={localStyles.modernLevelsContainer}>
       {levels.map(renderLevelCard)}
     </View>
   </ScrollView>
@@ -221,7 +221,7 @@ const LevelSelection = () => {
         style={{ flex: 1 }}
       >
         {renderHeader()}
-        <LevelListSection colors={colors} styles={styles} levels={levels} renderLevelCard={renderLevelCard} />
+        <LevelListSection colors={colors} localStyles={styles} levels={levels} renderLevelCard={renderLevelCard} />
       </LinearGradient>
     </Container>
   );
