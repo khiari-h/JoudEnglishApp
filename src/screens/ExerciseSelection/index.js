@@ -3,6 +3,7 @@ import { useContext, useMemo, useCallback } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import { useFocusEffect } from "@react-navigation/native";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -115,7 +116,7 @@ const ExerciseSelection = ({ level }) => {
   const { colors } = themeContext;
 
   // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
-  const { getExerciseProgress, hasProgress } = useRealTimeProgress();
+  const { getExerciseProgress, hasProgress, refresh } = useRealTimeProgress();
 
   // Infos du niveau
   const levelInfo = useMemo(() => {
@@ -186,6 +187,12 @@ const ExerciseSelection = ({ level }) => {
   const handleExercisePress = useCallback(
     (exercise) => () => handleExerciseSelect(exercise),
     [handleExerciseSelect]
+  );
+
+  useFocusEffect(
+    useCallback(() => {
+      refresh();
+    }, [refresh])
   );
 
   // ========== RENDU - TON DESIGN ORIGINAL ==========

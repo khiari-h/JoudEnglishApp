@@ -3,6 +3,7 @@ import { useContext, useCallback } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import { useFocusEffect } from "@react-navigation/native";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -103,7 +104,7 @@ const LevelSelection = () => {
   const { colors } = themeContext;
   
   // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
-  const { getLevelProgress, hasProgress } = useRealTimeProgress();
+  const { getLevelProgress, hasProgress, refresh } = useRealTimeProgress();
 
   // Niveau actuel simplifié
   const getCurrentUserLevel = () => {
@@ -162,6 +163,12 @@ const LevelSelection = () => {
   const handleLevelPress = useCallback(
     (level) => () => handleLevelSelect(level),
     [handleLevelSelect]
+  );
+
+  useFocusEffect(
+    useCallback(() => {
+      refresh();
+    }, [refresh])
   );
 
   // ========== RENDU - TON DESIGN ORIGINAL ==========
