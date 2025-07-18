@@ -29,8 +29,8 @@ const PhrasesProgress = ({
   phrasesData = null,
   completedPhrases = {},
   expanded = false,
-  onToggleExpand = () => {},
-  onCategoryPress = () => {},
+  onToggleExpand = () => { /* intentionally empty: default no-op to avoid errors if not provided */ },
+  onCategoryPress = () => { /* intentionally empty: default no-op to avoid errors if not provided */ },
 }) => {
   
   // ✅ CORRECTION : Utilise les vraies fonctions de calcul

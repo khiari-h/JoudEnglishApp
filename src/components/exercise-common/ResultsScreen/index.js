@@ -82,8 +82,8 @@ const ResultsScreen = ({
   level = "A1",
   levelColor = "#3b82f6",
   feedback = "",
-  onRetry = () => {},
-  onContinue = () => {},
+  onRetry = () => { /* intentionally empty: default no-op to avoid errors if not provided */ },
+  onContinue = () => { /* intentionally empty: default no-op to avoid errors if not provided */ },
   showDetailedResults = false,
   detailedResults = [],
 }) => {
