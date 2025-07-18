@@ -58,7 +58,7 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
                 
                 // Récupérer chaque mot appris
                 wordRefs.forEach((wordRef) => {
-                  let wordIndex;
+                  let wordIndex = undefined;
                   let timestamp = Date.now();
                   
                   // Support nouveau format (objet avec wordIndex + timestamp)

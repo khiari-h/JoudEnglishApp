@@ -74,7 +74,7 @@ const useActivityMetrics = () => {
         yesterday.setDate(yesterday.getDate() - 1);
         const isYesterday = lastDate === yesterday.toDateString();
         
-        let newStreak;
+        let newStreak = 0;
         if (isYesterday) {
           newStreak = currentStreak + 1;
         } else {

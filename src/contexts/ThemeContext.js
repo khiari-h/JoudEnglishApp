@@ -53,7 +53,7 @@ export const ThemeProvider = ({ children }) => {
 
   // Sauvegarder le thème lorsqu'il change
   useEffect(() => {
-    let timeoutId;
+    let timeoutId = null;
 
     if (loaded) {
       // Debounce pour éviter trop de sauvegardes

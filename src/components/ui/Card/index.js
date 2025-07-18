@@ -190,6 +190,73 @@ const Card = ({
     );
   };
 
+  // Sous-composant pour le badge
+  const CardBadge = ({ badge, iconColor, badgeStyle, badgeTextStyle }) => {
+    if (!badge) return null;
+    return (
+      <View style={[
+        styles.cardBadge,
+        { backgroundColor: `${iconColor}15` },
+        badgeStyle,
+      ]}>
+        <Text style={[styles.badgeText, { color: iconColor }, badgeTextStyle]}>
+          {badge}
+        </Text>
+      </View>
+    );
+  };
+
+  // Sous-composant pour le contenu principal (inclut la progress bar)
+  const CardContent = ({
+    children,
+    padding,
+    compactMode,
+    contentStyle,
+    showProgressBar,
+    progress,
+    fillColor,
+    progressHeight,
+    showPercentage,
+    percentageFormatter,
+    progressStyle
+  }) => (
+    <View style={[
+      styles.content,
+      padding && styles.contentPadding,
+      compactMode && styles.contentCompact,
+      contentStyle
+    ]}>
+      {children}
+      {showProgressBar && (
+        <ProgressBar
+          progress={progress}
+          fillColor={fillColor}
+          height={progressHeight}
+          backgroundColor={`${fillColor}15`}
+          borderRadius={Math.floor(progressHeight / 2)}
+          showPercentage={showPercentage}
+          percentageFormatter={percentageFormatter}
+          style={[
+            { marginTop: compactMode ? 8 : 12, marginBottom: compactMode ? 4 : 8 },
+            progressStyle
+          ]}
+        />
+      )}
+    </View>
+  );
+
+  // Sous-composant pour le footer
+  const CardFooter = ({ footer, footerStyle }) => {
+    if (!footer) return null;
+    return <View style={[styles.footer, footerStyle]}>{footer}</View>;
+  };
+
+  // Sous-composant pour l'overlay
+  const CardOverlay = ({ showOverlay, overlayContent, overlayStyle }) => {
+    if (!showOverlay) return null;
+    return <View style={[styles.overlay, overlayStyle]}>{overlayContent}</View>;
+  };
+
   return (
     <WrapperComponent
       style={[
@@ -207,62 +274,23 @@ const Card = ({
       testID={testID}
       {...wrapperProps}
     >
-      {/* Badge optionnel (coin supérieur) */}
-      {badge && (
-        <View style={[
-          styles.cardBadge,
-          { backgroundColor: `${iconColor}15` },
-          badgeStyle,
-        ]}>
-          <Text style={[styles.badgeText, { color: iconColor }, badgeTextStyle]}>
-            {badge}
-          </Text>
-        </View>
-      )}
-
-      {/* Header mobile amélioré */}
+      <CardBadge badge={badge} iconColor={iconColor} badgeStyle={badgeStyle} badgeTextStyle={badgeTextStyle} />
       {renderMobileHeader()}
-
-      {/* Contenu de la carte */}
-      <View style={[
-        styles.content,
-        padding && styles.contentPadding,
-        compactMode && styles.contentCompact,
-        contentStyle
-      ]}>
-        {children}
-
-        {/* Barre de progression */}
-        {showProgressBar && (
-          <ProgressBar
-            progress={progress}
-            fillColor={fillColor}
-            height={progressHeight}
-            backgroundColor={`${fillColor}15`}
-            borderRadius={Math.floor(progressHeight / 2)}
-            showPercentage={showPercentage}
-            percentageFormatter={percentageFormatter}
-            style={[
-              { marginTop: compactMode ? 8 : 12, marginBottom: compactMode ? 4 : 8 },
-              progressStyle
-            ]}
-          />
-        )}
-      </View>
-
-      {/* Footer */}
-      {footer && (
-        <View style={[styles.footer, footerStyle]}>
-          {footer}
-        </View>
-      )}
-
-      {/* Overlay (ex: niveau verrouillé) */}
-      {showOverlay && (
-        <View style={[styles.overlay, overlayStyle]}>
-          {overlayContent}
-        </View>
-      )}
+      <CardContent
+        children={children}
+        padding={padding}
+        compactMode={compactMode}
+        contentStyle={contentStyle}
+        showProgressBar={showProgressBar}
+        progress={progress}
+        fillColor={fillColor}
+        progressHeight={progressHeight}
+        showPercentage={showPercentage}
+        percentageFormatter={percentageFormatter}
+        progressStyle={progressStyle}
+      />
+      <CardFooter footer={footer} footerStyle={footerStyle} />
+      <CardOverlay showOverlay={showOverlay} overlayContent={overlayContent} overlayStyle={overlayStyle} />
     </WrapperComponent>
   );
 };
