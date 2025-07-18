@@ -1,5 +1,5 @@
 // src/screens/Dashboard/components/LearningProgress/index.js
-import { useContext, useCallback } from "react";
+import { useContext, useCallback, useMemo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Card from "../../../../components/ui/Card";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
@@ -12,37 +12,49 @@ import styles from "./style";
  * ✅ Seul le niveau en cours est coloré
  * ✅ Bouton Explorer = navigation vers exercices
  */
-const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLevelDisplay, colors, primaryColor, localStyles }) => (
-  <View style={localStyles.levelsContainer}>
-    {displayLevels.map((level) => {
-      const isActive = level.id === currentLevel;
-      const circleStyle = [localStyles.levelCircle];
-      const textStyle = [localStyles.levelText];
-      if (isActive) {
-        circleStyle.push([
-          localStyles.activeLevelCircle,
-          { backgroundColor: level.color || primaryColor }
-        ]);
-        textStyle.push(localStyles.activeLevelText);
-      } else {
-        circleStyle.push(localStyles.futureLevelCircle);
-        textStyle.push([localStyles.futureLevelText, { color: colors.textSecondary }]);
-      }
-      return (
-        <TouchableOpacity
-          key={level.id}
-          style={localStyles.levelButton}
-          onPress={handleLevelPress(level.id)}
-          activeOpacity={0.7}
-        >
-          <View style={circleStyle}>
-            <Text style={textStyle}>{getLevelDisplay(level.id)}</Text>
-          </View>
-        </TouchableOpacity>
-      );
-    })}
-  </View>
-);
+// Nouvelle version de LevelsCircleRow pour éviter la création de fonction inline
+const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLevelDisplay, colors, primaryColor, localStyles }) => {
+  // Mémoriser les handlers pour chaque niveau
+  const handlers = useMemo(() => {
+    const map = {};
+    displayLevels.forEach(level => {
+      map[level.id] = () => handleLevelPress(level.id);
+    });
+    return map;
+  }, [displayLevels, handleLevelPress]);
+
+  return (
+    <View style={localStyles.levelsContainer}>
+      {displayLevels.map((level) => {
+        const isActive = level.id === currentLevel;
+        const circleStyle = [localStyles.levelCircle];
+        const textStyle = [localStyles.levelText];
+        if (isActive) {
+          circleStyle.push([
+            localStyles.activeLevelCircle,
+            { backgroundColor: level.color || primaryColor }
+          ]);
+          textStyle.push(localStyles.activeLevelText);
+        } else {
+          circleStyle.push(localStyles.futureLevelCircle);
+          textStyle.push([localStyles.futureLevelText, { color: colors.textSecondary }]);
+        }
+        return (
+          <TouchableOpacity
+            key={level.id}
+            style={localStyles.levelButton}
+            onPress={handlers[level.id]}
+            activeOpacity={0.7}
+          >
+            <View style={circleStyle}>
+              <Text style={textStyle}>{getLevelDisplay(level.id)}</Text>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+};
 
 const GlobalProgressBar = ({ globalProgress, primaryColor, localStyles, colors }) => (
   <View style={localStyles.globalProgressContainer}>

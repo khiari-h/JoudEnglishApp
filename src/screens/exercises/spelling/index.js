@@ -1,6 +1,6 @@
 // SpellingExercise/index.js - VERSION PROPRE
 
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, useCallback } from "react";
 import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -73,6 +73,8 @@ const SpellingExercise = ({ route }) => {
     }
   }, [loaded, hasValidData, currentExercise, level, exerciseType, currentExerciseIndex, totalExercises, saveActivity]);
 
+  const handleBack = useCallback(() => navigation.goBack(), [navigation]);
+
   if (!loaded) {
     return (
       <Container>
@@ -80,7 +82,7 @@ const SpellingExercise = ({ route }) => {
           title={`Orthographe ${exerciseTypeName}`}
           level={level}
           levelColor={levelColor}
-          onBack={() => navigation.goBack()}
+          onBack={handleBack}
         />
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={levelColor} />
@@ -97,7 +99,7 @@ const SpellingExercise = ({ route }) => {
           title={`Orthographe ${exerciseTypeName}`}
           level={level}
           levelColor={levelColor}
-          onBack={() => navigation.goBack()}
+          onBack={handleBack}
         />
         <View style={styles.errorContainer}>
           <Text style={styles.errorText}>Aucune donnée trouvée pour ce niveau.</Text>
@@ -113,7 +115,7 @@ const SpellingExercise = ({ route }) => {
         title={`Orthographe ${exerciseTypeName}`}
         level={level}
         levelColor={levelColor}
-        onBack={() => navigation.goBack()}
+        onBack={handleBack}
       />
       <SpellingProgress
         currentExerciseIndex={currentExerciseIndex + 1}
