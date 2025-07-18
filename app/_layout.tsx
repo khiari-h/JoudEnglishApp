@@ -31,7 +31,7 @@ export default function RootLayout() {
       <AppProvider>
         {/* ← CHANGÉ: AppProvider qui inclut ThemeProvider + SettingsProvider + ProgressProvider */}
         <Stack screenOptions={{ headerShown: false }} />
-        <StatusBar style="auto" />
+        <StatusBar style="auto" /> {/* skipcq: JS-0473 - Expo StatusBar attend une string, pas un objet */}
       </AppProvider>
     </SafeAreaProvider>
   );

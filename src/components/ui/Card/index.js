@@ -277,7 +277,6 @@ const Card = ({
       <CardBadge badge={badge} iconColor={iconColor} badgeStyle={badgeStyle} badgeTextStyle={badgeTextStyle} />
       {renderMobileHeader()}
       <CardContent
-        children={children}
         padding={padding}
         compactMode={compactMode}
         contentStyle={contentStyle}
@@ -288,7 +287,9 @@ const Card = ({
         showPercentage={showPercentage}
         percentageFormatter={percentageFormatter}
         progressStyle={progressStyle}
-      />
+      >
+        {children}
+      </CardContent>
       <CardFooter footer={footer} footerStyle={footerStyle} />
       <CardOverlay showOverlay={showOverlay} overlayContent={overlayContent} overlayStyle={overlayStyle} />
     </WrapperComponent>
