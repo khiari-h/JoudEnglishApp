@@ -98,6 +98,8 @@ const useGrammar = (grammarData = [], level = "A1") => {
       if (saveDataTimeoutRef.current) {
         clearTimeout(saveDataTimeoutRef.current);
       }
+      // Explicit return for cleanup
+      return null;
     };
   }, [completedExercises, ruleIndex, exerciseIndex, loaded, saveDataToStorage]);
 

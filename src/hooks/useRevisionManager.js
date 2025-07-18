@@ -99,6 +99,8 @@ const useRevisionManager = () => {
       console.warn('Erreur calcul mots appris:', error);
       return 0;
     }
+    // Explicit return for all code paths
+    return 0;
   }, []);
 
   // ========== RÉCUPÉRATION DES MOTS POUR RÉVISION ==========

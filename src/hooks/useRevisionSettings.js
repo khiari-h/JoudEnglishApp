@@ -48,6 +48,7 @@ export const useRevisionSettings = () => {
       return true;
     } catch (error) {
       // Ignored on purpose
+      return null;
     }
   };
 
