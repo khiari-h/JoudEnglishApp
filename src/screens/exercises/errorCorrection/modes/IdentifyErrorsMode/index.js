@@ -48,6 +48,7 @@ const IdentifyErrorsMode = ({
 
       {/* 🎯 HERO SECTION - Zone de mots cliquables */}
       <HeroCard 
+        content=""
         levelColor={levelColor}
         showUnderline={false}
         style={styles.heroCard}
