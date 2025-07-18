@@ -89,35 +89,8 @@ const ExerciseFeedback = ({
     });
   }, [onDismiss, fadeAnim]);
 
-  return (
-    <Animated.View
-      style={[styles.container, containerStyle, { opacity: fadeAnim }]}
-    >
-      <View style={styles.content}>
-        <View style={styles.iconContainer}>
-          <Ionicons name={icon} size={24} color={iconColor} />
-        </View>
-
-        <View style={styles.textContainer}>
-          <Text style={styles.message}>{message}</Text>
-          {explanation ? (
-            <Text style={styles.explanation}>{explanation}</Text>
-          ) : null}
-        </View>
-
-        {showDismissButton && (
-          <TouchableOpacity
-            style={styles.dismissButton}
-            onPress={handleDismiss}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-            accessibilityRole="button"
-          >
-            <Ionicons name="close" size={20} color="#9CA3AF" />
-          </TouchableOpacity>
-        )}
-      </View>
-    </Animated.View>
-  );
+  // Si aucune condition de rendu n'est remplie, retourner null explicitement
+  return null;
 };
 
 export default ExerciseFeedback;

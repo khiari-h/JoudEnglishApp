@@ -94,10 +94,8 @@ const useRevisionManager = () => {
       }
 
       setTotalWordsLearned(total);
-      return total;
     } catch (error) {
       console.warn('Erreur calcul mots appris:', error);
-      return 0;
     }
   }, []);
 
