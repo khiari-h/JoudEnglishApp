@@ -25,7 +25,7 @@ const QuestionIndicators = ({
     <View style={styles.container}>
       {Array.from({ length: totalQuestions }).map((_, index) => (
         <TouchableOpacity
-          key={`indicator-${index}`}
+          key={`indicator-${index}`} // eslint-disable-next-line react/no-array-index-key
           onPress={handleSelectQuestion(index)}
         >
           <View
