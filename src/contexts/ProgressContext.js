@@ -123,6 +123,8 @@ export const ProgressProvider = ({ children }) => {
       if (saveTimeoutRef.current) {
         clearTimeout(saveTimeoutRef.current);
       }
+      // Explicit return for cleanup
+      return null;
     };
   }, [progress, isLoading]); // ✅ IMPORTANT : Inclure isLoading pour éviter sauvegarde pendant chargement
 

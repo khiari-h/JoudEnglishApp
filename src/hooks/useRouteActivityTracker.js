@@ -80,6 +80,8 @@ const useRouteActivityTracker = () => {
           console.warn('Erreur lors du cleanup:', error);
         }
       }
+      // Explicit return for cleanup
+      return null;
     };
   }, [segments, pathname]); // ✅ CORRIGÉ : Seulement les vraies dépendances
 
