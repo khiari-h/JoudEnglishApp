@@ -51,7 +51,7 @@ const HeroCard = ({
         
         {/* Contenu principal */}
         <View style={styles.contentContainer}>
-          {content ? (
+          {content && typeof content === 'string' && content.trim() ? (
             <Text 
               style={[
                 styles.contentText, 

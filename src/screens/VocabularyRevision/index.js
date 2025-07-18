@@ -75,7 +75,7 @@ const ResultScreenContent = ({ resultConfig, score, revisionQuestions, percentag
     <ScoreCard score={score} revisionQuestions={revisionQuestions} percentage={percentage} resultConfig={resultConfig} colors={colors} localStyles={localStyles} />
     <StatsDetails stats={stats} colors={colors} localStyles={localStyles} />
     {source && (
-      <Text style={[localStyles.sourceText, { color: colors.textSecondary }]}> {source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'} </Text>
+      <Text style={[localStyles.sourceText, { color: colors.textSecondary }]}>{source === 'popup_trigger' ? '🤖 Révision automatique' : '👤 Révision manuelle'}</Text>
     )}
     <ResultButtons colors={colors} resultConfig={resultConfig} handleRestartPress={handleRestartPress} handleFinishPress={handleFinishPress} localStyles={localStyles} />
   </View>
@@ -231,8 +231,7 @@ const VocabularyRevision = ({ route }) => {
             Aucun mot disponible
           </Text>
           <Text style={[styles.emptyMessage, { color: colors.textSecondary }]}>
-            Apprenez quelques mots avant de réviser !{'\n'}
-            {stats.totalLearned > 0 && `Vous avez ${stats.totalLearned} mots appris`}
+            Apprenez quelques mots avant de réviser !{stats.totalLearned > 0 ? `\nVous avez ${stats.totalLearned} mots appris` : ''}
           </Text>
           <TouchableOpacity 
             style={[styles.emptyButton, { backgroundColor: colors.primary }]} 

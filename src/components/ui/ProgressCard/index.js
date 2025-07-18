@@ -80,15 +80,15 @@ const ProgressCard = ({
       activeOpacity={headerExpandable ? 0.8 : 1}
     >
       <View style={headerStyles.headerLeft}>
-        <Text style={headerStyles.title}>{headerTitle}</Text>
+        <Text style={headerStyles.title}>{headerTitle || 'Progression'}</Text>
         {headerSubtitle && <Text style={headerStyles.subtitle}>{headerSubtitle}</Text>}
       </View>
       <View style={headerStyles.headerRight}>
         <View style={headerStyles.statsContainer}>
-          <Text style={[headerStyles.statsCount, { color: headerLevelColor }]}>{headerCompleted}</Text>
-          <Text style={headerStyles.statsTotal}>/ {headerTotal}</Text>
+          <Text style={[headerStyles.statsCount, { color: headerLevelColor }]}>{headerCompleted || 0}</Text>
+          <Text style={headerStyles.statsTotal}>/{headerTotal || 0}</Text>
         </View>
-        <Text style={[headerStyles.statsPercentage, { color: headerLevelColor }]}>{Math.round(headerProgress)}%</Text>
+        <Text style={[headerStyles.statsPercentage, { color: headerLevelColor }]}>{Math.round(headerProgress || 0)}%</Text>
         {headerExpandable && (
           <View style={[headerStyles.chevronContainer, headerExpanded && headerStyles.chevronExpanded]}>
             <Ionicons name="chevron-down" size={16} color={headerLevelColor} />
@@ -106,9 +106,9 @@ const ProgressCard = ({
         showPercentage={false}
         fillColor={mainLevelColor}
         height={6}
-      backgroundColor={`${mainLevelColor}15`}
-      borderRadius={3}
-      animated
+        backgroundColor={`${mainLevelColor}15`}
+        borderRadius={3}
+        animated
       />
     </View>
   );
@@ -164,41 +164,49 @@ const ProgressCard = ({
   );
 };
 
-const CategoryList = ({ categoryData, handleCategoryPress, levelColor, styles }) => (
-  <View style={styles.categoriesList}>
-    {categoryData.map((category, index) => (
-      <TouchableOpacity
-        key={category.id || category.title}
-        style={styles.categoryItem}
-        onPress={handleCategoryPress(index)}
-        activeOpacity={0.7}
-      >
-        {/* Row principale avec titre et stats */}
-        <View style={styles.categoryRow}>
-          <View style={styles.categoryLeft}>
-            <Text style={styles.categoryTitle} numberOfLines={1}>
-              {category.title}
-            </Text>
-          </View>
-          <Text style={[styles.categoryStats, { color: levelColor }]}>
-            {category.completed}/{category.total}
-          </Text>
-        </View>
-        {/* Barre de progression de la catégorie */}
-        <View style={styles.categoryProgressContainer}>
-          <ProgressBar
-            progress={category.progress}
-            showPercentage={false}
-            fillColor={levelColor}
-            backgroundColor={`${levelColor}10`}
-            height={3}
-            borderRadius={2}
-            animated
-          />
-        </View>
-      </TouchableOpacity>
-    ))}
-  </View>
-);
+const CategoryList = ({ categoryData, handleCategoryPress, levelColor, styles }) => {
+  if (!categoryData || !Array.isArray(categoryData)) return null;
+  
+  return (
+    <View style={styles.categoriesList}>
+      {categoryData.map((category, index) => {
+        if (!category || typeof category !== 'object') return null;
+        
+        return (
+          <TouchableOpacity
+            key={category.id || category.title || index}
+            style={styles.categoryItem}
+            onPress={handleCategoryPress ? handleCategoryPress(index) : undefined}
+            activeOpacity={0.7}
+          >
+            {/* Row principale avec titre et stats */}
+            <View style={styles.categoryRow}>
+              <View style={styles.categoryLeft}>
+                <Text style={styles.categoryTitle} numberOfLines={1}>
+                  {category.title || 'Catégorie'}
+                </Text>
+              </View>
+              <Text style={[styles.categoryStats, { color: levelColor }]}>
+                {category.completed || 0}/{category.total || 0}
+              </Text>
+            </View>
+            {/* Barre de progression de la catégorie */}
+            <View style={styles.categoryProgressContainer}>
+              <ProgressBar
+                progress={category.progress || 0}
+                showPercentage={false}
+                fillColor={levelColor}
+                backgroundColor={`${levelColor}10`}
+                height={3}
+                borderRadius={2}
+                animated
+              />
+            </View>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+};
 
 export default ProgressCard;

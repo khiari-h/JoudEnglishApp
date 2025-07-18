@@ -126,7 +126,7 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
         await saveRevisionPreferences(nextTarget, false);
         // Navigation
         router.push({
-          pathname: "/(tabs)/vocabularyRevision",
+          pathname: "/tabs/vocabularyRevision",
           params: {
             level: currentLevel,
             questionsCount: 10,

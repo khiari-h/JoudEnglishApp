@@ -83,7 +83,7 @@ const PhrasesExercise = ({ route }) => {
   // Handlers
   const handleBackPress = useCallback(() => {
     router.push({
-      pathname: "/(tabs)/exerciseSelection",
+      pathname: "/tabs/exerciseSelection",
       params: { level }
     });
   }, [level]);

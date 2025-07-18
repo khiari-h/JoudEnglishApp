@@ -67,7 +67,7 @@ const QuickActions = ({ currentLevel = "1" }) => {
     }
 
     router.push({
-      pathname: "/(tabs)/vocabularyRevision",
+      pathname: "/tabs/vocabularyRevision",
       params: {
         level: currentLevel,
         questionsCount: Math.min(10, totalWords),

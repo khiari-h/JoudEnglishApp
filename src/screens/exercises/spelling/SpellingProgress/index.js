@@ -52,7 +52,7 @@ const SpellingProgress = ({
         <View style={styles.header}>
           <Text style={styles.title}>Progression</Text>
           <Text style={[styles.stats, { color: levelColor }]}>
-            {completedCount} / {totalExercises} exercices
+            {completedCount}/{totalExercises} exercices
           </Text>
         </View>
 
