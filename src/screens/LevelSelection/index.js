@@ -92,9 +92,6 @@ const LevelListSection = ({ colors, localStyles, levels, renderLevelCard }) => (
     contentContainerStyle={[localStyles.modernScrollContent, { paddingBottom: 60 }]}
     showsVerticalScrollIndicator={false}
   >
-    <View className={localStyles.modernIntro}>
-      <Text style={[localStyles.modernIntroText, { color: colors.textSecondary }]}>À vous de choisir !</Text>
-    </View>
     <View style={localStyles.modernLevelsContainer}>
       {levels.map(renderLevelCard)}
     </View>

@@ -34,6 +34,7 @@ export default StyleSheet.create({
   modernIntro: {
     paddingHorizontal: 20,
     paddingVertical: 16,
+    marginBottom: 30, // Plus d'espace sous le texte d'intro
   },
 
   modernIntroText: {
