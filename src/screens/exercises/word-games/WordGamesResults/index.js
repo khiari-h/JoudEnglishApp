@@ -85,7 +85,7 @@ const WordGamesResults = ({
         fontSize={56}
         levelColor={performance.color}
         showUnderline={false}
-        backgroundColor={performance.color + '10'}
+        backgroundColor={`${performance.color}10`}
         padding={32}
         subtitle={`${finalScore.score}/${finalScore.totalMaxScore} points`}
       />
@@ -93,7 +93,7 @@ const WordGamesResults = ({
       {/* 🎭 MESSAGE DE PERFORMANCE */}
       <ContentSection
         title="Your Performance"
-        content={performance.message + '\n\n' + performance.description}
+        content={`${performance.message}\n\n${performance.description}`}
         levelColor={performance.color}
         backgroundColor={`${performance.color}05`}
         icon={performance.message.split(' ')[0]} // Récupère l'emoji

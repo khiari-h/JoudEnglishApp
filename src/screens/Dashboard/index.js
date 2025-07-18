@@ -139,7 +139,7 @@ const Dashboard = () => {
   // =================== BACKGROUND ===================
   
   const backgroundGradient = {
-    colors: [levelColor + '05', colors.background, levelColor + '08'],
+    colors: [`${levelColor}05`, colors.background, `${levelColor}08`],
     locations: [0, 0.6, 1],
   };
 

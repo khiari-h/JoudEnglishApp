@@ -89,36 +89,14 @@ const RevisionPreferencesModal = ({
       <View style={styles.overlay}>
         <View style={styles.modalContainer}>
           <ModalHeader onSkip={onSkip} localStyles={styles} />
-          <ScrollView 
-            style={styles.scrollContainer}
-            contentContainerStyle={styles.scrollContent}
-            showsVerticalScrollIndicator={false}
-          >
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>🏆 Choisissez votre style</Text>
-              <Text style={styles.sectionDescription}>
-                Sélectionnez la fréquence qui vous convient le mieux
-              </Text>
-              <RevisionStylesList 
-                revisionStyles={revisionStyles} 
-                selectedStyle={selectedStyle} 
-                handleStylePress={handleStylePress} 
-                localStyles={styles} 
-              />
-            </View>
-            <SummarySection 
-              selectedStyle={selectedStyle} 
-              revisionStyles={revisionStyles} 
-              localStyles={styles} 
-            />
-            <ModalButtons
-              revisionStyles={revisionStyles}
-              selectedStyle={selectedStyle}
-              handleConfirm={handleConfirm}
-              handleSkip={handleSkip}
-              localStyles={styles}
-            />
-          </ScrollView>
+          <ModalContentSection
+            styles={styles}
+            revisionStyles={revisionStyles}
+            selectedStyle={selectedStyle}
+            handleStylePress={handleStylePress}
+            handleConfirm={handleConfirm}
+            handleSkip={handleSkip}
+          />
         </View>
       </View>
     </Modal>
@@ -252,6 +230,40 @@ const SummarySection = ({ selectedStyle, revisionStyles, localStyles }) => (
       </Text>
     </View>
   )
+);
+
+// Sous-composant pour le contenu du modal (ScrollView)
+const ModalContentSection = ({ styles, revisionStyles, selectedStyle, handleStylePress, handleConfirm, handleSkip }) => (
+  <ScrollView 
+    style={styles.scrollContainer}
+    contentContainerStyle={styles.scrollContent}
+    showsVerticalScrollIndicator={false}
+  >
+    <View style={styles.section}>
+      <Text style={styles.sectionTitle}>🏆 Choisissez votre style</Text>
+      <Text style={styles.sectionDescription}>
+        Sélectionnez la fréquence qui vous convient le mieux
+      </Text>
+      <RevisionStylesList 
+        revisionStyles={revisionStyles} 
+        selectedStyle={selectedStyle} 
+        handleStylePress={handleStylePress} 
+        localStyles={styles} 
+      />
+    </View>
+    <SummarySection 
+      selectedStyle={selectedStyle} 
+      revisionStyles={revisionStyles} 
+      localStyles={styles} 
+    />
+    <ModalButtons
+      revisionStyles={revisionStyles}
+      selectedStyle={selectedStyle}
+      handleConfirm={handleConfirm}
+      handleSkip={handleSkip}
+      localStyles={styles}
+    />
+  </ScrollView>
 );
 
 export default RevisionPreferencesModal;

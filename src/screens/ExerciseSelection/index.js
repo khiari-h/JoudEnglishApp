@@ -90,6 +90,22 @@ const ExerciseCardContent = ({ exercise, colors, localStyles, handleExercisePres
   </View>
 );
 
+// Sous-composant pour la section liste d'exercices
+const ExerciseListSection = ({ colors, styles, exercises, renderExerciseCard }) => (
+  <ScrollView
+    style={{ flex: 1 }}
+    contentContainerStyle={[styles.scrollContent, { paddingBottom: 60 }]}
+    showsVerticalScrollIndicator={false}
+  >
+    <View style={styles.introSection}>
+      <Text style={[styles.introText, { color: colors.textSecondary }]}>Choisissez votre exercice</Text>
+    </View>
+    <View style={styles.levelsContainer}>
+      {exercises.map(renderExerciseCard)}
+    </View>
+  </ScrollView>
+);
+
 const ExerciseSelection = ({ level }) => {
   if (!level) {
     return null;
@@ -233,22 +249,7 @@ const ExerciseSelection = ({ level }) => {
         style={{ flex: 1 }}
       >
         {renderHeader()}
-        
-        <ScrollView
-          style={{ flex: 1 }}
-          contentContainerStyle={[styles.scrollContent, { paddingBottom: 60 }]}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.introSection}>
-            <Text style={[styles.introText, { color: colors.textSecondary }]}>
-              Choisissez votre exercice
-            </Text>
-          </View>
-          
-          <View style={styles.levelsContainer}>
-            {exercises.map(renderExerciseCard)}
-          </View>
-        </ScrollView>
+        <ExerciseListSection colors={colors} styles={styles} exercises={exercises} renderExerciseCard={renderExerciseCard} />
       </LinearGradient>
     </Container>
   );

@@ -5,7 +5,7 @@ import { StyleSheet, Platform } from 'react-native';
 export const getBackgroundGradient = (primaryColor, backgroundColor) => {
   return {
     colors: [
-      primaryColor + '10', // Très transparent en haut
+      `${primaryColor}10`, // Très transparent en haut
       backgroundColor,     // Couleur normale en bas
     ],
     locations: [0, 0.3],

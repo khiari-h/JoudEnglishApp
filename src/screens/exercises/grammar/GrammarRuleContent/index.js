@@ -100,45 +100,48 @@ const RuleContentSection = ({ expandAnim, contentHeight, rule, levelColor, style
       }
     ]}
   >
-    <View style={styles.contentContainer}>
-          {/* 💡 EXPLICATION avec ContentSection */}
-          <ContentSection
-            title="Explanation"
-            content={rule.explanation}
-            levelColor={levelColor}
-            backgroundColor="white"
-            showIcon
-          />
+    <RuleContentInnerSection rule={rule} levelColor={levelColor} styles={styles} />
+  </Animated.View>
+);
 
-          {/* 📝 EXEMPLES avec ContentSection */}
-          {rule.examples && rule.examples.length > 0 && (
-            <ContentSection
-              title="Examples"
-              content={rule.examples.map((example, index) => 
-                `${index + 1}. ${example.english}\n   → ${example.french}`
-              ).join('\n\n')}
-              levelColor={levelColor}
-              backgroundColor="#F8FAFC"
-              showIcon
-              isItalic={false}
-            />
-          )}
-
-          {/* 📋 RÈGLES avec ContentSection */}
-          {rule.rules && rule.rules.length > 0 && (
-            <ContentSection
-              title="Rules"
-              content={rule.rules.map((ruleItem, index) => 
-                `${index + 1}. ${ruleItem}`
-              ).join('\n\n')}
-              levelColor={levelColor}
-              backgroundColor="#F1F5F9"
-              showIcon
-              isItalic={false}
-            />
-          )}
-        </View>
-      </Animated.View>
+// Sous-composant pour le contenu interne de la règle
+const RuleContentInnerSection = ({ rule, levelColor, styles }) => (
+  <View style={styles.contentContainer}>
+    {/* 💡 EXPLICATION avec ContentSection */}
+    <ContentSection
+      title="Explanation"
+      content={rule.explanation}
+      levelColor={levelColor}
+      backgroundColor="white"
+      showIcon
+    />
+    {/* 📝 EXEMPLES avec ContentSection */}
+    {rule.examples && rule.examples.length > 0 && (
+      <ContentSection
+        title="Examples"
+        content={rule.examples.map((example, index) => 
+          `${index + 1}. ${example.english}\n   → ${example.french}`
+        ).join('\n\n')}
+        levelColor={levelColor}
+        backgroundColor="#F8FAFC"
+        showIcon
+        isItalic={false}
+      />
+    )}
+    {/* 📋 RÈGLES avec ContentSection */}
+    {rule.rules && rule.rules.length > 0 && (
+      <ContentSection
+        title="Rules"
+        content={rule.rules.map((ruleItem, index) => 
+          `${index + 1}. ${ruleItem}`
+        ).join('\n\n')}
+        levelColor={levelColor}
+        backgroundColor="#F1F5F9"
+        showIcon
+        isItalic={false}
+      />
+    )}
+  </View>
 );
 
 export default GrammarRuleContent;
