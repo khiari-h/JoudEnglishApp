@@ -311,7 +311,7 @@ const useRealTimeProgress = () => {
             if (!newExerciseProgress[exerciseType]) {
               newExerciseProgress[exerciseType] = {};
             }
-            newExerciseProgress[exerciseType] = progressForExercise;
+            newExerciseProgress[exerciseType][level] = progressForExercise;
 
             levelTotal += 100;
             levelCompleted += progressForExercise;
