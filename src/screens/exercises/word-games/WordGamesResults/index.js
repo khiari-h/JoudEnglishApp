@@ -95,7 +95,7 @@ const WordGamesResults = ({
         title="Your Performance"
         content={performance.message + '\n\n' + performance.description}
         levelColor={performance.color}
-        backgroundColor={performance.color + '08'}
+        backgroundColor={`${performance.color}05`}
         icon={performance.message.split(' ')[0]} // Récupère l'emoji
       />
 
@@ -133,7 +133,7 @@ const WordGamesResults = ({
           title="Feedback"
           content={feedbackMessage}
           levelColor={performance.color}
-          backgroundColor={performance.color + '05'}
+          backgroundColor={`${performance.color}05`}
         />
       )}
 

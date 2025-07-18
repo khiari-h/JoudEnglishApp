@@ -500,7 +500,7 @@ export const getRecommendedExercises = (
 
   // Filtrer les exercices non complétés
   const availableExercises = data.exercises.filter(
-    (ex) => !completedExercises.includes(ex.categoryId + "_" + ex.type)
+    (ex) => !completedExercises.includes(`${ex.categoryId}_${ex.type}`)
   );
 
   // Si pas de données de performance, retourner des exercices variés

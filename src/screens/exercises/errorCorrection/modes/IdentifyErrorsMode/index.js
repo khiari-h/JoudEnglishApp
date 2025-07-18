@@ -61,7 +61,7 @@ const IdentifyErrorsMode = ({
 
             return (
               <TouchableOpacity
-                key={word + '-' + index} // eslint-disable-next-line react/no-array-index-key
+                key={`${word}-${index}`} // eslint-disable-next-line react/no-array-index-key
                 onPress={handleWordPress(index)}
                 disabled={showFeedback}
                 style={[

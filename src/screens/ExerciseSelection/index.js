@@ -176,7 +176,7 @@ const ExerciseSelection = ({ level }) => {
   const renderHeader = () => (
     <View style={styles.headerContainer}>
       <LinearGradient
-        colors={[levelColor, levelColor + "DD"]}
+        colors={[levelColor, `${levelColor}DD`]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.headerGradient}

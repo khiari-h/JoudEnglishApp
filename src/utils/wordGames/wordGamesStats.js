@@ -225,7 +225,7 @@ export const generateFeedbackMessage = (finalScore, gameTypeStats) => {
   const performance = getPerformanceLevel(finalScore.percentage);
   
   // Message principal basé sur la performance
-  let message = performance.message + '\n\n';
+  let message = `${performance.message}\n\n`;
   
   // Analyse par type de jeu
   if (gameTypeStats.length > 1) {
