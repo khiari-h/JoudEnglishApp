@@ -8,7 +8,7 @@ import judicialReasoning from "./scenarios/judicialReasoning.js";
 import neuroscientificTheories from "./scenarios/neuroscientificTheories.js";
 import economicPolicyAnalysis from "./scenarios/economicPolicyAnalysis.js";
 import literaryCriticism from "./scenarios/literaryCriticism.js";
-import silenceCommunication from "././scenarios/silenceCommunication.js";
+import silenceCommunication from "./scenarios/silenceCommunication.js";
 import quantumComputingExplanation from "./scenarios/quantumComputingExplanation.js";
 import diplomaticCrisisMediation from "./scenarios/diplomaticCrisisMediation.js";
 
