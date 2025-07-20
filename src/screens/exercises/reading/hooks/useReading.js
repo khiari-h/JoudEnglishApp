@@ -5,7 +5,7 @@ import { Animated, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const useReading = (exercises = [], level = "A1") => {
-  
+
   const [selectedExerciseIndex, setSelectedExerciseIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -15,6 +15,8 @@ const useReading = (exercises = [], level = "A1") => {
   const [completedQuestions, setCompletedQuestions] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
+  // ✅ CORRECTION: Déclaration de l'état isCorrect ici
+  const [isCorrect, setIsCorrect] = useState(false); // <--- Laissez cette ligne ici
 
   // =================== REFS & ANIMATIONS ===================
   const scrollViewRef = useRef(null);
@@ -112,6 +114,7 @@ const useReading = (exercises = [], level = "A1") => {
     }
 
     const isCurrentAnswerCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    // Cette ligne utilise bien setIsCorrect de l'état
     setIsCorrect(isCurrentAnswerCorrect);
     setShowFeedback(true);
     setAttempts(prev => prev + 1);
@@ -196,10 +199,11 @@ const useReading = (exercises = [], level = "A1") => {
   }, [completedQuestions, selectedExerciseIndex, totalQuestions, exercises]);
 
   // =================== VALIDATION ===================
-  const isCorrect = currentQuestion && selectedAnswer !== null 
-    ? selectedAnswer === currentQuestion.correctAnswer 
+  // ✅ CORRECTION: Renommée pour éviter le conflit avec la variable d'état
+  const isAnswerCorrectComputed = currentQuestion && selectedAnswer !== null
+    ? selectedAnswer === currentQuestion.correctAnswer
     : false;
-  
+
   const isQuestionCompleted = completedQuestions[selectedExerciseIndex]?.includes(currentQuestionIndex) || false;
 
   return {
@@ -225,7 +229,8 @@ const useReading = (exercises = [], level = "A1") => {
     retryQuestion,
     toggleTextExpansion,
     toggleDetailedProgress,
-    isCorrect,
+    // ✅ CORRECTION: Utilisez la variable d'état ici
+    isCorrect, // <--- C'est cette variable d'état qui est retournée
     isQuestionCompleted,
     progress: getProgress(),
     scrollViewRef,
