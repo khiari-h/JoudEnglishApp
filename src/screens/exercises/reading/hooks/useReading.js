@@ -1,4 +1,4 @@
-// hooks/useReading.js - BOUCLES INFINIES CORRIGÉES
+// hooks/useReading.js - BOUCLES INFINIES CORRIGÉES ET CATCH BLOCKS CORRIGÉS
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Animated, Alert } from 'react-native';
@@ -28,131 +28,143 @@ const useReading = (exercises = [], level = "A1") => {
   const currentQuestion = currentExercise.questions?.[currentQuestionIndex] || null;
   const totalExercises = exercises.length;
   const totalQuestions = currentExercise.questions?.length || 0;
-  
-  // =================== STORAGE KEY STABLE ===================
-  const STORAGE_KEY = `reading_${level}`;
 
-  // ✅ FONCTION STABLE - Load data from storage
-  const loadData = useCallback(async () => {
+  // =================== ASYNC STORAGE ===================
+  const STORAGE_KEY = `reading_progress_${level}`;
+
+  const loadProgress = useCallback(async () => {
     try {
-      const saved = await AsyncStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const { completedQuestions: saved_completed, lastPosition } = JSON.parse(saved);
-        setCompletedQuestions(saved_completed || {});
-        if (lastPosition) {
-          setSelectedExerciseIndex(lastPosition.exerciseIndex || 0);
-          setCurrentQuestionIndex(lastPosition.questionIndex || 0);
-        }
+      const storedProgress = await AsyncStorage.getItem(STORAGE_KEY);
+      if (storedProgress) {
+        setCompletedQuestions(JSON.parse(storedProgress));
       }
     } catch (error) {
-      // Ignored on purpose: empty block to suppress error
+      // ✅ CORRECTION JS-0009: Log l'erreur au lieu de l'ignorer
+      console.error('Erreur lors du chargement de la progression de lecture:', error);
     } finally {
       setLoaded(true);
     }
   }, [STORAGE_KEY]);
 
-  // ✅ EFFET SIMPLIFIÉ - une seule fois
-  useEffect(() => {
-    if (!isInitialized.current) {
-      loadData();
-      isInitialized.current = true;
-    }
-  }, [loadData]);
-
-  // ✅ SAVE FONCTION STABLE
-  const saveToStorage = useCallback(async (dataToSave) => {
+  const saveProgress = useCallback(async () => {
     try {
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(completedQuestions));
     } catch (error) {
+      // ✅ CORRECTION JS-0009: Log l'erreur au lieu de l'ignorer
+      console.error('Erreur lors de la sauvegarde de la progression de lecture:', error);
     }
-  }, [STORAGE_KEY]);
+  }, [completedQuestions, STORAGE_KEY]);
 
-  // =================== NAVIGATION ACTIONS ===================
-  const changeExercise = useCallback((exerciseIndex) => {
-    setSelectedExerciseIndex(exerciseIndex);
-    setCurrentQuestionIndex(0);
-    setSelectedAnswer(null);
+  // =================== EFFECTS ===================
+  useEffect(() => {
+    loadProgress();
+  }, [loadProgress]);
+
+  useEffect(() => {
+    if (loaded) {
+      saveProgress();
+    }
+  }, [completedQuestions, loaded, saveProgress]);
+
+  // Réinitialiser le feedback et la réponse sélectionnée quand l'exercice ou la question change
+  useEffect(() => {
     setShowFeedback(false);
-    setAttempts(0);
-    setTextExpanded(true);
-  }, []);
-
-  const changeQuestion = useCallback((questionIndex) => {
-    setCurrentQuestionIndex(questionIndex);
     setSelectedAnswer(null);
-    setShowFeedback(false);
-    setAttempts(0);
-  }, []);
+    setAttempts(0); // Réinitialiser les tentatives pour la nouvelle question
+    setTextExpanded(true); // Toujours démarrer avec le texte développé pour une nouvelle question
 
-  const selectAnswer = useCallback((answerIndex) => {
+    if (currentQuestionIndex === 0 && selectedExerciseIndex === 0 && !isInitialized.current) {
+      // Ne pas scroller au premier chargement initial
+      isInitialized.current = true;
+    } else {
+      // Scroller vers le haut si on n'est pas au chargement initial
+      scrollViewRef.current?.scrollTo({ y: 0, animated: true });
+      textsScrollViewRef.current?.scrollTo({ y: 0, animated: true });
+    }
+  }, [currentQuestionIndex, selectedExerciseIndex]);
+
+
+  // =================== ACTIONS ===================
+
+  const changeExercise = useCallback((index) => {
+    if (index >= 0 && index < totalExercises) {
+      setSelectedExerciseIndex(index);
+      setCurrentQuestionIndex(0); // Toujours revenir à la première question
+    }
+  }, [totalExercises]);
+
+  const changeQuestion = useCallback((index) => {
+    if (index >= 0 && index < totalQuestions) {
+      setCurrentQuestionIndex(index);
+    }
+  }, [totalQuestions]);
+
+  const selectAnswer = useCallback((answer) => {
     if (!showFeedback) {
-      setSelectedAnswer(answerIndex);
+      setSelectedAnswer(answer);
     }
   }, [showFeedback]);
 
   const submitAnswer = useCallback(() => {
-    if (selectedAnswer === null || !currentQuestion) return;
-    
-    setAttempts(prev => prev + 1);
-    setShowFeedback(true);
-
-    // Mark question as completed if correct
-    if (selectedAnswer === currentQuestion.correctAnswer) {
-      setCompletedQuestions(prev => {
-        const exerciseCompleted = prev[selectedExerciseIndex] || [];
-        if (!exerciseCompleted.includes(currentQuestionIndex)) {
-          const newCompleted = {
-            ...prev,
-            [selectedExerciseIndex]: [...exerciseCompleted, currentQuestionIndex]
-          };
-          
-          // ✅ Sauvegarde directe
-          const dataToSave = {
-            completedQuestions: newCompleted,
-            lastPosition: {
-              exerciseIndex: selectedExerciseIndex,
-              questionIndex: currentQuestionIndex
-            }
-          };
-          saveToStorage(dataToSave);
-          
-          return newCompleted;
-        }
-        return prev;
-      });
+    if (!currentQuestion || selectedAnswer === null) {
+      Alert.alert("Sélection requise", "Veuillez sélectionner une réponse.");
+      return;
     }
-  }, [selectedAnswer, currentQuestion, selectedExerciseIndex, currentQuestionIndex, saveToStorage]);
+
+    const isCurrentAnswerCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    setIsCorrect(isCurrentAnswerCorrect);
+    setShowFeedback(true);
+    setAttempts(prev => prev + 1);
+
+    if (isCurrentAnswerCorrect) {
+      setCompletedQuestions(prev => {
+        const newCompleted = { ...prev };
+        if (!newCompleted[selectedExerciseIndex]) {
+          newCompleted[selectedExerciseIndex] = [];
+        }
+        if (!newCompleted[selectedExerciseIndex].includes(currentQuestionIndex)) {
+          newCompleted[selectedExerciseIndex].push(currentQuestionIndex);
+        }
+        return newCompleted;
+      });
+    } else {
+      // Optionnel: Réinitialiser selectedAnswer si incorrect pour permettre une nouvelle tentative
+      // setSelectedAnswer(null);
+    }
+  }, [currentQuestion, selectedAnswer, selectedExerciseIndex, currentQuestionIndex]);
 
   const nextQuestion = useCallback(() => {
-    const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
-    const isLastExercise = selectedExerciseIndex === totalExercises - 1;
-
-    setShowFeedback(false);
-    
-    if (isLastQuestion && isLastExercise) {
-      Alert.alert(
-        "🎉 Félicitations !",
-        "Vous avez terminé tous les exercices de lecture !",
-        [{ text: "Super !", style: "default" }]
-      );
-    } else if (isLastQuestion) {
-      // Next exercise
-      changeExercise(selectedExerciseIndex + 1);
-    } else {
-      // Next question
+    if (currentQuestionIndex < totalQuestions - 1) {
       changeQuestion(currentQuestionIndex + 1);
+    } else {
+      // Si c'est la dernière question de l'exercice actuel, passer à l'exercice suivant
+      if (selectedExerciseIndex < totalExercises - 1) {
+        changeExercise(selectedExerciseIndex + 1);
+      } else {
+        // Optionnel: Gérer la fin de tous les exercices de lecture
+        Alert.alert("Exercice terminé", "Vous avez terminé tous les exercices de lecture pour ce niveau !");
+      }
     }
-  }, [currentQuestionIndex, totalQuestions, selectedExerciseIndex, totalExercises, changeExercise, changeQuestion]);
+  }, [currentQuestionIndex, totalQuestions, changeQuestion, selectedExerciseIndex, totalExercises, changeExercise]);
 
   const previousQuestion = useCallback(() => {
     if (currentQuestionIndex > 0) {
       changeQuestion(currentQuestionIndex - 1);
+    } else if (selectedExerciseIndex > 0) {
+      // Si c'est la première question de l'exercice actuel, passer à la dernière question de l'exercice précédent
+      const prevExercise = exercises[selectedExerciseIndex - 1];
+      if (prevExercise) {
+        setSelectedExerciseIndex(selectedExerciseIndex - 1);
+        setCurrentQuestionIndex(prevExercise.questions.length - 1);
+      }
     }
-  }, [currentQuestionIndex, changeQuestion]);
+  }, [currentQuestionIndex, changeQuestion, selectedExerciseIndex, exercises]);
+
 
   const retryQuestion = useCallback(() => {
-    setSelectedAnswer(null);
     setShowFeedback(false);
+    setSelectedAnswer(null);
+    setAttempts(0);
   }, []);
 
   const toggleTextExpansion = useCallback(() => {
@@ -163,13 +175,14 @@ const useReading = (exercises = [], level = "A1") => {
     setShowDetailedProgress(prev => !prev);
   }, []);
 
-  // =================== COMPUTED PROGRESS ===================
+  // =================== PROGRESSION ===================
   const getProgress = useCallback(() => {
+    const totalCompletedQuestions = Object.values(completedQuestions).reduce((sum, completed) => sum + (completed?.length || 0), 0);
+    const totalQuestionsAllExercises = exercises.reduce((sum, ex) => sum + (ex.questions?.length || 0), 0);
+
     const completedInCurrentExercise = completedQuestions[selectedExerciseIndex]?.length || 0;
     const progressPercent = totalQuestions > 0 ? (completedInCurrentExercise / totalQuestions) * 100 : 0;
-    
-    const totalQuestionsAllExercises = exercises.reduce((sum, ex) => sum + (ex.questions?.length || 0), 0);
-    const totalCompletedQuestions = Object.values(completedQuestions).reduce((sum, completed) => sum + (completed?.length || 0), 0);
+
     const overallProgress = totalQuestionsAllExercises > 0 ? (totalCompletedQuestions / totalQuestionsAllExercises) * 100 : 0;
 
     return {
