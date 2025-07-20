@@ -15,8 +15,7 @@ const useReading = (exercises = [], level = "A1") => {
   const [completedQuestions, setCompletedQuestions] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
-  // ✅ CORRECTION: Déclaration de l'état isCorrect ici
-  const [isCorrect, setIsCorrect] = useState(false); // <--- Laissez cette ligne ici
+  const [isCorrect, setIsCorrect] = useState(false);
 
   // =================== REFS & ANIMATIONS ===================
   const scrollViewRef = useRef(null);
@@ -41,7 +40,6 @@ const useReading = (exercises = [], level = "A1") => {
         setCompletedQuestions(JSON.parse(storedProgress));
       }
     } catch (error) {
-      // ✅ CORRECTION JS-0009: Log l'erreur au lieu de l'ignorer
       console.error('Erreur lors du chargement de la progression de lecture:', error);
     } finally {
       setLoaded(true);
@@ -52,7 +50,6 @@ const useReading = (exercises = [], level = "A1") => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(completedQuestions));
     } catch (error) {
-      // ✅ CORRECTION JS-0009: Log l'erreur au lieu de l'ignorer
       console.error('Erreur lors de la sauvegarde de la progression de lecture:', error);
     }
   }, [completedQuestions, STORAGE_KEY]);
@@ -114,7 +111,6 @@ const useReading = (exercises = [], level = "A1") => {
     }
 
     const isCurrentAnswerCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    // Cette ligne utilise bien setIsCorrect de l'état
     setIsCorrect(isCurrentAnswerCorrect);
     setShowFeedback(true);
     setAttempts(prev => prev + 1);
@@ -199,10 +195,7 @@ const useReading = (exercises = [], level = "A1") => {
   }, [completedQuestions, selectedExerciseIndex, totalQuestions, exercises]);
 
   // =================== VALIDATION ===================
-  // ✅ CORRECTION: Renommée pour éviter le conflit avec la variable d'état
-  const isAnswerCorrectComputed = currentQuestion && selectedAnswer !== null
-    ? selectedAnswer === currentQuestion.correctAnswer
-    : false;
+  // ✅ CORRECTION: Suppression de la variable isAnswerCorrectComputed car elle n'était pas utilisée.
 
   const isQuestionCompleted = completedQuestions[selectedExerciseIndex]?.includes(currentQuestionIndex) || false;
 
@@ -229,8 +222,7 @@ const useReading = (exercises = [], level = "A1") => {
     retryQuestion,
     toggleTextExpansion,
     toggleDetailedProgress,
-    // ✅ CORRECTION: Utilisez la variable d'état ici
-    isCorrect, // <--- C'est cette variable d'état qui est retournée
+    isCorrect,
     isQuestionCompleted,
     progress: getProgress(),
     scrollViewRef,
