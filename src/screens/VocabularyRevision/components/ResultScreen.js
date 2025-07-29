@@ -1,26 +1,62 @@
 // src/screens/VocabularyRevision/components/ResultScreen.js
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { View, Text, TouchableOpacity, Animated } from 'react-native';
 
-const ScoreCard = ({ score, totalQuestions, percentage, resultConfig, colors, localStyles }) => (
-  <View style={[localStyles.scoreCard, { backgroundColor: colors.surface }]}>
-    <View style={localStyles.scoreRow}>
-      <Text style={[localStyles.scoreNumber, { color: resultConfig.color }]}>
-        {score}
-      </Text>
-      <Text style={[localStyles.scoreSlash, { color: colors.textSecondary }]}>/{totalQuestions}</Text>
+const AnimatedScoreCard = ({ score, totalQuestions, percentage, resultConfig, colors, localStyles }) => {
+  const progressAnim = useRef(new Animated.Value(0)).current;
+  const scoreAnim = useRef(new Animated.Value(0)).current;
+  const [displayedScore, setDisplayedScore] = useState(0);
+
+  useEffect(() => {
+    // Animate the progress bar and the score number simultaneously
+    Animated.parallel([
+      Animated.timing(progressAnim, {
+        toValue: percentage,
+        duration: 800,
+        delay: 300, // Start animation after a short delay for better effect
+        useNativeDriver: false, // 'width' is not supported by the native driver
+      }),
+      Animated.timing(scoreAnim, {
+        toValue: score,
+        duration: 800,
+        delay: 300,
+        useNativeDriver: true, // Safe for listeners
+      })
+    ]).start();
+
+    // Listener to update the score text as the animation runs
+    const scoreListenerId = scoreAnim.addListener(({ value }) => {
+      setDisplayedScore(Math.floor(value));
+    });
+
+    return () => {
+      // Cleanup listener on component unmount
+      scoreAnim.removeListener(scoreListenerId);
+    };
+  }, [score, percentage]);
+
+  const progressWidth = progressAnim.interpolate({
+    inputRange: [0, 100],
+    outputRange: ['0%', '100%'],
+  });
+
+  return (
+    <View style={[localStyles.scoreCard, { backgroundColor: colors.surface }]}>
+      <View style={localStyles.scoreRow}>
+        <Text style={[localStyles.scoreNumber, { color: resultConfig.color }]}>
+          {displayedScore}
+        </Text>
+        <Text style={[localStyles.scoreSlash, { color: colors.textSecondary }]}>/{totalQuestions}</Text>
+      </View>
+      <View style={[localStyles.progressBar, { backgroundColor: '#F3F4F6' }]}>
+        <Animated.View
+          style={[localStyles.progressFill, { backgroundColor: resultConfig.color, width: progressWidth }]}
+        />
+      </View>
+      <Text style={[localStyles.percentageText, { color: resultConfig.color }]}> {percentage}% de réussite </Text>
     </View>
-    <View style={[localStyles.progressBar, { backgroundColor: '#F3F4F6' }]}>
-      <View
-        style={[
-          localStyles.progressFill,
-          { backgroundColor: resultConfig.color, width: `${percentage}%` }
-        ]}
-      />
-    </View>
-    <Text style={[localStyles.percentageText, { color: resultConfig.color }]}> {percentage}% de réussite </Text>
-  </View>
-);
+  );
+};
 
 const ResultButtons = ({ colors, resultConfig, handleRestartPress, handleFinishPress, localStyles }) => (
   <View style={localStyles.buttonsContainer}>
@@ -64,7 +100,7 @@ const ResultScreen = ({ score, totalQuestions, source, handleRestart, handleFini
       <Text style={localStyles.resultEmoji}>{resultConfig.emoji}</Text>
       <Text style={[localStyles.resultTitle, { color: colors.text }]}>{resultConfig.title}</Text>
       <Text style={[localStyles.resultMessage, { color: colors.textSecondary }]}>{resultConfig.message}</Text>
-      <ScoreCard
+      <AnimatedScoreCard
         score={score}
         totalQuestions={totalQuestions}
         percentage={percentage}

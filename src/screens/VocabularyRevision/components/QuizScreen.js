@@ -1,8 +1,8 @@
 // src/screens/VocabularyRevision/components/QuizScreen.js
 import React from 'react';
 import { View, Text, Animated } from 'react-native';
-import QuizHeader from './QuizHeader';
-import QuizContent from './QuizContent.js';
+import QuizHeader from './QuizHeader.js';
+import QuizContent from './QuizContent';
 
 const ProgressBar = ({ progress, colors, localStyles }) => (
   <View style={localStyles.progressSection}>

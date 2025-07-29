@@ -121,31 +121,42 @@ export default StyleSheet.create({
 
   questionCard: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 20,
+    borderRadius: 24,
     padding: 24,
     alignItems: 'center',
+    borderTopWidth: 4,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.07,
         shadowRadius: 16,
       },
       android: {
-        elevation: 6,
+        elevation: 5,
       },
     }),
   },
 
-  questionLabel: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#6B7280',
+  questionLabelContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
     marginBottom: 16,
   },
 
+  questionLabelIcon: {
+    fontSize: 20,
+  },
+
+  questionLabel: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#6B7280',
+  },
+
   wordToTranslate: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: '800',
     textAlign: 'center',
     marginBottom: 8,
@@ -157,65 +168,87 @@ export default StyleSheet.create({
     fontStyle: 'italic',
   },
 
-  // =================== CHOIX ===================
+  // =================== CHOIX (REDESIGN) ===================
   choicesSection: {
     flex: 1,
     paddingHorizontal: 20,
-    gap: 12,
+    gap: 16,
+    paddingBottom: 20,
   },
 
   choiceButton: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderWidth: 1,
+    borderRadius: 20,
+    borderWidth: 2,
     borderColor: '#E5E7EB',
     ...Platform.select({
       ios: {
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.06,
-        shadowRadius: 8,
+        shadowOpacity: 0.08,
+        shadowRadius: 12,
       },
       android: {
-        elevation: 2,
+        elevation: 3,
       },
     }),
+    overflow: 'hidden',
+  },
+
+  choiceButtonInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+    gap: 16,
+  },
+
+  choiceNumberContainer: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#F3F4F6',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  choiceNumberText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#6B7280',
   },
 
   choiceText: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '600',
     flex: 1,
   },
 
+  choiceSelected: {
+    borderColor: '#3B82F6',
+    backgroundColor: '#EFF6FF',
+  },
+
   choiceCorrect: {
-    backgroundColor: '#DCFCE7',
     borderColor: '#10B981',
-    borderWidth: 2,
+    backgroundColor: '#DCFCE7',
   },
 
   choiceWrong: {
-    backgroundColor: '#FEE2E2',
     borderColor: '#EF4444',
-    borderWidth: 2,
+    backgroundColor: '#FEE2E2',
   },
 
   choiceTextCorrect: {
     color: '#059669',
   },
-
   choiceTextWrong: {
     color: '#DC2626',
   },
 
   choiceIcon: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: '700',
-    marginLeft: 12,
   },
 
   // =================== RÉSULTATS MODERNES ===================

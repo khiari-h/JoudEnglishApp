@@ -1,10 +1,10 @@
-// src/components/popups/RevisionPopup/style.js - VERSION SIMPLE AVEC SCROLL
+// src/components/popups/RevisionPopup/style.js - VERSION CORRIGÉE
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
-  // =================== OVERLAY & MODAL ===================
+  // =================== CONTAINER & OVERLAY ===================
   overlay: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
@@ -15,8 +15,7 @@ export default StyleSheet.create({
 
   popupContainer: {
     width: width * 0.9,
-    maxWidth: 400,
-    maxHeight: height * 0.8, // ✅ Hauteur max pour éviter débordement
+    maxWidth: 380,
     borderRadius: 24,
     backgroundColor: '#FFFFFF',
     overflow: 'hidden',
@@ -28,185 +27,115 @@ export default StyleSheet.create({
         shadowRadius: 25,
       },
       android: {
-        elevation: 15,
+        elevation: 20,
       },
     }),
   },
 
-  // =================== HEADER FIXE ===================
+  // =================== HEADER ===================
   header: {
-    paddingVertical: 24,
-    paddingHorizontal: 20,
     alignItems: 'center',
+    padding: 24,
+    paddingBottom: 20,
   },
 
   celebration: {
     fontSize: 40,
-    marginBottom: 12,
-  },
-
-  mainTitle: {
-    color: '#FFFFFF',
-    fontSize: 24,
-    fontWeight: '800',
-    textAlign: 'center',
-    marginBottom: 6,
-  },
-
-  wordsCounter: {
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: 16,
-    fontWeight: '600',
-    textAlign: 'center',
-    marginBottom: 8,
-  },
-
-  motivation: {
-    color: 'rgba(255, 255, 255, 0.8)',
-    fontSize: 15,
-    fontWeight: '500',
-    textAlign: 'center',
-    fontStyle: 'italic',
-  },
-
-  // =================== SCROLL CONTAINER ===================
-  scrollContainer: {
-    flex: 1,
-    backgroundColor: '#F8FAFC',
-  },
-
-  scrollContent: {
-    padding: 20,
-    paddingBottom: 30, // ✅ Espace en bas pour scroll complet
-  },
-
-  // =================== INFO SECTION ===================
-  infoSection: {
-    flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 14,
-    marginBottom: 20,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.05,
-        shadowRadius: 8,
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
-  },
-
-  infoItem: {
-    alignItems: 'center',
-    flex: 1,
-  },
-
-  infoEmoji: {
-    fontSize: 16,
-    marginBottom: 4,
-  },
-
-  infoText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#6B7280',
-    textAlign: 'center',
-  },
-
-  infoDivider: {
-    width: 1,
-    height: 20,
-    backgroundColor: '#E5E7EB',
-    marginHorizontal: 8,
-  },
-
-  // =================== CHOICES ===================
-  choicesContainer: {
-    gap: 12,
     marginBottom: 16,
   },
 
-  choiceButton: {
-    borderRadius: 16,
-    padding: 16,
-    borderWidth: 2,
-    borderColor: '#E5E7EB',
-    backgroundColor: '#FFFFFF',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.08,
-        shadowRadius: 12,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+  mainTitle: {
+    fontSize: 24,
+    fontWeight: '800',
+    textAlign: 'center',
+    marginBottom: 8,
+    color: '#1F2937',
   },
 
-  choiceContent: {
+  wordsCounter: {
+    fontSize: 16,
+    fontWeight: '600',
+    textAlign: 'center',
+    color: '#4B5563',
+  },
+
+  // =================== BODY (CHOICES) ===================
+  body: {
+    paddingHorizontal: 24,
+    paddingBottom: 24,
+  },
+
+  // ✅ SUPPRIMÉ le primaryButton - on utilise un style uniforme
+
+  // Conteneur pour tous les choix
+  choicesContainer: {
+    // Tous les choix dans le même container
+  },
+
+  // ✅ Style uniforme pour TOUS les boutons
+  choiceButton: {
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#F9FAFB',
+    borderRadius: 12,
+    padding: 16, // ✅ Un peu plus de padding
+    borderWidth: 1,
+    borderColor: '#F3F4F6',
+    marginBottom: 14,
+    minHeight: 60, // ✅ Même hauteur pour tous
   },
 
-  choiceEmoji: {
-    fontSize: 20,
+  // ✅ Modifier STYLÉ pour l'option principale
+  primaryChoiceModifier: {
+    borderWidth: 2,
+    borderColor: '#10B981', 
+    backgroundColor: '#ECFDF5', // ✅ Background vert plus prononcé
+    // ✅ Gradient effect avec shadow
+    ...Platform.select({
+      ios: {
+        shadowColor: '#10B981',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 6,
+      },
+    }),
+    // ✅ Animation scale légère
+    transform: [{ scale: 1.02 }],
+  },
+
+  choiceIconContainer: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
     marginRight: 12,
   },
 
-  choiceTexts: {
+  choiceTextContainer: {
     flex: 1,
   },
 
-  choiceTitle: {
-    fontSize: 16,
+  choiceLabel: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#374151',
+  },
+
+  // ✅ Label principal STYLÉ
+  primaryChoiceLabel: {
     fontWeight: '700',
-    color: '#1F2937',
-    marginBottom: 2,
+    fontSize: 16,
+    color: '#065F46', // ✅ Vert foncé pour plus de contraste
   },
 
   choiceSubtitle: {
     fontSize: 13,
     fontWeight: '500',
     color: '#6B7280',
-  },
-
-  primaryArrow: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: 'rgba(255, 255, 255, 0.8)',
-    marginLeft: 8,
-  },
-
-  // =================== FOOTER NOTE ===================
-  footerNote: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    padding: 14,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.05,
-        shadowRadius: 6,
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
-  },
-
-  noteText: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: '#6B7280',
-    textAlign: 'center',
+    marginTop: 2,
   },
 });

@@ -15,6 +15,9 @@ import styles from './style';
 
 const { width } = Dimensions.get('window');
 
+// Seuil pour débloquer la fonctionnalité de révision.
+const MIN_WORDS_FOR_REVISION_UNLOCK = 50;
+
 const VocabularyRevision = ({ route }) => {
   const navigation = useNavigation();
   const themeContext = useContext(ThemeContext);
@@ -114,11 +117,17 @@ const VocabularyRevision = ({ route }) => {
     }
 
     if (!canGenerateQuestions || !hasEnoughWords) {
-      const message = `Apprenez quelques mots avant de réviser !${stats.totalLearned > 0 ? `\nVous avez ${stats.totalLearned} mots appris` : ''}`;
+      // Si le quiz ne peut pas être généré mais que la révision est débloquée, on affiche un message spécifique.
+      if (hasEnoughWords && !canGenerateQuestions) {
+        return <EmptyState type="noWords" message={`Continuez d'apprendre pour diversifier les questions !\nUn quiz de ${questionsCount} questions ne peut pas être généré pour ce niveau.`} onAction={handleGoBack} colors={colors} localStyles={styles} />;
+      }
+
+      // Sinon, on affiche l'écran de progression "verrouillé".
       return (
         <EmptyState
-          type="noWords"
-          message={message}
+          type="locked"
+          progress={stats.totalLearned}
+          goal={MIN_WORDS_FOR_REVISION_UNLOCK}
           onAction={handleGoBack}
           colors={colors}
           localStyles={styles}

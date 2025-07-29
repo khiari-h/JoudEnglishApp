@@ -1,4 +1,4 @@
-// src/components/ui/ProgressCard/index.js - VERSION ÉPURÉE SANS DOTS
+// src/components/ui/ProgressCard/index.js - VERSION CORRIGÉE
 import { View, Text, TouchableOpacity, LayoutAnimation, Platform } from "react-native";
 import { useCallback } from 'react';
 import { LinearGradient } from "expo-linear-gradient";
@@ -11,19 +11,6 @@ import createStyles from "./style";
  * ✨ Design clean et moderne
  * 🚫 Suppression des categoryDot qui polluent l'interface
  * 🎯 Focus sur l'information, pas la décoration
- * 
- * @param {string} title - Titre principal
- * @param {string} subtitle - Sous-titre
- * @param {number} progress - Pourcentage de progression (0-100)
- * @param {number} completed - Nombre d'items complétés
- * @param {number} total - Nombre total d'items
- * @param {string} unit - Unité (ex: "mots", "phrases", "règles")
- * @param {string} levelColor - Couleur du niveau
- * @param {boolean} expandable - Peut être étendu pour voir détails
- * @param {boolean} expanded - État d'expansion
- * @param {function} onToggleExpand - Fonction pour toggle expansion
- * @param {array} categoryData - Données des catégories pour l'expansion
- * @param {function} onCategoryPress - Fonction appelée lors du clic sur catégorie
  */
 const ProgressCard = ({
   title = "Progression",
@@ -68,7 +55,7 @@ const ProgressCard = ({
     if (!expandable) return;
     configureLayoutAnimation();
     onToggleExpand?.();
-  }, [expandable, configureLayoutAnimation, onToggleExpand]);
+  }, [expandable, onToggleExpand]);
 
   const handleCategoryPress = useCallback((idx) => () => onCategoryPress?.(idx), [onCategoryPress]);
 
@@ -113,8 +100,8 @@ const ProgressCard = ({
     </View>
   );
 
-  // Sous-composant Expansion
-  const Expansion = ({ expandable: localExpandable, expanded: localExpanded, categoryData: localCategoryData, handleCategoryPress: localHandleCategoryPress, levelColor: localLevelColor, localStyles }) => (
+  // Sous-composant Expansion - CORRIGÉ
+  const Expansion = ({ expandable: localExpandable, expanded: localExpanded, categoryData: localCategoryData, handleCategoryPress: localHandleCategoryPress, levelColor: localLevelColor, styles: localStyles }) => (
     localExpandable && localExpanded && localCategoryData.length > 0 && (
       <View style={localStyles.expansionWrapper}>
         <View style={localStyles.expansionContainer}>

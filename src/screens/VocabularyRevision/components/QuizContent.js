@@ -3,8 +3,11 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 const QuestionCard = ({ currentQuestion, colors, localStyles }) => (
-  <View style={[localStyles.questionCard, { backgroundColor: colors.surface }]}>
-    <Text style={localStyles.questionLabel}>Traduisez :</Text>
+  <View style={[localStyles.questionCard, { backgroundColor: colors.surface, borderColor: colors.primary }]}>
+    <View style={localStyles.questionLabelContainer}>
+      <Text style={[localStyles.questionLabelIcon, { color: colors.primary }]}>?</Text>
+      <Text style={localStyles.questionLabel}>Traduisez le mot :</Text>
+    </View>
     <Text style={[localStyles.wordToTranslate, { color: colors.text }]}>
       {currentQuestion?.word}
     </Text>
@@ -16,28 +19,38 @@ const QuestionCard = ({ currentQuestion, colors, localStyles }) => (
   </View>
 );
 
-const ChoicesSection = ({ currentQuestion, selectedAnswer, showResult, handleAnswer, colors, localStyles }) => (
+const ChoicesSection = ({ currentQuestion, selectedAnswer, showResult, handleAnswer, colors, localStyles }) => {
+  return (
   <View style={localStyles.choicesSection}>
-    {currentQuestion?.choices.map((choice) => {
+    {currentQuestion?.choices.map((choice, index) => {
       const isSelected = selectedAnswer === choice;
-      const isCorrect = choice === currentQuestion.correctAnswer;
-      const isWrong = showResult && isSelected && !isCorrect;
-      const shouldHighlight = showResult && isCorrect;
+      const isCorrectAnswer = choice === currentQuestion.correctAnswer;
 
-      const buttonStyle = [localStyles.choiceButton, { backgroundColor: colors.surface }];
+      // Styles de base
+      const buttonStyle = [localStyles.choiceButton];
       const textStyle = [localStyles.choiceText, { color: colors.text }];
+      const numberContainerStyle = [localStyles.choiceNumberContainer];
+      const numberTextStyle = [localStyles.choiceNumberText];
       let icon = null;
 
-      if (shouldHighlight) {
-        buttonStyle.push(localStyles.choiceCorrect);
-        textStyle.push(localStyles.choiceTextCorrect);
-        icon = <Text style={localStyles.choiceIcon}>✓</Text>;
-      } else if (isWrong) {
-        buttonStyle.push(localStyles.choiceWrong);
-        textStyle.push(localStyles.choiceTextWrong);
-        icon = <Text style={localStyles.choiceIcon}>✗</Text>;
+      if (showResult) {
+        if (isCorrectAnswer) {
+          buttonStyle.push(localStyles.choiceCorrect);
+          textStyle.push(localStyles.choiceTextCorrect);
+          numberContainerStyle.push({ backgroundColor: '#10B981' });
+          numberTextStyle.push({ color: '#FFFFFF' });
+          icon = <Text style={[localStyles.choiceIcon, { color: '#10B981' }]}>✓</Text>;
+        } else if (isSelected) { // isSelected and not isCorrectAnswer
+          buttonStyle.push(localStyles.choiceWrong);
+          textStyle.push(localStyles.choiceTextWrong);
+          numberContainerStyle.push({ backgroundColor: '#EF4444' });
+          numberTextStyle.push({ color: '#FFFFFF' });
+          icon = <Text style={[localStyles.choiceIcon, { color: '#EF4444' }]}>✗</Text>;
+        }
       } else if (isSelected) {
-        buttonStyle.push({ borderColor: colors.primary, borderWidth: 2 });
+        buttonStyle.push(localStyles.choiceSelected);
+        numberContainerStyle.push({ backgroundColor: colors.primary });
+        numberTextStyle.push({ color: '#FFFFFF' });
       }
 
       return (
@@ -46,15 +59,20 @@ const ChoicesSection = ({ currentQuestion, selectedAnswer, showResult, handleAns
           style={buttonStyle}
           onPress={() => handleAnswer(choice)}
           disabled={showResult}
-          activeOpacity={0.7}
+          activeOpacity={0.8}
         >
-          <Text style={textStyle}>{choice}</Text>
-          {icon}
+          <View style={localStyles.choiceButtonInner}>
+            <View style={numberContainerStyle}>
+              <Text style={numberTextStyle}>{index + 1}</Text>
+            </View>
+            <Text style={textStyle}>{choice}</Text>
+            {icon}
+          </View>
         </TouchableOpacity>
       );
     })}
-  </View>
-);
+  </View>);
+};
 
 const QuizContent = ({
   currentQuestion,
