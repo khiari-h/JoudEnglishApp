@@ -173,6 +173,7 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     gap: 16,
+    justifyContent: 'center', // Pour centrer les choix s'ils sont peu nombreux
     paddingBottom: 20,
   },
 
@@ -249,6 +250,64 @@ export default StyleSheet.create({
   choiceIcon: {
     fontSize: 24,
     fontWeight: '700',
+  },
+
+  // =================== FEEDBACK & ACTION FOOTER ===================
+  feedbackContainer: {
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: Platform.OS === 'ios' ? 34 : 20,
+    borderTopWidth: 1,
+    borderTopColor: '#E5E7EB',
+    gap: 16, // Espace entre le message et le bouton
+  },
+
+  feedbackMessageRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+  },
+
+  feedbackIcon: {
+    fontSize: 20,
+  },
+
+  feedbackText: {
+    fontSize: 16,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+
+  continueButton: {
+    flexDirection: 'row', // Pour aligner le texte et l'icône
+    borderRadius: 20,
+    paddingVertical: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.25,
+        shadowRadius: 12,
+      },
+      android: {
+        elevation: 6,
+      },
+    }),
+  },
+
+  continueButtonText: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    marginRight: 8, // Espace entre le texte et l'icône
+  },
+
+  continueButtonIcon: {
+    fontSize: 22,
+    color: '#FFFFFF',
   },
 
   // =================== RÉSULTATS MODERNES ===================

@@ -1,6 +1,7 @@
 // src/screens/VocabularyRevision/components/QuizHeader.js
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const QuizHeader = ({ onGoBack, currentIndex, totalQuestions, score, colors, localStyles }) => (
   <View style={localStyles.header}>
@@ -8,20 +9,21 @@ const QuizHeader = ({ onGoBack, currentIndex, totalQuestions, score, colors, loc
       onPress={onGoBack} 
       style={[localStyles.backButton, { backgroundColor: colors.surface }]}
     >
-      <Text style={[localStyles.backButtonText, { color: colors.text }]}>←</Text>
+      <Icon name="arrow-left" size={24} color={colors.text} />
     </TouchableOpacity>
     
     <View style={localStyles.headerCenter}>
       <Text style={[localStyles.questionCounter, { color: colors.text }]}>
-        Question {currentIndex + 1}
+        Question {(currentIndex || 0) + 1}
       </Text>
       <Text style={[localStyles.totalQuestions, { color: colors.textSecondary }]}>
         sur {totalQuestions}
       </Text>
     </View>
     
-    <View style={[localStyles.scoreChip, { backgroundColor: colors.primary }]}>
-      <Text style={localStyles.scoreChipText}>{score}</Text>
+    <View style={[localStyles.scoreChip, { backgroundColor: '#10B981' }]}>
+      {/* ✅ Score en blanc sur fond vert pour une meilleure visibilité */}
+      <Text style={[localStyles.scoreChipText, { color: 'white' }]}>{score}</Text>
     </View>
   </View>
 );

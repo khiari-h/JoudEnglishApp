@@ -1,5 +1,5 @@
 // src/screens/VocabularyRevision/index.js - VERSION REFACTORISÉE
-import { useState, useContext, useCallback } from 'react';
+import { useState, useContext, useCallback, useRef } from 'react';
 import { View, Animated, StatusBar, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ThemeContext } from '../../contexts/ThemeContext';
@@ -49,35 +49,49 @@ const VocabularyRevision = ({ route }) => {
 
   // 2. HOOK DE LOGIQUE DU QUIZ
   const quizEngine = useQuizEngine(revisionQuestions);
-  const [slideAnim] = useState(new Animated.Value(0));
+  const slideAnim = useRef(new Animated.Value(0)).current;
+  const shakeAnim = useRef(new Animated.Value(0)).current;
 
   // 3. HANDLERS & ANIMATIONS
   const handleGoBack = useCallback(() => navigation.goBack(), [navigation]);
 
-  const animateAndGoToNext = useCallback(() => {
+  const triggerShakeAnimation = () => {
+    shakeAnim.setValue(0);
+    Animated.sequence([
+      Animated.timing(shakeAnim, { toValue: 10, duration: 80, useNativeDriver: true }),
+      Animated.timing(shakeAnim, { toValue: -10, duration: 80, useNativeDriver: true }),
+      Animated.timing(shakeAnim, { toValue: 10, duration: 80, useNativeDriver: true }),
+      Animated.timing(shakeAnim, { toValue: 0, duration: 80, useNativeDriver: true }),
+    ]).start();
+  };
+
+  const handleContinue = useCallback(() => {
     // Slide out to the left
     Animated.timing(slideAnim, {
       toValue: -width,
-      duration: 250,
+      duration: 300,
       useNativeDriver: true,
     }).start(() => {
       quizEngine.goToNextQuestion();
       // Position instantly off-screen to the right
       slideAnim.setValue(width);
       // Slide in from the right
-      Animated.timing(slideAnim, {
+      Animated.spring(slideAnim, {
         toValue: 0,
-        duration: 250,
+        speed: 12,
+        bounciness: 5,
         useNativeDriver: true,
       }).start();
     });
-  }, [slideAnim, quizEngine]);
+  }, [slideAnim, quizEngine, width]);
 
   const handleAnswer = useCallback((choice) => {
-    if (quizEngine.showResult) return; // Prevent answering again
-    quizEngine.handleAnswer(choice);
-    setTimeout(animateAndGoToNext, 1500);
-  }, [quizEngine, animateAndGoToNext]);
+    if (quizEngine.showResult) return;
+    const isCorrect = quizEngine.handleAnswer(choice);
+    if (!isCorrect) {
+      triggerShakeAnimation();
+    }
+  }, [quizEngine, triggerShakeAnimation]);
 
   const handleRestart = useCallback(() => {
     quizEngine.handleRestart();
@@ -153,7 +167,10 @@ const VocabularyRevision = ({ route }) => {
       <QuizScreen
         quizEngine={quizEngine}
         onGoBack={handleGoBack}
+        onAnswer={handleAnswer}
+        onContinue={handleContinue}
         slideAnim={slideAnim}
+        shakeAnim={shakeAnim}
         colors={colors}
         localStyles={styles}
       />
