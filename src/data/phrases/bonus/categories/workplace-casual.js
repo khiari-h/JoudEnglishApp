@@ -3,121 +3,169 @@
 const workplaceCasual = [
   {
     categoryId: 56,
-    english: "Let's circle back on... after we touch base with... I'll ping you when we have more bandwidth to deep dive into...",
-    translation: "Revenons sur... après qu'on ait pris contact avec... Je te contacterai quand on aura plus de capacité pour approfondir...",
-    context: "Planification de réunion avec jargon corporate décontracté",
+    english: "Let's circle back on this later.",
+    translation: "Revenons sur ce point plus tard.",
+    context: "Pour reporter une discussion. 'Circle back' est un jargon courant pour 'revenir sur un sujet'.",
     examples: [
       {
-        english: "Let's circle back on the marketing strategy after we touch base with the design team. I'll ping you when we have more bandwidth to deep dive into the user research findings.",
-        translation: "Revenons sur la stratégie marketing après qu'on ait pris contact avec l'équipe design. Je te contacterai quand on aura plus de capacité pour approfondir les résultats de recherche utilisateur.",
+        english: "This is a good point, but let's circle back on this after the main presentation.",
+        translation: "C'est un bon point, mais revenons sur ce point après la présentation principale.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "I'm completely swamped with... right now, but I can definitely... by end of day. Just need to prioritize... and we should be good to go.",
-    translation: "Je suis complètement débordé avec... en ce moment, mais je peux définitivement... avant la fin de la journée. J'ai juste besoin de prioriser... et on devrait être bon pour y aller.",
-    context: "Gestion de charge de travail et engagement sur les délais",
+    english: "Let's touch base next week.",
+    translation: "Prenons contact la semaine prochaine.",
+    context: "'To touch base' signifie prendre contact ou se synchroniser brièvement avec quelqu'un.",
     examples: [
       {
-        english: "I'm completely swamped with the quarterly reports right now, but I can definitely get you those numbers by end of day. Just need to prioritize the client presentation and we should be good to go.",
-        translation: "Je suis complètement débordé avec les rapports trimestriels en ce moment, mais je peux définitivement te donner ces chiffres avant la fin de la journée. J'ai juste besoin de prioriser la présentation client et on devrait être bon pour y aller.",
+        english: "I need to touch base with the design team before making a decision.",
+        translation: "Je dois prendre contact avec l'équipe de design avant de prendre une décision.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "Can we table... for now and focus on the low-hanging fruit? I think we're overthinking... when we should just... and iterate as we go.",
-    translation: "Peut-on mettre... de côté pour l'instant et se concentrer sur les gains faciles ? Je pense qu'on complique trop... quand on devrait juste... et itérer en cours de route.",
-    context: "Redirection strategique vers des solutions plus simples et pragmatiques",
+    english: "I don't have the bandwidth for that right now.",
+    translation: "Je n'ai pas la capacité/le temps pour ça en ce moment.",
+    context: "'Bandwidth' est une métaphore pour la capacité mentale ou le temps disponible.",
     examples: [
       {
-        english: "Can we table the advanced analytics for now and focus on the low-hanging fruit? I think we're overthinking the dashboard design when we should just launch the MVP and iterate as we go.",
-        translation: "Peut-on mettre l'analytique avancée de côté pour l'instant et se concentrer sur les gains faciles ? Je pense qu'on complique trop le design du tableau de bord quand on devrait juste lancer le MVP et itérer en cours de route.",
+        english: "With three major projects, I just don't have the bandwidth to take on another task.",
+        translation: "Avec trois projets majeurs, je n'ai tout simplement pas la capacité de prendre une autre tâche.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "This is a total game-changer for... We need to loop in... and make sure everyone's on the same page before we... Otherwise we'll hit roadblocks down the line.",
-    translation: "C'est un changement de donne total pour... On doit inclure... et s'assurer que tout le monde est sur la même longueur d'onde avant qu'on... Sinon on va rencontrer des obstacles plus tard.",
-    context: "Communication d'impact majeur et coordination d'équipe préventive",
+    english: "I'm completely swamped right now.",
+    translation: "Je suis complètement débordé(e) en ce moment.",
+    context: "Pour indiquer que vous avez une charge de travail très lourde.",
     examples: [
       {
-        english: "This is a total game-changer for our revenue model. We need to loop in the legal team and make sure everyone's on the same page before we announce anything. Otherwise we'll hit roadblocks down the line.",
-        translation: "C'est un changement de donne total pour notre modèle de revenus. On doit inclure l'équipe juridique et s'assurer que tout le monde est sur la même longueur d'onde avant qu'on annonce quoi que ce soit. Sinon on va rencontrer des obstacles plus tard.",
+        english: "I'd love to help, but I'm completely swamped with the quarterly reports.",
+        translation: "J'adorerais aider, mais je suis complètement débordé(e) par les rapports trimestriels.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "I hate to be the bearer of bad news, but... is going to push back on... We might need to... or find a workaround that doesn't step on anyone's toes.",
-    translation: "Je déteste être le porteur de mauvaises nouvelles, mais... va résister à... On pourrait avoir besoin de... ou trouver une solution de contournement qui ne marche sur les pieds de personne.",
-    context: "Communication de problèmes politiques internes et recherche de solutions diplomatiques",
+    english: "Let's table this discussion for now.",
+    translation: "Mettons cette discussion de côté pour l'instant.",
+    context: "'To table' une discussion signifie la reporter à plus tard.",
     examples: [
       {
-        english: "I hate to be the bearer of bad news, but the finance team is going to push back on the budget increase. We might need to rescope the project or find a workaround that doesn't step on anyone's toes.",
-        translation: "Je déteste être le porteur de mauvaises nouvelles, mais l'équipe finance va résister à l'augmentation du budget. On pourrait avoir besoin de redéfinir le projet ou trouver une solution de contournement qui ne marche sur les pieds de personne.",
+        english: "We're not making progress. Let's table this and revisit it with fresh eyes tomorrow.",
+        translation: "Nous ne progressons pas. Mettons cela de côté et réexaminons-le avec un regard neuf demain.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "Let's not reinvent the wheel here. We can totally leverage... and just... to fit our use case. No need to... when there's already a proven solution.",
-    translation: "Ne réinventons pas la roue ici. On peut totalement tirer parti de... et juste... pour s'adapter à notre cas d'usage. Pas besoin de... quand il y a déjà une solution éprouvée.",
-    context: "Optimisation d'efficacité en utilisant des ressources existantes plutôt que de développer de novo",
+    english: "Let's focus on the low-hanging fruit.",
+    translation: "Concentrons-nous sur les objectifs faciles à atteindre.",
+    context: "Le 'low-hanging fruit' représente les tâches les plus faciles à accomplir qui donnent des résultats rapides.",
     examples: [
       {
-        english: "Let's not reinvent the wheel here. We can totally leverage the existing API and just customize the interface to fit our use case. No need to build from scratch when there's already a proven solution.",
-        translation: "Ne réinventons pas la roue ici. On peut totalement tirer parti de l'API existante et juste personnaliser l'interface pour s'adapter à notre cas d'usage. Pas besoin de construire à partir de zéro quand il y a déjà une solution éprouvée.",
+        english: "Instead of a full redesign, let's focus on the low-hanging fruit, like fixing the obvious bugs.",
+        translation: "Au lieu d'une refonte complète, concentrons-nous sur les objectifs faciles, comme corriger les bugs évidents.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "I'm going to be super transparent here - ... is not working and we need to pivot before we... Let's cut our losses and... while we still can.",
-    translation: "Je vais être super transparent ici - ... ne fonctionne pas et on doit pivoter avant qu'on... Limitons nos pertes et... pendant qu'on peut encore.",
-    context: "Communication franche d'échec et proposition de changement de direction strategic",
+    english: "This new software is a total game-changer.",
+    translation: "Ce nouveau logiciel change complètement la donne.",
+    context: "Un 'game-changer' est une innovation ou un événement qui modifie radicalement une situation.",
     examples: [
       {
-        english: "I'm going to be super transparent here - this marketing approach is not working and we need to pivot before we burn through the entire budget. Let's cut our losses and try the social media strategy while we still can.",
-        translation: "Je vais être super transparent ici - cette approche marketing ne fonctionne pas et on doit pivoter avant qu'on brûle tout le budget. Limitons nos pertes et essayons la stratégie médias sociaux pendant qu'on peut encore.",
+        english: "Automating this process will be a total game-changer for our team's productivity.",
+        translation: "L'automatisation de ce processus va complètement changer la donne pour la productivité de notre équipe.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "Can we sync up tomorrow morning to... ? I want to make sure we're aligned on... before the meeting with... so we don't look unprepared.",
-    translation: "Peut-on se synchroniser demain matin pour... ? Je veux m'assurer qu'on est alignés sur... avant la réunion avec... pour qu'on n'ait pas l'air mal préparés.",
-    context: "Coordination préparatoire pour présentation ou réunion importante avec parties prenantes",
+    english: "We need to make sure we're all on the same page.",
+    translation: "Nous devons nous assurer que nous sommes tous sur la même longueur d'onde.",
+    context: "Signifie s'assurer que tout le monde a la même compréhension ou le même objectif.",
     examples: [
       {
-        english: "Can we sync up tomorrow morning to review the presentation? I want to make sure we're aligned on the key talking points before the meeting with the executives so we don't look unprepared.",
-        translation: "Peut-on se synchroniser demain matin pour réviser la présentation ? Je veux m'assurer qu'on est alignés sur les points de discussion clés avant la réunion avec les dirigeants pour qu'on n'ait pas l'air mal préparés.",
+        english: "Before we present to the client, let's meet to make sure we're all on the same page.",
+        translation: "Avant de faire la présentation au client, rencontrons-nous pour nous assurer que nous sommes tous sur la même longueur d'onde.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "This is definitely above my pay grade, but I think... We should probably escalate to... and let them... since they have more context on...",
-    translation: "C'est définitivement au-dessus de mon niveau de salaire, mais je pense que... On devrait probablement escalader vers... et les laisser... puisqu'ils ont plus de contexte sur...",
-    context: "Reconnaissance des limites d'autorité et délégation appropriée vers la hiérarchie supérieure",
+    english: "I hate to be the bearer of bad news, but...",
+    translation: "Je déteste être le porteur de mauvaises nouvelles, mais...",
+    context: "Une façon polie d'introduire une mauvaise nouvelle ou un problème.",
     examples: [
       {
-        english: "This is definitely above my pay grade, but I think we have a compliance issue. We should probably escalate to the legal department and let them handle the vendor contract since they have more context on regulatory requirements.",
-        translation: "C'est définitivement au-dessus de mon niveau de salaire, mais je pense qu'on a un problème de conformité. On devrait probablement escalader vers le département juridique et les laisser gérer le contrat fournisseur puisqu'ils ont plus de contexte sur les exigences réglementaires.",
+        english: "I hate to be the bearer of bad news, but the client rejected our proposal.",
+        translation: "Je déteste être le porteur de mauvaises nouvelles, mais le client a rejeté notre proposition.",
       }
     ],
   },
   {
     categoryId: 56,
-    english: "We're going to need all hands on deck for... The deadline is super tight and we can't afford to... Let's just... and figure out the details later.",
-    translation: "On va avoir besoin de tout le monde sur le pont pour... La deadline est super serrée et on ne peut pas se permettre de... Faisons juste... et on trouvera les détails plus tard.",
-    context: "Mobilisation d'urgence de l'équipe avec approche action-first pour respecter délais critiques",
+    english: "Let's not reinvent the wheel here.",
+    translation: "Ne réinventons pas la roue ici.",
+    context: "Signifie qu'il ne faut pas perdre de temps à créer quelque chose qui existe déjà.",
     examples: [
       {
-        english: "We're going to need all hands on deck for this product launch. The deadline is super tight and we can't afford to overthink every detail. Let's just execute the plan and figure out the edge cases later.",
-        translation: "On va avoir besoin de tout le monde sur le pont pour ce lancement de produit. La deadline est super serrée et on ne peut pas se permettre de trop réfléchir à chaque détail. Faisons juste exécuter le plan et on trouvera les cas limites plus tard.",
+        english: "Let's not reinvent the wheel. We can use an existing template for this report.",
+        translation: "Ne réinventons pas la roue. Nous pouvons utiliser un modèle existant pour ce rapport.",
+      }
+    ],
+  },
+  {
+    categoryId: 56,
+    english: "We need to pivot our strategy.",
+    translation: "Nous devons changer notre stratégie.",
+    context: "'To pivot' signifie changer de direction de manière significative, souvent en réponse à un échec ou une nouvelle information.",
+    examples: [
+      {
+        english: "This marketing campaign isn't working. We need to pivot before we burn through the budget.",
+        translation: "Cette campagne marketing ne fonctionne pas. Nous devons pivoter avant de griller tout le budget.",
+      }
+    ],
+  },
+  {
+    categoryId: 56,
+    english: "Can we sync up tomorrow morning?",
+    translation: "Peut-on se synchroniser demain matin ?",
+    context: "'To sync up' est une manière décontractée de dire 'se rencontrer' ou 'se coordonner'.",
+    examples: [
+      {
+        english: "Can we sync up tomorrow morning to review the presentation before the big meeting?",
+        translation: "Peut-on se synchroniser demain matin pour revoir la présentation avant la grande réunion ?",
+      }
+    ],
+  },
+  {
+    categoryId: 56,
+    english: "This is above my pay grade.",
+    translation: "Ceci dépasse mes compétences/mon autorité.",
+    context: "Une façon de dire qu'un problème doit être traité par quelqu'un de plus haut placé dans la hiérarchie.",
+    examples: [
+      {
+        english: "Handling a legal complaint is definitely above my pay grade. We need to escalate this to the legal department.",
+        translation: "Gérer une plainte légale est définitivement au-dessus de mes compétences. Nous devons remonter cela au service juridique.",
+      }
+    ],
+  },
+  {
+    categoryId: 56,
+    english: "We need all hands on deck for this launch.",
+    translation: "Nous avons besoin de tout le monde sur le pont pour ce lancement.",
+    context: "Une expression qui signifie que la participation de tout le monde est requise pour une tâche urgente ou importante.",
+    examples: [
+      {
+        english: "The deadline is tomorrow, so it's all hands on deck to get this finished.",
+        translation: "La date limite est demain, donc tout le monde doit s'y mettre pour finir ça.",
       }
     ],
   },

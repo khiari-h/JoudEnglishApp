@@ -3,121 +3,121 @@
 const problemsComplaints = [
   {
     categoryId: 60,
-    english: "This is absolutely ridiculous. I've been dealing with... for weeks now and nobody seems to give a damn about... How is this even acceptable?",
-    translation: "C'est absolument ridicule. Je me débrouille avec... depuis des semaines maintenant et personne n'a l'air de s'en foutre de... Comment est-ce que c'est même acceptable ?",
-    context: "Frustration extrême avec système ou service défaillant",
+    english: "This is absolutely ridiculous. How is this acceptable?",
+    translation: "C'est absolument ridicule. Comment est-ce acceptable ?",
+    context: "Pour exprimer une frustration extrême face à un service ou une situation inacceptable.",
     examples: [
       {
-        english: "This is absolutely ridiculous. I've been dealing with this billing error for weeks now and nobody seems to give a damn about fixing it. How is this even acceptable?",
-        translation: "C'est absolument ridicule. Je me débrouille avec cette erreur de facturation depuis des semaines maintenant et personne n'a l'air de s'en foutre de la corriger. Comment est-ce que c'est même acceptable ?",
+        english: "I've been dealing with this billing error for weeks and nobody seems to care. This is absolutely ridiculous. How is this acceptable?",
+        translation: "Je gère cette erreur de facturation depuis des semaines et personne ne semble s'en soucier. C'est absolument ridicule. Comment est-ce acceptable ?",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "I'm at my wit's end with... Every time I think... is sorted, something else goes wrong. It's like... is cursed or something.",
-    translation: "J'arrive au bout de mes ressources avec... Chaque fois que je pense que... est réglé, quelque chose d'autre foire. C'est comme si... était maudit ou quelque chose comme ça.",
-    context: "Épuisement face à problèmes récurrents et imprévisibles",
+    english: "I'm at my wit's end with this.",
+    translation: "J'en ai plus qu'assez de ça. / Je suis à bout.",
+    context: "Pour exprimer un épuisement total face à un problème qui ne semble jamais se résoudre. 'Wit's end' = à court d'idées/patience.",
     examples: [
       {
-        english: "I'm at my wit's end with this car. Every time I think one issue is sorted, something else goes wrong. It's like this vehicle is cursed or something.",
-        translation: "J'arrive au bout de mes ressources avec cette voiture. Chaque fois que je pense qu'un problème est réglé, quelque chose d'autre foire. C'est comme si ce véhicule était maudit ou quelque chose comme ça.",
+        english: "I'm at my wit's end with this car. Every time I fix one thing, something else breaks. It's like it's cursed.",
+        translation: "Je suis à bout avec cette voiture. Chaque fois que je répare un truc, autre chose casse. C'est comme si elle était maudite.",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "Look, I don't want to be difficult, but this is the third time... and I'm starting to lose my patience. Can someone please... without me having to...?",
-    translation: "Écoute, je ne veux pas être difficile, mais c'est la troisième fois que... et je commence à perdre patience. Est-ce que quelqu'un peut s'il vous plaît... sans que j'aie à... ?",
-    context: "Escalade diplomatique avec avertissement de limites atteintes",
+    english: "I'm starting to lose my patience.",
+    translation: "Je commence à perdre patience.",
+    context: "Un avertissement poli mais ferme pour indiquer que votre tolérance atteint ses limites face à un problème récurrent.",
     examples: [
       {
-        english: "Look, I don't want to be difficult, but this is the third time my order has been wrong and I'm starting to lose my patience. Can someone please fix this without me having to call corporate?",
-        translation: "Écoute, je ne veux pas être difficile, mais c'est la troisième fois que ma commande est fausse et je commence à perdre patience. Est-ce que quelqu'un peut s'il vous plaît corriger ça sans que j'aie à appeler le siège ?",
+        english: "Look, I don't want to be difficult, but this is the third time my order is wrong. I'm starting to lose my patience.",
+        translation: "Écoutez, je ne veux pas être difficile, mais c'est la troisième fois que ma commande est erronée. Je commence à perdre patience.",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "This is completely unacceptable and frankly... I expect better from... Given that I've been... for years, this treatment is just insulting.",
-    translation: "C'est complètement inacceptable et franchement... Je m'attends à mieux de... Étant donné que j'ai été... pendant des années, ce traitement est juste insultant.",
-    context: "Indignation basée sur loyauté et attentes légitimes non satisfaites",
+    english: "This is completely unacceptable. I expect better.",
+    translation: "C'est totalement inacceptable. Je m'attends à mieux.",
+    context: "Pour exprimer une forte indignation et souligner qu'un service ou produit est en dessous des standards attendus.",
     examples: [
       {
-        english: "This is completely unacceptable and frankly unprofessional. I expect better from a company of your reputation. Given that I've been a loyal customer for years, this treatment is just insulting.",
-        translation: "C'est complètement inacceptable et franchement non professionnel. Je m'attends à mieux d'une entreprise de votre réputation. Étant donné que j'ai été un client fidèle pendant des années, ce traitement est juste insultant.",
+        english: "This treatment is completely unacceptable. As a loyal customer, I expect better from your company.",
+        translation: "Ce traitement est totalement inacceptable. En tant que client fidèle, je m'attends à mieux de votre entreprise.",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "I'm really trying to stay calm here, but... is testing my limits. How many times do I have to... before someone actually...?",
-    translation: "J'essaie vraiment de rester calme ici, mais... teste mes limites. Combien de fois je dois... avant que quelqu'un... vraiment ?",
-    context: "Effort visible de self-control avec menace implicite de escalade",
+    english: "How many times do I have to explain this?",
+    translation: "Combien de fois dois-je expliquer cela ?",
+    context: "Pour exprimer sa frustration de devoir répéter la même chose plusieurs fois sans être compris ou écouté.",
     examples: [
       {
-        english: "I'm really trying to stay calm here, but this whole situation is testing my limits. How many times do I have to explain the problem before someone actually listens?",
-        translation: "J'essaie vraiment de rester calme ici, mais toute cette situation teste mes limites. Combien de fois je dois expliquer le problème avant que quelqu'un écoute vraiment ?",
+        english: "I'm trying to stay calm, but this is testing my limits. How many times do I have to explain the problem before someone listens?",
+        translation: "J'essaie de rester calme, mais cela teste mes limites. Combien de fois dois-je expliquer le problème avant que quelqu'un n'écoute ?",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "This is getting beyond a joke now. I was promised... and instead I get... What kind of operation are you running here exactly?",
-    translation: "Ça devient au-delà d'une blague maintenant. On m'a promis... et à la place j'obtiens... Quel genre d'opération vous dirigez ici exactement ?",
-    context: "Remise en question de la crédibilité et compétence organisationnelle",
+    english: "This is getting beyond a joke now.",
+    translation: "Ça dépasse les bornes maintenant.",
+    context: "Pour indiquer qu'une situation est devenue si absurde ou mal gérée qu'elle n'est plus tolérable.",
     examples: [
       {
-        english: "This is getting beyond a joke now. I was promised a full refund within 5 business days and instead I get excuses. What kind of operation are you running here exactly?",
-        translation: "Ça devient au-delà d'une blague maintenant. On m'a promis un remboursement complet dans les 5 jours ouvrables et à la place j'obtiens des excuses. Quel genre d'opération vous dirigez ici exactement ?",
+        english: "I was promised a refund in 5 days, and it's been three weeks. This is getting beyond a joke now.",
+        translation: "On m'a promis un remboursement en 5 jours, et ça fait trois semaines. Ça dépasse les bornes maintenant.",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "I'm not trying to cause trouble, but... needs to be addressed immediately. This affects... and I can't just... anymore. Something has to give.",
-    translation: "Je n'essaie pas de causer des problèmes, mais... doit être adressé immédiatement. Ça affecte... et je ne peux plus juste... Quelque chose doit céder.",
-    context: "Urgence justifiée avec impact concret et limite personnelle atteinte",
+    english: "This needs to be addressed immediately.",
+    translation: "Cela doit être traité immédiatement.",
+    context: "Pour souligner l'urgence d'un problème qui a des conséquences négatives et ne peut plus être ignoré.",
     examples: [
       {
-        english: "I'm not trying to cause trouble, but this noise issue needs to be addressed immediately. This affects my sleep and work and I can't just ignore it anymore. Something has to give.",
-        translation: "Je n'essaie pas de causer des problèmes, mais ce problème de bruit doit être adressé immédiatement. Ça affecte mon sommeil et mon travail et je ne peux plus juste l'ignorer. Quelque chose doit céder.",
+        english: "I'm not trying to cause trouble, but this noise issue affects my sleep and needs to be addressed immediately.",
+        translation: "Je n'essaie pas de causer de problèmes, mais ce problème de bruit affecte mon sommeil et doit être traité immédiatement.",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "Can someone explain to me why... when I specifically asked for...? This makes no sense and honestly, I'm questioning whether... even cares about...",
-    translation: "Est-ce que quelqu'un peut m'expliquer pourquoi... quand j'ai spécifiquement demandé... ? Ça n'a aucun sens et honnêtement, je me demande si... se soucie même de...",
-    context: "Demande d'explication avec remise en question des priorités organisationnelles",
+    english: "Can someone explain why [problem happened]?",
+    translation: "Quelqu'un peut-il m'expliquer pourquoi [le problème est arrivé] ?",
+    context: "Une façon rhétorique et accusatrice de demander une explication pour une erreur qui semble illogique ou négligente.",
     examples: [
       {
-        english: "Can someone explain to me why I received a damaged product when I specifically asked for careful packaging? This makes no sense and honestly, I'm questioning whether this company even cares about quality.",
-        translation: "Est-ce que quelqu'un peut m'expliquer pourquoi j'ai reçu un produit endommagé quand j'ai spécifiquement demandé un emballage soigneux ? Ça n'a aucun sens et honnêtement, je me demande si cette entreprise se soucie même de la qualité.",
+        english: "Can someone explain why I received a damaged product when I specifically asked for careful packaging? It makes no sense.",
+        translation: "Quelqu'un peut-il m'expliquer pourquoi j'ai reçu un produit endommagé alors que j'avais spécifiquement demandé un emballage soigné ? Ça n'a aucun sens.",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "This is the last straw. I've been patient with... but now... has crossed the line. I'm done dealing with... and I want to speak to someone who can actually...",
-    translation: "C'est la goutte qui fait déborder le vase. J'ai été patient avec... mais maintenant... a franchi la ligne. J'en ai fini de traiter avec... et je veux parler à quelqu'un qui peut vraiment...",
-    context: "Point de rupture atteint avec demande d'escalation hiérarchique",
+    english: "This is the last straw. I want to speak to a manager.",
+    translation: "C'est la goutte d'eau qui fait déborder le vase. Je veux parler à un responsable.",
+    context: "Pour indiquer que votre patience est à bout ('last straw') et que vous exigez de parler à un supérieur hiérarchique.",
     examples: [
       {
-        english: "This is the last straw. I've been patient with your customer service but now this representative has crossed the line. I'm done dealing with incompetence and I want to speak to someone who can actually solve problems.",
-        translation: "C'est la goutte qui fait déborder le vase. J'ai été patient avec votre service client mais maintenant ce représentant a franchi la ligne. J'en ai fini de traiter avec l'incompétence et je veux parler à quelqu'un qui peut vraiment résoudre les problèmes.",
+        english: "I've been patient, but this is the last straw. I'm done dealing with this representative and I want to speak to a manager.",
+        translation: "J'ai été patient, mais c'est la goutte d'eau qui fait déborder le vase. J'en ai fini avec ce représentant et je veux parler à un responsable.",
       }
     ],
   },
   {
     categoryId: 60,
-    english: "I hate to be that guy, but... is seriously affecting... and I need... to be resolved today. Not tomorrow, not next week - today. Is that possible or not?",
-    translation: "Je déteste être ce gars, mais... affecte sérieusement... et j'ai besoin que... soit résolu aujourd'hui. Pas demain, pas la semaine prochaine - aujourd'hui. C'est possible ou pas ?",
-    context: "Urgence absolue avec contrainte temporelle non négociable",
+    english: "I need this resolved today. Is that possible?",
+    translation: "J'ai besoin que ce soit résolu aujourd'hui. Est-ce possible ?",
+    context: "Pour poser un ultimatum clair et non négociable sur le délai de résolution d'un problème urgent.",
     examples: [
       {
-        english: "I hate to be that guy, but this internet outage is seriously affecting my work and I need this connection to be resolved today. Not tomorrow, not next week - today. Is that possible or not?",
-        translation: "Je déteste être ce gars, mais cette panne internet affecte sérieusement mon travail et j'ai besoin que cette connexion soit résolue aujourd'hui. Pas demain, pas la semaine prochaine - aujourd'hui. C'est possible ou pas ?",
+        english: "I hate to be 'that guy', but this outage is affecting my work. I need this resolved today. Is that possible or not?",
+        translation: "Je déteste être 'ce gars-là', mais cette panne affecte mon travail. J'ai besoin que ce soit résolu aujourd'hui. Est-ce possible ou non ?",
       }
     ],
   },

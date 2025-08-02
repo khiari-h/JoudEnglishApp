@@ -3,121 +3,121 @@
 const smallTalkSocial = [
   {
     categoryId: 58,
-    english: "So what's your deal with...? Are you still... or have you moved on to...? I'm always curious about people's... journeys.",
-    translation: "Alors c'est quoi ton truc avec... ? Tu... encore ou tu es passé à... ? Je suis toujours curieux des parcours... des gens.",
-    context: "Question personnelle indirecte pour connaître l'évolution de quelqu'un",
+    english: "So, what's your deal with [topic]?",
+    translation: "Alors, c'est quoi ton truc avec [sujet] ?",
+    context: "Une façon décontractée de demander des nouvelles sur un sujet ou un projet spécifique de quelqu'un.",
     examples: [
       {
-        english: "So what's your deal with photography? Are you still shooting weddings or have you moved on to corporate stuff? I'm always curious about people's creative journeys.",
-        translation: "Alors c'est quoi ton truc avec la photographie ? Tu fais encore des mariages ou tu es passé aux trucs corporate ? Je suis toujours curieux des parcours créatifs des gens.",
+        english: "So what's your deal with photography? Are you still shooting weddings or have you moved on to corporate stuff?",
+        translation: "Alors, c'est quoi ton truc avec la photographie ? Tu fais encore des mariages ou tu es passé à des projets d'entreprise ?",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "I've been meaning to ask you - how's... working out for you? I heard through the grapevine that... Is that actually true or just gossip?",
-    translation: "J'avais l'intention de te demander - comment ça se passe... pour toi ? J'ai entendu dire que... C'est vraiment vrai ou juste des ragots ?",
-    context: "Curiosité diplomatique mélangée avec vérification de rumeurs",
+    english: "I heard through the grapevine that... Is that true?",
+    translation: "J'ai entendu dire que... C'est vrai ?",
+    context: "Pour mentionner une rumeur de manière décontractée et demander confirmation. 'Through the grapevine' = par des bruits de couloir.",
     examples: [
       {
-        english: "I've been meaning to ask you - how's the remote work situation working out for you? I heard through the grapevine that your company might go fully remote. Is that actually true or just gossip?",
-        translation: "J'avais l'intention de te demander - comment ça se passe la situation du télétravail pour toi ? J'ai entendu dire que ta boîte pourrait passer entièrement en remote. C'est vraiment vrai ou juste des ragots ?",
+        english: "I heard through the grapevine that your company might go fully remote. Is that actually true or just gossip?",
+        translation: "J'ai entendu dire que votre entreprise pourrait passer au télétravail complet. C'est vraiment vrai ou juste des ragots ?",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "Random question, but do you ever feel like...? I was just thinking about... and wondered if I'm the only one who thinks...",
-    translation: "Question random, mais est-ce que tu as déjà l'impression que... ? Je pensais juste à... et je me demandais si je suis le seul qui pense que...",
-    context: "Ouverture de conversation philosophique ou personnelle de manière décontractée",
+    english: "Random question, but do you ever feel like...?",
+    translation: "Question au hasard, mais est-ce que tu as déjà l'impression que... ?",
+    context: "Pour lancer une conversation plus profonde ou philosophique de manière décontractée.",
     examples: [
       {
-        english: "Random question, but do you ever feel like social media is making us lonelier? I was just thinking about how we're all connected but isolated and wondered if I'm the only one who thinks it's weird.",
-        translation: "Question random, mais est-ce que tu as déjà l'impression que les réseaux sociaux nous rendent plus seuls ? Je pensais juste à comment on est tous connectés mais isolés et je me demandais si je suis le seul qui trouve ça bizarre.",
+        english: "Random question, but do you ever feel like social media is making us lonelier? I wondered if I'm the only one.",
+        translation: "Question au hasard, mais est-ce que tu as déjà l'impression que les réseaux sociaux nous rendent plus seuls ? Je me demandais si j'étais le seul.",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "You know what's wild? I was just... and it reminded me of... Do you remember when we...? That feels like a lifetime ago now.",
-    translation: "Tu sais ce qui est dingue ? J'étais juste en train de... et ça m'a rappelé... Tu te souviens quand on... ? Ça me semble être il y a une éternité maintenant.",
-    context: "Transition vers la nostalgie et souvenirs partagés",
+    english: "That feels like a lifetime ago.",
+    translation: "Ça semble remonter à une éternité.",
+    context: "Pour exprimer un sentiment de nostalgie à propos d'un souvenir lointain.",
     examples: [
       {
-        english: "You know what's wild? I was just driving past our old university and it reminded me of those crazy all-nighters. Do you remember when we lived on energy drinks and pizza? That feels like a lifetime ago now.",
-        translation: "Tu sais ce qui est dingue ? Je passais juste devant notre ancienne fac et ça m'a rappelé ces nuits blanches de folie. Tu te souviens quand on vivait de boissons énergisantes et de pizza ? Ça me semble être il y a une éternité maintenant.",
+        english: "Do you remember when we lived on energy drinks and pizza during exams? That feels like a lifetime ago now.",
+        translation: "Tu te souviens quand on vivait de boissons énergisantes et de pizza pendant les examens ? Ça semble remonter à une éternité.",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "Can I get your take on...? I'm genuinely curious because you always have... perspective on things. What's your gut feeling about...?",
-    translation: "Je peux avoir ton avis sur... ? Je suis vraiment curieux parce que tu as toujours une perspective... sur les choses. C'est quoi ton instinct sur... ?",
-    context: "Demande d'opinion avec flatterie subtile pour encourager l'ouverture",
+    english: "Can I get your take on [topic]?",
+    translation: "Je peux avoir ton avis sur [sujet] ?",
+    context: "Une façon polie et décontractée de demander l'opinion de quelqu'un.",
     examples: [
       {
-        english: "Can I get your take on this whole AI thing? I'm genuinely curious because you always have such a balanced perspective on tech stuff. What's your gut feeling about where it's all heading?",
-        translation: "Je peux avoir ton avis sur tout ce truc d'IA ? Je suis vraiment curieux parce que tu as toujours une perspective si équilibrée sur les trucs tech. C'est quoi ton instinct sur où tout ça va ?",
+        english: "Can I get your take on this whole AI thing? You always have such a balanced perspective on tech.",
+        translation: "Je peux avoir ton avis sur tout ce truc de l'IA ? Tu as toujours une perspective si équilibrée sur la technologie.",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "I don't know if this is just me being... but does... seem... to you lately? Maybe I'm overthinking it, but something feels off.",
-    translation: "Je ne sais pas si c'est juste moi qui suis... mais est-ce que... te semble... dernièrement ? Peut-être que je réfléchis trop, mais quelque chose cloche.",
-    context: "Expression d'une intuition vague avec auto-questionnement",
+    english: "Maybe I'm overthinking it, but something feels off.",
+    translation: "Peut-être que je réfléchis trop, mais quelque chose cloche.",
+    context: "Pour exprimer une intuition ou un malaise tout en admettant que cela pourrait être une perception personnelle.",
     examples: [
       {
-        english: "I don't know if this is just me being paranoid but does Sarah seem distant to you lately? Maybe I'm overthinking it, but something feels off.",
-        translation: "Je ne sais pas si c'est juste moi qui suis parano mais est-ce que Sarah te semble distante dernièrement ? Peut-être que je réfléchis trop, mais quelque chose cloche.",
+        english: "Does Sarah seem distant to you lately? Maybe I'm overthinking it, but something feels off.",
+        translation: "Est-ce que Sarah te semble distante dernièrement ? Peut-être que je réfléchis trop, mais quelque chose cloche.",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "Speaking of..., that reminds me - have you tried...? I keep meaning to... but never get around to it. Is it worth the hype?",
-    translation: "En parlant de..., ça me rappelle - tu as essayé... ? J'ai toujours l'intention de... mais je n'arrive jamais à le faire. Ça vaut le battage médiatique ?",
-    context: "Transition naturelle vers recommandation ou nouvelle expérience",
+    english: "Speaking of [topic], is [place/thing] worth the hype?",
+    translation: "En parlant de [sujet], est-ce que [endroit/chose] vaut le coup ?",
+    context: "Pour faire une transition et demander si quelque chose de populaire est vraiment aussi bien qu'on le dit.",
     examples: [
       {
-        english: "Speaking of fitness, that reminds me - have you tried that new yoga studio downtown? I keep meaning to check it out but never get around to it. Is it worth the hype?",
-        translation: "En parlant de fitness, ça me rappelle - tu as essayé ce nouveau studio de yoga en centre-ville ? J'ai toujours l'intention d'aller voir mais je n'arrive jamais à le faire. Ça vaut le battage médiatique ?",
+        english: "Speaking of fitness, have you tried that new yoga studio downtown? I keep meaning to check it out. Is it worth the hype?",
+        translation: "En parlant de fitness, as-tu essayé ce nouveau studio de yoga en ville ? J'ai toujours l'intention d'y aller. Est-ce que ça vaut le coup ?",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "This might sound crazy, but I've been obsessed with... lately. I know it's totally not my usual thing, but... Have you ever gotten into something completely random?",
-    translation: "Ça va peut-être sonner fou, mais j'ai été obsédé par... dernièrement. Je sais que c'est totalement pas mon truc habituel, mais... Tu es déjà tombé dans quelque chose de complètement random ?",
-    context: "Partage d'un nouvel intérêt inattendu avec vulnérabilité",
+    english: "Have you ever gotten into something completely random?",
+    translation: "T'es-tu déjà passionné pour quelque chose de complètement inattendu ?",
+    context: "Pour partager un nouvel intérêt surprenant et inviter l'autre à faire de même.",
     examples: [
       {
-        english: "This might sound crazy, but I've been obsessed with pottery lately. I know it's totally not my usual tech-bro thing, but there's something therapeutic about it. Have you ever gotten into something completely random?",
-        translation: "Ça va peut-être sonner fou, mais j'ai été obsédé par la poterie dernièrement. Je sais que c'est totalement pas mon truc habituel de tech-bro, mais il y a quelque chose de thérapeutique. Tu es déjà tombé dans quelque chose de complètement random ?",
+        english: "This might sound crazy, but I've been obsessed with pottery lately. Have you ever gotten into something completely random?",
+        translation: "Ça peut paraître fou, mais je suis obsédé par la poterie ces derniers temps. T'es-tu déjà passionné pour quelque chose de complètement inattendu ?",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "I'm probably way behind on this, but what's the deal with...? Everyone's talking about it and I feel like I'm living under a rock. Can you give me the cliff notes?",
-    translation: "Je suis probablement hyper en retard sur ça, mais c'est quoi le délire avec... ? Tout le monde en parle et j'ai l'impression de vivre sous un rocher. Tu peux me faire le résumé ?",
-    context: "Admission d'ignorance sur tendance populaire avec demande d'explication simple",
+    english: "I feel like I'm living under a rock. Can you give me the cliff notes on [topic]?",
+    translation: "J'ai l'impression de vivre dans une grotte. Tu peux me faire un résumé sur [sujet] ?",
+    context: "Pour admettre qu'on n'est pas au courant d'une tendance populaire et demander une explication simple. 'Cliff notes' = un résumé.",
     examples: [
       {
-        english: "I'm probably way behind on this, but what's the deal with crypto these days? Everyone's talking about it and I feel like I'm living under a rock. Can you give me the cliff notes?",
-        translation: "Je suis probablement hyper en retard sur ça, mais c'est quoi le délire avec la crypto ces jours-ci ? Tout le monde en parle et j'ai l'impression de vivre sous un rocher. Tu peux me faire le résumé ?",
+        english: "Everyone's talking about that new show and I feel like I'm living under a rock. Can you give me the cliff notes?",
+        translation: "Tout le monde parle de cette nouvelle série et j'ai l'impression de vivre dans une grotte. Tu peux me faire un résumé ?",
       }
     ],
   },
   {
     categoryId: 58,
-    english: "Before I forget to ask - how did... go? Last time we talked you were... about it. I've been wondering how it all turned out.",
-    translation: "Avant que j'oublie de demander - comment s'est passé... ? La dernière fois qu'on s'est parlé tu étais... à ce sujet. Je me demandais comment tout ça s'est terminé.",
-    context: "Suivi attentionné d'une situation précédemment mentionnée",
+    english: "Before I forget, how did [event] go?",
+    translation: "Avant que j'oublie, comment s'est passé [événement] ?",
+    context: "Pour montrer que vous vous souvenez et vous souciez d'un événement important dans la vie de l'autre.",
     examples: [
       {
-        english: "Before I forget to ask - how did the job interview go? Last time we talked you were super nervous about it. I've been wondering how it all turned out.",
-        translation: "Avant que j'oublie de demander - comment s'est passé l'entretien d'embauche ? La dernière fois qu'on s'est parlé tu étais super nerveux à ce sujet. Je me demandais comment tout ça s'est terminé.",
+        english: "Before I forget, how did the job interview go? Last time we talked, you were super nervous about it.",
+        translation: "Avant que j'oublie, comment s'est passé l'entretien d'embauche ? La dernière fois qu'on a parlé, tu étais super nerveux.",
       }
     ],
   },

@@ -21,33 +21,41 @@ const grammarRulesB2 = [
   {
     id: 2,
     title: "Les conditionnels mixtes",
-    explanation: "Combinaison de différentes formes conditionnelles pour exprimer des situations complexes.",
+    explanation: "Combinaison de différentes formes conditionnelles pour exprimer des situations complexes, y compris avec des modaux pour des nuances temporelles et modales avancées.",
     examples: [
       { english: "If I had studied harder (past), I would have a better job now (present).", french: "Si j'avais étudié plus dur, j'aurais un meilleur emploi maintenant." },
       { english: "If I were rich (present), I would have traveled the world (past).", french: "Si j'étais riche, j'aurais voyagé à travers le monde." },
-      { english: "If she had left earlier, she would be here by now.", french: "Si elle était partie plus tôt, elle serait ici maintenant." }
+      { english: "If she had left earlier, she would be here by now.", french: "Si elle était partie plus tôt, elle serait ici maintenant." },
+      { english: "If he hadn't been driving so fast, he wouldn't be in hospital now.", french: "S'il n'avait pas conduit si vite, il ne serait pas à l'hôpital maintenant." },
+      { english: "If I were you, I would have approached the problem differently.", french: "Si j'étais toi, j'aurais abordé le problème différemment." },
+      { english: "If you had taken my advice, you might not be facing these difficulties now.", french: "Si tu avais suivi mon conseil, tu ne ferais peut-être pas face à ces difficultés maintenant." }
     ],
     rules: [
-      "Condition passée + résultat présent",
-      "Condition présente + résultat passé",
+      "Condition passée + résultat présent (Type 3 → Type 2)",
+      "Condition présente + résultat passé (Type 2 → Type 3)",
       "Mélange les structures du 2ème et 3ème conditionnel",
-      "Exprime des liens complexes entre passé et présent"
+      "Exprime des liens complexes entre passé et présent",
+      "Mélange de conditionnels avec modaux: could, might, would, should",
+      "Variations avec des modaux passés dans les propositions principales: might have been + -ing"
     ]
   },
   {
     id: 3,
-    title: "Alternatives à 'if' dans les conditionnels",
-    explanation: "Autres façons d'exprimer des conditions sans utiliser 'if'.",
+    title: "Alternatives à 'if' (Conditionnels avancés)",
+    explanation: "Découvrez des manières formelles et courantes d'exprimer des conditions sans utiliser 'if', notamment par l'inversion et avec des conjonctions spécifiques.",
     examples: [
       { english: "Should you need help, please call me.", french: "Si vous aviez besoin d'aide, appelez-moi." },
-      { english: "Were I to win the lottery, I'd buy a house.", french: "Si je gagnais à la loterie, j'achèterais une maison." },
-      { english: "Had I known earlier, I would have acted differently.", french: "Si j'avais su plus tôt, j'aurais agi différemment." }
+      { english: "Were it not for your help, I'd be lost.", french: "Sans votre aide, je serais perdu." },
+      { english: "Had I known earlier, I would have acted differently.", french: "Si j'avais su plus tôt, j'aurais agi différemment." },
+      { english: "You can go out, as long as you finish your homework.", french: "Tu peux sortir, tant que tu finis tes devoirs." },
+      { english: "I won't go unless you come with me.", french: "Je n'irai pas à moins que tu ne viennes avec moi." }
     ],
     rules: [
-      "Inversion avec should, were, had",
-      "Unless = if not",
-      "Provided/providing (that)",
-      "As long as (du moment que)"
+      "Inversion formelle : 'Should' + sujet + verbe (remplace 'if' au présent/futur)",
+      "Inversion formelle : 'Were' + sujet + 'to' + verbe (remplace 'if' au prétérit)",
+      "Inversion formelle : 'Had' + sujet + participe passé (remplace 'if' au plus-que-parfait)",
+      "Conjonctions : 'Provided/providing (that)', 'as long as' (tant que)",
+      "Conjonctions : 'Unless' (à moins que / si... ne... pas)"
     ]
   },
   {
@@ -276,22 +284,6 @@ const grammarRulesB2 = [
   },
   {
     id: 18,
-    title: "Inversion conditionnelle",
-    explanation: "Inversion dans les structures conditionnelles alternatives.",
-    examples: [
-      { english: "Should you need any help, call me.", french: "Si vous aviez besoin d'aide, appelez-moi." },
-      { english: "Were it not for your help, I'd be lost.", french: "Sans votre aide, je serais perdu." },
-      { english: "Had I known, I would have come earlier.", french: "Si j'avais su, je serais venu plus tôt." }
-    ],
-    rules: [
-      "Should + sujet + verbe (pour if + present)",
-      "Were + sujet + to-infinitive (pour if + past)",
-      "Had + sujet + past participle (pour if + past perfect)",
-      "Utilisé dans un style formel et écrit"
-    ]
-  },
-  {
-    id: 19,
     title: "It patterns (structures avec 'it')",
     explanation: "Différentes structures utilisant 'it' comme sujet formel.",
     examples: [
@@ -307,7 +299,7 @@ const grammarRulesB2 = [
     ]
   },
   {
-    id: 20,
+    id: 19,
     title: "Connecteurs de discours avancés",
     explanation: "Mots de liaison sophistiqués pour structurer le discours.",
     examples: [
@@ -323,7 +315,7 @@ const grammarRulesB2 = [
     ]
   },
   {
-    id: 21,
+    id: 20,
     title: "Négations avancées",
     explanation: "Structures de négation complexes et leurs nuances.",
     examples: [
@@ -339,7 +331,7 @@ const grammarRulesB2 = [
     ]
   },
   {
-    id: 22,
+    id: 21,
     title: "Modaux pour critiques et reproches",
     explanation: "Utiliser les modaux pour exprimer critiques et reproches.",
     examples: [
@@ -355,7 +347,7 @@ const grammarRulesB2 = [
     ]
   },
   {
-    id: 23,
+    id: 22,
     title: "Adjectifs avec prépositions",
     explanation: "Adjectifs suivis de prépositions spécifiques et leur usage dans des contextes avancés.",
     examples: [
@@ -371,7 +363,7 @@ const grammarRulesB2 = [
     ]
   },
   {
-    id: 24,
+    id: 23,
     title: "Passive infinitive et gerund",
     explanation: "Utilisation du passif avec les infinitifs et les gérondifs.",
     examples: [
@@ -387,7 +379,7 @@ const grammarRulesB2 = [
     ]
   },
   {
-    id: 25,
+    id: 24,
     title: "Emphasis et Hedging",
     explanation: "Techniques pour souligner ou atténuer des affirmations.",
     examples: [
@@ -403,7 +395,7 @@ const grammarRulesB2 = [
     ]
   },
   {
-    id: 26,
+    id: 25,
     title: "Structures causatives détaillées",
     explanation: "Utilisation avancée des structures causatives dans différents contextes.",
     examples: [
@@ -419,7 +411,7 @@ const grammarRulesB2 = [
     ]
   },
   {
-    id: 27,
+    id: 26,
     title: "Expressions idiomatiques avec prépositions",
     explanation: "Expressions figées contenant des prépositions avec des sens idiomatiques.",
     examples: [
@@ -432,22 +424,6 @@ const grammarRulesB2 = [
       "Expressions de situation: in trouble, out of luck, at a loss, on the verge of",
       "Expressions de relation: on good terms with, at loggerheads with, in touch with",
       "Expressions de temps: on time, in advance, at the last minute, for ages"
-    ]
-  },
-  {
-    id: 28,
-    title: "Conditionnels mixtes complexes",
-    explanation: "Conditionnels mixtes avec des nuances temporelles et modales complexes.",
-    examples: [
-      { english: "If he hadn't been driving so fast, he wouldn't be in hospital now.", french: "S'il n'avait pas conduit si vite, il ne serait pas à l'hôpital maintenant." },
-      { english: "If I were you, I would have approached the problem differently.", french: "Si j'étais toi, j'aurais abordé le problème différemment." },
-      { english: "If you had taken my advice, you might not be facing these difficulties now.", french: "Si tu avais suivi mon conseil, tu ne ferais peut-être pas face à ces difficultés maintenant." }
-    ],
-    rules: [
-      "Mélange de conditionnels avec modaux: could, might, would, should",
-      "Type 3 → Type 2: condition passée → résultat présent",
-      "Type 2 → Type 3: condition présente → résultat passé",
-      "Variations avec des modaux passés dans les propositions principales: might have been + -ing"
     ]
   }
 ];

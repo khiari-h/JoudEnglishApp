@@ -3,121 +3,181 @@
 const phrasalVerbsContext = [
   {
     categoryId: 61,
-    english: "I'm trying to phase out... from my routine, but it's harder than I thought. Every time I think I've cut back on..., I end up falling back into...",
-    translation: "J'essaie d'éliminer progressivement... de ma routine, mais c'est plus dur que je pensais. Chaque fois que je pense avoir réduit..., je finis par retomber dans...",
-    context: "Changement d'habitude difficile avec rechutes",
+    english: "to phase something out",
+    translation: "éliminer progressivement quelque chose",
+    context: "Pour décrire le processus d'arrêt ou de suppression graduelle de quelque chose.",
     examples: [
       {
-        english: "I'm trying to phase out social media from my routine, but it's harder than I thought. Every time I think I've cut back on scrolling, I end up falling back into old patterns.",
-        translation: "J'essaie d'éliminer progressivement les réseaux sociaux de ma routine, mais c'est plus dur que je pensais. Chaque fois que je pense avoir réduit le défilement, je finis par retomber dans les anciens schémas.",
+        english: "The company is trying to phase out old software to improve security.",
+        translation: "L'entreprise essaie d'éliminer progressivement les anciens logiciels pour améliorer la sécurité.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "The whole situation really got to me, but I'm trying to bounce back from... I can't let... drag me down anymore, so I'm working on turning around...",
-    translation: "Toute la situation m'a vraiment atteint, mais j'essaie de rebondir après... Je ne peux pas laisser... me tirer vers le bas plus longtemps, alors je travaille à retourner...",
-    context: "Récupération émotionnelle après difficulté avec effort de redressement",
+    english: "to cut back on something",
+    translation: "réduire sa consommation de quelque chose",
+    context: "Pour indiquer une réduction volontaire de la quantité de quelque chose.",
     examples: [
       {
-        english: "The whole situation really got to me, but I'm trying to bounce back from this setback. I can't let one failure drag me down anymore, so I'm working on turning around my mindset.",
-        translation: "Toute la situation m'a vraiment atteint, mais j'essaie de rebondir après ce revers. Je ne peux pas laisser un échec me tirer vers le bas plus longtemps, alors je travaille à retourner mon état d'esprit.",
+        english: "I'm trying to cut back on sugar, but it's harder than I thought.",
+        translation: "J'essaie de réduire ma consommation de sucre, mais c'est plus difficile que je ne le pensais.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "I used to look up to... but now I see right through... It's like they've sold out and given up on... They really let me down.",
-    translation: "J'avais l'habitude d'admirer... mais maintenant je vois clair dans... C'est comme s'ils s'étaient vendus et avaient abandonné... Ils m'ont vraiment déçu.",
-    context: "Désillusion face à une figure admirée qui a changé",
+    english: "to fall back into (a habit)",
+    translation: "retomber dans (une habitude)",
+    context: "Pour décrire le retour à une ancienne habitude, souvent négative, après avoir essayé d'arrêter.",
     examples: [
       {
-        english: "I used to look up to that politician but now I see right through their promises. It's like they've sold out and given up on their principles. They really let me down.",
-        translation: "J'avais l'habitude d'admirer ce politicien mais maintenant je vois clair dans leurs promesses. C'est comme s'ils s'étaient vendus et avaient abandonné leurs principes. Ils m'ont vraiment déçu.",
+        english: "Every time I try to quit, I end up falling back into my old patterns.",
+        translation: "Chaque fois que j'essaie d'arrêter, je finis par retomber dans mes anciennes habitudes.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "We need to hash out... before moving forward. I don't want to brush over... or sweep... under the rug. Let's face up to... and sort this out properly.",
-    translation: "On doit débattre de... avant d'avancer. Je ne veux pas survoler... ou balayer... sous le tapis. Affrontons... et réglons ça proprement.",
-    context: "Approche directe pour résoudre un conflit ou problème",
+    english: "to bounce back from something",
+    translation: "rebondir après quelque chose",
+    context: "Pour décrire la capacité à se remettre d'une difficulté ou d'un échec.",
     examples: [
       {
-        english: "We need to hash out these disagreements before moving forward. I don't want to brush over important issues or sweep problems under the rug. Let's face up to reality and sort this out properly.",
-        translation: "On doit débattre de ces désaccords avant d'avancer. Je ne veux pas survoler les problèmes importants ou balayer les problèmes sous le tapis. Affrontons la réalité et réglons ça proprement.",
+        english: "The whole situation really got to me, but I'm trying to bounce back from this setback.",
+        translation: "Toute la situation m'a vraiment affecté, mais j'essaie de rebondir après ce revers.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "I'm really trying to build up... but it's tough when... keeps bringing me down. I need to break away from... and branch out into...",
-    translation: "J'essaie vraiment de développer... mais c'est dur quand... continue de me déprimer. J'ai besoin de rompre avec... et me diversifier dans...",
-    context: "Effort de développement personnel malgré influences négatives",
+    english: "to drag someone down",
+    translation: "tirer quelqu'un vers le bas",
+    context: "Pour décrire l'effet négatif et démoralisant que quelqu'un ou quelque chose a sur vous.",
     examples: [
       {
-        english: "I'm really trying to build up my confidence but it's tough when negativity keeps bringing me down. I need to break away from toxic people and branch out into new social circles.",
-        translation: "J'essaie vraiment de développer ma confiance mais c'est dur quand la négativité continue de me déprimer. J'ai besoin de rompre avec les gens toxiques et me diversifier dans de nouveaux cercles sociaux.",
+        english: "I can't let one failure drag me down anymore.",
+        translation: "Je ne peux plus laisser un échec me tirer vers le bas.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "Things have been piling up lately and I'm falling behind on... I need to buckle down and catch up on... before everything gets out of hand.",
-    translation: "Les choses se sont accumulées dernièrement et je prends du retard sur... Je dois me mettre au travail et rattraper... avant que tout dérape.",
-    context: "Accumulation de tâches nécessitant effort intensif de rattrapage",
+    english: "to look up to someone",
+    translation: "admirer quelqu'un",
+    context: "Pour exprimer le respect et l'admiration que vous avez pour une personne.",
     examples: [
       {
-        english: "Things have been piling up lately and I'm falling behind on important deadlines. I need to buckle down and catch up on my projects before everything gets out of hand.",
-        translation: "Les choses se sont accumulées dernièrement et je prends du retard sur des échéances importantes. Je dois me mettre au travail et rattraper mes projets avant que tout dérape.",
+        english: "I used to look up to that politician, but they really let me down.",
+        translation: "J'admirais ce politicien, mais il m'a vraiment déçu.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "I'm trying to cut down on... and give up... altogether, but it's hard to stick to... when... keeps coming up. I always end up giving in to...",
-    translation: "J'essaie de réduire... et d'arrêter... complètement, mais c'est dur de s'en tenir à... quand... continue d'arriver. Je finis toujours par céder à...",
-    context: "Lutte contre mauvaises habitudes avec tentations récurrentes",
+    english: "to see right through someone/something",
+    translation: "voir clair dans le jeu de quelqu'un/quelque chose",
+    context: "Pour indiquer que vous comprenez les véritables intentions ou la vraie nature de quelqu'un, malgré les apparences.",
     examples: [
       {
-        english: "I'm trying to cut down on junk food and give up smoking altogether, but it's hard to stick to healthy habits when stress keeps coming up. I always end up giving in to old patterns.",
-        translation: "J'essaie de réduire la junk food et d'arrêter de fumer complètement, mais c'est dur de s'en tenir aux habitudes saines quand le stress continue d'arriver. Je finis toujours par céder aux anciens schémas.",
+        english: "I see right through their promises now; they've sold out.",
+        translation: "Je vois clair dans leurs promesses maintenant ; ils se sont vendus.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "I was counting on... to come through, but they backed out at the last minute. Now I have to figure out... and make up for... somehow.",
-    translation: "Je comptais sur... pour assurer, mais ils se sont retirés à la dernière minute. Maintenant je dois trouver comment... et compenser... d'une façon ou d'une autre.",
-    context: "Déception suite à désistement avec nécessité de solution alternative",
+    english: "to hash something out",
+    translation: "débattre de quelque chose en détail",
+    context: "Pour discuter d'un problème ou d'un désaccord de manière approfondie afin de trouver une solution.",
     examples: [
       {
-        english: "I was counting on my business partner to come through, but they backed out at the last minute. Now I have to figure out the financing and make up for lost time somehow.",
-        translation: "Je comptais sur mon partenaire commercial pour assurer, mais il s'est retiré à la dernière minute. Maintenant je dois trouver comment financer et compenser le temps perdu d'une façon ou d'une autre.",
+        english: "We need to hash out these disagreements before moving forward.",
+        translation: "Nous devons débattre de ces désaccords avant d'avancer.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "I'm trying to move on from... but I keep dwelling on... I know I should let go of... and focus on... but it's easier said than done.",
-    translation: "J'essaie de passer à autre chose après... mais je continue de ressasser... Je sais que je devrais lâcher prise sur... et me concentrer sur... mais c'est plus facile à dire qu'à faire.",
-    context: "Difficulté à surmonter le passé malgré volonté de progresser",
+    english: "to sweep something under the rug",
+    translation: "mettre quelque chose sous le tapis",
+    context: "Pour ignorer ou cacher un problème dans l'espoir qu'il soit oublié.",
     examples: [
       {
-        english: "I'm trying to move on from my ex but I keep dwelling on what went wrong. I know I should let go of the past and focus on my future but it's easier said than done.",
-        translation: "J'essaie de passer à autre chose après mon ex mais je continue de ressasser ce qui a mal tourné. Je sais que je devrais lâcher prise sur le passé et me concentrer sur mon avenir mais c'est plus facile à dire qu'à faire.",
+        english: "I don't want to sweep these problems under the rug. Let's face up to reality.",
+        translation: "Je ne veux pas mettre ces problèmes sous le tapis. Affrontons la réalité.",
       }
     ],
   },
   {
     categoryId: 61,
-    english: "I've been putting off... for too long, but I can't keep putting it off. I need to own up to... and follow through on... instead of bailing out when...",
-    translation: "J'ai reporté... trop longtemps, mais je ne peux pas continuer à le reporter. Je dois assumer... et aller au bout de... au lieu de me défiler quand...",
-    context: "Reconnaissance de procrastination avec engagement à l'action responsable",
+    english: "to buckle down",
+    translation: "se mettre sérieusement au travail",
+    context: "Pour commencer à travailler dur et avec concentration, souvent après une période de procrastination.",
     examples: [
       {
-        english: "I've been putting off this difficult conversation for too long, but I can't keep putting it off. I need to own up to my mistakes and follow through on my promises instead of bailing out when things get tough.",
-        translation: "J'ai reporté cette conversation difficile trop longtemps, mais je ne peux pas continuer à la reporter. Je dois assumer mes erreurs et aller au bout de mes promesses au lieu de me défiler quand les choses deviennent dures.",
+        english: "I'm falling behind on deadlines, so I need to buckle down and catch up.",
+        translation: "Je prends du retard sur les échéances, donc je dois me mettre au travail et rattraper mon retard.",
+      }
+    ],
+  },
+  {
+    categoryId: 61,
+    english: "to count on someone/something",
+    translation: "compter sur quelqu'un/quelque chose",
+    context: "Pour se fier à quelqu'un ou quelque chose, en ayant confiance qu'il tiendra ses promesses.",
+    examples: [
+      {
+        english: "I was counting on my partner to come through, but they backed out at the last minute.",
+        translation: "Je comptais sur mon partenaire pour assurer, mais il s'est désisté à la dernière minute.",
+      }
+    ],
+  },
+  {
+    categoryId: 61,
+    english: "to back out",
+    translation: "se désister / se retirer",
+    context: "Pour décider de ne pas faire quelque chose que vous aviez accepté de faire.",
+    examples: [
+      {
+        english: "He backed out of the deal at the last minute, which caused a lot of problems.",
+        translation: "Il s'est retiré de l'accord à la dernière minute, ce qui a causé beaucoup de problèmes.",
+      }
+    ],
+  },
+  {
+    categoryId: 61,
+    english: "to dwell on something",
+    translation: "ressasser quelque chose",
+    context: "Pour penser ou parler de quelque chose de négatif pendant trop longtemps.",
+    examples: [
+      {
+        english: "I'm trying to move on, but I keep dwelling on what went wrong.",
+        translation: "J'essaie de passer à autre chose, mais je continue de ressasser ce qui n'a pas fonctionné.",
+      }
+    ],
+  },
+  {
+    categoryId: 61,
+    english: "to put something off",
+    translation: "reporter / remettre à plus tard",
+    context: "Pour retarder une tâche ou une décision, souvent parce qu'elle est désagréable.",
+    examples: [
+      {
+        english: "I've been putting off this difficult conversation for too long.",
+        translation: "Je remets cette conversation difficile à plus tard depuis trop longtemps.",
+      }
+    ],
+  },
+  {
+    categoryId: 61,
+    english: "to own up to something",
+    translation: "assumer / reconnaître quelque chose",
+    context: "Pour admettre que vous avez fait une erreur ou quelque chose de mal.",
+    examples: [
+      {
+        english: "I need to own up to my mistakes and follow through on my promises.",
+        translation: "Je dois assumer mes erreurs et tenir mes promesses.",
       }
     ],
   },

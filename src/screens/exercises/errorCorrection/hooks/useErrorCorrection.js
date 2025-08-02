@@ -17,6 +17,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
   const [completedExercises, setCompletedExercises] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
@@ -42,8 +43,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
   const totalExercisesInCategory = exercises.length;
   
   // =================== PERSISTENCE ===================
-  const progressKey = `${level}`;
-  const STORAGE_KEY = `error_correction_${progressKey}`;
+  const STORAGE_KEY = `error_correction_${level}`;
 
   // Load data from storage
   useEffect(() => {
@@ -65,7 +65,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
       }
     };
     loadData();
-  }, [progressKey]);
+  }, [STORAGE_KEY]); // Dépendance plus explicite et cohérente
 
   // Save data to storage
   const saveData = useCallback(async () => {
@@ -272,6 +272,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
       const nextCategoryId = findNextUncompletedCategory();
       if (nextCategoryId === null) {
         // All done!
+        setIsFinished(true);
         const completionMessage = `Félicitations ! Vous avez terminé tous les exercices de correction d'erreurs ${level} !`;
         Alert.alert("Félicitations", completionMessage);
         return { completed: true };
@@ -393,6 +394,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
     showFeedback,
     isCorrect,
     showResults,
+    isFinished,
     completedExercises,
     loaded,
     showDetailedProgress,
