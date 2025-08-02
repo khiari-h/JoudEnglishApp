@@ -1,53 +1,63 @@
 // src/screens/Dashboard/components/LearningProgress/index.js
-import { useContext, useCallback, useMemo } from "react";
+import React, { useContext, useCallback, useMemo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import PropTypes from "prop-types";
+
 import Card from "../../../../components/ui/Card";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import { LANGUAGE_LEVELS } from "../../../../utils/constants";
 import styles from "./style";
 
 /**
- * Progression d'apprentissage - VERSION SIMPLE
- * ✅ Clic cercle = change niveau visuel seulement  
- * ✅ Seul le niveau en cours est coloré
- * ✅ Bouton Explorer = navigation vers exercices
+ * Cercle pour chaque niveau avec gestion du clic
  */
-// Nouvelle version de LevelsCircleRow pour éviter la création de fonction inline
-const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLevelDisplay, colors, primaryColor, localStyles }) => {
-  // Mémoriser les handlers pour chaque niveau
+const LevelsCircleRow = ({
+  levels,
+  currentLevel,
+  onLevelPress,
+  getLevelLabel,
+  colors,
+  primaryColor,
+  styles,
+}) => {
+  // Memoriser handlers pour éviter re-création inline
   const handlers = useMemo(() => {
     const map = {};
-    displayLevels.forEach(level => {
-      map[level.id] = () => handleLevelPress(level.id);
+    levels.forEach((level) => {
+      map[level.id] = () => onLevelPress(level.id);
     });
     return map;
-  }, [displayLevels, handleLevelPress]);
+  }, [levels, onLevelPress]);
 
   return (
-    <View style={localStyles.levelsContainer}>
-      {displayLevels.map((level) => {
+    <View style={styles.levelsContainer}>
+      {levels.map((level) => {
         const isActive = level.id === currentLevel;
-        const circleStyle = [localStyles.levelCircle];
-        const textStyle = [localStyles.levelText];
-        if (isActive) {
-          circleStyle.push([
-            localStyles.activeLevelCircle,
-            { backgroundColor: level.color || primaryColor }
-          ]);
-          textStyle.push(localStyles.activeLevelText);
-        } else {
-          circleStyle.push(localStyles.futureLevelCircle);
-          textStyle.push([localStyles.futureLevelText, { color: colors.textSecondary }]);
-        }
         return (
           <TouchableOpacity
             key={level.id}
-            style={localStyles.levelButton}
+            style={styles.levelButton}
             onPress={handlers[level.id]}
             activeOpacity={0.7}
           >
-            <View style={circleStyle}>
-              <Text style={textStyle}>{getLevelDisplay(level.id)}</Text>
+            <View
+              style={[
+                styles.levelCircle,
+                isActive
+                  ? [styles.activeLevelCircle, { backgroundColor: level.color || primaryColor }]
+                  : styles.futureLevelCircle,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.levelText,
+                  isActive
+                    ? styles.activeLevelText
+                    : [styles.futureLevelText, { color: colors.textSecondary }],
+                ]}
+              >
+                {getLevelLabel(level.id)}
+              </Text>
             </View>
           </TouchableOpacity>
         );
@@ -56,112 +66,169 @@ const LevelsCircleRow = ({ displayLevels, currentLevel, handleLevelPress, getLev
   );
 };
 
-const GlobalProgressBar = ({ globalProgress, primaryColor, localStyles, colors }) => (
-  <View style={localStyles.globalProgressContainer}>
-    <View style={[localStyles.globalProgressTrack, { backgroundColor: `${primaryColor}15` }]}> 
-      <View 
+LevelsCircleRow.propTypes = {
+  levels: PropTypes.array.isRequired,
+  currentLevel: PropTypes.string.isRequired,
+  onLevelPress: PropTypes.func.isRequired,
+  getLevelLabel: PropTypes.func.isRequired,
+  colors: PropTypes.object.isRequired,
+  primaryColor: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+/**
+ * Barre de progression globale
+ */
+const GlobalProgressBar = ({ progress, primaryColor, colors, styles }) => (
+  <View style={styles.globalProgressContainer}>
+    <View style={[styles.globalProgressTrack, { backgroundColor: `${primaryColor}15` }]}>
+      <View
         style={[
-          localStyles.globalProgressFill,
-          { 
-            width: `${Math.min(globalProgress, 100)}%`,
-            backgroundColor: primaryColor
-          }
-        ]} 
+          styles.globalProgressFill,
+          {
+            width: `${Math.min(progress, 100)}%`,
+            backgroundColor: primaryColor,
+          },
+        ]}
       />
     </View>
-    <Text style={[localStyles.progressLabel, { color: colors.textSecondary }]}>Progression globale</Text>
+    <Text style={[styles.progressLabel, { color: colors.textSecondary }]}>Progression globale</Text>
   </View>
 );
 
-// Sous-composant ProgressHeader
-const ProgressHeader = ({ currentLevelInfo, currentLevelDisplay, globalProgress, primaryColor, colors, localStyles }) => (
-  <View style={localStyles.header}>
-    <View style={localStyles.progressInfo}>
-      <Text style={[localStyles.progressTitle, { color: colors.text }]}>
-        {currentLevelInfo.title || `Niveau ${currentLevelDisplay}`}
+GlobalProgressBar.propTypes = {
+  progress: PropTypes.number.isRequired,
+  primaryColor: PropTypes.string.isRequired,
+  colors: PropTypes.object.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+/**
+ * En-tête avec infos du niveau courant
+ */
+const ProgressHeader = ({ levelInfo, levelLabel, progress, primaryColor, colors, styles }) => (
+  <View style={styles.header}>
+    <View style={styles.progressInfo}>
+      <Text style={[styles.progressTitle, { color: colors.text }]}>
+        {levelInfo.title || `Niveau ${levelLabel}`}
       </Text>
-      <Text style={[localStyles.progressSubtitle, { color: colors.textSecondary }]}>
-        Continuez votre apprentissage {currentLevelInfo.icon}
+      <Text style={[styles.progressSubtitle, { color: colors.textSecondary }]}>
+        Continuez votre apprentissage {levelInfo.icon}
       </Text>
     </View>
-    <View style={localStyles.progressBadge}>
-      <Text style={[localStyles.progressPercentage, { color: primaryColor }]}>
-        {globalProgress}%
-      </Text>
+    <View style={styles.progressBadge}>
+      <Text style={[styles.progressPercentage, { color: primaryColor }]}>{progress}%</Text>
     </View>
   </View>
 );
 
-// Refactor LearningProgress pour utiliser les sous-composants
+ProgressHeader.propTypes = {
+  levelInfo: PropTypes.object.isRequired,
+  levelLabel: PropTypes.string.isRequired,
+  progress: PropTypes.number.isRequired,
+  primaryColor: PropTypes.string.isRequired,
+  colors: PropTypes.object.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+/**
+ * Composant principal LearningProgress
+ */
 const LearningProgress = ({
-  levels = [],
-  currentLevel = "1",
-  onSelectLevel, // Pour navigation vers exercices
-  onChangeLevelVisual, // Pour changer niveau visuel seulement
-  primaryColor = "#3B82F6",
-  globalProgress = 0,
+  levels,
+  currentLevel,
+  onSelectLevel,
+  onChangeLevelVisual,
+  primaryColor,
+  globalProgress,
 }) => {
-  const themeContext = useContext(ThemeContext);
-  const colors = themeContext?.colors || {
-    surface: "#FFFFFF",
-    text: "#1F2937",
-    textSecondary: "#6B7280",
+  const { colors: themeColors = {} } = useContext(ThemeContext) || {};
+
+  const colors = {
+    surface: themeColors.surface || "#FFFFFF",
+    text: themeColors.text || "#1F2937",
+    textSecondary: themeColors.textSecondary || "#6B7280",
   };
 
-  // Générer les niveaux par défaut si pas fournis
-  const defaultLevels = Object.keys(LANGUAGE_LEVELS).map((levelKey) => ({
-    id: levelKey,
-    color: LANGUAGE_LEVELS[levelKey].color,
-  }));
+  // Si pas de niveaux fournis, prendre ceux par défaut
+  const effectiveLevels = levels.length
+    ? levels
+    : Object.entries(LANGUAGE_LEVELS).map(([id, data]) => ({
+        id,
+        color: data.color,
+      }));
 
-  const displayLevels = levels.length > 0 ? levels : defaultLevels;
+  const currentLevelInfo = LANGUAGE_LEVELS[currentLevel] || LANGUAGE_LEVELS["1"];
+  const getLevelLabel = (id) => (id === "bonus" ? "B" : id);
 
-  // Info du niveau actuel
-  const getCurrentLevelInfo = () => {
-    return LANGUAGE_LEVELS[currentLevel] || LANGUAGE_LEVELS["1"];
-  };
+  // Handler clique sur cercle (changement visuel)
+  const handleLevelPress = useCallback(
+    (levelId) => {
+      if (onChangeLevelVisual) onChangeLevelVisual(levelId);
+    },
+    [onChangeLevelVisual]
+  );
 
-  // Affichage du niveau (1,2,3,4,5,6 ou B pour bonus)
-  const getLevelDisplay = (levelId) => {
-    return levelId === "bonus" ? "B" : levelId;
-  };
-
-  const currentLevelInfo = getCurrentLevelInfo();
-  const currentLevelDisplay = getLevelDisplay(currentLevel);
-
-  // ========== GESTION SIMPLE ==========
-  
-  // Clic sur cercle niveau = change affichage visuel seulement
-  const handleLevelPress = useCallback((levelId) => () => {
-    if (onChangeLevelVisual) {
-      onChangeLevelVisual(levelId);
-    }
-  }, [onChangeLevelVisual]);
-
-  // Clic sur bouton Explorer = navigation vers exercices du niveau courant
+  // Handler clique sur bouton explorer (navigation)
   const handleExplorePress = useCallback(() => {
-    if (onSelectLevel) {
-      onSelectLevel(currentLevel);
-    }
+    if (onSelectLevel) onSelectLevel(currentLevel);
   }, [onSelectLevel, currentLevel]);
 
   return (
     <View style={styles.container}>
       <Text style={[styles.sectionTitle, { color: colors.text }]}>🏆 Progression générale</Text>
       <Card style={[styles.card, { backgroundColor: colors.surface }]}>
-        <ProgressHeader currentLevelInfo={currentLevelInfo} currentLevelDisplay={currentLevelDisplay} globalProgress={globalProgress} primaryColor={primaryColor} colors={colors} localStyles={styles} />
-        <GlobalProgressBar globalProgress={globalProgress} primaryColor={primaryColor} localStyles={styles} colors={colors} />
-        <LevelsCircleRow displayLevels={displayLevels} currentLevel={currentLevel} handleLevelPress={handleLevelPress} getLevelDisplay={getLevelDisplay} colors={colors} primaryColor={primaryColor} localStyles={styles} />
+        <ProgressHeader
+          levelInfo={currentLevelInfo}
+          levelLabel={getLevelLabel(currentLevel)}
+          progress={globalProgress}
+          primaryColor={primaryColor}
+          colors={colors}
+          styles={styles}
+        />
+        <GlobalProgressBar
+          progress={globalProgress}
+          primaryColor={primaryColor}
+          colors={colors}
+          styles={styles}
+        />
+        <LevelsCircleRow
+          levels={effectiveLevels}
+          currentLevel={currentLevel}
+          onLevelPress={handleLevelPress}
+          getLevelLabel={getLevelLabel}
+          colors={colors}
+          primaryColor={primaryColor}
+          styles={styles}
+        />
         <TouchableOpacity
           style={[styles.actionButton, { borderColor: primaryColor }]}
           onPress={handleExplorePress}
           activeOpacity={0.7}
         >
-          <Text style={[styles.actionButtonText, { color: primaryColor }]}>Explorer le niveau {currentLevelDisplay}</Text>
+          <Text style={[styles.actionButtonText, { color: primaryColor }]}>
+            Explorer le niveau {getLevelLabel(currentLevel)}
+          </Text>
         </TouchableOpacity>
       </Card>
     </View>
   );
+};
+
+LearningProgress.propTypes = {
+  levels: PropTypes.array,
+  currentLevel: PropTypes.string,
+  onSelectLevel: PropTypes.func,
+  onChangeLevelVisual: PropTypes.func,
+  primaryColor: PropTypes.string,
+  globalProgress: PropTypes.number,
+};
+
+LearningProgress.defaultProps = {
+  levels: [],
+  currentLevel: "1",
+  primaryColor: "#3B82F6",
+  globalProgress: 0,
 };
 
 export default LearningProgress;

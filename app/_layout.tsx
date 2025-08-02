@@ -6,7 +6,7 @@ import { Stack } from "expo-router";
 import "react-native-reanimated";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import AppProvider from "../src/contexts/AppProvider"; // ← CHANGÉ: AppProvider au lieu de ProgressProvider
+import AppProvider from "../src/contexts/AppProvider";
 import useRouteActivityTracker from "../src/hooks/useRouteActivityTracker";
 
 export default function RootLayout() {
@@ -18,7 +18,9 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      hideAsync();
+      hideAsync().catch(err =>
+        console.warn("[RootLayout] hideAsync failed:", err)
+      );
     }
   }, [loaded]);
 
@@ -29,9 +31,9 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <AppProvider>
-        {/* ← CHANGÉ: AppProvider qui inclut ThemeProvider + SettingsProvider + ProgressProvider */}
+        {/* AppProvider inclut ThemeProvider + SettingsProvider + ProgressProvider */}
         <Stack screenOptions={{ headerShown: false }} />
-        <StatusBar style="auto" /> {/* skipcq: JS-0473 - Expo StatusBar attend une string, pas un objet */}
+        <StatusBar style="auto" />
       </AppProvider>
     </SafeAreaProvider>
   );

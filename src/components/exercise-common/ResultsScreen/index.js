@@ -227,11 +227,11 @@ const DetailedResultsSection = ({ showDetailedResults, detailedResults, localSty
     <View style={localStyles.detailedResultsContainer}>
       <Text style={localStyles.detailedResultsTitle}>Détail des réponses</Text>
 
-      {detailedResults.map((result) => (
+      {detailedResults.map((result, index) => (
         <View key={result.question} style={localStyles.detailedResultItem}>
           <View style={localStyles.questionHeader}>
             <Text style={localStyles.questionNumber}>
-              Question {detailedResults.indexOf(result) + 1}
+              Question {index + 1}
             </Text>
             <Ionicons
               name={
@@ -285,6 +285,5 @@ const DetailedResultsSection = ({ showDetailedResults, detailedResults, localSty
     </View>
   )
 );
-
 export default ResultsScreen;
 

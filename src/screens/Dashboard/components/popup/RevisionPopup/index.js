@@ -1,4 +1,4 @@
-import React, { useContext, useCallback, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Modal, Animated } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemeContext } from '../../../../../contexts/ThemeContext';
@@ -15,51 +15,63 @@ const PopupHeader = ({ colors, totalWordsLearned, localStyles }) => (
   </View>
 );
 
-// ✅ COMPOSANT UNIFIÉ - avec effet visuel pour le principal
-const UniformChoice = ({ choice, onPress, localStyles, isPrimary = false }) => (
-  <TouchableOpacity
-    style={[
-      localStyles.choiceButton,
-      isPrimary && localStyles.primaryChoiceModifier,
-    ]}
-    onPress={onPress}
-    activeOpacity={0.7}
-  >
-    <View style={[
-      localStyles.choiceIconContainer, 
-      { backgroundColor: choice.color + '20' },
-      // ✅ Icône plus marquée pour le principal
-      isPrimary && { 
-        backgroundColor: choice.color + '30',
-        borderWidth: 1,
-        borderColor: choice.color + '40',
-      }
-    ]}>
-      <Ionicons 
-        name={choice.iconName} 
-        size={isPrimary ? 22 : 20} // ✅ Icône plus grosse pour le principal
-        color={choice.color} 
-      />
-    </View>
-    <View style={localStyles.choiceTextContainer}>
-      <Text style={[
-        localStyles.choiceLabel,
-        isPrimary && localStyles.primaryChoiceLabel
+// Composant choix uniforme
+const OPACITY_LEVELS = {
+  normal: '20',
+  primary: '30',
+  primaryBorder: '40',
+};
+
+const UniformChoice = React.memo(({ choice, onPress, localStyles, isPrimary = false }) => {
+  const primarySubtitleStyle = React.useMemo(() => ({
+    color: '#047857',
+    fontWeight: '600'
+  }), []);
+
+  return (
+    <TouchableOpacity
+      style={[
+        localStyles.choiceButton,
+        isPrimary && localStyles.primaryChoiceModifier,
+      ]}
+      onPress={onPress}
+      activeOpacity={0.7}
+    >
+      <View style={[
+        localStyles.choiceIconContainer,
+        { backgroundColor: choice.color + OPACITY_LEVELS.normal },
+        isPrimary && {
+          backgroundColor: choice.color + OPACITY_LEVELS.primary,
+          borderWidth: 1,
+          borderColor: choice.color + OPACITY_LEVELS.primaryBorder,
+        }
       ]}>
-        {choice.label}
-        {isPrimary && ' ⚡'} {/* ✅ Petit emoji pour le principal */}
-      </Text>
-      {choice.subtitle && (
+        <Ionicons
+          name={choice.iconName}
+          size={isPrimary ? 22 : 20}
+          color={choice.color}
+        />
+      </View>
+      <View style={localStyles.choiceTextContainer}>
         <Text style={[
-          localStyles.choiceSubtitle,
-          isPrimary && { color: '#047857', fontWeight: '600' } // ✅ Subtitle plus foncé pour le principal
+          localStyles.choiceLabel,
+          isPrimary && localStyles.primaryChoiceLabel
         ]}>
-          {choice.subtitle}
+          {choice.label}
+          {isPrimary && ' ⚡'}
         </Text>
-      )}
-    </View>
-  </TouchableOpacity>
-);
+        {choice.subtitle && (
+          <Text style={[
+            localStyles.choiceSubtitle,
+            isPrimary && primarySubtitleStyle
+          ]}>
+            {choice.subtitle}
+          </Text>
+        )}
+      </View>
+    </TouchableOpacity>
+  );
+});
 
 const RevisionPopup = ({
   visible = false,
@@ -74,7 +86,8 @@ const RevisionPopup = ({
     text: "#1F2937",
     textSecondary: "#6B7280",
     primary: "#10B981",
-    accent: "#3B82F6"
+    accent: "#3B82F6",
+    warning: "#F59E0B",
   };
 
   const scaleAnim = useRef(new Animated.Value(0.95)).current;
@@ -95,34 +108,35 @@ const RevisionPopup = ({
           useNativeDriver: true,
         }),
       ]).start();
+    } else {
+      scaleAnim.setValue(0.95);
+      opacityAnim.setValue(0);
     }
-  }, [visible]);
+  }, [visible, scaleAnim, opacityAnim]);
 
-  const handleChoicePress = useCallback((id) => () => onChoice?.(id), [onChoice]);
-
-  // ✅ TOUTES LES OPTIONS avec le même format
+  // Liste des choix hors du useEffect !
   const allChoices = [
     {
       id: 'now',
       iconName: 'flash-outline',
       label: `Réviser (${questionsCount} questions)`,
       subtitle: 'Testez vos connaissances maintenant',
-      color: colors?.primary || '#10B981',
-      isPrimary: true, // ✅ Flag pour styling subtil
+      color: colors.primary,
+      isPrimary: true,
     },
     {
       id: 'later_50',
       iconName: 'time-outline',
       label: 'Plus tard (50 mots)',
       subtitle: `Prochaine révision à ${totalWordsLearned + 50} mots`,
-      color: colors?.accent || '#3B82F6',
+      color: colors.accent,
     },
     {
       id: 'later_100',
       iconName: 'hourglass-outline',
       label: 'Plus tard (100 mots)',
       subtitle: `Prochaine révision à ${totalWordsLearned + 100} mots`,
-      color: '#F59E0B',
+      color: colors.warning,
     },
     {
       id: 'disable',
@@ -132,6 +146,11 @@ const RevisionPopup = ({
       color: '#6B7280',
     },
   ];
+
+  // Callback pour gérer la sélection
+  const handleChoicePress = useCallback((id) => () => {
+    if (onChoice) onChoice(id);
+  }, [onChoice]);
 
   const animatedContainerStyle = {
     opacity: opacityAnim,
@@ -153,7 +172,6 @@ const RevisionPopup = ({
             localStyles={styles}
           />
           <View style={styles.body}>
-            {/* ✅ LISTE UNIFORME de toutes les options */}
             <View style={styles.choicesContainer}>
               {allChoices.map((choice) => (
                 <UniformChoice

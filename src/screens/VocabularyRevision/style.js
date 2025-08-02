@@ -125,6 +125,7 @@ export default StyleSheet.create({
     padding: 24,
     alignItems: 'center',
     borderTopWidth: 4,
+    borderTopColor: '#3B82F6', // or your intended color
     ...Platform.select({
       ios: {
         shadowColor: '#000',
@@ -137,7 +138,6 @@ export default StyleSheet.create({
       },
     }),
   },
-
   questionLabelContainer: {
     flexDirection: 'row',
     alignItems: 'center',

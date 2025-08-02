@@ -9,8 +9,10 @@ const useQuizEngine = (questions) => {
   const [isFinished, setIsFinished] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
 
-  const totalQuestions = useMemo(() => questions?.length || 0, [questions]);
-
+  const totalQuestions = useMemo(() => {
+    if (!Array.isArray(questions)) return 0;
+    return questions.length;
+  }, [questions]);
   const currentQuestion = useMemo(() => {
     if (!questions || totalQuestions === 0 || currentQuestionIndex >= totalQuestions) {
       return null;
@@ -27,6 +29,8 @@ const useQuizEngine = (questions) => {
   const handleAnswer = useCallback((choice) => {
     if (showResult) return false; // Empêche de répondre à nouveau
 
+    if (!currentQuestion) return false; // Prevent handling answers when no current question
+
     const isCorrect = choice === currentQuestion.correctAnswer;
     if (isCorrect) {
       setScore(prevScore => prevScore + 1);
@@ -38,7 +42,6 @@ const useQuizEngine = (questions) => {
 
     return isCorrect;
   }, [currentQuestion, showResult]);
-
   const goToNextQuestion = useCallback(() => {
     const nextIndex = currentQuestionIndex + 1;
     if (nextIndex < totalQuestions) {

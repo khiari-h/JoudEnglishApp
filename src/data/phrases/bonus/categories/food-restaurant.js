@@ -3,8 +3,8 @@
 const foodRestaurant = [
   {
     categoryId: 59,
-    english: "I'm absolutely craving [food type].",
-    translation: "J'ai une envie folle de [type de nourriture].",
+    english: "I'm absolutely craving [foodType].",
+    translation: "J'ai une envie folle de [foodType].",
     context: "Pour exprimer une envie très forte et spécifique pour un certain type de nourriture.",
     examples: [
       {
@@ -16,7 +16,7 @@ const foodRestaurant = [
   {
     categoryId: 59,
     english: "The [dish] was mediocre at best.",
-    translation: "Le [plat] était médiocre, au mieux.",
+    translation: "Le [dish] était médiocre, au mieux.",
     context: "Pour exprimer sa déception face à un plat qui n'était pas à la hauteur des attentes. 'Mediocre at best' est une critique assez forte.",
     examples: [
       {
@@ -40,7 +40,7 @@ const foodRestaurant = [
   {
     categoryId: 59,
     english: "Can you make sure the [item] is on the side?",
-    translation: "Pouvez-vous vous assurer que [l'élément] est à part ?",
+    translation: "Pouvez-vous vous assurer que [item] est à part ?",
     context: "Une demande polie pour un élément spécifique d'un plat (comme la sauce) servi séparément.",
     examples: [
       {
@@ -52,7 +52,7 @@ const foodRestaurant = [
   {
     categoryId: 59,
     english: "I hate to be that person, but my [dish] is [problem].",
-    translation: "Je déteste être cette personne, mais mon [plat] est [problème].",
+    translation: "Je déteste être cette personne, mais mon [dish] est [problem].",
     context: "Une façon polie d'introduire une plainte concernant un plat, pour montrer que vous n'aimez pas vous plaindre.",
     examples: [
       {
@@ -64,7 +64,7 @@ const foodRestaurant = [
   {
     categoryId: 59,
     english: "This is hands down the best [dish] I've ever had.",
-    translation: "C'est de loin le/la meilleur(e) [plat] que j'aie jamais mangé(e).",
+    translation: "C'est de loin le/la meilleur(e) [dish] que j'aie jamais mangé(e).",
     context: "Pour faire un compliment très fort et enthousiaste sur un plat. 'Hands down' signifie 'sans conteste'.",
     examples: [
       {
@@ -100,7 +100,7 @@ const foodRestaurant = [
   {
     categoryId: 59,
     english: "The service is [adjective], but the food makes up for it.",
-    translation: "Le service est [adjectif], mais la nourriture compense.",
+    translation: "Le service est [adjective], mais la nourriture compense.",
     context: "Pour décrire un restaurant où la qualité de la nourriture est bien meilleure que celle du service.",
     examples: [
       {
