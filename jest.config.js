@@ -1,8 +1,9 @@
 // jest.config.js
 
 module.exports = {
-  preset: 'react-native',
+  preset: 'jest-expo',
   setupFilesAfterEnv: ['./jest.setup.js'],
+  testTimeout: 30000,
   transformIgnorePatterns: [
     'node_modules/(?!(jest-?react-native|@react-native|react-native|react-native-reanimated|@react-native-async-storage/async-storage|expo|expo-.*|@expo/vector-icons|@react-navigation/.*)/)'
   ],

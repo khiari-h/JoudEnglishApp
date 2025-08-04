@@ -215,7 +215,7 @@ const Modal = ({
       <View style={[styles.modalContainer, { backgroundColor: backdropColor }]}>
         {/* Touche de l'arrière-plan pour fermer */}
         <TouchableWithoutFeedback onPress={handleBackdropPress}>
-          <View style={styles.backdrop} />
+          <View testID="modal-backdrop" style={styles.backdrop} />
         </TouchableWithoutFeedback>
 
         {/* Contenu de la modal */}

@@ -21,6 +21,7 @@ jest.mock('@expo/vector-icons', () => {
 });
 
 describe('ResultsScreen', () => {
+  
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -52,14 +53,12 @@ describe('ResultsScreen', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
-    act(() => {
-      jest.runAllTimers(); // Assure que toutes les animations sont terminées
-    });
+    jest.runOnlyPendingTimers();
   });
 
   it('renders basic statistics correctly', () => {
     const { getByText } = render(<ResultsScreen {...defaultProps} />);
-    act(() => { jest.runAllTimers(); });
+    
 
     expect(getByText('80%')).toBeTruthy(); // 8/10
     expect(getByText('8/10')).toBeTruthy();
@@ -75,14 +74,14 @@ describe('ResultsScreen', () => {
 
   it('displays feedback when provided', () => {
     const { getByText } = render(<ResultsScreen {...defaultProps} feedback="Great job!" />);
-    act(() => { jest.runAllTimers(); });
+    
     expect(getByText('Conseils pour progresser')).toBeTruthy();
     expect(getByText('Great job!')).toBeTruthy();
   });
 
   it('does not display feedback when not provided', () => {
     const { queryByText } = render(<ResultsScreen {...defaultProps} feedback="" />);
-    act(() => { jest.runAllTimers(); });
+    
     expect(queryByText('Conseils pour progresser')).toBeNull();
   });
 
@@ -93,7 +92,7 @@ describe('ResultsScreen', () => {
     const { getByText } = render(
       <ResultsScreen {...defaultProps} showDetailedResults={true} detailedResults={detailedResults} />
     );
-    act(() => { jest.runAllTimers(); });
+    
     expect(getByText('Détail des réponses')).toBeTruthy();
     expect(getByText('Question 1')).toBeTruthy();
     expect(getByText('Q1')).toBeTruthy();
@@ -110,55 +109,55 @@ describe('ResultsScreen', () => {
     const { queryByText } = render(
       <ResultsScreen {...defaultProps} showDetailedResults={false} detailedResults={detailedResults} />
     );
-    act(() => { jest.runAllTimers(); });
+    
     expect(queryByText('Détail des réponses')).toBeNull();
   });
 
   it('shows "Excellent!" for >= 80% score', () => {
     const { getByText, getByTestId } = render(<ResultsScreen {...defaultProps} correctAnswers={8} totalQuestions={10} />);
-    act(() => { jest.runAllTimers(); });
+    
     expect(getByText('Excellent!')).toBeTruthy();
     expect(getByTestId('icon-trophy')).toBeTruthy();
   });
 
   it('shows "Bien joué!" for >= 60% score', () => {
     const { getByText, getByTestId } = render(<ResultsScreen {...defaultProps} correctAnswers={6} totalQuestions={10} />);
-    act(() => { jest.runAllTimers(); });
+    
     expect(getByText('Bien joué!')).toBeTruthy();
     expect(getByTestId('icon-thumbs-up')).toBeTruthy();
   });
 
   it('shows "Pas mal!" for >= 40% score', () => {
     const { getByText, getByTestId } = render(<ResultsScreen {...defaultProps} correctAnswers={4} totalQuestions={10} />);
-    act(() => { jest.runAllTimers(); });
+    
     expect(getByText('Pas mal!')).toBeTruthy();
     expect(getByTestId('icon-fitness')).toBeTruthy();
   });
 
   it('shows "Continuez vos efforts" for < 40% score', () => {
     const { getByText, getByTestId } = render(<ResultsScreen {...defaultProps} correctAnswers={3} totalQuestions={10} />);
-    act(() => { jest.runAllTimers(); });
+    
     expect(getByText('Continuez vos efforts')).toBeTruthy();
     expect(getByTestId('icon-school')).toBeTruthy();
   });
 
   it('calls onRetry when the retry button is pressed', () => {
     const { getByText } = render(<ResultsScreen {...defaultProps} />);
-    act(() => { jest.runAllTimers(); });
+    
     fireEvent.press(getByText('Réessayer'));
     expect(defaultProps.onRetry).toHaveBeenCalledTimes(1);
   });
 
   it('calls onContinue when the continue button is pressed', () => {
     const { getByText } = render(<ResultsScreen {...defaultProps} />);
-    act(() => { jest.runAllTimers(); });
+    
     fireEvent.press(getByText('Continuer'));
     expect(defaultProps.onContinue).toHaveBeenCalledTimes(1);
   });
 
   it('calls Share.share with correct data when share button is pressed', async () => {
     const { getByText } = render(<ResultsScreen {...defaultProps} />);
-    act(() => { jest.runAllTimers(); });
+    
     fireEvent.press(getByText('Partager'));
 
     expect(Share.share).toHaveBeenCalledWith({

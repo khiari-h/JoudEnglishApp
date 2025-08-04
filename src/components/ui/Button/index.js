@@ -188,6 +188,7 @@ const Button = ({
       {loading ? (
         // Affichage du loader
         <ActivityIndicator
+          testID="button-loader"
           size={sizeStyles.loaderSize}
           color={variantStyles.text.color}
         />
