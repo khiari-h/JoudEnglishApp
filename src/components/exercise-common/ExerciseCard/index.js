@@ -34,11 +34,10 @@ const ExerciseCard = ({
         <View style={styles.progressSection}>
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
+              {/* testID utile pour vérifier la largeur dynamique de la barre de progression dans les tests unitaires */}
               <View
-                style={[
-                  styles.progressFill,
-                  { width: `${progress}%`, backgroundColor: color },
-                ]}
+                style={[styles.progressFill, { width: `${progress}%`, backgroundColor: color }]}
+                testID="progress-fill"
               />
             </View>
             <Text style={[styles.progressText, { color }]}>{progress}%</Text>
@@ -65,4 +64,3 @@ const ExerciseCard = ({
 };
 
 export default ExerciseCard;
-
