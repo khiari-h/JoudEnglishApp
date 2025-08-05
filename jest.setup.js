@@ -204,7 +204,9 @@ if (typeof clearImmediate === 'undefined') {
   global.clearImmediate = (id) => clearTimeout(id);
 }
 
-// 5. Suppress warnings pour les tests
+// 5. Suppress warnings pour les tests - VERSION CORRIGÉE
+const originalConsole = { ...console };
+
 global.console = {
   ...console,
   // Supprimer les warnings d'animations dans les tests
@@ -216,7 +218,7 @@ global.console = {
     ) {
       return; // Ignore les warnings act() pour les animations
     }
-    console.error(message);
+    originalConsole.error(message);
   }),
   warn: jest.fn((message) => {
     if (
@@ -226,6 +228,6 @@ global.console = {
     ) {
       return; // Ignore les warnings act() pour les animations
     }
-    console.warn(message);
+    originalConsole.warn(message);
   }),
 };
