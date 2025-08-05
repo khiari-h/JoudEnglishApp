@@ -8,7 +8,7 @@ import styles from "./style";
 const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, localStyles }) => {
   const currentWord = (lastActivity.metadata?.word || 0) + 1;
   const totalWords = lastActivity.metadata?.totalWords || 15;
-  const percentage = Math.round((currentWord / totalWords) * 100);
+  const percentage = Math.min(Math.round((currentWord / totalWords) * 100), 100);
   return (
     <View style={localStyles.content}>
       <View style={localStyles.header}>
@@ -27,7 +27,7 @@ const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, lo
             style={[
               localStyles.progressFill,
               { 
-                width: `${Math.min(percentage, 100)}%`,
+                width: `${percentage}%`,
                 backgroundColor: accentColor
               }
             ]} 
