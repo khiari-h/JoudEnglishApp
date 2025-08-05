@@ -31,7 +31,7 @@ jest.mock('expo-modules-core', () => ({
   requireNativeViewManager: jest.fn(() => ({})),
 }));
 
-// 🔥 NOUVEAU: Mock expo-linear-gradient
+// 🔥 Mock expo-linear-gradient
 jest.mock('expo-linear-gradient', () => {
   const React = require('react');
   const { View } = require('react-native');
@@ -50,6 +50,50 @@ jest.mock('expo-linear-gradient', () => {
     ),
   };
 });
+
+// 🔥 Mock expo-router
+jest.mock('expo-router', () => ({
+  router: {
+    push: jest.fn(),
+    replace: jest.fn(),
+    back: jest.fn(),
+    canGoBack: jest.fn(() => true),
+    setParams: jest.fn(),
+  },
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    back: jest.fn(),
+    canGoBack: jest.fn(() => true),
+    setParams: jest.fn(),
+  })),
+  useLocalSearchParams: jest.fn(() => ({})),
+  useGlobalSearchParams: jest.fn(() => ({})),
+  useSegments: jest.fn(() => []),
+  usePathname: jest.fn(() => '/'),
+  Redirect: ({ href }) => null,
+  Link: ({ href, children, ...props }) => {
+    const React = require('react');
+    const { TouchableOpacity, Text } = require('react-native');
+    return React.createElement(TouchableOpacity, props, 
+      typeof children === 'string' 
+        ? React.createElement(Text, {}, children)
+        : children
+    );
+  },
+  Stack: {
+    Screen: ({ children, ...props }) => {
+      const React = require('react');
+      return React.createElement('div', props, children);
+    },
+  },
+  Tabs: {
+    Screen: ({ children, ...props }) => {
+      const React = require('react');
+      return React.createElement('div', props, children);
+    },
+  },
+}));
 
 // 3. Mock complet des animations React Native - PLUS AGGRESSIF
 jest.mock('react-native', () => {
