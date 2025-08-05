@@ -11,4 +11,4 @@ export const useRoute = () => ({
   name: 'MockScreen',
 });
 
-// Exportez d'autres fonctions si nécessaire
+export const useFocusEffect = jest.fn(() => () => {});
