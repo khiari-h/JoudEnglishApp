@@ -1,0 +1,457 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/3/categories/10_medias_information.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/3/categories</a> 10_medias_information.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Médias &amp; Information",
+  words: [
+    // Types de médias
+    { word: "mass media", translation: "médias de masse", example: "Television is a traditional form of mass media." },
+    { word: "digital media", translation: "médias numériques", example: "Digital media has transformed how we consume information." },
+    { word: "print media", translation: "presse écrite", example: "Newspapers and magazines are forms of print media." },
+    { word: "broadcast media", translation: "médias audiovisuels", example: "Radio and television are examples of broadcast media." },
+&nbsp;
+    { word: "mainstream media", translation: "médias traditionnels", example: "The story was widely covered in the mainstream media." },
+    { word: "alternative media", translation: "médias alternatifs", example: "Alternative media often presents perspectives not found in mainstream outlets." },
+    { word: "independent media", translation: "médias indépendants", example: "Independent media is not controlled by large corporations." },
+    { word: "public media", translation: "médias publics", example: "Public media is funded by taxpayers rather than advertising." },
+    { word: "commercial media", translation: "médias commerciaux", example: "Commercial media relies primarily on advertising revenue." },
+&nbsp;
+    { word: "blog", translation: "blog", example: "His blog focuses on travel photography." },
+    { word: "video-sharing platform", translation: "plateforme de partage vidéo", example: "TikTok is a rapidly growing video-sharing platform." },
+&nbsp;
+    { word: "news aggregator", translation: "agrégateur d'actualités", example: "News aggregators compile articles from various sources." },
+    { word: "multimedia", translation: "multimédia", example: "The website features multimedia content including videos and interactive graphics." },
+    { word: "user-generated content", translation: "contenu généré par les utilisateurs", example: "Many websites rely on user-generated content." },
+    { word: "citizen journalism", translation: "journalisme citoyen", example: "Social media has enabled the rise of citizen journalism." },
+&nbsp;
+    // Contenu médiatique
+    { word: "news coverage", translation: "couverture médiatique", example: "The election received extensive news coverage." },
+    { word: "feature story", translation: "article de fond", example: "The newspaper published a feature story about climate change." },
+    { word: "opinion piece", translation: "article d'opinion", example: "She wrote an opinion piece for the local newspaper." },
+    { word: "investigative reporting", translation: "journalisme d'investigation", example: "Investigative reporting revealed corruption in the government." },
+    { word: "content creator", translation: "créateur de contenu", example: "Many young people aspire to become content creators." },
+    { word: "viral content", translation: "contenu viral", example: "The video became viral content overnight." },
+    { word: "exclusive", translation: "exclusivité", example: "The magazine published an exclusive interview with the president." },
+&nbsp;
+    { word: "sponsored content", translation: "contenu sponsorisé", example: "The website clearly labels sponsored content." },
+    { word: "paywall", translation: "mur payant", example: "Many news websites have implemented paywalls." },
+    { word: "infographic", translation: "infographie", example: "The infographic explained complex data in a visual format." },
+    { word: "press release", translation: "communiqué de presse", example: "The company issued a press release about the new product." },
+&nbsp;
+    { word: "podcast episode", translation: "épisode de podcast", example: "The podcast episode featured an interview with a renowned scientist." },
+    { word: "livestream", translation: "diffusion en direct", example: "The conference was available via livestream." },
+&nbsp;
+    // Production médiatique
+    { word: "media production", translation: "production médiatique", example: "Media production involves various technical skills." },
+    { word: "content creation", translation: "création de contenu", example: "Content creation has become a viable career path." },
+    { word: "editing", translation: "montage/édition", example: "Video editing requires both technical and creative skills." },
+    { word: "publishing", translation: "publication", example: "The publishing process includes several review stages." },
+    { word: "broadcasting", translation: "diffusion", example: "Broadcasting regulations vary by country." },
+    { word: "production team", translation: "équipe de production", example: "The production team works behind the scenes." },
+&nbsp;
+    { word: "editorial process", translation: "processus éditorial", example: "The editorial process ensures quality and accuracy." },
+&nbsp;
+    { word: "crowdsourcing", translation: "production participative", example: "The project used crowdsourcing to gather information." },
+    { word: "content management", translation: "gestion de contenu", example: "Content management systems help organize digital publications." },
+    { word: "content strategy", translation: "stratégie de contenu", example: "A good content strategy considers audience needs." },
+    { word: "post-production", translation: "post-production", example: "Post-production includes editing, sound mixing, and special effects." },
+    { word: "media planning", translation: "planification médiatique", example: "Media planning involves deciding where and when to place content." },
+    { word: "content calendar", translation: "calendrier éditorial", example: "A content calendar helps organize publication schedules." },
+    { word: "content distribution", translation: "distribution de contenu", example: "Social media platforms are important for content distribution." },
+&nbsp;
+    // Littératie médiatique
+    { word: "media literacy", translation: "littératie médiatique", example: "Media literacy helps people critically evaluate information." },
+&nbsp;
+    { word: "information evaluation", translation: "évaluation de l'information", example: "Information evaluation skills help identify reliable sources." },
+    { word: "source verification", translation: "vérification des sources", example: "Source verification is an important step in research." },
+    { word: "digital literacy", translation: "littératie numérique", example: "Digital literacy includes understanding online privacy issues." },
+    { word: "media education", translation: "éducation aux médias", example: "Media education is increasingly taught in schools." },
+    { word: "information filtering", translation: "filtrage d'information", example: "Information filtering helps manage information overload." },
+    { word: "news consumption", translation: "consommation d'actualités", example: "Young people have different news consumption habits than older generations." },
+    { word: "media bias", translation: "parti pris médiatique", example: "Recognizing media bias is part of media literacy." },
+    { word: "media manipulation", translation: "manipulation médiatique", example: "Media manipulation can influence public opinion." },
+    { word: "information overload", translation: "surcharge informationnelle", example: "Social media can contribute to information overload." },
+    { word: "echo chamber", translation: "chambre d'écho", example: "Social media algorithms can create echo chambers." },
+    { word: "filter bubble", translation: "bulle de filtre", example: "Filter bubbles limit exposure to diverse viewpoints." },
+    { word: "cross-checking", translation: "vérification croisée", example: "Cross-checking information with multiple sources is good practice." },
+&nbsp;
+    // Industrie des médias
+    { word: "media conglomerate", translation: "conglomérat médiatique", example: "A few large media conglomerates own many outlets." },
+    { word: "media ownership", translation: "propriété des médias", example: "Media ownership concentration can limit diverse perspectives." },
+    { word: "advertising revenue", translation: "revenus publicitaires", example: "Many media outlets depend on advertising revenue." },
+    { word: "subscription model", translation: "modèle par abonnement", example: "Many digital publications use a subscription model." },
+    { word: "media market", translation: "marché des médias", example: "The media market has become increasingly competitive." },
+    { word: "circulation", translation: "tirage", example: "Newspaper circulation has declined in the digital age." },
+    { word: "ratings", translation: "audimat", example: "Television programs live and die by their ratings." },
+    { word: "viewership", translation: "audience", example: "The show has experienced declining viewership." },
+    { word: "readership", translation: "lectorat", example: "The magazine has a loyal readership." },
+    { word: "media regulation", translation: "réglementation des médias", example: "Media regulation aims to ensure fairness and accuracy." },
+    { word: "press freedom", translation: "liberté de la presse", example: "Press freedom is essential for democracy." },
+    { word: "media ethics", translation: "éthique des médias", example: "Media ethics includes principles like accuracy and fairness." },
+    { word: "public interest", translation: "intérêt public", example: "Journalists should serve the public interest." },
+    { word: "media accountability", translation: "responsabilité des médias", example: "Media accountability mechanisms include press councils and ombudsmen." },
+    { word: "public trust", translation: "confiance du public", example: "Media outlets must work to maintain public trust." },
+&nbsp;
+    // Tendances médiatiques
+    { word: "media convergence", translation: "convergence médiatique", example: "Media convergence has blurred the lines between different types of media." },
+    { word: "digital transformation", translation: "transformation numérique", example: "Traditional news outlets are undergoing digital transformation." },
+    { word: "personalization", translation: "personnalisation", example: "Content personalization is based on user data and preferences." },
+    { word: "interactive media", translation: "médias interactifs", example: "Interactive media engages users more actively than passive consumption." },
+    { word: "mobile-first", translation: "priorité au mobile", example: "Many websites now use a mobile-first design approach." },
+    { word: "data journalism", translation: "journalisme de données", example: "Data journalism uses data analysis to tell complex stories." },
+    { word: "immersive journalism", translation: "journalisme immersif", example: "Virtual reality enables immersive journalism experiences." },
+    { word: "automated journalism", translation: "journalisme automatisé", example: "Automated journalism uses AI to generate certain types of content." },
+    { word: "clickbait", translation: "piège à clics", example: "Clickbait headlines may generate traffic but damage credibility." },
+    { word: "engagement metrics", translation: "métriques d'engagement", example: "Social media platforms track various engagement metrics." },
+    { word: "content monetization", translation: "monétisation de contenu", example: "Content creators explore different content monetization strategies." },
+    { word: "media fragmentation", translation: "fragmentation médiatique", example: "Media fragmentation has created niche audiences." },
+    { word: "attention economy", translation: "économie de l'attention", example: "Media outlets compete in the attention economy." },
+    { word: "viral marketing", translation: "marketing viral", example: "Viral marketing aims to spread content rapidly through social sharing." },
+&nbsp;
+    // Désinformation &amp; fake news
+    { word: "disinformation", translation: "désinformation", example: "Disinformation is deliberately created to mislead." },
+    { word: "misinformation", translation: "mésinformation", example: "Misinformation can spread unintentionally." },
+&nbsp;
+    { word: "conspiracy theory", translation: "théorie du complot", example: "The internet has facilitated the spread of conspiracy theories." },
+    { word: "manipulation", translation: "manipulation", example: "Image manipulation can create misleading content." },
+    { word: "deepfake", translation: "hypertrucage", example: "Deepfake technology creates convincing but fabricated videos." },
+    { word: "fact-checker", translation: "vérificateur de faits", example: "Professional fact-checkers investigate questionable claims." },
+    { word: "debunking", translation: "démystification", example: "Debunking false information requires evidence and clear explanation." },
+    { word: "information warfare", translation: "guerre de l'information", example: "Some countries engage in information warfare to influence others." },
+    { word: "media hoax", translation: "canular médiatique", example: "The media hoax fooled thousands before being exposed." },
+    { word: "information integrity", translation: "intégrité de l'information", example: "Protecting information integrity is crucial for democratic societies." },
+    { word: "digital forensics", translation: "investigation numérique", example: "Digital forensics can help identify manipulated content." },
+    { word: "source credibility", translation: "crédibilité des sources", example: "Source credibility is crucial when evaluating information." },
+    { word: "information disorder", translation: "désordre informationnel", example: "Information disorder includes mis-, dis-, and mal-information." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

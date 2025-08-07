@@ -74,6 +74,7 @@ const ModernCardButton = ({ level, handleLevelPress, localStyles }) => (
     onPress={handleLevelPress(level)}
     style={localStyles.modernButton}
     rightIcon={level.hasStarted ? "play-outline" : "rocket-outline"}
+    testID={`level-${level.id}-button`}
   />
 );
 
@@ -89,6 +90,7 @@ const LevelCardContent = ({ level, colors, localStyles, handleLevelPress }) => (
 // Sous-composant pour la section liste de niveaux
 const LevelListSection = ({ colors, localStyles, levels, renderLevelCard }) => (
   <ScrollView
+    testID="level-selection-scroll"
     style={{ flex: 1 }}
     contentContainerStyle={[localStyles.modernScrollContent, { paddingBottom: 60 }]}
     showsVerticalScrollIndicator={false}
@@ -189,6 +191,7 @@ const LevelSelection = () => {
           withStatusBar={false}
           withShadow={false}
           titleContainerStyle={styles.headerTitle}
+          testID="level-selection-header"
         />
       </LinearGradient>
     </View>
@@ -198,6 +201,7 @@ const LevelSelection = () => {
     return (
       <TouchableOpacity
         key={level.id}
+        testID={`level-${level.id}`}
         style={styles.modernCard}
         onPress={handleLevelPress(level)}
         activeOpacity={0.8}
@@ -209,6 +213,7 @@ const LevelSelection = () => {
 
   return (
     <Container
+      testID="level-selection-container"
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM}
       withScrollView={false}

@@ -1,0 +1,697 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/6/categories/16_expressions_idiomatiques.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/6/categories</a> 16_expressions_idiomatiques.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Expressions Idiomatiques Avancées",
+  words: [
+    // Expressions liées aux affaires et au monde professionnel (50 mots)
+&nbsp;
+    { word: "to hit the ground running", translation: "être opérationnel dès le début", example: "The new CEO hit the ground running, implementing changes within her first week." },
+    { word: "to be in the red", translation: "être déficitaire", example: "Despite increased sales, the company remained in the red due to high operating costs." },
+    { word: "to make a killing", translation: "faire fortune", example: "Early investors in the tech startup made a killing when it went public." },
+    { word: "to climb the corporate ladder", translation: "gravir les échelons", example: "She climbed the corporate ladder remarkably quickly, becoming a director by age thirty." },
+    { word: "to bring to the table", translation: "apporter comme contribution", example: "The new partnership manager brings extensive industry connections to the table." },
+    { word: "to put all one's eggs in one basket", translation: "mettre tous ses œufs dans le même panier", example: "The investment advisor warned against putting all our eggs in one basket, regardless of how promising the opportunity seemed." },
+    { word: "to think outside the box", translation: "sortir des sentiers battus", example: "Solving this market challenge will require thinking outside the box." },
+    { word: "to burn bridges", translation: "brûler les ponts", example: "He burned bridges with former colleagues by speaking negatively about the company after his departure." },
+    { word: "to separate the wheat from the chaff", translation: "séparer le bon grain de l'ivraie", example: "The rigorous interview process helps separate the wheat from the chaff among job applicants." },
+    { word: "the elephant in the room", translation: "le sujet dont personne n'ose parler", example: "The company's financial troubles were the elephant in the room during the all-hands meeting." },
+    { word: "to sweeten the deal", translation: "rendre l'offre plus attractive", example: "To convince the key executive to join, they sweetened the deal with substantial stock options." },
+    { word: "to get down to brass tacks", translation: "entrer dans le vif du sujet", example: "After some pleasantries, the negotiators got down to brass tacks regarding pricing terms." },
+    { word: "to hedge one's bets", translation: "ne pas mettre tous ses œufs dans le même panier", example: "The company hedged its bets by developing multiple product lines simultaneously." },
+    { word: "to call the shots", translation: "prendre les décisions", example: "Though not the CEO, the founder still calls the shots on strategic direction." },
+    { word: "to raise the bar", translation: "relever le niveau d'exigence", example: "Their innovative product raised the bar for the entire industry." },
+    { word: "a ballpark figure", translation: "une estimation approximative", example: "I can't give you exact costs yet, but as a ballpark figure, implementation will require about $200,000." },
+    { word: "to get the ball rolling", translation: "lancer les choses", example: "Let's get the ball rolling on this project by setting up an initial planning meeting." },
+    { word: "to push the envelope", translation: "repousser les limites", example: "The R&amp;D department continues to push the envelope with groundbreaking research." },
+    { word: "to get one's foot in the door", translation: "se faire une place", example: "The internship helped her get her foot in the door at the prestigious consulting firm." },
+    { word: "a hard sell", translation: "quelque chose de difficile à faire accepter", example: "Convincing conservative investors to fund such an experimental approach was a hard sell." },
+    { word: "to keep someone in the loop", translation: "tenir quelqu'un informé", example: "Please keep me in the loop regarding any developments with the client negotiations." },
+    { word: "to put something on the back burner", translation: "mettre quelque chose en attente", example: "We'll need to put the international expansion on the back burner until next quarter." },
+    { word: "to pull the plug", translation: "arrêter les frais", example: "After two years of losses, investors finally pulled the plug on the venture." },
+    { word: "to be on the same page", translation: "être sur la même longueur d'onde", example: "Before proceeding, I want to ensure we're all on the same page regarding the project objectives." },
+    { word: "to have deep pockets", translation: "avoir beaucoup d'argent", example: "The startup succeeded partly because its founders had deep pockets to weather early setbacks." },
+    { word: "to turn the tide", translation: "renverser la tendance", example: "The new marketing strategy helped turn the tide after three quarters of declining sales." },
+    { word: "to read between the lines", translation: "lire entre les lignes", example: "Reading between the lines of the announcement, it seems layoffs may be imminent." },
+    { word: "to test the waters", translation: "tâter le terrain", example: "Before fully committing to the Chinese market, they decided to test the waters with a limited product line." },
+    { word: "to go back to the drawing board", translation: "tout reprendre à zéro", example: "After the prototype failed testing, the team went back to the drawing board." },
+&nbsp;
+    { word: "to give someone the green light", translation: "donner le feu vert", example: "The board gave the CEO the green light to proceed with the acquisition." },
+&nbsp;
+    { word: "to move the goalposts", translation: "changer les règles en cours de route", example: "It's frustrating when clients move the goalposts after work has already begun." },
+&nbsp;
+    { word: "to keep one's head above water", translation: "garder la tête hors de l'eau", example: "During the recession, many small businesses struggled just to keep their heads above water." },
+    { word: "a cash cow", translation: "une vache à lait", example: "The printer ink business remains the company's cash cow, generating reliable profits." },
+    { word: "to give someone a run for their money", translation: "donner du fil à retordre", example: "The new competitor is giving established firms a run for their money with innovative pricing." },
+    { word: "to weather the storm", translation: "résister aux difficultés", example: "With adequate capital reserves, the company was able to weather the storm during the market downturn." },
+    { word: "to be ahead of the curve", translation: "avoir une longueur d'avance", example: "Their early investment in artificial intelligence put them ahead of the curve in their industry." },
+&nbsp;
+    { word: "to break even", translation: "atteindre le seuil de rentabilité", example: "The startup expects to break even by the end of its second year of operations." },
+    { word: "to talk shop", translation: "parler métier", example: "Even at social gatherings, the colleagues couldn't help talking shop." },
+    { word: "to pick someone's brain", translation: "demander l'avis de quelqu'un", example: "I'd like to pick your brain about the Asian market expansion strategy." },
+    { word: "a shoestring budget", translation: "un budget très serré", example: "The team launched the product on a shoestring budget, relying heavily on organic marketing." },
+    { word: "to put out fires", translation: "résoudre des problèmes urgents", example: "The new manager spent her first month putting out fires left by her predecessor." },
+&nbsp;
+    // Expressions liées à la communication et aux relations (50 mots)
+&nbsp;
+    { word: "to put one's foot in one's mouth", translation: "faire un impair", example: "He put his foot in his mouth by asking about her pregnancy when she had simply gained weight." },
+    { word: "to read someone like a book", translation: "cerner quelqu'un facilement", example: "After working together for years, she could read her business partner like a book." },
+    { word: "to give someone the cold shoulder", translation: "battre froid à quelqu'un", example: "After the disagreement, several colleagues gave him the cold shoulder at the conference." },
+&nbsp;
+    { word: "to get off on the wrong foot", translation: "mal commencer une relation", example: "They got off on the wrong foot when she criticized his proposal during their first meeting." },
+    { word: "to see through someone", translation: "ne pas être dupe de quelqu'un", example: "Experienced negotiators can see through attempts at artificial time pressure." },
+    { word: "to talk at cross purposes", translation: "ne pas parler de la même chose", example: "It became clear that the teams were talking at cross purposes regarding project objectives." },
+    { word: "to let something slip", translation: "laisser échapper une information", example: "During the interview, the executive accidentally let slip information about the upcoming merger." },
+    { word: "to speak volumes", translation: "être très révélateur", example: "The CEO's absence from the announcement speaks volumes about the company's direction." },
+    { word: "to take something with a grain of salt", translation: "prendre avec des pincettes", example: "You should take market forecasts with a grain of salt, especially during volatile periods." },
+    { word: "to sugarcoat something", translation: "enjoliver quelque chose", example: "The annual report sugarcoated the significant challenges facing the company." },
+&nbsp;
+    { word: "to get to the point", translation: "en venir au fait", example: "After a lengthy introduction, the presenter finally got to the point of the proposal." },
+    { word: "to put in a good word", translation: "recommander quelqu'un", example: "My former manager put in a good word for me during the interview process." },
+    { word: "to hold one's tongue", translation: "se retenir de parler", example: "She held her tongue during the meeting, saving her criticisms for a private conversation later." },
+    { word: "to save face", translation: "sauver les apparences", example: "The company offered the concession to allow their client to save face after the public disagreement." },
+    { word: "to be on the fence", translation: "être indécis", example: "Several board members remain on the fence regarding the proposed acquisition." },
+    { word: "to be in someone's shoes", translation: "être à la place de quelqu'un", example: "If I were in your shoes, I would request more information before making the commitment." },
+    { word: "to keep tabs on", translation: "surveiller", example: "The project manager keeps tabs on all team members' progress through weekly reports." },
+    { word: "to wear one's heart on one's sleeve", translation: "ne pas cacher ses sentiments", example: "As a leader, she wears her heart on her sleeve, sharing both enthusiasm and concerns openly." },
+    { word: "to go over someone's head", translation: "s'adresser au supérieur de quelqu'un", example: "Instead of resolving the issue directly, he went over his manager's head to the director." },
+    { word: "to lay one's cards on the table", translation: "mettre cartes sur table", example: "During the negotiation, she decided to lay her cards on the table about her company's limitations." },
+    { word: "to put words in someone's mouth", translation: "faire dire à quelqu'un ce qu'il n'a pas dit", example: "Don't put words in my mouth—I never said we would guarantee those delivery dates." },
+    { word: "to give someone the benefit of the doubt", translation: "accorder le bénéfice du doute", example: "Despite the missed deadline, the manager gave his team the benefit of the doubt due to extenuating circumstances." },
+    { word: "to hit it off", translation: "bien s'entendre dès le début", example: "The two executives hit it off immediately, facilitating the partnership discussions." },
+    { word: "to take someone under one's wing", translation: "prendre quelqu'un sous son aile", example: "The experienced consultant took several junior colleagues under her wing, offering valuable mentorship." },
+    { word: "to ruffle feathers", translation: "froisser des sensibilités", example: "The new policy ruffled feathers among the senior staff who preferred the traditional approach." },
+    { word: "to go through the motions", translation: "faire quelque chose sans conviction", example: "Some employees were merely going through the motions during the mandatory training." },
+    { word: "to put someone on a pedestal", translation: "idéaliser quelqu'un", example: "The danger of putting industry leaders on a pedestal is that we overlook their strategic mistakes." },
+    { word: "to get a word in edgewise", translation: "placer un mot", example: "The discussion was so dominated by the senior partner that others could barely get a word in edgewise." },
+    { word: "to be all ears", translation: "être tout ouïe", example: "When the client began explaining their requirements, the consultants were all ears." },
+    { word: "to read the room", translation: "sentir l'ambiance", example: "A good presenter knows how to read the room and adjust their approach accordingly." },
+    { word: "to have a chip on one's shoulder", translation: "avoir une attitude défensive", example: "The new hire had a chip on his shoulder about his lack of formal education." },
+    { word: "to call someone on the carpet", translation: "réprimander quelqu'un", example: "The CEO called the marketing director on the carpet after the failed product launch." },
+    { word: "to step on someone's toes", translation: "marcher sur les plates-bandes de quelqu'un", example: "The new initiative inadvertently stepped on the toes of the established department." },
+    { word: "to get wind of something", translation: "entendre parler de quelque chose", example: "When investors got wind of the potential acquisition, the stock price jumped." },
+    { word: "to bury the hatchet", translation: "enterrer la hache de guerre", example: "The competing firms decided to bury the hatchet and explore collaboration opportunities." },
+    { word: "to butter someone up", translation: "flatter quelqu'un de manière excessive", example: "He tried to butter up the client before asking for the contract extension." },
+    { word: "to get one's wires crossed", translation: "avoir un malentendu", example: "We got our wires crossed about the meeting time, which is why I arrived an hour late." },
+&nbsp;
+    { word: "to sing someone's praises", translation: "faire l'éloge de quelqu'un", example: "The director has been singing your praises after the successful project delivery." },
+    { word: "to take something at face value", translation: "prendre quelque chose au pied de la lettre", example: "Experienced auditors never take financial statements at face value." },
+    { word: "to wash one's hands of something", translation: "se désolidariser de quelque chose", example: "After raising concerns and being ignored, she washed her hands of the questionable project." },
+    { word: "to make amends", translation: "réparer ses torts", example: "The company tried to make amends for the data breach by offering free credit monitoring." },
+    { word: "to bend over backwards", translation: "se mettre en quatre", example: "The client success team bent over backwards to accommodate the high-profile customer's demands." },
+    { word: "to stick one's neck out", translation: "prendre des risques", example: "The junior analyst stuck her neck out by questioning the executive's projections during the meeting." },
+    { word: "to tread on thin ice", translation: "être en terrain glissant", example: "When discussing potential layoffs, managers need to recognize they're treading on thin ice." },
+&nbsp;
+    // Expressions pour la prise de décision et les situations complexes (50 mots)
+&nbsp;
+    { word: "to cross the Rubicon", translation: "franchir le Rubicon", example: "By going public with the allegations, the whistleblower had crossed the Rubicon—there was no turning back." },
+    { word: "between a rock and a hard place", translation: "entre le marteau et l'enclume", example: "The CEO found himself between a rock and a hard place: cut jobs or risk bankruptcy." },
+    { word: "to cut the Gordian knot", translation: "trancher le nœud gordien", example: "The mediator cut the Gordian knot by proposing a completely novel solution acceptable to both parties." },
+&nbsp;
+    { word: "to grasp the nettle", translation: "prendre le taureau par les cornes", example: "Rather than delaying further, the new director grasped the nettle and initiated the difficult restructuring." },
+    { word: "to have an ace up one's sleeve", translation: "avoir plus d'un tour dans son sac", example: "During the difficult negotiations, the company had an ace up its sleeve: a signed letter of intent from a major competitor." },
+    { word: "to jump the gun", translation: "agir prématurément", example: "The marketing team jumped the gun by announcing features that were still in development." },
+    { word: "to navigate uncharted waters", translation: "s'aventurer en terrain inconnu", example: "Entering the emerging market required the company to navigate uncharted waters." },
+&nbsp;
+    { word: "to play hardball", translation: "jouer dur", example: "When negotiations stalled, the acquiring company began playing hardball with aggressive deadlines." },
+    { word: "to roll the dice", translation: "jouer le tout pour le tout", example: "With the new product launch, the struggling company was essentially rolling the dice on its future." },
+    { word: "to stick to one's guns", translation: "camper sur ses positions", example: "Despite pressure from shareholders, the CEO stuck to her guns regarding the ethical sourcing policy." },
+&nbsp;
+    { word: "to throw caution to the wind", translation: "jeter la prudence aux orties", example: "With nothing left to lose, the startup threw caution to the wind with its disruptive business model." },
+    { word: "to tread carefully", translation: "avancer avec prudence", example: "When restructuring international operations, the company needs to tread carefully regarding local regulations." },
+    { word: "to venture into the lion's den", translation: "s'aventurer dans la fosse aux lions", example: "The spokesperson ventured into the lion's den by agreeing to an interview with the normally hostile media outlet." },
+&nbsp;
+    { word: "to be caught between Scylla and Charybdis", translation: "être entre Charybde et Scylla", example: "The central bank was caught between Scylla and Charybdis: raise rates and risk recession, or maintain them and risk inflation." },
+    { word: "to burn one's bridges", translation: "brûler ses vaisseaux", example: "By publicly criticizing the industry leader, the startup burned its bridges regarding potential partnership opportunities." },
+    { word: "to cross the bridge when one comes to it", translation: "aviser en temps voulu", example: "Rather than worrying about potential regulatory changes, we'll cross that bridge when we come to it." },
+    { word: "to have too many irons in the fire", translation: "courir plusieurs lièvres à la fois", example: "The company's poor performance stemmed from having too many irons in the fire and lacking focus." },
+    { word: "to leave no stone unturned", translation: "ne négliger aucune piste", example: "The due diligence team left no stone unturned in their examination of the acquisition target." },
+&nbsp;
+    { word: "to play one's cards close to one's chest", translation: "garder ses cartes près de son corps", example: "During negotiations, the investor played his cards close to his chest regarding his true budget." },
+    { word: "to pull out all the stops", translation: "mettre le paquet", example: "For the critical product launch, the marketing team pulled out all the stops with a comprehensive campaign." },
+&nbsp;
+    { word: "to rise to the occasion", translation: "être à la hauteur de la situation", example: "Despite being relatively inexperienced, the project manager rose to the occasion during the crisis." },
+    { word: "to take a calculated risk", translation: "prendre un risque calculé", example: "Entering the emerging market was a calculated risk based on extensive research and controlled investment." },
+    { word: "to take a leaf out of someone's book", translation: "s'inspirer de quelqu'un", example: "The startup took a leaf out of the tech giant's book by implementing a similar customer service approach." },
+    { word: "to take a step back", translation: "prendre du recul", example: "Before making such a significant decision, we need to take a step back and consider all implications." },
+    { word: "to think on one's feet", translation: "improviser", example: "When the presentation technology failed, the speaker had to think on her feet to engage the audience without slides." },
+    { word: "to thread the needle", translation: "trouver le juste milieu", example: "The policy attempts to thread the needle between encouraging innovation and ensuring consumer protection." },
+    { word: "to walk a fine line", translation: "jouer sur le fil du rasoir", example: "The diplomat walks a fine line between representing national interests and maintaining international relationships." },
+    { word: "to fly by the seat of one's pants", translation: "improviser sans préparation", example: "Without clear market data, the expansion team was essentially flying by the seat of their pants." },
+    { word: "to do some soul-searching", translation: "faire son examen de conscience", example: "After the project failure, the leadership team did some soul-searching about their risk assessment process." },
+    { word: "to follow one's gut", translation: "suivre son instinct", example: "Despite contradictory data, the entrepreneur followed her gut and launched the product successfully." },
+    { word: "to hang by a thread", translation: "ne tenir qu'à un fil", example: "After losing the major contract, the company's survival hung by a thread." },
+    { word: "to have one's back against the wall", translation: "être dos au mur", example: "With creditors demanding payment, the company had its back against the wall and few options remaining." },
+    { word: "to pass the buck", translation: "rejeter la responsabilité sur quelqu'un d'autre", example: "Rather than addressing the issue, the manager passed the buck to the IT department." },
+    { word: "to pull the rug out from under someone", translation: "couper l'herbe sous le pied", example: "The sudden policy change pulled the rug out from under businesses that had invested based on previous guidelines." },
+    { word: "to put the cart before the horse", translation: "mettre la charrue avant les bœufs", example: "Launching the marketing campaign before completing product testing is putting the cart before the horse." },
+    { word: "to read the tea leaves", translation: "prédire l'avenir", example: "Investors are trying to read the tea leaves regarding future central bank actions." },
+    { word: "to rock the boat", translation: "faire des vagues", example: "The new executive wasn't afraid to rock the boat by questioning long-established practices." },
+    { word: "to see which way the wind blows", translation: "voir de quel côté le vent souffle", example: "Some committee members delayed their vote, preferring to see which way the wind blows first." },
+    { word: "to take the plunge", translation: "se jeter à l'eau", example: "After months of deliberation, they finally took the plunge and invested in the expansion." },
+    { word: "to turn over a new leaf", translation: "tourner la page", example: "Following the scandal, the organization pledged to turn over a new leaf with comprehensive ethical reforms." },
+    { word: "to enter a minefield", translation: "s'engager en terrain miné", example: "Discussing compensation disparities is entering a minefield that requires careful navigation." },
+&nbsp;
+    // Expressions reflétant des attitudes et valeurs (50 mots)
+    { word: "actions speak louder than words", translation: "les actes en disent plus que les paroles", example: "The CEO talks about sustainability, but actions speak louder than words—the company needs concrete policies." },
+    { word: "all that glitters is not gold", translation: "tout ce qui brille n'est pas or", example: "The startup had impressive growth metrics, but as investors discovered, all that glitters is not gold." },
+    { word: "better late than never", translation: "mieux vaut tard que jamais", example: "The company finally implemented cybersecurity measures; better late than never, though the delay was costly." },
+    { word: "don't put the cart before the horse", translation: "ne pas mettre la charrue avant les bœufs", example: "Let's complete the market research before designing the product—don't put the cart before the horse." },
+    { word: "the early bird catches the worm", translation: "l'avenir appartient à ceux qui se lèvent tôt", example: "By entering the emerging market before competitors, they proved that the early bird catches the worm." },
+    { word: "hindsight is 20/20", translation: "avec du recul, tout paraît évident", example: "Hindsight is 20/20, but at the time, diversification seemed the prudent strategy." },
+    { word: "luck is what happens when preparation meets opportunity", translation: "la chance sourit aux esprits bien préparés", example: "Their 'overnight success' demonstrates that luck is what happens when preparation meets opportunity." },
+    { word: "necessity is the mother of invention", translation: "la nécessité est mère de l'invention", example: "The pandemic proved that necessity is the mother of invention as businesses rapidly adapted their operations." },
+    { word: "no pain, no gain", translation: "on n'a rien sans rien", example: "The difficult restructuring caused short-term disruption but confirmed the adage 'no pain, no gain'." },
+    { word: "the proof of the pudding is in the eating", translation: "c'est au pied du mur qu'on voit le maçon", example: "The strategy looks good on paper, but the proof of the pudding is in the eating—we'll see how it performs." },
+    { word: "there's no such thing as a free lunch", translation: "rien n'est gratuit dans la vie", example: "The 'free' software actually monetizes user data—there's no such thing as a free lunch." },
+    { word: "time is money", translation: "le temps, c'est de l'argent", example: "The efficiency initiative reflects the understanding that time is money in manufacturing operations." },
+    { word: "when in Rome, do as the Romans do", translation: "à Rome, fais comme les Romains", example: "Our international expansion follows the principle 'when in Rome, do as the Romans do' by adapting to local business practices." },
+    { word: "you can't make an omelette without breaking eggs", translation: "on ne fait pas d'omelette sans casser des œufs", example: "The merger will inevitably cause some disruption—you can't make an omelette without breaking eggs." },
+    { word: "a leopard cannot change its spots", translation: "chassez le naturel, il revient au galop", example: "Despite promises of reform, the company's repeated ethical violations suggest a leopard cannot change its spots." },
+    { word: "don't cry over spilled milk", translation: "ce qui est fait est fait", example: "Rather than dwelling on the failed launch, let's not cry over spilled milk and focus on the next opportunity." },
+    { word: "a chain is only as strong as its weakest link", translation: "une chaîne n'est pas plus solide que son maillon le plus faible", example: "The security breach demonstrated that a chain is only as strong as its weakest link—in this case, inadequate vendor protocols." },
+    { word: "a bird in the hand is worth two in the bush", translation: "un tiens vaut mieux que deux tu l'auras", example: "We accepted the smaller but certain acquisition offer, believing a bird in the hand is worth two in the bush." },
+    { word: "all roads lead to Rome", translation: "tous les chemins mènent à Rome", example: "The various analysis methods all reached similar conclusions, proving that all roads lead to Rome." },
+    { word: "barking up the wrong tree", translation: "faire fausse route", example: "The investigators were barking up the wrong tree by focusing on the finance department when the issues originated in operations." },
+    { word: "the devil is in the details", translation: "le diable se cache dans les détails", example: "The merger seemed straightforward until due diligence revealed that the devil is in the details." },
+    { word: "don't judge a book by its cover", translation: "il ne faut pas juger sur les apparences", example: "The unassuming startup with modest offices proved that you shouldn't judge a book by its cover when they revealed their impressive technology." },
+    { word: "every cloud has a silver lining", translation: "à quelque chose malheur est bon", example: "The market downturn has a silver lining—it allows acquisition of assets at favorable valuations." },
+    { word: "it takes two to tango", translation: "il faut être deux pour danser le tango", example: "The failed partnership demonstrates that it takes two to tango—both organizations must be fully committed." },
+    { word: "kill two birds with one stone", translation: "faire d'une pierre deux coups", example: "The new policy kills two birds with one stone by reducing costs and improving environmental compliance." },
+    { word: "look before you leap", translation: "regarder avant de sauter", example: "The cautious approach to expansion reflects the wisdom to look before you leap into new markets." },
+    { word: "make hay while the sun shines", translation: "il faut battre le fer pendant qu'il est chaud", example: "The company is making hay while the sun shines by expanding during favorable market conditions." },
+    { word: "once bitten, twice shy", translation: "chat échaudé craint l'eau froide", example: "After the failed venture in Asia, the company is once bitten, twice shy about international expansion." },
+    { word: "out of the frying pan into the fire", translation: "tomber de Charybde en Scylla", example: "By avoiding the regulatory scrutiny but facing new competitive pressures, the company went out of the frying pan into the fire." },
+    { word: "penny wise, pound foolish", translation: "économiser des bouts de chandelle", example: "Cutting the training budget proved penny wise but pound foolish as productivity declined significantly." },
+    { word: "the pot calling the kettle black", translation: "c'est l'hôpital qui se moque de la charité", example: "The corporation criticizing startup ethics is the pot calling the kettle black given their own compliance issues." },
+    { word: "Rome wasn't built in a day", translation: "Rome ne s'est pas faite en un jour", example: "Creating a robust compliance program takes time—Rome wasn't built in a day." },
+    { word: "strike while the iron is hot", translation: "battre le fer pendant qu'il est chaud", example: "With competitor weakness and available capital, now is the time to strike while the iron is hot with acquisitions." },
+    { word: "too many cooks spoil the broth", translation: "trop de cuisiniers gâtent la sauce", example: "The project suffered from too many cooks spoiling the broth as multiple departments competed for influence." },
+    { word: "when it rains, it pours", translation: "un malheur n'arrive jamais seul", example: "Following the product recall, the company faced litigation and regulatory investigations—when it rains, it pours." },
+    { word: "you can't have your cake and eat it too", translation: "on ne peut pas avoir le beurre et l'argent du beurre", example: "The company wants growth without investment, but you can't have your cake and eat it too." },
+    { word: "you can't teach an old dog new tricks", translation: "on ne change pas les vieilles habitudes", example: "The resistance to digital transformation showed that you can't easily teach old dogs new tricks in traditional industries." },
+    { word: "the best of both worlds", translation: "le meilleur des deux mondes", example: "The hybrid work model offers the best of both worlds: flexibility for employees and collaboration opportunities." },
+    { word: "a blessing in disguise", translation: "un mal pour un bien", example: "Losing the government contract forced diversification, which proved a blessing in disguise when public spending was cut." },
+    { word: "cross that bridge when you come to it", translation: "on verra en temps voulu", example: "Rather than worrying about potential regulatory changes, we'll cross that bridge when we come to it." },
+    { word: "cutting corners", translation: "faire des économies de bouts de chandelle", example: "The investigation revealed that cutting corners on safety protocols led to the industrial accident." },
+&nbsp;
+    { word: "get a taste of one's own medicine", translation: "goûter à sa propre médecine", example: "After years of aggressive tactics, the company got a taste of its own medicine when facing a hostile takeover." },
+    { word: "hit the nail on the head", translation: "mettre dans le mille", example: "The analysis hit the nail on the head by identifying supply chain vulnerabilities as our primary risk." },
+    { word: "leave no stone unturned", translation: "ne négliger aucune piste", example: "The audit team will leave no stone unturned in investigating the accounting discrepancies." },
+    { word: "miss the boat", translation: "rater le coche", example: "By delaying their digital transformation, the retailer missed the boat on e-commerce growth." },
+    { word: "the tip of the iceberg", translation: "la partie visible de l'iceberg", example: "The identified compliance issues are just the tip of the iceberg in terms of governance problems." },
+    { word: "wait for the dust to settle", translation: "attendre que la poussière retombe", example: "Investors are waiting for the dust to settle after the market turbulence before making new commitments." },
+    { word: "walk the talk", translation: "joindre le geste à la parole", example: "Leaders must walk the talk on diversity initiatives by implementing concrete changes, not just making statements." },
+    { word: "weather the storm", translation: "résister à la tempête", example: "Companies with strong balance sheets can weather the storm during economic downturns." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

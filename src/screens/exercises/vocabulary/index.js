@@ -118,7 +118,7 @@ const VocabularyExercise = ({ route }) => {
         statusBarStyle="dark-content"
       >
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={levelColor} />
+          <ActivityIndicator testID="activity-indicator" size="large" color={levelColor} />
         </View>
       </Container>
     );

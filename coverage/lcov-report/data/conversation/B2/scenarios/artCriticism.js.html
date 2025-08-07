@@ -1,0 +1,586 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/B2/scenarios/artCriticism.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/B2/scenarios</a> artCriticism.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/B2/scenarios/artCriticism.js
+&nbsp;
+const artCriticism = {
+    id: 15,
+    title: "Art Criticism",
+    level: "B2",
+    description: "Analyze and evaluate artistic works with appropriate terminology, considering technical elements, cultural context, and personal interpretation.",
+    estimatedTime: "25-30 minutes",
+    vocabulary: ["composition", "technique", "symbolism", "interpretation", "aesthetic", "perspective", "texture", "motif", "context", "movement", "contrast", "form", "subject matter", "representation", "abstraction"],
+    steps: [
+      {
+        id: 1,
+        botMessage: "Let's discuss Edward Hopper's famous painting 'Nighthawks' (1942). How would you analyze this artwork in terms of its formal elements and composition?",
+        inputMode: "freeText",
+        suggestions: [
+          "Hopper's 'Nighthawks' employs a striking compositional structure built around strong geometric elements. The painting is dominated by the sharp diagonal of the diner's corner, which creates a dramatic perspective drawing the viewer's eye into the scene. This angular architecture contrasts with the curved counter inside the establishment. Hopper uses light as a crucial formal element—the harsh, artificial illumination from within the diner creates a stark contrast with the dark, deserted street outside, emphasizing the boundary between the interior and exterior spaces. The composition features significant empty space in the foreground, creating both spatial depth and psychological distance. Color plays an important role, with the warm yellows and reds of the diner's interior contrasting with the cool, muted tones of the street, enhancing the emotional isolation despite physical proximity. The four figures are carefully arranged to create balanced asymmetry, with three customers distributed along the counter and the server positioned opposite. Hopper employs simplified forms and clean lines, removing extraneous details to focus attention on the essential elements of the scene, creating his characteristic sense of stillness and suspended time.",
+          "In analyzing 'Nighthawks,' I would first note Hopper's masterful use of linear perspective, with the corner diner functioning as the focal point where orthogonal lines converge, creating a dramatic sense of depth. The composition demonstrates careful balance—the bright, illuminated interior occupies roughly one-third of the canvas, while the darker exterior dominates the remaining space, creating a compelling visual tension. Hopper's use of color is deliberate and emotionally evocative, with the warm, artificial yellow-green light of the diner contrasting sharply with the deep blues and dark greens of the nocturnal urban environment. The painting features Hopper's characteristic clean, simplified forms and smooth application of paint, with minimal visible brushwork creating an almost cinematic quality. The arrangement of the four figures creates subtle compositional rhythm, with the three customers forming a loose triangle anchored by the counterman in his white uniform, who provides a bright visual counterpoint. The large window creates a frame-within-a-frame effect, making viewers feel as though they are observing the scene from the emptiness of the street, enhancing the painting's themes of voyeurism and urban isolation.",
+          "Hopper's 'Nighthawks' demonstrates his masterful control of formal elements to create both visual impact and psychological atmosphere. The composition is structured around strong geometric forms, with the triangular corner of the diner jutting into the canvas like the prow of a ship, creating dramatic perspective that pulls the viewer's gaze toward the scene. Hopper employs strategic negative space—the empty storefront opposite the diner and the vacant street—to emphasize the diner's isolation within the urban environment. The painting's palette is deliberately limited, with cool, dark tones dominating the exterior while warmer yellows and reds illuminate the interior, creating powerful contrast that emphasizes the boundary between spaces. Hopper's handling of light is particularly notable, with the harsh, artificial diner lighting creating dramatic shadows and reflections on the curved counter and glass windows. The figures are simplified and somewhat rigid, lacking individualized detail, which contributes to their sense of anonymity. Hopper uses line with architectural precision, creating crisp edges and clean contours that contribute to the painting's somewhat uncanny, stage-like quality. These formal elements work together to create the painting's distinctive atmosphere of urban detachment and suspended animation."
+        ],
+        hints: "Analyze the painting's formal elements such as composition, color, line, light, space, and form.",
+        expectedKeywords: ["composition", "perspective", "light", "color", "contrast", "space", "balance", "geometric", "focal point", "forms", "lines", "arrangement", "foreground"],
+        feedback: {
+          correct: "You've provided an excellent formal analysis of the painting. How would you interpret the mood and possible meanings of 'Nighthawks'?",
+          partial: "You've touched on some formal elements. Could you develop a more comprehensive analysis of the painting's compositional and formal aspects?",
+          incorrect: "Please analyze the formal elements and composition of Hopper's 'Nighthawks' more specifically, discussing aspects like color, light, perspective, space, and arrangement."
+        }
+      },
+      {
+        id: 2,
+        botMessage: "How would you interpret the mood and possible meanings of 'Nighthawks' based on both its visual elements and historical context?",
+        inputMode: "hybrid",
+        suggestions: [
+          "The mood of 'Nighthawks' is one of profound urban isolation and psychological detachment, created through both formal elements and cultural context. Hopper painted this work in 1942, just months after Pearl Harbor brought America into World War II, during a period of anxiety and uncertainty. The painting's nocturnal setting and empty streets evoke the wartime blackouts and curfews, while the brightly lit diner becomes a refuge of sorts—yet one that offers connection without true intimacy. The customers sit close together yet remain psychologically distant, avoiding eye contact and conversation, embodying the paradoxical loneliness of urban life. The harsh artificial lighting creates an almost clinical exposure of the figures, suggesting vulnerability rather than warmth. Historically, the painting captures America's transition from small-town community to modern urban anonymity, reflecting the increasing atomization of society. The diner—a quintessentially American institution—becomes a temporary shelter for night owls and insomniacs seeking escape from empty apartments. The absence of a door to the establishment creates a subtle but powerful sense of entrapment, suggesting these figures might be permanently suspended in their isolation. This ambiguity gives the painting its enduring resonance, capturing both a specific historical moment and universal human experiences of alienation and longing for connection.",
+          "The mood of 'Nighthawks' is predominantly one of existential solitude and urban alienation, though with complex undertones of both melancholy and resilience. Created during World War II, the painting reflects the anxiety of wartime America while also capturing broader shifts in urban social life. The night setting creates an immediate sense of vulnerability and exposure—these are people awake when others sleep, inhabiting the margins of normal social rhythms. The stark contrast between the illuminated interior and dark exterior establishes a mood of separation from the broader world. The figures, though physically close, appear emotionally disconnected, avoiding interaction through their body language and gazes, suggesting the quintessentially modern condition of being alone together. Historically, the painting coincides with significant social transformations—increasing urbanization, the decline of traditional community structures, and the rise of consumer culture represented by the standardized diner. The absence of doors in Hopper's composition subtly suggests these figures are trapped in their isolation, unable to fully enter or exit this liminal space. Yet the painting also captures a certain stoic dignity in the customers' quiet persistence, suggesting both the challenges and resilience of modern urban existence. This layered emotional resonance explains the painting's enduring psychological impact and its status as an iconic representation of modern American experience.",
+          "The mood of 'Nighthawks' evokes a profound urban loneliness that feels both historically specific and timelessly universal. Painted during the early years of American involvement in World War II, the work captures a moment of national uncertainty and transition. The night setting and empty streets might reference wartime curfews and blackout regulations, while also symbolizing broader themes of isolation in the modern metropolis. The harsh, artificial light creates an almost theatrical exposure of the figures, suggesting vulnerability rather than comfort despite the diner's shelter. The customers' body language—hunched over, gazes averted or distant—communicates psychological detachment despite physical proximity, embodying the paradox of urban anonymity amid crowds. Historically, the painting emerges during America's transformation from a predominantly rural society to an urban, industrial one, capturing the emotional consequences of this shift. The diner, a democratizing commercial space replacing more traditional community gathering places, offers temporary respite but not genuine connection. The conspicuous absence of a door to the establishment creates a subtle sense of entrapment, suggesting these figures occupy a liminal space between inclusion and isolation. The painting's enduring resonance stems from this ambiguity, allowing viewers across generations to project their own experiences of urban solitude onto these anonymous nighthawks."
+        ],
+        hints: "Interpret the mood and meaning, considering both visual elements and historical/cultural context.",
+        expectedKeywords: ["isolation", "loneliness", "urban", "disconnection", "World War II", "night", "anxiety", "modern", "alienation", "American", "refuge", "anonymity", "interpretation"],
+        acceptablePhrases: [
+          "urban isolation",
+          "psychological detachment",
+          "wartime",
+          "nocturnal setting",
+          "artificial lighting",
+          "modern urban",
+          "alienation",
+          "absence of a door",
+          "emotional disconnection"
+        ],
+        feedback: {
+          correct: "You've provided a thoughtful interpretation incorporating both visual analysis and historical context. How does Hopper's work relate to broader artistic movements or traditions?",
+          partial: "You've offered some interpretive insights. Could you develop a more comprehensive interpretation that considers both the painting's visual elements and its historical context?",
+          incorrect: "Please interpret the mood and possible meanings of 'Nighthawks,' considering both its visual elements and the historical context in which it was created."
+        }
+      },
+      {
+        id: 3,
+        botMessage: "How would you place Hopper's work within broader artistic movements or traditions, and how does 'Nighthawks' relate to or diverge from these contexts?",
+        inputMode: "freeText",
+        suggestions: [
+          "Hopper occupies an intriguing position within 20th-century art movements, simultaneously connecting to and standing apart from the dominant trends of his era. While often categorized with American Realism, his work diverges significantly from contemporaries like the Ashcan School painters, who typically depicted vibrant, crowded urban scenes. Instead, Hopper's vision is more selective and psychologically charged, using realistic techniques to create almost surreal emotional effects. Though working during the rise of European modernism and abstraction, Hopper maintained his commitment to representational painting, yet his simplified forms, geometric compositions, and focus on light show awareness of modernist formal concerns. His work shares thematic territory with New Objectivity in Germany, which similarly depicted urban alienation, though with a more explicit social critique than Hopper's ambiguous narratives. 'Nighthawks' specifically demonstrates how Hopper adopted certain cinematographic techniques—dramatic lighting, voyeuristic perspectives, and psychological tension—reflecting the growing influence of film noir. The painting's themes of urban isolation anticipate later existentialist concerns in post-war art. Ultimately, Hopper created a distinctive American modernism that used recognizable imagery to explore psychological states rather than formal experimentation, influencing both later realists and photorealists while also providing visual vocabulary for pop art and even postmodern cinematic references. This unique position—connected to yet distinct from major movements—helps explain Hopper's enduring significance and widespread influence beyond artistic circles.",
+          "Hopper occupies a fascinating intermediate position within artistic traditions, connected to multiple movements while maintaining a distinctive individual vision. Though contemporaneous with the rise of American Abstract Expressionism, Hopper remained committed to representational painting, seemingly swimming against the modernist current. However, his work is far from traditional realism—his simplified forms, architectural emphasis, and geometric compositions show clear modernist influences, creating a bridge between American Scene painting and more experimental approaches. 'Nighthawks' demonstrates Hopper's selective realism, where everyday subjects are transformed through careful omission and emphasis rather than faithful documentation. While the Ashcan School sought to capture the vitality and chaos of urban life, Hopper focused instead on moments of stillness, silence, and isolation within the modern city. His work shares thematic concerns with European movements like Neue Sachlichkeit (New Objectivity), which similarly depicted urban alienation, though without their explicit social criticism. Hopper's distinctive use of light and shadow, dramatic viewpoints, and psychological tension reveals the growing influence of cinema on painting, particularly film noir aesthetics. His focus on mundane American spaces transformed by emotional resonance influenced later movements including Photorealism and Pop Art, while his psychological atmospheres anticipated aspects of postmodern alienation. This position—maintaining representational approaches while incorporating modernist sensibilities—created a uniquely American modernism that continues to resonate across artistic and popular cultural realms.",
+          "Hopper's work exists at a fascinating intersection of multiple artistic currents, maintaining a distinctive vision that both connects to and diverges from contemporaneous movements. Though working during the ascendancy of abstraction in American art, Hopper remained committed to representation, yet his approach differs significantly from traditional realism or regionalism. His work demonstrates selective realism—using recognizable imagery while employing simplification, unusual perspectives, and dramatic lighting to create psychological rather than literal truth. Unlike the Social Realists of the 1930s, Hopper largely avoided explicit political commentary, focusing instead on existential rather than economic conditions. 'Nighthawks' exemplifies how Hopper incorporated modernist formal elements—geometric simplification, emphasis on two-dimensionality, and compositional tension—while maintaining recognizable subject matter. The painting's atmospheric qualities connect to aspects of Surrealism, creating dreamlike psychological spaces through realistic techniques rather than fantastical imagery. Hopper's fascination with architectural forms, artificial light, and voyeuristic viewpoints both influenced and was influenced by cinematic aesthetics, particularly film noir. His focus on alienation within mundane American environments anticipated later Pop Art's elevation of commercial spaces, though without Pop's ironic stance. Hopper's ability to infuse ordinary scenes with psychological complexity created a distinctive American modernism that influenced diverse subsequent movements from Photorealism to the cinematic visuals of directors like David Lynch, demonstrating how his work transcended categorical boundaries to create a singular artistic vision."
+        ],
+        hints: "Analyze how Hopper's work relates to broader artistic movements, traditions, and contemporaneous developments.",
+        expectedKeywords: ["Realism", "modernism", "abstraction", "American", "representational", "cinema", "film noir", "Ashcan School", "psychological", "influence", "movements", "contemporary", "distinctive"],
+        feedback: {
+          correct: "You've provided an insightful analysis of Hopper's relationship to broader artistic movements. How might different viewers interpret 'Nighthawks' based on their own experiences and perspectives?",
+          partial: "You've made some connections to art movements. Could you develop a more comprehensive analysis of how Hopper's work relates to and differs from broader artistic contexts?",
+          incorrect: "Please analyze more specifically how Hopper's work relates to broader artistic movements and traditions, and how 'Nighthawks' connects to or diverges from these contexts."
+        }
+      },
+      {
+        id: 4,
+        botMessage: "How might different viewers interpret 'Nighthawks' differently based on their own experiences and perspectives?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Different viewers might interpret 'Nighthawks' through vastly different experiential lenses. Those who have experienced urban loneliness might identify deeply with the emotional isolation depicted, finding personal resonance in the disconnected figures. Viewers from later generations might see the painting through a nostalgic filter, focusing on its depiction of mid-century Americana and the now-romanticized classic diner aesthetic. Those with experience of night work or insomnia might interpret the scene as representing a community of outsiders finding refuge during societal margins of time. Viewers familiar with cinematic traditions might approach it as a frozen film scene, imagining narratives about the characters' pasts and futures. Those viewing it during periods of social isolation (like the COVID-19 pandemic) might find new relevance in its depiction of constrained social interaction. Art historians might focus on its formal innovations and contextual significance, while casual museum-goers might connect primarily with its emotional atmosphere rather than its artistic importance. Urban dwellers might recognize the specific paradox of city life—proximity without intimacy—while those from rural backgrounds might see it as confirmation of urban alienation narratives. These varied interpretations demonstrate how great art functions as a mirror, reflecting viewers' own experiences while simultaneously expanding their understanding through new perspectives.",
+          "The interpretive flexibility of 'Nighthawks' allows diverse viewers to find different meanings based on their personal contexts. Those who have worked in service industries might focus on the counterman's perspective, seeing a representation of the unusual social dynamic of serving others during off-hours. Viewers experiencing depression might recognize the specific emotional quality of being surrounded by people yet feeling fundamentally disconnected. Those with military experience might interpret it through the wartime context, seeing the hypervigilance and altered social reality of a nation at war. Viewers who've experienced urban solitude might find validation of their own late-night wanderings and observations. Art students might approach it analytically, focusing on compositional techniques and historical significance. Those from later generations might view it through the lens of its many homages and references in films, advertisements, and popular culture, seeing it as an iconic representation of Americana. Viewers from different cultural backgrounds might interpret the scene through their own cultural frameworks of social connection and isolation. Digital natives might find resonance with the modern experience of being physically present yet mentally elsewhere. These varied interpretations demonstrate how 'Nighthawks' functions as a Rorschach test of sorts, revealing viewers' preoccupations while simultaneously expanding their perspective through its artistic ambiguity.",
+          "The enduring power of 'Nighthawks' lies partly in how it invites diverse interpretations based on viewers' own experiences. Those who've experienced profound loneliness might see a validation of their emotional reality in the painting's isolated figures. Viewers familiar with service work might focus on the power dynamic between the counterman and customers, seeing class dimensions others might miss. Those with urban experience might recognize the specific quality of city isolation—being alone in public—while rural viewers might see confirmation of preconceptions about urban anonymity. Viewers from collectivist cultures might interpret the scene differently than those from individualist societies, focusing on the social disconnection as problematic rather than ambient. Those viewing the painting after its proliferation in popular culture might see it through layers of references and homages, unable to approach it with fresh eyes. Viewers during different historical moments might find new relevance—during wartime, economic depression, or pandemic isolation—as the painting's themes resonate with contemporary experiences. Those with cinematic knowledge might interpret it through film noir conventions, while literary-minded viewers might see connections to Hemingway's clean, sparse prose or modernist themes of alienation. These varied interpretations demonstrate how great art transcends its creator's intentions, becoming a complex cultural text continually renewed through diverse viewpoints."
+        ],
+        hints: "Discuss how different viewers might interpret the painting based on their experiences and perspectives.",
+        expectedKeywords: ["interpret", "perspective", "experience", "viewer", "personal", "generation", "cultural", "background", "different", "resonance", "individual", "connection", "nostalgic"],
+        acceptablePhrases: [
+          "different viewers might",
+          "those who have experienced",
+          "viewers from",
+          "might interpret",
+          "might focus on",
+          "might see",
+          "resonance with",
+          "through the lens of",
+          "personal contexts"
+        ],
+        feedback: {
+          correct: "You've thoughtfully explored diverse interpretive perspectives. How would you evaluate the painting's significance and enduring relevance in art history and popular culture?",
+          partial: "You've mentioned some different perspectives. Could you develop a more thorough analysis of how diverse viewers might interpret the painting differently?",
+          incorrect: "Please discuss how different viewers might interpret 'Nighthawks' differently based on their own experiences, cultural backgrounds, and perspectives."
+        }
+      },
+      {
+        id: 5,
+        botMessage: "How would you evaluate 'Nighthawks' in terms of its significance in art history and its enduring cultural relevance?",
+        inputMode: "freeText",
+        suggestions: [
+          "'Nighthawks' occupies an exceptional position in both art historical and broader cultural contexts. Art historically, the painting represents a pivotal moment in American visual culture, offering a distinctively American response to modernism that maintained representational imagery while incorporating modernist compositional strategies and psychological depth. Its formal innovations include Hopper's cinematic framing, theatrical lighting, and creation of narrative ambiguity that invites viewer participation. The painting emerged at a crucial historical juncture—during World War II and amid America's transformation into an urban, consumer society—capturing essential tensions of modernity that transcended its specific moment. Its enduring cultural relevance stems from several factors: First, its visual accessibility combined with psychological complexity allows it to function simultaneously as popular image and serious art. Second, its themes of urban isolation and technological mediation of experience have only become more relevant in our increasingly digital society. Third, its aesthetic has proved remarkably adaptable, inspiring homages across diverse media from cinema (influencing directors from Hitchcock to Wenders) to photography, literature, and digital art. Fourth, its ambiguity allows it to be continually reinterpreted, maintaining relevance across changing social contexts. The painting has achieved rare cultural ubiquity, becoming visual shorthand for urban alienation and emotional isolation while simultaneously being recognized as a masterpiece of American art. This dual status—as both critical touchstone and popular icon—establishes its exceptional significance in American visual culture.",
+          "The significance of 'Nighthawks' can be evaluated across multiple dimensions—both within formal art history and in its broader cultural impact. Art historically, the painting represents a critical development in American modernism, creating a distinctive national visual language that engaged with European modernist concerns while maintaining representational focus and American subject matter. Its innovative handling of artificial light, geometric composition, and psychological atmosphere established new possibilities for realist painting during a period dominated by abstraction. The work's formal achievements include its cinematic framing, narrative ambiguity, and creation of emotional atmosphere through technical means rather than sentimental content. Its enduring cultural relevance stems from its remarkable versatility as a visual reference point—it has been parodied, homaged, and reinterpreted in countless films, advertisements, television programs, and other paintings. This widespread referencing demonstrates how the image transcended art world boundaries to become part of our shared visual vocabulary. The painting's themes of urban isolation have proved surprisingly adaptable to changing social contexts, from wartime anxiety to digital-age disconnection. Its influence extends beyond visual arts into literature, where its aesthetic sensibility informed minimalist fiction, and music, where its nocturnal mood inspired jazz and contemporary compositions. Few paintings have achieved this level of cross-disciplinary influence while maintaining their art historical significance, making 'Nighthawks' a rare cultural artifact that functions simultaneously as canonical masterpiece and living cultural touchstone.",
+          "The significance of 'Nighthawks' manifests in both its art historical importance and its remarkable cultural permeation. Within art history, the painting represents a crucial contribution to American modernism, offering an alternative path that maintained representational subject matter while incorporating modernist psychological complexity and formal innovation. Hopper's distinctive visual vocabulary—architectural emphasis, dramatic lighting, voyeuristic perspective—influenced subsequent generations of painters from photorealists to pop artists. The painting emerged during a pivotal historical moment when American culture began to displace European influence, making it an important marker in American cultural emergence. Its enduring cultural relevance extends far beyond the art world through unprecedented levels of visual citation and reference. The painting has been appropriated, parodied, and homaged in countless films, television programs, advertisements, and other art forms, demonstrating its function as a visual archetype rather than merely a specific artwork. Its themes of urban alienation and technologically mediated experience have proven remarkably prescient, gaining rather than losing relevance in our increasingly isolated digital society. The painting's visual accessibility combined with interpretive ambiguity allows it to function simultaneously as popular culture reference and serious artistic achievement. This dual status—canonical masterpiece and ubiquitous cultural shorthand—establishes 'Nighthawks' as one of the rare artworks that shaped not just art history but visual culture itself, creating a visual metaphor for modern experience that transcends its specific historical moment."
+        ],
+        hints: "Evaluate the painting's significance in art history and its enduring cultural impact and relevance.",
+        expectedKeywords: ["significance", "influence", "iconic", "American", "modern", "cultural", "impact", "enduring", "references", "popular culture", "visual", "symbol", "resonance"],
+        feedback: {
+          correct: "You've provided an excellent evaluation of the painting's significance and cultural impact. What aspects of the painting do you personally find most compelling, and why?",
+          partial: "You've touched on some important points about the painting's significance. Could you develop a more comprehensive evaluation of its art historical importance and cultural relevance?",
+          incorrect: "Please evaluate more specifically the significance of 'Nighthawks' in art history and its enduring relevance in broader culture."
+        }
+      },
+      {
+        id: 6,
+        botMessage: "What aspects of 'Nighthawks' do you personally find most compelling or meaningful, and why?",
+        inputMode: "hybrid",
+        suggestions: [
+          "I find the painting's exploration of public solitude particularly compelling—that paradoxical state of being physically surrounded yet emotionally isolated. Hopper captures something profound about modern urban experience in the way these figures occupy the same space without genuine connection. The painting resonates with my own experiences of city life, where proximity doesn't necessarily create community. I'm also drawn to the painting's narrative ambiguity, which invites active engagement rather than passive viewing. Each time I encounter the image, I find myself creating different stories about who these people are and why they're awake at this hour, making the viewing experience dynamic rather than static. The quality of light in the painting particularly moves me—the harsh, artificial illumination creating a sense of exposure and vulnerability while simultaneously providing refuge from the darkness outside. This interplay between security and exposure creates an emotional complexity that transcends simple categorization as either comforting or alienating. Finally, I appreciate how the painting captures a specific American moment while simultaneously feeling timeless, speaking to universal experiences of isolation and connection that remain relevant across changing social contexts. This multilayered quality allows the painting to resonate on both personal and universal levels simultaneously.",
+          "What I find most compelling about 'Nighthawks' is its masterful creation of psychological atmosphere through purely visual means. Hopper communicates profound emotional states without relying on narrative elements or sentimental techniques, achieving an emotional depth that feels authentic rather than manipulative. The painting's ambiguous relationship between loneliness and solitude particularly resonates with me—the way it presents isolation as neither entirely negative nor positive, but as a complex emotional state containing elements of both refuge and alienation. I'm drawn to how the painting captures a specific quality of night consciousness—that altered state of awareness that emerges during late hours when the social world recedes. The composition's voyeuristic perspective places viewers in the position of outsiders looking in, creating an almost cinematic spectator relationship that feels strikingly contemporary despite the painting's age. I also find compelling how Hopper treats mundane, everyday American spaces with the same seriousness traditionally reserved for grand subjects, elevating ordinary experience to the realm of the profound. This democratization of subject matter—finding emotional depth in a simple diner scene—suggests meaning can be found in even the most commonplace aspects of modern life, a perspective I find both artistically and philosophically valuable.",
+          "I'm particularly drawn to the tension between connection and disconnection that Hopper creates through compositional choices. The figures are physically proximate yet psychologically distant, capturing that uniquely modern experience of being alone together. This resonates with my own experiences of urban life and increasingly with digital-age social dynamics. I'm also compelled by the painting's treatment of artificial light—how Hopper transforms ordinary fluorescent illumination into something simultaneously harsh and beautiful, threatening and protective. The composition's voyeuristic perspective creates a complex viewing relationship; we observe these figures from the darkness outside, positioned as both witnesses and potential participants in this nocturnal scene. This ambiguous viewer positioning creates an emotional complexity that transcends simple identification or detachment. I find the painting's exploration of liminality particularly meaningful—how it captures transitional spaces and states (night between days, diner between public and private, wakefulness between activities) where normal social scripts are suspended. Finally, I'm moved by how the painting dignifies ordinary people and places, finding profound emotional resonance in an everyday American diner scene rather than exotic or elevated subject matter. This democratization of artistic focus affirms the significance of common experience, suggesting beauty and meaning exist not just in the extraordinary but in the fabric of daily life."
+        ],
+        hints: "Share your personal response to the painting, identifying specific aspects you find compelling and explaining why.",
+        expectedKeywords: ["personally", "compelling", "resonates", "drawn to", "experience", "emotional", "meaningful", "appreciate", "connection", "solitude", "isolation", "interpretation", "perspective"],
+        acceptablePhrases: [
+          "I find",
+          "resonates with",
+          "I'm drawn to",
+          "particularly compelling",
+          "personally",
+          "meaningful to me",
+          "I appreciate",
+          "speaks to",
+          "connects with"
+        ],
+        feedback: {
+          correct: "You've shared a thoughtful personal response to the painting. Throughout this discussion, you've demonstrated sophisticated art analysis skills, considering formal elements, historical context, artistic movements, and personal interpretation.",
+          partial: "You've offered some personal thoughts about the painting. Could you develop a more specific explanation of which aspects you find compelling and why?",
+          incorrect: "Please share your personal response to 'Nighthawks,' identifying specific aspects of the painting you find most compelling and explaining why they resonate with you."
+        }
+      }
+    ],
+    completionMessage: "Excellent work! You've demonstrated sophisticated art criticism skills, analyzing formal elements, interpreting meaning with attention to historical context, relating the work to broader artistic movements, considering diverse perspectives, and evaluating significance while articulating personal response. These analytical abilities enhance appreciation of visual arts.",
+    learningObjectives: [
+      "Analyze formal elements and composition of visual artworks",
+      "Interpret artistic meaning considering both visual elements and historical context",
+      "Connect individual artworks to broader artistic movements and traditions",
+      "Consider multiple interpretive perspectives on artworks",
+      "Evaluate artistic significance and cultural impact",
+      "Articulate personal responses to artworks with specific references"
+    ],
+    grammar: {
+      points: [
+        "Complex sentences with multiple subordinate clauses",
+        "Specialized art terminology with precise meanings",
+        "Present tense for discussing permanent aspects of artworks",
+        "Conditional structures for hypothetical interpretations",
+        "Comparative language for contextualizing artistic approaches"
+      ]
+    }
+  };
+&nbsp;
+  export default artCriticism;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

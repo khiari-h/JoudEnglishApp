@@ -1,0 +1,724 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/6/categories/03_management_strategie.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/6/categories</a> 03_management_strategie.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Management et Stratégie d'Entreprise",
+  words: [
+    // Leadership et gouvernance (25 mots)
+    { word: "strategic leadership", translation: "leadership stratégique", example: "Strategic leadership aligns organizational capabilities with market opportunities." },
+&nbsp;
+    { word: "executive decision-making", translation: "prise de décision exécutive", example: "Executive decision-making balances analytical and intuitive approaches." },
+&nbsp;
+    { word: "board dynamics", translation: "dynamique du conseil d'administration", example: "Board dynamics influence the quality of strategic oversight and guidance." },
+&nbsp;
+    { word: "leadership pipeline", translation: "vivier de leaders", example: "The leadership pipeline ensures succession readiness at all organizational levels." },
+    { word: "executive presence", translation: "présence exécutive", example: "Executive presence combines communication skills with credibility and confidence." },
+&nbsp;
+    { word: "collaborative leadership", translation: "leadership collaboratif", example: "Collaborative leadership engages diverse perspectives for better decisions." },
+    { word: "vision statement", translation: "énoncé de vision", example: "The vision statement articulates the organization's aspirational future state." },
+&nbsp;
+    { word: "leadership competency", translation: "compétence de leadership", example: "Leadership competency models define essential capabilities for executives." },
+    { word: "stewardship", translation: "intendance", example: "Stewardship emphasizes responsible management of company resources." },
+    { word: "distributed leadership", translation: "leadership distribué", example: "Distributed leadership shares responsibility across organizational levels." },
+    { word: "executive coaching", translation: "coaching exécutif", example: "Executive coaching develops leadership effectiveness through personalized guidance." },
+&nbsp;
+    { word: "board composition", translation: "composition du conseil", example: "Board composition should reflect diverse expertise and perspectives." },
+    { word: "leadership agility", translation: "agilité du leadership", example: "Leadership agility enables effective response to rapidly changing conditions." },
+&nbsp;
+    { word: "executive team effectiveness", translation: "efficacité de l'équipe dirigeante", example: "Executive team effectiveness requires both individual excellence and collaborative dynamics." },
+    { word: "leadership development", translation: "développement du leadership", example: "Leadership development accelerates the growth of high-potential talent." },
+&nbsp;
+    // Planification stratégique (25 mots)
+&nbsp;
+    { word: "competitive strategy", translation: "stratégie concurrentielle", example: "Their competitive strategy emphasizes service differentiation rather than price." },
+    { word: "strategic intent", translation: "intention stratégique", example: "Strategic intent articulates aspirational goals that stretch organizational capabilities." },
+&nbsp;
+    { word: "strategic positioning", translation: "positionnement stratégique", example: "Strategic positioning establishes a unique value proposition in the market." },
+&nbsp;
+    { word: "strategic objective", translation: "objectif stratégique", example: "Each strategic objective includes specific metrics and timeframes." },
+    { word: "strategic implementation", translation: "mise en œuvre stratégique", example: "Strategic implementation translates plans into operational activities." },
+    { word: "strategic initiative", translation: "initiative stratégique", example: "The strategic initiative aimed to penetrate emerging markets in Southeast Asia." },
+&nbsp;
+    { word: "corporate strategy", translation: "stratégie d'entreprise", example: "Corporate strategy determines which businesses to operate and how to allocate resources." },
+    { word: "business-level strategy", translation: "stratégie au niveau commercial", example: "Business-level strategy focuses on competitive advantage within specific markets." },
+    { word: "functional strategy", translation: "stratégie fonctionnelle", example: "Functional strategy aligns departmental activities with broader business objectives." },
+    { word: "strategic control", translation: "contrôle stratégique", example: "Strategic control monitors implementation progress against planned objectives." },
+&nbsp;
+    { word: "strategic planning cycle", translation: "cycle de planification stratégique", example: "The strategic planning cycle ensures regular review and adaptation." },
+    { word: "strategic analysis", translation: "analyse stratégique", example: "Strategic analysis evaluates internal capabilities and external factors." },
+&nbsp;
+    { word: "strategic alternatives", translation: "alternatives stratégiques", example: "Management evaluated strategic alternatives before selecting the acquisition path." },
+    { word: "blue ocean strategy", translation: "stratégie océan bleu", example: "Blue ocean strategy seeks uncontested market spaces rather than fierce competition." },
+    { word: "strategic vision", translation: "vision stratégique", example: "Their strategic vision guided decision-making through market turbulence." },
+    { word: "strategic thinking", translation: "pensée stratégique", example: "Strategic thinking combines analytical and creative approaches to opportunity identification." },
+&nbsp;
+    // Innovation et gestion du changement (25 mots)
+    { word: "innovation management", translation: "gestion de l'innovation", example: "Innovation management establishes processes for generating and implementing new ideas." },
+&nbsp;
+    { word: "organizational transformation", translation: "transformation organisationnelle", example: "The organizational transformation realigned structures with evolving customer needs." },
+&nbsp;
+    { word: "innovation culture", translation: "culture d'innovation", example: "Creating an innovation culture requires encouraging experimentation and tolerating failure." },
+    { word: "change resistance", translation: "résistance au changement", example: "Change resistance stemmed from inadequate communication about benefits." },
+&nbsp;
+    { word: "innovation portfolio", translation: "portefeuille d'innovation", example: "The innovation portfolio balances short-term improvements with long-term breakthroughs." },
+    { word: "change readiness", translation: "préparation au changement", example: "Assessments measured organizational change readiness before implementation." },
+&nbsp;
+    { word: "change leadership", translation: "leadership du changement", example: "Change leadership requires vision, communication, and persistence." },
+&nbsp;
+    { word: "change initiative", translation: "initiative de changement", example: "The change initiative transformed operational processes across divisions." },
+&nbsp;
+    { word: "design thinking", translation: "pensée design", example: "Design thinking puts customer needs at the center of innovation processes." },
+    { word: "change communication", translation: "communication du changement", example: "Effective change communication addresses both rational and emotional factors." },
+&nbsp;
+    { word: "change sustainability", translation: "durabilité du changement", example: "Change sustainability requires embedding new behaviors in organizational systems." },
+    { word: "innovation capability", translation: "capacité d'innovation", example: "Innovation capability combines creative processes with disciplined implementation." },
+&nbsp;
+    // Gestion des opérations (25 mots)
+    { word: "operations management", translation: "gestion des opérations", example: "Operations management optimizes processes for efficiency and quality." },
+    { word: "supply chain management", translation: "gestion de la chaîne d'approvisionnement", example: "Supply chain management coordinates product flows from suppliers to customers." },
+    { word: "operational excellence", translation: "excellence opérationnelle", example: "Operational excellence initiatives reduced costs while improving quality." },
+    { word: "process optimization", translation: "optimisation des processus", example: "Process optimization eliminated redundant steps and reduced cycle time." },
+    { word: "lean management", translation: "gestion allégée", example: "Lean management principles eliminated waste throughout the production system." },
+    { word: "quality management", translation: "gestion de la qualité", example: "Quality management systems ensure consistent product standards." },
+&nbsp;
+    { word: "inventory management", translation: "gestion des stocks", example: "Improved inventory management reduced carrying costs by 15%." },
+    { word: "operational efficiency", translation: "efficacité opérationnelle", example: "Operational efficiency initiatives increased productivity while reducing costs." },
+    { word: "business process management", translation: "gestion des processus d'affaires", example: "Business process management structures workflows for optimal results." },
+    { word: "continuous improvement", translation: "amélioration continue", example: "The continuous improvement program empowers employees to suggest process enhancements." },
+&nbsp;
+    { word: "six sigma methodology", translation: "méthodologie six sigma", example: "Six sigma methodology reduces process variation and defects." },
+&nbsp;
+    { word: "value stream mapping", translation: "cartographie de la chaîne de valeur", example: "Value stream mapping visualizes process flows to identify improvement opportunities." },
+    { word: "just-in-time production", translation: "production juste-à-temps", example: "Just-in-time production minimizes inventory costs while meeting customer demand." },
+    { word: "total quality management", translation: "gestion de la qualité totale", example: "Total quality management embeds quality principles throughout the organization." },
+    { word: "service operations", translation: "opérations de service", example: "Service operations balance efficiency with personalized customer experiences." },
+    { word: "bottleneck analysis", translation: "analyse des goulots d'étranglement", example: "Bottleneck analysis identified capacity constraints in the manufacturing process." },
+    { word: "operational strategy", translation: "stratégie opérationnelle", example: "Their operational strategy emphasized flexibility and responsiveness." },
+    { word: "process standardization", translation: "standardisation des processus", example: "Process standardization ensures consistent approaches across locations." },
+    { word: "productivity improvement", translation: "amélioration de la productivité", example: "The automation initiative delivered substantial productivity improvement." },
+    { word: "operations metrics", translation: "indicateurs opérationnels", example: "Operations metrics track efficiency, quality, and customer satisfaction." },
+    { word: "production planning", translation: "planification de la production", example: "Production planning coordinates resources to meet delivery schedules." },
+    { word: "operational resilience", translation: "résilience opérationnelle", example: "Operational resilience enables quick recovery from disruptions." },
+&nbsp;
+    // Comportement organisationnel (25 mots)
+    { word: "organizational behavior", translation: "comportement organisationnel", example: "Organizational behavior studies how individuals and groups interact within companies." },
+&nbsp;
+    { word: "team dynamics", translation: "dynamique d'équipe", example: "Team dynamics influence collaboration effectiveness and innovation." },
+    { word: "organizational learning", translation: "apprentissage organisationnel", example: "Organizational learning processes translate experiences into improved practices." },
+&nbsp;
+    { word: "organizational development", translation: "développement organisationnel", example: "Organizational development interventions improve system effectiveness." },
+&nbsp;
+    { word: "organizational change", translation: "changement organisationnel", example: "Organizational change requires addressing both structural and human factors." },
+    { word: "employee motivation", translation: "motivation des employés", example: "Understanding employee motivation helps design effective incentive systems." },
+    { word: "workplace climate", translation: "climat de travail", example: "The workplace climate survey revealed improving satisfaction scores." },
+&nbsp;
+    { word: "performance feedback", translation: "rétroaction sur la performance", example: "Regular performance feedback accelerates employee development." },
+    { word: "organizational identity", translation: "identité organisationnelle", example: "Organizational identity shapes how employees interpret and respond to challenges." },
+&nbsp;
+    { word: "organizational politics", translation: "politique organisationnelle", example: "Organizational politics influences decision-making and resource allocation." },
+    { word: "power dynamics", translation: "dynamiques de pouvoir", example: "Understanding power dynamics helps navigate complex organizational environments." },
+    { word: "employee wellbeing", translation: "bien-être des employés", example: "Employee wellbeing programs address physical, mental, and social health." },
+    { word: "organizational climate", translation: "climat organisationnel", example: "The organizational climate reflects shared perceptions of workplace practices." },
+&nbsp;
+    { word: "organizational commitment", translation: "engagement organisationnel", example: "Organizational commitment reflects employee loyalty and identification." },
+    { word: "workplace communication", translation: "communication en milieu de travail", example: "Effective workplace communication prevents misunderstandings and builds trust." },
+&nbsp;
+    // Marketing et gestion de la clientèle (25 mots)
+    { word: "strategic marketing", translation: "marketing stratégique", example: "Strategic marketing aligns offerings with target customer needs and company capabilities." },
+&nbsp;
+    { word: "brand management", translation: "gestion de marque", example: "Brand management ensures consistent positioning across communication channels." },
+&nbsp;
+    { word: "customer experience", translation: "expérience client", example: "Exceptional customer experience drives loyalty and positive word-of-mouth." },
+&nbsp;
+    { word: "marketing analytics", translation: "analytique marketing", example: "Marketing analytics measures campaign effectiveness and customer behavior." },
+&nbsp;
+    { word: "customer insights", translation: "connaissances client", example: "Customer insights drive product development and marketing strategies." },
+&nbsp;
+    { word: "omnichannel marketing", translation: "marketing omnicanal", example: "Omnichannel marketing delivers seamless experiences across physical and digital interactions." },
+&nbsp;
+    { word: "market development", translation: "développement de marché", example: "Market development strategies expand the customer base for existing products." },
+&nbsp;
+    { word: "marketing mix", translation: "mix marketing", example: "The marketing mix optimizes product, price, place, and promotion decisions." },
+&nbsp;
+    // Gestion de projet (25 mots)
+    { word: "project management", translation: "gestion de projet", example: "Project management coordinates activities to deliver specific objectives within constraints." },
+    { word: "scope management", translation: "gestion de la portée", example: "Scope management prevents feature creep and maintains project focus." },
+    { word: "project planning", translation: "planification de projet", example: "Project planning establishes activities, resources, and timelines." },
+&nbsp;
+    { word: "project schedule", translation: "calendrier de projet", example: "The project schedule defines activity sequence and completion dates." },
+    { word: "critical path", translation: "chemin critique", example: "Delays in critical path activities directly impact project completion dates." },
+&nbsp;
+    { word: "project governance", translation: "gouvernance de projet", example: "Project governance establishes decision-making authorities and oversight processes." },
+    { word: "project budget", translation: "budget de projet", example: "The project budget tracks planned versus actual expenditures." },
+    { word: "waterfall methodology", translation: "méthodologie en cascade", example: "Waterfall methodology follows sequential phases from requirements through delivery." },
+    { word: "sprint planning", translation: "planification de sprint", example: "Sprint planning defines deliverables for the upcoming development cycle." },
+&nbsp;
+    { word: "project portfolio management", translation: "gestion de portefeuille de projets", example: "Project portfolio management aligns initiatives with strategic priorities." },
+    { word: "project charter", translation: "charte de projet", example: "The project charter formally authorizes the project and defines high-level parameters." },
+    { word: "earned value management", translation: "gestion de la valeur acquise", example: "Earned value management integrates scope, schedule, and cost performance measurement." },
+    { word: "project stakeholder", translation: "partie prenante du projet", example: "Project stakeholders include anyone affected by or influencing the initiative." },
+    { word: "project deliverable", translation: "livrable de projet", example: "Project deliverables include all products or results produced during execution." },
+&nbsp;
+    { word: "project management office", translation: "bureau de gestion de projets", example: "The project management office standardizes project governance across the organization." },
+    { word: "project lifecycle", translation: "cycle de vie du projet", example: "The project lifecycle encompasses initiation through closure phases." },
+    { word: "work breakdown structure", translation: "structure de découpage du projet", example: "The work breakdown structure hierarchically organizes project deliverables and activities." },
+    { word: "project communication", translation: "communication de projet", example: "Effective project communication ensures stakeholder awareness and alignment." },
+    { word: "project prioritization", translation: "priorisation de projet", example: "Project prioritization ensures resource allocation to highest-value initiatives." },
+&nbsp;
+    // Négociation et résolution de conflits (25 mots)
+    { word: "negotiation strategy", translation: "stratégie de négociation", example: "Effective negotiation strategy balances value creation with value claiming." },
+&nbsp;
+    { word: "BATNA", translation: "MESORE", example: "Understanding your BATNA (Best Alternative To Negotiated Agreement) strengthens negotiating position." },
+    { word: "distributive negotiation", translation: "négociation distributive", example: "Distributive negotiation focuses on claiming value in zero-sum situations." },
+    { word: "integrative negotiation", translation: "négociation intégrative", example: "Integrative negotiation seeks mutual value creation through creative solutions." },
+&nbsp;
+    { word: "negotiation tactic", translation: "tactique de négociation", example: "The negotiation tactic aimed to determine the other party's reservation price." },
+&nbsp;
+    { word: "principled negotiation", translation: "négociation raisonnée", example: "Principled negotiation separates people from problems and focuses on interests rather than positions." },
+&nbsp;
+    { word: "negotiation preparation", translation: "préparation à la négociation", example: "Thorough negotiation preparation establishes objectives, strategies, and fallback positions." },
+&nbsp;
+    { word: "positional bargaining", translation: "négociation positionnelle", example: "Positional bargaining often creates suboptimal agreements by overlooking interests." },
+    { word: "consensus building", translation: "recherche de consensus", example: "Consensus building aligns multiple stakeholders behind shared solutions." },
+    { word: "team negotiation", translation: "négociation d'équipe", example: "Team negotiation requires clear roles and coordination strategies." },
+    { word: "cross-cultural negotiation", translation: "négociation interculturelle", example: "Cross-cultural negotiation demands awareness of varying communication styles and expectations." },
+    { word: "facilitation", translation: "facilitation", example: "Skilled facilitation helps groups navigate complex discussions productively." },
+    { word: "negotiation power", translation: "pouvoir de négociation", example: "Information asymmetry affects relative negotiation power between parties." },
+&nbsp;
+    // Éthique des affaires et responsabilité sociale (25 mots)
+&nbsp;
+    { word: "stakeholder theory", translation: "théorie des parties prenantes", example: "Stakeholder theory argues corporations should serve all groups affected by their activities." },
+    { word: "environmental sustainability", translation: "durabilité environnementale", example: "Environmental sustainability initiatives reduced carbon emissions by 35%." },
+    { word: "ethical leadership", translation: "leadership éthique", example: "Ethical leadership demonstrates integrity in all business decisions." },
+    { word: "corporate citizenship", translation: "citoyenneté d'entreprise", example: "Corporate citizenship programs support community development and social causes." },
+&nbsp;
+    { word: "social impact", translation: "impact social", example: "Measuring social impact quantifies program effects on community well-being." },
+&nbsp;
+    { word: "ethical supply chain", translation: "chaîne d'approvisionnement éthique", example: "Ethical supply chain management ensures fair labor practices and environmental responsibility." },
+    { word: "corporate transparency", translation: "transparence d'entreprise", example: "Corporate transparency builds stakeholder trust through open communication." },
+&nbsp;
+    { word: "diversity and inclusion", translation: "diversité et inclusion", example: "Diversity and inclusion initiatives enhance organizational performance and innovation." },
+    { word: "ethical culture", translation: "culture éthique", example: "Building an ethical culture requires consistent leadership example and accountability." },
+&nbsp;
+    { word: "ethical decision-making", translation: "prise de décision éthique", example: "Ethical decision-making frameworks help navigate complex situations." },
+&nbsp;
+    { word: "shared value", translation: "valeur partagée", example: "Creating shared value generates economic benefits while addressing societal challenges." },
+    { word: "ethical investing", translation: "investissement éthique", example: "Ethical investing applies moral criteria to portfolio decisions." },
+&nbsp;
+    { word: "corporate philanthropy", translation: "philanthropie d'entreprise", example: "Corporate philanthropy targets educational access in underserved communities." },
+    { word: "ESG factors", translation: "facteurs ESG", example: "Investment decisions increasingly consider environmental, social, and governance factors." },
+&nbsp;
+    // Entrepreneuriat et innovation (25 mots)
+&nbsp;
+    { word: "entrepreneurial ecosystem", translation: "écosystème entrepreneurial", example: "A thriving entrepreneurial ecosystem includes funding sources, mentors, and support services." },
+&nbsp;
+    { word: "bootstrap", translation: "autofinancement", example: "They chose to bootstrap the company rather than seek external funding." }]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

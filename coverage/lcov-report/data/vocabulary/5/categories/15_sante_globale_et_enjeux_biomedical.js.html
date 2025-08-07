@@ -1,0 +1,646 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/5/categories/15_sante_globale_et_enjeux_biomedical.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/5/categories</a> 15_sante_globale_et_enjeux_biomedical.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Santé Globale &amp; Enjeux Biomédicaux",
+  words: [
+    // Politiques sanitaires globales
+&nbsp;
+    { word: "universal health coverage", translation: "couverture sanitaire universelle", example: "Universal health coverage aims to ensure all people have access to essential health services." },
+&nbsp;
+    { word: "health system strengthening", translation: "renforcement des systèmes de santé", example: "Development programs prioritize health system strengthening over disease-specific interventions." },
+    { word: "non-state actors", translation: "acteurs non étatiques", example: "Non-state actors including NGOs and corporations increasingly influence global health priorities." },
+&nbsp;
+    { word: "public health policy", translation: "politique de santé publique", example: "Public health policy balances population-level interventions with individual freedoms." },
+    { word: "vertical program", translation: "programme vertical", example: "Vertical programs focus on specific diseases rather than comprehensive health services." },
+&nbsp;
+    { word: "global health architecture", translation: "architecture de la santé mondiale", example: "The global health architecture includes international organizations, national governments, and private entities." },
+&nbsp;
+    { word: "North-South divide", translation: "clivage Nord-Sud", example: "The North-South divide in health resources perpetuates global inequalities." },
+    { word: "donor coordination", translation: "coordination des donateurs", example: "Effective donor coordination prevents duplication and maximizes impact." },
+    { word: "sustainable health development", translation: "développement sanitaire durable", example: "The program promotes sustainable health development through local capacity building." },
+&nbsp;
+    { word: "disease surveillance", translation: "surveillance des maladies", example: "Effective disease surveillance requires standardized reporting systems." },
+    { word: "strategic health planning", translation: "planification sanitaire stratégique", example: "Strategic health planning addresses both immediate needs and long-term goals." },
+&nbsp;
+    { word: "health information system", translation: "système d'information sanitaire", example: "A robust health information system provides data for effective decision-making." },
+    { word: "essential medicines", translation: "médicaments essentiels", example: "The WHO maintains a list of essential medicines that should be available in all health systems." },
+&nbsp;
+    { word: "health resource allocation", translation: "allocation des ressources sanitaires", example: "Ethical frameworks guide health resource allocation during shortages." },
+&nbsp;
+    // Bioéthique
+    { word: "bioethical dilemma", translation: "dilemme bioéthique", example: "Emerging technologies create novel bioethical dilemmas requiring thoughtful analysis." },
+&nbsp;
+    { word: "autonomy principle", translation: "principe d'autonomie", example: "The autonomy principle respects individuals' right to make their own health decisions." },
+&nbsp;
+    { word: "justice principle", translation: "principe de justice", example: "The justice principle promotes fair distribution of benefits and burdens." },
+&nbsp;
+    { word: "bioethics committee", translation: "comité de bioéthique", example: "The national bioethics committee provides guidance on emerging issues." },
+    { word: "resource allocation ethics", translation: "éthique d'allocation des ressources", example: "Resource allocation ethics addresses fair distribution of limited healthcare." },
+    { word: "medical confidentiality", translation: "confidentialité médicale", example: "Medical confidentiality protects patients' private health information." },
+    { word: "research integrity", translation: "intégrité de la recherche", example: "Research integrity requires honest reporting of methods and results." },
+    { word: "ethical review board", translation: "comité d'éthique", example: "Clinical trials require approval from an ethical review board." },
+&nbsp;
+    { word: "bioethical principle", translation: "principe bioéthique", example: "Different cultural traditions may prioritize bioethical principles differently." },
+&nbsp;
+    { word: "ethical guideline", translation: "directive éthique", example: "Professional associations develop ethical guidelines for practitioners." },
+&nbsp;
+    { word: "bioethical discourse", translation: "discours bioéthique", example: "Bioethical discourse addresses fundamental questions about human life and technology." },
+    { word: "principlism", translation: "principisme", example: "Principlism applies core ethical principles to biomedical questions." },
+    { word: "ethical implication", translation: "implication éthique", example: "The research examined ethical implications of artificial reproduction technologies." },
+    { word: "professional ethics", translation: "éthique professionnelle", example: "Medical training includes professional ethics education throughout the curriculum." },
+    { word: "ethical reasoning", translation: "raisonnement éthique", example: "Clinicians apply ethical reasoning to complex treatment decisions." },
+    { word: "moral deliberation", translation: "délibération morale", example: "Ethics committees engage in structured moral deliberation about difficult cases." },
+&nbsp;
+    // Médecine personnalisée
+&nbsp;
+    { word: "personalized therapy", translation: "thérapie personnalisée", example: "Personalized therapy optimizes treatment for each patient's unique characteristics." },
+&nbsp;
+    { word: "targeted therapy", translation: "thérapie ciblée", example: "Targeted therapy addresses specific molecular pathways involved in disease." },
+    { word: "pharmacogenomics", translation: "pharmacogénomique", example: "Pharmacogenomics studies how genes affect individual responses to medications." },
+    { word: "genetic profiling", translation: "profilage génétique", example: "Genetic profiling identifies variants associated with disease risk or treatment response." },
+    { word: "companion diagnostics", translation: "diagnostics compagnons", example: "Companion diagnostics determine which patients will benefit from specific therapies." },
+    { word: "predictive biomarker", translation: "biomarqueur prédictif", example: "Predictive biomarkers indicate likely response to particular treatments." },
+    { word: "molecular diagnosis", translation: "diagnostic moléculaire", example: "Molecular diagnosis identifies disease at the genetic or protein level." },
+    { word: "individualized medicine", translation: "médecine individualisée", example: "Individualized medicine considers each patient's unique disease presentation." },
+    { word: "therapeutic monitoring", translation: "suivi thérapeutique", example: "Therapeutic monitoring adjusts treatment based on measured drug levels." },
+    { word: "biological variability", translation: "variabilité biologique", example: "Biological variability between patients affects treatment outcomes." },
+    { word: "stratified medicine", translation: "médecine stratifiée", example: "Stratified medicine classifies patients into subgroups with similar characteristics." },
+    { word: "patient-specific approach", translation: "approche spécifique au patient", example: "A patient-specific approach considers individual preferences and circumstances." },
+    { word: "molecular profiling", translation: "profilage moléculaire", example: "Molecular profiling identifies potential targets for personalized therapy." },
+    { word: "genetic susceptibility", translation: "susceptibilité génétique", example: "Genetic susceptibility testing identifies individuals at elevated disease risk." },
+    { word: "personalized prevention", translation: "prévention personnalisée", example: "Personalized prevention strategies address individual risk factors." },
+    { word: "tailored intervention", translation: "intervention sur mesure", example: "Tailored interventions match approaches to patient characteristics." },
+    { word: "genotype-guided therapy", translation: "thérapie guidée par génotype", example: "Genotype-guided therapy selects medications based on genetic variants." },
+    { word: "molecular targeting", translation: "ciblage moléculaire", example: "Molecular targeting addresses specific disease mechanisms in individual patients." },
+    { word: "n-of-1 trial", translation: "essai n-of-1", example: "N-of-1 trials evaluate treatments in single patients through systematic methods." },
+    { word: "omics technology", translation: "technologie omique", example: "Omics technologies provide comprehensive molecular profiles of individuals." },
+    { word: "patient stratification", translation: "stratification des patients", example: "Patient stratification identifies subgroups likely to benefit from specific approaches." },
+    { word: "molecular subtyping", translation: "sous-typage moléculaire", example: "Molecular subtyping classifies diseases based on underlying biology rather than symptoms." },
+    { word: "liquid biopsy", translation: "biopsie liquide", example: "Liquid biopsy analyzes circulating biomarkers to monitor disease non-invasively." },
+    { word: "theranostics", translation: "théranostique", example: "Theranostics combines therapeutic and diagnostic approaches in personalized medicine." },
+    { word: "personalised decision support", translation: "aide à la décision personnalisée", example: "Clinical systems provide personalised decision support based on patient data." },
+&nbsp;
+    // Systèmes de santé innovants
+    { word: "integrated care model", translation: "modèle de soins intégrés", example: "Integrated care models coordinate services across specialties and settings." },
+    { word: "value-based healthcare", translation: "soins de santé fondés sur la valeur", example: "Value-based healthcare reimburses providers based on patient outcomes rather than volume." },
+&nbsp;
+    { word: "patient-centered care", translation: "soins centrés sur le patient", example: "Patient-centered care prioritizes individual needs and preferences." },
+    { word: "healthcare delivery model", translation: "modèle de prestation de soins", example: "The healthcare delivery model determines how services reach populations." },
+&nbsp;
+    { word: "coordinated care", translation: "soins coordonnés", example: "Coordinated care ensures seamless transitions between providers and settings." },
+    { word: "accountable care organization", translation: "organisation de soins responsables", example: "Accountable care organizations coordinate provider groups for quality improvement." },
+    { word: "healthcare quality indicator", translation: "indicateur de qualité des soins", example: "Healthcare quality indicators measure performance across dimensions of care." },
+    { word: "remote monitoring", translation: "surveillance à distance", example: "Remote monitoring allows clinicians to track patients' conditions outside clinical settings." },
+    { word: "payment model", translation: "modèle de paiement", example: "Alternative payment models align financial incentives with quality outcomes." },
+    { word: "healthcare accessibility", translation: "accessibilité aux soins", example: "Geographic and financial barriers affect healthcare accessibility for vulnerable populations." },
+    { word: "health information exchange", translation: "échange d'informations de santé", example: "Health information exchange facilitates sharing of patient data between providers." },
+&nbsp;
+    { word: "medical home", translation: "centre médical principal", example: "The medical home model coordinates care through primary care providers." },
+    { word: "population health management", translation: "gestion de la santé des populations", example: "Population health management addresses needs of specific patient groups." },
+    { word: "healthcare innovation", translation: "innovation dans les soins de santé", example: "Healthcare innovation improves quality, efficiency, and patient experience." },
+    { word: "virtual care", translation: "soins virtuels", example: "Virtual care platforms expanded rapidly during the pandemic." },
+&nbsp;
+    { word: "learning health system", translation: "système de santé apprenant", example: "Learning health systems continuously improve through data and evidence." },
+    { word: "disruptive healthcare", translation: "soins de santé disruptifs", example: "Disruptive healthcare models challenge traditional delivery approaches." },
+    { word: "healthcare ecosystem", translation: "écosystème de soins de santé", example: "The healthcare ecosystem includes providers, payers, suppliers, and patients." },
+    { word: "health service integration", translation: "intégration des services de santé", example: "Health service integration improves coordination across the care continuum." },
+    { word: "alternative care model", translation: "modèle de soins alternatif", example: "Alternative care models address limitations in traditional approaches." },
+&nbsp;
+    // Santé planétaire
+    { word: "planetary health", translation: "santé planétaire", example: "Planetary health examines connections between human health and Earth's natural systems." },
+    { word: "environmental health", translation: "santé environnementale", example: "Environmental health addresses how external factors affect human wellbeing." },
+    { word: "One Health approach", translation: "approche Une seule santé", example: "The One Health approach integrates human, animal, and environmental health." },
+    { word: "climate-sensitive disease", translation: "maladie sensible au climat", example: "Climate-sensitive diseases spread more widely as temperatures increase." },
+    { word: "ecological health", translation: "santé écologique", example: "Ecological health provides the foundation for human wellbeing." },
+    { word: "health co-benefit", translation: "co-bénéfice sanitaire", example: "Climate policies often produce health co-benefits through reduced pollution." },
+    { word: "environmental degradation", translation: "dégradation environnementale", example: "Environmental degradation directly impacts population health outcomes." },
+    { word: "ecosystem service", translation: "service écosystémique", example: "Healthy ecosystems provide essential services supporting human health." },
+    { word: "health impact assessment", translation: "évaluation d'impact sur la santé", example: "Health impact assessments examine how projects affect community wellbeing." },
+    { word: "zoonotic disease", translation: "maladie zoonotique", example: "Zoonotic diseases transmit between animals and humans, often following environmental disruption." },
+    { word: "sustainable healthcare", translation: "soins de santé durables", example: "Sustainable healthcare reduces environmental impact while maintaining quality." },
+    { word: "environmental medicine", translation: "médecine environnementale", example: "Environmental medicine addresses health conditions related to external exposures." },
+    { word: "health adaptation", translation: "adaptation sanitaire", example: "Health adaptation strategies prepare communities for climate change impacts." },
+    { word: "vector-borne disease", translation: "maladie à transmission vectorielle", example: "Vector-borne diseases spread through mosquitoes and other carriers affected by climate." },
+    { word: "health vulnerability", translation: "vulnérabilité sanitaire", example: "Health vulnerability assessment identifies populations at greatest risk from environmental threats." },
+&nbsp;
+    { word: "environmental pathogen", translation: "pathogène environnemental", example: "Environmental pathogens emerge or spread following ecological disruption." },
+    { word: "health resilience", translation: "résilience sanitaire", example: "Communities need health resilience to withstand environmental challenges." },
+    { word: "green healthcare", translation: "soins de santé écologiques", example: "Green healthcare initiatives reduce waste and energy consumption in medical facilities." },
+&nbsp;
+    { word: "ecotoxicology", translation: "écotoxicologie", example: "Ecotoxicology studies how pollutants affect organisms and ecosystems." },
+    { word: "health forecasting", translation: "prévision sanitaire", example: "Climate-based health forecasting anticipates disease outbreaks and resource needs." },
+    { word: "conservation medicine", translation: "médecine de conservation", example: "Conservation medicine connects ecosystem health with human wellbeing." },
+    { word: "health geography", translation: "géographie de la santé", example: "Health geography examines spatial patterns of disease and environmental factors." },
+    { word: "climate-health nexus", translation: "nexus climat-santé", example: "The climate-health nexus represents interconnections between environmental change and wellbeing." },
+    { word: "biosphere integrity", translation: "intégrité de la biosphère", example: "Biosphere integrity provides fundamental support for human health." },
+    { word: "anthropogenic impact", translation: "impact anthropique", example: "Anthropogenic impacts on natural systems create cascading health effects." },
+&nbsp;
+    // Déterminants structurels
+    { word: "social determinant of health", translation: "déterminant social de la santé", example: "Housing quality represents a critical social determinant of health affecting wellbeing." },
+&nbsp;
+    { word: "upstream factor", translation: "facteur en amont", example: "Effective interventions address upstream factors creating health challenges." },
+&nbsp;
+    { word: "structural violence", translation: "violence structurelle", example: "Structural violence describes how social arrangements harm vulnerable populations." },
+&nbsp;
+    { word: "systemic barrier", translation: "barrière systémique", example: "Systemic barriers prevent equitable access to healthcare services." },
+&nbsp;
+    { word: "structural racism", translation: "racisme structurel", example: "Structural racism creates persistent health disparities between racial groups." },
+&nbsp;
+    { word: "institutional discrimination", translation: "discrimination institutionnelle", example: "Institutional discrimination affects healthcare access and treatment quality." },
+&nbsp;
+    { word: "structural intervention", translation: "intervention structurelle", example: "Structural interventions address root causes rather than individual behaviors." },
+    { word: "poverty-related disease", translation: "maladie liée à la pauvreté", example: "Poverty-related diseases reflect unequal distribution of resources and risks." },
+    { word: "population vulnerability", translation: "vulnérabilité de la population", example: "Population vulnerability assessment identifies groups at greatest health risk." },
+    { word: "social protection", translation: "protection sociale", example: "Social protection programs safeguard health during economic hardship." },
+    { word: "geospatial inequality", translation: "inégalité géospatiale", example: "Geospatial inequality in healthcare access affects rural populations disproportionately." },
+    { word: "foundational determinant", translation: "déterminant fondamental", example: "Racism functions as a foundational determinant structuring multiple health pathways." },
+    { word: "intersectional disadvantage", translation: "désavantage intersectionnel", example: "Intersectional disadvantage creates compounded health challenges for specific groups." },
+    { word: "structural competency", translation: "compétence structurelle", example: "Medical education increasingly includes structural competency training for providers." },
+&nbsp;
+    // Gestion des crises sanitaires
+    { word: "health crisis", translation: "crise sanitaire", example: "The health crisis required coordinated response across multiple sectors." },
+    { word: "pandemic preparedness", translation: "préparation à la pandémie", example: "Pandemic preparedness involves developing systems and resources before outbreaks occur." },
+&nbsp;
+    { word: "outbreak management", translation: "gestion des épidémies", example: "Outbreak management includes surveillance, containment, and treatment strategies." },
+    { word: "public health emergency", translation: "urgence de santé publique", example: "The organization declared a public health emergency of international concern." },
+&nbsp;
+    { word: "epidemic control", translation: "contrôle des épidémies", example: "Epidemic control measures aim to reduce transmission and mortality." },
+&nbsp;
+    { word: "surge capacity", translation: "capacité de pointe", example: "Hospitals increased surge capacity to accommodate additional patients." },
+    { word: "quarantine measure", translation: "mesure de quarantaine", example: "Quarantine measures restrict movement of potentially exposed individuals." },
+    { word: "emergency operations center", translation: "centre d'opérations d'urgence", example: "The emergency operations center coordinated multi-agency response efforts." },
+    { word: "strategic stockpile", translation: "réserve stratégique", example: "The strategic stockpile contains essential medical supplies for emergencies." },
+    { word: "incident command system", translation: "système de commandement des incidents", example: "The incident command system establishes clear authority during crisis response." },
+    { word: "disease containment", translation: "confinement des maladies", example: "Disease containment strategies include isolation, quarantine, and movement restrictions." },
+    { word: "health communication", translation: "communication sanitaire", example: "Effective health communication provides clear guidance during emergencies." },
+    { word: "epidemic intelligence", translation: "renseignement épidémique", example: "Epidemic intelligence monitors potential threats through surveillance systems." },
+    { word: "community mitigation", translation: "atténuation communautaire", example: "Community mitigation strategies reduce disease spread at population level." },
+    { word: "health emergency management", translation: "gestion des urgences sanitaires", example: "Health emergency management coordinates resources across multiple agencies." },
+    { word: "isolation protocol", translation: "protocole d'isolement", example: "The isolation protocol separates infected individuals from the general population." },
+    { word: "early warning system", translation: "système d'alerte précoce", example: "Early warning systems detect outbreaks before widespread transmission occurs." },
+    { word: "sanitary measure", translation: "mesure sanitaire", example: "Border authorities implemented sanitary measures for international travelers." },
+    { word: "outbreak investigation", translation: "enquête sur l'épidémie", example: "The outbreak investigation identified the source of contamination." },
+    { word: "emergency preparedness", translation: "préparation aux situations d'urgence", example: "Emergency preparedness requires planning, training, and resource allocation." },
+    { word: "health crisis communication", translation: "communication de crise sanitaire", example: "Health crisis communication must address uncertainty while maintaining public trust." },
+    { word: "early containment", translation: "confinement précoce", example: "Early containment efforts prevent widespread community transmission." },
+    { word: "emergency use authorization", translation: "autorisation d'utilisation d'urgence", example: "Emergency use authorization accelerates access to needed medical interventions." },
+    { word: "disaster medicine", translation: "médecine de catastrophe", example: "Disaster medicine specialists coordinate healthcare during crisis situations." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

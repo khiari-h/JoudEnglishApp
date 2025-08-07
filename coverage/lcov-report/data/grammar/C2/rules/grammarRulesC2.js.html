@@ -1,0 +1,1435 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/grammar/C2/rules/grammarRulesC2.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/grammar/C2/rules</a> grammarRulesC2.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a>
+<a name='L304'></a><a href='#L304'>304</a>
+<a name='L305'></a><a href='#L305'>305</a>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a>
+<a name='L316'></a><a href='#L316'>316</a>
+<a name='L317'></a><a href='#L317'>317</a>
+<a name='L318'></a><a href='#L318'>318</a>
+<a name='L319'></a><a href='#L319'>319</a>
+<a name='L320'></a><a href='#L320'>320</a>
+<a name='L321'></a><a href='#L321'>321</a>
+<a name='L322'></a><a href='#L322'>322</a>
+<a name='L323'></a><a href='#L323'>323</a>
+<a name='L324'></a><a href='#L324'>324</a>
+<a name='L325'></a><a href='#L325'>325</a>
+<a name='L326'></a><a href='#L326'>326</a>
+<a name='L327'></a><a href='#L327'>327</a>
+<a name='L328'></a><a href='#L328'>328</a>
+<a name='L329'></a><a href='#L329'>329</a>
+<a name='L330'></a><a href='#L330'>330</a>
+<a name='L331'></a><a href='#L331'>331</a>
+<a name='L332'></a><a href='#L332'>332</a>
+<a name='L333'></a><a href='#L333'>333</a>
+<a name='L334'></a><a href='#L334'>334</a>
+<a name='L335'></a><a href='#L335'>335</a>
+<a name='L336'></a><a href='#L336'>336</a>
+<a name='L337'></a><a href='#L337'>337</a>
+<a name='L338'></a><a href='#L338'>338</a>
+<a name='L339'></a><a href='#L339'>339</a>
+<a name='L340'></a><a href='#L340'>340</a>
+<a name='L341'></a><a href='#L341'>341</a>
+<a name='L342'></a><a href='#L342'>342</a>
+<a name='L343'></a><a href='#L343'>343</a>
+<a name='L344'></a><a href='#L344'>344</a>
+<a name='L345'></a><a href='#L345'>345</a>
+<a name='L346'></a><a href='#L346'>346</a>
+<a name='L347'></a><a href='#L347'>347</a>
+<a name='L348'></a><a href='#L348'>348</a>
+<a name='L349'></a><a href='#L349'>349</a>
+<a name='L350'></a><a href='#L350'>350</a>
+<a name='L351'></a><a href='#L351'>351</a>
+<a name='L352'></a><a href='#L352'>352</a>
+<a name='L353'></a><a href='#L353'>353</a>
+<a name='L354'></a><a href='#L354'>354</a>
+<a name='L355'></a><a href='#L355'>355</a>
+<a name='L356'></a><a href='#L356'>356</a>
+<a name='L357'></a><a href='#L357'>357</a>
+<a name='L358'></a><a href='#L358'>358</a>
+<a name='L359'></a><a href='#L359'>359</a>
+<a name='L360'></a><a href='#L360'>360</a>
+<a name='L361'></a><a href='#L361'>361</a>
+<a name='L362'></a><a href='#L362'>362</a>
+<a name='L363'></a><a href='#L363'>363</a>
+<a name='L364'></a><a href='#L364'>364</a>
+<a name='L365'></a><a href='#L365'>365</a>
+<a name='L366'></a><a href='#L366'>366</a>
+<a name='L367'></a><a href='#L367'>367</a>
+<a name='L368'></a><a href='#L368'>368</a>
+<a name='L369'></a><a href='#L369'>369</a>
+<a name='L370'></a><a href='#L370'>370</a>
+<a name='L371'></a><a href='#L371'>371</a>
+<a name='L372'></a><a href='#L372'>372</a>
+<a name='L373'></a><a href='#L373'>373</a>
+<a name='L374'></a><a href='#L374'>374</a>
+<a name='L375'></a><a href='#L375'>375</a>
+<a name='L376'></a><a href='#L376'>376</a>
+<a name='L377'></a><a href='#L377'>377</a>
+<a name='L378'></a><a href='#L378'>378</a>
+<a name='L379'></a><a href='#L379'>379</a>
+<a name='L380'></a><a href='#L380'>380</a>
+<a name='L381'></a><a href='#L381'>381</a>
+<a name='L382'></a><a href='#L382'>382</a>
+<a name='L383'></a><a href='#L383'>383</a>
+<a name='L384'></a><a href='#L384'>384</a>
+<a name='L385'></a><a href='#L385'>385</a>
+<a name='L386'></a><a href='#L386'>386</a>
+<a name='L387'></a><a href='#L387'>387</a>
+<a name='L388'></a><a href='#L388'>388</a>
+<a name='L389'></a><a href='#L389'>389</a>
+<a name='L390'></a><a href='#L390'>390</a>
+<a name='L391'></a><a href='#L391'>391</a>
+<a name='L392'></a><a href='#L392'>392</a>
+<a name='L393'></a><a href='#L393'>393</a>
+<a name='L394'></a><a href='#L394'>394</a>
+<a name='L395'></a><a href='#L395'>395</a>
+<a name='L396'></a><a href='#L396'>396</a>
+<a name='L397'></a><a href='#L397'>397</a>
+<a name='L398'></a><a href='#L398'>398</a>
+<a name='L399'></a><a href='#L399'>399</a>
+<a name='L400'></a><a href='#L400'>400</a>
+<a name='L401'></a><a href='#L401'>401</a>
+<a name='L402'></a><a href='#L402'>402</a>
+<a name='L403'></a><a href='#L403'>403</a>
+<a name='L404'></a><a href='#L404'>404</a>
+<a name='L405'></a><a href='#L405'>405</a>
+<a name='L406'></a><a href='#L406'>406</a>
+<a name='L407'></a><a href='#L407'>407</a>
+<a name='L408'></a><a href='#L408'>408</a>
+<a name='L409'></a><a href='#L409'>409</a>
+<a name='L410'></a><a href='#L410'>410</a>
+<a name='L411'></a><a href='#L411'>411</a>
+<a name='L412'></a><a href='#L412'>412</a>
+<a name='L413'></a><a href='#L413'>413</a>
+<a name='L414'></a><a href='#L414'>414</a>
+<a name='L415'></a><a href='#L415'>415</a>
+<a name='L416'></a><a href='#L416'>416</a>
+<a name='L417'></a><a href='#L417'>417</a>
+<a name='L418'></a><a href='#L418'>418</a>
+<a name='L419'></a><a href='#L419'>419</a>
+<a name='L420'></a><a href='#L420'>420</a>
+<a name='L421'></a><a href='#L421'>421</a>
+<a name='L422'></a><a href='#L422'>422</a>
+<a name='L423'></a><a href='#L423'>423</a>
+<a name='L424'></a><a href='#L424'>424</a>
+<a name='L425'></a><a href='#L425'>425</a>
+<a name='L426'></a><a href='#L426'>426</a>
+<a name='L427'></a><a href='#L427'>427</a>
+<a name='L428'></a><a href='#L428'>428</a>
+<a name='L429'></a><a href='#L429'>429</a>
+<a name='L430'></a><a href='#L430'>430</a>
+<a name='L431'></a><a href='#L431'>431</a>
+<a name='L432'></a><a href='#L432'>432</a>
+<a name='L433'></a><a href='#L433'>433</a>
+<a name='L434'></a><a href='#L434'>434</a>
+<a name='L435'></a><a href='#L435'>435</a>
+<a name='L436'></a><a href='#L436'>436</a>
+<a name='L437'></a><a href='#L437'>437</a>
+<a name='L438'></a><a href='#L438'>438</a>
+<a name='L439'></a><a href='#L439'>439</a>
+<a name='L440'></a><a href='#L440'>440</a>
+<a name='L441'></a><a href='#L441'>441</a>
+<a name='L442'></a><a href='#L442'>442</a>
+<a name='L443'></a><a href='#L443'>443</a>
+<a name='L444'></a><a href='#L444'>444</a>
+<a name='L445'></a><a href='#L445'>445</a>
+<a name='L446'></a><a href='#L446'>446</a>
+<a name='L447'></a><a href='#L447'>447</a>
+<a name='L448'></a><a href='#L448'>448</a>
+<a name='L449'></a><a href='#L449'>449</a>
+<a name='L450'></a><a href='#L450'>450</a>
+<a name='L451'></a><a href='#L451'>451</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// grammarRulesC2.js
+// Fichier contenant uniquement les règles grammaticales pour le niveau C2 du CECR
+&nbsp;
+const grammarRulesC2 = [
+  {
+    id: 1,
+    title: "Inversion archaïque et stylistique",
+    explanation: "Structures d'inversion sophistiquées utilisées dans la littérature et le discours formel hautement stylisé.",
+    examples: [
+      { english: "Gone were the days of innocence and simplicity.", french: "Révolues étaient les jours d'innocence et de simplicité." },
+      { english: "Great though his achievements may be, he remains humble.", french: "Aussi grands que soient ses accomplissements, il reste humble." },
+      { english: "Thus spoke the prophet, and all were silent.", french: "Ainsi parla le prophète, et tous se turent." }
+    ],
+    rules: [
+      "Though + adjective/adverb au début avec inversion",
+      "Adjectif qualificatif au début avec verbe 'be' inversé",
+      "Adverbes de mouvement au début: thus, hence, thence",
+      "Participial inversion: standing before them was... / such was..."
+    ]
+  },
+  {
+    id: 2,
+    title: "Modalité épistémique supérieure",
+    explanation: "Nuances sophistiquées de modalité pour exprimer des degrés de certitude, de probabilité et d'attitude.",
+    examples: [
+      { english: "One would be inclined to think that this assumption lacks merit.", french: "On serait enclin à penser que cette hypothèse manque de fondement." },
+      { english: "It would not be unreasonable to suppose that the evidence points elsewhere.", french: "Il ne serait pas déraisonnable de supposer que les preuves indiquent autre chose." },
+      { english: "The evidence would tend to militate against such a conclusion.", french: "Les preuves tendraient à militer contre une telle conclusion." }
+    ],
+    rules: [
+      "Be inclined to think/believe/suggest",
+      "Would tend to indicate/suggest/show",
+      "Not be unreasonable to suppose/assume",
+      "Militate for/against construction"
+    ]
+  },
+  {
+    id: 3,
+    title: "Subjunctive mood archaïque et formel",
+    explanation: "Utilisations rares et formelles du subjonctif, y compris des formes archaïques encore trouvées dans la littérature.",
+    examples: [
+      { english: "Had I but known, I would have acted differently.", french: "N'eût-ce été que j'avais su, j'aurais agi différemment." },
+      { english: "Come what may, we shall persevere.", french: "Advienne que pourra, nous persévérerons." },
+      { english: "Be it resolved that this motion be adopted forthwith.", french: "Qu'il soit résolu que cette motion soit adoptée sans délai." }
+    ],
+    rules: [
+      "Had I but/only known (= If only I had known)",
+      "Come what may (= whatever happens)",
+      "Be it resolved that... (style parlementaire)",
+      "Lest + subject + uninflected form"
+    ]
+  },
+  {
+    id: 4,
+    title: "Discourse metaphors et métastructures",
+    explanation: "Structures métaphoriques complexes qui organisent le discours au niveau macrostructural.",
+    examples: [
+      { english: "The argument unfolds along the following trajectory...", french: "L'argumentation se déploie selon la trajectoire suivante..." },
+      { english: "These findings constitute a cornerstone of the theoretical edifice.", french: "Ces résultats constituent une pierre angulaire de l'édifice théorique." },
+      { english: "The discourse navigates between the Scylla of oversimplification and the Charybdis of obscurity.", french: "Le discours navigue entre Charybde de la simplification excessive et Scylla de l'obscurité." }
+    ],
+    rules: [
+      "Journey metaphors: trajectory, navigate, path",
+      "Building metaphors: edifice, cornerstone, foundation",
+      "Water metaphors: flow, stream, current",
+      "Classical allusions: Scylla and Charybdis, Pandora's box"
+    ]
+  },
+  {
+    id: 5,
+    title: "Cataphoric et anaphoric references complexes",
+    explanation: "Techniques sophistiquées de référence textuelle au-delà des pronoms simples.",
+    examples: [
+      { english: "What follows is a detailed exposition of the methodology employed in this study.", french: "Ce qui suit est une exposition détaillée de la méthodologie employée dans cette étude." },
+      { english: "The aforementioned considerations notwithstanding, we must proceed with caution.", french: "Les considérations susmentionnées nonobstant, nous devons procéder avec prudence." },
+      { english: "The latter proposition, whilst theoretically sound, faces practical limitations.", french: "Cette dernière proposition, bien que théoriquement solide, se heurte à des limitations pratiques." }
+    ],
+    rules: [
+      "Cataphoric: what follows, in what follows, as will be shown",
+      "Anaphoric: the aforementioned, the latter/former, as stated previously",
+      "Demonstrative phrases: this being the case, such being the situation",
+      "Academic references: in the preceding section, as outlined above"
+    ]
+  },
+  {
+    id: 6,
+    title: "Metalinguistic commentaire",
+    explanation: "Techniques pour commenter sur le langage et le discours lui-même dans le texte.",
+    examples: [
+      { english: "If I may be permitted to use a colloquialism, the plan went south.", french: "Si je peux me permettre d'employer un familiarisme, le plan a capoté." },
+      { english: "To employ a somewhat hackneyed phrase, Rome wasn't built in a day.", french: "Pour employer une expression quelque peu éculée, Rome ne s'est pas bâtie en un jour." },
+      { english: "Pardon the pun, but this theory lacks foundational support.", french: "Pardonnez le calembour, mais cette théorie manque de soutien fondamental." }
+    ],
+    rules: [
+      "If I may be permitted to...",
+      "To employ/use a phrase/expression",
+      "Pardon the mixed metaphor/pun",
+      "To put it in layman's terms/technical terms"
+    ]
+  },
+  {
+    id: 7,
+    title: "Information packaging sophistiqué",
+    explanation: "Techniques avancées pour organiser et présenter l'information de manière stratégique.",
+    examples: [
+      { english: "Not insignificant is the fact that previous studies overlooked this variable.", french: "Non négligeable est le fait que les études précédentes ont omis cette variable." },
+      { english: "What bears emphasizing is the replicability of these results.", french: "Ce qu'il convient de souligner est la reproductibilité de ces résultats." },
+      { english: "Worthy of note is the consistency across multiple trials.", french: "Digne de mention est la cohérence à travers plusieurs essais." }
+    ],
+    rules: [
+      "Not insignificant/unimportant is the fact that...",
+      "What bears emphasizing/mentioning/highlighting is...",
+      "Worthy of note/attention/consideration is...",
+      "Of particular interest/importance/relevance is..."
+    ]
+  },
+  {
+    id: 8,
+    title: "Register shift and code-switching",
+    explanation: "Maîtrise consciente du changement de registre et de style pour des effets rhétoriques.",
+    examples: [
+      { english: "The economic indicators suggest—dare I say it—a recession looms.", french: "Les indicateurs économiques suggèrent—oserai-je le dire—qu'une récession se profile." },
+      { english: "The theory, as it were, fails to account for practical realities.", french: "La théorie, pour ainsi dire, ne tient pas compte des réalités pratiques." },
+      { english: "Colloquially speaking, the project was dead in the water.", french: "En termes familiers, le projet était mort dans l'eau." }
+    ],
+    rules: [
+      "Parenthetical asides: dare I say, if you will",
+      "Register markers: colloquially speaking, academically speaking",
+      "Hedging with style shift: as it were, so to speak",
+      "Calculated informality: let's face it, to put it bluntly"
+    ]
+  },
+  {
+    id: 9,
+    title: "Irony et indirect critique",
+    explanation: "Techniques sophistiquées d'ironie et de critique indirecte dans le discours académique.",
+    examples: [
+      { english: "One might be forgiven for questioning the validity of such assumptions.", french: "On pourrait être pardonné de questionner la validité de telles hypothèses." },
+      { english: "The methodology employed, while certainly novel, raises certain questions.", french: "La méthodologie employée, bien que certainement novatrice, soulève certaines questions." },
+      { english: "It would be an understatement to say the evidence is inconclusive.", french: "Ce serait un euphémisme de dire que les preuves ne sont pas concluantes." }
+    ],
+    rules: [
+      "One might be forgiven for...",
+      "Euphemistic understatement for criticism",
+      "Damning with faint praise: while certainly interesting...",
+      "Litotes for emphasis: not inconsiderable, not unimpressive"
+    ]
+  },
+  {
+    id: 10,
+    title: "Conditional sophistication extrême",
+    explanation: "Structures conditionnelles hautement stylisées et nuancées.",
+    examples: [
+      { english: "Had it not been for the intervention of chance, the outcome would have differed markedly.", french: "N'eût été l'intervention du hasard, le résultat aurait différé notablement." },
+      { english: "Were one to consider the implications thoroughly, certain inconsistencies emerge.", french: "Si l'on devait considérer les implications à fond, certaines incohérences émergent." },
+      { english: "Should circumstances have aligned differently, the conclusions might well have been reversed.", french: "Si les circonstances s'étaient alignées différemment, les conclusions auraient pu être inversées." }
+    ],
+    rules: [
+      "Had it not been for... (formal regret)",
+      "Were one to... (impersonal conditional)",
+      "Should circumstances have... (rare perfect conditional)",
+      "Lest... (formal purpose/prevention)"
+    ]
+  },
+  {
+    id: 11,
+    title: "Idiomatic académique élaboré",
+    explanation: "Expressions idiomatiques spécifiques au registre académique le plus avancé.",
+    examples: [
+      { english: "This finding flies in the face of conventional wisdom.", french: "Cette découverte va à l'encontre de la sagesse conventionnelle." },
+      { english: "The evidence cuts across traditional disciplinary boundaries.", french: "Les preuves transcendent les frontières disciplinaires traditionnelles." },
+      { english: "These results call into question the entire theoretical framework.", french: "Ces résultats remettent en question l'ensemble du cadre théorique." }
+    ],
+    rules: [
+      "Fly in the face of (contradict)",
+      "Cut across (transcend boundaries)",
+      "Call into question (challenge)",
+      "Turn on its head (reverse understanding)"
+    ]
+  },
+  {
+    id: 12,
+    title: "Nominalization et dénominalization stratégique",
+    explanation: "Utilisation sophistiquée de la nominalisation et sa déconstruction pour l'effect rhétorique.",
+    examples: [
+      { english: "The implementation of the policy, or rather, how the policy was implemented...", french: "La mise en œuvre de la politique, ou plutôt, comment la politique a été mise en œuvre..." },
+      { english: "The consideration of ethical implications necessitates that we consider ethically...", french: "La considération des implications éthiques nécessite que nous considérions de manière éthique..." },
+      { english: "To reify this abstract concept, let us examine what reification entails.", french: "Pour réifier ce concept abstrait, examinons ce qu'implique la réification." }
+    ],
+    rules: [
+      "Intentional dénominalisation for emphasis",
+      "Metalinguistic commentary on nominalisation",
+      "Verb → noun → verb for effect",
+      "Deliberate repetition for rhetorical purpose"
+    ]
+  },
+  {
+    id: 13,
+    title: "Hedging épistémique sophistiqué",
+    explanation: "Techniques avancées d'atténuation pour nuancer les affirmations avec précision.",
+    examples: [
+      { english: "The data would appear to suggest, albeit tentatively, a correlation.", french: "Les données semblent suggérer, bien que de manière provisoire, une corrélation." },
+      { english: "One might venture to propose that the relationship is not entirely coincidental.", french: "On pourrait se hasarder à proposer que la relation n'est pas entièrement fortuite." },
+      { english: "It would not be entirely unreasonable to hypothesize that causation may be involved.", french: "Il ne serait pas entièrement déraisonnable d'émettre l'hypothèse qu'une causalité pourrait être impliquée." }
+    ],
+    rules: [
+      "Modal stacking: would appear to suggest",
+      "Multiple hedges in sequence",
+      "Venture to propose/suggest",
+      "Degrees of certainty: entirely, partially, marginally"
+    ]
+  },
+  {
+    id: 14,
+    title: "Concessive sophistication",
+    explanation: "Structures concessives hautement élaborées pour des arguments nuancés.",
+    examples: [
+      { english: "Notwithstanding the inherent limitations of the methodology...", french: "Nonobstant les limitations inhérentes de la méthodologie..." },
+      { english: "The evidence, compelling as it may be, does not constitute conclusive proof.", french: "Les preuves, aussi convaincantes soient-elles, ne constituent pas une preuve concluante." },
+      { english: "Granting the validity of the premises, the conclusions remain disputable.", french: "En admettant la validité des prémisses, les conclusions restent discutables." }
+    ],
+    rules: [
+      "Notwithstanding: formal/legal concession",
+      "Adjective + as/though + clause + may/might be",
+      "Granting (that) + clause",
+      "For all (that) + clause"
+    ]
+  },
+  {
+    id: 15,
+    title: "Discours rapporté et attribution sophistiqués",
+    explanation: "Techniques avancées pour rapporter et attribuer des idées avec précision académique.",
+    examples: [
+      { english: "Smith (2020) contends that the phenomenon transcends simple categorization.", french: "Smith (2020) soutient que le phénomène transcende une simple catégorisation." },
+      { english: "The theory, as propounded by Johnson et al., posits a tripartite framework.", french: "La théorie, telle que développée par Johnson et al., postule un cadre tripartite." },
+      { english: "According to the prevailing scholarly consensus, the matter remains unresolved.", french: "Selon le consensus universitaire dominant, la question reste non résolue." }
+    ],
+    rules: [
+      "Academic reporting verbs: contend, posit, propound",
+      "Citation integration: as propounded by, as theorized by",
+      "Collective attribution: scholarly consensus, academic literature",
+      "Qualification of sources: prevailing view, dominant perspective"
+    ]
+  },
+  {
+    id: 16,
+    title: "Syntax parallèle complexe",
+    explanation: "Structures parallèles hautement élaborées pour l'effet rhétorique et la clarté.",
+    examples: [
+      { english: "Not only does the theory account for observed phenomena, but it also predicts future occurrences with remarkable accuracy.", french: "Non seulement la théorie explique les phénomènes observés, mais elle prédit aussi les occurrences futures avec une précision remarquable." },
+      { english: "Whether the results can be generalized to other populations or whether they remain context-specific constitutes a matter of ongoing debate.", french: "La question de savoir si les résultats peuvent être généralisés à d'autres populations ou s'ils restent spécifiques au contexte constitue une question de débat en cours." }
+    ],
+    rules: [
+      "Balanced binary structures",
+      "Whether...or whether constructions",
+      "Parallel negation structures",
+      "Correlative conjunctions with clauses"
+    ]
+  },
+  {
+    id: 17,
+    title: "Deixis et temporal anchoring",
+    explanation: "Références spatio-temporelles sophistiquées dans le discours académique.",
+    examples: [
+      { english: "As I write this in the summer of 2024, the implications of these findings continue to resonate.", french: "Alors que j'écris ceci à l'été 2024, les implications de ces découvertes continuent de résonner." },
+      { english: "At the time of this writing, consensus remains elusive.", french: "Au moment où j'écris ces lignes, le consensus reste insaisissable." },
+      { english: "In the present state of knowledge, such categorization appears premature.", french: "Dans l'état actuel des connaissances, une telle catégorisation semble prématurée." }
+    ],
+    rules: [
+      "Temporal anchoring: as I write, at this juncture",
+      "Knowledge state: in the present state of knowledge",
+      "Epistemic time: currently, presently, as things stand",
+      "Relative temporal positioning: at the time of writing"
+    ]
+  },
+  {
+    id: 18,
+    title: "Modality dense et surposée",
+    explanation: "Stratification de plusieurs modalités pour créer des nuances fines.",
+    examples: [
+      { english: "One might reasonably be expected to anticipate that such a methodology would necessarily yield questionable results.", french: "On pourrait raisonnablement s'attendre à anticiper qu'une telle méthodologie donnerait nécessairement des résultats discutables." },
+      { english: "It could conceivably be argued that the potential implications might well necessitate reconsideration.", french: "On pourrait concevoir que les implications potentielles pourraient bien nécessiter une reconsidération." }
+    ],
+    rules: [
+      "Multiple modal lexemes: might possibly could",
+      "Adverbial modal stacking: reasonably, conceivably",
+      "Necessity within possibility: might well necessitate",
+      "Expectation modals: be expected to, be anticipated to"
+    ]
+  },
+  {
+    id: 19,
+    title: "Genre-switching et style hybride",
+    explanation: "Mélange conscient de genres et styles pour des effets rhétoriques spécifiques.",
+    examples: [
+      { english: "One might frame the question thus: what paradigmatic shift do these findings herald?", french: "On pourrait formuler la question ainsi : quel changement paradigmatique ces découvertes annoncent-elles ?" },
+      { english: "The methodology, if one may employ a culinary metaphor, follows a recipe for empirical rigor.", french: "La méthodologie, si on peut se permettre une métaphore culinaire, suit une recette de rigueur empirique." }
+    ],
+    rules: [
+      "Conscious register mixing",
+      "Rhetorical questions in academic prose",
+      "Domain metaphor introduction",
+      "Narrative elements in analysis"
+    ]
+  },
+  {
+    id: 20,
+    title: "Ellipsis sophistiqué",
+    explanation: "Techniques d'ellipse élaborées pour la concision et l'effet stylistique.",
+    examples: [
+      { english: "The first hypothesis proved correct; the second, less so.", french: "La première hypothèse s'est avérée correcte ; la seconde, moins." },
+      { english: "Some researchers advocate for qualitative methods, others for quantitative.", french: "Certains chercheurs préconisent les méthodes qualitatives, d'autres les quantitatives." },
+      { english: "What was once considered peripheral has become central; what was central, marginal.", french: "Ce qui était autrefois considéré comme périphérique est devenu central ; ce qui était central, marginal." }
+    ],
+    rules: [
+      "Comparative ellipsis with omitted elements",
+      "Parallel structure with elliptical second clause",
+      "Noun phrase ellipsis in contrast",
+      "Polysyndetic vs asyndetic ellipsis"
+    ]
+  },
+  {
+    id: 21,
+    title: "Metalinguistic reflection",
+    explanation: "Réflexion explicite sur le langage utilisé et ses implications.",
+    examples: [
+      { english: "To characterize this as 'revolutionary' might seem hyperbolic, yet the term captures the essence of the transformation.", french: "Qualifier cela de 'révolutionnaire' pourrait sembler hyperbolique, pourtant ce terme capture l'essence de la transformation." },
+      { english: "The choice of the term 'paradigm' here is deliberate, invoking Kuhn's framework.", french: "Le choix du terme 'paradigme' ici est délibéré, invoquant le cadre de Kuhn." },
+      { english: "In employing the metaphor of 'scaffolding,' I aim to emphasize the supportive nature of the theory.", french: "En employant la métaphore d'échafaudage', je vise à souligner la nature de soutien de la théorie." }
+    ],
+    rules: [
+      "Explicit lexical choice justification",
+      "Etymology and semantic evolution",
+      "Metaphor analysis and explanation",
+      "Register consciousness commentary"
+    ]
+  },
+  {
+    id: 22,
+    title: "Presupposition et implicature gestion",
+    explanation: "Gestion sophistiquée des présuppositions et implications implicites.",
+    examples: [
+      { english: "Even granting the validity of these assumptions, which themselves require scrutiny...", french: "Même en admettant la validité de ces hypothèses, qui elles-mêmes nécessitent un examen..." },
+      { english: "The notion that objectivity is attainable—a premise we must question—underpins this argument.", french: "La notion que l'objectivité est atteignable—une prémisse que nous devons questionner—sous-tend cet argument." },
+      { english: "To say the evidence is 'compelling' is to invite examination of what constitutes compelling evidence.", french: "Dire que les preuves sont 'convaincantes' invite à examiner ce qui constitue des preuves convaincantes." }
+    ],
+    rules: [
+      "Explicit presupposition marking",
+      "Parenthetical challenges to assumptions",
+      "Scare quotes for problematic terms",
+      "Invitation to critical examination"
+    ]
+  },
+  {
+    id: 23,
+    title: "Syntactic ambiguity résolue",
+    explanation: "Gestion consciente de l'ambiguïté syntaxique pour la clarté académique.",
+    examples: [
+      { english: "The students who had studied thoroughly passed, as opposed to those who had studied thoroughly passed exams.", french: "Les étudiants qui avaient étudié à fond ont réussi, par opposition à ceux qui avaient étudié aux examens réussis à fond." },
+      { english: "More important than studying grammar is understanding its application—not 'more important than studying grammar' the activity.", french: "Plus important que d'étudier la grammaire est de comprendre son application—pas 'plus important que d'étudier la grammaire' l'activité." }
+    ],
+    rules: [
+      "Disambiguation through repetition",
+      "Structural parallelism for clarity",
+      "Parenthetical specification",
+      "Relative clause disambiguation"
+    ]
+  },
+  {
+    id: 24,
+    title: "Recursive structures et nesting",
+    explanation: "Structures récursives sophistiquées qui permettent une expression nuancée.",
+    examples: [
+      { english: "The evidence that researchers, who had access to data that was itself contested, used to support claims that others had questioned, remains controversial.", french: "Les preuves que les chercheurs, qui avaient accès à des données elles-mêmes contestées, ont utilisées pour soutenir des affirmations que d'autres avaient questionnées, restent controversées." },
+      { english: "What studies of studies of methodology have shown is that methodological meta-analysis, itself a methodology, requires its own methodological framework.", french: "Ce que les études d'études de méthodologie ont montré est que la méta-analyse méthodologique, elle-même une méthodologie, nécessite son propre cadre méthodologique." }
+    ],
+    rules: [
+      "Multiple levels of embedding",
+      "Self-referential structures",
+      "Recursive definitions",
+      "Meta-level constructions"
+    ]
+  },
+  {
+    id: 25,
+    title: "Rhétorique académique et persuasion sophistiquée",
+    explanation: "Techniques rhétoriques avancées pour l'argumentation et la persuasion académique.",
+    examples: [
+      { english: "One need not subscribe to the theoretical framework wholesale to appreciate its explanatory power.", french: "On n'a pas besoin de souscrire au cadre théorique en gros pour apprécier son pouvoir explicatif." },
+      { english: "The implications extend beyond the immediate scope of this study, reaching into domains heretofore unconsidered.", french: "Les implications s'étendent au-delà de la portée immédiate de cette étude, atteignant des domaines jusqu'à présent non considérés." },
+      { english: "That such a methodology yields consistent results across diverse contexts speaks to its robustness rather than its limitations.", french: "Qu'une telle méthodologie produise des résultats cohérents dans divers contextes témoigne de sa robustesse plutôt que de ses limitations." }
+    ],
+    rules: [
+      "Concessive persuasion: need not accept entirely",
+      "Scope extension rhetoric",
+      "Positive reframing of limitations",
+      "Appeal to universality: across diverse contexts"
+    ]
+  },
+  {
+    id: 26,
+    title: "Analyse critique du discours",
+    explanation: "Méthodes d'analyse et de déconstruction des structures rhétoriques et des constructions idéologiques dans le discours.",
+    examples: [
+      { english: "The text subtly reinforces dominant narratives through its selective emphasis on certain aspects of the issue.", french: "Le texte renforce subtilement les récits dominants par son accent sélectif sur certains aspects de la question." },
+      { english: "Such phrasing reveals underlying assumptions that merit interrogation.", french: "Une telle formulation révèle des hypothèses sous-jacentes qui méritent d'être interrogées." },
+      { english: "The rhetorical devices employed herein function to naturalize what are, in fact, contingent social arrangements.", french: "Les dispositifs rhétoriques employés ici fonctionnent pour naturaliser ce qui sont, en fait, des arrangements sociaux contingents." }
+    ],
+    rules: [
+      "Identification des présupposés idéologiques",
+      "Analyse des stratégies d'exclusion/inclusion",
+      "Déconstruction des binarités conceptuelles",
+      "Examen des métaphores conceptuelles structurantes"
+    ]
+  },
+  {
+    id: 27,
+    title: "Jeux de mots et double sens",
+    explanation: "Utilisation consciente de l'ambiguïté lexicale et sémantique à des fins stylistiques et argumentatives.",
+    examples: [
+      { english: "Their groundbreaking research was, quite literally, breaking new ground in geological exploration.", french: "Leur recherche révolutionnaire était, au sens propre, en train de creuser de nouveaux terrains dans l'exploration géologique." },
+      { english: "The gravity of the situation cannot be overstated—particularly in astrophysical terms.", french: "La gravité de la situation ne peut être surestimée—particulièrement en termes astrophysiques." },
+      { english: "His illuminating presentation shed light on several previously obscure theoretical dark corners.", french: "Sa présentation éclairante a jeté de la lumière sur plusieurs coins théoriques obscurs auparavant dans l'ombre." }
+    ],
+    rules: [
+      "Double sens délibéré: exploitation des multiples significations",
+      "Jeux sur polysémie technique/ordinaire",
+      "Paronomase: jeux sur des mots similaires phonétiquement",
+      "Exploitation consciente de métaphores figées"
+    ]
+  },
+  {
+    id: 28,
+    title: "Usage littéraire de structures archaïques",
+    explanation: "Emploi stratégique de formes grammaticales archaïques pour des effets stylistiques particuliers.",
+    examples: [
+      { english: "Whence cometh this notion, if not from a fundamentally flawed understanding?", french: "D'où vient donc cette notion, si ce n'est d'une compréhension fondamentalement imparfaite ?" },
+      { english: "One must needs consider the historical context.", french: "Force est de considérer le contexte historique." },
+      { english: "Methinks the theory doth promise too much.", french: "Il me semble que la théorie promet trop." }
+    ],
+    rules: [
+      "Inversion sujet-verbe archaïque",
+      "Formes verbales obsolètes: doth, hath, cometh",
+      "Pronoms archaïques: thee, thou, thy, thine",
+      "Archaïsmes lexicaux délibérés: ere, betwixt, forsooth, verily"
+    ]
+  }
+];
+&nbsp;
+export default grammarRulesC2;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -1,0 +1,580 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/bonus/categories/19_temporelle.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/bonus/categories</a> 19_temporelle.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "BONUS 11/21 - Expressions Temporelles (Temps &amp; Chronologie Natifs)",
+  words: [
+    // Past - distant (25 mots)
+    { word: "back in the day", translation: "à l'époque", example: "Back in the day, things were different." },
+    { word: "way back when", translation: "il y a longtemps", example: "Way back when, I used to live there." },
+    { word: "ages ago", translation: "il y a une éternité", example: "I saw him ages ago." },
+    { word: "eons ago", translation: "il y a des lustres", example: "That happened eons ago." },
+    { word: "forever ago", translation: "il y a une éternité", example: "We talked about this forever ago." },
+    { word: "way back", translation: "il y a longtemps", example: "Way back, we were best friends." },
+    { word: "long time ago", translation: "il y a longtemps", example: "A long time ago in a galaxy far away..." },
+    { word: "once upon a time", translation: "il était une fois", example: "Once upon a time, I believed that." },
+    { word: "in the old days", translation: "dans le temps", example: "In the old days, we walked to school." },
+    { word: "years and years ago", translation: "il y a des années", example: "Years and years ago, this was farmland." },
+    { word: "way before", translation: "bien avant", example: "This was way before you were born." },
+    { word: "decades ago", translation: "il y a des décennies", example: "Decades ago, nobody had cell phones." },
+    { word: "ancient history", translation: "histoire ancienne", example: "That's ancient history now." },
+    { word: "water under the bridge", translation: "du passé", example: "That argument is water under the bridge." },
+    { word: "bygone era", translation: "époque révolue", example: "That's from a bygone era." },
+    { word: "distant past", translation: "passé lointain", example: "That's in the distant past." },
+    { word: "olden days", translation: "temps anciens", example: "In the olden days, life was simpler." },
+    { word: "yesteryear", translation: "autrefois", example: "The fashions of yesteryear." },
+    { word: "days of yore", translation: "temps jadis", example: "In the days of yore." },
+    { word: "time immemorial", translation: "nuit des temps", example: "Since time immemorial." },
+    { word: "donkey's years", translation: "une éternité", example: "I haven't seen him in donkey's years." },
+    { word: "moon's age", translation: "une éternité", example: "It's been a moon's age." },
+    { word: "blue moon", translation: "rarissimement", example: "Once in a blue moon, he calls." },
+    { word: "when hell freezes over", translation: "quand les poules auront des dents", example: "That'll happen when hell freezes over." },
+    { word: "when pigs fly", translation: "quand les cochons voleront", example: "He'll apologize when pigs fly." },
+&nbsp;
+    // Past - recent (25 mots)
+    { word: "just now", translation: "à l'instant", example: "I saw him just now." },
+    { word: "a minute ago", translation: "il y a une minute", example: "She was here a minute ago." },
+    { word: "a second ago", translation: "il y a une seconde", example: "I told you a second ago!" },
+    { word: "moments ago", translation: "il y a quelques instants", example: "This happened moments ago." },
+    { word: "earlier today", translation: "plus tôt aujourd'hui", example: "I called you earlier today." },
+    { word: "this morning", translation: "ce matin", example: "I saw the news this morning." },
+    { word: "a while back", translation: "il y a un moment", example: "A while back, we discussed this." },
+    { word: "a bit ago", translation: "il y a un peu", example: "I finished that a bit ago." },
+    { word: "not too long ago", translation: "pas si longtemps", example: "Not too long ago, things were different." },
+    { word: "recently", translation: "récemment", example: "I've been thinking recently." },
+    { word: "lately", translation: "dernièrement", example: "Lately, I've been busy." },
+    { word: "of late", translation: "ces temps-ci", example: "Of late, he's been quiet." },
+    { word: "as of late", translation: "ces derniers temps", example: "As of late, business is good." },
+    { word: "the other day", translation: "l'autre jour", example: "The other day, I ran into Sarah." },
+    { word: "just the other day", translation: "encore l'autre jour", example: "Just the other day, we talked about this." },
+    { word: "yesterday", translation: "hier", example: "Yesterday feels like a lifetime ago." },
+    { word: "last week", translation: "la semaine dernière", example: "Last week was crazy." },
+    { word: "last month", translation: "le mois dernier", example: "Last month, I started a new job." },
+    { word: "not long ago", translation: "il n'y a pas longtemps", example: "Not long ago, I lived here." },
+    { word: "just recently", translation: "tout récemment", example: "Just recently, I learned about this." },
+    { word: "a short while ago", translation: "il y a peu", example: "A short while ago, everything was fine." },
+    { word: "fresh", translation: "frais", example: "This news is fresh off the press." },
+    { word: "hot off the press", translation: "tout chaud", example: "This story is hot off the press." },
+    { word: "brand new", translation: "tout nouveau", example: "This information is brand new." },
+    { word: "just in", translation: "qui vient d'arriver", example: "This is just in from our reporter." },
+&nbsp;
+    // Present/Now (25 mots)
+    { word: "right now", translation: "maintenant", example: "I need this right now." },
+    { word: "at this very moment", translation: "en ce moment même", example: "At this very moment, he's probably sleeping." },
+    { word: "as we speak", translation: "pendant qu'on parle", example: "As we speak, things are changing." },
+    { word: "currently", translation: "actuellement", example: "Currently, I'm working on a project." },
+    { word: "presently", translation: "actuellement", example: "Presently, we're reviewing the options." },
+    { word: "at present", translation: "à présent", example: "At present, we don't have enough data." },
+    { word: "for the time being", translation: "pour le moment", example: "For the time being, this will work." },
+    { word: "at the moment", translation: "en ce moment", example: "At the moment, I'm too busy." },
+    { word: "these days", translation: "de nos jours", example: "These days, everyone has a phone." },
+    { word: "nowadays", translation: "de nos jours", example: "Nowadays, things are different." },
+    { word: "in this day and age", translation: "à notre époque", example: "In this day and age, privacy is rare." },
+    { word: "in today's world", translation: "dans le monde d'aujourd'hui", example: "In today's world, technology rules." },
+    { word: "as of now", translation: "à partir de maintenant", example: "As of now, we're closed." },
+    { word: "as of today", translation: "à partir d'aujourd'hui", example: "As of today, new rules apply." },
+    { word: "from now on", translation: "dorénavant", example: "From now on, things will be different." },
+    { word: "going forward", translation: "à l'avenir", example: "Going forward, we'll be more careful." },
+    { word: "moving forward", translation: "en avançant", example: "Moving forward, let's focus on solutions." },
+    { word: "here and now", translation: "ici et maintenant", example: "Let's focus on the here and now." },
+    { word: "this instant", translation: "à l'instant", example: "I want you here this instant!" },
+    { word: "this very second", translation: "à la seconde", example: "Stop what you're doing this very second!" },
+    { word: "on the spot", translation: "sur le champ", example: "I need an answer on the spot." },
+    { word: "immediately", translation: "immédiatement", example: "We need to leave immediately." },
+    { word: "straight away", translation: "tout de suite", example: "Let's go straight away." },
+    { word: "without delay", translation: "sans délai", example: "We must act without delay." },
+    { word: "this minute", translation: "tout de suite", example: "Come here this minute!" },
+&nbsp;
+    // Future - near (25 mots)
+    { word: "in a bit", translation: "dans un moment", example: "I'll call you in a bit." },
+    { word: "in a minute", translation: "dans une minute", example: "I'll be there in a minute." },
+    { word: "in a sec", translation: "dans une seconde", example: "Hold on, I'll be ready in a sec." },
+    { word: "in a jiffy", translation: "en un clin d'œil", example: "I'll fix this in a jiffy." },
+    { word: "shortly", translation: "bientôt", example: "The meeting will start shortly." },
+    { word: "soon", translation: "bientôt", example: "We'll know the results soon." },
+    { word: "real soon", translation: "très bientôt", example: "Real soon, everything will change." },
+    { word: "pretty soon", translation: "assez tôt", example: "Pretty soon, you'll understand." },
+    { word: "any minute now", translation: "d'une minute à l'autre", example: "He should arrive any minute now." },
+    { word: "any second now", translation: "d'une seconde à l'autre", example: "The results should come any second now." },
+    { word: "any moment", translation: "d'un moment à l'autre", example: "She could call any moment." },
+    { word: "before long", translation: "avant longtemps", example: "Before long, you'll be an expert." },
+    { word: "in the near future", translation: "dans un proche avenir", example: "In the near future, we'll expand." },
+    { word: "coming up", translation: "qui arrive", example: "There's a big meeting coming up." },
+    { word: "around the corner", translation: "au coin", example: "Summer is just around the corner." },
+    { word: "on the horizon", translation: "à l'horizon", example: "Change is on the horizon." },
+    { word: "in the works", translation: "en préparation", example: "Something big is in the works." },
+    { word: "in the pipeline", translation: "en cours", example: "New features are in the pipeline." },
+    { word: "next thing you know", translation: "et puis", example: "Next thing you know, he was gone." },
+    { word: "before you know it", translation: "avant qu'on s'en rende compte", example: "Before you know it, summer will be over." },
+    { word: "in no time", translation: "en un rien de temps", example: "You'll learn this in no time." },
+    { word: "in a heartbeat", translation: "en un battement de cœur", example: "I'd move there in a heartbeat." },
+    { word: "right away", translation: "tout de suite", example: "I'll do it right away." },
+    { word: "straight away", translation: "immédiatement", example: "Let's leave straight away." },
+    { word: "first thing", translation: "en premier", example: "I'll call you first thing tomorrow." },
+&nbsp;
+    // Future - distant (25 mots)
+    { word: "down the road", translation: "plus tard", example: "Down the road, we might expand." },
+    { word: "down the line", translation: "à terme", example: "Down the line, this will pay off." },
+    { word: "in the long run", translation: "à long terme", example: "In the long run, it's worth it." },
+    { word: "in the long term", translation: "à long terme", example: "In the long term, we'll save money." },
+    { word: "eventually", translation: "finalement", example: "Eventually, he'll understand." },
+    { word: "someday", translation: "un jour", example: "Someday, I'll travel the world." },
+    { word: "one day", translation: "un jour", example: "One day, you'll thank me." },
+    { word: "one of these days", translation: "un de ces jours", example: "One of these days, I'll visit." },
+    { word: "some other time", translation: "une autre fois", example: "Let's talk some other time." },
+    { word: "further down the road", translation: "plus loin", example: "Further down the road, we'll see." },
+    { word: "way down the road", translation: "dans longtemps", example: "Way down the road, things will change." },
+    { word: "in years to come", translation: "dans les années à venir", example: "In years to come, you'll understand." },
+    { word: "in the distant future", translation: "dans un futur lointain", example: "In the distant future, cars will fly." },
+    { word: "sometime", translation: "un jour", example: "Let's meet sometime." },
+    { word: "at some point", translation: "à un moment donné", example: "At some point, we'll have to decide." },
+    { word: "sooner or later", translation: "tôt ou tard", example: "Sooner or later, he'll call." },
+    { word: "in due time", translation: "en temps voulu", example: "All will be revealed in due time." },
+    { word: "in due course", translation: "en temps et lieu", example: "We'll address that in due course." },
+    { word: "when the time comes", translation: "le moment venu", example: "When the time comes, you'll know." },
+    { word: "when the time is right", translation: "quand ce sera le bon moment", example: "When the time is right, I'll tell him." },
+    { word: "in the fullness of time", translation: "avec le temps", example: "In the fullness of time, all will be clear." },
+    { word: "until hell freezes over", translation: "jusqu'à la fin des temps", example: "I'll wait until hell freezes over." },
+    { word: "until the cows come home", translation: "jusqu'à pas d'heure", example: "We could talk until the cows come home." },
+    { word: "when hell freezes over", translation: "jamais", example: "I'll forgive him when hell freezes over." },
+    { word: "when pigs fly", translation: "jamais", example: "He'll change when pigs fly." },
+&nbsp;
+    // Duration &amp; Frequency (25 mots)
+    { word: "all the time", translation: "tout le temps", example: "He complains all the time." },
+    { word: "around the clock", translation: "24h/24", example: "We work around the clock." },
+    { word: "24/7", translation: "24h/24, 7j/7", example: "The store is open 24/7." },
+    { word: "day and night", translation: "jour et nuit", example: "She studies day and night." },
+    { word: "nonstop", translation: "sans arrêt", example: "It's been raining nonstop." },
+    { word: "constantly", translation: "constamment", example: "He's constantly on his phone." },
+    { word: "continuously", translation: "continuellement", example: "The machine runs continuously." },
+    { word: "non-stop", translation: "sans escale", example: "We flew non-stop to Paris." },
+    { word: "every so often", translation: "de temps en temps", example: "Every so often, I call my mom." },
+    { word: "once in a while", translation: "de temps en temps", example: "Once in a while, treat yourself." },
+    { word: "from time to time", translation: "de temps à autre", example: "From time to time, I wonder." },
+    { word: "now and then", translation: "de temps en temps", example: "Now and then, I miss home." },
+    { word: "now and again", translation: "parfois", example: "Now and again, he visits." },
+    { word: "on and off", translation: "par intermittence", example: "It's been raining on and off." },
+    { word: "off and on", translation: "par moments", example: "I've been working off and on." },
+    { word: "here and there", translation: "ça et là", example: "I travel here and there for work." },
+    { word: "every now and then", translation: "de temps à autre", example: "Every now and then, call me." },
+    { word: "every once in a while", translation: "de temps en temps", example: "Every once in a while, splurge." },
+    { word: "rarely", translation: "rarement", example: "I rarely eat fast food." },
+    { word: "seldom", translation: "rarement", example: "He seldom complains." },
+    { word: "hardly ever", translation: "presque jamais", example: "I hardly ever watch TV." },
+    { word: "almost never", translation: "presque jamais", example: "She almost never calls." },
+    { word: "once in a blue moon", translation: "très rarement", example: "Once in a blue moon, he's right." },
+    { word: "for ages", translation: "depuis longtemps", example: "I've been waiting for ages." },
+    { word: "for the longest time", translation: "depuis très longtemps", example: "For the longest time, I thought..." }
+  ]
+};</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

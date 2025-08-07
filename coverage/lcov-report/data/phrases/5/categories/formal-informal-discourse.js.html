@@ -1,0 +1,1255 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/5/categories/formal-informal-discourse.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/5/categories</a> formal-informal-discourse.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a>
+<a name='L304'></a><a href='#L304'>304</a>
+<a name='L305'></a><a href='#L305'>305</a>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a>
+<a name='L316'></a><a href='#L316'>316</a>
+<a name='L317'></a><a href='#L317'>317</a>
+<a name='L318'></a><a href='#L318'>318</a>
+<a name='L319'></a><a href='#L319'>319</a>
+<a name='L320'></a><a href='#L320'>320</a>
+<a name='L321'></a><a href='#L321'>321</a>
+<a name='L322'></a><a href='#L322'>322</a>
+<a name='L323'></a><a href='#L323'>323</a>
+<a name='L324'></a><a href='#L324'>324</a>
+<a name='L325'></a><a href='#L325'>325</a>
+<a name='L326'></a><a href='#L326'>326</a>
+<a name='L327'></a><a href='#L327'>327</a>
+<a name='L328'></a><a href='#L328'>328</a>
+<a name='L329'></a><a href='#L329'>329</a>
+<a name='L330'></a><a href='#L330'>330</a>
+<a name='L331'></a><a href='#L331'>331</a>
+<a name='L332'></a><a href='#L332'>332</a>
+<a name='L333'></a><a href='#L333'>333</a>
+<a name='L334'></a><a href='#L334'>334</a>
+<a name='L335'></a><a href='#L335'>335</a>
+<a name='L336'></a><a href='#L336'>336</a>
+<a name='L337'></a><a href='#L337'>337</a>
+<a name='L338'></a><a href='#L338'>338</a>
+<a name='L339'></a><a href='#L339'>339</a>
+<a name='L340'></a><a href='#L340'>340</a>
+<a name='L341'></a><a href='#L341'>341</a>
+<a name='L342'></a><a href='#L342'>342</a>
+<a name='L343'></a><a href='#L343'>343</a>
+<a name='L344'></a><a href='#L344'>344</a>
+<a name='L345'></a><a href='#L345'>345</a>
+<a name='L346'></a><a href='#L346'>346</a>
+<a name='L347'></a><a href='#L347'>347</a>
+<a name='L348'></a><a href='#L348'>348</a>
+<a name='L349'></a><a href='#L349'>349</a>
+<a name='L350'></a><a href='#L350'>350</a>
+<a name='L351'></a><a href='#L351'>351</a>
+<a name='L352'></a><a href='#L352'>352</a>
+<a name='L353'></a><a href='#L353'>353</a>
+<a name='L354'></a><a href='#L354'>354</a>
+<a name='L355'></a><a href='#L355'>355</a>
+<a name='L356'></a><a href='#L356'>356</a>
+<a name='L357'></a><a href='#L357'>357</a>
+<a name='L358'></a><a href='#L358'>358</a>
+<a name='L359'></a><a href='#L359'>359</a>
+<a name='L360'></a><a href='#L360'>360</a>
+<a name='L361'></a><a href='#L361'>361</a>
+<a name='L362'></a><a href='#L362'>362</a>
+<a name='L363'></a><a href='#L363'>363</a>
+<a name='L364'></a><a href='#L364'>364</a>
+<a name='L365'></a><a href='#L365'>365</a>
+<a name='L366'></a><a href='#L366'>366</a>
+<a name='L367'></a><a href='#L367'>367</a>
+<a name='L368'></a><a href='#L368'>368</a>
+<a name='L369'></a><a href='#L369'>369</a>
+<a name='L370'></a><a href='#L370'>370</a>
+<a name='L371'></a><a href='#L371'>371</a>
+<a name='L372'></a><a href='#L372'>372</a>
+<a name='L373'></a><a href='#L373'>373</a>
+<a name='L374'></a><a href='#L374'>374</a>
+<a name='L375'></a><a href='#L375'>375</a>
+<a name='L376'></a><a href='#L376'>376</a>
+<a name='L377'></a><a href='#L377'>377</a>
+<a name='L378'></a><a href='#L378'>378</a>
+<a name='L379'></a><a href='#L379'>379</a>
+<a name='L380'></a><a href='#L380'>380</a>
+<a name='L381'></a><a href='#L381'>381</a>
+<a name='L382'></a><a href='#L382'>382</a>
+<a name='L383'></a><a href='#L383'>383</a>
+<a name='L384'></a><a href='#L384'>384</a>
+<a name='L385'></a><a href='#L385'>385</a>
+<a name='L386'></a><a href='#L386'>386</a>
+<a name='L387'></a><a href='#L387'>387</a>
+<a name='L388'></a><a href='#L388'>388</a>
+<a name='L389'></a><a href='#L389'>389</a>
+<a name='L390'></a><a href='#L390'>390</a>
+<a name='L391'></a><a href='#L391'>391</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/c1/categories/formal-informal-discourse.js
+&nbsp;
+const formalInformalDiscourse = [
+  {
+    categoryId: 55,
+    english: "I would like to formally request..., as outlined in..., and would appreciate your earliest convenience in addressing this matter.",
+    translation: "Je souhaiterais demander formellement..., comme décrit dans..., et apprécierais que vous traitiez cette question dans les plus brefs délais.",
+    context: "Faire une demande formelle dans un cadre professionnel",
+    examples: [
+      {
+        english: "I would like to formally request a comprehensive review of our department's budget allocation, as outlined in the recent efficiency audit report, and would appreciate your earliest convenience in addressing this matter given the approaching fiscal year deadline and the significant impact these adjustments could have on our operational capacity and strategic planning initiatives for the coming quarter.",
+        translation: "Je souhaiterais demander formellement un examen complet de l'allocation budgétaire de notre département, comme décrit dans le récent rapport d'audit d'efficacité, et apprécierais que vous traitiez cette question dans les plus brefs délais étant donné l'échéance approchante de l'année fiscale et l'impact significatif que ces ajustements pourraient avoir sur notre capacité opérationnelle et nos initiatives de planification stratégique pour le trimestre à venir.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Look, I'm just going to level with you here..., because I think we need to stop dancing around the issue and get real about...",
+    translation: "Écoute, je vais être direct(e) avec toi ici..., parce que je pense qu'on doit arrêter de tourner autour du pot et être réalistes à propos de...",
+    context: "Adopter un ton direct et familier pour aborder un sujet délicat",
+    examples: [
+      {
+        english: "Look, I'm just going to level with you here about what's really happening with this project timeline, because I think we need to stop dancing around the issue and get real about the fact that we're significantly behind schedule and the client expectations are completely unrealistic given the resource constraints we're working under, and pretending otherwise isn't helping anyone.",
+        translation: "Écoute, je vais être direct avec toi ici à propos de ce qui se passe vraiment avec ce calendrier de projet, parce que je pense qu'on doit arrêter de tourner autour du pot et être réalistes à propos du fait qu'on est significativement en retard et que les attentes du client sont complètement irréalistes étant donné les contraintes de ressources sous lesquelles on travaille, et faire semblant du contraire n'aide personne.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "It is with great regret that I must inform you of..., which necessitates immediate action regarding..., in accordance with established protocols.",
+    translation: "C'est avec un grand regret que je dois vous informer de..., ce qui nécessite une action immédiate concernant..., conformément aux protocoles établis.",
+    context: "Communiquer de mauvaises nouvelles de manière formelle",
+    examples: [
+      {
+        english: "It is with great regret that I must inform you of the unexpected resignation of our department head, which necessitates immediate action regarding the restructuring of current project assignments and the establishment of interim leadership arrangements, in accordance with established protocols for maintaining operational continuity during periods of administrative transition.",
+        translation: "C'est avec un grand regret que je dois vous informer de la démission inattendue de notre chef de département, ce qui nécessite une action immédiate concernant la restructuration des affectations de projet actuelles et l'établissement d'arrangements de direction intérimaire, conformément aux protocoles établis pour maintenir la continuité opérationnelle pendant les périodes de transition administrative.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Honestly, this whole situation is getting a bit out of hand, and we really need to figure out... before things get completely crazy around here.",
+    translation: "Honnêtement, toute cette situation devient un peu incontrôlable, et on doit vraiment trouver comment... avant que les choses deviennent complètement folles ici.",
+    context: "Exprimer une préoccupation de manière décontractée",
+    examples: [
+      {
+        english: "Honestly, this whole situation with the new software implementation is getting a bit out of hand, and we really need to figure out a better training schedule and support system before things get completely crazy around here with people making mistakes because they don't understand the new interface and workflow changes that affect pretty much everything we do on a daily basis.",
+        translation: "Honnêtement, toute cette situation avec l'implémentation du nouveau logiciel devient un peu incontrôlable, et on doit vraiment trouver un meilleur calendrier de formation et système de support avant que les choses deviennent complètement folles ici avec des gens qui font des erreurs parce qu'ils ne comprennent pas la nouvelle interface et les changements de workflow qui affectent pratiquement tout ce qu'on fait au quotidien.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "May I respectfully suggest that we consider alternative approaches to..., which might yield more favorable outcomes while addressing the concerns raised by...",
+    translation: "Puis-je respectueusement suggérer que nous considérions des approches alternatives à..., qui pourraient produire des résultats plus favorables tout en répondant aux préoccupations soulevées par...",
+    context: "Proposer poliment une alternative dans un contexte professionnel",
+    examples: [
+      {
+        english: "May I respectfully suggest that we consider alternative approaches to customer service training that incorporate more hands-on practice scenarios, which might yield more favorable outcomes in terms of both employee confidence and customer satisfaction while addressing the concerns raised by recent feedback surveys regarding response time and problem resolution effectiveness.",
+        translation: "Puis-je respectueusement suggérer que nous considérions des approches alternatives à la formation du service client qui incorporent plus de scénarios de pratique pratique, qui pourraient produire des résultats plus favorables en termes de confiance des employés et de satisfaction client tout en répondant aux préoccupations soulevées par les récentes enquêtes de feedback concernant le temps de réponse et l'efficacité de résolution des problèmes.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "You know what? I think we're overthinking this whole thing... Let's just try... and see what happens.",
+    translation: "Tu sais quoi ? Je pense qu'on se prend trop la tête avec tout ça... Essayons juste... et voyons ce qui se passe.",
+    context: "Simplifier une situation complexe avec une approche décontractée",
+    examples: [
+      {
+        english: "You know what? I think we're overthinking this whole marketing campaign strategy with all these detailed demographic analyses and complex messaging frameworks. Let's just try a simple, direct approach that highlights the actual benefits people care about and see what happens with our response rates before we invest more time in theoretical planning.",
+        translation: "Tu sais quoi ? Je pense qu'on se prend trop la tête avec toute cette stratégie de campagne marketing avec toutes ces analyses démographiques détaillées et ces cadres de messagerie complexes. Essayons juste une approche simple et directe qui met en évidence les avantages réels qui importent aux gens et voyons ce qui se passe avec nos taux de réponse avant d'investir plus de temps dans la planification théorique.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "In accordance with our institutional policy regarding..., I am obligated to notify you that... and request your immediate compliance with...",
+    translation: "Conformément à notre politique institutionnelle concernant..., je suis dans l'obligation de vous notifier que... et de demander votre conformité immédiate avec...",
+    context: "Invoquer des règlements officiels de manière formelle",
+    examples: [
+      {
+        english: "In accordance with our institutional policy regarding workplace safety and regulatory compliance, I am obligated to notify you that recent inspection findings have identified several areas requiring immediate attention and request your immediate compliance with the updated procedures outlined in the attached documentation to ensure we maintain our certification standards.",
+        translation: "Conformément à notre politique institutionnelle concernant la sécurité au travail et la conformité réglementaire, je suis dans l'obligation de vous notifier que les récentes conclusions d'inspection ont identifié plusieurs zones nécessitant une attention immédiate et de demander votre conformité immédiate avec les procédures mises à jour décrites dans la documentation jointe pour assurer que nous maintenons nos standards de certification.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Between you and me, I think... is not working out the way we hoped, and we might want to start thinking about... before this becomes a bigger problem.",
+    translation: "Entre nous, je pense que... ne fonctionne pas comme on l'espérait, et on pourrait vouloir commencer à réfléchir à... avant que ça devienne un plus gros problème.",
+    context: "Partager une confidence de manière informelle",
+    examples: [
+      {
+        english: "Between you and me, I think this new collaboration with the external consulting firm is not working out the way we hoped, and we might want to start thinking about how to transition some of their responsibilities back in-house before this becomes a bigger problem with project delays and communication breakdowns that affect our client relationships.",
+        translation: "Entre nous, je pense que cette nouvelle collaboration avec la firme de conseil externe ne fonctionne pas comme on l'espérait, et on pourrait vouloir commencer à réfléchir à comment retransférer certaines de leurs responsabilités en interne avant que ça devienne un plus gros problème avec des retards de projet et des pannes de communication qui affectent nos relations clients.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "I would be most grateful if you could provide clarification regarding..., as this information would be instrumental in facilitating our progress on...",
+    translation: "Je vous serais très reconnaissant(e) si vous pouviez fournir des clarifications concernant..., car cette information serait déterminante pour faciliter notre progrès sur...",
+    context: "Demander poliment des informations importantes",
+    examples: [
+      {
+        english: "I would be most grateful if you could provide clarification regarding the approved budget parameters and timeline expectations for the upcoming product launch, as this information would be instrumental in facilitating our progress on resource allocation decisions and vendor contract negotiations that need to be finalized before we can proceed with the implementation phase.",
+        translation: "Je vous serais très reconnaissant si vous pouviez fournir des clarifications concernant les paramètres budgétaires approuvés et les attentes de calendrier pour le prochain lancement de produit, car cette information serait déterminante pour faciliter notre progrès sur les décisions d'allocation de ressources et les négociations de contrats de fournisseurs qui doivent être finalisées avant qu'on puisse procéder avec la phase d'implémentation.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Okay, so here's the deal with..., and I'm just going to be straight with you about what we're looking at in terms of... and what that means for...",
+    translation: "Bon, voici le topo avec..., et je vais juste être direct(e) avec toi sur ce qu'on regarde en termes de... et ce que ça signifie pour...",
+    context: "Expliquer une situation de manière directe et accessible",
+    examples: [
+      {
+        english: "Okay, so here's the deal with the server migration project, and I'm just going to be straight with you about what we're looking at in terms of downtime and potential complications and what that means for our customer service operations and the backup plans we need to have in place to minimize disruption to daily business activities.",
+        translation: "Bon, voici le topo avec le projet de migration des serveurs, et je vais juste être direct avec toi sur ce qu'on regarde en termes de temps d'arrêt et de complications potentielles et ce que ça signifie pour nos opérations de service client et les plans de sauvegarde qu'on doit avoir en place pour minimiser la perturbation des activités commerciales quotidiennes.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "It is imperative that we establish clear protocols for..., given the potential ramifications of... and the need to ensure compliance with...",
+    translation: "Il est impératif que nous établissions des protocoles clairs pour..., étant donné les ramifications potentielles de... et la nécessité d'assurer la conformité avec...",
+    context: "Souligner l'urgence d'une action de manière formelle",
+    examples: [
+      {
+        english: "It is imperative that we establish clear protocols for handling sensitive client data during the digital transformation process, given the potential ramifications of privacy breaches and regulatory violations and the need to ensure compliance with both existing data protection laws and the evolving requirements for cybersecurity measures in our industry sector.",
+        translation: "Il est impératif que nous établissions des protocoles clairs pour la manipulation des données client sensibles pendant le processus de transformation numérique, étant donné les ramifications potentielles des violations de confidentialité et des violations réglementaires et la nécessité d'assurer la conformité avec les lois existantes de protection des données et les exigences évolutives pour les mesures de cybersécurité dans notre secteur industriel.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Look, I get it that... is important, but we also have to be realistic about... and figure out a way to make this work without completely...",
+    translation: "Écoute, je comprends que... soit important, mais on doit aussi être réalistes à propos de... et trouver un moyen de faire marcher ça sans complètement...",
+    context: "Reconnaître une contrainte tout en cherchant un compromis",
+    examples: [
+      {
+        english: "Look, I get it that maintaining high quality standards is important, but we also have to be realistic about our time constraints and budget limitations and figure out a way to make this work without completely overwhelming our team or sacrificing the essential features that our customers actually need and expect from this product release.",
+        translation: "Écoute, je comprends que maintenir des standards de haute qualité soit important, mais on doit aussi être réalistes à propos de nos contraintes de temps et limitations budgétaires et trouver un moyen de faire marcher ça sans complètement surcharger notre équipe ou sacrifier les fonctionnalités essentielles que nos clients ont réellement besoin et attendent de cette sortie de produit.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "I trust this correspondence finds you well. I am writing to bring to your attention... and to propose... as a mutually beneficial solution.",
+    translation: "J'espère que cette correspondance vous trouve en bonne santé. Je vous écris pour porter à votre attention... et pour proposer... comme une solution mutuellement bénéfique.",
+    context: "Commencer une communication formelle écrite",
+    examples: [
+      {
+        english: "I trust this correspondence finds you well. I am writing to bring to your attention some concerns that have been raised regarding our current contract terms and delivery schedules and to propose a revised framework that addresses these issues while maintaining the high standards of service that have characterized our professional relationship, as a mutually beneficial solution that could strengthen our partnership moving forward.",
+        translation: "J'espère que cette correspondance vous trouve en bonne santé. Je vous écris pour porter à votre attention certaines préoccupations qui ont été soulevées concernant nos termes contractuels actuels et nos horaires de livraison et pour proposer un cadre révisé qui adresse ces questions tout en maintenant les hauts standards de service qui ont caractérisé notre relation professionnelle, comme une solution mutuellement bénéfique qui pourrait renforcer notre partenariat à l'avenir.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Alright, so basically what happened is..., and now we're stuck dealing with... unless we can come up with some kind of solution that doesn't make everything worse.",
+    translation: "Bon, donc en gros ce qui s'est passé c'est..., et maintenant on est coincés à gérer... à moins qu'on puisse trouver une sorte de solution qui n'empire pas tout.",
+    context: "Expliquer un problème de manière décontractée",
+    examples: [
+      {
+        english: "Alright, so basically what happened is the vendor we were counting on for the main components just told us they can't deliver on time, and now we're stuck dealing with either significant delays or finding alternative suppliers at probably higher costs unless we can come up with some kind of solution that doesn't make everything worse for our budget and timeline.",
+        translation: "Bon, donc en gros ce qui s'est passé c'est que le fournisseur sur lequel on comptait pour les composants principaux vient de nous dire qu'ils ne peuvent pas livrer à temps, et maintenant on est coincés à gérer soit des retards significatifs soit trouver des fournisseurs alternatifs à probablement des coûts plus élevés à moins qu'on puisse trouver une sorte de solution qui n'empire pas tout pour notre budget et notre calendrier.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Pursuant to our previous discussion regarding..., I would like to formally recommend... as the most appropriate course of action, considering...",
+    translation: "Suite à notre discussion précédente concernant..., je souhaiterais recommander formellement... comme la ligne de conduite la plus appropriée, considérant...",
+    context: "Faire une recommandation officielle en référence à une discussion antérieure",
+    examples: [
+      {
+        english: "Pursuant to our previous discussion regarding the need to improve our customer retention rates and competitive positioning, I would like to formally recommend implementing a comprehensive loyalty program with tiered benefits as the most appropriate course of action, considering both the market research findings and the successful implementation of similar programs by our industry peers.",
+        translation: "Suite à notre discussion précédente concernant le besoin d'améliorer nos taux de rétention client et notre positionnement concurrentiel, je souhaiterais recommander formellement l'implémentation d'un programme de fidélité complet avec des avantages échelonnés comme la ligne de conduite la plus appropriée, considérant à la fois les résultats de recherche de marché et l'implémentation réussie de programmes similaires par nos pairs de l'industrie.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "I hate to be the bearer of bad news, but it looks like... isn't going to work out the way we planned, so we need to start brainstorming alternatives pretty quickly.",
+    translation: "Je déteste être porteur de mauvaises nouvelles, mais il semble que... ne va pas marcher comme on l'avait prévu, donc on doit commencer à réfléchir à des alternatives assez rapidement.",
+    context: "Annoncer de mauvaises nouvelles de manière informelle mais empathique",
+    examples: [
+      {
+        english: "I hate to be the bearer of bad news, but it looks like our primary funding source isn't going to work out the way we planned due to their new budget restrictions, so we need to start brainstorming alternatives pretty quickly if we want to keep this project moving forward without major delays or scope reductions.",
+        translation: "Je déteste être porteur de mauvaises nouvelles, mais il semble que notre source de financement principale ne va pas marcher comme on l'avait prévu à cause de leurs nouvelles restrictions budgétaires, donc on doit commencer à réfléchir à des alternatives assez rapidement si on veut garder ce projet en mouvement sans retards majeurs ou réductions de portée.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "With all due respect, I believe we may need to reconsider our approach to..., as the current strategy appears to be yielding suboptimal results in terms of...",
+    translation: "Avec tout le respect dû, je crois qu'on pourrait avoir besoin de reconsidérer notre approche de..., car la stratégie actuelle semble produire des résultats sous-optimaux en termes de...",
+    context: "Exprimer un désaccord de manière diplomatique",
+    examples: [
+      {
+        english: "With all due respect, I believe we may need to reconsider our approach to employee performance evaluations, as the current strategy appears to be yielding suboptimal results in terms of both employee satisfaction and actual performance improvement, with many staff members expressing confusion about expectations and managers struggling to provide meaningful developmental feedback.",
+        translation: "Avec tout le respect dû, je crois qu'on pourrait avoir besoin de reconsidérer notre approche des évaluations de performance des employés, car la stratégie actuelle semble produire des résultats sous-optimaux en termes de satisfaction des employés et d'amélioration réelle des performances, avec de nombreux membres du personnel exprimant de la confusion sur les attentes et des managers ayant du mal à fournir un feedback de développement significatif.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Can we just take a step back here and look at... from a different angle? Maybe there's something we're missing that could make this whole thing a lot easier.",
+    translation: "Est-ce qu'on peut juste prendre du recul ici et regarder... sous un angle différent ? Peut-être qu'il y a quelque chose qu'on rate qui pourrait rendre tout ça beaucoup plus facile.",
+    context: "Suggérer une nouvelle perspective de manière collaborative",
+    examples: [
+      {
+        english: "Can we just take a step back here and look at this workflow problem from a different angle? Maybe there's something we're missing about how different departments actually use this system that could make this whole integration process a lot easier if we understood their real needs better instead of assuming what they want.",
+        translation: "Est-ce qu'on peut juste prendre du recul ici et regarder ce problème de workflow sous un angle différent ? Peut-être qu'il y a quelque chose qu'on rate sur la façon dont les différents départements utilisent réellement ce système qui pourrait rendre tout ce processus d'intégration beaucoup plus facile si on comprenait mieux leurs vrais besoins au lieu de supposer ce qu'ils veulent.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "I would be remiss if I did not acknowledge... and express our sincere appreciation for... while also addressing the matter of...",
+    translation: "Je manquerais à mes devoirs si je ne reconnaissais pas... et n'exprimais notre sincère appréciation pour... tout en abordant également la question de...",
+    context: "Équilibrer reconnaissance et critique de manière formelle",
+    examples: [
+      {
+        english: "I would be remiss if I did not acknowledge your team's exceptional dedication and express our sincere appreciation for the long hours and creative problem-solving that have kept this project on track while also addressing the matter of resource allocation concerns that have been raised and need to be resolved for future project phases.",
+        translation: "Je manquerais à mes devoirs si je ne reconnaissais pas le dévouement exceptionnel de votre équipe et n'exprimais notre sincère appréciation pour les longues heures et la résolution créative de problèmes qui ont gardé ce projet sur la bonne voie tout en abordant également la question des préoccupations d'allocation de ressources qui ont été soulevées et doivent être résolues pour les phases futures du projet.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "So the way I see it, we've got a few options here: we can either... or... or maybe try something completely different like...",
+    translation: "Donc de la façon dont je le vois, on a quelques options ici : on peut soit... soit... ou peut-être essayer quelque chose de complètement différent comme...",
+    context: "Présenter des alternatives de manière informelle",
+    examples: [
+      {
+        english: "So the way I see it, we've got a few options here: we can either stick with the original plan and accept the delays, or renegotiate the scope to fit our timeline, or maybe try something completely different like partnering with another organization that has the resources we're lacking right now.",
+        translation: "Donc de la façon dont je le vois, on a quelques options ici : on peut soit s'en tenir au plan original et accepter les retards, soit renégocier la portée pour correspondre à notre calendrier, ou peut-être essayer quelque chose de complètement différent comme s'associer avec une autre organisation qui a les ressources qui nous manquent en ce moment.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Allow me to suggest that we approach this challenge by first establishing... and then proceeding systematically through... in order to ensure both thoroughness and efficiency.",
+    translation: "Permettez-moi de suggérer qu'on aborde ce défi en établissant d'abord... puis en procédant systématiquement à travers... afin d'assurer à la fois la minutie et l'efficacité.",
+    context: "Proposer une approche méthodique de manière formelle",
+    examples: [
+      {
+        english: "Allow me to suggest that we approach this quality control challenge by first establishing clear benchmarks and measurement criteria and then proceeding systematically through each stage of the production process in order to ensure both thoroughness and efficiency while identifying potential points of improvement without disrupting current operations.",
+        translation: "Permettez-moi de suggérer qu'on aborde ce défi de contrôle qualité en établissant d'abord des références claires et des critères de mesure puis en procédant systématiquement à travers chaque étape du processus de production afin d'assurer à la fois la minutie et l'efficacité tout en identifiant des points d'amélioration potentiels sans perturber les opérations actuelles.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "You know what would be really helpful right now? If we could just... without having to worry about... and focus on getting... sorted out first.",
+    translation: "Tu sais ce qui serait vraiment utile maintenant ? Si on pouvait juste... sans avoir à s'inquiéter de... et se concentrer sur régler... d'abord.",
+    context: "Identifier une solution pragmatique de manière décontractée",
+    examples: [
+      {
+        english: "You know what would be really helpful right now? If we could just get everyone on the same page about priorities without having to worry about all these competing deadlines and focus on getting the core functionality sorted out first before we start adding all the extra features that are nice to have but not essential.",
+        translation: "Tu sais ce qui serait vraiment utile maintenant ? Si on pouvait juste mettre tout le monde sur la même longueur d'onde sur les priorités sans avoir à s'inquiéter de toutes ces échéances concurrentes et se concentrer sur régler la fonctionnalité principale d'abord avant de commencer à ajouter toutes les fonctionnalités supplémentaires qui sont agréables à avoir mais pas essentielles.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "In light of recent developments concerning..., it has become necessary to reassess our position on... and determine the most prudent course of action moving forward.",
+    translation: "À la lumière des développements récents concernant..., il est devenu nécessaire de réévaluer notre position sur... et déterminer la ligne de conduite la plus prudente à suivre.",
+    context: "Réagir à des changements de circonstances de manière formelle",
+    examples: [
+      {
+        english: "In light of recent developments concerning regulatory changes in our industry and shifting market conditions, it has become necessary to reassess our position on expansion plans and determine the most prudent course of action moving forward that balances growth opportunities with risk management and compliance requirements.",
+        translation: "À la lumière des développements récents concernant les changements réglementaires dans notre industrie et l'évolution des conditions de marché, il est devenu nécessaire de réévaluer notre position sur les plans d'expansion et déterminer la ligne de conduite la plus prudente à suivre qui équilibre les opportunités de croissance avec la gestion des risques et les exigences de conformité.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Honestly, I'm starting to think we might be making this way more complicated than it needs to be. What if we just... and see how that goes?",
+    translation: "Honnêtement, je commence à penser qu'on complique peut-être les choses beaucoup plus que nécessaire. Et si on faisait juste... et on regardait comment ça se passe ?",
+    context: "Proposer une simplification de manière décontractée",
+    examples: [
+      {
+        english: "Honestly, I'm starting to think we might be making this customer onboarding process way more complicated than it needs to be with all these forms and approval steps. What if we just streamlined it to the essential information and automated most of the verification and see how that goes with customer satisfaction and processing time?",
+        translation: "Honnêtement, je commence à penser qu'on complique peut-être ce processus d'intégration client beaucoup plus que nécessaire avec tous ces formulaires et étapes d'approbation. Et si on le simplifiait juste aux informations essentielles et automatisait la plupart de la vérification et on regardait comment ça se passe avec la satisfaction client et le temps de traitement ?",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "I would like to draw your attention to... and respectfully submit that immediate intervention is required to address... before it escalates further.",
+    translation: "Je souhaiterais attirer votre attention sur... et soumettre respectueusement qu'une intervention immédiate est requise pour traiter... avant que cela ne s'aggrave davantage.",
+    context: "Signaler un problème urgent de manière formelle",
+    examples: [
+      {
+        english: "I would like to draw your attention to the recurring communication breakdowns between our technical and sales teams and respectfully submit that immediate intervention is required to address these coordination issues before it escalates further and begins to impact client relationships and project delivery timelines in ways that could damage our professional reputation.",
+        translation: "Je souhaiterais attirer votre attention sur les pannes de communication récurrentes entre nos équipes techniques et de vente et soumettre respectueusement qu'une intervention immédiate est requise pour traiter ces problèmes de coordination avant que cela ne s'aggrave davantage et commence à impacter les relations clients et les délais de livraison de projet de manières qui pourraient endommager notre réputation professionnelle.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "This is probably going to sound crazy, but what if we tried... instead of... because it might actually work better and cost less in the long run.",
+    translation: "Ça va probablement sonner fou, mais et si on essayait... au lieu de... parce que ça pourrait réellement mieux marcher et coûter moins à long terme.",
+    context: "Proposer une idée non conventionnelle de manière informelle",
+    examples: [
+      {
+        english: "This is probably going to sound crazy, but what if we tried outsourcing the entire inventory management system instead of trying to build everything in-house because it might actually work better and cost less in the long run when you factor in development time, maintenance, and the expertise we'd need to hire.",
+        translation: "Ça va probablement sonner fou, mais et si on essayait d'externaliser tout le système de gestion d'inventaire au lieu d'essayer de tout construire en interne parce que ça pourrait réellement mieux marcher et coûter moins à long terme quand on prend en compte le temps de développement, la maintenance et l'expertise qu'on aurait besoin d'embaucher.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "After careful consideration of all available options and consultation with relevant stakeholders, I am pleased to recommend... as our preferred approach to...",
+    translation: "Après mûre réflexion de toutes les options disponibles et consultation avec les parties prenantes pertinentes, j'ai le plaisir de recommander... comme notre approche préférée pour...",
+    context: "Présenter une recommandation finale de manière formelle",
+    examples: [
+      {
+        english: "After careful consideration of all available options and consultation with relevant stakeholders including department heads, technical specialists, and budget administrators, I am pleased to recommend the phased implementation approach as our preferred method for transitioning to the new enterprise software system, which will minimize disruption while ensuring thorough training and adequate support.",
+        translation: "Après mûre réflexion de toutes les options disponibles et consultation avec les parties prenantes pertinentes incluant les chefs de département, les spécialistes techniques et les administrateurs budgétaires, j'ai le plaisir de recommander l'approche d'implémentation par phases comme notre méthode préférée pour la transition vers le nouveau système logiciel d'entreprise, qui minimisera la perturbation tout en assurant une formation approfondie et un support adéquat.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Alright, here's where we stand right now with..., and here's what I think we need to do to get this back on track before it becomes a real headache for everyone.",
+    translation: "Bon, voici où on en est maintenant avec..., et voici ce que je pense qu'on doit faire pour remettre ça sur les rails avant que ça devienne un vrai casse-tête pour tout le monde.",
+    context: "Faire un récapitulatif de situation de manière directe",
+    examples: [
+      {
+        english: "Alright, here's where we stand right now with the client presentation preparation: we're behind on the research component, the graphics team is overwhelmed, and we still don't have final approval on the budget numbers, and here's what I think we need to do to get this back on track before it becomes a real headache for everyone involved.",
+        translation: "Bon, voici où on en est maintenant avec la préparation de la présentation client : on est en retard sur le composant recherche, l'équipe graphique est débordée, et on n'a toujours pas l'approbation finale sur les chiffres du budget, et voici ce que je pense qu'on doit faire pour remettre ça sur les rails avant que ça devienne un vrai casse-tête pour tout le monde impliqué.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "It would be greatly appreciated if you could provide an update on... at your earliest convenience, as this information is crucial for our continued progress on...",
+    translation: "Il serait grandement apprécié si vous pouviez fournir une mise à jour sur... dès que possible, car cette information est cruciale pour notre progrès continu sur...",
+    context: "Demander une mise à jour de manière formelle et polie",
+    examples: [
+      {
+        english: "It would be greatly appreciated if you could provide an update on the regulatory approval status and any feedback from the review board at your earliest convenience, as this information is crucial for our continued progress on the product launch timeline and our ability to coordinate marketing activities and distribution partnerships effectively.",
+        translation: "Il serait grandement apprécié si vous pouviez fournir une mise à jour sur le statut d'approbation réglementaire et tout feedback du comité de révision dès que possible, car cette information est cruciale pour notre progrès continu sur le calendrier de lancement de produit et notre capacité à coordonner efficacement les activités marketing et les partenariats de distribution.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "I've been thinking about what you said regarding..., and I think you might be onto something with... Maybe we should explore that option more seriously.",
+    translation: "J'ai réfléchi à ce que tu as dit concernant..., et je pense que tu tiens peut-être quelque chose avec... Peut-être qu'on devrait explorer cette option plus sérieusement.",
+    context: "Reconnaître et valider une suggestion antérieure de manière informelle",
+    examples: [
+      {
+        english: "I've been thinking about what you said regarding the potential for remote work arrangements to improve both productivity and employee satisfaction, and I think you might be onto something with the hybrid model approach. Maybe we should explore that option more seriously by looking at what other companies in our sector have done and measuring some pilot results.",
+        translation: "J'ai réfléchi à ce que tu as dit concernant le potentiel des arrangements de travail à distance pour améliorer à la fois la productivité et la satisfaction des employés, et je pense que tu tiens peut-être quelque chose avec l'approche du modèle hybride. Peut-être qu'on devrait explorer cette option plus sérieusement en regardant ce que d'autres entreprises dans notre secteur ont fait et en mesurant quelques résultats pilotes.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Given the complexity of this matter and the various stakeholders involved, I propose that we schedule a comprehensive meeting to discuss... and establish clear parameters for...",
+    translation: "Étant donné la complexité de cette question et les diverses parties prenantes impliquées, je propose qu'on programme une réunion complète pour discuter de... et établir des paramètres clairs pour...",
+    context: "Proposer une approche collaborative formelle pour un problème complexe",
+    examples: [
+      {
+        english: "Given the complexity of this matter and the various stakeholders involved including legal, finance, operations, and external partners, I propose that we schedule a comprehensive meeting to discuss the contract renegotiation strategy and establish clear parameters for decision-making authority, timeline expectations, and acceptable compromise positions that all parties can support.",
+        translation: "Étant donné la complexité de cette question et les diverses parties prenantes impliquées incluant le juridique, les finances, les opérations et les partenaires externes, je propose qu'on programme une réunion complète pour discuter de la stratégie de renégociation de contrat et établir des paramètres clairs pour l'autorité de prise de décision, les attentes de calendrier et les positions de compromis acceptables que toutes les parties peuvent soutenir.",
+      }
+    ],
+  },
+  {
+    categoryId: 55,
+    english: "Let me just throw this idea out there and see what you think: what if we... because that might solve both the... problem and the... issue at the same time.",
+    translation: "Laisse-moi juste lancer cette idée et voir ce que tu en penses : et si on... parce que ça pourrait résoudre à la fois le problème de... et la question de... en même temps.",
+    context: "Proposer une solution créative de manière décontractée",
+    examples: [
+      {
+        english: "Let me just throw this idea out there and see what you think: what if we combined the training program with the team-building activities because that might solve both the skills development problem and the communication issues between departments at the same time while making more efficient use of everyone's limited time.",
+        translation: "Laisse-moi juste lancer cette idée et voir ce que tu en penses : et si on combinait le programme de formation avec les activités de consolidation d'équipe parce que ça pourrait résoudre à la fois le problème de développement des compétences et les problèmes de communication entre départements en même temps tout en utilisant plus efficacement le temps limité de tout le monde.",
+      }
+    ],
+  },
+];
+&nbsp;
+export default formalInformalDiscourse;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

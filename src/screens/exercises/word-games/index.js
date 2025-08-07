@@ -123,7 +123,7 @@ const WordGamesExercise = ({ route }) => {
           onBackPress={handleBackPress}
         />
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={levelColor} />
+          <ActivityIndicator testID="activity-indicator" size="large" color={levelColor} />
         </View>
       </Container>
     );
@@ -143,7 +143,7 @@ const WordGamesExercise = ({ route }) => {
           onBackPress={handleBackPress}
         />
         <View style={styles.emptyContainer}>
-          <ActivityIndicator size="large" color={levelColor} />
+          <ActivityIndicator testID="activity-indicator" size="large" color={levelColor} />
         </View>
       </Container>
     );

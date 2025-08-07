@@ -131,7 +131,7 @@ const handleBackPress = useCallback(() => {
         statusBarStyle="dark-content"
       >
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={levelColor} />
+          <ActivityIndicator size="large" color={levelColor} testID="activity-indicator" />
         </View>
       </Container>
     );
@@ -208,6 +208,7 @@ const handleBackPress = useCallback(() => {
 
       {/* Navigation */}
       <GrammarNavigation
+        testID="grammar-navigation"
         showFeedback={showFeedback}
         isCorrect={isCorrect}
         canCheckAnswer={canCheckAnswer}

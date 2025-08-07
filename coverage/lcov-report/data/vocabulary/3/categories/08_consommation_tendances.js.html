@@ -1,0 +1,463 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/3/categories/08_consommation_tendances.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/3/categories</a> 08_consommation_tendances.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Consommation &amp; Tendances",
+  words: [
+    // Comportements d'achat
+    { word: "consumer behavior", translation: "comportement du consommateur", example: "Companies study consumer behavior to improve their marketing strategies." },
+    { word: "impulse buying", translation: "achat impulsif", example: "Placing candy near checkout counters encourages impulse buying." },
+    { word: "comparison shopping", translation: "comparaison des prix", example: "Many consumers engage in comparison shopping before making a major purchase." },
+    { word: "brand loyalty", translation: "fidélité à la marque", example: "Apple has exceptional brand loyalty among its customers." },
+    { word: "purchasing power", translation: "pouvoir d'achat", example: "Inflation has reduced many families' purchasing power." },
+    { word: "customer preferences", translation: "préférences des clients", example: "The survey aims to identify customer preferences for new products." },
+    { word: "buying pattern", translation: "habitude d'achat", example: "Seasonal buying patterns affect retail staffing throughout the year." },
+    { word: "shopping habit", translation: "habitude de consommation", example: "The pandemic changed many people's shopping habits." },
+    { word: "budget constraint", translation: "contrainte budgétaire", example: "Budget constraints force consumers to prioritize their purchases." },
+    { word: "perceived value", translation: "valeur perçue", example: "Marketing aims to increase the perceived value of products." },
+    { word: "decision-making process", translation: "processus de décision", example: "Understanding the consumer decision-making process is crucial for marketers." },
+    { word: "needs versus wants", translation: "besoins contre envies", example: "Financial advisors recommend distinguishing between needs versus wants when budgeting." },
+    { word: "customer journey", translation: "parcours client", example: "Companies map the customer journey to identify improvement opportunities." },
+    { word: "shopping experience", translation: "expérience d'achat", example: "Retailers are focusing more on creating a memorable shopping experience." },
+    { word: "consumer psychology", translation: "psychologie du consommateur", example: "Understanding consumer psychology helps create effective advertising." },
+    { word: "purchasing decision", translation: "décision d'achat", example: "Reviews strongly influence purchasing decisions for many consumers." },
+    { word: "price sensitivity", translation: "sensibilité au prix", example: "Luxury brands target customers with low price sensitivity." },
+    { word: "window shopping", translation: "lèche-vitrines", example: "Many people enjoy window shopping even when they don't plan to buy anything." },
+&nbsp;
+    // Commerce en ligne
+    { word: "e-commerce", translation: "commerce électronique", example: "E-commerce sales have grown significantly in recent years." },
+    { word: "online shopping", translation: "achats en ligne", example: "Online shopping offers convenience and often better prices." },
+    { word: "digital marketplace", translation: "marché numérique", example: "Amazon is the world's largest digital marketplace." },
+    { word: "shopping cart", translation: "panier d'achat", example: "Items in your shopping cart will be saved for later." },
+    { word: "checkout process", translation: "processus de paiement", example: "A complicated checkout process can lead to abandoned purchases." },
+    { word: "payment gateway", translation: "passerelle de paiement", example: "The website uses a secure payment gateway for transactions." },
+    { word: "digital wallet", translation: "portefeuille numérique", example: "Apple Pay is a popular digital wallet for online purchases." },
+    { word: "shipping options", translation: "options de livraison", example: "The website offers several shipping options at different price points." },
+    { word: "order tracking", translation: "suivi de commande", example: "Order tracking allows customers to monitor their package's journey." },
+    { word: "customer review", translation: "avis client", example: "Customer reviews help others make informed purchasing decisions." },
+    { word: "online retailer", translation: "détaillant en ligne", example: "Online retailers often offer lower prices than brick-and-mortar stores." },
+    { word: "mobile commerce", translation: "commerce mobile", example: "Mobile commerce continues to grow as smartphone usage increases." },
+    { word: "user interface", translation: "interface utilisateur", example: "A good user interface makes online shopping easier." },
+    { word: "secure transaction", translation: "transaction sécurisée", example: "The padlock icon indicates a secure transaction." },
+    { word: "product recommendation", translation: "recommandation de produit", example: "The website uses algorithms to provide personalized product recommendations." },
+    { word: "subscription service", translation: "service d'abonnement", example: "Subscription services deliver products regularly to customers." },
+&nbsp;
+    // Produits &amp; marques
+    { word: "brand image", translation: "image de marque", example: "The scandal damaged the company's brand image." },
+    { word: "brand awareness", translation: "notoriété de la marque", example: "Advertising helps increase brand awareness among consumers." },
+    { word: "product lifecycle", translation: "cycle de vie du produit", example: "Every product goes through stages in its product lifecycle." },
+    { word: "product line", translation: "gamme de produits", example: "The company is expanding its product line to include eco-friendly options." },
+    { word: "brand positioning", translation: "positionnement de marque", example: "Luxury brands maintain exclusive brand positioning through high prices." },
+    { word: "trademark", translation: "marque déposée", example: "The company filed for trademark protection for its new logo." },
+    { word: "brand identity", translation: "identité de marque", example: "Consistent visual elements help establish brand identity." },
+    { word: "logo", translation: "logo", example: "The company unveiled its new logo during the rebranding campaign." },
+&nbsp;
+    { word: "premium product", translation: "produit haut de gamme", example: "They specialize in premium products for discerning customers." },
+    { word: "generic brand", translation: "marque générique", example: "Generic brands are usually less expensive than name brands." },
+    { word: "counterfeit goods", translation: "contrefaçon", example: "Authorities seized a shipment of counterfeit goods at the border." },
+    { word: "product quality", translation: "qualité du produit", example: "Consumers increasingly consider product quality over price." },
+    { word: "product features", translation: "caractéristiques du produit", example: "The advertisement highlighted several unique product features." },
+    { word: "limited edition", translation: "édition limitée", example: "The limited edition watches sold out within hours." },
+&nbsp;
+    // Consumérisme &amp; alternatives
+    { word: "consumerism", translation: "consumérisme", example: "Modern consumerism encourages constant purchasing of new products." },
+    { word: "minimalism", translation: "minimalisme", example: "Minimalism focuses on living with less and buying only what's necessary." },
+    { word: "conscious consumption", translation: "consommation consciente", example: "Conscious consumption involves considering the ethical impact of purchases." },
+    { word: "sustainable shopping", translation: "achats durables", example: "Sustainable shopping practices reduce environmental impact." },
+    { word: "ethical consumer", translation: "consommateur éthique", example: "Ethical consumers research a company's practices before making purchases." },
+    { word: "planned obsolescence", translation: "obsolescence programmée", example: "Planned obsolescence encourages consumers to replace products frequently." },
+    { word: "sharing economy", translation: "économie du partage", example: "Airbnb is part of the growing sharing economy." },
+    { word: "second-hand market", translation: "marché d'occasion", example: "The second-hand market for clothing is growing rapidly." },
+&nbsp;
+    { word: "zero-waste lifestyle", translation: "mode de vie zéro déchet", example: "A zero-waste lifestyle aims to eliminate packaging and disposable items." },
+    { word: "buy-nothing movement", translation: "mouvement d'achat zéro", example: "The buy-nothing movement encourages trading and repurposing instead of purchasing." },
+&nbsp;
+    { word: "locally sourced", translation: "d'origine locale", example: "The restaurant emphasizes locally sourced ingredients." },
+    { word: "consumer activism", translation: "activisme consommateur", example: "Consumer activism can pressure companies to change harmful practices." },
+&nbsp;
+    // Services financiers
+    { word: "banking services", translation: "services bancaires", example: "Online banking services allow 24/7 account access." },
+    { word: "credit score", translation: "pointage de crédit", example: "A good credit score helps you qualify for better loan terms." },
+    { word: "financial advisor", translation: "conseiller financier", example: "A financial advisor can help you plan for retirement." },
+    { word: "investment portfolio", translation: "portefeuille d'investissement", example: "A diversified investment portfolio reduces risk." },
+&nbsp;
+    { word: "installment plan", translation: "plan de paiement échelonné", example: "The store offers an installment plan for large purchases." },
+    { word: "overdraft protection", translation: "protection de découvert", example: "Overdraft protection prevents declined transactions when your account is empty." },
+    { word: "insurance coverage", translation: "couverture d'assurance", example: "Check your insurance coverage before traveling abroad." },
+    { word: "mobile banking", translation: "services bancaires mobiles", example: "Mobile banking apps allow you to deposit checks remotely." },
+    { word: "online transfer", translation: "virement en ligne", example: "Online transfers between accounts are usually free." },
+    { word: "contactless payment", translation: "paiement sans contact", example: "Contactless payment has become more popular during the pandemic." },
+    { word: "loan application", translation: "demande de prêt", example: "The loan application process requires extensive documentation." },
+    { word: "account statement", translation: "relevé de compte", example: "Always review your account statement for unauthorized charges." },
+    { word: "financial literacy", translation: "littératie financière", example: "Schools are increasingly teaching financial literacy to students." },
+&nbsp;
+    // Réclamations &amp; droits du consommateur
+    { word: "consumer rights", translation: "droits du consommateur", example: "Consumer rights laws protect buyers from unfair business practices." },
+    { word: "complaint", translation: "réclamation", example: "The company responded quickly to my complaint about the defective product." },
+    { word: "consumer protection", translation: "protection du consommateur", example: "Consumer protection agencies investigate fraudulent businesses." },
+&nbsp;
+    { word: "money-back guarantee", translation: "garantie de remboursement", example: "Their money-back guarantee makes trying the product risk-free." },
+    { word: "product recall", translation: "rappel de produit", example: "The company issued a product recall due to safety concerns." },
+    { word: "return policy", translation: "politique de retour", example: "Read the return policy before making a purchase." },
+&nbsp;
+    { word: "dispute resolution", translation: "résolution des litiges", example: "The company offers a dispute resolution process for unhappy customers." },
+&nbsp;
+    { word: "class action lawsuit", translation: "recours collectif", example: "Affected consumers joined the class action lawsuit against the manufacturer." },
+&nbsp;
+    { word: "fine print", translation: "petites lignes", example: "Always read the fine print before signing a contract." },
+    { word: "terms and conditions", translation: "conditions générales", example: "Most people don't read the terms and conditions before agreeing." },
+&nbsp;
+    // Publicité &amp; marketing
+    { word: "advertising campaign", translation: "campagne publicitaire", example: "The advertising campaign successfully increased sales by 30%." },
+    { word: "target audience", translation: "public cible", example: "The advertisement is designed to appeal to its target audience of young professionals." },
+    { word: "market research", translation: "étude de marché", example: "Market research helps companies understand consumer preferences." },
+    { word: "brand ambassador", translation: "ambassadeur de marque", example: "The celebrity became a brand ambassador for the sportswear company." },
+    { word: "influencer marketing", translation: "marketing d'influence", example: "Many brands now use influencer marketing to reach younger consumers." },
+    { word: "viral campaign", translation: "campagne virale", example: "Their viral campaign generated millions of views on social media." },
+    { word: "customer retention", translation: "fidélisation client", example: "Loyalty programs improve customer retention rates." },
+    { word: "demographic", translation: "démographie", example: "The product appeals to a wide demographic of consumers." },
+    { word: "sales promotion", translation: "promotion des ventes", example: "The store is running a sales promotion this weekend." },
+    { word: "market segment", translation: "segment de marché", example: "The company is focusing on the luxury market segment." },
+    { word: "advertising budget", translation: "budget publicitaire", example: "Small businesses often have limited advertising budgets." },
+&nbsp;
+    { word: "endorsement", translation: "soutien publicitaire", example: "Celebrity endorsements can significantly increase product sales." },
+    { word: "promotional offer", translation: "offre promotionnelle", example: "The promotional offer included a free gift with purchase." },
+    { word: "call to action", translation: "appel à l'action", example: "Effective advertisements include a clear call to action." },
+    { word: "sponsorship", translation: "parrainage", example: "The company's sponsorship of the event increased its visibility." },
+    { word: "product placement", translation: "placement de produit", example: "Product placement in movies provides subtle advertising for brands." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

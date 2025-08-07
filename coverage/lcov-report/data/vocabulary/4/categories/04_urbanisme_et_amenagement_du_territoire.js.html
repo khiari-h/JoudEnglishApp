@@ -1,0 +1,556 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/4/categories/04_urbanisme_et_amenagement_du_territoire.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/4/categories</a> 04_urbanisme_et_amenagement_du_territoire.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Urbanisme &amp; Aménagement du Territoire",
+  words: [
+    // Développement urbain
+    { word: "urban development", translation: "développement urbain", example: "Sustainable urban development aims to improve city life while minimizing environmental impact." },
+&nbsp;
+    { word: "urban renewal", translation: "renouvellement urbain", example: "The urban renewal project transformed the abandoned industrial area into a vibrant neighborhood." },
+    { word: "urban regeneration", translation: "régénération urbaine", example: "Urban regeneration focuses on revitalizing declining areas of cities." },
+    { word: "brownfield development", translation: "développement de friches industrielles", example: "Brownfield development reclaims contaminated former industrial sites." },
+    { word: "greenfield development", translation: "développement de terrains vierges", example: "Environmentalists often oppose greenfield development that converts natural areas to urban use." },
+    { word: "urban density", translation: "densité urbaine", example: "Higher urban density can support more efficient public transportation systems." },
+    { word: "mixed-use development", translation: "développement à usage mixte", example: "Mixed-use development combines residential, commercial, and recreational spaces." },
+    { word: "transit-oriented development", translation: "développement axé sur le transport en commun", example: "Transit-oriented development creates walkable neighborhoods around public transportation hubs." },
+    { word: "urban growth boundary", translation: "limite de croissance urbaine", example: "The urban growth boundary prevents development beyond a designated area." },
+&nbsp;
+    { word: "urban village", translation: "village urbain", example: "The urban village concept creates self-contained communities within cities." },
+    { word: "urban fabric", translation: "tissu urbain", example: "The historic urban fabric reflects centuries of organic development." },
+    { word: "infill development", translation: "développement intercalaire", example: "Infill development utilizes vacant or underused parcels within existing urban areas." },
+    { word: "urban corridor", translation: "corridor urbain", example: "The urban corridor connects downtown with suburban commercial districts." },
+    { word: "urban morphology", translation: "morphologie urbaine", example: "Urban morphology studies the physical form and structure of urban settlements." },
+    { word: "eco-district", translation: "éco-quartier", example: "The eco-district incorporates renewable energy and water conservation systems." },
+    { word: "urban agglomeration", translation: "agglomération urbaine", example: "The urban agglomeration encompasses multiple administratively distinct cities." },
+    { word: "megalopolis", translation: "mégalopole", example: "The Boston-Washington corridor forms a megalopolis of interconnected urban areas." },
+&nbsp;
+    // Planification territoriale
+&nbsp;
+    { word: "master plan", translation: "plan directeur", example: "The city's master plan outlines development goals for the next twenty years." },
+    { word: "land use", translation: "utilisation des sols", example: "Land use regulations determine which activities are permitted in specific areas." },
+    { word: "zoning", translation: "zonage", example: "Zoning laws separate residential, commercial, and industrial activities." },
+    { word: "comprehensive plan", translation: "plan d'aménagement global", example: "The comprehensive plan addresses housing, transportation, and environmental needs." },
+    { word: "regional planning", translation: "planification régionale", example: "Regional planning coordinates development across multiple municipalities." },
+&nbsp;
+    { word: "growth management", translation: "gestion de la croissance", example: "Growth management policies control the rate and location of new development." },
+    { word: "transportation planning", translation: "planification des transports", example: "Transportation planning coordinates different mobility networks throughout the city." },
+    { word: "environmental planning", translation: "planification environnementale", example: "Environmental planning protects natural resources while accommodating human needs." },
+    { word: "infrastructure planning", translation: "planification des infrastructures", example: "Infrastructure planning ensures utilities and services support future development." },
+    { word: "urban design", translation: "design urbain", example: "Urban design shapes the physical form and character of cities and neighborhoods." },
+    { word: "site planning", translation: "planification de site", example: "Site planning arranges buildings and features within a specific property." },
+    { word: "land subdivision", translation: "lotissement", example: "Land subdivision regulations control how properties are divided for development." },
+    { word: "planning permission", translation: "permis d'aménager", example: "Developers must obtain planning permission before beginning construction." },
+    { word: "planning policy", translation: "politique d'aménagement", example: "Planning policy provides guidelines for development decisions." },
+    { word: "planning authority", translation: "autorité d'aménagement", example: "The local planning authority reviews and approves development proposals." },
+    { word: "capacity planning", translation: "planification des capacités", example: "Capacity planning ensures urban services can support projected population growth." },
+    { word: "multi-level planning", translation: "planification multi-niveaux", example: "Multi-level planning coordinates actions across national, regional, and local scales." },
+&nbsp;
+    // Architecture contemporaine
+    { word: "contemporary architecture", translation: "architecture contemporaine", example: "Contemporary architecture embraces innovative materials and sustainable designs." },
+&nbsp;
+    { word: "adaptive reuse", translation: "réutilisation adaptative", example: "Adaptive reuse transforms old factories into modern living and working spaces." },
+    { word: "parametric design", translation: "conception paramétrique", example: "Parametric design uses algorithms to create complex architectural forms." },
+    { word: "high-rise building", translation: "immeuble de grande hauteur", example: "The high-rise building offers spectacular views of the cityscape." },
+    { word: "mixed-use building", translation: "bâtiment à usage mixte", example: "The mixed-use building combines apartments, offices, and retail spaces." },
+    { word: "urban landscape", translation: "paysage urbain", example: "The architect's design complements the existing urban landscape." },
+    { word: "urban infill", translation: "insertion urbaine", example: "The urban infill project fits seamlessly between older buildings." },
+    { word: "architectural heritage", translation: "patrimoine architectural", example: "The renovation preserves the architectural heritage while adding modern amenities." },
+    { word: "built environment", translation: "environnement bâti", example: "The built environment significantly impacts residents' quality of life." },
+    { word: "building envelope", translation: "enveloppe du bâtiment", example: "The innovative building envelope maximizes energy efficiency." },
+    { word: "façade", translation: "façade", example: "The glass façade reflects the surrounding cityscape." },
+    { word: "architectural competition", translation: "concours d'architecture", example: "The firm won the architectural competition for the new civic center." },
+    { word: "architectural program", translation: "programme architectural", example: "The architectural program specifies the building's required spaces and functions." },
+&nbsp;
+    { word: "passive design", translation: "conception passive", example: "Passive design utilizes natural lighting and ventilation to reduce energy consumption." },
+    { word: "net-zero building", translation: "bâtiment à énergie nette zéro", example: "The net-zero building produces as much energy as it consumes." },
+    { word: "urban form", translation: "forme urbaine", example: "The city's urban form evolved from its geographic features and historical development." },
+&nbsp;
+    // Problématiques urbaines
+    { word: "urban issue", translation: "problématique urbaine", example: "Traffic congestion remains a persistent urban issue in growing cities." },
+    { word: "urban poverty", translation: "pauvreté urbaine", example: "Urban poverty often concentrates in specific neighborhoods with limited services." },
+&nbsp;
+    { word: "urban inequality", translation: "inégalité urbaine", example: "Urban inequality manifests in disparities of access to services and opportunities." },
+    { word: "informal settlement", translation: "établissement informel", example: "The informal settlement lacks basic infrastructure and secure land tenure." },
+    { word: "urban blight", translation: "délabrement urbain", example: "Urban blight affected neighborhoods following industrial decline." },
+    { word: "urban segregation", translation: "ségrégation urbaine", example: "Urban segregation creates socially and economically isolated communities." },
+&nbsp;
+    { word: "traffic congestion", translation: "congestion routière", example: "Traffic congestion costs the city millions in lost productivity annually." },
+&nbsp;
+    { word: "water management", translation: "gestion de l'eau", example: "Urban water management addresses both supply and stormwater challenges." },
+    { word: "urban resilience", translation: "résilience urbaine", example: "Urban resilience helps cities withstand natural disasters and economic shocks." },
+    { word: "crime rate", translation: "taux de criminalité", example: "The neighborhood has experienced a declining crime rate following community initiatives." },
+&nbsp;
+    { word: "municipal services", translation: "services municipaux", example: "Equitable access to municipal services is a key urban governance challenge." },
+&nbsp;
+    // Espaces publics
+    { word: "public space", translation: "espace public", example: "Well-designed public spaces foster community interaction and civic engagement." },
+    { word: "urban plaza", translation: "place urbaine", example: "The urban plaza hosts markets and cultural events throughout the year." },
+    { word: "public park", translation: "parc public", example: "The public park provides recreational opportunities and natural environments within the city." },
+&nbsp;
+    { word: "urban square", translation: "place urbaine", example: "The historic urban square serves as the city's social center." },
+    { word: "waterfront", translation: "front de mer", example: "The redeveloped waterfront combines recreational spaces with commercial amenities." },
+    { word: "civic space", translation: "espace civique", example: "The civic space in front of city hall accommodates public gatherings and demonstrations." },
+    { word: "urban commons", translation: "biens communs urbains", example: "Community gardens represent urban commons managed collectively by residents." },
+    { word: "accessibility", translation: "accessibilité", example: "Universal accessibility ensures public spaces can be used by people of all abilities." },
+    { word: "wayfinding", translation: "orientation spatiale", example: "Effective wayfinding systems help visitors navigate complex urban environments." },
+    { word: "street furniture", translation: "mobilier urbain", example: "Street furniture includes benches, lighting, and waste receptacles." },
+    { word: "public realm", translation: "domaine public", example: "The quality of the public realm significantly impacts urban livability." },
+    { word: "pocket park", translation: "mini-parc", example: "Pocket parks provide green space in densely developed neighborhoods." },
+    { word: "shared space", translation: "espace partagé", example: "The shared space design removes traditional boundaries between pedestrians and vehicles." },
+    { word: "streetscape", translation: "paysage de rue", example: "The streetscape improvements include wider sidewalks and additional trees." },
+    { word: "urban amenity", translation: "aménité urbaine", example: "Parks and cultural facilities are important urban amenities." },
+    { word: "public-private partnership", translation: "partenariat public-privé", example: "The plaza was developed through a public-private partnership." },
+    { word: "place-making", translation: "création de lieu", example: "Place-making transforms underutilized spaces into vibrant community assets." },
+&nbsp;
+    // Smart cities
+    { word: "smart city", translation: "ville intelligente", example: "The smart city uses technology to improve efficiency and quality of life." },
+    { word: "urban technology", translation: "technologie urbaine", example: "Urban technology solutions address challenges from transportation to waste management." },
+&nbsp;
+    { word: "digital infrastructure", translation: "infrastructure numérique", example: "Digital infrastructure provides the foundation for smart city applications." },
+&nbsp;
+    { word: "intelligent transportation system", translation: "système de transport intelligent", example: "The intelligent transportation system reduces congestion through adaptive traffic management." },
+    { word: "urban sensing", translation: "détection urbaine", example: "Urban sensing networks collect real-time data on environmental conditions." },
+    { word: "smart building", translation: "bâtiment intelligent", example: "Smart buildings automatically adjust lighting and temperature for optimal efficiency." },
+    { word: "smart mobility", translation: "mobilité intelligente", example: "Smart mobility solutions integrate various transportation modes through digital platforms." },
+    { word: "digital twin", translation: "jumeau numérique", example: "The digital twin simulates urban systems to test potential interventions." },
+    { word: "data analytics", translation: "analyse de données", example: "Data analytics helps city managers identify patterns and optimize services." },
+    { word: "urban dashboard", translation: "tableau de bord urbain", example: "The urban dashboard displays real-time information about city services." },
+    { word: "civic technology", translation: "technologie civique", example: "Civic technology empowers citizens to participate in urban governance." },
+    { word: "smart infrastructure", translation: "infrastructure intelligente", example: "Smart infrastructure responds adaptively to changing conditions and needs." },
+    { word: "urban informatics", translation: "informatique urbaine", example: "Urban informatics studies how data and technology can improve city life." },
+    { word: "smart governance", translation: "gouvernance intelligente", example: "Smart governance uses digital tools to increase transparency and participation." },
+&nbsp;
+    // Logement &amp; politiques urbaines
+    { word: "housing policy", translation: "politique du logement", example: "The new housing policy aims to increase affordable housing supply." },
+    { word: "social housing", translation: "logement social", example: "Social housing provides subsidized homes for lower-income households." },
+&nbsp;
+    { word: "housing tenure", translation: "mode d'occupation du logement", example: "Housing tenure options include ownership, renting, and cooperative arrangements." },
+&nbsp;
+    { word: "housing development", translation: "développement résidentiel", example: "The housing development includes a mix of apartment types and sizes." },
+&nbsp;
+    { word: "inclusionary zoning", translation: "zonage inclusif", example: "Inclusionary zoning requires developers to include affordable units in new projects." },
+&nbsp;
+    { word: "urban policy", translation: "politique urbaine", example: "Urban policy addresses housing, transportation, economic development, and public services." },
+    { word: "housing subsidy", translation: "subvention au logement", example: "Housing subsidies help low-income families afford suitable accommodation." },
+    { word: "slum clearance", translation: "résorption des bidonvilles", example: "Past slum clearance programs often displaced residents without adequate alternatives." },
+&nbsp;
+    { word: "property rights", translation: "droits de propriété", example: "Secure property rights provide the foundation for housing markets." },
+    { word: "residential density", translation: "densité résidentielle", example: "Higher residential density can support more efficient public services." },
+    { word: "mixed-income housing", translation: "logement à revenus mixtes", example: "Mixed-income housing developments include units for various economic levels." },
+    { word: "squatter settlement", translation: "établissement de squatters", example: "The squatter settlement developed informally on vacant public land." },
+&nbsp;
+    // Urbanisme participatif
+    { word: "participatory planning", translation: "planification participative", example: "Participatory planning involves citizens in decision-making about their neighborhoods." },
+&nbsp;
+    { word: "stakeholder consultation", translation: "consultation des parties prenantes", example: "Stakeholder consultation gathered input from residents, businesses, and institutions." },
+    { word: "public participation", translation: "participation publique", example: "Public participation requirements are codified in planning legislation." },
+    { word: "community-based planning", translation: "planification communautaire", example: "Community-based planning empowers residents to develop neighborhood improvement strategies." },
+    { word: "charrette", translation: "charrette", example: "The design charrette brought together residents and professionals for intensive collaboration." },
+    { word: "co-design", translation: "co-conception", example: "Co-design workshops allowed users to shape the park features directly." },
+    { word: "citizen jury", translation: "jury citoyen", example: "The citizen jury reviewed development proposals and made recommendations." },
+    { word: "right to the city", translation: "droit à la ville", example: "The right to the city movement advocates for democratic control of urban development." },
+    { word: "tactical urbanism", translation: "urbanisme tactique", example: "Tactical urbanism uses low-cost, temporary changes to improve local neighborhoods." },
+    { word: "placemaking", translation: "création de lieu", example: "Community placemaking transforms underused spaces into vibrant public areas." },
+    { word: "community visioning", translation: "vision communautaire", example: "The community visioning process identified shared priorities for future development." },
+    { word: "civic innovation", translation: "innovation civique", example: "Civic innovation labs develop creative solutions to urban challenges." },
+    { word: "community development corporation", translation: "corporation de développement communautaire", example: "The community development corporation builds affordable housing in the neighborhood." },
+    { word: "bottom-up planning", translation: "planification ascendante", example: "Bottom-up planning starts with community needs rather than expert assumptions." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

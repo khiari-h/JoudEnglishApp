@@ -1,0 +1,700 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/C1/scenarios/medicalConsultation.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/C1/scenarios</a> medicalConsultation.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/C1/scenarios/medicalConsultation.js
+&nbsp;
+const medicalConsultation = {
+    id: 3,
+    title: "Medical Consultation",
+    level: "C1",
+    description: "Conduct a comprehensive medical consultation requiring advanced medical terminology, thorough patient history-taking, differential diagnosis discussion, and clear explanation of complex medical concepts to patients.",
+    estimatedTime: "35-40 minutes",
+    vocabulary: ["etiology", "pathophysiology", "differential diagnosis", "clinical presentation", "comorbidity", "contraindication", "therapeutic intervention", "prognosis", "pharmacokinetics", "idiopathic", "symptomatic relief", "diagnostic criteria", "remission", "palliative care", "informed consent"],
+    steps: [
+      {
+        id: 1,
+        botMessage: "Good morning, I'm Dr. Roberts. Welcome to our specialist consultation. I've reviewed your referral, but I'd like to hear directly from you about your symptoms and concerns. Could you describe what you've been experiencing, when it started, and how it has progressed?",
+        inputMode: "freeText",
+        suggestions: [
+          "Thank you, doctor. I've been experiencing progressively worsening episodes of vertigo over the past three months, typically lasting between 30 minutes and several hours. These episodes are characterized by intense rotational dizziness, accompanied by nausea, vomiting, and a noticeable hearing loss and tinnitus in my left ear. The attacks seem to occur without warning, though I've noticed they're sometimes preceded by a feeling of fullness or pressure in my affected ear. Between episodes, I experience residual unsteadiness and persistent tinnitus. The symptoms have significantly impacted my daily functioning, particularly my ability to drive and concentrate at work. My primary care physician prescribed meclizine, which provides modest symptomatic relief during acute episodes but doesn't seem to prevent recurrences or address the auditory symptoms.",
+          "Thank you for seeing me, doctor. For approximately six months, I've been suffering from recurring episodes of intense abdominal pain centered in the right upper quadrant, typically occurring about one to two hours after meals, particularly following fatty foods. The pain is sharp and steady in nature, often radiating to my right shoulder blade, and usually persists for several hours. These episodes are frequently accompanied by nausea, occasionally culminating in vomiting which provides minimal relief. I've also noticed increasing intolerance to fatty foods and have experienced occasional low-grade fever and chills during severe episodes. My primary care doctor conducted initial blood tests showing mildly elevated liver enzymes and prescribed an antacid medication which hasn't appreciably improved my symptoms. An ultrasound was performed last month, but I haven't been informed of any specific findings, which is why I was referred to you for further evaluation.",
+          "Thank you for this consultation, doctor. I've been experiencing recurrent episodes of shortness of breath, chest tightness, and wheezing for approximately eight months. Initially, these symptoms occurred primarily during physical exertion or exposure to cold air, but they've progressively worsened and now frequently wake me from sleep, particularly between 2 and 4 AM. During these episodes, I find myself sitting upright or standing to breathe, often feeling anxious as I struggle for air. I've noticed increased mucus production with a chronic cough, especially productive in the mornings. Environmental factors like dust, strong odors, and pollen seem to trigger or exacerbate these episodes. My general practitioner prescribed an albuterol inhaler, which provides temporary relief during acute episodes but hasn't prevented their increasing frequency and severity. I've never experienced these respiratory issues before, though I should mention I have a family history of allergies and asthma."
+        ],
+        hints: "Provide a comprehensive description of your symptoms, including onset, progression, characteristics, triggers, and previous treatments.",
+        expectedKeywords: ["symptoms", "experiencing", "episodes", "pain", "severity", "duration", "frequency", "started", "worsened", "triggers", "treatment"],
+        feedback: {
+          correct: "Thank you for that detailed description. To better understand your condition, I'd like to ask about your medical history. Do you have any chronic health conditions, previous surgeries, or significant family history of medical conditions? Also, what medications are you currently taking?",
+          partial: "Thank you for sharing some of your symptoms. Could you elaborate more on when these symptoms started, how they've progressed over time, and any treatments you've tried so far?",
+          incorrect: "I understand this may be difficult, but I need you to describe your specific symptoms in more detail, including when they started and how they've changed over time, to help with my assessment."
+        }
+      },
+      {
+        id: 2,
+        botMessage: "Thank you for that detailed description. To better understand your condition, I'd like to ask about your medical history. Do you have any chronic health conditions, previous surgeries, or significant family history of medical conditions? Also, what medications are you currently taking?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Regarding my medical history, I was diagnosed with type 2 diabetes five years ago, which has been relatively well-controlled with metformin 1000mg twice daily and lifestyle modifications, with my most recent HbA1c at 6.8%. I also have hypertension diagnosed approximately seven years ago, currently managed with lisinopril 20mg daily. I underwent an appendectomy in my teens and cholecystectomy three years ago following recurrent gallstone episodes. In terms of family history, my father had coronary artery disease requiring bypass surgery at age 62 and subsequently developed vascular dementia, while my mother has hypothyroidism and osteoporosis. My paternal grandfather had Parkinson's disease. Currently, I'm taking the previously mentioned metformin and lisinopril, along with atorvastatin 20mg daily for hyperlipidemia, a daily low-dose aspirin (81mg), and an over-the-counter vitamin D supplement (2000 IU). I occasionally use ibuprofen for joint pain, typically not exceeding 400mg twice weekly. I have no known drug allergies, though I experienced pronounced nausea with doxycycline when treated for a respiratory infection last year.",
+          "My medical history includes hyperthyroidism diagnosed approximately eight years ago, now well-managed with methimazole 5mg daily, with my thyroid function tests within normal range for the past three years. I had a significant episode of major depression following my divorce six years ago, treated with psychotherapy and sertraline 50mg daily, which I continue to take. Surgically, I've had a tonsillectomy in childhood and arthroscopic repair of a torn meniscus in my right knee two years ago following a skiing accident. My family history is significant for autoimmune disorders, with my mother having rheumatoid arthritis and a sister with systemic lupus erythematosus. My father died at 67 from complications of type 2 diabetes, including diabetic nephropathy. Currently, besides the methimazole and sertraline, I take levoceterizine 5mg daily for seasonal allergies, a multivitamin, and omega-3 supplements. I use a prescription-strength hydrocortisone cream for occasional eczema flares. I have a documented allergy to penicillin, which caused a significant rash in childhood, and I experience gastrointestinal distress with NSAIDs.",
+          "Regarding my medical history, I have mild asthma diagnosed in childhood which has been well-controlled until the recent exacerbation of symptoms, previously managed with only occasional use of an albuterol inhaler. I was diagnosed with Hashimoto's thyroiditis approximately four years ago and take levothyroxine 125mcg daily, with stable thyroid function on recent testing. I underwent surgical correction of a deviated septum three years ago and had my wisdom teeth extracted in my twenties. My family history is significant for asthma and allergies on my mother's side, hypertension in both parents, and my father had a myocardial infarction at age 59. My maternal grandmother had rheumatoid arthritis. Currently, I take the previously mentioned levothyroxine, use an albuterol inhaler as needed for respiratory symptoms, take loratadine 10mg daily for allergies, and occasionally use nasal fluticasone when environmental allergies are particularly problematic. I also take a calcium supplement with vitamin D daily. I have a documented allergy to sulfa drugs, which caused a severe skin reaction requiring hospitalization approximately five years ago, and I experience significant gastrointestinal distress with erythromycin."
+        ],
+        hints: "Provide comprehensive information about your medical history, including chronic conditions, surgeries, family history, and current medications with dosages.",
+        expectedKeywords: ["medical history", "diagnosed", "condition", "chronic", "surgery", "family history", "medications", "taking", "dosage", "allergies", "managed"],
+        acceptablePhrases: [
+          "diagnosed with",
+          "managed with",
+          "underwent",
+          "family history is significant for",
+          "currently taking",
+          "documented allergy to"
+        ],
+        feedback: {
+          correct: "Thank you for that comprehensive medical history. Based on your symptoms and history, I have several potential diagnoses in mind. Let me explain what could be causing your symptoms and what diagnostic tests we should consider to reach a definitive diagnosis.",
+          partial: "Thank you for sharing some of your medical history. Could you provide more details about any chronic conditions you have, your family's medical history, and a complete list of your current medications with dosages?",
+          incorrect: "I need more specific information about your medical history, including any chronic conditions, previous surgeries, family medical history, and a detailed list of your current medications to help with my assessment."
+        }
+      },
+      {
+        id: 3,
+        botMessage: "Based on your symptoms and history, I have several potential diagnoses in mind. I'd like to discuss with you what might be causing your symptoms and what diagnostic tests we should consider. Could you share your understanding of your condition and any concerns or questions you have about potential diagnoses?",
+        inputMode: "freeText",
+        suggestions: [
+          "I've been researching my symptoms, and I'm concerned about the possibility of Ménière's disease based on the characteristic triad of vertigo, hearing loss, and tinnitus affecting only one ear. However, I'm uncertain about the typical progression of this condition and what it might mean for my long-term hearing and balance function. I'm particularly anxious about the unpredictable nature of the vertigo attacks, as they've already led to several dangerous situations while driving and one incident where I fell and injured my wrist. I've also read about vestibular migraine and benign paroxysmal positional vertigo as potential causes, but I'm not sure how to distinguish between these conditions. My primary concern is whether there are treatments that could prevent these episodes rather than just managing symptoms during attacks, and whether I'm facing a progressive condition that might eventually affect my other ear or lead to permanent hearing loss. Additionally, I'm worried about potential impacts on my career, as my work involves frequent presentations and travel, which have become increasingly difficult to manage with these unpredictable symptoms.",
+          "After my primary care physician mentioned elevated liver enzymes and referred me to you, I've been concerned about potential gallbladder issues, despite my previous cholecystectomy. I've read that bile duct problems such as stones or strictures can cause similar symptoms. I'm particularly worried about the possibility of pancreatitis or some form of hepatitis, given the location of pain and the connection to fatty meals. My greatest concern is whether this could indicate something more serious like a pancreatic or liver malignancy, especially since the symptoms have been progressively worsening rather than improving over time. The impact on my quality of life has been significant—I've become hesitant to eat in social situations due to fear of triggering an episode, and I've had to take time off work during severe pain episodes. I'm curious about what diagnostic tests would be most appropriate at this point and whether dietary modifications alone might help manage my symptoms while we determine the underlying cause.",
+          "Given my symptoms and family history, I suspect I might be developing adult-onset asthma, possibly exacerbated by environmental allergies. However, I'm concerned about the progressive nature of my symptoms despite using the prescribed inhaler, particularly the nighttime episodes which have become increasingly frightening. I've read about conditions such as COPD, though I've never been a smoker, and gastroesophageal reflux disease as potential contributors to nocturnal respiratory symptoms. I'm also aware that cardiac conditions can sometimes present with shortness of breath, which concerns me given my family history of cardiovascular disease. My main questions revolve around distinguishing between these possibilities and understanding what diagnostic tests would be most appropriate. I'm particularly concerned about long-term implications—whether this represents a chronic condition requiring ongoing management, if permanent damage to my lungs might be occurring, and what lifestyle modifications might help beyond medication. The symptoms have significantly impacted my quality of life, affecting my sleep, exercise tolerance, and even my confidence in participating in normal activities due to fear of triggering breathlessness."
+        ],
+        hints: "Express your understanding of possible diagnoses, specific concerns about your condition, and questions about diagnostic approaches or treatment implications.",
+        expectedKeywords: ["concerned", "possibility", "condition", "symptoms", "diagnosis", "worried", "causes", "tests", "treatment", "progressive", "implications"],
+        feedback: {
+          correct: "Thank you for sharing your thoughts and concerns. Let me discuss the potential diagnoses that might explain your symptoms, the diagnostic process we'll follow, and what these possibilities might mean for your treatment and prognosis.",
+          partial: "Thank you for sharing some of your concerns. To better address your situation, could you elaborate on your specific questions about possible diagnoses and what aspects of your condition are most concerning to you?",
+          incorrect: "I'd like to understand your perspective better. Please share your thoughts about what might be causing your symptoms, along with your specific concerns or questions about potential diagnoses."
+        }
+      },
+      {
+        id: 4,
+        botMessage: "Thank you for sharing your thoughts and concerns. Let me explain the potential diagnoses that might explain your symptoms, the diagnostic approach we'll take, and what these possibilities might mean for your treatment.",
+        inputMode: "hybrid",
+        suggestions: [
+          "Based on your presentation of recurrent vertigo episodes accompanied by unilateral auditory symptoms, I'm considering several potential diagnoses. Ménière's disease appears most consistent with your clinical picture, characterized by the classic triad of episodic vertigo, fluctuating sensorineural hearing loss, and tinnitus, typically affecting one ear. The pathophysiology involves endolymphatic hydrops—essentially an abnormal fluid accumulation in the inner ear—though the underlying etiology remains incompletely understood. Alternative considerations include vestibular migraine, which can present with vertigo but typically includes headache history and lacks progressive hearing loss; benign paroxysmal positional vertigo, distinguished by brief vertigo episodes triggered by specific head movements rather than the prolonged attacks you describe; and less commonly, a vestibular schwannoma, though the episodic nature of your symptoms makes this less likely. To establish a definitive diagnosis, I recommend several diagnostic approaches: comprehensive audiometric testing including pure tone audiometry, speech discrimination, and impedance testing to document the pattern and severity of hearing loss; vestibular function testing, particularly electronystagmography to evaluate balance function; and brain MRI with contrast to rule out structural lesions. If Ménière's disease is confirmed, treatment options include lifestyle modifications such as sodium restriction and caffeine limitation; pharmacological interventions including diuretics like hydrochlorothiazide to reduce endolymphatic fluid, and vestibular suppressants during acute episodes; and for refractory cases, more invasive interventions ranging from endolymphatic sac procedures to intratympanic gentamicin therapy might be considered. Regarding prognosis, Ménière's is typically characterized by fluctuating symptoms with remissions and exacerbations, and while approximately 15-30% of patients may eventually develop bilateral involvement, many achieve good symptomatic control with appropriate management strategies.",
+          "Your presentation of right upper quadrant pain exacerbated by fatty meals, despite previous cholecystectomy, suggests several potential diagnoses that we need to consider. Post-cholecystectomy syndrome appears likely, which encompasses various conditions including bile duct dysfunction, sphincter of Oddi dysfunction, or retained common bile duct stones. The pathophysiology often involves altered bile flow dynamics following gallbladder removal, creating inappropriate bile concentration or pressure in the biliary system. Differential considerations include biliary stricture, potentially from your previous surgery; chronic pancreatitis, particularly given your description of postprandial pain radiating to the back; primary sclerosing cholangitis, though this typically presents more insidiously; and less likely but requiring exclusion, pancreaticobiliary malignancy. To establish a diagnosis, I recommend a systematic approach: comprehensive laboratory evaluation including liver function tests, pancreatic enzymes, and inflammatory markers; advanced imaging starting with magnetic resonance cholangiopancreatography (MRCP) to visualize the biliary and pancreatic ducts non-invasively; potentially followed by endoscopic retrograde cholangiopancreatography (ERCP), which offers both diagnostic visualization and therapeutic intervention capabilities if strictures or stones are identified. Treatment will depend on the specific etiology identified, but may include pharmacological approaches such as ursodeoxycholic acid to improve bile flow characteristics; antispasmodics for sphincter dysfunction; endoscopic interventions like sphincterotomy or stent placement; or rarely, surgical revision of the biliary anastomosis. While awaiting definitive diagnosis, dietary modifications including small, frequent, low-fat meals may provide symptomatic improvement, along with careful use of antispasmodics and potentially pancreatic enzyme supplementation.",
+          "Based on your presentation of progressive dyspnea, wheezing, nocturnal symptoms, and apparent triggers, bronchial asthma appears to be the most likely diagnosis, specifically adult-onset asthma with potential moderate persistence given your symptom frequency and nocturnal awakening. The pathophysiology involves chronic airway inflammation, bronchial hyperresponsiveness, and reversible airflow obstruction, commonly triggered by environmental factors as you've described. Important differential considerations include chronic obstructive pulmonary disease, though your non-smoking status makes this less probable; vocal cord dysfunction, which can mimic asthma but typically presents with inspiratory stridor; gastroesophageal reflux disease contributing to or mimicking respiratory symptoms, particularly given your nocturnal pattern; and allergic bronchopulmonary aspergillosis, especially with your history of asthma and productive cough. To establish a definitive diagnosis, I recommend pulmonary function testing with bronchodilator responsiveness to document reversible airflow obstruction; fractional exhaled nitric oxide measurement to assess airway inflammation; methacholine challenge testing if baseline spirometry is normal but asthma remains suspected; chest imaging to exclude structural abnormalities; and potentially allergy testing to identify specific triggers. Regarding treatment, a step-wise approach aligned with current guidelines would be appropriate, likely including: daily inhaled corticosteroids as controller medication, addressing the underlying inflammation rather than merely providing symptomatic relief; a long-acting bronchodilator if symptoms persist despite moderate-dose inhaled corticosteroids; continuation of short-acting bronchodilators for rescue therapy during acute symptoms; and potentially leukotriene modifiers or long-acting muscarinic antagonists as adjunctive therapy depending on your response. With appropriate management, most patients achieve good symptom control, though asthma typically represents a chronic condition requiring ongoing therapy and monitoring."
+        ],
+        hints: "Provide a detailed explanation of potential diagnoses, pathophysiology, differential considerations, diagnostic approaches, and treatment options.",
+        expectedKeywords: ["diagnosis", "symptoms", "condition", "differential", "pathophysiology", "testing", "recommend", "treatment", "options", "prognosis", "management"],
+        acceptablePhrases: [
+          "potential diagnoses",
+          "most consistent with",
+          "pathophysiology involves",
+          "differential considerations include",
+          "to establish a definitive diagnosis",
+          "treatment options include",
+          "regarding prognosis"
+        ],
+        feedback: {
+          correct: "Thank you for listening to that explanation. Now that we've discussed the potential diagnoses and approach, I'd like to address your specific concerns. What questions do you have about the diagnostic process, potential treatments, or how this condition might affect your daily life?",
+          partial: "I've outlined some potential explanations for your symptoms, but I should provide more specific information about diagnostic approaches and treatment options. What aspects would you like me to elaborate on further?",
+          incorrect: "I need to provide you with more detailed information about the potential causes of your symptoms, diagnostic tests we should consider, and possible treatment approaches. Let me explain these more clearly."
+        }
+      },
+      {
+        id: 5,
+        botMessage: "Now that we've discussed the potential diagnoses and approach, I'd like to address your specific concerns. What questions do you have about the diagnostic process, potential treatments, or how this condition might affect your daily life?",
+        inputMode: "freeText",
+        suggestions: [
+          "Thank you for that comprehensive explanation. I have several specific questions about Ménière's disease and the diagnostic process. First, regarding the MRI, I'm somewhat claustrophobic—are there alternative imaging options or methods to make this more tolerable? Second, I'm concerned about the timeline—how long might it take to reach a definitive diagnosis and begin effective treatment? Third, regarding the potential treatments, could you elaborate on the success rates of the different approaches? Particularly, I'm interested in understanding how many patients achieve significant reduction in vertigo episodes with conservative measures like dietary modifications and diuretics versus those requiring more invasive interventions. Regarding daily life implications, my most pressing concern is driving—should I avoid driving entirely until this condition is controlled, and what criteria would indicate it's safe to resume? Additionally, I travel frequently for work, sometimes internationally—are there specific precautions I should take or modifications to consider if Ménière's is confirmed? Finally, I'm concerned about the progressive nature of the hearing loss—does treatment typically slow or halt the progression, or should I be preparing for eventual significant hearing impairment in the affected ear regardless of intervention?",
+          "Thanks for explaining everything so thoroughly. I have several questions about my situation. First, regarding the MRCP and potential ERCP, what are the risks associated with these procedures, particularly with ERCP if intervention becomes necessary? I've read about potential complications like pancreatitis and would like to understand the risk-benefit balance. Second, while awaiting diagnosis and treatment, are there specific dietary guidelines beyond generally reducing fat intake that might help manage symptoms? Third, if sphincter of Oddi dysfunction is determined to be the cause, what is the long-term prognosis with treatment—can I expect complete resolution of symptoms or is this likely to be a chronic condition requiring ongoing management? Fourth, given the pattern of pain occurring after meals, are there any medications I can take prophylactically before eating that might reduce the likelihood or severity of an episode? Finally, regarding potential endoscopic or surgical interventions, what is the typical recovery period, and how might this impact my work schedule? I'm particularly concerned as I have several important professional commitments in the coming months and need to understand how to plan appropriately.",
+          "Thank you for that detailed explanation. I have several questions about asthma and the management approach. First, regarding pulmonary function testing, what should I expect during these procedures, and should I discontinue my current inhaler before testing to ensure accurate results? Second, I'm concerned about the long-term effects of corticosteroid medications—what are the potential side effects of daily inhaled corticosteroids, and are there strategies to minimize these risks? Third, regarding trigger management, would comprehensive allergy testing be valuable in my case, and if specific triggers are identified, how effective are avoidance strategies compared to pharmacological management? Fourth, I've read about biologic therapies for severe asthma—at what point would these be considered in the treatment algorithm, and what criteria determine eligibility? Fifth, regarding prognosis, is there evidence that early intervention prevents the development of irreversible airway remodeling, and what percentage of adult-onset asthma patients experience progressive worsening versus stable or improving symptoms with appropriate treatment? Finally, from a practical perspective, what guidance can you provide regarding exercise, as I've been increasingly avoiding physical activity due to fear of triggering symptoms, yet I understand that cardiovascular fitness may be beneficial for respiratory health?"
+        ],
+        hints: "Ask specific questions about diagnostic procedures, treatment options, prognosis, or practical implications of your condition for daily life.",
+        expectedKeywords: ["questions", "concerned", "regarding", "diagnostic", "treatment", "procedure", "options", "prognosis", "implications", "wondering", "risk"],
+        feedback: {
+          correct: "Those are excellent questions. Let me address each of your concerns to help you better understand what to expect with the diagnostic process, treatment options, and how to manage this condition in your daily life.",
+          partial: "Thank you for those questions. Could you be more specific about your concerns regarding the diagnostic procedures, treatment options, or how this condition might impact your daily activities?",
+          incorrect: "I'd like to know what specific questions or concerns you have about the diagnostic tests I've recommended, the treatment options we've discussed, or how this condition might affect your daily life."
+        }
+      },
+      {
+        id: 6,
+        botMessage: "Those are excellent questions. Let me address each of your concerns to help you better understand what to expect with the diagnostic process, treatment options, and how to manage this condition in your daily life.",
+        inputMode: "hybrid",
+        suggestions: [
+          "Regarding your concerns about MRI claustrophobia, several accommodations can make this experience more tolerable. Open MRI systems are available at some facilities, offering a less confining alternative, though with slightly reduced image resolution. For conventional MRI, pre-procedure anxiolytic medication can be prescribed, and many centers offer headphones with music, communication systems, and even virtual reality goggles to reduce anxiety. As for the diagnostic timeline, most patients with suspected Ménière's disease undergo a staged evaluation over approximately 4-6 weeks. The audiometric and vestibular testing can typically be completed within 1-2 weeks, while MRI scheduling may require 2-3 weeks depending on facility availability. Regarding treatment efficacy, approximately 60-80% of patients achieve substantial reduction in vertigo frequency and severity with conservative measures including dietary sodium restriction, diuretics, and vestibular suppressants during acute episodes. Of the remainder, about 70% respond favorably to intratympanic steroid injections, while more invasive procedures like endolymphatic sac decompression show variable success rates between 60-75% depending on patient selection. Concerning your driving concerns, I generally recommend patients refrain from driving until they've been vertigo-free for at least 3 months and have demonstrated good response to treatment, as unpredictable vertigo episodes pose significant safety risks. For travel considerations, I suggest maintaining medication availability, ensuring adequate hydration while avoiding alcohol during flights, considering prophylactic anti-vertigo medication before travel, and selecting aisle seats to facilitate movement if symptoms emerge. Regarding hearing prognosis, while treatment primarily targets vertigo control rather than hearing preservation, early intervention may help stabilize hearing in approximately 50-60% of patients. However, you should be aware that roughly 25-30% of patients experience progressive hearing deterioration in the affected ear despite appropriate management, making regular audiometric monitoring essential to track changes and adjust hearing rehabilitation strategies as needed.",
+          "Addressing your questions about diagnostic procedures, MRCP is a non-invasive imaging study with negligible risks beyond standard MRI considerations such as claustrophobia and rare allergic reactions to contrast material if administered. ERCP, however, carries more significant risks including post-procedure pancreatitis (occurring in approximately 3-5% of cases), bleeding (1-2%), infection (1%), and extremely rarely, perforation (less than 0.5%). We carefully weigh these risks against potential benefits, typically proceeding with ERCP only when therapeutic intervention is anticipated based on MRCP findings. Regarding dietary management while awaiting definitive diagnosis and treatment, I recommend several evidence-based approaches beyond general fat restriction: consuming smaller, more frequent meals to avoid overwhelming the biliary system; identifying and avoiding specific trigger foods, which commonly include fried foods, fatty meats, certain dairy products, and for some patients, eggs and cruciferous vegetables; maintaining adequate hydration; and potentially supplementing with medium-chain triglycerides, which bypass normal bile-dependent fat digestion. For sphincter of Oddi dysfunction, prognosis varies by classification type—Type I (objective biliary abnormalities) responds excellently to sphincterotomy with 90-95% symptom improvement, Type II (biliary pain with some abnormal findings) shows 70-85% improvement rates, while Type III (pain only) demonstrates more variable outcomes with 55-65% improvement following intervention. Regarding prophylactic medications, antispasmodics such as hyoscyamine taken 30-45 minutes before meals sometimes reduce postprandial symptoms, though efficacy varies considerably between patients. Finally, for procedural recovery considerations, diagnostic ERCP typically requires 24-48 hours of limited activity, while therapeutic ERCP with sphincterotomy generally necessitates 5-7 days of restricted activities and potentially 2-3 weeks before resuming strenuous physical activity, important factors to consider when planning your professional commitments.",
+          "Let me address your questions about asthma management comprehensively. Regarding pulmonary function testing, you should ideally withhold short-acting bronchodilators for 4-6 hours and long-acting bronchodilators for 12-24 hours prior to testing to accurately assess baseline function and bronchodilator responsiveness. The procedures themselves are non-invasive, primarily involving breathing maneuvers into specialized equipment that measures airflow parameters. Concerning inhaled corticosteroids (ICS), long-term safety data are generally reassuring. Local side effects include oropharyngeal candidiasis and dysphonia, which can be minimized by using a spacer device and rinsing your mouth after administration. Systemic effects such as adrenal suppression, bone mineral density reduction, and increased cataract risk are dose-dependent and primarily associated with high-dose, long-term usage. Regular monitoring and dose optimization help mitigate these risks. Regarding trigger identification, comprehensive allergy testing can be valuable given your symptom pattern and family history. Studies indicate that specific allergen avoidance, when feasible, can reduce asthma exacerbations by 40-60% in sensitized individuals. However, avoidance strategies must be complemented by pharmacological management, as complete allergen elimination is rarely achievable. On biologic therapies, these are typically considered after failure of high-dose ICS plus at least one additional controller medication, generally reserved for patients with specific inflammatory phenotypes and frequent exacerbations. Eligibility criteria include elevated biomarkers (eosinophils or IgE) and demonstration of inadequate control despite maximal conventional therapy. Regarding disease progression, evidence strongly suggests that early intervention with anti-inflammatory treatment significantly reduces the risk of irreversible airway remodeling. Approximately 60-70% of adult-onset asthma patients maintain stable or improving symptoms with appropriate management, while 20-30% may experience progressive worsening despite therapy, often associated with specific phenotypes or comorbidities. Finally, for exercise considerations, I strongly encourage maintaining physical activity with appropriate precautions, including pre-exercise bronchodilator use, extended warm-up periods, and possibly protective breathing techniques. Exercise-induced symptoms often improve with regular physical activity and optimal controller therapy, with most patients ultimately able to participate in their preferred activities with proper management strategies."
+        ],
+        hints: "Address the patient's specific questions with detailed, evidence-based information about diagnostic procedures, treatment efficacy, prognosis, and practical management strategies.",
+        expectedKeywords: ["regarding", "concerns", "questions", "approximately", "typically", "recommend", "monitoring", "management", "procedures", "strategies", "considerations"],
+        acceptablePhrases: [
+          "regarding your concerns",
+          "several accommodations",
+          "approximately 60-80% of patients",
+          "I generally recommend",
+          "addressing your questions",
+          "let me address your questions"
+        ],
+        feedback: {
+          correct: "I appreciate your thoughtful questions. Based on our discussion, I'd like to outline my recommendations for next steps, including diagnostic tests and initial management strategies. Then we can discuss any remaining questions you might have.",
+          partial: "I've addressed some of your questions, but let me provide more specific information about the aspects I've not fully covered yet.",
+          incorrect: "I should provide more specific answers to your questions about diagnostic procedures, treatment options, and managing this condition in your daily life."
+        }
+      },
+      {
+        id: 7,
+        botMessage: "Based on our discussion, I'd like to outline my specific recommendations for next steps, including diagnostic tests and initial management strategies. After that, we can address any remaining questions you might have.",
+        inputMode: "freeText",
+        suggestions: [
+          "For suspected Ménière's disease, I recommend proceeding with a systematic diagnostic evaluation beginning with comprehensive audiovestibular assessment, including pure-tone audiometry, speech discrimination testing, tympanometry, and electrocochleography to document the characteristic low-frequency sensorineural hearing loss and assess endolymphatic hydrops. This should be complemented by vestibular function testing, particularly videonystagmography and rotary chair testing, to evaluate semicircular canal function and potential vestibular asymmetry. I've arranged for these tests to be scheduled within the next 7-10 days. Concurrently, I'm ordering contrast-enhanced MRI of the internal auditory canals with specific thin-section protocols to exclude structural lesions such as vestibular schwannoma. For initial symptom management, I'm prescribing meclizine 25mg to be taken as needed during acute vertigo episodes, with specific instructions to avoid driving or operating machinery for 24 hours following administration due to sedative effects. Additionally, I recommend implementing dietary modifications including sodium restriction to 1500-2000mg daily, limiting caffeine and alcohol consumption, and maintaining consistent hydration. I'll also prescribe hydrochlorothiazide 25mg daily as a diuretic therapy, with baseline electrolyte monitoring prior to initiation and follow-up testing in two weeks to monitor for potential hypokalemia. For your hearing symptoms, while we await definitive diagnosis, regular audiometric monitoring will establish baseline function and track potential progression. I recommend scheduling a follow-up appointment in approximately four weeks, by which time we should have completed diagnostic testing and can assess your response to initial management. Meanwhile, I suggest you maintain a symptom diary documenting vertigo episodes, potential triggers, and associated symptoms to help refine our management approach.",
+          "Based on your presentation of post-cholecystectomy biliary-type pain, I recommend a comprehensive diagnostic approach beginning with laboratory studies, including liver function tests, pancreatic enzymes (amylase, lipase), complete blood count, and inflammatory markers. I'm ordering these tests today with results expected within 48-72 hours. Simultaneously, I'm scheduling magnetic resonance cholangiopancreatography (MRCP) with hepatobiliary contrast to provide detailed visualization of the biliary and pancreatic ductal systems, specifically looking for evidence of bile duct stones, strictures, or sphincter of Oddi dysfunction. This imaging should be completed within the next 7-10 days. For symptomatic management while awaiting definitive diagnosis, I recommend implementing dietary modifications including small, frequent, low-fat meals; avoiding identified trigger foods; and ensuring adequate hydration. I'm prescribing hyoscyamine 0.125mg to be taken 30-45 minutes before meals to reduce sphincter spasm and postprandial pain, with instructions regarding potential anticholinergic side effects. Additionally, I'm recommending a trial of ursodeoxycholic acid 300mg twice daily to improve bile flow characteristics, which may provide symptomatic relief particularly if microlithiasis is contributing to your symptoms. Depending on MRCP findings, we may proceed with endoscopic retrograde cholangiopancreatography (ERCP) for both diagnostic clarification and potential therapeutic intervention, including sphincterotomy if sphincter dysfunction is identified or stone extraction if choledocholithiasis is present. I suggest scheduling a follow-up appointment in approximately two weeks to review test results and determine appropriate next steps in your management. Meanwhile, please maintain a symptom diary documenting pain episodes, their relationship to meals, and response to prescribed medications to help guide our approach.",
+          "For management of your suspected asthma, I recommend a systematic diagnostic and therapeutic approach. First, I'm ordering comprehensive pulmonary function testing, including spirometry with bronchodilator responsiveness, to document reversible airflow obstruction—the hallmark of asthma. I'll also request measurement of fractional exhaled nitric oxide (FeNO) to assess airway inflammation, and potentially methacholine challenge testing if baseline spirometry is normal despite clinically suspected asthma. These should be scheduled within the next 5-7 days, with instructions to withhold short-acting bronchodilators for 6 hours and long-acting bronchodilators for 24 hours prior to testing. Simultaneously, I'm ordering chest radiography to exclude alternative pathologies, and basic laboratory studies including complete blood count with differential to assess for eosinophilia. Given your symptom pattern and family history, I'm also recommending comprehensive allergy testing to identify potential environmental triggers. For initial therapeutic management, I'm prescribing a medium-potency inhaled corticosteroid (fluticasone 250mcg, two inhalations twice daily) as controller medication, addressing the underlying airway inflammation. You should continue albuterol as rescue therapy during symptomatic episodes, but monitor frequency of use as a marker of control. Given your nocturnal symptoms, I'm adding montelukast 10mg to be taken in the evening, which specifically targets nighttime symptoms in many patients. I'll also provide a detailed asthma action plan with instructions for recognizing and responding to worsening symptoms, including when to seek urgent medical attention. We should schedule follow-up in approximately 3-4 weeks to assess your response to initial therapy and review diagnostic results, at which point we can refine your treatment regimen. I recommend maintaining an asthma symptom diary, noting potential triggers, symptom patterns, and medication use to guide our ongoing management."
+        ],
+        hints: "Provide detailed recommendations for diagnostic tests, initial management strategies, medications with specific dosages, and follow-up plans.",
+        expectedKeywords: ["recommend", "diagnostic", "testing", "prescribing", "assessment", "management", "monitoring", "follow-up", "approximately", "specifically", "schedule"],
+        feedback: {
+          correct: "Thank you for listening carefully to my recommendations. Before we conclude, I want to make sure I've addressed all your concerns and that you understand the plan we've discussed. What other questions do you have at this point?",
+          partial: "I've outlined some recommendations, but I should provide more specific details about diagnostic tests, management strategies, and follow-up plans. Is there a particular aspect of the plan you'd like me to clarify further?",
+          incorrect: "I need to provide more specific recommendations about the diagnostic tests, treatment approaches, and follow-up plan I'm suggesting for your condition."
+        }
+      },
+      {
+        id: 8,
+        botMessage: "Before we conclude, I want to make sure I've addressed all your concerns and that you understand the plan we've discussed. What other questions do you have at this point?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Thank you for your thorough explanation and recommendations. I do have a few remaining questions to clarify the plan moving forward. First, regarding the audiovestibular testing, should I expect these to be completed in a single session, or will multiple appointments be necessary? Second, concerning the dietary sodium restriction, could you provide some practical guidance on implementing this effectively, perhaps resources for low-sodium meal planning? I'm also wondering about work accommodations during this diagnostic and initial treatment period—would you recommend any specific workplace modifications or restrictions beyond avoiding driving? Additionally, while I understand the unpredictable nature of Ménière's disease, what warning signs might indicate an impending vertigo episode, allowing me to take precautionary measures? Finally, are there any support groups or reliable patient resources you would recommend for additional information about living with this condition? I want to ensure I'm well-prepared to manage this effectively while maintaining as much normalcy in my daily life as possible.",
+          "Thank you for outlining such a comprehensive plan. I have several additional questions to ensure I fully understand the approach. First, regarding the hyoscyamine prescription, are there any specific activities I should avoid while taking this medication besides driving? Second, I'm curious about the potential duration of ursodeoxycholic acid therapy—is this typically a short-term intervention during diagnostic evaluation, or might it become a long-term management strategy? Third, if ERCP with sphincterotomy becomes necessary, what is the typical hospitalization period, and what post-procedure complications should I be vigilant about? I'm also wondering about potential alternative or complementary approaches—I've read about treatments like acupuncture for biliary pain; is there any evidence supporting such interventions? Finally, regarding long-term follow-up, assuming we reach a definitive diagnosis and implement appropriate treatment, what ongoing monitoring would be recommended to ensure continued management of this condition? I appreciate your patience with these additional questions as I try to fully understand what to expect in the coming weeks and months.",
+          "Thank you for your detailed recommendations. I have a few remaining questions to clarify the management plan. First, regarding the inhaled medications, could you provide specific instruction on proper inhaler technique, particularly how to use the spacer device you mentioned to minimize side effects? Second, I'm concerned about medication interactions—will the newly prescribed asthma medications potentially interact with my current levothyroxine or other medications? Third, regarding the allergy testing, what specifically should I expect during this procedure, and should I discontinue any medications prior to testing? Fourth, I'm interested in understanding how quickly I might notice improvement with the prescribed regimen, particularly for the nighttime symptoms which have been most disruptive. Finally, regarding long-term management, assuming this is confirmed as asthma, what parameters would indicate good control versus the need to adjust therapy, and how frequently would you recommend follow-up visits once we've established an effective management approach? These clarifications will help me feel more confident in implementing the plan we've discussed."
+        ],
+        hints: "Ask specific remaining questions about the diagnostic plan, treatment recommendations, practical management strategies, or expected outcomes.",
+        expectedKeywords: ["questions", "clarify", "wondering", "regarding", "concerned", "expect", "implementation", "recommendations", "management", "approach", "follow-up"],
+        acceptablePhrases: [
+          "I do have a few remaining questions",
+          "I'm wondering about",
+          "could you provide",
+          "are there any specific",
+          "what is the typical",
+          "regarding the",
+          "I'm concerned about"
+        ],
+        feedback: {
+          correct: "Those are excellent questions. Let me address each of them to ensure you have a complete understanding of our plan and what to expect moving forward. After our consultation today, my office will help coordinate all the testing we've discussed, and I'll be available if new concerns arise before our follow-up appointment.",
+          partial: "Thank you for those questions. Are there any other specific aspects of the diagnostic plan, treatment recommendations, or practical management strategies you'd like me to clarify further?",
+          incorrect: "Do you have any other questions about the diagnostic tests I've recommended, the treatment plan we've discussed, or how to manage your condition in your daily life?"
+        }
+      }
+    ],
+    completionMessage: "Excellent job! You've successfully conducted a comprehensive medical consultation, demonstrating advanced medical terminology, thorough history-taking, sophisticated differential diagnosis, clear explanation of complex medical concepts, and patient-centered communication. Your ability to address both clinical and practical aspects of patient care reflects the high-level language skills necessary for effective medical communication.",
+    learningObjectives: [
+      "Utilize advanced medical terminology appropriately in clinical contexts",
+      "Provide comprehensive medical history information with relevant details",
+      "Understand and discuss potential diagnoses, pathophysiology, and differential considerations",
+      "Formulate specific questions about diagnostic procedures and treatment options",
+      "Comprehend detailed medical explanations and respond appropriately",
+      "Discuss practical implications of medical conditions for daily living",
+      "Engage in patient-centered communication with appropriate level of detail"
+    ],
+    grammar: {
+      points: [
+        "Complex medical terminology with accurate usage",
+        "Formal register appropriate for clinical settings",
+        "Complex sentence structures with multiple subordinate clauses",
+        "Technical noun phrases with precise modifiers",
+        "Advanced causal language for discussing disease mechanisms",
+        "Nuanced conditional structures for discussing diagnostic possibilities",
+        "Specialized vocabulary for describing symptoms and treatments"
+      ]
+    }
+  };
+&nbsp;
+  export default medicalConsultation;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

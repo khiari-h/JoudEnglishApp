@@ -1,0 +1,763 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/5/categories/01_analyse_psychosociale_et_comportementale.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/5/categories</a> 01_analyse_psychosociale_et_comportementale.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Analyse Psychosociale &amp; Comportementale",
+  words: [
+    // Théories psychologiques
+&nbsp;
+    { word: "social learning theory", translation: "théorie de l'apprentissage social", example: "According to social learning theory, children learn behaviors through observation and imitation." },
+    { word: "psychoanalytic approach", translation: "approche psychanalytique", example: "The therapist used a psychoanalytic approach to explore the patient's unconscious conflicts." },
+    { word: "behavioral paradigm", translation: "paradigme comportemental", example: "The researcher's work falls within the behavioral paradigm, focusing on observable actions." },
+    { word: "humanistic psychology", translation: "psychologie humaniste", example: "Humanistic psychology emphasizes personal growth and self-actualization." },
+    { word: "existential theory", translation: "théorie existentielle", example: "Existential theory addresses questions of meaning, purpose, and authenticity in human life." },
+    { word: "self-determination theory", translation: "théorie de l'autodétermination", example: "Self-determination theory explores intrinsic motivation and psychological needs." },
+    { word: "schema theory", translation: "théorie des schémas", example: "Schema theory helps explain how people categorize and interpret new information." },
+    { word: "cognitive-behavioral model", translation: "modèle cognitivo-comportemental", example: "The cognitive-behavioral model links thoughts, feelings, and behaviors in a reciprocal relationship." },
+    { word: "constructivism", translation: "constructivisme", example: "Constructivism proposes that individuals actively construct their understanding of reality." },
+    { word: "developmental stage", translation: "stade de développement", example: "According to Piaget, concrete operational thinking is a crucial developmental stage." },
+    { word: "psychodynamic theory", translation: "théorie psychodynamique", example: "Psychodynamic theory emphasizes unconscious psychological processes." },
+    { word: "gestalt psychology", translation: "psychologie de la gestalt", example: "Gestalt psychology focuses on perception of complete patterns rather than individual components." },
+    { word: "attribution theory", translation: "théorie de l'attribution", example: "Attribution theory examines how individuals explain the causes of behaviors and events." },
+    { word: "evolutionary psychology", translation: "psychologie évolutionniste", example: "Evolutionary psychology considers how natural selection shaped human behavior." },
+&nbsp;
+    { word: "classical conditioning", translation: "conditionnement classique", example: "Pavlov's experiments demonstrated classical conditioning with dogs salivating at the sound of a bell." },
+    { word: "positive psychology", translation: "psychologie positive", example: "Positive psychology examines human strengths, virtues, and factors that lead to a fulfilling life." },
+    { word: "systems theory", translation: "théorie des systèmes", example: "Family therapists often apply systems theory to understand relationship dynamics." },
+    { word: "analytical psychology", translation: "psychologie analytique", example: "Jung developed analytical psychology, emphasizing the collective unconscious." },
+    { word: "object relations theory", translation: "théorie des relations d'objet", example: "Object relations theory focuses on internalized representations of significant others." },
+    { word: "archetypal pattern", translation: "schéma archétypal", example: "The hero's journey is a common archetypal pattern found across cultures." },
+    { word: "theoretical construct", translation: "construit théorique", example: "Intelligence is a theoretical construct measured through various tests." },
+    { word: "empirical validation", translation: "validation empirique", example: "The hypothesis requires empirical validation through controlled experiments." },
+    { word: "hermeneutic approach", translation: "approche herméneutique", example: "A hermeneutic approach to psychology emphasizes interpretation and meaning." },
+    { word: "interpersonal theory", translation: "théorie interpersonnelle", example: "Interpersonal theory examines patterns in how people relate to others." },
+    { word: "ecological model", translation: "modèle écologique", example: "Bronfenbrenner's ecological model considers multiple levels of environmental influence." },
+    { word: "sociocultural perspective", translation: "perspective socioculturelle", example: "A sociocultural perspective emphasizes the role of culture in shaping thought and behavior." },
+    { word: "phenomenological approach", translation: "approche phénoménologique", example: "The researcher took a phenomenological approach to understand subjective experiences." },
+    { word: "psychological resilience", translation: "résilience psychologique", example: "The study examined factors contributing to psychological resilience after trauma." },
+&nbsp;
+    // Cognition sociale
+&nbsp;
+    { word: "implicit bias", translation: "biais implicite", example: "Implicit bias affects judgments without conscious awareness or control." },
+    { word: "stereotype threat", translation: "menace du stéréotype", example: "Stereotype threat can diminish performance when negative stereotypes are made salient." },
+    { word: "fundamental attribution error", translation: "erreur fondamentale d'attribution", example: "The fundamental attribution error leads us to overemphasize personality and underemphasize situational factors." },
+    { word: "confirmation bias", translation: "biais de confirmation", example: "Confirmation bias leads people to favor information that confirms existing beliefs." },
+    { word: "social schema", translation: "schéma social", example: "Social schemas help people quickly categorize and understand social situations." },
+    { word: "actor-observer bias", translation: "biais acteur-observateur", example: "The actor-observer bias explains why we attribute our own actions to situations but others' actions to their personality." },
+    { word: "availability heuristic", translation: "heuristique de disponibilité", example: "The availability heuristic leads us to judge probability based on how easily examples come to mind." },
+    { word: "social categorization", translation: "catégorisation sociale", example: "Social categorization is the process of dividing people into groups based on common attributes." },
+    { word: "self-serving bias", translation: "biais d'auto-complaisance", example: "Self-serving bias leads people to attribute success to personal factors and failure to external factors." },
+    { word: "halo effect", translation: "effet de halo", example: "The halo effect occurs when one positive trait influences perception of other traits." },
+&nbsp;
+    { word: "impression formation", translation: "formation d'impression", example: "First impressions strongly influence subsequent impression formation." },
+&nbsp;
+    { word: "mental representation", translation: "représentation mentale", example: "Mental representations of social groups influence intergroup behavior." },
+    { word: "illusory correlation", translation: "corrélation illusoire", example: "Illusory correlation leads to perception of relationships between unrelated variables." },
+    { word: "social information processing", translation: "traitement de l'information sociale", example: "Aggressive children often show distortions in social information processing." },
+    { word: "perspective taking", translation: "prise de perspective", example: "Perspective taking involves understanding a situation from another's point of view." },
+    { word: "anchoring effect", translation: "effet d'ancrage", example: "The anchoring effect shows how initial information influences subsequent judgments." },
+&nbsp;
+    { word: "priming effect", translation: "effet d'amorçage", example: "The priming effect demonstrates how exposure to one stimulus influences response to another." },
+    { word: "social projection", translation: "projection sociale", example: "Social projection involves assuming others share our attributes and opinions." },
+    { word: "hindsight bias", translation: "biais rétrospectif", example: "Hindsight bias leads people to perceive events as predictable after they've occurred." },
+    { word: "correspondence bias", translation: "biais de correspondance", example: "Correspondence bias is the tendency to infer personality from behavior despite situational factors." },
+    { word: "social comparison", translation: "comparaison sociale", example: "People engage in social comparison to evaluate their abilities and opinions." },
+    { word: "representativeness heuristic", translation: "heuristique de représentativité", example: "The representativeness heuristic leads to judgments based on similarity to prototypes." },
+    { word: "expectancy effect", translation: "effet d'attente", example: "The expectancy effect occurs when expectations influence perception and interpretation." },
+    { word: "mind perception", translation: "perception de l'esprit", example: "Mind perception involves attributing mental states to others." },
+    { word: "theory of mind", translation: "théorie de l'esprit", example: "Theory of mind is the ability to attribute mental states to others and understand they differ from one's own." },
+    { word: "social inference", translation: "inférence sociale", example: "Social inference allows us to draw conclusions about others' intentions and traits." },
+    { word: "information integration", translation: "intégration d'information", example: "Information integration theory explains how multiple pieces of information are combined into judgments." },
+&nbsp;
+    // Neurosciences comportementales
+    { word: "neural circuitry", translation: "circuits neuronaux", example: "The study mapped neural circuitry involved in fear responses." },
+    { word: "neurotransmitter", translation: "neurotransmetteur", example: "Dopamine is a neurotransmitter associated with reward and motivation." },
+    { word: "brain plasticity", translation: "plasticité cérébrale", example: "Brain plasticity allows neural connections to change in response to experience." },
+    { word: "prefrontal cortex", translation: "cortex préfrontal", example: "The prefrontal cortex plays a critical role in decision-making and impulse control." },
+    { word: "limbic system", translation: "système limbique", example: "The limbic system processes emotions and memory formation." },
+    { word: "synaptic pruning", translation: "élagage synaptique", example: "Synaptic pruning refines neural connections during development." },
+    { word: "neurogenesis", translation: "neurogénèse", example: "Adult neurogenesis occurs primarily in the hippocampus and olfactory bulb." },
+    { word: "amygdala activation", translation: "activation de l'amygdale", example: "Threat perception causes amygdala activation and initiates fear responses." },
+    { word: "neural imaging", translation: "imagerie neuronale", example: "Functional MRI is a neural imaging technique that measures brain activity." },
+    { word: "neurocognitive mechanisms", translation: "mécanismes neurocognitifs", example: "The research explored neurocognitive mechanisms underlying attention disorders." },
+    { word: "neural pathway", translation: "voie neuronale", example: "This neural pathway connects the hippocampus to the prefrontal cortex." },
+    { word: "neuromodulator", translation: "neuromodulateur", example: "Serotonin functions as a neuromodulator affecting mood and anxiety." },
+&nbsp;
+    { word: "neurodevelopmental trajectory", translation: "trajectoire neurodéveloppementale", example: "Early adversity can alter neurodevelopmental trajectories." },
+    { word: "hormonal regulation", translation: "régulation hormonale", example: "Stress affects behavior through hormonal regulation systems." },
+    { word: "neuroendocrine response", translation: "réponse neuroendocrine", example: "The neuroendocrine response to stress involves the HPA axis." },
+    { word: "reward pathway", translation: "circuit de récompense", example: "Addiction hijacks the brain's reward pathway, particularly the mesolimbic system." },
+    { word: "neurochemical balance", translation: "équilibre neurochimique", example: "Mood disorders often involve disruptions in neurochemical balance." },
+    { word: "cortical thickness", translation: "épaisseur corticale", example: "The study measured cortical thickness in regions associated with language processing." },
+    { word: "inhibitory control", translation: "contrôle inhibiteur", example: "Inhibitory control develops gradually throughout childhood." },
+    { word: "neural correlate", translation: "corrélat neuronal", example: "Researchers identified the neural correlates of conscious perception." },
+&nbsp;
+    { word: "synaptic transmission", translation: "transmission synaptique", example: "Synaptic transmission involves the release of neurotransmitters across the synaptic cleft." },
+    { word: "neuroepigenetics", translation: "neuroépigénétique", example: "Neuroepigenetics examines how environmental factors affect gene expression in the brain." },
+    { word: "dendritic spine", translation: "épine dendritique", example: "Learning increases dendritic spine formation in specific neural circuits." },
+    { word: "neurocognitive development", translation: "développement neurocognitif", example: "Adolescence is a critical period for neurocognitive development." },
+    { word: "hemispheric specialization", translation: "spécialisation hémisphérique", example: "Language processing shows hemispheric specialization, typically left-dominant." },
+    { word: "glial cell", translation: "cellule gliale", example: "Glial cells support neuronal function and communication in the brain." },
+    { word: "neuropsychological assessment", translation: "évaluation neuropsychologique", example: "The neuropsychological assessment measured cognitive functions after the injury." },
+    { word: "default mode network", translation: "réseau du mode par défaut", example: "The default mode network is active when the mind is at rest or daydreaming." },
+    { word: "neurobehavioral profile", translation: "profil neurocomportemental", example: "Each developmental disorder has a distinctive neurobehavioral profile." },
+&nbsp;
+    // Psychopathologie
+    { word: "comorbidity", translation: "comorbidité", example: "Anxiety and depression show high rates of comorbidity in clinical populations." },
+    { word: "symptom constellation", translation: "constellation de symptômes", example: "This symptom constellation suggests a trauma-related disorder." },
+    { word: "psychopathological mechanism", translation: "mécanisme psychopathologique", example: "Cognitive distortions are a central psychopathological mechanism in depression." },
+    { word: "diagnostic criteria", translation: "critères diagnostiques", example: "The DSM-5 outlines specific diagnostic criteria for each mental disorder." },
+    { word: "maladaptive pattern", translation: "schéma inadapté", example: "Personality disorders involve enduring maladaptive patterns of behavior and experience." },
+    { word: "etiological factor", translation: "facteur étiologique", example: "Genetic predisposition is an important etiological factor for schizophrenia." },
+    { word: "clinical presentation", translation: "présentation clinique", example: "The clinical presentation varied significantly among patients with the same diagnosis." },
+    { word: "psychotic symptom", translation: "symptôme psychotique", example: "Hallucinations and delusions are common psychotic symptoms." },
+    { word: "prodromal phase", translation: "phase prodromique", example: "The prodromal phase of schizophrenia often includes subtle cognitive and social changes." },
+    { word: "mood disorder", translation: "trouble de l'humeur", example: "Bipolar disorder is a serious mood disorder characterized by alternating periods of mania and depression." },
+    { word: "anxiety spectrum", translation: "spectre de l'anxiété", example: "Various conditions fall along the anxiety spectrum, from specific phobias to generalized anxiety." },
+    { word: "trauma-related disorder", translation: "trouble lié au trauma", example: "PTSD is a trauma-related disorder triggered by experiencing or witnessing terrifying events." },
+    { word: "pathological process", translation: "processus pathologique", example: "The research aimed to understand the pathological processes underlying addiction." },
+    { word: "affective dysregulation", translation: "dysrégulation affective", example: "Borderline personality disorder involves severe affective dysregulation." },
+    { word: "intrusive thought", translation: "pensée intrusive", example: "Intrusive thoughts are a core feature of obsessive-compulsive disorder." },
+    { word: "neurodevelopmental disorder", translation: "trouble neurodéveloppemental", example: "Autism spectrum disorder is a complex neurodevelopmental disorder." },
+    { word: "impulse control", translation: "contrôle des impulsions", example: "Impaired impulse control contributes to a range of problematic behaviors." },
+    { word: "emotional reactivity", translation: "réactivité émotionnelle", example: "Heightened emotional reactivity is characteristic of certain anxiety disorders." },
+    { word: "rumination pattern", translation: "schéma de rumination", example: "Depression often involves persistent rumination patterns focused on negative experiences." },
+    { word: "subclinical symptom", translation: "symptôme subclinique", example: "Subclinical symptoms may indicate vulnerability to developing a full disorder." },
+    { word: "personality pathology", translation: "pathologie de la personnalité", example: "The dimensional model conceptualizes personality pathology as extreme variants of normal traits." },
+    { word: "dissociative state", translation: "état dissociatif", example: "Trauma can trigger dissociative states as a psychological defense mechanism." },
+    { word: "somatization", translation: "somatisation", example: "Somatization involves physical symptoms stemming from psychological distress." },
+&nbsp;
+    { word: "affect regulation", translation: "régulation des affects", example: "Therapy focused on improving affect regulation skills to manage emotional intensity." },
+    { word: "thought suppression", translation: "suppression de pensée", example: "Thought suppression often paradoxically increases unwanted thoughts." },
+    { word: "psychological vulnerability", translation: "vulnérabilité psychologique", example: "Early childhood adversity creates psychological vulnerability to later disorders." },
+    { word: "resilience factor", translation: "facteur de résilience", example: "Social support is a critical resilience factor that buffers against stress." },
+    { word: "disordered eating", translation: "troubles alimentaires", example: "Disordered eating includes a spectrum of problematic attitudes and behaviors toward food." },
+    { word: "paranoid ideation", translation: "idéation paranoïde", example: "Paranoid ideation involves suspicious thoughts about others' intentions." },
+    { word: "psychosomatic manifestation", translation: "manifestation psychosomatique", example: "Chronic stress often leads to psychosomatic manifestations like tension headaches." },
+&nbsp;
+    // Dynamiques identitaires
+&nbsp;
+    { word: "social identity theory", translation: "théorie de l'identité sociale", example: "Social identity theory explains intergroup behavior through group membership." },
+    { word: "identity negotiation", translation: "négociation identitaire", example: "Bicultural individuals engage in constant identity negotiation across contexts." },
+&nbsp;
+    { word: "identity conflict", translation: "conflit identitaire", example: "Adolescents often experience identity conflict when navigating different social roles." },
+    { word: "identity development", translation: "développement identitaire", example: "Identity development involves exploration and commitment to various life domains." },
+&nbsp;
+    { word: "self-categorization", translation: "auto-catégorisation", example: "Self-categorization processes determine which identities become salient in different contexts." },
+    { word: "bicultural identity", translation: "identité biculturelle", example: "Many immigrants develop a bicultural identity integrating aspects of both cultures." },
+&nbsp;
+    { word: "identity status", translation: "statut identitaire", example: "Marcia described four identity statuses based on exploration and commitment." },
+    { word: "narrative identity", translation: "identité narrative", example: "Narrative identity involves constructing a life story that provides coherence and meaning." },
+&nbsp;
+    { word: "identity achievement", translation: "réalisation identitaire", example: "Identity achievement follows a period of exploration and culminates in commitment." },
+    { word: "social role", translation: "rôle social", example: "Professional identity develops through internalization of social roles in workplace settings." },
+    { word: "identity integration", translation: "intégration identitaire", example: "Successful identity integration involves harmonizing potentially conflicting aspects of self." },
+    { word: "possible self", translation: "soi possible", example: "Possible selves represent individuals' ideas about what they might become in the future." },
+    { word: "identity performance", translation: "performance identitaire", example: "Identity performance involves behavioral expressions that signal group membership." },
+&nbsp;
+    { word: "individual differentiation", translation: "différenciation individuelle", example: "The process of individual differentiation distinguishes oneself from reference groups." },
+    { word: "identity threat", translation: "menace identitaire", example: "Stereotype threat is a form of identity threat that affects performance." },
+    { word: "identity-based motivation", translation: "motivation basée sur l'identité", example: "Identity-based motivation drives choices congruent with salient identities." },
+    { word: "relational identity", translation: "identité relationnelle", example: "Relational identity derives from interpersonal roles and connections to others." },
+    { word: "identity marker", translation: "marqueur identitaire", example: "Language can serve as a powerful identity marker for cultural groups." },
+    { word: "identity affirmation", translation: "affirmation identitaire", example: "Identity affirmation involves positive engagement with aspects of one's identity." },
+&nbsp;
+    { word: "identity salience", translation: "saillance identitaire", example: "Context determines identity salience, which identity becomes activated and influential." },
+    { word: "identity fusion", translation: "fusion identitaire", example: "Identity fusion occurs when personal and group identities become functionally equivalent." },
+    { word: "identity capital", translation: "capital identitaire", example: "Identity capital comprises resources that help navigate identity challenges successfully." },
+&nbsp;
+    // Phénomènes sociocognitifs
+&nbsp;
+    { word: "obedience to authority", translation: "obéissance à l'autorité", example: "Milgram's experiments demonstrated surprising levels of obedience to authority." },
+    { word: "social contagion", translation: "contagion sociale", example: "Emotional states can spread through social contagion in groups." },
+    { word: "ingroup favoritism", translation: "favoritisme envers l'endogroupe", example: "Ingroup favoritism leads people to favor members of their own group." },
+    { word: "intergroup bias", translation: "biais intergroupe", example: "Intergroup bias affects perceptions, evaluations, and behavior toward outgroup members." },
+&nbsp;
+    { word: "social representation", translation: "représentation sociale", example: "Social representations provide shared frameworks for understanding complex phenomena." },
+&nbsp;
+    { word: "pluralistic ignorance", translation: "ignorance pluraliste", example: "Pluralistic ignorance occurs when people incorrectly assume others' private attitudes." },
+    { word: "social tuning", translation: "ajustement social", example: "Social tuning involves adjusting attitudes to align with perceived views of others." },
+    { word: "outgroup homogeneity", translation: "homogénéité de l'exogroupe", example: "Outgroup homogeneity is the tendency to perceive outgroup members as more similar to each other than they actually are." },
+    { word: "false consensus effect", translation: "effet de faux consensus", example: "The false consensus effect leads people to overestimate how common their beliefs and behaviors are." },
+    { word: "stereotype formation", translation: "formation de stéréotype", example: "Stereotype formation begins with categorization and observed correlations." },
+    { word: "minimal group paradigm", translation: "paradigme du groupe minimal", example: "The minimal group paradigm demonstrates bias even with arbitrary group assignments." },
+    { word: "social dominance", translation: "dominance sociale", example: "Social dominance orientation predicts support for hierarchy-enhancing policies." },
+    { word: "diffusion of responsibility", translation: "diffusion de responsabilité", example: "Diffusion of responsibility explains reduced helping in larger groups." },
+    { word: "moral licensing", translation: "licence morale", example: "Moral licensing allows people to act questionably after previous good behavior." },
+    { word: "shared reality", translation: "réalité partagée", example: "Close relationships develop through creation of shared reality about experiences." },
+    { word: "social proof", translation: "preuve sociale", example: "Social proof influences behavior by demonstrating what others consider appropriate." },
+    { word: "reactance theory", translation: "théorie de la réactance", example: "Reactance theory explains resistance to perceived threats to behavioral freedom." },
+    { word: "framing effect", translation: "effet de cadrage", example: "The framing effect shows how presentation of information influences decisions." },
+    { word: "collective efficacy", translation: "efficacité collective", example: "Collective efficacy represents shared beliefs in a group's joint capabilities." },
+    { word: "social dilemma", translation: "dilemme social", example: "The tragedy of the commons exemplifies a social dilemma between individual and collective interests." },
+    { word: "norm enforcement", translation: "application des normes", example: "Norm enforcement through social sanctions maintains cooperative behavior." },
+    { word: "social identity complexity", translation: "complexité de l'identité sociale", example: "Social identity complexity reflects awareness of partial overlap between different group memberships." },
+&nbsp;
+    // Psychologie interculturelle
+    { word: "cultural frame", translation: "cadre culturel", example: "A cultural frame shapes interpretation of social interactions." },
+    { word: "cross-cultural psychology", translation: "psychologie interculturelle", example: "Cross-cultural psychology examines psychological variations across different cultures." },
+    { word: "cultural dimensions", translation: "dimensions culturelles", example: "Hofstede identified several cultural dimensions including individualism-collectivism." },
+    { word: "cultural adaptation", translation: "adaptation culturelle", example: "International students undergo cultural adaptation when studying abroad." },
+    { word: "cultural value orientation", translation: "orientation des valeurs culturelles", example: "Cultural value orientations influence perception, cognition, and behavior." },
+    { word: "cultural schema", translation: "schéma culturel", example: "Cultural schemas provide frameworks for understanding social situations." },
+    { word: "enculturation", translation: "enculturation", example: "Enculturation is the process of learning one's native culture from early childhood." },
+    { word: "acculturation strategy", translation: "stratégie d'acculturation", example: "Integration is an acculturation strategy that maintains cultural identity while adopting host culture practices." },
+    { word: "cultural competence", translation: "compétence culturelle", example: "Therapists need cultural competence to work effectively with diverse clients." },
+&nbsp;
+    { word: "ethnocentrism", translation: "ethnocentrisme", example: "Ethnocentrism involves judging other cultures by the standards of one's own." },
+    { word: "indigenous psychology", translation: "psychologie autochtone", example: "Indigenous psychology develops theories grounded in local cultural contexts." },
+    { word: "cultural identity development", translation: "développement de l'identité culturelle", example: "Minority youth navigate cultural identity development across multiple contexts." },
+    { word: "cultural neuroscience", translation: "neuroscience culturelle", example: "Cultural neuroscience examines how cultural experiences shape brain function." },
+    { word: "collectivistic orientation", translation: "orientation collectiviste", example: "East Asian cultures often demonstrate a collectivistic orientation emphasizing group harmony." },
+    { word: "cultural syndrome", translation: "syndrome culturel", example: "Cultural syndromes are patterns of behavior specific to particular cultural contexts." },
+    { word: "cultural distance", translation: "distance culturelle", example: "Greater cultural distance typically requires more significant adaptation efforts." },
+&nbsp;
+    { word: "cultural intelligence", translation: "intelligence culturelle", example: "Cultural intelligence involves effectively adapting behavior across cultural contexts." },
+    { word: "bicultural competence", translation: "compétence biculturelle", example: "Bicultural competence allows individuals to function effectively in two cultures." },
+    { word: "acculturative stress", translation: "stress acculturatif", example: "Immigrants often experience acculturative stress during cultural transition." },
+    { word: "cultural frame switching", translation: "changement de cadre culturel", example: "Bilingual individuals engage in cultural frame switching when alternating languages." },
+    { word: "cultural psychology", translation: "psychologie culturelle", example: "Cultural psychology examines how culture and psyche make each other up." },
+    { word: "emic approach", translation: "approche émique", example: "An emic approach studies behavior from within the cultural system." },
+    { word: "etic approach", translation: "approche étique", example: "An etic approach applies universal concepts across cultural contexts." },
+    { word: "cultural worldview", translation: "vision culturelle du monde", example: "Cultural worldviews shape basic assumptions about reality and existence." },
+    { word: "culturally-bound syndrome", translation: "syndrome culturellement déterminé", example: "Culturally-bound syndromes are psychological conditions specific to particular cultures." },
+    { word: "cultural lens", translation: "prisme culturel", example: "Researchers must recognize how their cultural lens affects interpretation of findings." },
+    { word: "cultural pluralism", translation: "pluralisme culturel", example: "Cultural pluralism values diversity while maintaining distinct cultural identities." },
+    { word: "multicultural identity", translation: "identité multiculturelle", example: "Multicultural identity integrates elements from multiple cultural backgrounds." },
+    { word: "intercultural sensitivity", translation: "sensibilité interculturelle", example: "Intercultural sensitivity develops through meaningful cross-cultural experiences." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

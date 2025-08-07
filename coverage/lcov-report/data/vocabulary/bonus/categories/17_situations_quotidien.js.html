@@ -1,0 +1,580 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/bonus/categories/17_situations_quotidien.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/bonus/categories</a> 17_situations_quotidien.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "BONUS 17/21 - Situations du Quotidien (Galères &amp; Imprévus de la Vraie Vie)",
+  words: [
+    // Transportation &amp; commuting hassles (25 mots)
+    { word: "traffic jam", translation: "embouteillage", example: "I'm stuck in a traffic jam." },
+    { word: "gridlock", translation: "blocage total", example: "The city is in complete gridlock." },
+    { word: "road rage", translation: "colère au volant", example: "That guy has serious road rage." },
+    { word: "fender bender", translation: "accrochage", example: "Had a minor fender bender today." },
+    { word: "rear-ended", translation: "emboutir par derrière", example: "I got rear-ended at the light." },
+    { word: "flat tire", translation: "pneu crevé", example: "Great, I have a flat tire." },
+    { word: "dead battery", translation: "batterie à plat", example: "My car has a dead battery." },
+    { word: "breakdown", translation: "panne", example: "My car had a breakdown on the highway." },
+    { word: "running late", translation: "en retard", example: "I'm running late for the meeting." },
+    { word: "missed the bus", translation: "raté le bus", example: "I missed the bus this morning." },
+    { word: "delayed flight", translation: "vol retardé", example: "My flight is delayed by 3 hours." },
+    { word: "cancelled", translation: "annulé", example: "My train was cancelled." },
+    { word: "rush hour", translation: "heure de pointe", example: "Avoid driving during rush hour." },
+    { word: "bumper to bumper", translation: "pare-chocs contre pare-chocs", example: "Traffic is bumper to bumper." },
+    { word: "crawling", translation: "au pas", example: "Traffic is crawling on the highway." },
+    { word: "detour", translation: "détour", example: "Had to take a detour due to construction." },
+    { word: "roadwork", translation: "travaux", example: "Roadwork is causing delays." },
+    { word: "construction", translation: "construction", example: "Construction zone ahead." },
+    { word: "parking nightmare", translation: "cauchemar parking", example: "Finding parking here is a nightmare." },
+    { word: "meter expired", translation: "compteur expiré", example: "My parking meter expired." },
+    { word: "towed", translation: "remorqué", example: "My car got towed!" },
+    { word: "speeding ticket", translation: "contravention vitesse", example: "I got a speeding ticket." },
+    { word: "pulled over", translation: "arrêté par la police", example: "I got pulled over for speeding." },
+    { word: "lost", translation: "perdu", example: "I'm completely lost." },
+    { word: "GPS died", translation: "GPS mort", example: "My GPS died in the middle of nowhere." },
+&nbsp;
+    // Tech &amp; gadget failures (25 mots)
+    { word: "crashed", translation: "planté", example: "My computer crashed again." },
+    { word: "frozen", translation: "gelé", example: "My phone is completely frozen." },
+    { word: "glitchy", translation: "buggé", example: "This app is so glitchy." },
+    { word: "laggy", translation: "lent", example: "The internet is laggy today." },
+    { word: "buffering", translation: "mise en mémoire tampon", example: "The video keeps buffering." },
+    { word: "slow connection", translation: "connexion lente", example: "I have a slow internet connection." },
+    { word: "wifi down", translation: "wifi en panne", example: "The wifi is down again." },
+    { word: "no signal", translation: "pas de signal", example: "I have no cell signal here." },
+    { word: "dead zone", translation: "zone morte", example: "This area is a dead zone." },
+    { word: "low battery", translation: "batterie faible", example: "My phone has low battery." },
+    { word: "died", translation: "mort", example: "My phone died during the call." },
+    { word: "fried", translation: "grillé", example: "My laptop got fried in the storm." },
+    { word: "virus", translation: "virus", example: "My computer has a virus." },
+    { word: "malware", translation: "logiciel malveillant", example: "Downloaded malware by accident." },
+    { word: "hacked", translation: "piraté", example: "I think I got hacked." },
+    { word: "locked out", translation: "exclu", example: "I'm locked out of my account." },
+    { word: "forgot password", translation: "mot de passe oublié", example: "I forgot my password again." },
+    { word: "corrupted", translation: "corrompu", example: "The file got corrupted." },
+    { word: "deleted", translation: "supprimé", example: "I accidentally deleted everything." },
+    { word: "lost data", translation: "données perdues", example: "I lost all my data." },
+    { word: "backup failed", translation: "sauvegarde échouée", example: "My backup failed." },
+    { word: "update broke", translation: "mise à jour cassée", example: "The update broke my system." },
+    { word: "incompatible", translation: "incompatible", example: "The software is incompatible." },
+    { word: "outdated", translation: "obsolète", example: "My phone is too outdated." },
+    { word: "overheating", translation: "surchauffe", example: "My laptop is overheating." },
+&nbsp;
+    // Money &amp; financial stress (25 mots)
+    { word: "broke", translation: "fauché", example: "I'm completely broke this month." },
+    { word: "strapped for cash", translation: "à court d'argent", example: "I'm strapped for cash right now." },
+    { word: "tight budget", translation: "budget serré", example: "I'm on a tight budget." },
+    { word: "maxed out", translation: "à découvert", example: "My credit card is maxed out." },
+    { word: "overdraft", translation: "découvert", example: "I went into overdraft again." },
+    { word: "declined", translation: "refusé", example: "My card got declined." },
+    { word: "insufficient funds", translation: "fonds insuffisants", example: "Insufficient funds in my account." },
+    { word: "bounced check", translation: "chèque sans provision", example: "My check bounced." },
+    { word: "late fees", translation: "frais de retard", example: "I got hit with late fees." },
+    { word: "interest charges", translation: "frais d'intérêt", example: "These interest charges are killing me." },
+    { word: "minimum payment", translation: "paiement minimum", example: "I can only make the minimum payment." },
+    { word: "living paycheck to paycheck", translation: "vivre de paie en paie", example: "I'm living paycheck to paycheck." },
+    { word: "drowning in debt", translation: "noyé dans les dettes", example: "I'm drowning in debt." },
+    { word: "financial stress", translation: "stress financier", example: "Financial stress is overwhelming." },
+    { word: "money problems", translation: "problèmes d'argent", example: "I'm having money problems." },
+    { word: "can't afford", translation: "ne peut pas se permettre", example: "I can't afford that right now." },
+    { word: "expensive", translation: "cher", example: "Everything is so expensive now." },
+    { word: "overpriced", translation: "trop cher", example: "That restaurant is overpriced." },
+    { word: "ripped off", translation: "arnaqué", example: "I got ripped off by that mechanic." },
+    { word: "scammed", translation: "escroqué", example: "I think I got scammed online." },
+    { word: "impulse purchase", translation: "achat impulsif", example: "That was an impulse purchase." },
+    { word: "buyer's remorse", translation: "regret d'achat", example: "I have serious buyer's remorse." },
+    { word: "waste of money", translation: "gaspillage d'argent", example: "That was a waste of money." },
+    { word: "throwing money away", translation: "jeter l'argent", example: "I'm throwing money away on rent." },
+    { word: "penny pinching", translation: "économiser", example: "I'm penny pinching this month." },
+&nbsp;
+    // Health &amp; physical discomfort (25 mots)
+    { word: "under the weather", translation: "mal fichu", example: "I'm feeling under the weather." },
+    { word: "coming down with", translation: "attraper", example: "I think I'm coming down with something." },
+    { word: "stuffed up", translation: "bouché", example: "My nose is all stuffed up." },
+    { word: "congested", translation: "congestionné", example: "I'm feeling really congested." },
+    { word: "achy", translation: "douloureux", example: "I'm feeling achy all over." },
+    { word: "run down", translation: "épuisé", example: "I'm feeling really run down." },
+    { word: "drained", translation: "vidé", example: "I feel completely drained." },
+    { word: "wiped out", translation: "épuisé", example: "I'm wiped out from work." },
+    { word: "exhausted", translation: "épuisé", example: "I'm absolutely exhausted." },
+    { word: "sleep deprived", translation: "privé de sommeil", example: "I'm seriously sleep deprived." },
+    { word: "insomnia", translation: "insomnie", example: "I've been having insomnia." },
+    { word: "tossing and turning", translation: "se retourner", example: "I was tossing and turning all night." },
+    { word: "groggy", translation: "groggy", example: "I feel groggy this morning." },
+    { word: "hangover", translation: "gueule de bois", example: "I have a terrible hangover." },
+    { word: "headache", translation: "mal de tête", example: "I have a splitting headache." },
+    { word: "migraine", translation: "migraine", example: "I'm getting a migraine." },
+    { word: "nauseous", translation: "nauséeux", example: "I'm feeling nauseous." },
+    { word: "queasy", translation: "barbouillé", example: "My stomach feels queasy." },
+    { word: "dizzy", translation: "étourdi", example: "I feel dizzy when I stand up." },
+    { word: "lightheaded", translation: "tête qui tourne", example: "I'm feeling lightheaded." },
+    { word: "dehydrated", translation: "déshydraté", example: "I think I'm dehydrated." },
+    { word: "bloated", translation: "ballonné", example: "I feel so bloated after that meal." },
+    { word: "cramping", translation: "crampes", example: "I'm cramping from that workout." },
+    { word: "sore", translation: "endolori", example: "I'm sore from yesterday's gym session." },
+    { word: "stiff", translation: "raide", example: "My neck is really stiff." },
+&nbsp;
+    // Household &amp; domestic chaos (25 mots)
+    { word: "messy", translation: "en désordre", example: "My apartment is so messy." },
+    { word: "cluttered", translation: "encombré", example: "My desk is completely cluttered." },
+    { word: "disaster zone", translation: "zone de catastrophe", example: "My room is a disaster zone." },
+    { word: "pig sty", translation: "porcherie", example: "This place looks like a pig sty." },
+    { word: "chaos", translation: "chaos", example: "My life is pure chaos right now." },
+    { word: "hectic", translation: "mouvementé", example: "Things have been hectic lately." },
+    { word: "overwhelming", translation: "accablant", example: "The to-do list is overwhelming." },
+    { word: "behind on", translation: "en retard sur", example: "I'm behind on everything." },
+    { word: "procrastinating", translation: "procrastiner", example: "I've been procrastinating all day." },
+    { word: "deadline crunch", translation: "rush de deadline", example: "I'm in deadline crunch mode." },
+    { word: "scrambling", translation: "se démener", example: "I'm scrambling to finish this." },
+    { word: "last minute", translation: "dernière minute", example: "Everything I do is last minute." },
+    { word: "cutting it close", translation: "juste à temps", example: "I'm cutting it close with this deadline." },
+    { word: "burning the midnight oil", translation: "travailler tard", example: "I'm burning the midnight oil tonight." },
+    { word: "pulling an all-nighter", translation: "faire une nuit blanche", example: "I'm pulling an all-nighter." },
+    { word: "swamped", translation: "débordé", example: "I'm completely swamped with work." },
+    { word: "juggling", translation: "jongler", example: "I'm juggling too many things." },
+    { word: "dropped the ball", translation: "rater", example: "I really dropped the ball on this." },
+    { word: "forgot", translation: "oublié", example: "I completely forgot about the meeting." },
+    { word: "slipped my mind", translation: "m'est sorti de la tête", example: "It completely slipped my mind." },
+    { word: "spaced out", translation: "dans la lune", example: "I totally spaced out during the lecture." },
+    { word: "brain fog", translation: "brouillard mental", example: "I have serious brain fog today." },
+    { word: "scattered", translation: "dispersé", example: "I'm feeling really scattered." },
+    { word: "all over the place", translation: "dans tous les sens", example: "My thoughts are all over the place." },
+    { word: "losing it", translation: "perdre la boule", example: "I think I'm losing it." },
+&nbsp;
+    // Social awkwardness &amp; embarrassment (25 mots)
+    { word: "awkward", translation: "gênant", example: "That was so awkward." },
+    { word: "cringe", translation: "gênant", example: "That made me cringe so hard." },
+    { word: "cringeworthy", translation: "très gênant", example: "That performance was cringeworthy." },
+    { word: "secondhand embarrassment", translation: "honte par procuration", example: "I felt secondhand embarrassment." },
+    { word: "mortified", translation: "mortifié", example: "I was absolutely mortified." },
+    { word: "humiliated", translation: "humilié", example: "I felt completely humiliated." },
+    { word: "embarrassed", translation: "embarrassé", example: "I'm so embarrassed about that." },
+    { word: "awkward silence", translation: "silence gênant", example: "There was an awkward silence." },
+    { word: "foot in mouth", translation: "gaffe", example: "I really put my foot in my mouth." },
+    { word: "said the wrong thing", translation: "mal dit", example: "I said the wrong thing again." },
+    { word: "overshared", translation: "trop partagé", example: "I totally overshared at dinner." },
+    { word: "TMI", translation: "trop d'informations", example: "That was definitely TMI." },
+    { word: "inappropriate", translation: "inapproprié", example: "My joke was inappropriate." },
+    { word: "crossed a line", translation: "franchi une ligne", example: "I think I crossed a line." },
+    { word: "made a scene", translation: "fait une scène", example: "I made a scene at the restaurant." },
+    { word: "lost my cool", translation: "perdu mon calme", example: "I lost my cool in the meeting." },
+    { word: "snapped", translation: "craqué", example: "I snapped at my coworker." },
+    { word: "overreacted", translation: "surréagi", example: "I totally overreacted." },
+    { word: "dramatic", translation: "dramatique", example: "I was being too dramatic." },
+    { word: "made a fool of myself", translation: "me suis ridiculisé", example: "I made a fool of myself." },
+    { word: "looked stupid", translation: "ai eu l'air stupide", example: "I looked stupid in front of everyone." },
+    { word: "fumbled", translation: "bafouillé", example: "I fumbled through my presentation." },
+    { word: "blanked out", translation: "trou noir", example: "I completely blanked out." },
+    { word: "brain fart", translation: "absence", example: "I had a total brain fart." },
+    { word: "deer in headlights", translation: "tétanisé", example: "I was like a deer in headlights." }
+  ]
+};</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

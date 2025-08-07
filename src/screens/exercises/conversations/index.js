@@ -115,6 +115,7 @@ const ConversationExercise = ({ route }) => {
   if (!loaded || !hasValidData) {
     return (
       <Container
+        testID="conversation-container"
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
         backgroundColor="#FAFBFC"
@@ -127,6 +128,7 @@ const ConversationExercise = ({ route }) => {
 
   return (
     <Container
+     testID="conversation-container" 
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
       backgroundColor="#FAFBFC"

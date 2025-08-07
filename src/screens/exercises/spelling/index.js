@@ -85,7 +85,7 @@ const SpellingExercise = ({ route }) => {
           onBack={handleBack}
         />
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={levelColor} />
+          <ActivityIndicator size="large" color={levelColor} testID="activity-indicator" />
           <Text style={styles.loadingText}>Chargement des exercices...</Text>
         </View>
       </Container>

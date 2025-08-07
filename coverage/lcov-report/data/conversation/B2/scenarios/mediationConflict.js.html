@@ -1,0 +1,604 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/B2/scenarios/mediationConflict.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/B2/scenarios</a> mediationConflict.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/B2/scenarios/mediationConflict.js
+&nbsp;
+const mediationConflict = {
+    id: 7,
+    title: "Mediating a Conflict",
+    level: "B2",
+    description: "Intervene in a workplace or interpersonal conflict, helping to identify issues and facilitate resolution through effective communication.",
+    estimatedTime: "25-30 minutes",
+    vocabulary: ["mediation", "conflict", "resolution", "perspective", "compromise", "misunderstanding", "underlying", "interests", "negotiation", "common ground", "facilitation", "reconciliation", "stakeholders", "constructive", "concerns"],
+    steps: [
+      {
+        id: 1,
+        botMessage: "You've been asked to help mediate a conflict between two colleagues in the marketing department who disagree about project leadership. How would you begin the mediation process?",
+        inputMode: "freeText",
+        suggestions: [
+          "I would begin by meeting separately with each colleague to understand their perspective before bringing them together, establishing ground rules for the discussion that emphasize respectful communication.",
+          "First, I'd create a neutral environment and explain my role as a facilitator rather than a decision-maker. Then I would invite each person to share their version of the situation without interruption.",
+          "I would start by acknowledging that conflicts are natural in collaborative environments and frame this as an opportunity to improve working relationships, then establish a structured process that gives equal speaking time to both parties."
+        ],
+        hints: "Describe how you would initiate a mediation process, emphasizing neutrality and structure.",
+        expectedKeywords: ["begin", "start", "first", "initially", "neutral", "ground rules", "perspectives", "separately", "together", "establish", "process", "facilitate"],
+        feedback: {
+          correct: "That's an excellent approach to begin the mediation process. Now, what questions would you ask to better understand the core issues of the conflict?",
+          partial: "You've touched on some important initial steps. Could you elaborate on how you would establish neutrality and structure?",
+          incorrect: "Please describe specific steps you would take to begin mediating this conflict between colleagues."
+        }
+      },
+      {
+        id: 2,
+        botMessage: "What specific questions would you ask to identify the underlying issues in this leadership conflict?",
+        inputMode: "hybrid",
+        suggestions: [
+          "I would ask: 'What specific aspects of project leadership are creating tension? Can you describe a recent situation where this conflict manifested? What outcome would you consider satisfactory for resolving this issue?'",
+          "My questions would include: 'How has the current situation affected your work and wellbeing? What communication breakdown do you believe contributed to this conflict? What are your primary concerns regarding project leadership?'",
+          "I would inquire: 'What are your main responsibilities and priorities for this project? Where do you see overlap or conflict in your roles? What previous attempts have been made to resolve this issue, and why do you think they were unsuccessful?'"
+        ],
+        hints: "Propose specific questions that would help identify core issues and interests.",
+        expectedKeywords: ["ask", "questions", "inquire", "specific", "situation", "concerns", "priorities", "expectations", "outcome", "responsibilities", "affected"],
+        acceptablePhrases: [
+          "I would ask",
+          "questions would include",
+          "would inquire",
+          "specific aspects",
+          "main concerns"
+        ],
+        feedback: {
+          correct: "Those are thoughtful questions that would help reveal the underlying issues. After hearing both perspectives, how would you identify common ground between them?",
+          partial: "You've suggested some questions. Could you make them more specific to uncovering the core issues of the leadership conflict?",
+          incorrect: "Please propose specific questions you would ask to better understand the underlying issues in this conflict."
+        }
+      },
+      {
+        id: 3,
+        botMessage: "After hearing both sides, you notice they actually agree on the project goals but disagree on methods. How would you help them identify common ground and areas of agreement?",
+        inputMode: "freeText",
+        suggestions: [
+          "I would explicitly highlight the shared project goals they've both mentioned and create a visual representation of their points of agreement. Then I'd facilitate a discussion specifically about these commonalities before addressing areas of disagreement.",
+          "I would summarize and reflect back the common elements I've observed: 'It seems you both want the project to succeed and meet its deadlines. You both value quality work and team collaboration. Can we start by acknowledging these shared priorities?'",
+          "I would ask them to individually identify what they appreciate about the other's approach and contribution to the project, then facilitate a discussion about how their different methods might be complementary rather than contradictory."
+        ],
+        hints: "Explain how you would highlight and build upon areas of agreement and common interests.",
+        expectedKeywords: ["common", "shared", "agree", "similar", "both", "highlight", "acknowledge", "summarize", "reflect", "priorities", "goals", "interests"],
+        feedback: {
+          correct: "That's an effective way to establish common ground. Now, how would you facilitate a discussion about the specific areas of disagreement regarding project leadership?",
+          partial: "You've identified some approaches to finding common ground. Could you be more specific about how you would make these commonalities explicit to both parties?",
+          incorrect: "Please explain how you would help the colleagues identify and acknowledge their areas of agreement and common interests."
+        }
+      },
+      {
+        id: 4,
+        botMessage: "One colleague feels they should lead the project because of their experience, while the other believes they should lead due to their relationship with the client. How would you help them discuss this specific disagreement constructively?",
+        inputMode: "hybrid",
+        suggestions: [
+          "I would reframe the discussion from 'who should lead' to 'how can both valuable perspectives be incorporated in the leadership structure?' I'd ask them to identify specific project components where each person's strengths would be most valuable, potentially suggesting a co-leadership model with clearly defined responsibilities.",
+          "I would encourage them to discuss the specific skills required for different aspects of the project and explore how their complementary strengths could be leveraged. I might suggest: 'Could we consider dividing leadership responsibilities according to your respective strengths rather than having a single leader?'",
+          "I would facilitate a discussion about the project's success criteria and what type of leadership would best serve those goals. Then I'd ask: 'What if we approach this as a collaborative leadership opportunity where each of you takes primary responsibility for the aspects where you bring the most value?'"
+        ],
+        hints: "Describe how you would reframe the disagreement and facilitate a constructive discussion of options.",
+        expectedKeywords: ["reframe", "specific", "strengths", "skills", "responsibilities", "collaborative", "complementary", "structure", "model", "discuss", "explore"],
+        acceptablePhrases: [
+          "reframe the discussion",
+          "encourage them to discuss",
+          "facilitate a discussion",
+          "complementary strengths",
+          "collaborative leadership"
+        ],
+        feedback: {
+          correct: "That's an excellent approach to reframing the leadership issue. What would you do if emotions escalate during this part of the discussion?",
+          partial: "You've suggested some constructive approaches. Could you elaborate on how you would help them move beyond the 'either/or' thinking about leadership?",
+          incorrect: "Please explain how you would help them discuss their specific disagreement about project leadership in a constructive way."
+        }
+      },
+      {
+        id: 5,
+        botMessage: "During your mediation, one colleague becomes visibly upset and starts making accusatory statements. How would you handle this emotional escalation?",
+        inputMode: "freeText",
+        suggestions: [
+          "I would calmly acknowledge their emotions: 'I can see this is frustrating for you,' then suggest a short break if needed. After emotions settle, I would redirect the conversation to focus on specific behaviors and situations rather than personal accusations, and reestablish ground rules about constructive communication.",
+          "I would intervene by saying: 'Let's pause for a moment. It's natural to feel strongly about this issue, but it's important we maintain respectful communication.' Then I would suggest they express their concerns using 'I' statements that focus on impact rather than blame, and check if the other person feels comfortable continuing.",
+          "I would validate their feelings while redirecting: 'I understand you feel strongly about this, and those feelings are important. Let's try to express these concerns in a way that helps us move toward resolution.' Then I would remind them of our shared goal to find a workable solution and ask if they need a moment before continuing."
+        ],
+        hints: "Explain how you would manage emotional escalation while maintaining a productive conversation.",
+        expectedKeywords: ["acknowledge", "emotions", "pause", "break", "redirect", "calm", "respectful", "validate", "feelings", "ground rules", "intervention"],
+        feedback: {
+          correct: "That's a thoughtful way to handle emotional escalation. How would you help the colleagues move toward a specific resolution or agreement?",
+          partial: "You've addressed the emotional aspect. Could you be more specific about how you would redirect the conversation back to productive discussion?",
+          incorrect: "Please explain how you would respond to emotional escalation and accusatory statements during the mediation."
+        }
+      },
+      {
+        id: 6,
+        botMessage: "After discussing various options, how would you help the colleagues reach a concrete agreement or compromise about the project leadership?",
+        inputMode: "hybrid",
+        suggestions: [
+          "I would summarize the potential solutions we've discussed and ask them to identify which elements they find most promising. Then I'd guide them in crafting a specific written agreement that outlines their respective responsibilities, decision-making authorities, and communication protocols, with concrete criteria for success.",
+          "I would facilitate a structured decision-making process by asking them to evaluate each option against agreed criteria such as project efficiency, client satisfaction, and team harmony. Once they identify a preferred approach, I'd help them develop an implementation plan with clear roles and checkpoints to review progress.",
+          "I would propose they draft a shared leadership charter that defines their complementary roles, establishes boundaries for autonomous decisions versus joint decisions, and includes a conflict resolution process for future disagreements. I'd ensure they both explicitly commit to the terms and schedule a follow-up meeting to review how the arrangement is working."
+        ],
+        hints: "Describe how you would facilitate a specific, actionable agreement or compromise.",
+        expectedKeywords: ["agreement", "specific", "concrete", "outline", "draft", "written", "responsibilities", "roles", "commit", "follow-up", "review", "implementation"],
+        acceptablePhrases: [
+          "summarize potential solutions",
+          "guide them in crafting",
+          "written agreement",
+          "facilitate a structured",
+          "draft a shared",
+          "clear roles"
+        ],
+        feedback: {
+          correct: "That's an excellent approach to creating a concrete agreement. How would you ensure this resolution is sustainable over time?",
+          partial: "You've outlined some steps toward agreement. Could you be more specific about how you would ensure the agreement includes actionable details?",
+          incorrect: "Please explain how you would help the colleagues create a specific, concrete agreement about project leadership."
+        }
+      },
+      {
+        id: 7,
+        botMessage: "How would you ensure that the resolution you've helped facilitate remains effective over time and prevents future conflicts?",
+        inputMode: "freeText",
+        suggestions: [
+          "I would suggest scheduling regular check-in meetings specifically to review how their leadership arrangement is working, starting weekly then decreasing frequency as things stabilize. I'd also help them establish clear metrics for success and a process for addressing new concerns before they escalate into conflicts.",
+          "I would propose creating a written conflict resolution protocol that they both agree to follow when tensions arise, including specific steps, timeframes, and if needed, designated neutral third parties. Additionally, I'd recommend they regularly reflect together on what's working well in their collaboration to reinforce positive patterns.",
+          "I would facilitate the creation of a feedback mechanism where they can constructively communicate about leadership challenges in real-time, rather than allowing frustrations to build. I would also suggest a quarterly review of their leadership structure to assess if adjustments are needed based on changing project requirements or team dynamics."
+        ],
+        hints: "Explain strategies for monitoring, maintaining, and reinforcing the resolution over time.",
+        expectedKeywords: ["follow-up", "check-in", "review", "monitor", "evaluate", "adjust", "feedback", "regular", "process", "protocol", "communication", "sustainable"],
+        feedback: {
+          correct: "Those are excellent strategies for ensuring a sustainable resolution. Thank you for demonstrating such thoughtful conflict mediation skills.",
+          partial: "You've suggested some follow-up approaches. Could you be more specific about the structure and frequency of these measures?",
+          incorrect: "Please explain specific strategies for ensuring the resolution remains effective over time and prevents similar conflicts from recurring."
+        }
+      }
+    ],
+    completionMessage: "Excellent work! You've successfully demonstrated the ability to mediate conflicts effectively, showing skills in active listening, reframing issues, managing emotions, and facilitating concrete agreements. These communication strategies are valuable in professional and personal contexts.",
+    learningObjectives: [
+      "Facilitate constructive dialogue between conflicting parties",
+      "Identify underlying interests and common ground",
+      "Reframe disagreements in more productive terms",
+      "Manage emotional escalation appropriately",
+      "Help negotiate specific, actionable agreements",
+      "Develop strategies for sustainable conflict resolution"
+    ],
+    grammar: {
+      points: [
+        "Conditional structures for suggesting possibilities",
+        "Reported speech for summarizing perspectives",
+        "Modal verbs for making suggestions and expressing possibilities",
+        "Sequence markers for structuring the mediation process",
+        "Questions forms for probing and clarifying issues"
+      ]
+    }
+  };
+&nbsp;
+  export default mediationConflict;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

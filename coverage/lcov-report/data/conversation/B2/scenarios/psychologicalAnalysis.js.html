@@ -1,0 +1,577 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/B2/scenarios/psychologicalAnalysis.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/B2/scenarios</a> psychologicalAnalysis.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/B2/scenarios/psychologicalAnalysis.js
+&nbsp;
+const psychologicalAnalysis = {
+  id: 12,
+  title: "Psychological Analysis",
+  level: "B2",
+  description: "Analyze psychological behaviors, motivations, and patterns using appropriate terminology and theoretical frameworks.",
+  estimatedTime: "25-30 minutes",
+  vocabulary: ["motivation", "behavior", "cognition", "perception", "reinforcement", "attribution", "identity", "personality traits", "cognitive bias", "psychological pattern", "emotional regulation", "defense mechanism", "self-concept", "social influence", "resilience"],
+  steps: [
+    {
+      id: 1,
+      botMessage: "Anna is a talented team member who consistently produces high-quality work, but she often expresses doubt about her abilities, attributes her successes to luck, and worries that others will discover she's not as competent as they think. Meanwhile, she's extremely critical of any small mistakes she makes. How would you analyze Anna's psychological pattern from a theoretical perspective?",
+      inputMode: "freeText",
+      suggestions: [
+        "Anna appears to be experiencing impostor syndrome, a psychological pattern where individuals doubt their accomplishments and have a persistent fear of being exposed as fraudulent despite evidence of their competence. This reflects a disconnect between her objective performance and subjective self-evaluation. From a cognitive perspective, she demonstrates negative attribution bias—attributing success to external factors (luck) while internalizing failures as personal deficiencies. Her perfectionism manifests as heightened self-criticism over minor errors. These cognitive distortions may stem from early socialization experiences, high parental expectations, or environments where achievement was heavily emphasized but never quite sufficient. This pattern often creates significant anxiety as the individual feels they must constantly prove their worth while simultaneously believing that their success is undeserved or precarious.",
+        "Anna's behavior suggests impostor phenomenon, characterized by inability to internalize her accomplishments despite objective evidence of competence. Psychodynamically, this might reflect early experiences where her self-worth became contingent on performance rather than intrinsic value. Cognitively, she exhibits attribution errors—crediting external factors for successes while attributing failures to personal inadequacy. Her perfectionism functions as both a driver of high achievement and a self-defeating mechanism that prevents satisfaction with her accomplishments. From a behavioral perspective, her high performance may have been intermittently reinforced in ways that created anxiety rather than confidence. This psychological pattern is often observed in high-achieving individuals, particularly women and minority groups, and can limit career advancement as she may avoid challenges due to fear of failure, despite having the capability to succeed.",
+        "From a psychological perspective, Anna displays classic symptoms of impostor syndrome combined with maladaptive perfectionism. Her cognitive pattern involves systematic external attribution for successes ('luck') while maintaining internal attribution for perceived failures, creating a persistent sense of fraudulence despite evidence to the contrary. This cognitive distortion maintains a self-concept that is resistant to contradictory evidence of her competence. Social cognitive theory would suggest that Anna's self-efficacy beliefs have been impaired despite her behavioral mastery experiences. Her perfectionism manifests as setting excessively high standards and being highly self-critical when those standards aren't met. These patterns may intersect with identity factors and social messages she has internalized about competence, worth, and achievement, potentially reinforced by workplace or societal dynamics where certain groups receive less validation for their accomplishments."
+      ],
+      hints: "Analyze the psychological pattern using appropriate theoretical concepts and terminology.",
+      expectedKeywords: ["impostor syndrome", "attribution", "perfectionism", "cognitive", "self-concept", "anxiety", "pattern", "bias", "distortion", "internalized", "competence", "perspective"],
+      feedback: {
+        correct: "You've provided an insightful theoretical analysis of Anna's psychological pattern. What interventions or approaches might help address this pattern?",
+        partial: "You've identified some aspects of Anna's psychology. Could you develop a more thorough analysis using specific psychological concepts?",
+        incorrect: "Please analyze Anna's pattern using specific psychological terminology and theoretical concepts like attribution patterns, cognitive biases, or relevant psychological syndromes."
+      }
+    },
+    {
+      id: 2,
+      botMessage: "Based on your analysis, what psychological interventions or approaches might be effective in helping Anna develop a more accurate self-perception?",
+      inputMode: "hybrid",
+      suggestions: [
+        "Several evidence-based approaches could help Anna. Cognitive-behavioral therapy (CBT) would be particularly effective in addressing her cognitive distortions by helping her identify and challenge her inaccurate thought patterns, especially her attribution biases regarding success and failure. She could benefit from cognitive restructuring techniques to replace thoughts like 'I just got lucky' with more accurate assessments like 'I succeeded because I prepared thoroughly.' Mindfulness practices could help her observe her self-critical thoughts without automatically accepting them as true. Additionally, keeping an 'achievement journal' documenting her accomplishments and the skills they required would create a concrete record contradicting her impostor feelings. In a workplace context, a mentor who provides specific, skill-based feedback could help anchor her self-assessment in objective evidence rather than emotional reactions. Group interventions with others experiencing similar patterns might also reduce shame through normalization and provide peer validation of her legitimate accomplishments.",
+        "A multi-faceted approach would be most beneficial for Anna. Cognitive therapy techniques would help her identify her automatic negative thoughts and develop more balanced self-evaluations. Specifically, addressing her attribution style by challenging her tendency to externalize success and internalize failure would be crucial. Self-compassion training would help counteract her harsh self-criticism, teaching her to treat herself with the same kindness she likely extends to others when they make mistakes. From an interpersonal perspective, authentic feedback conversations with trusted colleagues could help recalibrate her self-perception. Setting process-oriented rather than outcome-oriented goals might also help her recognize the genuine skills and efforts behind her achievements. In some cases, exploring the developmental origins of her perfectionism and impostor feelings through psychodynamic approaches might provide deeper insight, particularly if these patterns are significantly impairing her wellbeing or advancement despite cognitive interventions.",
+        "Several psychological approaches could address Anna's pattern. Cognitive-behavioral approaches would target her distorted thinking patterns, particularly her attribution errors and perfectionist standards. Acceptance and Commitment Therapy (ACT) might help her acknowledge her impostor thoughts without being ruled by them, while clarifying values beyond performance validation. Schema therapy could address early maladaptive schemas around conditional acceptance that may underlie her pattern. Practically, behavioral experiments that gradually expose her to situations that trigger impostor feelings (like public recognition) while preventing her usual safety behaviors (like excessive preparation or deflecting praise) would help disconfirm her fears. In a work context, a strengths-based coaching approach would help her develop a more comprehensive awareness of her capabilities, while establishing specific metrics for self-evaluation would reduce reliance on subjective feelings of fraudulence. Regular, structured reflection on accomplishments with objective external validation would also gradually recalibrate her self-assessment."
+      ],
+      hints: "Suggest specific psychological interventions or approaches to address the identified pattern.",
+      expectedKeywords: ["cognitive-behavioral therapy", "CBT", "interventions", "approach", "reframing", "restructuring", "mindfulness", "attribution", "self-compassion", "journal", "feedback", "coaching"],
+      acceptablePhrases: [
+        "cognitive-behavioral",
+        "cognitive therapy",
+        "mindfulness practices",
+        "self-compassion",
+        "attribution style",
+        "achievement journal",
+        "behavioral experiments",
+        "schema therapy"
+      ],
+      feedback: {
+        correct: "You've suggested well-reasoned psychological interventions. How might sociocultural factors potentially contribute to this type of psychological pattern?",
+        partial: "You've mentioned some helpful approaches. Could you develop more specific psychological interventions with clearer theoretical foundations?",
+        incorrect: "Please suggest specific psychological interventions or therapeutic approaches that would address Anna's pattern of impostor syndrome and perfectionism."
+      }
+    },
+    {
+      id: 3,
+      botMessage: "How might various sociocultural factors contribute to the development of impostor syndrome and perfectionism in individuals like Anna?",
+      inputMode: "freeText",
+      suggestions: [
+        "Sociocultural factors significantly influence these psychological patterns. Gender socialization often teaches women to attribute success to external factors and to doubt their abilities, while emphasizing the importance of likeability alongside achievement—creating double binds that fuel impostor feelings. For individuals from underrepresented groups, stereotype threat can intensify impostor experiences, as awareness of negative stereotypes about one's group increases performance anxiety and self-doubt. First-generation professionals may lack cultural capital and role models, intensifying feelings of not belonging in professional environments. Educational systems that emphasize performance outcomes rather than learning processes contribute to perfectionism, particularly in competitive academic environments. Workplace cultures that reward overwork, celebrate 'natural genius' narratives, or provide inconsistent feedback can exacerbate these tendencies. Social media's curated presentations of success create unrealistic comparison standards. Additionally, family systems with conditional praise or emphasis on achievement over process can establish early patterns where self-worth becomes contingent on accomplishment, laying the groundwork for both perfectionism and impostor fears.",
+        "Multiple sociocultural dynamics may contribute to Anna's psychological pattern. Organizational cultures often reward perfectionism implicitly while simultaneously criticizing it, creating double binds particularly for women who navigate contradictory expectations around assertiveness and likeability. Educational socialization frequently emphasizes achievement over learning, teaching students to value external validation rather than intrinsic measures of success. For individuals from marginalized groups, the burden of representing their entire identity group can heighten performance pressure and impostor feelings, particularly when they're pioneering in fields where they lack predecessors or mentors. Family systems transmit intergenerational messages about achievement, with certain cultural backgrounds particularly emphasizing academic and professional success as measures of worth. Meritocracy narratives that attribute success solely to individual effort rather than acknowledging structural advantages may lead those who have faced barriers to question their legitimacy. Media representations that highlight 'natural talent' rather than effort and development perpetuate myths that fuel impostor syndrome. Collectively, these sociocultural factors create environments where individuals internalize unrealistic standards and struggle to accurately assess their genuine competence.",
+        "Various sociocultural factors likely contribute to Anna's psychological pattern. Gender socialization often teaches women to be modest about achievements while simultaneously expecting high performance—creating contradictory demands that foster impostor feelings. In competitive academic and professional environments, visible success coupled with invisible struggle creates the illusion that others succeed effortlessly, fostering unhealthy comparisons. Cultural messaging that equates self-worth with productivity and achievement establishes perfectionism as an identity rather than a behavior. For individuals with marginalized identities, limited representation in their field may intensify feelings of not belonging, while the 'only one' phenomenon can create pressure to represent their entire group. High-achievement subcultures normalize unhealthy standards, making perfectionism seem necessary rather than problematic. Family dynamics, particularly parenting styles that offer praise conditionally based on achievement rather than effort or character, establish early patterns connecting performance to worth. Neoliberal cultural emphasis on individual responsibility obscures systemic factors affecting success, making those who've overcome barriers more likely to discount their achievements. These intersecting factors create fertile ground for impostor syndrome and perfectionism to develop, particularly in high-achieving individuals."
+      ],
+      hints: "Analyze how various sociocultural factors might contribute to impostor syndrome and perfectionism.",
+      expectedKeywords: ["gender", "socialization", "stereotype", "marginalized", "representation", "cultural", "educational", "family", "workplace", "media", "expectations", "standards"],
+      feedback: {
+        correct: "You've provided an insightful analysis of sociocultural factors. How might this psychological pattern manifest differently in various professional or educational contexts?",
+        partial: "You've identified some sociocultural influences. Could you develop a more comprehensive analysis of how different sociocultural factors contribute to these psychological patterns?",
+        incorrect: "Please analyze how sociocultural factors such as gender socialization, educational systems, workplace cultures, or societal expectations might contribute to impostor syndrome and perfectionism."
+      }
+    },
+    {
+      id: 4,
+      botMessage: "How might impostor syndrome and perfectionism manifest differently across various professional and educational contexts?",
+      inputMode: "hybrid",
+      suggestions: [
+        "These psychological patterns adapt to their contexts in distinctive ways. In highly competitive academic environments, impostor syndrome might manifest as excessive preparation, difficulty accepting recognition, or attributing academic success to factors like lenient grading rather than ability. In creative fields, perfectionism may appear as endless revisions, reluctance to share work, or discounting positive feedback as mere politeness. In corporate environments, those experiencing impostor syndrome might over-prepare for presentations, avoid applying for promotions despite qualifications, or excessively seek validation before making decisions. In STEM fields, impostor feelings often intersect with stereotype threat for underrepresented groups, manifesting as anxiety about confirming negative stereotypes through mistakes. In entrepreneurial contexts, perfectionism might appear as launching paralysis—constantly refining business plans without executing. In medical or legal professions where errors have serious consequences, impostor syndrome can manifest as defensive practice or extreme caution. The common thread across contexts is discounting evidence of competence while overemphasizing perceived limitations, but the specific behaviors adaptation to the particular standards, risks, and reward structures of each environment.",
+        "Context significantly shapes how these patterns manifest. In academic settings, impostor syndrome might appear as attributing success to having found the 'right formula' rather than comprehension, excessive concern about professors' opinions, or diminishing achievements ('the assignment was easy'). Perfectionism in this context often involves procrastination due to fear of producing imperfect work or extreme disappointment with any grade below an A. In technical fields, impostor syndrome frequently manifests as code anxiety—reluctance to contribute to open repositories or participate in code reviews—while perfectionism appears as excessive debugging or optimization beyond practical requirements. In leadership positions, these patterns might manifest as micromanagement, difficulty delegating, or excessive consensus-seeking before decisions. In medical contexts, impostor feelings can present as over-referral to specialists or defensive medicine. In entrepreneurial settings, these patterns might manifest as comparative anxiety with other startups or fear of seeking investment due to anticipated scrutiny. The cultural norms and performance metrics of each environment shape the specific manifestations, but underlying validation-seeking and fear of negative evaluation remain consistent.",
+        "These psychological patterns present distinctively across different contexts. In academic settings, impostor syndrome often manifests as difficulty accepting intellectual belonging, attributing admission or recognition to demographic factors rather than merit, or excessive concern with professors' opinions of one's intellect. In healthcare professions, the high-stakes environment can transform impostor fears into anxiety about patient harm, excessive consultation with colleagues, or avoiding complex cases. In creative industries, perfectionism might appear as creative block, inability to finish projects, or harsh comparison with idealized others, while impostor syndrome manifests as attributing success to networking rather than talent. In corporate environments, these patterns often involve difficulty claiming expertise, excessive qualification of statements ('I might be wrong, but...'), or compulsive over-preparation. In entrepreneurial contexts, impostor syndrome may present as pivot-seeking—constantly changing business models in search of 'real' success—while perfectionism appears as launch anxiety and excessive focus on competitors. In technical fields, these patterns often involve knowledge hoarding, tutorial addiction before beginning projects, or constant comparison with idealized programming capabilities. Across contexts, the fundamental dynamics persist, but they adapt to the specific success metrics, cultural norms, and failure risks of each environment."
+      ],
+      hints: "Analyze how these psychological patterns manifest differently across various professional and educational contexts.",
+      expectedKeywords: ["manifest", "academic", "professional", "context", "environment", "corporate", "creative", "technical", "healthcare", "entrepreneurial", "leadership", "STEM"],
+      acceptablePhrases: [
+        "in academic environments",
+        "in creative fields",
+        "in corporate environments",
+        "in STEM fields",
+        "in healthcare professions",
+        "in leadership positions",
+        "in entrepreneurial contexts",
+        "manifests as"
+      ],
+      feedback: {
+        correct: "You've provided an insightful analysis of contextual manifestations. What developmental factors might influence the emergence of these psychological patterns?",
+        partial: "You've identified some contextual differences. Could you more thoroughly analyze how these patterns manifest differently across various professional and educational environments?",
+        incorrect: "Please analyze how impostor syndrome and perfectionism would manifest with different behaviors and thought patterns across various professional and educational contexts."
+      }
+    },
+    {
+      id: 5,
+      botMessage: "What developmental or early experience factors might contribute to the emergence of impostor syndrome and perfectionism?",
+      inputMode: "freeText",
+      suggestions: [
+        "Several developmental factors may contribute to these patterns. Parenting styles play a crucial role—particularly authoritarian or performance-oriented parenting where approval is contingent on achievement rather than effort or character. Children who receive praise primarily for outcomes ('You're so smart!') rather than process ('I notice how hard you worked') may develop contingent self-worth dependent on continued high achievement. Early experiences of being labeled as 'gifted,' 'talented,' or 'special' can paradoxically create pressure to maintain an identity centered on exceptional performance. Sibling dynamics, including comparison or differentiation based on academic or talent domains, can establish perfectionist tendencies. Significant early success followed by more challenging environments (e.g., being top of class in high school, then attending a competitive university) can trigger impostor feelings when effort becomes necessary where ability once sufficed. Attachment patterns also influence these tendencies—insecure attachment may manifest as persistent anxiety about maintaining relationships through achievement. Additionally, witnessing parents' own perfectionism or hearing regular self-criticism modeled by caregivers teaches children these cognitive patterns. Early experiences of discrimination or bias may lead individuals from marginalized groups to feel they must perform perfectly to overcome negative stereotypes, setting the stage for both impostor feelings and perfectionist standards.",
+        "Developmental pathways to these patterns typically begin in childhood. Family dynamics where love or approval seems performance-contingent teach children that their worth depends on achievement. Educational experiences where natural ability is praised over effort can establish fixed mindsets, making normal struggles feel threatening to identity. Early experiences of being 'the smart one' or 'the talented one' can create fragile identities centered on maintaining these labels. First-generation children navigating expectations of immigrant parents may internalize messages about success being necessary to justify family sacrifices. Comparative parenting that references siblings' or peers' achievements can establish unhealthy competition and perfectionist tendencies. Inconsistent feedback, where sometimes minor errors are heavily criticized while other times significant achievements receive minimal acknowledgment, creates confusion about standards and hypervigilance. Early experiences of failure without supportive processing can establish fear-based performance patterns. Additionally, attachment theorists note that children who feel they must be 'perfect' to maintain parental love develop insecure attachments that manifest in achievement domains. These early experiences establish neural pathways and cognitive schemas about self-worth, success, and failure that persist into adulthood, creating vulnerability to impostor feelings and perfectionist standards when triggered by achievement contexts.",
+        "Multiple developmental factors contribute to these psychological patterns. Early educational experiences that emphasize performance outcomes rather than learning processes may teach children to derive worth from achievements rather than growth. Family systems with high expectations and conditional positive regard create environments where children learn their value depends on meeting standards. Critical or perfectionistic parents model self-judgment while simultaneously establishing impossibly high benchmarks. Children identified as 'bright' or 'gifted' often develop fixed mindsets about intelligence, making normal struggles feel threatening to their core identity and triggering impostor feelings when effort becomes necessary. Birth order dynamics can contribute, with firstborns often experiencing higher expectations and developing stronger perfectionist tendencies. Early traumatic or adverse experiences may lead to compensatory high achievement as a form of control or worthiness. Cultural and intergenerational trauma can transmit messages about exceptionalism being necessary for acceptance or safety. Gender socialization teaches girls particularly to prioritize both achievement and likeability, creating double binds that foster perfectionism. Importantly, these are vulnerability factors rather than deterministic—the same developmental experiences interact with temperament, resilience factors, and later environments to produce varying outcomes. Theoretically, these early experiences establish internal working models about contingent worth that later manifest as impostor syndrome and perfectionism in achievement domains."
+      ],
+      hints: "Analyze how early developmental experiences and family dynamics might contribute to these psychological patterns.",
+      expectedKeywords: ["parenting", "childhood", "early experiences", "family", "praise", "gifted", "attachment", "expectations", "contingent", "worth", "developmental", "achievement"],
+      feedback: {
+        correct: "You've provided a sophisticated analysis of developmental factors. How might understanding these psychological patterns benefit both individuals and organizations?",
+        partial: "You've identified some developmental factors. Could you more thoroughly analyze early experiences and family dynamics that contribute to these patterns?",
+        incorrect: "Please analyze how early childhood experiences, parenting styles, or family dynamics might contribute to the development of impostor syndrome and perfectionism."
+      }
+    },
+    {
+      id: 6,
+      botMessage: "How might a better understanding of impostor syndrome and perfectionism benefit both individuals and organizations?",
+      inputMode: "hybrid",
+      suggestions: [
+        "Understanding these patterns offers multilevel benefits. For individuals, recognizing impostor syndrome and perfectionism as named, common phenomena rather than personal flaws reduces shame and isolation. This awareness creates space between thoughts and identity, enabling more adaptive responses to achievement situations. Individuals can develop healthier self-evaluation metrics based on growth and effort rather than flawless performance. For organizations, recognizing these patterns helps create cultures that maximize talent utilization rather than losing valuable contributions to psychological barriers. Organizations benefit when qualified employees pursue advancement rather than avoiding opportunities due to impostor fears. Understanding perfectionism helps organizations distinguish between healthy high standards and diminishing returns from excessive refinement. This knowledge can inform more effective feedback systems that balance constructive criticism with genuine recognition, and mentoring programs that address psychological barriers to performance. Additionally, education about these patterns may reduce burnout and improve retention of talented employees who might otherwise internalize normal workplace challenges as personal inadequacy. Ultimately, both individuals and organizations benefit when achievement can be pursued from a foundation of secure self-worth rather than driven by unexamined psychological patterns.",
+        "A deeper understanding of these psychological patterns creates significant advantages. For individuals, recognizing these patterns helps them distinguish between productive high standards and self-defeating perfectionism, allowing more strategic allocation of effort rather than diminishing returns from excessive refinement. Understanding impostor syndrome enables recognition of cognitive distortions rather than accepting them as reality, potentially reducing anxiety, procrastination, and overwork. Individuals can develop more nuanced definitions of success beyond binary perfect/failure categorizations. For organizations, this understanding informs more effective talent development strategies that address psychological barriers to advancement and support employees through transitional challenges rather than losing valuable talent to self-limitation. Organizations can design recognition systems that emphasize specific contributions rather than general praise, which is often discounted by those with impostor tendencies. Team dynamics improve when members understand these patterns, reducing both competitive perfectionism and the tendency to hide struggles. Leadership development particularly benefits from this awareness, as impostor tendencies often intensify during role transitions and leadership challenges. Overall, both individual well-being and organizational effectiveness improve when achievement-oriented environments recognize and address these common psychological patterns rather than inadvertently reinforcing them.",
+        "Understanding these psychological patterns creates substantial value at multiple levels. For individuals, recognizing impostor syndrome provides language and normalization for otherwise isolating experiences, reducing shame and enabling more objective self-assessment. Awareness creates cognitive distance from automatic thoughts like 'I'm a fraud,' allowing reframing to 'I'm experiencing impostor thoughts.' Understanding perfectionism helps differentiate between excellence and unattainable flawlessness, potentially reducing procrastination, work-life imbalance, and burnout. For organizations, this knowledge informs more effective talent management strategies—creating advancement pathways that don't require self-promotion, developing feedback systems that acknowledge effort alongside outcomes, and establishing mentoring that addresses psychological barriers. Culturally, organizations can reduce practices that inadvertently intensify these patterns, such as exclusively celebrating exceptional achievements while ignoring consistent contributions. Recognizing that these patterns disproportionately impact certain demographic groups helps organizations address equity issues that might otherwise be attributed to individual choice or capability. Ultimately, this understanding allows both individuals and organizations to foster psychological environments where talent is fully expressed and developed rather than constrained by unaddressed cognitive patterns—creating both wellbeing and performance benefits."
+      ],
+      hints: "Analyze benefits of understanding these patterns for both individuals and organizations.",
+      expectedKeywords: ["awareness", "recognize", "identify", "benefit", "reduce", "improve", "culture", "shame", "feedback", "mentoring", "development", "performance", "wellbeing"],
+      acceptablePhrases: [
+        "for individuals",
+        "for organizations",
+        "understanding helps",
+        "recognizing these patterns",
+        "awareness creates",
+        "reduces shame",
+        "improve performance",
+        "talent development"
+      ],
+      feedback: {
+        correct: "You've provided an insightful analysis of the benefits at both individual and organizational levels. Your psychological analysis throughout this discussion has been thorough and sophisticated.",
+        partial: "You've identified some benefits. Could you develop a more comprehensive analysis of how understanding these patterns benefits both individuals and organizations?",
+        incorrect: "Please analyze how a better understanding of impostor syndrome and perfectionism would benefit both individuals experiencing these patterns and the organizations they work within."
+      }
+    }
+  ],
+  completionMessage: "Excellent work! You've demonstrated sophisticated psychological analysis skills, applying theoretical concepts to understand complex psychological patterns, interventions, and contextual factors. This capacity for nuanced psychological reasoning is valuable in professional, educational, and personal contexts.",
+  learningObjectives: [
+    "Analyze psychological patterns using appropriate theoretical frameworks",
+    "Apply psychological concepts to understand behavior and motivation",
+    "Identify appropriate interventions for psychological patterns",
+    "Examine sociocultural influences on psychological development",
+    "Analyze contextual variations in psychological manifestations",
+    "Integrate developmental perspectives into psychological understanding"
+  ],
+  grammar: {
+    points: [
+      "Complex sentences with multiple subordinate clauses",
+      "Academic register with specialized terminology",
+      "Parallel structure in analytical descriptions",
+      "Hedging language for appropriate psychological speculation",
+      "Causal relationships and conditional structures"
+    ]
+  }
+};
+&nbsp;
+export default psychologicalAnalysis;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -36,6 +36,7 @@ const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, lo
         <Text style={[localStyles.progressText, { color: accentColor }]}>{percentage}%</Text>
       </View>
       <TouchableOpacity
+        testID="continue-activity-button"
         style={[localStyles.button, { backgroundColor: accentColor }]}
         onPress={handleContinue}
         activeOpacity={0.8}
@@ -52,6 +53,7 @@ const HeroEmptyCardContent = ({ accentColor, colors, handleLevelSelection, local
     <Text style={[localStyles.title, { color: colors.text }]}>Commencer l&apos;apprentissage</Text>
     <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}>Choisissez votre premier exercice</Text>
     <TouchableOpacity
+      testID="level-selection-button"
       style={[localStyles.button, { backgroundColor: accentColor }]}
       onPress={handleLevelSelection}
       activeOpacity={0.8}
@@ -95,7 +97,7 @@ const HeroContinueSection = ({
   // État vide - première utilisation
   if (!lastActivity) {
     return (
-      <View style={styles.container}>
+      <View testID="hero-empty-section" style={styles.container}>
         <Card style={[styles.card, { backgroundColor: colors.surface }]}>
           <HeroEmptyCardContent
             accentColor={accentColor}
@@ -109,7 +111,7 @@ const HeroContinueSection = ({
   }
 
   return (
-    <View style={styles.container}>
+    <View testID="hero-continue-section" style={styles.container}>
       <Card style={[styles.card, { backgroundColor: colors.surface }]}>
         <HeroCardContent
           lastActivity={lastActivity}

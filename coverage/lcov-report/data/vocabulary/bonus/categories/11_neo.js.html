@@ -1,0 +1,577 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/bonus/categories/11_neo.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/bonus/categories</a> 11_neo.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "BONUS 13/21 - Néologismes 2020s (Mots Nés de Notre Époque)",
+  words: [
+    // Dating &amp; relationships modern terms (25 mots)
+    { word: "ghosting", translation: "disparaître subitement", example: "He's been ghosting me for weeks." },
+    { word: "breadcrumbing", translation: "donner de faux espoirs", example: "She's breadcrumbing him with occasional texts." },
+    { word: "orbiting", translation: "tourner autour", example: "He's orbiting my social media but not messaging." },
+    { word: "cushioning", translation: "garder des options", example: "She's cushioning in case her relationship fails." },
+    { word: "benching", translation: "garder en réserve", example: "I think he's benching me." },
+    { word: "submarining", translation: "disparaître et réapparaître", example: "He's submarining - shows up randomly." },
+    { word: "soft launching", translation: "révélation progressive", example: "She's soft launching her new boyfriend." },
+    { word: "hard launching", translation: "révélation officielle", example: "Time to hard launch this relationship." },
+    { word: "love bombing", translation: "bombardement d'amour", example: "That's love bombing, not genuine affection." },
+    { word: "trauma dumping", translation: "déverser ses traumatismes", example: "Stop trauma dumping on first dates." },
+    { word: "emotional dumping", translation: "décharge émotionnelle", example: "That was emotional dumping, not sharing." },
+    { word: "situationship", translation: "relation floue", example: "We're in a situationship, not dating." },
+    { word: "talking stage", translation: "phase de discussion", example: "We're still in the talking stage." },
+    { word: "rizz", translation: "charisme", example: "He's got mad rizz with the ladies." },
+    { word: "mid", translation: "moyen", example: "His rizz is mid at best." },
+    { word: "era", translation: "époque", example: "I'm in my villain era right now." },
+    { word: "main character", translation: "personnage principal", example: "Living my main character era." },
+    { word: "side character", translation: "figurant", example: "I refuse to be a side character in my own life." },
+    { word: "NPC", translation: "personnage non-joueur", example: "Don't be an NPC, think for yourself." },
+    { word: "pick me", translation: "cherche validation", example: "That's such pick me behavior." },
+    { word: "chronically online", translation: "accro à internet", example: "You're chronically online, touch grass." },
+    { word: "touch grass", translation: "va dehors", example: "You need to touch grass and get some perspective." },
+    { word: "grass is green", translation: "évidence", example: "Water is wet, grass is green." },
+    { word: "ratio", translation: "surpasser", example: "That reply got ratio'd hard." },
+&nbsp;
+    // Mental health &amp; wellness terms (25 mots)
+    { word: "trauma bonding", translation: "lien traumatique", example: "That's trauma bonding, not real connection." },
+    { word: "trauma response", translation: "réaction traumatique", example: "That's just my trauma response kicking in." },
+    { word: "triggered", translation: "déclenché", example: "I'm triggered by loud noises now." },
+    { word: "hypervigilant", translation: "hypervigilant", example: "I'm hypervigilant in crowded places." },
+    { word: "dissociation", translation: "dissociation", example: "I experience dissociation during stress." },
+    { word: "disregulation", translation: "dérégulation", example: "I'm having emotional disregulation today." },
+    { word: "nervous system", translation: "système nerveux", example: "My nervous system is dysregulated." },
+    { word: "regulation", translation: "régulation", example: "I need some nervous system regulation." },
+    { word: "grounding", translation: "ancrage", example: "I use grounding techniques for anxiety." },
+    { word: "somatic", translation: "somatique", example: "Somatic therapy helps with trauma." },
+    { word: "embodiment", translation: "incarnation", example: "Practicing embodiment and mindfulness." },
+    { word: "nervous system activation", translation: "activation du système nerveux", example: "I'm feeling nervous system activation." },
+    { word: "window of tolerance", translation: "fenêtre de tolérance", example: "I'm outside my window of tolerance." },
+    { word: "co-regulation", translation: "corégulation", example: "We need co-regulation when upset." },
+    { word: "self-soothing", translation: "auto-apaisement", example: "Learning healthy self-soothing techniques." },
+    { word: "attachment style", translation: "style d'attachement", example: "My attachment style is anxious." },
+    { word: "secure attachment", translation: "attachement sécure", example: "Working toward secure attachment." },
+    { word: "anxious attachment", translation: "attachement anxieux", example: "I have anxious attachment tendencies." },
+    { word: "avoidant attachment", translation: "attachement évitant", example: "He shows avoidant attachment patterns." },
+    { word: "healing journey", translation: "chemin de guérison", example: "I'm on my healing journey right now." },
+    { word: "inner work", translation: "travail intérieur", example: "Doing the inner work on myself." },
+    { word: "shadow work", translation: "travail de l'ombre", example: "Shadow work helps integrate all parts." },
+    { word: "inner child", translation: "enfant intérieur", example: "Healing my inner child wounds." },
+    { word: "reparenting", translation: "reparentage", example: "Reparenting myself with compassion." },
+    { word: "boundary setting", translation: "établissement de limites", example: "Boundary setting is self-care." },
+&nbsp;
+    // Social media &amp; internet culture (25 mots)
+    { word: "doomscrolling", translation: "défilement morbide", example: "I spent hours doomscrolling the news." },
+    { word: "doom spending", translation: "dépenses de désespoir", example: "Doom spending because of anxiety." },
+    { word: "revenge bedtime procrastination", translation: "procrastination vengeresse du coucher", example: "I have revenge bedtime procrastination habits." },
+    { word: "phubbing", translation: "ignorer pour le téléphone", example: "Stop phubbing me during dinner!" },
+    { word: "digital detox", translation: "cure de désintox numérique", example: "I need a digital detox weekend." },
+    { word: "screen time", translation: "temps d'écran", example: "My screen time is out of control." },
+    { word: "doom and gloom", translation: "pessimisme", example: "Stop with the doom and gloom news." },
+    { word: "virtue signaling", translation: "vertu ostentatoire", example: "That post feels like virtue signaling." },
+    { word: "cancel culture", translation: "culture de l'annulation", example: "Cancel culture is controversial." },
+    { word: "call out culture", translation: "culture de dénonciation", example: "Call out culture can be toxic." },
+    { word: "outrage culture", translation: "culture de l'indignation", example: "Outrage culture is exhausting." },
+    { word: "echo chamber", translation: "chambre d'écho", example: "Social media creates echo chambers." },
+    { word: "filter bubble", translation: "bulle de filtres", example: "We're all stuck in filter bubbles." },
+    { word: "algorithm", translation: "algorithme", example: "The algorithm is showing me weird content." },
+    { word: "chronically online", translation: "chroniquement en ligne", example: "That take is chronically online." },
+    { word: "extremely online", translation: "extrêmement en ligne", example: "That's an extremely online opinion." },
+    { word: "terminally online", translation: "terminalement en ligne", example: "You're terminally online, go outside." },
+    { word: "IRL", translation: "dans la vraie vie", example: "Let's meet IRL sometime." },
+    { word: "touch grass", translation: "toucher l'herbe", example: "You need to touch grass more often." },
+    { word: "grass touching", translation: "toucher l'herbe", example: "Some grass touching would help." },
+    { word: "go outside", translation: "sortir dehors", example: "Go outside and get some fresh air." },
+    { word: "be so for real", translation: "sois sérieux", example: "Be so for real right now." },
+    { word: "not you", translation: "pas toi", example: "Not you defending that!" },
+    { word: "the way", translation: "la façon", example: "The way I screamed at this!" },
+    { word: "not me", translation: "pas moi", example: "Not me crying at this TikTok." },
+&nbsp;
+    // Work &amp; productivity culture (25 mots)
+    { word: "workation", translation: "vacances-travail", example: "I'm planning a workation in Bali." },
+    { word: "hybrid work", translation: "travail hybride", example: "We're doing hybrid work now." },
+    { word: "remote work", translation: "télétravail", example: "Remote work is the new normal." },
+    { word: "WFH", translation: "travail à domicile", example: "WFH life is different." },
+    { word: "Zoom fatigue", translation: "fatigue Zoom", example: "I have serious Zoom fatigue." },
+    { word: "burnout", translation: "épuisement professionnel", example: "I'm experiencing burnout at work." },
+    { word: "quiet quitting", translation: "démission silencieuse", example: "Quiet quitting is becoming common." },
+    { word: "rage quitting", translation: "démission colère", example: "He rage quit during the meeting." },
+    { word: "great resignation", translation: "grande démission", example: "The great resignation changed everything." },
+    { word: "antiwork", translation: "anti-travail", example: "The antiwork movement is growing." },
+    { word: "hustle culture", translation: "culture du hustle", example: "Hustle culture is toxic." },
+    { word: "grind culture", translation: "culture du grind", example: "Grind culture burns people out." },
+    { word: "side hustle", translation: "activité secondaire", example: "My side hustle became my main job." },
+    { word: "passion economy", translation: "économie de la passion", example: "The passion economy is booming." },
+    { word: "creator economy", translation: "économie des créateurs", example: "The creator economy changed media." },
+    { word: "gig economy", translation: "économie des petits boulots", example: "The gig economy lacks benefits." },
+    { word: "flexible work", translation: "travail flexible", example: "Flexible work arrangements are key." },
+    { word: "work-life balance", translation: "équilibre vie-travail", example: "Work-life balance is important." },
+    { word: "work-life integration", translation: "intégration vie-travail", example: "Work-life integration over balance." },
+    { word: "productivity culture", translation: "culture de productivité", example: "Productivity culture can be harmful." },
+    { word: "optimization", translation: "optimisation", example: "Life optimization is trending." },
+    { word: "biohacking", translation: "biohacking", example: "Biohacking for better performance." },
+    { word: "wellness culture", translation: "culture du bien-être", example: "Wellness culture is everywhere now." },
+    { word: "self-care", translation: "prendre soin de soi", example: "Self-care isn't selfish." },
+    { word: "self-optimization", translation: "auto-optimisation", example: "Self-optimization can become toxic." },
+&nbsp;
+    // Cultural &amp; social phenomena (25 mots)
+    { word: "adulting", translation: "faire l'adulte", example: "Adulting is harder than I thought." },
+    { word: "soft life", translation: "vie douce", example: "Living that soft life aesthetic." },
+    { word: "soft girl era", translation: "ère fille douce", example: "I'm in my soft girl era." },
+    { word: "clean girl", translation: "fille naturelle", example: "The clean girl aesthetic is popular." },
+    { word: "that girl", translation: "cette fille", example: "Trying to be that girl who has it together." },
+    { word: "hot girl summer", translation: "été de fille chaude", example: "It's hot girl summer time!" },
+    { word: "villain era", translation: "ère méchant", example: "I'm entering my villain era." },
+    { word: "healing era", translation: "ère de guérison", example: "This is my healing era." },
+    { word: "growth era", translation: "ère de croissance", example: "I'm in my growth era right now." },
+    { word: "glow up", translation: "transformation", example: "Her glow up is incredible!" },
+    { word: "level up", translation: "monter de niveau", example: "Time to level up my life." },
+    { word: "upgrade", translation: "amélioration", example: "This is definitely an upgrade." },
+    { word: "downgrade", translation: "déclassement", example: "Going back to him is a downgrade." },
+    { word: "energy", translation: "énergie", example: "I don't like his energy." },
+    { word: "vibe", translation: "vibe", example: "The vibe is off today." },
+    { word: "aura", translation: "aura", example: "She has such a positive aura." },
+    { word: "frequency", translation: "fréquence", example: "We're on different frequencies." },
+    { word: "manifestation", translation: "manifestation", example: "Manifestation culture is huge now." },
+    { word: "manifesting", translation: "manifester", example: "I'm manifesting a promotion." },
+    { word: "abundance mindset", translation: "mentalité d'abondance", example: "Cultivate an abundance mindset." },
+    { word: "scarcity mindset", translation: "mentalité de rareté", example: "That's scarcity mindset thinking." },
+    { word: "mindset shift", translation: "changement de mentalité", example: "I need a mindset shift." },
+    { word: "perspective shift", translation: "changement de perspective", example: "That gave me a perspective shift." },
+    { word: "paradigm shift", translation: "changement de paradigme", example: "We need a paradigm shift." },
+    { word: "plot twist", translation: "rebondissement", example: "Plot twist: he was lying!" },
+&nbsp;
+    // Generational &amp; identity terms (25 mots)
+    { word: "generational trauma", translation: "traumatisme générationnel", example: "Breaking generational trauma cycles." },
+    { word: "generational wealth", translation: "richesse générationnelle", example: "Building generational wealth." },
+    { word: "generational gap", translation: "écart générationnel", example: "The generational gap is real." },
+    { word: "OK boomer", translation: "ok boomer", example: "Climate change is real, OK boomer." },
+    { word: "millennial", translation: "millénaire", example: "As a millennial, I can't afford houses." },
+    { word: "Gen Z", translation: "génération Z", example: "Gen Z humor is different." },
+    { word: "Gen Alpha", translation: "génération Alpha", example: "Gen Alpha kids are iPad babies." },
+    { word: "elder millennial", translation: "millénaire âgé", example: "I'm an elder millennial now." },
+    { word: "geriatric millennial", translation: "millénaire gériatrique", example: "Geriatric millennials remember dial-up." },
+    { word: "zillennial", translation: "zillennial", example: "Zillennials bridge the gap." },
+    { word: "digital native", translation: "natif numérique", example: "They're digital natives." },
+    { word: "iPad kid", translation: "enfant iPad", example: "These iPad kids can't focus." },
+    { word: "chronically online", translation: "chroniquement en ligne", example: "That's chronically online behavior." },
+    { word: "touch grass", translation: "toucher l'herbe", example: "You need to touch grass." },
+    { word: "go outside", translation: "sortir", example: "Please go outside and socialize." },
+    { word: "IRL friends", translation: "amis dans la vraie vie", example: "I need more IRL friends." },
+    { word: "online persona", translation: "personnage en ligne", example: "That's just his online persona." },
+    { word: "authentic self", translation: "soi authentique", example: "Being my authentic self." },
+    { word: "curated life", translation: "vie organisée", example: "Stop living a curated life." },
+    { word: "performative", translation: "performatif", example: "That feels performative." },
+    { word: "aesthetic", translation: "esthétique", example: "That's not my aesthetic." },
+    { word: "vibe check", translation: "contrôle de vibe", example: "Time for a vibe check." },
+    { word: "energy check", translation: "contrôle d'énergie", example: "Energy check: you okay?" },
+    { word: "mental health check", translation: "contrôle santé mentale", example: "Mental health check-in time." },
+    { word: "wellness check", translation: "contrôle bien-être", example: "Just doing a wellness check." }
+  ]
+};</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

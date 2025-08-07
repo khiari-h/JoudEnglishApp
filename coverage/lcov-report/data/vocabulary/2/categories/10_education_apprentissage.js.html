@@ -1,0 +1,415 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/2/categories/10_education_apprentissage.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/2/categories</a> 10_education_apprentissage.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Éducation &amp; Apprentissage",
+  words: [
+    // Système scolaire
+    { word: "education system", translation: "système éducatif", example: "The education system varies from country to country." },
+    { word: "elementary school", translation: "école primaire", example: "My daughter starts elementary school next year." },
+    { word: "middle school", translation: "collège", example: "In many countries, students attend middle school from ages 11 to 14." },
+&nbsp;
+    { word: "nursery school", translation: "crèche", example: "Children can attend nursery school from a very young age." },
+    { word: "public school", translation: "école publique", example: "Most children in our neighborhood go to public school." },
+    { word: "private school", translation: "école privée", example: "Private schools often have smaller class sizes." },
+    { word: "boarding school", translation: "internat", example: "Some parents send their children to boarding school." },
+    { word: "grade", translation: "niveau/classe", example: "My daughter is in fifth grade." },
+    { word: "semester", translation: "semestre", example: "The school year is divided into two semesters." },
+    { word: "term", translation: "trimestre", example: "Report cards are given at the end of each term." },
+    { word: "academic year", translation: "année scolaire/universitaire", example: "The academic year usually starts in September." },
+&nbsp;
+    // Matières scolaires
+    { word: "subject", translation: "matière", example: "What's your favorite subject at school?" },
+    { word: "mathematics", translation: "mathématiques", example: "Mathematics is a challenging subject for many students." },
+    { word: "science", translation: "sciences", example: "He's very interested in science." },
+    { word: "biology", translation: "biologie", example: "We're studying the human body in biology." },
+    { word: "chemistry", translation: "chimie", example: "Chemistry involves a lot of laboratory work." },
+    { word: "physics", translation: "physique", example: "Physics helps us understand how the world works." },
+    { word: "history", translation: "histoire", example: "We're learning about ancient civilizations in history class." },
+    { word: "geography", translation: "géographie", example: "In geography, we study maps and different countries." },
+    { word: "literature", translation: "littérature", example: "We read classic novels in literature class." },
+&nbsp;
+    { word: "physical education", translation: "éducation physique", example: "Physical education helps students stay fit and healthy." },
+    { word: "foreign language", translation: "langue étrangère", example: "Learning a foreign language is important in today's global world." },
+    { word: "social studies", translation: "sciences sociales", example: "Social studies covers topics like civics and economics." },
+    { word: "computer science", translation: "informatique", example: "Computer science is becoming increasingly important in the curriculum." },
+&nbsp;
+    // Matériel scolaire
+    { word: "textbook", translation: "manuel scolaire", example: "Our textbooks are quite heavy to carry." },
+    { word: "notebook", translation: "cahier", example: "I write all my notes in my notebook." },
+    { word: "workbook", translation: "cahier d'exercices", example: "Complete the exercises in your workbook for homework." },
+    { word: "binder", translation: "classeur", example: "I keep all my class handouts in a binder." },
+&nbsp;
+    { word: "highlighter", translation: "surligneur", example: "I use a highlighter to mark important information." },
+&nbsp;
+    { word: "calculator", translation: "calculatrice", example: "You're allowed to use a calculator during the math exam." },
+    { word: "ruler", translation: "règle", example: "Use a ruler to draw straight lines." },
+    { word: "protractor", translation: "rapporteur", example: "You need a protractor to measure angles." },
+    { word: "compass", translation: "compas", example: "Draw a circle using a compass." },
+    { word: "dictionary", translation: "dictionnaire", example: "Look up the word in the dictionary." },
+    { word: "library card", translation: "carte de bibliothèque", example: "You need a library card to borrow books." },
+&nbsp;
+    // Personnel éducatif
+&nbsp;
+    { word: "principal", translation: "directeur (d'école)", example: "You need the principal's permission for this activity." },
+    { word: "headmaster", translation: "proviseur", example: "The headmaster gave a speech at the graduation ceremony." },
+    { word: "professor", translation: "professeur (université)", example: "Professor Smith teaches economics at the university." },
+    { word: "lecturer", translation: "maître de conférences", example: "The lecturer explained the concept clearly." },
+    { word: "tutor", translation: "tuteur", example: "I have a math tutor who helps me once a week." },
+    { word: "substitute teacher", translation: "professeur remplaçant", example: "We had a substitute teacher yesterday because our regular teacher was sick." },
+    { word: "counselor", translation: "conseiller d'orientation", example: "The school counselor helps students choose their future careers." },
+    { word: "school psychologist", translation: "psychologue scolaire", example: "The school psychologist works with students who have learning difficulties." },
+    { word: "librarian", translation: "bibliothécaire", example: "Ask the librarian if you can't find the book you're looking for." },
+    { word: "teaching assistant", translation: "assistant d'éducation", example: "The teaching assistant helps the teacher with classroom activities." },
+&nbsp;
+    { word: "faculty", translation: "corps enseignant", example: "The faculty at this university is highly qualified." },
+    { word: "school board", translation: "conseil scolaire", example: "The school board decides on educational policies." },
+&nbsp;
+    // Activités d'apprentissage
+    { word: "lesson", translation: "leçon", example: "Today's lesson is about the Industrial Revolution." },
+    { word: "lecture", translation: "cours magistral", example: "I attended a fascinating lecture on quantum physics." },
+    { word: "seminar", translation: "séminaire", example: "The seminar involved small group discussions." },
+    { word: "tutorial", translation: "travaux dirigés", example: "The tutorial helps students apply what they've learned in lectures." },
+&nbsp;
+    { word: "field trip", translation: "sortie scolaire", example: "The class went on a field trip to the museum." },
+    { word: "group work", translation: "travail de groupe", example: "Group work helps develop collaboration skills." },
+    { word: "presentation", translation: "exposé", example: "I'm nervous about giving my presentation tomorrow." },
+    { word: "research", translation: "recherche", example: "Students learn to do research for their projects." },
+    { word: "homework", translation: "devoirs", example: "I have a lot of homework to do tonight." },
+    { word: "assignment", translation: "devoir/travail à rendre", example: "The assignment is due next week." },
+    { word: "project", translation: "projet", example: "We're working on a science project this semester." },
+    { word: "debate", translation: "débat", example: "The debate club meets every Thursday." },
+    { word: "discussion", translation: "discussion", example: "We had an interesting class discussion about the book." },
+&nbsp;
+    // Évaluations simples
+    { word: "test", translation: "contrôle", example: "We have a vocabulary test tomorrow." },
+    { word: "exam", translation: "examen", example: "I'm studying for my final exams." },
+    { word: "quiz", translation: "interrogation écrite", example: "The teacher gives a quiz every Friday." },
+    { word: "assessment", translation: "évaluation", example: "Regular assessments help track students' progress." },
+&nbsp;
+    { word: "score", translation: "score/résultat", example: "What was your score on the math quiz?" },
+&nbsp;
+    { word: "fail", translation: "échouer", example: "If you don't study, you might fail the test." },
+    { word: "oral exam", translation: "examen oral", example: "I have an oral exam in Spanish next week." },
+    { word: "written exam", translation: "examen écrit", example: "The written exam is three hours long." },
+    { word: "multiple choice", translation: "questionnaire à choix multiples", example: "Multiple choice questions are easier than essay questions." },
+    { word: "true or false", translation: "vrai ou faux", example: "The first part of the test is true or false questions." },
+    { word: "essay", translation: "rédaction/dissertation", example: "I need to write a 500-word essay for my English class." },
+    { word: "report card", translation: "bulletin scolaire", example: "Report cards are sent to parents at the end of each term." },
+    { word: "feedback", translation: "retour/commentaires", example: "The teacher gives detailed feedback on all assignments." },
+&nbsp;
+    // Formation continue basique
+    { word: "adult education", translation: "formation pour adultes", example: "Adult education classes are offered in the evenings." },
+    { word: "continuing education", translation: "formation continue", example: "Many professionals take continuing education courses." },
+    { word: "distance learning", translation: "enseignement à distance", example: "Distance learning allows people to study from home." },
+    { word: "online course", translation: "cours en ligne", example: "I'm taking an online course in web development." },
+    { word: "vocational training", translation: "formation professionnelle", example: "Vocational training prepares students for specific careers." },
+    { word: "internship", translation: "stage", example: "She did an internship at a local newspaper." },
+    { word: "certification", translation: "certification", example: "This program offers certification in computer skills." },
+    { word: "diploma", translation: "diplôme", example: "You'll receive a diploma upon completion of the course." },
+&nbsp;
+    { word: "lifelong learning", translation: "apprentissage tout au long de la vie", example: "Lifelong learning is important in today's changing world." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

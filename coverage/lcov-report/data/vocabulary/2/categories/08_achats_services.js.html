@@ -1,0 +1,421 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/2/categories/08_achats_services.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/2/categories</a> 08_achats_services.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Achats &amp; Services",
+  words: [
+    // Types de commerces spécifiques
+    { word: "shopping mall", translation: "centre commercial", example: "Let's meet at the shopping mall this afternoon." },
+&nbsp;
+    { word: "hardware store", translation: "quincaillerie", example: "I need to go to the hardware store to buy some tools." },
+    { word: "electronics store", translation: "magasin d'électronique", example: "I bought my new laptop at the electronics store." },
+    { word: "furniture store", translation: "magasin de meubles", example: "We're going to a furniture store to look for a new sofa." },
+    { word: "stationery shop", translation: "papeterie", example: "I need to buy some notebooks at the stationery shop." },
+    { word: "jeweler", translation: "bijoutier", example: "She bought her wedding ring at the local jeweler." },
+    { word: "florist", translation: "fleuriste", example: "I ordered flowers for my mother from the florist." },
+    { word: "optical store", translation: "opticien", example: "I'm going to the optical store to get new glasses." },
+    { word: "DIY store", translation: "magasin de bricolage", example: "We bought paint at the DIY store." },
+    { word: "garden center", translation: "jardinerie", example: "The garden center sells a variety of plants and gardening tools." },
+    { word: "boutique", translation: "boutique", example: "She owns a small boutique selling handmade jewelry." },
+    { word: "outlet", translation: "magasin d'usine", example: "You can find discounted brand items at the outlet." },
+    { word: "wholesale market", translation: "marché de gros", example: "Restaurants buy their supplies at the wholesale market." },
+&nbsp;
+    // Sections de magasin
+    { word: "aisle", translation: "rayon/allée", example: "You'll find pasta in aisle 5." },
+    { word: "checkout", translation: "caisse", example: "There's a long line at the checkout." },
+    { word: "customer service", translation: "service client", example: "If you have any problems, go to customer service." },
+    { word: "changing room", translation: "cabine d'essayage", example: "She tried on several dresses in the changing room." },
+    { word: "food court", translation: "aire de restauration", example: "Let's have lunch at the food court in the mall." },
+    { word: "entrance", translation: "entrée", example: "We'll meet at the main entrance." },
+    { word: "exit", translation: "sortie", example: "The emergency exit is at the back of the store." },
+    { word: "produce section", translation: "rayon fruits et légumes", example: "The produce section has fresh local vegetables." },
+    { word: "dairy section", translation: "rayon produits laitiers", example: "You'll find milk in the dairy section." },
+    { word: "bakery section", translation: "rayon boulangerie", example: "The bakery section smells wonderful in the morning." },
+    { word: "frozen food section", translation: "rayon surgelés", example: "Ice cream is in the frozen food section." },
+    { word: "electronics department", translation: "rayon électronique", example: "TVs are in the electronics department." },
+    { word: "clothing department", translation: "rayon vêtements", example: "The clothing department is on the second floor." },
+    { word: "fitting room", translation: "cabine d'essayage", example: "She took several dresses into the fitting room." },
+    { word: "return desk", translation: "comptoir des retours", example: "If you want to return an item, go to the return desk." },
+&nbsp;
+    // Produits par catégories
+    { word: "household goods", translation: "articles ménagers", example: "We need to buy some household goods for our new apartment." },
+    { word: "toiletries", translation: "produits de toilette", example: "Don't forget to pack toiletries for the trip." },
+    { word: "stationery", translation: "papeterie", example: "I need to buy some stationery for school." },
+    { word: "appliances", translation: "appareils électroménagers", example: "We need to replace some kitchen appliances." },
+    { word: "electronics", translation: "produits électroniques", example: "This store sells all kinds of electronics." },
+    { word: "accessories", translation: "accessoires", example: "The shop sells fashion accessories like scarves and hats." },
+    { word: "school supplies", translation: "fournitures scolaires", example: "Parents buy school supplies in August." },
+    { word: "office supplies", translation: "fournitures de bureau", example: "We need to order more office supplies." },
+    { word: "groceries", translation: "provisions", example: "I need to buy groceries for the week." },
+    { word: "cosmetics", translation: "cosmétiques", example: "She works at the cosmetics counter." },
+    { word: "prescription drugs", translation: "médicaments sur ordonnance", example: "You can only get prescription drugs at a pharmacy." },
+    { word: "over-the-counter drugs", translation: "médicaments sans ordonnance", example: "You can buy over-the-counter drugs for a common cold." },
+    { word: "frozen goods", translation: "produits surgelés", example: "Frozen goods are convenient when you're busy." },
+    { word: "fresh produce", translation: "produits frais", example: "I always try to buy fresh produce from local farmers." },
+&nbsp;
+    // Transactions commerciales
+&nbsp;
+    { word: "warranty", translation: "garantie", example: "This laptop comes with a two-year warranty." },
+    { word: "refund", translation: "remboursement", example: "If you're not satisfied, you can get a refund." },
+    { word: "exchange", translation: "échange", example: "If it doesn't fit, you can make an exchange." },
+&nbsp;
+    { word: "loyalty card", translation: "carte de fidélité", example: "Use your loyalty card to earn points." },
+    { word: "gift card", translation: "carte-cadeau", example: "I got a gift card for my birthday." },
+    { word: "installment", translation: "versement/mensualité", example: "You can pay in installments over six months." },
+&nbsp;
+    { word: "shipping", translation: "expédition", example: "The shipping cost depends on the destination." },
+    { word: "order", translation: "commande", example: "I placed an order online yesterday." },
+    { word: "invoice", translation: "facture", example: "The company will send you an invoice." },
+    { word: "payment", translation: "paiement", example: "We accept various methods of payment." },
+    { word: "bargain", translation: "bonne affaire", example: "This coat was a real bargain." },
+&nbsp;
+    // Services bancaires basiques
+    { word: "bank account", translation: "compte bancaire", example: "You need to open a bank account to receive your salary." },
+    { word: "savings account", translation: "compte d'épargne", example: "Put some money in your savings account every month." },
+    { word: "checking account", translation: "compte courant", example: "I use my checking account for daily expenses." },
+&nbsp;
+    { word: "debit card", translation: "carte de débit", example: "I prefer using my debit card for shopping." },
+    { word: "PIN", translation: "code PIN", example: "Never share your PIN with anyone." },
+    { word: "to withdraw", translation: "retirer", example: "I need to withdraw some cash from the ATM." },
+    { word: "to deposit", translation: "déposer", example: "I deposited my check at the bank yesterday." },
+    { word: "ATM", translation: "distributeur automatique", example: "There's an ATM on the corner." },
+    { word: "bank statement", translation: "relevé bancaire", example: "Check your bank statement for any unusual transactions." },
+    { word: "to transfer", translation: "virer/transférer", example: "I'll transfer the money to your account." },
+    { word: "loan", translation: "prêt", example: "They took out a loan to buy their house." },
+&nbsp;
+    { word: "balance", translation: "solde", example: "I need to check my account balance." },
+&nbsp;
+    // Services publics
+&nbsp;
+    { word: "utility company", translation: "entreprise de service public", example: "Contact the utility company if you have problems with your electricity." },
+&nbsp;
+    { word: "garbage collection", translation: "collecte des ordures", example: "Garbage collection is on Tuesdays and Fridays." },
+&nbsp;
+    { word: "employment agency", translation: "agence pour l'emploi", example: "The employment agency helps people find jobs." },
+    { word: "tourism office", translation: "office de tourisme", example: "We got a map at the tourism office." },
+    { word: "tax office", translation: "centre des impôts", example: "You need to file your tax return at the tax office." },
+    { word: "public service", translation: "service public", example: "Education is an essential public service." },
+    { word: "government agency", translation: "agence gouvernementale", example: "This form is issued by a government agency." },
+    { word: "citizen service", translation: "service aux citoyens", example: "The citizen service desk is open from 9 to 5." },
+&nbsp;
+    // Publicité simple
+    { word: "advertisement", translation: "publicité", example: "I saw an advertisement for this product on TV." },
+    { word: "commercial", translation: "spot publicitaire", example: "They broadcast the commercial during the football game." },
+    { word: "poster", translation: "affiche", example: "There's a poster advertising the concert in the shop window." },
+    { word: "flyer", translation: "prospectus", example: "They were distributing flyers outside the supermarket." },
+    { word: "promotion", translation: "promotion", example: "The store is running a promotion this weekend." },
+&nbsp;
+    { word: "special offer", translation: "offre spéciale", example: "There's a special offer on kitchen appliances." },
+    { word: "discount coupon", translation: "bon de réduction", example: "I have a discount coupon for this restaurant." },
+    { word: "two-for-one", translation: "deux pour le prix d'un", example: "They have a two-for-one offer on pizzas on Tuesdays." },
+    { word: "free sample", translation: "échantillon gratuit", example: "They were giving out free samples of the new chocolate." },
+    { word: "brand", translation: "marque", example: "This is a well-known brand of coffee." },
+    { word: "slogan", translation: "slogan", example: "Their slogan is 'Just Do It'." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -79,6 +79,7 @@ const CardButton = ({ exercise, handleExercisePress, localStyles }) => (
     onPress={handleExercisePress(exercise)}
     style={localStyles.startButton}
     rightIcon={exercise.hasProgress ? "play-outline" : "rocket-outline"}
+    testID={`${exercise.id}-button`}
   />
 );
 
@@ -94,6 +95,7 @@ const ExerciseCardContent = ({ exercise, colors, localStyles, handleExercisePres
 // Sous-composant pour la section liste d'exercices
 const ExerciseListSection = ({ colors, localStyles, exercises, renderExerciseCard }) => (
   <ScrollView
+    testID="exercises-scroll"
     style={{ flex: 1 }}
     contentContainerStyle={[localStyles.scrollContent, { paddingBottom: 60 }]}
     showsVerticalScrollIndicator={false}
@@ -212,6 +214,7 @@ const ExerciseSelection = ({ level }) => {
           withStatusBar={false}
           withShadow={false}
           titleContainerStyle={styles.headerTitle}
+          testID="exercises-header"
         />
 
         {level === "bonus" && (
@@ -229,6 +232,7 @@ const ExerciseSelection = ({ level }) => {
     return (
       <TouchableOpacity
         key={exercise.id}
+        testID={`${exercise.id}-exercise`}
         style={styles.levelCard}
         onPress={handleExercisePress(exercise)}
         activeOpacity={0.8}
@@ -240,6 +244,7 @@ const ExerciseSelection = ({ level }) => {
 
   return (
     <Container
+      testID="exercise-selection-container"
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.NO_BOTTOM}
       withScrollView={false}

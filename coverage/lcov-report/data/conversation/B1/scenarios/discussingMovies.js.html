@@ -1,0 +1,610 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/B1/scenarios/discussingMovies.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/B1/scenarios</a> discussingMovies.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/B1/scenarios/discussingMovies.js
+&nbsp;
+const discussingMovies = {
+    id: 2,
+    title: "Discussing Movies",
+    level: "B1",
+    description: "Learn how to discuss movies with nuanced opinions, analyze plots and express preferences about cinema.",
+    estimatedTime: "15-20 minutes",
+    vocabulary: ["film", "cinéma", "acteur", "réalisateur", "scénario", "intrigue", "critique", "genre", "effets spéciaux", "chef-d'œuvre"],
+    steps: [
+      {
+        id: 1,
+        botMessage: "Salut ! J'ai vu que tu étais allé(e) au cinéma récemment. Quel film as-tu vu ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "J'ai vu le nouveau film d'action avec Tom Cruise. Les effets spéciaux étaient impressionnants !",
+          "Je suis allé(e) voir le dernier film de science-fiction qui vient de sortir. L'histoire était vraiment originale.",
+          "J'ai regardé un documentaire sur la nature. C'était à la fois éducatif et visuellement magnifique."
+        ],
+        hints: "Mentionnez un film que vous avez vu récemment et ajoutez un commentaire général.",
+        expectedKeywords: ["vu", "film", "action", "science-fiction", "documentaire", "effets", "spéciaux", "histoire", "originale", "éducatif"],
+        feedback: {
+          correct: "Oh, intéressant ! Qu'est-ce qui t'a plu dans ce film ?",
+          incorrect: "Parle-moi d'un film que tu as vu récemment et ce que tu en as pensé."
+        }
+      },
+      {
+        id: 2,
+        botMessage: "Qu'est-ce qui t'a particulièrement plu dans ce film ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "J'ai beaucoup aimé la performance des acteurs, surtout le rôle principal qui était très convaincant dans ses émotions.",
+          "Ce qui m'a impressionné(e), c'est la qualité de la photographie et la façon dont le réalisateur a créé l'atmosphère du film.",
+          "L'histoire était captivante du début à la fin, avec des rebondissements que je n'avais pas prévus."
+        ],
+        hints: "Expliquez ce que vous avez apprécié dans le film en donnant des détails précis.",
+        expectedKeywords: ["aimé", "performance", "acteurs", "impressionné", "photographie", "réalisateur", "atmosphère", "histoire", "captivante", "rebondissements"],
+        acceptablePhrases: [
+          "j'ai beaucoup aimé",
+          "ce qui m'a impressionné",
+          "l'histoire était",
+          "j'ai apprécié"
+        ],
+        feedback: {
+          correct: "Je vois. Et y avait-il des aspects du film que tu as moins appréciés ?",
+          partial: "C'est un bon point. Y a-t-il d'autres éléments qui t'ont marqué(e) ?",
+          incorrect: "Donne-moi des détails sur ce que tu as particulièrement apprécié dans ce film."
+        }
+      },
+      {
+        id: 3,
+        botMessage: "Y a-t-il des aspects du film que tu as moins appréciés ou qui auraient pu être améliorés selon toi ?",
+        inputMode: "freeText",
+        suggestions: [
+          "Le film était un peu trop long à mon goût, certaines scènes auraient pu être raccourcies sans perdre le fil de l'histoire.",
+          "Je trouve que la fin était prévisible et manquait d'originalité par rapport au reste du film qui était innovant.",
+          "Les dialogues étaient parfois un peu artificiels, ce qui rendait certaines scènes moins crédibles malgré le bon jeu des acteurs."
+        ],
+        hints: "Mentionnez des éléments du film que vous avez moins aimés en justifiant votre opinion.",
+        expectedKeywords: ["long", "scènes", "raccourcies", "fin", "prévisible", "manquait", "originalité", "dialogues", "artificiels", "crédibles"],
+        feedback: {
+          correct: "C'est une critique intéressante. Qu'as-tu pensé des personnages principaux du film ?",
+          partial: "Je comprends ton point de vue. Cet aspect aurait effectivement pu être travaillé différemment.",
+          incorrect: "Indique des éléments du film qui t'ont moins plu ou qui auraient pu être améliorés selon toi."
+        }
+      },
+      {
+        id: 4,
+        botMessage: "Les personnages du film t'ont-ils semblé bien développés et crédibles ? Lequel as-tu préféré et pourquoi ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "J'ai trouvé que le personnage principal avait une vraie évolution psychologique tout au long du film. Sa transformation était subtile et convaincante.",
+          "Le personnage secondaire m'a semblé plus intéressant que le héros, avec un passé mystérieux et des motivations complexes qui nous font réfléchir.",
+          "Honnêtement, les personnages manquaient de profondeur. Ils suivaient des archétypes assez classiques sans vraiment nous surprendre."
+        ],
+        hints: "Donnez votre opinion sur les personnages du film et expliquez quel personnage vous avez préféré.",
+        expectedKeywords: ["personnage", "principal", "évolution", "psychologique", "transformation", "secondaire", "intéressant", "passé", "motivations", "profondeur"],
+        feedback: {
+          correct: "C'est une analyse pertinente des personnages. Ce film te fait-il penser à d'autres films que tu as vus ?",
+          incorrect: "Donne ton avis sur les personnages du film et dis-moi lequel tu as préféré."
+        }
+      },
+      {
+        id: 5,
+        botMessage: "Est-ce que ce film te fait penser à d'autres œuvres similaires ? Comment le comparerais-tu à d'autres films du même genre ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Ce film m'a rappelé certaines œuvres de Christopher Nolan, notamment pour la complexité narrative et les questionnements philosophiques qu'il soulève.",
+          "Il s'inspire clairement des classiques du genre, mais apporte une touche moderne et des perspectives nouvelles que je n'avais pas vues ailleurs.",
+          "J'ai trouvé qu'il était assez conventionnel comparé à d'autres films récents sur le même thème. Il n'apporte pas vraiment d'éléments novateurs."
+        ],
+        hints: "Comparez ce film à d'autres œuvres similaires en expliquant les points communs et les différences.",
+        expectedKeywords: ["rappelé", "œuvres", "complexité", "s'inspire", "classiques", "genre", "touche", "moderne", "conventionnel", "novateurs"],
+        feedback: {
+          correct: "C'est une comparaison intéressante. Recommanderais-tu ce film ? Et à quel type de public ?",
+          partial: "Tu as raison de faire ce parallèle. Penses-tu que ce film se démarque dans ce genre ?",
+          incorrect: "Compare ce film à d'autres œuvres similaires que tu connais."
+        }
+      },
+      {
+        id: 6,
+        botMessage: "Recommanderais-tu ce film à d'autres personnes ? Si oui, à quel type de public conviendrait-il particulièrement ?",
+        inputMode: "freeText",
+        suggestions: [
+          "Oui, je le recommanderais surtout aux amateurs de thrillers psychologiques qui aiment les films qui font réfléchir et qui ne dévoilent pas tout immédiatement.",
+          "Je le conseillerais aux personnes qui apprécient les effets spéciaux impressionnants et l'action, mais pas à ceux qui cherchent une intrigue complexe ou des dialogues sophistiqués.",
+          "Je pense que ce film plairait particulièrement aux fans du réalisateur et aux cinéphiles qui s'intéressent aux techniques cinématographiques innovantes, moins au grand public."
+        ],
+        hints: "Indiquez si vous recommanderiez ce film et à quel public spécifique il conviendrait le mieux.",
+        expectedKeywords: ["recommanderais", "amateurs", "thrillers", "psychologiques", "réfléchir", "effets", "spéciaux", "action", "intrigue", "cinéphiles"],
+        acceptablePhrases: [
+          "je le recommanderais",
+          "je le conseillerais",
+          "ce film plairait",
+          "il conviendrait"
+        ],
+        feedback: {
+          correct: "C'est un bon conseil. Quel est ton genre de film préféré en général ?",
+          partial: "Je comprends ton point de vue sur le public cible de ce film.",
+          incorrect: "Dis-moi si tu recommanderais ce film et à quel type de spectateurs il conviendrait le mieux."
+        }
+      },
+      {
+        id: 7,
+        botMessage: "Et toi, quel genre de films préfères-tu regarder en général ? As-tu des réalisateurs ou acteurs favoris ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "J'aime beaucoup les films de science-fiction qui explorent des concepts futuristes tout en posant des questions sur notre société actuelle. Christopher Nolan est l'un de mes réalisateurs préférés.",
+          "Je suis plutôt fan de comédies et de films légers qui permettent de se détendre. J'apprécie particulièrement les films avec Emma Stone ou Ryan Reynolds.",
+          "J'ai un faible pour les drames historiques et les biographies. J'admire le travail de réalisateurs comme Steven Spielberg qui savent raconter des histoires complexes de façon accessible."
+        ],
+        hints: "Parlez de vos genres de films préférés et mentionnez des réalisateurs ou acteurs que vous appréciez.",
+        expectedKeywords: ["science-fiction", "comédies", "drames", "historiques", "réalisateurs", "acteurs", "préférés", "j'aime", "fan", "apprécie"],
+        feedback: {
+          correct: "C'est intéressant ! Y a-t-il un film récent que tu attends particulièrement de voir prochainement ?",
+          incorrect: "Parle-moi des types de films que tu préfères et des réalisateurs ou acteurs que tu apprécies particulièrement."
+        }
+      },
+      {
+        id: 8,
+        botMessage: "Y a-t-il un film qui va bientôt sortir et que tu as hâte de voir ? Pourquoi es-tu impatient(e) de le découvrir ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "J'attends avec impatience la suite de cette saga de science-fiction car le premier film m'avait vraiment captivé(e) et la bande-annonce promet des révélations importantes sur l'intrigue.",
+          "Je suis curieux(se) de voir le prochain film de ce réalisateur reconnu, surtout qu'il s'agit d'un genre différent de ses œuvres habituelles.",
+          "Pas vraiment, je préfère découvrir les films après leur sortie, quand j'ai pu lire quelques critiques et avoir l'avis de mes amis."
+        ],
+        hints: "Mentionnez un film à venir que vous attendez et expliquez pourquoi vous êtes impatient de le voir.",
+        expectedKeywords: ["attends", "impatience", "suite", "saga", "captivé", "bande-annonce", "curieux", "prochain", "réalisateur", "critiques"],
+        feedback: {
+          correct: "Ça a l'air prometteur ! Merci pour cette discussion sur le cinéma, c'était très intéressant d'échanger nos points de vue.",
+          partial: "Je comprends ta position. Chacun a sa façon de choisir les films qu'il va voir.",
+          incorrect: "Parle-moi d'un film que tu attends prochainement ou explique pourquoi tu préfères ne pas anticiper les sorties."
+        }
+      }
+    ],
+    completionMessage: "Félicitations ! Vous avez réussi à discuter de films de façon nuancée, à analyser différents aspects cinématographiques et à exprimer vos préférences en matière de cinéma.",
+    learningObjectives: [
+      "Exprimer une opinion nuancée sur une œuvre",
+      "Analyser différents aspects d'un film (intrigue, personnages, réalisation)",
+      "Comparer des œuvres entre elles",
+      "Formuler des recommandations ciblées",
+      "Utiliser le vocabulaire spécifique au cinéma"
+    ],
+    grammar: {
+      points: [
+        "Utilisation du conditionnel pour les recommandations",
+        "Comparatifs et superlatifs",
+        "Structure cause-conséquence",
+        "Expression de l'opinion personnelle"
+      ]
+    }
+  };
+&nbsp;
+  export default discussingMovies;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

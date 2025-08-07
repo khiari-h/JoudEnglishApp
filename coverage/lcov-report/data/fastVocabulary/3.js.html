@@ -1,0 +1,712 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/fastVocabulary/3.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">data/fastVocabulary</a> 3.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "B1 - Top 200 Indispensables Pépites",
+  words: [
+    { word: "think", translation: "penser", example: "I think this is a good idea." },
+    { word: "believe", translation: "croire", example: "I believe in hard work." },
+    { word: "opinion", translation: "opinion", example: "What's your opinion on this?" },
+    { word: "agree", translation: "être d'accord", example: "I agree with you completely." },
+    { word: "disagree", translation: "ne pas être d'accord", example: "I disagree with that statement." },
+    { word: "discuss", translation: "discuter", example: "Let's discuss the problem." },
+    { word: "argue", translation: "se disputer", example: "Don't argue about small things." },
+    { word: "debate", translation: "débattre", example: "We had a long debate." },
+    { word: "suggest", translation: "suggérer", example: "I suggest we leave early." },
+    { word: "recommend", translation: "recommander", example: "I recommend this book." },
+    { word: "advise", translation: "conseiller", example: "I advise you to be careful." },
+    { word: "warn", translation: "avertir", example: "I warn you about the risks." },
+    { word: "convince", translation: "convaincre", example: "Try to convince him to come." },
+    { word: "persuade", translation: "persuader", example: "She persuaded me to join." },
+    { word: "influence", translation: "influencer", example: "Don't let others influence you." },
+    { word: "support", translation: "soutenir", example: "I support your decision." },
+    { word: "oppose", translation: "s'opposer", example: "Many people oppose this plan." },
+    { word: "criticize", translation: "critiquer", example: "Don't criticize others so harshly." },
+    { word: "praise", translation: "faire l'éloge", example: "The teacher praised my work." },
+    { word: "complain", translation: "se plaindre", example: "Stop complaining about everything." },
+    { word: "doubt", translation: "douter", example: "I doubt he will come." },
+    { word: "trust", translation: "faire confiance", example: "I trust you completely." },
+    { word: "respect", translation: "respecter", example: "Respect other people's opinions." },
+    { word: "admire", translation: "admirer", example: "I admire her courage." },
+    { word: "appreciate", translation: "apprécier", example: "I appreciate your help." },
+    { word: "understand", translation: "comprendre", example: "I understand your point of view." },
+    { word: "realize", translation: "se rendre compte", example: "I realize I made a mistake." },
+    { word: "recognize", translation: "reconnaître", example: "I recognize this place." },
+    { word: "admit", translation: "admettre", example: "I admit I was wrong." },
+    { word: "deny", translation: "nier", example: "He denies stealing the money." },
+    { word: "confess", translation: "avouer", example: "She confessed her mistake." },
+    { word: "claim", translation: "prétendre", example: "He claims to be innocent." },
+    { word: "prove", translation: "prouver", example: "Can you prove what you're saying?" },
+    { word: "demonstrate", translation: "démontrer", example: "This demonstrates my point." },
+    { word: "explain", translation: "expliquer", example: "Please explain what happened." },
+    { word: "describe", translation: "décrire", example: "Describe your perfect day." },
+    { word: "compare", translation: "comparer", example: "Compare these two options." },
+    { word: "contrast", translation: "contraster", example: "These colors contrast nicely." },
+    { word: "analyze", translation: "analyser", example: "Let's analyze the situation." },
+    { word: "evaluate", translation: "évaluer", example: "Evaluate your progress regularly." },
+&nbsp;
+    { word: "experience", translation: "expérience", example: "That was an amazing experience." },
+    { word: "happen", translation: "arriver", example: "What happened yesterday?" },
+    { word: "occur", translation: "se produire", example: "The accident occurred at noon." },
+    { word: "take place", translation: "avoir lieu", example: "The meeting takes place tomorrow." },
+    { word: "event", translation: "événement", example: "This is an important event." },
+    { word: "situation", translation: "situation", example: "This is a difficult situation." },
+    { word: "story", translation: "histoire", example: "Tell me your story." },
+    { word: "tale", translation: "conte", example: "She told us a fairy tale." },
+    { word: "memory", translation: "souvenir", example: "I have good memories of school." },
+    { word: "remember", translation: "se souvenir", example: "I remember our first meeting." },
+    { word: "recall", translation: "se rappeler", example: "I can't recall his name." },
+    { word: "remind", translation: "rappeler", example: "This song reminds me of you." },
+    { word: "imagine", translation: "imaginer", example: "Imagine living in Paris." },
+    { word: "dream", translation: "rêver", example: "I dream of traveling the world." },
+    { word: "hope", translation: "espérer", example: "I hope everything goes well." },
+    { word: "wish", translation: "souhaiter", example: "I wish I could speak French." },
+    { word: "expect", translation: "s'attendre", example: "I expect good results." },
+    { word: "predict", translation: "prédire", example: "It's hard to predict the future." },
+    { word: "suppose", translation: "supposer", example: "I suppose you're right." },
+    { word: "assume", translation: "présumer", example: "Don't assume anything." },
+    { word: "guess", translation: "deviner", example: "Can you guess my age?" },
+    { word: "wonder", translation: "se demander", example: "I wonder what he's thinking." },
+    { word: "curiosity", translation: "curiosité", example: "Curiosity killed the cat." },
+    { word: "surprise", translation: "surprise", example: "What a pleasant surprise!" },
+    { word: "shock", translation: "choc", example: "The news was a shock." },
+    { word: "amazement", translation: "étonnement", example: "She looked at him in amazement." },
+    { word: "excitement", translation: "excitation", example: "I can't contain my excitement." },
+    { word: "disappointment", translation: "déception", example: "His face showed disappointment." },
+    { word: "regret", translation: "regret", example: "I have no regrets about my decision." },
+    { word: "mistake", translation: "erreur", example: "Everyone makes mistakes." },
+    { word: "error", translation: "erreur", example: "There's an error in this calculation." },
+    { word: "success", translation: "succès", example: "Hard work leads to success." },
+    { word: "failure", translation: "échec", example: "Failure is part of learning." },
+    { word: "achievement", translation: "réussite", example: "Graduating was a great achievement." },
+    { word: "goal", translation: "objectif", example: "What's your main goal in life?" },
+&nbsp;
+    { word: "relationship", translation: "relation", example: "We have a good relationship." },
+    { word: "friendship", translation: "amitié", example: "Our friendship is very important." },
+    { word: "love", translation: "amour", example: "Love conquers all." },
+    { word: "romance", translation: "romance", example: "They had a beautiful romance." },
+    { word: "marriage", translation: "mariage", example: "Marriage requires commitment." },
+    { word: "divorce", translation: "divorce", example: "Divorce can be difficult." },
+    { word: "partner", translation: "partenaire", example: "Choose your business partner carefully." },
+    { word: "couple", translation: "couple", example: "They make a lovely couple." },
+    { word: "single", translation: "célibataire", example: "I'm single and happy." },
+    { word: "date", translation: "rendez-vous", example: "We had our first date yesterday." },
+    { word: "emotion", translation: "émotion", example: "She showed no emotion." },
+    { word: "feeling", translation: "sentiment", example: "I have mixed feelings about this." },
+    { word: "mood", translation: "humeur", example: "I'm in a good mood today." },
+    { word: "attitude", translation: "attitude", example: "Your attitude needs to change." },
+    { word: "behavior", translation: "comportement", example: "His behavior is unacceptable." },
+    { word: "personality", translation: "personnalité", example: "She has a strong personality." },
+    { word: "character", translation: "caractère", example: "He has good character." },
+    { word: "confidence", translation: "confiance", example: "She speaks with confidence." },
+    { word: "pride", translation: "fierté", example: "I take pride in my work." },
+    { word: "shame", translation: "honte", example: "He felt shame for his actions." },
+    { word: "guilt", translation: "culpabilité", example: "Don't carry guilt forever." },
+    { word: "jealousy", translation: "jalousie", example: "Jealousy can destroy relationships." },
+    { word: "envy", translation: "envie", example: "I envy your lifestyle." },
+    { word: "anger", translation: "colère", example: "Control your anger." },
+    { word: "rage", translation: "rage", example: "He flew into a rage." },
+    { word: "frustration", translation: "frustration", example: "I understand your frustration." },
+    { word: "stress", translation: "stress", example: "Work causes me stress." },
+    { word: "anxiety", translation: "anxiété", example: "She suffers from anxiety." },
+    { word: "worry", translation: "inquiétude", example: "Don't worry about me." },
+    { word: "fear", translation: "peur", example: "Fear can hold you back." },
+&nbsp;
+    { word: "communication", translation: "communication", example: "Good communication is key." },
+    { word: "conversation", translation: "conversation", example: "We had an interesting conversation." },
+    { word: "chat", translation: "bavarder", example: "Let's chat over coffee." },
+    { word: "gossip", translation: "ragot", example: "Don't spread gossip." },
+    { word: "rumor", translation: "rumeur", example: "That's just a rumor." },
+    { word: "news", translation: "nouvelles", example: "Have you heard the news?" },
+    { word: "information", translation: "information", example: "I need more information." },
+    { word: "details", translation: "détails", example: "Give me all the details." },
+    { word: "facts", translation: "faits", example: "Stick to the facts." },
+    { word: "truth", translation: "vérité", example: "Tell me the truth." },
+    { word: "lie", translation: "mensonge", example: "Don't tell lies." },
+    { word: "secret", translation: "secret", example: "Can you keep a secret?" },
+    { word: "privacy", translation: "vie privée", example: "Everyone needs privacy." },
+    { word: "public", translation: "public", example: "This is public information." },
+    { word: "private", translation: "privé", example: "This is a private matter." },
+    { word: "personal", translation: "personnel", example: "That's too personal." },
+    { word: "interview", translation: "interview", example: "I saw his TV interview." },
+    { word: "report", translation: "rapport", example: "Write a detailed report." },
+    { word: "article", translation: "article", example: "I read an interesting article." },
+    { word: "newspaper", translation: "journal", example: "Do you read the newspaper?" },
+    { word: "magazine", translation: "magazine", example: "This magazine is popular." },
+    { word: "television", translation: "télévision", example: "I watch television every evening." },
+    { word: "radio", translation: "radio", example: "Listen to the radio news." },
+    { word: "broadcast", translation: "diffusion", example: "The broadcast starts at 8 PM." },
+    { word: "program", translation: "programme", example: "What's your favorite TV program?" },
+&nbsp;
+    { word: "health", translation: "santé", example: "Health is wealth." },
+    { word: "disease", translation: "maladie", example: "This disease is serious." },
+    { word: "illness", translation: "maladie", example: "She's recovering from illness." },
+    { word: "infection", translation: "infection", example: "The wound got infected." },
+    { word: "symptoms", translation: "symptômes", example: "What are the symptoms?" },
+    { word: "treatment", translation: "traitement", example: "This treatment is effective." },
+    { word: "cure", translation: "guérison", example: "There's no cure for this yet." },
+    { word: "recovery", translation: "guérison", example: "I wish you a speedy recovery." },
+    { word: "medicine", translation: "médicament", example: "Take your medicine regularly." },
+    { word: "prescription", translation: "ordonnance", example: "You need a prescription." },
+    { word: "surgery", translation: "chirurgie", example: "He needs heart surgery." },
+    { word: "operation", translation: "opération", example: "The operation was successful." },
+    { word: "patient", translation: "patient", example: "The patient is recovering well." },
+    { word: "specialist", translation: "spécialiste", example: "See a specialist for this problem." },
+    { word: "emergency", translation: "urgence", example: "Call emergency services!" },
+    { word: "ambulance", translation: "ambulance", example: "The ambulance arrived quickly." },
+    { word: "injury", translation: "blessure", example: "He has a serious injury." },
+    { word: "wound", translation: "blessure", example: "Clean the wound carefully." },
+    { word: "pain", translation: "douleur", example: "The pain is getting worse." },
+    { word: "ache", translation: "mal", example: "I have a stomach ache." },
+&nbsp;
+    { word: "idea", translation: "idée", example: "That's a brilliant idea!" },
+    { word: "concept", translation: "concept", example: "Explain this concept to me." },
+    { word: "thought", translation: "pensée", example: "What are your thoughts on this?" },
+    { word: "mind", translation: "esprit", example: "Keep an open mind." },
+    { word: "brain", translation: "cerveau", example: "Use your brain!" },
+    { word: "intelligence", translation: "intelligence", example: "She has great intelligence." },
+    { word: "wisdom", translation: "sagesse", example: "Age brings wisdom." },
+    { word: "knowledge", translation: "connaissance", example: "Knowledge is power." },
+    { word: "skill", translation: "compétence", example: "He has excellent skills." },
+    { word: "ability", translation: "capacité", example: "She has the ability to succeed." },
+    { word: "talent", translation: "talent", example: "He has natural talent." },
+    { word: "gift", translation: "don", example: "Music is her special gift." },
+    { word: "potential", translation: "potentiel", example: "You have great potential." },
+    { word: "opportunity", translation: "opportunité", example: "Don't miss this opportunity." },
+    { word: "activity", translation: "activité", example: "What's your favorite activity?" },
+    { word: "possibility", translation: "possibilité", example: "There's a possibility of rain." },
+    { word: "probability", translation: "probabilité", example: "What's the probability of success?" },
+    { word: "risk", translation: "risque", example: "Calculate the risks involved." },
+    { word: "danger", translation: "danger", example: "Stay away from danger." },
+    { word: "safety", translation: "sécurité", example: "Safety comes first." },
+    { word: "choice", translation: "choix", example: "You have a difficult choice." },
+    { word: "decision", translation: "décision", example: "Make a quick decision." },
+    { word: "problem", translation: "problème", example: "We have a serious problem." },
+    { word: "solution", translation: "solution", example: "I found the solution." },
+    { word: "answer", translation: "réponse", example: "What's your answer?" },
+    { word: "question", translation: "question", example: "Ask me any question." },
+    { word: "reason", translation: "raison", example: "Give me one good reason." },
+    { word: "result", translation: "résultat", example: "The result was positive." },
+    { word: "effect", translation: "effet", example: "The effect was immediate." },
+    { word: "cause", translation: "cause", example: "What's the cause of this?" },
+    { word: "method", translation: "méthode", example: "This method works well." },
+    { word: "way", translation: "façon", example: "There's another way to do it." },
+    { word: "manner", translation: "manière", example: "Do it in a polite manner." },
+    { word: "style", translation: "style", example: "I like your style." },
+    { word: "habit", translation: "habitude", example: "Reading is a good habit." },
+    { word: "custom", translation: "coutume", example: "It's our family custom." },
+    { word: "tradition", translation: "tradition", example: "We follow old traditions." },
+    { word: "culture", translation: "culture", example: "Learn about different cultures." },
+    { word: "society", translation: "société", example: "We live in modern society." },
+    { word: "community", translation: "communauté", example: "Our community is strong." },
+    { word: "neighbor", translation: "voisin", example: "My neighbor is friendly." },
+    { word: "stranger", translation: "étranger", example: "Don't talk to strangers." },
+    { word: "guest", translation: "invité", example: "We have a guest for dinner." },
+    { word: "host", translation: "hôte", example: "Thank you for being a good host." },
+    { word: "visit", translation: "visite", example: "Your visit made us happy." },
+    { word: "invitation", translation: "invitation", example: "Thank you for the invitation." },
+    { word: "party", translation: "fête", example: "Come to my birthday party." },
+    { word: "celebration", translation: "célébration", example: "The celebration was wonderful." },
+    { word: "festival", translation: "festival", example: "The music festival is next week." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

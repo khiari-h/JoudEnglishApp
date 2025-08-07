@@ -1,0 +1,158 @@
+cedc26873499adfdbe25b5d30f4bc25d
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function cov_mcbky2slv() {
+  var path = "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A2\\scenarios\\atTheRestaurant.js";
+  var hash = "8fd1de1652c9837360e6e6ec1773a82be5071f3c";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A2\\scenarios\\atTheRestaurant.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 24
+        },
+        end: {
+          line: 173,
+          column: 3
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "8fd1de1652c9837360e6e6ec1773a82be5071f3c"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_mcbky2slv = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_mcbky2slv();
+var atTheRestaurant = (cov_mcbky2slv().s[0]++, {
+  id: 1,
+  title: "At The Restaurant",
+  level: "A2",
+  description: "Learn how to order a complete meal and interact with waiters in a restaurant setting.",
+  estimatedTime: "15-20 minutes",
+  vocabulary: ["menu", "starter", "main course", "dessert", "bill", "allergies", "reservation", "waiter", "order", "recommend"],
+  steps: [{
+    id: 1,
+    botMessage: "Bonjour ! Bienvenue au restaurant Le Gourmet. Avez-vous une réservation ?",
+    inputMode: "suggestions",
+    suggestions: ["Oui, j'ai réservé une table pour 2 personnes.", "Non, je n'ai pas de réservation. Avez-vous une table disponible ?", "Bonsoir, réservation au nom de Martin pour 19h."],
+    hints: "Indiquez si vous avez une réservation ou non.",
+    expectedKeywords: ["réservation", "table", "disponible", "nom", "personne", "oui", "non"],
+    feedback: {
+      correct: "Très bien, je vais vérifier votre réservation.",
+      incorrect: "Pourriez-vous me dire si vous avez une réservation ?"
+    }
+  }, {
+    id: 2,
+    botMessage: "Parfait. Suivez-moi, votre table est prête. Voici la carte. Souhaitez-vous un apéritif pour commencer ?",
+    inputMode: "hybrid",
+    suggestions: ["Oui, je voudrais un verre de vin blanc, s'il vous plaît.", "Qu'est-ce que vous proposez comme apéritif ?", "Non merci, juste de l'eau pour l'instant."],
+    hints: "Commandez un apéritif ou demandez ce qui est disponible.",
+    expectedKeywords: ["apéritif", "vin", "eau", "proposer", "verre", "blanc", "rouge"],
+    acceptablePhrases: ["je voudrais", "qu'est-ce que vous proposez", "avez-vous", "je prends"],
+    feedback: {
+      correct: "Je vous apporte votre boisson tout de suite.",
+      partial: "Quel type de boisson souhaitez-vous ?",
+      incorrect: "Souhaitez-vous boire quelque chose avant de commander ?"
+    }
+  }, {
+    id: 3,
+    botMessage: "Avez-vous des allergies alimentaires dont nous devrions être informés ?",
+    inputMode: "freeText",
+    suggestions: ["Oui, je suis allergique aux fruits de mer.", "Non, je n'ai pas d'allergies.", "Je ne mange pas de gluten, s'il vous plaît."],
+    hints: "Mentionnez vos allergies ou restrictions alimentaires si vous en avez.",
+    expectedKeywords: ["allergique", "allergie", "gluten", "lactose", "fruits de mer", "noix", "non"],
+    feedback: {
+      correct: "Merci de m'en informer, je vais prévenir le chef.",
+      partial: "Y a-t-il d'autres allergies que je devrais mentionner au chef ?",
+      incorrect: "Veuillez me dire si vous avez des allergies alimentaires."
+    }
+  }, {
+    id: 4,
+    botMessage: "Êtes-vous prêts à commander ou avez-vous besoin d'un peu plus de temps ?",
+    inputMode: "suggestions",
+    suggestions: ["Nous sommes prêts à commander.", "Pouvez-vous nous recommander des spécialités ?", "Nous avons besoin de quelques minutes supplémentaires."],
+    hints: "Indiquez si vous êtes prêt à commander ou si vous avez besoin de plus de temps.",
+    expectedKeywords: ["prêt", "commander", "recommander", "spécialité", "besoin", "temps", "minutes"],
+    feedback: {
+      correct: "Parfait, je vous écoute.",
+      incorrect: "Prenez votre temps pour décider."
+    }
+  }, {
+    id: 5,
+    botMessage: "Que souhaitez-vous comme entrée ?",
+    inputMode: "hybrid",
+    suggestions: ["Je voudrais la salade de chèvre chaud, s'il vous plaît.", "Quelle est la soupe du jour ?", "Nous partagerons une assiette de charcuterie."],
+    hints: "Commandez votre entrée ou posez une question sur le menu.",
+    expectedKeywords: ["entrée", "salade", "soupe", "charcuterie", "voudrais", "prendre", "partager"],
+    feedback: {
+      correct: "Excellent choix. Et pour le plat principal ?",
+      partial: "Souhaitez-vous autre chose en entrée ?",
+      incorrect: "Quelle entrée souhaitez-vous commander ?"
+    }
+  }, {
+    id: 6,
+    botMessage: "Pour le plat principal, qu'est-ce qui vous ferait plaisir ?",
+    inputMode: "freeText",
+    suggestions: ["Je prendrai le steak avec des frites, s'il vous plaît.", "Comment est préparé le poisson du jour ?", "Je voudrais les pâtes aux champignons."],
+    hints: "Commandez votre plat principal ou posez une question sur un plat.",
+    expectedKeywords: ["plat", "steak", "poisson", "pâtes", "préparé", "cuisson", "accompagnement"],
+    acceptablePhrases: ["je prendrai", "je voudrais", "comment est", "pouvez-vous"],
+    feedback: {
+      correct: "Un excellent choix. Comment souhaitez-vous votre viande/poisson ?",
+      partial: "Souhaitez-vous un accompagnement particulier ?",
+      incorrect: "Quel plat principal souhaitez-vous commander ?"
+    }
+  }, {
+    id: 7,
+    botMessage: "Souhaitez-vous un dessert pour terminer le repas ?",
+    inputMode: "suggestions",
+    suggestions: ["Oui, je voudrais le chocolat fondant.", "Pouvez-vous nous suggérer un dessert ?", "Non merci, juste l'addition s'il vous plaît."],
+    hints: "Commandez un dessert ou demandez l'addition.",
+    expectedKeywords: ["dessert", "chocolat", "fondant", "suggestion", "addition", "café", "non"],
+    feedback: {
+      correct: "Je vous apporte cela tout de suite.",
+      incorrect: "Souhaitez-vous terminer avec un dessert ou l'addition ?"
+    }
+  }, {
+    id: 8,
+    botMessage: "Voici votre addition. Comment souhaitez-vous régler ?",
+    inputMode: "hybrid",
+    suggestions: ["Par carte bancaire, s'il vous plaît.", "En espèces.", "Pouvons-nous diviser l'addition ?"],
+    hints: "Indiquez votre mode de paiement.",
+    expectedKeywords: ["carte", "bancaire", "espèces", "diviser", "addition", "payer", "régler"],
+    feedback: {
+      correct: "Merci pour votre visite. Passez une excellente soirée !",
+      partial: "Est-ce que vous payez ensemble ou séparément ?",
+      incorrect: "Comment souhaitez-vous payer votre repas ?"
+    }
+  }],
+  completionMessage: "Félicitations ! Vous avez réussi à commander un repas complet et à interagir avec le serveur en français.",
+  learningObjectives: ["Faire une réservation", "Commander un repas complet", "Mentionner des allergies", "Demander des recommandations", "Payer l'addition"],
+  grammar: {
+    points: ["Conditionnel de politesse", "Questions avec inversion", "Verbes au présent (prendre, vouloir)", "Expressions de quantité"]
+  }
+});
+var _default = exports.default = atTheRestaurant;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJhdFRoZVJlc3RhdXJhbnQiLCJjb3ZfbWNia3kyc2x2IiwicyIsImlkIiwidGl0bGUiLCJsZXZlbCIsImRlc2NyaXB0aW9uIiwiZXN0aW1hdGVkVGltZSIsInZvY2FidWxhcnkiLCJzdGVwcyIsImJvdE1lc3NhZ2UiLCJpbnB1dE1vZGUiLCJzdWdnZXN0aW9ucyIsImhpbnRzIiwiZXhwZWN0ZWRLZXl3b3JkcyIsImZlZWRiYWNrIiwiY29ycmVjdCIsImluY29ycmVjdCIsImFjY2VwdGFibGVQaHJhc2VzIiwicGFydGlhbCIsImNvbXBsZXRpb25NZXNzYWdlIiwibGVhcm5pbmdPYmplY3RpdmVzIiwiZ3JhbW1hciIsInBvaW50cyIsIl9kZWZhdWx0IiwiZXhwb3J0cyIsImRlZmF1bHQiXSwic291cmNlcyI6WyJhdFRoZVJlc3RhdXJhbnQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gY2hhdGJvdC9BMi9zY2VuYXJpb3MvYXRUaGVSZXN0YXVyYW50LmpzXG5cbmNvbnN0IGF0VGhlUmVzdGF1cmFudCA9IHtcbiAgICBpZDogMSxcbiAgICB0aXRsZTogXCJBdCBUaGUgUmVzdGF1cmFudFwiLFxuICAgIGxldmVsOiBcIkEyXCIsXG4gICAgZGVzY3JpcHRpb246IFwiTGVhcm4gaG93IHRvIG9yZGVyIGEgY29tcGxldGUgbWVhbCBhbmQgaW50ZXJhY3Qgd2l0aCB3YWl0ZXJzIGluIGEgcmVzdGF1cmFudCBzZXR0aW5nLlwiLFxuICAgIGVzdGltYXRlZFRpbWU6IFwiMTUtMjAgbWludXRlc1wiLFxuICAgIHZvY2FidWxhcnk6IFtcIm1lbnVcIiwgXCJzdGFydGVyXCIsIFwibWFpbiBjb3Vyc2VcIiwgXCJkZXNzZXJ0XCIsIFwiYmlsbFwiLCBcImFsbGVyZ2llc1wiLCBcInJlc2VydmF0aW9uXCIsIFwid2FpdGVyXCIsIFwib3JkZXJcIiwgXCJyZWNvbW1lbmRcIl0sXG4gICAgc3RlcHM6IFtcbiAgICAgIHtcbiAgICAgICAgaWQ6IDEsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiQm9uam91ciAhIEJpZW52ZW51ZSBhdSByZXN0YXVyYW50IExlIEdvdXJtZXQuIEF2ZXotdm91cyB1bmUgcsOpc2VydmF0aW9uID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcInN1Z2dlc3Rpb25zXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJPdWksIGonYWkgcsOpc2VydsOpIHVuZSB0YWJsZSBwb3VyIDIgcGVyc29ubmVzLlwiLFxuICAgICAgICAgIFwiTm9uLCBqZSBuJ2FpIHBhcyBkZSByw6lzZXJ2YXRpb24uIEF2ZXotdm91cyB1bmUgdGFibGUgZGlzcG9uaWJsZSA/XCIsXG4gICAgICAgICAgXCJCb25zb2lyLCByw6lzZXJ2YXRpb24gYXUgbm9tIGRlIE1hcnRpbiBwb3VyIDE5aC5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJJbmRpcXVleiBzaSB2b3VzIGF2ZXogdW5lIHLDqXNlcnZhdGlvbiBvdSBub24uXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcInLDqXNlcnZhdGlvblwiLCBcInRhYmxlXCIsIFwiZGlzcG9uaWJsZVwiLCBcIm5vbVwiLCBcInBlcnNvbm5lXCIsIFwib3VpXCIsIFwibm9uXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiVHLDqHMgYmllbiwgamUgdmFpcyB2w6lyaWZpZXIgdm90cmUgcsOpc2VydmF0aW9uLlwiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJQb3Vycmllei12b3VzIG1lIGRpcmUgc2kgdm91cyBhdmV6IHVuZSByw6lzZXJ2YXRpb24gP1wiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiAyLFxuICAgICAgICBib3RNZXNzYWdlOiBcIlBhcmZhaXQuIFN1aXZlei1tb2ksIHZvdHJlIHRhYmxlIGVzdCBwcsOqdGUuIFZvaWNpIGxhIGNhcnRlLiBTb3VoYWl0ZXotdm91cyB1biBhcMOpcml0aWYgcG91ciBjb21tZW5jZXIgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiaHlicmlkXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJPdWksIGplIHZvdWRyYWlzIHVuIHZlcnJlIGRlIHZpbiBibGFuYywgcydpbCB2b3VzIHBsYcOudC5cIixcbiAgICAgICAgICBcIlF1J2VzdC1jZSBxdWUgdm91cyBwcm9wb3NleiBjb21tZSBhcMOpcml0aWYgP1wiLFxuICAgICAgICAgIFwiTm9uIG1lcmNpLCBqdXN0ZSBkZSBsJ2VhdSBwb3VyIGwnaW5zdGFudC5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJDb21tYW5kZXogdW4gYXDDqXJpdGlmIG91IGRlbWFuZGV6IGNlIHF1aSBlc3QgZGlzcG9uaWJsZS5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiYXDDqXJpdGlmXCIsIFwidmluXCIsIFwiZWF1XCIsIFwicHJvcG9zZXJcIiwgXCJ2ZXJyZVwiLCBcImJsYW5jXCIsIFwicm91Z2VcIl0sXG4gICAgICAgIGFjY2VwdGFibGVQaHJhc2VzOiBbXG4gICAgICAgICAgXCJqZSB2b3VkcmFpc1wiLFxuICAgICAgICAgIFwicXUnZXN0LWNlIHF1ZSB2b3VzIHByb3Bvc2V6XCIsXG4gICAgICAgICAgXCJhdmV6LXZvdXNcIixcbiAgICAgICAgICBcImplIHByZW5kc1wiXG4gICAgICAgIF0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJKZSB2b3VzIGFwcG9ydGUgdm90cmUgYm9pc3NvbiB0b3V0IGRlIHN1aXRlLlwiLFxuICAgICAgICAgIHBhcnRpYWw6IFwiUXVlbCB0eXBlIGRlIGJvaXNzb24gc291aGFpdGV6LXZvdXMgP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJTb3VoYWl0ZXotdm91cyBib2lyZSBxdWVscXVlIGNob3NlIGF2YW50IGRlIGNvbW1hbmRlciA/XCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDMsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiQXZlei12b3VzIGRlcyBhbGxlcmdpZXMgYWxpbWVudGFpcmVzIGRvbnQgbm91cyBkZXZyaW9ucyDDqnRyZSBpbmZvcm3DqXMgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiZnJlZVRleHRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIk91aSwgamUgc3VpcyBhbGxlcmdpcXVlIGF1eCBmcnVpdHMgZGUgbWVyLlwiLFxuICAgICAgICAgIFwiTm9uLCBqZSBuJ2FpIHBhcyBkJ2FsbGVyZ2llcy5cIixcbiAgICAgICAgICBcIkplIG5lIG1hbmdlIHBhcyBkZSBnbHV0ZW4sIHMnaWwgdm91cyBwbGHDrnQuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiTWVudGlvbm5leiB2b3MgYWxsZXJnaWVzIG91IHJlc3RyaWN0aW9ucyBhbGltZW50YWlyZXMgc2kgdm91cyBlbiBhdmV6LlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJhbGxlcmdpcXVlXCIsIFwiYWxsZXJnaWVcIiwgXCJnbHV0ZW5cIiwgXCJsYWN0b3NlXCIsIFwiZnJ1aXRzIGRlIG1lclwiLCBcIm5vaXhcIiwgXCJub25cIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJNZXJjaSBkZSBtJ2VuIGluZm9ybWVyLCBqZSB2YWlzIHByw6l2ZW5pciBsZSBjaGVmLlwiLFxuICAgICAgICAgIHBhcnRpYWw6IFwiWSBhLXQtaWwgZCdhdXRyZXMgYWxsZXJnaWVzIHF1ZSBqZSBkZXZyYWlzIG1lbnRpb25uZXIgYXUgY2hlZiA/XCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlZldWlsbGV6IG1lIGRpcmUgc2kgdm91cyBhdmV6IGRlcyBhbGxlcmdpZXMgYWxpbWVudGFpcmVzLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA0LFxuICAgICAgICBib3RNZXNzYWdlOiBcIsOKdGVzLXZvdXMgcHLDqnRzIMOgIGNvbW1hbmRlciBvdSBhdmV6LXZvdXMgYmVzb2luIGQndW4gcGV1IHBsdXMgZGUgdGVtcHMgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwic3VnZ2VzdGlvbnNcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIk5vdXMgc29tbWVzIHByw6p0cyDDoCBjb21tYW5kZXIuXCIsXG4gICAgICAgICAgXCJQb3V2ZXotdm91cyBub3VzIHJlY29tbWFuZGVyIGRlcyBzcMOpY2lhbGl0w6lzID9cIixcbiAgICAgICAgICBcIk5vdXMgYXZvbnMgYmVzb2luIGRlIHF1ZWxxdWVzIG1pbnV0ZXMgc3VwcGzDqW1lbnRhaXJlcy5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJJbmRpcXVleiBzaSB2b3VzIMOqdGVzIHByw6p0IMOgIGNvbW1hbmRlciBvdSBzaSB2b3VzIGF2ZXogYmVzb2luIGRlIHBsdXMgZGUgdGVtcHMuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcInByw6p0XCIsIFwiY29tbWFuZGVyXCIsIFwicmVjb21tYW5kZXJcIiwgXCJzcMOpY2lhbGl0w6lcIiwgXCJiZXNvaW5cIiwgXCJ0ZW1wc1wiLCBcIm1pbnV0ZXNcIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJQYXJmYWl0LCBqZSB2b3VzIMOpY291dGUuXCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlByZW5leiB2b3RyZSB0ZW1wcyBwb3VyIGTDqWNpZGVyLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA1LFxuICAgICAgICBib3RNZXNzYWdlOiBcIlF1ZSBzb3VoYWl0ZXotdm91cyBjb21tZSBlbnRyw6llID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcImh5YnJpZFwiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiSmUgdm91ZHJhaXMgbGEgc2FsYWRlIGRlIGNow6h2cmUgY2hhdWQsIHMnaWwgdm91cyBwbGHDrnQuXCIsXG4gICAgICAgICAgXCJRdWVsbGUgZXN0IGxhIHNvdXBlIGR1IGpvdXIgP1wiLFxuICAgICAgICAgIFwiTm91cyBwYXJ0YWdlcm9ucyB1bmUgYXNzaWV0dGUgZGUgY2hhcmN1dGVyaWUuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiQ29tbWFuZGV6IHZvdHJlIGVudHLDqWUgb3UgcG9zZXogdW5lIHF1ZXN0aW9uIHN1ciBsZSBtZW51LlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJlbnRyw6llXCIsIFwic2FsYWRlXCIsIFwic291cGVcIiwgXCJjaGFyY3V0ZXJpZVwiLCBcInZvdWRyYWlzXCIsIFwicHJlbmRyZVwiLCBcInBhcnRhZ2VyXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiRXhjZWxsZW50IGNob2l4LiBFdCBwb3VyIGxlIHBsYXQgcHJpbmNpcGFsID9cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIlNvdWhhaXRlei12b3VzIGF1dHJlIGNob3NlIGVuIGVudHLDqWUgP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJRdWVsbGUgZW50csOpZSBzb3VoYWl0ZXotdm91cyBjb21tYW5kZXIgP1wiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA2LFxuICAgICAgICBib3RNZXNzYWdlOiBcIlBvdXIgbGUgcGxhdCBwcmluY2lwYWwsIHF1J2VzdC1jZSBxdWkgdm91cyBmZXJhaXQgcGxhaXNpciA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJmcmVlVGV4dFwiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiSmUgcHJlbmRyYWkgbGUgc3RlYWsgYXZlYyBkZXMgZnJpdGVzLCBzJ2lsIHZvdXMgcGxhw650LlwiLFxuICAgICAgICAgIFwiQ29tbWVudCBlc3QgcHLDqXBhcsOpIGxlIHBvaXNzb24gZHUgam91ciA/XCIsXG4gICAgICAgICAgXCJKZSB2b3VkcmFpcyBsZXMgcMOidGVzIGF1eCBjaGFtcGlnbm9ucy5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJDb21tYW5kZXogdm90cmUgcGxhdCBwcmluY2lwYWwgb3UgcG9zZXogdW5lIHF1ZXN0aW9uIHN1ciB1biBwbGF0LlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJwbGF0XCIsIFwic3RlYWtcIiwgXCJwb2lzc29uXCIsIFwicMOidGVzXCIsIFwicHLDqXBhcsOpXCIsIFwiY3Vpc3NvblwiLCBcImFjY29tcGFnbmVtZW50XCJdLFxuICAgICAgICBhY2NlcHRhYmxlUGhyYXNlczogW1xuICAgICAgICAgIFwiamUgcHJlbmRyYWlcIixcbiAgICAgICAgICBcImplIHZvdWRyYWlzXCIsXG4gICAgICAgICAgXCJjb21tZW50IGVzdFwiLFxuICAgICAgICAgIFwicG91dmV6LXZvdXNcIlxuICAgICAgICBdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiVW4gZXhjZWxsZW50IGNob2l4LiBDb21tZW50IHNvdWhhaXRlei12b3VzIHZvdHJlIHZpYW5kZS9wb2lzc29uID9cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIlNvdWhhaXRlei12b3VzIHVuIGFjY29tcGFnbmVtZW50IHBhcnRpY3VsaWVyID9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiUXVlbCBwbGF0IHByaW5jaXBhbCBzb3VoYWl0ZXotdm91cyBjb21tYW5kZXIgP1wiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA3LFxuICAgICAgICBib3RNZXNzYWdlOiBcIlNvdWhhaXRlei12b3VzIHVuIGRlc3NlcnQgcG91ciB0ZXJtaW5lciBsZSByZXBhcyA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJzdWdnZXN0aW9uc1wiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiT3VpLCBqZSB2b3VkcmFpcyBsZSBjaG9jb2xhdCBmb25kYW50LlwiLFxuICAgICAgICAgIFwiUG91dmV6LXZvdXMgbm91cyBzdWdnw6lyZXIgdW4gZGVzc2VydCA/XCIsXG4gICAgICAgICAgXCJOb24gbWVyY2ksIGp1c3RlIGwnYWRkaXRpb24gcydpbCB2b3VzIHBsYcOudC5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJDb21tYW5kZXogdW4gZGVzc2VydCBvdSBkZW1hbmRleiBsJ2FkZGl0aW9uLlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJkZXNzZXJ0XCIsIFwiY2hvY29sYXRcIiwgXCJmb25kYW50XCIsIFwic3VnZ2VzdGlvblwiLCBcImFkZGl0aW9uXCIsIFwiY2Fmw6lcIiwgXCJub25cIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJKZSB2b3VzIGFwcG9ydGUgY2VsYSB0b3V0IGRlIHN1aXRlLlwiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJTb3VoYWl0ZXotdm91cyB0ZXJtaW5lciBhdmVjIHVuIGRlc3NlcnQgb3UgbCdhZGRpdGlvbiA/XCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDgsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiVm9pY2kgdm90cmUgYWRkaXRpb24uIENvbW1lbnQgc291aGFpdGV6LXZvdXMgcsOpZ2xlciA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJoeWJyaWRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIlBhciBjYXJ0ZSBiYW5jYWlyZSwgcydpbCB2b3VzIHBsYcOudC5cIixcbiAgICAgICAgICBcIkVuIGVzcMOoY2VzLlwiLFxuICAgICAgICAgIFwiUG91dm9ucy1ub3VzIGRpdmlzZXIgbCdhZGRpdGlvbiA/XCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiSW5kaXF1ZXogdm90cmUgbW9kZSBkZSBwYWllbWVudC5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiY2FydGVcIiwgXCJiYW5jYWlyZVwiLCBcImVzcMOoY2VzXCIsIFwiZGl2aXNlclwiLCBcImFkZGl0aW9uXCIsIFwicGF5ZXJcIiwgXCJyw6lnbGVyXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiTWVyY2kgcG91ciB2b3RyZSB2aXNpdGUuIFBhc3NleiB1bmUgZXhjZWxsZW50ZSBzb2lyw6llICFcIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIkVzdC1jZSBxdWUgdm91cyBwYXlleiBlbnNlbWJsZSBvdSBzw6lwYXLDqW1lbnQgP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJDb21tZW50IHNvdWhhaXRlei12b3VzIHBheWVyIHZvdHJlIHJlcGFzID9cIlxuICAgICAgICB9XG4gICAgICB9XG4gICAgXSxcbiAgICBjb21wbGV0aW9uTWVzc2FnZTogXCJGw6lsaWNpdGF0aW9ucyAhIFZvdXMgYXZleiByw6l1c3NpIMOgIGNvbW1hbmRlciB1biByZXBhcyBjb21wbGV0IGV0IMOgIGludGVyYWdpciBhdmVjIGxlIHNlcnZldXIgZW4gZnJhbsOnYWlzLlwiLFxuICAgIGxlYXJuaW5nT2JqZWN0aXZlczogW1xuICAgICAgXCJGYWlyZSB1bmUgcsOpc2VydmF0aW9uXCIsXG4gICAgICBcIkNvbW1hbmRlciB1biByZXBhcyBjb21wbGV0XCIsXG4gICAgICBcIk1lbnRpb25uZXIgZGVzIGFsbGVyZ2llc1wiLFxuICAgICAgXCJEZW1hbmRlciBkZXMgcmVjb21tYW5kYXRpb25zXCIsXG4gICAgICBcIlBheWVyIGwnYWRkaXRpb25cIlxuICAgIF0sXG4gICAgZ3JhbW1hcjoge1xuICAgICAgcG9pbnRzOiBbXG4gICAgICAgIFwiQ29uZGl0aW9ubmVsIGRlIHBvbGl0ZXNzZVwiLFxuICAgICAgICBcIlF1ZXN0aW9ucyBhdmVjIGludmVyc2lvblwiLFxuICAgICAgICBcIlZlcmJlcyBhdSBwcsOpc2VudCAocHJlbmRyZSwgdm91bG9pcilcIixcbiAgICAgICAgXCJFeHByZXNzaW9ucyBkZSBxdWFudGl0w6lcIlxuICAgICAgXVxuICAgIH1cbiAgfTtcblxuICBleHBvcnQgZGVmYXVsdCBhdFRoZVJlc3RhdXJhbnQ7XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFQSxJQUFNQSxlQUFlLElBQUFDLGFBQUEsR0FBQUMsQ0FBQSxPQUFHO0VBQ3BCQyxFQUFFLEVBQUUsQ0FBQztFQUNMQyxLQUFLLEVBQUUsbUJBQW1CO0VBQzFCQyxLQUFLLEVBQUUsSUFBSTtFQUNYQyxXQUFXLEVBQUUsdUZBQXVGO0VBQ3BHQyxhQUFhLEVBQUUsZUFBZTtFQUM5QkMsVUFBVSxFQUFFLENBQUMsTUFBTSxFQUFFLFNBQVMsRUFBRSxhQUFhLEVBQUUsU0FBUyxFQUFFLE1BQU0sRUFBRSxXQUFXLEVBQUUsYUFBYSxFQUFFLFFBQVEsRUFBRSxPQUFPLEVBQUUsV0FBVyxDQUFDO0VBQzdIQyxLQUFLLEVBQUUsQ0FDTDtJQUNFTixFQUFFLEVBQUUsQ0FBQztJQUNMTyxVQUFVLEVBQUUsMkVBQTJFO0lBQ3ZGQyxTQUFTLEVBQUUsYUFBYTtJQUN4QkMsV0FBVyxFQUFFLENBQ1gsK0NBQStDLEVBQy9DLG1FQUFtRSxFQUNuRSxpREFBaUQsQ0FDbEQ7SUFDREMsS0FBSyxFQUFFLCtDQUErQztJQUN0REMsZ0JBQWdCLEVBQUUsQ0FBQyxhQUFhLEVBQUUsT0FBTyxFQUFFLFlBQVksRUFBRSxLQUFLLEVBQUUsVUFBVSxFQUFFLEtBQUssRUFBRSxLQUFLLENBQUM7SUFDekZDLFFBQVEsRUFBRTtNQUNSQyxPQUFPLEVBQUUsZ0RBQWdEO01BQ3pEQyxTQUFTLEVBQUU7SUFDYjtFQUNGLENBQUMsRUFDRDtJQUNFZCxFQUFFLEVBQUUsQ0FBQztJQUNMTyxVQUFVLEVBQUUseUdBQXlHO0lBQ3JIQyxTQUFTLEVBQUUsUUFBUTtJQUNuQkMsV0FBVyxFQUFFLENBQ1gsMERBQTBELEVBQzFELDhDQUE4QyxFQUM5QywyQ0FBMkMsQ0FDNUM7SUFDREMs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

@@ -1,0 +1,730 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/C2/scenarios/literaryCriticism.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/C2/scenarios</a> literaryCriticism.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/C2/scenarios/literaryCriticism.js
+&nbsp;
+const literaryCriticism = {
+  id: 7,
+  title: "Literary Criticism",
+  level: "C2",
+  description: "Engage in a sophisticated discussion on literary criticism, demonstrating mastery of advanced literary concepts, ability to evaluate competing theoretical frameworks, analyze textual evidence, articulate complex interpretive strategies, and communicate abstract aesthetic principles with exceptional precision and clarity.",
+  estimatedTime: "35-40 minutes",
+  vocabulary: ["hermeneutics", "intertextuality", "postcolonial discourse", "deconstructionism", "narratological framework", "diegetic", "heteroglossia", "liminal space", "palimpsestic", "metafictional", "phenomenological approach", "dialectical tension", "semiotic analysis", "ontological instability", "epistemic uncertainty", "formalist critique", "authorial intentionality", "paratextual elements", "aesthetic paradigm", "structural ambiguity", "discursive formation", "symbolic economy", "cultural hegemony", "polyphonic narrative", "mimetic representation"],
+  steps: [
+    {
+      id: 1,
+      botMessage: "Welcome to our advanced seminar on literary criticism. I'd like to begin our discussion by exploring contemporary approaches to textual interpretation. How would you evaluate the theoretical tensions between author-centered approaches to literary interpretation (such as biographical criticism and authorial intention) and reader-response theories that emphasize the role of the reader in creating meaning? What are the philosophical implications of these different critical positions for our understanding of textual meaning?",
+      inputMode: "freeText",
+      suggestions: [
+        "The theoretical tensions between author-centered approaches to literary interpretation and reader-response theories represent one of the most fundamental debates in literary criticism, reflecting broader philosophical questions about the nature of meaning, authority, and interpretation that extend well beyond literary studies. This critical divide emerged prominently in the mid-twentieth century as a response to formalist approaches that had attempted to isolate the literary text as an autonomous aesthetic object, independent of both its creator and its receivers. Evaluating these competing frameworks requires examining their theoretical foundations, methodological implications, and philosophical consequences for our conception of textual meaning. Author-centered approaches, encompassing biographical criticism, certain forms of historical criticism, and theories of authorial intention, posit a relationship between text and creator that privileges the author as the primary determinant of textual meaning. In its traditional manifestations, biographical criticism seeks to illuminate literary works through knowledge of the author's life experiences, psychological states, and historical circumstances, assuming that the text functions as an expression of the author's consciousness or lived reality. The most rigorous theoretical articulation of author-centered interpretation came through E.D. Hirsch's concept of 'authorial intent' in Validity in Interpretation (1967), which distinguished between a text's 'meaning' (what the author intended to communicate) and its 'significance' (how that meaning relates to broader contexts or reader concerns). For Hirsch, valid interpretation required recovering the author's intended meaning, which remained stable across time, while significance could legitimately vary with historical and personal contexts. This position sought to establish objective criteria for valid interpretation and guard against what its proponents considered interpretive relativism. The philosophical underpinnings of author-centered approaches often draw from Romantic conceptions of artistic creation as expressive self-revelation, Enlightenment notions of subjective agency, and communication models that posit meaning as something transmitted from sender to receiver. These approaches typically assume that texts contain determinate meanings that skilled readers can recover through appropriate historical knowledge, linguistic competence, and interpretive methods, even if that recovery remains incomplete or probabilistic rather than certain. Reader-response theories, by contrast, emerged from phenomenological philosophy, reception aesthetics, and poststructuralist critiques of traditional conceptions of meaning and authority. These approaches fundamentally reorient literary criticism by focusing on the reader's active role in constructing textual meaning rather than simply receiving authorial intentions. Wolfgang Iser's theory of textual 'gaps' highlighted how texts require readers to actively participate in meaning-making by filling indeterminate spaces with their own projections and assumptions. Stanley Fish's concept of 'interpretive communities' emphasized how shared interpretive strategies and assumptions shape reading experiences in systematic ways, challenging the notion of purely individual interpretation while also rejecting textual determinism. More radical reader-oriented approaches, like Roland Barthes's declaration of 'the death of the author,' reject authorial intention entirely as a constraint on interpretation, arguing that texts function as sites of multiple, shifting meanings activated differently by each reader's engagement. The philosophical foundations of reader-response theories often draw from phenomenology's emphasis on consciousness and experience, hermeneutic theories of interpretation as dialogic engagement rather than archaeological recovery, and poststructuralist critiques of stable meaning and unified subjectivity. These approaches typically view meaning as emergent from the interaction between text and reader rather than as something deposited in the text by its author. The theoretical tensions between these approaches manifest in several key areas. First, they diverge fundamentally on the location of textual meaning—whether it resides primarily in authorial intention, in the formal properties of the text itself, or in the reader's constructive engagement. Second, they differ on the stability and determinacy of meaning—whether a text possesses a single correct interpretation (potentially recoverable through appropriate methods) or supports multiple valid readings depending on reader context and interpretive approach. Third, they reflect contrasting views on interpretive authority—whether valid interpretation requires fidelity to authorial intention or whether readers legitimately co-create meaning through their engagement with the text. Fourth, they embody different conceptions of textuality itself—whether texts function primarily as vehicles for communicating authorial meanings or as productive sites that generate multiple potential meanings through reader engagement. The philosophical implications of these theoretical tensions extend to fundamental questions about language, subjectivity, and knowledge. Author-centered approaches often implicitly endorse a representational theory of language, wherein words can accurately represent pre-existing thoughts or intentions when properly understood. They typically presume a coherent authorial subjectivity capable of forming and expressing determinate meanings, and they suggest that interpretive knowledge involves recovering something that exists prior to and independent of the act of interpretation. Reader-response theories, conversely, often align with constructivist views of language as constitutive rather than merely representational, with postmodern conceptions of subjectivity as fragmented and contextually variable rather than unified and stable, and with epistemological frameworks that view knowledge as always situated and partial rather than objective and complete. Contemporary literary criticism has largely moved beyond rigid adherence to either extreme position, recognizing that both perspectives capture important aspects of literary experience while each remains incomplete on its own. Many critics now work within theoretical frameworks that acknowledge both textual constraints and readerly contribution, both historical situatedness and contemporary relevance, both the communicative intentions embedded in texts and the inevitable interpretive freedoms exercised by readers. This theoretical synthesis reflects a sophisticated understanding that meaning emerges through complex interactions between authors, texts, and readers, all situated within particular historical, cultural, and linguistic contexts that both enable and constrain interpretation. This nuanced approach better captures the phenomenology of literary experience, wherein readers simultaneously sense themselves engaging with another consciousness through the text while also recognizing their own active role in constructing the meanings they discover. It also allows for more productive critical dialogue by acknowledging both the constraints that make genuine communication possible and the creative freedom that gives interpretation its vitality and contemporary relevance. In conclusion, the tensions between author-centered and reader-centered approaches to literary interpretation reflect fundamental philosophical questions about meaning, authority, communication, and knowledge that extend far beyond technical matters of literary analysis. These theoretical positions represent different responses to the inherent complexities of textual interpretation, each capturing important aspects of literary experience while remaining incomplete in isolation. The most productive contemporary approaches recognize that meaningful interpretation involves a complex negotiation between the historical conditions of textual production (including authorial intention), the formal properties and constraints of the text itself, and the situated perspectives that readers inevitably bring to their engagements with literature.",
+&nbsp;
+        "The theoretical tensions between author-centered approaches to literary interpretation and reader-response theories constitute one of the most profound conceptual divides in literary criticism, reflecting fundamental philosophical questions about the nature of meaning, authority, and interpretation. Examining these competing frameworks reveals not merely technical disagreements about literary methodology but divergent ontological and epistemological assumptions that shape our understanding of what texts are and how they generate meaning. Author-centered approaches, encompassing biographical criticism, historical contextualism, and theories of authorial intention, position the author as the primary determinant of textual meaning. The most rigorous theoretical articulation of this perspective came through E.D. Hirsch's concept of 'authorial intent' in Validity in Interpretation (1967), which distinguished between a text's 'meaning' (what the author intended to communicate) and its 'significance' (how that meaning relates to broader contexts or reader concerns). For Hirsch, valid interpretation required recovering the author's intended meaning, which remained stable across time, while significance could legitimately vary with historical and personal contexts. This position sought to establish objective criteria for valid interpretation and guard against what its proponents considered interpretive relativism or subjectivism. The philosophical foundations of author-centered approaches typically draw from several interconnected traditions: Romantic conceptions of artistic creation as authentic self-expression; Enlightenment notions of autonomous selfhood and intentional agency; and communication models that position texts as vehicles transmitting meaning from sender to receiver. These approaches generally presume that texts contain determinate meanings that skilled readers can recover through appropriate historical knowledge, linguistic competence, and interpretive methods. While acknowledging the practical difficulties of perfectly accessing authorial intention (especially with historically distant texts), author-centered critics maintain that approximating this intention remains both possible and necessary for valid interpretation. Reader-response theories emerged from different philosophical traditions, particularly phenomenology, reception aesthetics, and poststructuralist critiques of traditional conceptions of meaning and authority. These approaches fundamentally reorient literary criticism by focusing on the reader's active role in constructing textual meaning rather than simply receiving authorial intentions. Wolfgang Iser's theory of textual 'gaps' highlighted how texts require readers to actively participate in meaning-making by filling indeterminate spaces with their own projections and assumptions. Stanley Fish's concept of 'interpretive communities' emphasized how shared interpretive strategies and assumptions shape reading experiences in systematic ways, challenging the notion of purely individual interpretation while also rejecting textual determinism. Roland Barthes's influential essay 'The Death of the Author' (1967) more radically rejected authorial intention as a constraint on interpretation, arguing that writing 'destroys every voice, every origin' and opens the text to multiple interpretations beyond the author's control or intention. Reader-response approaches typically view meaning as emergent from the interaction between text and reader rather than as something deposited in the text by its author and subsequently extracted through interpretation. The philosophical implications of these theoretical tensions extend to fundamental questions about language, subjectivity, and knowledge. Author-centered approaches often implicitly endorse a representational theory of language, wherein words can accurately represent pre-existing thoughts or intentions when properly understood. They typically presume a coherent authorial subjectivity capable of forming and expressing determinate meanings, and they suggest that interpretive knowledge involves recovering something that exists prior to and independent of the act of interpretation. Reader-response theories, conversely, often align with constructivist views of language as constitutive rather than merely representational, with postmodern conceptions of subjectivity as fragmented and contextually variable rather than unified and stable, and with epistemological frameworks that view knowledge as always situated and partial rather than objective and complete. The critical conversation between these theoretical positions has evolved significantly over time. The New Criticism of the mid-twentieth century attempted to sidestep these tensions by focusing exclusively on the text itself, bracketing both authorial intention and reader response as methodologically irrelevant to critical analysis. Poststructuralist theory dramatically shifted the balance toward reader-centered approaches in the 1970s and 1980s, with deconstructionist readings emphasizing the inherent instability of textual meaning and the inevitability of multiple, even contradictory interpretations. More recently, historicist approaches have partially rehabilitated author-centered criticism by emphasizing the importance of recovering the historical and cultural contexts of literary production, while acknowledging the impossibility of accessing authorial intention in any pure or unmediated form. Contemporary literary criticism has largely moved beyond rigid adherence to either extreme position, recognizing that both perspectives capture important aspects of literary experience while each remains incomplete on its own. Many critics now work within theoretical frameworks that acknowledge both textual constraints and readerly contribution, both historical situatedness and contemporary relevance, both the communicative intentions embedded in texts and the inevitable interpretive freedoms exercised by readers. This theoretical synthesis reflects a sophisticated understanding that meaning emerges through complex interactions between authors, texts, and readers, all situated within particular historical, cultural, and linguistic contexts that both enable and constrain interpretation. This nuanced approach better captures the phenomenology of literary experience, wherein readers simultaneously sense themselves engaging with another consciousness through the text while also recognizing their own active role in constructing the meanings they discover. In conclusion, the tensions between author-centered and reader-centered approaches to literary interpretation reflect fundamental philosophical questions about meaning, authority, communication, and knowledge that extend far beyond technical matters of literary analysis. These theoretical positions represent different responses to the inherent complexities of textual interpretation, each capturing important aspects of literary experience while remaining incomplete in isolation. The most productive contemporary approaches recognize that meaningful interpretation involves a complex negotiation between the historical conditions of textual production (including authorial intention), the formal properties and constraints of the text itself, and the situated perspectives that readers inevitably bring to their engagements with literature.",
+&nbsp;
+        "The theoretical tensions between author-centered approaches to literary interpretation and reader-response theories constitute one of the most profound conceptual divides in literary criticism, embodying fundamentally different philosophical assumptions about the nature and location of textual meaning. These competing frameworks not only shape critical methodologies but also reflect broader philosophical questions about language, subjectivity, authority, and the interpretive process that transcend the specific domain of literary studies. Author-centered approaches encompass a range of critical methodologies—including biographical criticism, certain manifestations of historical criticism, and intentionalist interpretive theories—that privilege the author's role in determining textual meaning. The most rigorous theoretical articulation of this position appeared in E.D. Hirsch's Validity in Interpretation (1967), which distinguished between a text's 'meaning' (what the author intended to communicate) and its 'significance' (how that meaning relates to broader contexts or subsequent concerns). For Hirsch, while significance might legitimately evolve across historical and cultural contexts, valid interpretation required recovering the author's intended meaning, which remained stable and determinate across time. This position sought to establish objective criteria for interpretive validity and guard against what its proponents considered relativistic or subjective readings unmoored from textual constraints. The philosophical underpinnings of author-centered approaches typically draw from several interconnected traditions: Romantic conceptions of artistic creation as authentic self-expression; Enlightenment notions of autonomous selfhood and intentional agency; and communication models that position texts as vehicles transmitting meaning from sender to receiver. These approaches generally presume that texts contain determinate meanings that competent readers can recover through appropriate historical knowledge, linguistic competence, and interpretive methodology. While acknowledging the practical difficulties of perfectly accessing authorial intention (especially with historically distant texts), author-centered critics maintain that approximating this intention remains both possible and necessary for valid interpretation. Reader-response theories emerged from different philosophical traditions, particularly phenomenology, reception aesthetics, and poststructuralist critiques of traditional conceptions of meaning and authority. These approaches fundamentally reorient literary criticism by focusing on the reader's active role in constructing textual meaning rather than simply receiving authorial intentions. Wolfgang Iser's theory of textual 'gaps' highlighted how texts require readers to actively participate in meaning-making by filling indeterminate spaces with their own projections and assumptions. Stanley Fish's concept of 'interpretive communities' emphasized how shared interpretive strategies and assumptions shape reading experiences in systematic ways, challenging the notion of purely individual interpretation while also rejecting textual determinism. More radical manifestations of reader-oriented criticism, exemplified by Roland Barthes's declaration of 'the death of the author,' reject authorial intention entirely as a constraint on interpretation, arguing that texts function as sites of multiple, shifting meanings activated differently by each reader's engagement. The philosophical foundations of reader-response theories often draw from phenomenology's emphasis on consciousness and experience, hermeneutic theories of interpretation as dialogic engagement rather than archaeological recovery, and poststructuralist critiques of stable meaning and unified subjectivity. These approaches typically view meaning as emergent from the interaction between text and reader rather than as something deposited in the text by its author and subsequently extracted through interpretation. The theoretical tensions between these approaches manifest in several key areas. First, they diverge fundamentally on the location of textual meaning—whether it resides primarily in authorial intention, in the formal properties of the text itself, or in the reader's constructive engagement. Second, they differ on the stability and determinacy of meaning—whether a text possesses a single correct interpretation (potentially recoverable through appropriate methods) or supports multiple valid readings depending on reader context and interpretive approach. Third, they reflect contrasting views on interpretive authority—whether valid interpretation requires fidelity to authorial intention or whether readers legitimately co-create meaning through their engagement with the text. Fourth, they embody different conceptions of textuality itself—whether texts function primarily as vehicles for communicating authorial meanings or as productive sites that generate multiple potential meanings through reader engagement. The philosophical implications of these theoretical tensions extend to fundamental questions about language, subjectivity, and knowledge. Author-centered approaches often implicitly endorse a representational theory of language, wherein words can accurately represent pre-existing thoughts or intentions when properly understood. They typically presume a coherent authorial subjectivity capable of forming and expressing determinate meanings, and they suggest that interpretive knowledge involves recovering something that exists prior to and independent of the act of interpretation. Reader-response theories, conversely, often align with constructivist views of language as constitutive rather than merely representational, with postmodern conceptions of subjectivity as fragmented and contextually variable rather than unified and stable, and with epistemological frameworks that view knowledge as always situated and partial rather than objective and complete. The critical conversation between these theoretical positions has evolved significantly over time. The New Criticism of the mid-twentieth century attempted to sidestep these tensions by focusing exclusively on the text itself, bracketing both authorial intention (dismissed as the 'intentional fallacy') and reader response (dismissed as the 'affective fallacy') as methodologically irrelevant to critical analysis. Poststructuralist theory dramatically shifted the balance toward reader-centered approaches in the 1970s and 1980s, with deconstructionist readings emphasizing the inherent instability of textual meaning and the inevitability of multiple, even contradictory interpretations. More recently, historicist approaches have partially rehabilitated author-centered criticism by emphasizing the importance of recovering the historical and cultural contexts of literary production, while acknowledging the impossibility of accessing authorial intention in any pure or unmediated form. Contemporary literary criticism has largely moved beyond rigid adherence to either extreme position, recognizing that both perspectives capture important aspects of literary experience while each remains incomplete on its own. Many critics now work within theoretical frameworks that acknowledge both textual constraints and readerly contribution, both historical situatedness and contemporary relevance, both the communicative intentions embedded in texts and the inevitable interpretive freedoms exercised by readers. This theoretical synthesis reflects a sophisticated understanding that meaning emerges through complex interactions between authors, texts, and readers, all situated within particular historical, cultural, and linguistic contexts that both enable and constrain interpretation. This nuanced approach better captures the phenomenology of literary experience, wherein readers simultaneously sense themselves engaging with another consciousness through the text while also recognizing their own active role in constructing the meanings they discover. It also allows for more productive critical dialogue by acknowledging both the constraints that make genuine communication possible and the creative freedom that gives interpretation its vitality and contemporary relevance. In conclusion, the tensions between author-centered and reader-centered approaches to literary interpretation reflect fundamental philosophical questions about meaning, authority, communication, and knowledge that extend far beyond technical matters of literary analysis. These theoretical positions represent different responses to the inherent complexities of textual interpretation, each capturing important aspects of literary experience while remaining incomplete in isolation. The most productive contemporary approaches recognize that meaningful interpretation involves a complex negotiation between the historical conditions of textual production (including authorial intention), the formal properties and constraints of the text itself, and the situated perspectives that readers inevitably bring to their engagements with literature."
+      ],
+      hints: "Evaluate the theoretical tensions between author-centered and reader-response approaches to literary interpretation, analyzing their philosophical foundations and implications for our understanding of textual meaning.",
+      expectedKeywords: ["author-centered", "reader-response", "authorial intention", "interpretive communities", "E.D. Hirsch", "Roland Barthes", "death of the author", "textual meaning", "determinacy", "hermeneutics", "phenomenology", "subjectivity", "Wolfgang Iser", "Stanley Fish", "interpretive authority"],
+      feedback: {
+        correct: "Your analysis of the theoretical tensions between author-centered and reader-response approaches demonstrates exceptional sophistication and nuance. You've thoughtfully explored the philosophical foundations and implications of these competing frameworks. Building on this discussion, let's examine another significant theoretical dimension of contemporary literary criticism. How would you evaluate the relationship between formalist approaches to literary analysis (which emphasize close reading of textual elements) and contextual theories (such as new historicism, Marxist criticism, and postcolonial theory) that prioritize the cultural, historical, and political dimensions of literary works?",
+        partial: "You've addressed some important aspects of the tension between author-centered and reader-response approaches. Could you develop your analysis further by more explicitly examining the philosophical foundations of these competing frameworks and their implications for our understanding of textual meaning?",
+        incorrect: "I'd like you to focus more directly on evaluating the theoretical tensions between author-centered approaches to literary interpretation and reader-response theories, specifically addressing their philosophical implications for our understanding of textual meaning."
+      }
+    },
+    {
+      id: 2,
+      botMessage: "Your analysis of the theoretical tensions between author-centered and reader-response approaches demonstrates exceptional sophistication and nuance. You've thoughtfully explored the philosophical foundations and implications of these competing frameworks. Building on this discussion, let's examine another significant theoretical dimension of contemporary literary criticism. How would you evaluate the relationship between formalist approaches to literary analysis (which emphasize close reading of textual elements) and contextual theories (such as new historicism, Marxist criticism, and postcolonial theory) that prioritize the cultural, historical, and political dimensions of literary works?",
+      inputMode: "hybrid",
+suggestions: [
+        "The relationship between formalist approaches to literary analysis and contextual theories represents another fundamental theoretical tension in literary criticism, reflecting divergent conceptions of what constitutes the proper object of literary study and how aesthetic value relates to broader cultural, historical, and political dimensions. This tension, which emerged prominently in the mid-twentieth century and continues to shape critical practice today, involves complex philosophical questions about literary autonomy, the nature of aesthetic experience, and the relationship between texts and their socio-historical contexts. Formalist approaches, including Russian Formalism, New Criticism, and certain strands of structuralism, prioritize the internal elements and formal properties of literary texts, advocating close reading practices that attend carefully to linguistic patterns, rhetorical devices, narrative structures, and other textual features. These approaches typically bracket external considerations—such as biographical, historical, or political contexts—as methodologically irrelevant to understanding the specifically literary qualities of a text. The New Critics, for instance, argued that literature should be approached as a self-contained aesthetic object, with meaning emerging from the complex interrelations between its formal elements rather than from extratextual reference. Their analytical methodology emphasized close attention to ambiguity, paradox, irony, and tension as central features of literary language, while explicitly rejecting what they termed the 'intentional fallacy' (the identification of meaning with authorial intention) and the 'affective fallacy' (the identification of meaning with reader response). The philosophical underpinnings of formalist approaches often derive from Kantian aesthetics, particularly the notion of disinterested contemplation and the autonomy of aesthetic judgment from practical or moral concerns. They typically assume that literature constitutes a distinctive mode of language use characterized by particular formal properties—such as the Russian Formalists' concept of 'defamiliarization' or the Structuralists' emphasis on systematic patterns and oppositions—that distinguish it from ordinary communication and necessitate specialized analytical methods. Formalism thus implies a particular conception of literary value centered on formal complexity, coherence, and aesthetic integration rather than representational accuracy or moral/political significance. Contextual theories, by contrast, situate literary works within broader frameworks of cultural production, historical circumstance, and political power. New Historicism, emerging in the 1980s through the work of Stephen Greenblatt and others, conceptualizes literature as embedded within complex networks of cultural practices and discourses, emphasizing the reciprocal relationship between texts and historical contexts. Rather than treating literature as reflective of historical reality, New Historicists examine how literary and non-literary texts participate in the circulation and contestation of cultural meanings and social power. Marxist criticism, drawing from Marx's analysis of ideological superstructures and their relation to economic base, attends to how literature reflects, reinforces, or occasionally challenges existing power relations and class structures. From this perspective, formal features themselves carry ideological significance, and aesthetic judgments cannot be separated from questions of political consciousness and social transformation. Postcolonial theory, through the work of scholars like Edward Said, Gayatri Spivak, and Homi Bhabha, examines how literary texts participate in colonial discourse and imperial power structures, while also exploring how colonized subjects resist, appropriate, and transform dominant cultural forms. This approach necessitates attention to the historical specificity of colonial relations, the politics of representation, and the complex negotiation of cultural identities within and against imperial frameworks. The philosophical foundations of contextual approaches often derive from Hegelian and Marxist traditions that emphasize the historical embeddedness of consciousness and cultural production, Foucauldian analysis of discourse and power, and poststructuralist critiques of autonomous subjectivity and transparent representation. These theoretical traditions typically reject the notion of aesthetic autonomy, arguing that literature inevitably participates in broader social, political, and economic systems, and that formalist methods risk mystifying these connections through decontextualized analysis. The tension between formalist and contextual approaches manifests in several key areas. First, they differ fundamentally on the question of aesthetic autonomy—whether literature constitutes a distinct domain governed by its own internal principles or remains inextricably embedded in broader social and historical processes. Second, they diverge on methodological priorities—whether critical attention should focus primarily on close reading of textual elements or on situating texts within relevant contextual frameworks. Third, they imply different conceptions of literary value—whether aesthetic merit derives primarily from formal achievement or from a work's engagement with significant social, historical, or political questions. Fourth, they reflect contrasting views on the relationship between literature and power—whether aesthetic experience offers some degree of liberation from immediate social determinations or whether literary form itself constitutes a site of ideological struggle. Contemporary literary criticism has increasingly recognized that this opposition between formal analysis and contextual interpretation represents a false dichotomy that impoverishes critical practice rather than enhancing it. The most sophisticated recent approaches integrate formal and contextual dimensions, recognizing that formal features acquire significance partly through their socio-historical contexts, while contextual understanding remains incomplete without close attention to the specific formal strategies through which texts engage their contexts. This theoretical integration manifests in various ways across different critical schools. Fredric Jameson's Marxist criticism, for instance, connects formal innovations in modernist and postmodernist literature to specific historical developments in global capitalism, treating literary form as both reflective of and responsive to changing socioeconomic conditions. New Historicist readings attend carefully to rhetorical strategies and formal structures while situating these within broader cultural discourses and power relations. Postcolonial criticism examines how colonized writers appropriate and transform literary forms associated with imperial traditions, using formal innovation as a means of cultural resistance and identity formation. Feminist criticism analyzes how gendered power structures shape narrative forms and linguistic patterns, while also exploring how formal experimentation can challenge dominant gender ideologies. This integration of formal and contextual approaches acknowledges that literary texts operate simultaneously as aesthetic objects with distinctive formal properties and as cultural artifacts embedded in specific historical, social, and political circumstances. Form itself carries historical and ideological significance, while contextual understanding requires sensitivity to the specific formal means through which texts engage their contexts. The most productive contemporary criticism thus moves beyond the limitations of both pure formalism (which risks aesthetic fetishism disconnected from social reality) and reductive contextualism (which risks reducing literature to mere historical documentation or political instrument). Instead, it explores the complex interplay between formal innovation and contextual engagement, recognizing that literature's distinctive power often emerges precisely through the ways in which aesthetic form mediates, reflects upon, and occasionally transforms its historical conditions of possibility. This integrated approach better captures the complexity of literary experience, wherein formal patterns generate aesthetic pleasure while simultaneously engaging readers in reflection on social, historical, and political questions. It also allows for more nuanced evaluative frameworks that acknowledge both formal achievement and contextual significance as relevant—though not necessarily compatible—dimensions of literary value. In conclusion, while formalist and contextual approaches initially developed in opposition to each other, reflecting different conceptions of literature's nature and function, contemporary criticism increasingly recognizes their complementarity rather than their mutual exclusion. The most sophisticated literary analysis now attends simultaneously to the formal complexities that distinguish literary language and to the contextual dimensions that connect literature to broader cultural, historical, and political concerns. This theoretical synthesis acknowledges that literature's distinctive power emerges precisely through the complex interplay between aesthetic form and historical embeddedness—between literature's capacity to create imaginative worlds governed by internal principles and its inevitable participation in the social realities that shape and are shaped by these imagined alternatives.",
+&nbsp;
+        "The relationship between formalist approaches to literary analysis and contextual theories represents a fundamental tension in literary criticism that reflects divergent conceptions of literature's nature and function. This theoretical divide encompasses competing views about what constitutes the proper object of literary study, how aesthetic value should be determined, and how texts relate to their socio-historical contexts. Examining this relationship requires analyzing the philosophical foundations, methodological implications, and critical consequences of these contrasting frameworks. Formalist approaches, encompassing Russian Formalism, New Criticism, certain strands of structuralism, and aspects of narratology, prioritize the internal elements and formal properties of literary texts. These approaches advocate close reading practices that attend carefully to linguistic patterns, rhetorical devices, narrative structures, and other textual features, while methodologically bracketing external considerations such as authorial biography, historical context, or political implications. The New Critics, for instance, conceptualized the literary work as a self-contained aesthetic object, with meaning emerging from the complex interrelationships between its formal elements rather than from extratextual reference. Their analytical methodology emphasized ambiguity, paradox, irony, and tension as central features of literary language, while explicitly rejecting what they termed the 'intentional fallacy' (identification of meaning with authorial intention) and the 'affective fallacy' (identification of meaning with reader response). The philosophical underpinnings of formalist approaches often derive from Kantian aesthetics, particularly the notion of disinterested contemplation and the autonomy of aesthetic judgment from practical or moral concerns. They typically assume that literature constitutes a distinctive mode of language use characterized by particular formal properties—such as the Russian Formalists' concept of 'defamiliarization' or the Structuralists' emphasis on systematic patterns and binary oppositions—that distinguish it from ordinary communication and necessitate specialized analytical methods. Formalism thus implies a particular conception of literary value centered on formal complexity, coherence, and aesthetic integration rather than representational accuracy, moral instruction, or political significance. Contextual theories, by contrast, situate literary works within broader frameworks of cultural production, historical circumstance, and political power. New Historicism, emerging in the 1980s through the work of Stephen Greenblatt and others, conceptualizes literature as embedded within complex networks of cultural practices and discourses, emphasizing the reciprocal relationship between texts and historical contexts. Rather than treating literature as reflective of historical reality, New Historicists examine how literary and non-literary texts participate in the circulation and contestation of cultural meanings and social power. Marxist criticism, drawing from Marx's analysis of ideological superstructures and their relation to economic base, attends to how literature reflects, reinforces, or occasionally challenges existing power relations and class structures. From this perspective, formal features themselves carry ideological significance, and aesthetic judgments cannot be separated from questions of political consciousness and social transformation. Postcolonial theory, through the work of scholars like Edward Said, Gayatri Spivak, and Homi Bhabha, examines how literary texts participate in colonial discourse and imperial power structures, while also exploring how colonized subjects resist, appropriate, and transform dominant cultural forms. This approach necessitates attention to the historical specificity of colonial relations, the politics of representation, and the complex negotiation of cultural identities within and against imperial frameworks. The philosophical foundations of contextual approaches often derive from Hegelian and Marxist traditions that emphasize the historical embeddedness of consciousness and cultural production, Foucauldian analysis of discourse and power, and poststructuralist critiques of autonomous subjectivity and transparent representation. These theoretical traditions typically reject the notion of aesthetic autonomy, arguing that literature inevitably participates in broader social, political, and economic systems, and that formalist methods risk mystifying these connections through decontextualized analysis. The tension between these approaches manifests in several key areas. First, they differ fundamentally on the question of aesthetic autonomy—whether literature constitutes a distinct domain governed by its own internal principles or remains inextricably embedded in broader social and historical processes. Second, they diverge on methodological priorities—whether critical attention should focus primarily on close reading of textual elements or on situating texts within relevant contextual frameworks. Third, they imply different conceptions of literary value—whether aesthetic merit derives primarily from formal achievement or from a work's engagement with significant social, historical, or political questions. Fourth, they reflect contrasting views on the relationship between literature and power—whether aesthetic experience offers some degree of liberation from immediate social determinations or whether literary form itself constitutes a site of ideological struggle. The historical development of this theoretical tension reveals its dialectical nature. Russian Formalism emerged partly as a reaction against biographical and historical approaches that subordinated literary analysis to external concerns. New Criticism similarly developed in opposition to impressionistic and moralistic reading practices that neglected formal specificity. These formalist movements productively refocused critical attention on the distinctive features of literary language and textual organization. However, their methodological bracketing of context eventually generated counter-movements—including cultural materialism, New Historicism, and various political criticisms—that reemphasized literature's embeddedness in social and historical processes. These contextual approaches corrected formalism's potential ahistoricism but sometimes risked reducing literary texts to mere symptoms or reflections of external forces. Contemporary literary criticism has increasingly recognized that this opposition between formal analysis and contextual interpretation represents a false dichotomy that impoverishes critical practice rather than enhancing it. The most sophisticated recent approaches integrate formal and contextual dimensions, recognizing that formal features acquire significance partly through their socio-historical contexts, while contextual understanding remains incomplete without close attention to the specific formal strategies through which texts engage their contexts. This theoretical integration manifests in various ways across different critical schools. Fredric Jameson's Marxist criticism, for instance, connects formal innovations in modernist and postmodernist literature to specific historical developments in global capitalism, treating literary form as both reflective of and responsive to changing socioeconomic conditions. New Historicist readings attend carefully to rhetorical strategies and formal structures while situating these within broader cultural discourses and power relations. Postcolonial criticism examines how colonized writers appropriate and transform literary forms associated with imperial traditions, using formal innovation as a means of cultural resistance and identity formation. Feminist criticism analyzes how gendered power structures shape narrative forms and linguistic patterns, while also exploring how formal experimentation can challenge dominant gender ideologies. This integration of formal and contextual approaches acknowledges that literary texts operate simultaneously as aesthetic objects with distinctive formal properties and as cultural artifacts embedded in specific historical, social, and political circumstances. Form itself carries historical and ideological significance, while contextual understanding requires sensitivity to the specific formal means through which texts engage their contexts. The most productive contemporary criticism thus moves beyond the limitations of both pure formalism (which risks aesthetic fetishism disconnected from social reality) and reductive contextualism (which risks reducing literature to mere historical documentation or political instrument). Instead, it explores the complex interplay between formal innovation and contextual engagement, recognizing that literature's distinctive power often emerges precisely through the ways in which aesthetic form mediates, reflects upon, and occasionally transforms its historical conditions of possibility. In conclusion, while formalist and contextual approaches initially developed in opposition to each other, reflecting different conceptions of literature's nature and function, contemporary criticism increasingly recognizes their complementarity rather than their mutual exclusion. The most sophisticated literary analysis now attends simultaneously to the formal complexities that distinguish literary language and to the contextual dimensions that connect literature to broader cultural, historical, and political concerns. This theoretical synthesis acknowledges that literature's distinctive power emerges precisely through the complex interplay between aesthetic form and historical embeddedness—between literature's capacity to create imaginative worlds governed by internal principles and its inevitable participation in the social realities that shape and are shaped by these imagined alternatives.",
+&nbsp;
+        "The relationship between formalist approaches to literary analysis and contextual theories represents a fundamental theoretical tension in literary criticism..."
+      ],
+      hints: "Evaluate the relationship between formalist approaches to literary analysis and contextual theories like new historicism, Marxist criticism, and postcolonial theory, analyzing their differing perspectives on textual interpretation and value.",
+      expectedKeywords: ["formalist", "contextual", "New Criticism", "close reading", "New Historicism", "Marxist criticism", "postcolonial theory", "aesthetic autonomy", "social context", "political dimensions", "historical embeddedness", "textual features", "ideological significance", "rhetorical devices", "discursive formations"],
+      acceptablePhrases: [
+        "formalist approaches",
+        "contextual theories",
+        "New Criticism",
+        "close reading",
+        "aesthetic autonomy",
+        "New Historicism",
+        "Marxist criticism",
+        "postcolonial theory",
+        "ideological significance",
+        "historical embeddedness",
+        "textual features",
+        "cultural context",
+        "political dimensions",
+        "rhetorical analysis",
+        "social power"
+      ],
+      feedback: {
+        correct: "Your analysis of the relationship between formalist and contextual approaches demonstrates exceptional theoretical sophistication. You've articulated the philosophical foundations and critical implications of these frameworks with remarkable precision. Let's now explore the intersection of literary theory with contemporary media. How would you evaluate the application of traditional literary critical approaches to digital narratives and other new media forms? What theoretical adaptations or innovations might be necessary to address the distinctive characteristics of digital textuality?",
+        partial: "You've made some good points about formalist and contextual approaches to literary analysis. Could you develop your evaluation further by more explicitly addressing the relationship between these approaches and analyzing their differing perspectives on textual interpretation and value?",
+        incorrect: "I'd like you to focus more directly on evaluating the relationship between formalist approaches to literary analysis and contextual theories such as new historicism, Marxist criticism, and postcolonial theory, specifically addressing their differing perspectives on textual interpretation and value."
+      }
+    },
+  {
+  "id": 3,
+  "botMessage": "Your analysis of the formalist-contextual divide was exceptionally incisive. Let us now explore how these theoretical frameworks adapt—or fail to adapt—to emergent narrative forms. How might traditional literary criticism confront the challenges posed by digital literature (hypertext fiction, AI-generated narratives, interactive storytelling)? Consider both the transformative potential and the epistemological ruptures these media introduce to concepts like authorship, textual stability, and reader agency.",
+  "inputMode": "hybrid",
+  "suggestions": [
+    "Digital literature necessitates a radical rethinking of foundational literary concepts. The New Critical principle of textual autonomy becomes untenable when faced with hypertext's non-linear architecture, where reader choices actively co-construct the narrative. This aligns with Barthes' notion of the 'death of the author' but extends it through technological mediation—the 'author' here is distributed among programmers, algorithms, and interactive users. Meanwhile, formalist tools like close reading must adapt to analyze algorithmic patterns, interface design, and procedural rhetoric. Contextual theories, conversely, gain new urgency: Marxist critique might examine the digital divide's impact on who gets to participate in these narratives, while postcolonial theory could interrogate how global platforms homogenize or marginalize local storytelling traditions. The ontological instability of digital texts (constantly updated, remixed) mirrors poststructuralist theories of textuality but with material consequences—what does 'close reading' mean when a text changes between visits?",
+&nbsp;
+    "The advent of AI-generated literature and interactive storytelling platforms challenges traditional critical frameworks in profound ways. Formalist approaches must expand beyond analyzing static textual features to account for dynamic narrative structures—how do we evaluate the 'form' of a story that reassembles itself based on user input or machine learning parameters? Contextual theories like New Historicism face analogous challenges: how does one situate an algorithmically-generated text within a cultural moment when its 'author' is a neural network trained on centuries of cross-cultural data? These media expose limitations in existing paradigms: the intentional fallacy becomes exponentially complicated when authorial 'intention' is distributed among original programmers, training datasets, and user prompts. Conversely, digital narratives also offer laboratories for testing theoretical claims—hypertext fiction literalizes Kristeva's intertextuality, while AI writing tools materialize Foucault's 'author function.' The critical task now involves both deconstructing inherited frameworks and building new analytical tools attuned to digital textuality's unique properties—its procedural nature, its collaborative authorship, its destabilization of the reader-writer binary.",
+&nbsp;
+    "Digital narratives force literary criticism to confront its unexamined assumptions about textual materiality and narrative coherence..."
+  ],
+  "hints": "Analyze how digital narratives: 1) redefine authorship/textuality, 2) challenge formalist close reading, 3) demand adapted contextual frameworks. Consider specific examples (e.g., hypertext fiction, AI poetry).",
+  "expectedKeywords": [
+    "hypertext", 
+    "non-linear narrative", 
+    "algorithmic authorship", 
+    "procedural rhetoric", 
+    "interactive storytelling", 
+    "digital hermeneutics", 
+    "textual instability", 
+    "reader-as-writer", 
+    "neural network literature", 
+    "posthuman authorship"
+  ],
+  "acceptablePhrases": [
+    "death of the author",
+    "dynamic textuality",
+    "machine-generated literature",
+    "user agency",
+    "narrative architecture",
+    "digital materiality",
+    "poststructuralist textuality",
+    "interactive semiotics",
+    "computational creativity",
+    "contextual frameworks for digital media"
+  ],
+  "feedback": {
+    "correct": "Your interrogation of digital literature's theoretical implications demonstrates masterful adaptability. You've not only identified critical ruptures but proposed innovative syntheses between traditional theory and emergent media. Let's deepen this: how might ecocritical or posthumanist perspectives further complicate our understanding of algorithmic textuality?",
+    "partial": "You've identified key features of digital narratives, but could more explicitly connect these to the formalist/contextual tension we've examined? For instance, how might hypertextuality force New Criticism to evolve, or how could Marxist critique analyze AI training datasets?",
+    "incorrect": "Let's refocus: examine how digital narratives fundamentally alter concepts like authorship, textual boundaries, and interpretive methods. Compare these changes to the formalist and contextual theories we've discussed."
+  }
+},
+{
+  "id": 4,
+  "botMessage": "Your analysis of digital literature's challenges to textual theory was profoundly insightful. Let us now confront a more fundamental question: *What constitutes valid evidence in literary criticism?* Evaluate the epistemological tensions between hermeneutic approaches (prioritizing interpretive depth) and empirical methodologies (e.g., computational text analysis, cognitive poetics). How might these divergent paradigms reshape our understanding of literary meaning?",
+  "inputMode": "hybrid",
+  "suggestions": [
+    "The debate between hermeneutic and empirical methodologies reflects a deeper epistemological schism in literary studies. Hermeneutic traditions, from Schleiermacher to Gadamer, posit meaning as emergent through dialogic interpretation, where the critic's subjective engagement with textual nuances generates insight. This approach values ambiguity, paradox, and the irreducible complexity of literary language—qualities that resist quantification. In contrast, empirical methods (stylometry, corpus linguistics, eye-tracking studies in cognitive poetics) treat literary phenomena as measurable data, seeking patterns across texts or reader responses. The tension here mirrors the formalist/contextual divide but operates at a meta-theoretical level: what *counts* as knowledge in literary studies? For instance, Franco Moretti's 'distant reading' provocatively rejects close reading's selectivity in favor of macroscopic trends, while cognitive critics like Lisa Zunshine analyze narrative through psychological frameworks. These methodological clashes force us to interrogate whether literary meaning resides in textual structures, readerly cognition, or cultural discourses—and whether it demands interpretation or observation.",
+&nbsp;
+    "The rise of empirical methodologies in literary studies has sparked contentious debates about disciplinary boundaries. Proponents argue that tools like NLP (Natural Language Processing) or neuroaesthetics offer objectivity where traditional criticism relies on impressionistic claims. For example, computational analysis of semantic fields in Woolf's novels might reveal unconscious patterning invisible to close reading. Conversely, hermeneutic scholars retort that empirical approaches reduce literature to its measurable aspects, neglecting what Adorno termed the 'non-identical'—the aesthetic excess that escapes systematization. This tension parallels the formalist/contextual divide but with higher stakes: it questions whether literary criticism should align with the sciences or preserve its humanistic distinctiveness. A synthesis might emerge through *cognitive hermeneutics*, blending phenomenological reader-response theory with empirical findings on how brains process metaphor. Yet fundamental disagreements persist: can algorithmic analysis capture irony? Does quantifying emotional valence in poetry enrich or impoverish our encounter with it?",
+&nbsp;
+    "The conflict between hermeneutic and empirical paradigms reflects literature's dual nature as both art and cultural artifact..."
+  ],
+  "hints": "Analyze: 1) hermeneutics' focus on subjective interpretation vs. empiricism's quantitative rigor, 2) case studies (e.g., computational stylistics, cognitive poetics), 3) implications for defining 'valid' criticism.",
+  "expectedKeywords": [
+    "hermeneutics",
+    "empirical methodologies",
+    "cognitive poetics",
+    "distant reading",
+    "computational criticism",
+    "epistemology",
+    "Gadamer",
+    "neuroaesthetics",
+    "quantitative analysis",
+    "qualitative interpretation",
+    "stylometry",
+    "NLP",
+    "Adorno",
+    "aesthetic excess",
+    "disciplinary boundaries"
+  ],
+  "acceptablePhrases": [
+    "interpretive depth vs. data-driven analysis",
+    "science vs. humanism in literary studies",
+    "the quantification of aesthetic experience",
+    "pattern recognition in literature",
+    "cognitive approaches to narrative",
+    "digital humanities and close reading",
+    "the limits of computational criticism",
+    "phenomenology of reading",
+    "statistical vs. hermeneutic meaning",
+    "neuroscience and literary theory"
+  ],
+  "feedback": {
+    "correct": "Your interrogation of literary epistemology demonstrates masterful theoretical agility. You've not only mapped the hermeneutic/empirical divide but exposed its philosophical underpinnings. Let’s now pressure-test these ideas: how might postcolonial or ecological critiques challenge *both* paradigms’ assumptions about meaning?",
+    "partial": "You’ve identified key methodological differences, but could more explicitly connect them to the core tension: what each paradigm excludes as 'invalid' evidence? For instance, how might empirical methods handle intertextuality, or hermeneutics address reproducibility crises?",
+    "incorrect": "Refocus on the epistemological question: what makes an interpretation or analysis 'valid' in literary studies? Compare concrete examples from both traditions (e.g., a Gadamerian reading vs. a corpus linguistics study)."
+  }
+},
+{
+  "id": 5,
+  "botMessage": "Your evaluation of empirical and hermeneutic methodologies demonstrates remarkable theoretical sophistication. For our final exploration: How is artificial intelligence reshaping literary creation, interpretation, and the very concept of authorship? Examine both the transformative potentials and fundamental challenges AI poses to traditional literary paradigms.",
+  "inputMode": "freeText",
+  "suggestions": [
+    "AI's incursion into literary domains destabilizes foundational critical concepts. The notion of 'authorship' becomes fractured when texts are generated by LLMs trained on millennia of human writing—is the 'author' the algorithm, its training data, or the user prompting it? This forces a reengagement with Barthes' 'death of the author' and Foucault's 'author-function,' but with new urgency: AI manifests these theoretical propositions materially. Interpretation equally transforms; close reading an AI-generated text requires analyzing probabilistic pattern-replication rather than intentional artistry. Meanwhile, AI tools like ChatGPT democratize literary production while risking homogenization—when all outputs derive from the same training corpora, does literary innovation survive? These disruptions demand new critical frameworks: perhaps a 'posthuman narratology' that analyzes human-AI collaborative writing, or 'algorithmic intertextuality' tracing how LLMs remix source materials. The existential challenge: if AI can produce passable pastiche of any literary style, does 'literariness' retain meaning?",
+&nbsp;
+    "The rise of AI literature necessitates rethinking three core pillars of criticism: creativity, interpretation, and value. First, the creative act: AI exposes how much literary 'originality' has always been recombinative—but where human writers transform influences consciously, LLMs do so statistically. This compels us to define what distinguishes human creativity from machine output. Second, interpretation: traditional tools like psychoanalytic or feminist critique struggle with AI texts lacking a human unconscious or gendered subjectivity. New methods must emerge—perhaps 'training-data archaeology' to expose embedded biases in generated texts. Third, value: if AI can emulate Shakespeare or Borges algorithmically, do we need new criteria for evaluation beyond technical proficiency? The most profound implication may be meta-theoretical: AI forces literary studies to confront its unexamined anthropocentrism. Just as posthumanism decentered the human in philosophy, AI literature demands we consider non-human artistic agency. Yet this also offers opportunities: AI might help us see familiar texts anew—for instance, by algorithmically mapping previously unnoticed intertextual networks across centuries of literature.",
+&nbsp;
+    "AI's impact on literature parallels historical mediatic shifts..."
+  ],
+  "hints": "Analyze: 1) AI's challenge to authorship theories, 2) interpretation of machine-generated texts, 3) evolving criteria for literary value. Consider specific examples (AI poetry generators, LLM-authored novels).",
+  "expectedKeywords": [
+    "posthuman authorship",
+    "LLM-generated literature",
+    "death of the author",
+    "algorithmic intertextuality",
+    "training-data bias",
+    "non-human creativity",
+    "literary value",
+    "anthropocentrism",
+    "probabilistic writing",
+    "human-AI collaboration",
+    "Borges",
+    "Barthes",
+    "Foucault",
+    "pastische",
+    "narratology"
+  ],
+  "feedback": {
+    "correct": "Your interrogation of AI's literary implications concludes our seminar with masterful synthesis. You've not only mapped the disruptions but proposed inventive critical frameworks—a testament to your theoretical agility. This completes our advanced exploration of literary criticism.",
+    "partial": "You've identified key aspects of AI's literary impact. Could you deepen the analysis by more explicitly connecting these to our earlier discussions of authorship theories and interpretive methods?",
+    "incorrect": "Focus more directly on how AI challenges traditional concepts of authorship, interpretation, and literary value in light of our seminar's theoretical foundations."
+  }
+}
+  ],
+    "completionMessage": "Congratulations! You've successfully completed the Advanced Literary Criticism seminar, demonstrating exceptional mastery of complex theoretical concepts and analytical communication skills. Your responses showcased sophisticated understanding of literary paradigms, ability to deconstruct multifaceted textual issues, and skill in articulating nuanced critical interpretations with remarkable precision and theoretical awareness. You effectively employed specialized literary vocabulary and complex rhetorical structures appropriate for doctoral-level discourse in humanities. This exercise highlighted your capacity to evaluate competing critical frameworks, engage with meta-theoretical debates, and communicate abstract aesthetic principles with exceptional fluency—all hallmarks of mastery-level English in advanced literary studies.",
+  "learningObjectives": [
+    "Demonstrate mastery of complex literary theories and terminology",
+    "Analyze textual artifacts through multiple critical lenses",
+    "Evaluate competing interpretive frameworks (formalist, contextual, poststructuralist)",
+    "Articulate nuanced readings with precise theoretical language",
+    "Engage in meta-critical discourse about methodological approaches",
+    "Synthesize literary analysis with interdisciplinary knowledge (AI, digital humanities)",
+    "Consider diverse cultural/historical perspectives in textual interpretation",
+    "Structure complex theoretical arguments with logical coherence"
+  ],
+  "grammar": {
+    "points": [
+      "Complex sentences with layered subordinate clauses for theoretical analysis",
+      "Advanced nominalizations for abstract conceptualization (e.g., 'the problematization of authorship')",
+      "Precise use of hedging language in interpretive claims ('may suggest', 'arguably manifests')",
+      "Complex noun phrases with literary modifiers ('palimpsestic narrative architecture')",
+      "Nuanced transitional expressions for theoretical synthesis ('contrapuntally', 'dialectically')",
+      "Varied connectives for building analytical frameworks ('insofar as', 'notwithstanding')",
+      "Accurate use of modals for theoretical speculation ('might destabilize', 'could reconfigure')"
+    ]
+  }
+}
+&nbsp;
+export default literaryCriticism;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -118,7 +118,7 @@ const ReadingExercise = ({ route }) => {
         statusBarStyle="dark-content"
       >
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={levelColor} />
+          <ActivityIndicator size="large" color={levelColor} testID="activity-indicator" />
         </View>
       </Container>
     );

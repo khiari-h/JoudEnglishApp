@@ -1,0 +1,673 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/5/categories/14_relations_internationales.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/5/categories</a> 14_relations_internationales.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Relations internationales &amp; Diplomatie",
+  words: [
+    // Mécanismes diplomatiques
+    { word: "diplomatic protocol", translation: "protocole diplomatique", example: "The ambassador strictly followed diplomatic protocol during the state visit." },
+&nbsp;
+    { word: "consular services", translation: "services consulaires", example: "The embassy provides consular services to citizens living abroad." },
+&nbsp;
+    { word: "diplomatic credentials", translation: "lettres de créance", example: "The new ambassador presented his diplomatic credentials to the head of state." },
+    { word: "diplomatic cable", translation: "câble diplomatique", example: "The leaked diplomatic cables revealed candid assessments of foreign leaders." },
+    { word: "diplomatic pouch", translation: "valise diplomatique", example: "Sensitive documents are transported in a diplomatic pouch that cannot be inspected by foreign authorities." },
+    { word: "persona non grata", translation: "persona non grata", example: "The ambassador was declared persona non grata and given 48 hours to leave the country." },
+    { word: "diplomatic dispatch", translation: "dépêche diplomatique", example: "The diplomatic dispatch alerted headquarters to the unfolding crisis." },
+    { word: "extraterritoriality", translation: "extraterritorialité", example: "Embassies operate under the principle of extraterritoriality." },
+    { word: "diplomatic representation", translation: "représentation diplomatique", example: "The nation upgraded its diplomatic representation from a consulate to an embassy." },
+    { word: "diplomatic presence", translation: "présence diplomatique", example: "The country maintains diplomatic presence in over 150 nations." },
+    { word: "diplomatic service", translation: "service diplomatique", example: "She joined the diplomatic service after graduating from international relations." },
+    { word: "diplomatic incident", translation: "incident diplomatique", example: "The minister's controversial remarks sparked a diplomatic incident between the two nations." },
+&nbsp;
+    { word: "ambassador-at-large", translation: "ambassadeur itinérant", example: "The ambassador-at-large focuses on human rights issues across multiple countries." },
+    { word: "diplomatic discourse", translation: "discours diplomatique", example: "Diplomatic discourse often employs careful language to avoid direct criticism." },
+    { word: "diplomatic courtesy", translation: "courtoisie diplomatique", example: "As a matter of diplomatic courtesy, the minister avoided commenting on the host country's internal affairs." },
+&nbsp;
+    // Négociations multilatérales
+    { word: "multilateral agreement", translation: "accord multilatéral", example: "The multilateral agreement was signed by over 150 nations after years of negotiation." },
+    { word: "negotiation round", translation: "cycle de négociations", example: "The third negotiation round focused on trade barriers and tariffs." },
+    { word: "stakeholder consensus", translation: "consensus des parties prenantes", example: "Achieving stakeholder consensus was crucial to moving the treaty forward." },
+    { word: "diplomatic summit", translation: "sommet diplomatique", example: "World leaders gathered for the diplomatic summit to address climate change." },
+    { word: "plenary session", translation: "séance plénière", example: "The contentious issues were debated during the plenary session with all members present." },
+    { word: "bilateral talks", translation: "pourparlers bilatéraux", example: "Bilateral talks between the two powers preceded the larger conference." },
+    { word: "diplomatic concession", translation: "concession diplomatique", example: "Each party made diplomatic concessions to reach the final agreement." },
+    { word: "shuttle diplomacy", translation: "diplomatie de la navette", example: "The secretary engaged in shuttle diplomacy, traveling between capitals to broker a deal." },
+    { word: "position paper", translation: "document de position", example: "Each country submitted a position paper outlining their priorities and concerns." },
+    { word: "diplomatic communiqué", translation: "communiqué diplomatique", example: "The diplomatic communiqué outlined the key agreements reached at the summit." },
+    { word: "negotiation impasse", translation: "impasse de négociation", example: "The talks reached a negotiation impasse over territorial claims." },
+    { word: "multilateral forum", translation: "forum multilatéral", example: "The issue was raised in several multilateral forums." },
+    { word: "negotiation protocol", translation: "protocole de négociation", example: "The negotiation protocol established rules for the discussion." },
+    { word: "diplomatic breakthrough", translation: "percée diplomatique", example: "The surprise concession led to a diplomatic breakthrough." },
+    { word: "negotiation stalemate", translation: "blocage des négociations", example: "The negotiation stalemate continued for months without progress." },
+    { word: "diplomatic compromise", translation: "compromis diplomatique", example: "The final treaty represented a diplomatic compromise acceptable to all major powers." },
+    { word: "treaty ratification", translation: "ratification d'un traité", example: "Treaty ratification faced opposition in several national parliaments." },
+    { word: "mediation effort", translation: "effort de médiation", example: "The neutral country led mediation efforts between the conflicting parties." },
+    { word: "diplomatic bargaining", translation: "marchandage diplomatique", example: "Diplomatic bargaining continued late into the night as the deadline approached." },
+    { word: "negotiation leverage", translation: "levier de négociation", example: "Their economic strength provided significant negotiation leverage." },
+&nbsp;
+    // Résolution de conflits
+    { word: "mediation process", translation: "processus de médiation", example: "The UN led a mediation process between the warring factions." },
+    { word: "peace negotiations", translation: "négociations de paix", example: "Peace negotiations finally resumed after months of escalating violence." },
+&nbsp;
+    { word: "ceasefire agreement", translation: "accord de cessez-le-feu", example: "Both sides violated the ceasefire agreement within days." },
+&nbsp;
+    { word: "peace enforcement", translation: "imposition de la paix", example: "Peace enforcement may require military action to stop ongoing violence." },
+    { word: "conflict prevention", translation: "prévention des conflits", example: "Early diplomatic intervention is essential for effective conflict prevention." },
+    { word: "buffer zone", translation: "zone tampon", example: "UN forces established a buffer zone between the opposing armies." },
+    { word: "conflict de-escalation", translation: "désescalade de conflit", example: "Both leaders took steps toward conflict de-escalation after the crisis." },
+&nbsp;
+    { word: "peacebuilding initiative", translation: "initiative de consolidation de la paix", example: "The peacebuilding initiative focused on economic recovery and governance." },
+    { word: "disarmament program", translation: "programme de désarmement", example: "The disarmament program collected thousands of weapons from former combatants." },
+    { word: "conflict mediation", translation: "médiation de conflit", example: "The neighboring country offered to lead conflict mediation efforts." },
+    { word: "demilitarized zone", translation: "zone démilitarisée", example: "The treaty established a demilitarized zone along the border." },
+&nbsp;
+    { word: "peace accord", translation: "accord de paix", example: "The peace accord ended the decade-long civil war." },
+    { word: "trust-building measure", translation: "mesure de confiance", example: "Military withdrawals served as a trust-building measure between the parties." },
+    { word: "good offices", translation: "bons offices", example: "The secretary-general offered his good offices to facilitate dialogue." },
+    { word: "peace dividend", translation: "dividende de la paix", example: "Economic growth was seen as a peace dividend after the conflict ended." },
+    { word: "post-conflict reconstruction", translation: "reconstruction post-conflit", example: "International donors pledged support for post-conflict reconstruction." },
+&nbsp;
+    // Organisations internationales
+    { word: "supranational body", translation: "organisme supranational", example: "The EU is a supranational body with shared sovereignty among member states." },
+    { word: "intergovernmental organization", translation: "organisation intergouvernementale", example: "NATO is an intergovernmental organization focused on collective security." },
+&nbsp;
+    { word: "Security Council", translation: "Conseil de sécurité", example: "The Security Council voted unanimously to extend the mission's mandate." },
+    { word: "General Assembly", translation: "Assemblée générale", example: "All member states have representation in the General Assembly." },
+&nbsp;
+    { word: "specialized agency", translation: "agence spécialisée", example: "The WHO is a specialized agency of the United Nations focused on global health." },
+    { word: "diplomatic observer", translation: "observateur diplomatique", example: "The organization was granted diplomatic observer status at the UN." },
+    { word: "voting bloc", translation: "bloc de vote", example: "The regional voting bloc coordinated their positions before the crucial vote." },
+    { word: "charter amendment", translation: "amendement à la charte", example: "The charter amendment required approval from two-thirds of member states." },
+    { word: "organizational mandate", translation: "mandat organisationnel", example: "The organizational mandate was expanded to include climate action." },
+    { word: "secretariat", translation: "secrétariat", example: "The secretariat coordinates the day-to-day operations of the organization." },
+    { word: "regional organization", translation: "organisation régionale", example: "The regional organization promotes cooperation among neighboring states." },
+    { word: "international bureaucracy", translation: "bureaucratie internationale", example: "The international bureaucracy has grown increasingly complex." },
+&nbsp;
+    { word: "executive board", translation: "conseil exécutif", example: "The executive board oversees the organization's strategic direction." },
+    { word: "member state", translation: "état membre", example: "As a member state, the country is expected to uphold the organization's principles." },
+&nbsp;
+    // Géopolitique stratégique
+    { word: "sphere of influence", translation: "sphère d'influence", example: "The great power sought to expand its sphere of influence in the region." },
+    { word: "strategic partner", translation: "partenaire stratégique", example: "India has become a strategic partner for many Western nations." },
+    { word: "geopolitical rivalry", translation: "rivalité géopolitique", example: "The geopolitical rivalry has intensified over access to resources." },
+    { word: "power projection", translation: "projection de puissance", example: "Naval bases allow for power projection in distant regions." },
+    { word: "balance of power", translation: "équilibre des puissances", example: "The alliance aimed to restore the balance of power in Europe." },
+    { word: "strategic interest", translation: "intérêt stratégique", example: "The strait remains a strategic interest for maritime powers." },
+    { word: "regional hegemon", translation: "hégémon régional", example: "The country aspires to become a regional hegemon." },
+    { word: "foreign policy doctrine", translation: "doctrine de politique étrangère", example: "The foreign policy doctrine emphasized engagement with emerging economies." },
+    { word: "diplomatic isolation", translation: "isolement diplomatique", example: "Sanctions led to the regime's diplomatic isolation." },
+    { word: "strategic alignment", translation: "alignement stratégique", example: "The nation's strategic alignment shifted after the new government took power." },
+    { word: "geopolitical asset", translation: "atout géopolitique", example: "Control of the waterway is a significant geopolitical asset." },
+    { word: "strategic autonomy", translation: "autonomie stratégique", example: "The nation pursues strategic autonomy in its defense policy." },
+    { word: "geopolitical flashpoint", translation: "point chaud géopolitique", example: "The disputed territory remains a geopolitical flashpoint." },
+    { word: "strategic reassessment", translation: "réévaluation stratégique", example: "The crisis prompted a strategic reassessment of regional alliances." },
+    { word: "pivot strategy", translation: "stratégie de pivot", example: "The pivot strategy redirected diplomatic focus toward emerging powers." },
+    { word: "geostrategic position", translation: "position géostratégique", example: "The island's geostrategic position gives it outsized importance." },
+    { word: "strategic competitor", translation: "concurrent stratégique", example: "The two nations have become strategic competitors in the region." },
+    { word: "great power competition", translation: "compétition entre grandes puissances", example: "The region has become an arena for great power competition." },
+    { word: "strategic reset", translation: "réinitialisation stratégique", example: "The new administration called for a strategic reset in relations." },
+    { word: "geopolitical influence", translation: "influence géopolitique", example: "The nation's geopolitical influence has grown with its economic power." },
+&nbsp;
+    // Politique étrangère
+    { word: "foreign affairs", translation: "affaires étrangères", example: "The minister of foreign affairs issued a statement condemning the attack." },
+    { word: "diplomatic strategy", translation: "stratégie diplomatique", example: "The diplomatic strategy aimed to build regional alliances." },
+&nbsp;
+    { word: "diplomatic engagement", translation: "engagement diplomatique", example: "The administration favored diplomatic engagement over isolation." },
+    { word: "foreign policy advisor", translation: "conseiller en politique étrangère", example: "The president consulted with foreign policy advisors before the summit." },
+    { word: "diplomatic overture", translation: "ouverture diplomatique", example: "The diplomatic overture signaled willingness to normalize relations." },
+    { word: "foreign policy realignment", translation: "réalignement de politique étrangère", example: "The crisis triggered a major foreign policy realignment." },
+    { word: "coercive diplomacy", translation: "diplomatie coercitive", example: "The sanctions were part of a coercive diplomacy strategy." },
+    { word: "diplomatic initiative", translation: "initiative diplomatique", example: "The diplomatic initiative aimed to restart stalled negotiations." },
+    { word: "foreign policy apparatus", translation: "appareil de politique étrangère", example: "The foreign policy apparatus includes multiple agencies and departments." },
+    { word: "diplomatic priority", translation: "priorité diplomatique", example: "Regional stability became the top diplomatic priority." },
+    { word: "diplomatic posture", translation: "posture diplomatique", example: "The diplomatic posture hardened following the border incident." },
+    { word: "foreign policy legacy", translation: "héritage de politique étrangère", example: "The president's foreign policy legacy includes several landmark treaties." },
+&nbsp;
+    { word: "smart power", translation: "puissance intelligente", example: "Smart power combines elements of both hard and soft power approaches." },
+    { word: "diplomatic network", translation: "réseau diplomatique", example: "The country maintains an extensive diplomatic network worldwide." },
+    { word: "foreign policy establishment", translation: "establishment de politique étrangère", example: "The foreign policy establishment opposed the radical new approach." },
+    { word: "foreign policy objective", translation: "objectif de politique étrangère", example: "Promoting democracy remains a key foreign policy objective." },
+&nbsp;
+    // Diplomatie contemporaine
+&nbsp;
+    { word: "diplomatic backchannel", translation: "canal diplomatique informel", example: "The diplomatic backchannel allowed for sensitive discussions away from public scrutiny." },
+&nbsp;
+    { word: "diplomatic sanctions", translation: "sanctions diplomatiques", example: "Diplomatic sanctions included the expulsion of envoys and closure of consulates." },
+    { word: "diplomatic faux pas", translation: "faux pas diplomatique", example: "The ambassador's comments were considered a diplomatic faux pas." },
+    { word: "diplomatic row", translation: "différend diplomatique", example: "The spying allegations triggered a diplomatic row between the allies." },
+&nbsp;
+    { word: "sports diplomacy", translation: "diplomatie sportive", example: "The international tournament served as an opportunity for sports diplomacy." },
+&nbsp;
+    { word: "digital ambassador", translation: "ambassadeur numérique", example: "The country appointed its first digital ambassador to address cyber policy." },
+    { word: "vaccine diplomacy", translation: "diplomatie vaccinale", example: "Vaccine diplomacy became prominent during the global pandemic." },
+    { word: "summit diplomacy", translation: "diplomatie de sommet", example: "Summit diplomacy brings leaders together for face-to-face negotiations." },
+    { word: "humanitarian diplomacy", translation: "diplomatie humanitaire", example: "Humanitarian diplomacy aims to secure access for aid workers in conflict zones." },
+    { word: "parliamentary diplomacy", translation: "diplomatie parlementaire", example: "Parliamentary diplomacy involves inter-parliamentary exchanges and cooperation." },
+    { word: "religious diplomacy", translation: "diplomatie religieuse", example: "Religious diplomacy engages faith leaders in peacebuilding efforts." },
+&nbsp;
+    // Relations économiques internationales
+&nbsp;
+    { word: "international finance", translation: "finance internationale", example: "International finance flows have become increasingly complex." },
+    { word: "trade dispute", translation: "différend commercial", example: "The trade dispute was brought before the WTO for resolution." },
+&nbsp;
+    { word: "customs union", translation: "union douanière", example: "The customs union removed internal trade barriers among member states." },
+&nbsp;
+    { word: "financial diplomacy", translation: "diplomatie financière", example: "Financial diplomacy includes coordination of monetary policies." },
+    { word: "trade diplomacy", translation: "diplomatie commerciale", example: "Trade diplomacy aims to increase exports and investment." },
+&nbsp;
+    { word: "trade embargo", translation: "embargo commercial", example: "The trade embargo has lasted for over two decades." },
+&nbsp;
+    { word: "investment framework", translation: "cadre d'investissement", example: "The investment framework protects foreign investors." },
+    { word: "trade mission", translation: "mission commerciale", example: "The minister led a trade mission to explore business opportunities." },
+    { word: "preferential trade", translation: "commerce préférentiel", example: "Preferential trade arrangements offer reduced tariffs to specific partners." },
+    { word: "commercial diplomacy", translation: "diplomatie commerciale", example: "Commercial diplomacy focuses on promoting business interests abroad." },
+    { word: "trade facilitation", translation: "facilitation des échanges", example: "Trade facilitation measures streamline customs procedures." },
+&nbsp;
+    // Sécurité internationale
+    { word: "security alliance", translation: "alliance de sécurité", example: "The security alliance provides mutual defense guarantees." },
+    { word: "threat perception", translation: "perception de menace", example: "Threat perception varies significantly between the rival states." },
+    { word: "intelligence sharing", translation: "partage de renseignements", example: "Intelligence sharing is crucial to counterterrorism cooperation." },
+&nbsp;
+    { word: "military cooperation", translation: "coopération militaire", example: "Military cooperation includes joint exercises and training." },
+    { word: "defense pact", translation: "pacte de défense", example: "The defense pact commits members to collective security." },
+    { word: "nuclear deterrence", translation: "dissuasion nucléaire", example: "Nuclear deterrence remains a cornerstone of their security doctrine." },
+    { word: "security guarantee", translation: "garantie de sécurité", example: "The treaty provides security guarantees to the smaller nation." },
+    { word: "transnational threat", translation: "menace transnationale", example: "Terrorism represents a transnational threat requiring cooperation." },
+    { word: "strategic stability", translation: "stabilité stratégique", example: "The missile treaty aims to maintain strategic stability." },
+    { word: "security dilemma", translation: "dilemme de sécurité", example: "The security dilemma occurs when one country's defensive measures appear threatening to others." },
+    { word: "asymmetric warfare", translation: "guerre asymétrique", example: "Asymmetric warfare involves combatants with greatly differing military capabilities and strategies." },
+    { word: "cyber security", translation: "cybersécurité", example: "Cyber security has become a major concern for national defense planners." },
+    { word: "security architecture", translation: "architecture de sécurité", example: "The regional security architecture includes multiple overlapping treaties and organizations." },
+    { word: "counter-terrorism", translation: "contre-terrorisme", example: "Counter-terrorism efforts require coordination across multiple agencies and countries." },
+    { word: "non-proliferation", translation: "non-prolifération", example: "The non-proliferation treaty aims to prevent the spread of nuclear weapons." },
+    { word: "military deterrence", translation: "dissuasion militaire", example: "Military deterrence relies on credible threats to prevent adversary actions." },
+    { word: "security cooperation", translation: "coopération en matière de sécurité", example: "Security cooperation between the former rivals has improved significantly." },
+    { word: "collective defense", translation: "défense collective", example: "NATO's principle of collective defense is enshrined in Article 5 of its treaty." },
+    { word: "preventive diplomacy", translation: "diplomatie préventive", example: "Preventive diplomacy aims to address potential conflicts before they escalate." },
+    { word: "security sector reform", translation: "réforme du secteur de la sécurité", example: "Security sector reform focuses on rebuilding military and police forces in post-conflict states." },
+    { word: "hybrid warfare", translation: "guerre hybride", example: "Hybrid warfare combines conventional military tactics with irregular warfare and cyber operations." },
+    { word: "arms race", translation: "course aux armements", example: "The arms race accelerated as both countries developed new missile systems." },
+    { word: "force projection", translation: "projection de force", example: "Aircraft carriers enable force projection in distant theaters." },
+    { word: "forward deployment", translation: "déploiement avancé", example: "Forward deployment positions troops near potential conflict zones." },
+    { word: "military presence", translation: "présence militaire", example: "The country has reduced its military presence in the region." },
+    { word: "security treaty", translation: "traité de sécurité", example: "The security treaty was renewed for another decade despite public opposition." },
+    { word: "defense posture", translation: "posture de défense", example: "The nation shifted to a more aggressive defense posture after the attack." },
+    { word: "rules of engagement", translation: "règles d'engagement", example: "The rules of engagement specify when and how force can be used." },
+    { word: "military doctrine", translation: "doctrine militaire", example: "The new military doctrine emphasizes rapid response capabilities." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

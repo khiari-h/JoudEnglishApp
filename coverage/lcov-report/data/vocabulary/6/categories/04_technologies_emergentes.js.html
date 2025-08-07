@@ -1,0 +1,754 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/6/categories/04_technologies_emergentes.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/6/categories</a> 04_technologies_emergentes.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Technologies Émergentes",
+  words: [
+    // Intelligence artificielle (25 mots)
+&nbsp;
+    { word: "generative AI", translation: "IA générative", example: "Generative AI creates new content, from images to text, based on training examples." },
+&nbsp;
+    { word: "recommendation system", translation: "système de recommandation", example: "Recommendation systems suggest products or content based on user preferences." },
+&nbsp;
+    { word: "computer reasoning", translation: "raisonnement informatique", example: "Computer reasoning systems make logical inferences from available information." },
+    { word: "autonomous agent", translation: "agent autonome", example: "Autonomous agents interact with environments to achieve specified goals." },
+&nbsp;
+    // Robotique et automatisation (25 mots)
+&nbsp;
+    { word: "autonomous robot", translation: "robot autonome", example: "Autonomous robots navigate environments and make decisions without human control." },
+    { word: "collaborative robot", translation: "robot collaboratif", example: "Collaborative robots work alongside humans in shared workspaces." },
+    { word: "industrial automation", translation: "automatisation industrielle", example: "Industrial automation systems perform manufacturing processes with minimal human intervention." },
+&nbsp;
+    { word: "swarm robotics", translation: "robotique en essaim", example: "Swarm robotics coordinates multiple simple robots to perform complex tasks." },
+    { word: "human-robot interaction", translation: "interaction homme-robot", example: "Human-robot interaction studies how people engage with robotic systems." },
+    { word: "actuator", translation: "actionneur", example: "Actuators convert control signals into physical movement in robotic systems." },
+    { word: "robotic manipulation", translation: "manipulation robotique", example: "Robotic manipulation involves gripping, moving, and modifying objects." },
+    { word: "locomotion system", translation: "système de locomotion", example: "The robot's locomotion system enables movement across varied terrain." },
+    { word: "automation technology", translation: "technologie d'automatisation", example: "Automation technology replaces manual processes with software-controlled systems." },
+    { word: "humanoid robot", translation: "robot humanoïde", example: "Humanoid robots feature physical structures resembling human bodies." },
+&nbsp;
+    { word: "industrial robot", translation: "robot industriel", example: "Industrial robots perform precise, repetitive tasks in manufacturing environments." },
+    { word: "service robot", translation: "robot de service", example: "Service robots assist humans in commercial and domestic settings." },
+    { word: "drone technology", translation: "technologie des drones", example: "Drone technology enables aerial monitoring, delivery, and imaging applications." },
+    { word: "robot sensor", translation: "capteur robotique", example: "Robot sensors gather environmental data for navigation and interaction." },
+    { word: "robotic arm", translation: "bras robotique", example: "The robotic arm performed precise assembly operations on the production line." },
+    { word: "autonomous navigation", translation: "navigation autonome", example: "Autonomous navigation systems plan and execute movement paths independently." },
+    { word: "smart automation", translation: "automatisation intelligente", example: "Smart automation systems adapt processes based on changing conditions." },
+    { word: "robotic exoskeleton", translation: "exosquelette robotique", example: "Robotic exoskeletons enhance human strength and endurance." },
+    { word: "path planning", translation: "planification de trajectoire", example: "Path planning algorithms determine optimal routes through environments." },
+&nbsp;
+    { word: "robot programming", translation: "programmation robotique", example: "Robot programming defines behaviors and responses to environmental conditions." },
+    { word: "telepresence robot", translation: "robot de téléprésence", example: "Telepresence robots enable remote interaction with distant environments." },
+&nbsp;
+    // Biotechnologie et sciences médicales (25 mots)
+&nbsp;
+    { word: "genetic engineering", translation: "génie génétique", example: "Genetic engineering modifies DNA to produce organisms with desired traits." },
+    { word: "CRISPR technology", translation: "technologie CRISPR", example: "CRISPR technology enables precise editing of genetic sequences." },
+    { word: "genomics", translation: "génomique", example: "Genomics studies the structure, function, and mapping of complete genetic material." },
+&nbsp;
+    { word: "stem cell therapy", translation: "thérapie par cellules souches", example: "Stem cell therapy uses undifferentiated cells to treat or prevent diseases." },
+&nbsp;
+    { word: "medical imaging", translation: "imagerie médicale", example: "Advanced medical imaging techniques provide detailed views of internal structures." },
+&nbsp;
+    { word: "wearable health monitor", translation: "moniteur de santé portable", example: "Wearable health monitors track vital signs and physical activity continuously." },
+    { word: "biopharmaceutical", translation: "biopharmaceutique", example: "Biopharmaceuticals are medical drugs produced using biotechnology." },
+&nbsp;
+    { word: "molecular diagnostics", translation: "diagnostic moléculaire", example: "Molecular diagnostics identifies disease by detecting specific genetic sequences." },
+&nbsp;
+    { word: "digital therapeutics", translation: "thérapeutiques numériques", example: "Digital therapeutics deliver medical interventions through software applications." },
+&nbsp;
+    { word: "microbiome", translation: "microbiome", example: "Research on the microbiome examines how microbial communities affect health." },
+    { word: "drug delivery system", translation: "système d'administration de médicaments", example: "Advanced drug delivery systems target specific tissues while minimizing side effects." },
+    { word: "computational biology", translation: "biologie computationnelle", example: "Computational biology simulates biological processes to accelerate research." },
+    { word: "biomarker", translation: "biomarqueur", example: "Biomarkers indicate normal biological processes, pathogenic processes, or responses to treatments." },
+&nbsp;
+    // Informatique quantique (25 mots)
+&nbsp;
+    { word: "quantum bit", translation: "bit quantique", example: "Quantum bits or qubits can exist in multiple states simultaneously unlike classical bits." },
+&nbsp;
+    { word: "quantum gate", translation: "porte quantique", example: "Quantum gates are the basic quantum circuit operations on qubits." },
+&nbsp;
+    { word: "quantum compiler", translation: "compilateur quantique", example: "Quantum compilers transform algorithms into executable quantum circuit instructions." },
+&nbsp;
+    { word: "quantum information", translation: "information quantique", example: "Quantum information theory extends classical information theory to quantum systems." },
+    { word: "quantum machine learning", translation: "apprentissage automatique quantique", example: "Quantum machine learning applies quantum algorithms to improve pattern recognition." },
+    { word: "quantum phase", translation: "phase quantique", example: "The quantum phase encodes information critical to the computation process." },
+&nbsp;
+    { word: "quantum programming", translation: "programmation quantique", example: "Quantum programming requires new paradigms distinct from classical computing." },
+&nbsp;
+    // Réalité virtuelle et augmentée (25 mots)
+&nbsp;
+    { word: "immersive technology", translation: "technologie immersive", example: "Immersive technologies create sensory experiences that alter perception of environments." },
+    { word: "head-mounted display", translation: "visiocasque", example: "The head-mounted display tracked eye movements to adjust rendered perspectives." },
+    { word: "spatial computing", translation: "informatique spatiale", example: "Spatial computing integrates digital content with physical spaces." },
+    { word: "haptic feedback", translation: "retour haptique", example: "Haptic feedback provides tactile sensations in virtual environments." },
+    { word: "motion tracking", translation: "suivi de mouvement", example: "Motion tracking systems capture and translate physical movements into digital actions." },
+&nbsp;
+    { word: "AR overlay", translation: "superposition en RA", example: "The AR overlay displayed real-time information about nearby landmarks." },
+    { word: "VR headset", translation: "casque de RV", example: "The VR headset delivered high-resolution visuals with minimal latency." },
+    { word: "spatial awareness", translation: "conscience spatiale", example: "Spatial awareness enables devices to understand physical surroundings." },
+    { word: "photogrammetry", translation: "photogrammétrie", example: "Photogrammetry creates 3D models from multiple 2D photographs." },
+    { word: "visual rendering", translation: "rendu visuel", example: "Advanced visual rendering creates photorealistic virtual environments." },
+    { word: "extended reality", translation: "réalité étendue", example: "Extended reality encompasses virtual, augmented, and mixed reality technologies." },
+    { word: "field of view", translation: "champ de vision", example: "A wider field of view increases immersion in virtual environments." },
+    { word: "positional tracking", translation: "suivi de position", example: "Positional tracking monitors the user's location within physical space." },
+    { word: "AR glasses", translation: "lunettes de RA", example: "AR glasses display contextual information without obstructing normal vision." },
+    { word: "volumetric capture", translation: "capture volumétrique", example: "Volumetric capture records three-dimensional representations of people and objects." },
+    { word: "spatial mapping", translation: "cartographie spatiale", example: "Spatial mapping creates digital representations of physical environments." },
+    { word: "AR cloud", translation: "nuage de RA", example: "The AR cloud provides persistent digital content anchored to physical locations." },
+    { word: "gesture recognition", translation: "reconnaissance gestuelle", example: "Gesture recognition interprets hand movements as control inputs." },
+    { word: "immersive learning", translation: "apprentissage immersif", example: "Immersive learning uses virtual environments for educational experiences." },
+    { word: "virtual collaboration", translation: "collaboration virtuelle", example: "Virtual collaboration tools connect remote teams in shared digital spaces." },
+&nbsp;
+    // Internet des objets (25 mots)
+&nbsp;
+    { word: "connected device", translation: "appareil connecté", example: "Connected devices communicate with each other and central systems." },
+    { word: "smart sensor", translation: "capteur intelligent", example: "Smart sensors collect and transmit environmental data for analysis." },
+    { word: "IoT platform", translation: "plateforme IdO", example: "IoT platforms manage device connectivity, data collection, and application development." },
+&nbsp;
+    { word: "device provisioning", translation: "provisionnement d'appareils", example: "Device provisioning configures new IoT devices for secure network integration." },
+    { word: "smart home", translation: "maison intelligente", example: "Smart home systems automate lighting, climate control, and security functions." },
+    { word: "industrial IoT", translation: "IdO industriel", example: "Industrial IoT applications monitor equipment performance and predict maintenance needs." },
+    { word: "IoT gateway", translation: "passerelle IdO", example: "IoT gateways connect sensor networks to the internet and manage data transmission." },
+    { word: "device authentication", translation: "authentification d'appareil", example: "Device authentication ensures only authorized devices connect to IoT networks." },
+&nbsp;
+    { word: "mesh network", translation: "réseau maillé", example: "Mesh networks provide reliable communication paths between IoT devices." },
+&nbsp;
+    { word: "IoT analytics", translation: "analytique de l'IdO", example: "IoT analytics processes device data to extract actionable insights." },
+    { word: "device management", translation: "gestion d'appareils", example: "Device management platforms monitor and update connected devices remotely." },
+    { word: "low-power wide-area network", translation: "réseau étendu à faible consommation", example: "Low-power wide-area networks support long-range IoT communications efficiently." },
+&nbsp;
+    { word: "smart agriculture", translation: "agriculture intelligente", example: "Smart agriculture uses IoT sensors to optimize irrigation and monitor crop health." },
+    { word: "asset tracking", translation: "suivi des actifs", example: "Asset tracking systems monitor location and condition of equipment and inventory." },
+    { word: "IoT security", translation: "sécurité de l'IdO", example: "IoT security protects connected devices and their data from unauthorized access." },
+&nbsp;
+    { word: "device interoperability", translation: "interopérabilité des appareils", example: "Device interoperability allows products from different manufacturers to work together." },
+    { word: "environmental monitoring", translation: "surveillance environnementale", example: "Environmental monitoring applications track air quality, water levels, and weather conditions." },
+    { word: "remote diagnostics", translation: "diagnostics à distance", example: "Remote diagnostics assess equipment status without on-site inspections." },
+&nbsp;
+    // Blockchain et technologies distribuées (25 mots)
+&nbsp;
+    { word: "distributed ledger", translation: "registre distribué", example: "Distributed ledgers maintain synchronized data across multiple locations." },
+&nbsp;
+    { word: "decentralized application", translation: "application décentralisée", example: "Decentralized applications operate on distributed networks rather than central servers." },
+    { word: "consensus mechanism", translation: "mécanisme de consensus", example: "Consensus mechanisms determine how blockchain participants agree on valid transactions." },
+    { word: "proof of work", translation: "preuve de travail", example: "Proof of work requires computational effort to validate blockchain transactions." },
+    { word: "proof of stake", translation: "preuve d'enjeu", example: "Proof of stake validates transactions based on the quantity of cryptocurrency held." },
+&nbsp;
+    { word: "hash function", translation: "fonction de hachage", example: "Hash functions create fixed-size outputs from variable-size inputs in blockchain systems." },
+    { word: "peer-to-peer network", translation: "réseau pair à pair", example: "Blockchain operates on peer-to-peer networks without central coordination." },
+    { word: "private blockchain", translation: "blockchain privée", example: "Private blockchains restrict participation to authorized entities." },
+    { word: "public blockchain", translation: "blockchain publique", example: "Public blockchains allow anyone to participate in the network." },
+    { word: "blockchain governance", translation: "gouvernance de blockchain", example: "Blockchain governance determines how protocols evolve and decisions are made." },
+    { word: "immutable record", translation: "registre immuable", example: "Blockchains create immutable records that cannot be altered retroactively." },
+    { word: "distributed application", translation: "application distribuée", example: "Distributed applications operate across multiple computing resources." },
+    { word: "digital signature", translation: "signature numérique", example: "Digital signatures verify identity and authenticity in blockchain transactions." },
+    { word: "blockchain oracle", translation: "oracle blockchain", example: "Blockchain oracles connect smart contracts with external data sources." },
+    { word: "non-fungible token", translation: "jeton non fongible", example: "Non-fungible tokens represent unique digital assets on blockchains." },
+    { word: "interoperability", translation: "interopérabilité", example: "Blockchain interoperability enables different networks to exchange information." },
+    { word: "sidechain", translation: "chaîne latérale", example: "Sidechains are separate blockchains connected to parent chains for specific functions." },
+    { word: "cryptographic hash", translation: "hachage cryptographique", example: "Cryptographic hashes provide data integrity verification in blockchain systems." },
+    { word: "distributed consensus", translation: "consensus distribué", example: "Distributed consensus ensures agreement across decentralized systems." },
+&nbsp;
+    // Cybersécurité avancée (25 mots)
+&nbsp;
+    { word: "security information and event management", translation: "gestion des informations et des événements de sécurité", example: "Security information and event management systems analyze security alerts in real-time." },
+&nbsp;
+    { word: "zero trust security", translation: "sécurité zéro confiance", example: "Zero trust security requires verification for all users, regardless of location." },
+    { word: "security operations center", translation: "centre des opérations de sécurité", example: "Security operations centers monitor and analyze an organization's security posture." },
+    { word: "vulnerability management", translation: "gestion des vulnérabilités", example: "Vulnerability management identifies and remedies security weaknesses." },
+&nbsp;
+    { word: "attack surface", translation: "surface d'attaque", example: "Attack surface refers to all points where unauthorized users could access systems." },
+    { word: "secure access service edge", translation: "périmètre de service d'accès sécurisé", example: "Secure access service edge combines network security functions with wide area network capabilities." },
+    { word: "security posture", translation: "posture de sécurité", example: "Security posture describes an organization's overall cybersecurity strength." },
+    { word: "red team assessment", translation: "évaluation par équipe rouge", example: "Red team assessments simulate real-world attacks to test defenses." },
+    { word: "phishing simulation", translation: "simulation de hameçonnage", example: "Phishing simulations test employee awareness of social engineering tactics." },
+&nbsp;
+    { word: "secure development lifecycle", translation: "cycle de développement sécurisé", example: "Secure development lifecycle integrates security practices throughout software creation." },
+    { word: "data loss prevention", translation: "prévention des pertes de données", example: "Data loss prevention tools identify and block unauthorized data transfers." },
+    { word: "security automation", translation: "automatisation de la sécurité", example: "Security automation reduces manual effort in threat detection and response." },
+    { word: "security compliance", translation: "conformité de sécurité", example: "Security compliance ensures adherence to regulatory and policy requirements." },
+    { word: "deception technology", translation: "technologie de leurre", example: "Deception technology deploys decoys to detect and analyze attack methods." },
+&nbsp;
+    // Cloud computing avancé (25 mots)
+&nbsp;
+    { word: "multi-cloud strategy", translation: "stratégie multi-cloud", example: "Multi-cloud strategies distribute workloads across multiple cloud providers." },
+    { word: "cloud-native application", translation: "application cloud-native", example: "Cloud-native applications are designed specifically for cloud environments." },
+    { word: "infrastructure as code", translation: "infrastructure en tant que code", example: "Infrastructure as code manages computing resources through machine-readable definition files." },
+    { word: "serverless computing", translation: "informatique sans serveur", example: "Serverless computing executes code without provisioning specific servers." },
+    { word: "containerization", translation: "conteneurisation", example: "Containerization packages applications with dependencies for consistent deployment." },
+    { word: "microservices architecture", translation: "architecture de microservices", example: "Microservices architecture structures applications as independent, loosely coupled services." },
+    { word: "cloud orchestration", translation: "orchestration cloud", example: "Cloud orchestration automates arrangement, coordination, and management of complex services." },
+    { word: "service mesh", translation: "maillage de services", example: "Service mesh manages communication between microservices in distributed applications." },
+    { word: "cloud security posture management", translation: "gestion de la posture de sécurité cloud", example: "Cloud security posture management identifies and remedies cloud configuration risks." },
+    { word: "hybrid cloud", translation: "cloud hybride", example: "Hybrid cloud environments combine private and public cloud resources." },
+    { word: "cloud migration", translation: "migration vers le cloud", example: "Cloud migration transfers applications and data from on-premises systems to cloud platforms." },
+    { word: "cloud optimization", translation: "optimisation cloud", example: "Cloud optimization maximizes performance while minimizing costs in cloud environments." },
+    { word: "auto-scaling", translation: "mise à l'échelle automatique", example: "Auto-scaling adjusts resources automatically based on application demand." },
+    { word: "cloud governance", translation: "gouvernance cloud", example: "Cloud governance establishes policies for efficient, secure cloud resource usage." },
+&nbsp;
+    { word: "continuous deployment", translation: "déploiement continu", example: "Continuous deployment automatically releases validated code to production environments." },
+    { word: "platform as a service", translation: "plateforme en tant que service", example: "Platform as a service provides development and deployment environments in the cloud." },
+    { word: "software as a service", translation: "logiciel en tant que service", example: "Software as a service delivers applications over the internet on a subscription basis." },
+    { word: "container orchestration", translation: "orchestration de conteneurs", example: "Container orchestration tools automate deployment and management of containerized applications." },
+    { word: "FinOps", translation: "FinOps", example: "FinOps aligns technology, finance, and business for cloud financial management." },
+    { word: "cloud compliance", translation: "conformité cloud", example: "Cloud compliance ensures cloud services meet regulatory requirements." },
+    { word: "edge cloud", translation: "cloud en périphérie", example: "Edge cloud distributes computing resources closer to data sources." },
+    { word: "API gateway", translation: "passerelle d'API", example: "API gateways manage, secure, and optimize application programming interfaces." },
+&nbsp;
+    // Technologie 5G et communications (25 mots)
+    { word: "5G technology", translation: "technologie 5G", example: "5G technology provides faster speeds and lower latency than previous cellular networks." },
+    { word: "network slicing", translation: "découpage de réseau", example: "Network slicing creates multiple virtual networks on shared physical infrastructure." },
+    { word: "massive MIMO", translation: "MIMO massif", example: "Massive MIMO uses multiple antennas to improve network capacity and efficiency." },
+    { word: "millimeter wave spectrum", translation: "spectre d'ondes millimétriques", example: "Millimeter wave spectrum enables ultra-high-speed short-range 5G communications." },
+    { word: "beamforming", translation: "formation de faisceaux", example: "Beamforming focuses wireless signals toward specific devices rather than broadcasting widely." },
+    { word: "ultra-reliable low-latency communication", translation: "communication ultra-fiable à faible latence", example: "Ultra-reliable low-latency communication enables critical applications like autonomous vehicles." },
+    { word: "private 5G network", translation: "réseau 5G privé", example: "Private 5G networks provide dedicated wireless connectivity for industrial applications." },
+&nbsp;
+    { word: "spectrum sharing", translation: "partage de spectre", example: "Spectrum sharing allows multiple users to access the same frequency bands." },
+    { word: "small cell", translation: "petite cellule", example: "Small cells extend network coverage and capacity in localized areas." },
+    { word: "fixed wireless access", translation: "accès sans fil fixe", example: "Fixed wireless access provides internet connectivity to premises using wireless networks." },
+    { word: "radio access network", translation: "réseau d'accès radio", example: "The radio access network connects devices to the core network in cellular systems." },
+    { word: "network function virtualization", translation: "virtualisation des fonctions réseau", example: "Network function virtualization replaces dedicated hardware with software applications." },
+    { word: "software-defined networking", translation: "réseau défini par logiciel", example: "Software-defined networking separates network control from data forwarding functions." },
+    { word: "enhanced mobile broadband", translation: "haut débit mobile amélioré", example: "Enhanced mobile broadband provides significantly faster data speeds for consumer applications." },
+    { word: "massive machine-type communication", translation: "communication massive de type machine", example: "Massive machine-type communication supports large-scale IoT deployments." },
+    { word: "network densification", translation: "densification du réseau", example: "Network densification increases the number of transmitters within a geographic area." },
+    { word: "mobile edge computing", translation: "informatique en périphérie mobile", example: "Mobile edge computing brings processing capabilities closer to cellular users." },
+    { word: "non-terrestrial network", translation: "réseau non terrestre", example: "Non-terrestrial networks include satellite and high-altitude platform systems." },
+    { word: "cellular vehicle-to-everything", translation: "communication véhiculaire cellulaire", example: "Cellular vehicle-to-everything technology enables cars to communicate with surrounding infrastructure." },
+    { word: "fronthaul network", translation: "réseau de liaison frontale", example: "Fronthaul networks connect baseband units to remote radio heads in cellular systems." },
+    { word: "backhaul network", translation: "réseau de liaison arrière", example: "Backhaul networks connect cell sites to the core network." },
+    { word: "open RAN", translation: "RAN ouvert", example: "Open RAN standardizes radio access network interfaces for multi-vendor deployments." },
+    { word: "dynamic spectrum access", translation: "accès dynamique au spectre", example: "Dynamic spectrum access allows opportunistic use of available frequency bands." },
+    { word: "self-organizing network", translation: "réseau auto-organisé", example: "Self-organizing networks automatically configure, optimize, and heal cellular networks." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

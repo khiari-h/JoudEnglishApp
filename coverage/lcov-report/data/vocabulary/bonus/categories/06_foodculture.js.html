@@ -1,0 +1,580 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/bonus/categories/06_foodculture.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/bonus/categories</a> 06_foodculture.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "BONUS 20/21 - Food Culture (Restaurant &amp; Culture Culinaire Authentique)",
+  words: [
+    // Restaurant experience &amp; etiquette (25 mots)
+    { word: "table for two", translation: "table pour deux", example: "We'd like a table for two, please." },
+    { word: "reservation", translation: "réservation", example: "Do you have a reservation under Smith?" },
+    { word: "walk-in", translation: "sans réservation", example: "Sorry, we don't take walk-ins tonight." },
+    { word: "waiting list", translation: "liste d'attente", example: "I can put you on the waiting list." },
+    { word: "booth", translation: "box", example: "Could we have a booth instead of a table?" },
+    { word: "hostess", translation: "hôtesse", example: "The hostess will seat you in a moment." },
+    { word: "sommelier", translation: "sommelier", example: "Ask the sommelier for wine recommendations." },
+    { word: "wine pairing", translation: "accord vin", example: "They offer wine pairing with each course." },
+    { word: "tasting menu", translation: "menu dégustation", example: "Let's try the chef's tasting menu." },
+    { word: "prix fixe", translation: "prix fixe", example: "The prix fixe menu is a great deal." },
+    { word: "à la carte", translation: "à la carte", example: "I prefer ordering à la carte." },
+    { word: "daily special", translation: "plat du jour", example: "What's today's daily special?" },
+    { word: "chef's recommendation", translation: "recommandation du chef", example: "I'll have the chef's recommendation." },
+    { word: "house specialty", translation: "spécialité maison", example: "Their house specialty is amazing." },
+    { word: "signature dish", translation: "plat signature", example: "This is our signature dish." },
+    { word: "appetizer", translation: "entrée", example: "We'll start with appetizers." },
+    { word: "main course", translation: "plat principal", example: "For my main course, I'll have the salmon." },
+    { word: "side dish", translation: "accompagnement", example: "What side dishes come with that?" },
+    { word: "dessert", translation: "dessert", example: "Save room for dessert!" },
+    { word: "check", translation: "addition", example: "Could we have the check, please?" },
+    { word: "separate checks", translation: "additions séparées", example: "Could we get separate checks?" },
+    { word: "split the bill", translation: "partager l'addition", example: "Let's split the bill three ways." },
+    { word: "tip", translation: "pourboire", example: "How much should we tip?" },
+    { word: "gratuity", translation: "service", example: "Gratuity is included for parties of six." },
+    { word: "doggy bag", translation: "sac pour emporter", example: "Could I get a doggy bag for this?" },
+&nbsp;
+    // Food preparation &amp; cooking methods (25 mots)
+    { word: "rare", translation: "saignant", example: "I'd like my steak rare, please." },
+    { word: "medium rare", translation: "à point", example: "Medium rare is perfect for me." },
+    { word: "medium", translation: "entre à point et bien cuit", example: "Cook it medium, please." },
+    { word: "well done", translation: "bien cuit", example: "I prefer my meat well done." },
+    { word: "grilled", translation: "grillé", example: "I'll have the grilled chicken." },
+    { word: "roasted", translation: "rôti", example: "The roasted vegetables are delicious." },
+    { word: "baked", translation: "cuit au four", example: "Try the baked potato with sour cream." },
+    { word: "fried", translation: "frit", example: "I'm craving some fried chicken." },
+    { word: "sautéed", translation: "sauté", example: "The sautéed mushrooms are perfect." },
+    { word: "steamed", translation: "à la vapeur", example: "Steamed broccoli is healthier." },
+    { word: "poached", translation: "poché", example: "Poached eggs are tricky to make." },
+    { word: "scrambled", translation: "brouillés", example: "I like my eggs scrambled." },
+    { word: "sunny side up", translation: "au plat", example: "Two eggs sunny side up, please." },
+    { word: "over easy", translation: "retournés", example: "I'll have my eggs over easy." },
+    { word: "marinated", translation: "mariné", example: "This marinated chicken is tender." },
+    { word: "seasoned", translation: "assaisonné", example: "The fish is perfectly seasoned." },
+    { word: "blackened", translation: "noirci", example: "Try the blackened fish special." },
+    { word: "smoked", translation: "fumé", example: "The smoked salmon is expensive but worth it." },
+    { word: "braised", translation: "braisé", example: "Braised beef is so tender." },
+    { word: "caramelized", translation: "caramélisé", example: "The caramelized onions add sweetness." },
+    { word: "glazed", translation: "glacé", example: "The glazed carrots are sweet." },
+    { word: "crispy", translation: "croustillant", example: "The skin should be crispy." },
+    { word: "tender", translation: "tendre", example: "This meat is so tender." },
+    { word: "al dente", translation: "al dente", example: "The pasta should be al dente." },
+    { word: "charred", translation: "carbonisé", example: "I like my vegetables slightly charred." },
+&nbsp;
+    // Taste descriptions &amp; food quality (25 mots)
+    { word: "flavorful", translation: "savoureux", example: "This dish is incredibly flavorful." },
+    { word: "bland", translation: "fade", example: "The soup tastes a bit bland." },
+    { word: "delicious", translation: "délicieux", example: "This is absolutely delicious!" },
+    { word: "mouth-watering", translation: "qui met l'eau à la bouche", example: "The aroma is mouth-watering." },
+    { word: "rich", translation: "riche", example: "This chocolate cake is very rich." },
+    { word: "creamy", translation: "crémeux", example: "I love creamy pasta sauces." },
+    { word: "juicy", translation: "juteux", example: "This burger is perfectly juicy." },
+    { word: "moist", translation: "moelleux", example: "The cake is moist and fluffy." },
+    { word: "dry", translation: "sec", example: "The chicken breast is a bit dry." },
+    { word: "chewy", translation: "caoutchouteux", example: "This meat is too chewy." },
+    { word: "tough", translation: "dur", example: "My steak is tough." },
+    { word: "fresh", translation: "frais", example: "The fish is very fresh today." },
+    { word: "zesty", translation: "piquant", example: "This sauce has a zesty kick." },
+    { word: "tangy", translation: "acidulé", example: "The dressing is pleasantly tangy." },
+    { word: "aromatic", translation: "aromatique", example: "The herbs make it very aromatic." },
+    { word: "savory", translation: "salé", example: "I prefer savory dishes to sweet ones." },
+    { word: "sweet", translation: "sucré", example: "This sauce is too sweet for me." },
+    { word: "salty", translation: "salé", example: "These fries are way too salty." },
+    { word: "spicy", translation: "épicé", example: "How spicy is this curry?" },
+    { word: "mild", translation: "doux", example: "I'll have the mild salsa." },
+    { word: "hot", translation: "piquant", example: "This sauce is really hot!" },
+    { word: "bitter", translation: "amer", example: "Dark chocolate can be bitter." },
+    { word: "sour", translation: "aigre", example: "This wine has gone sour." },
+    { word: "pungent", translation: "fort", example: "Blue cheese has a pungent smell." },
+    { word: "gourmet", translation: "gastronomique", example: "This is gourmet quality food." },
+&nbsp;
+    // Dietary needs &amp; restrictions (25 mots)
+    { word: "vegetarian", translation: "végétarien", example: "Do you have vegetarian options?" },
+    { word: "vegan", translation: "végan", example: "I'm vegan, so no animal products." },
+    { word: "gluten-free", translation: "sans gluten", example: "Is this dish gluten-free?" },
+    { word: "dairy-free", translation: "sans lactose", example: "I need dairy-free alternatives." },
+    { word: "nut allergy", translation: "allergie aux noix", example: "I have a severe nut allergy." },
+    { word: "shellfish allergy", translation: "allergie aux fruits de mer", example: "I'm allergic to shellfish." },
+    { word: "food allergy", translation: "allergie alimentaire", example: "Please inform the chef about my food allergy." },
+    { word: "organic", translation: "bio", example: "Do you serve organic produce?" },
+    { word: "free-range", translation: "élevé en liberté", example: "Are these free-range eggs?" },
+    { word: "grass-fed", translation: "nourri à l'herbe", example: "We only serve grass-fed beef." },
+    { word: "farm-to-table", translation: "de la ferme à la table", example: "This is a farm-to-table restaurant." },
+    { word: "locally sourced", translation: "d'origine locale", example: "All ingredients are locally sourced." },
+    { word: "sustainable", translation: "durable", example: "We focus on sustainable seafood." },
+    { word: "keto-friendly", translation: "compatible cétogène", example: "Do you have keto-friendly options?" },
+    { word: "low-carb", translation: "pauvre en glucides", example: "I'm looking for low-carb dishes." },
+    { word: "low-fat", translation: "pauvre en graisses", example: "Is this prepared low-fat?" },
+    { word: "low-sodium", translation: "pauvre en sodium", example: "I need low-sodium options." },
+    { word: "sugar-free", translation: "sans sucre", example: "Do you have sugar-free desserts?" },
+    { word: "raw", translation: "cru", example: "I love raw fish preparations." },
+    { word: "kosher", translation: "casher", example: "Is this restaurant kosher?" },
+    { word: "halal", translation: "halal", example: "Do you serve halal meat?" },
+    { word: "portion size", translation: "taille de portion", example: "How large are the portion sizes?" },
+    { word: "half portion", translation: "demi-portion", example: "Could I get a half portion?" },
+    { word: "kids menu", translation: "menu enfant", example: "Do you have a kids menu?" },
+    { word: "senior discount", translation: "remise senior", example: "Do you offer a senior discount?" },
+&nbsp;
+    // Beverages &amp; bar culture (25 mots)
+    { word: "wine list", translation: "carte des vins", example: "Could we see the wine list?" },
+    { word: "house wine", translation: "vin de la maison", example: "I'll have a glass of house red." },
+    { word: "vintage", translation: "millésime", example: "This is an excellent vintage." },
+    { word: "dry wine", translation: "vin sec", example: "I prefer dry white wines." },
+    { word: "sweet wine", translation: "vin doux", example: "Do you have any sweet dessert wines?" },
+    { word: "full-bodied", translation: "corsé", example: "This is a full-bodied red wine." },
+    { word: "light wine", translation: "vin léger", example: "I prefer light, crisp wines." },
+    { word: "on tap", translation: "à la pression", example: "What beers do you have on tap?" },
+    { word: "draft beer", translation: "bière pression", example: "I'll have a draft beer." },
+    { word: "craft beer", translation: "bière artisanale", example: "Do you serve local craft beer?" },
+    { word: "cocktail", translation: "cocktail", example: "I'd like to start with a cocktail." },
+    { word: "mixed drink", translation: "boisson mélangée", example: "Can you make mixed drinks?" },
+    { word: "neat", translation: "sec", example: "I'll take my whiskey neat." },
+    { word: "on the rocks", translation: "avec glaçons", example: "Scotch on the rocks, please." },
+    { word: "straight up", translation: "sans glaçons", example: "Vodka martini, straight up." },
+    { word: "twist", translation: "zeste", example: "With a lemon twist, please." },
+    { word: "chaser", translation: "accompagnement", example: "I need a chaser with this shot." },
+    { word: "mocktail", translation: "cocktail sans alcool", example: "Do you have any mocktails?" },
+    { word: "virgin drink", translation: "sans alcool", example: "Can you make that virgin?" },
+    { word: "designated driver", translation: "conducteur désigné", example: "I'm the designated driver tonight." },
+    { word: "happy hour", translation: "happy hour", example: "When is your happy hour?" },
+    { word: "last call", translation: "dernière commande", example: "It's last call for alcohol!" },
+    { word: "tab", translation: "note", example: "Put it on my tab." },
+    { word: "cash bar", translation: "bar payant", example: "It's a cash bar tonight." },
+    { word: "open bar", translation: "bar ouvert", example: "There's an open bar at the wedding." },
+&nbsp;
+    // Restaurant problems &amp; complaints (25 mots)
+    { word: "overcooked", translation: "trop cuit", example: "This steak is overcooked." },
+    { word: "undercooked", translation: "pas assez cuit", example: "The chicken seems undercooked." },
+    { word: "burnt", translation: "brûlé", example: "My toast is burnt." },
+    { word: "cold food", translation: "nourriture froide", example: "My soup arrived cold." },
+    { word: "wrong order", translation: "mauvaise commande", example: "This is the wrong order." },
+    { word: "missing item", translation: "article manquant", example: "My side dish is missing." },
+    { word: "slow service", translation: "service lent", example: "The service is really slow tonight." },
+    { word: "rude server", translation: "serveur impoli", example: "Our server was very rude." },
+    { word: "dirty utensils", translation: "couverts sales", example: "These utensils are dirty." },
+    { word: "hair in food", translation: "cheveu dans la nourriture", example: "There's a hair in my salad!" },
+    { word: "foreign object", translation: "corps étranger", example: "I found something in my food." },
+    { word: "food poisoning", translation: "intoxication alimentaire", example: "I think I got food poisoning here." },
+    { word: "send back", translation: "renvoyer", example: "I need to send this back." },
+    { word: "remake", translation: "refaire", example: "Could you remake this dish?" },
+    { word: "speak to manager", translation: "parler au manager", example: "I'd like to speak to the manager." },
+    { word: "comp the meal", translation: "offrir le repas", example: "They should comp this meal." },
+    { word: "discount", translation: "remise", example: "Can you give us a discount?" },
+    { word: "refund", translation: "remboursement", example: "I'd like a full refund." },
+    { word: "disappointing", translation: "décevant", example: "This meal was disappointing." },
+    { word: "not as described", translation: "pas comme décrit", example: "This isn't as described on the menu." },
+    { word: "poor quality", translation: "mauvaise qualité", example: "The food quality was poor." },
+    { word: "overpriced", translation: "trop cher", example: "This restaurant is overpriced." },
+    { word: "bad value", translation: "mauvais rapport qualité-prix", example: "This is bad value for money." },
+    { word: "unsatisfied", translation: "insatisfait", example: "I'm unsatisfied with this service." },
+    { word: "never coming back", translation: "ne reviendrai jamais", example: "We're never coming back here." }
+  ]
+};</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

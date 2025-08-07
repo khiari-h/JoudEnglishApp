@@ -1,0 +1,856 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/6/categories/02_marches_financiers.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/6/categories</a> 02_marches_financiers.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Marchés Financiers et Investissements",
+  words: [
+    // Marchés de capitaux (25 mots)
+    { word: "capital market", translation: "marché des capitaux", example: "Capital markets connect investors with entities needing funding." },
+    { word: "securities market", translation: "marché des valeurs mobilières", example: "Securities markets include both stock and bond exchanges." },
+&nbsp;
+    { word: "market liquidity", translation: "liquidité du marché", example: "Market liquidity deteriorated rapidly during the financial crisis." },
+&nbsp;
+    { word: "market depth", translation: "profondeur du marché", example: "Market depth indicates the market's ability to absorb large orders." },
+    { word: "market structure", translation: "structure du marché", example: "Electronic trading has transformed market structure in recent decades." },
+    { word: "market maker", translation: "teneur de marché", example: "Market makers provide continuous bid and ask quotes." },
+    { word: "order book", translation: "carnet d'ordres", example: "The order book displays pending buy and sell orders." },
+    { word: "bid-ask spread", translation: "écart acheteur-vendeur", example: "Narrow bid-ask spreads indicate highly liquid markets." },
+    { word: "market microstructure", translation: "microstructure de marché", example: "Market microstructure studies trading mechanisms and price formation." },
+    { word: "market fragmentation", translation: "fragmentation du marché", example: "Market fragmentation divides trading across multiple venues." },
+    { word: "dark pool", translation: "pool opaque", example: "Dark pools execute trades without displaying quotes publicly." },
+    { word: "high-frequency trading", translation: "trading haute fréquence", example: "High-frequency trading uses algorithms to execute orders in milliseconds." },
+&nbsp;
+    { word: "market infrastructure", translation: "infrastructure de marché", example: "Market infrastructure includes exchanges, clearinghouses, and settlement systems." },
+    { word: "order flow", translation: "flux d'ordres", example: "Brokers may receive payments for directing order flow to specific venues." },
+    { word: "price discovery", translation: "découverte des prix", example: "Efficient markets facilitate accurate price discovery." },
+&nbsp;
+    { word: "crossing network", translation: "réseau de croisement", example: "Crossing networks match buy and sell orders internally." },
+    { word: "listing requirements", translation: "conditions d'admission", example: "Exchanges establish listing requirements for traded companies." },
+    { word: "trading venue", translation: "plateforme de négociation", example: "Alternative trading venues compete with traditional exchanges." },
+    { word: "market surveillance", translation: "surveillance du marché", example: "Market surveillance systems detect potential manipulation or abuse." },
+&nbsp;
+    // Analyse des investissements (25 mots)
+    { word: "investment analysis", translation: "analyse d'investissement", example: "Investment analysis evaluates potential returns and risks." },
+    { word: "fundamental analysis", translation: "analyse fondamentale", example: "Fundamental analysis examines financial statements and economic factors." },
+&nbsp;
+    { word: "quantitative analysis", translation: "analyse quantitative", example: "Quantitative analysis uses mathematical models to evaluate securities." },
+&nbsp;
+    { word: "intrinsic value", translation: "valeur intrinsèque", example: "The stock traded well below its estimated intrinsic value." },
+    { word: "valuation multiple", translation: "multiple de valorisation", example: "The company's valuation multiple exceeded industry averages." },
+    { word: "comparative analysis", translation: "analyse comparative", example: "Comparative analysis benchmarks performance against peer companies." },
+    { word: "industry analysis", translation: "analyse sectorielle", example: "Industry analysis evaluates competitive dynamics and growth potential." },
+&nbsp;
+    { word: "equity valuation", translation: "évaluation des actions", example: "Equity valuation methodologies include DCF, multiples, and asset-based approaches." },
+    { word: "growth rate assumption", translation: "hypothèse de taux de croissance", example: "Growth rate assumptions significantly impact valuation outcomes." },
+    { word: "terminal value", translation: "valeur terminale", example: "Terminal value often represents the majority of a DCF valuation." },
+&nbsp;
+    { word: "margin expansion", translation: "expansion des marges", example: "Their investment thesis relies on significant margin expansion." },
+    { word: "earnings quality", translation: "qualité des bénéfices", example: "Earnings quality assessment examines accounting policies and reporting." },
+    { word: "normalized earnings", translation: "bénéfices normalisés", example: "Normalized earnings adjust for one-time or unusual items." },
+&nbsp;
+    { word: "relative valuation", translation: "évaluation relative", example: "Relative valuation compares metrics across similar companies." },
+    { word: "private market value", translation: "valeur de marché privé", example: "Private market value estimates worth in an acquisition scenario." },
+    { word: "sum-of-the-parts analysis", translation: "analyse par somme des parties", example: "Sum-of-the-parts analysis values each business segment separately." },
+&nbsp;
+    // Gestion de portefeuille (25 mots)
+    { word: "portfolio management", translation: "gestion de portefeuille", example: "Portfolio management balances return objectives with risk constraints." },
+&nbsp;
+    { word: "portfolio construction", translation: "construction de portefeuille", example: "Portfolio construction implements the investment strategy." },
+    { word: "portfolio rebalancing", translation: "rééquilibrage de portefeuille", example: "Regular portfolio rebalancing maintains the target asset allocation." },
+    { word: "performance attribution", translation: "attribution de performance", example: "Performance attribution identifies sources of investment returns." },
+    { word: "benchmark", translation: "indice de référence", example: "The fund outperformed its benchmark by 200 basis points." },
+    { word: "tracking error", translation: "erreur de suivi", example: "The strategy's tracking error measures deviation from the benchmark." },
+&nbsp;
+    { word: "investment mandate", translation: "mandat d'investissement", example: "The investment mandate specifies allowable investments and constraints." },
+    { word: "active management", translation: "gestion active", example: "Active management seeks to outperform market benchmarks." },
+    { word: "passive management", translation: "gestion passive", example: "Passive management aims to replicate index performance at low cost." },
+    { word: "strategic asset allocation", translation: "allocation stratégique d'actifs", example: "Strategic asset allocation focuses on long-term investment goals." },
+    { word: "tactical asset allocation", translation: "allocation tactique d'actifs", example: "Tactical asset allocation adjusts positions based on short-term views." },
+    { word: "portfolio optimization", translation: "optimisation de portefeuille", example: "Portfolio optimization seeks the highest return for a given risk level." },
+    { word: "portfolio turnover", translation: "rotation du portefeuille", example: "High portfolio turnover increases transaction costs and tax implications." },
+    { word: "efficient frontier", translation: "frontière efficiente", example: "The efficient frontier represents optimal portfolios with maximum returns for given risk levels." },
+    { word: "factor investing", translation: "investissement factoriel", example: "Factor investing targets specific drivers of returns such as value or momentum." },
+    { word: "style drift", translation: "dérive de style", example: "Style drift occurs when managers deviate from their stated investment approach." },
+    { word: "active share", translation: "part active", example: "Active share measures how different a portfolio is from its benchmark." },
+    { word: "portfolio concentration", translation: "concentration du portefeuille", example: "Portfolio concentration focuses investments in high-conviction positions." },
+    { word: "core-satellite approach", translation: "approche noyau-satellite", example: "The core-satellite approach combines index funds with specialized strategies." },
+    { word: "investment horizon", translation: "horizon d'investissement", example: "Long-term investment horizons allow greater exposure to illiquid assets." },
+    { word: "alpha generation", translation: "génération d'alpha", example: "Alpha generation represents returns beyond what market exposure explains." },
+    { word: "beta exposure", translation: "exposition au bêta", example: "Beta exposure indicates sensitivity to overall market movements." },
+&nbsp;
+    // Gestion des risques financiers (25 mots)
+    { word: "financial risk management", translation: "gestion des risques financiers", example: "Financial risk management identifies and mitigates investment threats." },
+    { word: "market risk", translation: "risque de marché", example: "Market risk arises from price movements in stocks, bonds, and currencies." },
+    { word: "credit risk", translation: "risque de crédit", example: "Credit risk assessment evaluates the probability of default." },
+    { word: "liquidity risk", translation: "risque de liquidité", example: "Liquidity risk increases during market stress conditions." },
+&nbsp;
+    { word: "counterparty risk", translation: "risque de contrepartie", example: "Derivative transactions expose investors to counterparty risk." },
+    { word: "risk exposure", translation: "exposition au risque", example: "The portfolio's risk exposure to emerging markets exceeded targets." },
+&nbsp;
+    { word: "risk decomposition", translation: "décomposition du risque", example: "Risk decomposition identifies the sources of portfolio volatility." },
+&nbsp;
+    { word: "risk parity", translation: "parité des risques", example: "Risk parity allocates based on risk contribution rather than capital." },
+&nbsp;
+    { word: "risk limit", translation: "limite de risque", example: "Investment mandates establish risk limits for various exposures." },
+&nbsp;
+    { word: "volatility targeting", translation: "ciblage de volatilité", example: "Volatility targeting adjusts exposure to maintain consistent risk levels." },
+    { word: "conditional value at risk", translation: "valeur à risque conditionnelle", example: "Conditional value at risk measures expected losses in extreme scenarios." },
+&nbsp;
+    { word: "risk-reward ratio", translation: "ratio risque-rendement", example: "Investment decisions evaluate the risk-reward ratio of each opportunity." },
+&nbsp;
+    { word: "idiosyncratic risk", translation: "risque idiosyncratique", example: "Idiosyncratic risk relates to specific investments rather than markets." },
+    { word: "model risk", translation: "risque de modèle", example: "Model risk acknowledges potential flaws in quantitative approaches." },
+    { word: "risk attribution", translation: "attribution du risque", example: "Risk attribution identifies sources of portfolio volatility." },
+&nbsp;
+    // Instruments financiers (25 mots)
+    { word: "financial instrument", translation: "instrument financier", example: "Financial instruments include equities, fixed income, and derivatives." },
+    { word: "equity security", translation: "titre de participation", example: "Common stock is the most basic equity security." },
+    { word: "fixed income security", translation: "titre à revenu fixe", example: "Fixed income securities provide regular interest payments." },
+    { word: "derivative instrument", translation: "instrument dérivé", example: "Derivative instruments derive value from underlying assets." },
+    { word: "futures contract", translation: "contrat à terme", example: "Futures contracts obligate buyers to purchase assets at predetermined prices." },
+    { word: "options contract", translation: "contrat d'option", example: "Options contracts provide the right but not obligation to trade." },
+    { word: "swap agreement", translation: "contrat d'échange", example: "Interest rate swaps exchange fixed payments for floating payments." },
+&nbsp;
+    { word: "structured product", translation: "produit structuré", example: "Structured products combine securities with derivatives." },
+    { word: "alternative investment", translation: "investissement alternatif", example: "Alternative investments include real estate, private equity, and hedge funds." },
+    { word: "convertible bond", translation: "obligation convertible", example: "Convertible bonds can be exchanged for company shares." },
+    { word: "asset-backed security", translation: "titre adossé à des actifs", example: "Asset-backed securities derive value from underlying loan pools." },
+    { word: "mortgage-backed security", translation: "titre adossé à des hypothèques", example: "Mortgage-backed securities bundle residential mortgage loans." },
+    { word: "collateralized debt obligation", translation: "obligation adossée à des dettes", example: "Collateralized debt obligations repackage various debt instruments." },
+    { word: "credit default swap", translation: "swap de défaut de crédit", example: "Credit default swaps provide insurance against bond defaults." },
+    { word: "forward contract", translation: "contrat à terme de gré à gré", example: "Forward contracts are customized agreements traded over-the-counter." },
+    { word: "depository receipt", translation: "certificat de dépôt", example: "Depository receipts represent foreign shares trading domestically." },
+    { word: "preferred stock", translation: "action privilégiée", example: "Preferred stock combines equity and debt characteristics." },
+&nbsp;
+    { word: "rights issue", translation: "émission de droits", example: "Rights issues allow existing shareholders to purchase additional shares." },
+    { word: "index fund", translation: "fonds indiciel", example: "Index funds passively track market benchmarks." },
+&nbsp;
+    { word: "closed-end fund", translation: "fonds d'investissement à capital fixe", example: "Closed-end funds issue fixed numbers of shares trading on exchanges." },
+    { word: "real estate investment trust", translation: "société d'investissement immobilier cotée", example: "Real estate investment trusts own and manage income-producing properties." },
+    { word: "exchange-traded note", translation: "billet négocié en bourse", example: "Exchange-traded notes are unsecured debt securities tracking indexes." },
+&nbsp;
+    // Marchés obligataires (25 mots)
+&nbsp;
+    { word: "yield curve", translation: "courbe des taux", example: "An inverted yield curve often precedes economic recessions." },
+    { word: "credit spread", translation: "écart de crédit", example: "Credit spreads widened during the financial uncertainty." },
+    { word: "fixed income analysis", translation: "analyse des titres à revenu fixe", example: "Fixed income analysis evaluates interest rate and credit risks." },
+    { word: "bond duration", translation: "duration obligataire", example: "Bond duration measures price sensitivity to interest rate changes." },
+    { word: "bond convexity", translation: "convexité obligataire", example: "Bond convexity captures non-linear price-yield relationships." },
+    { word: "yield to maturity", translation: "rendement à l'échéance", example: "Yield to maturity considers coupon payments and price appreciation." },
+    { word: "credit rating", translation: "notation de crédit", example: "Credit ratings assess the issuer's ability to meet debt obligations." },
+    { word: "bond covenant", translation: "clause obligataire", example: "Bond covenants restrict issuers' actions to protect bondholders." },
+    { word: "fixed income portfolio", translation: "portefeuille à revenu fixe", example: "The fixed income portfolio emphasized corporate bonds." },
+    { word: "corporate bond", translation: "obligation d'entreprise", example: "Corporate bonds finance business operations and expansions." },
+    { word: "government bond", translation: "obligation d'État", example: "Government bonds are considered the safest fixed income investments." },
+    { word: "municipal bond", translation: "obligation municipale", example: "Municipal bonds finance local government infrastructure projects." },
+    { word: "high-yield bond", translation: "obligation à haut rendement", example: "High-yield bonds offer greater returns with increased default risk." },
+    { word: "investment-grade bond", translation: "obligation de qualité investissement", example: "Investment-grade bonds have lower default risk than speculative issues." },
+    { word: "zero-coupon bond", translation: "obligation zéro-coupon", example: "Zero-coupon bonds pay no interest but trade at discounts to face value." },
+    { word: "floating-rate note", translation: "titre à taux variable", example: "Floating-rate notes adjust interest payments based on reference rates." },
+    { word: "bond liquidity", translation: "liquidité obligataire", example: "Bond liquidity varies significantly across market segments." },
+    { word: "bond auction", translation: "adjudication d'obligations", example: "Treasury bonds are issued through regular bond auctions." },
+    { word: "call provision", translation: "clause de remboursement anticipé", example: "Call provisions allow issuers to redeem bonds before maturity." },
+    { word: "yield spread", translation: "écart de rendement", example: "Yield spreads measure the difference between two bond yields." },
+    { word: "term premium", translation: "prime de terme", example: "Term premiums compensate investors for longer maturity exposures." },
+    { word: "interest rate risk", translation: "risque de taux d'intérêt", example: "Interest rate risk increases with bond duration." },
+    { word: "default risk", translation: "risque de défaut", example: "Default risk assessment evaluates the issuer's financial stability." },
+    { word: "yield to call", translation: "rendement à l'option", example: "Yield to call calculates returns if bonds are redeemed early." },
+&nbsp;
+    // Marchés d'actions (25 mots)
+    { word: "equity market", translation: "marché des actions", example: "Equity markets reflect economic growth expectations." },
+&nbsp;
+    { word: "price-to-earnings ratio", translation: "ratio cours/bénéfice", example: "A high price-to-earnings ratio indicates growth expectations." },
+    { word: "dividend yield", translation: "rendement du dividende", example: "Dividend yield provides income while awaiting capital appreciation." },
+    { word: "earnings per share", translation: "bénéfice par action", example: "Earnings per share growth drives long-term stock performance." },
+    { word: "market sentiment", translation: "sentiment du marché", example: "Market sentiment shifted from pessimism to optimism." },
+&nbsp;
+    { word: "growth stock", translation: "action de croissance", example: "Growth stocks offer above-average revenue and earnings increases." },
+    { word: "value stock", translation: "action de valeur", example: "Value stocks trade below their intrinsic worth." },
+    { word: "market breadth", translation: "ampleur du marché", example: "Market breadth indicators track the number of advancing versus declining stocks." },
+&nbsp;
+    { word: "share buyback", translation: "rachat d'actions", example: "Share buybacks reduce outstanding stock and increase earnings per share." },
+&nbsp;
+    { word: "secondary offering", translation: "offre secondaire", example: "The secondary offering allowed early investors to sell their shares." },
+    { word: "price momentum", translation: "momentum de prix", example: "Price momentum strategies buy rising stocks and sell falling ones." },
+    { word: "contrarian investing", translation: "investissement à contre-courant", example: "Contrarian investing takes positions opposite to prevailing sentiment." },
+    { word: "market timing", translation: "market timing", example: "Market timing attempts to predict major market movements." },
+    { word: "earnings surprise", translation: "surprise de bénéfices", example: "The earnings surprise triggered a 15% increase in the stock price." },
+    { word: "equity research", translation: "recherche actions", example: "Equity research analysts provide investment recommendations and analysis." },
+    { word: "sector rotation", translation: "rotation sectorielle", example: "Sector rotation strategies shift between industries based on economic cycles." },
+&nbsp;
+    { word: "market rally", translation: "rebond du marché", example: "The market rally recovered half of the previous losses." },
+&nbsp;
+    // Marchés de devises (25 mots)
+&nbsp;
+    { word: "currency pair", translation: "paire de devises", example: "EUR/USD is the most actively traded currency pair." },
+&nbsp;
+    { word: "spot market", translation: "marché au comptant", example: "Spot market transactions settle within two business days." },
+&nbsp;
+    { word: "currency swap", translation: "swap de devises", example: "Currency swaps exchange principal and interest payments in different currencies." },
+&nbsp;
+    { word: "currency hedging", translation: "couverture de change", example: "Currency hedging protects against adverse exchange rate movements." },
+    { word: "central bank intervention", translation: "intervention de la banque centrale", example: "Central bank intervention attempts to stabilize currency values." },
+    { word: "currency volatility", translation: "volatilité des devises", example: "Political uncertainty increased currency volatility." },
+&nbsp;
+    { word: "currency option", translation: "option sur devise", example: "Currency options provide flexible hedging solutions." },
+    { word: "foreign exchange dealer", translation: "courtier en devises", example: "Foreign exchange dealers provide liquidity to the market." },
+    { word: "interbank market", translation: "marché interbancaire", example: "The interbank market handles the majority of currency transactions." },
+    { word: "currency futures", translation: "contrats à terme sur devises", example: "Currency futures standardize foreign exchange contracts on exchanges." },
+    { word: "carry trade", translation: "opération de portage", example: "Carry trades exploit interest rate differentials between currencies." },
+    { word: "currency correlation", translation: "corrélation de devises", example: "Currency correlation patterns shift during market stress periods." },
+    { word: "exchange rate regime", translation: "régime de taux de change", example: "Countries adopt various exchange rate regimes from fixed to floating." },
+    { word: "revaluation", translation: "réévaluation", example: "Currency revaluation increases purchasing power for imports." },
+    { word: "devaluation", translation: "dévaluation", example: "Currency devaluation aims to boost export competitiveness." },
+    { word: "purchasing power parity", translation: "parité de pouvoir d'achat", example: "Purchasing power parity theory suggests exchange rates should equalize price levels." },
+    { word: "interest rate differential", translation: "différentiel de taux d'intérêt", example: "Interest rate differentials influence currency movements." },
+    { word: "foreign exchange liquidity", translation: "liquidité du marché des changes", example: "Major currency pairs offer the highest foreign exchange liquidity." },
+    { word: "currency basket", translation: "panier de devises", example: "Some countries manage their currency against a weighted currency basket." },
+    { word: "currency manipulation", translation: "manipulation de devise", example: "Currency manipulation accusations arise when countries artificially influence exchange rates." },
+&nbsp;
+    // Investissement institutionnel (25 mots)
+    { word: "institutional investor", translation: "investisseur institutionnel", example: "Institutional investors include pension funds, endowments, and insurers." },
+&nbsp;
+    { word: "endowment fund", translation: "fonds de dotation", example: "University endowment funds support educational missions." },
+    { word: "insurance investment", translation: "investissement d'assurance", example: "Insurance investment portfolios match assets with liability profiles." },
+    { word: "asset-liability management", translation: "gestion actif-passif", example: "Asset-liability management coordinates investment horizon with obligations." },
+    { word: "fiduciary responsibility", translation: "responsabilité fiduciaire", example: "Institutional managers have fiduciary responsibilities to beneficiaries." },
+    { word: "investment policy statement", translation: "déclaration de politique d'investissement", example: "The investment policy statement defines objectives and constraints." },
+    { word: "liability driven investment", translation: "investissement guidé par le passif", example: "Liability driven investment strategies focus on funding specific obligations." },
+    { word: "proxy voting", translation: "vote par procuration", example: "Institutional investors exercise governance through proxy voting." },
+    { word: "investment committee", translation: "comité d'investissement", example: "The investment committee oversees portfolio strategy and manager selection." },
+    { word: "manager selection", translation: "sélection de gestionnaires", example: "Manager selection processes evaluate both quantitative performance and qualitative factors." },
+    { word: "investment consultant", translation: "consultant en investissement", example: "Investment consultants advise institutions on portfolio strategy and implementation." },
+    { word: "defined benefit plan", translation: "régime à prestations définies", example: "Defined benefit plans guarantee specific retirement payments to participants." },
+    { word: "defined contribution plan", translation: "régime à cotisations définies", example: "Defined contribution plans depend on investment performance for retirement benefits." },
+    { word: "actuarial assumption", translation: "hypothèse actuarielle", example: "Actuarial assumptions about longevity and returns drive pension investments." },
+    { word: "funded status", translation: "niveau de capitalisation", example: "The pension plan's funded status improved with strong investment returns." },
+    { word: "environmental, social, governance", translation: "environnemental, social, gouvernance", example: "Institutional investors increasingly consider environmental, social, and governance factors." },
+&nbsp;
+    { word: "active ownership", translation: "actionnariat actif", example: "Active ownership engages with companies to improve practices and performance." },
+    { word: "investment outsourcing", translation: "externalisation des investissements", example: "Investment outsourcing delegates portfolio management to specialized firms." },
+    { word: "investment beliefs", translation: "convictions d'investissement", example: "Investment beliefs document an institution's core principles and philosophy." },
+&nbsp;
+    { word: "investment stewardship", translation: "gestion responsable des investissements", example: "Investment stewardship promotes long-term value creation and sustainability." },
+    { word: "multi-asset portfolio", translation: "portefeuille multi-actifs", example: "Institutional investors typically maintain multi-asset portfolios for diversification." },
+&nbsp;
+    // Analyse macroéconomique (25 mots)
+    { word: "macroeconomic analysis", translation: "analyse macroéconomique", example: "Macroeconomic analysis evaluates economic trends affecting investments." },
+&nbsp;
+    { word: "economic cycle", translation: "cycle économique", example: "Asset allocation strategies adapt to different economic cycle phases." },
+&nbsp;
+    { word: "economic growth forecast", translation: "prévision de croissance économique", example: "Economic growth forecasts drive equity market sentiment." },
+    { word: "economic uncertainty", translation: "incertitude économique", example: "Economic uncertainty typically increases market volatility." },
+&nbsp;
+    { word: "global macro strategy", translation: "stratégie macro globale", example: "Global macro strategies position investments based on economic trends." },
+&nbsp;
+    { word: "economic output gap", translation: "écart de production économique", example: "The economic output gap measures actual versus potential GDP." },
+&nbsp;
+    { word: "economic expansion", translation: "expansion économique", example: "The economic expansion lasted over ten years before recession." },
+    { word: "interest rate forecast", translation: "prévision de taux d'intérêt", example: "Interest rate forecasts influence fixed income positioning." },
+    { word: "unemployment rate", translation: "taux de chômage", example: "The unemployment rate is a lagging indicator of economic health." },
+    { word: "consumer confidence", translation: "confiance des consommateurs", example: "Consumer confidence measures household optimism about economic conditions." },
+    { word: "purchasing managers index", translation: "indice des directeurs d'achat", example: "The purchasing managers index tracks manufacturing sector activity." },
+    { word: "central bank policy", translation: "politique de la banque centrale", example: "Central bank policy decisions influence all financial markets." },
+    { word: "economic surprise index", translation: "indice de surprise économique", example: "The economic surprise index tracks data relative to expectations." },
+    { word: "yield curve analysis", translation: "analyse de la courbe des taux", example: "Yield curve analysis provides insights into future economic conditions." },
+    { word: "Phillips curve", translation: "courbe de Phillips", example: "The Phillips curve describes the relationship between inflation and unemployment." },
+    { word: "inflationary pressure", translation: "pression inflationniste", example: "Commodity price increases created inflationary pressure in the economy." },
+    { word: "economic contraction", translation: "contraction économique", example: "The economic contraction reduced corporate earnings significantly." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -1,0 +1,616 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/B1/scenarios/rentingCar.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/B1/scenarios</a> rentingCar.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/B1/scenarios/rentingCar.js
+&nbsp;
+const rentingCar = {
+    id: 11,
+    title: "Renting a Car",
+    level: "B1",
+    description: "Learn how to rent a car, discuss rental conditions, and handle problems with a rental vehicle.",
+    estimatedTime: "15-20 minutes",
+    vocabulary: ["location", "voiture", "permis de conduire", "assurance", "caution", "réservoir", "kilométrage", "dommages", "contrat", "frais supplémentaires"],
+    steps: [
+      {
+        id: 1,
+        botMessage: "Bonjour et bienvenue à l'agence de location AutoPlus. Comment puis-je vous aider aujourd'hui ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "Bonjour, je souhaiterais louer une voiture pour 5 jours à partir de demain. Quels types de véhicules proposez-vous ?",
+          "Bonjour, j'ai une réservation au nom de Martin pour aujourd'hui. Je viens récupérer le véhicule.",
+          "Bonjour, je cherche une voiture familiale pour un voyage de deux semaines. Pouvez-vous me renseigner sur vos tarifs ?"
+        ],
+        hints: "Saluez et expliquez ce que vous recherchez comme location de voiture.",
+        expectedKeywords: ["bonjour", "louer", "voiture", "jours", "réservation", "récupérer", "véhicule", "familiale", "voyage", "tarifs"],
+        feedback: {
+          correct: "Bien sûr, je vais vous aider avec votre demande de location. Avez-vous déjà loué chez nous auparavant ?",
+          incorrect: "Pourriez-vous préciser ce que vous recherchez comme type de location de voiture ?"
+        }
+      },
+      {
+        id: 2,
+        botMessage: "Avez-vous déjà loué chez nous auparavant ? Si non, puis-je voir votre permis de conduire et une pièce d'identité, s'il vous plaît ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Non, c'est la première fois que je loue dans votre agence. Voici mon permis de conduire et ma carte d'identité. Est-ce que ma carte de crédit sera également nécessaire ?",
+          "Oui, j'ai déjà loué chez vous l'année dernière. Mon numéro de client est le 45789, mais j'ai quand même apporté tous mes documents.",
+          "Je n'ai jamais loué chez vous, mais j'ai mon permis et mon passeport avec moi. Je voudrais savoir si un permis international est nécessaire ?"
+        ],
+        hints: "Indiquez si vous avez déjà loué chez eux et mentionnez les documents que vous avez.",
+        expectedKeywords: ["première", "fois", "voici", "permis", "carte", "identité", "crédit", "loué", "année", "documents"],
+        acceptablePhrases: [
+          "non, c'est la première fois",
+          "oui, j'ai déjà loué",
+          "je n'ai jamais loué",
+          "voici mon permis",
+          "j'ai mon permis"
+        ],
+        feedback: {
+          correct: "Merci pour vos documents. En effet, nous aurons besoin de votre carte de crédit pour la caution. Quel type de véhicule recherchez-vous précisément ?",
+          partial: "Votre numéro de client est bien dans notre système. Quel type de véhicule souhaiteriez-vous cette fois-ci ?",
+          incorrect: "Veuillez indiquer si vous avez déjà loué chez nous et montrer vos documents d'identité."
+        }
+      },
+      {
+        id: 3,
+        botMessage: "Quel type de véhicule recherchez-vous ? Nous proposons différentes catégories : économique, compacte, berline, SUV et minivan.",
+        inputMode: "freeText",
+        suggestions: [
+          "Je cherche une voiture économique, la moins chère possible. C'est juste pour me déplacer en ville, donc quelque chose de petit et facile à garer me conviendrait parfaitement.",
+          "Je préférerais une berline confortable, car nous allons faire un long trajet sur autoroute. Idéalement avec une bonne climatisation et un GPS intégré.",
+          "Il me faudrait un SUV ou un minivan, car nous sommes 5 personnes avec beaucoup de bagages. Est-ce que ces modèles ont un grand coffre ?"
+        ],
+        hints: "Précisez le type de véhicule que vous souhaitez et pourquoi ce choix vous convient.",
+        expectedKeywords: ["économique", "chère", "déplacer", "ville", "berline", "confortable", "trajet", "autoroute", "SUV", "minivan"],
+        feedback: {
+          correct: "Parfait, j'ai plusieurs options qui correspondent à vos besoins. Quelle est la durée exacte de location souhaitée ?",
+          partial: "Nous avons ce type de véhicule disponible. Avez-vous des exigences particulières concernant la transmission ou les options ?",
+          incorrect: "Veuillez préciser quel type de véhicule vous intéresse parmi nos catégories disponibles."
+        }
+      },
+      {
+        id: 4,
+        botMessage: "Pour quelle durée souhaitez-vous louer ce véhicule, et quelles sont vos dates de départ et de retour prévues ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "Je souhaite louer la voiture du 15 au 20 de ce mois, donc pour 5 jours. Je la prendrai vers 10h le 15 et la ramènerai vers 18h le 20.",
+          "Pour une semaine exactement, du lundi prochain au lundi suivant. Je passerai la prendre en début d'après-midi et la rapporterai en matinée.",
+          "J'aurais besoin du véhicule pour un week-end, du vendredi soir au lundi matin. Est-ce que vous proposez des tarifs spéciaux pour les week-ends ?"
+        ],
+        hints: "Indiquez précisément la durée et les dates de votre location.",
+        expectedKeywords: ["jours", "mois", "semaine", "lundi", "week-end", "vendredi", "prendrai", "ramènerai", "passerai", "rapporterai"],
+        feedback: {
+          correct: "C'est noté. Laissez-moi vérifier la disponibilité pour ces dates... Nous avons bien un véhicule disponible. Concernant l'assurance, quelle formule souhaitez-vous ?",
+          incorrect: "Pourriez-vous préciser les dates exactes de début et de fin de location ?"
+        }
+      },
+      {
+        id: 5,
+        botMessage: "Pour l'assurance, nous proposons trois formules : de base (avec franchise de 1000€), intermédiaire (franchise de 500€) ou tous risques (sans franchise). Quelle formule préférez-vous ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Je préfère l'assurance tous risques, même si c'est plus cher. Je serai plus tranquille sans franchise en cas de problème.",
+          "L'option intermédiaire me convient. Pouvez-vous me préciser ce qui est couvert exactement avec cette formule ?",
+          "Quelle est la différence de prix entre ces formules ? Ma propre assurance couvre déjà certains dommages sur les véhicules de location."
+        ],
+        hints: "Choisissez une formule d'assurance ou demandez plus d'informations sur les options.",
+        expectedKeywords: ["tous risques", "tranquille", "sans", "intermédiaire", "convient", "couvert", "différence", "prix", "propre", "assurance"],
+        feedback: {
+          correct: "Très bien. Concernant le carburant, nous vous remettons le véhicule avec le plein d'essence et vous devez le rendre de la même façon. Est-ce que cela vous convient ?",
+          partial: "L'assurance intermédiaire couvre les dommages au véhicule, vol, incendie, avec une franchise de 500€. Elle n'inclut pas les dommages aux pneus et vitres.",
+          incorrect: "Veuillez indiquer quelle formule d'assurance vous préférez ou demander plus d'informations sur ces options."
+        }
+      },
+      {
+        id: 6,
+        botMessage: "Pour le carburant, notre politique est 'plein-plein' : nous vous remettons le véhicule avec le réservoir plein et vous devez le rendre de la même façon. D'accord ? Souhaitez-vous ajouter des options comme GPS, siège bébé ou chaînes à neige ?",
+        inputMode: "freeText",
+        suggestions: [
+          "C'est parfait pour le carburant. J'aimerais ajouter un GPS, car je ne connais pas bien la région. Quel est le coût supplémentaire pour cette option ?",
+          "Pas de problème pour le plein d'essence au retour. Je n'ai pas besoin d'options supplémentaires, j'utiliserai le GPS de mon téléphone.",
+          "Je comprends pour le carburant. Je voudrais ajouter un siège enfant pour un enfant de 3 ans. Est-ce que vous proposez aussi un service de livraison du véhicule à mon hôtel ?"
+        ],
+        hints: "Répondez concernant la politique de carburant et indiquez si vous souhaitez des options supplémentaires.",
+        expectedKeywords: ["carburant", "parfait", "GPS", "région", "coût", "supplémentaire", "plein", "essence", "siège", "enfant"],
+        acceptablePhrases: [
+          "c'est parfait",
+          "pas de problème",
+          "je comprends",
+          "j'aimerais ajouter",
+          "je n'ai pas besoin"
+        ],
+        feedback: {
+          correct: "Le GPS coûte 5€ par jour supplémentaire. Je vais l'ajouter à votre contrat. Préférez-vous payer maintenant ou au retour du véhicule ?",
+          partial: "Très bien, nous n'ajouterons pas d'options supplémentaires.",
+          incorrect: "Veuillez confirmer que vous acceptez la politique de carburant et préciser si vous voulez des options supplémentaires."
+        }
+      },
+      {
+        id: 7,
+        botMessage: "Je vais maintenant préparer votre contrat de location. Préférez-vous payer maintenant l'intégralité, ou payer une partie maintenant et le reste au retour du véhicule ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "Je préfère payer la totalité maintenant, comme ça ce sera réglé. Je peux payer par carte bancaire.",
+          "Je voudrais payer un acompte maintenant et le reste à mon retour. Quel est le montant minimum à verser aujourd'hui ?",
+          "Avant de décider, pourriez-vous me détailler le coût total avec toutes les options et assurances ? Y a-t-il des frais supplémentaires dont nous n'avons pas parlé ?"
+        ],
+        hints: "Indiquez comment vous préférez payer et/ou demandez des précisions sur le coût total.",
+        expectedKeywords: ["payer", "totalité", "maintenant", "acompte", "reste", "retour", "montant", "minimum", "coût", "frais"],
+        feedback: {
+          correct: "Parfait, je vais préparer la facture pour un paiement intégral. Le montant total est de 345€, incluant la location, l'assurance et le GPS.",
+          incorrect: "Veuillez indiquer si vous préférez payer maintenant ou partiellement."
+        }
+      },
+      {
+        id: 8,
+        botMessage: "Votre véhicule est prêt. Avant de vous donner les clés, je dois vous informer qu'il y a une petite éraflure sur l'aile avant droite, déjà notée sur le contrat. Souhaitez-vous faire le tour du véhicule ensemble pour vérifier son état ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Oui, je préfère qu'on fasse le tour ensemble et qu'on vérifie bien tous les dommages existants. Je voudrais aussi prendre des photos pour ma propre documentation.",
+          "D'accord pour la vérification. Est-ce que je dois signaler tout nouveau dommage à mon retour ? Que se passe-t-il en cas de panne pendant la location ?",
+          "Bien sûr, allons voir le véhicule. J'aimerais aussi que vous m'expliquiez rapidement les fonctionnalités spécifiques de cette voiture, comme l'ouverture du réservoir et le démarrage."
+        ],
+        hints: "Répondez à la proposition de vérification du véhicule et posez éventuellement des questions supplémentaires.",
+        expectedKeywords: ["vérification", "ensemble", "dommages", "existants", "photos", "signaler", "panne", "fonctionnalités", "réservoir", "démarrage"],
+        feedback: {
+          correct: "Allons-y ensemble. Vous avez raison de vouloir documenter l'état du véhicule. En cas de panne, vous avez un numéro d'assistance 24h/24 dans les documents de bord. Pour toute question ou problème, n'hésitez pas à nous contacter. Bonne route !",
+          partial: "Je vais vous montrer les principales fonctionnalités du véhicule et nous vérifierons son état ensemble.",
+          incorrect: "Indiquez si vous acceptez de faire une vérification de l'état du véhicule avant de partir."
+        }
+      }
+    ],
+    completionMessage: "Félicitations ! Vous avez réussi à louer une voiture en français, en comprenant les conditions de location et en gérant les vérifications nécessaires.",
+    learningObjectives: [
+      "Décrire ses besoins pour une location de voiture",
+      "Comprendre les conditions de location (assurance, carburant)",
+      "Négocier des options supplémentaires",
+      "Discuter des modalités de paiement",
+      "Vérifier et signaler l'état d'un véhicule"
+    ],
+    grammar: {
+      points: [
+        "Conditionnel pour les demandes polies",
+        "Futur proche pour les actions planifiées",
+        "Vocabulaire spécifique à la location de voiture",
+        "Questions directes et indirectes"
+      ]
+    }
+  };
+&nbsp;
+  export default rentingCar;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

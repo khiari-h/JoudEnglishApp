@@ -1,0 +1,658 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/6/categories/15_communication_interculturelle.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/6/categories</a> 15_communication_interculturelle.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Communication Interculturelle",
+  words: [
+    // Principes fondamentaux (50 mots)
+&nbsp;
+    { word: "ethnorelativism", translation: "ethnorelativisme", example: "Ethnorelativism views cultural differences as neither superior nor inferior, but simply different." },
+&nbsp;
+    { word: "reverse culture shock", translation: "choc culturel inverse", example: "Expatriates often experience reverse culture shock when returning to their home countries." },
+&nbsp;
+    { word: "cultural awareness", translation: "conscience culturelle", example: "Cultural awareness begins with recognizing one's own cultural conditioning." },
+    { word: "cultural orientation", translation: "orientation culturelle", example: "Cultural orientation encompasses fundamental assumptions about human nature and relationships." },
+&nbsp;
+    { word: "intercultural encounter", translation: "rencontre interculturelle", example: "Each intercultural encounter presents opportunities for learning and misunderstanding." },
+    { word: "cultural mediator", translation: "médiateur culturel", example: "The translator served as a cultural mediator, explaining contextual implications." },
+    { word: "cultural broker", translation: "intermédiaire culturel", example: "Bicultural individuals often function as cultural brokers between communities." },
+    { word: "cultural frame of reference", translation: "cadre de référence culturel", example: "Each person interprets experiences through their cultural frame of reference." },
+&nbsp;
+    { word: "cultural script", translation: "script culturel", example: "Cultural scripts provide templates for appropriate behavior in specific situations." },
+&nbsp;
+    { word: "cultural baggage", translation: "bagage culturel", example: "Travelers bring cultural baggage—unconscious assumptions—to their intercultural experiences." },
+    { word: "cultural blind spot", translation: "angle mort culturel", example: "Cultural blind spots prevent recognition of one's own cultural conditioning." },
+    { word: "cultural communication style", translation: "style de communication culturel", example: "Cultural communication styles vary in directness, emotionality, and formality." },
+    { word: "intercultural competence", translation: "compétence interculturelle", example: "Intercultural competence combines knowledge, skills, and attitudinal openness." },
+    { word: "cultural filter", translation: "filtre culturel", example: "Cultural filters affect how we perceive and process information from other cultures." },
+    { word: "cultural iceberg", translation: "iceberg culturel", example: "The cultural iceberg model distinguishes visible practices from underlying values and assumptions." },
+    { word: "surface culture", translation: "culture de surface", example: "Surface culture includes visible elements like food, clothing, and festivals." },
+    { word: "deep culture", translation: "culture profonde", example: "Deep culture encompasses unconscious values, beliefs, and thought patterns." },
+    { word: "cultural determinism", translation: "déterminisme culturel", example: "Cultural determinism suggests behavior is primarily shaped by cultural conditioning." },
+    { word: "cultural reductionism", translation: "réductionnisme culturel", example: "Cultural reductionism oversimplifies complex behaviors as merely cultural." },
+    { word: "cultural essentialism", translation: "essentialisme culturel", example: "Cultural essentialism attributes fixed, inherent characteristics to cultural groups." },
+&nbsp;
+    { word: "cultural hybridity", translation: "hybridité culturelle", example: "Cultural hybridity emerges from the creative fusion of diverse cultural elements." },
+&nbsp;
+    { word: "cultural translation", translation: "traduction culturelle", example: "Cultural translation adapts concepts from one cultural framework to another." },
+    { word: "cultural accommodation", translation: "accommodation culturelle", example: "Cultural accommodation involves adapting one's behavior to another cultural context." },
+&nbsp;
+    { word: "cultural marginalization", translation: "marginalisation culturelle", example: "Cultural marginalization occurs when groups are excluded from mainstream society." },
+    { word: "cultural separation", translation: "séparation culturelle", example: "Cultural separation maintains strong boundaries between cultural communities." },
+    { word: "cultural segregation", translation: "ségrégation culturelle", example: "Cultural segregation involves institutional separation of cultural groups." },
+&nbsp;
+    // Dimensions interculturelles (50 mots)
+&nbsp;
+    { word: "individualism", translation: "individualisme", example: "Individualistic cultures prioritize personal goals over group objectives." },
+    { word: "collectivism", translation: "collectivisme", example: "Collectivistic cultures emphasize group harmony and interdependence." },
+    { word: "power distance", translation: "distance hiérarchique", example: "Power distance reflects acceptance of unequal power distribution in organizations and society." },
+    { word: "uncertainty avoidance", translation: "évitement de l'incertitude", example: "Cultures with high uncertainty avoidance prefer structure, rules, and predictability." },
+    { word: "masculinity-femininity dimension", translation: "dimension masculinité-féminité", example: "The masculinity-femininity dimension contrasts competition with cooperation and quality of life." },
+    { word: "long-term orientation", translation: "orientation à long terme", example: "Long-term oriented cultures value persistence, thrift, and future planning." },
+    { word: "short-term orientation", translation: "orientation à court terme", example: "Short-term oriented cultures emphasize immediate results and present concerns." },
+    { word: "indulgence versus restraint", translation: "indulgence contre retenue", example: "Indulgent cultures allow greater gratification of natural human desires." },
+    { word: "monochronic time", translation: "temps monochrone", example: "Monochronic cultures approach time linearly, focusing on one task at a time." },
+    { word: "polychronic time", translation: "temps polychrone", example: "Polychronic cultures engage in multiple activities simultaneously and emphasize relationships over schedules." },
+    { word: "achievement orientation", translation: "orientation vers l'accomplissement", example: "Achievement-oriented cultures value recognition based on personal performance." },
+    { word: "ascription orientation", translation: "orientation vers l'attribution", example: "Ascription-oriented cultures assign status based on who one is rather than what one does." },
+    { word: "universalism", translation: "universalisme", example: "Universalistic cultures apply identical rules regardless of relationship or context." },
+    { word: "particularism", translation: "particularisme", example: "Particularistic cultures adjust rules based on relationships and circumstances." },
+    { word: "specific cultures", translation: "cultures spécifiques", example: "Specific cultures compartmentalize relationships and keep personal lives separate from business." },
+    { word: "diffuse cultures", translation: "cultures diffuses", example: "Diffuse cultures blur boundaries between personal and professional spheres." },
+    { word: "neutral cultures", translation: "cultures neutres", example: "Neutral cultures discourage public display of emotions in professional contexts." },
+    { word: "affective cultures", translation: "cultures affectives", example: "Affective cultures express emotions openly in various communication contexts." },
+    { word: "internal control", translation: "contrôle interne", example: "Cultures emphasizing internal control believe individuals can dominate their environment." },
+    { word: "external control", translation: "contrôle externe", example: "Cultures emphasizing external control adapt to environmental circumstances beyond their control." },
+    { word: "sequential time", translation: "temps séquentiel", example: "Sequential time orientation views activities as linear steps to be completed in order." },
+    { word: "synchronic time", translation: "temps synchronique", example: "Synchronic time orientation perceives past, present, and future as interconnected periods." },
+    { word: "linear-active culture", translation: "culture linéaire-active", example: "Linear-active cultures prioritize organized, scheduled activities and focus on one task at a time." },
+    { word: "multi-active culture", translation: "culture multi-active", example: "Multi-active cultures are relationship-focused and comfortable with multiple simultaneous tasks." },
+    { word: "reactive culture", translation: "culture réactive", example: "Reactive cultures prioritize courtesy and respect, listening before responding thoughtfully." },
+    { word: "direct communication style", translation: "style de communication direct", example: "Direct communication styles explicitly state intentions and meanings in conversation." },
+    { word: "indirect communication style", translation: "style de communication indirect", example: "Indirect communication styles convey messages through implication and context." },
+    { word: "hierarchical orientation", translation: "orientation hiérarchique", example: "Hierarchical orientation accepts status differences and formal protocols." },
+    { word: "egalitarian orientation", translation: "orientation égalitaire", example: "Egalitarian orientation minimizes status differences and formal protocols." },
+    { word: "expression", translation: "expression", example: "Expression-oriented cultures value eloquence and verbal adeptness." },
+&nbsp;
+    { word: "being culture", translation: "culture de l'être", example: "Being cultures emphasize quality of life and natural spontaneity." },
+    { word: "doing culture", translation: "culture du faire", example: "Doing cultures emphasize achievement, action, and measurable accomplishments." },
+    { word: "dignity culture", translation: "culture de la dignité", example: "Dignity cultures base self-worth on internal values independent of others' opinions." },
+    { word: "honor culture", translation: "culture de l'honneur", example: "Honor cultures base reputation on strength and defense against affronts." },
+    { word: "face culture", translation: "culture de la face", example: "Face cultures emphasize maintaining reputation through harmonious relationships." },
+    { word: "high emotional expressiveness", translation: "expressivité émotionnelle élevée", example: "Mediterranean cultures often demonstrate high emotional expressiveness in communication." },
+    { word: "low emotional expressiveness", translation: "expressivité émotionnelle basse", example: "Nordic cultures typically demonstrate low emotional expressiveness in public settings." },
+&nbsp;
+    { word: "cultural convergence", translation: "convergence culturelle", example: "Cultural convergence occurs when different cultures become more similar through contact." },
+    { word: "cultural attribution", translation: "attribution culturelle", example: "Cultural attribution explains behavior through cultural rather than personal factors." },
+    { word: "cultural stereotype", translation: "stéréotype culturel", example: "Cultural stereotypes oversimplify complex cultural patterns into rigid generalizations." },
+    { word: "cultural generalization", translation: "généralisation culturelle", example: "Cultural generalizations identify patterns while acknowledging individual variations." },
+    { word: "cultural fluency", translation: "aisance culturelle", example: "Cultural fluency enables seamless navigation across different cultural contexts." },
+    { word: "cultural metacognition", translation: "métacognition culturelle", example: "Cultural metacognition involves conscious awareness of one's cultural assumptions." },
+    { word: "cultural archetype", translation: "archétype culturel", example: "Cultural archetypes represent fundamental patterns recurring across societies." },
+&nbsp;
+    // Applications pratiques (50 mots)
+&nbsp;
+    { word: "cultural miscommunication", translation: "mauvaise communication culturelle", example: "Cultural miscommunication often results from different assumptions about appropriate behavior." },
+&nbsp;
+    { word: "intercultural relations", translation: "relations interculturelles", example: "The department of intercultural relations facilitates integration in multinational organizations." },
+&nbsp;
+    { word: "cultural briefing", translation: "briefing culturel", example: "Diplomats receive cultural briefing before foreign assignments to prevent diplomatic incidents." },
+    { word: "cultural debriefing", translation: "débriefing culturel", example: "Cultural debriefing helps returnees process and integrate their international experiences." },
+    { word: "cultural due diligence", translation: "diligence raisonnable culturelle", example: "Cultural due diligence assesses compatibility before international mergers." },
+    { word: "cultural audit", translation: "audit culturel", example: "The cultural audit revealed incompatible decision-making processes between the merging companies." },
+    { word: "cultural intelligence quotient", translation: "quotient d'intelligence culturelle", example: "The cultural intelligence quotient measures capacity to function effectively across cultures." },
+    { word: "cultural interpreter", translation: "interprète culturel", example: "Beyond translation, the cultural interpreter explained context and implications." },
+    { word: "cultural mentor", translation: "mentor culturel", example: "A cultural mentor helps newcomers navigate unfamiliar social and organizational norms." },
+    { word: "cultural consultant", translation: "consultant culturel", example: "The cultural consultant advised on appropriate market entry strategies for the region." },
+    { word: "cultural bridge", translation: "pont culturel", example: "Bicultural individuals often serve as cultural bridges between communities." },
+&nbsp;
+    { word: "cultural liability", translation: "passif culturel", example: "Ethnocentric attitudes become a cultural liability in international business." },
+&nbsp;
+    { word: "intercultural marriage", translation: "mariage interculturel", example: "Intercultural marriages navigate differences in family expectations and communication styles." },
+    { word: "intercultural workplace", translation: "lieu de travail interculturel", example: "Intercultural workplaces benefit from diverse perspectives when properly managed." },
+    { word: "intercultural education", translation: "éducation interculturelle", example: "Intercultural education prepares students for global citizenship and collaboration." },
+    { word: "intercultural conflict", translation: "conflit interculturel", example: "Intercultural conflict often stems from different values and communication patterns." },
+&nbsp;
+    { word: "cross-cultural management", translation: "management interculturel", example: "Cross-cultural management adapts leadership practices to diverse cultural contexts." },
+&nbsp;
+    { word: "intercultural adjustment", translation: "ajustement interculturel", example: "Intercultural adjustment involves psychological and sociocultural adaptation processes." },
+    { word: "cultural agility", translation: "agilité culturelle", example: "Cultural agility enables quick adaptation to unfamiliar cultural environments." },
+&nbsp;
+    { word: "ethnocultural empathy", translation: "empathie ethnoculturelle", example: "Ethnocultural empathy involves understanding experiences from another cultural perspective." },
+    { word: "cultural mindfulness", translation: "pleine conscience culturelle", example: "Cultural mindfulness involves aware attention to cultural dimensions of interaction." },
+    { word: "cultural bias", translation: "biais culturel", example: "Cultural bias unconsciously influences perceptions and evaluations of other groups." },
+    { word: "cultural prejudice", translation: "préjugé culturel", example: "Cultural prejudice involves negative pre-judgments about other cultural groups." },
+    { word: "cultural self-awareness", translation: "conscience de soi culturelle", example: "Cultural self-awareness recognizes how one's own culture shapes perceptions." },
+    { word: "intercultural ethics", translation: "éthique interculturelle", example: "Intercultural ethics navigates competing moral frameworks across cultural boundaries." },
+&nbsp;
+    { word: "business across cultures", translation: "affaires interculturelles", example: "Business across cultures requires adapting strategies to local preferences." },
+    { word: "global leadership", translation: "leadership mondial", example: "Global leadership combines strategic vision with intercultural adaptability." },
+    { word: "cultural diversity management", translation: "gestion de la diversité culturelle", example: "Cultural diversity management transforms differences into organizational strengths." },
+    { word: "cultural inclusion", translation: "inclusion culturelle", example: "Cultural inclusion creates environments where diverse perspectives are valued." },
+    { word: "intercultural client relations", translation: "relations clientèle interculturelles", example: "Intercultural client relations adapt service approaches to cultural expectations." },
+    { word: "intercultural healthcare", translation: "soins de santé interculturels", example: "Intercultural healthcare respects diverse health beliefs and practices." },
+    { word: "intercultural counseling", translation: "conseil interculturel", example: "Intercultural counseling adapts therapeutic approaches to cultural frameworks." },
+&nbsp;
+    { word: "cultural adaptation strategy", translation: "stratégie d'adaptation culturelle", example: "The cultural adaptation strategy modified the product for regional preferences." },
+    { word: "cultural marketing", translation: "marketing culturel", example: "Cultural marketing tailors campaigns to cultural values and preferences." },
+    { word: "cultural localization", translation: "localisation culturelle", example: "Cultural localization adapts products and services to specific cultural markets." },
+    { word: "cross-cultural teamwork", translation: "travail d'équipe interculturel", example: "Cross-cultural teamwork leverages diverse perspectives for innovation." },
+    { word: "intercultural learning", translation: "apprentissage interculturel", example: "Intercultural learning transforms experiences into enhanced cultural competence." },
+    { word: "cultural synergy", translation: "synergie culturelle", example: "Cultural synergy creates solutions superior to those of any single cultural approach." },
+&nbsp;
+    // Tendances contemporaines (50 mots)
+&nbsp;
+    { word: "cultural intelligence development", translation: "développement de l'intelligence culturelle", example: "Cultural intelligence development requires cognitive, motivational, and behavioral training." },
+    { word: "culture and technology", translation: "culture et technologie", example: "Culture and technology interact as digital tools reflect and reshape cultural patterns." },
+    { word: "intercultural virtual teams", translation: "équipes virtuelles interculturelles", example: "Intercultural virtual teams face challenges of both distance and cultural differences." },
+&nbsp;
+    { word: "third culture individuals", translation: "individus de troisième culture", example: "Third culture individuals develop identities influenced by multiple cultural systems." },
+    { word: "global mindset", translation: "état d'esprit global", example: "A global mindset combines openness to diversity with ability to recognize patterns." },
+    { word: "geocentric orientation", translation: "orientation géocentrique", example: "Organizations with geocentric orientation integrate global and local perspectives." },
+&nbsp;
+    { word: "cultural globalisation", translation: "mondialisation culturelle", example: "Cultural globalisation creates complex flows of ideas, practices, and values." },
+    { word: "transnationalism", translation: "transnationalisme", example: "Transnationalism involves maintaining connections across multiple national contexts." },
+    { word: "diaspora communities", translation: "communautés diasporiques", example: "Diaspora communities maintain cultural identity while adapting to host environments." },
+    { word: "digital intercultural communication", translation: "communication interculturelle numérique", example: "Digital intercultural communication faces unique challenges of reduced contextual cues." },
+    { word: "intercultural communication technology", translation: "technologie de communication interculturelle", example: "Intercultural communication technology includes translation tools and cultural databases." },
+    { word: "culturally responsive technology", translation: "technologie culturellement adaptée", example: "Culturally responsive technology adapts to users' cultural preferences." },
+    { word: "cultural algorithm", translation: "algorithme culturel", example: "Cultural algorithms in artificial intelligence incorporate cultural knowledge systems." },
+    { word: "intercultural digital literacy", translation: "littératie numérique interculturelle", example: "Intercultural digital literacy navigates cultural differences in online contexts." },
+    { word: "cultural dimension of social media", translation: "dimension culturelle des médias sociaux", example: "The cultural dimension of social media shapes online interaction patterns." },
+    { word: "intercultural citizen journalism", translation: "journalisme citoyen interculturel", example: "Intercultural citizen journalism provides diverse perspectives on global events." },
+    { word: "intercultural knowledge management", translation: "gestion des connaissances interculturelles", example: "Intercultural knowledge management preserves diverse perspectives in organizations." },
+    { word: "neuroscience of culture", translation: "neuroscience de la culture", example: "The neuroscience of culture examines how cultural contexts shape neural processing." },
+    { word: "embodied cultural cognition", translation: "cognition culturelle incarnée", example: "Embodied cultural cognition explores how culture shapes bodily experiences." },
+&nbsp;
+    { word: "heritage language maintenance", translation: "maintien de la langue d'origine", example: "Heritage language maintenance preserves cultural identity across generations." },
+    { word: "intercultural urbanism", translation: "urbanisme interculturel", example: "Intercultural urbanism designs spaces that facilitate cross-cultural interaction." },
+    { word: "superdiversity", translation: "superdiversité", example: "Superdiversity describes contexts with multiple dimensions of cultural difference." },
+    { word: "intergroup contact", translation: "contact intergroupe", example: "Positive intergroup contact reduces prejudice under appropriate conditions." },
+    { word: "transcultural identity", translation: "identité transculturelle", example: "Transcultural identity integrates elements from multiple cultural frameworks." },
+    { word: "cultural transfusion", translation: "transfusion culturelle", example: "Cultural transfusion describes how practices acquire new meanings in new contexts." },
+    { word: "cultural regeneration", translation: "régénération culturelle", example: "Cultural regeneration revitalizes traditions through contemporary adaptations." },
+&nbsp;
+    { word: "cultural intersectionality", translation: "intersectionnalité culturelle", example: "Cultural intersectionality examines overlapping cultural, gender, and class identities." },
+    { word: "intercultural aesthetics", translation: "esthétique interculturelle", example: "Intercultural aesthetics studies artistic forms that transcend cultural boundaries." },
+    { word: "cultural memory", translation: "mémoire culturelle", example: "Cultural memory preserves collective experiences through narratives and practices." },
+&nbsp;
+    { word: "intercultural historiography", translation: "historiographie interculturelle", example: "Intercultural historiography examines how cultures interpret shared historical events." },
+    { word: "cultural reconciliation", translation: "réconciliation culturelle", example: "Cultural reconciliation heals historical conflicts between cultural groups." },
+    { word: "intercultural justice", translation: "justice interculturelle", example: "Intercultural justice balances universal principles with cultural particularity." },
+    { word: "decolonial approach", translation: "approche décoloniale", example: "Decolonial approaches to intercultural communication address power imbalances." },
+    { word: "cultural sovereignty", translation: "souveraineté culturelle", example: "Cultural sovereignty asserts a group's right to maintain distinctive practices." },
+&nbsp;
+    { word: "cultural brokerage", translation: "courtage culturel", example: "Cultural brokerage facilitates understanding between disparate cultural groups." },
+    { word: "cultural exchange program", translation: "programme d'échange culturel", example: "Cultural exchange programs facilitate immersive cross-cultural learning." },
+    { word: "cultural democratization", translation: "démocratisation culturelle", example: "Cultural democratization expands access to cultural resources and voices." },
+    { word: "cultural citizenship", translation: "citoyenneté culturelle", example: "Cultural citizenship recognizes identity rights alongside political membership." },
+    { word: "intercultural solidarity", translation: "solidarité interculturelle", example: "Intercultural solidarity builds alliances across identity differences." },
+    { word: "intercivilizational dialogue", translation: "dialogue intercivilisationnel", example: "Intercivilizational dialogue addresses fundamental differences in worldviews." },
+    { word: "cultural fusion", translation: "fusion culturelle", example: "Cultural fusion creates innovative hybrid forms across traditional boundaries." },
+    { word: "global-local dynamic", translation: "dynamique global-local", example: "The global-local dynamic creates complex patterns of cultural influence." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

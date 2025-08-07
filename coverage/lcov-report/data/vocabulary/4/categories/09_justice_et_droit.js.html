@@ -1,0 +1,505 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/4/categories/09_justice_et_droit.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/4/categories</a> 09_justice_et_droit.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Justice &amp; Droit",
+  words: [
+    // Systèmes juridiques
+    { word: "legal system", translation: "système juridique", example: "Every country has its own distinct legal system shaped by history and culture." },
+    { word: "common law", translation: "common law", example: "Common law systems rely heavily on judicial precedent and case law." },
+    { word: "civil law", translation: "droit civil", example: "Civil law systems are based primarily on comprehensive legal codes." },
+    { word: "customary law", translation: "droit coutumier", example: "Customary law derives from traditional practices and social norms." },
+    { word: "religious law", translation: "droit religieux", example: "Religious law applies principles derived from sacred texts." },
+    { word: "jurisprudence", translation: "jurisprudence", example: "Jurisprudence is the theory and philosophy of law." },
+    { word: "rule of law", translation: "état de droit", example: "The rule of law ensures that no one is above the law, including government officials." },
+    { word: "jurisdiction", translation: "juridiction", example: "The court's jurisdiction determines which cases it has authority to hear." },
+    { word: "constitutional law", translation: "droit constitutionnel", example: "Constitutional law governs the fundamental principles of the state." },
+    { word: "statutory law", translation: "droit législatif", example: "Statutory law consists of written laws passed by legislative bodies." },
+    { word: "case law", translation: "jurisprudence", example: "Case law develops through judicial decisions that establish precedent." },
+    { word: "legal code", translation: "code juridique", example: "A legal code systematically arranges laws by subject matter." },
+    { word: "administrative law", translation: "droit administratif", example: "Administrative law governs the activities of government agencies." },
+    { word: "judicial review", translation: "contrôle juridictionnel", example: "Judicial review allows courts to examine the constitutionality of laws." },
+    { word: "judicial independence", translation: "indépendance judiciaire", example: "Judicial independence ensures courts can make decisions without interference." },
+&nbsp;
+    { word: "legal hierarchy", translation: "hiérarchie des normes", example: "The legal hierarchy determines which laws take precedence when conflicts arise." },
+    { word: "binding precedent", translation: "précédent contraignant", example: "Binding precedent requires courts to follow earlier decisions in similar cases." },
+    { word: "legal pluralism", translation: "pluralisme juridique", example: "Legal pluralism recognizes multiple legal systems operating within one society." },
+    { word: "judicial system", translation: "système judiciaire", example: "The judicial system encompasses courts, judges, and legal procedures." },
+&nbsp;
+    // Procédures légales
+    { word: "trial", translation: "procès", example: "The trial allowed both sides to present evidence and arguments." },
+    { word: "litigation", translation: "contentieux", example: "Litigation involves resolving disputes through the court system." },
+    { word: "lawsuit", translation: "procès", example: "She filed a lawsuit seeking compensation for her injuries." },
+&nbsp;
+    { word: "testimony", translation: "témoignage", example: "The witness provided testimony about what she had seen." },
+    { word: "cross-examination", translation: "contre-interrogatoire", example: "During cross-examination, the attorney challenged the witness's account." },
+    { word: "legal procedure", translation: "procédure juridique", example: "Legal procedures ensure cases are handled consistently and fairly." },
+&nbsp;
+    { word: "motion", translation: "requête", example: "The defense filed a motion to dismiss the charges." },
+    { word: "discovery", translation: "communication préalable", example: "Discovery allows parties to obtain evidence from each other before trial." },
+    { word: "burden of proof", translation: "charge de la preuve", example: "In criminal cases, the prosecution bears the burden of proof." },
+    { word: "subpoena", translation: "assignation", example: "A subpoena requires someone to appear in court or provide documents." },
+    { word: "injunction", translation: "injonction", example: "The court issued an injunction to stop the construction project." },
+    { word: "deposition", translation: "déposition", example: "During the deposition, witnesses answered questions under oath outside of court." },
+    { word: "settlement", translation: "règlement", example: "Both parties preferred a settlement rather than continuing the lengthy trial." },
+    { word: "plea bargain", translation: "négociation de peine", example: "The defendant accepted a plea bargain to reduce his sentence." },
+    { word: "court proceeding", translation: "procédure judiciaire", example: "Court proceedings must follow established rules and procedures." },
+&nbsp;
+    // Droits &amp; responsabilités
+    { word: "legal right", translation: "droit juridique", example: "Citizens have legal rights that are protected by law." },
+    { word: "legal duty", translation: "obligation juridique", example: "Parents have a legal duty to care for their children." },
+    { word: "legal responsibility", translation: "responsabilité juridique", example: "Property owners have legal responsibility for maintaining safe conditions." },
+    { word: "liability", translation: "responsabilité civile", example: "The company's liability insurance covered damages from the accident." },
+&nbsp;
+    { word: "legal capacity", translation: "capacité juridique", example: "Legal capacity refers to a person's ability to enter into binding contracts." },
+    { word: "legal obligation", translation: "obligation légale", example: "Tax payment is a legal obligation for citizens and businesses." },
+&nbsp;
+    { word: "equality before the law", translation: "égalité devant la loi", example: "Equality before the law ensures all persons are treated the same under legal statutes." },
+    { word: "legal privilege", translation: "privilège juridique", example: "Attorney-client communications are protected by legal privilege." },
+    { word: "reasonable care", translation: "diligence raisonnable", example: "Doctors must exercise reasonable care when treating patients." },
+    { word: "privacy rights", translation: "droits à la vie privée", example: "Privacy rights protect personal information from unauthorized disclosure." },
+    { word: "constitutional guarantee", translation: "garantie constitutionnelle", example: "Freedom of speech is a constitutional guarantee in many democracies." },
+&nbsp;
+    { word: "right to counsel", translation: "droit à un avocat", example: "The right to counsel ensures defendants have legal representation." },
+    { word: "presumption of innocence", translation: "présomption d'innocence", example: "The presumption of innocence means defendants are considered innocent until proven guilty." },
+&nbsp;
+    // Contentieux &amp; règlement
+&nbsp;
+    { word: "alternative dispute resolution", translation: "résolution alternative des conflits", example: "Alternative dispute resolution includes mediation, arbitration, and negotiation." },
+    { word: "settlement agreement", translation: "accord de règlement", example: "The settlement agreement outlined the terms for resolving the dispute." },
+&nbsp;
+    { word: "conciliation", translation: "conciliation", example: "Conciliation helped the disputing parties restore their relationship." },
+    { word: "binding arbitration", translation: "arbitrage contraignant", example: "Binding arbitration produces decisions that parties must follow." },
+    { word: "non-binding arbitration", translation: "arbitrage non contraignant", example: "Non-binding arbitration provides recommendations that parties can accept or reject." },
+    { word: "class action", translation: "action collective", example: "A class action allows many plaintiffs with similar claims to sue together." },
+    { word: "out-of-court settlement", translation: "règlement à l'amiable", example: "The out-of-court settlement avoided a lengthy trial process." },
+    { word: "small claims court", translation: "tribunal des petites créances", example: "Small claims court handles minor disputes with simplified procedures." },
+&nbsp;
+    { word: "adjudication", translation: "décision judiciaire", example: "Adjudication involves a neutral third party making a binding decision." },
+    { word: "final judgment", translation: "jugement définitif", example: "The final judgment concluded the legal proceedings." },
+    { word: "restitution", translation: "restitution", example: "The court ordered restitution to compensate victims for their losses." },
+    { word: "remedy", translation: "recours", example: "Legal remedies include damages, injunctions, and specific performance." },
+    { word: "damages", translation: "dommages-intérêts", example: "The jury awarded damages to compensate for the plaintiff's injuries." },
+&nbsp;
+    // Droit international
+&nbsp;
+    { word: "international court", translation: "cour internationale", example: "The International Court of Justice resolves legal disputes between states." },
+    { word: "international criminal court", translation: "cour pénale internationale", example: "The International Criminal Court prosecutes genocide, war crimes, and crimes against humanity." },
+    { word: "extradition", translation: "extradition", example: "Extradition involves transferring an accused person from one country to another." },
+    { word: "diplomatic immunity", translation: "immunité diplomatique", example: "Diplomatic immunity protects foreign officials from arrest or prosecution." },
+    { word: "humanitarian law", translation: "droit humanitaire", example: "Humanitarian law governs the conduct of armed conflicts." },
+&nbsp;
+    { word: "human rights law", translation: "droit des droits humains", example: "Human rights law protects fundamental freedoms and dignities globally." },
+    { word: "maritime law", translation: "droit maritime", example: "Maritime law governs activities on international waters." },
+    { word: "customary international law", translation: "droit international coutumier", example: "Customary international law derives from consistent state practice." },
+    { word: "refugee law", translation: "droit des réfugiés", example: "Refugee law protects people fleeing persecution in their home countries." },
+    { word: "convention", translation: "convention", example: "The Geneva Conventions establish standards for humanitarian treatment in war." },
+    { word: "non-governmental organization", translation: "organisation non gouvernementale", example: "Non-governmental organizations advocate for human rights and environmental protection." },
+    { word: "state responsibility", translation: "responsabilité de l'État", example: "State responsibility holds nations accountable for breaches of international law." },
+    { word: "international tribunal", translation: "tribunal international", example: "International tribunals address specific conflicts or human rights violations." },
+    { word: "territorial jurisdiction", translation: "compétence territoriale", example: "Territorial jurisdiction limits a state's authority to its geographical boundaries." },
+&nbsp;
+    // Professions juridiques
+&nbsp;
+    { word: "attorney", translation: "avocat", example: "The attorney specialized in corporate law cases." },
+    { word: "judge", translation: "juge", example: "The judge presided over the trial and issued the final ruling." },
+    { word: "prosecutor", translation: "procureur", example: "The prosecutor presented evidence to prove the defendant's guilt." },
+    { word: "defense attorney", translation: "avocat de la défense", example: "The defense attorney challenged the evidence against her client." },
+    { word: "public defender", translation: "défenseur public", example: "The public defender represented clients who couldn't afford private attorneys." },
+    { word: "barrister", translation: "avocat plaidant", example: "The barrister presented arguments in the higher courts." },
+    { word: "solicitor", translation: "avocat-conseil", example: "The solicitor prepared legal documents and advised clients directly." },
+    { word: "paralegal", translation: "assistant juridique", example: "The paralegal conducted research to support the case." },
+    { word: "court clerk", translation: "greffier", example: "The court clerk maintained records and assisted with administrative tasks." },
+    { word: "legal advisor", translation: "conseiller juridique", example: "The company hired a legal advisor to ensure regulatory compliance." },
+    { word: "notary public", translation: "notaire", example: "A notary public verifies identities and witnesses document signings." },
+    { word: "mediator", translation: "médiateur", example: "The mediator helped the parties reach a voluntary agreement." },
+    { word: "arbitrator", translation: "arbitre", example: "The arbitrator made a binding decision to resolve the dispute." },
+    { word: "law firm", translation: "cabinet d'avocats", example: "The law firm specialized in patent litigation cases." },
+    { word: "legal aid", translation: "aide juridique", example: "Legal aid provides assistance to those who cannot afford legal services." },
+    { word: "bar association", translation: "barreau", example: "The bar association regulates the professional conduct of lawyers." },
+&nbsp;
+    // Criminalité &amp; application de la loi
+&nbsp;
+    { word: "criminal law", translation: "droit pénal", example: "Criminal law defines offenses against the state and establishes punishments." },
+    { word: "felony", translation: "crime", example: "Murder and armed robbery are examples of felonies." },
+    { word: "misdemeanor", translation: "délit", example: "Petty theft and trespassing are typically classified as misdemeanors." },
+    { word: "law enforcement", translation: "application de la loi", example: "Law enforcement agencies work to prevent and investigate crimes." },
+&nbsp;
+    { word: "arrest", translation: "arrestation", example: "The arrest occurred after officers observed illegal activity." },
+    { word: "search warrant", translation: "mandat de perquisition", example: "Police must obtain a search warrant before entering private property." },
+    { word: "probable cause", translation: "cause probable", example: "Officers need probable cause to make an arrest or search someone." },
+    { word: "criminal justice system", translation: "système de justice pénale", example: "The criminal justice system includes police, courts, and corrections." },
+    { word: "sentencing", translation: "détermination de la peine", example: "Sentencing guidelines help judges decide appropriate punishments." },
+    { word: "incarceration", translation: "incarcération", example: "Incarceration separates offenders from society during their punishment." },
+    { word: "parole", translation: "libération conditionnelle", example: "Parole allows prisoners to serve the remainder of their sentence in the community." },
+    { word: "probation", translation: "probation", example: "Probation requires offenders to meet certain conditions while living in the community." },
+&nbsp;
+    { word: "penal code", translation: "code pénal", example: "The penal code defines criminal offenses and their punishments." },
+    { word: "prosecution", translation: "poursuite", example: "The prosecution must prove guilt beyond a reasonable doubt." },
+    { word: "detention", translation: "détention", example: "The suspect remained in detention while awaiting trial." },
+    { word: "criminal procedure", translation: "procédure pénale", example: "Criminal procedure establishes rules for investigating and prosecuting crimes." },
+    { word: "white-collar crime", translation: "criminalité en col blanc", example: "Fraud and embezzlement are examples of white-collar crime." }
+  ]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

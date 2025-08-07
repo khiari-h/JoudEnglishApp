@@ -1,0 +1,616 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/B1/scenarios/explainProblemIT.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/B1/scenarios</a> explainProblemIT.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/B1/scenarios/explainProblemIT.js
+&nbsp;
+const explainProblemIT = {
+    id: 6,
+    title: "Explain Problem IT",
+    level: "B1",
+    description: "Learn how to describe a technical IT problem in detail and understand troubleshooting instructions.",
+    estimatedTime: "15-20 minutes",
+    vocabulary: ["ordinateur", "logiciel", "système d'exploitation", "planter", "connexion", "réseau", "redémarrer", "fichier", "mise à jour", "bogue"],
+    steps: [
+      {
+        id: 1,
+        botMessage: "Bonjour, vous êtes en ligne avec le service d'assistance technique de DigiSolutions. Je m'appelle Thomas. Comment puis-je vous aider aujourd'hui ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "Bonjour Thomas. Mon ordinateur portable se bloque régulièrement quand j'essaie d'ouvrir plusieurs applications en même temps, surtout depuis la dernière mise à jour.",
+          "Bonjour. J'ai un problème avec mon logiciel de traitement de texte qui ne sauvegarde plus automatiquement mes documents et j'ai perdu plusieurs heures de travail.",
+          "Bonjour. Je n'arrive plus à me connecter à ma messagerie professionnelle depuis hier. Un message d'erreur s'affiche mais je ne comprends pas ce qu'il signifie."
+        ],
+        hints: "Saluez et décrivez clairement le problème informatique que vous rencontrez.",
+        expectedKeywords: ["ordinateur", "bloque", "logiciel", "traitement", "texte", "sauvegarde", "connecter", "messagerie", "erreur", "mise à jour"],
+        feedback: {
+          correct: "Merci pour ces informations. Pourriez-vous me donner plus de détails sur ce problème ? Par exemple, depuis quand l'avez-vous remarqué ?",
+          incorrect: "Pourriez-vous décrire plus précisément le problème informatique que vous rencontrez ?"
+        }
+      },
+      {
+        id: 2,
+        botMessage: "Depuis quand rencontrez-vous ce problème et dans quelles circonstances précises se produit-il ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Le problème a commencé il y a environ une semaine, après l'installation d'une mise à jour. Il se produit systématiquement quand j'ouvre plus de trois applications en même temps, surtout des applications gourmandes en ressources.",
+          "J'ai remarqué ce dysfonctionnement hier soir. Le logiciel fonctionnait normalement, puis l'écran a figé pendant quelques secondes et depuis, la fonction de sauvegarde automatique ne marche plus.",
+          "Depuis hier matin, je ne peux plus accéder à mes emails. Le problème survient sur tous mes appareils (ordinateur, téléphone, tablette) donc je pense que c'est lié à mon compte et non à un appareil spécifique."
+        ],
+        hints: "Précisez quand le problème a commencé et dans quelles circonstances il se produit.",
+        expectedKeywords: ["commencé", "semaine", "installation", "mise à jour", "remarqué", "dysfonctionnement", "fonctionnait", "normalement", "appareils", "compte"],
+        acceptablePhrases: [
+          "le problème a commencé",
+          "j'ai remarqué",
+          "depuis hier",
+          "il se produit",
+          "j'ai constaté"
+        ],
+        feedback: {
+          correct: "Merci pour ces précisions. Avez-vous essayé certaines solutions par vous-même avant de nous contacter ?",
+          partial: "Pouvez-vous préciser si le problème est constant ou s'il apparaît seulement dans certaines conditions ?",
+          incorrect: "Indiquez depuis quand vous avez ce problème et dans quelles circonstances il se manifeste."
+        }
+      },
+      {
+        id: 3,
+        botMessage: "Avez-vous déjà essayé certaines solutions ou manipulations pour résoudre ce problème avant de nous contacter ?",
+        inputMode: "freeText",
+        suggestions: [
+          "Oui, j'ai essayé de redémarrer l'ordinateur plusieurs fois et j'ai même désinstallé puis réinstallé le logiciel problématique, mais rien n'a changé. J'ai aussi vérifié les mises à jour disponibles.",
+          "J'ai consulté les forums en ligne et suivi quelques conseils comme vider le cache et supprimer les fichiers temporaires, mais le problème persiste. J'ai également exécuté un scan antivirus qui n'a rien détecté d'anormal.",
+          "Je n'ai pas tenté grand-chose car je crains d'aggraver la situation. J'ai juste redémarré mon appareil et vérifié ma connexion internet qui fonctionne bien pour d'autres applications."
+        ],
+        hints: "Décrivez les solutions que vous avez déjà tentées pour résoudre le problème.",
+        expectedKeywords: ["redémarrer", "désinstallé", "réinstallé", "mises à jour", "forums", "cache", "fichiers", "temporaires", "scan", "antivirus"],
+        feedback: {
+          correct: "Vous avez déjà essayé plusieurs solutions pertinentes. Pour mieux comprendre votre situation, pourriez-vous me donner des informations sur votre système ?",
+          partial: "C'est une approche prudente. Avez-vous remarqué d'autres comportements inhabituels sur votre appareil ?",
+          incorrect: "Indiquez si vous avez déjà essayé certaines solutions avant de nous contacter."
+        }
+      },
+      {
+        id: 4,
+        botMessage: "Pour mieux comprendre votre situation, pourriez-vous me donner quelques informations sur votre système ? Par exemple, quel système d'exploitation utilisez-vous et quelle est la configuration de votre appareil ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "J'utilise Windows 11 sur un ordinateur portable acheté l'année dernière avec 8 Go de RAM et un processeur Intel Core i5. J'ai environ 60% d'espace disque libre.",
+          "Je travaille sur un Mac avec macOS Monterey. C'est un MacBook Pro de 2020 avec 16 Go de RAM et 256 Go de stockage SSD, dont la moitié est utilisée.",
+          "Mon système est Linux Ubuntu 22.04, installé sur un PC de bureau avec 32 Go de RAM et un processeur AMD Ryzen 7. J'ai plusieurs disques durs avec beaucoup d'espace disponible."
+        ],
+        hints: "Précisez votre système d'exploitation et les caractéristiques principales de votre appareil.",
+        expectedKeywords: ["Windows", "Mac", "Linux", "RAM", "processeur", "disque", "espace", "stockage", "portable", "bureau"],
+        feedback: {
+          correct: "Merci pour ces informations techniques. D'après ce que vous m'avez décrit, je vais vous proposer quelques manipulations à essayer. Êtes-vous devant votre appareil actuellement ?",
+          incorrect: "Veuillez préciser quel système d'exploitation vous utilisez et les caractéristiques principales de votre appareil."
+        }
+      },
+      {
+        id: 5,
+        botMessage: "D'après les informations que vous m'avez fournies, je vais vous guider à travers quelques étapes de dépannage. Êtes-vous prêt(e) à suivre mes instructions maintenant ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Oui, je suis devant mon ordinateur et prêt(e) à suivre vos instructions étape par étape.",
+          "Je préfèrerais que vous m'expliquiez d'abord ce que nous allons faire et pourquoi, avant de commencer les manipulations techniques.",
+          "Pas immédiatement, mais je peux prendre des notes. Pouvez-vous me donner les instructions par écrit pour que je puisse les suivre plus tard ?"
+        ],
+        hints: "Indiquez si vous êtes prêt à suivre les instructions de dépannage maintenant ou si vous préférez une autre approche.",
+        expectedKeywords: ["prêt", "suivre", "instructions", "étape", "expliquiez", "d'abord", "notes", "écrit", "plus tard", "manipulations"],
+        feedback: {
+          correct: "Parfait. Nous allons procéder étape par étape. La première chose à faire est de vérifier si des mises à jour sont en attente.",
+          partial: "Bien sûr, je comprends. Le problème semble lié à [explication technique du problème selon le cas évoqué].",
+          incorrect: "Indiquez si vous pouvez suivre mes instructions maintenant ou si vous préférez une autre approche."
+        }
+      },
+      {
+        id: 6,
+        botMessage: "Première étape : vérifiez s'il y a des mises à jour en attente pour votre système. Sur Windows, allez dans Paramètres &gt; Windows Update. Sur Mac, allez dans Préférences Système &gt; Mise à jour de logiciels. Sur Linux Ubuntu, ouvrez le terminal et tapez 'sudo apt update &amp;&amp; sudo apt upgrade'. Pouvez-vous faire cela et me dire ce que vous constatez ?",
+        inputMode: "freeText",
+        suggestions: [
+          "J'ai vérifié et il y a effectivement plusieurs mises à jour en attente. Je les installe maintenant. Faut-il redémarrer l'ordinateur après l'installation ?",
+          "J'ai regardé et mon système est à jour. Aucune mise à jour n'est disponible ou en attente d'installation. Quelle est la prochaine étape ?",
+          "J'ai essayé mais je rencontre un message d'erreur pendant la vérification des mises à jour. L'erreur indique : 'Impossible de se connecter au serveur de mise à jour'. Ma connexion internet fonctionne pourtant bien."
+        ],
+        hints: "Décrivez ce que vous constatez après avoir vérifié les mises à jour selon les instructions.",
+        expectedKeywords: ["vérifié", "mises à jour", "attente", "installe", "redémarrer", "à jour", "aucune", "disponible", "erreur", "connexion"],
+        acceptablePhrases: [
+          "j'ai vérifié",
+          "j'ai regardé",
+          "j'ai essayé",
+          "il y a",
+          "je les installe"
+        ],
+        feedback: {
+          correct: "Excellent. Après l'installation des mises à jour, veuillez redémarrer votre appareil. Ensuite, nous passerons à la vérification des ressources système.",
+          partial: "Dans ce cas, passons directement à la vérification des ressources système pour identifier d'éventuels goulots d'étranglement.",
+          incorrect: "Indiquez si vous avez pu vérifier les mises à jour et ce que vous avez constaté."
+        }
+      },
+      {
+        id: 7,
+        botMessage: "Maintenant, vérifions les ressources de votre système pendant que le problème se produit. Pouvez-vous reproduire le problème, puis ouvrir le Gestionnaire des tâches (Windows), le Moniteur d'activité (Mac) ou le Moniteur système (Linux) pour voir quelle ressource est la plus sollicitée (CPU, mémoire, disque) ?",
+        inputMode: "suggestions",
+        suggestions: [
+          "J'ai reproduit le problème et ouvert le gestionnaire. Je constate que la mémoire RAM est utilisée à près de 95% et que le CPU monte à 100% juste avant que l'ordinateur ne se bloque.",
+          "J'ai essayé de reproduire le problème mais il ne se produit pas en ce moment. Est-ce que je devrais essayer autre chose ou attendre qu'il réapparaisse ?",
+          "En surveillant les ressources, je remarque que c'est surtout l'utilisation du disque qui atteint 100%, même si la RAM et le CPU semblent normaux. Le disque semble très sollicité."
+        ],
+        hints: "Décrivez ce que vous observez dans le gestionnaire de ressources quand le problème se produit.",
+        expectedKeywords: ["reproduit", "gestionnaire", "mémoire", "RAM", "CPU", "disque", "utilisée", "100%", "bloque", "ressources"],
+        feedback: {
+          correct: "Cette information est très utile pour diagnostiquer votre problème. Il semble que nous ayons identifié le goulot d'étranglement. Voici ce que je vous propose comme solution.",
+          incorrect: "Essayez de reproduire le problème tout en surveillant les ressources système (CPU, mémoire, disque) et décrivez ce que vous observez."
+        }
+      },
+      {
+        id: 8,
+        botMessage: "D'après votre diagnostic, je vous recommande la solution suivante : [solution spécifique au problème identifié]. Pensez-vous pouvoir appliquer cette solution ? Avez-vous des questions sur la procédure à suivre ?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Oui, je pense pouvoir appliquer cette solution. Pourriez-vous juste me préciser si je dois sauvegarder mes données avant de procéder ? Je ne voudrais pas perdre d'informations importantes.",
+          "La solution me semble un peu complexe. Y a-t-il une alternative plus simple que je pourrais essayer d'abord, ou pourriez-vous me guider étape par étape ?",
+          "Je vais essayer d'appliquer votre solution dès que possible. Si le problème persiste après cela, que me conseillez-vous de faire ? Devrais-je vous recontacter ?"
+        ],
+        hints: "Réagissez à la solution proposée en posant des questions spécifiques si nécessaire.",
+        expectedKeywords: ["appliquer", "solution", "sauvegarder", "données", "complexe", "alternative", "guider", "étape", "persiste", "recontacter"],
+        feedback: {
+          correct: "Excellente question. Oui, il est toujours recommandé de sauvegarder vos données importantes avant toute intervention technique. Si le problème persiste après avoir essayé cette solution, n'hésitez pas à nous recontacter en mentionnant ce ticket : #45678. Y a-t-il autre chose que je puisse faire pour vous aujourd'hui ?",
+          partial: "Je vais vous guider pas à pas. Commencez par [première étape détaillée], puis [deuxième étape]...",
+          incorrect: "Indiquez si vous pensez pouvoir appliquer la solution proposée et si vous avez des questions spécifiques."
+        }
+      }
+    ],
+    completionMessage: "Félicitations ! Vous avez réussi à décrire un problème informatique technique de manière précise et à suivre des instructions de dépannage en français.",
+    learningObjectives: [
+      "Décrire précisément un problème technique",
+      "Comprendre et suivre des instructions informatiques",
+      "Donner des informations sur une configuration technique",
+      "Utiliser le vocabulaire spécifique à l'informatique",
+      "Poser des questions pertinentes sur une procédure technique"
+    ],
+    grammar: {
+      points: [
+        "Expression de la cause et de la conséquence",
+        "Utilisation de l'impératif pour les instructions",
+        "Structures hypothétiques (si...alors)",
+        "Vocabulaire technique et expressions spécialisées"
+      ]
+    }
+  };
+&nbsp;
+  export default explainProblemIT;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -1,0 +1,568 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/bonus/categories/12_outdoor_life.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/bonus/categories</a> 12_outdoor_life.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "BONUS 18/21 - Outdoor Life &amp; Nature (Vie en Plein Air Authentique)",
+  words: [
+    // Hiking &amp; Camping (38 mots)
+    { word: "trail", translation: "sentier", example: "This trail is really well-marked." },
+    { word: "trailhead", translation: "début de sentier", example: "Meet me at the trailhead at 8 AM." },
+    { word: "day hike", translation: "randonnée d'une journée", example: "Let's do a day hike this weekend." },
+    { word: "backpacking", translation: "randonnée avec sac à dos", example: "We're going backpacking for three days." },
+    { word: "overnight", translation: "une nuit", example: "It's just an overnight camping trip." },
+    { word: "backcountry", translation: "arrière-pays", example: "Backcountry camping requires a permit." },
+    { word: "dispersed camping", translation: "camping sauvage", example: "Dispersed camping is free but basic." },
+    { word: "campground", translation: "terrain de camping", example: "The campground has flush toilets." },
+    { word: "campsite", translation: "emplacement de camping", example: "Our campsite has a great view." },
+    { word: "pitch a tent", translation: "monter une tente", example: "Help me pitch this tent before dark." },
+    { word: "sleeping bag", translation: "sac de couchage", example: "My sleeping bag is rated for 20 degrees." },
+    { word: "sleeping pad", translation: "matelas de sol", example: "A good sleeping pad makes all the difference." },
+    { word: "camp stove", translation: "réchaud de camping", example: "The camp stove ran out of fuel." },
+    { word: "bear canister", translation: "boîte anti-ours", example: "Bear canisters are required here." },
+    { word: "water filter", translation: "filtre à eau", example: "Don't forget to pack the water filter." },
+    { word: "headlamp", translation: "lampe frontale", example: "I always bring extra headlamp batteries." },
+    { word: "hiking boots", translation: "chaussures de randonnée", example: "Break in your hiking boots before the trip." },
+    { word: "daypack", translation: "sac à dos de jour", example: "Just bring a small daypack for snacks." },
+    { word: "trekking poles", translation: "bâtons de randonnée", example: "Trekking poles help on steep descents." },
+    { word: "switchbacks", translation: "lacets", example: "The trail has lots of switchbacks going up." },
+    { word: "elevation gain", translation: "dénivelé positif", example: "This hike has 2,000 feet of elevation gain." },
+    { word: "summit", translation: "sommet", example: "The summit views are incredible." },
+    { word: "ridge", translation: "crête", example: "We hiked along the ridge for miles." },
+    { word: "scramble", translation: "escalade facile", example: "There's a short scramble to reach the peak." },
+    { word: "bushwhacking", translation: "progression hors sentier", example: "We had to do some bushwhacking to find the trail." },
+    { word: "Leave No Trace", translation: "ne laisser aucune trace", example: "Follow Leave No Trace principles." },
+    { word: "pack it out", translation: "remporter ses déchets", example: "Remember to pack out all your trash." },
+    { word: "wildlife", translation: "faune", example: "We saw lots of wildlife on the trail." },
+    { word: "bear spray", translation: "spray anti-ours", example: "Carry bear spray in grizzly country." },
+    { word: "bug spray", translation: "anti-moustiques", example: "The mosquitoes are bad without bug spray." },
+    { word: "sunscreen", translation: "crème solaire", example: "Don't forget sunscreen at high altitude." },
+    { word: "first aid kit", translation: "trousse de premiers secours", example: "Always pack a basic first aid kit." },
+    { word: "blisters", translation: "ampoules", example: "New boots gave me terrible blisters." },
+    { word: "altitude sickness", translation: "mal des montagnes", example: "Take it slow to avoid altitude sickness." },
+    { word: "dehydration", translation: "déshydratation", example: "Dehydration hits fast at high elevation." },
+    { word: "hypothermia", translation: "hypothermie", example: "Wet clothes can lead to hypothermia." },
+    { word: "campfire", translation: "feu de camp", example: "Let's build a campfire after dinner." },
+    { word: "fire ban", translation: "interdiction de feu", example: "There's a fire ban due to dry conditions." },
+&nbsp;
+    // Weather &amp; Seasonal Activities (38 mots)
+    { word: "forecast", translation: "prévisions", example: "Check the weather forecast before heading out." },
+    { word: "partly cloudy", translation: "partiellement nuageux", example: "It's partly cloudy with some sun breaks." },
+    { word: "overcast", translation: "couvert", example: "The sky has been overcast all week." },
+    { word: "drizzle", translation: "bruine", example: "Just a light drizzle, nothing too bad." },
+    { word: "downpour", translation: "averse", example: "We got caught in a sudden downpour." },
+    { word: "thunderstorm", translation: "orage", example: "The thunderstorm rolled in fast." },
+    { word: "hail", translation: "grêle", example: "Golf ball-sized hail damaged our car." },
+    { word: "flash flood", translation: "crue éclair", example: "Flash floods are common in desert washes." },
+    { word: "heat wave", translation: "canicule", example: "This heat wave is brutal." },
+    { word: "cold snap", translation: "vague de froid", example: "The cold snap killed my plants." },
+    { word: "frost", translation: "gelée", example: "There was frost on the windshield this morning." },
+    { word: "freeze warning", translation: "alerte gel", example: "There's a freeze warning tonight." },
+    { word: "humidity", translation: "humidité", example: "The humidity makes it feel even hotter." },
+    { word: "dew point", translation: "point de rosée", example: "The dew point is really high today." },
+    { word: "wind chill", translation: "refroidissement éolien", example: "With wind chill, it feels like 20 below." },
+    { word: "gusts", translation: "rafales", example: "Wind gusts up to 50 mph are expected." },
+    { word: "seasonal", translation: "saisonnier", example: "This is typical seasonal weather for October." },
+    { word: "Indian summer", translation: "été indien", example: "We're having a beautiful Indian summer." },
+    { word: "ski season", translation: "saison de ski", example: "Ski season starts early this year." },
+    { word: "powder", translation: "poudreuse", example: "Fresh powder makes for great skiing." },
+    { word: "snowpack", translation: "manteau neigeux", example: "The snowpack is below average this winter." },
+    { word: "avalanche", translation: "avalanche", example: "Avalanche danger is high today." },
+    { word: "spring break-up", translation: "dégel printanier", example: "Spring break-up makes trails muddy." },
+    { word: "mud season", translation: "saison de boue", example: "Mud season is the worst time for hiking." },
+    { word: "wildfire season", translation: "saison des feux", example: "Wildfire season starts earlier each year." },
+    { word: "drought", translation: "sécheresse", example: "The drought has lasted three years." },
+    { word: "water restrictions", translation: "restrictions d'eau", example: "Water restrictions are in effect." },
+    { word: "pollen count", translation: "taux de pollen", example: "The pollen count is extremely high." },
+    { word: "allergy season", translation: "saison des allergies", example: "Allergy season is starting early." },
+    { word: "daylight saving", translation: "heure d'été", example: "Daylight saving time ends next week." },
+    { word: "solstice", translation: "solstice", example: "Summer solstice is the longest day." },
+    { word: "equinox", translation: "équinoxe", example: "Fall equinox marks equal day and night." },
+    { word: "migration", translation: "migration", example: "Bird migration peaks in September." },
+    { word: "hibernation", translation: "hibernation", example: "Bears are preparing for hibernation." },
+    { word: "foliage", translation: "feuillage", example: "Fall foliage is spectacular this year." },
+    { word: "peak season", translation: "haute saison", example: "Peak season for colors is next week." },
+    { word: "off-season", translation: "basse saison", example: "Off-season rates are much cheaper." },
+    { word: "shoulder season", translation: "saison intermédiaire", example: "Shoulder season is perfect for hiking." },
+&nbsp;
+    // Gardening &amp; Yard Work (38 mots)
+    { word: "green thumb", translation: "main verte", example: "She really has a green thumb." },
+    { word: "landscaping", translation: "aménagement paysager", example: "The landscaping around our house looks great." },
+    { word: "mulch", translation: "paillis", example: "Spread mulch around the flower beds." },
+    { word: "fertilizer", translation: "engrais", example: "The lawn needs fertilizer in spring." },
+    { word: "compost", translation: "compost", example: "We compost all our kitchen scraps." },
+    { word: "compost bin", translation: "bac à compost", example: "The compost bin is full again." },
+    { word: "topsoil", translation: "terre végétale", example: "We need to add some fresh topsoil." },
+    { word: "drainage", translation: "drainage", example: "Poor drainage is killing my plants." },
+    { word: "irrigation", translation: "irrigation", example: "The irrigation system needs repair." },
+    { word: "sprinkler system", translation: "système d'arrosage", example: "Our sprinkler system runs every morning." },
+    { word: "drip irrigation", translation: "irrigation goutte à goutte", example: "Drip irrigation saves a lot of water." },
+    { word: "pruning", translation: "taille", example: "The roses need pruning in late winter." },
+    { word: "deadheading", translation: "ébourgeonner", example: "Deadheading flowers encourages more blooms." },
+    { word: "weeding", translation: "désherbage", example: "I spent the morning weeding the garden." },
+    { word: "edging", translation: "bordure", example: "The lawn looks better after edging." },
+    { word: "mowing", translation: "tonte", example: "Mowing the lawn takes an hour." },
+    { word: "raking", translation: "ratissage", example: "Fall means lots of leaf raking." },
+    { word: "aerating", translation: "aération", example: "The lawn needs aerating this spring." },
+    { word: "overseeding", translation: "sursemis", example: "Overseeding will fill in bare spots." },
+    { word: "dethatching", translation: "déchaumage", example: "Dethatching removes dead grass buildup." },
+    { word: "annual", translation: "annuelle", example: "Marigolds are colorful annual flowers." },
+    { word: "perennial", translation: "vivace", example: "Perennials come back every year." },
+    { word: "native plants", translation: "plantes indigènes", example: "Native plants require less water." },
+    { word: "drought-tolerant", translation: "résistant à la sécheresse", example: "Choose drought-tolerant plants for dry areas." },
+    { word: "full sun", translation: "plein soleil", example: "Tomatoes need full sun to grow well." },
+    { word: "partial shade", translation: "mi-ombre", example: "Hostas prefer partial shade." },
+    { word: "hardiness zone", translation: "zone de rusticité", example: "Check the hardiness zone before planting." },
+    { word: "frost-free date", translation: "date sans gel", example: "Wait until after the last frost-free date." },
+    { word: "growing season", translation: "saison de croissance", example: "Our growing season is fairly short." },
+    { word: "harvest", translation: "récolte", example: "Tomato harvest starts in late summer." },
+    { word: "crop rotation", translation: "rotation des cultures", example: "Crop rotation prevents soil depletion." },
+    { word: "pest control", translation: "lutte antiparasitaire", example: "Organic pest control methods work well." },
+    { word: "aphids", translation: "pucerons", example: "Aphids are attacking my roses." },
+    { word: "slugs", translation: "limaces", example: "Slugs ate all my lettuce seedlings." },
+    { word: "deer damage", translation: "dégâts de cerfs", example: "Deer damage is a constant problem." },
+    { word: "greenhouse", translation: "serre", example: "Start seeds early in the greenhouse." },
+    { word: "cold frame", translation: "châssis froid", example: "A cold frame extends the growing season." },
+    { word: "raised beds", translation: "plates-bandes surélevées", example: "Raised beds have better drainage." },
+&nbsp;
+    // Parks, Trails &amp; Outdoor Sports (36 mots)
+    { word: "national park", translation: "parc national", example: "We're visiting three national parks this summer." },
+    { word: "state park", translation: "parc d'État", example: "The state park has great fishing." },
+    { word: "nature preserve", translation: "réserve naturelle", example: "The nature preserve protects rare birds." },
+    { word: "wilderness area", translation: "zone sauvage", example: "No vehicles allowed in the wilderness area." },
+    { word: "recreational area", translation: "zone récréative", example: "The recreational area has picnic tables." },
+    { word: "visitor center", translation: "centre des visiteurs", example: "Stop at the visitor center for maps." },
+    { word: "ranger station", translation: "poste de garde forestier", example: "Get permits at the ranger station." },
+    { word: "interpretive trail", translation: "sentier d'interprétation", example: "The interpretive trail has educational signs." },
+    { word: "loop trail", translation: "sentier en boucle", example: "This loop trail takes about two hours." },
+    { word: "out-and-back", translation: "aller-retour", example: "It's an out-and-back hike to the waterfall." },
+    { word: "scenic overlook", translation: "belvédère", example: "The scenic overlook has amazing views." },
+    { word: "picnic area", translation: "aire de pique-nique", example: "Let's eat lunch at the picnic area." },
+    { word: "boat launch", translation: "mise à l'eau", example: "The boat launch opens at sunrise." },
+    { word: "fishing pier", translation: "jetée de pêche", example: "The fishing pier is popular with locals." },
+    { word: "swimming hole", translation: "trou de baignade", example: "There's a great swimming hole downstream." },
+    { word: "rock climbing", translation: "escalade", example: "Rock climbing requires special gear." },
+    { word: "bouldering", translation: "bloc", example: "Bouldering doesn't need ropes." },
+    { word: "rappelling", translation: "rappel", example: "Rappelling down cliffs is thrilling." },
+    { word: "mountain biking", translation: "VTT", example: "Mountain biking trails are well-maintained." },
+    { word: "trail running", translation: "trail running", example: "Trail running is harder than road running." },
+    { word: "cross-country skiing", translation: "ski de fond", example: "Cross-country skiing is great exercise." },
+    { word: "snowshoeing", translation: "raquettes", example: "Snowshoeing lets you hike in winter." },
+    { word: "kayaking", translation: "kayak", example: "Kayaking on the lake is peaceful." },
+    { word: "whitewater rafting", translation: "rafting en eau vive", example: "Whitewater rafting gets your adrenaline pumping." },
+    { word: "stand-up paddleboard", translation: "paddle", example: "Stand-up paddleboard rentals are available." },
+    { word: "bird watching", translation: "observation d'oiseaux", example: "Bird watching is best in early morning." },
+    { word: "wildlife photography", translation: "photographie animalière", example: "Wildlife photography requires patience." },
+    { word: "geocaching", translation: "géocaching", example: "Geocaching is like a treasure hunt with GPS." },
+    { word: "stargazing", translation: "observation des étoiles", example: "This area is perfect for stargazing." },
+    { word: "campfire program", translation: "programme autour du feu", example: "Join tonight's campfire program." },
+    { word: "guided tour", translation: "visite guidée", example: "The guided tour explains local history." },
+    { word: "wilderness permit", translation: "permis sauvage", example: "Wilderness permits are required for overnight trips." },
+    { word: "day-use fee", translation: "frais journaliers", example: "There's a small day-use fee for parking." },
+    { word: "season pass", translation: "abonnement saisonnier", example: "A season pass pays for itself quickly." },
+    { word: "trail conditions", translation: "conditions du sentier", example: "Check trail conditions before you go." },
+    { word: "trail closure", translation: "fermeture de sentier", example: "The trail closure is due to bear activity." }
+  ]
+};</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

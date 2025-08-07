@@ -1,0 +1,158 @@
+c1229eb9f32d91bb91069bf1db887298
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function cov_155gpt2pjo() {
+  var path = "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A2\\scenarios\\weatherAndSeasons.js";
+  var hash = "163b438f28df2314da60b7f0bbc43f23420205b9";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A2\\scenarios\\weatherAndSeasons.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 26
+        },
+        end: {
+          line: 173,
+          column: 3
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "163b438f28df2314da60b7f0bbc43f23420205b9"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_155gpt2pjo = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_155gpt2pjo();
+var weatherAndSeasons = (cov_155gpt2pjo().s[0]++, {
+  id: 9,
+  title: "Weather and Seasons",
+  level: "A2",
+  description: "Learn how to have an elaborate conversation about weather, seasons, and related activities.",
+  estimatedTime: "15-20 minutes",
+  vocabulary: ["météo", "saison", "température", "climat", "prévisions", "préférence", "activités saisonnières", "changement climatique", "chaleur", "froid"],
+  steps: [{
+    id: 1,
+    botMessage: "Bonjour ! Quel temps fait-il aujourd'hui chez vous ?",
+    inputMode: "suggestions",
+    suggestions: ["Il fait beau et ensoleillé, la température est d'environ 25 degrés.", "Il pleut depuis ce matin, et il fait assez frais pour la saison.", "C'est nuageux aujourd'hui, mais il ne pleut pas."],
+    hints: "Décrivez le temps qu'il fait aujourd'hui.",
+    expectedKeywords: ["beau", "ensoleillé", "pleut", "frais", "nuageux", "température", "degrés", "saison", "pluie"],
+    feedback: {
+      correct: "C'est vrai ? Chez moi aussi ! Quelle est votre saison préférée ?",
+      incorrect: "Parlez du temps qu'il fait aujourd'hui là où vous êtes."
+    }
+  }, {
+    id: 2,
+    botMessage: "Quelle est votre saison préférée et pourquoi ?",
+    inputMode: "hybrid",
+    suggestions: ["J'adore l'été pour les longues journées ensoleillées et les activités de plein air.", "Je préfère l'automne, j'aime les couleurs des feuilles et la température plus fraîche.", "L'hiver est ma saison préférée, j'aime la neige et les sports d'hiver."],
+    hints: "Indiquez votre saison préférée et expliquez pourquoi.",
+    expectedKeywords: ["préfère", "adore", "été", "automne", "hiver", "printemps", "aime", "température", "activités", "neige"],
+    acceptablePhrases: ["j'adore", "je préfère", "ma saison préférée", "j'aime"],
+    feedback: {
+      correct: "C'est une belle saison, en effet ! Quelles activités aimez-vous faire pendant cette saison ?",
+      partial: "Cette saison a vraiment des caractéristiques uniques, n'est-ce pas ?",
+      incorrect: "Dites quelle est votre saison préférée et expliquez pourquoi vous l'aimez."
+    }
+  }, {
+    id: 3,
+    botMessage: "Quelles activités aimez-vous faire pendant cette saison ?",
+    inputMode: "freeText",
+    suggestions: ["J'aime faire des randonnées et des pique-niques en plein air.", "Je profite des journées à la plage et des soirées barbecue avec des amis.", "J'adore le ski et les promenades dans la neige, puis boire un chocolat chaud."],
+    hints: "Décrivez les activités que vous préférez faire pendant votre saison favorite.",
+    expectedKeywords: ["aime", "faire", "randonnées", "plage", "ski", "pique-niques", "barbecue", "amis", "plein air", "neige"],
+    feedback: {
+      correct: "Ces activités sont parfaites pour cette saison ! Comment le climat change-t-il dans votre région au fil des saisons ?",
+      partial: "Ça semble très agréable ! Faites-vous ces activités seul(e) ou avec d'autres personnes ?",
+      incorrect: "Parlez des activités que vous aimez faire pendant votre saison préférée."
+    }
+  }, {
+    id: 4,
+    botMessage: "Comment le climat change-t-il dans votre région au cours de l'année ?",
+    inputMode: "suggestions",
+    suggestions: ["Nous avons des étés très chauds et des hivers doux avec peu de neige.", "Le climat est assez constant, mais nous avons beaucoup de pluie en automne.", "Les saisons sont très marquées : étés chauds, automnes colorés, hivers froids avec neige et printemps pluvieux."],
+    hints: "Décrivez comment le climat change dans votre région au fil des saisons.",
+    expectedKeywords: ["climat", "étés", "hivers", "chauds", "froids", "neige", "pluie", "automne", "printemps", "saisons"],
+    feedback: {
+      correct: "C'est intéressant ! Ces variations climatiques influencent-elles vos activités quotidiennes ?",
+      incorrect: "Décrivez comment le temps change dans votre région au cours des différentes saisons."
+    }
+  }, {
+    id: 5,
+    botMessage: "Est-ce que les conditions météorologiques influencent vos activités quotidiennes ou votre humeur ?",
+    inputMode: "hybrid",
+    suggestions: ["Oui, quand il pleut, je me sens plus fatigué(e) et je préfère rester à l'intérieur.", "Absolument, je suis de bien meilleure humeur quand il fait beau et ensoleillé !", "Pas vraiment, j'essaie de maintenir la même routine quelle que soit la météo."],
+    hints: "Expliquez comment la météo influence vos activités ou votre humeur.",
+    expectedKeywords: ["influence", "humeur", "fatigué", "meilleure", "beau", "ensoleillé", "routine", "rester", "intérieur", "météo"],
+    feedback: {
+      correct: "Je comprends tout à fait ! Avez-vous remarqué des changements dans les tendances météorologiques ces dernières années ?",
+      partial: "C'est intéressant de voir comment la météo peut nous affecter différemment.",
+      incorrect: "Expliquez si et comment la météo influence votre humeur ou vos activités quotidiennes."
+    }
+  }, {
+    id: 6,
+    botMessage: "Avez-vous remarqué des changements dans les tendances météorologiques ou saisonnières ces dernières années ?",
+    inputMode: "freeText",
+    suggestions: ["Oui, les étés semblent devenir de plus en plus chauds et les périodes de canicule plus fréquentes.", "J'ai remarqué que les saisons sont moins prévisibles, avec des hivers parfois très doux.", "Dans ma région, nous avons des événements météorologiques extrêmes plus fréquents comme des fortes pluies ou des tempêtes."],
+    hints: "Parlez des changements météorologiques que vous avez observés ces dernières années.",
+    expectedKeywords: ["changements", "remarqué", "étés", "chauds", "canicule", "prévisibles", "hivers", "doux", "extrêmes", "tempêtes"],
+    acceptablePhrases: ["j'ai remarqué", "il me semble que", "ces dernières années", "de plus en plus"],
+    feedback: {
+      correct: "C'est vrai, beaucoup de personnes font des observations similaires. Comment vous adaptez-vous à ces changements ?",
+      partial: "Ces changements sont-ils constants ou variables selon les années ?",
+      incorrect: "Parlez des changements de temps ou de climat que vous avez remarqués récemment."
+    }
+  }, {
+    id: 7,
+    botMessage: "Consultez-vous régulièrement les prévisions météo ? Si oui, comment ?",
+    inputMode: "suggestions",
+    suggestions: ["Oui, je vérifie l'application météo sur mon téléphone tous les matins.", "Parfois, surtout avant de planifier des activités de plein air ou des voyages.", "Pas vraiment, je préfère regarder par la fenêtre et m'adapter en conséquence !"],
+    hints: "Indiquez si vous consultez les prévisions météo et comment.",
+    expectedKeywords: ["prévisions", "météo", "application", "téléphone", "vérifier", "planifier", "activités", "voyages", "fenêtre", "adapter"],
+    feedback: {
+      correct: "C'est pratique, en effet ! Pour finir, quel serait pour vous le climat idéal ?",
+      incorrect: "Dites-moi si vous consultez les prévisions météo et comment vous le faites."
+    }
+  }, {
+    id: 8,
+    botMessage: "Pour vous, quel serait le climat ou la météo idéale pour vivre ?",
+    inputMode: "hybrid",
+    suggestions: ["J'aimerais un climat méditerranéen : étés chauds et secs, hivers doux et ensoleillés.", "Je préfère les quatre saisons bien distinctes, mais sans températures extrêmes.", "Mon idéal serait un printemps perpétuel avec des températures modérées et un peu de pluie."],
+    hints: "Décrivez votre climat idéal pour vivre.",
+    expectedKeywords: ["idéal", "climat", "méditerranéen", "saisons", "chaud", "doux", "ensoleillé", "modéré", "pluie", "températures"],
+    feedback: {
+      correct: "C'est un beau climat en effet ! Merci pour cette conversation sur la météo et les saisons.",
+      partial: "Je comprends votre préférence. Nous avons tous des goûts différents en matière de climat.",
+      incorrect: "Décrivez quel serait le climat idéal pour vous."
+    }
+  }],
+  completionMessage: "Félicitations ! Vous avez réussi à avoir une conversation élaborée sur la météo, les saisons et les activités associées en français.",
+  learningObjectives: ["Décrire les conditions météorologiques", "Parler des saisons et de leurs caractéristiques", "Discuter des activités liées aux saisons", "Exprimer des préférences climatiques", "Parler des changements météorologiques"],
+  grammar: {
+    points: ["Expressions météorologiques (faire + adjectif)", "Comparatifs et superlatifs", "Adjectifs descriptifs", "Expressions de fréquence et d'habitude"]
+  }
+});
+var _default = exports.default = weatherAndSeasons;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ3ZWF0aGVyQW5kU2Vhc29ucyIsImNvdl8xNTVncHQycGpvIiwicyIsImlkIiwidGl0bGUiLCJsZXZlbCIsImRlc2NyaXB0aW9uIiwiZXN0aW1hdGVkVGltZSIsInZvY2FidWxhcnkiLCJzdGVwcyIsImJvdE1lc3NhZ2UiLCJpbnB1dE1vZGUiLCJzdWdnZXN0aW9ucyIsImhpbnRzIiwiZXhwZWN0ZWRLZXl3b3JkcyIsImZlZWRiYWNrIiwiY29ycmVjdCIsImluY29ycmVjdCIsImFjY2VwdGFibGVQaHJhc2VzIiwicGFydGlhbCIsImNvbXBsZXRpb25NZXNzYWdlIiwibGVhcm5pbmdPYmplY3RpdmVzIiwiZ3JhbW1hciIsInBvaW50cyIsIl9kZWZhdWx0IiwiZXhwb3J0cyIsImRlZmF1bHQiXSwic291cmNlcyI6WyJ3ZWF0aGVyQW5kU2Vhc29ucy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBjaGF0Ym90L0EyL3NjZW5hcmlvcy93ZWF0aGVyQW5kU2Vhc29ucy5qc1xuXG5jb25zdCB3ZWF0aGVyQW5kU2Vhc29ucyA9IHtcbiAgICBpZDogOSxcbiAgICB0aXRsZTogXCJXZWF0aGVyIGFuZCBTZWFzb25zXCIsXG4gICAgbGV2ZWw6IFwiQTJcIixcbiAgICBkZXNjcmlwdGlvbjogXCJMZWFybiBob3cgdG8gaGF2ZSBhbiBlbGFib3JhdGUgY29udmVyc2F0aW9uIGFib3V0IHdlYXRoZXIsIHNlYXNvbnMsIGFuZCByZWxhdGVkIGFjdGl2aXRpZXMuXCIsXG4gICAgZXN0aW1hdGVkVGltZTogXCIxNS0yMCBtaW51dGVzXCIsXG4gICAgdm9jYWJ1bGFyeTogW1wibcOpdMOpb1wiLCBcInNhaXNvblwiLCBcInRlbXDDqXJhdHVyZVwiLCBcImNsaW1hdFwiLCBcInByw6l2aXNpb25zXCIsIFwicHLDqWbDqXJlbmNlXCIsIFwiYWN0aXZpdMOpcyBzYWlzb25uacOocmVzXCIsIFwiY2hhbmdlbWVudCBjbGltYXRpcXVlXCIsIFwiY2hhbGV1clwiLCBcImZyb2lkXCJdLFxuICAgIHN0ZXBzOiBbXG4gICAgICB7XG4gICAgICAgIGlkOiAxLFxuICAgICAgICBib3RNZXNzYWdlOiBcIkJvbmpvdXIgISBRdWVsIHRlbXBzIGZhaXQtaWwgYXVqb3VyZCdodWkgY2hleiB2b3VzID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcInN1Z2dlc3Rpb25zXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJJbCBmYWl0IGJlYXUgZXQgZW5zb2xlaWxsw6ksIGxhIHRlbXDDqXJhdHVyZSBlc3QgZCdlbnZpcm9uIDI1IGRlZ3LDqXMuXCIsXG4gICAgICAgICAgXCJJbCBwbGV1dCBkZXB1aXMgY2UgbWF0aW4sIGV0IGlsIGZhaXQgYXNzZXogZnJhaXMgcG91ciBsYSBzYWlzb24uXCIsXG4gICAgICAgICAgXCJDJ2VzdCBudWFnZXV4IGF1am91cmQnaHVpLCBtYWlzIGlsIG5lIHBsZXV0IHBhcy5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJEw6ljcml2ZXogbGUgdGVtcHMgcXUnaWwgZmFpdCBhdWpvdXJkJ2h1aS5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiYmVhdVwiLCBcImVuc29sZWlsbMOpXCIsIFwicGxldXRcIiwgXCJmcmFpc1wiLCBcIm51YWdldXhcIiwgXCJ0ZW1ww6lyYXR1cmVcIiwgXCJkZWdyw6lzXCIsIFwic2Fpc29uXCIsIFwicGx1aWVcIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJDJ2VzdCB2cmFpID8gQ2hleiBtb2kgYXVzc2kgISBRdWVsbGUgZXN0IHZvdHJlIHNhaXNvbiBwcsOpZsOpcsOpZSA/XCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlBhcmxleiBkdSB0ZW1wcyBxdSdpbCBmYWl0IGF1am91cmQnaHVpIGzDoCBvw7kgdm91cyDDqnRlcy5cIlxuICAgICAgICB9XG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogMixcbiAgICAgICAgYm90TWVzc2FnZTogXCJRdWVsbGUgZXN0IHZvdHJlIHNhaXNvbiBwcsOpZsOpcsOpZSBldCBwb3VycXVvaSA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJoeWJyaWRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkonYWRvcmUgbCfDqXTDqSBwb3VyIGxlcyBsb25ndWVzIGpvdXJuw6llcyBlbnNvbGVpbGzDqWVzIGV0IGxlcyBhY3Rpdml0w6lzIGRlIHBsZWluIGFpci5cIixcbiAgICAgICAgICBcIkplIHByw6lmw6hyZSBsJ2F1dG9tbmUsIGonYWltZSBsZXMgY291bGV1cnMgZGVzIGZldWlsbGVzIGV0IGxhIHRlbXDDqXJhdHVyZSBwbHVzIGZyYcOuY2hlLlwiLFxuICAgICAgICAgIFwiTCdoaXZlciBlc3QgbWEgc2Fpc29uIHByw6lmw6lyw6llLCBqJ2FpbWUgbGEgbmVpZ2UgZXQgbGVzIHNwb3J0cyBkJ2hpdmVyLlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkluZGlxdWV6IHZvdHJlIHNhaXNvbiBwcsOpZsOpcsOpZSBldCBleHBsaXF1ZXogcG91cnF1b2kuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcInByw6lmw6hyZVwiLCBcImFkb3JlXCIsIFwiw6l0w6lcIiwgXCJhdXRvbW5lXCIsIFwiaGl2ZXJcIiwgXCJwcmludGVtcHNcIiwgXCJhaW1lXCIsIFwidGVtcMOpcmF0dXJlXCIsIFwiYWN0aXZpdMOpc1wiLCBcIm5laWdlXCJdLFxuICAgICAgICBhY2NlcHRhYmxlUGhyYXNlczogW1xuICAgICAgICAgIFwiaidhZG9yZVwiLFxuICAgICAgICAgIFwiamUgcHLDqWbDqHJlXCIsXG4gICAgICAgICAgXCJtYSBzYWlzb24gcHLDqWbDqXLDqWVcIixcbiAgICAgICAgICBcImonYWltZVwiXG4gICAgICAgIF0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJDJ2VzdCB1bmUgYmVsbGUgc2Fpc29uLCBlbiBlZmZldCAhIFF1ZWxsZXMgYWN0aXZpdMOpcyBhaW1lei12b3VzIGZhaXJlIHBlbmRhbnQgY2V0dGUgc2Fpc29uID9cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIkNldHRlIHNhaXNvbiBhIHZyYWltZW50IGRlcyBjYXJhY3TDqXJpc3RpcXVlcyB1bmlxdWVzLCBuJ2VzdC1jZSBwYXMgP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJEaXRlcyBxdWVsbGUgZXN0IHZvdHJlIHNhaXNvbiBwcsOpZsOpcsOpZSBldCBleHBsaXF1ZXogcG91cnF1b2kgdm91cyBsJ2FpbWV6LlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiAzLFxuICAgICAgICBib3RNZXNzYWdlOiBcIlF1ZWxsZXMgYWN0aXZpdMOpcyBhaW1lei12b3VzIGZhaXJlIHBlbmRhbnQgY2V0dGUgc2Fpc29uID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcImZyZWVUZXh0XCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJKJ2FpbWUgZmFpcmUgZGVzIHJhbmRvbm7DqWVzIGV0IGRlcyBwaXF1ZS1uaXF1ZXMgZW4gcGxlaW4gYWlyLlwiLFxuICAgICAgICAgIFwiSmUgcHJvZml0ZSBkZXMgam91cm7DqWVzIMOgIGxhIHBsYWdlIGV0IGRlcyBzb2lyw6llcyBiYXJiZWN1ZSBhdmVjIGRlcyBhbWlzLlwiLFxuICAgICAgICAgIFwiSidhZG9yZSBsZSBza2kgZXQgbGVzIHByb21lbmFkZXMgZGFucyBsYSBuZWlnZSwgcHVpcyBib2lyZSB1biBjaG9jb2xhdCBjaGF1ZC5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJEw6ljcml2ZXogbGVzIGFjdGl2aXTDqXMgcXVlIHZvdXMgcHLDqWbDqXJleiBmYWlyZSBwZW5kYW50IHZvdHJlIHNhaXNvbiBmYXZvcml0ZS5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiYWltZVwiLCBcImZhaXJlXCIsIFwicmFuZG9ubsOpZXNcIiwgXCJwbGFnZVwiLCBcInNraVwiLCBcInBpcXVlLW5pcXVlc1wiLCBcImJhcmJlY3VlXCIsIFwiYW1pc1wiLCBcInBsZWluIGFpclwiLCBcIm5laWdlXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiQ2VzIGFjdGl2aXTDqXMgc29udCBwYXJmYWl0ZXMgcG91ciBjZXR0ZSBzYWlzb24gISBDb21tZW50IGxlIGNsaW1hdCBjaGFuZ2UtdC1pbCBkYW5zIHZvdHJlIHLDqWdpb24gYXUgZmlsIGRlcyBzYWlzb25zID9cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIsOHYSBzZW1ibGUgdHLDqHMgYWdyw6lhYmxlICEgRmFpdGVzLXZvdXMgY2VzIGFjdGl2aXTDqXMgc2V1bChlKSBvdSBhdmVjIGQnYXV0cmVzIHBlcnNvbm5lcyA/XCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlBhcmxleiBkZXMgYWN0aXZpdMOpcyBxdWUgdm91cyBhaW1leiBmYWlyZSBwZW5kYW50IHZvdHJlIHNhaXNvbiBwcsOpZsOpcsOpZS5cIlxuICAgICAgICB9XG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogNCxcbiAgICAgICAgYm90TWVzc2FnZTogXCJDb21tZW50IGxlIGNsaW1hdCBjaGFuZ2UtdC1pbCBkYW5zIHZvdHJlIHLDqWdpb24gYXUgY291cnMgZGUgbCdhbm7DqWUgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwic3VnZ2VzdGlvbnNcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIk5vdXMgYXZvbnMgZGVzIMOpdMOpcyB0csOocyBjaGF1ZHMgZXQgZGVzIGhpdmVycyBkb3V4IGF2ZWMgcGV1IGRlIG5laWdlLlwiLFxuICAgICAgICAgIFwiTGUgY2xpbWF0IGVzdCBhc3NleiBjb25zdGFudCwgbWFpcyBub3VzIGF2b25zIGJlYXVjb3VwIGRlIHBsdWllIGVuIGF1dG9tbmUuXCIsXG4gICAgICAgICAgXCJMZXMgc2Fpc29ucyBzb250IHRyw6hzIG1hcnF1w6llcyA6IMOpdMOpcyBjaGF1ZHMsIGF1dG9tbmVzIGNvbG9yw6lzLCBoaXZlcnMgZnJvaWRzIGF2ZWMgbmVpZ2UgZXQgcHJpbnRlbXBzIHBsdXZpZXV4LlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkTDqWNyaXZleiBjb21tZW50IGxlIGNsaW1hdCBjaGFuZ2UgZGFucyB2b3RyZSByw6lnaW9uIGF1IGZpbCBkZXMgc2Fpc29ucy5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiY2xpbWF0XCIsIFwiw6l0w6lzXCIsIFwiaGl2ZXJzXCIsIFwiY2hhdWRzXCIsIFwiZnJvaWRzXCIsIFwibmVpZ2VcIiwgXCJwbHVpZVwiLCBcImF1dG9tbmVcIiwgXCJwcmludGVtcHNcIiwgXCJzYWlzb25zXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiQydlc3QgaW50w6lyZXNzYW50ICEgQ2VzIHZhcmlhdGlvbnMgY2xpbWF0aXF1ZXMgaW5mbHVlbmNlbnQtZWxsZXMgdm9zIGFjdGl2aXTDqXMgcXVvdGlkaWVubmVzID9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiRMOpY3JpdmV6IGNvbW1lbnQgbGUgdGVtcHMgY2hhbmdlIGRhbnMgdm90cmUgcsOpZ2lvbiBhdSBjb3VycyBkZXMgZGlmZsOpcmVudGVzIHNhaXNvbnMuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDUsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiRXN0LWNlIHF1ZSBsZXMgY29uZGl0aW9ucyBtw6l0w6lvcm9sb2dpcXVlcyBpbmZsdWVuY2VudCB2b3MgYWN0aXZpdMOpcyBxdW90aWRpZW5uZXMgb3Ugdm90cmUgaHVtZXVyID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcImh5YnJpZFwiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiT3VpLCBxdWFuZCBpbCBwbGV1dCwgamUgbWUgc2VucyBwbHVzIGZhdGlndcOpKGUpIGV0IGplIHByw6lmw6hyZSByZXN0ZXIgw6AgbCdpbnTDqXJpZXVyLlwiLFxuICAgICAgICAgIFwiQWJzb2x1bWVudCwgamUgc3VpcyBkZSBiaWVuIG1laWxsZXVyZSBodW1ldXIgcXVhbmQgaWwgZmFpdCBiZWF1IGV0IGVuc29sZWlsbMOpICFcIixcbiAgICAgICAgICBcIlBhcyB2cmFpbWVudCwgaidlc3NhaWUgZGUgbWFpbnRlbmlyIGxhIG3Dqm1lIHJvdXRpbmUgcXVlbGxlIHF1ZSBzb2l0IGxhIG3DqXTDqW8uXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiRXhwbGlxdWV6IGNvbW1lbnQgbGEgbcOpdMOpbyBpbmZsdWVuY2Ugdm9zIGFjdGl2aXTDqXMgb3Ugdm90cmUgaHVtZXVyLlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJpbmZsdWVuY2VcIiwgXCJodW1ldXJcIiwgXCJmYXRpZ3XDqVwiLCBcIm1laWxsZXVyZVwiLCBcImJlYXVcIiwgXCJlbnNvbGVpbGzDqVwiLCBcInJvdXRpbmVcIiwgXCJyZXN0ZXJcIiwgXCJpbnTDqXJpZXVyXCIsIFwibcOpdMOpb1wiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIkplIGNvbXByZW5kcyB0b3V0IMOgIGZhaXQgISBBdmV6LXZvdXMgcmVtYXJxdcOpIGRlcyBjaGFuZ2VtZW50cyBkYW5zIGxlcyB0ZW5kYW5jZXMgbcOpdMOpb3JvbG9naXF1ZXMgY2VzIGRlcm5pw6hyZXMgYW5uw6llcyA/XCIsXG4gICAgICAgICAgcGFydGlhbDogXCJDJ2VzdCBpbnTDqXJlc3NhbnQgZGUgdm9pciBjb21tZW50IGxhIG3DqXTDqW8gcGV1dCBub3VzIGFmZmVjdGVyIGRpZmbDqXJlbW1lbnQuXCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIkV4cGxpcXVleiBzaSBldCBjb21tZW50IGxhIG3DqXTDqW8gaW5mbHVlbmNlIHZvdHJlIGh1bWV1ciBvdSB2b3MgYWN0aXZpdMOpcyBxdW90aWRpZW5uZXMuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDYsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiQXZlei12b3VzIHJlbWFycXXDqSBkZXMgY2hhbmdlbWVudHMgZGFucyBsZXMgdGVuZGFuY2VzIG3DqXTDqW9yb2xvZ2lxdWVzIG91IHNhaXNvbm5pw6hyZXMgY2VzIGRlcm5pw6hyZXMgYW5uw6llcyA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJmcmVlVGV4dFwiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiT3VpLCBsZXMgw6l0w6lzIHNlbWJsZW50IGRldmVuaXIgZGUgcGx1cyBlbiBwbHVzIGNoYXVkcyBldCBsZXMgcMOpcmlvZGVzIGRlIGNhbmljdWxlIHBsdXMgZnLDqXF1ZW50ZXMuXCIsXG4gICAgICAgICAgXCJKJ2FpIHJlbWFycXXDqSBxdWUgbGVzIHNhaXNvbnMgc29udCBtb2lucyBwcsOpdmlzaWJsZXMsIGF2ZWMgZGVzIGhpdmVycyBwYXJmb2lzIHRyw6hzIGRvdXguXCIsXG4gICAgICAgICAgXCJEYW5zIG1hIHLDqWdpb24sIG5vdXMgYXZvbnMgZGVzIMOpdsOpbmVtZW50cyBtw6l0w6lvcm9sb2dpcXVlcyBleHRyw6ptZXMgcGx1cyBmcsOpcXVlbnRzIGNvbW1lIGRlcyBmb3J0ZXMgcGx1aWVzIG91IGRlcyB0ZW1ww6p0ZXMuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiUGFybGV6IGRlcyBjaGFuZ2VtZW50cyBtw6l0w6lvcm9sb2dpcXVlcyBxdWUgdm91cyBhdmV6IG9ic2VydsOpcyBjZXMgZGVybmnDqHJlcyBhbm7DqWVzLlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJjaGFuZ2VtZW50c1wiLCBcInJlbWFycXXDqVwiLCBcIsOpdMOpc1wiLCBcImNoYXVkc1wiLCBcImNhbmljdWxlXCIsIFwicHLDqXZpc2libGVzXCIsIFwiaGl2ZXJzXCIsIFwiZG91eFwiLCBcImV4dHLDqm1lc1wiLCBcInRlbXDDqnRlc1wiXSxcbiAgICAgICAgYWNjZXB0YWJsZVBocmFzZXM6IFtcbiAgICAgICAgICBcImonYWkgcmVtYXJxdcOpXCIsXG4gICAgICAgICAgXCJpbCBtZSBzZW1ibGUgcXVlXCIsXG4gICAgICAgICAgXCJjZXMgZGVybmnDqHJlcyBhbm7DqWVzXCIsXG4gICAgICAgICAgXCJkZSBwbHVzIGVuIHBsdXNcIlxuICAgICAgICBdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiQydlc3QgdnJhaSwgYmVhdWNvdXAgZGUgcGVyc29ubmVzIGZvbnQgZGVzIG9ic2VydmF0aW9ucyBzaW1pbGFpcmVzLiBDb21tZW50IHZvdXMgYWRhcHRlei12b3VzIMOgIGNlcyBjaGFuZ2VtZW50cyA/XCIsXG4gICAgICAgICAgcGFydGlhbDogXCJDZXMgY2hhbmdlbWVudHMgc29udC1pbHMgY29uc3RhbnRzIG91IHZhcmlhYmxlcyBzZWxvbiBsZXMgYW5uw6llcyA/XCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlBhcmxleiBkZXMgY2hhbmdlbWVudHMgZGUgdGVtcHMgb3UgZGUgY2xpbWF0IHF1ZSB2b3VzIGF2ZXogcmVtYXJxdcOpcyByw6ljZW1tZW50LlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA3LFxuICAgICAgICBib3RNZXNzYWdlOiBcIkNvbnN1bHRlei12b3VzIHLDqWd1bGnDqHJlbWVudCBsZXMgcHLDqXZpc2lvbnMgbcOpdMOpbyA/IFNpIG91aSwgY29tbWVudCA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJzdWdnZXN0aW9uc1wiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiT3VpLCBqZSB2w6lyaWZpZSBsJ2FwcGxpY2F0aW9uIG3DqXTDqW8gc3VyIG1vbiB0w6lsw6lwaG9uZSB0b3VzIGxlcyBtYXRpbnMuXCIsXG4gICAgICAgICAgXCJQYXJmb2lzLCBzdXJ0b3V0IGF2YW50IGRlIHBsYW5pZmllciBkZXMgYWN0aXZpdMOpcyBkZSBwbGVpbiBhaXIgb3UgZGVzIHZveWFnZXMuXCIsXG4gICAgICAgICAgXCJQYXMgdnJhaW1lbnQsIGplIHByw6lmw6hyZSByZWdhcmRlciBwYXIgbGEgZmVuw6p0cmUgZXQgbSdhZGFwdGVyIGVuIGNvbnPDqXF1ZW5jZSAhXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiSW5kaXF1ZXogc2kgdm91cyBjb25zdWx0ZXogbGVzIHByw6l2aXNpb25zIG3DqXTDqW8gZXQgY29tbWVudC5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wicHLDqXZpc2lvbnNcIiwgXCJtw6l0w6lvXCIsIFwiYXBwbGljYXRpb25cIiwgXCJ0w6lsw6lwaG9uZVwiLCBcInbDqXJpZmllclwiLCBcInBsYW5pZmllclwiLCBcImFjdGl2aXTDqXNcIiwgXCJ2b3lhZ2VzXCIsIFwiZmVuw6p0cmVcIiwgXCJhZGFwdGVyXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiQydlc3QgcHJhdGlxdWUsIGVuIGVmZmV0ICEgUG91ciBmaW5pciwgcXVlbCBzZXJhaXQgcG91ciB2b3VzIGxlIGNsaW1hdCBpZMOpYWwgP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJEaXRlcy1tb2kgc2kgdm91cyBjb25zdWx0ZXogbGVzIHByw6l2aXNpb25zIG3DqXTDqW8gZXQgY29tbWVudCB2b3VzIGxlIGZhaXRlcy5cIlxuICAgICAgICB9XG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogOCxcbiAgICAgICAgYm90TWVzc2FnZTogXCJQb3VyIHZvdXMsIHF1ZWwgc2VyYWl0IGxlIGNsaW1hdCBvdSBsYSBtw6l0w6lvIGlkw6lhbGUgcG91ciB2aXZyZSA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJoeWJyaWRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkonYWltZXJhaXMgdW4gY2xpbWF0IG3DqWRpdGVycmFuw6llbiA6IMOpdMOpcyBjaGF1ZHMgZXQgc2VjcywgaGl2ZXJzIGRvdXggZXQgZW5zb2xlaWxsw6lzLlwiLFxuICAgICAgICAgIFwiSmUgcHLDqWbDqHJlIGxlcyBxdWF0cmUgc2Fpc29ucyBiaWVuIGRpc3RpbmN0ZXMsIG1haXMgc2FucyB0ZW1ww6lyYXR1cmVzIGV4dHLDqm1lcy5cIixcbiAgICAgICAgICBcIk1vbiBpZMOpYWwgc2VyYWl0IHVuIHByaW50ZW1wcyBwZXJww6l0dWVsIGF2ZWMgZGVzIHRlbXDDqXJhdHVyZXMgbW9kw6lyw6llcyBldCB1biBwZXUgZGUgcGx1aWUuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiRMOpY3JpdmV6IHZvdHJlIGNsaW1hdCBpZMOpYWwgcG91ciB2aXZyZS5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiaWTDqWFsXCIsIFwiY2xpbWF0XCIsIFwibcOpZGl0ZXJyYW7DqWVuXCIsIFwic2Fpc29uc1wiLCBcImNoYXVkXCIsIFwiZG91eFwiLCBcImVuc29sZWlsbMOpXCIsIFwibW9kw6lyw6lcIiwgXCJwbHVpZVwiLCBcInRlbXDDqXJhdHVyZXNcIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJDJ2VzdCB1biBiZWF1IGNsaW1hdCBlbiBlZmZldCAhIE1lcmNpIHBvdXIgY2V0dGUgY29udmVyc2F0aW9uIHN1ciBsYSBtw6l0w6lvIGV0IGxlcyBzYWlzb25zLlwiLFxuICAgICAgICAgIHBhcnRpYWw6IFwiSmUgY29tcHJlbmRzIHZvdHJlIHByw6lmw6lyZW5jZS4gTm91cyBhdm9ucyB0b3VzIGRlcyBnb8O7dHMgZGlmZsOpcmVudHMgZW4gbWF0acOocmUgZGUgY2xpbWF0LlwiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJEw6ljcml2ZXogcXVlbCBzZXJhaXQgbGUgY2xpbWF0IGlkw6lhbCBwb3VyIHZvdXMuXCJcbiAgICAgICAgfVxuICAgICAgfVxuICAgIF0sXG4gICAgY29tcGxldGlvbk1lc3NhZ2U6IFwiRsOpbGljaXRhdGlvbnMgISBWb3VzIGF2ZXogcsOpdXNzaSDDoCBhdm9pciB1bmUgY29udmVyc2F0aW9uIMOpbGFib3LDqWUgc3VyIGxhIG3DqXTDqW8sIGxlcyBzYWlzb25zIGV0IGxlcyBhY3Rpdml0w6lzIGFzc29jacOpZXMgZW4gZnJhbsOnYWlzLlwiLFxuICAgIGxlYXJuaW5nT2JqZWN0aXZlczogW1xuICAgICAgXCJEw6ljcmlyZSBsZXMgY29uZGl0aW9ucyBtw6l0w6lvcm9sb2dpcXVlc1wiLFxuICAgICAgXCJQYXJsZXIgZGVzIHNhaXNvbnMgZXQgZGUgbGV1cnMgY2FyYWN0w6lyaXN0aXF1ZXNcIixcbiAgICAgIFwiRGlzY3V0ZXIgZGVzIGFjdGl2aXTDqXMgbGnDqWVzIGF1eCBzYWlzb25zXCIsXG4gICAgICBcIkV4cHJpbWVyIGRlcyBwcsOpZsOpcmVuY2VzIGNsaW1hdGlxdWVzXCIsXG4gICAgICBcIlBhcmxlciBkZXMgY2hhbmdlbWVudHMgbcOpdMOpb3JvbG9naXF1ZXNcIlxuICAgIF0sXG4gICAgZ3JhbW1hcjoge1xuICAgICAgcG9pbnRzOiBbXG4gICAgICAgIFwiRXhwcmVzc2lvbnMgbcOpdMOpb3JvbG9naXF1ZXMgKGZhaXJlICsgYWRqZWN0aWYpXCIsXG4gICAgICAgIFwiQ29tcGFyYXRpZnMgZXQgc3VwZXJsYXRpZnNcIixcbiAgICAgICAgXCJBZGplY3RpZnMgZGVzY3JpcHRpZnNcIixcbiAgICAgICAgXCJFeHByZXNzaW9ucyBkZSBmcsOpcXVlbmNlIGV0IGQnaGFiaXR1ZGVcIlxuICAgICAgXVxuICAgIH1cbiAgfTtcblxuICBleHBvcnQgZGVmYXVsdCB3ZWF0aGVyQW5kU2Vhc29ucztcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUVBLElBQU1BLGlCQUFpQixJQUFBQyxjQUFBLEdBQUFDLENBQUEsT0FBRztFQUN0QkMsRUFBRSxFQUFFLENBQUM7RUFDTEMsS0FBSyxFQUFFLHFCQUFxQjtFQUM1QkMsS0FBSyxFQUFFLElBQUk7RUFD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

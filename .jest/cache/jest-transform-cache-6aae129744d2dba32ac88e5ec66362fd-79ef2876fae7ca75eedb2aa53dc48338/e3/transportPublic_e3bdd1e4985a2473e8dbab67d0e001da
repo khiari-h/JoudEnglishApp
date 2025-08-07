@@ -1,0 +1,146 @@
+f6ec86771e532488832c0b808c69b602
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function cov_fc8etg78q() {
+  var path = "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A1\\scenarios\\transportPublic.js";
+  var hash = "68fe84f89485c88a615eb95cd13ee40d2c5fb20f";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A1\\scenarios\\transportPublic.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 24
+        },
+        end: {
+          line: 156,
+          column: 3
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "68fe84f89485c88a615eb95cd13ee40d2c5fb20f"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_fc8etg78q = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_fc8etg78q();
+var transportPublic = (cov_fc8etg78q().s[0]++, {
+  id: 10,
+  title: "Using Public Transport",
+  level: "A1",
+  description: "Learn basic phrases for using buses, trains, and other public transportation.",
+  estimatedTime: "10-15 minutes",
+  vocabulary: ["bus", "train", "ticket", "station", "stop", "platform", "schedule", "arrive", "depart", "fare"],
+  steps: [{
+    id: 1,
+    botMessage: "Hello! This is the ticket office. How can I help you?",
+    inputMode: "suggestions",
+    suggestions: ["I need a bus ticket, please.", "Where can I buy a train ticket?", "How much is a ticket to downtown?"],
+    hints: "Ask about tickets for public transport.",
+    expectedKeywords: ["ticket", "bus", "train", "buy", "need", "much", "price"],
+    feedback: {
+      correct: "I'd be happy to help you with that.",
+      incorrect: "Ask about buying a ticket or the price."
+    }
+  }, {
+    id: 2,
+    botMessage: "Where would you like to go?",
+    inputMode: "hybrid",
+    suggestions: ["To the airport, please.", "I want to go to the city center.", "To Central Station."],
+    hints: "Tell your destination.",
+    expectedKeywords: ["airport", "city", "center", "station", "downtown", "go", "to"],
+    acceptablePhrases: ["to", "airport", "city center", "downtown"],
+    feedback: {
+      correct: "How many tickets do you need?",
+      partial: "Which place exactly?",
+      incorrect: "Say where you want to go using 'to' + place."
+    }
+  }, {
+    id: 3,
+    botMessage: "How many tickets do you need?",
+    inputMode: "freeText",
+    suggestions: ["One ticket, please.", "Two adult tickets.", "One adult and one child ticket."],
+    hints: "Specify the number and type of tickets.",
+    expectedKeywords: ["one", "two", "adult", "child", "ticket", "please"],
+    feedback: {
+      correct: "The fare to the city center is $3 per person.",
+      partial: "How many people are traveling?",
+      incorrect: "Say how many tickets: one, two, etc."
+    }
+  }, {
+    id: 4,
+    botMessage: "A ticket to the city center costs $3. Would you like a single or return ticket?",
+    inputMode: "suggestions",
+    suggestions: ["A single ticket, please.", "Return ticket, please.", "What's the difference?"],
+    hints: "Choose between one-way or round-trip ticket.",
+    expectedKeywords: ["single", "return", "round", "trip", "both", "difference"],
+    feedback: {
+      correct: "Perfect!",
+      incorrect: "Choose 'single' for one-way or 'return' for round-trip."
+    }
+  }, {
+    id: 5,
+    botMessage: "What time do you want to travel?",
+    inputMode: "hybrid",
+    suggestions: ["As soon as possible.", "Around 3 PM.", "What time is the next bus?"],
+    hints: "Tell when you want to travel.",
+    expectedKeywords: ["now", "soon", "3", "time", "next", "bus", "train", "morning", "afternoon"],
+    feedback: {
+      correct: "Let me check the schedule.",
+      partial: "Morning or afternoon?",
+      incorrect: "Say when you want to travel: now, afternoon, etc."
+    }
+  }, {
+    id: 6,
+    botMessage: "The next bus leaves at 3:15 PM from platform 2. It arrives at 3:45 PM.",
+    inputMode: "freeText",
+    suggestions: ["Platform 2. Thank you!", "Arrives at 3:45. Got it!", "Is it direct or do I need to change?"],
+    hints: "Confirm understanding or ask more questions.",
+    expectedKeywords: ["platform", "15", "45", "change", "direct", "understand", "okay"],
+    acceptablePhrases: ["platform 2", "got it", "understand", "thank you"],
+    feedback: {
+      correct: "Great! Here's your ticket.",
+      partial: "Did you understand the information?",
+      incorrect: "Confirm the platform and time."
+    }
+  }, {
+    id: 7,
+    botMessage: "Here's your ticket and $1 change. Have a good trip!",
+    inputMode: "suggestions",
+    suggestions: ["Thank you very much!", "Thanks for your help!", "Thank you. Goodbye!"],
+    hints: "Thank them politely.",
+    expectedKeywords: ["thank", "thanks", "goodbye", "bye", "help"],
+    feedback: {
+      correct: "You're welcome! Safe travels!",
+      incorrect: "Don't forget to say 'thank you'."
+    }
+  }],
+  completionMessage: "Excellent! You can now buy public transport tickets confidently.",
+  learningObjectives: ["Buy transport tickets", "Ask about destinations and times", "Understand basic schedule information", "Deal with money and change", "Ask for platform/gate information"],
+  grammar: {
+    points: ["Questions about time and place", "Need vs want for requests", "Telling time and dates", "Prepositions of movement (to, from)"]
+  }
+});
+var _default = exports.default = transportPublic;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ0cmFuc3BvcnRQdWJsaWMiLCJjb3ZfZmM4ZXRnNzhxIiwicyIsImlkIiwidGl0bGUiLCJsZXZlbCIsImRlc2NyaXB0aW9uIiwiZXN0aW1hdGVkVGltZSIsInZvY2FidWxhcnkiLCJzdGVwcyIsImJvdE1lc3NhZ2UiLCJpbnB1dE1vZGUiLCJzdWdnZXN0aW9ucyIsImhpbnRzIiwiZXhwZWN0ZWRLZXl3b3JkcyIsImZlZWRiYWNrIiwiY29ycmVjdCIsImluY29ycmVjdCIsImFjY2VwdGFibGVQaHJhc2VzIiwicGFydGlhbCIsImNvbXBsZXRpb25NZXNzYWdlIiwibGVhcm5pbmdPYmplY3RpdmVzIiwiZ3JhbW1hciIsInBvaW50cyIsIl9kZWZhdWx0IiwiZXhwb3J0cyIsImRlZmF1bHQiXSwic291cmNlcyI6WyJ0cmFuc3BvcnRQdWJsaWMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gY2hhdGJvdC9BMS9zY2VuYXJpb3MvdHJhbnNwb3J0UHVibGljLmpzXG5cbmNvbnN0IHRyYW5zcG9ydFB1YmxpYyA9IHtcbiAgICBpZDogMTAsXG4gICAgdGl0bGU6IFwiVXNpbmcgUHVibGljIFRyYW5zcG9ydFwiLFxuICAgIGxldmVsOiBcIkExXCIsXG4gICAgZGVzY3JpcHRpb246IFwiTGVhcm4gYmFzaWMgcGhyYXNlcyBmb3IgdXNpbmcgYnVzZXMsIHRyYWlucywgYW5kIG90aGVyIHB1YmxpYyB0cmFuc3BvcnRhdGlvbi5cIixcbiAgICBlc3RpbWF0ZWRUaW1lOiBcIjEwLTE1IG1pbnV0ZXNcIixcbiAgICB2b2NhYnVsYXJ5OiBbXCJidXNcIiwgXCJ0cmFpblwiLCBcInRpY2tldFwiLCBcInN0YXRpb25cIiwgXCJzdG9wXCIsIFwicGxhdGZvcm1cIiwgXCJzY2hlZHVsZVwiLCBcImFycml2ZVwiLCBcImRlcGFydFwiLCBcImZhcmVcIl0sXG4gICAgc3RlcHM6IFtcbiAgICAgIHtcbiAgICAgICAgaWQ6IDEsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiSGVsbG8hIFRoaXMgaXMgdGhlIHRpY2tldCBvZmZpY2UuIEhvdyBjYW4gSSBoZWxwIHlvdT9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcInN1Z2dlc3Rpb25zXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJJIG5lZWQgYSBidXMgdGlja2V0LCBwbGVhc2UuXCIsXG4gICAgICAgICAgXCJXaGVyZSBjYW4gSSBidXkgYSB0cmFpbiB0aWNrZXQ/XCIsXG4gICAgICAgICAgXCJIb3cgbXVjaCBpcyBhIHRpY2tldCB0byBkb3dudG93bj9cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJBc2sgYWJvdXQgdGlja2V0cyBmb3IgcHVibGljIHRyYW5zcG9ydC5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1widGlja2V0XCIsIFwiYnVzXCIsIFwidHJhaW5cIiwgXCJidXlcIiwgXCJuZWVkXCIsIFwibXVjaFwiLCBcInByaWNlXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiSSdkIGJlIGhhcHB5IHRvIGhlbHAgeW91IHdpdGggdGhhdC5cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiQXNrIGFib3V0IGJ1eWluZyBhIHRpY2tldCBvciB0aGUgcHJpY2UuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDIsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiV2hlcmUgd291bGQgeW91IGxpa2UgdG8gZ28/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJoeWJyaWRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIlRvIHRoZSBhaXJwb3J0LCBwbGVhc2UuXCIsXG4gICAgICAgICAgXCJJIHdhbnQgdG8gZ28gdG8gdGhlIGNpdHkgY2VudGVyLlwiLFxuICAgICAgICAgIFwiVG8gQ2VudHJhbCBTdGF0aW9uLlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIlRlbGwgeW91ciBkZXN0aW5hdGlvbi5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiYWlycG9ydFwiLCBcImNpdHlcIiwgXCJjZW50ZXJcIiwgXCJzdGF0aW9uXCIsIFwiZG93bnRvd25cIiwgXCJnb1wiLCBcInRvXCJdLFxuICAgICAgICBhY2NlcHRhYmxlUGhyYXNlczogW1xuICAgICAgICAgIFwidG9cIixcbiAgICAgICAgICBcImFpcnBvcnRcIixcbiAgICAgICAgICBcImNpdHkgY2VudGVyXCIsXG4gICAgICAgICAgXCJkb3dudG93blwiXG4gICAgICAgIF0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJIb3cgbWFueSB0aWNrZXRzIGRvIHlvdSBuZWVkP1wiLFxuICAgICAgICAgIHBhcnRpYWw6IFwiV2hpY2ggcGxhY2UgZXhhY3RseT9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiU2F5IHdoZXJlIHlvdSB3YW50IHRvIGdvIHVzaW5nICd0bycgKyBwbGFjZS5cIlxuICAgICAgICB9XG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogMyxcbiAgICAgICAgYm90TWVzc2FnZTogXCJIb3cgbWFueSB0aWNrZXRzIGRvIHlvdSBuZWVkP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiZnJlZVRleHRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIk9uZSB0aWNrZXQsIHBsZWFzZS5cIixcbiAgICAgICAgICBcIlR3byBhZHVsdCB0aWNrZXRzLlwiLFxuICAgICAgICAgIFwiT25lIGFkdWx0IGFuZCBvbmUgY2hpbGQgdGlja2V0LlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIlNwZWNpZnkgdGhlIG51bWJlciBhbmQgdHlwZSBvZiB0aWNrZXRzLlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJvbmVcIiwgXCJ0d29cIiwgXCJhZHVsdFwiLCBcImNoaWxkXCIsIFwidGlja2V0XCIsIFwicGxlYXNlXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiVGhlIGZhcmUgdG8gdGhlIGNpdHkgY2VudGVyIGlzICQzIHBlciBwZXJzb24uXCIsXG4gICAgICAgICAgcGFydGlhbDogXCJIb3cgbWFueSBwZW9wbGUgYXJlIHRyYXZlbGluZz9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiU2F5IGhvdyBtYW55IHRpY2tldHM6IG9uZSwgdHdvLCBldGMuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDQsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiQSB0aWNrZXQgdG8gdGhlIGNpdHkgY2VudGVyIGNvc3RzICQzLiBXb3VsZCB5b3UgbGlrZSBhIHNpbmdsZSBvciByZXR1cm4gdGlja2V0P1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwic3VnZ2VzdGlvbnNcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkEgc2luZ2xlIHRpY2tldCwgcGxlYXNlLlwiLFxuICAgICAgICAgIFwiUmV0dXJuIHRpY2tldCwgcGxlYXNlLlwiLFxuICAgICAgICAgIFwiV2hhdCdzIHRoZSBkaWZmZXJlbmNlP1wiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkNob29zZSBiZXR3ZWVuIG9uZS13YXkgb3Igcm91bmQtdHJpcCB0aWNrZXQuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcInNpbmdsZVwiLCBcInJldHVyblwiLCBcInJvdW5kXCIsIFwidHJpcFwiLCBcImJvdGhcIiwgXCJkaWZmZXJlbmNlXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiUGVyZmVjdCFcIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiQ2hvb3NlICdzaW5nbGUnIGZvciBvbmUtd2F5IG9yICdyZXR1cm4nIGZvciByb3VuZC10cmlwLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA1LFxuICAgICAgICBib3RNZXNzYWdlOiBcIldoYXQgdGltZSBkbyB5b3Ugd2FudCB0byB0cmF2ZWw/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJoeWJyaWRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkFzIHNvb24gYXMgcG9zc2libGUuXCIsXG4gICAgICAgICAgXCJBcm91bmQgMyBQTS5cIixcbiAgICAgICAgICBcIldoYXQgdGltZSBpcyB0aGUgbmV4dCBidXM/XCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiVGVsbCB3aGVuIHlvdSB3YW50IHRvIHRyYXZlbC5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wibm93XCIsIFwic29vblwiLCBcIjNcIiwgXCJ0aW1lXCIsIFwibmV4dFwiLCBcImJ1c1wiLCBcInRyYWluXCIsIFwibW9ybmluZ1wiLCBcImFmdGVybm9vblwiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIkxldCBtZSBjaGVjayB0aGUgc2NoZWR1bGUuXCIsXG4gICAgICAgICAgcGFydGlhbDogXCJNb3JuaW5nIG9yIGFmdGVybm9vbj9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiU2F5IHdoZW4geW91IHdhbnQgdG8gdHJhdmVsOiBub3csIGFmdGVybm9vbiwgZXRjLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA2LFxuICAgICAgICBib3RNZXNzYWdlOiBcIlRoZSBuZXh0IGJ1cyBsZWF2ZXMgYXQgMzoxNSBQTSBmcm9tIHBsYXRmb3JtIDIuIEl0IGFycml2ZXMgYXQgMzo0NSBQTS5cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcImZyZWVUZXh0XCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJQbGF0Zm9ybSAyLiBUaGFuayB5b3UhXCIsXG4gICAgICAgICAgXCJBcnJpdmVzIGF0IDM6NDUuIEdvdCBpdCFcIixcbiAgICAgICAgICBcIklzIGl0IGRpcmVjdCBvciBkbyBJIG5lZWQgdG8gY2hhbmdlP1wiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkNvbmZpcm0gdW5kZXJzdGFuZGluZyBvciBhc2sgbW9yZSBxdWVzdGlvbnMuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcInBsYXRmb3JtXCIsIFwiMTVcIiwgXCI0NVwiLCBcImNoYW5nZVwiLCBcImRpcmVjdFwiLCBcInVuZGVyc3RhbmRcIiwgXCJva2F5XCJdLFxuICAgICAgICBhY2NlcHRhYmxlUGhyYXNlczogW1xuICAgICAgICAgIFwicGxhdGZvcm0gMlwiLFxuICAgICAgICAgIFwiZ290IGl0XCIsXG4gICAgICAgICAgXCJ1bmRlcnN0YW5kXCIsXG4gICAgICAgICAgXCJ0aGFuayB5b3VcIlxuICAgICAgICBdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiR3JlYXQhIEhlcmUncyB5b3VyIHRpY2tldC5cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIkRpZCB5b3UgdW5kZXJzdGFuZCB0aGUgaW5mb3JtYXRpb24/XCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIkNvbmZpcm0gdGhlIHBsYXRmb3JtIGFuZCB0aW1lLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA3LFxuICAgICAgICBib3RNZXNzYWdlOiBcIkhlcmUncyB5b3VyIHRpY2tldCBhbmQgJDEgY2hhbmdlLiBIYXZlIGEgZ29vZCB0cmlwIVwiLFxuICAgICAgICBpbnB1dE1vZGU6IFwic3VnZ2VzdGlvbnNcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIlRoYW5rIHlvdSB2ZXJ5IG11Y2ghXCIsXG4gICAgICAgICAgXCJUaGFua3MgZm9yIHlvdXIgaGVscCFcIixcbiAgICAgICAgICBcIlRoYW5rIHlvdS4gR29vZGJ5ZSFcIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJUaGFuayB0aGVtIHBvbGl0ZWx5LlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJ0aGFua1wiLCBcInRoYW5rc1wiLCBcImdvb2RieWVcIiwgXCJieWVcIiwgXCJoZWxwXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiWW91J3JlIHdlbGNvbWUhIFNhZmUgdHJhdmVscyFcIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiRG9uJ3QgZm9yZ2V0IHRvIHNheSAndGhhbmsgeW91Jy5cIlxuICAgICAgICB9XG4gICAgICB9XG4gICAgXSxcbiAgICBjb21wbGV0aW9uTWVzc2FnZTogXCJFeGNlbGxlbnQhIFlvdSBjYW4gbm93IGJ1eSBwdWJsaWMgdHJhbnNwb3J0IHRpY2tldHMgY29uZmlkZW50bHkuXCIsXG4gICAgbGVhcm5pbmdPYmplY3RpdmVzOiBbXG4gICAgICBcIkJ1eSB0cmFuc3BvcnQgdGlja2V0c1wiLFxuICAgICAgXCJBc2sgYWJvdXQgZGVzdGluYXRpb25zIGFuZCB0aW1lc1wiLFxuICAgICAgXCJVbmRlcnN0YW5kIGJhc2ljIHNjaGVkdWxlIGluZm9ybWF0aW9uXCIsXG4gICAgICBcIkRlYWwgd2l0aCBtb25leSBhbmQgY2hhbmdlXCIsXG4gICAgICBcIkFzayBmb3IgcGxhdGZvcm0vZ2F0ZSBpbmZvcm1hdGlvblwiXG4gICAgXSxcbiAgICBncmFtbWFyOiB7XG4gICAgICBwb2ludHM6IFtcbiAgICAgICAgXCJRdWVzdGlvbnMgYWJvdXQgdGltZSBhbmQgcGxhY2VcIixcbiAgICAgICAgXCJOZWVkIHZzIHdhbnQgZm9yIHJlcXVlc3RzXCIsXG4gICAgICAgIFwiVGVsbGluZyB0aW1lIGFuZCBkYXRlc1wiLFxuICAgICAgICBcIlByZXBvc2l0aW9ucyBvZiBtb3ZlbWVudCAodG8sIGZyb20pXCJcbiAgICAgIF1cbiAgICB9XG4gIH07XG5cbiAgZXhwb3J0IGRlZmF1bHQgdHJhbnNwb3J0UHVibGljO1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7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

@@ -1,0 +1,754 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/6/categories/11_arts_visuels.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/6/categories</a> 11_arts_visuels.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Arts Visuels et Analyse Esthétique",
+  words: [
+    // Histoire de l'art (25 mots)
+    { word: "art history", translation: "histoire de l'art", example: "Art history examines visual expression across cultures and time periods." },
+&nbsp;
+    { word: "art periodization", translation: "périodisation de l'art", example: "Art periodization categorizes works by stylistic era and cultural context." },
+&nbsp;
+    { word: "artistic influence", translation: "influence artistique", example: "The exhibition examines artistic influence across generations." },
+&nbsp;
+    { word: "art historiography", translation: "historiographie de l'art", example: "Art historiography examines how art history itself has been written." },
+    { word: "chronology", translation: "chronologie", example: "The museum presents works in strict chronological sequence." },
+    { word: "artistic development", translation: "développement artistique", example: "The retrospective traces the artist's development over six decades." },
+    { word: "artistic legacy", translation: "héritage artistique", example: "The exhibition explores the artist's enduring legacy on contemporary practice." },
+    { word: "art historical research", translation: "recherche en histoire de l'art", example: "Recent art historical research challenges traditional attributions." },
+&nbsp;
+    { word: "visual culture", translation: "culture visuelle", example: "The department explores visual culture across media and time periods." },
+    { word: "historical context", translation: "contexte historique", example: "Historical context provides essential background for interpretation." },
+    { word: "artistic canon", translation: "canon artistique", example: "Recent scholarship has expanded the artistic canon beyond Western traditions." },
+&nbsp;
+    // Techniques artistiques (25 mots)
+    { word: "artistic technique", translation: "technique artistique", example: "The artist pioneered innovative artistic techniques using mixed media." },
+    { word: "oil painting", translation: "peinture à l'huile", example: "Oil painting allows for luminous color and subtle blending effects." },
+    { word: "watercolor", translation: "aquarelle", example: "Watercolor creates transparent washes of delicate pigment." },
+&nbsp;
+    { word: "drawing", translation: "dessin", example: "Drawing serves both as preparatory study and finished artwork." },
+&nbsp;
+    { word: "fresco", translation: "fresque", example: "Fresco painting applies pigment to wet plaster for permanent wall decoration." },
+    { word: "lithography", translation: "lithographie", example: "Lithography creates prints through oil and water resistance." },
+    { word: "etching", translation: "eau-forte", example: "Etching uses acid to incise designs on metal printing plates." },
+    { word: "woodcut", translation: "gravure sur bois", example: "The woodcut tradition dates back to early Chinese printing methods." },
+    { word: "mosaic", translation: "mosaïque", example: "Byzantine mosaics create luminous imagery from glass tesserae." },
+    { word: "ceramic", translation: "céramique", example: "Contemporary ceramic practice extends beyond functional vessels." },
+&nbsp;
+    { word: "assemblage", translation: "assemblage", example: "Assemblage creates three-dimensional compositions from found objects." },
+    { word: "casting", translation: "moulage", example: "Bronze sculpture requires complex casting processes." },
+    { word: "glazing", translation: "glaçage", example: "Glazing techniques build transparent layers of color in painting." },
+    { word: "chiaroscuro", translation: "clair-obscur", example: "Chiaroscuro creates dramatic contrasts between light and shadow." },
+    { word: "perspectival technique", translation: "technique perspectiviste", example: "Renaissance artists developed mathematical perspectival techniques." },
+&nbsp;
+    // Analyse formelle (25 mots)
+    { word: "formal analysis", translation: "analyse formelle", example: "Formal analysis examines visual elements and their relationships." },
+&nbsp;
+    { word: "value", translation: "valeur", example: "Dramatic value contrasts establish focal hierarchy within the image." },
+    { word: "space", translation: "espace", example: "Overlapping forms create illusionistic space without linear perspective." },
+&nbsp;
+    { word: "asymmetry", translation: "asymétrie", example: "Dynamic asymmetry generates visual tension throughout the composition." },
+&nbsp;
+    { word: "scale", translation: "échelle", example: "Monumental scale creates an overwhelming viewer experience." },
+&nbsp;
+    { word: "variety", translation: "variété", example: "Textural variety maintains visual interest throughout the surface." },
+    { word: "emphasis", translation: "accentuation", example: "Strategic emphasis directs attention to significant narrative elements." },
+&nbsp;
+    { word: "movement", translation: "mouvement", example: "Directional brushwork creates visual movement across the canvas." },
+&nbsp;
+    { word: "visual weight", translation: "poids visuel", example: "Dark values create greater visual weight within the composition." },
+&nbsp;
+    { word: "geometric analysis", translation: "analyse géométrique", example: "Geometric analysis reveals underlying compositional structure." },
+&nbsp;
+    // Critique d'art (25 mots)
+&nbsp;
+    { word: "critical interpretation", translation: "interprétation critique", example: "Critical interpretation reveals meanings beyond artist intention." },
+    { word: "artistic evaluation", translation: "évaluation artistique", example: "Artistic evaluation considers both technical execution and conceptual depth." },
+&nbsp;
+    { word: "critical framework", translation: "cadre critique", example: "Feminist critical frameworks reveal gendered aspects of representation." },
+&nbsp;
+    { word: "comparative criticism", translation: "critique comparative", example: "Comparative criticism examines relationships between diverse works." },
+&nbsp;
+    { word: "critical discourse", translation: "discours critique", example: "Critical discourse shapes reception and interpretation of artwork." },
+    { word: "critical response", translation: "réponse critique", example: "The installation provoked divided critical response from reviewers." },
+    { word: "critical analysis", translation: "analyse critique", example: "Critical analysis examines both form and content of visual works." },
+    { word: "critical reception", translation: "réception critique", example: "Critical reception evolves significantly over time for avant-garde work." },
+&nbsp;
+    { word: "exhibition review", translation: "critique d'exposition", example: "The exhibition review assessed curatorial choices and visitor experience." },
+&nbsp;
+    { word: "art writing", translation: "écriture sur l'art", example: "Contemporary art writing blends criticism with creative expression." },
+&nbsp;
+    { word: "critical methodology", translation: "méthodologie critique", example: "The critic employs a consistent critical methodology across analyses." },
+    { word: "interpretive strategy", translation: "stratégie interprétative", example: "Biographical interpretive strategies connect artwork to artists' lives." },
+    { word: "critical dialogue", translation: "dialogue critique", example: "The panel fostered critical dialogue between diverse perspectives." },
+    { word: "artistic significance", translation: "importance artistique", example: "Critics debate the artistic significance of digital art forms." },
+&nbsp;
+    // Théories esthétiques (25 mots)
+    { word: "aesthetic theory", translation: "théorie esthétique", example: "Aesthetic theory examines the nature of beauty and artistic value." },
+&nbsp;
+    { word: "beauty", translation: "beauté", example: "Conceptions of beauty vary across historical periods and cultures." },
+    { word: "sublime", translation: "sublime", example: "The sublime creates overwhelming aesthetic experiences through vastness or power." },
+&nbsp;
+    { word: "mimesis", translation: "mimesis", example: "Mimesis describes art's imitation of nature or reality." },
+&nbsp;
+    { word: "aesthetic experience", translation: "expérience esthétique", example: "Aesthetic experience involves contemplative engagement with artworks." },
+    { word: "aesthetic value", translation: "valeur esthétique", example: "Philosophers debate whether aesthetic value is subjective or objective." },
+&nbsp;
+    { word: "aesthetic attitude", translation: "attitude esthétique", example: "Aesthetic attitude involves disinterested contemplation of formal qualities." },
+    { word: "aesthetic property", translation: "propriété esthétique", example: "Unity represents a significant aesthetic property in classical composition." },
+&nbsp;
+    { word: "aesthetic response", translation: "réponse esthétique", example: "Aesthetic response combines sensory, emotional, and intellectual dimensions." },
+    { word: "aesthetic distance", translation: "distance esthétique", example: "Aesthetic distance separates viewers from practical engagement with artworks." },
+    { word: "disinterestedness", translation: "désintéressement", example: "Aesthetic disinterestedness involves appreciation beyond practical utility." },
+    { word: "aesthetic education", translation: "éducation esthétique", example: "Schiller advocated aesthetic education for social harmony." },
+    { word: "aesthetic category", translation: "catégorie esthétique", example: "The grotesque represents a distinct aesthetic category beyond beauty." },
+    { word: "aesthetic interpretation", translation: "interprétation esthétique", example: "Aesthetic interpretation constructs meaning from visual elements." },
+    { word: "aesthetic contemplation", translation: "contemplation esthétique", example: "Aesthetic contemplation involves sustained attention to artistic qualities." },
+    { word: "aesthetic quality", translation: "qualité esthétique", example: "Formal harmony represents a traditional aesthetic quality in composition." },
+    { word: "aesthetic theory of art", translation: "théorie esthétique de l'art", example: "Aesthetic theories of art identify essential properties of artwork." },
+    { word: "aesthetic perception", translation: "perception esthétique", example: "Aesthetic perception involves heightened awareness of sensory qualities." },
+    { word: "aesthetic emotion", translation: "émotion esthétique", example: "Aesthetic emotion arises from engagement with artistic form and content." },
+&nbsp;
+    // Architecture et espace (25 mots)
+    { word: "architectural design", translation: "conception architecturale", example: "Architectural design balances function, structure, and aesthetic expression." },
+    { word: "spatial analysis", translation: "analyse spatiale", example: "Spatial analysis examines relationships between volumes and circulation." },
+&nbsp;
+    { word: "architectural theory", translation: "théorie architecturale", example: "Architectural theory addresses fundamental principles of design and space." },
+    { word: "structural system", translation: "système structurel", example: "The innovative structural system enabled unprecedented interior spans." },
+    { word: "spatial organization", translation: "organisation spatiale", example: "Spatial organization creates hierarchical relationships between functions." },
+&nbsp;
+    { word: "architectural form", translation: "forme architecturale", example: "Sculptural architectural form creates dramatic visual impact." },
+&nbsp;
+    { word: "spatial experience", translation: "expérience spatiale", example: "Sequential spatial experience unfolds as visitors move through the museum." },
+    { word: "architectural context", translation: "contexte architectural", example: "The design responds sensitively to its architectural context." },
+    { word: "architectural composition", translation: "composition architecturale", example: "Architectural composition balances proportion, rhythm, and scale." },
+    { word: "building typology", translation: "typologie du bâtiment", example: "The project reimagines traditional building typology for contemporary use." },
+    { word: "spatial sequence", translation: "séquence spatiale", example: "The spatial sequence creates narrative progression through the structure." },
+&nbsp;
+    { word: "spatial hierarchy", translation: "hiérarchie spatiale", example: "Volumetric scale creates spatial hierarchy throughout the complex." },
+    { word: "architectural character", translation: "caractère architectural", example: "Material selection contributes to distinctive architectural character." },
+    { word: "spatial configuration", translation: "configuration spatiale", example: "The innovative spatial configuration maximizes natural illumination." },
+    { word: "architectural concept", translation: "concept architectural", example: "The architectural concept responds to both site and cultural context." },
+    { word: "spatial perception", translation: "perception spatiale", example: "Compressed entrances alter spatial perception of subsequent volumes." },
+    { word: "architectural element", translation: "élément architectural", example: "Repetitive architectural elements create visual rhythm across the façade." },
+    { word: "architectural scale", translation: "échelle architecturale", example: "Human architectural scale creates comfortable inhabitation." },
+    { word: "spatial relationship", translation: "relation spatiale", example: "Complex spatial relationships generate continually changing perspectives." },
+    { word: "architectural expression", translation: "expression architecturale", example: "Structural systems become explicit architectural expression." },
+    { word: "spatial quality", translation: "qualité spatiale", example: "Diffused natural light enhances spatial quality throughout the interior." },
+&nbsp;
+    // Arts contemporains (25 mots)
+&nbsp;
+    { word: "video installation", translation: "installation vidéo", example: "The video installation projects multiple synchronized narratives." },
+&nbsp;
+    { word: "site-specific art", translation: "art in situ", example: "Site-specific art responds directly to particular locations and contexts." },
+&nbsp;
+    { word: "appropriation art", translation: "art d'appropriation", example: "Appropriation art repurposes existing images to create new meanings." },
+&nbsp;
+    { word: "bioart", translation: "bio-art", example: "Bioart utilizes living materials and biological processes as artistic media." },
+&nbsp;
+    { word: "postinternet art", translation: "art post-internet", example: "Postinternet art responds to ubiquitous digital connectivity and its effects." },
+&nbsp;
+    { word: "immersive art", translation: "art immersif", example: "Immersive art surrounds viewers in multisensory environments." },
+&nbsp;
+    { word: "experimental art", translation: "art expérimental", example: "Experimental art tests boundaries of conventional artistic practice." },
+    { word: "contemporary artistic practice", translation: "pratique artistique contemporaine", example: "Contemporary artistic practice often blurs traditional disciplinary boundaries." },
+    { word: "artistic discourse", translation: "discours artistique", example: "Artistic discourse connects visual practice with theoretical frameworks." },
+&nbsp;
+    // Muséologie et commissariat (25 mots)
+    { word: "museology", translation: "muséologie", example: "Museology studies theory and practice of museum functions and operations." },
+&nbsp;
+    { word: "exhibition design", translation: "scénographie d'exposition", example: "Exhibition design creates spatial narratives for viewer experience." },
+    { word: "art collection", translation: "collection d'art", example: "The museum's art collection encompasses diverse periods and cultures." },
+    { word: "provenance research", translation: "recherche de provenance", example: "Provenance research traces ownership history of collection objects." },
+&nbsp;
+    { word: "acquisition policy", translation: "politique d'acquisition", example: "The museum's acquisition policy prioritizes underrepresented artists." },
+&nbsp;
+    { word: "museum ethics", translation: "éthique muséale", example: "Museum ethics addresses responsible collection management and exhibition." },
+&nbsp;
+    { word: "museum studies", translation: "études muséales", example: "Museum studies programs address theoretical and practical aspects of the field." },
+    { word: "exhibition narrative", translation: "récit d'exposition", example: "The exhibition narrative presented multiple perspectives on colonialism." },
+    { word: "permanent collection", translation: "collection permanente", example: "The permanent collection display rotates periodically for conservation." },
+    { word: "museum education", translation: "éducation muséale", example: "Museum education programs engage diverse audience constituencies." },
+    { word: "curatorial statement", translation: "déclaration curatoriale", example: "The curatorial statement articulated the exhibition's conceptual framework." },
+    { word: "art installation", translation: "installation d'art", example: "Art installation requires careful planning for each exhibition context." },
+&nbsp;
+    { word: "viewer experience", translation: "expérience du visiteur", example: "Digital interactives enhance viewer experience through participation." },
+&nbsp;
+    { word: "exhibition catalog", translation: "catalogue d'exposition", example: "The scholarly exhibition catalog includes commissioned essays." },
+    { word: "collection management", translation: "gestion de collection", example: "Digital systems facilitate comprehensive collection management." },
+    { word: "gallery space", translation: "espace d'exposition", example: "Flexible gallery space accommodates diverse installation requirements." },
+    { word: "cultural representation", translation: "représentation culturelle", example: "The museum reexamined issues of cultural representation in displays." },
+    { word: "interpretation strategy", translation: "stratégie d'interprétation", example: "The interpretation strategy included multilingual digital resources." },
+&nbsp;
+    // Photographie et arts visuels numériques (25 mots)
+&nbsp;
+    { word: "digital imaging", translation: "imagerie numérique", example: "Digital imaging enables unprecedented manipulation of visual information." },
+    { word: "lens-based media", translation: "médias basés sur l'objectif", example: "Lens-based media encompasses film, video, and photography." },
+    { word: "documentary photography", translation: "photographie documentaire", example: "Documentary photography engages with social and political realities." },
+    { word: "photographic composition", translation: "composition photographique", example: "Photographic composition employs framing, perspective, and timing." },
+    { word: "digital manipulation", translation: "manipulation numérique", example: "Digital manipulation raises questions about photographic truth." },
+    { word: "photographic series", translation: "série photographique", example: "The photographic series explores variations on a central theme." },
+    { word: "computational photography", translation: "photographie computationnelle", example: "Computational photography uses algorithms to enhance images." },
+    { word: "photographic process", translation: "procédé photographique", example: "Historical photographic processes require specialized materials and techniques." },
+    { word: "photographic theory", translation: "théorie photographique", example: "Photographic theory examines the medium's relationship to reality." },
+    { word: "photographic archive", translation: "archive photographique", example: "The photographic archive preserves historical visual documentation." },
+    { word: "photographic image", translation: "image photographique", example: "The photographic image possesses indexical relationship to its subject." },
+    { word: "photographic reproduction", translation: "reproduction photographique", example: "Photographic reproduction transformed access to visual culture." },
+    { word: "photographic representation", translation: "représentation photographique", example: "Photographic representation mediates our understanding of events." },
+&nbsp;
+    { word: "3D modeling", translation: "modélisation 3D", example: "3D modeling constructs digital objects for various applications." },
+&nbsp;
+    { word: "immersive media", translation: "médias immersifs", example: "Immersive media creates multisensory environmental experiences." },
+&nbsp;
+    { word: "photographic practice", translation: "pratique photographique", example: "Contemporary photographic practice spans diverse approaches and technologies." },
+    { word: "visual storytelling", translation: "narration visuelle", example: "Visual storytelling combines images into coherent narrative sequences." },
+&nbsp;
+    // Marchés de l'art et industrie culturelle (25 mots)
+&nbsp;
+    { word: "cultural industry", translation: "industrie culturelle", example: "The cultural industry commodifies creative expression for commercial distribution." },
+&nbsp;
+    { word: "art auction", translation: "vente aux enchères d'art", example: "The art auction established a new record price for the artist." },
+    { word: "art gallery", translation: "galerie d'art", example: "Commercial art galleries represent artists and mount regular exhibitions." },
+&nbsp;
+    { word: "cultural economics", translation: "économie culturelle", example: "Cultural economics studies financial aspects of artistic production." },
+&nbsp;
+    { word: "art appraisal", translation: "expertise d'art", example: "Professional art appraisal provides official valuation for insurance purposes." },
+&nbsp;
+    { word: "art world", translation: "monde de l'art", example: "The contemporary art world encompasses global networks of institutions and individuals." },
+    { word: "art philanthropy", translation: "philanthropie artistique", example: "Art philanthropy supports non-commercial creative innovation." },
+&nbsp;
+    { word: "art commission", translation: "commission artistique", example: "The corporate art commission transformed the headquarters lobby." },
+    { word: "art sponsorship", translation: "parrainage artistique", example: "Corporate art sponsorship supports exhibitions and institutional programming." },
+    { word: "cultural funding", translation: "financement culturel", example: "Public cultural funding sustains institutions beyond market forces." },
+    { word: "art insurance", translation: "assurance d'art", example: "Specialized art insurance covers transportation, exhibition, and storage risks." },
+    { word: "art authentication", translation: "authentification d'art", example: "Scientific art authentication methods verify attribution and date." },
+    { word: "cultural consumption", translation: "consommation culturelle", example: "Digital platforms have transformed patterns of cultural consumption." }]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -111,7 +111,7 @@ const PhrasesExercise = ({ route }) => {
         statusBarStyle="dark-content"
       >
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={levelColor} />
+          <ActivityIndicator size="large" color={levelColor} testID="activity-indicator" />
         </View>
       </Container>
     );
@@ -131,7 +131,7 @@ const PhrasesExercise = ({ route }) => {
           onBackPress={handleBackPress}
         />
         <View style={styles.emptyStateContainer}>
-          <ActivityIndicator size="large" color={levelColor} />
+          <ActivityIndicator size="large" color={levelColor} testID="activity-indicator" />
         </View>
       </Container>
     );

@@ -1,0 +1,598 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/vocabulary/6/categories/24_sante_publique.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/vocabulary/6/categories</a> 24_sante_publique.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const vocab = {
+  title: "Santé Publique et Épidémiologie",
+  words: [
+    // Concepts fondamentaux en santé publique (50 mots)
+&nbsp;
+    { word: "health determinants", translation: "déterminants de la santé", example: "Social and economic factors often exert stronger influence as health determinants than healthcare access." },
+&nbsp;
+    { word: "health inequity", translation: "iniquité en santé", example: "Health inequity refers to systematic disparities in health outcomes that are avoidable and unjust." },
+    { word: "health disparities", translation: "disparités en matière de santé", example: "Persistent health disparities exist across socioeconomic, racial, and geographic dimensions." },
+&nbsp;
+    { word: "population health", translation: "santé des populations", example: "Population health approaches consider multiple factors beyond medical care that influence outcomes." },
+&nbsp;
+    { word: "disease prevention", translation: "prévention des maladies", example: "Primary disease prevention focuses on averting initial occurrence through risk factor reduction." },
+    { word: "primary prevention", translation: "prévention primaire", example: "Vaccination represents a classic primary prevention strategy against infectious diseases." },
+    { word: "secondary prevention", translation: "prévention secondaire", example: "Secondary prevention through screening programs enables early disease detection and intervention." },
+    { word: "tertiary prevention", translation: "prévention tertiaire", example: "Tertiary prevention aims to reduce complications and disability from established disease." },
+    { word: "health surveillance", translation: "surveillance sanitaire", example: "Ongoing health surveillance monitors disease trends and emerging threats in populations." },
+&nbsp;
+    { word: "syndromic surveillance", translation: "surveillance syndromique", example: "Syndromic surveillance monitors symptom patterns to detect outbreaks before laboratory confirmation." },
+&nbsp;
+    { word: "community-based participatory research", translation: "recherche participative communautaire", example: "Community-based participatory research involves residents in study design, implementation, and dissemination." },
+&nbsp;
+    { word: "public health infrastructure", translation: "infrastructure de santé publique", example: "Sustained investment in public health infrastructure is necessary for effective emergency response." },
+&nbsp;
+    { word: "health economics", translation: "économie de la santé", example: "Health economics evaluates efficiency and value in healthcare resource allocation." },
+    { word: "burden of disease", translation: "charge de morbidité", example: "The global burden of disease study quantifies health loss from hundreds of conditions worldwide." },
+    { word: "disability-adjusted life year", translation: "année de vie ajustée sur l'incapacité", example: "Disability-adjusted life years combine premature mortality and years lived with disability." },
+    { word: "quality-adjusted life year", translation: "année de vie ajustée par la qualité", example: "Quality-adjusted life years incorporate both survival and health-related quality of life." },
+    { word: "healthy life expectancy", translation: "espérance de vie en bonne santé", example: "Healthy life expectancy measures expected years of life in full health without disability." },
+&nbsp;
+    { word: "behavioral determinants", translation: "déterminants comportementaux", example: "Effective interventions address multiple behavioral determinants beyond knowledge provision." },
+    { word: "health risk factor", translation: "facteur de risque sanitaire", example: "Modifiable health risk factors include tobacco use, unhealthy diet, and physical inactivity." },
+    { word: "non-communicable disease", translation: "maladie non transmissible", example: "Non-communicable diseases represent the leading cause of global mortality and disability." },
+    { word: "communicable disease", translation: "maladie transmissible", example: "Communicable disease control requires understanding transmission dynamics and effective interventions." },
+    { word: "disease outbreak", translation: "flambée épidémique", example: "Early disease outbreak detection enables rapid containment before widespread transmission." },
+    { word: "epidemic", translation: "épidémie", example: "The epidemic spread rapidly due to high population density and limited control measures." },
+&nbsp;
+    { word: "endemic disease", translation: "maladie endémique", example: "Endemic diseases persist at baseline levels within specific geographic regions or populations." },
+&nbsp;
+    { word: "one health", translation: "une seule santé", example: "The One Health approach recognizes interconnections between human, animal, and environmental health." },
+&nbsp;
+    { word: "climate change and health", translation: "changement climatique et santé", example: "Climate change and health research examines both direct and indirect impacts on human well-being." },
+    { word: "health in all policies", translation: "la santé dans toutes les politiques", example: "Health in all policies approaches integrate health considerations across governmental sectors." },
+&nbsp;
+    // Méthodes épidémiologiques et recherche (50 mots)
+    { word: "epidemiological study", translation: "étude épidémiologique", example: "The epidemiological study examined associations between exposures and health outcomes in the population." },
+    { word: "descriptive epidemiology", translation: "épidémiologie descriptive", example: "Descriptive epidemiology characterizes disease distribution by person, place, and time." },
+    { word: "analytical epidemiology", translation: "épidémiologie analytique", example: "Analytical epidemiology investigates causal factors through comparisons between groups." },
+    { word: "experimental epidemiology", translation: "épidémiologie expérimentale", example: "Experimental epidemiology tests interventions through controlled trials within populations." },
+&nbsp;
+    { word: "case definition", translation: "définition de cas", example: "A standardized case definition ensures consistent patient classification during outbreak investigations." },
+    { word: "incidence", translation: "incidence", example: "Incidence measures the rate of new cases in a population during a specific time period." },
+&nbsp;
+    { word: "mortality rate", translation: "taux de mortalité", example: "Age-adjusted mortality rates enable fair comparisons between populations with different structures." },
+    { word: "morbidity", translation: "morbidité", example: "Morbidity statistics quantify disease burden beyond mortality measures." },
+    { word: "case-fatality rate", translation: "taux de létalité", example: "The case-fatality rate indicates the proportion of diagnosed cases resulting in death." },
+    { word: "excess mortality", translation: "surmortalité", example: "Excess mortality measures deaths beyond expected baseline during specific events like pandemics." },
+&nbsp;
+    { word: "age-adjusted rate", translation: "taux ajusté selon l'âge", example: "Age-adjusted rates control for demographic differences when comparing populations." },
+    { word: "standardized mortality ratio", translation: "ratio standardisé de mortalité", example: "The standardized mortality ratio compares observed deaths with expected deaths based on reference population rates." },
+    { word: "epidemiological transition", translation: "transition épidémiologique", example: "Epidemiological transition describes population health shifts from infectious to chronic disease predominance." },
+&nbsp;
+    { word: "ecological study", translation: "étude écologique", example: "The ecological study analyzed relationships between environmental factors and disease rates across regions." },
+&nbsp;
+    { word: "cluster randomized trial", translation: "essai randomisé en grappes", example: "The cluster randomized trial assigned entire communities rather than individuals to intervention conditions." },
+&nbsp;
+    { word: "prospective study", translation: "étude prospective", example: "The prospective study design measured exposures before outcome occurrence to establish temporal precedence." },
+    { word: "retrospective study", translation: "étude rétrospective", example: "The retrospective study examined existing records to analyze past exposure-outcome relationships." },
+&nbsp;
+    { word: "transmission dynamics", translation: "dynamique de transmission", example: "Mathematical models of transmission dynamics inform control strategy selection and implementation." },
+    { word: "basic reproduction number", translation: "taux de reproduction de base", example: "The basic reproduction number (R0) indicates the average secondary cases from one infected person in a susceptible population." },
+    { word: "effective reproduction number", translation: "taux de reproduction effectif", example: "The effective reproduction number accounts for immunity levels and control measures in ongoing outbreaks." },
+&nbsp;
+    { word: "disease cluster", translation: "agrégat de cas", example: "The investigation examined whether the disease cluster represented random chance or a common source." },
+    { word: "index case", translation: "cas index", example: "The investigation identified the index case who introduced the pathogen to the previously unaffected community." },
+    { word: "super-spreader", translation: "super-propagateur", example: "A single super-spreader event resulted in dozens of secondary transmission chains." },
+    { word: "attack rate", translation: "taux d'atteinte", example: "The attack rate measures the proportion of exposed population that develops the disease." },
+    { word: "secondary attack rate", translation: "taux d'atteinte secondaire", example: "The secondary attack rate indicates transmission efficiency within household or close contact settings." },
+&nbsp;
+    { word: "odds ratio", translation: "rapport des cotes", example: "The odds ratio approximates relative risk in case-control studies when the disease is relatively rare." },
+    { word: "absolute risk", translation: "risque absolu", example: "Absolute risk measures provide context for interpreting relative risk statistics." },
+    { word: "population attributable risk", translation: "risque attribuable dans la population", example: "Population attributable risk estimates the proportion of disease burden preventable by eliminating an exposure." },
+    { word: "confounding factor", translation: "facteur de confusion", example: "The analysis controlled for potential confounding factors including age, sex, and socioeconomic status." },
+&nbsp;
+    { word: "effect modification", translation: "modification d'effet", example: "The analysis revealed effect modification, with stronger associations in older populations." },
+    { word: "dose-response relationship", translation: "relation dose-effet", example: "The study demonstrated a dose-response relationship between exposure duration and disease risk." },
+&nbsp;
+    { word: "counterfactual framework", translation: "cadre contrefactuel", example: "Causal inference compares observed outcomes with counterfactual scenarios under different exposures." },
+&nbsp;
+    { word: "evidence synthesis", translation: "synthèse des données probantes", example: "Evidence synthesis integrated findings from diverse study designs to inform policy recommendations." },
+&nbsp;
+    // Santé publique appliquée et interventions (50 mots)
+    { word: "health intervention", translation: "intervention sanitaire", example: "Effective health interventions address multiple levels from individual to structural factors." },
+    { word: "preventive intervention", translation: "intervention préventive", example: "Preventive interventions focus on reducing risk factors before disease development." },
+    { word: "public health program", translation: "programme de santé publique", example: "The public health program combined education, policy change, and environmental modifications." },
+&nbsp;
+    { word: "behavior change communication", translation: "communication pour le changement de comportement", example: "Effective behavior change communication addresses barriers beyond information gaps." },
+    { word: "social marketing", translation: "marketing social", example: "The social marketing campaign applied commercial techniques to promote public health behaviors." },
+&nbsp;
+    { word: "intervention fidelity", translation: "fidélité d'intervention", example: "The evaluation assessed intervention fidelity—the degree of adherence to the original program design." },
+&nbsp;
+    { word: "evaluation", translation: "évaluation", example: "Comprehensive evaluation examines both implementation processes and outcome achievements." },
+&nbsp;
+    { word: "outcome evaluation", translation: "évaluation des résultats", example: "Outcome evaluation assesses whether the intervention achieved its intended effects." },
+    { word: "impact evaluation", translation: "évaluation d'impact", example: "Impact evaluation determines causal attribution between program activities and observed changes." },
+    { word: "program effectiveness", translation: "efficacité du programme", example: "Real-world program effectiveness often differs from efficacy demonstrated in controlled settings." },
+    { word: "cost-effectiveness analysis", translation: "analyse coût-efficacité", example: "Cost-effectiveness analysis compares interventions based on expenses per health outcome achieved." },
+    { word: "quality improvement", translation: "amélioration de la qualité", example: "Quality improvement uses iterative methods to enhance system performance and outcomes." },
+&nbsp;
+    { word: "policy intervention", translation: "intervention politique", example: "Policy interventions create supportive environments that facilitate healthy behaviors." },
+&nbsp;
+    { word: "regulation", translation: "réglementation", example: "Evidence-based regulations address environment, product safety, and service quality standards." },
+    { word: "fiscal intervention", translation: "intervention fiscale", example: "Fiscal interventions use taxation and subsidies to influence health-related behaviors." },
+    { word: "population screening", translation: "dépistage dans la population", example: "Population screening programs detect diseases at earlier, more treatable stages." },
+    { word: "vaccination program", translation: "programme de vaccination", example: "Successful vaccination programs require both high coverage and public confidence." },
+    { word: "immunization coverage", translation: "couverture vaccinale", example: "Immunization coverage monitoring identifies vulnerable populations needing targeted outreach." },
+    { word: "surveillance system", translation: "système de surveillance", example: "The integrated surveillance system provides real-time data across multiple health conditions." },
+    { word: "epidemic preparedness", translation: "préparation aux épidémies", example: "Epidemic preparedness requires maintained infrastructure, trained personnel, and response plans." },
+&nbsp;
+    { word: "containment strategy", translation: "stratégie de confinement", example: "The containment strategy aimed to identify and isolate cases before widespread community transmission." },
+&nbsp;
+    { word: "quarantine", translation: "quarantaine", example: "Quarantine separates exposed individuals to prevent disease transmission during the incubation period." },
+    { word: "isolation", translation: "isolement", example: "Isolation separates infected individuals from the susceptible population to reduce transmission." },
+    { word: "non-pharmaceutical intervention", translation: "intervention non pharmaceutique", example: "Non-pharmaceutical interventions include physical distancing, masks, and ventilation improvements." },
+    { word: "risk communication", translation: "communication des risques", example: "Effective risk communication provides actionable information without causing undue alarm." },
+    { word: "infodemic management", translation: "gestion de l'infodémie", example: "Infodemic management addresses misinformation that undermines public health responses." },
+&nbsp;
+    { word: "harm reduction", translation: "réduction des risques", example: "Harm reduction approaches pragmatically decrease negative consequences without requiring abstinence." },
+    { word: "health protection", translation: "protection de la santé", example: "Health protection measures safeguard populations from environmental and infectious threats." },
+    { word: "sanitation", translation: "assainissement", example: "Improved sanitation infrastructure prevents numerous infectious diseases through waste management." },
+    { word: "safe water", translation: "eau potable", example: "Access to safe water remains a fundamental public health priority globally." },
+    { word: "food safety", translation: "sécurité alimentaire", example: "Food safety systems monitor production, processing, and distribution chains for contamination risks." },
+    { word: "occupational health", translation: "santé au travail", example: "Occupational health programs address workplace hazards through engineering, administrative, and protective measures." },
+&nbsp;
+    { word: "maternal and child health", translation: "santé maternelle et infantile", example: "Maternal and child health programs provide continuum of care from pregnancy through early childhood." },
+&nbsp;
+    // Défis sanitaires mondiaux et perspectives (50 mots)
+    { word: "global health challenge", translation: "défi sanitaire mondial", example: "Antimicrobial resistance represents a critical global health challenge requiring coordinated action." },
+    { word: "emerging infectious disease", translation: "maladie infectieuse émergente", example: "Emerging infectious disease surveillance focuses on novel pathogens and changing transmission patterns." },
+&nbsp;
+    { word: "non-communicable disease epidemic", translation: "épidémie de maladies non transmissibles", example: "The global non-communicable disease epidemic requires addressing shared risk factors across conditions." },
+    { word: "chronic disease burden", translation: "fardeau des maladies chroniques", example: "Low-income countries increasingly face double burdens of infectious and chronic disease." },
+    { word: "demographic aging", translation: "vieillissement démographique", example: "Demographic aging creates new public health challenges in healthcare delivery and financing." },
+    { word: "urbanization and health", translation: "urbanisation et santé", example: "Rapid urbanization presents both opportunities and challenges for population health." },
+    { word: "health and migration", translation: "santé et migration", example: "Health and migration policies must address both migrant needs and public health considerations." },
+    { word: "humanitarian health", translation: "santé humanitaire", example: "Humanitarian health interventions provide essential services during complex emergencies." },
+&nbsp;
+    { word: "malnutrition", translation: "malnutrition", example: "Malnutrition manifests as both undernutrition and excessive consumption of nutrient-poor foods." },
+&nbsp;
+    { word: "nutrition transition", translation: "transition nutritionnelle", example: "Nutrition transition describes population dietary shifts accompanying economic development." },
+    { word: "water insecurity", translation: "insécurité hydrique", example: "Water insecurity increasingly affects population health through multiple direct and indirect pathways." },
+&nbsp;
+    { word: "mental health burden", translation: "fardeau de la santé mentale", example: "The global mental health burden receives insufficient attention despite enormous disability impacts." },
+    { word: "substance use disorders", translation: "troubles liés à l'usage de substances", example: "Substance use disorders require integrated prevention, treatment, and harm reduction approaches." },
+    { word: "health inequalities", translation: "inégalités en santé", example: "Health inequalities between and within countries often reflect broader socioeconomic disparities." },
+    { word: "vulnerable populations", translation: "populations vulnérables", example: "Public health interventions must prioritize vulnerable populations facing disproportionate health risks." },
+    { word: "gender and health", translation: "genre et santé", example: "Gender and health analysis examines how social constructs affect exposure, care access, and outcomes." },
+    { word: "commercial determinants of health", translation: "déterminants commerciaux de la santé", example: "Commercial determinants of health include corporate activities influencing consumption patterns and regulations." },
+    { word: "political determinants of health", translation: "déterminants politiques de la santé", example: "Political determinants of health include governance structures and power distributions affecting health resources." },
+&nbsp;
+    { word: "health system resilience", translation: "résilience du système de santé", example: "Health system resilience involves absorptive, adaptive, and transformative capacities during crises." },
+    { word: "global health security", translation: "sécurité sanitaire mondiale", example: "Global health security requires coordinated surveillance, response, and preparedness capacities." },
+&nbsp;
+    { word: "implementation research", translation: "recherche sur la mise en œuvre", example: "Implementation research examines how interventions function in real-world contexts." },
+&nbsp;
+    { word: "precision public health", translation: "santé publique de précision", example: "Precision public health applies advanced analytics to tailor interventions for specific populations." },
+    { word: "genomic epidemiology", translation: "épidémiologie génomique", example: "Genomic epidemiology uses pathogen sequencing to track transmission networks and evolution." },
+&nbsp;
+    { word: "participatory approaches", translation: "approches participatives", example: "Participatory approaches engage affected communities as active partners throughout public health processes." },
+    { word: "multisectoral action", translation: "action multisectorielle", example: "Addressing complex health challenges requires coordinated multisectoral action beyond healthcare alone." }]
+};
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

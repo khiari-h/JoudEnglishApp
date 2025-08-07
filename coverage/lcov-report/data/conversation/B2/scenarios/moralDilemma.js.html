@@ -1,0 +1,574 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/B2/scenarios/moralDilemma.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/B2/scenarios</a> moralDilemma.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/B2/scenarios/moralDilemma.js
+&nbsp;
+const moralDilemma = {
+    id: 11,
+    title: "Moral Dilemma",
+    level: "B2",
+    description: "Debate ethical questions with nuanced perspectives, weighing principles, consequences, and competing moral values.",
+    estimatedTime: "25-30 minutes",
+    vocabulary: ["ethical", "moral", "principle", "consequence", "dilemma", "values", "integrity", "justified", "responsibility", "perspective", "obligation", "rights", "duty", "autonomy", "virtue"],
+    steps: [
+      {
+        id: 1,
+        botMessage: "You've discovered that a colleague has been exaggerating sales figures in their reports to management. The inaccuracies are significant but not enormous. You're concerned, but this person has also confided in you that they're supporting their seriously ill parent and can't afford to lose their job. How would you approach this ethical dilemma?",
+        inputMode: "freeText",
+        suggestions: [
+          "This situation presents a conflict between honesty and professional integrity on one hand, and compassion for my colleague's difficult personal circumstances on the other. While I understand their motivation, falsifying company data violates basic ethical principles and could have serious consequences for the business, other employees, and eventually for my colleague themselves. I would approach them privately first, express my concerns, and encourage them to correct the reports voluntarily. I would also help them explore alternative solutions to their financial challenges, such as company assistance programs or legal financial aid options for family medical care.",
+          "I see this as a dilemma between truth and loyalty. While I value honesty and recognize that inaccurate reporting undermines business integrity, I also feel compassion for my colleague's situation. I would first speak directly with them, acknowledging their difficult circumstances while explaining that falsifying reports could ultimately lead to worse consequences if discovered by others. I would offer to help them find resources for their parent's care and suggest they proactively correct the reports, framing it to management as an accounting error rather than deliberate deception.",
+          "This situation involves balancing competing ethical principles: truthfulness in professional conduct versus compassion and care for someone in difficult circumstances. I would approach my colleague privately and express both my concern about the inaccuracies and my understanding of their challenging situation. I would point out that continuing this practice puts them at greater risk long-term, and suggest we work together to find alternatives—perhaps speaking confidentially with HR about hardship assistance or family leave options. I believe this approach respects both the importance of honesty and the colleague's dignity."
+        ],
+        hints: "Identify the ethical principles in conflict and suggest a nuanced approach that considers multiple perspectives.",
+        expectedKeywords: ["dilemma", "ethical", "conflict", "honesty", "integrity", "compassion", "consequences", "approach", "balance", "principles", "alternatives", "situation"],
+        feedback: {
+          correct: "You've thoughtfully identified the competing values and suggested a balanced approach. What specific consequences might result from different ways of handling this situation?",
+          partial: "You've touched on some ethical aspects. Could you more clearly identify the competing principles and develop a more nuanced approach?",
+          incorrect: "Please identify the ethical principles in conflict in this situation and suggest an approach that considers both the professional integrity concerns and the colleague's personal circumstances."
+        }
+      },
+      {
+        id: 2,
+        botMessage: "What potential consequences might result from different approaches to this situation, both for the individuals involved and for the organization?",
+        inputMode: "hybrid",
+        suggestions: [
+          "If I report the situation immediately, the consequences could include: my colleague losing their job when they're most vulnerable; damage to workplace trust and relationships; but also proper accountability and correction of misleading business data. If I remain silent, the short-term consequence might be protecting my colleague's livelihood, but longer-term risks include: the deception potentially growing larger; enabling unethical behavior that could harm the company's decision-making; personal liability if I'm seen as complicit; and undermining the culture of integrity. A balanced approach of private intervention might result in: preserving the colleague's dignity; giving them an opportunity to correct the situation themselves; maintaining workplace relationships; while still eventually ensuring accurate business reporting and potentially connecting them with legitimate support resources.",
+          "Different approaches would yield varied consequences. Immediate reporting to management would ensure business integrity and accurate decision-making, but could devastate my colleague financially and emotionally during their family crisis, potentially creating a hostile atmosphere among other team members who may see it as callous. Ignoring the situation protects my colleague temporarily but enables potentially escalating dishonesty, makes me complicit in unethical behavior, and could eventually lead to more serious repercussions for everyone if the deception expands or is discovered. The middle-ground approach of speaking directly with my colleague acknowledges their humanity while upholding ethical standards, though it carries the uncertainty of whether they will respond constructively to this intervention.",
+          "The consequences vary significantly based on approach. Immediately escalating to management upholds professional standards but could have severe humanitarian consequences for both my colleague and their ill parent, while creating a workplace culture of fear rather than ethical understanding. Saying nothing avoids immediate conflict but tacitly endorses dishonesty, potentially enabling increasingly serious ethical violations that could eventually harm customers, investors, and the company's reputation, while making me ethically complicit. A graduated approach—starting with a private conversation, followed by supporting my colleague in finding alternatives, and only escalating if necessary—balances immediate compassion with ethical principles. This approach has the potential consequence of helping my colleague develop greater ethical awareness while addressing their legitimate needs through proper channels."
+        ],
+        hints: "Analyze consequences of different approaches, considering ethical, professional, and personal dimensions.",
+        expectedKeywords: ["consequences", "reporting", "ignoring", "balanced approach", "short-term", "long-term", "risking", "trust", "integrity", "relationships", "reputation", "ethical"],
+        acceptablePhrases: [
+          "if I report",
+          "if I remain silent",
+          "balanced approach",
+          "consequences include",
+          "could result in",
+          "risks include",
+          "long-term"
+        ],
+        feedback: {
+          correct: "You've thoroughly analyzed the consequences of different approaches. How might cultural factors or different ethical frameworks influence how someone views this dilemma?",
+          partial: "You've identified some consequences. Could you develop a more comprehensive analysis of how different approaches would affect both individuals and the organization?",
+          incorrect: "Please analyze the potential consequences of different approaches to this situation, considering impacts on the individual, yourself, and the organization."
+        }
+      },
+      {
+        id: 3,
+        botMessage: "How might different ethical frameworks or cultural perspectives lead to different approaches to this dilemma?",
+        inputMode: "freeText",
+        suggestions: [
+          "Different ethical frameworks would indeed suggest varying approaches. A utilitarian perspective might weigh the total harm caused by each option, potentially favoring protecting the colleague if their family hardship outweighs the harm of the reporting inaccuracies. A deontological or Kantian approach would emphasize the universal principle of honesty, suggesting that falsifying reports is inherently wrong regardless of circumstances. Virtue ethics might focus on what a person of good character would do, balancing honesty with compassion. Cultural perspectives also influence ethical reasoning—collectivist cultures might prioritize group harmony and the colleague's family needs, while individualist cultures might emphasize personal responsibility and organizational rules. Religious frameworks might emphasize mercy and forgiveness while still requiring truth and restitution. These diverse perspectives explain why reasonable people might disagree about the right approach, highlighting the importance of moral reasoning that considers multiple ethical dimensions rather than applying simplistic rules.",
+          "Ethical frameworks provide different lenses for this dilemma. A consequentialist would focus primarily on which approach produces the best overall outcome for all stakeholders, potentially justifying temporary silence if the colleague's situation is truly desperate and the reporting issues relatively minor. A principled deontological approach would emphasize the categorical imperative to be truthful, viewing the falsification as wrong regardless of circumstances. Care ethics would prioritize the relationships involved and the vulnerability of the colleague, perhaps favoring a supportive intervention approach. Cultural differences also significantly impact ethical reasoning—some cultures prioritize family obligations above almost all else, potentially viewing the colleague's actions as justified by filial responsibility, while others might emphasize professional duties and transparent business practices as paramount. A justice perspective would consider what's fair to all parties, including other employees who report honestly despite their own hardships.",
+          "Various ethical traditions suggest different resolutions. A rights-based approach would consider both the organization's right to accurate information and the colleague's right to dignified treatment. A communitarian perspective might examine obligations to the broader community, including how falsified reports affect other stakeholders. Professional ethics specifically emphasizes obligations within one's occupational role—the duty to maintain data integrity in business contexts. Cultural factors significantly influence these considerations: in some societies, family obligation might be seen as the highest moral duty, potentially justifying actions taken to protect family members, while in others, adherence to abstract principles like truthfulness might take precedence regardless of circumstances. Religious traditions often grapple with balancing justice and mercy—acknowledging wrongdoing while creating paths for redemption. Finally, contextual ethics would examine the specific power dynamics, noting that organizational policies that lack compassion for employees in crisis might themselves raise ethical concerns."
+        ],
+        hints: "Analyze how different ethical frameworks and cultural perspectives would approach this dilemma.",
+        expectedKeywords: ["utilitarian", "deontological", "virtue ethics", "consequentialist", "principles", "cultural", "religious", "justice", "rights", "care", "collectivist", "individualist", "perspectives"],
+        feedback: {
+          correct: "You've provided a sophisticated analysis of how different ethical frameworks and cultural perspectives might approach this situation. If you were in a position of authority, what policy or systemic response might help prevent similar dilemmas?",
+          partial: "You've mentioned some ethical perspectives. Could you develop a more thorough analysis of how different ethical frameworks and cultural values would approach this situation?",
+          incorrect: "Please explain how different ethical frameworks (such as utilitarian, deontological, virtue ethics) and cultural perspectives might lead to different approaches to this dilemma."
+        }
+      },
+      {
+        id: 4,
+        botMessage: "If you were in a leadership position at this organization, what policies or systemic changes might you implement to reduce the likelihood of such ethical dilemmas arising?",
+        inputMode: "hybrid",
+        suggestions: [
+          "I would implement several interconnected policies. First, I'd establish a robust employee assistance program providing financial support, paid family leave, and counseling services for employees facing personal crises—addressing the underlying needs that drove the desperate behavior. Second, I'd create transparent sales reporting systems with multiple verification points rather than relying on individual self-reporting. Third, I'd develop an ethical climate through regular training that uses realistic scenarios to build moral reasoning skills. Fourth, I'd implement a graduated discipline policy that distinguishes between ethical lapses driven by personal hardship versus self-interest, encouraging self-reporting of mistakes. Finally, I'd establish a confidential ethics consultation service where employees could discuss dilemmas before making decisions they might regret. These systemic approaches would address both the immediate symptoms and underlying causes of ethical dilemmas.",
+          "I would address this systemically through both compassionate support and structural integrity measures. On the support side: establish emergency financial assistance programs for employees in crisis; create flexible work arrangements for those with caregiver responsibilities; and partner with community organizations providing elder care resources. On the integrity side: implement a four-eyes principle for financial and sales reporting; conduct regular, randomized audits of reports rather than waiting for red flags; and create dashboards comparing reported figures against objective metrics to quickly identify discrepancies. I would also foster psychological safety by celebrating ethical courage when employees acknowledge mistakes, while still maintaining appropriate accountability. This balanced approach addresses the institutional conditions that often create pressure for unethical choices while maintaining necessary oversight.",
+          "I would implement a multi-faceted approach addressing both human needs and organizational integrity. First, developing robust family support policies including emergency loans, expanded family leave, and healthcare advocacy services—removing the desperation that drives some unethical choices. Second, creating structural safeguards within reporting systems, such as automated cross-checks that flag statistical anomalies and regular rotation of reporting responsibilities. Third, building a transparent organization where key metrics and their verification processes are visible to teams, reducing the perception that reporting manipulations go unnoticed. Fourth, establishing proportional response protocols for ethical violations that consider context and intent while still ensuring accountability and correction. And finally, implementing regular ethical decision-making workshops using realistic scenarios to develop employees' moral reasoning skills before they face real dilemmas. This comprehensive approach balances compassion with integrity."
+        ],
+        hints: "Propose specific policies and systemic changes that address both the immediate ethical issue and underlying causes.",
+        expectedKeywords: ["policy", "implement", "assistance", "support", "verification", "transparency", "training", "culture", "reporting", "systems", "accountability", "ethical climate"],
+        acceptablePhrases: [
+          "I would implement",
+          "establish a",
+          "create a",
+          "develop a",
+          "policies including",
+          "support systems",
+          "verification processes",
+          "ethical training"
+        ],
+        feedback: {
+          correct: "You've proposed thoughtful systemic solutions that address both immediate issues and root causes. How might you respond if someone challenged your approach as either too lenient or too rigid?",
+          partial: "You've suggested some policy approaches. Could you develop more comprehensive solutions that address both the human needs and accountability concerns?",
+          incorrect: "Please propose specific policies or systemic changes you would implement as a leader to prevent similar ethical dilemmas, addressing both employee needs and organizational integrity."
+        }
+      },
+      {
+        id: 5,
+        botMessage: "Some stakeholders believe ethical standards should be absolute, while others argue they should be flexible based on circumstances. How would you respond to criticism that your approach to this dilemma is either too rigid or too lenient?",
+        inputMode: "freeText",
+        suggestions: [
+          "I would acknowledge that this tension between absolutism and contextualism in ethics reflects a fundamental philosophical question about moral reasoning. To those who view my approach as too lenient, I would emphasize that ethical principles must be applied with an understanding of human complexity—rigid application without considering circumstances can itself become unjust when it ignores relevant moral factors like intent, necessity, or vulnerability. To those who see my approach as too rigid, I would stress that contextual flexibility must still be anchored in core principles, or it risks becoming mere rationalization for convenience. I believe the most defensible ethical reasoning acknowledges both dimensions: upholding fundamental principles like honesty and integrity while recognizing that their application requires thoughtful consideration of circumstances. This balancing approach doesn't mean ethics are arbitrary, but rather that moral wisdom requires both principled commitment and contextual judgment. In organizational settings particularly, ethical systems must be principled enough to provide clear guidance while flexible enough to accommodate human complexity.",
+          "I would respond that sophisticated ethical reasoning necessarily involves both principles and context. To critics claiming my approach is too lenient, I would point out that ethical absolutism that ignores human circumstances can become a form of moral cruelty—punishing desperate actions without addressing the conditions that created the desperation. Ethical systems exist to serve human flourishing, not to blindly apply rules regardless of consequences. To those suggesting my approach is too rigid, I would emphasize that contextual flexibility without firm principles becomes moral relativism, where any action can be justified through circumstantial reasoning. The most robust ethical approaches maintain clear principles while acknowledging that their application requires judgment informed by relevant circumstances, just as legal systems distinguish between identical actions performed under different conditions. This nuanced approach recognizes that ethical reasoning is more complex than simple rule-following, requiring both moral clarity about fundamental values and discernment about their application in complex human situations.",
+          "I would engage thoughtfully with both perspectives, as they reflect an important philosophical tension. To those arguing my approach is too flexible, I would emphasize that ethical principles derive their meaning within human contexts—justice includes both accountability and mercy, and treating vastly different situations identically can produce fundamentally unjust outcomes. Principles matter precisely because they guide us through complex situations, not because they absolve us from the responsibility of careful moral reasoning. To those viewing my approach as too rigid, I would clarify that contextual consideration doesn't mean subjective preference—not all reasons carry equal moral weight, and some principles (like truth-telling in professional contexts) establish strong presumptions that require substantial justification to override. Ethical reasoning is neither mechanical rule-application nor subjective preference, but rather a disciplined practice of applying principles within contexts. The goal isn't to split the difference between extremes, but to develop wisdom that holds both universal principles and particular circumstances in appropriate tension."
+        ],
+        hints: "Address criticism from both absolutist and contextualist perspectives, articulating a nuanced ethical position.",
+        expectedKeywords: ["balance", "principles", "context", "circumstances", "absolutism", "relativism", "judgment", "wisdom", "complexity", "nuanced", "considerations", "reasoning"],
+        feedback: {
+          correct: "You've articulated a sophisticated position on ethical reasoning that addresses both absolutist and contextualist criticisms. How is this dilemma relevant to broader ethical challenges in contemporary professional environments?",
+          partial: "You've made some good points about balancing perspectives. Could you develop a more thorough response addressing both types of criticism more directly?",
+          incorrect: "Please respond to criticism from those who might find your approach either too rigid (absolutist) or too lenient (contextualist), explaining your ethical reasoning."
+        }
+      },
+      {
+        id: 6,
+        botMessage: "How does this specific ethical dilemma connect to broader ethical challenges in contemporary professional environments?",
+        inputMode: "hybrid",
+        suggestions: [
+          "This dilemma reflects several widespread ethical challenges in modern workplaces. First, it highlights the growing tension between data-driven performance metrics and human realities—as organizations increasingly manage by numbers, the pressure to manipulate those numbers intensifies, especially when compensation and job security depend on them. Second, it illustrates how inadequate social safety nets often create impossible choices for employees, forcing them to choose between professional integrity and family care obligations when systems fail to provide sufficient support. Third, it demonstrates the ethical complexity faced by bystanders or witnesses to questionable behavior, raising questions about collective responsibility in organizational contexts. Finally, it connects to broader questions about organizational justice—whether rules are applied consistently across hierarchical levels, as employees often observe far more serious ethical compromises at leadership levels going unaddressed. These systemic patterns suggest that individual ethical dilemmas like this one aren't merely personal moral failures, but symptoms of structural tensions in contemporary work environments that require systemic rather than merely individual solutions.",
+          "This scenario exemplifies several critical ethical challenges facing today's professionals. It illustrates the increasing conflict between organizational demands for continuous performance improvement and the messy reality of human lives with their inevitable crises and limitations. In many industries, aggressive growth targets create implicit pressure to bend rules, while simultaneously organizations emphasize compliance and integrity—creating double binds for employees. The dilemma also highlights how economic insecurity and inadequate healthcare systems create ethical vulnerabilities when people face impossible choices between family obligations and professional integrity. Additionally, it demonstrates the erosion of boundaries between personal and professional life, as employees' personal hardships increasingly affect workplace decisions. Finally, it reflects the ethical complexity of collegial relationships in modern workplaces, where professional obligations and human solidarity sometimes conflict. These tensions aren't merely individual moral challenges but reflect broader systemic issues requiring both personal ethical development and institutional reforms.",
+          "This dilemma encapsulates several significant ethical tensions in contemporary work environments. It reflects the growing conflict between the quantification of performance through metrics and the human elements of work, creating pressure to 'game the system' when numbers become paramount. It highlights how financial precarity and inadequate social safety nets transform professional environments into sites of moral compromise when personal crises emerge. It demonstrates the challenges of maintaining community and care within competitive organizational cultures, where reporting a colleague's violation might be professionally rewarded but socially punished. It raises questions about disparities in ethical standards across organizational hierarchies, as rank-and-file employees often observe different standards applied to leadership behaviors. And it illuminates the increasingly blurred boundaries between work and personal life, as family caregiving responsibilities collide with professional obligations. These patterns suggest that creating ethical workplaces requires addressing not just individual moral reasoning but the systemic conditions that repeatedly generate similar dilemmas across organizations."
+        ],
+        hints: "Connect this specific dilemma to broader ethical patterns and challenges in contemporary workplaces.",
+        expectedKeywords: ["performance metrics", "pressure", "social safety", "family obligations", "workplace culture", "integrity", "systemic", "tensions", "contemporary", "challenges", "professional", "environments"],
+        acceptablePhrases: [
+          "reflects broader",
+          "highlights the tension",
+          "illustrates how",
+          "demonstrates the",
+          "connects to",
+          "exemplifies",
+          "contemporary workplaces",
+          "modern organizations"
+        ],
+        feedback: {
+          correct: "You've insightfully connected this specific dilemma to broader ethical patterns and tensions in contemporary work environments. Your analysis throughout this discussion demonstrates sophisticated ethical reasoning.",
+          partial: "You've made some connections to broader workplace issues. Could you more thoroughly analyze how this specific case reflects wider ethical patterns in contemporary professional environments?",
+          incorrect: "Please explain how this particular ethical dilemma connects to broader patterns and challenges in contemporary professional environments."
+        }
+      }
+    ],
+    completionMessage: "Excellent work! You've demonstrated sophisticated ethical reasoning abilities, analyzing a complex moral dilemma from multiple perspectives, considering various ethical frameworks, and connecting individual dilemmas to broader systemic issues. These skills in ethical analysis and articulation are valuable in professional, civic, and personal contexts.",
+    learningObjectives: [
+      "Analyze ethical dilemmas from multiple perspectives",
+      "Evaluate potential consequences of different ethical choices",
+      "Apply different ethical frameworks to moral questions",
+      "Consider cultural influences on ethical reasoning",
+      "Develop systemic approaches to recurring ethical challenges",
+      "Articulate nuanced ethical positions balancing principles and context"
+    ],
+    grammar: {
+      points: [
+        "Complex sentences with multiple subordinate clauses",
+        "Conditional structures for hypothetical scenarios",
+        "Concessive clauses with 'while' and 'although'",
+        "Evaluative and hedging language",
+        "Comparative structures for weighing alternatives"
+      ]
+    }
+  };
+&nbsp;
+  export default moralDilemma;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

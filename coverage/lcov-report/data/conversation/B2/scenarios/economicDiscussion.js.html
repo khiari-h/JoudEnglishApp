@@ -1,0 +1,628 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/conversation/B2/scenarios/economicDiscussion.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/conversation/B2/scenarios</a> economicDiscussion.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// chatbot/B2/scenarios/economicDiscussion.js
+&nbsp;
+const economicDiscussion = {
+    id: 10,
+    title: "Economic Discussion",
+    level: "B2",
+    description: "Analyze and discuss economic situations, trends, and policies using appropriate terminology and supporting evidence.",
+    estimatedTime: "25-30 minutes",
+    vocabulary: ["inflation", "recession", "monetary policy", "fiscal stimulus", "interest rates", "economic growth", "unemployment", "deficit", "productivity", "market trends", "consumer confidence", "economic indicators", "supply chain", "trade balance", "currency valuation"],
+    steps: [
+      {
+        id: 1,
+        botMessage: "Recent economic data shows rising inflation alongside slowing growth in our economy. How would you interpret this situation?",
+        inputMode: "freeText",
+        suggestions: [
+          "This combination of rising inflation and slowing growth suggests we may be entering a period of stagflation. This challenging economic environment is likely driven by supply chain disruptions limiting production capacity while demand remains relatively strong, pushing prices upward despite the growth slowdown.",
+          "The data indicates potential economic trouble ahead. Rising inflation typically erodes purchasing power, while slowing growth signals weakening economic fundamentals. This combination may be caused by external supply shocks, such as energy price increases or logistical bottlenecks, rather than by excessive demand, making it particularly challenging for policymakers.",
+          "These indicators point to an economy in transition. The inflation could be resulting from pandemic-related supply constraints not keeping pace with recovering demand, while the slowing growth may reflect diminishing effects of earlier fiscal stimulus measures. This situation presents difficult tradeoffs for central banks, as traditional anti-inflation measures could further dampen growth."
+        ],
+        hints: "Analyze the economic situation using appropriate terminology and potential causes.",
+        expectedKeywords: ["inflation", "growth", "stagflation", "supply", "demand", "purchasing power", "policy", "indicators", "economy", "prices", "constraints", "factors"],
+        feedback: {
+          correct: "That's a thoughtful analysis of the situation. What economic policies might be appropriate to address these challenges?",
+          partial: "You've touched on some relevant aspects. Could you expand your analysis with more economic terminology and potential causes?",
+          incorrect: "Please provide a more detailed analysis of the economic situation described, using appropriate economic terminology."
+        }
+      },
+      {
+        id: 2,
+        botMessage: "What economic policies would you recommend to address this combination of inflation and slowing growth?",
+        inputMode: "hybrid",
+        suggestions: [
+          "Policymakers face a difficult balancing act. I would recommend targeted fiscal measures to address specific supply bottlenecks, rather than broad stimulus that could worsen inflation. Simultaneously, the central bank should take a measured approach to monetary tightening—raising rates gradually to control inflation expectations while avoiding a severe growth contraction. Structural reforms to improve productivity and supply-side capacity would also be crucial for longer-term economic health.",
+          "In this challenging scenario, conventional tools present tradeoffs. A mixed approach might be most effective: selective infrastructure investments to alleviate supply constraints; tax incentives for productivity-enhancing investments; and careful monetary policy that signals commitment to price stability while avoiding aggressive tightening that could trigger recession. Additionally, clear communication about the temporary nature of some inflationary factors could help anchor inflation expectations.",
+          "The situation calls for nuanced policy responses. On the fiscal side, I'd recommend redirecting spending from general demand stimulus toward targeted investments in supply-chain resilience and workforce development. For monetary policy, a data-dependent approach that balances inflation concerns with growth support would be prudent. The central bank might need to tolerate slightly above-target inflation temporarily if it appears supply constraints will ease as global conditions normalize."
+        ],
+        hints: "Recommend specific fiscal and monetary policies with appropriate rationales.",
+        expectedKeywords: ["fiscal", "monetary", "policy", "central bank", "interest rates", "stimulus", "supply", "inflation expectations", "targeted", "balance", "investments", "productivity"],
+        acceptablePhrases: [
+          "I would recommend",
+          "central bank should",
+          "fiscal measures",
+          "monetary policy",
+          "interest rates",
+          "balance",
+          "infrastructure investments",
+          "productivity"
+        ],
+        feedback: {
+          correct: "You've provided well-reasoned policy recommendations. What economic indicators would you monitor to evaluate whether these policies are effective?",
+          partial: "You've suggested some policy directions. Could you be more specific about both fiscal and monetary recommendations and their rationales?",
+          incorrect: "Please recommend specific economic policies to address the situation, explaining your rationale in economic terms."
+        }
+      },
+      {
+        id: 3,
+        botMessage: "What key economic indicators would you monitor to evaluate whether your proposed policies are working effectively?",
+        inputMode: "freeText",
+        suggestions: [
+          "I would monitor several categories of indicators. For inflation: core CPI to track underlying inflation trends excluding volatile food and energy; PPI as a leading indicator of future consumer price pressures; and inflation expectations surveys to gauge whether expectations remain anchored. For growth: real GDP growth rates; industrial production indices to measure output; and capacity utilization to assess supply constraints. Additionally, labor market metrics such as unemployment rates, labor force participation, and wage growth would help evaluate overall economic health and potential wage-price spirals.",
+          "To evaluate policy effectiveness, I would track inflation measures like the PCE price index (preferred by the Fed) and its core version, along with consumer inflation expectations which influence future price-setting. For growth assessment, beyond headline GDP figures, I'd examine forward-looking indicators like purchasing managers' indices (PMIs) and new orders components. Supply chain healing could be monitored through supplier delivery times, inventory-to-sales ratios, and shipping costs. Finally, I'd watch credit conditions and business investment to gauge monetary policy impacts.",
+          "I would establish a dashboard of key indicators across multiple dimensions. On prices: core inflation rates, producer price indices, and import price trends to distinguish between domestic and external inflation drivers. On economic activity: GDP growth components to identify where slowdowns are concentrated, retail sales for consumption trends, and manufacturing output. On market signals: yield curve shapes to assess growth expectations, credit spreads for financial stress, and consumer confidence indices. Finally, sector-specific indicators for areas with supply bottlenecks would help track resolution of constraints."
+        ],
+        hints: "Identify specific economic indicators across different categories and explain their relevance.",
+        expectedKeywords: ["inflation", "GDP", "unemployment", "indicators", "consumer confidence", "production", "monitor", "measure", "core", "index", "growth", "rate", "prices"],
+        feedback: {
+          correct: "You've identified appropriate indicators to monitor across multiple economic dimensions. How might global economic factors influence this domestic situation?",
+          partial: "You've mentioned some relevant indicators. Could you provide a more comprehensive set covering different aspects of the economy with specific explanation of their relevance?",
+          incorrect: "Please specify several economic indicators you would monitor to evaluate policy effectiveness, explaining why each would be informative."
+        }
+      },
+      {
+        id: 4,
+        botMessage: "How might international economic factors be influencing the inflation and growth situation in our economy?",
+        inputMode: "hybrid",
+        suggestions: [
+          "International factors likely play a significant role in our economic situation. Global supply chain disruptions following the pandemic have created persistent bottlenecks in key sectors. Meanwhile, commodity prices, particularly energy and agricultural goods, are determined in global markets and have risen sharply due to geopolitical tensions and extreme weather events. Additionally, divergent monetary policies among major economies affect currency valuations, potentially leading to imported inflation if our currency depreciates. Finally, weakening growth in major trading partners could reduce export demand, contributing to our growth slowdown.",
+          "The domestic economic picture is substantially shaped by global factors. Energy price shocks originating from international markets are feeding into production costs across sectors. Simultaneously, worldwide shipping constraints and port congestion have extended delivery times and increased logistics costs. Labor shortages in many developed economies have pushed wages upward internationally. On the financial side, global investors' reactions to monetary tightening by major central banks impact our bond yields and capital flows, affecting domestic credit conditions and investment. These external pressures complicate domestic policy responses.",
+          "Our inflation and growth challenges have strong international dimensions. The post-pandemic global recovery created synchronized demand surges when production capacity remained constrained, driving worldwide inflationary pressures. Trade patterns have shifted as countries prioritize resilience over efficiency, raising costs. Currency fluctuations resulting from changing interest rate differentials between major economies influence imported goods prices and export competitiveness. Furthermore, varying vaccination rates and pandemic management approaches across countries have created asymmetric recovery paths, disrupting established supply relationships and contributing to input shortages in global production networks."
+        ],
+        hints: "Analyze how global economic factors could impact domestic inflation and growth.",
+        expectedKeywords: ["global", "international", "supply chain", "commodity prices", "currency", "exchange rates", "trade", "imports", "exports", "energy", "foreign", "worldwide"],
+        acceptablePhrases: [
+          "international factors",
+          "global supply chain",
+          "commodity prices",
+          "energy prices",
+          "currency valuations",
+          "imported inflation",
+          "trading partners",
+          "worldwide shipping"
+        ],
+        feedback: {
+          correct: "You've provided a comprehensive analysis of international factors. How might different demographic groups be affected differently by this economic situation?",
+          partial: "You've identified some international factors. Could you develop a more complete analysis of how global economic conditions impact domestic inflation and growth?",
+          incorrect: "Please explain how international economic factors might be influencing our domestic inflation and growth situation."
+        }
+      },
+      {
+        id: 5,
+        botMessage: "How would this economic situation of high inflation and slowing growth likely affect different socioeconomic groups differently?",
+        inputMode: "freeText",
+        suggestions: [
+          "This economic environment would likely exacerbate existing inequalities. Lower-income households would be disproportionately affected by inflation since they spend higher percentages of their budgets on necessities like food, energy, and housing—categories experiencing particularly high inflation. They also typically have fewer savings to buffer against rising prices and less bargaining power to secure wage increases that keep pace with inflation. Meanwhile, slowing growth often impacts employment opportunities for vulnerable workers first, including those with less education, younger workers, and minorities. In contrast, wealthier households may be relatively insulated, as they often have more diverse income sources, greater savings, and assets like real estate that can appreciate during inflationary periods.",
+          "The combination of inflation and slowing growth creates divergent impacts across socioeconomic groups. Working-class families face a double burden: essential expenses consuming larger portions of their budgets while job security potentially weakens. Fixed-income retirees see their purchasing power steadily erode if their pensions or annuities lack robust inflation adjustments. Middle-class homeowners face mixed effects: higher mortgage costs if rates rise, but potential appreciation of their primary asset. Business owners experience margin pressures from rising input costs and potentially decreasing consumer spending power. Higher-income professionals with specialized skills may maintain negotiating leverage for inflation-matching compensation, while those with substantial financial assets might reposition investments to inflation-resistant categories.",
+          "This stagflationary environment would create uneven distributional effects. Economically vulnerable groups—including low-wage workers, rural communities, and those without college education—would face heightened challenges as inflation erodes purchasing power while job markets tighten. The urban middle class would experience financial strain through rising housing costs and potentially reduced career advancement opportunities in a slowing economy. Small business owners would struggle with the dual pressure of rising input costs and customers' reduced purchasing power. Meanwhile, certain asset owners might benefit if investments in commodities, real estate, or inflation-protected securities outperform, potentially widening wealth disparities. Historically, these economic conditions have increased income inequality and reduced economic mobility."
+        ],
+        hints: "Analyze differential impacts across socioeconomic groups with specific examples.",
+        expectedKeywords: ["lower-income", "middle-class", "wealthy", "inequality", "disproportionate", "purchasing power", "necessities", "assets", "savings", "vulnerable", "fixed-income", "employment"],
+        feedback: {
+          correct: "You've provided an insightful analysis of distributional effects. What historical examples might provide lessons for addressing our current economic challenges?",
+          partial: "You've identified some differential impacts. Could you provide more specific analysis of how various socioeconomic groups would be affected differently?",
+          incorrect: "Please explain how inflation combined with slowing growth would impact different socioeconomic groups in different ways."
+        }
+      },
+      {
+        id: 6,
+        botMessage: "Can you discuss a historical example of similar economic conditions and what lessons it might offer for our current situation?",
+        inputMode: "hybrid",
+        suggestions: [
+          "The stagflation of the 1970s provides relevant historical parallels. Like today, it featured supply shocks (oil crises) combined with monetary factors. Key lessons include: first, the danger of letting inflation expectations become unanchored—once embedded in wage-price spirals, inflation became much more costly to tame; second, the importance of credible monetary policy—Paul Volcker's decisive but painful rate hikes eventually succeeded where earlier stop-go policies failed; third, the need to address supply-side constraints rather than solely focusing on demand management; and finally, the recognition that structural economic transitions (then from manufacturing, now perhaps from pandemic disruptions) require targeted support for affected industries and workers rather than general stimulus.",
+          "The economic situation in the early 1980s offers instructive parallels. Following the second oil shock of 1979, many economies faced double-digit inflation alongside rising unemployment. The policy response—particularly in the US under Fed Chairman Volcker—prioritized inflation control through steep interest rate increases, which successfully broke inflation expectations but triggered a severe recession. The key lessons are nuanced: while controlling inflation expectations is crucial, today's policymakers might consider more graduated approaches given improvements in central bank credibility and communication tools. Additionally, the 1980s experience highlights the importance of coordinating monetary and fiscal policies rather than working at cross-purposes, and suggests that structural reforms addressing supply constraints can reduce the growth sacrifice needed to control inflation.",
+          "Japan's experience with its economic bubble collapse in the early 1990s and subsequent decades of stagnation offers cautionary lessons. Though Japan's initial problem was deflation rather than inflation, it demonstrates how policy hesitancy and uncoordinated responses can prolong economic difficulties. Japanese authorities initially underestimated structural problems in the financial system and relied too heavily on fiscal stimulus without addressing underlying productivity challenges. For our current situation, this suggests the importance of promptly addressing financial vulnerabilities that might be exposed by tightening monetary conditions, ensuring transparent assessment of balance sheet risks, and implementing structural reforms alongside macroeconomic policies. Japan's experience also highlights demographic challenges as a potential constraint on growth—a factor increasingly relevant for many developed economies today."
+        ],
+        hints: "Discuss a relevant historical economic example and draw specific applicable lessons.",
+        expectedKeywords: ["stagflation", "1970s", "oil crisis", "Volcker", "inflation expectations", "monetary policy", "historical", "recession", "parallel", "lessons", "policy response"],
+        acceptablePhrases: [
+          "stagflation of the 1970s",
+          "oil shocks",
+          "Paul Volcker",
+          "inflation expectations",
+          "policy response",
+          "historical parallel",
+          "Japan's experience",
+          "early 1980s"
+        ],
+        feedback: {
+          correct: "You've drawn apt historical comparisons with thoughtful lessons for current policy. Finally, how might long-term structural economic trends factor into this situation?",
+          partial: "You've mentioned a historical example. Could you develop more specific lessons applicable to our current economic challenges?",
+          incorrect: "Please discuss a specific historical example of similar economic conditions and explain what lessons it might offer for addressing our current situation."
+        }
+      },
+      {
+        id: 7,
+        botMessage: "Beyond immediate policy responses, how might longer-term structural economic trends influence our approach to these challenges?",
+        inputMode: "freeText",
+        suggestions: [
+          "Several structural trends require consideration in our economic strategy. Demographic aging in many advanced economies reduces labor force growth and may constrain potential output, suggesting we need productivity-enhancing investments rather than just demand management. Technological change, particularly automation and artificial intelligence, may increase productivity but could exacerbate inequality without complementary education and labor market policies. Climate change adaptation and the energy transition create both economic risks and opportunities, potentially affecting inflation through carbon pricing and stranded asset effects. Finally, evolving patterns of globalization, with greater emphasis on supply chain resilience over pure efficiency, may structurally increase certain costs. These trends suggest that alongside cyclical policies, we need longer-term strategies focusing on innovation capacity, workforce development, sustainable infrastructure, and inclusive growth frameworks.",
+          "Long-term structural trends should significantly inform our policy approaches. The accelerating digital transformation of the economy creates productivity opportunities but requires substantial investment in human capital and digital infrastructure to be broadly beneficial. Simultaneously, demographic trends in many developed economies point toward persistent labor market tightness as workforces shrink relative to total populations, potentially maintaining upward wage pressure. The climate transition necessitates massive capital reallocation toward sustainable technologies and infrastructure, likely creating sectoral inflation pressures during the adjustment period. Additionally, the partial reversal of hyperglobalization may permanently increase production costs as supply chains prioritize resilience over minimal cost. These structural factors suggest that alongside short-term stabilization policies, we need comprehensive strategies addressing skills development, sustainable investment frameworks, and inclusive innovation systems to achieve stable, non-inflationary growth in this changing environment.",
+          "Several fundamental structural shifts warrant consideration alongside cyclical policies. First, the reconfiguration of global supply chains following pandemic and geopolitical disruptions represents a potential regime change in how businesses approach operational efficiency versus resilience, with implications for price formation and investment patterns. Second, accelerating digital transformation creates both deflationary forces through efficiency gains and inflationary pressures through market concentration and the need for new infrastructure. Third, the clean energy transition involves substantial adjustment costs before potential efficiency benefits materialize. Fourth, demographic aging in advanced economies affects everything from labor markets to consumption patterns and healthcare costs. These structural factors suggest that beyond traditional demand management tools, we need forward-looking policies supporting adaptation capacity, including education reform, infrastructure modernization, research investment, and regulatory frameworks that facilitate rather than impede necessary economic transitions."
+        ],
+        hints: "Analyze how long-term structural trends might affect economic policy approaches.",
+        expectedKeywords: ["demographic", "aging", "technological", "automation", "digital", "climate change", "globalization", "structural", "long-term", "productivity", "inequality", "sustainability", "transition"],
+        feedback: {
+          correct: "Your analysis effectively integrates long-term structural trends with current economic challenges. You've demonstrated strong economic analysis skills throughout this discussion.",
+          partial: "You've identified some structural trends. Could you more clearly explain how they should influence our policy approaches to current challenges?",
+          incorrect: "Please analyze how long-term structural economic trends might influence our approach to addressing the current inflation and growth challenges."
+        }
+      }
+    ],
+    completionMessage: "Excellent work! You've demonstrated sophisticated economic analysis skills and the ability to discuss complex economic situations using appropriate terminology. Your analysis of policy options, economic indicators, distributional effects, historical parallels, and structural trends shows strong economic reasoning abilities.",
+    learningObjectives: [
+      "Analyze economic situations using appropriate terminology",
+      "Evaluate economic policy options and their implications",
+      "Identify relevant economic indicators for different scenarios",
+      "Assess differential impacts across socioeconomic groups",
+      "Draw lessons from historical economic examples",
+      "Connect short-term economic challenges to longer-term structural trends"
+    ],
+    grammar: {
+      points: [
+        "Complex sentences with multiple subordinate clauses",
+        "Conditional structures for policy recommendations",
+        "Cause and effect relationships",
+        "Comparative and superlative forms",
+        "Academic register and specialized vocabulary"
+      ]
+    }
+  };
+&nbsp;
+  export default economicDiscussion;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-06T20:36:52.697Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    
