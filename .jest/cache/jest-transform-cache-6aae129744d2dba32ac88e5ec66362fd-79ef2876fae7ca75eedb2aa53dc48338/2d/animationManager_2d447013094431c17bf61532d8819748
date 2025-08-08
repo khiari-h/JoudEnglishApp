@@ -1,0 +1,83 @@
+af3d3103b75054f049b34930936248a2
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.startScreenTransition = exports.finishScreenTransition = void 0;
+var _ConfigHelper = require("../ConfigHelper.js");
+var _styleUpdater = require("./styleUpdater.js");
+var _swipeSimulator = require("./swipeSimulator.js");
+(0, _ConfigHelper.configureProps)();
+var _worklet_9547009467426_init_data = {
+  code: "function startScreenTransition_animationManagerJs1(screenTransitionConfig){const{applyStyle}=this.__closure;const{stackTag:stackTag,sharedEvent:sharedEvent}=screenTransitionConfig;sharedEvent.addListener(stackTag,function(){applyStyle(screenTransitionConfig,sharedEvent.value);});}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\screenTransition\\animationManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"startScreenTransition_animationManagerJs1\",\"screenTransitionConfig\",\"applyStyle\",\"__closure\",\"stackTag\",\"sharedEvent\",\"addListener\",\"value\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/screenTransition/animationManager.js\"],\"mappings\":\"AAMO,SAAAA,yCAA+BA,CAAAC,sBAAwB,QAAAC,UAAA,OAAAC,SAAA,CAG5D,KAAM,CACJC,QAAQ,CAARA,QAAQ,CACRC,WAAA,CAAAA,WACF,CAAC,CAAGJ,sBAAsB,CAC1BI,WAAW,CAACC,WAAW,CAACF,QAAQ,CAAE,UAAM,CACtCF,UAAU,CAACD,sBAAsB,CAAEI,WAAW,CAACE,KAAK,CAAC,CACvD,CAAC,CAAC,CACJ\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var startScreenTransition = exports.startScreenTransition = function () {
+  var _e = [new global.Error(), -2, -27];
+  var startScreenTransition = function startScreenTransition(screenTransitionConfig) {
+    var stackTag = screenTransitionConfig.stackTag,
+      sharedEvent = screenTransitionConfig.sharedEvent;
+    sharedEvent.addListener(stackTag, function () {
+      (0, _styleUpdater.applyStyle)(screenTransitionConfig, sharedEvent.value);
+    });
+  };
+  startScreenTransition.__closure = {
+    applyStyle: _styleUpdater.applyStyle
+  };
+  startScreenTransition.__workletHash = 9547009467426;
+  startScreenTransition.__initData = _worklet_9547009467426_init_data;
+  startScreenTransition.__stackDetails = _e;
+  return startScreenTransition;
+}();
+var _worklet_7393455879676_init_data = {
+  code: "function getLockAxis_animationManagerJs2(goBackGesture){if(['swipeRight','swipeLeft','horizontalSwipe'].includes(goBackGesture)){return'x';}else if(['swipeUp','swipeDown','verticalSwipe'].includes(goBackGesture)){return'y';}return undefined;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\screenTransition\\animationManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"getLockAxis_animationManagerJs2\",\"goBackGesture\",\"includes\",\"undefined\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/screenTransition/animationManager.js\"],\"mappings\":\"AAiBA,SAAAA,+BAAoCA,CAAAC,aAAA,EAGlC,GAAI,CAAC,YAAY,CAAE,WAAW,CAAE,iBAAiB,CAAC,CAACC,QAAQ,CAACD,aAAa,CAAC,CAAE,CAC1E,MAAO,GAAG,CACZ,CAAC,IAAM,IAAI,CAAC,SAAS,CAAE,WAAW,CAAE,eAAe,CAAC,CAACC,QAAQ,CAACD,aAAa,CAAC,CAAE,CAC5E,MAAO,GAAG,CACZ,CACA,MAAO,CAAAE,SAAS,CAClB\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var getLockAxis = function () {
+  var _e = [new global.Error(), 1, -27];
+  var getLockAxis = function getLockAxis(goBackGesture) {
+    if (['swipeRight', 'swipeLeft', 'horizontalSwipe'].includes(goBackGesture)) {
+      return 'x';
+    } else if (['swipeUp', 'swipeDown', 'verticalSwipe'].includes(goBackGesture)) {
+      return 'y';
+    }
+    return undefined;
+  };
+  getLockAxis.__closure = {};
+  getLockAxis.__workletHash = 7393455879676;
+  getLockAxis.__initData = _worklet_7393455879676_init_data;
+  getLockAxis.__stackDetails = _e;
+  return getLockAxis;
+}();
+var _worklet_362992529423_init_data = {
+  code: "function finishScreenTransition_animationManagerJs3(screenTransitionConfig){const{getLockAxis,getSwipeSimulator}=this.__closure;const{stackTag:stackTag,sharedEvent:sharedEvent,goBackGesture:goBackGesture}=screenTransitionConfig;sharedEvent.removeListener(stackTag);const lockAxis=getLockAxis(goBackGesture);const step=getSwipeSimulator(sharedEvent.value,screenTransitionConfig,lockAxis);step();}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\screenTransition\\animationManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"finishScreenTransition_animationManagerJs3\",\"screenTransitionConfig\",\"getLockAxis\",\"getSwipeSimulator\",\"__closure\",\"stackTag\",\"sharedEvent\",\"goBackGesture\",\"removeListener\",\"lockAxis\",\"step\",\"value\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/screenTransition/animationManager.js\"],\"mappings\":\"AA2BO,SAAAA,0CAAgCA,CAAAC,sBAAwB,QAAAC,WAAA,CAAAC,iBAAA,OAAAC,SAAA,CAG7D,KAAM,CACJC,QAAQ,CAARA,QAAQ,CACRC,WAAW,CAAXA,WAAW,CACXC,aAAA,CAAAA,aACF,CAAC,CAAGN,sBAAsB,CAC1BK,WAAW,CAACE,cAAc,CAACH,QAAQ,CAAC,CACpC,KAAM,CAAAI,QAAQ,CAAGP,WAAW,CAACK,aAAa,CAAC,CAC3C,KAAM,CAAAG,IAAI,CAAGP,iBAAiB,CAACG,WAAW,CAACK,KAAK,CAAEV,sBAAsB,CAAEQ,QAAQ,CAAC,CACnFC,IAAI,CAAC,CAAC,CACR\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var finishScreenTransition = exports.finishScreenTransition = function () {
+  var _e = [new global.Error(), -3, -27];
+  var finishScreenTransition = function finishScreenTransition(screenTransitionConfig) {
+    var stackTag = screenTransitionConfig.stackTag,
+      sharedEvent = screenTransitionConfig.sharedEvent,
+      goBackGesture = screenTransitionConfig.goBackGesture;
+    sharedEvent.removeListener(stackTag);
+    var lockAxis = getLockAxis(goBackGesture);
+    var step = (0, _swipeSimulator.getSwipeSimulator)(sharedEvent.value, screenTransitionConfig, lockAxis);
+    step();
+  };
+  finishScreenTransition.__closure = {
+    getLockAxis: getLockAxis,
+    getSwipeSimulator: _swipeSimulator.getSwipeSimulator
+  };
+  finishScreenTransition.__workletHash = 362992529423;
+  finishScreenTransition.__initData = _worklet_362992529423_init_data;
+  finishScreenTransition.__stackDetails = _e;
+  return finishScreenTransition;
+}();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPYmplY3QiLCJkZWZpbmVQcm9wZXJ0eSIsImV4cG9ydHMiLCJ2YWx1ZSIsInN0YXJ0U2NyZWVuVHJhbnNpdGlvbiIsImZpbmlzaFNjcmVlblRyYW5zaXRpb24iLCJfQ29uZmlnSGVscGVyIiwicmVxdWlyZSIsIl9zdHlsZVVwZGF0ZXIiLCJfc3dpcGVTaW11bGF0b3IiLCJjb25maWd1cmVQcm9wcyIsIl93b3JrbGV0Xzk1NDcwMDk0Njc0MjZfaW5pdF9kYXRhIiwiY29kZSIsImxvY2F0aW9uIiwic291cmNlTWFwIiwidmVyc2lvbiIsIl9lIiwiZ2xvYmFsIiwiRXJyb3IiLCJzY3JlZW5UcmFuc2l0aW9uQ29uZmlnIiwic3RhY2tUYWciLCJzaGFyZWRFdmVudCIsImFkZExpc3RlbmVyIiwiYXBwbHlTdHlsZSIsIl9fY2xvc3VyZSIsIl9fd29ya2xldEhhc2giLCJfX2luaXREYXRhIiwiX19zdGFja0RldGFpbHMiLCJfd29ya2xldF83MzkzNDU1ODc5Njc2X2luaXRfZGF0YSIsImdldExvY2tBeGlzIiwiZ29CYWNrR2VzdHVyZSIsImluY2x1ZGVzIiwidW5kZWZpbmVkIiwiX3dvcmtsZXRfMzYyOTkyNTI5NDIzX2luaXRfZGF0YSIsInJlbW92ZUxpc3RlbmVyIiwibG9ja0F4aXMiLCJzdGVwIiwiZ2V0U3dpcGVTaW11bGF0b3IiXSwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvc2NyZWVuVHJhbnNpdGlvbi9hbmltYXRpb25NYW5hZ2VyLnRzIl0sInNvdXJjZXNDb250ZW50IjpbbnVsbF0sIm1hcHBpbmdzIjoiQUFBQSxZQUFZOztBQUFBQSxNQUFBLENBQUFDLGNBQUEsQ0FBQUMsT0FBQTtFQUFBQyxLQUFBO0FBQUE7QUFBQUQsT0FBQSxDQUFBRSxxQkFBQSxHQUFBRixPQUFBLENBQUFHLHNCQUFBO0FBR1osSUFBQUMsYUFBQSxHQUFBQyxPQUFBO0FBQ0EsSUFBQUMsYUFBQSxHQUFBRCxPQUFBO0FBQ0EsSUFBQUUsZUFBQSxHQUFBRixPQUFBO0FBRUEsSUFBQUcs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

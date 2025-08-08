@@ -1,0 +1,96 @@
+# Test E2E - Tous les exercices
+# JoudEnglishApp - Test de tous les types d'exercices
+
+appId: com.hamdanek.JoudEnglishApp
+---
+
+# 🚀 LANCEMENT ET NAVIGATION
+- launchApp
+- waitForAnimationToEnd
+
+# Aller aux niveaux - avec plusieurs stratégies de fallback
+- tapOn:
+    id: "level-selection-button"
+    optional: true
+- tapOn: 
+    text: "Niveaux"
+    optional: true
+- tapOn:
+    text: "Sélectionner niveau"
+    optional: true
+
+# Attendre que la page des niveaux se charge
+- assertVisible: "Niveaux"
+
+# Sélectionner Niveau 1
+- tapOn:
+    id: "level-1-button"
+- waitForAnimationToEnd
+
+# Vérifier qu'on est sur la page des exercices
+- assertVisible: "Choisissez votre exercice"
+
+# 📚 TEST VOCABULAIRE
+- tapOn:
+    id: "vocabulary-button"
+- waitForAnimationToEnd
+- assertVisible: "Vocabulaire"
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# 🗣️ TEST EXPRESSIONS
+- tapOn:
+    id: "phrases-button"
+- waitForAnimationToEnd
+- assertVisible: "Expressions"
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# 📝 TEST GRAMMAIRE
+- tapOn:
+    id: "grammar-button"
+- waitForAnimationToEnd
+- assertVisible: "Grammaire"
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# 🔤 TEST ORTHOGRAPHE
+- tapOn:
+    id: "spelling-button"
+- waitForAnimationToEnd
+- assertVisible: "Orthographe"
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# 📖 TEST LECTURE
+- tapOn:
+    id: "reading-button"
+- waitForAnimationToEnd
+- assertVisible: "Lecture"
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# ⚡ TEST FAST VOCABULARY
+- tapOn:
+    id: "vocabulary_fast-button"
+- waitForAnimationToEnd
+- assertVisible: "Fast Vocabulary"
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# 🔙 RETOUR AU DASHBOARD
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# Vérifier qu'on est bien revenu au dashboard
+- assertVisible: "JoudEnglishApp"

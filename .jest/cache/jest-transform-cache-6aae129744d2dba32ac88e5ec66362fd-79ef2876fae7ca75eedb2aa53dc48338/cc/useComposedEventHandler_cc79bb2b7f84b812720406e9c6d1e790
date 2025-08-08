@@ -1,0 +1,58 @@
+0c71a3751174c0350e1565151df3980d
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useComposedEventHandler = useComposedEventHandler;
+var _useEvent = require("./useEvent.js");
+var _useHandler2 = require("./useHandler.js");
+var _WorkletEventHandler = require("../WorkletEventHandler.js");
+var _worklet_10072825819171_init_data = {
+  code: "function useComposedEventHandlerJs1(event){const{workletsMap}=this.__closure;if(workletsMap[event.eventName]){workletsMap[event.eventName].forEach(function(worklet){return worklet(event);});}}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\hook\\useComposedEventHandler.js",
+  sourceMap: "{\"version\":3,\"names\":[\"useComposedEventHandlerJs1\",\"event\",\"workletsMap\",\"__closure\",\"eventName\",\"forEach\",\"worklet\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/hook/useComposedEventHandler.js\"],\"mappings\":\"AAiDkB,SAAAA,0BAASA,CAAAC,KAAA,QAAAC,WAAA,OAAAC,SAAA,CAGvB,GAAID,WAAW,CAACD,KAAK,CAACG,SAAS,CAAC,CAAE,CAChCF,WAAW,CAACD,KAAK,CAACG,SAAS,CAAC,CAACC,OAAO,CAAC,SAAAC,OAAO,QAAI,CAAAA,OAAO,CAACL,KAAK,CAAC,GAAC,CACjE,CACF\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+function useComposedEventHandler(handlers) {
+  var workletsRecord = {};
+  var composedEventNames = new Set();
+  var workletsMap = {};
+  handlers.filter(function (h) {
+    return h !== null;
+  }).forEach(function (handler) {
+    var workletEventHandler = handler.workletEventHandler;
+    if (workletEventHandler instanceof _WorkletEventHandler.WorkletEventHandler) {
+      workletEventHandler.eventNames.forEach(function (eventName) {
+        composedEventNames.add(eventName);
+        if (workletsMap[eventName]) {
+          workletsMap[eventName].push(workletEventHandler.worklet);
+        } else {
+          workletsMap[eventName] = [workletEventHandler.worklet];
+        }
+        var handlerName = eventName + `${workletsMap[eventName].length}`;
+        workletsRecord[handlerName] = workletEventHandler.worklet;
+      });
+    }
+  });
+  var _useHandler = (0, _useHandler2.useHandler)(workletsRecord),
+    doDependenciesDiffer = _useHandler.doDependenciesDiffer;
+  return (0, _useEvent.useEvent)(function () {
+    var _e = [new global.Error(), -2, -27];
+    var useComposedEventHandlerJs1 = function useComposedEventHandlerJs1(event) {
+      if (workletsMap[event.eventName]) {
+        workletsMap[event.eventName].forEach(function (worklet) {
+          return worklet(event);
+        });
+      }
+    };
+    useComposedEventHandlerJs1.__closure = {
+      workletsMap: workletsMap
+    };
+    useComposedEventHandlerJs1.__workletHash = 10072825819171;
+    useComposedEventHandlerJs1.__initData = _worklet_10072825819171_init_data;
+    useComposedEventHandlerJs1.__stackDetails = _e;
+    return useComposedEventHandlerJs1;
+  }(), Array.from(composedEventNames), doDependenciesDiffer);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPYmplY3QiLCJkZWZpbmVQcm9wZXJ0eSIsImV4cG9ydHMiLCJ2YWx1ZSIsInVzZUNvbXBvc2VkRXZlbnRIYW5kbGVyIiwiX3VzZUV2ZW50IiwicmVxdWlyZSIsIl91c2VIYW5kbGVyMiIsIl9Xb3JrbGV0RXZlbnRIYW5kbGVyIiwiX3dvcmtsZXRfMTAwNzI4MjU4MTkxNzFfaW5pdF9kYXRhIiwiY29kZSIsImxvY2F0aW9uIiwic291cmNlTWFwIiwidmVyc2lvbiIsImhhbmRsZXJzIiwid29ya2xldHNSZWNvcmQiLCJjb21wb3NlZEV2ZW50TmFtZXMiLCJTZXQiLCJ3b3JrbGV0c01hcCIsImZpbHRlciIsImgiLCJmb3JFYWNoIiwiaGFuZGxlciIsIndvcmtsZXRFdmVudEhhbmRsZXIiLCJXb3JrbGV0RXZlbnRIYW5kbGVyIiwiZXZlbnROYW1lcyIsImV2ZW50TmFtZSIsImFkZCIsInB1c2giLCJ3b3JrbGV0IiwiaGFuZGxlck5hbWUiLCJsZW5ndGgiLCJfdXNlSGFuZGxlciIsInVzZUhhbmRsZXIiLCJkb0RlcGVuZGVuY2llc0RpZmZlciIsInVzZUV2ZW50IiwiX2UiLCJnbG9iYWwiLCJFcnJvciIsInVzZUNvbXBvc2VkRXZlbnRIYW5kbGVySnMxIiwiZXZlbnQiLCJfX2Nsb3N1cmUiLCJfX3dvcmtsZXRIYXNoIiwiX19pbml0RGF0YSIsIl9fc3RhY2tEZXRhaWxzIiwiQXJyYXkiLCJmcm9tIl0sInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2hvb2svdXNlQ29tcG9zZWRFdmVudEhhbmRsZXIudHMiXSwic291cmNlc0NvbnRlbnQiOltudWxsXSwibWFwcGluZ3MiOiJBQUFBLFlBQVk7O0FBQUFBLE1BQUEsQ0FBQUMsY0FBQSxDQUFBQyxPQUFBO0VBQUFDLEtBQUE7QUFBQTtBQUFBRCxPQUFBLENBQUFFLHVCQUFBLEdBQUFBLHVCQUFBO0FBQ1osSUFBQUMsU0FBQSxHQUFBQyxPQUFBO0FBQ0EsSUFBQUMsWUFBQSxHQUFBRCxPQUFBO0FBQ0EsSUFBQUUsb0JBQUEsR0FBQUYsT0FBQTtBQUE0RCxJQUFBRyxpQ0FBQTtFQUFBQyxJQUFBO0VBQUFDLFFBQUE7RUFBQUMsU0FBQTtFQUFBQyxPQUFBO0FBQUE7QUFrQ3JELFNBQVNULHVCQUF1QkEsQ0FHckNVLFFBQTBELEVBQUU7RUFFNUQsSUFBTUMsY0FBK0MsR0FBRyxDQUFDLENBQUM7RUFFMUQsSUFBTUMsa0JBQWtCLEdBQUcsSUFBSUMsR0FBRyxDQUFTLENBQUM7RUFFNUMsSUFBTUMsV0FFTCxHQUFHLENBQUMsQ0FBQztFQUVOSixRQUFRLENBQ0xLLE1BQU0sQ0FBRSxVQUFBQyxDQUFDO0lBQUEsT0FBS0EsQ0FBQyxLQUFLLElBQUk7RUFBQSxFQUFDLENBQ3pCQyxPQUFPLENBQUUsVUFBQUMsT0FBTyxFQUFLO0lBRXBCLElBQVFDLG1CQUFBLEdBQ05ELE9BQW1ELENBRDdDQyxtQkFBQTtJQUVSLElBQUlBLG1CQUFtQixZQUFZQyx3Q0FBbUIsRUFBRTtNQUN0REQsbUJBQW1CLENBQUNFLFVBQVUsQ0FBQ0osT0FBTyxDQUFFLFVBQUFLLFNBQVMsRUFBSztRQUNwRFYsa0JBQWtCLENBQUNXLEdBQUcsQ0FBQ0QsU0FBUyxDQUFDO1FBRWpDLElBQUlSLFdBQVcsQ0FBQ1EsU0FBUyxDQUFDLEVBQUU7VUFDMUJSLFdBQVcsQ0FBQ1EsU0FBUyxDQUFDLENBQUNFLElBQUksQ0FBQ0wsbUJBQW1CLENBQUNNLE9BQU8sQ0FBQztRQUMxRCxDQUFDLE1BQU07VUFDTFgsV0FBVyxDQUFDUSxTQUFTLENBQUMsR0FBRyxDQUFDSCxtQkFBbUIsQ0FBQ00sT0FBTyxDQUFDO1FBQ3hEO1FBRUEsSUFBTUMsV0FBVyxHQUFHSixTQUFTLEdBQUcsR0FBR1IsV0FBVyxDQUFDUSxTQUFTLENBQUMsQ0FBQ0ssTUFBTSxFQUFFO1FBQ2xFaEIsY0FBYyxDQUFDZSxXQUFXLENBQUMsR0FDekJQLG1CQUFtQixDQUFDTSxPQUEwQjtNQUNsRCxDQUFDLENBQUM7SUFDSjtFQUNGLENBQUMsQ0FBQztFQUVKLElBQUFHLFdBQUEsR0FBaUMsSUFBQUMsdUJBQVUsRUFBQ2xCLGNBQWMsQ0FBQztJQUFuRG1CLG9CQUFBLEdBQUFGLFdBQUEsQ0FBQUUsb0JBQUE7RUFFUixPQUFPLElBQUFDLGtCQUFRLEVBQ1o7SUFBQSxJQUFBQyxFQUFBLFFBQUFDLE1BQUEsQ0FBQUMsS0FBQTtJQUFBLElBQUFDLDBCQUFBLFlBQUFBLDJCQUFBQyxLQUFLLEVBQUs7TUFFVCxJQUFJdEIsV0FBVyxDQUFDc0IsS0FBSyxDQUFDZCxTQUFTLENBQUMsRUFBRTtRQUNoQ1IsV0FBVyxDQUFDc0IsS0FBSyxDQUFDZCxTQUFTLENBQUMsQ0FBQ0wsT0FBTyxDQUFFLFVBQUFRLE9BQU87VUFBQSxPQUFLQSxPQUFPLENBQUNXLEtBQUssQ0FBQztRQUFBLEVBQUM7TUFDbkU7SUFDRixDQUFDO0lBQUFELDBCQUFBLENBQUFFLFNBQUE7TUFBQXZCLFdBQUEsRUFIS0E7SUFBVztJQUFBcUIsMEJBQUEsQ0FBQUcsYUFBQTtJQUFBSCwwQkFBQSxDQUFBSSxVQUFBLEdBQUFsQyxpQ0FBQTtJQUFBOEIsMEJBQUEsQ0FBQUssY0FBQSxHQUFBUixFQUFBO0lBQUEsT0FBQUcsMEJBQUE7RUFBQSxDQUZoQixJQU1ETSxLQUFLLENBQUNDLElBQUksQ0FBQzlCLGtCQUFrQixDQUFDLEVBQzlCa0Isb0JBQ0YsQ0FBQztBQUNIIiwiaWdub3JlTGlzdCI6W119

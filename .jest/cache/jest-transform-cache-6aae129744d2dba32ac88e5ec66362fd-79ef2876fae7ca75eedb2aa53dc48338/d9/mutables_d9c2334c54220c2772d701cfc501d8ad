@@ -1,0 +1,293 @@
+5a0a444586466f13f139fff591708545
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.makeMutableUI = exports.makeMutable = void 0;
+var _PlatformChecker = require("./PlatformChecker.js");
+var _errors = require("./errors.js");
+var _index = require("./logger/index.js");
+var _reactUtils = require("./reactUtils.js");
+var _shareableMappingCache = require("./shareableMappingCache.js");
+var _shareables = require("./shareables.js");
+var _threads = require("./threads.js");
+var _valueSetter = require("./valueSetter.js");
+var SHOULD_BE_USE_WEB = (0, _PlatformChecker.shouldBeUseWeb)();
+function shouldWarnAboutAccessDuringRender() {
+  return __DEV__ && (0, _reactUtils.isReactRendering)() && !(0, _reactUtils.isFirstReactRender)();
+}
+function checkInvalidReadDuringRender() {
+  if (shouldWarnAboutAccessDuringRender()) {
+    _index.logger.warn('Reading from `value` during component render. Please ensure that you do not access the `value` property or use `get` method of a shared value while React is rendering a component.', {
+      strict: true
+    });
+  }
+}
+function checkInvalidWriteDuringRender() {
+  if (shouldWarnAboutAccessDuringRender()) {
+    _index.logger.warn('Writing to `value` during component render. Please ensure that you do not access the `value` property or use `set` method of a shared value while React is rendering a component.', {
+      strict: true
+    });
+  }
+}
+var _worklet_12217892493301_init_data = {
+  code: "function addCompilerSafeGetAndSet_mutablesJs1(mutable){Object.defineProperties(mutable,{get:{value:function(){return mutable.value;},configurable:false,enumerable:false},set:{value:function(newValue){if(typeof newValue==='function'&&!newValue.__isAnimationDefinition){mutable.value=newValue(mutable.value);}else{mutable.value=newValue;}},configurable:false,enumerable:false}});}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\mutables.js",
+  sourceMap: "{\"version\":3,\"names\":[\"addCompilerSafeGetAndSet_mutablesJs1\",\"mutable\",\"Object\",\"defineProperties\",\"get\",\"value\",\"configurable\",\"enumerable\",\"set\",\"newValue\",\"__isAnimationDefinition\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/mutables.js\"],\"mappings\":\"AA4BA,SAAAA,qCAAAC,OAAA,EAAAC,MAAA,CAAAC,gBAAA,CAAAF,OAAA,EACAG,GAAA,EACAC,KAAA,SAAAA,CAAA,EACA,OAAAJ,OAAA,CAAAI,KAAA,CACA,EACAC,YAAA,OACAC,UAAA,MACA,EACAC,GAAA,EACAH,KAAS,SAAAA,CAAAI,QAAA,CAAwB,CAGzB,GAAC,OAAAA,QAAiB,aAAS,EAE7B,CAAAA,QAAK,CAAAC,uBAAG,EACNT,OAAO,CAAAI,KAAQ,CAAAI,QAAK,CAAAR,OAAA,CAAAI,KAAA,EACrB,MACDJ,OAAA,CAAYI,KAAE,CAAKI,QAAA,CACnB,CACD,EACDH,YAAK,OACHC,UAAK,M\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var addCompilerSafeGetAndSet = function () {
+  var _e = [new global.Error(), 1, -27];
+  var addCompilerSafeGetAndSet = function addCompilerSafeGetAndSet(mutable) {
+    Object.defineProperties(mutable, {
+      get: {
+        value: function value() {
+          return mutable.value;
+        },
+        configurable: false,
+        enumerable: false
+      },
+      set: {
+        value: function value(newValue) {
+          if (typeof newValue === 'function' && !newValue.__isAnimationDefinition) {
+            mutable.value = newValue(mutable.value);
+          } else {
+            mutable.value = newValue;
+          }
+        },
+        configurable: false,
+        enumerable: false
+      }
+    });
+  };
+  addCompilerSafeGetAndSet.__closure = {};
+  addCompilerSafeGetAndSet.__workletHash = 12217892493301;
+  addCompilerSafeGetAndSet.__initData = _worklet_12217892493301_init_data;
+  addCompilerSafeGetAndSet.__stackDetails = _e;
+  return addCompilerSafeGetAndSet;
+}();
+var _worklet_10205313403334_init_data = {
+  code: "function hideInternalValueProp_mutablesJs2(mutable){Object.defineProperty(mutable,'_value',{configurable:false,enumerable:false});}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\mutables.js",
+  sourceMap: "{\"version\":3,\"names\":[\"hideInternalValueProp_mutablesJs2\",\"mutable\",\"Object\",\"defineProperty\",\"configurable\",\"enumerable\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/mutables.js\"],\"mappings\":\"AA+DA,SAAAA,kCAAAC,OAAA,EAAAC,MAAA,CAAAC,cAAA,CAAAF,OAAA,WACAG,YAAA,OACAC,UAAA,MACA,GACA\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var hideInternalValueProp = function () {
+  var _e = [new global.Error(), 1, -27];
+  var hideInternalValueProp = function hideInternalValueProp(mutable) {
+    Object.defineProperty(mutable, '_value', {
+      configurable: false,
+      enumerable: false
+    });
+  };
+  hideInternalValueProp.__closure = {};
+  hideInternalValueProp.__workletHash = 10205313403334;
+  hideInternalValueProp.__initData = _worklet_10205313403334_init_data;
+  hideInternalValueProp.__stackDetails = _e;
+  return hideInternalValueProp;
+}();
+var _worklet_5053227285428_init_data = {
+  code: "function makeMutableUI_mutablesJs3(initial){const{valueSetter,hideInternalValueProp,addCompilerSafeGetAndSet}=this.__closure;const listeners=new Map();let value=initial;const mutable={get value(){return value;},set value(newValue){valueSetter(mutable,newValue);},get _value(){return value;},set _value(newValue){value=newValue;listeners.forEach(function(listener){listener(newValue);});},modify:function(modifier,forceUpdate=true){valueSetter(mutable,modifier!==undefined?modifier(value):value,forceUpdate);},addListener:function(id,listener){listeners.set(id,listener);},removeListener:function(id){listeners.delete(id);},_animation:null,_isReanimatedSharedValue:true};hideInternalValueProp(mutable);addCompilerSafeGetAndSet(mutable);return mutable;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\mutables.js",
+  sourceMap: "{\"version\":3,\"names\":[\"makeMutableUI_mutablesJs3\",\"initial\",\"valueSetter\",\"hideInternalValueProp\",\"addCompilerSafeGetAndSet\",\"__closure\",\"listeners\",\"Map\",\"value\",\"mutable\",\"newValue\",\"_value\",\"forEach\",\"listener\",\"modify\",\"modifier\",\"forceUpdate\",\"undefined\",\"addListener\",\"id\",\"set\",\"removeListener\",\"delete\",\"_animation\",\"_isReanimatedSharedValue\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/mutables.js\"],\"mappings\":\"AAoFO,SAAAA,yBAAgCA,CAAAC,OAAA,QAAAC,WAAA,CAAAC,qBAAA,CAAAC,wBAAA,OAAAC,SAAA,CAGrC,KAAM,CAAAC,SAAS,CAAG,GAAI,CAAAC,GAAG,CAAC,CAAC,CAC3B,GAAI,CAAAC,KAAK,CAAGP,OAAO,CACnB,KAAM,CAAAQ,OAAO,CAAG,CACd,GAAI,CAAAD,KAAKA,CAAA,CAAG,CACV,MAAO,CAAAA,KAAK,CACd,CAAC,CACD,GAAI,CAAAA,KAAKA,CAACE,QAAQ,CAAE,CAClBR,WAAW,CAACO,OAAO,CAAEC,QAAQ,CAAC,CAChC,CAAC,CACD,GAAI,CAAAC,MAAMA,CAAA,CAAG,CACX,MAAO,CAAAH,KAAK,CACd,CAAC,CACD,GAAI,CAAAG,MAAMA,CAACD,QAAQ,CAAE,CACnBF,KAAK,CAAGE,QAAQ,CAChBJ,SAAS,CAACM,OAAO,CAAC,SAAAC,QAAQ,CAAI,CAC5BA,QAAQ,CAACH,QAAQ,CAAC,CACpB,CAAC,CAAC,CACJ,CAAC,CACDI,MAAM,CAAE,QAAAA,CAACC,QAAQ,CAAEC,WAAW,CAAG,IAAI,CAAK,CACxCd,WAAW,CAACO,OAAO,CAAEM,QAAQ,GAAKE,SAAS,CAAGF,QAAQ,CAACP,KAAK,CAAC,CAAGA,KAAK,CAAEQ,WAAW,CAAC,CACrF,CAAC,CACDE,WAAW,CAAE,QAAAA,CAACC,EAAE,CAAEN,QAAQ,CAAK,CAC7BP,SAAS,CAACc,GAAG,CAACD,EAAE,CAAEN,QAAQ,CAAC,CAC7B,CAAC,CACDQ,cAAc,CAAE,QAAAA,CAAAF,EAAE,CAAI,CACpBb,SAAS,CAACgB,MAAM,CAACH,EAAE,CAAC,CACtB,CAAC,CACDI,UAAU,CAAE,IAAI,CAChBC,wBAAwB,CAAE,IAC5B,CAAC,CACDrB,qBAAqB,CAACM,OAAO,CAAC,CAC9BL,wBAAwB,CAACK,OAAO,CAAC,CACjC,MAAO,CAAAA,OAAO,CAChB\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var makeMutableUI = exports.makeMutableUI = function () {
+  var _e = [new global.Error(), -4, -27];
+  var makeMutableUI = function makeMutableUI(initial) {
+    var listeners = new Map();
+    var value = initial;
+    var mutable = {
+      get value() {
+        return value;
+      },
+      set value(newValue) {
+        (0, _valueSetter.valueSetter)(mutable, newValue);
+      },
+      get _value() {
+        return value;
+      },
+      set _value(newValue) {
+        value = newValue;
+        listeners.forEach(function (listener) {
+          listener(newValue);
+        });
+      },
+      modify: function modify(modifier) {
+        var forceUpdate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+        (0, _valueSetter.valueSetter)(mutable, modifier !== undefined ? modifier(value) : value, forceUpdate);
+      },
+      addListener: function addListener(id, listener) {
+        listeners.set(id, listener);
+      },
+      removeListener: function removeListener(id) {
+        listeners.delete(id);
+      },
+      _animation: null,
+      _isReanimatedSharedValue: true
+    };
+    hideInternalValueProp(mutable);
+    addCompilerSafeGetAndSet(mutable);
+    return mutable;
+  };
+  makeMutableUI.__closure = {
+    valueSetter: _valueSetter.valueSetter,
+    hideInternalValueProp: hideInternalValueProp,
+    addCompilerSafeGetAndSet: addCompilerSafeGetAndSet
+  };
+  makeMutableUI.__workletHash = 5053227285428;
+  makeMutableUI.__initData = _worklet_5053227285428_init_data;
+  makeMutableUI.__stackDetails = _e;
+  return makeMutableUI;
+}();
+var _worklet_2123156817818_init_data = {
+  code: "function mutablesJs4(){const{makeMutableUI,initial}=this.__closure;return makeMutableUI(initial);}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\mutables.js",
+  sourceMap: "{\"version\":3,\"names\":[\"mutablesJs4\",\"makeMutableUI\",\"initial\",\"__closure\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/mutables.js\"],\"mappings\":\"AA2HY,SAAAA,WAAMA,CAAA,QAAAC,aAAA,CAAAC,OAAA,OAAAC,SAAA,CAGZ,MAAO,CAAAF,aAAa,CAACC,OAAO,CAAC,CAC/B\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_13022162336143_init_data = {
+  code: "function mutablesJs5(sv){return sv.value;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\mutables.js",
+  sourceMap: "{\"version\":3,\"names\":[\"mutablesJs5\",\"sv\",\"value\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/mutables.js\"],\"mappings\":\"AAoImD,SAAAA,WAAMA,CAAAC,EAAA,EACjD,MAAO,CAAAA,EAAE,CAACC,KAAK,CACjB\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_15165378887275_init_data = {
+  code: "function mutablesJs6(){const{mutable,newValue}=this.__closure;mutable.value=newValue;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\mutables.js",
+  sourceMap: "{\"version\":3,\"names\":[\"mutablesJs6\",\"mutable\",\"newValue\",\"__closure\",\"value\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/mutables.js\"],\"mappings\":\"AA2Ic,SAAAA,WAAMA,CAAA,QAAAC,OAAA,CAAAC,QAAA,OAAAC,SAAA,CACZF,OAAO,CAACG,KAAK,CAAGF,QAAQ,CAC1B\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_4988898487821_init_data = {
+  code: "function mutablesJs7(){const{mutable,modifier,forceUpdate}=this.__closure;mutable.modify(modifier,forceUpdate);}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\mutables.js",
+  sourceMap: "{\"version\":3,\"names\":[\"mutablesJs7\",\"mutable\",\"modifier\",\"forceUpdate\",\"__closure\",\"modify\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/mutables.js\"],\"mappings\":\"AAsJc,SAAAA,WAAMA,CAAA,QAAAC,OAAA,CAAAC,QAAA,CAAAC,WAAA,OAAAC,SAAA,CACZH,OAAO,CAACI,MAAM,CAACH,QAAQ,CAAEC,WAAW,CAAC,CACvC\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+function makeMutableNative(initial) {
+  var handle = (0, _shareables.makeShareableCloneRecursive)({
+    __init: function () {
+      var _e = [new global.Error(), -3, -27];
+      var mutablesJs4 = function mutablesJs4() {
+        return makeMutableUI(initial);
+      };
+      mutablesJs4.__closure = {
+        makeMutableUI: makeMutableUI,
+        initial: initial
+      };
+      mutablesJs4.__workletHash = 2123156817818;
+      mutablesJs4.__initData = _worklet_2123156817818_init_data;
+      mutablesJs4.__stackDetails = _e;
+      return mutablesJs4;
+    }()
+  });
+  var mutable = {
+    get value() {
+      checkInvalidReadDuringRender();
+      var uiValueGetter = (0, _threads.executeOnUIRuntimeSync)(function () {
+        var _e = [new global.Error(), 1, -27];
+        var mutablesJs5 = function mutablesJs5(sv) {
+          return sv.value;
+        };
+        mutablesJs5.__closure = {};
+        mutablesJs5.__workletHash = 13022162336143;
+        mutablesJs5.__initData = _worklet_13022162336143_init_data;
+        mutablesJs5.__stackDetails = _e;
+        return mutablesJs5;
+      }());
+      return uiValueGetter(mutable);
+    },
+    set value(newValue) {
+      checkInvalidWriteDuringRender();
+      (0, _threads.runOnUI)(function () {
+        var _e = [new global.Error(), -3, -27];
+        var mutablesJs6 = function mutablesJs6() {
+          mutable.value = newValue;
+        };
+        mutablesJs6.__closure = {
+          mutable: mutable,
+          newValue: newValue
+        };
+        mutablesJs6.__workletHash = 15165378887275;
+        mutablesJs6.__initData = _worklet_15165378887275_init_data;
+        mutablesJs6.__stackDetails = _e;
+        return mutablesJs6;
+      }())();
+    },
+    get _value() {
+      throw new _errors.ReanimatedError('Reading from `_value` directly is only possible on the UI runtime. Perhaps you passed an Animated Style to a non-animated component?');
+    },
+    set _value(_newValue) {
+      throw new _errors.ReanimatedError('Setting `_value` directly is only possible on the UI runtime. Perhaps you want to assign to `value` instead?');
+    },
+    modify: function modify(modifier) {
+      var forceUpdate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      (0, _threads.runOnUI)(function () {
+        var _e = [new global.Error(), -4, -27];
+        var mutablesJs7 = function mutablesJs7() {
+          mutable.modify(modifier, forceUpdate);
+        };
+        mutablesJs7.__closure = {
+          mutable: mutable,
+          modifier: modifier,
+          forceUpdate: forceUpdate
+        };
+        mutablesJs7.__workletHash = 4988898487821;
+        mutablesJs7.__initData = _worklet_4988898487821_init_data;
+        mutablesJs7.__stackDetails = _e;
+        return mutablesJs7;
+      }())();
+    },
+    addListener: function addListener() {
+      throw new _errors.ReanimatedError('Adding listeners is only possible on the UI runtime.');
+    },
+    removeListener: function removeListener() {
+      throw new _errors.ReanimatedError('Removing listeners is only possible on the UI runtime.');
+    },
+    _isReanimatedSharedValue: true
+  };
+  hideInternalValueProp(mutable);
+  addCompilerSafeGetAndSet(mutable);
+  _shareableMappingCache.shareableMappingCache.set(mutable, handle);
+  return mutable;
+}
+function makeMutableWeb(initial) {
+  var value = initial;
+  var listeners = new Map();
+  var mutable = {
+    get value() {
+      checkInvalidReadDuringRender();
+      return value;
+    },
+    set value(newValue) {
+      checkInvalidWriteDuringRender();
+      (0, _valueSetter.valueSetter)(mutable, newValue);
+    },
+    get _value() {
+      return value;
+    },
+    set _value(newValue) {
+      value = newValue;
+      listeners.forEach(function (listener) {
+        listener(newValue);
+      });
+    },
+    modify: function modify(modifier) {
+      var forceUpdate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      (0, _valueSetter.valueSetter)(mutable, modifier !== undefined ? modifier(mutable.value) : mutable.value, forceUpdate);
+    },
+    addListener: function addListener(id, listener) {
+      listeners.set(id, listener);
+    },
+    removeListener: function removeListener(id) {
+      listeners.delete(id);
+    },
+    _isReanimatedSharedValue: true
+  };
+  hideInternalValueProp(mutable);
+  addCompilerSafeGetAndSet(mutable);
+  return mutable;
+}
+var makeMutable = exports.makeMutable = SHOULD_BE_USE_WEB ? makeMutableWeb : makeMutableNative;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPYmplY3QiLCJkZWZpbmVQcm9wZXJ0eSIsImV4cG9ydHMiLCJ2YWx1ZSIsIm1ha2VNdXRhYmxlVUkiLCJtYWtlTXV0YWJsZSIsIl9QbGF0Zm9ybUNoZWNrZXIiLCJyZXF1aXJlIiwiX2Vycm9ycyIsIl9pbmRleCIsIl9yZWFjdFV0aWxzIiwiX3NoYXJlYWJsZU1hcHBpbmdDYWNoZSIsIl9zaGFyZWFibGVzIiwiX3RocmVhZHMiLCJfdmFsdWVTZXR0ZXIiLCJTSE9VTERfQkVfVVNFX1dFQiIsInNob3VsZEJlVXNlV2ViIiwic2hvdWxkV2FybkFib3V0QWNjZXNzRHVyaW5nUmVuZGVyIiwiX19ERVZfXyIsImlzUmVhY3RSZW5kZXJpbmciLCJpc0ZpcnN0UmVhY3RSZW5kZXIiLCJjaGVja0ludmFsaWRSZWFkRHVyaW5nUmVuZGVyIiwibG9nZ2VyIiwid2FybiIsInN0cmljdCIsImNoZWNrSW52YWxpZFdyaXRlRHVyaW5nUmVuZGVyIiwiX3dvcmtsZXRfMTIyMTc4OTI0OTMzMDFfaW5pdF9kYXRhIiwiY29kZSIsImxvY2F0aW9uIiwic291cmNlTWFwIiwidmVyc2lvbiIsImFkZENvbXBpbGVyU2FmZUdldEFuZFNldCIsIl9lIiwiZ2xvYmFsIiwiRXJyb3IiLCJtdXRhYmxlIiwiZGVmaW5lUHJvcGVydGllcyIsImdldCIsImNvbmZpZ3VyYWJsZSIsImVudW1lcmFibGUiLCJzZXQiLCJuZXdWYWx1ZSIsIl9faXNBbmltYXRpb25EZWZpbml0aW9uIiwiX19jbG9zdXJlIiwiX193b3JrbGV0SGFzaCIsIl9faW5pdERhdGEiLCJfX3N0YWNrRGV0YWlscyIsIl93b3JrbGV0XzEwMjA1MzEzNDAzMzM0X2luaXRfZGF0YSIsImhpZGVJbnRlcm5hbFZhbHVlUHJvcCIsIl93b3JrbGV0XzUwNTMyMjcyODU0MjhfaW5pdF9kYXRhIiwiaW5pdGlhbCIsImxpc3RlbmVycyIsIk1hcCIsInZhbHVlU2V0dGVyIiwiX3ZhbHVlIiwiZm9yRWFjaCIsImxpc3RlbmVyIiwibW9kaWZ5IiwibW9kaWZpZXIiLCJmb3JjZVVwZGF0ZSIsImFyZ3VtZW50cyIsImxlbmd0aCIsInVuZGVmaW5lZCIsImFkZExpc3RlbmVyIiwiaWQiLCJyZW1vdmVMaXN0ZW5lciIsImRlbGV0ZSIsIl9hbmltYXRpb24iLCJfaXNSZWFuaW1hdGVkU2hhcmVkVmFsdWUiLCJfd29ya2xldF8yMTIzMTU2ODE3ODE4X2luaXRfZGF0YSIsIl93b3JrbGV0XzEzMDIyMTYyMzM2MTQzX2luaXRfZGF0YSIsIl93b3JrbGV0XzE1MTY1Mzc4ODg3Mjc1X2luaXRfZGF0YSIsIl93b3JrbGV0XzQ5ODg4OTg0ODc4MjFfaW5pdF9kYXRhIiwibWFrZU11dGFibGVOYXRpdmUiLCJoYW5kbGUiLCJtYWtlU2hhcmVhYmxlQ2xvbmVSZWN1cnNpdmUiLCJfX2luaXQiLCJtdXRhYmxlc0pzNCIsInVpVmFsdWVHZXR0ZXIiLCJleGVjdXRlT25VSVJ1bnRpbWVTeW5jIiwibXV0YWJsZXNKczUiLCJzdiIsInJ1bk9uVUkiLCJtdXRhYmxlc0pzNiIsIlJlYW5pbWF0ZWRFcnJvciIsIl9uZXdWYWx1ZSIsIm11dGFibGVzSnM3Iiwic2hhcmVhYmxlTWFwcGluZ0NhY2hlIiwibWFrZU11dGFibGVXZWIiXSwic291cmNlcyI6WyIuLi8uLi9zcmMvbXV0YWJsZXMudHMiXSwic291cmNlc0NvbnRlbnQiOltudWxsXSwibWFwcGluZ3MiOiJBQUFBLFlBQVk7O0FBQUFBLE1BQUEsQ0FBQUMsY0FBQSxDQUFBQyxPQUFBO0VBQUFDLEtBQUE7QUFBQTtBQUFBRCxPQUFBLENBQUFFLGFBQUEsR0FBQUYsT0FBQSxDQUFBRyxXQUFBO0FBQ1osSUFBQUMsZ0JBQUEsR0FBQUMsT0FBQTtBQUVBLElBQUFDLE9BQUEsR0FBQUQsT0FBQTtBQUNBLElBQUFFLE1BQUEsR0FBQUYsT0FBQTtBQUNBLElBQUFHLFdBQUEsR0FBQUgsT0FBQTtBQUNBLElBQUFJLHNCQUFBLEdBQUFKLE9BQUE7QUFDQSxJQUFBSyxXQUFBLEdBQUFMLE9BQUE7QUFDQSxJQUFBTSxRQUFBLEdBQUFOLE9B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

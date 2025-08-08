@@ -1,0 +1,80 @@
+ab5c03accd24895cdb7affe98a677811
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useAnimatedRef = useAnimatedRef;
+var _react = require("react");
+var _useSharedValue = require("./useSharedValue.js");
+var _fabricUtils = require("../fabricUtils");
+var _shareables = require("../shareables.js");
+var _shareableMappingCache = require("../shareableMappingCache.js");
+var _reactNative = require("react-native");
+var _findNodeHandle = require("../platformFunctions/findNodeHandle");
+var _PlatformChecker = require("../PlatformChecker.js");
+var IS_WEB = (0, _PlatformChecker.isWeb)();
+function getComponentOrScrollable(component) {
+  if ((0, _PlatformChecker.isFabric)() && component.getNativeScrollRef) {
+    return component.getNativeScrollRef();
+  } else if (!(0, _PlatformChecker.isFabric)() && component.getScrollableNode) {
+    return component.getScrollableNode();
+  }
+  return component;
+}
+var _worklet_13436670454384_init_data = {
+  code: "function useAnimatedRefJs1(){const{tag,viewName}=this.__closure;const f=function(){return tag.value;};f.viewName=viewName;return f;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\hook\\useAnimatedRef.js",
+  sourceMap: "{\"version\":3,\"names\":[\"useAnimatedRefJs1\",\"tag\",\"viewName\",\"__closure\",\"f\",\"value\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/hook/useAnimatedRef.js\"],\"mappings\":\"AAqDc,SAAAA,iBAAMA,CAAA,QAAAC,GAAA,CAAAC,QAAA,OAAAC,SAAA,CAGZ,KAAM,CAAAC,CAAC,CAAG,QAAAA,CAAA,QAAM,CAAAH,GAAG,CAACI,KAAK,GACzBD,CAAC,CAACF,QAAQ,CAAGA,QAAQ,CACrB,MAAO,CAAAE,CAAC,CACV\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+function useAnimatedRef() {
+  var tag = (0, _useSharedValue.useSharedValue)(-1);
+  var viewName = (0, _useSharedValue.useSharedValue)(null);
+  var ref = (0, _react.useRef)();
+  if (!ref.current) {
+    var _fun = function fun(component) {
+      if (component) {
+        var getTagValueFunction = (0, _PlatformChecker.isFabric)() ? _fabricUtils.getShadowNodeWrapperFromRef : _findNodeHandle.findNodeHandle;
+        var getTagOrShadowNodeWrapper = function getTagOrShadowNodeWrapper() {
+          return IS_WEB ? getComponentOrScrollable(component) : getTagValueFunction(getComponentOrScrollable(component));
+        };
+        tag.value = getTagOrShadowNodeWrapper();
+        _fun.getTag = (0, _PlatformChecker.isFabric)() ? function () {
+          return (0, _findNodeHandle.findNodeHandle)(getComponentOrScrollable(component));
+        } : getTagOrShadowNodeWrapper;
+        _fun.current = component;
+        if (_reactNative.Platform.OS === 'ios' && !(0, _PlatformChecker.isFabric)()) {
+          var _component$viewConfig;
+          viewName.value = (component == null || (_component$viewConfig = component.viewConfig) == null ? void 0 : _component$viewConfig.uiViewClassName) || 'RCTView';
+        }
+      }
+      return tag.value;
+    };
+    _fun.current = null;
+    var animatedRefShareableHandle = (0, _shareables.makeShareableCloneRecursive)({
+      __init: function () {
+        var _e = [new global.Error(), -3, -27];
+        var useAnimatedRefJs1 = function useAnimatedRefJs1() {
+          var f = function f() {
+            return tag.value;
+          };
+          f.viewName = viewName;
+          return f;
+        };
+        useAnimatedRefJs1.__closure = {
+          tag: tag,
+          viewName: viewName
+        };
+        useAnimatedRefJs1.__workletHash = 13436670454384;
+        useAnimatedRefJs1.__initData = _worklet_13436670454384_init_data;
+        useAnimatedRefJs1.__stackDetails = _e;
+        return useAnimatedRefJs1;
+      }()
+    });
+    _shareableMappingCache.shareableMappingCache.set(_fun, animatedRefShareableHandle);
+    ref.current = _fun;
+  }
+  return ref.current;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPYmplY3QiLCJkZWZpbmVQcm9wZXJ0eSIsImV4cG9ydHMiLCJ2YWx1ZSIsInVzZUFuaW1hdGVkUmVmIiwiX3JlYWN0IiwicmVxdWlyZSIsIl91c2VTaGFyZWRWYWx1ZSIsIl9mYWJyaWNVdGlscyIsIl9zaGFyZWFibGVzIiwiX3NoYXJlYWJsZU1hcHBpbmdDYWNoZSIsIl9yZWFjdE5hdGl2ZSIsIl9maW5kTm9kZUhhbmRsZSIsIl9QbGF0Zm9ybUNoZWNrZXIiLCJJU19XRUIiLCJpc1dlYiIsImdldENvbXBvbmVudE9yU2Nyb2xsYWJsZSIsImNvbXBvbmVudCIsImlzRmFicmljIiwiZ2V0TmF0aXZlU2Nyb2xsUmVmIiwiZ2V0U2Nyb2xsYWJsZU5vZGUiLCJfd29ya2xldF8xMzQzNjY3MDQ1NDM4NF9pbml0X2RhdGEiLCJjb2RlIiwibG9jYXRpb24iLCJzb3VyY2VNYXAiLCJ2ZXJzaW9uIiwidGFnIiwidXNlU2hhcmVkVmFsdWUiLCJ2aWV3TmFtZSIsInJlZiIsInVzZVJlZiIsImN1cnJlbnQiLCJmdW4iLCJnZXRUYWdWYWx1ZUZ1bmN0aW9uIiwiZ2V0U2hhZG93Tm9kZVdyYXBwZXJGcm9tUmVmIiwiZmluZE5vZGVIYW5kbGUiLCJnZXRUYWdPclNoYWRvd05vZGVXcmFwcGVyIiwiZ2V0VGFnIiwiUGxhdGZvcm0iLCJPUyIsIl9jb21wb25lbnQkdmlld0NvbmZpZyIsInZpZXdDb25maWciLCJ1aVZpZXdDbGFzc05hbWUiLCJhbmltYXRlZFJlZlNoYXJlYWJsZUhhbmRsZSIsIm1ha2VTaGFyZWFibGVDbG9uZVJlY3Vyc2l2ZSIsIl9faW5pdCIsIl9lIiwiZ2xvYmFsIiwiRXJyb3IiLCJ1c2VBbmltYXRlZFJlZkpzMSIsImYiLCJfX2Nsb3N1cmUiLCJfX3dvcmtsZXRIYXNoIiwiX19pbml0RGF0YSIsIl9fc3RhY2tEZXRhaWxzIiwic2hhcmVhYmxlTWFwcGluZ0NhY2hlIiwic2V0Il0sInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2hvb2svdXNlQW5pbWF0ZWRSZWYu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

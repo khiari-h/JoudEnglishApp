@@ -1,0 +1,132 @@
+18bc71515144906a90695f47d542cecd
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.withDecay = void 0;
+var _util = require("../util");
+var _rubberBandDecay = require("./rubberBandDecay");
+var _utils = require("./utils");
+var _rigidDecay = require("./rigidDecay");
+var _errors = require("../../errors");
+var _worklet_9073199851290_init_data = {
+  code: "function validateConfig_decayTs1(config){if(config.clamp){if(!Array.isArray(config.clamp)){throw new ReanimatedError(\"`config.clamp` must be an array but is \"+typeof config.clamp+\".\");}if(config.clamp.length!==2){throw new ReanimatedError(\"`clamp array` must contain 2 items but is given \"+config.clamp.length+\".\");}}if(config.velocityFactor<=0){throw new ReanimatedError(\"`config.velocityFactor` must be greater then 0 but is \"+config.velocityFactor+\".\");}if(config.rubberBandEffect&&!config.clamp){throw new ReanimatedError('You need to set `clamp` property when using `rubberBandEffect`.');}}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\src\\animation\\decay\\decay.ts",
+  sourceMap: "{\"version\":3,\"names\":[\"validateConfig_decayTs1\",\"config\",\"clamp\",\"Array\",\"isArray\",\"ReanimatedError\",\"length\",\"velocityFactor\",\"rubberBandEffect\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/src/animation/decay/decay.ts\"],\"mappings\":\"AA0BA,SAAAA,uBAAmDA,CAAOC,MAAA,EAExD,GAAIA,MAAM,CAACC,KAAK,CAAE,CAChB,GAAI,CAACC,KAAK,CAACC,OAAO,CAACH,MAAM,CAACC,KAAK,CAAC,CAAE,CAChC,KAAM,IAAI,CAAAG,eAAe,2CACqB,MAAO,CAAAJ,MAAM,CAACC,KAAK,IACjE,CAAC,CACH,CACA,GAAID,MAAM,CAACC,KAAK,CAACI,MAAM,GAAK,CAAC,CAAE,CAC7B,KAAM,IAAI,CAAAD,eAAe,oDAErBJ,MAAM,CAACC,KAAK,CAACI,MAAM,IAEvB,CAAC,CACH,CACF,CACA,GAAIL,MAAM,CAACM,cAAc,EAAI,CAAC,CAAE,CAC9B,KAAM,IAAI,CAAAF,eAAe,0DACoCJ,MAAM,CAACM,cAAc,IAClF,CAAC,CACH,CACA,GAAIN,MAAM,CAACO,gBAAgB,EAAI,CAACP,MAAM,CAACC,KAAK,CAAE,CAC5C,KAAM,IAAI,CAAAG,eAAe,CACvB,iEACF,CAAC,CACH,CACF\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var validateConfig = function () {
+  var _e = [new global.Error(), 1, -27];
+  var validateConfig = function validateConfig(config) {
+    if (config.clamp) {
+      if (!Array.isArray(config.clamp)) {
+        throw new _errors.ReanimatedError(`\`config.clamp\` must be an array but is ${typeof config.clamp}.`);
+      }
+      if (config.clamp.length !== 2) {
+        throw new _errors.ReanimatedError(`\`clamp array\` must contain 2 items but is given ${config.clamp.length}.`);
+      }
+    }
+    if (config.velocityFactor <= 0) {
+      throw new _errors.ReanimatedError(`\`config.velocityFactor\` must be greater then 0 but is ${config.velocityFactor}.`);
+    }
+    if (config.rubberBandEffect && !config.clamp) {
+      throw new _errors.ReanimatedError('You need to set `clamp` property when using `rubberBandEffect`.');
+    }
+  };
+  validateConfig.__closure = {};
+  validateConfig.__workletHash = 9073199851290;
+  validateConfig.__initData = _worklet_9073199851290_init_data;
+  validateConfig.__stackDetails = _e;
+  return validateConfig;
+}();
+var _worklet_935525678198_init_data = {
+  code: "function decayTs2(userConfig,callback){const{defineAnimation,isValidRubberBandConfig,rubberBandDecay,rigidDecay,validateConfig,getReduceMotionForAnimation}=this.__closure;return defineAnimation(0,function(){'worklet';var _config$velocity;const config={deceleration:0.998,velocityFactor:1,velocity:0,rubberBandFactor:0.6};if(userConfig){Object.keys(userConfig).forEach(function(key){return config[key]=userConfig[key];});}const decay=isValidRubberBandConfig(config)?function(animation,now){return rubberBandDecay(animation,now,config);}:function(animation,now){return rigidDecay(animation,now,config);};function onStart(animation,value,now){animation.current=value;animation.lastTimestamp=now;animation.startTimestamp=now;animation.initialVelocity=config.velocity;validateConfig(config);if(animation.reduceMotion&&config.clamp){if(value<config.clamp[0]){animation.current=config.clamp[0];}else if(value>config.clamp[1]){animation.current=config.clamp[1];}}}return{onFrame:decay,onStart:onStart,callback:callback,velocity:(_config$velocity=config.velocity)!==null&&_config$velocity!==void 0?_config$velocity:0,initialVelocity:0,current:0,lastTimestamp:0,startTimestamp:0,reduceMotion:getReduceMotionForAnimation(config.reduceMotion)};});}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\src\\animation\\decay\\decay.ts",
+  sourceMap: "{\"version\":3,\"names\":[\"decayTs2\",\"userConfig\",\"callback\",\"defineAnimation\",\"isValidRubberBandConfig\",\"rubberBandDecay\",\"rigidDecay\",\"validateConfig\",\"getReduceMotionForAnimation\",\"__closure\",\"_config$velocity\",\"config\",\"deceleration\",\"velocityFactor\",\"velocity\",\"rubberBandFactor\",\"Object\",\"keys\",\"forEach\",\"key\",\"decay\",\"animation\",\"now\",\"onStart\",\"value\",\"current\",\"lastTimestamp\",\"startTimestamp\",\"initialVelocity\",\"reduceMotion\",\"clamp\",\"onFrame\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/src/animation/decay/decay.ts\"],\"mappings\":\"AAiEyB,SAAAA,QACvBA,CAAAC,UACA,CAAAC,QAC2B,QAAAC,eAAA,CAAAC,uBAAA,CAAAC,eAAA,CAAAC,UAAA,CAAAC,cAAA,CAAAC,2BAAA,OAAAC,SAAA,CAG3B,MAAO,CAAAN,eAAe,CAAiB,CAAC,CAAE,UAAM,CAC9C,SAAS,KAAAO,gBAAA,CACT,KAAM,CAAAC,MAA0B,CAAG,CACjCC,YAAY,CAAE,KAAK,CACnBC,cAAc,CAAE,CAAC,CACjBC,QAAQ,CAAE,CAAC,CACXC,gBAAgB,CAAE,GACpB,CAAC,CACD,GAAId,UAAU,CAAE,CACde,MAAM,CAACC,IAAI,CAAChB,UAAU,CAAC,CAACiB,OAAO,CAC5B,SAAAC,GAAG,QACA,CAAAR,MAAM,CAASQ,GAAG,CAAC,CAAGlB,UAAU,CAACkB,GAAG,CAC1C,GAAC,CACH,CAEA,KAAM,CAAAC,KAA+D,CACnEhB,uBAAuB,CAACO,MAAM,CAAC,CAC3B,SAACU,SAAS,CAAEC,GAAG,QAAK,CAAAjB,eAAe,CAACgB,SAAS,CAAEC,GAAG,CAAEX,MAAM,CAAC,GAC3D,SAACU,SAAS,CAAEC,GAAG,QAAK,CAAAhB,UAAU,CAACe,SAAS,CAAEC,GAAG,CAAEX,MAAM,CAAC,GAE5D,QAAS,CAAAY,OAAOA,CACdF,SAAyB,CACzBG,KAAa,CACbF,GAAc,CACR,CACND,SAAS,CAACI,OAAO,CAAGD,KAAK,CACzBH,SAAS,CAACK,aAAa,CAAGJ,GAAG,CAC7BD,SAAS,CAACM,cAAc,CAAGL,GAAG,CAC9BD,SAAS,CAACO,eAAe,CAAGjB,MAAM,CAACG,QAAQ,CAC3CP,cAAc,CAACI,MAAM,CAAC,CAEtB,GAAIU,SAAS,CAACQ,YAAY,EAAIlB,MAAM,CAACmB,KAAK,CAAE,CAC1C,GAAIN,KAAK,CAAGb,MAAM,CAACmB,KAAK,CAAC,CAAC,CAAC,CAAE,CAC3BT,SAAS,CAACI,OAAO,CAAGd,MAAM,CAACmB,KAAK,CAAC,CAAC,CAAC,CACrC,CAAC,IAAM,IAAIN,KAAK,CAAGb,MAAM,CAACmB,KAAK,CAAC,CAAC,CAAC,CAAE,CAClCT,SAAS,CAACI,OAAO,CAAGd,MAAM,CAACmB,KAAK,CAAC,CAAC,CAAC,CACrC,CACF,CACF,CAEA,MAAO,CACLC,OAAO,CAAEX,KAAK,CACdG,OAAO,CAAPA,OAAO,CACPrB,QAAQ,CAARA,QAAQ,CACRY,QAAQ,EAAAJ,gBAAA,CAAEC,MAAM,CAACG,QAAQ,UAAAJ,gBAAA,UAAAA,gBAAA,CAAI,CAAC,CAC9BkB,eAAe,CAAE,CAAC,CAClBH,OAAO,CAAE,CAAC,CACVC,aAAa,CAAE,CAAC,CAChBC,cAAc,CAAE,CAAC,CACjBE,YAAY,CAAErB,2BAA2B,CAACG,MAAM,CAACkB,YAAY,CAC/D,CAAC,CACH,CAAC,CAAC,CACJ\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_16883678704281_init_data = {
+  code: "function decayTs3(){const{userConfig,isValidRubberBandConfig,rubberBandDecay,rigidDecay,validateConfig,callback,getReduceMotionForAnimation}=this.__closure;var _config$velocity;const config={deceleration:0.998,velocityFactor:1,velocity:0,rubberBandFactor:0.6};if(userConfig){Object.keys(userConfig).forEach(function(key){return config[key]=userConfig[key];});}const decay=isValidRubberBandConfig(config)?function(animation,now){return rubberBandDecay(animation,now,config);}:function(animation,now){return rigidDecay(animation,now,config);};function onStart(animation,value,now){animation.current=value;animation.lastTimestamp=now;animation.startTimestamp=now;animation.initialVelocity=config.velocity;validateConfig(config);if(animation.reduceMotion&&config.clamp){if(value<config.clamp[0]){animation.current=config.clamp[0];}else if(value>config.clamp[1]){animation.current=config.clamp[1];}}}return{onFrame:decay,onStart:onStart,callback:callback,velocity:(_config$velocity=config.velocity)!==null&&_config$velocity!==void 0?_config$velocity:0,initialVelocity:0,current:0,lastTimestamp:0,startTimestamp:0,reduceMotion:getReduceMotionForAnimation(config.reduceMotion)};}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\src\\animation\\decay\\decay.ts",
+  sourceMap: "{\"version\":3,\"names\":[\"decayTs3\",\"userConfig\",\"isValidRubberBandConfig\",\"rubberBandDecay\",\"rigidDecay\",\"validateConfig\",\"callback\",\"getReduceMotionForAnimation\",\"__closure\",\"_config$velocity\",\"config\",\"deceleration\",\"velocityFactor\",\"velocity\",\"rubberBandFactor\",\"Object\",\"keys\",\"forEach\",\"key\",\"decay\",\"animation\",\"now\",\"onStart\",\"value\",\"current\",\"lastTimestamp\",\"startTimestamp\",\"initialVelocity\",\"reduceMotion\",\"clamp\",\"onFrame\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/src/animation/decay/decay.ts\"],\"mappings\":\"AAuE4C,SAAAA,QAAMA,CAAA,QAAAC,UAAA,CAAAC,uBAAA,CAAAC,eAAA,CAAAC,UAAA,CAAAC,cAAA,CAAAC,QAAA,CAAAC,2BAAA,OAAAC,SAAA,KAAAC,gBAAA,CAE9C,KAAM,CAAAC,MAA0B,CAAG,CACjCC,YAAY,CAAE,KAAK,CACnBC,cAAc,CAAE,CAAC,CACjBC,QAAQ,CAAE,CAAC,CACXC,gBAAgB,CAAE,GACpB,CAAC,CACD,GAAIb,UAAU,CAAE,CACdc,MAAM,CAACC,IAAI,CAACf,UAAU,CAAC,CAACgB,OAAO,CAC5B,SAAAC,GAAG,QACA,CAAAR,MAAM,CAASQ,GAAG,CAAC,CAAGjB,UAAU,CAACiB,GAAG,CAC1C,GAAC,CACH,CAEA,KAAM,CAAAC,KAA+D,CACnEjB,uBAAuB,CAACQ,MAAM,CAAC,CAC3B,SAACU,SAAS,CAAEC,GAAG,QAAK,CAAAlB,eAAe,CAACiB,SAAS,CAAEC,GAAG,CAAEX,MAAM,CAAC,GAC3D,SAACU,SAAS,CAAEC,GAAG,QAAK,CAAAjB,UAAU,CAACgB,SAAS,CAAEC,GAAG,CAAEX,MAAM,CAAC,GAE5D,QAAS,CAAAY,OAAOA,CACdF,SAAyB,CACzBG,KAAa,CACbF,GAAc,CACR,CACND,SAAS,CAACI,OAAO,CAAGD,KAAK,CACzBH,SAAS,CAACK,aAAa,CAAGJ,GAAG,CAC7BD,SAAS,CAACM,cAAc,CAAGL,GAAG,CAC9BD,SAAS,CAACO,eAAe,CAAGjB,MAAM,CAACG,QAAQ,CAC3CR,cAAc,CAACK,MAAM,CAAC,CAEtB,GAAIU,SAAS,CAACQ,YAAY,EAAIlB,MAAM,CAACmB,KAAK,CAAE,CAC1C,GAAIN,KAAK,CAAGb,MAAM,CAACmB,KAAK,CAAC,CAAC,CAAC,CAAE,CAC3BT,SAAS,CAACI,OAAO,CAAGd,MAAM,CAACmB,KAAK,CAAC,CAAC,CAAC,CACrC,CAAC,IAAM,IAAIN,KAAK,CAAGb,MAAM,CAACmB,KAAK,CAAC,CAAC,CAAC,CAAE,CAClCT,SAAS,CAACI,OAAO,CAAGd,MAAM,CAACmB,KAAK,CAAC,CAAC,CAAC,CACrC,CACF,CACF,CAEA,MAAO,CACLC,OAAO,CAAEX,KAAK,CACdG,OAAO,CAAPA,OAAO,CACPhB,QAAQ,CAARA,QAAQ,CACRO,QAAQ,EAAAJ,gBAAA,CAAEC,MAAM,CAACG,QAAQ,UAAAJ,gBAAA,UAAAA,gBAAA,CAAI,CAAC,CAC9BkB,eAAe,CAAE,CAAC,CAClBH,OAAO,CAAE,CAAC,CACVC,aAAa,CAAE,CAAC,CAChBC,cAAc,CAAE,CAAC,CACjBE,YAAY,CAAErB,2BAA2B,CAACG,MAAM,CAACkB,YAAY,CAC/D,CAAC,CACH\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var withDecay = exports.withDecay = function () {
+  var _e = [new global.Error(), -7, -27];
+  var decayTs2 = function decayTs2(userConfig, callback) {
+    return (0, _util.defineAnimation)(0, function () {
+      var _e = [new global.Error(), -8, -27];
+      var decayTs3 = function decayTs3() {
+        var _config$velocity;
+        var config = {
+          deceleration: 0.998,
+          velocityFactor: 1,
+          velocity: 0,
+          rubberBandFactor: 0.6
+        };
+        if (userConfig) {
+          Object.keys(userConfig).forEach(function (key) {
+            return config[key] = userConfig[key];
+          });
+        }
+        var decay = (0, _utils.isValidRubberBandConfig)(config) ? function (animation, now) {
+          return (0, _rubberBandDecay.rubberBandDecay)(animation, now, config);
+        } : function (animation, now) {
+          return (0, _rigidDecay.rigidDecay)(animation, now, config);
+        };
+        function onStart(animation, value, now) {
+          animation.current = value;
+          animation.lastTimestamp = now;
+          animation.startTimestamp = now;
+          animation.initialVelocity = config.velocity;
+          validateConfig(config);
+          if (animation.reduceMotion && config.clamp) {
+            if (value < config.clamp[0]) {
+              animation.current = config.clamp[0];
+            } else if (value > config.clamp[1]) {
+              animation.current = config.clamp[1];
+            }
+          }
+        }
+        return {
+          onFrame: decay,
+          onStart: onStart,
+          callback: callback,
+          velocity: (_config$velocity = config.velocity) != null ? _config$velocity : 0,
+          initialVelocity: 0,
+          current: 0,
+          lastTimestamp: 0,
+          startTimestamp: 0,
+          reduceMotion: (0, _util.getReduceMotionForAnimation)(config.reduceMotion)
+        };
+      };
+      decayTs3.__closure = {
+        userConfig: userConfig,
+        isValidRubberBandConfig: _utils.isValidRubberBandConfig,
+        rubberBandDecay: _rubberBandDecay.rubberBandDecay,
+        rigidDecay: _rigidDecay.rigidDecay,
+        validateConfig: validateConfig,
+        callback: callback,
+        getReduceMotionForAnimation: _util.getReduceMotionForAnimation
+      };
+      decayTs3.__workletHash = 16883678704281;
+      decayTs3.__initData = _worklet_16883678704281_init_data;
+      decayTs3.__stackDetails = _e;
+      return decayTs3;
+    }());
+  };
+  decayTs2.__closure = {
+    defineAnimation: _util.defineAnimation,
+    isValidRubberBandConfig: _utils.isValidRubberBandConfig,
+    rubberBandDecay: _rubberBandDecay.rubberBandDecay,
+    rigidDecay: _rigidDecay.rigidDecay,
+    validateConfig: validateConfig,
+    getReduceMotionForAnimation: _util.getReduceMotionForAnimation
+  };
+  decayTs2.__workletHash = 935525678198;
+  decayTs2.__initData = _worklet_935525678198_init_data;
+  decayTs2.__stackDetails = _e;
+  return decayTs2;
+}();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPYmplY3QiLCJkZWZpbmVQcm9wZXJ0eSIsImV4cG9ydHMiLCJ2YWx1ZSIsIndpdGhEZWNheSIsIl91dGlsIiwicmVxdWlyZSIsIl9ydWJiZXJCYW5kRGVjYXkiLCJfdXRpbHMiLCJfcmlnaWREZWNheSIsIl9lcnJvcnMiLCJfd29ya2xldF85MDczMTk5ODUxMjkwX2luaXRfZGF0YSIsImNvZGUiLCJsb2NhdGlvbiIsInNvdXJjZU1hcCIsInZlcnNpb24iLCJ2YWxpZGF0ZUNvbmZpZyIsIl9lIiwiZ2xvYmFsIiwiRXJyb3IiLCJjb25maWciLCJjbGFtcCIsIkFycmF5IiwiaXNBcnJheSIsIlJlYW5pbWF0ZWRFcnJvciIsImxlbmd0aCIsInZlbG9jaXR5RmFjdG9yIiwicnViYmVyQmFuZEVmZmVjdCIsIl9fY2xvc3VyZSIsIl9fd29ya2xldEhhc2giLCJfX2luaXREYXRhIiwiX19zdGFja0RldGFpbHMiLCJfd29ya2xldF85MzU1MjU2NzgxOThfaW5pdF9kYXRhIiwiX3dvcmtsZXRfMTY4ODM2Nzg3MDQyODFfaW5pdF9kYXRhIiwiZGVjYXlUczIiLCJ1c2VyQ29uZmlnIiwiY2FsbGJhY2siLCJkZWZpbmVBbmltYXRpb24iLCJkZWNheVRzMyIsIl9jb25maWckdmVsb2NpdHkiLCJkZWNlbGVyYXRpb24iLCJ2ZWxvY2l0eSIsInJ1YmJlckJhbmRGYWN0b3IiLCJrZXlzIiwiZm9yRWFjaCIsImtleSIsImRlY2F5IiwiaXNWYWxpZFJ1YmJlckJhbmRDb25maWciLCJhbmltYXRpb24iLCJub3ciLCJydWJiZXJCYW5kRGVjYXkiLCJyaWdpZERlY2F5Iiwib25TdGFydCIsImN1cnJlbnQiLCJsYXN0VGltZXN0YW1wIiwic3RhcnRUaW1lc3RhbXAiLCJpbml0aWFsVmVsb2NpdHkiLCJyZWR1Y2VNb3Rpb24iLCJvbkZyYW1lIiwiZ2V0UmVkdWNlTW90aW9uRm9yQW5pbWF0aW9uIl0sInNvdXJjZXMiOlsiZGVjYXkudHMiXSwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBzdHJpY3QnO1xuaW1wb3J0IHsgZGVmaW5lQW5pbWF0aW9uLCBnZXRSZWR1Y2VNb3Rpb25Gb3JBbmltYXRpb24gfSBmcm9tICcuLi91dGlsJztcbmltcG9ydCB0eXBlIHtcbiAgQW5pbWF0aW9uQ2FsbGJhY2ssXG4gIFRpbWVzdGFtcCxcbiAgQW5pbWF0aW9uLFxufSBmcm9tICcuLi8uLi9jb21tb25UeXBlcyc7XG5pbXBvcnQgeyBydWJiZXJCYW5kRGVjYXkgfSBmcm9tICcuL3J1YmJlckJhbmREZWNheSc7XG5pbXBvcnQgeyBpc1ZhbGlkUnViYmVyQmFuZENvbmZpZyB9IGZyb20gJy4vdXRpbHMnO1xuaW1wb3J0IHR5cGUge1xuICBEZWNheUFuaW1hdGlvbixcbiAgRGVjYXlDb25maWcsXG4gIERlZmF1bHREZWNheUNvbmZpZyxcbiAgSW5uZXJEZWNheUFuaW1hdGlvbixcbn0gZnJvbSAnLi91dGlscyc7XG5pbXBvcnQgeyByaWdpZERlY2F5IH0gZnJvbSAnLi9yaWdpZERlY2F5JztcbmltcG9ydCB7IFJlYW5pbWF0ZWRFcnJvciB9IGZyb20gJy4uLy4uL2Vycm9ycyc7XG5cbmV4cG9ydCB0eXBlIFdpdGhEZWNheUNvbmZpZyA9IERlY2F5Q29uZmlnO1xuXG4vLyBUT0RPIFRZUEVTQ1JJUFQgVGhpcyBpcyBhIHRlbXBvcmFyeSB0eXBlIHRvIGdldCByaWQgb2YgLmQudHMgZmlsZS5cbnR5cGUgd2l0aERlY2F5VHlwZSA9IChcbiAgdXNlckNvbmZpZzogRGVjYXlDb25maWcsXG4gIGNhbGxiYWNrPzogQW5pbWF0aW9uQ2FsbGJhY2tcbikgPT4gbnVtYmVyO1xuXG5mdW5jdGlvbiB2YWxpZGF0ZUNvbmZpZyhjb25maWc6IERlZmF1bHREZWNheUNvbmZpZyk6IHZvaWQge1xuICAnd29ya2xldCc7XG4gIGlmIChjb25maWcuY2xhbXApIHtcbiAgICBpZiAoIUFycmF5LmlzQXJyYXkoY29uZmlnLmNsYW1wKSkge1xuICAgICAgdGhyb3cgbmV3IFJlYW5pbWF0ZWRFcnJvcihcbiAgICAgICAgYFxcYGNvbmZpZy5jbGFtcFxcYCBtdXN0IGJlIGFuIGFycmF5IGJ1dCBpcyAke3R5cGVvZiBjb25maWcuY2xhbXB9LmBcbiAgICAgICk7XG4gICAgfVxuICAgIGlmIChjb25maWcuY2xhbXAubGVuZ3RoICE9PSAyKSB7XG4gICAgICB0aHJvdyBuZXcgUmVhbmltYXRlZEVycm9yKFxuICAgICAgICBgXFxgY2xhbXAgYXJyYXlcXGAgbXVzdCBjb250YWluIDIgaXRlbXMgYnV0IGlzIGdpdmVuICR7XG4gICAgICAgICAgY29uZmlnLmNsYW1wLmxlbmd0aCBhcyBudW1iZXJcbiAgICAgICAgfS5gXG4gICAgICApO1xuICAgIH1cbiAgfVxuICBpZiAoY29uZmlnLnZlbG9jaXR5RmFjdG9yIDw9IDApIHtcbiAgICB0aHJvdyBuZXcgUmVhbmltYXRlZEVycm9yKFxuICAgICAgYFxcYGNvbmZpZy52ZWxvY2l0eUZhY3RvclxcYCBtdXN0IGJlIGdyZWF0ZXIgdGhlbiAwIGJ1dCBpcyAke2NvbmZpZy52ZWxvY2l0eUZhY3Rvcn0uYFxuICAgICk7XG4gIH1cbiAgaWYgKGNvbmZpZy5ydWJiZXJCYW5kRWZmZWN0ICYmICFjb25maWcuY2xhbXApIHtcbiAgICB0aHJvdyBuZXcgUmVhbmltYXRlZEVycm9yKFxuICAgICAgJ1lvdSBuZWVkIHRvIHNldCBgY2xhbXBgIHByb3BlcnR5IHdoZW4gdXNpbmcgYHJ1YmJlckJhbmRFZmZlY3RgLidcbiAgICApO1xuICB9XG59XG5cbi8qKlxuICogTGV0cyB5b3UgY3JlYXRlIGFuaW1hdGlvbnMgdGhhdCBtaW1pYyBvYmplY3RzIGluIG1vdGlvbiB3aXRoIGZyaWN0aW9uLlxuICpcbiAqIEBwYXJhbSBjb25maWcgLSBUaGUgZGVjYXkgYW5pbWF0aW9uIGNvbmZpZ3VyYXRpb24gLSB7QGxpbmsgRGVjYXlDb25maWd9LlxuICogQHBhcmFtIGNhbGxiYWNrIC0gQSBmdW5jdGlvbiBjYWxsZWQgdXBvbiBhbmltYXRpb24gY29tcGxldGlvbiAtXG4gKiAgIHtAbGluayBBbmltYXRpb25DYWxsYmFja30uXG4gKiBAcmV0dXJucyBBbiBbYW5pbWF0aW9uXG4gKiAgIG9iamVjdF0oaHR0cHM6Ly9kb2NzLnN3bWFuc2lvbi5jb20vcmVhY3QtbmF0aXZlLXJlYW5pbWF0ZWQvZG9jcy9mdW5kYW1lbnRhbHMvZ2xvc3NhcnkjYW5pbWF0aW9uLW9iamVjdClcbiAqICAgd2hpY2ggaG9sZHMgdGhlIGN1cnJlbnQgc3RhdGUgb2YgdGhlIGFuaW1hdGlvbi5cbiAqIEBzZWUgaHR0cHM6Ly9kb2NzLnN3bWFuc2lvbi5jb20vcmVhY3QtbmF0aXZlLXJlYW5pbWF0ZWQvZG9jcy9hbmltYXRpb25zL3dpdGhEZWNheVxuICovXG5leHBvcnQgY29uc3Qgd2l0aERlY2F5ID0gZnVuY3Rpb24gKFxuICB1c2VyQ29uZmlnOiBEZWNheUNvbmZpZyxcbiAgY2FsbGJhY2s/OiBBbmltYXRpb25DYWxsYmFja1xuKTogQW5pbWF0aW9uPERlY2F5QW5pbWF0aW9uPiB7XG4gICd3b3JrbGV0JztcblxuICByZXR1cm4gZGVmaW5lQW5pbWF0aW9uPERlY2F5QW5pbWF0aW9uPigwLCAoKSA9PiB7XG4gICAgJ3dvcmtsZXQnO1xuICAgIGNvbnN0IGNvbmZpZzogRGVmYXVsdERlY2F5Q29uZmlnID0ge1xuICAgICAgZGVjZWxlcmF0aW9uOiAwLjk5OCxcbiAgICAgIHZlbG9jaXR5RmFjdG9yOiAxLFxuICAgICAgdmVsb2NpdHk6IDAsXG4gICAgICBydWJiZXJCYW5kRmFjdG9yOiAwLjYsXG4gICAgfTtcbiAgICBpZiAodXNlckNvbmZpZykge1xuICAgICAgT2JqZWN0LmtleXModXNlckNvbmZpZykuZm9yRWFjaChcbiAgICAgICAgKGtleSkgPT5cbiAgICAgICAgICAoKGNvbmZpZyBhcyBhbnkpW2tleV0gPSB1c2VyQ29uZmlnW2tleSBhcyBrZXlvZiB0eXBlb2YgdXNlckNvbmZpZ10pXG4gICAgICApO1xuICAgIH1cblxuICAgIGNvbnN0IGRlY2F5OiAoYW5pbWF0aW9uOiBJbm5lckRlY2F5QW5pbWF0aW9uLCBub3c6IG51bWJlcikgPT4gYm9vbGVhbiA9XG4gICAgICBpc1ZhbGlkUnViYmVyQmFuZENvbmZpZyhjb25maWcpXG4gICAgICAgID8gKGFuaW1hdGlvbiwgbm93KSA9PiBydWJiZXJCYW5kRGVjYXkoYW5pbWF0aW9uLCBub3csIGNvbmZpZylcbiAgICAgICAgOiAoYW5pbWF0aW9uLCBub3cpID0+IHJpZ2lkRGVjYXkoYW5pbWF0aW9uLCBub3csIGNvbmZpZyk7XG5cbiAgICBmdW5jdGlvbiBvblN0YXJ0KFxuICAgICAgYW5pbWF0aW9uOiBEZWNheUFuaW1hdGlvbixcbiAgICAgIHZhbHVlOiBudW1iZXIsXG4gICAgICBub3c6IFRpbWVzdGFtcFxuICAgICk6IHZvaWQge1xuICAgICAgYW5pbWF0aW9uLmN1cnJlbnQgPSB2YWx1ZTtcbiAgICAgIGFuaW1hdGlvbi5sYXN0VGltZXN0YW1wID0gbm93O1xuICAgICAgYW5pbWF0aW9uLnN0YXJ0VGltZXN0YW1wID0gbm93O1xuICAgICAgYW5pbWF0aW9uLmluaXRpYWxWZWxvY2l0eSA9IGNvbmZpZy52ZWxvY2l0eTtcbiAgICAgIHZhbGlkYXRlQ29uZmlnKGNvbmZpZyk7XG5cbiAgICAgIGlmIChhbmltYXRpb24ucmVkdWNlTW90aW9uICYmIGNvbmZpZy5jbGFtcCkge1xuICAgICAgICBpZiAodmFsdWUgPCBjb25maWcuY2xhbXBbMF0pIHtcbiAgICAgICAgICBhbmltYXRpb24uY3VycmVudCA9IGNvbmZpZy5jbGFtcFswXTtcbiAgICAgICAgfSBlbHNlIGlmICh2YWx1ZSA+IGNvbmZpZy5jbGFtcFsxXSkge1xuICAgICAgICAgIGFuaW1hdGlvbi5jdXJyZW50ID0gY29uZmlnLmNsYW1wWzFdO1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuXG4gICAgcmV0dXJuIHtcbiAgICAgIG9uRnJhbWU6IGRlY2F5LFxuICAgICAgb25TdGFydCxcbiAgICAgIGNhbGxiYWNrLFxuICAgICAgdmVsb2NpdHk6IGNvbmZpZy52ZWxvY2l0eSA/PyAwLFxuICAgICAgaW5pdGlhbFZlbG9jaXR5OiAwLFxuICAgICAgY3VycmVudDogMCxcbiAgICAgIGxhc3RUaW1lc3RhbXA6IDAsXG4gICAgICBzdGFydFRpbWVzdGFtcDogMCxcbiAgICAgIHJlZHVjZU1vdGlvbjogZ2V0UmVkdWNlTW90aW9uRm9yQW5pbWF0aW9uKGNvbmZpZy5yZWR1Y2VNb3Rpb24pLFxuICAgIH0gYXMgRGVjYXlBbmltYXRpb247XG4gIH0pO1xufSBhcyB1bmtub3duIGFzIHdpdGhEZWNheVR5cGU7XG4iXSwibWFwcGluZ3MiOiJBQUFBLFlBQVk7O0FBQUNBLE1BQUEsQ0FBQUMsY0FBQSxDQUFBQyxPQUFBO0VBQUFDLEtBQUE7QUFBQTtBQUFBRCxPQUFBLENBQUFFLFNBQUE7QUFDYixJQUFBQyxLQUFBLEdBQUFDLE9BQUE7QUFNQSxJQUFBQyxnQkFBQSxHQUFBRCxPQUFBO0FBQ0EsSUFBQUUsTUFBQSxHQUFBRixPQUFBO0FBT0EsSUFBQUcsV0FBQSxHQUFBSCxPQUFBO0FBQ0EsSUFBQUksT0FBQSxHQUFBSixPQUFBO0FBQStDLElBQUFLLGdDQUFBO0VBQUFDLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0VBQUFDLE9BQUE7QUFBQTtBQUFBLElBQUFDLGNBQUEsR0FVL0M7RUFBQSxJQUFBQyxFQUFBLFFBQUFDLE1BQUEsQ0FBQUMsS0FBQTtFQUFBLElBQUFILGNBQUEsWUFBQUEsZUFBd0JJLE1BQTBCLEVBQVE7SUFFeEQsSUFBSUEsTUFBTSxDQUFDQyxLQUFLLEVBQUU7TUFDaEIsSUFBSSxDQUFDQyxLQUFLLENBQUNDLE9BQU8sQ0FBQ0gsTUFBTSxDQUFDQyxLQUFLLENBQUMsRUFBRTtRQUNoQyxNQUFNLElBQUlHLHVCQUFlLENBQ3ZCLDRDQUE0QyxPQUFPSixNQUFNLENBQUNDLEtBQUssR0FDakUsQ0FBQztNQUNIO01BQ0EsSUFBSUQsTUFBTSxDQUFDQyxLQUFLLENBQUNJLE1BQU0sS0FBSyxDQUFDLEVBQUU7UUFDN0IsTUFBTSxJQUFJRCx1QkFBZSxDQUN2QixxREFDRUosTUFBTSxDQUFDQyxLQUFLLENBQUNJLE1BQU0sR0FFdkIsQ0FB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

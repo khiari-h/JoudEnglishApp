@@ -1,0 +1,76 @@
+# Test E2E - Parcours utilisateur principal
+# JoudEnglishApp - Dashboard → Niveaux → Exercices → Vocabulaire
+
+appId: com.hamdanek.JoudEnglishApp
+---
+
+# 🚀 LANCEMENT DE L'APPLICATION
+- launchApp
+
+# Attendre que l'application se charge complètement
+- waitForAnimationToEnd
+
+# 📱 NAVIGATION VERS NIVEAUX
+# Essayer différentes approches pour trouver le bouton
+- tapOn:
+    id: "level-selection-button"
+    optional: true
+- tapOn: 
+    text: "Niveaux"
+    optional: true
+- tapOn: 
+    text: "Sélectionner niveau"
+    optional: true
+
+# Attendre que la page se charge
+- waitForAnimationToEnd
+
+# Vérifier qu'on est sur la page des niveaux
+- assertVisible: "Niveaux"
+
+# 🎯 SÉLECTION DE NIVEAU 1
+- tapOn:
+    id: "Commencer"
+- waitForAnimationToEnd
+
+# Vérifier qu'on est sur la sélection d'exercices
+- assertVisible: "Choisissez votre exercice"
+
+# 📚 SÉLECTION VOCABULAIRE
+- tapOn:
+    id: "vocabulary-button"
+- waitForAnimationToEnd
+
+# Vérifier qu'on est dans l'exercice de vocabulaire
+- assertVisible: "Vocabulaire"
+
+# 📖 INTERACTION AVEC L'EXERCICE
+# Révéler la traduction
+- tapOn: "Reveal Translation"
+- waitForAnimationToEnd
+
+# Passer au mot suivant
+- tapOn: "Mot suivant"
+- waitForAnimationToEnd
+
+# Faire encore quelques mots
+- tapOn: "Révéler"
+- waitForAnimationToEnd
+- tapOn: "Mot suivant"
+- waitForAnimationToEnd
+
+# 🔙 NAVIGATION RETOUR
+# Retour aux exercices
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# Retour aux niveaux
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd
+
+# Retour au dashboard
+- tapOn:
+    id: "back-button"
+- waitForAnimationToEnd

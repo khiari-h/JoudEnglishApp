@@ -37,7 +37,7 @@ export const SettingsProvider = ({ children }) => {
 
   // Sauvegarder les paramètres lorsqu'ils changent
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && settings !== DEFAULT_SETTINGS) {
       storeData('userSettings', settings);
     }
   }, [settings, isLoading]);

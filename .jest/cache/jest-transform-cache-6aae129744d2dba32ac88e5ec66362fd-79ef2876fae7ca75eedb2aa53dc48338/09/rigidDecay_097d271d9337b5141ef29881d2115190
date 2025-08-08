@@ -1,0 +1,48 @@
+fec1aedda9e998dc5496e08afc6ebb42
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.rigidDecay = void 0;
+var _utils = require("./utils.js");
+var _worklet_440840678862_init_data = {
+  code: "function rigidDecay_rigidDecayJs1(animation,now,config){const{SLOPE_FACTOR,VELOCITY_EPS}=this.__closure;const{lastTimestamp:lastTimestamp,startTimestamp:startTimestamp,initialVelocity:initialVelocity,current:current,velocity:velocity}=animation;const deltaTime=Math.min(now-lastTimestamp,64);const v=velocity*Math.exp(-(1-config.deceleration)*(now-startTimestamp)*SLOPE_FACTOR);animation.current=current+v*config.velocityFactor*deltaTime/1000;animation.velocity=v;animation.lastTimestamp=now;if(config.clamp){if(initialVelocity<0&&animation.current<=config.clamp[0]){animation.current=config.clamp[0];return true;}else if(initialVelocity>0&&animation.current>=config.clamp[1]){animation.current=config.clamp[1];return true;}}return Math.abs(v)<VELOCITY_EPS;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\animation\\decay\\rigidDecay.js",
+  sourceMap: "{\"version\":3,\"names\":[\"rigidDecay_rigidDecayJs1\",\"animation\",\"now\",\"config\",\"SLOPE_FACTOR\",\"VELOCITY_EPS\",\"__closure\",\"lastTimestamp\",\"startTimestamp\",\"initialVelocity\",\"current\",\"velocity\",\"deltaTime\",\"Math\",\"min\",\"v\",\"exp\",\"deceleration\",\"velocityFactor\",\"clamp\",\"abs\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/animation/decay/rigidDecay.js\"],\"mappings\":\"AAGO,SAAAA,wBAA+BA,CAAAC,SAAW,CAAEC,GAAA,CAAAC,MAAA,QAAAC,YAAA,CAAAC,YAAA,OAAAC,SAAA,CAGjD,KAAM,CACJC,aAAa,CAAbA,aAAa,CACbC,cAAc,CAAdA,cAAc,CACdC,eAAe,CAAfA,eAAe,CACfC,OAAO,CAAPA,OAAO,CACPC,QAAA,CAAAA,QACF,CAAC,CAAGV,SAAS,CACb,KAAM,CAAAW,SAAS,CAAGC,IAAI,CAACC,GAAG,CAACZ,GAAG,CAAGK,aAAa,CAAE,EAAE,CAAC,CACnD,KAAM,CAAAQ,CAAC,CAAGJ,QAAQ,CAAGE,IAAI,CAACG,GAAG,CAAC,EAAE,CAAC,CAAGb,MAAM,CAACc,YAAY,CAAC,EAAIf,GAAG,CAAGM,cAAc,CAAC,CAAGJ,YAAY,CAAC,CACjGH,SAAS,CAACS,OAAO,CAAGA,OAAO,CAAGK,CAAC,CAAGZ,MAAM,CAACe,cAAc,CAAGN,SAAS,CAAG,IAAI,CAC1EX,SAAS,CAACU,QAAQ,CAAGI,CAAC,CACtBd,SAAS,CAACM,aAAa,CAAGL,GAAG,CAC7B,GAAIC,MAAM,CAACgB,KAAK,CAAE,CAChB,GAAIV,eAAe,CAAG,CAAC,EAAIR,SAAS,CAACS,OAAO,EAAIP,MAAM,CAACgB,KAAK,CAAC,CAAC,CAAC,CAAE,CAC/DlB,SAAS,CAACS,OAAO,CAAGP,MAAM,CAACgB,KAAK,CAAC,CAAC,CAAC,CACnC,MAAO,KAAI,CACb,CAAC,IAAM,IAAIV,eAAe,CAAG,CAAC,EAAIR,SAAS,CAACS,OAAO,EAAIP,MAAM,CAACgB,KAAK,CAAC,CAAC,CAAC,CAAE,CACtElB,SAAS,CAACS,OAAO,CAAGP,MAAM,CAACgB,KAAK,CAAC,CAAC,CAAC,CACnC,MAAO,KAAI,CACb,CACF,CACA,MAAO,CAAAN,IAAI,CAACO,GAAG,CAACL,CAAC,CAAC,CAAGV,YAAY,CACnC\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var rigidDecay = exports.rigidDecay = function () {
+  var _e = [new global.Error(), -3, -27];
+  var rigidDecay = function rigidDecay(animation, now, config) {
+    var lastTimestamp = animation.lastTimestamp,
+      startTimestamp = animation.startTimestamp,
+      initialVelocity = animation.initialVelocity,
+      current = animation.current,
+      velocity = animation.velocity;
+    var deltaTime = Math.min(now - lastTimestamp, 64);
+    var v = velocity * Math.exp(-(1 - config.deceleration) * (now - startTimestamp) * _utils.SLOPE_FACTOR);
+    animation.current = current + v * config.velocityFactor * deltaTime / 1000;
+    animation.velocity = v;
+    animation.lastTimestamp = now;
+    if (config.clamp) {
+      if (initialVelocity < 0 && animation.current <= config.clamp[0]) {
+        animation.current = config.clamp[0];
+        return true;
+      } else if (initialVelocity > 0 && animation.current >= config.clamp[1]) {
+        animation.current = config.clamp[1];
+        return true;
+      }
+    }
+    return Math.abs(v) < _utils.VELOCITY_EPS;
+  };
+  rigidDecay.__closure = {
+    SLOPE_FACTOR: _utils.SLOPE_FACTOR,
+    VELOCITY_EPS: _utils.VELOCITY_EPS
+  };
+  rigidDecay.__workletHash = 440840678862;
+  rigidDecay.__initData = _worklet_440840678862_init_data;
+  rigidDecay.__stackDetails = _e;
+  return rigidDecay;
+}();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPYmplY3QiLCJkZWZpbmVQcm9wZXJ0eSIsImV4cG9ydHMiLCJ2YWx1ZSIsInJpZ2lkRGVjYXkiLCJfdXRpbHMiLCJyZXF1aXJlIiwiX3dvcmtsZXRfNDQwODQwNjc4ODYyX2luaXRfZGF0YSIsImNvZGUiLCJsb2NhdGlvbiIsInNvdXJjZU1hcCIsInZlcnNpb24iLCJfZSIsImdsb2JhbCIsIkVycm9yIiwiYW5pbWF0aW9uIiwibm93IiwiY29uZmlnIiwibGFzdFRpbWVzdGFtcCIsInN0YXJ0VGltZXN0YW1wIiwiaW5pdGlhbFZlbG9jaXR5IiwiY3VycmVudCIsInZlbG9jaXR5IiwiZGVsdGFUaW1lIiwiTWF0aCIsIm1pbiIsInYiLCJleHAiLCJkZWNlbGVyYXRpb24iLCJTTE9QRV9GQUNUT1IiLCJ2ZWxvY2l0eUZhY3RvciIsImNsYW1wIiwiYWJzIiwiVkVMT0NJVFlfRVBTIiwiX19jbG9zdXJlIiwiX193b3JrbGV0SGFzaCIsIl9faW5pdERhdGEiLCJfX3N0YWNrRGV0YWlscyJdLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy9hbmltYXRpb24vZGVjYXkvcmlnaWREZWNheS50cyJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdLCJtYXBwaW5ncyI6IkFBQUEsWUFBWTs7QUFBQUEsTUFBQSxDQUFBQyxjQUFBLENBQUFDLE9BQUE7RUFBQUMsS0FBQTtBQUFBO0FBQUFELE9BQUEsQ0FBQUUsVUFBQTtBQUNaLElBQUFDLE1BQUEsR0FBQUMsT0FBQTtBQUFvRCxJQUFBQywrQkFBQTtFQUFBQyxJQUFBO0VBQUFDLFFBQUE7RUFBQUMsU0FBQTtFQUFBQyxPQUFBO0FBQUE7QUFBQSxJQUFBUCxVQUFBLEdBQUFGLE9BQUEsQ0FBQUUsVUFBQSxHQUc3QztFQUFBLElBQUFRLEVBQUEsUUFBQUMsTUFBQSxDQUFBQyxLQUFBO0VBQUEsSUFBQVYsVUFBQSxZQUFBQSxXQUNMVyxTQUE4QixFQUM5QkMsR0FBVyxFQUNYQyxNQUEwQixFQUNqQjtJQUVULElBQVFDLGFBQWEsR0FDbkJILFNBQVMsQ0FESEcsYUFBYTtNQUFFQyxjQUFjLEdBQ25DSixTQUFTLENBRFlJLGNBQWM7TUFBRUMsZUFBZSxHQUNwREwsU0FBUyxDQUQ0QkssZUFBZTtNQUFFQyxPQUFPLEdBQzdETixTQUFTLENBRDZDTSxPQUFPO01BQUVDLFFBQUEsR0FDL0RQLFNBQVMsQ0FEc0RPLFFBQUE7SUFHakUsSUFBTUMsU0FBUyxHQUFHQyxJQUFJLENBQUNDLEdBQUcsQ0FBQ1QsR0FBRyxHQUFHRSxhQUFhLEVBQUUsRUFBRSxDQUFDO0lBQ25ELElBQU1RLENBQUMsR0FDTEosUUFBUSxHQUNSRSxJQUFJLENBQUNHLEdBQUcsQ0FDTixFQUFFLENBQUMsR0FBR1YsTUFBTSxDQUFDVyxZQUFZLENBQUMsSUFBSVosR0FBRyxHQUFHRyxjQUFjLENBQUMsR0FBR1UsbUJBQ3hELENBQUM7SUFDSGQsU0FBUyxDQUFDTSxPQUFPLEdBQUdBLE9BQU8sR0FBSUssQ0FBQyxHQUFHVCxNQUFNLENBQUNhLGNBQWMsR0FBR1AsU0FBUyxHQUFJLElBQUk7SUFDNUVSLFNBQVMsQ0FBQ08sUUFBUSxHQUFHSSxDQUFDO0lBQ3RCWCxTQUFTLENBQUNHLGFBQWEsR0FBR0YsR0FBRztJQUU3QixJQUFJQyxNQUFNLENBQUNjLEtBQUssRUFBRTtNQUNoQixJQUFJWCxlQUFlLEdBQUcsQ0FBQyxJQUFJTCxTQUFTLENBQUNNLE9BQU8sSUFBSUosTUFBTSxDQUFDYyxLQUFLLENBQUMsQ0FBQyxDQUFDLEVBQUU7UUFDL0RoQixTQUFTLENBQUNNLE9BQU8sR0FBR0osTUFBTSxDQUFDYyxLQUFLLENBQUMsQ0FBQyxDQUFDO1FBQ25DLE9BQU8sSUFBSTtNQUNiLENBQUMsTUFBTSxJQUFJWCxlQUFlLEdBQUcsQ0FBQyxJQUFJTCxTQUFTLENBQUNNLE9BQU8sSUFBSUosTUFBTSxDQUFDYyxLQUFLLENBQUMsQ0FBQyxDQUFDLEVBQUU7UUFDdEVoQixTQUFTLENBQUNNLE9BQU8sR0FBR0osTUFBTSxDQUFDYyxLQUFLLENBQUMsQ0FBQyxDQUFDO1FBQ25DLE9BQU8sSUFBSTtNQUNiO0lBQ0Y7SUFDQSxPQUFPUCxJQUFJLENBQUNRLEdBQUcsQ0FBQ04sQ0FBQyxDQUFDLEdBQUdPLG1CQUFZO0VBQ25DO0VBQUE3QixVQUFBLENBQUE4QixTQUFBO0lBQUFMLFlBQUEsRUFoQjREQSxtQkFDeEQ7SUFBQUksWUFBQSxFQWNtQkE7RUFBWTtFQUFBN0IsVUFBQSxDQUFBK0IsYUFBQTtFQUFBL0IsVUFBQSxDQUFBZ0MsVUFBQSxHQUFBN0IsK0JBQUE7RUFBQUgsVUFBQSxDQUFBaUMsY0FBQSxHQUFBekIsRUFBQTtFQUFBLE9BQUFSLFVBQUE7QUFBQSxDQTVCNUIiLCJpZ25vcmVMaXN0IjpbXX0=

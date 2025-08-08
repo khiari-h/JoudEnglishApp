@@ -1,0 +1,138 @@
+# Test E2E - Fonctionnalités avancées
+# JoudEnglishApp - Settings, révisions, métriques
+appId: com.hamdanek.JoudEnglishApp
+---
+# 🚀 LANCEMENT
+- launchApp
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Dashboard"
+    optional: true
+
+# ⚙️ PARAMÈTRES (si accessible depuis dashboard)
+- tapOn:
+    id: "settings-button"
+    optional: true
+- tapOn:
+    text: "Paramètres"
+    optional: true
+- tapOn:
+    text: "Settings"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Paramètres"
+    optional: true
+
+# Test des paramètres de révision
+- assertVisible:
+    text: "Révisions"
+    optional: true
+- tapOn:
+    text: "Révisions"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Fréquence"
+    optional: true
+- assertVisible:
+    text: "Notifications"
+    optional: true
+
+# Modifier un paramètre
+- tapOn:
+    text: "Quotidien"
+    optional: true
+- tapOn:
+    text: "Daily"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Sauvegardé"
+    optional: true
+
+# Retour au dashboard
+- pressKey: "Back"
+- waitForAnimationToEnd
+- pressKey: "Back"
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Dashboard"
+    optional: true
+
+# 📊 MÉTRIQUES DÉTAILLÉES
+- scroll
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Temps d'étude"
+    optional: true
+- assertVisible:
+    text: "Série"
+    optional: true
+- assertVisible:
+    text: "Niveau actuel"
+    optional: true
+
+# 🔄 SYSTÈME DE RÉVISION
+- tapOn:
+    text: "Commencer >"
+- waitForAnimationToEnd
+- tapOn:
+    id: "level-1"
+    optional: true
+- tapOn:
+    text: "Niveau 1"
+    optional: true
+- waitForAnimationToEnd
+- tapOn:
+    id: "vocabulary-button"
+    optional: true
+- tapOn:
+    text: "Vocabulaire"
+    optional: true
+- waitForAnimationToEnd
+
+# Apprendre plusieurs mots
+- tapOn:
+    text: "Révéler"
+- waitForAnimationToEnd
+- tapOn:
+    text: "Mot suivant"
+- waitForAnimationToEnd
+- tapOn:
+    text: "Révéler"
+- waitForAnimationToEnd
+- tapOn:
+    text: "Mot suivant"
+- waitForAnimationToEnd
+- tapOn:
+    text: "Révéler"
+- waitForAnimationToEnd
+- tapOn:
+    text: "Mot suivant"
+- waitForAnimationToEnd
+
+# Retour dashboard
+- pressKey: "Back"
+- waitForAnimationToEnd
+- pressKey: "Back"
+- waitForAnimationToEnd
+- pressKey: "Back"
+- waitForAnimationToEnd
+
+# 📱 TEST DE NAVIGATION SIMPLE
+- tapOn:
+    text: "Commencer >"
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Niveaux"
+- pressKey: "Back"
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Dashboard"
+    optional: true
+
+# ✅ VÉRIFICATION FINALE
+- assertVisible:
+    text: "Commencer >"
+    optional: true

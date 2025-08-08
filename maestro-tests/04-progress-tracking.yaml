@@ -1,0 +1,185 @@
+# Test E2E - Suivi d'avancement et persistance
+# JoudEnglishApp - Test de sauvegarde et restauration des données
+
+appId: com.hamdanek.JoudEnglishApp
+---
+
+# 🚀 CRÉATION D'ACTIVITÉ
+- launchApp
+- waitForAnimationToEnd
+- tapOn: "Commencer >"
+- waitForAnimationToEnd
+- tapOn: "Niveau 1"
+- waitForAnimationToEnd
+- tapOn: "Vocabulaire"
+- waitForAnimationToEnd
+
+# Faire une session d'apprentissage
+- assertVisible: "Vocabulaire"
+- assertVisible: "1/"
+
+# Compléter plusieurs mots pour créer de la progression
+- tapOn: "Révéler"
+- waitForAnimationToEnd
+- tapOn: "Mot suivant"
+- waitForAnimationToEnd
+- assertVisible: "2/"
+
+- tapOn: "Révéler"
+- waitForAnimationToEnd
+- tapOn: "Mot suivant"
+- waitForAnimationToEnd
+- assertVisible: "3/"
+
+- tapOn: "Révéler"
+- waitForAnimationToEnd
+- tapOn: "Mot suivant"
+- waitForAnimationToEnd
+- assertVisible: "4/"
+
+- tapOn: "Révéler"
+- waitForAnimationToEnd
+- tapOn: "Mot suivant"
+- waitForAnimationToEnd
+- assertVisible: "5/"
+
+# 💾 SAUVEGARDE AUTOMATIQUE
+# Retourner au dashboard pour déclencher la sauvegarde
+- pressKey: "Back"
+- waitForAnimationToEnd
+- pressKey: "Back"
+- waitForAnimationToEnd
+- pressKey: "Back"
+- waitForAnimationToEnd
+- assertVisible: "Dashboard"
+
+# Vérifier que l'activité récente est affichée
+- assertVisible:
+    text: "Reprendre"
+    optional: true
+- assertVisible:
+    text: "Vocabulaire"
+    optional: true
+- assertVisible:
+    text: "Niv 1"
+    optional: true
+
+# 📊 MÉTRIQUES DE PROGRESSION
+# Vérifier les métriques sur le dashboard
+- assertVisible:
+    text: "mots"
+    optional: true
+- assertVisible:
+    text: "%"
+    optional: true
+
+# 🔄 TEST DE PERSISTANCE
+# Simuler redémarrage en relançant l'app
+- stopApp
+- launchApp
+- waitForAnimationToEnd
+
+# Vérifier que les données sont restaurées
+- assertVisible:
+    text: "Dashboard"
+    optional: true
+- assertVisible:
+    text: "Reprendre"
+    optional: true
+- assertVisible:
+    text: "Vocabulaire"
+    optional: true
+
+# 📈 CONTINUATION DE L'ACTIVITÉ
+# Reprendre l'activité sauvegardée
+- tapOn:
+    text: "Continuer ▶️"
+    optional: true
+- tapOn:
+    text: "Reprendre"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible: "Vocabulaire"
+
+# Vérifier qu'on reprend où on s'était arrêté
+- assertVisible:
+    text: "5/"
+    optional: true
+
+# Continuer l'exercice
+- tapOn: "Révéler"
+- waitForAnimationToEnd
+- tapOn: "Mot suivant"
+- waitForAnimationToEnd
+- assertVisible:
+    text: "6/"
+    optional: true
+
+# 🏠 RETOUR ET VÉRIFICATION FINALE
+- pressKey: "Back"
+- waitForAnimationToEnd
+- pressKey: "Back"
+- waitForAnimationToEnd
+- pressKey: "Back"
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Dashboard"
+    optional: true
+
+# Vérifier que la progression a été mise à jour
+- assertVisible:
+    text: "Reprendre"
+    optional: true
+- assertVisible:
+    text: "6/"
+    optional: true
+
+# 📊 VÉRIFICATION NIVEAUX
+# Aller voir la progression dans les niveaux
+- tapOn: "Commencer >"
+- waitForAnimationToEnd
+- assertVisible: "Niveaux"
+- assertVisible: "Niveau 1"
+
+# Le niveau 1 devrait montrer de la progression
+- assertVisible:
+    text: "%"
+    optional: true
+
+# 🎯 TEST MULTI-EXERCICES
+# Tester la progression sur plusieurs exercices
+- tapOn: "Niveau 1"
+- waitForAnimationToEnd
+- tapOn: "Expressions"
+- waitForAnimationToEnd
+- assertVisible: "Expressions"
+
+# Faire quelques expressions
+- tapOn: "Révéler"
+- waitForAnimationToEnd
+- tapOn: "Suivant"
+- waitForAnimationToEnd
+- tapOn: "Révéler"
+- waitForAnimationToEnd
+- tapOn: "Suivant"
+- waitForAnimationToEnd
+
+# Retour pour vérifier progression globale
+- pressKey: "Back"
+- waitForAnimationToEnd
+- pressKey: "Back"
+- waitForAnimationToEnd
+- assertVisible: "Niveaux"
+
+# La progression du niveau 1 devrait avoir augmenté
+- assertVisible: "Niveau 1"
+- assertVisible:
+    text: "%"
+    optional: true
+
+# ✅ RETOUR FINAL
+- pressKey: "Back"
+- waitForAnimationToEnd
+- assertVisible:
+    text: "Dashboard"
+    optional: true

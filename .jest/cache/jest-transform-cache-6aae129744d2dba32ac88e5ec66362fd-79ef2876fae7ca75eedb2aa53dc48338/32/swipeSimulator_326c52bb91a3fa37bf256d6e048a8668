@@ -1,0 +1,264 @@
+df6f91c7d7e1fef96b0f08a06eb6fd47
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getSwipeSimulator = void 0;
+var _styleUpdater = require("./styleUpdater.js");
+var _RNScreensTurboModule = require("./RNScreensTurboModule.js");
+var BASE_VELOCITY = 400;
+var ADDITIONAL_VELOCITY_FACTOR_X = 400;
+var ADDITIONAL_VELOCITY_FACTOR_Y = 500;
+var ADDITIONAL_VELOCITY_FACTOR_XY = 600;
+var _worklet_13250582126840_init_data = {
+  code: "function computeEasingProgress_swipeSimulatorJs1(startingTimestamp,distance,velocity){if(Math.abs(distance)<1){return 1;}const elapsedTime=(_getAnimationTimestamp()-startingTimestamp)/1000;const currentPosition=velocity*elapsedTime;const progress=currentPosition/distance;return progress;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\screenTransition\\swipeSimulator.js",
+  sourceMap: "{\"version\":3,\"names\":[\"computeEasingProgress_swipeSimulatorJs1\",\"startingTimestamp\",\"distance\",\"velocity\",\"Math\",\"abs\",\"elapsedTime\",\"_getAnimationTimestamp\",\"currentPosition\",\"progress\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/screenTransition/swipeSimulator.js\"],\"mappings\":\"AAQA,SAAAA,uCAA+BA,CAAiBC,iBAAY,CAAAC,QAAU,CAAAC,QAAA,EAGpE,GAAIC,IAAI,CAACC,GAAG,CAACH,QAAQ,CAAC,CAAG,CAAC,CAAE,CAC1B,MAAO,EAAC,CACV,CACA,KAAM,CAAAI,WAAW,CAAG,CAACC,sBAAsB,CAAC,CAAC,CAAGN,iBAAiB,EAAI,IAAI,CACzE,KAAM,CAAAO,eAAe,CAAGL,QAAQ,CAAGG,WAAW,CAC9C,KAAM,CAAAG,QAAQ,CAAGD,eAAe,CAAGN,QAAQ,CAC3C,MAAO,CAAAO,QAAQ,CACjB\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var computeEasingProgress = function () {
+  var _e = [new global.Error(), 1, -27];
+  var computeEasingProgress = function computeEasingProgress(startingTimestamp, distance, velocity) {
+    if (Math.abs(distance) < 1) {
+      return 1;
+    }
+    var elapsedTime = (_getAnimationTimestamp() - startingTimestamp) / 1000;
+    var currentPosition = velocity * elapsedTime;
+    var progress = currentPosition / distance;
+    return progress;
+  };
+  computeEasingProgress.__closure = {};
+  computeEasingProgress.__workletHash = 13250582126840;
+  computeEasingProgress.__initData = _worklet_13250582126840_init_data;
+  computeEasingProgress.__stackDetails = _e;
+  return computeEasingProgress;
+}();
+var _worklet_16796933992064_init_data = {
+  code: "function easing_swipeSimulatorJs2(x){return 1-Math.pow(1-x,5);}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\screenTransition\\swipeSimulator.js",
+  sourceMap: "{\"version\":3,\"names\":[\"easing_swipeSimulatorJs2\",\"x\",\"Math\",\"pow\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/screenTransition/swipeSimulator.js\"],\"mappings\":\"AAmBA,SAAAA,wBAAmBA,CAAAC,CAAA,EAIjB,MAAO,EAAC,CAAGC,IAAI,CAACC,GAAG,CAAC,CAAC,CAAGF,CAAC,CAAE,CAAC,CAAC,CAC/B\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var easing = function () {
+  var _e = [new global.Error(), 1, -27];
+  var easing = function easing(x) {
+    return 1 - Math.pow(1 - x, 5);
+  };
+  easing.__closure = {};
+  easing.__workletHash = 16796933992064;
+  easing.__initData = _worklet_16796933992064_init_data;
+  easing.__stackDetails = _e;
+  return easing;
+}();
+var _worklet_3744168031199_init_data = {
+  code: "function computeProgress_swipeSimulatorJs3(screenTransitionConfig,event,isTransitionCanceled){const screenDimensions=screenTransitionConfig.screenDimensions;const progressX=Math.abs(event.translationX/screenDimensions.width);const progressY=Math.abs(event.translationY/screenDimensions.height);const maxProgress=Math.max(progressX,progressY);const progress=isTransitionCanceled?maxProgress/2:maxProgress;return progress;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\screenTransition\\swipeSimulator.js",
+  sourceMap: "{\"version\":3,\"names\":[\"computeProgress_swipeSimulatorJs3\",\"screenTransitionConfig\",\"event\",\"isTransitionCanceled\",\"screenDimensions\",\"progressX\",\"Math\",\"abs\",\"translationX\",\"width\",\"progressY\",\"translationY\",\"height\",\"maxProgress\",\"max\",\"progress\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/screenTransition/swipeSimulator.js\"],\"mappings\":\"AAyBA,SAAAA,iCAAyBA,CAAAC,sBAA+B,CAAAC,KAAA,CAAAC,oBAAsB,EAG5E,KAAM,CAAAC,gBAAgB,CAAGH,sBAAsB,CAACG,gBAAgB,CAChE,KAAM,CAAAC,SAAS,CAAGC,IAAI,CAACC,GAAG,CAACL,KAAK,CAACM,YAAY,CAAGJ,gBAAgB,CAACK,KAAK,CAAC,CACvE,KAAM,CAAAC,SAAS,CAAGJ,IAAI,CAACC,GAAG,CAACL,KAAK,CAACS,YAAY,CAAGP,gBAAgB,CAACQ,MAAM,CAAC,CACxE,KAAM,CAAAC,WAAW,CAAGP,IAAI,CAACQ,GAAG,CAACT,SAAS,CAAEK,SAAS,CAAC,CAClD,KAAM,CAAAK,QAAQ,CAAGZ,oBAAoB,CAAGU,WAAW,CAAG,CAAC,CAAGA,WAAW,CACrE,MAAO,CAAAE,QAAQ,CACjB\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var computeProgress = function () {
+  var _e = [new global.Error(), 1, -27];
+  var computeProgress = function computeProgress(screenTransitionConfig, event, isTransitionCanceled) {
+    var screenDimensions = screenTransitionConfig.screenDimensions;
+    var progressX = Math.abs(event.translationX / screenDimensions.width);
+    var progressY = Math.abs(event.translationY / screenDimensions.height);
+    var maxProgress = Math.max(progressX, progressY);
+    var progress = isTransitionCanceled ? maxProgress / 2 : maxProgress;
+    return progress;
+  };
+  computeProgress.__closure = {};
+  computeProgress.__workletHash = 3744168031199;
+  computeProgress.__initData = _worklet_3744168031199_init_data;
+  computeProgress.__stackDetails = _e;
+  return computeProgress;
+}();
+var _worklet_10921191910910_init_data = {
+  code: "function maybeScheduleNextFrame_swipeSimulatorJs4(step,didScreenReachDestination,screenTransitionConfig,event,isTransitionCanceled){const{computeProgress,RNScreensTurboModule}=this.__closure;if(!didScreenReachDestination){const stackTag=screenTransitionConfig.stackTag;const progress=computeProgress(screenTransitionConfig,event,isTransitionCanceled);RNScreensTurboModule.updateTransition(stackTag,progress);requestAnimationFrame(step);}else{var _screenTransitionConf;(_screenTransitionConf=screenTransitionConfig.onFinishAnimation)===null||_screenTransitionConf===void 0||_screenTransitionConf.call(screenTransitionConfig);}}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\screenTransition\\swipeSimulator.js",
+  sourceMap: "{\"version\":3,\"names\":[\"maybeScheduleNextFrame_swipeSimulatorJs4\",\"step\",\"didScreenReachDestination\",\"screenTransitionConfig\",\"event\",\"isTransitionCanceled\",\"computeProgress\",\"RNScreensTurboModule\",\"__closure\",\"stackTag\",\"progress\",\"updateTransition\",\"requestAnimationFrame\",\"_screenTransitionConf\",\"onFinishAnimation\",\"call\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/screenTransition/swipeSimulator.js\"],\"mappings\":\"AAmCA,SAAAA,wCAAsCA,CAAAC,IAAA,CAAAC,yBAA2B,CAAAC,sBAA+B,CAAAC,KAAA,CAAAC,oBAAsB,QAAAC,eAAA,CAAAC,oBAAA,OAAAC,SAAA,CAGpH,GAAI,CAACN,yBAAyB,CAAE,CAC9B,KAAM,CAAAO,QAAQ,CAAGN,sBAAsB,CAACM,QAAQ,CAChD,KAAM,CAAAC,QAAQ,CAAGJ,eAAe,CAACH,sBAAsB,CAAEC,KAAK,CAAEC,oBAAoB,CAAC,CACrFE,oBAAoB,CAACI,gBAAgB,CAACF,QAAQ,CAAEC,QAAQ,CAAC,CACzDE,qBAAqB,CAACX,IAAI,CAAC,CAC7B,CAAC,IAAM,KAAAY,qBAAA,CACL,CAAAA,qBAAA,CAAAV,sBAAsB,CAACW,iBAAiB,UAAAD,qBAAA,WAAxCA,qBAAA,CAAAE,IAAA,CAAAZ,sBAA2C,CAAC,CAC9C,CACF\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var maybeScheduleNextFrame = function () {
+  var _e = [new global.Error(), -3, -27];
+  var maybeScheduleNextFrame = function maybeScheduleNextFrame(step, didScreenReachDestination, screenTransitionConfig, event, isTransitionCanceled) {
+    if (!didScreenReachDestination) {
+      var stackTag = screenTransitionConfig.stackTag;
+      var progress = computeProgress(screenTransitionConfig, event, isTransitionCanceled);
+      _RNScreensTurboModule.RNScreensTurboModule.updateTransition(stackTag, progress);
+      requestAnimationFrame(step);
+    } else {
+      screenTransitionConfig.onFinishAnimation == null || screenTransitionConfig.onFinishAnimation();
+    }
+  };
+  maybeScheduleNextFrame.__closure = {
+    computeProgress: computeProgress,
+    RNScreensTurboModule: _RNScreensTurboModule.RNScreensTurboModule
+  };
+  maybeScheduleNextFrame.__workletHash = 10921191910910;
+  maybeScheduleNextFrame.__initData = _worklet_10921191910910_init_data;
+  maybeScheduleNextFrame.__stackDetails = _e;
+  return maybeScheduleNextFrame;
+}();
+var _worklet_12932403363400_init_data = {
+  code: "function getSwipeSimulator_swipeSimulatorJs5(event,screenTransitionConfig,lockAxis){const{BASE_VELOCITY,ADDITIONAL_VELOCITY_FACTOR_X,ADDITIONAL_VELOCITY_FACTOR_Y,ADDITIONAL_VELOCITY_FACTOR_XY,applyStyleForBelowTopScreen,computeEasingProgress,easing,applyStyle,maybeScheduleNextFrame}=this.__closure;const screenDimensions=screenTransitionConfig.screenDimensions;const startTimestamp=_getAnimationTimestamp();const{isTransitionCanceled:isTransitionCanceled}=screenTransitionConfig;const startingPosition={x:event.translationX,y:event.translationY};const direction={x:Math.sign(event.translationX),y:Math.sign(event.translationY)};const finalPosition=isTransitionCanceled?{x:0,y:0}:{x:direction.x*screenDimensions.width,y:direction.y*screenDimensions.height};const distance={x:Math.abs(finalPosition.x-startingPosition.x),y:Math.abs(finalPosition.y-startingPosition.y)};const didScreenReachDestination={x:false,y:false};const velocity={x:BASE_VELOCITY,y:BASE_VELOCITY};if(lockAxis==='x'){velocity.y=0;velocity.x+=ADDITIONAL_VELOCITY_FACTOR_X*distance.x/screenDimensions.width;}else if(lockAxis==='y'){velocity.x=0;velocity.y+=ADDITIONAL_VELOCITY_FACTOR_Y*distance.y/screenDimensions.height;}else{const euclideanDistance=Math.sqrt(distance.x**2+distance.y**2);const screenDiagonal=Math.sqrt(screenDimensions.width**2+screenDimensions.height**2);const velocityVectorLength=BASE_VELOCITY+ADDITIONAL_VELOCITY_FACTOR_XY*euclideanDistance/screenDiagonal;if(Math.abs(startingPosition.x)>Math.abs(startingPosition.y)){velocity.x=velocityVectorLength;velocity.y=velocityVectorLength*Math.abs(startingPosition.y/startingPosition.x);}else{velocity.x=velocityVectorLength*Math.abs(startingPosition.x/startingPosition.y);velocity.y=velocityVectorLength;}}if(isTransitionCanceled){function didScreenReachDestinationCheck(){if(lockAxis==='x'){return didScreenReachDestination.x;}else if(lockAxis==='y'){return didScreenReachDestination.y;}else{return didScreenReachDestination.x&&didScreenReachDestination.y;}}function restoreOriginalStyleForBelowTopScreen(){event.translationX=direction.x*screenDimensions.width;event.translationY=direction.y*screenDimensions.height;applyStyleForBelowTopScreen(screenTransitionConfig,event);}const computeFrame=function(){const progress={x:computeEasingProgress(startTimestamp,distance.x,velocity.x),y:computeEasingProgress(startTimestamp,distance.y,velocity.y)};event.translationX=startingPosition.x-direction.x*distance.x*easing(progress.x);event.translationY=startingPosition.y-direction.y*distance.y*easing(progress.y);if(direction.x>0){if(event.translationX<=0){didScreenReachDestination.x=true;event.translationX=0;}}else{if(event.translationX>=0){didScreenReachDestination.x=true;event.translationX=0;}}if(direction.y>0){if(event.translationY<=0){didScreenReachDestination.y=true;event.translationY=0;}}else{if(event.translationY>=0){didScreenReachDestination.y=true;event.translationY=0;}}applyStyle(screenTransitionConfig,event);const finished=didScreenReachDestinationCheck();if(finished){restoreOriginalStyleForBelowTopScreen();}maybeScheduleNextFrame(computeFrame,finished,screenTransitionConfig,event,isTransitionCanceled);};return computeFrame;}else{const computeFrame=function(){const progress={x:computeEasingProgress(startTimestamp,distance.x,velocity.x),y:computeEasingProgress(startTimestamp,distance.y,velocity.y)};event.translationX=startingPosition.x+direction.x*distance.x*easing(progress.x);event.translationY=startingPosition.y+direction.y*distance.y*easing(progress.y);if(direction.x>0){if(event.translationX>=screenDimensions.width){didScreenReachDestination.x=true;event.translationX=screenDimensions.width;}}else{if(event.translationX<=-screenDimensions.width){didScreenReachDestination.x=true;event.translationX=-screenDimensions.width;}}if(direction.y>0){if(event.translationY>=screenDimensions.height){didScreenReachDestination.y=true;event.translationY=screenDimensions.height;}}else{if(event.translationY<=-screenDimensions.height){didScreenReachDestination.y=true;event.translationY=-screenDimensions.height;}}applyStyle(screenTransitionConfig,event);maybeScheduleNextFrame(computeFrame,didScreenReachDestination.x||didScreenReachDestination.y,screenTransitionConfig,event,isTransitionCanceled);};return computeFrame;}}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\screenTransition\\swipeSimulator.js",
+  sourceMap: "{\"version\":3,\"names\":[\"getSwipeSimulator_swipeSimulatorJs5\",\"event\",\"screenTransitionConfig\",\"lockAxis\",\"BASE_VELOCITY\",\"ADDITIONAL_VELOCITY_FACTOR_X\",\"ADDITIONAL_VELOCITY_FACTOR_Y\",\"ADDITIONAL_VELOCITY_FACTOR_XY\",\"applyStyleForBelowTopScreen\",\"computeEasingProgress\",\"easing\",\"applyStyle\",\"maybeScheduleNextFrame\",\"__closure\",\"screenDimensions\",\"startTimestamp\",\"_getAnimationTimestamp\",\"isTransitionCanceled\",\"startingPosition\",\"x\",\"translationX\",\"y\",\"translationY\",\"direction\",\"Math\",\"sign\",\"finalPosition\",\"width\",\"height\",\"distance\",\"abs\",\"didScreenReachDestination\",\"velocity\",\"euclideanDistance\",\"sqrt\",\"screenDiagonal\",\"velocityVectorLength\",\"didScreenReachDestinationCheck\",\"restoreOriginalStyleForBelowTopScreen\",\"computeFrame\",\"progress\",\"finished\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/screenTransition/swipeSimulator.js\"],\"mappings\":\"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\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var getSwipeSimulator = exports.getSwipeSimulator = function () {
+  var _e = [new global.Error(), -10, -27];
+  var getSwipeSimulator = function getSwipeSimulator(event, screenTransitionConfig, lockAxis) {
+    var screenDimensions = screenTransitionConfig.screenDimensions;
+    var startTimestamp = _getAnimationTimestamp();
+    var isTransitionCanceled = screenTransitionConfig.isTransitionCanceled;
+    var startingPosition = {
+      x: event.translationX,
+      y: event.translationY
+    };
+    var direction = {
+      x: Math.sign(event.translationX),
+      y: Math.sign(event.translationY)
+    };
+    var finalPosition = isTransitionCanceled ? {
+      x: 0,
+      y: 0
+    } : {
+      x: direction.x * screenDimensions.width,
+      y: direction.y * screenDimensions.height
+    };
+    var distance = {
+      x: Math.abs(finalPosition.x - startingPosition.x),
+      y: Math.abs(finalPosition.y - startingPosition.y)
+    };
+    var didScreenReachDestination = {
+      x: false,
+      y: false
+    };
+    var velocity = {
+      x: BASE_VELOCITY,
+      y: BASE_VELOCITY
+    };
+    if (lockAxis === 'x') {
+      velocity.y = 0;
+      velocity.x += ADDITIONAL_VELOCITY_FACTOR_X * distance.x / screenDimensions.width;
+    } else if (lockAxis === 'y') {
+      velocity.x = 0;
+      velocity.y += ADDITIONAL_VELOCITY_FACTOR_Y * distance.y / screenDimensions.height;
+    } else {
+      var euclideanDistance = Math.sqrt(distance.x ** 2 + distance.y ** 2);
+      var screenDiagonal = Math.sqrt(screenDimensions.width ** 2 + screenDimensions.height ** 2);
+      var velocityVectorLength = BASE_VELOCITY + ADDITIONAL_VELOCITY_FACTOR_XY * euclideanDistance / screenDiagonal;
+      if (Math.abs(startingPosition.x) > Math.abs(startingPosition.y)) {
+        velocity.x = velocityVectorLength;
+        velocity.y = velocityVectorLength * Math.abs(startingPosition.y / startingPosition.x);
+      } else {
+        velocity.x = velocityVectorLength * Math.abs(startingPosition.x / startingPosition.y);
+        velocity.y = velocityVectorLength;
+      }
+    }
+    if (isTransitionCanceled) {
+      function didScreenReachDestinationCheck() {
+        if (lockAxis === 'x') {
+          return didScreenReachDestination.x;
+        } else if (lockAxis === 'y') {
+          return didScreenReachDestination.y;
+        } else {
+          return didScreenReachDestination.x && didScreenReachDestination.y;
+        }
+      }
+      function restoreOriginalStyleForBelowTopScreen() {
+        event.translationX = direction.x * screenDimensions.width;
+        event.translationY = direction.y * screenDimensions.height;
+        (0, _styleUpdater.applyStyleForBelowTopScreen)(screenTransitionConfig, event);
+      }
+      var _computeFrame = function computeFrame() {
+        var progress = {
+          x: computeEasingProgress(startTimestamp, distance.x, velocity.x),
+          y: computeEasingProgress(startTimestamp, distance.y, velocity.y)
+        };
+        event.translationX = startingPosition.x - direction.x * distance.x * easing(progress.x);
+        event.translationY = startingPosition.y - direction.y * distance.y * easing(progress.y);
+        if (direction.x > 0) {
+          if (event.translationX <= 0) {
+            didScreenReachDestination.x = true;
+            event.translationX = 0;
+          }
+        } else {
+          if (event.translationX >= 0) {
+            didScreenReachDestination.x = true;
+            event.translationX = 0;
+          }
+        }
+        if (direction.y > 0) {
+          if (event.translationY <= 0) {
+            didScreenReachDestination.y = true;
+            event.translationY = 0;
+          }
+        } else {
+          if (event.translationY >= 0) {
+            didScreenReachDestination.y = true;
+            event.translationY = 0;
+          }
+        }
+        (0, _styleUpdater.applyStyle)(screenTransitionConfig, event);
+        var finished = didScreenReachDestinationCheck();
+        if (finished) {
+          restoreOriginalStyleForBelowTopScreen();
+        }
+        maybeScheduleNextFrame(_computeFrame, finished, screenTransitionConfig, event, isTransitionCanceled);
+      };
+      return _computeFrame;
+    } else {
+      var _computeFrame2 = function computeFrame() {
+        var progress = {
+          x: computeEasingProgress(startTimestamp, distance.x, velocity.x),
+          y: computeEasingProgress(startTimestamp, distance.y, velocity.y)
+        };
+        event.translationX = startingPosition.x + direction.x * distance.x * easing(progress.x);
+        event.translationY = startingPosition.y + direction.y * distance.y * easing(progress.y);
+        if (direction.x > 0) {
+          if (event.translationX >= screenDimensions.width) {
+            didScreenReachDestination.x = true;
+            event.translationX = screenDimensions.width;
+          }
+        } else {
+          if (event.translationX <= -screenDimensions.width) {
+            didScreenReachDestination.x = true;
+            event.translationX = -screenDimensions.width;
+          }
+        }
+        if (direction.y > 0) {
+          if (event.translationY >= screenDimensions.height) {
+            didScreenReachDestination.y = true;
+            event.translationY = screenDimensions.height;
+          }
+        } else {
+          if (event.translationY <= -screenDimensions.height) {
+            didScreenReachDestination.y = true;
+            event.translationY = -screenDimensions.height;
+          }
+        }
+        (0, _styleUpdater.applyStyle)(screenTransitionConfig, event);
+        maybeScheduleNextFrame(_computeFrame2, didScreenReachDestination.x || didScreenReachDestination.y, screenTransitionConfig, event, isTransitionCanceled);
+      };
+      return _computeFrame2;
+    }
+  };
+  getSwipeSimulator.__closure = {
+    BASE_VELOCITY: BASE_VELOCITY,
+    ADDITIONAL_VELOCITY_FACTOR_X: ADDITIONAL_VELOCITY_FACTOR_X,
+    ADDITIONAL_VELOCITY_FACTOR_Y: ADDITIONAL_VELOCITY_FACTOR_Y,
+    ADDITIONAL_VELOCITY_FACTOR_XY: ADDITIONAL_VELOCITY_FACTOR_XY,
+    applyStyleForBelowTopScreen: _styleUpdater.applyStyleForBelowTopScreen,
+    computeEasingProgress: computeEasingProgress,
+    easing: easing,
+    applyStyle: _styleUpdater.applyStyle,
+    maybeScheduleNextFrame: maybeScheduleNextFrame
+  };
+  getSwipeSimulator.__workletHash = 12932403363400;
+  getSwipeSimulator.__initData = _worklet_12932403363400_init_data;
+  getSwipeSimulator.__stackDetails = _e;
+  return getSwipeSimulator;
+}();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPYmplY3QiLCJkZWZpbmVQcm9wZXJ0eSIsImV4cG9ydHMiLCJ2YWx1ZSIsImdldFN3aXBlU2ltdWxhdG9yIiwiX3N0eWxlVXBkYXRlciIsInJlcXVpcmUiLCJfUk5TY3JlZW5zVHVyYm9Nb2R1bGUiLCJCQVNFX1ZFTE9DSVRZIiwiQURESVRJT05BTF9WRUxPQ0lUWV9GQUNUT1JfWCIsIkFERElUSU9OQUxfVkVMT0NJVFlfRkFDVE9SX1kiLCJBRERJVElPTkFMX1ZFTE9DSVRZX0ZBQ1RPUl9YWSIsIl93b3JrbGV0XzEzMjUwNTgyMTI2ODQwX2luaXRfZGF0YSIsImNvZGUiLCJsb2NhdGlvbiIsInNvdXJjZU1hcCIsInZlcnNpb24iLCJjb21wdXRlRWFzaW5nUHJvZ3Jlc3MiLCJfZSIsImdsb2JhbCIsIkVycm9yIiwic3RhcnRpbmdUaW1lc3RhbXAiLCJkaXN0YW5jZSIsInZlbG9jaXR5IiwiTWF0aCIsImFicyIsImVsYXBzZWRUaW1lIiwiX2dldEFuaW1hdGlvblRpbWVzdGFtcCIsImN1cnJlbnRQb3NpdGlvbiIsInByb2dyZXNzIiwiX19jbG9zdXJlIiwiX193b3JrbGV0SGFzaCIsIl9faW5pdERhdGEiLCJfX3N0YWNrRGV0YWlscyIsIl93b3JrbGV0XzE2Nzk2OTMzOTkyMDY0X2luaXRfZGF0YSIsImVhc2luZyIsIngiLCJwb3ciLCJfd29ya2xldF8zNzQ0MTY4MDMxMTk5X2luaXRfZGF0YSIsImNvbXB1dGVQcm9ncmVzcyIsInNjcmVlblRyYW5zaXRpb25Db25maWciLCJldmVudCIsImlzVHJhbnNpdGlvbkNhbmNlbGVkIiwic2NyZWVuRGltZW5zaW9ucyIsInByb2dyZXNzWCIsInRyYW5zbGF0aW9uWCIsIndpZHRoIiwicHJvZ3Jlc3NZIiwidHJhbnNsYXRpb25ZIiwiaGVpZ2h0IiwibWF4UHJvZ3Jlc3MiLCJtYXgiLCJfd29ya2xldF8xMDkyMTE5MTkxMDkxMF9pbml0X2RhdGEiLCJtYXliZVNjaGVkdWxlTmV4dEZyYW1lIiwic3RlcCIsImRpZFNjcmVlblJlYWNoRGVzdGluYXRpb24iLCJzdGFja1RhZyIsIlJOU2NyZWVuc1R1cmJvTW9kdWxlIiwidXBkYXRlVHJhbnNpdGlvbiIsInJlcXVlc3RBbmltYXRpb25GcmFtZSIsIm9uRmluaXNoQW5pbWF0aW9uIiwiX3dvcmtsZXRfMTI5MzI0MDMzNjM0MDBfaW5pdF9kYXRhIiwibG9ja0F4aXMiLCJzdGFydFRpbWVzdGFtcCIsInN0YXJ0aW5nUG9zaXRpb24iLCJ5IiwiZGlyZWN0aW9uIiwic2lnbiIsImZpbmFsUG9zaXRpb24iLCJldWNsaWRlYW5EaXN0YW5jZSIsInNxcnQiLCJzY3JlZW5EaWFnb25hbCIsInZlbG9jaXR5VmVjdG9yTGVuZ3RoIiwiZGlkU2NyZWVuUmVhY2hEZXN0aW5hdGlvbkNoZWNrIiwicmVzdG9yZU9yaWdpbmFsU3R5bGVGb3JCZWxvd1RvcFNjcmVlbiIsImFwcGx5U3R5bGVGb3JCZWxvd1RvcFNjcmVlbiIsImNvbXB1dGVGcmFtZSIsImFwcGx5U3R5bGUiLCJmaW5pc2hlZCJdLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zY3JlZW5UcmFuc2l0aW9uL3N3aXBlU2ltdWxhdG9yLnRzIl0sInNvdXJjZXNDb250ZW50IjpbbnVsbF0sIm1hcHBpbmdzIjoiQUFBQSxZQUFZOztBQUFBQSxNQUFBLENBQUFDLGNBQUEsQ0FBQUMsT0FBQTtFQUFBQyxLQUFBO0FBQUE7QUFBQUQsT0FBQSxDQUFBRSxpQkFBQTtBQU1aLElBQUFDLGFBQUEsR0FBQUMsT0FBQTtBQUNBLElBQUFDLHFCQUFBLEdBQUFELE9BQUE7QUFFQSxJQUFNRSxhQUFhLEdBQUcsR0FBRztBQUN6QixJQUFNQyw0QkFBNEIsR0FBRyxHQUFHO0FBQ3hDLElBQU1DLDRCQUE0QixHQUFHLEdBQUc7QUFDeEMsSUFBTUMsNkJBQTZCLEdBQUcsR0FBRztBQUFBLElBQUFDLGlDQUFBO0VBQUFDLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0VBQUFDLE9BQUE7QUFBQTtBQUFBLElBQUFDLHFCQUFBLEdBRXpDO0VBQUEsSUFBQUMsRUFBQSxRQUFBQyxNQUFBLENBQUFDLEtBQUE7RUFBQSxJQUFBSCxxQkFBQSxZQUFBQSxzQkFDRUksaUJBQXlCLEVBQ3pCQyxRQUFnQixFQUNoQkMsUUFBZ0IsRUFDaEI7SUFFQSxJQUFJQyxJQUFJLENBQUNDLEdBQUcsQ0FBQ0gsUUFBUSxDQUFDLEdBQUcsQ0FBQyxFQUFFO01BQzFCLE9BQU8sQ0FBQztJQUNWO0lBQ0EsSUFBTUksV0FBVyxHQUFHLENBQUNDLHNCQUFzQixDQUFDLENBQUMsR0FBR04saUJBQWlCLElBQUksSUFBSTtJQUN6RSxJQUFNTyxlQUFlLEdBQUdMLFFBQVEsR0FBR0csV0FBVztJQUM5QyxJQUFNRyxRQUFRLEdBQUdELGVBQWUsR0FBR04sUUFBUTtJQUMzQyxPQUFPTyxRQUFRO0VBQ2pCO0VBQUFaLHFCQUFBLENBQUFhLFNBQUE7RUFBQWIscUJBQUEsQ0FBQWMsYUFBQTtFQUFBZCxxQkFBQSxDQUFBZSxVQUFBLEdBQUFwQixpQ0FBQTtFQUFBSyxxQkFBQSxDQUFBZ0IsY0FBQSxHQUFBZixFQUFBO0VBQUEsT0FBQUQscUJBQUE7QUFBQSxDQWJBO0FBQUEsSUFBQWlCLGlDQUFBO0VBQUFyQixJQUFBO0VBQUFDLFFBQUE7RUFBQUMsU0FBQTtFQUFBQyxPQUFBO0FBQUE7QUFBQSxJQUFBbUIsTUFBQSxHQWVBO0VBQUEsSUFBQWpCLEVBQUEsUUFBQUMsTUFBQSxDQUFBQyxLQUFBO0VBQUEsSUFBQWUsTUFBQSxZQUFBQSxPQUFnQkMsQ0FBUyxFQUFVO0lBR2pDLE9BQU8sQ0FBQyxHQUFHWixJQUFJLENBQUNhLEdBQUcsQ0FBQyxDQUFDLEdBQUdELENBQUMsRUFBRSxDQUFDLENBQUM7RUFDL0I7RUFBQUQsTUFBQSxDQUFBTCxTQUFBO0VBQUFLLE1BQUEsQ0FBQUosYUFBQTtFQUFBSSxNQUFBLENBQUFILFVBQUEsR0FBQUUsaUNBQUE7RUFBQUMsTUFBQSxDQUFBRixjQUFBLEdBQUFmLEVBQUE7RUFBQSxPQUFBaUIsTUFBQTtBQUFBLENBSkE7QUFBQSxJQUFBRyxnQ0FBQTtFQUFBekIsSUFBQTtFQUFBQyxRQUFBO0VBQUFDLFNBQUE7RUFBQUMsT0FBQTtBQUFBO0FBQUEsSUFBQXVCLGVBQUEsR0FNQTtFQUFBLElBQUFyQixFQUFBLFFBQUFDLE1BQUEsQ0FBQUMsS0FBQTtFQUFBLElBQUFtQixlQUFBLFlBQUFBLGdCQUNFQyxzQkFBOEMsRUFDOUNDLEtBQW9DLEVBQ3BDQyxvQkFBNkIsRUFDN0I7SUFFQSxJQUFNQyxnQkFBZ0IsR0FBR0gsc0JBQXNCLENBQUNHLGdCQUFnQjtJQUNoRSxJQUFNQyxTQUFTLEdBQUdwQixJQUFJLENBQUNDLEdBQUcsQ0FBQ2dCLEtBQUssQ0FBQ0ksWUFBWSxHQUFHRixnQkFBZ0IsQ0FBQ0csS0FBSyxDQUFDO0lBQ3ZFLElBQU1DLFNBQVMsR0FBR3ZCLElBQUksQ0FBQ0MsR0FBRyxDQUFDZ0IsS0FBSyxDQUFDTyxZQUFZLEdBQUdMLGdCQUFnQixDQUFDTSxNQUFNLENBQUM7SUFDeEUsSUFBTUMsV0FBVyxHQUFHMUIsSUFBSSxDQUFDMkIsR0FBRyxDQUFDUCxTQUFTLEVBQUVHLFNBQVMsQ0FBQztJQUNsRCxJQUFNbEIsUUFBUSxHQUFHYSxvQkFBb0IsR0FBR1EsV0FBVyxHQUFHLENBQUMsR0FBR0EsV0FBVztJQUNyRSxPQUFPckIsUUFBUTtFQUNqQjtFQUFBVSxlQUFBLENBQUFULFNBQUE7RUFBQVMsZUFBQSxDQUFBUixhQUFBO0VBQUFRLGVBQUEsQ0FBQVAsVUFBQSxHQUFBTSxnQ0FBQTtFQUFBQyxlQUFBLENBQUFOLGNBQUEsR0FBQWYsRUFBQTtFQUFBLE9BQUFxQixlQUFBO0FBQUEsQ0FaQTtBQUFBLElBQUFhLGlDQUFBO0VBQUF2QyxJQUFBO0VBQUFDLFFBQUE7RUFBQUMsU0FBQTtFQUFBQyxPQUFBO0FBQUE7QUFBQSxJQUFBcUMsc0JBQUEsR0FjQTtFQUFBLElBQUFuQyxFQUFBLFFBQUFDLE1BQUEsQ0FBQUMsS0FBQTtFQUFBLElBQUFpQyxzQkFBQSxZQUFBQSx1QkFDRUMsSUFBZ0IsRUFDaEJDLHlCQUFrQyxFQUNsQ2Ysc0JBQThDLEVBQzlDQyxLQUFvQyxFQUNwQ0Msb0JBQTZCLEVBQzdCO0lBRUEsSUFBSSxDQUFDYSx5QkFBeUIsRUFBRTtNQUM5QixJQUFNQyxRQUFRLEdBQUdoQixzQkFBc0IsQ0FBQ2dCLFFBQVE7TUFDaEQsSUFBTTNCLFFBQVEsR0FBR1UsZUFBZSxDQUM5QkMsc0JBQXNCLEVBQ3RCQyxLQUFLLEVBQ0xDLG9CQUNGLENBQUM7TUFDRGUsMENBQW9CLENBQUNDLGdCQUFnQixDQUFDRixRQUFRLEVBQUUzQixRQUFRLENBQUM7TUFDekQ4QixxQkFBcUIsQ0FBQ0wsSUFBSSxDQUFDO0lBQzdCLENBQUMsTUFBTTtNQUNMZCxzQkFBc0IsQ0FBQ29CLGlCQUFpQixZQUF4Q3BCLHNCQUFzQixDQUFDb0IsaUJBQWlCLENBQUcsQ0FBQztJQUM5QztFQUNGO0VBQUFQLHNCQUFBLENBQUF2QixTQUFBO0lBQUFTLGVBQUEsRUFWcUJBLGVBQWU7SUFBQWtCLG9CQUFBLEVBS2hDQTtFQUFvQjtFQUFBSixzQkFBQSxDQUFBdEIsYUFBQTtFQUFBc0Isc0JBQUEsQ0FBQXJCLFVBQUEsR0FBQW9CLGlDQUFBO0VBQUFDLHNCQUFBLENBQUFwQixjQUFBLEdBQUFmLEVBQUE7RUFBQSxPQUFBbUMsc0JBQUE7QUFBQSxDQWZ4QjtBQUFBLElBQUFRLGlDQUFBO0VBQUFoRCxJQUFBO0VBQUFDLFFBQUE7RUFBQUMsU0FBQTtFQUFBQyxPQUFBO0FBQUE7QUFBQSxJQUFBWixpQkFBQSxHQUFBRixPQUFBLENBQUFFLGlCQUFBLEdBc0JPO0VBQUEsSUFBQWMsRUFBQSxRQUFBQyxNQUFBLENBQUFDLEtBQUE7RUFBQSxJQUFBaEIsaUJBQUEsWUFBQUEsa0JBQ0xxQyxLQUFvQyxFQUNwQ0Qsc0JBQThDLEVBQzlDc0IsUUFBbUIsRUFDbkI7SUFFQSxJQUFNbkIsZ0JBQWdCLEdBQUdILHNCQUFzQixDQUFDRyxnQkFBZ0I7SUFDaEUsSUFBTW9CLGNBQWMsR0FBR3BDLHNCQUFzQixDQUFDLENBQUM7SUFDL0MsSUFBUWUsb0JBQUEsR0FBeUJGLHNCQUFzQixDQUEvQ0Usb0JBQUE7SUFDUixJQUFNc0IsZ0JBQWdCLEdBQUc7TUFDdkI1QixDQUFDLEVBQUVLLEtBQUssQ0FBQ0ksWUFBWTtNQUNyQm9CLENBQUMsRUFBRXhCLEtBQUssQ0FBQ087SUFDWCxDQUFDO0lBQ0QsSUFBTWtCLFNBQVMsR0FBRztNQUNoQjlCLENBQUMsRUFBRVosSUFBSSxDQUFDMkMsSUFBSSxDQUFDMUIsS0FBSyxDQUFDSSxZQUFZLENBQUM7TUFDaENvQixDQUFDLEVBQUV6QyxJQUFJLENBQUMyQyxJQUFJLENBQUMxQixLQUFLLENBQUNPLFlBQVk7SUFDakMsQ0FBQztJQUNELElBQU1vQixhQUFhLEdBQUcxQixvQkFBb0IsR0FDdEM7TUFBRU4sQ0FBQyxFQUFFLENBQUM7TUFBRTZCLENBQUMsRUFBRTtJQUFFLENBQUMsR0FDZDtNQUNFN0IsQ0FBQyxFQUFFOEIsU0FBUyxDQUFDOUIsQ0FBQyxHQUFHTyxnQkFBZ0IsQ0FBQ0csS0FBSztNQUN2Q21CLENBQUMsRUFBRUMsU0FBUyxDQUFDRCxDQUFDLEdBQUd0QixnQkFBZ0IsQ0FBQ007SUFDcEMsQ0FBQztJQUNMLElBQU0zQixRQUFRLEdBQUc7TUFDZmMsQ0FBQyxFQUFFWixJQUFJLENBQUNDLEdBQUcsQ0FBQzJDLGFBQWEsQ0FBQ2hDLENBQUMsR0FBRzRCLGdCQUFnQixDQUFDNUIsQ0FBQyxDQUFDO01BQ2pENkIsQ0FBQyxFQUFFekMsSUFBSSxDQUFDQyxHQUFHLENBQUMyQyxhQUFhLENBQUNILENBQUMsR0FBR0QsZ0JBQWdCLENBQUNDLENBQUM7SUFDbEQsQ0FBQztJQUNELElBQU1WLHlCQUF5QixHQUFHO01BQ2hDbkIsQ0FBQyxFQUFFLEtBQUs7TUFDUjZCLENBQUMsRUFBRTtJQUNMLENBQUM7SUFDRCxJQUFNMUMsUUFBUSxHQUFHO01BQUVhLENBQUMsRUFBRTVCLGFBQWE7TUFBRXlELENBQUMsRUFBRXpEO0lBQWMsQ0FBQztJQUN2RCxJQUFJc0QsUUFBUSxLQUFLLEdBQUcsRUFBRTtNQUNwQnZDLFFBQVEsQ0FBQzBDLENBQUMsR0FBRyxDQUFDO01BQ2QxQyxRQUFRLENBQUNhLENBQUMsSUFDUDNCLDRCQUE0QixHQUFHYSxRQUFRLENBQUNjLENBQUMsR0FBSU8sZ0JBQWdCLENBQUNHLEtBQUs7SUFDeEUsQ0FBQyxNQUFNLElBQUlnQixRQUFRLEtBQUssR0FBRyxFQUFFO01BQzNCdkMsUUFBUSxDQUFDYSxDQUFDLEdBQUcsQ0FBQztNQUNkYixRQUFRLENBQUMwQyxDQUFDLElBQ1B2RCw0QkFBNEIsR0FBR1ksUUFBUSxDQUFDMkMsQ0FBQyxHQUFJdEIsZ0JBQWdCLENBQUNNLE1BQU07SUFDekUsQ0FBQyxNQUFNO01BQ0wsSUFBTW9CLGlCQUFpQixHQUFHN0MsSUFBSSxDQUFDOEMsSUFBSSxDQUFDaEQsUUFBUSxDQUFDYyxDQUFDLElBQUksQ0FBQyxHQUFHZCxRQUFRLENBQUMyQyxDQUFDLElBQUksQ0FBQyxDQUFDO01BQ3RFLElBQU1NLGNBQWMsR0FBRy9DLElBQUksQ0FBQzhDLElBQUksQ0FDOUIzQixnQkFBZ0IsQ0FBQ0csS0FBSyxJQUFJLENBQUMsR0FBR0gsZ0JBQWdCLENBQUNNLE1BQU0sSUFBSSxDQUMzRCxDQUFDO01BQ0QsSUFBTXVCLG9CQUFvQixHQUN4QmhFLGFBQWEsR0FDWkcsNkJBQTZCLEdBQUcwRCxpQkFBaUIsR0FBSUUsY0FBYztNQUN0RSxJQUFJL0MsSUFBSSxDQUFDQyxHQUFHLENBQUN1QyxnQkFBZ0IsQ0FBQzVCLENBQUMsQ0FBQyxHQUFHWixJQUFJLENBQUNDLEdBQUcsQ0FBQ3VDLGdCQUFnQixDQUFDQyxDQUFDLENBQUMsRUFBRTtRQUMvRDFDLFFBQVEsQ0FBQ2EsQ0FBQyxHQUFHb0Msb0JBQW9CO1FBQ2pDakQsUUFBUSxDQUFDMEMsQ0FBQyxHQUNSTyxvQkFBb0IsR0FDcEJoRCxJQUFJLENBQUNDLEdBQUcsQ0FBQ3VDLGdCQUFnQixDQUFDQyxDQUFDLEdBQUdELGdCQUFnQixDQUFDNUIsQ0FBQyxDQUFDO01BQ3JELENBQUMsTUFBTTtRQUNMYixRQUFRLENBQUNhLENBQUMsR0FDUm9DLG9CQUFvQixHQUNwQmhELElBQUksQ0FBQ0MsR0FBRyxDQUFDdUMsZ0JBQWdCLENBQUM1QixDQUFDLEdBQUc0QixnQkFBZ0IsQ0FBQ0MsQ0FBQyxDQUFDO1FBQ25EMUMsUUFBUSxDQUFDMEMsQ0FBQyxHQUFHTyxvQkFBb0I7TUFDbkM7SUFDRjtJQUVBLElBQUk5QixvQkFBb0IsRUFBRTtNQUN4QixTQUFTK0IsOEJBQThCQSxDQUFBLEVBQUc7UUFDeEMsSUFBSVgsUUFBUSxLQUFLLEdBQUcsRUFBRTtVQUNwQixPQUFPUCx5QkFBeUIsQ0FBQ25CLENBQUM7UUFDcEMsQ0FBQyxNQUFNLElBQUkwQixRQUFRLEtBQUssR0FBRyxFQUFFO1VBQzNCLE9BQU9QLHlCQUF5QixDQUFDVSxDQUFDO1FBQ3BDLENBQUMsTUFBTTtVQUNMLE9BQU9WLHlCQUF5QixDQUFDbkIsQ0FBQyxJQUFJbUIseUJBQXlCLENBQUNVLENBQUM7UUFDbkU7TUFDRjtNQUVBLFNBQVNTLHFDQUFxQ0EsQ0FBQSxFQUFHO1FBQy9DakMsS0FBSyxDQUFDSSxZQUFZLEdBQUdxQixTQUFTLENBQUM5QixDQUFDLEdBQUdPLGdCQUFnQixDQUFDRyxLQUFLO1FBQ3pETCxLQUFLLENBQUNPLFlBQVksR0FBR2tCLFNBQVMsQ0FBQ0QsQ0FBQyxHQUFHdEIsZ0JBQWdCLENBQUNNLE1BQU07UUFDMUQsSUFBQTBCLHlDQUEyQixFQUFDbkMsc0JBQXNCLEVBQUVDLEtBQUssQ0FBQztNQUM1RDtNQUVBLElBQU1tQyxhQUFZLEdBQUcsU0FBZkEsWUFBWUEsQ0FBQSxFQUFTO1FBQ3pCLElBQU0vQyxRQUFRLEdBQUc7VUFDZk8sQ0FBQyxFQUFFbkIscUJBQXFCLENBQUM4QyxjQUFjLEVBQUV6QyxRQUFRLENBQUNjLENBQUMsRUFBRWIsUUFBUSxDQUFDYSxDQUFDLENBQUM7VUFDaEU2QixDQUFDLEVBQUVoRCxxQkFBcUIsQ0FBQzhDLGNBQWMsRUFBRXpDLFFBQVEsQ0FBQzJDLENBQUMsRUFBRTFDLFFBQVEsQ0FBQzBDLENBQUM7UUFDakUsQ0FBQztRQUNEeEIsS0FBSyxDQUFDSSxZQUFZLEdBQ2hCbUIsZ0JBQWdCLENBQUM1QixDQUFDLEdBQUc4QixTQUFTLENBQUM5QixDQUFDLEdBQUdkLFFBQVEsQ0FBQ2MsQ0FBQyxHQUFHRCxNQUFNLENBQUNOLFFBQVEsQ0FBQ08sQ0FBQyxDQUFDO1FBQ3BFSyxLQUFLLENBQUNPLFlBQVksR0FDaEJnQixnQkFBZ0IsQ0FBQ0MsQ0FBQyxHQUFHQyxTQUFTLENBQUNELENBQUMsR0FBRzNDLFFBQVEsQ0FBQzJDLENBQUMsR0FBRzlCLE1BQU0sQ0FBQ04sUUFBUSxDQUFDb0MsQ0FBQyxDQUFDO1FBQ3BFLElBQUlDLFNBQVMsQ0FBQzlCLENBQUMsR0FBRyxDQUFDLEVBQUU7VUFDbkIsSUFBSUssS0FBSyxDQUFDSSxZQUFZLElBQUksQ0FBQyxFQUFFO1lBQzNCVSx5QkFBeUIsQ0FBQ25CLENBQUMsR0FBRyxJQUFJO1lBQ2xDSyxLQUFLLENBQUNJLFlBQVksR0FBRyxDQUFDO1VBQ3hCO1FBQ0YsQ0FBQyxNQUFNO1VBQ0wsSUFBSUosS0FBSyxDQUFDSSxZQUFZLElBQUksQ0FBQyxFQUFFO1lBQzNCVSx5QkFBeUIsQ0FBQ25CLENBQUMsR0FBRyxJQUFJO1lBQ2xDSyxLQUFLLENBQUNJLFlBQVksR0FBRyxDQUFDO1VBQ3hCO1FBQ0Y7UUFDQSxJQUFJcUIsU0FBUyxDQUFDRCxDQUFDLEdBQUcsQ0FBQyxFQUFFO1VBQ25CLElBQUl4QixLQUFLLENBQUNPLFlBQVksSUFBSSxDQUFDLEVBQUU7WUFDM0JPLHlCQUF5QixDQUFDVSxDQUFDLEdBQUcsSUFBSTtZQUNsQ3hCLEtBQUssQ0FBQ08sWUFBWSxHQUFHLENBQUM7VUFDeEI7UUFDRixDQUFDLE1BQU07VUFDTCxJQUFJUCxLQUFLLENBQUNPLFlBQVksSUFBSSxDQUFDLEVBQUU7WUFDM0JPLHlCQUF5QixDQUFDVSxDQUFDLEdBQUcsSUFBSTtZQUNsQ3hCLEtBQUssQ0FBQ08sWUFBWSxHQUFHLENBQUM7VUFDeEI7UUFDRjtRQUNBLElBQUE2Qix3QkFBVSxFQUFDckMsc0JBQXNCLEVBQUVDLEtBQUssQ0FBQztRQUN6QyxJQUFNcUMsUUFBUSxHQUFHTCw4QkFBOEIsQ0FBQyxDQUFDO1FBQ2pELElBQUlLLFFBQVEsRUFBRTtVQUNaSixxQ0FBcUMsQ0FBQyxDQUFDO1FBQ3pDO1FBQ0FyQixzQkFBc0IsQ0FDcEJ1QixhQUFZLEVBQ1pFLFFBQVEsRUFDUnRDLHNCQUFzQixFQUN0QkMsS0FBSyxFQUNMQyxvQkFDRixDQUFDO01BQ0gsQ0FBQztNQUNELE9BQU9rQyxhQUFZO0lBQ3JCLENBQUMsTUFBTTtNQUNMLElBQU1BLGNBQVksR0FBRyxTQUFmQSxZQUFZQSxDQUFBLEVBQVM7UUFDekIsSUFBTS9DLFFBQVEsR0FBRztVQUNmTyxDQUFDLEVBQUVuQixxQkFBcUIsQ0FBQzhDLGNBQWMsRUFBRXpDLFFBQVEsQ0FBQ2MsQ0FBQyxFQUFFYixRQUFRLENBQUNhLENBQUMsQ0FBQztVQUNoRTZCLENBQUMsRUFBRWhELHFCQUFxQixDQUFDOEMsY0FBYyxFQUFFekMsUUFBUSxDQUFDMkMsQ0FBQyxFQUFFMUMsUUFBUSxDQUFDMEMsQ0FBQztRQUNqRSxDQUFDO1FBQ0R4QixLQUFLLENBQUNJLFlBQVksR0FDaEJtQixnQkFBZ0IsQ0FBQzVCLENBQUMsR0FBRzhCLFNBQVMsQ0FBQzlCLENBQUMsR0FBR2QsUUFBUSxDQUFDYyxDQUFDLEdBQUdELE1BQU0sQ0FBQ04sUUFBUSxDQUFDTyxDQUFDLENBQUM7UUFDcEVLLEtBQUssQ0FBQ08sWUFBWSxHQUNoQmdCLGdCQUFnQixDQUFDQyxDQUFDLEdBQUdDLFNBQVMsQ0FBQ0QsQ0FBQyxHQUFHM0MsUUFBUSxDQUFDMkMsQ0FBQyxHQUFHOUIsTUFBTSxDQUFDTixRQUFRLENBQUNvQyxDQUFDLENBQUM7UUFDcEUsSUFBSUMsU0FBUyxDQUFDOUIsQ0FBQyxHQUFHLENBQUMsRUFBRTtVQUNuQixJQUFJSyxLQUFLLENBQUNJLFlBQVksSUFBSUYsZ0JBQWdCLENBQUNHLEtBQUssRUFBRTtZQUNoRFMseUJBQXlCLENBQUNuQixDQUFDLEdBQUcsSUFBSTtZQUNsQ0ssS0FBSyxDQUFDSSxZQUFZLEdBQUdGLGdCQUFnQixDQUFDRyxLQUFLO1VBQzdDO1FBQ0YsQ0FBQyxNQUFNO1VBQ0wsSUFBSUwsS0FBSyxDQUFDSSxZQUFZLElBQUksQ0FBQ0YsZ0JBQWdCLENBQUNHLEtBQUssRUFBRTtZQUNqRFMseUJBQXlCLENBQUNuQixDQUFDLEdBQUcsSUFBSTtZQUNsQ0ssS0FBSyxDQUFDSSxZQUFZLEdBQUcsQ0FBQ0YsZ0JBQWdCLENBQUNHLEtBQUs7VUFDOUM7UUFDRjtRQUNBLElBQUlvQixTQUFTLENBQUNELENBQUMsR0FBRyxDQUFDLEVBQUU7VUFDbkIsSUFBSXhCLEtBQUssQ0FBQ08sWUFBWSxJQUFJTCxnQkFBZ0IsQ0FBQ00sTUFBTSxFQUFFO1lBQ2pETSx5QkFBeUIsQ0FBQ1UsQ0FBQyxHQUFHLElBQUk7WUFDbEN4QixLQUFLLENBQUNPLFlBQVksR0FBR0wsZ0JBQWdCLENBQUNNLE1BQU07VUFDOUM7UUFDRixDQUFDLE1BQU07VUFDTCxJQUFJUixLQUFLLENBQUNPLFlBQVksSUFBSSxDQUFDTCxnQkFBZ0IsQ0FBQ00sTUFBTSxFQUFFO1lBQ2xETSx5QkFBeUIsQ0FBQ1UsQ0FBQyxHQUFHLElBQUk7WUFDbEN4QixLQUFLLENBQUNPLFlBQVksR0FBRyxDQUFDTCxnQkFBZ0IsQ0FBQ00sTUFBTTtVQUMvQztRQUNGO1FBQ0EsSUFBQTRCLHdCQUFVLEVBQUNyQyxzQkFBc0IsRUFBRUMsS0FBSyxDQUFDO1FBQ3pDWSxzQkFBc0IsQ0FDcEJ1QixjQUFZLEVBQ1pyQix5QkFBeUIsQ0FBQ25CLENBQUMsSUFBSW1CLHlCQUF5QixDQUFDVSxDQUFDLEVBQzFEekIsc0JBQXNCLEVBQ3RCQyxLQUFLLEVBQ0xDLG9CQUNGLENBQUM7TUFDSCxDQUFDO01BQ0QsT0FBT2tDLGNBQVk7SUFDckI7RUFDRjtFQUFBeEUsaUJBQUEsQ0FBQTBCLFNBQUE7SUFBQXRCLGFBQUEsRUF2SXdCQSxhQUFhO0lBQUFDLDRCQUFBLEVBSTlCQSw0QkFBNEI7SUFBQUMsNEJBQUEsRUFJNUJBLDRCQUE0QjtJQUFBQyw2QkFBQSxFQVE1QkEsNkJBQTZCO0lBQUFnRSwyQkFBQSxFQTRCOUJBLHlDQUEyQjtJQUFBMUQscUJBQUEsRUFLdEJBLHFCQUFxQjtJQUFBa0IsTUFBQSxFQUl3QkEsTUFBTTtJQUFBMEMsVUFBQSxFQXlCeERBLHdCQUFVO0lBQUF4QixzQkFBQSxFQUtWQTtFQUFzQjtFQUFBakQsaUJBQUEsQ0FBQTJCLGFBQUE7RUFBQTNCLGlCQUFBLENBQUE0QixVQUFBLEdBQUE2QixpQ0FBQTtFQUFBekQsaUJBQUEsQ0FBQTZCLGNBQUEsR0FBQWYsRUFBQTtFQUFBLE9BQUFkLGlCQUFBO0FBQUEsQ0FsSHJCIiwiaWdub3JlTGlzdCI6W119

@@ -38,9 +38,6 @@ export const useDashboardLevel = ({ progress: progressData }) => {
 
   // ========== 🚨 CORRECTION PRINCIPALE : CHARGEMENT UNIQUE ==========
   useEffect(() => {
-    // Ne charger qu'une seule fois au montage
-    if (!isInitialLoad.current) return;
-    
     const loadActiveLevel = async () => {
       try {
         const savedLevel = await AsyncStorage.getItem(ACTIVE_LEVEL_KEY);
@@ -52,30 +49,16 @@ export const useDashboardLevel = ({ progress: progressData }) => {
         }
         
         setIsLoaded(true);
-        isInitialLoad.current = false;
       } catch (error) {
         console.error('Erreur chargement niveau actif:', error);
         setIsLoaded(true);
-        isInitialLoad.current = false;
       }
     };
 
     loadActiveLevel();
-  }, []); // ✅ CORRIGÉ : Aucune dépendance - ne charge qu'une fois
+  }, [progressData]);
 
-  // ========== EFFET SÉPARÉ POUR SYNC AVEC PROGRESS ==========
-  useEffect(() => {
-    // Seulement après le chargement initial
-    if (!isLoaded || isInitialLoad.current) return;
-    
-    // Seulement si le progress a un currentLevel différent
-    if (progressData?.currentLevel && progressData.currentLevel !== currentLevel) {
-      const mappedLevel = mapOldToNewLevel(progressData.currentLevel);
-      if (mappedLevel !== currentLevel && LANGUAGE_LEVELS[mappedLevel]) {
-        setCurrentLevel(mappedLevel);
-      }
-    }
-  }, [progressData?.currentLevel, isLoaded, currentLevel, mapOldToNewLevel]);
+  
 
   // ✅ CORRECTION : Mémoriser la couleur du niveau
   const levelColor = LANGUAGE_LEVELS[currentLevel]?.color || "#3B82F6";

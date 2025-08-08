@@ -1,0 +1,66 @@
+4222e233de3eac020a46f4054782e585
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useAnimatedScrollHandler = useAnimatedScrollHandler;
+var _useHandler2 = require("./useHandler.js");
+var _useEvent = require("./useEvent.js");
+var _worklet_2200428883878_init_data = {
+  code: "function useAnimatedScrollHandlerJs1(event){const{scrollHandlers,context}=this.__closure;const{onScroll:onScroll,onBeginDrag:onBeginDrag,onEndDrag:onEndDrag,onMomentumBegin:onMomentumBegin,onMomentumEnd:onMomentumEnd}=scrollHandlers;if(onScroll&&event.eventName.endsWith('onScroll')){onScroll(event,context);}else if(onBeginDrag&&event.eventName.endsWith('onScrollBeginDrag')){onBeginDrag(event,context);}else if(onEndDrag&&event.eventName.endsWith('onScrollEndDrag')){onEndDrag(event,context);}else if(onMomentumBegin&&event.eventName.endsWith('onMomentumScrollBegin')){onMomentumBegin(event,context);}else if(onMomentumEnd&&event.eventName.endsWith('onMomentumScrollEnd')){onMomentumEnd(event,context);}}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\hook\\useAnimatedScrollHandler.js",
+  sourceMap: "{\"version\":3,\"names\":[\"useAnimatedScrollHandlerJs1\",\"event\",\"scrollHandlers\",\"context\",\"__closure\",\"onScroll\",\"onBeginDrag\",\"onEndDrag\",\"onMomentumBegin\",\"onMomentumEnd\",\"eventName\",\"endsWith\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/hook/useAnimatedScrollHandler.js\"],\"mappings\":\"AA4CkB,SAAAA,2BAASA,CAAAC,KAAA,QAAAC,cAAA,CAAAC,OAAA,OAAAC,SAAA,CAGvB,KAAM,CACJC,QAAQ,CAARA,QAAQ,CACRC,WAAW,CAAXA,WAAW,CACXC,SAAS,CAATA,SAAS,CACTC,eAAe,CAAfA,eAAe,CACfC,aAAA,CAAAA,aACF,CAAC,CAAGP,cAAc,CAClB,GAAIG,QAAQ,EAAIJ,KAAK,CAACS,SAAS,CAACC,QAAQ,CAAC,UAAU,CAAC,CAAE,CACpDN,QAAQ,CAACJ,KAAK,CAAEE,OAAO,CAAC,CAC1B,CAAC,IAAM,IAAIG,WAAW,EAAIL,KAAK,CAACS,SAAS,CAACC,QAAQ,CAAC,mBAAmB,CAAC,CAAE,CACvEL,WAAW,CAACL,KAAK,CAAEE,OAAO,CAAC,CAC7B,CAAC,IAAM,IAAII,SAAS,EAAIN,KAAK,CAACS,SAAS,CAACC,QAAQ,CAAC,iBAAiB,CAAC,CAAE,CACnEJ,SAAS,CAACN,KAAK,CAAEE,OAAO,CAAC,CAC3B,CAAC,IAAM,IAAIK,eAAe,EAAIP,KAAK,CAACS,SAAS,CAACC,QAAQ,CAAC,uBAAuB,CAAC,CAAE,CAC/EH,eAAe,CAACP,KAAK,CAAEE,OAAO,CAAC,CACjC,CAAC,IAAM,IAAIM,aAAa,EAAIR,KAAK,CAACS,SAAS,CAACC,QAAQ,CAAC,qBAAqB,CAAC,CAAE,CAC3EF,aAAa,CAACR,KAAK,CAAEE,OAAO,CAAC,CAC/B,CACF\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+function useAnimatedScrollHandler(handlers, dependencies) {
+  var scrollHandlers = typeof handlers === 'function' ? {
+    onScroll: handlers
+  } : handlers;
+  var _useHandler = (0, _useHandler2.useHandler)(scrollHandlers, dependencies),
+    context = _useHandler.context,
+    doDependenciesDiffer = _useHandler.doDependenciesDiffer;
+  var subscribeForEvents = ['onScroll'];
+  if (scrollHandlers.onBeginDrag !== undefined) {
+    subscribeForEvents.push('onScrollBeginDrag');
+  }
+  if (scrollHandlers.onEndDrag !== undefined) {
+    subscribeForEvents.push('onScrollEndDrag');
+  }
+  if (scrollHandlers.onMomentumBegin !== undefined) {
+    subscribeForEvents.push('onMomentumScrollBegin');
+  }
+  if (scrollHandlers.onMomentumEnd !== undefined) {
+    subscribeForEvents.push('onMomentumScrollEnd');
+  }
+  return (0, _useEvent.useEvent)(function () {
+    var _e = [new global.Error(), -3, -27];
+    var useAnimatedScrollHandlerJs1 = function useAnimatedScrollHandlerJs1(event) {
+      var onScroll = scrollHandlers.onScroll,
+        onBeginDrag = scrollHandlers.onBeginDrag,
+        onEndDrag = scrollHandlers.onEndDrag,
+        onMomentumBegin = scrollHandlers.onMomentumBegin,
+        onMomentumEnd = scrollHandlers.onMomentumEnd;
+      if (onScroll && event.eventName.endsWith('onScroll')) {
+        onScroll(event, context);
+      } else if (onBeginDrag && event.eventName.endsWith('onScrollBeginDrag')) {
+        onBeginDrag(event, context);
+      } else if (onEndDrag && event.eventName.endsWith('onScrollEndDrag')) {
+        onEndDrag(event, context);
+      } else if (onMomentumBegin && event.eventName.endsWith('onMomentumScrollBegin')) {
+        onMomentumBegin(event, context);
+      } else if (onMomentumEnd && event.eventName.endsWith('onMomentumScrollEnd')) {
+        onMomentumEnd(event, context);
+      }
+    };
+    useAnimatedScrollHandlerJs1.__closure = {
+      scrollHandlers: scrollHandlers,
+      context: context
+    };
+    useAnimatedScrollHandlerJs1.__workletHash = 2200428883878;
+    useAnimatedScrollHandlerJs1.__initData = _worklet_2200428883878_init_data;
+    useAnimatedScrollHandlerJs1.__stackDetails = _e;
+    return useAnimatedScrollHandlerJs1;
+  }(), subscribeForEvents, doDependenciesDiffer);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPYmplY3QiLCJkZWZpbmVQcm9wZXJ0eSIsImV4cG9ydHMiLCJ2YWx1ZSIsInVzZUFuaW1hdGVkU2Nyb2xsSGFuZGxlciIsIl91c2VIYW5kbGVyMiIsInJlcXVpcmUiLCJfdXNlRXZlbnQiLCJfd29ya2xldF8yMjAwNDI4ODgzODc4X2luaXRfZGF0YSIsImNvZGUiLCJsb2NhdGlvbiIsInNvdXJjZU1hcCIsInZlcnNpb24iLCJoYW5kbGVycyIsImRlcGVuZGVuY2llcyIsInNjcm9sbEhhbmRsZXJzIiwib25TY3JvbGwiLCJfdXNlSGFuZGxlciIsInVzZUhhbmRsZXIiLCJjb250ZXh0IiwiZG9EZXBlbmRlbmNpZXNEaWZmZXIiLCJzdWJzY3JpYmVGb3JFdmVudHMiLCJvbkJlZ2luRHJhZyIsInVuZGVmaW5lZCIsInB1c2giLCJvbkVuZERyYWciLCJvbk1vbWVudHVtQmVnaW4iLCJvbk1vbWVudHVtRW5kIiwidXNlRXZlbnQiLCJfZSIsImdsb2JhbCIsIkVycm9yIiwidXNlQW5pbWF0ZWRTY3JvbGxIYW5kbGVySnMxIiwiZXZlbnQiLCJldmVudE5hbWUiLCJlbmRzV2l0aCIsIl9fY2xvc3VyZSIsIl9fd29ya2xldEhhc2giLCJfX2luaXREYXRhIiwiX19zdGFja0RldGFpbHMiXSwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvaG9vay91c2VBbmltYXRlZFNjcm9sbEhhbmRsZXIudHMiXSwic291cmNlc0NvbnRlbnQiOltudWxsXSwibWFwcGluZ3MiOiJBQUFBLFlBQVk7O0FBQUFBLE1BQUEsQ0FBQUMsY0FBQSxDQUFBQyxPQUFBO0VBQUFDLEtBQUE7QUFBQTtBQUFBRCxPQUFBLENBQUFFLHdCQUFBLEdBQUFBLHdCQUFBO0FBTVosSUFBQUMsWUFBQSxHQUFBQyxPQUFBO0FBRUEsSUFBQUMsU0FBQSxHQUFBRCxPQUFBO0FBQXFDLElBQUFFLGdDQUFBO0VBQUFDLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0VBQUFDLE9BQUE7QUFBQTtBQXdDOUIsU0FBU1Isd0JB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

@@ -1,0 +1,338 @@
+383eac19a30855ce9c4be20b8aad3820
+'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ProgressTransitionManager = void 0;
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+var _threads = require("../../threads.js");
+var _core = require("../../core.js");
+var _reactNative = require("react-native");
+var _PlatformChecker = require("../../PlatformChecker.js");
+var _errors = require("../../errors.js");
+var IS_ANDROID = _reactNative.Platform.OS === 'android';
+var _worklet_5709970646903_init_data = {
+  code: "function ProgressTransitionManagerJs1(){const{viewTag,progressAnimation}=this.__closure;global.ProgressTransitionRegister.addProgressAnimation(viewTag,progressAnimation);}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"ProgressTransitionManagerJs1\",\"viewTag\",\"progressAnimation\",\"__closure\",\"global\",\"ProgressTransitionRegister\",\"addProgressAnimation\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"AAkBuB,SAAAA,4BAAMA,CAAA,QAAAC,OAAA,CAAAC,iBAAA,OAAAC,SAAA,CAGvBC,MAAM,CAACC,0BAA0B,CAACC,oBAAoB,CAACL,OAAO,CAAEC,iBAAiB,CAAC,CACpF\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_7528792784723_init_data = {
+  code: "function ProgressTransitionManagerJs2(){const{viewTag,isUnmounting}=this.__closure;global.ProgressTransitionRegister.removeProgressAnimation(viewTag,isUnmounting);}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"ProgressTransitionManagerJs2\",\"viewTag\",\"isUnmounting\",\"__closure\",\"global\",\"ProgressTransitionRegister\",\"removeProgressAnimation\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"AA2BuB,SAAAA,4BAAMA,CAAA,QAAAC,OAAA,CAAAC,YAAA,OAAAC,SAAA,CAGvBC,MAAM,CAACC,0BAA0B,CAACC,uBAAuB,CAACL,OAAO,CAAEC,YAAY,CAAC,CAClF\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_1812176989708_init_data = {
+  code: "function ProgressTransitionManagerJs3(event){const{lastProgressValue}=this.__closure;const progress=event.progress;if(progress===lastProgressValue){return;}lastProgressValue=progress;global.ProgressTransitionRegister.frame(progress);}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"ProgressTransitionManagerJs3\",\"event\",\"lastProgressValue\",\"__closure\",\"progress\",\"global\",\"ProgressTransitionRegister\",\"frame\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"AAwC+D,SAAAA,4BAASA,CAAAC,KAAA,QAAAC,iBAAA,OAAAC,SAAA,CAGhE,KAAM,CAAAC,QAAQ,CAAGH,KAAK,CAACG,QAAQ,CAC/B,GAAIA,QAAQ,GAAKF,iBAAiB,CAAE,CAIlC,OACF,CACAA,iBAAiB,CAAGE,QAAQ,CAC5BC,MAAM,CAACC,0BAA0B,CAACC,KAAK,CAACH,QAAQ,CAAC,CACnD\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_12704473041509_init_data = {
+  code: "function ProgressTransitionManagerJs4(){global.ProgressTransitionRegister.onTransitionEnd();}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"ProgressTransitionManagerJs4\",\"global\",\"ProgressTransitionRegister\",\"onTransitionEnd\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"AAqDmD,SAAAA,4BAAMA,CAAA,EAGjDC,MAAM,CAACC,0BAA0B,CAACC,eAAe,CAAC,CAAC,CACrD\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_9409079992067_init_data = {
+  code: "function ProgressTransitionManagerJs5(){global.ProgressTransitionRegister.onAndroidFinishTransitioning();}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"ProgressTransitionManagerJs5\",\"global\",\"ProgressTransitionRegister\",\"onAndroidFinishTransitioning\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"AA6DwD,SAAAA,4BAAMA,CAAA,EAGpDC,MAAM,CAACC,0BAA0B,CAACC,4BAA4B,CAAC,CAAC,CAClE\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_3077692692177_init_data = {
+  code: "function ProgressTransitionManagerJs6(){global.ProgressTransitionRegister.onTransitionEnd(true);}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"ProgressTransitionManagerJs6\",\"global\",\"ProgressTransitionRegister\",\"onTransitionEnd\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"AAoEwD,SAAAA,4BAAMA,CAAA,EAGpDC,MAAM,CAACC,0BAA0B,CAACC,eAAe,CAAC,IAAI,CAAC,CACzD\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var _worklet_15551717441510_init_data = {
+  code: "function ProgressTransitionManagerJs7(){global.ProgressTransitionRegister.onTransitionEnd();}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"ProgressTransitionManagerJs7\",\"global\",\"ProgressTransitionRegister\",\"onTransitionEnd\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"AAyE2D,SAAAA,4BAAMA,CAAA,EAGvDC,MAAM,CAACC,0BAA0B,CAACC,eAAe,CAAC,CAAC,CACrD\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var ProgressTransitionManager = exports.ProgressTransitionManager = function () {
+  function ProgressTransitionManager() {
+    (0, _classCallCheck2.default)(this, ProgressTransitionManager);
+    this._sharedElementCount = 0;
+    this._eventHandler = {
+      isRegistered: false,
+      onTransitionProgress: -1,
+      onAppear: -1,
+      onDisappear: -1,
+      onSwipeDismiss: -1
+    };
+  }
+  return (0, _createClass2.default)(ProgressTransitionManager, [{
+    key: "addProgressAnimation",
+    value: function addProgressAnimation(viewTag, progressAnimation) {
+      (0, _threads.runOnUIImmediately)(function () {
+        var _e = [new global.Error(), -3, -27];
+        var ProgressTransitionManagerJs1 = function ProgressTransitionManagerJs1() {
+          global.ProgressTransitionRegister.addProgressAnimation(viewTag, progressAnimation);
+        };
+        ProgressTransitionManagerJs1.__closure = {
+          viewTag: viewTag,
+          progressAnimation: progressAnimation
+        };
+        ProgressTransitionManagerJs1.__workletHash = 5709970646903;
+        ProgressTransitionManagerJs1.__initData = _worklet_5709970646903_init_data;
+        ProgressTransitionManagerJs1.__stackDetails = _e;
+        return ProgressTransitionManagerJs1;
+      }())();
+      this.registerEventHandlers();
+    }
+  }, {
+    key: "removeProgressAnimation",
+    value: function removeProgressAnimation(viewTag) {
+      var isUnmounting = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      this.unregisterEventHandlers();
+      (0, _threads.runOnUIImmediately)(function () {
+        var _e = [new global.Error(), -3, -27];
+        var ProgressTransitionManagerJs2 = function ProgressTransitionManagerJs2() {
+          global.ProgressTransitionRegister.removeProgressAnimation(viewTag, isUnmounting);
+        };
+        ProgressTransitionManagerJs2.__closure = {
+          viewTag: viewTag,
+          isUnmounting: isUnmounting
+        };
+        ProgressTransitionManagerJs2.__workletHash = 7528792784723;
+        ProgressTransitionManagerJs2.__initData = _worklet_7528792784723_init_data;
+        ProgressTransitionManagerJs2.__stackDetails = _e;
+        return ProgressTransitionManagerJs2;
+      }())();
+    }
+  }, {
+    key: "registerEventHandlers",
+    value: function registerEventHandlers() {
+      this._sharedElementCount++;
+      var eventHandler = this._eventHandler;
+      if (!eventHandler.isRegistered) {
+        eventHandler.isRegistered = true;
+        var eventPrefix = IS_ANDROID ? 'on' : 'top';
+        var lastProgressValue = -1;
+        eventHandler.onTransitionProgress = (0, _core.registerEventHandler)(function () {
+          var _e = [new global.Error(), -2, -27];
+          var ProgressTransitionManagerJs3 = function ProgressTransitionManagerJs3(event) {
+            var progress = event.progress;
+            if (progress === lastProgressValue) {
+              return;
+            }
+            lastProgressValue = progress;
+            global.ProgressTransitionRegister.frame(progress);
+          };
+          ProgressTransitionManagerJs3.__closure = {
+            lastProgressValue: lastProgressValue
+          };
+          ProgressTransitionManagerJs3.__workletHash = 1812176989708;
+          ProgressTransitionManagerJs3.__initData = _worklet_1812176989708_init_data;
+          ProgressTransitionManagerJs3.__stackDetails = _e;
+          return ProgressTransitionManagerJs3;
+        }(), eventPrefix + 'TransitionProgress');
+        eventHandler.onAppear = (0, _core.registerEventHandler)(function () {
+          var _e = [new global.Error(), 1, -27];
+          var ProgressTransitionManagerJs4 = function ProgressTransitionManagerJs4() {
+            global.ProgressTransitionRegister.onTransitionEnd();
+          };
+          ProgressTransitionManagerJs4.__closure = {};
+          ProgressTransitionManagerJs4.__workletHash = 12704473041509;
+          ProgressTransitionManagerJs4.__initData = _worklet_12704473041509_init_data;
+          ProgressTransitionManagerJs4.__stackDetails = _e;
+          return ProgressTransitionManagerJs4;
+        }(), eventPrefix + 'Appear');
+        if (IS_ANDROID) {
+          eventHandler.onDisappear = (0, _core.registerEventHandler)(function () {
+            var _e = [new global.Error(), 1, -27];
+            var ProgressTransitionManagerJs5 = function ProgressTransitionManagerJs5() {
+              global.ProgressTransitionRegister.onAndroidFinishTransitioning();
+            };
+            ProgressTransitionManagerJs5.__closure = {};
+            ProgressTransitionManagerJs5.__workletHash = 9409079992067;
+            ProgressTransitionManagerJs5.__initData = _worklet_9409079992067_init_data;
+            ProgressTransitionManagerJs5.__stackDetails = _e;
+            return ProgressTransitionManagerJs5;
+          }(), 'onFinishTransitioning');
+        } else if (_reactNative.Platform.OS === 'ios') {
+          eventHandler.onDisappear = (0, _core.registerEventHandler)(function () {
+            var _e = [new global.Error(), 1, -27];
+            var ProgressTransitionManagerJs6 = function ProgressTransitionManagerJs6() {
+              global.ProgressTransitionRegister.onTransitionEnd(true);
+            };
+            ProgressTransitionManagerJs6.__closure = {};
+            ProgressTransitionManagerJs6.__workletHash = 3077692692177;
+            ProgressTransitionManagerJs6.__initData = _worklet_3077692692177_init_data;
+            ProgressTransitionManagerJs6.__stackDetails = _e;
+            return ProgressTransitionManagerJs6;
+          }(), 'topDisappear');
+          eventHandler.onSwipeDismiss = (0, _core.registerEventHandler)(function () {
+            var _e = [new global.Error(), 1, -27];
+            var ProgressTransitionManagerJs7 = function ProgressTransitionManagerJs7() {
+              global.ProgressTransitionRegister.onTransitionEnd();
+            };
+            ProgressTransitionManagerJs7.__closure = {};
+            ProgressTransitionManagerJs7.__workletHash = 15551717441510;
+            ProgressTransitionManagerJs7.__initData = _worklet_15551717441510_init_data;
+            ProgressTransitionManagerJs7.__stackDetails = _e;
+            return ProgressTransitionManagerJs7;
+          }(), 'topGestureCancel');
+        }
+      }
+    }
+  }, {
+    key: "unregisterEventHandlers",
+    value: function unregisterEventHandlers() {
+      this._sharedElementCount--;
+      if (this._sharedElementCount === 0) {
+        var eventHandler = this._eventHandler;
+        eventHandler.isRegistered = false;
+        if (eventHandler.onTransitionProgress !== -1) {
+          (0, _core.unregisterEventHandler)(eventHandler.onTransitionProgress);
+          eventHandler.onTransitionProgress = -1;
+        }
+        if (eventHandler.onAppear !== -1) {
+          (0, _core.unregisterEventHandler)(eventHandler.onAppear);
+          eventHandler.onAppear = -1;
+        }
+        if (eventHandler.onDisappear !== -1) {
+          (0, _core.unregisterEventHandler)(eventHandler.onDisappear);
+          eventHandler.onDisappear = -1;
+        }
+        if (eventHandler.onSwipeDismiss !== -1) {
+          (0, _core.unregisterEventHandler)(eventHandler.onSwipeDismiss);
+          eventHandler.onSwipeDismiss = -1;
+        }
+      }
+    }
+  }]);
+}();
+var _worklet_10744455887744_init_data = {
+  code: "function createProgressTransitionRegister_ProgressTransitionManagerJs8(){const{IS_ANDROID}=this.__closure;const progressAnimations=new Map();const snapshots=new Map();const currentTransitions=new Set();const toRemove=new Set();let skipCleaning=false;let isTransitionRestart=false;const progressTransitionManager={addProgressAnimation:function(viewTag,progressAnimation){if(currentTransitions.size>0&&!progressAnimations.has(viewTag)){isTransitionRestart=!IS_ANDROID;}progressAnimations.set(viewTag,progressAnimation);},removeProgressAnimation:function(viewTag,isUnmounting){if(currentTransitions.size>0){isTransitionRestart=!IS_ANDROID;}if(isUnmounting){toRemove.add(viewTag);}else{progressAnimations.delete(viewTag);}},onTransitionStart:function(viewTag,snapshot){skipCleaning=isTransitionRestart;snapshots.set(viewTag,snapshot);currentTransitions.add(viewTag);progressTransitionManager.frame(0);},frame:function(progress){for(const viewTag of currentTransitions){const progressAnimation=progressAnimations.get(viewTag);if(!progressAnimation){continue;}const snapshot=snapshots.get(viewTag);progressAnimation(viewTag,snapshot,progress);}},onAndroidFinishTransitioning:function(){if(toRemove.size>0){progressTransitionManager.onTransitionEnd();}},onTransitionEnd:function(removeViews=false){if(currentTransitions.size===0){toRemove.clear();return;}if(skipCleaning){skipCleaning=false;isTransitionRestart=false;return;}for(const viewTag of currentTransitions){global._notifyAboutEnd(viewTag,removeViews);}currentTransitions.clear();if(isTransitionRestart){return;}snapshots.clear();if(toRemove.size>0){for(const viewTag of toRemove){progressAnimations.delete(viewTag);global._notifyAboutEnd(viewTag,removeViews);}toRemove.clear();}}};return progressTransitionManager;}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"createProgressTransitionRegister_ProgressTransitionManagerJs8\",\"IS_ANDROID\",\"__closure\",\"progressAnimations\",\"Map\",\"snapshots\",\"currentTransitions\",\"Set\",\"toRemove\",\"skipCleaning\",\"isTransitionRestart\",\"progressTransitionManager\",\"addProgressAnimation\",\"viewTag\",\"progressAnimation\",\"size\",\"has\",\"set\",\"removeProgressAnimation\",\"isUnmounting\",\"add\",\"delete\",\"onTransitionStart\",\"snapshot\",\"frame\",\"progress\",\"get\",\"onAndroidFinishTransitioning\",\"onTransitionEnd\",\"removeViews\",\"clear\",\"global\",\"_notifyAboutEnd\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"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\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+var createProgressTransitionRegister = function () {
+  var _e = [new global.Error(), -2, -27];
+  var createProgressTransitionRegister = function createProgressTransitionRegister() {
+    var progressAnimations = new Map();
+    var snapshots = new Map();
+    var currentTransitions = new Set();
+    var toRemove = new Set();
+    var skipCleaning = false;
+    var isTransitionRestart = false;
+    var progressTransitionManager = {
+      addProgressAnimation: function addProgressAnimation(viewTag, progressAnimation) {
+        if (currentTransitions.size > 0 && !progressAnimations.has(viewTag)) {
+          isTransitionRestart = !IS_ANDROID;
+        }
+        progressAnimations.set(viewTag, progressAnimation);
+      },
+      removeProgressAnimation: function removeProgressAnimation(viewTag, isUnmounting) {
+        if (currentTransitions.size > 0) {
+          isTransitionRestart = !IS_ANDROID;
+        }
+        if (isUnmounting) {
+          toRemove.add(viewTag);
+        } else {
+          progressAnimations.delete(viewTag);
+        }
+      },
+      onTransitionStart: function onTransitionStart(viewTag, snapshot) {
+        skipCleaning = isTransitionRestart;
+        snapshots.set(viewTag, snapshot);
+        currentTransitions.add(viewTag);
+        progressTransitionManager.frame(0);
+      },
+      frame: function frame(progress) {
+        for (var viewTag of currentTransitions) {
+          var progressAnimation = progressAnimations.get(viewTag);
+          if (!progressAnimation) {
+            continue;
+          }
+          var snapshot = snapshots.get(viewTag);
+          progressAnimation(viewTag, snapshot, progress);
+        }
+      },
+      onAndroidFinishTransitioning: function onAndroidFinishTransitioning() {
+        if (toRemove.size > 0) {
+          progressTransitionManager.onTransitionEnd();
+        }
+      },
+      onTransitionEnd: function onTransitionEnd() {
+        var removeViews = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+        if (currentTransitions.size === 0) {
+          toRemove.clear();
+          return;
+        }
+        if (skipCleaning) {
+          skipCleaning = false;
+          isTransitionRestart = false;
+          return;
+        }
+        for (var viewTag of currentTransitions) {
+          global._notifyAboutEnd(viewTag, removeViews);
+        }
+        currentTransitions.clear();
+        if (isTransitionRestart) {
+          return;
+        }
+        snapshots.clear();
+        if (toRemove.size > 0) {
+          for (var _viewTag of toRemove) {
+            progressAnimations.delete(_viewTag);
+            global._notifyAboutEnd(_viewTag, removeViews);
+          }
+          toRemove.clear();
+        }
+      }
+    };
+    return progressTransitionManager;
+  };
+  createProgressTransitionRegister.__closure = {
+    IS_ANDROID: IS_ANDROID
+  };
+  createProgressTransitionRegister.__workletHash = 10744455887744;
+  createProgressTransitionRegister.__initData = _worklet_10744455887744_init_data;
+  createProgressTransitionRegister.__stackDetails = _e;
+  return createProgressTransitionRegister;
+}();
+var _worklet_17276620694150_init_data = {
+  code: "function ProgressTransitionManagerJs9(){const{createProgressTransitionRegister}=this.__closure;global.ProgressTransitionRegister=createProgressTransitionRegister();}",
+  location: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\node_modules\\react-native-reanimated\\lib\\module\\layoutReanimation\\sharedTransitions\\ProgressTransitionManager.js",
+  sourceMap: "{\"version\":3,\"names\":[\"ProgressTransitionManagerJs9\",\"createProgressTransitionRegister\",\"__closure\",\"global\",\"ProgressTransitionRegister\"],\"sources\":[\"C:/Users/khi_h/Desktop/Projets/JoudEnglishApp/node_modules/react-native-reanimated/lib/module/layoutReanimation/sharedTransitions/ProgressTransitionManager.js\"],\"mappings\":\"AA6MqB,SAAAA,4BAAMA,CAAA,QAAAC,gCAAA,OAAAC,SAAA,CAGvBC,MAAM,CAACC,0BAA0B,CAAGH,gCAAgC,CAAC,CAAC,CACxE\",\"ignoreList\":[]}",
+  version: "3.16.7"
+};
+if ((0, _PlatformChecker.shouldBeUseWeb)()) {
+  var maybeThrowError = function maybeThrowError() {
+    if (!(0, _PlatformChecker.isJest)()) {
+      throw new _errors.ReanimatedError('`ProgressTransitionRegister` is not available on non-native platform.');
+    }
+  };
+  global.ProgressTransitionRegister = new Proxy({}, {
+    get: maybeThrowError,
+    set: function set() {
+      maybeThrowError();
+      return false;
+    }
+  });
+} else {
+  (0, _threads.runOnUIImmediately)(function () {
+    var _e = [new global.Error(), -2, -27];
+    var ProgressTransitionManagerJs9 = function ProgressTransitionManagerJs9() {
+      global.ProgressTransitionRegister = createProgressTransitionRegister();
+    };
+    ProgressTransitionManagerJs9.__closure = {
+      createProgressTransitionRegister: createProgressTransitionRegister
+    };
+    ProgressTransitionManagerJs9.__workletHash = 17276620694150;
+    ProgressTransitionManagerJs9.__initData = _worklet_17276620694150_init_data;
+    ProgressTransitionManagerJs9.__stackDetails = _e;
+    return ProgressTransitionManagerJs9;
+  }())();
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfaW50ZXJvcFJlcXVpcmVEZWZhdWx0IiwicmVxdWlyZSIsIk9iamVjdCIsImRlZmluZVByb3BlcnR5IiwiZXhwb3J0cyIsInZhbHVlIiwiUHJvZ3Jlc3NUcmFuc2l0aW9uTWFuYWdlciIsIl9jbGFzc0NhbGxDaGVjazIiLCJfY3JlYXRlQ2xhc3MyIiwiX3RocmVhZHMiLCJfY29yZSIsIl9yZWFjdE5hdGl2ZSIsIl9QbGF0Zm9ybUNoZWNrZXIiLCJfZXJyb3JzIiwiSVNfQU5EUk9JRCIsIlBsYXRmb3JtIiwiT1MiLCJfd29ya2xldF81NzA5OTcwNjQ2OTAzX2luaXRfZGF0YSIsImNvZGUiLCJsb2NhdGlvbiIsInNvdXJjZU1hcCIsInZlcnNpb24iLCJfd29ya2xldF83NTI4NzkyNzg0NzIzX2luaXRfZGF0YSIsIl93b3JrbGV0XzE4MTIxNzY5ODk3MDhfaW5pdF9kYXRhIiwiX3dvcmtsZXRfMTI3MDQ0NzMwNDE1MDlfaW5pdF9kYXRhIiwiX3dvcmtsZXRfOTQwOTA3OTk5MjA2N19pbml0X2RhdGEiLCJfd29ya2xldF8zMDc3NjkyNjkyMTc3X2luaXRfZGF0YSIsIl93b3JrbGV0XzE1NTUxNzE3NDQxNTEwX2luaXRfZGF0YSIsImRlZmF1bHQiLCJfc2hhcmVkRWxlbWVudENvdW50IiwiX2V2ZW50SGFuZGxlciIsImlzUmVnaXN0ZXJlZCIsIm9uVHJhbnNpdGlvblByb2dyZXNzIiwib25BcHBlYXIiLCJvbkRpc2FwcGVhciIsIm9uU3dpcGVEaXNtaXNzIiwia2V5IiwiYWRkUHJvZ3Jlc3NBbmltYXRpb24iLCJ2aWV3VGFnIiwicHJvZ3Jlc3NBbmltYXRpb24iLCJydW5PblVJSW1tZWRpYXRlbHkiLCJfZSIsImdsb2JhbCIsIkVycm9yIiwiUHJvZ3Jlc3NUcmFuc2l0aW9uTWFuYWdlckpzMSIsIlByb2dyZXNzVHJhbnNpdGlvblJlZ2lzdGVyIiwiX19jbG9zdXJlIiwiX193b3JrbGV0SGFzaCIsIl9faW5pdERhdGEiLCJfX3N0YWNrRGV0YWlscyIsInJlZ2lzdGVyRXZlbnRIYW5kbGVycyIsInJlbW92ZVByb2dyZXNzQW5pbWF0aW9uIiwiaXNVbm1vdW50aW5nIiwiYXJndW1lbnRzIiwibGVuZ3RoIiwidW5kZWZpbmVkIiwidW5yZWdpc3RlckV2ZW50SGFuZGxlcnMiLCJQcm9ncmVzc1RyYW5zaXRpb25NYW5hZ2VySnMyIiwiZXZlbnRIYW5kbGVyIiwiZXZlbnRQcmVmaXgiLCJsYXN0UHJvZ3Jlc3NWYWx1ZSIsInJlZ2lzdGVyRXZlbnRIYW5kbGVyIiwiUHJvZ3Jlc3NUcmFuc2l0aW9uTWFuYWdlckpzMyIsImV2ZW50IiwicHJvZ3Jlc3MiLCJmcmFtZSIsIlByb2dyZXNzVHJhbnNpdGlvbk1hbmFnZXJKczQiLCJvblRyYW5zaXRpb25FbmQiLCJQcm9ncmVzc1RyYW5zaXRpb25NYW5hZ2VySnM1Iiwib25BbmRyb2lkRmluaXNoVHJhbnNpdGlvbmluZyIsIlByb2dyZXNzVHJhbnNpdGlvbk1hbmFnZXJKczYiLCJQcm9ncmVzc1RyYW5zaXRpb25NYW5hZ2VySnM3IiwidW5yZWdpc3RlckV2ZW50SGFuZGxlciIsIl93b3JrbGV0XzEwNzQ0NDU1ODg3NzQ0X2luaXRfZGF0YSIsImNyZWF0ZVByb2dyZXNzVHJhbnNpdGlvblJlZ2lzdGVyIiwicHJvZ3Jlc3NBbmltYXRpb25zIiwiTWFwIiwic25hcHNob3RzIiwiY3VycmVudFRyYW5zaXRpb25zIiwiU2V0IiwidG9SZW1vdmUiLCJza2lwQ2xlYW5pbmciLCJpc1RyYW5zaXRpb25SZXN0YXJ0IiwicHJvZ3Jlc3NUcmFuc2l0aW9uTWFuYWdlciIsInNpemUiLCJoYXMiLCJzZXQiLCJhZGQiLCJkZWxldGUiLCJvblRyYW5zaXRpb25TdGFydCIsInNuYXBzaG90IiwiZ2V0IiwicmVtb3ZlVmlld3MiLCJjbGVhciIsIl9ub3RpZnlBYm91dEVuZCIsIl93b3JrbGV0XzE3Mjc2NjIwNjk0MTUwX2luaXRfZGF0YSIsInNob3VsZEJlVXNlV2ViIiwibWF5YmVUaHJvd0Vycm9yIiwiaXNKZXN0IiwiUmVhbmltYXRlZEVycm9yIiwiUHJveHkiLCJQcm9ncmVzc1RyYW5zaXRpb25NYW5hZ2VySnM5Il0sInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vc3JjL2xheW91dFJlYW5pbWF0aW9uL3NoYXJlZFRyYW5zaXRpb25zL1Byb2dyZXNzVHJhbnNpdGlvbk1hbmFnZXIudHMiXSwic291cmNlc0NvbnRlbnQiOltudWxsXSwibWFwcGluZ3MiOiJBQUFBLFlBQVk7O0FBQUEsSUFBQUEsc0JBQUEsR0FBQUMsT0FBQTtBQUFBQyxNQUFBLENBQUFDLGNBQUEsQ0FBQUMsT0FBQTtFQUFBQyxLQUFBO0FBQUE7QUFBQUQsT0FBQSxDQUFBRSx5QkFBQTtBQUFBLElBQUFDLGdCQUFBLEdBQUFQLHNCQUFBLENBQUFDLE9BQUE7QUFBQSxJQUFBTyxhQUFBLEdBQUFSLHNCQUFBLENBQUFDLE9BQUE7QUFDWixJQUFBUSxRQUFBLEdBQUFSLE9BQUE7QUFLQSxJQUFBUyxLQUFBLEdBQUFULE9BQUE7QUFDQSxJQUFBVSxZQUFBLEdBQUFWLE9BQUE7QUFDQSxJQUFBVyxnQkFBQSxHQUFBWCxPQUFBO0FBQ0EsSUFBQVksT0FBQSxHQUFBWixPQUFBO0FBVUEsSUFBTWEsVUFBVSxHQUFHQyxxQkFBUSxDQUFDQyxFQUFFLEtBQUssU0FBUztBQUFBLElBQUFDLGdDQUFBO0VBQUFDLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0VBQUFDLE9BQUE7QUFBQTtBQUFBLElBQUFDLGdDQUFBO0VBQUFKLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0VBQUFDLE9BQUE7QUFBQTtBQUFBLElBQUFFLGdDQUFBO0VBQUFMLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0VBQUFDLE9BQUE7QUFBQTtBQUFBLElBQUFHLGlDQUFBO0VBQUFOLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0VBQUFDLE9BQUE7QUFBQTtBQUFBLElBQUFJLGdDQUFBO0VBQUFQLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0VBQUFDLE9BQUE7QUFBQTtBQUFBLElBQUFLLGdDQUFBO0VBQUFSLElBQUE7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

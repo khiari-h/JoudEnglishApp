@@ -1,0 +1,105 @@
+# Test E2E - Niveaux et progression
+# JoudEnglishApp - Test de navigation entre niveaux
+
+appId: com.hamdanek.JoudEnglishApp
+---
+
+# 🚀 LANCEMENT
+- launchApp
+- waitForAnimationToEnd
+
+# 📚 NAVIGATION VERS NIVEAUX
+- tapOn: "Commencer >"
+- waitForAnimationToEnd
+- assertVisible: "Niveaux"
+
+# 🎯 TEST NIVEAU 1
+- tapOn:
+    id: "level-1"
+    optional: true
+- tapOn:
+    text: "Niveau 1"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible: "Niveau 1"
+- assertVisible: "Choisissez votre exercice"
+- pressKey: "Back"
+- waitForAnimationToEnd
+
+# 🎯 TEST NIVEAU 2
+- tapOn:
+    id: "level-2"
+    optional: true
+- tapOn:
+    text: "Niveau 2"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible: "Niveau 2"
+- pressKey: "Back"
+- waitForAnimationToEnd
+
+# 🎯 TEST NIVEAU 3
+- tapOn:
+    id: "level-3"
+    optional: true
+- tapOn:
+    text: "Niveau 3"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible: "Niveau 3"
+- pressKey: "Back"
+- waitForAnimationToEnd
+
+# 🎯 TEST NIVEAU 4
+- tapOn:
+    id: "level-4"
+    optional: true
+- tapOn:
+    text: "Niveau 4"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible: "Niveau 4"
+- pressKey: "Back"
+- waitForAnimationToEnd
+
+# 🎯 TEST NIVEAU 5
+- tapOn:
+    id: "level-5"
+    optional: true
+- tapOn:
+    text: "Niveau 5"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible: "Niveau 5"
+- pressKey: "Back"
+- waitForAnimationToEnd
+
+# 🎯 TEST NIVEAU 6
+- tapOn:
+    id: "level-6"
+    optional: true
+- tapOn:
+    text: "Niveau 6"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible: "Niveau 6"
+- pressKey: "Back"
+- waitForAnimationToEnd
+
+# ⭐ TEST NIVEAU BONUS
+- tapOn:
+    id: "level-bonus"
+    optional: true
+- tapOn:
+    text: "Bonus"
+    optional: true
+- waitForAnimationToEnd
+- assertVisible: "Bonus"
+- assertVisible: "Contenu exclusif débloqué !"
+- pressKey: "Back"
+- waitForAnimationToEnd
+
+# 🔙 RETOUR AU DASHBOARD
+- pressKey: "Back"
+- waitForAnimationToEnd
+- assertVisible: "Commencer >"

@@ -25,9 +25,83 @@ jest.mock('expo-haptics', () => ({
   impactAsync: jest.fn(),
 }));
 
+jest.mock('expo-splash-screen', () => ({
+  hideAsync: jest.fn(),
+  preventAutoHideAsync: jest.fn(),
+}));
+
+jest.mock('expo-constants', () => ({
+  ...jest.requireActual('expo-constants'),
+  manifest: {
+    extra: {
+      // your extra config here
+    },
+  },
+}));
+
+jest.mock('expo-asset', () => ({
+  Asset: {
+    fromModule: jest.fn(() => ({
+      downloadAsync: jest.fn(),
+      uri: 'test-uri',
+    })),
+  },
+}));
+
+jest.mock('react-native-reanimated', () => {
+    const Reanimated = require('react-native-reanimated/mock');
+    Reanimated.useSharedValue = jest.fn(() => ({ value: 0 }));
+    Reanimated.withTiming = (toValue, options, callback) => {
+        if (callback) {
+            callback(true);
+        }
+        return toValue;
+    };
+    Reanimated.withSpring = (toValue, options, callback) => {
+        if (callback) {
+            callback(true);
+        }
+        return toValue;
+    };
+    Reanimated.withRepeat = (animation, repetitions, reverse) => {
+        return animation;
+    };
+    Reanimated.withSequence = (...animations) => {
+        return animations[0];
+    };
+    Reanimated.withDelay = (delay, animation) => {
+        return animation;
+    };
+    return Reanimated;
+});
+
+// Mock 'expo-modules-core'
 jest.mock('expo-modules-core', () => ({
-  NativeModulesProxy: {},
-  EventEmitter: jest.fn(),
+  ...jest.requireActual('expo-modules-core'),
+  requireOptionalNativeModule: jest.fn(),
+  NativeModulesProxy: new Proxy({}, {
+    get(target, prop) {
+      if (prop === 'ExpoLocalization') {
+        return {
+          locale: 'en-US',
+          isoCurrencyCodes: ['USD'],
+          timezone: 'America/New_York',
+          isRTL: false,
+        };
+      }
+      if (prop === 'ExpoRandom') {
+          return {
+              getRandomBytes: jest.fn(),
+              getRandomBytesAsync: jest.fn(),
+          }
+      }
+      return {};
+    }
+  }),
+  EventEmitter: jest.fn(() => ({
+    addListener: jest.fn(),
+    removeListeners: jest.fn(),
+  })),
   requireNativeViewManager: jest.fn(() => ({})),
 }));
 

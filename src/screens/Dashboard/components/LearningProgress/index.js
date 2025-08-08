@@ -36,6 +36,7 @@ const LevelsCircleRow = ({
         return (
           <TouchableOpacity
             key={level.id}
+            testID={`level-${level.id}-button`}
             style={styles.levelButton}
             onPress={handlers[level.id]}
             activeOpacity={0.7}
