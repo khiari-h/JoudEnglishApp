@@ -12,9 +12,9 @@ jest.mock('../../src/utils/storageUtils', () => ({
 // Mock constants
 jest.mock('../../src/utils/constants', () => ({
   DEFAULT_SETTINGS: {
-    notifications: true,
-    dailyGoal: 30,
-    theme: 'light',
+    notifications: false,
+    dailyGoal: 60,
+    theme: 'dark',
   },
   STORAGE_KEYS: {
     USER_SETTINGS: 'userSettings',

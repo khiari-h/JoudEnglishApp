@@ -96,6 +96,22 @@ export const EXERCISE_TYPES = EXERCISES;
 // =================== CONFIGS ===================
 export const BONUS_EXERCISES = ["reading", "vocabulary", "phrases"];
 
+export const COLORS = {
+  background: '#F9FAFB',
+  surface: '#FFFFFF',
+  primary: '#3b82f6',
+  primaryDark: '#2563eb',
+  secondary: '#10b981',
+  accent: '#f59e0b',
+  error: '#ef4444',
+  text: '#1F2937',
+  textSecondary: '#6B7280',
+  border: '#E5E7EB',
+  divider: '#E5E7EB',
+  disabled: '#D1D5DB',
+  icon: '#1F2937',
+};
+
 export const STORAGE_KEYS = {
   LAST_ACTIVITY: "user_last_activity",
   USER_PROGRESS: "user_progress", 
