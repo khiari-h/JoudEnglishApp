@@ -39,19 +39,21 @@ describe('LearningProgress', () => {
     { id: '3', color: '#8B5CF6', progress: 25 }
   ];
 
-  const defaultProps = {
-    levels: mockLevels,
-    currentLevel: '1',
-    globalProgress: 75,
-    primaryColor: '#10B981',
-    onSelectLevel: jest.fn(),
-    onChangeLevelVisual: jest.fn()
-  };
-
+  
+    const defaultProps = {
+      levels: mockLevels,
+      currentLevel: '1',
+      globalProgress: 75,
+      primaryColor: '#10B981',
+      onSelectLevel: jest.fn(),
+      onChangeLevelVisual: jest.fn()
+    };
   const renderComponent = (props = {}) => {
+
+    const allProps = { ...defaultProps, ...props };
     return render(
       <ThemeContext.Provider value={mockTheme}>
-        <LearningProgress {...defaultProps} {...props} />
+        <LearningProgress {...allProps} />
       </ThemeContext.Provider>
     );
   };

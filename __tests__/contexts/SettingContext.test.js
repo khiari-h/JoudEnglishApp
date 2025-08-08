@@ -87,7 +87,7 @@ describe('SettingsContext', () => {
     expect(flattenChildren(screen.getByTestId('theme').props.children)).toBe('Theme: light');
 
     expect(getData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS);
-    expect(storeData).toHaveBeenCalledTimes(1); // Should save default settings on initial load
+    expect(storeData).toHaveBeenCalledTimes(2); // Should save default settings on initial load, and then again when settings are updated after load
   });
 
   it('loads saved settings from storage', async () => {

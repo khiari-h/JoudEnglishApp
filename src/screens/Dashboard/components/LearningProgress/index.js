@@ -136,12 +136,12 @@ ProgressHeader.propTypes = {
  * Composant principal LearningProgress
  */
 const LearningProgress = ({
-  levels,
-  currentLevel,
+  levels = [],
+  currentLevel = "1",
   onSelectLevel,
   onChangeLevelVisual,
-  primaryColor,
-  globalProgress,
+  primaryColor = "#3B82F6",
+  globalProgress = 0,
 }) => {
   const { colors: themeColors = {} } = useContext(ThemeContext) || {};
 
@@ -225,11 +225,6 @@ LearningProgress.propTypes = {
   globalProgress: PropTypes.number,
 };
 
-LearningProgress.defaultProps = {
-  levels: [],
-  currentLevel: "1",
-  primaryColor: "#3B82F6",
-  globalProgress: 0,
-};
+
 
 export default LearningProgress;

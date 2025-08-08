@@ -12,7 +12,7 @@ export const ThemeContext = createContext();
  */
 export const ThemeProvider = ({ children }) => {
   // États
-  const [theme, setTheme] = useState('system'); // 'light', 'dark', 'system'
+    const [theme, setTheme] = useState('light'); // 'light', 'dark', 'system'
   const systemColorScheme = useColorScheme();
   const [loaded, setLoaded] = useState(false);
 

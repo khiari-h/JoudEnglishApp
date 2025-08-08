@@ -24,6 +24,9 @@ export const SettingsProvider = ({ children }) => {
         if (savedSettings) {
           // Fusionner avec les paramètres par défaut pour s'assurer que tous les champs sont présents
           setSettings({ ...DEFAULT_SETTINGS, ...savedSettings });
+        } else {
+          // If no saved settings, use default
+          setSettings(DEFAULT_SETTINGS);
         }
       } catch (error) {
         // Ignored on purpose
@@ -37,7 +40,7 @@ export const SettingsProvider = ({ children }) => {
 
   // Sauvegarder les paramètres lorsqu'ils changent
   useEffect(() => {
-    if (!isLoading && settings !== DEFAULT_SETTINGS) {
+    if (!isLoading) {
       storeData('userSettings', settings);
     }
   }, [settings, isLoading]);
