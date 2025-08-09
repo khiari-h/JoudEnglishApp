@@ -1,4 +1,4 @@
-// __tests__/screens/Dashboard/components/SimpleMetrics.test.js
+// __tests__/screens/Dashboard/components/SimpleMetrics.test.js - MIS À JOUR
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import SimpleMetrics from '../../../../src/screens/Dashboard/components/SimpleMetrics';
@@ -37,19 +37,28 @@ describe('SimpleMetrics', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    
+    // 🔥 SETUP PAR DÉFAUT DES HOOKS
+    useActivityMetrics.mockReturnValue({
+      currentStreak: 0,
+      streakTrend: null,
+      formattedTime: '0min',
+      refresh: jest.fn()
+    });
+
+    useDailyWords.mockReturnValue({
+      wordsToday: 0,
+      isLoading: false,
+      refresh: jest.fn()
+    });
   });
 
   describe('État de chargement', () => {
     it('devrait afficher l\'indicateur de chargement', () => {
-      useActivityMetrics.mockReturnValue({
-        currentStreak: 0,
-        streakTrend: null,
-        formattedTime: '0min'
-      });
-
       useDailyWords.mockReturnValue({
         wordsToday: 0,
-        isLoading: true
+        isLoading: true,
+        refresh: jest.fn()
       });
 
       const { getByText } = renderComponent();
@@ -59,17 +68,6 @@ describe('SimpleMetrics', () => {
 
   describe('État vide', () => {
     it('devrait afficher l\'état vide quand aucune activité', () => {
-      useActivityMetrics.mockReturnValue({
-        currentStreak: 0,
-        streakTrend: null,
-        formattedTime: '0min'
-      });
-
-      useDailyWords.mockReturnValue({
-        wordsToday: 0,
-        isLoading: false
-      });
-
       const { getByText } = renderComponent();
       
       expect(getByText('🎯')).toBeTruthy();
@@ -83,12 +81,14 @@ describe('SimpleMetrics', () => {
       useActivityMetrics.mockReturnValue({
         currentStreak: 5,
         streakTrend: '+1 🔥',
-        formattedTime: '15min'
+        formattedTime: '15min',
+        refresh: jest.fn()
       });
 
       useDailyWords.mockReturnValue({
         wordsToday: 12,
-        isLoading: false
+        isLoading: false,
+        refresh: jest.fn()
       });
 
       const { getByText } = renderComponent();
@@ -109,16 +109,100 @@ describe('SimpleMetrics', () => {
       useActivityMetrics.mockReturnValue({
         currentStreak: 3,
         streakTrend: '+2 💪',
-        formattedTime: '10min'
+        formattedTime: '10min',
+        refresh: jest.fn()
       });
 
       useDailyWords.mockReturnValue({
         wordsToday: 8,
-        isLoading: false
+        isLoading: false,
+        refresh: jest.fn()
       });
 
       const { getByText } = renderComponent();
       expect(getByText('+2 💪')).toBeTruthy();
+    });
+  });
+
+  // 🔥 NOUVEAUX TESTS POUR LE SYSTÈME DE RAFRAÎCHISSEMENT
+  describe('Système de rafraîchissement', () => {
+    it('devrait appeler les fonctions refresh quand refreshKey change', () => {
+      const mockRefreshMetrics = jest.fn();
+      const mockRefreshWords = jest.fn();
+
+      useActivityMetrics.mockReturnValue({
+        currentStreak: 1,
+        streakTrend: null,
+        formattedTime: '5min',
+        refresh: mockRefreshMetrics
+      });
+
+      useDailyWords.mockReturnValue({
+        wordsToday: 3,
+        isLoading: false,
+        refresh: mockRefreshWords
+      });
+
+      const { rerender } = renderComponent({ refreshKey: 0 });
+      
+      // Change refreshKey
+      rerender(
+        <ThemeContext.Provider value={mockTheme}>
+          <SimpleMetrics refreshKey={1} />
+        </ThemeContext.Provider>
+      );
+
+      expect(mockRefreshMetrics).toHaveBeenCalled();
+      expect(mockRefreshWords).toHaveBeenCalled();
+    });
+
+    it('devrait gérer les hooks sans fonction refresh', () => {
+      useActivityMetrics.mockReturnValue({
+        currentStreak: 1,
+        streakTrend: null,
+        formattedTime: '5min'
+        // Pas de fonction refresh
+      });
+
+      useDailyWords.mockReturnValue({
+        wordsToday: 3,
+        isLoading: false
+        // Pas de fonction refresh
+      });
+
+      const { rerender } = renderComponent({ refreshKey: 0 });
+      
+      // Ne devrait pas planter
+      rerender(
+        <ThemeContext.Provider value={mockTheme}>
+          <SimpleMetrics refreshKey={1} />
+        </ThemeContext.Provider>
+      );
+
+      expect(true).toBe(true); // Test que ça ne plante pas
+    });
+
+    it('ne devrait pas refresh si refreshKey est 0', () => {
+      const mockRefreshMetrics = jest.fn();
+      const mockRefreshWords = jest.fn();
+
+      useActivityMetrics.mockReturnValue({
+        currentStreak: 1,
+        streakTrend: null,
+        formattedTime: '5min',
+        refresh: mockRefreshMetrics
+      });
+
+      useDailyWords.mockReturnValue({
+        wordsToday: 3,
+        isLoading: false,
+        refresh: mockRefreshWords
+      });
+
+      renderComponent({ refreshKey: 0 });
+
+      expect(mockRefreshMetrics).not.toHaveBeenCalled();
+      expect(mockRefreshWords).not.toHaveBeenCalled();
     });
   });
 
@@ -127,12 +211,14 @@ describe('SimpleMetrics', () => {
       useActivityMetrics.mockReturnValue({
         currentStreak: null,
         streakTrend: null,
-        formattedTime: null
+        formattedTime: null,
+        refresh: jest.fn()
       });
 
       useDailyWords.mockReturnValue({
         wordsToday: null,
-        isLoading: false
+        isLoading: false,
+        refresh: jest.fn()
       });
 
       const { getByText } = renderComponent();
@@ -143,32 +229,29 @@ describe('SimpleMetrics', () => {
       useActivityMetrics.mockReturnValue({
         currentStreak: undefined,
         streakTrend: null,
-        formattedTime: '5min'
+        formattedTime: '5min',
+        refresh: jest.fn()
       });
 
       useDailyWords.mockReturnValue({
         wordsToday: undefined,
-        isLoading: false
+        isLoading: false,
+        refresh: jest.fn()
       });
 
       const { getByText, getAllByText } = renderComponent();
       const zeroElements = getAllByText('0');
-      expect(zeroElements.length).toBeGreaterThan(0); // Au moins un élément avec "0"
+      expect(zeroElements.length).toBeGreaterThan(0);
       expect(getByText('5min')).toBeTruthy();
     });
   });
 
   describe('Couleurs et thème', () => {
     it('devrait utiliser la couleur d\'accent personnalisée', () => {
-      useActivityMetrics.mockReturnValue({
-        currentStreak: 0,
-        streakTrend: null,
-        formattedTime: '0min'
-      });
-
       useDailyWords.mockReturnValue({
         wordsToday: 0,
-        isLoading: true
+        isLoading: true,
+        refresh: jest.fn()
       });
 
       const { getByText } = renderComponent({ accentColor: '#FF5722' });
@@ -179,12 +262,14 @@ describe('SimpleMetrics', () => {
       useActivityMetrics.mockReturnValue({
         currentStreak: 1,
         streakTrend: null,
-        formattedTime: '5min'
+        formattedTime: '5min',
+        refresh: jest.fn()
       });
 
       useDailyWords.mockReturnValue({
         wordsToday: 3,
-        isLoading: false
+        isLoading: false,
+        refresh: jest.fn()
       });
 
       const { getByText } = render(<SimpleMetrics />);
@@ -194,15 +279,10 @@ describe('SimpleMetrics', () => {
 
   describe('Cas limites', () => {
     it('devrait afficher les métriques avec une seule valeur non-nulle', () => {
-      useActivityMetrics.mockReturnValue({
-        currentStreak: 0,
-        streakTrend: null,
-        formattedTime: '0min'
-      });
-
       useDailyWords.mockReturnValue({
         wordsToday: 1,
-        isLoading: false
+        isLoading: false,
+        refresh: jest.fn()
       });
 
       const { getByText } = renderComponent();
@@ -214,12 +294,14 @@ describe('SimpleMetrics', () => {
       useActivityMetrics.mockReturnValue({
         currentStreak: 365,
         streakTrend: '+1 🏆',
-        formattedTime: '2h 45min'
+        formattedTime: '2h 45min',
+        refresh: jest.fn()
       });
 
       useDailyWords.mockReturnValue({
         wordsToday: 100,
-        isLoading: false
+        isLoading: false,
+        refresh: jest.fn()
       });
 
       const { getByText } = renderComponent();

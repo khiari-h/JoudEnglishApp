@@ -1,6 +1,6 @@
-// src/screens/Dashboard/components/SimpleMetrics/index.js - MÉTRIQUES CORRIGÉES
+// src/screens/Dashboard/components/SimpleMetrics/index.js - AVEC RAFRAÎCHISSEMENT
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import useActivityMetrics from "../../../../hooks/useActivityMetrics";
@@ -8,12 +8,12 @@ import useDailyWords from "../../../../hooks/useDailyWords";
 import styles from "./style";
 
 /**
- * 📊 SimpleMetrics - CORRIGÉ
- * ✅ Temps quotidien (pas total)
- * ✅ Mots sans trend
- * ✅ Plus de confusion quotidien/cumulatif
+ * 📊 SimpleMetrics - AVEC SYSTÈME DE RAFRAÎCHISSEMENT
  */
-const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
+const SimpleMetrics = ({ 
+  accentColor = "#3B82F6", 
+  refreshKey = 0 // 🔥 NOUVELLE PROP pour forcer le rafraîchissement
+}) => {
   const themeContext = useContext(ThemeContext);
   const colors = themeContext?.colors || {
     surface: "#FFFFFF",
@@ -21,18 +21,34 @@ const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
     textSecondary: "#6B7280",
   };
 
-  // =================== HOOKS CORRIGÉS ===================
+  // =================== ÉTAT LOCAL POUR FORCER LE REFRESH ===================
+  const [localRefresh, setLocalRefresh] = useState(0);
+
+  // =================== HOOKS AVEC REFRESH ===================
   const { 
     currentStreak, 
     streakTrend, 
-    formattedTime // ✅ Maintenant quotidien
-  } = useActivityMetrics();
+    formattedTime,
+    refresh: refreshMetrics // 🔥 Si ton hook a une fonction refresh
+  } = useActivityMetrics(localRefresh); // Passe le trigger local
 
   const { 
     wordsToday,
-    isLoading: wordsLoading 
-    // ✅ Plus de trend
-  } = useDailyWords();
+    isLoading: wordsLoading,
+    refresh: refreshWords // 🔥 Si ton hook a une fonction refresh
+  } = useDailyWords(localRefresh); // Passe le trigger local
+
+  // =================== ÉCOUTE DU REFRESH DU PARENT ===================
+  useEffect(() => {
+    if (refreshKey > 0) {
+      // Force le rechargement des données
+      setLocalRefresh(prev => prev + 1);
+      
+      // Si les hooks ont des fonctions refresh, les appeler
+      if (refreshMetrics) refreshMetrics();
+      if (refreshWords) refreshWords();
+    }
+  }, [refreshKey, refreshMetrics, refreshWords]);
 
   // =================== LOADING STATE ===================
   if (wordsLoading) {
@@ -48,27 +64,27 @@ const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
     );
   }
 
-  // =================== DONNÉES DES MÉTRIQUES CORRIGÉES ===================
+  // =================== DONNÉES DES MÉTRIQUES ===================
   const metrics = [
     {
       id: 'streak',
       icon: '🔥',
       value: (currentStreak || 0).toString(),
       label: 'Jours de suite',
-      trend: streakTrend, // ✅ Gardé pour streak
+      trend: streakTrend,
     },
     {
       id: 'words',
       icon: '📚',
       value: (wordsToday || 0).toString(),
       label: 'Mots aujourd\'hui',
-      trend: null, // ✅ SUPPRIMÉ : plus de trend trompeur
+      trend: null,
     },
     {
       id: 'time',
       icon: '⏱️',
       value: formattedTime || '0min',
-      label: 'Temps aujourd\'hui', // ✅ CHANGÉ : quotidien
+      label: 'Temps aujourd\'hui',
       trend: null,
     }
   ];
@@ -112,7 +128,7 @@ const SimpleMetrics = ({ accentColor = "#3B82F6" }) => {
 };
 
 /**
- * 📈 Carte métrique individuelle - INCHANGÉE
+ * 📈 Carte métrique individuelle
  */
 const MetricCard = ({ metric, colors }) => {
   const getTrendStyle = (trend) => {

@@ -209,6 +209,7 @@ const ExerciseSelection = ({ level }) => {
         <Header
           title={levelInfo.title}
           showBackButton
+          onBackPress={() => router.push('/tabs/levelSelection')}
           backgroundColor="transparent"
           textColor="white"
           withStatusBar={false}
