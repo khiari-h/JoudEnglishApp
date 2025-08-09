@@ -1,33 +1,30 @@
 import React from 'react';
 import { render, screen, act, fireEvent } from '@testing-library/react-native';
-import { Text, Button } from 'react-native';
+import { Text, Button, View } from 'react-native';
 import { SettingsProvider, SettingsContext } from '../../src/contexts/SettingContext';
+import { storeData, getData } from '../../src/utils/storageUtils';
+import { DEFAULT_SETTINGS, STORAGE_KEYS } from '../../src/utils/constants';
 
-// Mock storageUtils
+// Mock des modules externes
 jest.mock('../../src/utils/storageUtils', () => ({
-  storeData: jest.fn(() => Promise.resolve()),
-  getData: jest.fn(() => Promise.resolve(null)),
+  storeData: jest.fn().mockResolvedValue(undefined),
+  getData: jest.fn().mockResolvedValue(null),
 }));
 
-// Mock constants
+// Le mock de 'constants' doit refléter les vraies valeurs par défaut utilisées dans le contexte
 jest.mock('../../src/utils/constants', () => ({
   DEFAULT_SETTINGS: {
-    notifications: false,
-    dailyGoal: 60,
-    theme: 'dark',
+    notifications: true,
+    dailyGoal: 30,
+    theme: 'light',
   },
   STORAGE_KEYS: {
     USER_SETTINGS: 'userSettings',
   },
 }));
 
-import { storeData, getData } from '../../src/utils/storageUtils';
-import { DEFAULT_SETTINGS, STORAGE_KEYS } from '../../src/utils/constants';
-
-const flattenChildren = (children) =>
-  Array.isArray(children) ? children.join('') : children;
-
-const TestComponent = () => {
+// Composant de test pour consommer le contexte
+const TestConsumer = () => {
   const {
     settings,
     isLoading,
@@ -44,173 +41,190 @@ const TestComponent = () => {
   }
 
   return (
-    <>
-      <Text testID="notifications-enabled">Notifications: {settings.notifications ? 'On' : 'Off'}</Text>
-      <Text testID="daily-goal">Daily Goal: {settings.dailyGoal} minutes</Text>
-      <Text testID="theme">Theme: {settings.theme}</Text>
-      <Text testID="are-notifications-enabled-func">Func Notifications: {areNotificationsEnabled() ? 'On' : 'Off'}</Text>
-      <Text testID="get-daily-goal-func">Func Daily Goal: {getDailyGoal()} minutes</Text>
+    <View>
+      <Text testID="notifications-status">Notifications: {settings.notifications ? 'On' : 'Off'}</Text>
+      <Text testID="daily-goal-status">Daily Goal: {settings.dailyGoal}</Text>
+      <Text testID="theme-status">Theme: {settings.theme}</Text>
+      
+      <Text testID="are-notifications-enabled">Are Notifs Enabled: {areNotificationsEnabled() ? 'Yes' : 'No'}</Text>
+      <Text testID="get-daily-goal">Get Daily Goal: {getDailyGoal()}</Text>
 
       <Button title="Toggle Notifications" onPress={() => updateSetting('notifications', !settings.notifications)} />
-      <Button title="Set Daily Goal 60" onPress={() => setDailyGoal(60)} />
-      <Button title="Set Daily Goal 5" onPress={() => setDailyGoal(5)} />
-      <Button title="Set Daily Goal 150" onPress={() => setDailyGoal(150)} />
-      <Button title="Update Theme to Dark" onPress={() => updateSetting('theme', 'dark')} />
+      <Button title="Set Goal to 90" onPress={() => setDailyGoal(90)} />
+      <Button title="Set Goal to -10" onPress={() => setDailyGoal(-10)} />
+      <Button title="Set Goal to 200" onPress={() => setDailyGoal(200)} />
+      <Button title="Update Theme" onPress={() => updateSetting('theme', 'dark')} />
       <Button title="Update Multiple" onPress={() => updateSettings({ notifications: false, dailyGoal: 45 })} />
-      <Button title="Reset Settings" onPress={resetSettings} />
-      <Button title="Update Invalid Setting" onPress={() => updateSetting('invalidKey', 'value')} />
-    </>
+      <Button title="Reset" onPress={resetSettings} />
+      <Button title="Update Invalid" onPress={() => updateSetting('nonExistentKey', 'some-value')} />
+    </View>
   );
 };
 
+// Wrapper pour le rendu
+const renderWithProvider = (component) =>
+  render(<SettingsProvider>{component}</SettingsProvider>);
+
 describe('SettingsContext', () => {
   beforeEach(() => {
+    // Nettoyer les mocks avant chaque test
     jest.clearAllMocks();
+    // S'assurer que par défaut, aucun paramètre n'est en mémoire
     getData.mockResolvedValue(null);
   });
 
-  it('loads default settings if no saved settings found', async () => {
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
-
+  it('should show loading state initially', () => {
+    renderWithProvider(<TestConsumer />);
     expect(screen.getByTestId('loading-status')).toBeTruthy();
+  });
 
+  it('should load default settings when no data is in storage', async () => {
+    renderWithProvider(<TestConsumer />);
+
+    // Attendre la fin du chargement
     await act(async () => {});
 
     expect(screen.queryByTestId('loading-status')).toBeNull();
+    expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: On');
+    expect(screen.getByTestId('daily-goal-status')).toHaveTextContent('Daily Goal: 30');
+    expect(screen.getByTestId('theme-status')).toHaveTextContent('Theme: light');
 
-    expect(flattenChildren(screen.getByTestId('notifications-enabled').props.children)).toBe('Notifications: On');
-    expect(flattenChildren(screen.getByTestId('daily-goal').props.children)).toBe('Daily Goal: 30 minutes');
-    expect(flattenChildren(screen.getByTestId('theme').props.children)).toBe('Theme: light');
-
+    // Vérifier les appels aux fonctions de stockage
     expect(getData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS);
-    expect(storeData).toHaveBeenCalledTimes(2); // Should save default settings on initial load, and then again when settings are updated after load
-  });
-
-  it('loads saved settings from storage', async () => {
-    const savedSettings = { notifications: false, dailyGoal: 60, theme: 'dark' };
-    getData.mockResolvedValueOnce(savedSettings);
-
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
-
-    await act(async () => {});
-
-    expect(flattenChildren(screen.getByTestId('notifications-enabled').props.children)).toBe('Notifications: Off');
-    expect(flattenChildren(screen.getByTestId('daily-goal').props.children)).toBe('Daily Goal: 60 minutes');
-    expect(flattenChildren(screen.getByTestId('theme').props.children)).toBe('Theme: dark');
-  });
-
-  it('updates a single setting and saves it', async () => {
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
-    await act(async () => {});
-
-    fireEvent.press(screen.getByText('Toggle Notifications'));
-    expect(flattenChildren(screen.getByTestId('notifications-enabled').props.children)).toBe('Notifications: Off');
-    expect(storeData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS, { ...DEFAULT_SETTINGS, notifications: false });
-
-    fireEvent.press(screen.getByText('Update Theme to Dark'));
-    expect(flattenChildren(screen.getByTestId('theme').props.children)).toBe('Theme: dark');
-    expect(storeData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS, { ...DEFAULT_SETTINGS, notifications: false, theme: 'dark' });
-  });
-
-  it('updates multiple settings and saves them', async () => {
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
-    await act(async () => {});
-
-    fireEvent.press(screen.getByText('Update Multiple'));
-    expect(flattenChildren(screen.getByTestId('notifications-enabled').props.children)).toBe('Notifications: Off');
-    expect(flattenChildren(screen.getByTestId('daily-goal').props.children)).toBe('Daily Goal: 45 minutes');
-    expect(storeData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS, { ...DEFAULT_SETTINGS, notifications: false, dailyGoal: 45 });
-  });
-
-  it('resets settings to defaults and saves', async () => {
-    getData.mockResolvedValueOnce({ notifications: false, dailyGoal: 60, theme: 'dark' });
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
-    await act(async () => {});
-
-    expect(flattenChildren(screen.getByTestId('notifications-enabled').props.children)).toBe('Notifications: Off');
-
-    fireEvent.press(screen.getByText('Reset Settings'));
-    expect(flattenChildren(screen.getByTestId('notifications-enabled').props.children)).toBe('Notifications: On');
-    expect(flattenChildren(screen.getByTestId('daily-goal').props.children)).toBe('Daily Goal: 30 minutes');
+    expect(storeData).toHaveBeenCalledTimes(1);
     expect(storeData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS, DEFAULT_SETTINGS);
   });
 
-  it('areNotificationsEnabled returns correct status', async () => {
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
+  it('should load saved settings from storage', async () => {
+    const savedSettings = { notifications: false, dailyGoal: 90, theme: 'dark' };
+    getData.mockResolvedValueOnce(savedSettings);
+
+    renderWithProvider(<TestConsumer />);
     await act(async () => {});
 
-    expect(flattenChildren(screen.getByTestId('are-notifications-enabled-func').props.children)).toBe('Func Notifications: On');
-    fireEvent.press(screen.getByText('Toggle Notifications'));
-    expect(flattenChildren(screen.getByTestId('are-notifications-enabled-func').props.children)).toBe('Func Notifications: Off');
+    expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: Off');
+    expect(screen.getByTestId('daily-goal-status')).toHaveTextContent('Daily Goal: 90');
+    expect(screen.getByTestId('theme-status')).toHaveTextContent('Theme: dark');
+    
+    // Doit sauvegarder les paramètres fusionnés (au cas où de nouveaux paramètres par défaut auraient été ajoutés)
+    expect(storeData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS, {
+      ...DEFAULT_SETTINGS,
+      ...savedSettings,
+    });
   });
 
-  it('getDailyGoal returns correct value', async () => {
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
-    await act(async () => {});
+  it('should update a single setting and persist the change', async () => {
+    renderWithProvider(<TestConsumer />);
+    await act(async () => {}); // Chargement initial
 
-    expect(flattenChildren(screen.getByTestId('get-daily-goal-func').props.children)).toBe('Func Daily Goal: 30 minutes');
-    fireEvent.press(screen.getByText('Set Daily Goal 60'));
-    expect(flattenChildren(screen.getByTestId('get-daily-goal-func').props.children)).toBe('Func Daily Goal: 60 minutes');
+    // Vérifier l'état initial
+    expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: On');
+
+    // Simuler une action utilisateur
+    await act(async () => {
+      fireEvent.press(screen.getByText('Toggle Notifications'));
+    });
+
+    // Vérifier le nouvel état
+    expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: Off');
+    
+    // Vérifier que la sauvegarde a été appelée avec les nouvelles données
+    expect(storeData).toHaveBeenCalledTimes(2); // 1. Initial load, 2. Update
+    expect(storeData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS, {
+      ...DEFAULT_SETTINGS,
+      notifications: false,
+    });
   });
 
-  it('setDailyGoal clamps values between 1 and 120', async () => {
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
+  it('should update multiple settings at once and persist changes', async () => {
+    renderWithProvider(<TestConsumer />);
     await act(async () => {});
 
-    fireEvent.press(screen.getByText('Set Daily Goal 5'));
-    expect(flattenChildren(screen.getByTestId('daily-goal').props.children)).toBe('Daily Goal: 5 minutes');
+    await act(async () => {
+      fireEvent.press(screen.getByText('Update Multiple'));
+    });
 
-    fireEvent.press(screen.getByText('Set Daily Goal 150'));
-    expect(flattenChildren(screen.getByTestId('daily-goal').props.children)).toBe('Daily Goal: 120 minutes');
+    expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: Off');
+    expect(screen.getByTestId('daily-goal-status')).toHaveTextContent('Daily Goal: 45');
+    
+    expect(storeData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS, {
+      ...DEFAULT_SETTINGS,
+      notifications: false,
+      dailyGoal: 45,
+    });
   });
 
-  it('does not update invalid setting key', async () => {
-    render(
-      <SettingsProvider>
-        <TestComponent />
-      </SettingsProvider>
-    );
+  it('should reset settings to default and persist the change', async () => {
+    const savedSettings = { notifications: false, dailyGoal: 90, theme: 'dark' };
+    getData.mockResolvedValueOnce(savedSettings);
+
+    renderWithProvider(<TestConsumer />);
     await act(async () => {});
 
-    fireEvent.press(screen.getByText('Update Invalid Setting'));
+    // Vérifier que les données sauvegardées sont bien chargées
+    expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: Off');
 
-    expect(flattenChildren(screen.getByTestId('notifications-enabled').props.children)).toBe('Notifications: On');
-    expect(flattenChildren(screen.getByTestId('daily-goal').props.children)).toBe('Daily Goal: 30 minutes');
-    expect(flattenChildren(screen.getByTestId('theme').props.children)).toBe('Theme: light');
+    await act(async () => {
+      fireEvent.press(screen.getByText('Reset'));
+    });
 
-    // No extra storeData calls for invalid keys
+    // Vérifier que les paramètres sont revenus à leurs valeurs par défaut
+    expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: On');
+    expect(screen.getByTestId('daily-goal-status')).toHaveTextContent('Daily Goal: 30');
+    expect(storeData).toHaveBeenCalledWith(STORAGE_KEYS.USER_SETTINGS, DEFAULT_SETTINGS);
+  });
+
+  it('should correctly report status via helper functions', async () => {
+    renderWithProvider(<TestConsumer />);
+    await act(async () => {});
+
+    expect(screen.getByTestId('are-notifications-enabled')).toHaveTextContent('Are Notifs Enabled: Yes');
+    expect(screen.getByTestId('get-daily-goal')).toHaveTextContent('Get Daily Goal: 30');
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Toggle Notifications'));
+      fireEvent.press(screen.getByText('Set Goal to 90'));
+    });
+
+    expect(screen.getByTestId('are-notifications-enabled')).toHaveTextContent('Are Notifs Enabled: No');
+    expect(screen.getByTestId('get-daily-goal')).toHaveTextContent('Get Daily Goal: 90');
+  });
+
+  it('should clamp daily goal values using setDailyGoal', async () => {
+    renderWithProvider(<TestConsumer />);
+    await act(async () => {});
+
+    // Test avec une valeur trop basse
+    await act(async () => {
+      fireEvent.press(screen.getByText('Set Goal to -10'));
+    });
+    expect(screen.getByTestId('daily-goal-status')).toHaveTextContent('Daily Goal: 1');
+
+    // Test avec une valeur trop haute
+    await act(async () => {
+      fireEvent.press(screen.getByText('Set Goal to 200'));
+    });
+    expect(screen.getByTestId('daily-goal-status')).toHaveTextContent('Daily Goal: 120');
+  });
+
+  it('should not update state for an invalid setting key', async () => {
+    renderWithProvider(<TestConsumer />);
+    await act(async () => {});
+
+    const initialSettings = { ...DEFAULT_SETTINGS };
+    
+    // storeData a été appelé une fois au chargement
+    expect(storeData).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Update Invalid'));
+    });
+
+    // Vérifier que rien n'a changé
+    expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: On');
+    expect(screen.getByTestId('theme-status')).toHaveTextContent('Theme: light');
+    
+    // S'assurer qu'aucune sauvegarde supplémentaire n'a eu lieu
     expect(storeData).toHaveBeenCalledTimes(1);
   });
 });
