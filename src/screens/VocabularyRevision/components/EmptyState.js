@@ -43,7 +43,7 @@ const EmptyState = ({ type, message, onAction, colors, localStyles, progress, go
   const lockedMessage = `Apprenez ${goal} mots pour débloquer le mode révision et tester vos connaissances !`;
 
   return (
-    <View style={localStyles.emptyContainer}>
+    <View style={localStyles.emptyContainer} testID={type === 'loading' ? 'loading-indicator' : undefined}>
       <Text style={localStyles.emptyEmoji}>{emoji}</Text>
       <Text style={[localStyles.emptyTitle, { color: colors.text }]}>
         {title}

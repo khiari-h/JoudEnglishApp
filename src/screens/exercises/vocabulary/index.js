@@ -18,7 +18,7 @@ import { isBonusLevel, getLevelColor, getVocabularyData } from "../../../utils/v
 import createStyles from "./style";
 
 const VocabularyExercise = ({ route }) => {
-  const { level, mode } = route.params;
+  const { level, mode } = route.params || {};
   const navigation = useNavigation();
   const styles = createStyles();
   const { saveActivity } = useLastActivity();
