@@ -51,34 +51,43 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
     }
   };
 
-  // ========== CHARGEMENT INITIAL ==========
+  // ========== CHARGEMENT INITIAL ET VÉRIFICATION RÉVISION ==========
   useEffect(() => {
     const initializeRevision = async () => {
       await countWords();
       setIsLoaded(true);
+      
+      // ✅ VÉRIFICATION IMMÉDIATE après chargement
+      const shouldShow = !preferences.isDisabled && 
+                        totalWords >= preferences.nextRevisionAt && 
+                        totalWords > 0 && 
+                        !popupShownRef.current;
+
+      if (shouldShow) {
+        // ✅ PROTECTION double-popup
+        popupShownRef.current = true;
+        setTimeout(() => setShowPopup(true), 1000);
+      }
     };
 
     initializeRevision();
-  }, []);
+  }, [preferences.isDisabled, preferences.nextRevisionAt]); // ✅ Dépendances simplifiées
 
-  // ========== VÉRIFICATION RÉVISION (AVEC HOOK) ==========
+  // ========== VÉRIFICATION RÉVISION QUAND LES PREFERENCES CHANGENT ==========
   useEffect(() => {
-    // ✅ ATTENDRE que tout soit chargé
+    // ✅ Vérifier seulement si déjà chargé et si les préférences changent
     if (!isLoaded) return;
     
-    // 🔥 UTILISE LES PREFERENCES DU HOOK
     const shouldShow = !preferences.isDisabled && 
                       totalWords >= preferences.nextRevisionAt && 
                       totalWords > 0 && 
-                      !showPopup && 
                       !popupShownRef.current;
 
     if (shouldShow) {
-      // ✅ PROTECTION double-popup
       popupShownRef.current = true;
       setTimeout(() => setShowPopup(true), 1000);
     }
-  }, [isLoaded, preferences.isDisabled, totalWords, preferences.nextRevisionAt, showPopup]);
+  }, [isLoaded, preferences.isDisabled, preferences.nextRevisionAt, totalWords]); // ✅ Ajout de totalWords
 
   // ========== HANDLERS AVEC HOOK PARTAGÉ ==========
   const handleChoice = useCallback(async (choice) => {

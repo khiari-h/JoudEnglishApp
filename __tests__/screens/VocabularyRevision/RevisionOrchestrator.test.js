@@ -112,7 +112,7 @@ describe('RevisionOrchestrator', () => {
     mockUseRevisionSettings = {
       preferences: {
         isDisabled: false,
-        nextRevisionAt: 100, // La popup se déclenche à 100 mots
+        nextRevisionAt: 50,
         questionsCount: 10,
         frequency: 50,
       },
@@ -122,6 +122,9 @@ describe('RevisionOrchestrator', () => {
     };
     RevisionSettingsHook.useRevisionSettings.mockReturnValue(mockUseRevisionSettings);
 
+    // Réinitialisation complète d'AsyncStorage
+    AsyncStorage.getItem.mockReset();
+    
     // Mock par défaut pour AsyncStorage (peu de mots)
     const defaultWordsData = createWordsData(3);
     AsyncStorage.getItem.mockImplementation((key) => {
@@ -148,7 +151,7 @@ describe('RevisionOrchestrator', () => {
   });
 
   it('ne montre pas la popup si le nombre de mots est inférieur au seuil', async () => {
-    // Le mock par défaut a 3 mots, le seuil est à 100
+    // Le mock par défaut a 3 mots, le seuil est maintenant à 50
     const { queryByTestId } = render(<RevisionOrchestrator />);
     
     // Attendre que les données soient chargées et le timer s'exécute
@@ -160,50 +163,55 @@ describe('RevisionOrchestrator', () => {
   });
 
   it('montre la popup quand le nombre de mots atteint le seuil', async () => {
-    // Configurer AsyncStorage pour retourner 120 mots
-    const wordsData = createWordsData(120);
+    // Configurer AsyncStorage pour retourner 60 mots (≥ 50)
+    const wordsData = createWordsData(60);
     AsyncStorage.getItem.mockImplementation((key) => {
       return Promise.resolve(wordsData[key] || null);
     });
 
-    const { getByTestId, getByText } = render(<RevisionOrchestrator />);
+    const { getByTestId, getByText, queryByTestId } = render(<RevisionOrchestrator />);
     
-    // Attendre que les données AsyncStorage soient chargées
-    await waitFor(() => {
-      expect(AsyncStorage.getItem).toHaveBeenCalled();
-    });
-
-    // Attendre que les données soient chargées et le timer s'exécute
+    // Attendre que les données AsyncStorage soient chargées et processées
     await act(async () => {
-      jest.advanceTimersByTime(2000); // Dépasse le délai de 1000ms du setTimeout
+      jest.advanceTimersByTime(100); // Laisser le temps aux promises AsyncStorage
     });
 
-    // Attendre un peu plus pour que le state se mette à jour
-    await waitFor(() => {
-      expect(getByTestId('revision-popup')).toBeTruthy();
-    }, { timeout: 3000 });
+    // Attendre que le setTimeout de 1000ms s'exécute
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
 
-    expect(getByText('Words: 120')).toBeTruthy();
+    // Attendre que la popup soit rendue
+    await waitFor(() => {
+      expect(queryByTestId('revision-popup')).toBeTruthy();
+    });
+
+    expect(getByText('Words: 60')).toBeTruthy();
     expect(getByText('Questions: 10')).toBeTruthy();
   });
 
   it('appelle resetToNextTarget et navigue quand "now" est choisi', async () => {
-    // Configurer AsyncStorage pour retourner 120 mots
-    const wordsData = createWordsData(120);
+    // Configurer AsyncStorage pour retourner 60 mots
+    const wordsData = createWordsData(60);
     AsyncStorage.getItem.mockImplementation((key) => {
       return Promise.resolve(wordsData[key] || null);
     });
 
-    const { getByTestId } = render(<RevisionOrchestrator currentLevel="A1" />);
+    const { getByTestId, queryByTestId } = render(<RevisionOrchestrator currentLevel="A1" />);
     
-    // Attendre que la popup apparaisse - approche plus simple
+    // Attendre le chargement des données et l'affichage de la popup
     await act(async () => {
-      jest.advanceTimersByTime(3000); // Attendre plus longtemps
+      jest.advanceTimersByTime(100); // AsyncStorage
     });
 
-    // Vérifier que la popup est visible
-    const popup = getByTestId('revision-popup');
-    expect(popup).toBeTruthy();
+    await act(async () => {
+      jest.advanceTimersByTime(1000); // setTimeout pour afficher la popup
+    });
+
+    // Attendre que la popup soit rendue
+    await waitFor(() => {
+      expect(queryByTestId('revision-popup')).toBeTruthy();
+    });
 
     const nowButton = getByTestId('popup-now');
     
@@ -212,7 +220,7 @@ describe('RevisionOrchestrator', () => {
     });
 
     // Vérifier les appels
-    expect(mockUseRevisionSettings.resetToNextTarget).toHaveBeenCalledWith(120);
+    expect(mockUseRevisionSettings.resetToNextTarget).toHaveBeenCalledWith(60);
     expect(router.push).toHaveBeenCalledWith({
       pathname: "/tabs/vocabularyRevision",
       params: {
@@ -224,20 +232,26 @@ describe('RevisionOrchestrator', () => {
   });
 
   it('appelle updatePreferences quand "later_50" est choisi', async () => {
-    const wordsData = createWordsData(120);
+    const wordsData = createWordsData(60);
     AsyncStorage.getItem.mockImplementation((key) => {
       return Promise.resolve(wordsData[key] || null);
     });
 
-    const { getByTestId } = render(<RevisionOrchestrator />);
+    const { getByTestId, queryByTestId } = render(<RevisionOrchestrator />);
     
+    // Attendre le chargement des données et l'affichage de la popup
     await act(async () => {
-      jest.advanceTimersByTime(3000);
+      jest.advanceTimersByTime(100);
     });
 
-    // Vérifier que la popup est visible
-    const popup = getByTestId('revision-popup');
-    expect(popup).toBeTruthy();
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    // Attendre que la popup soit rendue
+    await waitFor(() => {
+      expect(queryByTestId('revision-popup')).toBeTruthy();
+    });
 
     const laterButton = getByTestId('popup-later50');
     
@@ -245,27 +259,33 @@ describe('RevisionOrchestrator', () => {
       fireEvent.press(laterButton);
     });
 
-    // Vérifier l'appel
+    // Vérifier l'appel - 60 mots + 50 = 110
     expect(mockUseRevisionSettings.updatePreferences).toHaveBeenCalledWith({ 
-      nextRevisionAt: 170 
+      nextRevisionAt: 110 
     });
   });
 
   it('appelle disableRevisions quand "disable" est choisi', async () => {
-    const wordsData = createWordsData(120);
+    const wordsData = createWordsData(60);
     AsyncStorage.getItem.mockImplementation((key) => {
       return Promise.resolve(wordsData[key] || null);
     });
 
-    const { getByTestId } = render(<RevisionOrchestrator />);
+    const { getByTestId, queryByTestId } = render(<RevisionOrchestrator />);
     
+    // Attendre le chargement des données et l'affichage de la popup
     await act(async () => {
-      jest.advanceTimersByTime(3000);
+      jest.advanceTimersByTime(100);
     });
 
-    // Vérifier que la popup est visible
-    const popup = getByTestId('revision-popup');
-    expect(popup).toBeTruthy();
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    // Attendre que la popup soit rendue
+    await waitFor(() => {
+      expect(queryByTestId('revision-popup')).toBeTruthy();
+    });
 
     const disableButton = getByTestId('popup-disable');
     
@@ -278,20 +298,26 @@ describe('RevisionOrchestrator', () => {
   });
 
   it('gère la fermeture (dismiss) en choisissant "later_50" par défaut', async () => {
-    const wordsData = createWordsData(120);
+    const wordsData = createWordsData(60);
     AsyncStorage.getItem.mockImplementation((key) => {
       return Promise.resolve(wordsData[key] || null);
     });
 
-    const { getByTestId } = render(<RevisionOrchestrator />);
+    const { getByTestId, queryByTestId } = render(<RevisionOrchestrator />);
     
+    // Attendre le chargement des données et l'affichage de la popup
     await act(async () => {
-      jest.advanceTimersByTime(3000);
+      jest.advanceTimersByTime(100);
     });
 
-    // Vérifier que la popup est visible
-    const popup = getByTestId('revision-popup');
-    expect(popup).toBeTruthy();
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    // Attendre que la popup soit rendue
+    await waitFor(() => {
+      expect(queryByTestId('revision-popup')).toBeTruthy();
+    });
 
     const dismissButton = getByTestId('popup-dismiss');
     
@@ -299,15 +325,15 @@ describe('RevisionOrchestrator', () => {
       fireEvent.press(dismissButton);
     });
 
-    // Vérifier l'appel
+    // Vérifier l'appel - 60 mots + 50 = 110
     expect(mockUseRevisionSettings.updatePreferences).toHaveBeenCalledWith({ 
-      nextRevisionAt: 170 
+      nextRevisionAt: 110 
     });
   });
 
   // Test de debugging pour comprendre le comportement
   it('debug - vérifie les conditions de la popup', async () => {
-    const wordsData = createWordsData(120);
+    const wordsData = createWordsData(60);
     AsyncStorage.getItem.mockImplementation((key) => {
       return Promise.resolve(wordsData[key] || null);
     });
@@ -377,22 +403,15 @@ describe('RevisionOrchestrator', () => {
     const threshold = getByTestId('debug-threshold').children[0];
     const shouldShow = getByTestId('debug-should-show').children[0];
 
-    console.log('Debug info:', {
-      totalWords,
-      isDisabled,
-      threshold,
-      shouldShow
-    });
-
-    expect(totalWords).toBe('120');
+    expect(totalWords).toBe('60');
     expect(isDisabled).toBe('false');
-    expect(threshold).toBe('100');
+    expect(threshold).toBe('50');
     expect(shouldShow).toBe('true');
   });
 
   // Test supplémentaire pour vérifier le comptage des mots
   it('compte correctement les mots depuis AsyncStorage', async () => {
-    const wordsData = createWordsData(85);
+    const wordsData = createWordsData(35);
     AsyncStorage.getItem.mockImplementation((key) => {
       return Promise.resolve(wordsData[key] || null);
     });
@@ -403,7 +422,7 @@ describe('RevisionOrchestrator', () => {
       jest.advanceTimersByTime(2000);
     });
 
-    // Avec 85 mots et un seuil à 100, la popup ne doit pas apparaître
+    // Avec 35 mots et un seuil à 50, la popup ne doit pas apparaître
     expect(queryByTestId('revision-popup')).toBeNull();
     
     // Vérifier que AsyncStorage a été appelé pour tous les niveaux/modes
@@ -413,5 +432,97 @@ describe('RevisionOrchestrator', () => {
     expectedCalls.forEach(key => {
       expect(AsyncStorage.getItem).toHaveBeenCalledWith(key);
     });
+  });
+
+  // Test de debug pour vérifier l'état du composant RevisionOrchestrator
+  it('debug - vérifie l\'état du composant RevisionOrchestrator', async () => {
+    const wordsData = createWordsData(60);
+    AsyncStorage.getItem.mockImplementation((key) => {
+      return Promise.resolve(wordsData[key] || null);
+    });
+
+    const { queryByTestId } = render(<RevisionOrchestrator />);
+    
+    // Attendre que les données soient chargées
+    await act(async () => {
+      jest.advanceTimersByTime(100);
+    });
+
+    expect(queryByTestId('revision-popup')).toBeNull();
+
+    // Attendre que la popup apparaisse après le setTimeout
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    // Vérifier que la popup est visible
+    const popup = queryByTestId('revision-popup');
+    expect(popup).toBeTruthy();
+  });
+
+  // Test pour vérifier le mock AsyncStorage
+  it('debug - vérifie le mock AsyncStorage', async () => {
+    const wordsData = createWordsData(60);
+    
+    AsyncStorage.getItem.mockImplementation((key) => {
+      const result = wordsData[key] || null;
+      return Promise.resolve(result);
+    });
+
+    // Simuler les appels
+    const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
+    const modes = ['classic', 'fast'];
+    
+    let total = 0;
+    for (const level of levels) {
+      for (const mode of modes) {
+        const key = `vocabulary_${level}_${mode}`;
+        const stored = await AsyncStorage.getItem(key);
+        if (stored) {
+          const data = JSON.parse(stored);
+          const completedWords = data.completedWords || {};
+          const count = Object.values(completedWords).reduce((acc, words) => {
+            if (Array.isArray(words)) {
+              return acc + words.length;
+            }
+            return acc;
+          }, 0);
+          total += count;
+        }
+      }
+    }
+    
+    expect(total).toBe(60);
+  });
+
+  // Nouveau test pour vérifier le timing exact
+  it('respecte le délai de 1000ms avant d\'afficher la popup', async () => {
+    const wordsData = createWordsData(60);
+    AsyncStorage.getItem.mockImplementation((key) => {
+      return Promise.resolve(wordsData[key] || null);
+    });
+
+    const { queryByTestId } = render(<RevisionOrchestrator />);
+    
+    // Attendre le chargement des données AsyncStorage
+    await act(async () => {
+      jest.advanceTimersByTime(100);
+    });
+
+    // À ce moment, la popup ne doit pas encore être visible
+    expect(queryByTestId('revision-popup')).toBeNull();
+
+    // Avancer de 999ms - popup toujours pas visible
+    await act(async () => {
+      jest.advanceTimersByTime(999);
+    });
+    expect(queryByTestId('revision-popup')).toBeNull();
+
+    // Avancer de 1ms supplémentaire - maintenant la popup doit être visible
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+
+    expect(queryByTestId('revision-popup')).toBeTruthy();
   });
 });
