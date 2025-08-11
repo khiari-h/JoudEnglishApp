@@ -1,22 +1,27 @@
-// src/components/revision/RevisionOrchestrator/index.js - VERSION CORRIGÉE
+// src/components/revision/RevisionOrchestrator/index.js - VERSION AVEC HOOK PARTAGÉ
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RevisionPopup from '../../Dashboard/components/popup/RevisionPopup';
-
-const REVISION_STORAGE_KEY = 'revision_preferences';
+import { useRevisionSettings } from '../../../hooks/useRevisionSettings'; // 🔥 UTILISE LE HOOK EXISTANT
 
 const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [totalWords, setTotalWords] = useState(0);
-  const [nextRevisionAt, setNextRevisionAt] = useState(50);
-  const [isDisabled, setIsDisabled] = useState(false); // ✅ VRAI FLAG BOOLEAN
   const [isLoaded, setIsLoaded] = useState(false);
+  
+  // 🔥 UTILISE LE HOOK PARTAGÉ AU LIEU DE SA PROPRE LOGIQUE
+  const { 
+    preferences, 
+    disableRevisions, 
+    resetToNextTarget,
+    updatePreferences 
+  } = useRevisionSettings();
   
   // ✅ PROTECTION contre double-popup
   const popupShownRef = useRef(false);
 
-  // ========== COMPTAGE SIMPLE ==========
+  // ========== COMPTAGE SIMPLE (INCHANGÉ) ==========
   const countWords = async () => {
     try {
       let total = 0;
@@ -46,63 +51,24 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
     }
   };
 
-  // ========== SAUVEGARDE/CHARGEMENT CORRIGÉ ==========
-  const loadRevisionPreferences = async () => {
-    try {
-      const saved = await AsyncStorage.getItem(REVISION_STORAGE_KEY);
-      if (saved) {
-        const prefs = JSON.parse(saved);
-        setNextRevisionAt(prefs.nextRevisionAt || 50);
-        setIsDisabled(prefs.isDisabled || false); // ✅ VRAI FLAG
-      } else {
-        // ✅ Valeurs par défaut
-        setNextRevisionAt(50);
-        setIsDisabled(false);
-      }
-    } catch (error) {
-      console.error('Error loading revision preferences:', error);
-      setNextRevisionAt(50);
-      setIsDisabled(false);
-    } finally {
-      setIsLoaded(true);
-    }
-  };
-
-  const saveRevisionPreferences = async (newNextAt, newIsDisabled) => {
-    try {
-      const prefs = {
-        nextRevisionAt: newNextAt,
-        isDisabled: newIsDisabled,
-        lastUpdate: Date.now()
-      };
-      
-      await AsyncStorage.setItem(REVISION_STORAGE_KEY, JSON.stringify(prefs));
-      
-      setNextRevisionAt(newNextAt);
-      setIsDisabled(newIsDisabled);
-    } catch (error) {
-      console.error('Error saving revision preferences:', error);
-    }
-  };
-
   // ========== CHARGEMENT INITIAL ==========
   useEffect(() => {
     const initializeRevision = async () => {
-      await loadRevisionPreferences();
       await countWords();
+      setIsLoaded(true);
     };
 
     initializeRevision();
   }, []);
 
-  // ========== VÉRIFICATION RÉVISION ==========
+  // ========== VÉRIFICATION RÉVISION (AVEC HOOK) ==========
   useEffect(() => {
     // ✅ ATTENDRE que tout soit chargé
     if (!isLoaded) return;
     
-    // ✅ VÉRIFICATION COMPLÈTE
-    const shouldShow = !isDisabled && 
-                      totalWords >= nextRevisionAt && 
+    // 🔥 UTILISE LES PREFERENCES DU HOOK
+    const shouldShow = !preferences.isDisabled && 
+                      totalWords >= preferences.nextRevisionAt && 
                       totalWords > 0 && 
                       !showPopup && 
                       !popupShownRef.current;
@@ -112,24 +78,23 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
       popupShownRef.current = true;
       setTimeout(() => setShowPopup(true), 1000);
     }
-  }, [isLoaded, isDisabled, totalWords, nextRevisionAt, showPopup]);
+  }, [isLoaded, preferences.isDisabled, totalWords, preferences.nextRevisionAt, showPopup]);
 
-  // ========== HANDLERS CORRIGÉS ==========
+  // ========== HANDLERS AVEC HOOK PARTAGÉ ==========
   const handleChoice = useCallback(async (choice) => {
     setShowPopup(false);
     popupShownRef.current = false; // ✅ Reset protection
     
     switch (choice) {
       case 'now': {
-        // ✅ Programmer prochaine révision AVANT navigation
-        const nextTarget = totalWords + 50;
-        await saveRevisionPreferences(nextTarget, false);
+        // ✅ Programmer prochaine révision AVEC LE HOOK
+        await resetToNextTarget(totalWords);
         // Navigation
         router.push({
           pathname: "/tabs/vocabularyRevision",
           params: {
             level: currentLevel,
-            questionsCount: 10,
+            questionsCount: preferences.questionsCount,
             source: 'popup_trigger'
           }
         });
@@ -137,32 +102,32 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
       }
       case 'later_50': {
         const next50 = totalWords + 50;
-        await saveRevisionPreferences(next50, false);
+        await updatePreferences({ nextRevisionAt: next50 });
         break;
       }
       case 'later_100': {
         const next100 = totalWords + 100;
-        await saveRevisionPreferences(next100, false);
+        await updatePreferences({ nextRevisionAt: next100 });
         break;
       }
       case 'disable': {
-        // ✅ VRAIE DÉSACTIVATION
-        await saveRevisionPreferences(nextRevisionAt, true); // ✅ isDisabled = true
+        // 🔥 UTILISE LA FONCTION DU HOOK - MISE À JOUR AUTOMATIQUE !
+        await disableRevisions();
         break;
       }
       default: {
         // Fermeture = later_50 par défaut
         const defaultNext = totalWords + 50;
-        await saveRevisionPreferences(defaultNext, false);
+        await updatePreferences({ nextRevisionAt: defaultNext });
         break;
       }
     }
-  }, [totalWords, saveRevisionPreferences, currentLevel, nextRevisionAt]);
+  }, [totalWords, disableRevisions, resetToNextTarget, updatePreferences, currentLevel, preferences.questionsCount]);
 
   const handleDismiss = useCallback(() => handleChoice('later_50'), [handleChoice]);
 
-  // ✅ NE PAS RENDRE SI DISABLED
-  if (isDisabled) {
+  // ✅ NE PAS RENDRE SI DISABLED (AVEC HOOK)
+  if (preferences.isDisabled) {
     return null;
   }
 
@@ -170,7 +135,7 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
     <RevisionPopup
       visible={showPopup}
       totalWordsLearned={totalWords}
-      questionsCount={10}
+      questionsCount={preferences.questionsCount} // 🔥 UTILISE LA VALEUR DU HOOK
       currentLevel={currentLevel}
       onChoice={handleChoice}
       onDismiss={handleDismiss}

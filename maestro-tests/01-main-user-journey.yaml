@@ -1,76 +1,50 @@
 # Test E2E - Parcours utilisateur principal
 # JoudEnglishApp - Dashboard → Niveaux → Exercices → Vocabulaire
+#
+# INSTRUCTIONS: Lance ton app manuellement sur l'émulateur AVANT d'exécuter ce test
+# Commande: maestro test 01-main-user-journey.yaml
 
 appId: com.hamdanek.JoudEnglishApp
 ---
+# 🚀 Démarrage du test depuis le Dashboard
 
-# 🚀 LANCEMENT DE L'APPLICATION
-- launchApp
-
-# Attendre que l'application se charge complètement
 - waitForAnimationToEnd
 
-# 📱 NAVIGATION VERS NIVEAUX
-# Essayer différentes approches pour trouver le bouton
+# 📱 1. Navigation vers les exercices d vWu niveau actuel
 - tapOn:
-    id: "level-selection-button"
-    optional: true
-- tapOn: 
-    text: "Niveaux"
-    optional: true
-- tapOn: 
-    text: "Sélectionner niveau"
-    optional: true
-
-# Attendre que la page se charge
+    text: "Explorer le niveau 1"
 - waitForAnimationToEnd
-
-# Vérifier qu'on est sur la page des niveaux
-- assertVisible: "Niveaux"
-
-# 🎯 SÉLECTION DE NIVEAU 1
-- tapOn:
-    id: "Commencer"
-- waitForAnimationToEnd
-
-# Vérifier qu'on est sur la sélection d'exercices
 - assertVisible: "Choisissez votre exercice"
 
-# 📚 SÉLECTION VOCABULAIRE
-- tapOn:
-    id: "vocabulary-button"
+# 📚 3. Sélection de l'exercice de vocabulaire
+- tapOn: "Vocabulaire"
 - waitForAnimationToEnd
+- assertVisible: "Vocabulaire" # Vérifie qu'on est bien dans l'exercice
 
-# Vérifier qu'on est dans l'exercice de vocabulaire
-- assertVisible: "Vocabulaire"
-
-# 📖 INTERACTION AVEC L'EXERCICE
-# Révéler la traduction
+# 📖 4. Interaction simple avec l'exercice
 - tapOn: "Reveal Translation"
 - waitForAnimationToEnd
+- assertVisible: "Hide Translation" # S'assurer que l'état a changé
 
-# Passer au mot suivant
-- tapOn: "Mot suivant"
+- tapOn: "Hide Translation"
 - waitForAnimationToEnd
+- assertVisible: "Reveal Translation"
 
-# Faire encore quelques mots
-- tapOn: "Révéler"
-- waitForAnimationToEnd
-- tapOn: "Mot suivant"
+- tapOn: "Suivant"
 - waitForAnimationToEnd
 
-# 🔙 NAVIGATION RETOUR
-# Retour aux exercices
-- tapOn:
-    id: "back-button"
-- waitForAnimationToEnd
+# On vérifie qu'une nouvelle carte est affichée (le bouton est réapparu)
+- assertVisible: "Reveal Translation"
 
-# Retour aux niveaux
-- tapOn:
-    id: "back-button"
+# 🔙 5. Navigation retour vers le Dashboard
+- tapOn: "←" # Retour à la sélection d'exercices
 - waitForAnimationToEnd
+- assertVisible: "Choisissez votre exercice"
 
-# Retour au dashboard
-- tapOn:
-    id: "back-button"
+- tapOn: "←" # Retour à la sélection de niveaux
 - waitForAnimationToEnd
+- assertVisible: "Niveaux"
+
+- tapOn: "←" # Retour au Dashboard
+- waitForAnimationToEnd
+- assertVisible: "Dashboard"
