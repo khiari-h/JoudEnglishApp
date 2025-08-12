@@ -1,50 +1,181 @@
-# Test E2E - Parcours utilisateur principal
-# JoudEnglishApp - Dashboard → Niveaux → Exercices → Vocabulaire
-#
-# INSTRUCTIONS: Lance ton app manuellement sur l'émulateur AVANT d'exécuter ce test
-# Commande: maestro test 01-main-user-journey.yaml
+# Test E2E : Parcours utilisateur principal
+# Couvre : Dashboard → Level → Exercise → Vocabulary Exercise → Mise à jour des métriques
 
-appId: com.hamdanek.JoudEnglishApp
+appId: com.joudenglish.app
+name: "Parcours utilisateur principal - Vocabulaire"
+tags:
+  - "user-journey"
+  - "vocabulary"
+  - "progress-update"
+
+# Configuration globale
+env:
+  TIMEOUT: 10000
+  RETRY_COUNT: 3
+
+# Test principal
 ---
-# 🚀 Démarrage du test depuis le Dashboard
+- runFlow:
+    when:
+      true: ${ENV:TEST_TYPE == "full" || !ENV:TEST_TYPE}
+    commands:
+      # =================== PHASE 1: DASHBOARD INITIAL ===================
+      - launchApp
+      - assertVisible: "Accueil" # Vérifier qu'on est sur le dashboard
+      
+      # Vérifier les composants du dashboard
+      - assertVisible: "📊 Aujourd'hui" # SimpleMetrics
+      - assertVisible: "⚡ Actions rapides" # QuickActions
+      - assertVisible: "🏆 Progression générale" # LearningProgress
+      
+      # Capturer les métriques initiales
+      - tapOn: "📚 Mots aujourd'hui"
+      - assertVisible: "0" # ou la valeur actuelle
+      
+      # =================== PHASE 2: NAVIGATION VERS NIVEAU ===================
+      - tapOn: "Niveaux" # Onglet footer
+      - assertVisible: "Niveaux"
+      - assertVisible: "Choisissez votre niveau"
+      
+      # Sélectionner le niveau 1
+      - tapOn: "level-1-button"
+      - assertVisible: "Niveau 1"
+      
+      # =================== PHASE 3: SÉLECTION EXERCICE ===================
+      - assertVisible: "Choisissez votre exercice"
+      - assertVisible: "Vocabulaire"
+      
+      # Vérifier la progression initiale
+      - assertVisible: "0%" # Progression vocabulaire
+      
+      # Lancer l'exercice de vocabulaire
+      - tapOn: "vocabulary-button"
+      - assertVisible: "Vocabulaire"
+      
+      # =================== PHASE 4: EXERCICE VOCABULAIRE ===================
+      - assertVisible: "Progression"
+      - assertVisible: "0/15" # ou le nombre total de mots
+      
+      # Faire quelques mots
+      - repeat:
+          times: 3
+          commands:
+            - assertVisible: "Traduire"
+            - tapOn: "Traduire" # Révéler la traduction
+            - assertVisible: "Suivant"
+            - tapOn: "Suivant" # Passer au mot suivant
+            
+      # Vérifier que la progress bar s'est mise à jour
+      - assertVisible: "3/15" # ou la progression actuelle
+      
+      # Continuer jusqu'à la fin (optionnel)
+      - repeat:
+          times: 12
+          commands:
+            - tapOn: "Traduire"
+            - tapOn: "Suivant"
+            
+      # =================== PHASE 5: RETOUR ET VÉRIFICATION ===================
+      # Retour à la sélection d'exercices
+      - assertVisible: "Niveau 1"
+      - assertVisible: "Vocabulaire"
+      
+      # Vérifier que la progression s'est mise à jour
+      - assertVisible: "15%" # ou la progression calculée
+      
+      # Retour à la sélection de niveaux
+      - tapOn: "Niveaux" # Bouton retour
+      - assertVisible: "Niveaux"
+      
+      # Vérifier que le niveau 1 a progressé
+      - assertVisible: "level-1-button"
+      - assertVisible: "15%" # Progression du niveau
+      
+      # Retour au dashboard
+      - tapOn: "Accueil" # Onglet footer
+      - assertVisible: "Accueil"
+      
+      # =================== PHASE 6: VÉRIFICATION DASHBOARD ===================
+      # Vérifier que SimpleMetrics s'est mis à jour
+      - assertVisible: "📚 Mots aujourd'hui"
+      - assertVisible: "15" # ou le nombre de mots appris
+      
+      # Vérifier que QuickActions s'est mis à jour
+      - assertVisible: "⚡ Actions rapides"
+      - assertVisible: "15 mots disponibles" # Pour la révision
+      
+      # Vérifier que LearningProgress s'est mis à jour
+      - assertVisible: "🏆 Progression générale"
+      - assertVisible: "15%" # Progression du niveau actuel
+      
+      # Vérifier que "Continue Learning" s'est mis à jour
+      - assertVisible: "Continuez votre apprentissage"
+      
+      # =================== PHASE 7: TEST RÉVISION ===================
+      # Tester la révision (maintenant disponible)
+      - tapOn: "🔄 Révision"
+      - assertVisible: "Révision"
+      - assertVisible: "15 mots disponibles"
+      
+      # Retour au dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "Accueil"
 
-- waitForAnimationToEnd
+# Test de navigation footer
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST_TYPE == "navigation" || !ENV:TEST_TYPE}
+    commands:
+      - launchApp
+      
+      # Test navigation Dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "📊 Aujourd'hui"
+      
+      # Test navigation Niveaux
+      - tapOn: "Niveaux"
+      - assertVisible: "Choisissez votre niveau"
+      
+      # Test navigation Exercices
+      - tapOn: "Exercices"
+      - assertVisible: "Choisissez votre exercice"
+      
+      # Test navigation Réglages
+      - tapOn: "Réglages"
+      - assertVisible: "Paramètres"
+      - assertVisible: "🔄 Révisions automatiques"
+      
+      # Retour au dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "Accueil"
 
-# 📱 1. Navigation vers les exercices d vWu niveau actuel
-- tapOn:
-    text: "Explorer le niveau 1"
-- waitForAnimationToEnd
-- assertVisible: "Choisissez votre exercice"
-
-# 📚 3. Sélection de l'exercice de vocabulaire
-- tapOn: "Vocabulaire"
-- waitForAnimationToEnd
-- assertVisible: "Vocabulaire" # Vérifie qu'on est bien dans l'exercice
-
-# 📖 4. Interaction simple avec l'exercice
-- tapOn: "Reveal Translation"
-- waitForAnimationToEnd
-- assertVisible: "Hide Translation" # S'assurer que l'état a changé
-
-- tapOn: "Hide Translation"
-- waitForAnimationToEnd
-- assertVisible: "Reveal Translation"
-
-- tapOn: "Suivant"
-- waitForAnimationToEnd
-
-# On vérifie qu'une nouvelle carte est affichée (le bouton est réapparu)
-- assertVisible: "Reveal Translation"
-
-# 🔙 5. Navigation retour vers le Dashboard
-- tapOn: "←" # Retour à la sélection d'exercices
-- waitForAnimationToEnd
-- assertVisible: "Choisissez votre exercice"
-
-- tapOn: "←" # Retour à la sélection de niveaux
-- waitForAnimationToEnd
-- assertVisible: "Niveaux"
-
-- tapOn: "←" # Retour au Dashboard
-- waitForAnimationToEnd
-- assertVisible: "Dashboard"
+# Test des paramètres de révision
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST_TYPE == "settings" || !ENV:TEST_TYPE}
+    commands:
+      - launchApp
+      - tapOn: "Réglages"
+      - assertVisible: "🔄 Révisions automatiques"
+      
+      # Vérifier l'état initial
+      - assertVisible: "Révisions automatiques"
+      - assertVisible: "Tous les 50 mots (standard)"
+      
+      # Changer la fréquence
+      - tapOn: "Tous les 25 mots (léger)"
+      - assertVisible: "✓"
+      
+      # Désactiver les révisions
+      - tapOn: "Révisions automatiques" # Toggle
+      - assertVisible: "⚠️ Révisions désactivées"
+      
+      # Réactiver les révisions
+      - tapOn: "Révisions automatiques" # Toggle
+      - assertVisible: "Tous les 25 mots (léger)"
+      
+      # Retour au dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "Accueil"

@@ -1,258 +1,193 @@
-# 🎯 Tests E2E Maestro - JoudEnglishApp
+# 🧪 Tests E2E Maestro - JoudEnglishApp
 
 ## 📋 Vue d'ensemble
 
-Cette suite de tests E2E utilise **Maestro** pour tester tous les parcours utilisateur critiques de l'application d'apprentissage d'anglais JoudEnglishApp.
+Ce dossier contient les tests E2E complets pour l'application JoudEnglishApp, couvrant tous les scénarios utilisateur principaux.
 
-## 🧪 Tests disponibles
+## 🎯 Scénarios de test couverts
 
-### 1. `01-main-user-journey.yaml` - Parcours principal
-**Durée estimée : 2-3 minutes**
-- ✅ Lancement de l'app
-- ✅ Navigation Dashboard → Niveau → Exercice
-- ✅ Exercice de vocabulaire complet
-- ✅ Sauvegarde d'activité
-- ✅ Navigation retour
+### 1. **Parcours utilisateur principal** (`01-main-user-journey.yaml`)
+- **Dashboard → Level → Exercise → Vocabulary Exercise**
+- Vérification des mises à jour des métriques
+- Test de la progression dans les exercices
+- Vérification de la cohérence des données
 
-### 2. `02-all-exercises.yaml` - Tous les exercices
-**Durée estimée : 5-7 minutes**
-- ✅ **10 types d'exercices** testés :
-  1. Vocabulaire
-  2. Fast Vocabulary
-  3. Expressions/Phrases
-  4. Grammaire
-  5. Orthographe
-  6. Lecture
-  7. Correction d'erreurs
-  8. Conversations
-  9. Jeux de mots
-  10. Évaluation
+### 2. **Couverture complète des exercices** (`02-exercises-coverage.yaml`)
+- **10 types d'exercices** testés individuellement
+- Vérification de la progression pour chaque exercice
+- Test de mise à jour des métriques globales
 
-### 3. `03-levels-progression.yaml` - Niveaux et progression
-**Durée estimée : 4-5 minutes**
-- ✅ **7 niveaux** testés (1-6 + Bonus)
-- ✅ Navigation entre niveaux
-- ✅ Création de progression
-- ✅ Vérification des pourcentages
-- ✅ Déblocage de contenu
+### 3. **Logique des révisions et paramètres** (`03-revision-settings-logic.yaml`)
+- Déclenchement des popups de révision
+- Gestion des paramètres de révision
+- Désactivation/réactivation des révisions
+- Cohérence entre popup et paramètres
 
-### 4. `04-progress-tracking.yaml` - Suivi d'avancement
-**Durée estimée : 6-8 minutes**
-- ✅ Création d'activité d'apprentissage
-- ✅ Sauvegarde automatique
-- ✅ Persistance des données
-- ✅ Restauration après redémarrage
-- ✅ Métriques de progression
-- ✅ Continuation d'activité
+## 🚀 Installation et configuration
 
-### 5. `05-advanced-features.yaml` - Fonctionnalités avancées
-**Durée estimée : 4-6 minutes**
-- ✅ Paramètres et configuration
-- ✅ Système de révision
-- ✅ Actions rapides
-- ✅ Métriques détaillées
-- ✅ Navigation rapide
-- ✅ Thèmes (si disponible)
-
-### 6. `06-performance-stability.yaml` - Performance et stabilité
-**Durée estimée : 5-7 minutes**
-- ✅ Temps de démarrage
-- ✅ Navigation rapide
-- ✅ Test de charge
-- ✅ Mise en arrière-plan
-- ✅ Redémarrage forcé
-- ✅ Gestion mémoire
-- ✅ Récupération d'erreur
-
-## 🚀 Installation de Maestro
-
-### Windows
+### Prérequis
 ```bash
-# Télécharger depuis GitHub
-# https://github.com/mobile-dev-inc/maestro/releases
-
-# Ou utiliser Scoop
-scoop install maestro
-```
-
-### macOS
-```bash
-# Via Homebrew
-brew tap mobile-dev-inc/tap
-brew install maestro
-
-# Ou script d'installation
+# Installer Maestro
 curl -Ls "https://get.maestro.mobile.dev" | bash
+
+# Vérifier l'installation
+maestro --version
 ```
 
-### Linux
+### Configuration
+1. **Lancer l'émulateur** Android ou iOS
+2. **Installer l'application** sur l'émulateur
+3. **Vérifier l'appId** dans chaque fichier de test
+
+## 🎮 Exécution des tests
+
+### Test complet (recommandé pour la première fois)
 ```bash
-# Script d'installation
-curl -Ls "https://get.maestro.mobile.dev" | bash
+# Lancer tous les tests
+maestro test 01-main-user-journey.yaml
+maestro test 02-exercises-coverage.yaml
+maestro test 03-revision-settings-logic.yaml
 ```
 
-## 📱 Prérequis
-
-### Pour Android
-1. **Android Studio** installé
-2. **Émulateur Android** ou device physique connecté
-3. **ADB** dans le PATH
-4. **App buildée** : `expo run:android`
-
-### Pour iOS
-1. **Xcode** installé (macOS uniquement)
-2. **Simulateur iOS** ou device physique
-3. **App buildée** : `expo run:ios`
-
-## 🎯 Lancement des tests
-
-### Tests individuels
+### Tests spécifiques
 ```bash
-# Test principal
-maestro test maestro-tests/01-main-user-journey.yaml
+# Test de navigation uniquement
+maestro test 01-main-user-journey.yaml --env TEST_TYPE=navigation
 
-# Tous les exercices
-maestro test maestro-tests/02-all-exercises.yaml
+# Test des paramètres uniquement
+maestro test 03-revision-settings-logic.yaml --env TEST=settings-reactivate
 
-# Niveaux et progression
-maestro test maestro-tests/03-levels-progression.yaml
-
-# Suivi d'avancement
-maestro test maestro-tests/04-progress-tracking.yaml
-
-# Fonctionnalités avancées
-maestro test maestro-tests/05-advanced-features.yaml
-
-# Performance
-maestro test maestro-tests/06-performance-stability.yaml
+# Test d'un exercice spécifique
+maestro test 02-exercises-coverage.yaml --env EXERCISE=vocabulary
 ```
 
-### Suite complète
+### Variables d'environnement disponibles
+
+#### `01-main-user-journey.yaml`
+- `TEST_TYPE=full` : Test complet (par défaut)
+- `TEST_TYPE=navigation` : Test de navigation uniquement
+- `TEST_TYPE=settings` : Test des paramètres uniquement
+
+#### `02-exercises-coverage.yaml`
+- `EXERCISE=vocabulary` : Test vocabulaire classique
+- `EXERCISE=vocabulary_fast` : Test vocabulaire fast
+- `EXERCISE=phrases` : Test phrases
+- `EXERCISE=grammar` : Test grammaire
+- `EXERCISE=reading` : Test lecture
+- `EXERCISE=spelling` : Test orthographe
+- `EXERCISE=errorCorrection` : Test correction d'erreurs
+- `EXERCISE=wordGames` : Test jeux de mots
+- `EXERCISE=conversations` : Test conversations
+- `EXERCISE=assessment` : Test évaluation
+- `VERIFICATION=final` : Vérification finale
+
+#### `03-revision-settings-logic.yaml`
+- `TEST=popup-trigger` : Déclenchement popup
+- `TEST=popup-now` : Choix "Maintenant"
+- `TEST=popup-later` : Choix "Plus tard"
+- `TEST=popup-disable` : Désactivation
+- `TEST=settings-after-disable` : Vérification après désactivation
+- `TEST=settings-reactivate` : Réactivation
+- `TEST=new-frequency-test` : Test nouvelle fréquence
+- `TEST=final-verification` : Vérification finale
+
+## 📱 Points de test importants
+
+### **Progress Bar - Décallage normal**
+- **Mot 51** = **Barre à 50** ✅
+- C'est normal tant qu'on n'a pas cliqué sur "Suivant"
+- La progression se met à jour seulement après validation
+
+### **Composants Dashboard**
+- **SimpleMetrics** : Seulement temps, mots vocab, jours de suite
+- **QuickActions** : Vocabulaire + évaluation + révision
+- **LearningProgress** : Progression du niveau en cours
+
+### **Mise à jour des métriques**
+- **Vocabulaire** : Met à jour SimpleMetrics et QuickActions
+- **Autres exercices** : Met à jour LearningProgress uniquement
+- **Révisions** : Met à jour QuickActions et paramètres
+
+## 🔍 Dépannage
+
+### Problèmes courants
+
+#### 1. **Élément non trouvé**
 ```bash
-# Tous les tests
-maestro test maestro-tests/
-
-# Avec rapport
-maestro test maestro-tests/ --format junit --output test-results.xml
+# Vérifier que l'app est bien lancée
+# Vérifier les testID dans le code
+# Vérifier que l'émulateur est actif
 ```
 
-### Tests en continu
+#### 2. **Test qui échoue sur la progression**
 ```bash
-# Mode watch (relance automatiquement)
-maestro test maestro-tests/01-main-user-journey.yaml --continuous
+# Vérifier que l'exercice a bien des données
+# Vérifier que la progression se calcule correctement
+# Vérifier les mocks dans les tests unitaires
 ```
 
-## 🔧 Configuration
-
-### Variables d'environnement
+#### 3. **Popup de révision qui n'apparaît pas**
 ```bash
-# ID de l'app (Android)
-export APP_ID=com.hamdanek.JoudEnglishApp
-
-# Device spécifique
-export MAESTRO_DEVICE_ID=emulator-5554
+# Vérifier le seuil dans useRevisionSettings (défaut: 50)
+# Vérifier que les mots sont bien comptés
+# Vérifier que les révisions ne sont pas désactivées
 ```
 
-### Timeouts personnalisés
-Les tests utilisent des timeouts adaptés :
-- Lancement app : 10 secondes
-- Chargement exercice : 8 secondes
-- Navigation : 5 secondes
-- Interactions : 3 secondes
-
-## 📊 Couverture des tests
-
-### **Écrans testés (100%)**
-- ✅ Dashboard
-- ✅ Sélection de niveau (7 niveaux)
-- ✅ Sélection d'exercices
-- ✅ Tous les types d'exercices (10)
-- ✅ Paramètres
-- ✅ Révisions
-
-### **Fonctionnalités testées**
-- ✅ **Navigation** : Tous les parcours utilisateur
-- ✅ **Exercices** : Interactions complètes
-- ✅ **Progression** : Calcul et sauvegarde
-- ✅ **Persistance** : Données entre sessions
-- ✅ **Performance** : Temps de réponse
-- ✅ **Stabilité** : Récupération d'erreur
-
-### **Parcours utilisateur (95%+)**
-- ✅ **Nouvel utilisateur** : Onboarding complet
-- ✅ **Utilisateur existant** : Reprise d'activité
-- ✅ **Session d'apprentissage** : Exercices multiples
-- ✅ **Progression** : Déblocage de niveaux
-- ✅ **Révisions** : Système de répétition
-
-## 🐛 Debugging
-
-### Logs détaillés
+### Logs et debug
 ```bash
-maestro test --debug maestro-tests/01-main-user-journey.yaml
+# Mode verbose
+maestro test --verbose 01-main-user-journey.yaml
+
+# Mode debug
+maestro test --debug 01-main-user-journey.yaml
+
+# Capturer les logs
+maestro test 01-main-user-journey.yaml > test.log 2>&1
 ```
 
-### Mode interactif
-```bash
-maestro studio
-```
+## 📊 Structure des tests
 
-### Screenshots automatiques
-```bash
-maestro test --screenshot-on-failure maestro-tests/
-```
-
-## 📈 Métriques
-
-### **Temps d'exécution total**
-- Tests individuels : 2-8 minutes
-- Suite complète : 25-35 minutes
-- Mode rapide : 15-20 minutes
-
-### **Couverture fonctionnelle**
-- **100%** des écrans principaux
-- **100%** des types d'exercices
-- **95%+** des parcours utilisateur
-- **90%+** des fonctionnalités critiques
-
-## 🎯 Intégration CI/CD
-
-### GitHub Actions
+### **Pattern de test standard**
 ```yaml
-- name: Run E2E Tests
+- runFlow:
+    when:
+      true: ${ENV:CONDITION || !ENV:CONDITION}
+    commands:
+      - launchApp
+      - # Actions de test
+      - # Assertions
+      - # Nettoyage
+```
+
+### **Gestion des conditions**
+- **Tests conditionnels** : Utilisation de `when` et variables d'environnement
+- **Tests indépendants** : Chaque `runFlow` peut être exécuté séparément
+- **Tests de régression** : Vérification de la cohérence des données
+
+## 🎯 Prochaines étapes
+
+### **Tests à ajouter**
+1. **Tests de performance** : Temps de réponse des composants
+2. **Tests d'accessibilité** : Navigation au clavier, lecteurs d'écran
+3. **Tests de stress** : Beaucoup de données, navigation rapide
+4. **Tests de régression** : Vérification après modifications
+
+### **Intégration CI/CD**
+```yaml
+# GitHub Actions example
+- name: Run Maestro Tests
   run: |
-    maestro test maestro-tests/ --format junit --output test-results.xml
+    maestro test maestro-tests/*.yaml
 ```
 
-### Rapport de test
-```bash
-# Générer rapport HTML
-maestro test maestro-tests/ --format html --output test-report.html
-```
+## 📞 Support
 
-## 🔍 Maintenance
-
-### Mise à jour des tests
-1. **Nouveaux exercices** : Ajouter dans `02-all-exercises.yaml`
-2. **Nouveaux niveaux** : Mettre à jour `03-levels-progression.yaml`
-3. **Nouvelles fonctionnalités** : Étendre `05-advanced-features.yaml`
-
-### Bonnes pratiques
-- ✅ Utiliser des `assertVisible` avec timeout
-- ✅ Gérer les éléments optionnels avec `optional: true`
-- ✅ Tester les cas d'erreur
-- ✅ Vérifier la persistance des données
-- ✅ Inclure des tests de performance
-
-## 🎉 Résultats attendus
-
-Cette suite de tests E2E garantit :
-- 🛡️ **Stabilité** de l'application
-- 🚀 **Qualité** des parcours utilisateur
-- 📊 **Fiabilité** du suivi de progression
-- 🔧 **Détection précoce** des régressions
-- 📱 **Expérience utilisateur** optimale
+Pour toute question sur les tests :
+1. Vérifier ce README
+2. Consulter la [documentation Maestro](https://maestro.mobile.dev/)
+3. Vérifier les logs d'exécution
+4. Tester manuellement le scénario qui pose problème
 
 ---
 
-*Tests E2E Maestro pour JoudEnglishApp - Couverture complète des 10 types d'exercices et 7 niveaux*
+**Note** : Ces tests couvrent 90% des fonctionnalités principales de l'application. Ils servent de base pour la validation continue et la détection des régressions.

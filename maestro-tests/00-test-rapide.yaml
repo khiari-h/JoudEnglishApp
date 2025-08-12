@@ -1,0 +1,43 @@
+# Test E2E : Test rapide de vérification
+# Vérifie que Maestro fonctionne et peut lancer l'app
+
+appId: com.joudenglish.app
+name: "Test rapide - Vérification Maestro"
+tags:
+  - "verification"
+  - "quick-test"
+
+env:
+  TIMEOUT: 10000
+  RETRY_COUNT: 1
+
+# Test simple de vérification
+---
+- runFlow:
+    when:
+      true: true
+    commands:
+      # Lancer l'app
+      - launchApp
+      
+      # Attendre un peu
+      - wait: 2000
+      
+      # Vérifier qu'on est sur le dashboard
+      - assertVisible: "Accueil"
+      
+      # Vérifier les composants principaux
+      - assertVisible: "📊 Aujourd'hui"
+      - assertVisible: "⚡ Actions rapides"
+      - assertVisible: "🏆 Progression générale"
+      
+      # Test de navigation simple
+      - tapOn: "Niveaux"
+      - assertVisible: "Niveaux"
+      
+      # Retour au dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "Accueil"
+      
+      # Test terminé avec succès
+      - assertVisible: "📊 Aujourd'hui"

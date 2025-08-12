@@ -1,0 +1,259 @@
+# Test E2E : Logique des révisions et paramètres
+# Vérifie : Popup révision → Paramètres → Désactivation → Mise à jour UI
+
+appId: com.joudenglish.app
+name: "Logique des révisions et paramètres"
+tags:
+  - "revisions"
+  - "settings"
+  - "popup-logic"
+
+env:
+  TIMEOUT: 12000
+  RETRY_COUNT: 3
+
+# Test 1: Déclenchement de la popup de révision
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST == "popup-trigger" || !ENV:TEST}
+    commands:
+      - launchApp
+      
+      # Vérifier l'état initial
+      - assertVisible: "📊 Aujourd'hui"
+      - assertVisible: "⚡ Actions rapides"
+      
+      # Aller au vocabulaire pour déclencher la popup
+      - tapOn: "Niveaux"
+      - tapOn: "level-1-button"
+      - tapOn: "vocabulary-button"
+      
+      # Faire assez de mots pour déclencher la popup (seuil par défaut: 50)
+      - repeat:
+          times: 51
+          commands:
+            - tapOn: "Traduire"
+            - tapOn: "Suivant"
+      
+      # Vérifier que la popup de révision apparaît
+      - assertVisible: "revision-popup"
+      - assertVisible: "popup-words"
+      - assertVisible: "popup-questions"
+      - assertVisible: "popup-now"
+      - assertVisible: "popup-later50"
+      - assertVisible: "popup-disable"
+      - assertVisible: "popup-dismiss"
+      
+      # Retour au dashboard
+      - tapOn: "popup-dismiss"
+      - tapOn: "←"
+      - tapOn: "←"
+      - tapOn: "Accueil"
+
+# Test 2: Gestion de la popup - Choix "Maintenant"
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST == "popup-now" || !ENV:TEST}
+    commands:
+      - launchApp
+      
+      # Aller au vocabulaire
+      - tapOn: "Niveaux"
+      - tapOn: "level-1-button"
+      - tapOn: "vocabulary-button"
+      
+      # Faire assez de mots pour déclencher la popup
+      - repeat:
+          times: 51
+          commands:
+            - tapOn: "Traduire"
+            - tapOn: "Suivant"
+      
+      # Choisir "Maintenant"
+      - assertVisible: "revision-popup"
+      - tapOn: "popup-now"
+      
+      # Vérifier qu'on est redirigé vers la révision
+      - assertVisible: "Révision"
+      - assertVisible: "51 mots disponibles"
+      
+      # Retour au dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "Accueil"
+
+# Test 3: Gestion de la popup - Choix "Plus tard"
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST == "popup-later" || !ENV:TEST}
+    commands:
+      - launchApp
+      
+      # Aller au vocabulaire
+      - tapOn: "Niveaux"
+      - tapOn: "level-1-button"
+      - tapOn: "vocabulary-button"
+      
+      # Faire assez de mots pour déclencher la popup
+      - repeat:
+          times: 51
+          commands:
+            - tapOn: "Traduire"
+            - tapOn: "Suivant"
+      
+      # Choisir "Plus tard"
+      - assertVisible: "revision-popup"
+      - tapOn: "popup-later50"
+      
+      # Vérifier que la popup se ferme
+      - assertNotVisible: "revision-popup"
+      
+      # Retour au dashboard
+      - tapOn: "←"
+      - tapOn: "←"
+      - tapOn: "Accueil"
+
+# Test 4: Gestion de la popup - Désactivation
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST == "popup-disable" || !ENV:TEST}
+    commands:
+      - launchApp
+      
+      # Aller au vocabulaire
+      - tapOn: "Niveaux"
+      - tapOn: "level-1-button"
+      - tapOn: "vocabulary-button"
+      
+      # Faire assez de mots pour déclencher la popup
+      - repeat:
+          times: 51
+          commands:
+            - tapOn: "Traduire"
+            - tapOn: "Suivant"
+      
+      # Choisir "Désactiver"
+      - assertVisible: "revision-popup"
+      - tapOn: "popup-disable"
+      
+      # Vérifier que la popup se ferme
+      - assertNotVisible: "revision-popup"
+      
+      # Retour au dashboard
+      - tapOn: "←"
+      - tapOn: "←"
+      - tapOn: "Accueil"
+      
+      # Vérifier que les révisions sont désactivées dans QuickActions
+      - assertVisible: "⚡ Actions rapides"
+      - assertVisible: "Apprenez plus de mots" # Révision désactivée
+
+# Test 5: Vérification des paramètres après désactivation
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST == "settings-after-disable" || !ENV:TEST}
+    commands:
+      - launchApp
+      - tapOn: "Réglages"
+      
+      # Vérifier que les révisions sont désactivées
+      - assertVisible: "🔄 Révisions automatiques"
+      - assertVisible: "⚠️ Révisions désactivées"
+      - assertVisible: "Réactivez-les pour maintenir votre mémorisation !"
+      
+      # Retour au dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "Accueil"
+
+# Test 6: Réactivation des révisions via paramètres
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST == "settings-reactivate" || !ENV:TEST}
+    commands:
+      - launchApp
+      - tapOn: "Réglages"
+      
+      # Réactiver les révisions
+      - assertVisible: "🔄 Révisions automatiques"
+      - tapOn: "Révisions automatiques" # Toggle
+      
+      # Vérifier que les révisions sont réactivées
+      - assertVisible: "Tous les 50 mots (standard)"
+      - assertVisible: "💡 Prochaine révision à 50 mots appris"
+      
+      # Changer la fréquence
+      - tapOn: "Tous les 25 mots (léger)"
+      - assertVisible: "✓"
+      - assertVisible: "💡 Prochaine révision à 25 mots appris"
+      
+      # Retour au dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "Accueil"
+      
+      # Vérifier que QuickActions a été mis à jour
+      - assertVisible: "⚡ Actions rapides"
+      - assertVisible: "🔄 Révision"
+
+# Test 7: Test de la nouvelle fréquence (25 mots)
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST == "new-frequency-test" || !ENV:TEST}
+    commands:
+      - launchApp
+      
+      # Aller au vocabulaire
+      - tapOn: "Niveaux"
+      - tapOn: "level-1-button"
+      - tapOn: "vocabulary-button"
+      
+      # Faire 25 mots pour déclencher la popup avec la nouvelle fréquence
+      - repeat:
+          times: 25
+          commands:
+            - tapOn: "Traduire"
+            - tapOn: "Suivant"
+      
+      # Vérifier que la popup apparaît à 25 mots (nouvelle fréquence)
+      - assertVisible: "revision-popup"
+      - assertVisible: "25 mots disponibles"
+      
+      # Fermer la popup
+      - tapOn: "popup-dismiss"
+      
+      # Retour au dashboard
+      - tapOn: "←"
+      - tapOn: "←"
+      - tapOn: "Accueil"
+
+# Test 8: Vérification finale - Cohérence entre popup et paramètres
+---
+- runFlow:
+    when:
+      true: ${ENV:TEST == "final-verification" || !ENV:TEST}
+    commands:
+      - launchApp
+      
+      # Vérifier l'état des révisions dans QuickActions
+      - assertVisible: "⚡ Actions rapides"
+      - assertVisible: "🔄 Révision"
+      - assertVisible: "25 mots disponibles"
+      
+      # Aller aux paramètres
+      - tapOn: "Réglages"
+      - assertVisible: "🔄 Révisions automatiques"
+      - assertVisible: "Tous les 25 mots (léger)"
+      - assertVisible: "💡 Prochaine révision à 25 mots appris"
+      
+      # Retour au dashboard
+      - tapOn: "Accueil"
+      - assertVisible: "Accueil"
+      
+      # Vérifier que tout est cohérent
+      - assertVisible: "📊 Aujourd'hui"
+      - assertVisible: "🏆 Progression générale"

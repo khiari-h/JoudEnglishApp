@@ -1,0 +1,297 @@
+# Configuration Maestro - JoudEnglishApp
+# Fichier de configuration global pour tous les tests
+
+# Configuration de l'application
+appId: com.joudenglish.app
+name: "JoudEnglishApp E2E Tests"
+
+# Configuration des tests
+env:
+  # Timeouts
+  TIMEOUT: 15000
+  RETRY_COUNT: 3
+  WAIT_TIMEOUT: 10000
+  
+  # Configuration spécifique à l'app
+  APP_NAME: "JoudEnglishApp"
+  DEFAULT_LEVEL: "1"
+  VOCABULARY_WORDS_COUNT: 15
+  REVISION_THRESHOLD: 50
+  
+  # Sélecteurs communs
+  SELECTORS:
+    DASHBOARD_TAB: "Accueil"
+    LEVELS_TAB: "Niveaux"
+    EXERCISES_TAB: "Exercices"
+    SETTINGS_TAB: "Réglages"
+    
+    # Composants Dashboard
+    SIMPLE_METRICS: "📊 Aujourd'hui"
+    QUICK_ACTIONS: "⚡ Actions rapides"
+    LEARNING_PROGRESS: "🏆 Progression générale"
+    
+    # Navigation
+    BACK_BUTTON: "←"
+    NEXT_BUTTON: "Suivant"
+    TRANSLATE_BUTTON: "Traduire"
+    
+    # Popup révision
+    REVISION_POPUP: "revision-popup"
+    POPUP_WORDS: "popup-words"
+    POPUP_QUESTIONS: "popup-questions"
+    POPUP_NOW: "popup-now"
+    POPUP_LATER: "popup-later50"
+    POPUP_DISABLE: "popup-disable"
+    POPUP_DISMISS: "popup-dismiss"
+
+# Configuration des devices
+devices:
+  - name: "Android Emulator"
+    type: "android"
+    id: "emulator-5554"
+    
+  - name: "iOS Simulator"
+    type: "ios"
+    id: "iPhone 14"
+
+# Configuration des timeouts
+timeouts:
+  # Éléments UI
+  element: 10000
+  animation: 3000
+  navigation: 5000
+  
+  # Opérations
+  launch: 15000
+  loading: 8000
+  save: 3000
+
+# Configuration des retry
+retry:
+  count: 3
+  delay: 1000
+
+# Configuration des captures
+screenshots:
+  onFailure: true
+  onSuccess: false
+  directory: "./screenshots"
+
+# Configuration des logs
+logging:
+  level: "INFO"
+  includeScreenshots: true
+  includeVideos: false
+
+# Configuration des tests
+test:
+  # Patterns d'exclusion
+  exclude:
+    - "**/node_modules/**"
+    - "**/.git/**"
+    - "**/coverage/**"
+    
+  # Patterns d'inclusion
+  include:
+    - "**/*.yaml"
+    - "**/*.yml"
+
+# Configuration des assertions
+assertions:
+  # Timeouts par défaut
+  timeout: 10000
+  
+  # Tolérance pour les comparaisons
+  tolerance: 0.01
+
+# Configuration des hooks
+hooks:
+  # Avant chaque test
+  beforeTest:
+    - command: "clearAppData"
+      description: "Nettoyer les données de l'app"
+    
+  # Après chaque test
+  afterTest:
+    - command: "takeScreenshot"
+      description: "Capturer l'état final"
+    
+    - command: "clearAppData"
+      description: "Nettoyer après le test"
+
+# Configuration des variables globales
+variables:
+  # Niveaux de l'application
+  LEVELS:
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+    - "5"
+    - "6"
+    - "bonus"
+  
+  # Types d'exercices
+  EXERCISES:
+    - "vocabulary"
+    - "vocabulary_fast"
+    - "phrases"
+    - "grammar"
+    - "reading"
+    - "spelling"
+    - "errorCorrection"
+    - "wordGames"
+    - "conversations"
+    - "assessment"
+  
+  # Couleurs des niveaux
+  LEVEL_COLORS:
+    "1": "#3B82F6"
+    "2": "#8B5CF6"
+    "3": "#EC4899"
+    "4": "#F59E0B"
+    "5": "#10B981"
+    "6": "#EF4444"
+    "bonus": "#6366F1"
+
+# Configuration des métriques
+metrics:
+  # Performance
+  performance:
+    launchTime: 5000
+    navigationTime: 2000
+    responseTime: 1000
+  
+  # Stabilité
+  stability:
+    crashRate: 0.01
+    memoryUsage: 100
+    batteryDrain: 5
+
+# Configuration des rapports
+reports:
+  # Formats supportés
+  formats:
+    - "junit"
+    - "html"
+    - "json"
+    - "csv"
+  
+  # Répertoire de sortie
+  outputDir: "./test-reports"
+  
+  # Nom du fichier
+  filename: "maestro-test-report"
+  
+  # Inclure les métriques
+  includeMetrics: true
+  
+  # Inclure les captures
+  includeScreenshots: true
+
+# Configuration des notifications
+notifications:
+  # Slack
+  slack:
+    enabled: false
+    webhook: ""
+    channel: "#testing"
+  
+  # Email
+  email:
+    enabled: false
+    smtp: ""
+    recipients: []
+  
+  # Teams
+  teams:
+    enabled: false
+    webhook: ""
+
+# Configuration des intégrations
+integrations:
+  # Jira
+  jira:
+    enabled: false
+    url: ""
+    project: ""
+    issueType: "Bug"
+  
+  # GitHub
+  github:
+    enabled: false
+    token: ""
+    repository: ""
+    issueLabels: ["e2e-failure"]
+  
+  # TestRail
+  testrail:
+    enabled: false
+    url: ""
+    username: ""
+    password: ""
+    projectId: ""
+
+# Configuration de sécurité
+security:
+  # Masquer les données sensibles
+  maskData: true
+  
+  # Variables sensibles
+  sensitiveVariables:
+    - "API_KEY"
+    - "PASSWORD"
+    - "TOKEN"
+    - "SECRET"
+  
+  # Chiffrement des rapports
+  encryptReports: false
+  
+  # Authentification
+  authentication:
+    required: false
+    method: "none"
+    credentials: {}
+
+# Configuration des environnements
+environments:
+  development:
+    appId: "com.joudenglish.app.dev"
+    baseUrl: "https://dev-api.joudenglish.com"
+    
+  staging:
+    appId: "com.joudenglish.app.staging"
+    baseUrl: "https://staging-api.joudenglish.com"
+    
+  production:
+    appId: "com.joudenglish.app"
+    baseUrl: "https://api.joudenglish.com"
+
+# Configuration des profils
+profiles:
+  fast:
+    description: "Tests rapides pour le développement"
+    timeouts:
+      element: 5000
+      navigation: 3000
+    retry:
+      count: 1
+      
+  thorough:
+    description: "Tests complets pour la validation"
+    timeouts:
+      element: 15000
+      navigation: 8000
+    retry:
+      count: 5
+      
+  ci:
+    description: "Configuration pour l'intégration continue"
+    timeouts:
+      element: 30000
+      navigation: 15000
+    retry:
+      count: 3
+    screenshots:
+      onFailure: true
+      onSuccess: false
