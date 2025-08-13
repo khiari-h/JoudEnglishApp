@@ -48,6 +48,16 @@ jest.mock('expo-asset', () => ({
   },
 }));
 
+// Mocks pour éviter warnings RN extraits du core
+jest.mock('@react-native-clipboard/clipboard', () => ({
+  getString: jest.fn(async () => ''),
+  setString: jest.fn(),
+}), { virtual: true });
+jest.mock('@react-native-community/push-notification-ios', () => ({
+  presentLocalNotification: jest.fn(),
+}), { virtual: true });
+jest.mock('@react-native-community/progress-bar-android', () => 'ProgressBarAndroid', { virtual: true });
+
 jest.mock('react-native-reanimated', () => {
     const Reanimated = require('react-native-reanimated/mock');
     Reanimated.useSharedValue = jest.fn(() => ({ value: 0 }));
@@ -134,6 +144,7 @@ jest.mock('expo-router', () => ({
     canGoBack: jest.fn(() => true),
     setParams: jest.fn(),
   },
+  useFocusEffect: jest.fn(() => {}),
   useRouter: jest.fn(() => ({
     push: jest.fn(),
     replace: jest.fn(),
@@ -339,13 +350,17 @@ global.console = {
     originalConsole.error(message);
   }),
   warn: jest.fn((message) => {
-    if (
-      typeof message === 'string' && 
-      message.includes('Warning: An update to') && 
-      message.includes('was not wrapped in act')
-    ) {
-      return; // Ignore les warnings act() pour les animations
-    }
+    const msg = typeof message === 'string' ? message : '';
+    const ignore = [
+      'Warning: An update to',
+      'was not wrapped in act',
+      'has been extracted from react-native core and will be removed in a future release',
+      'new NativeEventEmitter()',
+      'PushNotificationIOS has been extracted from react-native core',
+      'Clipboard has been extracted from react-native core',
+      'ProgressBarAndroid has been extracted from react-native core',
+    ].some((t) => msg.includes(t));
+    if (ignore) return;
     originalConsole.warn(message);
   }),
 };

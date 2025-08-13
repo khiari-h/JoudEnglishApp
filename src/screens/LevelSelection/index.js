@@ -2,8 +2,7 @@
 import { useContext, useCallback } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
-import { useFocusEffect } from "@react-navigation/native";
+import { router, useFocusEffect } from "expo-router";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -19,10 +18,11 @@ import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Contain
 import Header from "../../components/layout/Header";
 
 // Constantes
-import { LANGUAGE_LEVELS, LEVELS_LIST } from "../../utils/constants";
+import { LANGUAGE_LEVELS } from "../../utils/constants";
 
 // Styles
 import styles, { getBackgroundGradient } from "./style";
+import useLevelListData from "./hooks/useLevelListData";
 
 const DEFAULT_THEME = {
   colors: {
@@ -105,21 +105,9 @@ const LevelSelection = () => {
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
   
-  // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
+  // 🚀 PROGRESSION TEMPS RÉEL + Préparation des données d'affichage
   const { getLevelProgress, hasProgress, refresh } = useRealTimeProgress();
-
-  // Niveau actuel simplifié
-  const getCurrentUserLevel = () => {
-    for (let i = 1; i <= 6; i++) {
-      if (getLevelProgress(i.toString()) === 0) {
-        return i;
-      }
-    }
-    return 6;
-  };
-
-  const currentUserLevel = getCurrentUserLevel();
-  const currentLevelData = LANGUAGE_LEVELS[currentUserLevel];
+  const { currentUserLevel, currentLevelData, levels } = useLevelListData({ getLevelProgress, hasProgress });
 
   // Background
   const backgroundGradient = getBackgroundGradient(
@@ -127,32 +115,7 @@ const LevelSelection = () => {
     colors.background
   );
 
-  // ✅ DONNÉES NIVEAUX - DESIGN ORIGINAL + VRAIES DONNÉES
-  const levels = LEVELS_LIST.map((levelKey) => {
-    const levelInfo = LANGUAGE_LEVELS[levelKey];
-    const progress = getLevelProgress(levelKey); // ✅ Seul changement : vrai chiffre
-    
-    // ✅ LOGIQUE SIMPLE : A-t-on commencé ce niveau ?
-    const hasStarted = hasProgress('vocabulary', levelKey) || 
-                      hasProgress('phrases', levelKey) ||
-                      hasProgress('grammar', levelKey) ||
-                      hasProgress('reading', levelKey) ||
-                      hasProgress('spelling', levelKey) ||
-                      hasProgress('conversations', levelKey) ||
-                      hasProgress('errorCorrection', levelKey) ||
-                      hasProgress('wordGames', levelKey) ||
-                      hasProgress('assessment', levelKey);
-    
-    return {
-      id: levelKey,
-      title: levelInfo.title,
-      progress, // ✅ Vrai chiffre
-      color: levelInfo.color,
-      icon: levelInfo.icon,
-      hasProgress: progress > 0,
-      hasStarted, // ✅ Pour logique bouton
-    };
-  });
+  // levels déjà préparés par le hook
 
   // Navigation
   const handleLevelSelect = useCallback((level) => {
@@ -205,6 +168,9 @@ const LevelSelection = () => {
         style={styles.modernCard}
         onPress={handleLevelPress(level)}
         activeOpacity={0.8}
+        accessibilityRole="button"
+        accessibilityLabel={`Niveau ${level.id}`}
+        accessibilityValue={{ min: 0, max: 100, now: level.progress }}
       >
         <LevelCardContent level={level} colors={colors} localStyles={styles} handleLevelPress={handleLevelPress} />
       </TouchableOpacity>

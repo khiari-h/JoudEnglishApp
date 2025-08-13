@@ -1,5 +1,5 @@
 // PhrasesExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
-import { useMemo, useEffect, useCallback } from "react";
+import { useMemo, useEffect, useCallback, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -17,7 +17,7 @@ import PhrasesNavigation from "./PhrasesNavigation";
 // Hook & Utils
 import usePhrases from "./hooks/usePhrases";
 import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
-import { getPhrasesData, getLevelColor } from "../../../utils/phrases/phrasesDataHelper";
+import { getPhrasesData, loadPhrasesData, getLevelColor } from "../../../utils/phrases/phrasesDataHelper";
 import createStyles from "./style";
 
 /**
@@ -33,7 +33,22 @@ const PhrasesExercise = ({ route }) => {
 
   // Data
   const levelColor = getLevelColor(level);
-  const phrasesData = useMemo(() => getPhrasesData(level), [level]);
+  const [phrasesData, setPhrasesData] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      if (process.env.JEST_WORKER_ID) {
+        const data = getPhrasesData(level);
+        if (isMounted) setPhrasesData(data);
+        return;
+      }
+      const data = await loadPhrasesData(level);
+      if (isMounted) setPhrasesData(data);
+    };
+    load();
+    return () => { isMounted = false; };
+  }, [level]);
 
   // Hook unifié - Garde seulement les variables utilisées
   const {

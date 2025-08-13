@@ -17,6 +17,7 @@ jest.mock('expo-router', () => ({
   router: {
     push: jest.fn(),
   },
+  useFocusEffect: jest.fn(() => {}),
 }));
 
 // Mock @react-navigation/native's useFocusEffect and useNavigation

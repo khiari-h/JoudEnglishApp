@@ -1,6 +1,7 @@
 // utils/grammar/grammarDataHelper.js
 
 // Import des données de grammaire par niveau
+// Imports statiques conservés pour compat internes/tests si besoin
 import grammarA1 from "../../data/grammar/A1";
 import grammarA2 from "../../data/grammar/A2";
 import grammarB1 from "../../data/grammar/B1";
@@ -24,6 +25,25 @@ export const getGrammarData = (level) => {
   };
   // Retourne A1 par défaut si le niveau n'est pas reconnu
   return dataMap[level] || grammarA1;
+};
+
+// Chargement dynamique pour réduire le bundle initial
+export const loadGrammarData = async (level) => {
+  try {
+    const loaders = {
+      A1: () => import("../../data/grammar/A1"),
+      A2: () => import("../../data/grammar/A2"),
+      B1: () => import("../../data/grammar/B1"),
+      B2: () => import("../../data/grammar/B2"),
+      C1: () => import("../../data/grammar/C1"),
+      C2: () => import("../../data/grammar/C2"),
+    };
+    const load = loaders[level] || loaders.A1;
+    const mod = await load();
+    return mod.default || mod;
+  } catch (e) {
+    return getGrammarData("A1");
+  }
 };
 
 /**

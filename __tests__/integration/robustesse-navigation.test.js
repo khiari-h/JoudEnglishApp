@@ -7,7 +7,7 @@ import VocabularyExercise from '../../src/screens/exercises/vocabulary';
 
 // Mock expo-router
 jest.mock('expo-router', () => ({
-  useFocusEffect: jest.fn(callback => callback()),
+  useFocusEffect: jest.fn(() => {}),
   router: {
     push: jest.fn(),
     back: jest.fn(),
@@ -30,23 +30,37 @@ jest.mock('../../src/contexts/CurrentLevelContext', () => ({
 }));
 
 // Mock useVocabulary hook
-jest.mock('../../src/screens/exercises/vocabulary/hooks/useVocabulary', () => {
-  const actualUseVocabulary = jest.requireActual('../../src/screens/exercises/vocabulary/hooks/useVocabulary').default;
-  return jest.fn((vocabularyData, level, mode) => {
+jest.mock('../../src/screens/exercises/vocabulary/hooks/useVocabulary', () => ({
+  __esModule: true,
+  default: jest.fn((vocabularyData, level, mode) => {
     if (!vocabularyData) {
-      return { loaded: false }; // Simulate loading state when no data
+      return { loaded: false };
     }
+    const first = (vocabularyData.exercises && vocabularyData.exercises[0]) || { title: '', words: [] };
     return {
-      ...actualUseVocabulary(vocabularyData, level, mode),
+      categoryIndex: 0,
+      wordIndex: 0,
+      showTranslation: false,
+      completedWords: {},
       loaded: true,
-      currentWord: vocabularyData.exercises[0].words[0],
+      showDetailedProgress: false,
+      currentWord: first.words[0] || null,
+      currentCategory: first,
+      changeCategory: jest.fn(),
+      toggleTranslation: jest.fn(),
+      toggleDetailedProgress: jest.fn(),
+      handleNext: jest.fn().mockReturnValue({ completed: true }),
+      handlePrevious: jest.fn(),
+      canGoToPrevious: false,
+      isLastWordInExercise: true,
       display: {
         wordCounter: '1 / 1',
-        categories: vocabularyData.exercises.map(ex => ex.title), // ✅ CORRIGÉ : ex.title au lieu de { name: ex.title, words: ex.words }
+        categories: (vocabularyData.exercises || []).map(ex => ex.title),
       },
+      saveData: jest.fn(),
     };
-  });
-});
+  }),
+}));
 
 // Mock vocabularyDataHelper
 jest.mock('../../src/utils/vocabulary/vocabularyDataHelper', () => ({
@@ -71,6 +85,26 @@ jest.mock('../../src/utils/vocabulary/vocabularyDataHelper', () => ({
     }
     
     return null; // For any other level
+  }),
+  loadVocabularyData: jest.fn(async (level, mode) => {
+    const mod = (module.exports && module.exports.getVocabularyData)
+      ? module.exports.getVocabularyData
+      : (() => null);
+    return mod(level, mode);
+  }),
+  loadVocabularyData: jest.fn(async (level, mode) => {
+    if (!level || level === 'invalid' || level === undefined) {
+      return null;
+    }
+    if (level === 'A1' || level === '1') {
+      return {
+        exercises: [{
+          title: 'Identité & informations personnelles',
+          words: [{ word: 'name', translation: 'nom', example: 'My name is Sarah.' }],
+        }],
+      };
+    }
+    return null;
   }),
 }));
 

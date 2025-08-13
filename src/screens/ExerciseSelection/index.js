@@ -2,8 +2,7 @@
 import { useContext, useMemo, useCallback } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
-import { useFocusEffect } from "@react-navigation/native";
+import { router, useFocusEffect } from "expo-router";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -19,10 +18,11 @@ import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Contain
 import Header from "../../components/layout/Header";
 
 // Constantes
-import { EXERCISES, LANGUAGE_LEVELS, BONUS_EXERCISES } from "../../utils/constants";
+import { LANGUAGE_LEVELS } from "../../utils/constants";
 
 // Styles
 import styles, { getBackgroundGradient } from "./style";
+import useExerciseListData from "./hooks/useExerciseListData";
 
 const DEFAULT_THEME = {
   colors: {
@@ -119,56 +119,23 @@ const ExerciseSelection = ({ level }) => {
 
   // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
   const { getExerciseProgress, hasProgress, refresh } = useRealTimeProgress();
+  const { levelInfo: computedLevelInfo, exercises } = useExerciseListData({ level, getExerciseProgress, hasProgress });
 
   // Infos du niveau
   const levelInfo = useMemo(() => {
-    return LANGUAGE_LEVELS[level] || {
-      color: colors.primary,
-      title: `Niveau ${level}`,
-      icon: level === "bonus" ? "⭐" : "📚",
-    };
-  }, [level, colors.primary]);
+    return (
+      computedLevelInfo || {
+        color: colors.primary,
+        title: `Niveau ${level}`,
+        icon: level === "bonus" ? "⭐" : "📚",
+      }
+    );
+  }, [computedLevelInfo, level, colors.primary]);
 
   const levelColor = levelInfo.color;
   const backgroundGradient = getBackgroundGradient(levelColor, colors.background);
 
-  // ✅ EXERCICES - TON DESIGN ORIGINAL + VRAIES DONNÉES
-  const exercises = useMemo(() => {
-    const exercisesList = [];
-
-    Object.values(EXERCISES).forEach((exercise) => {
-      // Filtrer niveau bonus
-      if (level === "bonus" && !BONUS_EXERCISES.includes(exercise.id)) {
-        return;
-      }
-
-      // ✅ FAST VOCABULARY - A SON PROPRE POURCENTAGE
-      if (exercise.id === 'vocabulary_fast') {
-        const fastProgress = getExerciseProgress('vocabulary_fast', level); // ✅ Vraie progression Fast
-        
-        exercisesList.push({
-          ...exercise,
-          progress: fastProgress, // ✅ Son vrai %
-          hasProgress: fastProgress > 0,
-          isFast: true,
-        });
-        return;
-      }
-
-      // ✅ EXERCICES NORMAUX avec VRAIE PROGRESSION
-      const exerciseProgress = getExerciseProgress(exercise.id, level);
-      const exerciseHasProgress = hasProgress(exercise.id, level);
-
-      exercisesList.push({
-        ...exercise,
-        progress: exerciseProgress, // ✅ Vrai chiffre
-        hasProgress: exerciseHasProgress, // ✅ Vraie détection
-        isFast: false,
-      });
-    });
-
-    return exercisesList;
-  }, [level, getExerciseProgress, hasProgress]);
+  // exercises préparés par le hook
 
   // Navigation
   const handleExerciseSelect = useCallback((exercise) => {
@@ -237,6 +204,9 @@ const ExerciseSelection = ({ level }) => {
         style={styles.levelCard}
         onPress={handleExercisePress(exercise)}
         activeOpacity={0.8}
+        accessibilityRole="button"
+        accessibilityLabel={`${exercise.title}`}
+        accessibilityValue={{ min: 0, max: 100, now: exercise.progress ?? 0 }}
       >
         <ExerciseCardContent exercise={exercise} colors={colors} localStyles={styles} handleExercisePress={handleExercisePress} />
       </TouchableOpacity>

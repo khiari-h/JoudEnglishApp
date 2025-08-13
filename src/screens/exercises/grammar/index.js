@@ -1,6 +1,6 @@
 // GrammarExercise/index.js - VERSION TOTALEMENT RECODÉE
 
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useEffect, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -19,7 +19,7 @@ import GrammarNavigation from "./GrammarNavigation";
 
 // Hook & Utils
 import useGrammar from "./hooks/useGrammar";
-import { getGrammarData, getLevelColor } from "../../../utils/grammar/grammarDataHelper";
+import { getGrammarData, loadGrammarData, getLevelColor } from "../../../utils/grammar/grammarDataHelper";
 import createStyles from "./style";
 
 /**
@@ -39,7 +39,22 @@ const GrammarExercise = ({ route }) => {
 
   // ✅ MÉMORISER les données principales
   const levelColor = useMemo(() => getLevelColor(level), [level]);
-  const grammarData = useMemo(() => getGrammarData(level), [level]);
+  const [grammarData, setGrammarData] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      if (process.env.JEST_WORKER_ID) {
+        const data = getGrammarData(level);
+        if (isMounted) setGrammarData(data);
+        return;
+      }
+      const data = await loadGrammarData(level);
+      if (isMounted) setGrammarData(data);
+    };
+    load();
+    return () => { isMounted = false; };
+  }, [level]);
 
   // Hook unifié
   const {

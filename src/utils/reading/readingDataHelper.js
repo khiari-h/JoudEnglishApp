@@ -1,6 +1,7 @@
 // src/utils/reading/readingDataHelper.js
 
 // Import de tous les index des niveaux de lecture (6 niveaux + bonus)
+// Imports statiques conservés pour compat internes/tests si besoin
 import reading1Data from "../../data/reading/1";
 import reading2Data from "../../data/reading/2";
 import reading3Data from "../../data/reading/3";
@@ -27,6 +28,26 @@ export const getReadingData = (level) => {
   
   // Si le niveau demandé n'existe pas, on retourne le niveau 1 par défaut
   return dataMap[level] || reading1Data;
+};
+
+// Chargement dynamique pour réduire le bundle initial
+export const loadReadingData = async (level) => {
+  try {
+    const loaders = {
+      "1": () => import("../../data/reading/1"),
+      "2": () => import("../../data/reading/2"),
+      "3": () => import("../../data/reading/3"),
+      "4": () => import("../../data/reading/4"),
+      "5": () => import("../../data/reading/5"),
+      "6": () => import("../../data/reading/6"),
+      bonus: () => import("../../data/reading/bonus"),
+    };
+    const load = loaders[level] || loaders["1"];
+    const mod = await load();
+    return mod.default || mod;
+  } catch (e) {
+    return getReadingData("1");
+  }
 };
 
 /**

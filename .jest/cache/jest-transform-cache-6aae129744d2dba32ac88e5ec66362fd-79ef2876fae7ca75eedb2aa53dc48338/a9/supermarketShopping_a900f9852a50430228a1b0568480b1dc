@@ -1,0 +1,104 @@
+4a29655d45794709bd035fe592716e9a
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var supermarketShopping = {
+  id: 8,
+  title: "Supermarket Shopping",
+  level: "A1",
+  description: "Practice shopping for groceries, asking about products and understanding basic checkout procedures.",
+  estimatedTime: "10-15 minutes",
+  vocabulary: ["supermarket", "bread", "milk", "egg", "cheese", "fruit", "vegetable", "meat", "aisle", "checkout"],
+  steps: [{
+    id: 1,
+    botMessage: "Welcome to FreshMart Supermarket! Can I help you find something?",
+    inputMode: "suggestions",
+    suggestions: ["Yes, where can I find bread?", "I'm looking for the milk.", "Where is the cheese section?"],
+    hints: "Ask where to find specific items using 'Where can I find...?' or 'Where is...'",
+    expectedKeywords: ["where", "find", "milk", "bread", "cheese", "section", "aisle"],
+    feedback: {
+      correct: "I'll show you!",
+      incorrect: "Ask 'Where can I find...?' or 'Where is...?'"
+    }
+  }, {
+    id: 2,
+    botMessage: "The bread is in aisle 3. We have many types today. Do you want white or brown bread?",
+    inputMode: "hybrid",
+    suggestions: ["I prefer white bread.", "Brown bread, please.", "Do you have whole wheat?"],
+    hints: "Tell your preference for bread type.",
+    expectedKeywords: ["white", "brown", "wheat", "prefer", "like", "want"],
+    acceptablePhrases: ["i want", "i like", "white", "brown"],
+    feedback: {
+      correct: "Good choice!",
+      partial: "Which type of bread?",
+      incorrect: "Choose white, brown, or whole wheat bread."
+    }
+  }, {
+    id: 3,
+    botMessage: "Great! Here's our fresh white bread. Would you like anything else?",
+    inputMode: "freeText",
+    suggestions: ["Yes, I need eggs too.", "Where is the fruit section?", "I need milk, please."],
+    hints: "Ask for more items or directions to other sections.",
+    expectedKeywords: ["eggs", "milk", "fruit", "cheese", "need", "want", "yes", "no"],
+    feedback: {
+      correct: "I'll help you find that.",
+      partial: "What else do you need?",
+      incorrect: "Say what else you need or ask where to find it."
+    }
+  }, {
+    id: 4,
+    botMessage: "Eggs are on the right side, next to the dairy products. How many eggs do you need?",
+    inputMode: "suggestions",
+    suggestions: ["A dozen, please.", "12 eggs.", "One carton of eggs."],
+    hints: "Specify how many eggs you want.",
+    expectedKeywords: ["dozen", "12", "six", "eggs", "carton", "many"],
+    feedback: {
+      correct: "Here you are!",
+      incorrect: "Tell how many eggs: a dozen or 12?"
+    }
+  }, {
+    id: 5,
+    botMessage: "Do you need any fruits or vegetables today?",
+    inputMode: "hybrid",
+    suggestions: ["Yes, I need bananas.", "Do you have fresh apples?", "No, that's all for today."],
+    hints: "Decide if you want produce or decline politely.",
+    expectedKeywords: ["yes", "no", "banana", "apple", "fruit", "vegetable", "fresh", "need"],
+    feedback: {
+      correct: "The fruit section is over there.",
+      partial: "Which fruits or vegetables?",
+      incorrect: "Answer yes or no, and specify what you want."
+    }
+  }, {
+    id: 6,
+    botMessage: "Are you ready to checkout? The cashier is free now.",
+    inputMode: "freeText",
+    suggestions: ["Yes, I'm ready.", "I forgot milk. Where is it?", "One more thing, please."],
+    hints: "Confirm you're ready or mention if you forgot something.",
+    expectedKeywords: ["yes", "ready", "forgot", "need", "milk", "one", "more"],
+    acceptablePhrases: ["yes", "ready", "forgot", "need"],
+    feedback: {
+      correct: "Great! Follow me to the cashier.",
+      partial: "Let me help you quickly.",
+      incorrect: "Say 'yes, I'm ready' or mention what you forgot."
+    }
+  }, {
+    id: 7,
+    botMessage: "Your total is $12.50. How would you like to pay?",
+    inputMode: "suggestions",
+    suggestions: ["By card, please.", "I'll pay with cash.", "Do you accept mobile payment?"],
+    hints: "Choose your payment method.",
+    expectedKeywords: ["card", "cash", "credit", "mobile", "pay", "payment"],
+    feedback: {
+      correct: "Perfect! Thank you for shopping with us!",
+      incorrect: "Choose card, cash, or mobile payment."
+    }
+  }],
+  completionMessage: "Excellent! You successfully did your grocery shopping in English.",
+  learningObjectives: ["Ask for product locations", "Understand basic food vocabulary", "Specify quantities", "Handle checkout procedures", "Use polite shopping phrases"],
+  grammar: {
+    points: ["Questions with 'where'", "Quantities and numbers", "Present simple for shopping", "Prepositions of place"]
+  }
+};
+var _default = exports.default = supermarketShopping;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzdXBlcm1hcmtldFNob3BwaW5nIiwiaWQiLCJ0aXRsZSIsImxldmVsIiwiZGVzY3JpcHRpb24iLCJlc3RpbWF0ZWRUaW1lIiwidm9jYWJ1bGFyeSIsInN0ZXBzIiwiYm90TWVzc2FnZSIsImlucHV0TW9kZSIsInN1Z2dlc3Rpb25zIiwiaGludHMiLCJleHBlY3RlZEtleXdvcmRzIiwiZmVlZGJhY2siLCJjb3JyZWN0IiwiaW5jb3JyZWN0IiwiYWNjZXB0YWJsZVBocmFzZXMiLCJwYXJ0aWFsIiwiY29tcGxldGlvbk1lc3NhZ2UiLCJsZWFybmluZ09iamVjdGl2ZXMiLCJncmFtbWFyIiwicG9pbnRzIiwiX2RlZmF1bHQiLCJleHBvcnRzIiwiZGVmYXVsdCJdLCJzb3VyY2VzIjpbInN1cGVybWFya2V0U2hvcHBpbmcuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gY2hhdGJvdC9BMS9zY2VuYXJpb3Mvc3VwZXJtYXJrZXRTaG9wcGluZy5qc1xuXG5jb25zdCBzdXBlcm1hcmtldFNob3BwaW5nID0ge1xuICAgIGlkOiA4LFxuICAgIHRpdGxlOiBcIlN1cGVybWFya2V0IFNob3BwaW5nXCIsXG4gICAgbGV2ZWw6IFwiQTFcIixcbiAgICBkZXNjcmlwdGlvbjogXCJQcmFjdGljZSBzaG9wcGluZyBmb3IgZ3JvY2VyaWVzLCBhc2tpbmcgYWJvdXQgcHJvZHVjdHMgYW5kIHVuZGVyc3RhbmRpbmcgYmFzaWMgY2hlY2tvdXQgcHJvY2VkdXJlcy5cIixcbiAgICBlc3RpbWF0ZWRUaW1lOiBcIjEwLTE1IG1pbnV0ZXNcIixcbiAgICB2b2NhYnVsYXJ5OiBbXCJzdXBlcm1hcmtldFwiLCBcImJyZWFkXCIsIFwibWlsa1wiLCBcImVnZ1wiLCBcImNoZWVzZVwiLCBcImZydWl0XCIsIFwidmVnZXRhYmxlXCIsIFwibWVhdFwiLCBcImFpc2xlXCIsIFwiY2hlY2tvdXRcIl0sXG4gICAgc3RlcHM6IFtcbiAgICAgIHtcbiAgICAgICAgaWQ6IDEsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiV2VsY29tZSB0byBGcmVzaE1hcnQgU3VwZXJtYXJrZXQhIENhbiBJIGhlbHAgeW91IGZpbmQgc29tZXRoaW5nP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwic3VnZ2VzdGlvbnNcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIlllcywgd2hlcmUgY2FuIEkgZmluZCBicmVhZD9cIixcbiAgICAgICAgICBcIkknbSBsb29raW5nIGZvciB0aGUgbWlsay5cIixcbiAgICAgICAgICBcIldoZXJlIGlzIHRoZSBjaGVlc2Ugc2VjdGlvbj9cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJBc2sgd2hlcmUgdG8gZmluZCBzcGVjaWZpYyBpdGVtcyB1c2luZyAnV2hlcmUgY2FuIEkgZmluZC4uLj8nIG9yICdXaGVyZSBpcy4uLidcIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wid2hlcmVcIiwgXCJmaW5kXCIsIFwibWlsa1wiLCBcImJyZWFkXCIsIFwiY2hlZXNlXCIsIFwic2VjdGlvblwiLCBcImFpc2xlXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiSSdsbCBzaG93IHlvdSFcIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiQXNrICdXaGVyZSBjYW4gSSBmaW5kLi4uPycgb3IgJ1doZXJlIGlzLi4uPydcIlxuICAgICAgICB9XG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogMixcbiAgICAgICAgYm90TWVzc2FnZTogXCJUaGUgYnJlYWQgaXMgaW4gYWlzbGUgMy4gV2UgaGF2ZSBtYW55IHR5cGVzIHRvZGF5LiBEbyB5b3Ugd2FudCB3aGl0ZSBvciBicm93biBicmVhZD9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcImh5YnJpZFwiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiSSBwcmVmZXIgd2hpdGUgYnJlYWQuXCIsXG4gICAgICAgICAgXCJCcm93biBicmVhZCwgcGxlYXNlLlwiLFxuICAgICAgICAgIFwiRG8geW91IGhhdmUgd2hvbGUgd2hlYXQ/XCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiVGVsbCB5b3VyIHByZWZlcmVuY2UgZm9yIGJyZWFkIHR5cGUuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcIndoaXRlXCIsIFwiYnJvd25cIiwgXCJ3aGVhdFwiLCBcInByZWZlclwiLCBcImxpa2VcIiwgXCJ3YW50XCJdLFxuICAgICAgICBhY2NlcHRhYmxlUGhyYXNlczogW1xuICAgICAgICAgIFwiaSB3YW50XCIsXG4gICAgICAgICAgXCJpIGxpa2VcIixcbiAgICAgICAgICBcIndoaXRlXCIsXG4gICAgICAgICAgXCJicm93blwiXG4gICAgICAgIF0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJHb29kIGNob2ljZSFcIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIldoaWNoIHR5cGUgb2YgYnJlYWQ/XCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIkNob29zZSB3aGl0ZSwgYnJvd24sIG9yIHdob2xlIHdoZWF0IGJyZWFkLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiAzLFxuICAgICAgICBib3RNZXNzYWdlOiBcIkdyZWF0ISBIZXJlJ3Mgb3VyIGZyZXNoIHdoaXRlIGJyZWFkLiBXb3VsZCB5b3UgbGlrZSBhbnl0aGluZyBlbHNlP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiZnJlZVRleHRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIlllcywgSSBuZWVkIGVnZ3MgdG9vLlwiLFxuICAgICAgICAgIFwiV2hlcmUgaXMgdGhlIGZydWl0IHNlY3Rpb24/XCIsXG4gICAgICAgICAgXCJJIG5lZWQgbWlsaywgcGxlYXNlLlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkFzayBmb3IgbW9yZSBpdGVtcyBvciBkaXJlY3Rpb25zIHRvIG90aGVyIHNlY3Rpb25zLlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJlZ2dzXCIsIFwibWlsa1wiLCBcImZydWl0XCIsIFwiY2hlZXNlXCIsIFwibmVlZFwiLCBcIndhbnRcIiwgXCJ5ZXNcIiwgXCJub1wiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIkknbGwgaGVscCB5b3UgZmluZCB0aGF0LlwiLFxuICAgICAgICAgIHBhcnRpYWw6IFwiV2hhdCBlbHNlIGRvIHlvdSBuZWVkP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJTYXkgd2hhdCBlbHNlIHlvdSBuZWVkIG9yIGFzayB3aGVyZSB0byBmaW5kIGl0LlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA0LFxuICAgICAgICBib3RNZXNzYWdlOiBcIkVnZ3MgYXJlIG9uIHRoZSByaWdodCBzaWRlLCBuZXh0IHRvIHRoZSBkYWlyeSBwcm9kdWN0cy4gSG93IG1hbnkgZWdncyBkbyB5b3UgbmVlZD9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcInN1Z2dlc3Rpb25zXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJBIGRvemVuLCBwbGVhc2UuXCIsXG4gICAgICAgICAgXCIxMiBlZ2dzLlwiLFxuICAgICAgICAgIFwiT25lIGNhcnRvbiBvZiBlZ2dzLlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIlNwZWNpZnkgaG93IG1hbnkgZWdncyB5b3Ugd2FudC5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiZG96ZW5cIiwgXCIxMlwiLCBcInNpeFwiLCBcImVnZ3NcIiwgXCJjYXJ0b25cIiwgXCJtYW55XCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiSGVyZSB5b3UgYXJlIVwiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJUZWxsIGhvdyBtYW55IGVnZ3M6IGEgZG96ZW4gb3IgMTI/XCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDUsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiRG8geW91IG5lZWQgYW55IGZydWl0cyBvciB2ZWdldGFibGVzIHRvZGF5P1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiaHlicmlkXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJZZXMsIEkgbmVlZCBiYW5hbmFzLlwiLFxuICAgICAgICAgIFwiRG8geW91IGhhdmUgZnJlc2ggYXBwbGVzP1wiLFxuICAgICAgICAgIFwiTm8sIHRoYXQncyBhbGwgZm9yIHRvZGF5LlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkRlY2lkZSBpZiB5b3Ugd2FudCBwcm9kdWNlIG9yIGRlY2xpbmUgcG9saXRlbHkuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcInllc1wiLCBcIm5vXCIsIFwiYmFuYW5hXCIsIFwiYXBwbGVcIiwgXCJmcnVpdFwiLCBcInZlZ2V0YWJsZVwiLCBcImZyZXNoXCIsIFwibmVlZFwiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIlRoZSBmcnVpdCBzZWN0aW9uIGlzIG92ZXIgdGhlcmUuXCIsXG4gICAgICAgICAgcGFydGlhbDogXCJXaGljaCBmcnVpdHMgb3IgdmVnZXRhYmxlcz9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiQW5zd2VyIHllcyBvciBubywgYW5kIHNwZWNpZnkgd2hhdCB5b3Ugd2FudC5cIlxuICAgICAgICB9XG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogNixcbiAgICAgICAgYm90TWVzc2FnZTogXCJBcmUgeW91IHJlYWR5IHRvIGNoZWNrb3V0PyBUaGUgY2FzaGllciBpcyBmcmVlIG5vdy5cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcImZyZWVUZXh0XCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJZZXMsIEknbSByZWFkeS5cIixcbiAgICAgICAgICBcIkkgZm9yZ290IG1pbGsuIFdoZXJlIGlzIGl0P1wiLFxuICAgICAgICAgIFwiT25lIG1vcmUgdGhpbmcsIHBsZWFzZS5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJDb25maXJtIHlvdSdyZSByZWFkeSBvciBtZW50aW9uIGlmIHlvdSBmb3Jnb3Qgc29tZXRoaW5nLlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJ5ZXNcIiwgXCJyZWFkeVwiLCBcImZvcmdvdFwiLCBcIm5lZWRcIiwgXCJtaWxrXCIsIFwib25lXCIsIFwibW9yZVwiXSxcbiAgICAgICAgYWNjZXB0YWJsZVBocmFzZXM6IFtcbiAgICAgICAgICBcInllc1wiLFxuICAgICAgICAgIFwicmVhZHlcIixcbiAgICAgICAgICBcImZvcmdvdFwiLFxuICAgICAgICAgIFwibmVlZFwiXG4gICAgICAgIF0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJHcmVhdCEgRm9sbG93IG1lIHRvIHRoZSBjYXNoaWVyLlwiLFxuICAgICAgICAgIHBhcnRpYWw6IFwiTGV0IG1lIGhlbHAgeW91IHF1aWNrbHkuXCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlNheSAneWVzLCBJJ20gcmVhZHknIG9yIG1lbnRpb24gd2hhdCB5b3UgZm9yZ290LlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA3LFxuICAgICAgICBib3RNZXNzYWdlOiBcIllvdXIgdG90YWwgaXMgJDEyLjUwLiBIb3cgd291bGQgeW91IGxpa2UgdG8gcGF5P1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwic3VnZ2VzdGlvbnNcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkJ5IGNhcmQsIHBsZWFzZS5cIixcbiAgICAgICAgICBcIkknbGwgcGF5IHdpdGggY2FzaC5cIixcbiAgICAgICAgICBcIkRvIHlvdSBhY2NlcHQgbW9iaWxlIHBheW1lbnQ/XCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiQ2hvb3NlIHlvdXIgcGF5bWVudCBtZXRob2QuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcImNhcmRcIiwgXCJjYXNoXCIsIFwiY3JlZGl0XCIsIFwibW9iaWxlXCIsIFwicGF5XCIsIFwicGF5bWVudFwiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIlBlcmZlY3QhIFRoYW5rIHlvdSBmb3Igc2hvcHBpbmcgd2l0aCB1cyFcIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiQ2hvb3NlIGNhcmQsIGNhc2gsIG9yIG1vYmlsZSBwYXltZW50LlwiXG4gICAgICAgIH1cbiAgICAgIH1cbiAgICBdLFxuICAgIGNvbXBsZXRpb25NZXNzYWdlOiBcIkV4Y2VsbGVudCEgWW91IHN1Y2Nlc3NmdWxseSBkaWQgeW91ciBncm9jZXJ5IHNob3BwaW5nIGluIEVuZ2xpc2guXCIsXG4gICAgbGVhcm5pbmdPYmplY3RpdmVzOiBbXG4gICAgICBcIkFzayBmb3IgcHJvZHVjdCBsb2NhdGlvbnNcIixcbiAgICAgIFwiVW5kZXJzdGFuZCBiYXNpYyBmb29kIHZvY2FidWxhcnlcIixcbiAgICAgIFwiU3BlY2lmeSBxdWFudGl0aWVzXCIsXG4gICAgICBcIkhhbmRsZSBjaGVja291dCBwcm9jZWR1cmVzXCIsXG4gICAgICBcIlVzZSBwb2xpdGUgc2hvcHBpbmcgcGhyYXNlc1wiXG4gICAgXSxcbiAgICBncmFtbWFyOiB7XG4gICAgICBwb2ludHM6IFtcbiAgICAgICAgXCJRdWVzdGlvbnMgd2l0aCAnd2hlcmUnXCIsXG4gICAgICAgIFwiUXVhbnRpdGllcyBhbmQgbnVtYmVyc1wiLFxuICAgICAgICBcIlByZXNlbnQgc2ltcGxlIGZvciBzaG9wcGluZ1wiLFxuICAgICAgICBcIlByZXBvc2l0aW9ucyBvZiBwbGFjZVwiXG4gICAgICBdXG4gICAgfVxuICB9O1xuXG4gIGV4cG9ydCBkZWZhdWx0IHN1cGVybWFya2V0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

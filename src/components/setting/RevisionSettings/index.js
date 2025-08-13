@@ -40,7 +40,7 @@ const RevisionSettings = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="revision-settings">
       <Text style={styles.sectionTitle}>
         🔄 Révisions automatiques
       </Text>
@@ -49,6 +49,7 @@ const RevisionSettings = () => {
       <View style={styles.toggleRow}>
         <Text style={styles.toggleLabel}>Révisions automatiques</Text>
         <Switch
+          testID="revisions-toggle"
           value={!preferences.isDisabled}
           onValueChange={handleToggleRevisions}
         />
@@ -64,6 +65,7 @@ const RevisionSettings = () => {
           {frequencyOptions.map((option) => (
             <TouchableOpacity
               key={option.value}
+              testID={`frequency-${option.value}`}
               style={[
                 styles.frequencyOption,
                 preferences.frequency === option.value 

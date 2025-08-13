@@ -70,6 +70,7 @@ const ExerciseHeader = ({
 const HeaderLeftSection = ({ handleClose, backIcon, exerciseIcon, title, exerciseColor, localStyles }) => (
   <View style={localStyles.leftSection}>
     <TouchableOpacity
+      testID="back-button"
       style={localStyles.backButton}
       onPress={handleClose}
       hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}

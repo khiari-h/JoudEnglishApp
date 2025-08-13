@@ -6,7 +6,7 @@ import VocabularyExercise from '../../src/screens/exercises/vocabulary';
 
 // Mock expo-router
 jest.mock('expo-router', () => ({
-  useFocusEffect: jest.fn(callback => callback()),
+  useFocusEffect: jest.fn(() => {}),
   router: {
     push: jest.fn(),
     back: jest.fn(),
@@ -23,36 +23,88 @@ jest.mock('expo-router', () => ({
 }));
 
 // Mock useVocabulary hook
-jest.mock('../../src/screens/exercises/vocabulary/hooks/useVocabulary', () => {
-  const actualUseVocabulary = jest.requireActual('../../src/screens/exercises/vocabulary/hooks/useVocabulary').default;
-  return jest.fn((vocabularyData, level, mode) => {
+jest.mock('../../src/screens/exercises/vocabulary/hooks/useVocabulary', () => ({
+  __esModule: true,
+  default: jest.fn((vocabularyData, level, mode) => {
     if (!vocabularyData) {
       return { loaded: false };
     }
+    const first = (vocabularyData.exercises && vocabularyData.exercises[0]) || { title: '', words: [] };
     return {
-      ...actualUseVocabulary(vocabularyData, level, mode),
+      categoryIndex: 0,
+      wordIndex: 0,
+      showTranslation: false,
+      completedWords: {},
       loaded: true,
-      currentWord: vocabularyData.exercises[0].words[0],
-      showTranslation: false, // Par défaut, la traduction n'est pas affichée
-      toggleTranslation: jest.fn(), // Mock de la fonction toggle
-      display: {
-        wordCounter: '1 / ' + vocabularyData.exercises[0].words.length,
-        categories: vocabularyData.exercises.map(ex => ex.title),
-        currentWord: vocabularyData.exercises[0].words[0],
-        currentCategory: vocabularyData.exercises[0]
-      },
-      isLastWordInExercise: true,
+      showDetailedProgress: false,
+      currentWord: first.words[0] || null,
+      currentCategory: first,
+      changeCategory: jest.fn(),
+      toggleTranslation: jest.fn(),
+      toggleDetailedProgress: jest.fn(),
       handleNext: jest.fn().mockReturnValue({ completed: true }),
+      handlePrevious: jest.fn(),
+      canGoToPrevious: false,
+      isLastWordInExercise: true,
+      display: {
+        wordCounter: '1 / ' + (first.words.length || 0),
+        categories: (vocabularyData.exercises || []).map(ex => ex.title),
+        currentWord: first.words[0] || null,
+        currentCategory: first,
+      },
       saveData: jest.fn().mockResolvedValue(undefined),
     };
-  });
-});
+  }),
+}));
 
 // Mock vocabularyDataHelper
 jest.mock('../../src/utils/vocabulary/vocabularyDataHelper', () => ({
   isBonusLevel: jest.fn(() => false),
   getLevelColor: jest.fn(() => 'blue'),
   getVocabularyData: jest.fn((level, mode) => {
+    if (level === 'A1' || level === '1') {
+      return {
+        exercises: [{
+          title: 'Identité & informations personnelles',
+          words: [
+            { word: 'name', translation: 'nom', example: 'My name is Sarah.' },
+            { word: 'hello', translation: 'bonjour', example: 'Hello, how are you?' }
+          ],
+        }],
+      };
+    }
+    if (level === 'B1' || level === '3') {
+      return {
+        exercises: [{
+          title: 'Expression & Communication Avancée',
+          words: [
+            { word: 'rhetoric', translation: 'rhétorique', example: 'His rhetoric was powerful enough to convince the entire audience.' },
+            { word: 'sophisticated', translation: 'sophistiqué', example: 'She has a sophisticated understanding of the topic.' }
+          ],
+        }],
+      };
+    }
+    if (level === 'C1' || level === '5') {
+      return {
+        exercises: [{
+          title: 'Maîtrise Linguistique Avancée',
+          words: [
+            { word: 'ubiquitous', translation: 'omniprésent', example: 'Smartphones have become ubiquitous in modern society.' },
+            { word: 'paradigm', translation: 'paradigme', example: 'This discovery represents a new paradigm in science.' }
+          ],
+        }],
+      };
+    }
+    return {
+      exercises: [{
+        title: 'Default Category',
+        words: [
+          { word: 'default', translation: 'défaut', example: 'This is a default word.' }
+        ],
+      }]
+    };
+  }),
+  loadVocabularyData: jest.fn(async (level, mode) => {
     if (level === 'A1' || level === '1') {
       return {
         exercises: [{

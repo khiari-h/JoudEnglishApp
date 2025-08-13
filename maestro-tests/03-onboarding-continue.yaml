@@ -1,0 +1,24 @@
+appId: com.hamdanek.JoudEnglishApp
+---
+- openLink: "exp+joudenglishapp://expo-development-client/?url=http://localhost:8082"
+- assertVisible:
+    id: "hero-empty-section"
+- tapOn:
+    id: "level-selection-button"
+- assertVisible:
+    id: "level-selection-container"
+- tapOn:
+    id: "level-1"
+- assertVisible:
+    id: "exercise-selection-container"
+- tapOn:
+    id: "vocabulary-button"
+- openLink: "exp+joudenglishapp://expo-development-client/?url=http://localhost:8082"
+- assertVisible:
+    id: "hero-continue-section"
+- assertVisible:
+    id: "continue-activity-button"
+- tapOn:
+    id: "continue-activity-button"
+
+

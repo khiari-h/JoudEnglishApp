@@ -1,6 +1,7 @@
 // src/utils/phrases/phrasesDataHelper.js
 
 // Import des données de phrases par niveau (6 niveaux + bonus)
+// Imports statiques conservés pour compat internes/tests si besoin
 import phrases1Data from "../../data/phrases/1";
 import phrases2Data from "../../data/phrases/2";
 import phrases3Data from "../../data/phrases/3";
@@ -27,6 +28,26 @@ export const getPhrasesData = (level) => {
 
   // Si le niveau demandé n'existe pas, on retourne le niveau 1 par défaut
   return dataMap[level] || phrases1Data;
+};
+
+// Chargement dynamique pour réduire le bundle initial
+export const loadPhrasesData = async (level) => {
+  try {
+    const loaders = {
+      "1": () => import("../../data/phrases/1"),
+      "2": () => import("../../data/phrases/2"),
+      "3": () => import("../../data/phrases/3"),
+      "4": () => import("../../data/phrases/4"),
+      "5": () => import("../../data/phrases/5"),
+      "6": () => import("../../data/phrases/6"),
+      bonus: () => import("../../data/phrases/bonus"),
+    };
+    const load = loaders[level] || loaders["1"];
+    const mod = await load();
+    return mod.default || mod;
+  } catch (e) {
+    return getPhrasesData("1");
+  }
 };
 
 /**

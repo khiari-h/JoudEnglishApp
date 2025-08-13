@@ -112,6 +112,9 @@ const PreviousButton = ({ disablePrevious, prevScale, handlePrevPress, buttonLab
         onPress={handlePrevPress}
         disabled={disablePrevious}
         activeOpacity={0.8}
+        accessibilityRole="button"
+        accessibilityLabel={buttonLabels.previous}
+        accessibilityState={{ disabled: !!disablePrevious }}
       >
         <Ionicons name="chevron-back" size={18} color={primaryColor} />
         <Text style={[styles.previousText, { color: primaryColor }]}>
@@ -125,10 +128,14 @@ const PreviousButton = ({ disablePrevious, prevScale, handlePrevPress, buttonLab
 const NextButton = ({ disableNext, nextScale, handleNextPress, isLast, buttonLabels, primaryColor, styles }) => (
   <Animated.View style={{ transform: [{ scale: nextScale }] }}>
     <TouchableOpacity
+      testID="next-button"
       style={styles.nextButtonContainer}
       onPress={handleNextPress}
       disabled={disableNext}
-      activeOpacity={0.9}
+        activeOpacity={0.9}
+        accessibilityRole="button"
+        accessibilityLabel={isLast ? buttonLabels.finish : buttonLabels.next}
+        accessibilityState={{ disabled: !!disableNext }}
     >
       <LinearGradient
         colors={

@@ -85,6 +85,55 @@ export const getVocabularyData = (level, mode = "classic") => {
 };
 
 /**
+ * Chargement dynamique des données de vocabulaire par niveau et mode
+ * Utilise import() pour éviter de charger tous les niveaux au démarrage.
+ * Conserve getVocabularyData pour compatibilité.
+ */
+export const loadVocabularyData = async (level, mode = "classic") => {
+  try {
+    if (mode === "fast") {
+      const fastLoaders = {
+        "1": () => import("../../data/fastVocabulary/1"),
+        "2": () => import("../../data/fastVocabulary/2"),
+        "3": () => import("../../data/fastVocabulary/3"),
+        "4": () => import("../../data/fastVocabulary/4"),
+        "5": () => import("../../data/fastVocabulary/5"),
+        "6": () => import("../../data/fastVocabulary/6"),
+        bonus: () => import("../../data/fastVocabulary/bonus"),
+      };
+      const loadFast = fastLoaders[level] || fastLoaders["1"];
+      const fastModule = await loadFast();
+      const fastVocab = fastModule.vocab || fastModule.default || {};
+      return {
+        exercises: [
+          {
+            title: fastVocab.title || "Vocabulaire Fast",
+            words: fastVocab.words || [],
+          },
+        ],
+      };
+    }
+
+    const loaders = {
+      "1": () => import("../../data/vocabulary/1"),
+      "2": () => import("../../data/vocabulary/2"),
+      "3": () => import("../../data/vocabulary/3"),
+      "4": () => import("../../data/vocabulary/4"),
+      "5": () => import("../../data/vocabulary/5"),
+      "6": () => import("../../data/vocabulary/6"),
+      bonus: () => import("../../data/vocabulary/bonus"),
+    };
+
+    const load = loaders[level] || loaders["1"];
+    const mod = await load();
+    return mod.default || mod;
+  } catch (error) {
+    // Fallback: structure vide en cas d'échec
+    return { exercises: [] };
+  }
+};
+
+/**
  * Récupère la liste des niveaux disponibles selon le mode
  * @param {string} mode - Le mode ('classic' ou 'fast')
  * @returns {Array} Liste des niveaux disponibles

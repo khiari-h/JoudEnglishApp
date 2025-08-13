@@ -1,5 +1,5 @@
 // src/components/exercise-common/CategorySelector/index.js
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
 import { View, ScrollView, TouchableOpacity, Text, Animated } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import createStyles from "./style";
@@ -87,6 +87,9 @@ const CategorySelector = ({
           style={styles.categoryTouchable}
           onPress={handleCategoryPress(category.id)}
           activeOpacity={0.8}
+          accessibilityRole="button"
+          accessibilityLabel={String(category.name)}
+          accessibilityState={{ selected: isSelected }}
         >
           {isSelected ? (
             // État sélectionné - Gradient premium
@@ -153,4 +156,12 @@ const CategorySelector = ({
   );
 };
 
-export default CategorySelector;
+function areEqual(prevProps, nextProps) {
+  return (
+    prevProps.selectedCategory === nextProps.selectedCategory &&
+    prevProps.primaryColor === nextProps.primaryColor &&
+    prevProps.categories === nextProps.categories
+  );
+}
+
+export default memo(CategorySelector, areEqual);

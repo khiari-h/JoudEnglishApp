@@ -3,7 +3,7 @@
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import VocabularyHeader from "./VocabularyHeader";
@@ -14,7 +14,7 @@ import VocabularyNavigation from "./VocabularyNavigation";
 
 import useVocabulary from "./hooks/useVocabulary";
 import useLastActivity from "../../../hooks/useLastActivity";
-import { isBonusLevel, getLevelColor, getVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
+import { isBonusLevel, getLevelColor, getVocabularyData, loadVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 import createStyles from "./style";
 
 const VocabularyExercise = ({ route }) => {
@@ -26,7 +26,19 @@ const VocabularyExercise = ({ route }) => {
   // Data
   const finalMode = mode || (isBonusLevel(level) ? "fast" : "classic");
   const levelColor = getLevelColor(level);
-  const vocabularyData = getVocabularyData(level, finalMode);
+  const [vocabularyData, setVocabularyData] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      const data = await loadVocabularyData(level, finalMode);
+      if (isMounted) setVocabularyData(data);
+    };
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, [level, finalMode]);
 
   // Hook unifié
   const {
@@ -82,6 +94,37 @@ const VocabularyExercise = ({ route }) => {
 
     saveActivity(activityData);
   }, [wordIndex]); // ✅ SEULEMENT wordIndex - plus de boucle !
+
+  // Appel initial pour enregistrer l'activité dès que les données sont prêtes
+  useEffect(() => {
+    if (!loaded || !vocabularyData || !currentWord) return;
+
+    let totalWords = 15;
+    if (vocabularyData.categories && Array.isArray(vocabularyData.categories)) {
+      totalWords = vocabularyData.categories.reduce((total, cat) => total + (cat.words?.length || 0), 0);
+    } else if (vocabularyData.exercises && Array.isArray(vocabularyData.exercises)) {
+      totalWords = vocabularyData.exercises.reduce((total, ex) => total + (ex.words?.length || 0), 0);
+    } else if (vocabularyData.words && Array.isArray(vocabularyData.words)) {
+      totalWords = vocabularyData.words.length;
+    }
+
+    const activityData = {
+      title: `Vocabulaire ${finalMode === "fast" ? "Fast" : ""}`,
+      level,
+      type: "vocabulary",
+      mode: finalMode,
+      metadata: {
+        word: wordIndex,
+        totalWords,
+        category: currentCategory?.name || "Général",
+        categoryIndex,
+        wordIndex,
+      },
+    };
+
+    saveActivity(activityData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loaded, vocabularyData]);
 
   // Handlers
   const handleBackPress = useCallback(() => {

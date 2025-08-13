@@ -1,6 +1,7 @@
 // src/screens/Settings/index.js
-import { Text, ScrollView } from 'react-native';
+import { Text, ScrollView, View } from 'react-native';
 import RevisionSettings from '../../components/setting/RevisionSettings';
+import SecuritySettings from '../../components/setting/SecuritySettings';
 
 const SettingsScreen = () => {
   return (
@@ -8,8 +9,10 @@ const SettingsScreen = () => {
       <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 20 }}>
         Paramètres
       </Text>
-      <RevisionSettings />
-      {/* D'autres paramètres pourront être ajoutés ici */}
+      <View style={{ gap: 16 }}>
+        <RevisionSettings />
+        <SecuritySettings />
+      </View>
     </ScrollView>
   );
 };

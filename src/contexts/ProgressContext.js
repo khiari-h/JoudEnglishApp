@@ -5,6 +5,8 @@ import { STORAGE_KEYS } from '../utils/constants';
 
 // Créer le contexte
 export const ProgressContext = createContext();
+export const ProgressReadContext = createContext();
+export const ProgressWriteContext = createContext();
 
 // Données initiales simples
 const createInitialProgress = () => ({
@@ -216,10 +218,28 @@ export const ProgressProvider = ({ children }) => {
     resetProgress
   ]);
 
+  // Découpage read/write (non-rupturant): nouveaux contextes pour séparer les responsabilités
+  const readValue = useMemo(() => ({
+    progress,
+    isLoading,
+    calculateGlobalProgress,
+    calculateLevelProgress,
+  }), [progress, isLoading, calculateGlobalProgress, calculateLevelProgress]);
+
+  const writeValue = useMemo(() => ({
+    updateExerciseProgress,
+    updateStats,
+    resetProgress,
+  }), [updateExerciseProgress, updateStats, resetProgress]);
+
   return (
-    <ProgressContext.Provider value={contextValue}>
-      {children}
-    </ProgressContext.Provider>
+    <ProgressReadContext.Provider value={readValue}>
+      <ProgressWriteContext.Provider value={writeValue}>
+        <ProgressContext.Provider value={contextValue}>
+          {children}
+        </ProgressContext.Provider>
+      </ProgressWriteContext.Provider>
+    </ProgressReadContext.Provider>
   );
 };
 
@@ -228,6 +248,22 @@ export const useProgress = () => {
   const context = useContext(ProgressContext);
   if (!context) {
     throw new Error('useProgress must be used within a ProgressProvider');
+  }
+  return context;
+};
+
+export const useProgressRead = () => {
+  const context = useContext(ProgressReadContext);
+  if (!context) {
+    throw new Error('useProgressRead must be used within a ProgressProvider');
+  }
+  return context;
+};
+
+export const useProgressWrite = () => {
+  const context = useContext(ProgressWriteContext);
+  if (!context) {
+    throw new Error('useProgressWrite must be used within a ProgressProvider');
   }
   return context;
 };

@@ -1,7 +1,9 @@
 // src/components/ui/ProgressBar/index.js - Version Mobile-First Simple
-import { useEffect, useRef } from "react";
-import { View, Text, Animated } from "react-native";
+import { View, Text } from "react-native";
 import createStyles from "./style";
+import useProgressAnimation from "./useProgressAnimation";
+import ProgressTrack from "./ProgressTrack";
+import ProgressFill from "./ProgressFill";
 
 /**
  * 🎯 ProgressBar - Version Mobile-First Ultra-Simple
@@ -30,28 +32,11 @@ const ProgressBar = ({
 }) => {
   const styles = createStyles(fillColor, height, borderRadius);
   
-  // Calculer le pourcentage validé
-  const validProgress = Math.min(Math.max(progress, 0), 100);
-
-  // Animation simple de la barre
-  const progressAnim = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    if (animated) {
-      Animated.timing(progressAnim, {
-        toValue: validProgress,
-        duration: animationDuration,
-        useNativeDriver: false,
-      }).start();
-    } else {
-      progressAnim.setValue(validProgress);
-    }
-  }, [validProgress, animated, animationDuration]);
-
-  // Largeur animée
-  const width = progressAnim.interpolate({
-    inputRange: [0, 100],
-    outputRange: ["0%", "100%"],
+  const validProgress = Math.round(Math.min(Math.max(Number(progress) || 0, 0), 100));
+  const { width } = useProgressAnimation({
+    progress: validProgress,
+    animated,
+    duration: animationDuration,
   });
 
   // Rendu du label
@@ -94,26 +79,21 @@ const ProgressBar = ({
   };
 
   return (
-    <View style={[styles.container, style]} testID={testID}>
+    <View
+      style={[styles.container, style]}
+      testID={testID}
+      accessible
+      accessibilityRole="progressbar"
+      accessibilityValue={{ min: 0, max: 100, now: validProgress, text: percentageFormatter(validProgress) }}
+      accessibilityLabel={label || undefined}
+    >
       {/* Contenu au-dessus */}
       {renderTopContent()}
 
       {/* 📊 BARRE DE PROGRESSION SIMPLE ET CLAIRE */}
       <View style={styles.progressBarContainer}>
-        {/* Track de fond simple */}
-        <View style={[styles.progressTrack, { backgroundColor, borderRadius }]} />
-        
-        {/* Barre de progression */}
-        <Animated.View
-          style={[
-            styles.progressFill,
-            {
-              width,
-              backgroundColor: fillColor,
-              borderRadius,
-            },
-          ]}
-        />
+        <ProgressTrack style={styles.progressTrack} backgroundColor={backgroundColor} borderRadius={borderRadius} />
+        <ProgressFill style={styles.progressFill} width={width} fillColor={fillColor} borderRadius={borderRadius} />
       </View>
 
       {/* Pourcentage en ligne si pas au-dessus */}

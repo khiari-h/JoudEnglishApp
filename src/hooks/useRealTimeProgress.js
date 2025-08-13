@@ -282,49 +282,52 @@ const useRealTimeProgress = () => {
 
       const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
       
-      for (const level of levels) {
-        const exerciseCalculators = {
-          vocabulary: calculateVocabularyProgress,
-          vocabulary_fast: calculateVocabularyFastProgress,
-          grammar: calculateGrammarProgress,
-          reading: calculateReadingProgress,
-          spelling: calculateSpellingProgress,
-          phrases: calculatePhrasesProgress,
-          conversations: calculateConversationsProgress,
-          errorCorrection: calculateErrorCorrectionProgress,
-          wordGames: calculateWordGamesProgress,
-          assessment: calculateAssessmentProgress,
-        };
+      const exerciseCalculators = {
+        vocabulary: calculateVocabularyProgress,
+        vocabulary_fast: calculateVocabularyFastProgress,
+        grammar: calculateGrammarProgress,
+        reading: calculateReadingProgress,
+        spelling: calculateSpellingProgress,
+        phrases: calculatePhrasesProgress,
+        conversations: calculateConversationsProgress,
+        errorCorrection: calculateErrorCorrectionProgress,
+        wordGames: calculateWordGamesProgress,
+        assessment: calculateAssessmentProgress,
+      };
 
-        const availableExercises = level === 'bonus' 
-          ? ['reading', 'vocabulary', 'phrases']
-          : Object.keys(exerciseCalculators);
+      await Promise.all(
+        levels.map(async (level) => {
+          const availableExercises = level === 'bonus'
+            ? ['reading', 'vocabulary', 'phrases']
+            : Object.keys(exerciseCalculators);
 
-        let levelTotal = 0;
-        let levelCompleted = 0;
+          const results = await Promise.all(
+            availableExercises.map(async (exerciseType) => {
+              try {
+                const calculator = exerciseCalculators[exerciseType];
+                const value = await calculator(level);
+                return { exerciseType, value };
+              } catch (e) {
+                console.warn(`Erreur calcul ${exerciseType} niveau ${level}:`, e);
+                return { exerciseType, value: 0 };
+              }
+            })
+          );
 
-        for (const exerciseType of availableExercises) {
-          try {
-            const calculator = exerciseCalculators[exerciseType];
-            const progressForExercise = await calculator(level);
-
-            if (!newExerciseProgress[exerciseType]) {
-              newExerciseProgress[exerciseType] = {};
-            }
-            newExerciseProgress[exerciseType][level] = progressForExercise;
-
+          let levelTotal = 0;
+          let levelCompleted = 0;
+          results.forEach(({ exerciseType, value }) => {
+            if (!newExerciseProgress[exerciseType]) newExerciseProgress[exerciseType] = {};
+            newExerciseProgress[exerciseType][level] = value;
             levelTotal += 100;
-            levelCompleted += progressForExercise;
-            
-          } catch (error) {
-            console.warn(`Erreur calcul ${exerciseType} niveau ${level}:`, error);
-          }
-        }
+            levelCompleted += value;
+          });
 
-        newLevelProgress[level] = levelTotal > 0 
-          ? Math.round((levelCompleted / levelTotal) * 100)
-          : 0;
-      }
+          newLevelProgress[level] = levelTotal > 0
+            ? Math.round((levelCompleted / levelTotal) * 100)
+            : 0;
+        })
+      );
 
       setLevelProgress(newLevelProgress);
       setExerciseProgress(newExerciseProgress);

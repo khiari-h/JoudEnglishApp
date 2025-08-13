@@ -40,6 +40,9 @@ const LevelsCircleRow = ({
             style={styles.levelButton}
             onPress={handlers[level.id]}
             activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel={`Niveau ${getLevelLabel(level.id)}`}
+            accessibilityValue={{ min: 0, max: 100, now: level.progress ?? 0 }}
           >
             <View
               style={[
@@ -203,9 +206,12 @@ const LearningProgress = ({
           styles={styles}
         />
         <TouchableOpacity
+          testID="explore-level-button"
           style={[styles.actionButton, { borderColor: primaryColor }]}
           onPress={handleExplorePress}
           activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel={`Explorer le niveau ${getLevelLabel(currentLevel)}`}
         >
           <Text style={[styles.actionButtonText, { color: primaryColor }]}>
             Explorer le niveau {getLevelLabel(currentLevel)}

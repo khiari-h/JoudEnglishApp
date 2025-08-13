@@ -1,4 +1,5 @@
 // src/components/exercise-common/ExerciseCard/index.js
+import { memo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./style";
 
@@ -36,7 +37,7 @@ const ExerciseCard = ({
             <View style={styles.progressBar}>
               {/* testID utile pour vérifier la largeur dynamique de la barre de progression dans les tests unitaires */}
               <View
-                style={[styles.progressFill, { width: `${progress}%`, backgroundColor: color }]}
+                style={[styles.progressFill, { width: `${Math.round(Number(progress) || 0)}%`, backgroundColor: color }]}
                 testID="progress-fill"
               />
             </View>
@@ -63,4 +64,4 @@ const ExerciseCard = ({
   );
 };
 
-export default ExerciseCard;
+export default memo(ExerciseCard);

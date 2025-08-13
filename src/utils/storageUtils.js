@@ -34,6 +34,12 @@ export const isStorageAvailable = async () => {
  */
 export const storeData = async (key, value) => {
   try {
+    // Si la valeur est null/undefined, on supprime la clé pour éviter l'erreur AsyncStorage
+    if (value === undefined || value === null) {
+      await AsyncStorage.removeItem(key);
+      return true;
+    }
+
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem(key, jsonValue);
     return true;

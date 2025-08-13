@@ -1,13 +1,13 @@
 // src/screens/Dashboard/index.js - VERSION CORRIGÉE - RAFRAÎCHISSEMENT COMPLET
 
-import { useContext, useCallback, useState } from "react";
+import { useContext, useCallback } from "react";
 import { RefreshControl, Text, ScrollView, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { router, useFocusEffect } from "expo-router";
+import { useFocusEffect } from "expo-router";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { useProgress } from "../../contexts/ProgressContext";
+import { useProgressRead } from "../../contexts/ProgressContext";
 import { useCurrentLevel } from '../../contexts/CurrentLevelContext';
 
 // 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES CHIFFRES
@@ -32,17 +32,20 @@ import LearningProgress from "./components/LearningProgress";
 import RevisionOrchestrator from "../VocabularyRevision/RevisionOrchestrator";
 
 // Constantes
-import { EXERCISES, LANGUAGE_LEVELS } from "../../utils/constants";
+import { LANGUAGE_LEVELS } from "../../utils/constants";
 import styles from "./style";
+import useDashboardRefresh from "./hooks/useDashboardRefresh";
+import useDashboardNavigation from "./hooks/useDashboardNavigation";
+import useDashboardSelectors from "./hooks/useDashboardSelectors";
 
 const Dashboard = () => {
   
   // =================== ÉTAT LOCAL RAFRAÎCHISSEMENT ===================
-  const [refreshKey, setRefreshKey] = useState(0); // Force le re-render des composants
+  // Géré par useDashboardRefresh
   
   // =================== CONTEXTES ===================
   const themeContext = useContext(ThemeContext);
-  const progressData = useProgress();
+  const progressData = useProgressRead();
 
   // 🚀 PROGRESSION TEMPS RÉEL
   const { getLevelProgress, refresh: refreshProgress } = useRealTimeProgress();
@@ -64,17 +67,7 @@ const Dashboard = () => {
   const { lastActivity, isLoading: isActivityLoading, reload: reloadActivity } = useLastActivity();
   
   const { refreshing, onRefresh: originalOnRefresh } = useDashboardState(reloadActivity);
-
-  // 🔥 RAFRAÎCHISSEMENT COMPLET DE TOUTES LES SECTIONS
-  const onRefresh = useCallback(async () => {
-    await Promise.all([
-      originalOnRefresh(),    // Recharge lastActivity
-      refreshProgress()       // Recharge progression temps réel
-    ]);
-    
-    // Force le re-render de tous les composants enfants
-    setRefreshKey(prev => prev + 1);
-  }, [originalOnRefresh, refreshProgress]);
+  const { refreshKey, onRefresh } = useDashboardRefresh({ originalOnRefresh, refreshProgress });
 
   useFocusEffect(
     useCallback(() => {
@@ -83,69 +76,16 @@ const Dashboard = () => {
   );
 
   // =================== NAVIGATION ===================
-  
-  const handleContinue = useCallback((activity) => {
-    if (activity === "levelSelection") {
-      router.push("/tabs/levelSelection");
-      return;
-    }
-
-    const { type, level, mode } = activity;
-    const exercise = Object.values(EXERCISES).find(ex => ex.id === type);
-    
-    if (exercise) {
-      const params = { level };
-      if (mode && type === "vocabulary") params.mode = mode;
-      
-      router.push({
-        pathname: exercise.route,
-        params
-      });
-    }
-  }, []);
-
-  const handleChangeLevelVisual = useCallback((levelId) => {
-    handleChangeActiveLevel(levelId);
-    setCurrentLevel(levelId);
-  }, [handleChangeActiveLevel, setCurrentLevel]);
-
-  const handleLevelSelect = useCallback((level) => {
-    setCurrentLevel(level);
-    router.push(`/tabs/exerciseSelection?level=${level}`);
-  }, [setCurrentLevel]);
+  const { handleContinue, handleChangeLevelVisual, handleLevelSelect } = useDashboardNavigation({
+    setCurrentLevel,
+    handleChangeActiveLevel,
+  });
 
   // =================== NIVEAUX ===================
   
-  const allLevels = ['1', '2', '3', '4', '5', '6', 'bonus'].map(levelKey => {
-    const levelInfo = LANGUAGE_LEVELS[levelKey];
-    const progress = getLevelProgress(levelKey);
-    
-    return {
-      id: levelKey,
-      title: levelInfo.title,
-      color: levelInfo.color,
-      icon: levelInfo.icon,
-      progress,
-      isActive: levelKey === currentLevel,
-      isCompleted: progress >= 100,
-    };
-  });
+  const { allLevels, globalProgress } = useDashboardSelectors({ getLevelProgress, currentLevel });
 
-  const globalProgress = getLevelProgress(currentLevel);
-
-  // =================== LOADING ===================
-  
-  if (progressData.isLoading) {
-    return (
-      <Container safeArea backgroundColor={colors.background} withPadding>
-        <View style={styles.loadingContainer}>
-          <Text style={[styles.loadingText, { color: colors.primary }]}>
-            Chargement du tableau de bord...
-          </Text>
-        </View>
-      </Container>
-    );
-  }
+  // Note: on ne bloque plus l'affichage sur isLoading; les sections se rafraîchiront via refreshKey
 
   // =================== BACKGROUND ===================
   
@@ -199,6 +139,8 @@ const Dashboard = () => {
             onPress={handleContinue}
             accentColor={levelColor}
             isLoading={isActivityLoading}
+            accessibilityLabel="Continuer l'activité"
+            accessibilityRole="button"
           />
 
           {/* Actions rapides */}
@@ -225,6 +167,7 @@ const Dashboard = () => {
             onSelectLevel={handleLevelSelect}
             onChangeLevelVisual={handleChangeLevelVisual}
             primaryColor={levelColor}
+            accessibilityLabel="Progression générale"
           />
 
           {/* Espace en bas */}

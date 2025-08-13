@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react-native';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react-native';
 import VocabularyExercise from '../../../../src/screens/exercises/vocabulary';
 
 // Mock dependencies
@@ -11,6 +11,7 @@ jest.mock('expo-router', () => ({
   router: {
     push: jest.fn(),
   },
+  useFocusEffect: jest.fn(() => {}),
 }));
 
 jest.mock('../../../../src/screens/exercises/vocabulary/hooks/useVocabulary', () => ({
@@ -28,14 +29,14 @@ jest.mock('../../../../src/hooks/useLastActivity', () => ({
 jest.mock('../../../../src/utils/vocabulary/vocabularyDataHelper', () => ({
   isBonusLevel: jest.fn(() => false),
   getLevelColor: jest.fn(() => '#007AFF'),
-  getVocabularyData: jest.fn(() => ({
-    categories: [
-      { 
-        name: 'Greetings', 
-        words: [{ word: 'hello' }, { word: 'world' }] 
-      }
-    ]
-  }))
+  loadVocabularyData: jest.fn(async () => ({
+    exercises: [
+      {
+        title: 'Greetings',
+        words: [{ word: 'hello', translation: 'bonjour' }, { word: 'world', translation: 'monde' }],
+      },
+    ],
+  })),
 }));
 
 jest.mock('../../../../src/screens/exercises/vocabulary/style', () => ({
@@ -146,9 +147,9 @@ describe('VocabularyExercise', () => {
     expect(screen.getByTestId('activity-indicator')).toBeTruthy();
   });
 
-  it('should render main components when loaded', () => {
+  it('should render main components when loaded', async () => {
     render(<VocabularyExercise route={{ params: mockRouteParams }} />);
-    expect(screen.getByTestId('VocabularyHeader')).toBeTruthy();
+    await waitFor(() => expect(screen.getByTestId('VocabularyHeader')).toBeTruthy());
     expect(screen.getByTestId('VocabularyProgress')).toBeTruthy();
     expect(screen.getByTestId('VocabularyCategorySelector')).toBeTruthy();
     expect(screen.getByTestId('VocabularyWordSection')).toBeTruthy();
@@ -238,9 +239,9 @@ describe('VocabularyExercise', () => {
     });
   });
 
-  it('should navigate back to exercise selection on back press', () => {
+  it('should navigate back to exercise selection on back press', async () => {
     render(<VocabularyExercise route={{ params: mockRouteParams }} />);
-    const header = screen.getByTestId('VocabularyHeader');
+    const header = await waitFor(() => screen.getByTestId('VocabularyHeader'));
     fireEvent(header, 'onBackPress');
     expect(mockRouterPush).toHaveBeenCalledWith({
       pathname: '/tabs/exerciseSelection',
@@ -248,54 +249,62 @@ describe('VocabularyExercise', () => {
     });
   });
 
-  it('should call changeCategory when category is selected', () => {
+  it('should call changeCategory when category is selected', async () => {
     const mockChangeCategory = jest.fn();
-    mockUseVocabulary.mockReturnValueOnce({
+    mockUseVocabulary.mockReturnValue({
       ...mockUseVocabulary(),
       changeCategory: mockChangeCategory,
       display: { categories: [{ name: 'Cat1' }, { name: 'Cat2' }] },
     });
     render(<VocabularyExercise route={{ params: mockRouteParams }} />);
-    const categorySelector = screen.getByTestId('VocabularyCategorySelector');
-    fireEvent(categorySelector, 'onSelectCategory', 1);
+    const categorySelector = await waitFor(() => screen.getByTestId('VocabularyCategorySelector'));
+    await act(async () => {
+      categorySelector.props.onSelectCategory(1);
+    });
     expect(mockChangeCategory).toHaveBeenCalledWith(1);
   });
 
-  it('should call toggleDetailedProgress when progress is toggled', () => {
+  it('should call toggleDetailedProgress when progress is toggled', async () => {
     const mockToggleDetailedProgress = jest.fn();
-    mockUseVocabulary.mockReturnValueOnce({
+    mockUseVocabulary.mockReturnValue({
       ...mockUseVocabulary(),
       toggleDetailedProgress: mockToggleDetailedProgress,
     });
     render(<VocabularyExercise route={{ params: mockRouteParams }} />);
-    const progress = screen.getByTestId('VocabularyProgress');
-    fireEvent(progress, 'onToggleExpand');
+    const progress = await waitFor(() => screen.getByTestId('VocabularyProgress'));
+    await act(async () => {
+      progress.props.onToggleExpand();
+    });
     expect(mockToggleDetailedProgress).toHaveBeenCalled();
   });
 
-  it('should call toggleTranslation when translation is toggled', () => {
+  it('should call toggleTranslation when translation is toggled', async () => {
     const mockToggleTranslation = jest.fn();
-    mockUseVocabulary.mockReturnValueOnce({
+    mockUseVocabulary.mockReturnValue({
       ...mockUseVocabulary(),
       toggleTranslation: mockToggleTranslation,
     });
     render(<VocabularyExercise route={{ params: mockRouteParams }} />);
-    const wordSection = screen.getByTestId('VocabularyWordSection');
-    fireEvent(wordSection, 'onToggleTranslation');
+    const wordSection = await waitFor(() => screen.getByTestId('VocabularyWordSection'));
+    await act(async () => {
+      wordSection.props.onToggleTranslation();
+    });
     expect(mockToggleTranslation).toHaveBeenCalled();
   });
 
   it('should call handleNextWord and saveData on next button press', async () => {
     const mockHandleNext = jest.fn(() => ({ completed: false }));
     const mockSaveData = jest.fn();
-    mockUseVocabulary.mockReturnValueOnce({
+    mockUseVocabulary.mockReturnValue({
       ...mockUseVocabulary(),
       handleNext: mockHandleNext,
       saveData: mockSaveData,
     });
     render(<VocabularyExercise route={{ params: mockRouteParams }} />);
-    const navigation = screen.getByTestId('VocabularyNavigation');
-    fireEvent(navigation, 'onNext');
+    const navigation = await waitFor(() => screen.getByTestId('VocabularyNavigation'));
+    await act(async () => {
+      await navigation.props.onNext();
+    });
     expect(mockHandleNext).toHaveBeenCalled();
     await waitFor(() => expect(mockSaveData).toHaveBeenCalled());
   });
@@ -303,28 +312,32 @@ describe('VocabularyExercise', () => {
   it('should navigate back when handleNext indicates completion', async () => {
     const mockHandleNext = jest.fn(() => ({ completed: true }));
     const mockSaveData = jest.fn();
-    mockUseVocabulary.mockReturnValueOnce({
+    mockUseVocabulary.mockReturnValue({
       ...mockUseVocabulary(),
       handleNext: mockHandleNext,
       saveData: mockSaveData,
     });
     render(<VocabularyExercise route={{ params: mockRouteParams }} />);
-    const navigation = screen.getByTestId('VocabularyNavigation');
-    fireEvent(navigation, 'onNext');
+    const navigation = await waitFor(() => screen.getByTestId('VocabularyNavigation'));
+    await act(async () => {
+      await navigation.props.onNext();
+    });
     expect(mockHandleNext).toHaveBeenCalled();
     await waitFor(() => expect(mockSaveData).toHaveBeenCalled());
     await waitFor(() => expect(mockNavigationGoBack).toHaveBeenCalled());
   });
 
-  it('should call handlePreviousWord on previous button press', () => {
+  it('should call handlePreviousWord on previous button press', async () => {
     const mockHandlePrevious = jest.fn();
-    mockUseVocabulary.mockReturnValueOnce({
+    mockUseVocabulary.mockReturnValue({
       ...mockUseVocabulary(),
       handlePrevious: mockHandlePrevious,
     });
     render(<VocabularyExercise route={{ params: mockRouteParams }} />);
-    const navigation = screen.getByTestId('VocabularyNavigation');
-    fireEvent(navigation, 'onPrevious');
+    const navigation = await waitFor(() => screen.getByTestId('VocabularyNavigation'));
+    await act(async () => {
+      navigation.props.onPrevious();
+    });
     expect(mockHandlePrevious).toHaveBeenCalled();
   });
 });

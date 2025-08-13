@@ -12,8 +12,12 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
+import useModalAnimation from "./useModalAnimation";
+import ModalBackdrop from "./ModalBackdrop";
+import ModalHeader from "./ModalHeader";
+import ModalBody from "./ModalBody";
+import ModalFooter from "./ModalFooter";
 
 /**
  * Composant Modal personnalisé avec plusieurs variantes et animations
@@ -42,19 +46,7 @@ const Modal = ({
   scrollable = false,
   customAnimation,
 }) => {
-  // Animation personnalisée
-  const [animation] = React.useState(new Animated.Value(0));
-
-  // Exécuter l'animation personnalisée lorsque visible change
-  React.useEffect(() => {
-    if (animationType === "custom" && customAnimation) {
-      Animated.timing(animation, {
-        toValue: visible ? 1 : 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    }
-  }, [visible, animationType, customAnimation]);
+  const customStyle = useModalAnimation({ visible, animationType, position, customAnimation });
 
   // Gérer le clic sur l'arrière-plan
   const handleBackdropPress = useCallback(() => {
@@ -100,47 +92,7 @@ const Modal = ({
   };
 
   // Style d'animation personnalisée
-  const getCustomAnimationStyle = () => {
-    if (animationType !== "custom" || !customAnimation) return {};
-
-    switch (position) {
-      case "bottom":
-        return {
-          transform: [
-            {
-              translateY: animation.interpolate({
-                inputRange: [0, 1],
-                outputRange: [300, 0],
-              }),
-            },
-          ],
-        };
-      case "top":
-        return {
-          transform: [
-            {
-              translateY: animation.interpolate({
-                inputRange: [0, 1],
-                outputRange: [-300, 0],
-              }),
-            },
-          ],
-        };
-      case "center":
-      default:
-        return {
-          opacity: animation,
-          transform: [
-            {
-              scale: animation.interpolate({
-                inputRange: [0, 1],
-                outputRange: [0.8, 1],
-              }),
-            },
-          ],
-        };
-    }
-  };
+  const getCustomAnimationStyle = () => customStyle;
 
   // Construction du contenu de la modal
   const renderModalContent = () => {
@@ -158,37 +110,11 @@ const Modal = ({
           contentContainerStyle,
         ]}
       >
-        {/* En-tête */}
-        {(title || showCloseButton) && (
-          <View style={[styles.header, headerStyle]}>
-            <Text style={styles.title}>{title}</Text>
-            {showCloseButton && (
-              <TouchableOpacity
-                style={styles.closeButton}
-                onPress={onClose}
-                hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              >
-                <Ionicons name="close" size={24} color="#6B7280" />
-              </TouchableOpacity>
-            )}
-          </View>
-        )}
+        <ModalHeader title={title} showCloseButton={showCloseButton} onClose={onClose} headerStyle={headerStyle} />
 
-        {/* Corps */}
-        {scrollable ? (
-          <ScrollView
-            style={[styles.scrollableBody, bodyStyle]}
-            contentContainerStyle={styles.scrollableContent}
-            showsVerticalScrollIndicator
-          >
-            {children}
-          </ScrollView>
-        ) : (
-          <View style={[styles.body, bodyStyle]}>{children}</View>
-        )}
+        <ModalBody scrollable={scrollable} bodyStyle={bodyStyle}>{children}</ModalBody>
 
-        {/* Pied de page */}
-        {footer && <View style={[styles.footer, footerStyle]}>{footer}</View>}
+        <ModalFooter footer={footer} footerStyle={footerStyle} />
       </Animated.View>
     );
 
@@ -213,10 +139,7 @@ const Modal = ({
       animationType={animationType === "custom" ? "none" : animationType}
     >
       <View style={[styles.modalContainer, { backgroundColor: backdropColor }]}>
-        {/* Touche de l'arrière-plan pour fermer */}
-        <TouchableWithoutFeedback onPress={handleBackdropPress}>
-          <View testID="modal-backdrop" style={styles.backdrop} />
-        </TouchableWithoutFeedback>
+        <ModalBackdrop backdropColor={backdropColor} onPress={handleBackdropPress} />
 
         {/* Contenu de la modal */}
         {renderModalContent()}

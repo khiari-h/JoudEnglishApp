@@ -52,12 +52,14 @@ const HeroEmptyCardContent = ({ accentColor, colors, handleLevelSelection, local
     <Text style={localStyles.emoji}>🚀</Text>
     <Text style={[localStyles.title, { color: colors.text }]}>Commencer l&apos;apprentissage</Text>
     <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}>Choisissez votre premier exercice</Text>
-    <TouchableOpacity
-      testID="level-selection-button"
-      style={[localStyles.button, { backgroundColor: accentColor }]}
-      onPress={handleLevelSelection}
-      activeOpacity={0.8}
-    >
+      <TouchableOpacity
+        testID="level-selection-button"
+        accessibilityLabel="Commencer"
+        accessibilityRole="button"
+        style={[localStyles.button, { backgroundColor: accentColor }]}
+        onPress={handleLevelSelection}
+        activeOpacity={0.8}
+      >
       <Text style={localStyles.buttonText}>Commencer {'>'}</Text>
     </TouchableOpacity>
   </View>

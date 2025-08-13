@@ -262,12 +262,17 @@ describe('storageUtils', () => {
   describe('Gestion des erreurs et edge cases', () => {
     it('devrait gérer les données null et undefined', async () => {
       AsyncStorage.setItem.mockResolvedValue();
+      AsyncStorage.removeItem.mockResolvedValue();
 
       const result1 = await storeData('null-test', null);
       const result2 = await storeData('undefined-test', undefined);
 
       expect(result1).toBe(true);
       expect(result2).toBe(true);
+      expect(AsyncStorage.setItem).not.toHaveBeenCalled();
+      expect(AsyncStorage.removeItem).toHaveBeenCalledTimes(2);
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('null-test');
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('undefined-test');
     });
 
     it('devrait gérer les objets circulaires', async () => {

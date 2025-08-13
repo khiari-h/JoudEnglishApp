@@ -1,8 +1,8 @@
 // src/components/exercise-common/OptionsList/index.js
+import { memo, useCallback } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
-import { useCallback } from "react";
 
 /**
  * Liste d'options sélectionnables pour les exercices à choix multiples
@@ -79,6 +79,12 @@ const OptionsList = ({
           style={[styles.optionItem, getOptionStyle(option.id)]}
           onPress={handleOptionPress(option.id)}
           disabled={disabled}
+          accessibilityRole="button"
+          accessibilityLabel={String(option.text)}
+          accessibilityState={{
+            disabled,
+            selected: selectedOptionId === option.id,
+          }}
         >
           <Text style={[styles.optionItemText, getOptionTextStyle(option.id)]}>
             {option.text}
@@ -118,6 +124,12 @@ const OptionsList = ({
           ]}
           onPress={handleOptionPress(option.id)}
           disabled={disabled}
+          accessibilityRole="button"
+          accessibilityLabel={String(option.text)}
+          accessibilityState={{
+            disabled,
+            selected: selectedOptionId === option.id,
+          }}
         >
           <Text style={[styles.gridOptionText, getOptionTextStyle(option.id)]}>
             {option.text}
@@ -138,5 +150,17 @@ const OptionsList = ({
   return layout === "vertical" ? renderVerticalOptions() : renderGridOptions();
 };
 
-export default OptionsList;
+function areEqual(prevProps, nextProps) {
+  return (
+    prevProps.selectedOptionId === nextProps.selectedOptionId &&
+    prevProps.correctOptionId === nextProps.correctOptionId &&
+    prevProps.showCorrectAnswer === nextProps.showCorrectAnswer &&
+    prevProps.disabled === nextProps.disabled &&
+    prevProps.primaryColor === nextProps.primaryColor &&
+    prevProps.layout === nextProps.layout &&
+    prevProps.options === nextProps.options
+  );
+}
+
+export default memo(OptionsList, areEqual);
 

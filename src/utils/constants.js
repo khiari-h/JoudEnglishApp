@@ -118,3 +118,11 @@ export const STORAGE_KEYS = {
   USER_SETTINGS: "user_settings",
   STREAK_DATA: "user_streak_data",
 };
+
+// =================== PARAMÈTRES PAR DÉFAUT ===================
+export const DEFAULT_SETTINGS = {
+  notifications: true,
+  dailyGoal: 15,
+  theme: 'system',
+  reducedMotion: false,
+};

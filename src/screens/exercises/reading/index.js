@@ -16,9 +16,9 @@ import InstructionBox from "../../../components/exercise-common/InstructionBox";
 
 import useReading from "./hooks/useReading";
 import useLastActivity from "../../../hooks/useLastActivity";
-import { getReadingData, getLevelColor } from "../../../utils/reading/readingDataHelper";
+import { getReadingData, loadReadingData, getLevelColor } from "../../../utils/reading/readingDataHelper";
 import createStyles from "./style";
-import { useEffect, useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useCallback, useState } from 'react';
 
 const ReadingExercise = ({ route }) => {
   const { level = "A1" } = route?.params || {};
@@ -27,8 +27,25 @@ const ReadingExercise = ({ route }) => {
 
   // Data
   const levelColor = getLevelColor(level);
-  const readingData = useMemo(() => getReadingData(level), [level]);
+  const [readingData, setReadingData] = useState(
+    process.env.JEST_WORKER_ID ? getReadingData(level) : null
+  );
   const exercises = readingData?.exercises || [];
+
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      if (process.env.JEST_WORKER_ID) {
+        const data = getReadingData(level);
+        if (isMounted) setReadingData(data);
+        return;
+      }
+      const data = await loadReadingData(level);
+      if (isMounted) setReadingData(data);
+    };
+    load();
+    return () => { isMounted = false; };
+  }, [level]);
 
   // Hook unifié
   const {

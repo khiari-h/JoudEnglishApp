@@ -115,7 +115,7 @@ const QuickActions = ({ currentLevel = "1" }) => {
   if (isLoading) {
     return (
       <View style={styles.container}>
-        <Text style={[styles.sectionTitle, { color: colors.text }]}>
+        <Text testID="quick-actions-title" style={[styles.sectionTitle, { color: colors.text }]}>
           ⚡ Actions rapides
         </Text>
         <Text style={[styles.loadingText, { color: colors.textSecondary }]}>
@@ -127,7 +127,7 @@ const QuickActions = ({ currentLevel = "1" }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.sectionTitle, { color: colors.text }]}>
+      <Text testID="quick-actions-title" style={[styles.sectionTitle, { color: colors.text }]}>
         ⚡ Actions rapides
       </Text>
 
@@ -143,6 +143,9 @@ const QuickActions = ({ currentLevel = "1" }) => {
             onPress={action.action}
             activeOpacity={0.7}
             disabled={action.disabled}
+            accessibilityRole="button"
+            accessibilityLabel={`${action.label} – ${action.subtitle}`}
+            accessibilityState={{ disabled: !!action.disabled }}
           >
             <View style={[styles.actionIcon, { backgroundColor: `${action.color}15` }]}>
               <Text style={styles.actionIconText}>{action.icon}</Text>

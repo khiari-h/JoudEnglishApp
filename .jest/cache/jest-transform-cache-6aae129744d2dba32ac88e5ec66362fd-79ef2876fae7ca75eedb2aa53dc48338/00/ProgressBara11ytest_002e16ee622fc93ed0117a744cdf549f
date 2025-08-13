@@ -1,0 +1,23 @@
+59af81c79b374129758981ea8e504455
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _react = _interopRequireDefault(require("react"));
+var _reactNative = require("@testing-library/react-native");
+var _ProgressBar = _interopRequireDefault(require("../../src/components/ui/ProgressBar"));
+var _jsxRuntime = require("react/jsx-runtime");
+describe('ProgressBar accessibility', function () {
+  it('should expose progressbar role and value', function () {
+    var _render = (0, _reactNative.render)((0, _jsxRuntime.jsx)(_ProgressBar.default, {
+        progress: 42,
+        label: "Avancement",
+        showPercentage: true
+      })),
+      getByA11yRole = _render.getByA11yRole;
+    var bar = getByA11yRole('progressbar');
+    expect(bar.props.accessibilityValue).toMatchObject({
+      min: 0,
+      max: 100,
+      now: 42
+    });
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfcmVhY3QiLCJfaW50ZXJvcFJlcXVpcmVEZWZhdWx0IiwicmVxdWlyZSIsIl9yZWFjdE5hdGl2ZSIsIl9Qcm9ncmVzc0JhciIsIl9qc3hSdW50aW1lIiwiZGVzY3JpYmUiLCJpdCIsIl9yZW5kZXIiLCJyZW5kZXIiLCJqc3giLCJkZWZhdWx0IiwicHJvZ3Jlc3MiLCJsYWJlbCIsInNob3dQZXJjZW50YWdlIiwiZ2V0QnlBMTF5Um9sZSIsImJhciIsImV4cGVjdCIsInByb3BzIiwiYWNjZXNzaWJpbGl0eVZhbHVlIiwidG9NYXRjaE9iamVjdCIsIm1pbiIsIm1heCIsIm5vdyJdLCJzb3VyY2VzIjpbIlByb2dyZXNzQmFyLmExMXkudGVzdC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgeyByZW5kZXIgfSBmcm9tICdAdGVzdGluZy1saWJyYXJ5L3JlYWN0LW5hdGl2ZSc7XHJcbmltcG9ydCBQcm9ncmVzc0JhciBmcm9tICcuLi8uLi9zcmMvY29tcG9uZW50cy91aS9Qcm9ncmVzc0Jhcic7XHJcblxyXG5kZXNjcmliZSgnUHJvZ3Jlc3NCYXIgYWNjZXNzaWJpbGl0eScsICgpID0+IHtcclxuICBpdCgnc2hvdWxkIGV4cG9zZSBwcm9ncmVzc2JhciByb2xlIGFuZCB2YWx1ZScsICgpID0+IHtcclxuICAgIGNvbnN0IHsgZ2V0QnlBMTF5Um9sZSB9ID0gcmVuZGVyKDxQcm9ncmVzc0JhciBwcm9ncmVzcz17NDJ9IGxhYmVsPVwiQXZhbmNlbWVudFwiIHNob3dQZXJjZW50YWdlIC8+KTtcclxuICAgIGNvbnN0IGJhciA9IGdldEJ5QTExeVJvbGUoJ3Byb2dyZXNzYmFyJyk7XHJcbiAgICBleHBlY3QoYmFyLnByb3BzLmFjY2Vzc2liaWxpdHlWYWx1ZSkudG9NYXRjaE9iamVjdCh7IG1pbjogMCwgbWF4OiAxMDAsIG5vdzogNDIgfSk7XHJcbiAgfSk7XHJcbn0pO1xyXG5cclxuXHJcbiJdLCJtYXBwaW5ncyI6IjtBQUFBLElBQUFBLE1BQUEsR0FBQUMsc0JBQUEsQ0FBQUMsT0FBQTtBQUNBLElBQUFDLFlBQUEsR0FBQUQsT0FBQTtBQUNBLElBQUFFLFlBQUEsR0FBQUgsc0JBQUEsQ0FBQUMsT0FBQTtBQUE4RCxJQUFBRyxXQUFBLEdBQUFILE9BQUE7QUFFOURJLFFBQVEsQ0FBQywyQkFBMkIsRUFBRSxZQUFNO0VBQzFDQyxFQUFFLENBQUMsMENBQTBDLEVBQUUsWUFBTTtJQUNuRCxJQUFBQyxPQUFBLEdBQTBCLElBQUFDLG1CQUFNLEVBQUMsSUFBQUosV0FBQSxDQUFBSyxHQUFBLEVBQUNOLFlBQUEsQ0FBQU8sT0FBVztRQUFDQyxRQUFRLEVBQUUsRUFBRztRQUFDQyxLQUFLLEVBQUMsWUFBWTtRQUFDQyxjQUFjO01BQUEsQ0FBRSxDQUFDLENBQUM7TUFBekZDLGFBQWEsR0FBQVAsT0FBQSxDQUFiTyxhQUFhO0lBQ3JCLElBQU1DLEdBQUcsR0FBR0QsYUFBYSxDQUFDLGFBQWEsQ0FBQztJQUN4Q0UsTUFBTSxDQUFDRCxHQUFHLENBQUNFLEtBQUssQ0FBQ0Msa0JBQWtCLENBQUMsQ0FBQ0MsYUFBYSxDQUFDO01BQUVDLEdBQUcsRUFBRSxDQUFDO01BQUVDLEdBQUcsRUFBRSxHQUFHO01BQUVDLEdBQUcsRUFBRTtJQUFHLENBQUMsQ0FBQztFQUNuRixDQUFDLENBQUM7QUFDSixDQUFDLENBQUMiLCJpZ25vcmVMaXN0IjpbXX0=
