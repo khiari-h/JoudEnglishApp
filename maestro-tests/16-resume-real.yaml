@@ -10,11 +10,19 @@ appId: com.hamdanek.JoudEnglishApp
     id: "vocabulary-button"
 - assertVisible:
     id: "back-button"
+# Compléter complètement la première catégorie (60 mots)
+# Cliquer 59 fois sur "Suivant" pour aller du mot 0 au mot 59
+- repeat:
+    times: 79
+    commands:
+      - tapOn:
+          id: "next-button"
+# Retourner au Dashboard et vérifier la reprise
 - tapOn:
     id: "back-button"
 - tapOn:
     id: "back-button"
-- openLink: "exp+joudenglishapp://expo-development-client/?url=http://localhost:8082"
+# Maintenant on devrait voir hero-continue-section
 - assertVisible:
     id: "hero-continue-section"
 - assertVisible:
