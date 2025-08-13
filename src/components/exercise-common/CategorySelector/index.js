@@ -2,6 +2,7 @@
 import { useState, useCallback, memo } from "react";
 import { View, ScrollView, TouchableOpacity, Text, Animated } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import PropTypes from 'prop-types';
 import createStyles from "./style";
 
 /**
