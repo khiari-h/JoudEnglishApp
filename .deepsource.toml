@@ -2,4 +2,24 @@ version = 1
 
 [[analyzers]]
 name = "javascript"
-# plus de meta.runtime_version ici
+enabled = true
+
+[[analyzers]]
+name = "typescript"
+enabled = true
+
+# Exclure les tests et fichiers de configuration
+exclude_patterns = [
+  "__tests__/**",
+  "**/*.test.js",
+  "**/*.test.jsx",
+  "**/*.test.ts",
+  "**/*.test.tsx",
+  "**/*.spec.js",
+  "**/*.spec.jsx",
+  "**/*.spec.ts",
+  "**/*.spec.tsx",
+  "maestro-tests/**",
+  "coverage/**",
+  "**/node_modules/**"
+]
