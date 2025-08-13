@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, AccessibilityInfo } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';import PropTypes from 'prop-types';
+
 
 const QuizHeader = ({
   onGoBack,
@@ -38,6 +39,15 @@ const QuizHeader = ({
       </View>
     </View>
   );
+};
+
+
+QuizHeader.propTypes = {
+  onGoBack: PropTypes.func.isRequired,
+  currentIndex: PropTypes.number,
+  totalQuestions: PropTypes.func,
+  score: PropTypes.number,
+  colors: PropTypes.any,
 };
 
 export default QuizHeader;

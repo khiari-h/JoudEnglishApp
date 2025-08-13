@@ -1,7 +1,8 @@
 // src/screens/Lock/ForgotPinScreen.js
 import { useState, useCallback } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import * as Lock from '../../services/lockService';
+import * as Lock from '../../services/lockService';import PropTypes from 'prop-types';
+
 
 const ForgotPinScreen = ({ onReset }) => {
   const [code, setCode] = useState('');
@@ -45,6 +46,11 @@ const ForgotPinScreen = ({ onReset }) => {
       </TouchableOpacity>
     </View>
   );
+};
+
+
+ForgotPinScreen.propTypes = {
+  onReset: PropTypes.func.isRequired,
 };
 
 export default ForgotPinScreen;

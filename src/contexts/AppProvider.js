@@ -3,6 +3,7 @@ import { ThemeProvider } from './ThemeContext';
 import { ProgressProvider } from './ProgressContext';
 import { SettingsProvider } from './SettingContext';
 import { CurrentLevelProvider } from './CurrentLevelContext';
+import PropTypes from 'prop-types';
 
 /**
  * Fournisseur global qui combine tous les contextes de l'application
@@ -20,6 +21,11 @@ const AppProvider = ({ children }) => {
       </SettingsProvider>
     </ThemeProvider>
   );
+};
+
+
+AppProvider.propTypes = {
+  children: PropTypes.any.isRequired,
 };
 
 export default AppProvider;

@@ -2,6 +2,7 @@
 import { createContext, useState, useEffect, useContext, useCallback, useRef, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS } from '../utils/constants';
+import PropTypes from 'prop-types';
 
 // Créer le contexte
 export const ProgressContext = createContext();
@@ -266,6 +267,11 @@ export const useProgressWrite = () => {
     throw new Error('useProgressWrite must be used within a ProgressProvider');
   }
   return context;
+};
+
+
+ProgressContext.propTypes = {
+  children: PropTypes.any.isRequired,
 };
 
 export default ProgressContext;

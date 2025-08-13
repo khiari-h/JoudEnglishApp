@@ -2,6 +2,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import PropTypes from 'prop-types';
 import styles from "./style";
 
 export default function ModalHeader({ title, showCloseButton, onClose, headerStyle }) {
@@ -23,5 +24,12 @@ export default function ModalHeader({ title, showCloseButton, onClose, headerSty
     </View>
   );
 }
+
+ModalHeader.propTypes = {
+  title: PropTypes.string,
+  showCloseButton: PropTypes.bool,
+  onClose: PropTypes.func,
+  headerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
 
 

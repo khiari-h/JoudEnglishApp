@@ -2,7 +2,8 @@
 import React from 'react';
 import { View, Text, Animated } from 'react-native';
 import QuizHeader from './QuizHeader.js';
-import QuizContent from './QuizContent';
+import QuizContent from './QuizContent';import PropTypes from 'prop-types';
+
 
 const ProgressBar = ({ progress, colors, localStyles }) => {
   const displayProgress = !progress || isNaN(progress) ? 0 : Math.round(progress);
@@ -76,6 +77,13 @@ const QuizScreen = ({
       </Animated.View>
     </>
   );
+};
+
+
+ProgressBar.propTypes = {
+  progress: PropTypes.any.isRequired,
+  colors: PropTypes.any.isRequired,
+  localStyles: PropTypes.any.isRequired,
 };
 
 export default QuizScreen;

@@ -1,6 +1,7 @@
 // src/screens/VocabularyRevision/components/EmptyState.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';import PropTypes from 'prop-types';
+
 
 const ProgressBar = ({ progress, goal, colors }) => {
   const percentage = Math.min((progress / goal) * 100, 100);
@@ -83,5 +84,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+
+ProgressBar.propTypes = {
+  progress: PropTypes.any.isRequired,
+  goal: PropTypes.any.isRequired,
+  colors: PropTypes.any.isRequired,
+};
 
 export default EmptyState;

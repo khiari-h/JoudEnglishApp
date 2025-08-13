@@ -3,6 +3,7 @@ import { createContext, useState, useEffect, useCallback, useMemo } from 'react'
 import { useColorScheme } from 'react-native';
 import { getData, storeData } from '../utils/storageUtils';
 import { COLORS } from '../utils/constants';
+import PropTypes from 'prop-types';
 
 // Créer le contexte
 export const ThemeContext = createContext();
@@ -258,6 +259,11 @@ export const ThemeProvider = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
+};
+
+
+ThemeContext.propTypes = {
+  children: PropTypes.any.isRequired,
 };
 
 export default ThemeContext;

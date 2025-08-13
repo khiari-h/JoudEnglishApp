@@ -1,7 +1,8 @@
 // src/screens/Lock/EmergencyResetScreen.js
 import { useState, useCallback } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import * as Lock from '../../services/lockService';
+import * as Lock from '../../services/lockService';import PropTypes from 'prop-types';
+
 
 const EmergencyResetScreen = ({ onDone }) => {
   const [confirm, setConfirm] = useState('');
@@ -32,6 +33,11 @@ const EmergencyResetScreen = ({ onDone }) => {
       </TouchableOpacity>
     </View>
   );
+};
+
+
+EmergencyResetScreen.propTypes = {
+  onDone: PropTypes.func.isRequired,
 };
 
 export default EmergencyResetScreen;

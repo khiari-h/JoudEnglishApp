@@ -2,6 +2,7 @@
 import { createContext, useState, useEffect } from 'react';
 import { storeData, getData } from '../utils/storageUtils';
 import { DEFAULT_SETTINGS } from '../utils/constants';
+import PropTypes from 'prop-types';
 
 // Créer le contexte
 export const SettingsContext = createContext();
@@ -103,6 +104,11 @@ export const SettingsProvider = ({ children }) => {
       {children}
     </SettingsContext.Provider>
   );
+};
+
+
+SettingsContext.propTypes = {
+  children: PropTypes.any.isRequired,
 };
 
 export default SettingsContext;

@@ -1,9 +1,10 @@
 import { createContext, useContext, useState } from "react";
+import PropTypes from 'prop-types';
 
 // Crée le contexte
 const CurrentLevelContext = createContext();
 
-// Provider pour englober l’app
+// Provider pour englober l'app
 export function CurrentLevelProvider({ children, initialLevel = "1" }) {
   const [currentLevel, setCurrentLevel] = useState(initialLevel);
 
@@ -14,7 +15,12 @@ export function CurrentLevelProvider({ children, initialLevel = "1" }) {
   );
 }
 
-// Hook d’accès pratique
+CurrentLevelProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  initialLevel: PropTypes.string,
+};
+
+// Hook d'accès pratique
 export function useCurrentLevel() {
   const context = useContext(CurrentLevelContext);
   if (!context) {

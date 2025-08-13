@@ -2,7 +2,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import NavigationButtons from '../../../components/exercise-common/NavigationButtons'; // ✅ Import du composant NavigationButtons
+import NavigationButtons from '../../../components/exercise-common/NavigationButtons';import PropTypes from 'prop-types';
+ // ✅ Import du composant NavigationButtons
 
 const QuizContent = ({
   currentQuestion,
@@ -115,6 +116,17 @@ const QuizContent = ({
       )}
     </View>
   );
+};
+
+
+QuizContent.propTypes = {
+  currentQuestion: PropTypes.func.isRequired,
+  selectedAnswer: PropTypes.any.isRequired,
+  showResult: PropTypes.bool.isRequired,
+  handleAnswer: PropTypes.func.isRequired,
+  handleContinue: PropTypes.func.isRequired,
+  colors: PropTypes.any.isRequired,
+  localStyles: PropTypes.any.isRequired,
 };
 
 export default QuizContent;

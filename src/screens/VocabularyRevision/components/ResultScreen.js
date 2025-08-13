@@ -1,6 +1,7 @@
 // src/screens/VocabularyRevision/components/ResultScreen.js
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, TouchableOpacity, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, Animated } from 'react-native';import PropTypes from 'prop-types';
+
 
 const AnimatedScoreCard = ({ score, totalQuestions, percentage, resultConfig, colors, localStyles }) => {
   const progressAnim = useRef(new Animated.Value(0)).current;
@@ -122,6 +123,16 @@ const ResultScreen = ({ score, totalQuestions, source, handleRestart, handleFini
       />
     </View>
   );
+};
+
+
+AnimatedScoreCard.propTypes = {
+  score: PropTypes.any.isRequired,
+  totalQuestions: PropTypes.func.isRequired,
+  percentage: PropTypes.any.isRequired,
+  resultConfig: PropTypes.func.isRequired,
+  colors: PropTypes.any.isRequired,
+  localStyles: PropTypes.any.isRequired,
 };
 
 export default ResultScreen;

@@ -1,5 +1,6 @@
 // src/contexts/LockContext.js
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import * as Lock from '../services/lockService';
 
 const LockContext = createContext(null);
@@ -61,6 +62,10 @@ export function LockProvider({ children }) {
     <LockContext.Provider value={value}>{children}</LockContext.Provider>
   );
 }
+
+LockProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export function useLock() {
   const ctx = useContext(LockContext);
