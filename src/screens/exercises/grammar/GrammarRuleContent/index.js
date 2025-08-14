@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 import ContentSection from '../../../../components/ui/ContentSection';
 import createStyles from './style';
 
@@ -148,5 +149,58 @@ const RuleContentInnerSection = ({ rule, levelColor, styles }) => (
     )}
   </View>
 );
+
+// PropTypes pour tous les sous-composants
+CollapsibleHeader.propTypes = {
+  expanded: PropTypes.bool.isRequired,
+  toggleExpanded: PropTypes.func.isRequired,
+  iconRotation: PropTypes.object.isRequired,
+  rule: PropTypes.object.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+HeaderContentSection.propTypes = {
+  expanded: PropTypes.bool.isRequired,
+  iconRotation: PropTypes.object.isRequired,
+  rule: PropTypes.object.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+RuleContentSection.propTypes = {
+  expandAnim: PropTypes.object.isRequired,
+  contentHeight: PropTypes.object.isRequired,
+  rule: PropTypes.object.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+RuleContentInnerSection.propTypes = {
+  rule: PropTypes.shape({
+    explanation: PropTypes.string,
+    examples: PropTypes.arrayOf(PropTypes.shape({
+      english: PropTypes.string,
+      french: PropTypes.string,
+    })),
+    rules: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  levelColor: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour le composant principal GrammarRuleContent
+GrammarRuleContent.propTypes = {
+  rule: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    explanation: PropTypes.string,
+    examples: PropTypes.arrayOf(PropTypes.shape({
+      english: PropTypes.string,
+      french: PropTypes.string,
+    })),
+    rules: PropTypes.arrayOf(PropTypes.string),
+  }),
+  levelColor: PropTypes.string,
+};
 
 export default GrammarRuleContent;

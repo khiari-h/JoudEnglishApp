@@ -3,6 +3,7 @@
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
+import PropTypes from 'prop-types';
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
@@ -232,6 +233,25 @@ const GrammarExerciseRenderer = ({
   }
 
   return null;
+};
+
+// PropTypes pour le composant principal GrammarExerciseRenderer
+GrammarExerciseRenderer.propTypes = {
+  exercise: PropTypes.shape({
+    question: PropTypes.string.isRequired,
+    sentence: PropTypes.string,
+    options: PropTypes.arrayOf(PropTypes.string),
+    answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    type: PropTypes.oneOf(['fillInTheBlank', 'transformation']).isRequired,
+  }),
+  selectedOption: PropTypes.number,
+  setSelectedOption: PropTypes.func.isRequired,
+  inputText: PropTypes.string,
+  setInputText: PropTypes.func.isRequired,
+  showFeedback: PropTypes.bool,
+  isCorrect: PropTypes.bool,
+  exerciseIndex: PropTypes.number,
+  attempts: PropTypes.number,
 };
 
 export default GrammarExerciseRenderer;
