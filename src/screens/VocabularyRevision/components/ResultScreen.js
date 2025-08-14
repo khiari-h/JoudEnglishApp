@@ -1,6 +1,7 @@
 // src/screens/VocabularyRevision/components/ResultScreen.js
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, TouchableOpacity, Animated } from 'react-native';import PropTypes from 'prop-types';
+import { View, Text, TouchableOpacity, Animated } from 'react-native';
+import PropTypes from 'prop-types';
 
 
 const AnimatedScoreCard = ({ score, totalQuestions, percentage, resultConfig, colors, localStyles }) => {
@@ -126,13 +127,41 @@ const ResultScreen = ({ score, totalQuestions, source, handleRestart, handleFini
 };
 
 
+// PropTypes corrigés pour AnimatedScoreCard
 AnimatedScoreCard.propTypes = {
-  score: PropTypes.any.isRequired,
-  totalQuestions: PropTypes.func.isRequired,
-  percentage: PropTypes.any.isRequired,
-  resultConfig: PropTypes.func.isRequired,
-  colors: PropTypes.any.isRequired,
-  localStyles: PropTypes.any.isRequired,
+  score: PropTypes.number.isRequired,
+  totalQuestions: PropTypes.number.isRequired,
+  percentage: PropTypes.number.isRequired,
+  resultConfig: PropTypes.shape({
+    emoji: PropTypes.string,
+    title: PropTypes.string,
+    message: PropTypes.string,
+    color: PropTypes.string,
+  }).isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour ResultButtons
+ResultButtons.propTypes = {
+  colors: PropTypes.object.isRequired,
+  resultConfig: PropTypes.shape({
+    color: PropTypes.string.isRequired,
+  }).isRequired,
+  handleRestartPress: PropTypes.func.isRequired,
+  handleFinishPress: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour le composant principal ResultScreen
+ResultScreen.propTypes = {
+  score: PropTypes.number.isRequired,
+  totalQuestions: PropTypes.number.isRequired,
+  source: PropTypes.string,
+  handleRestart: PropTypes.func.isRequired,
+  handleFinish: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+  colors: PropTypes.object.isRequired,
 };
 
 export default ResultScreen;

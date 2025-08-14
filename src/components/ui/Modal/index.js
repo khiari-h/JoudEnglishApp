@@ -12,6 +12,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import PropTypes from 'prop-types';
 import styles from "./style";
 import useModalAnimation from "./useModalAnimation";
 import ModalBackdrop from "./ModalBackdrop";
@@ -146,6 +147,32 @@ const Modal = ({
       </View>
     </RNModal>
   );
+};
+
+// PropTypes pour le composant Modal
+Modal.propTypes = {
+  visible: PropTypes.bool,
+  onClose: PropTypes.func,
+  title: PropTypes.string,
+  children: PropTypes.node,
+  footer: PropTypes.node,
+  position: PropTypes.oneOf(['center', 'bottom', 'top']),
+  animationType: PropTypes.oneOf(['none', 'slide', 'fade', 'custom']),
+  closeOnBackdropPress: PropTypes.bool,
+  showCloseButton: PropTypes.bool,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  fullScreen: PropTypes.bool,
+  transparent: PropTypes.bool,
+  backdropColor: PropTypes.string,
+  contentContainerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  headerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  footerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  bodyStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  avoidKeyboard: PropTypes.bool,
+  scrollable: PropTypes.bool,
+  customAnimation: PropTypes.object,
 };
 
 export default Modal;

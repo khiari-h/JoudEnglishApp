@@ -8,6 +8,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 import styles from "./style";
 
 /**
@@ -180,6 +181,38 @@ const Header = ({
       )}
     </View>
   );
+};
+
+// PropTypes pour le composant Header
+Header.propTypes = {
+  // Options de base
+  title: PropTypes.string,
+  showBackButton: PropTypes.bool,
+  onBackPress: PropTypes.func,
+  rightComponent: PropTypes.node,
+  rightIcon: PropTypes.string,
+  onRightPress: PropTypes.func,
+
+  // Style et apparence
+  backgroundColor: PropTypes.string,
+  textColor: PropTypes.string,
+  withShadow: PropTypes.bool,
+  withBottomBorder: PropTypes.bool,
+  withStatusBar: PropTypes.bool,
+  statusBarColor: PropTypes.string,
+  statusBarStyle: PropTypes.oneOf(['default', 'light-content', 'dark-content']),
+  condensed: PropTypes.bool,
+
+  // Mode titre large
+  largeTitleMode: PropTypes.bool,
+  subtitle: PropTypes.string,
+
+  // Composants personnalisés
+  leftComponent: PropTypes.node,
+  bottomComponent: PropTypes.node,
+  children: PropTypes.node,
+  contentContainerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  titleContainerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default Header;
