@@ -1,4 +1,5 @@
 import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 import Modal from '../../../../components/ui/Modal';
 import styles from './style';
 
@@ -102,3 +103,20 @@ const PhrasesDetailsModal = ({
 };
 
 export default PhrasesDetailsModal;
+
+// PropTypes pour le composant PhrasesDetailsModal
+PhrasesDetailsModal.propTypes = {
+  phrase: PropTypes.shape({
+    english: PropTypes.string.isRequired,
+    translation: PropTypes.string.isRequired,
+    context: PropTypes.string,
+    examples: PropTypes.arrayOf(PropTypes.shape({
+      english: PropTypes.string.isRequired,
+      translation: PropTypes.string.isRequired,
+    })),
+    notes: PropTypes.string,
+  }).isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  levelColor: PropTypes.string.isRequired,
+};

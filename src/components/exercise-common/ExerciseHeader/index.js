@@ -87,11 +87,28 @@ const HeaderLeftSection = ({ handleClose, backIcon, exerciseIcon, title, exercis
   </View>
 );
 
+// PropTypes pour HeaderLeftSection
+HeaderLeftSection.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  backIcon: PropTypes.string.isRequired,
+  exerciseIcon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  exerciseColor: PropTypes.string.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
 const LevelBadge = ({ displayLevel, levelColor, localStyles }) => (
   <View style={[localStyles.levelBadge, { backgroundColor: levelColor }]}> 
     <Text style={localStyles.levelText}>{displayLevel}</Text>
   </View>
 );
+
+// PropTypes pour LevelBadge
+LevelBadge.propTypes = {
+  displayLevel: PropTypes.string.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
 
 // PropTypes pour le composant principal ExerciseHeader
 ExerciseHeader.propTypes = {

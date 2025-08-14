@@ -52,6 +52,12 @@ const HeaderLeftSection = ({ colors, localStyles }) => (
   </View>
 );
 
+// PropTypes pour HeaderLeftSection
+HeaderLeftSection.propTypes = {
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
 const HeaderRightSection = ({ displayLevel, levelColor, colors, localStyles }) => (
   <View style={localStyles.rightSection}>
     <View style={[localStyles.levelBadge, { backgroundColor: colors.surface }]}> 
@@ -59,6 +65,14 @@ const HeaderRightSection = ({ displayLevel, levelColor, colors, localStyles }) =
     </View>
   </View>
 );
+
+// PropTypes pour HeaderRightSection
+HeaderRightSection.propTypes = {
+  displayLevel: PropTypes.string.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
 
 // PropTypes pour le composant principal ModernHeader
 ModernHeader.propTypes = {

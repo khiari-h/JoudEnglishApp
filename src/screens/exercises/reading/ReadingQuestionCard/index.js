@@ -1,6 +1,7 @@
 // ReadingQuestionCard/index.js - VERSION SIMPLE
 import { View, Text, TouchableOpacity, Animated } from "react-native";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 import { Ionicons } from "@expo/vector-icons";
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";
@@ -24,6 +25,16 @@ const ReadingQuestionCard = ({
 }) => {
   const styles = createStyles(levelColor);
 
+  // Hook AVANT tout return conditionnel ✅
+  const handleOptionPressCallback = useCallback(
+    (optionIndex) => () => {
+      if (!showFeedback) {
+        onSelectAnswer(optionIndex);
+      }
+    },
+    [onSelectAnswer, showFeedback]
+  );
+
   if (!question) return null;
 
   // Determine option state
@@ -42,16 +53,6 @@ const ReadingQuestionCard = ({
     
     return 'default';
   };
-
-  // Handler stable pour la sélection d'une option
-  const handleOptionPressCallback = useCallback(
-    (optionIndex) => () => {
-      if (!showFeedback) {
-        onSelectAnswer(optionIndex);
-      }
-    },
-    [onSelectAnswer, showFeedback]
-  );
 
   return (
     <Animated.View
@@ -166,6 +167,17 @@ const ReadingQuestionCard = ({
       </View>
     </Animated.View>
   );
+};
+
+ReadingQuestionCard.propTypes = {
+  question: PropTypes.object.isRequired,
+  questionIndex: PropTypes.number.isRequired,
+  selectedAnswer: PropTypes.number,
+  onSelectAnswer: PropTypes.func.isRequired,
+  showFeedback: PropTypes.bool,
+  fadeAnim: PropTypes.instanceOf(Animated.Value).isRequired,
+  slideAnim: PropTypes.instanceOf(Animated.Value).isRequired,
+  levelColor: PropTypes.string,
 };
 
 export default ReadingQuestionCard;
