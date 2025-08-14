@@ -3,6 +3,7 @@ import { useContext, useCallback } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router, useFocusEffect } from "expo-router";
+import PropTypes from 'prop-types';
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -200,6 +201,50 @@ const LevelSelection = () => {
       </LinearGradient>
     </Container>
   );
+};
+
+// PropTypes pour tous les sous-composants
+ModernCardHeader.propTypes = {
+  level: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    progress: PropTypes.number.isRequired,
+  }).isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+ModernProgress.propTypes = {
+  level: PropTypes.shape({
+    hasProgress: PropTypes.bool,
+    progress: PropTypes.number,
+  }).isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+ModernCardButton.propTypes = {
+  level: PropTypes.shape({
+    hasStarted: PropTypes.bool,
+    color: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  handleLevelPress: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+LevelCardContent.propTypes = {
+  level: PropTypes.object.isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+  handleLevelPress: PropTypes.func.isRequired,
+};
+
+LevelListSection.propTypes = {
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+  levels: PropTypes.array.isRequired,
+  renderLevelCard: PropTypes.func.isRequired,
 };
 
 export default LevelSelection;

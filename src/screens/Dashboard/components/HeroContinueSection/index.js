@@ -1,6 +1,7 @@
 // src/screens/Dashboard/components/HeroContinueSection/index.js
 import { useContext, useCallback } from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import PropTypes from 'prop-types';
 import Card from "../../../../components/ui/Card";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import styles from "./style";
@@ -125,6 +126,47 @@ const HeroContinueSection = ({
       </Card>
     </View>
   );
+};
+
+// PropTypes pour HeroCardContent
+HeroCardContent.propTypes = {
+  lastActivity: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    level: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    metadata: PropTypes.shape({
+      word: PropTypes.number,
+      totalWords: PropTypes.number,
+      categoryIndex: PropTypes.number,
+    }),
+  }).isRequired,
+  accentColor: PropTypes.string.isRequired,
+  colors: PropTypes.object.isRequired,
+  handleContinue: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour HeroEmptyCardContent
+HeroEmptyCardContent.propTypes = {
+  accentColor: PropTypes.string.isRequired,
+  colors: PropTypes.object.isRequired,
+  handleLevelSelection: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour le composant principal HeroContinueSection
+HeroContinueSection.propTypes = {
+  lastActivity: PropTypes.shape({
+    title: PropTypes.string,
+    level: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    metadata: PropTypes.shape({
+      word: PropTypes.number,
+      totalWords: PropTypes.number,
+      categoryIndex: PropTypes.number,
+    }),
+  }),
+  onPress: PropTypes.func,
+  accentColor: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 export default HeroContinueSection;

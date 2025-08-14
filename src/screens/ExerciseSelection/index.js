@@ -3,6 +3,7 @@ import { useContext, useMemo, useCallback } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router, useFocusEffect } from "expo-router";
+import PropTypes from 'prop-types';
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -236,6 +237,56 @@ const ExerciseSelection = ({ level }) => {
       </LinearGradient>
     </Container>
   );
+};
+
+// PropTypes pour tous les sous-composants
+CardHeader.propTypes = {
+  exercise: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    progress: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+Progression.propTypes = {
+  exercise: PropTypes.shape({
+    hasProgress: PropTypes.bool,
+    progress: PropTypes.number,
+  }).isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+CardButton.propTypes = {
+  exercise: PropTypes.shape({
+    hasProgress: PropTypes.bool,
+    color: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  handleExercisePress: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+ExerciseCardContent.propTypes = {
+  exercise: PropTypes.object.isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+  handleExercisePress: PropTypes.func.isRequired,
+};
+
+ExerciseListSection.propTypes = {
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+  exercises: PropTypes.array.isRequired,
+  renderExerciseCard: PropTypes.func.isRequired,
+};
+
+// PropTypes pour le composant principal
+ExerciseSelection.propTypes = {
+  level: PropTypes.string,
 };
 
 export default ExerciseSelection;

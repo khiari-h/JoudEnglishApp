@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, LayoutAnimation, Platform } from "react-n
 import { useCallback } from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
+import PropTypes from 'prop-types';
 import ProgressBar from "../ProgressBar";
 import createStyles from "./style";
 
@@ -194,6 +195,41 @@ const CategoryList = ({ categoryData, handleCategoryPress, levelColor, styles })
       })}
     </View>
   );
+};
+
+// PropTypes pour le composant principal ProgressCard
+ProgressCard.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  progress: PropTypes.number,
+  completed: PropTypes.number,
+  total: PropTypes.number,
+  levelColor: PropTypes.string,
+  expandable: PropTypes.bool,
+  expanded: PropTypes.bool,
+  onToggleExpand: PropTypes.func,
+  categoryData: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    title: PropTypes.string,
+    completed: PropTypes.number,
+    total: PropTypes.number,
+    progress: PropTypes.number,
+  })),
+  onCategoryPress: PropTypes.func,
+};
+
+// PropTypes pour CategoryList
+CategoryList.propTypes = {
+  categoryData: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    title: PropTypes.string,
+    completed: PropTypes.number,
+    total: PropTypes.number,
+    progress: PropTypes.number,
+  })),
+  handleCategoryPress: PropTypes.func,
+  levelColor: PropTypes.string,
+  styles: PropTypes.object.isRequired,
 };
 
 export default ProgressCard;
