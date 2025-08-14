@@ -9,6 +9,7 @@ import {
   Share,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import PropTypes from "prop-types";
 import styles from "./style";
 
 /**
@@ -25,6 +26,14 @@ const ResultsHeader = ({ level, levelColor, exerciseType, localStyles }) => (
   </View>
 );
 
+// PropTypes pour ResultsHeader
+ResultsHeader.propTypes = {
+  level: PropTypes.string.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  exerciseType: PropTypes.string.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
 // Sous-composant ScoreSection
 const ScoreSection = ({ color, icon, successPercentage, correctAnswers, totalQuestions, title, message, localStyles }) => (
   <View style={localStyles.scoreSection}>
@@ -40,6 +49,18 @@ const ScoreSection = ({ color, icon, successPercentage, correctAnswers, totalQue
   </View>
 );
 
+// PropTypes pour ScoreSection
+ScoreSection.propTypes = {
+  color: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  successPercentage: PropTypes.number.isRequired,
+  correctAnswers: PropTypes.number.isRequired,
+  totalQuestions: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
 // Sous-composant FeedbackSection
 const FeedbackSection = ({ feedback, localStyles }) => (
   feedback ? (
@@ -49,6 +70,12 @@ const FeedbackSection = ({ feedback, localStyles }) => (
     </View>
   ) : null
 );
+
+// PropTypes pour FeedbackSection
+FeedbackSection.propTypes = {
+  feedback: PropTypes.string,
+  localStyles: PropTypes.object.isRequired,
+};
 
 // Sous-composant ResultsButtons
 const ResultsButtons = ({ shareResults, onRetry, onContinue, levelColor, localStyles }) => (
@@ -70,6 +97,15 @@ const ResultsButtons = ({ shareResults, onRetry, onContinue, levelColor, localSt
     </TouchableOpacity>
   </>
 );
+
+// PropTypes pour ResultsButtons
+ResultsButtons.propTypes = {
+  shareResults: PropTypes.func.isRequired,
+  onRetry: PropTypes.func.isRequired,
+  onContinue: PropTypes.func.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
 
 // Refactor ResultsScreen pour utiliser les sous-composants
 const ResultsScreen = ({
@@ -178,6 +214,29 @@ const ResultsScreen = ({
   );
 };
 
+// PropTypes pour ResultsScreen
+ResultsScreen.propTypes = {
+  totalQuestions: PropTypes.number,
+  correctAnswers: PropTypes.number,
+  incorrectAnswers: PropTypes.number,
+  skippedAnswers: PropTypes.number,
+  timeTaken: PropTypes.string,
+  exerciseType: PropTypes.string,
+  level: PropTypes.string,
+  levelColor: PropTypes.string,
+  feedback: PropTypes.string,
+  onRetry: PropTypes.func,
+  onContinue: PropTypes.func,
+  showDetailedResults: PropTypes.bool,
+  detailedResults: PropTypes.arrayOf(PropTypes.shape({
+    question: PropTypes.string.isRequired,
+    isCorrect: PropTypes.bool.isRequired,
+    isSkipped: PropTypes.bool.isRequired,
+    userAnswer: PropTypes.string,
+    correctAnswer: PropTypes.string,
+  })),
+};
+
 const StatsSection = ({ correctAnswers, incorrectAnswers, skippedAnswers, timeTaken, localStyles }) => (
   <View style={localStyles.statsContainer}>
     <View style={localStyles.statItem}>
@@ -221,6 +280,15 @@ const StatsSection = ({ correctAnswers, incorrectAnswers, skippedAnswers, timeTa
     </View>
   </View>
 );
+
+// PropTypes pour StatsSection
+StatsSection.propTypes = {
+  correctAnswers: PropTypes.number.isRequired,
+  incorrectAnswers: PropTypes.number.isRequired,
+  skippedAnswers: PropTypes.number.isRequired,
+  timeTaken: PropTypes.string.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
 
 const DetailedResultsSection = ({ showDetailedResults, detailedResults, localStyles }) => (
   showDetailedResults && detailedResults.length > 0 && (
@@ -285,5 +353,13 @@ const DetailedResultsSection = ({ showDetailedResults, detailedResults, localSty
     </View>
   )
 );
+
+// PropTypes pour DetailedResultsSection
+DetailedResultsSection.propTypes = {
+  showDetailedResults: PropTypes.bool.isRequired,
+  detailedResults: PropTypes.array.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
 export default ResultsScreen;
 
