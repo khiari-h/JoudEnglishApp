@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../../utils/constants";
 import styles from "./style";
 
@@ -91,5 +92,14 @@ const LevelBadge = ({ displayLevel, levelColor, localStyles }) => (
     <Text style={localStyles.levelText}>{displayLevel}</Text>
   </View>
 );
+
+// PropTypes pour le composant principal ExerciseHeader
+ExerciseHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  level: PropTypes.string.isRequired,
+  exerciseType: PropTypes.string,
+  onClose: PropTypes.func,
+  backIcon: PropTypes.string,
+};
 
 export default ExerciseHeader;

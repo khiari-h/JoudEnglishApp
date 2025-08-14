@@ -1,6 +1,7 @@
 // SpellingCard/index.js - VERSION PROPRE
 
 import { View, Text, ScrollView } from "react-native";
+import PropTypes from 'prop-types';
 
 import HeroCard from "../../../../components/ui/HeroCard";
 import RevealButton from "../../../../components/ui/RevealButton";
@@ -143,6 +144,29 @@ const SpellingCard = ({
       </View>
     </ScrollView>
   );
+};
+
+// PropTypes pour le composant SpellingCard
+SpellingCard.propTypes = {
+  exercise: PropTypes.shape({
+    type: PropTypes.oneOf(['correction', 'spelling_rule', 'homophones']).isRequired,
+    wordToCorrect: PropTypes.string,
+    rule: PropTypes.string,
+    instruction: PropTypes.string,
+    sentence: PropTypes.string,
+    choices: PropTypes.arrayOf(PropTypes.string),
+    hint: PropTypes.string,
+    correctAnswer: PropTypes.string,
+    explanation: PropTypes.string,
+  }),
+  userInput: PropTypes.string,
+  showHint: PropTypes.bool,
+  showFeedback: PropTypes.bool,
+  isCorrect: PropTypes.bool,
+  isCompleted: PropTypes.bool,
+  onChangeText: PropTypes.func.isRequired,
+  onToggleHint: PropTypes.func.isRequired,
+  levelColor: PropTypes.string.isRequired,
 };
 
 export default SpellingCard;

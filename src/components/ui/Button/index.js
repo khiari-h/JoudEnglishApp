@@ -1,5 +1,6 @@
 // src/components/ui/Button/index.js
 import { View } from "react-native";
+import PropTypes from 'prop-types';
 import styles from "./style";
 import BasePressable from "./BasePressable";
 import ButtonSpinner from "./ButtonSpinner";
@@ -83,6 +84,27 @@ const Button = ({
       )}
     </BasePressable>
   );
+};
+
+// PropTypes pour le composant Button
+Button.propTypes = {
+  title: PropTypes.string,
+  onPress: PropTypes.func.isRequired,
+  variant: PropTypes.oneOf(['filled', 'outlined', 'text', 'icon', 'tonal']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'info']),
+  fullWidth: PropTypes.bool,
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
+  leftIcon: PropTypes.string,
+  rightIcon: PropTypes.string,
+  iconOnly: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  onLongPress: PropTypes.func,
+  elevation: PropTypes.bool,
+  uppercase: PropTypes.bool,
+  rounded: PropTypes.bool,
 };
 
 export default Button;

@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import PropTypes from 'prop-types';
 import FullCorrectionMode from "../modes/FullCorrectionMode";
 import IdentifyErrorsMode from "../modes/IdentifyErrorsMode";
 import MultipleChoiceMode from "../modes/MultipleChoiceMode";
@@ -91,6 +92,23 @@ const ErrorCorrectionWordSection = memo(({
     </View>
   );
 });
+
+// PropTypes pour le composant principal ErrorCorrectionWordSection
+ErrorCorrectionWordSection.propTypes = {
+  currentExercise: PropTypes.object.isRequired,
+  exerciseCounter: PropTypes.string.isRequired,
+  correctionMode: PropTypes.oneOf(['full', 'identify', 'multiple_choice']).isRequired,
+  levelColor: PropTypes.string.isRequired,
+  showFeedback: PropTypes.bool.isRequired,
+  isCorrect: PropTypes.bool.isRequired,
+  // Mode-specific props
+  userCorrection: PropTypes.string,
+  selectedErrorIndices: PropTypes.arrayOf(PropTypes.number),
+  selectedChoiceIndex: PropTypes.number,
+  onChangeUserCorrection: PropTypes.func,
+  onToggleErrorIndex: PropTypes.func,
+  onSelectChoice: PropTypes.func,
+};
 
 ErrorCorrectionWordSection.displayName = "ErrorCorrectionWordSection";
 
