@@ -1,5 +1,6 @@
 // src/screens/exercises/wordGames/WordGamesCard/index.js
 import { View, Text, ScrollView, Animated } from "react-native";
+import PropTypes from 'prop-types';
 import MatchingGame from "../MatchingGame";
 import CategorizationGame from "../CategorizationGame";
 import FeedbackMessage from "../FeedbackMessage";
@@ -106,6 +107,25 @@ const WordGamesCard = ({
       </Animated.View>
     </ScrollView>
   );
+};
+
+// PropTypes pour le composant principal WordGamesCard
+WordGamesCard.propTypes = {
+  currentGame: PropTypes.shape({
+    type: PropTypes.oneOf(['matching', 'categorization']).isRequired,
+    title: PropTypes.string,
+    successMessage: PropTypes.string,
+    failureMessage: PropTypes.string,
+  }).isRequired,
+  selectedItems: PropTypes.array.isRequired,
+  matchedItems: PropTypes.array.isRequired,
+  shuffledOptions: PropTypes.array.isRequired,
+  showFeedback: PropTypes.bool.isRequired,
+  isCorrect: PropTypes.bool.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  fadeAnim: PropTypes.object.isRequired,
+  bounceAnim: PropTypes.object.isRequired,
+  onSelectItem: PropTypes.func.isRequired,
 };
 
 export default WordGamesCard;

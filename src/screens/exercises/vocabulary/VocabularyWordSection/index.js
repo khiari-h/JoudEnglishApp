@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import PropTypes from 'prop-types';
 import VocabularyWordCard from "../VocabularyWordCard"; // ← Utilise la version refactorisée
 import createStyles from "./style";
 
@@ -63,6 +64,27 @@ const CounterSection = ({ wordCounter, levelColor, styles }) => (
     </LinearGradient>
   </View>
 );
+
+// PropTypes pour CounterSection
+CounterSection.propTypes = {
+  wordCounter: PropTypes.string.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour le composant principal VocabularyWordSection
+VocabularyWordSection.propTypes = {
+  currentWord: PropTypes.shape({
+    word: PropTypes.string,
+    translation: PropTypes.string,
+    definition: PropTypes.string,
+    example: PropTypes.string,
+  }),
+  wordCounter: PropTypes.string.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  showTranslation: PropTypes.bool.isRequired,
+  onToggleTranslation: PropTypes.func.isRequired,
+};
 
 VocabularyWordSection.displayName = "VocabularyWordSection";
 

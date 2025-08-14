@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import PropTypes from 'prop-types';
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import styles from "./style";
 
@@ -58,5 +59,11 @@ const HeaderRightSection = ({ displayLevel, levelColor, colors, localStyles }) =
     </View>
   </View>
 );
+
+// PropTypes pour le composant principal ModernHeader
+ModernHeader.propTypes = {
+  level: PropTypes.string,
+  levelColor: PropTypes.string,
+};
 
 export default ModernHeader;

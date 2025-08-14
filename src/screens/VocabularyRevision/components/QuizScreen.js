@@ -1,8 +1,9 @@
 // src/screens/VocabularyRevision/components/QuizScreen.js
 import React from 'react';
 import { View, Text, Animated } from 'react-native';
+import PropTypes from 'prop-types';
 import QuizHeader from './QuizHeader.js';
-import QuizContent from './QuizContent';import PropTypes from 'prop-types';
+import QuizContent from './QuizContent';
 
 
 const ProgressBar = ({ progress, colors, localStyles }) => {
@@ -80,10 +81,31 @@ const QuizScreen = ({
 };
 
 
+// PropTypes corrigés pour ProgressBar
 ProgressBar.propTypes = {
-  progress: PropTypes.any.isRequired,
-  colors: PropTypes.any.isRequired,
-  localStyles: PropTypes.any.isRequired,
+  progress: PropTypes.number.isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour le composant principal QuizScreen
+QuizScreen.propTypes = {
+  quizEngine: PropTypes.shape({
+    currentQuestionIndex: PropTypes.number.isRequired,
+    totalQuestions: PropTypes.number.isRequired,
+    score: PropTypes.number.isRequired,
+    progress: PropTypes.number.isRequired,
+    currentQuestion: PropTypes.object.isRequired,
+    selectedChoice: PropTypes.number,
+    showResult: PropTypes.bool.isRequired,
+  }).isRequired,
+  onGoBack: PropTypes.func.isRequired,
+  onAnswer: PropTypes.func.isRequired,
+  onContinue: PropTypes.func.isRequired,
+  slideAnim: PropTypes.object.isRequired,
+  shakeAnim: PropTypes.object.isRequired,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
 };
 
 export default QuizScreen;

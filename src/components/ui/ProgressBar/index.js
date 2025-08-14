@@ -1,5 +1,6 @@
 // src/components/ui/ProgressBar/index.js - Version Mobile-First Simple
 import { View, Text } from "react-native";
+import PropTypes from 'prop-types';
 import createStyles from "./style";
 import useProgressAnimation from "./useProgressAnimation";
 import ProgressTrack from "./ProgressTrack";
@@ -104,6 +105,26 @@ const ProgressBar = ({
       )}
     </View>
   );
+};
+
+// PropTypes pour le composant ProgressBar
+ProgressBar.propTypes = {
+  progress: PropTypes.number,
+  showPercentage: PropTypes.bool,
+  showValue: PropTypes.bool,
+  total: PropTypes.number,
+  height: PropTypes.number,
+  backgroundColor: PropTypes.string,
+  fillColor: PropTypes.string,
+  borderRadius: PropTypes.number,
+  animated: PropTypes.bool,
+  animationDuration: PropTypes.number,
+  label: PropTypes.string,
+  labelPosition: PropTypes.oneOf(['top', 'bottom']),
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  valueFormatter: PropTypes.func,
+  percentageFormatter: PropTypes.func,
+  testID: PropTypes.string,
 };
 
 export default ProgressBar;

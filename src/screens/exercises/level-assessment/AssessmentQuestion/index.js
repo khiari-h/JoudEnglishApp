@@ -1,6 +1,7 @@
 // AssessmentQuestion/index.js - VERSION REFACTORISÉE avec composants génériques
 
 import { View, TouchableOpacity, Text } from "react-native";
+import PropTypes from 'prop-types';
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
@@ -108,6 +109,20 @@ const AssessmentQuestion = ({
       )}
     </View>
   );
+};
+
+// PropTypes pour le composant AssessmentQuestion
+AssessmentQuestion.propTypes = {
+  question: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    correctAnswer: PropTypes.number.isRequired,
+    explanation: PropTypes.string,
+  }).isRequired,
+  selectedAnswer: PropTypes.number,
+  showFeedback: PropTypes.bool.isRequired,
+  levelColor: PropTypes.string,
+  onSelectAnswer: PropTypes.func.isRequired,
 };
 
 export default AssessmentQuestion;

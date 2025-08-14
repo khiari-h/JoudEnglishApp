@@ -1,6 +1,7 @@
 // src/screens/VocabularyRevision/components/EmptyState.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';import PropTypes from 'prop-types';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 
 const ProgressBar = ({ progress, goal, colors }) => {
@@ -86,10 +87,22 @@ const styles = StyleSheet.create({
 });
 
 
+// PropTypes corrigés pour ProgressBar
 ProgressBar.propTypes = {
-  progress: PropTypes.any.isRequired,
-  goal: PropTypes.any.isRequired,
-  colors: PropTypes.any.isRequired,
+  progress: PropTypes.number.isRequired,
+  goal: PropTypes.number.isRequired,
+  colors: PropTypes.object.isRequired,
+};
+
+// PropTypes pour le composant principal EmptyState
+EmptyState.propTypes = {
+  type: PropTypes.oneOf(['locked', 'loading', 'error', 'noWords']).isRequired,
+  message: PropTypes.string,
+  onAction: PropTypes.func,
+  colors: PropTypes.object.isRequired,
+  localStyles: PropTypes.object.isRequired,
+  progress: PropTypes.number,
+  goal: PropTypes.number,
 };
 
 export default EmptyState;
