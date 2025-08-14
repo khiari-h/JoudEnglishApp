@@ -73,6 +73,11 @@ describe('arrayUtils', () => {
       const result = shuffleAndTake(input, 3);
       
       expect(result).toHaveLength(3);
+      // Vérifier que tous les éléments viennent de l'array d'origine
+      expect(result.every(item => input.includes(item))).toBe(true);
+      // Vérifier qu'il n'y a pas de doublons
+      expect(result).toHaveLength(new Set(result).size);
+      // Vérifier que le contenu est correct (ordre peut varier)
       expect(result.sort()).toEqual([1, 2, 3, 4, 5].slice(0, 3).sort());
     });
 
@@ -129,34 +134,45 @@ describe('arrayUtils', () => {
     it('devrait modifier l\'array original', () => {
       const input = [1, 2, 3, 4, 5];
       const originalReference = input;
-      const result = shuffleInPlace(input);
+      const originalContent = [...input];
       
-      expect(result).toBe(originalReference); // Même référence
-      expect(result).toHaveLength(5);
+      shuffleInPlace(input);
+      
+      expect(input).toBe(originalReference); // Même référence
+      expect(input).toHaveLength(5);
+      expect(input.sort()).toEqual(originalContent.sort()); // Même contenu mais ordre différent
     });
 
-    it('devrait retourner l\'array original pour un array vide', () => {
+    it('devrait ne rien faire pour un array vide', () => {
       const input = [];
-      const result = shuffleInPlace(input);
+      const originalReference = input;
       
-      expect(result).toBe(input);
-      expect(result).toEqual([]);
+      shuffleInPlace(input);
+      
+      expect(input).toBe(originalReference);
+      expect(input).toEqual([]);
     });
 
-    it('devrait retourner l\'array original pour un array avec un seul élément', () => {
+    it('devrait ne rien faire pour un array avec un seul élément', () => {
       const input = [1];
-      const result = shuffleInPlace(input);
+      const originalReference = input;
       
-      expect(result).toBe(input);
-      expect(result).toEqual([1]);
+      shuffleInPlace(input);
+      
+      expect(input).toBe(originalReference);
+      expect(input).toEqual([1]);
     });
 
     it('devrait gérer les arrays avec des objets', () => {
       const input = [{ id: 1 }, { id: 2 }, { id: 3 }];
-      const result = shuffleInPlace(input);
+      const originalReference = input;
+      const originalContent = [...input];
       
-      expect(result).toBe(input);
-      expect(result).toHaveLength(3);
+      shuffleInPlace(input);
+      
+      expect(input).toBe(originalReference);
+      expect(input).toHaveLength(3);
+      expect(input.sort((a, b) => a.id - b.id)).toEqual(originalContent.sort((a, b) => a.id - b.id));
     });
   });
 

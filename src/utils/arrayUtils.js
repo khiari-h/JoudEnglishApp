@@ -63,17 +63,14 @@ export const shuffleWithFallback = (array, fallbackArray, count) => {
 /**
  * Mélange un array en place (modifie l'array original)
  * @param {Array} array - L'array à mélanger
- * @returns {Array} - L'array mélangé (même référence)
  */
 export const shuffleInPlace = (array) => {
   if (!Array.isArray(array) || array.length <= 1) {
-    return array;
+    return;
   }
 
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
-  
-  return array;
 };
