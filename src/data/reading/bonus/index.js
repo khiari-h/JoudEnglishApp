@@ -48,8 +48,8 @@ const bonusMetadata = {
   totalTexts: readingTextsBonus.length,
   totalQuestions: readingQuestionsBonus.reduce((sum, q) => sum + q.questions.length, 0),
   averageWordCount: Math.round(readingTextsBonus.reduce((sum, text) => sum + text.wordCount, 0) / readingTextsBonus.length),
-  difficulties: [...new Set(readingTextsBonus.map(text => text.difficulty))].sort(),
-  topics: [...new Set(readingTextsBonus.flatMap(text => text.topics))].sort(),
+  difficulties: [...new Set(readingTextsBonus.map(text => text.difficulty))].sort((a, b) => a.localeCompare(b)),
+  topics: [...new Set(readingTextsBonus.flatMap(text => text.topics))].sort((a, b) => a.localeCompare(b)),
   description: "Native-level reading comprehension exercises featuring authentic content that native speakers encounter daily. Focuses on inference, tone analysis, and cultural understanding."
 };
 

@@ -27,6 +27,28 @@ const processWordRef = (wordRef, category) => {
   return { wordIndex, timestamp };
 };
 
+// Fonction pour traiter les mots d'une catégorie
+const processCategoryWords = (wordRefs, categoryIndex, originalData, levelKey, mode, learnedWords) => {
+  if (!Array.isArray(wordRefs) || wordRefs.length === 0) return;
+  
+  const catIndex = parseInt(categoryIndex);
+  const category = originalData.exercises[catIndex];
+  
+  if (!category?.words) return;
+  
+  // Récupérer chaque mot appris
+  wordRefs.forEach((wordRef) => {
+    const { wordIndex, timestamp } = processWordRef(wordRef, category);
+    
+    // Récupérer le vrai mot depuis les données originales
+    if (wordIndex !== undefined && category.words[wordIndex]) {
+      const realWord = category.words[wordIndex];
+      const learnedWord = createLearnedWord(realWord, levelKey, mode, catIndex, wordIndex, timestamp);
+      learnedWords.push(learnedWord);
+    }
+  });
+};
+
 // Fonction pour créer un mot appris avec métadonnées
 const createLearnedWord = (realWord, levelKey, mode, catIndex, wordIndex, timestamp) => ({
   // Données du mot
@@ -65,24 +87,7 @@ const loadLevelData = async (levelKey, mode, learnedWords) => {
     
     // Traiter chaque catégorie
     Object.entries(completedWordsRefs).forEach(([categoryIndex, wordRefs]) => {
-      if (!Array.isArray(wordRefs) || wordRefs.length === 0) return;
-      
-      const catIndex = parseInt(categoryIndex);
-      const category = originalData.exercises[catIndex];
-      
-      if (!category?.words) return;
-      
-      // Récupérer chaque mot appris
-      wordRefs.forEach((wordRef) => {
-        const { wordIndex, timestamp } = processWordRef(wordRef, category);
-        
-        // Récupérer le vrai mot depuis les données originales
-        if (wordIndex !== undefined && category.words[wordIndex]) {
-          const realWord = category.words[wordIndex];
-          const learnedWord = createLearnedWord(realWord, levelKey, mode, catIndex, wordIndex, timestamp);
-          learnedWords.push(learnedWord);
-        }
-      });
+      processCategoryWords(wordRefs, categoryIndex, originalData, levelKey, mode, learnedWords);
     });
   } catch (storageError) {
     console.error(`❌ Erreur traitement ${storageKey}:`, storageError);
@@ -143,54 +148,24 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ========== RÉCUPÉRATION DES MOTS APPRIS ==========
-  useEffect(() => {
-    const loadLearnedWords = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        const learnedWords = [];
-        
-        const levels = level === "mixed" ? ['1', '2', '3', '4', '5', '6', 'bonus'] : [level];
-        const modes = ['classic', 'fast'];
+  // Fonction pour supprimer les doublons
+  const removeDuplicates = (words) => {
+    return words.filter((word, index, self) => 
+      index === self.findIndex(w => w.uniqueId === word.uniqueId)
+    );
+  };
 
-        // Charger les données de chaque niveau et mode
-        for (const levelKey of levels) {
-          for (const mode of modes) {
-            await loadLevelData(levelKey, mode, learnedWords);
-          }
-        }
-        
-        // Supprimer les doublons potentiels basés sur uniqueId
-        const uniqueWords = learnedWords.filter((word, index, self) => 
-          index === self.findIndex(w => w.uniqueId === word.uniqueId)
-        );
-        
-        setAllLearnedWords(uniqueWords);
-        
-      } catch (mainError) {
-        console.error('❌ Erreur générale useRevisionData:', mainError);
-        setError(mainError.message);
-        setAllLearnedWords([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadLearnedWords();
-  }, [level]); // Recharger si le niveau change
-
-  // ========== GÉNÉRATION DES QUESTIONS ==========
-  const revisionQuestions = useMemo(() => {
-    if (allLearnedWords.length === 0) return [];
+  // Fonction pour générer les questions de révision
+  const generateRevisionQuestions = (words, count) => {
+    if (words.length === 0) return [];
 
     // Mélanger et sélectionner
-    const shuffledWords = shuffleArray(allLearnedWords);
-    const selectedWords = shuffledWords.slice(0, Math.min(questionsCount, allLearnedWords.length));
+    const shuffledWords = shuffleArray(words);
+    const selectedWords = shuffledWords.slice(0, Math.min(count, words.length));
     
     // Générer les questions avec choix
-    const questionsWithChoices = selectedWords.map((word) => {
-      const choices = generateQuestionChoices(word, allLearnedWords);
+    return selectedWords.map((word) => {
+      const choices = generateQuestionChoices(word, words);
       
       return {
         ...word,
@@ -198,9 +173,47 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
         correctAnswer: word.translation
       };
     });
+  };
 
-    return questionsWithChoices;
-    
+  // Fonction pour charger tous les mots appris
+  const loadLearnedWords = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const learnedWords = [];
+      
+      const levels = level === "mixed" ? ['1', '2', '3', '4', '5', '6', 'bonus'] : [level];
+      const modes = ['classic', 'fast'];
+
+      // Charger les données de chaque niveau et mode
+      for (const levelKey of levels) {
+        for (const mode of modes) {
+          await loadLevelData(levelKey, mode, learnedWords);
+        }
+      }
+      
+      // Supprimer les doublons potentiels basés sur uniqueId
+      const uniqueWords = removeDuplicates(learnedWords);
+      
+      setAllLearnedWords(uniqueWords);
+      
+    } catch (mainError) {
+      console.error('❌ Erreur générale useRevisionData:', mainError);
+      setError(mainError.message);
+      setAllLearnedWords([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // ========== RÉCUPÉRATION DES MOTS APPRIS ==========
+  useEffect(() => {
+    loadLearnedWords();
+  }, [level]); // Recharger si le niveau change
+
+  // ========== GÉNÉRATION DES QUESTIONS ==========
+  const revisionQuestions = useMemo(() => {
+    return generateRevisionQuestions(allLearnedWords, questionsCount);
   }, [allLearnedWords, questionsCount]);
 
   // ========== STATISTIQUES ==========

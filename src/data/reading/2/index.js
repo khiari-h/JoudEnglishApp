@@ -49,8 +49,8 @@ const a2Metadata = {
   totalTexts: readingTextsA2.length,
   totalQuestions: readingQuestionsA2.reduce((sum, q) => sum + q.questions.length, 0),
   averageWordCount: Math.round(readingTextsA2.reduce((sum, text) => sum + text.wordCount, 0) / readingTextsA2.length),
-  difficulties: [...new Set(readingTextsA2.map(text => text.difficulty))].sort(),
-  topics: [...new Set(readingTextsA2.flatMap(text => text.topics))].sort(),
+  difficulties: [...new Set(readingTextsA2.map(text => text.difficulty))].sort((a, b) => a.localeCompare(b)),
+  topics: [...new Set(readingTextsA2.flatMap(text => text.topics))].sort((a, b) => a.localeCompare(b)),
   description: "Elementary level reading comprehension exercises focusing on common situations, past experiences, and simple descriptions."
 };
 

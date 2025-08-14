@@ -49,8 +49,8 @@ const b1Metadata = {
   totalTexts: readingTextsB1.length,
   totalQuestions: readingQuestionsB1.reduce((sum, q) => sum + q.questions.length, 0),
   averageWordCount: Math.round(readingTextsB1.reduce((sum, text) => sum + text.wordCount, 0) / readingTextsB1.length),
-  difficulties: [...new Set(readingTextsB1.map(text => text.difficulty))].sort(),
-  topics: [...new Set(readingTextsB1.flatMap(text => text.topics))].sort(),
+  difficulties: [...new Set(readingTextsB1.map(text => text.difficulty))].sort((a, b) => a.localeCompare(b)),
+  topics: [...new Set(readingTextsB1.flatMap(text => text.topics))].sort((a, b) => a.localeCompare(b)),
   description: "Intermediate level reading comprehension exercises focusing on opinions, abstract topics, and complex ideas with detailed explanations."
 };
 

@@ -236,7 +236,7 @@ export const getAvailableTopics = (level) => {
   if (!data.exercises) return [];
   
   const allTopics = data.exercises.flatMap(exercise => exercise.topics || []);
-  return [...new Set(allTopics)].sort();
+  return [...new Set(allTopics)].sort((a, b) => a.localeCompare(b));
 };
 
 /**

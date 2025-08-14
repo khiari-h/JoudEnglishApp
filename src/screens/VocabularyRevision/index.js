@@ -98,9 +98,19 @@ const VocabularyRevision = ({ route }) => {
     slideAnim.setValue(0);
   }, [quizEngine, slideAnim]);
 
-  const handleFinish = useCallback(async () => {
+  const handleFinish = useCallback(() => {
     if (markRevisionCompleted) {
-      await markRevisionCompleted(revisionQuestions, quizEngine.score, quizEngine.totalQuestions);
+      try {
+        const result = markRevisionCompleted(revisionQuestions, quizEngine.score, quizEngine.totalQuestions);
+        // Si c'est une Promise, on la gère de manière asynchrone
+        if (result && typeof result.then === 'function') {
+          result.catch(error => {
+            console.error('Erreur lors de la finalisation de la révision:', error);
+          });
+        }
+      } catch (error) {
+        console.error('Erreur lors de la finalisation de la révision:', error);
+      }
     }
     navigation.goBack();
   }, [navigation, markRevisionCompleted, revisionQuestions, quizEngine.score, quizEngine.totalQuestions]);

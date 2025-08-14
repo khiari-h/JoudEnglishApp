@@ -49,8 +49,8 @@ const c2Metadata = {
   totalTexts: readingTextsC2.length,
   totalQuestions: readingQuestionsC2.reduce((sum, q) => sum + q.questions.length, 0),
   averageWordCount: Math.round(readingTextsC2.reduce((sum, text) => sum + text.wordCount, 0) / readingTextsC2.length),
-  difficulties: [...new Set(readingTextsC2.map(text => text.difficulty))].sort(),
-  topics: [...new Set(readingTextsC2.flatMap(text => text.topics))].sort(),
+  difficulties: [...new Set(readingTextsC2.map(text => text.difficulty))].sort((a, b) => a.localeCompare(b)),
+  topics: [...new Set(readingTextsC2.flatMap(text => text.topics))].sort((a, b) => a.localeCompare(b)),
   description: "Mastery level reading comprehension exercises featuring highly sophisticated philosophical, academic, and literary texts with complex argumentation, extensive vocabulary, and nuanced interpretive challenges."
 };
 
