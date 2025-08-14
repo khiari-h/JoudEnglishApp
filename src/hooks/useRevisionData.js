@@ -1,7 +1,142 @@
-// src/hooks/useRevisionData.js - HOOK POUR RÉCUPÉRER LES MOTS APPRIS
+// src/hooks/useRevisionData.js - REFACTORISÉ pour réduire la complexité cognitive
 import { useState, useEffect, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getVocabularyData } from '../utils/vocabulary/vocabularyDataHelper';
+import { shuffleArray, shuffleAndTake, shuffleWithFallback } from '../utils/arrayUtils';
+
+// Fonction utilitaire pour traiter les différents formats de wordRef
+const processWordRef = (wordRef, category) => {
+  let wordIndex;
+  let timestamp = Date.now();
+  
+  // Support nouveau format (objet avec wordIndex + timestamp)
+  if (typeof wordRef === 'object' && wordRef.wordIndex !== undefined) {
+    wordIndex = wordRef.wordIndex;
+    timestamp = wordRef.timestamp || timestamp;
+  } 
+  // Support ancien format (juste l'index)
+  else if (typeof wordRef === 'number') {
+    wordIndex = wordRef;
+  }
+  // Support très ancien format (string du mot)
+  else if (typeof wordRef === 'string') {
+    const foundIndex = category.words.findIndex(w => w.word === wordRef);
+    if (foundIndex !== -1) wordIndex = foundIndex;
+  }
+  
+  return { wordIndex, timestamp };
+};
+
+// Fonction pour créer un mot appris avec métadonnées
+const createLearnedWord = (realWord, levelKey, mode, catIndex, wordIndex, timestamp) => ({
+  // Données du mot
+  word: realWord.word,
+  translation: realWord.translation,
+  definition: realWord.definition || '',
+  example: realWord.example || '',
+  
+  // Métadonnées
+  fromLevel: levelKey,
+  fromMode: mode,
+  categoryIndex: catIndex,
+  wordIndex,
+  timestamp,
+  
+  // ID unique pour éviter doublons
+  uniqueId: `${levelKey}_${mode}_${catIndex}_${wordIndex}`
+});
+
+// Fonction pour charger les données d'un niveau spécifique
+const loadLevelData = async (levelKey, mode, learnedWords) => {
+  const storageKey = `vocabulary_${levelKey}_${mode}`;
+  
+  try {
+    const stored = await AsyncStorage.getItem(storageKey);
+    if (!stored) return;
+
+    const data = JSON.parse(stored);
+    const completedWordsRefs = data.completedWords || {};
+    
+    if (Object.keys(completedWordsRefs).length === 0) return;
+    
+    // Récupérer les données originales du vocabulaire
+    const originalData = getVocabularyData(levelKey, mode);
+    if (!originalData?.exercises) return;
+    
+    // Traiter chaque catégorie
+    Object.entries(completedWordsRefs).forEach(([categoryIndex, wordRefs]) => {
+      if (!Array.isArray(wordRefs) || wordRefs.length === 0) return;
+      
+      const catIndex = parseInt(categoryIndex);
+      const category = originalData.exercises[catIndex];
+      
+      if (!category?.words) return;
+      
+      // Récupérer chaque mot appris
+      wordRefs.forEach((wordRef) => {
+        const { wordIndex, timestamp } = processWordRef(wordRef, category);
+        
+        // Récupérer le vrai mot depuis les données originales
+        if (wordIndex !== undefined && category.words[wordIndex]) {
+          const realWord = category.words[wordIndex];
+          const learnedWord = createLearnedWord(realWord, levelKey, mode, catIndex, wordIndex, timestamp);
+          learnedWords.push(learnedWord);
+        }
+      });
+    });
+  } catch (storageError) {
+    console.error(`❌ Erreur traitement ${storageKey}:`, storageError);
+  }
+};
+
+// Fonction pour générer les choix de réponses d'une question
+const generateQuestionChoices = (word, allLearnedWords) => {
+  // Pool des autres mots pour les mauvaises réponses
+  const otherWords = allLearnedWords.filter(w => w.uniqueId !== word.uniqueId);
+  
+  // Prendre 3 mauvaises réponses
+  let wrongAnswers = shuffleAndTake(otherWords, 3).map(w => w.translation);
+  
+  // Si pas assez de mauvaises réponses, compléter avec dataset de fallback
+  if (wrongAnswers.length < 3) {
+    const fallbackData = getVocabularyData('1', 'classic');
+    if (fallbackData?.exercises?.[0]?.words) {
+      const needed = 3 - wrongAnswers.length;
+      const randomFallback = shuffleAndTake(
+        fallbackData.exercises[0].words.filter(w => 
+          !wrongAnswers.includes(w.translation) && w.translation !== word.translation
+        ), 
+        needed
+      ).map(w => w.translation);
+      
+      wrongAnswers = [...wrongAnswers, ...randomFallback];
+    }
+  }
+  
+  // Mélanger toutes les réponses
+  const choices = shuffleArray([word.translation, ...wrongAnswers.slice(0, 3)]);
+  
+  return choices;
+};
+
+// Fonction pour calculer les statistiques
+const calculateStats = (allLearnedWords, revisionQuestions) => {
+  const totalLearned = allLearnedWords.length;
+  const byLevel = {};
+  const byMode = {};
+  
+  allLearnedWords.forEach(word => {
+    byLevel[word.fromLevel] = (byLevel[word.fromLevel] || 0) + 1;
+    byMode[word.fromMode] = (byMode[word.fromMode] || 0) + 1;
+  });
+  
+  return {
+    totalLearned,
+    byLevel,
+    byMode,
+    questionsGenerated: revisionQuestions.length
+  };
+};
 
 const useRevisionData = (level = "mixed", questionsCount = 10) => {
   const [allLearnedWords, setAllLearnedWords] = useState([]);
@@ -11,7 +146,6 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
   // ========== RÉCUPÉRATION DES MOTS APPRIS ==========
   useEffect(() => {
     const loadLearnedWords = async () => {
-      
       try {
         setIsLoading(true);
         setError(null);
@@ -20,92 +154,10 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
         const levels = level === "mixed" ? ['1', '2', '3', '4', '5', '6', 'bonus'] : [level];
         const modes = ['classic', 'fast'];
 
+        // Charger les données de chaque niveau et mode
         for (const levelKey of levels) {
           for (const mode of modes) {
-            const storageKey = `vocabulary_${levelKey}_${mode}`;
-            
-            try {
-              const stored = await AsyncStorage.getItem(storageKey);
-              if (!stored) {
-                continue;
-              }
-
-              const data = JSON.parse(stored);
-              const completedWordsRefs = data.completedWords || {};
-              
-              if (Object.keys(completedWordsRefs).length === 0) {
-                continue;
-              }
-              
-              // Récupérer les données originales du vocabulaire
-              const originalData = getVocabularyData(levelKey, mode);
-              if (!originalData?.exercises) {
-                // Pas de données originales pour ce niveau/mode
-                return;
-              }
-              
-              // Traiter chaque catégorie
-              Object.entries(completedWordsRefs).forEach(([categoryIndex, wordRefs]) => {
-                if (!Array.isArray(wordRefs) || wordRefs.length === 0) return;
-                
-                const catIndex = parseInt(categoryIndex);
-                const category = originalData.exercises[catIndex];
-                
-                if (!category?.words) {
-                  // Catégorie introuvable dans ce niveau/mode
-                  return;
-                }
-                
-                // Récupérer chaque mot appris
-                wordRefs.forEach((wordRef) => {
-                  let wordIndex; // skipcq: JS-0119 - Initialisation dépend de la logique ci-dessous
-                  let timestamp = Date.now();
-                  
-                  // Support nouveau format (objet avec wordIndex + timestamp)
-                  if (typeof wordRef === 'object' && wordRef.wordIndex !== undefined) {
-                    wordIndex = wordRef.wordIndex;
-                    timestamp = wordRef.timestamp || timestamp;
-                  } 
-                  // Support ancien format (juste l'index)
-                  else if (typeof wordRef === 'number') {
-                    wordIndex = wordRef;
-                  }
-                  // Support très ancien format (string du mot)
-                  else if (typeof wordRef === 'string') {
-                    const foundIndex = category.words.findIndex(w => w.word === wordRef);
-                    if (foundIndex !== -1) wordIndex = foundIndex;
-                  }
-                  
-                  // Récupérer le vrai mot depuis les données originales
-                  if (wordIndex !== undefined && category.words[wordIndex]) {
-                    const realWord = category.words[wordIndex];
-                    learnedWords.push({
-                      // Données du mot
-                      word: realWord.word,
-                      translation: realWord.translation,
-                      definition: realWord.definition || '',
-                      example: realWord.example || '',
-                      
-                      // Métadonnées
-                      fromLevel: levelKey,
-                      fromMode: mode,
-                      categoryIndex: catIndex,
-                      wordIndex,
-                      timestamp,
-                      
-                      // ID unique pour éviter doublons
-                      uniqueId: `${levelKey}_${mode}_${catIndex}_${wordIndex}`
-                    });
-                    
-                  } else {
-                    // WordIndex introuvable dans la catégorie
-                  }
-                });
-              });
-              
-            } catch (storageError) {
-              console.error(`❌ Erreur traitement ${storageKey}:`, storageError);
-            }
+            await loadLevelData(levelKey, mode, learnedWords);
           }
         }
         
@@ -133,38 +185,12 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
     if (allLearnedWords.length === 0) return [];
 
     // Mélanger et sélectionner
-    const shuffledWords = [...allLearnedWords].sort(() => Math.random() - 0.5);
+    const shuffledWords = shuffleArray(allLearnedWords);
     const selectedWords = shuffledWords.slice(0, Math.min(questionsCount, allLearnedWords.length));
     
-    // Générer les choix pour chaque question
+    // Générer les questions avec choix
     const questionsWithChoices = selectedWords.map((word) => {
-      // Pool des autres mots pour les mauvaises réponses
-      const otherWords = allLearnedWords.filter(w => w.uniqueId !== word.uniqueId);
-      
-      // Prendre 3 mauvaises réponses
-      let wrongAnswers = otherWords
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3)
-        .map(w => w.translation);
-      
-      // Si pas assez de mauvaises réponses, compléter avec dataset de fallback
-      if (wrongAnswers.length < 3) {
-        const fallbackData = getVocabularyData('1', 'classic');
-        if (fallbackData?.exercises?.[0]?.words) {
-          const needed = 3 - wrongAnswers.length;
-          const randomFallback = fallbackData.exercises[0].words
-            .sort(() => Math.random() - 0.5)
-            .filter(w => !wrongAnswers.includes(w.translation) && w.translation !== word.translation)
-            .slice(0, needed)
-            .map(w => w.translation);
-          
-          wrongAnswers = [...wrongAnswers, ...randomFallback];
-        }
-      }
-      
-      // Mélanger toutes les réponses
-      const choices = [word.translation, ...wrongAnswers.slice(0, 3)]
-        .sort(() => Math.random() - 0.5);
+      const choices = generateQuestionChoices(word, allLearnedWords);
       
       return {
         ...word,
@@ -179,21 +205,7 @@ const useRevisionData = (level = "mixed", questionsCount = 10) => {
 
   // ========== STATISTIQUES ==========
   const stats = useMemo(() => {
-    const totalLearned = allLearnedWords.length;
-    const byLevel = {};
-    const byMode = {};
-    
-    allLearnedWords.forEach(word => {
-      byLevel[word.fromLevel] = (byLevel[word.fromLevel] || 0) + 1;
-      byMode[word.fromMode] = (byMode[word.fromMode] || 0) + 1;
-    });
-    
-    return {
-      totalLearned,
-      byLevel,
-      byMode,
-      questionsGenerated: revisionQuestions.length
-    };
+    return calculateStats(allLearnedWords, revisionQuestions);
   }, [allLearnedWords, revisionQuestions]);
 
   return {

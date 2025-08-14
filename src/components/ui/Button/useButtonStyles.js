@@ -1,4 +1,4 @@
-// src/components/ui/Button/useButtonStyles.js
+// src/components/ui/Button/useButtonStyles.js - REFACTORISÉ pour réduire la complexité cognitive
 import styles from "./style";
 
 const COLOR_MAP = {
@@ -10,112 +10,122 @@ const COLOR_MAP = {
   info: "#3B82F6",
 };
 
+// Constantes pour les états communs
+const DISABLED_COLORS = {
+  text: "#9CA3AF",
+  icon: "#9CA3AF",
+  background: "#F3F4F6",
+  border: "#D1D5DB",
+};
+
+const SIZE_CONFIGS = {
+  small: {
+    button: styles.smallButton,
+    text: styles.smallText,
+    iconSize: 16,
+    loaderSize: "small",
+  },
+  medium: {
+    button: styles.mediumButton,
+    text: styles.mediumText,
+    iconSize: 20,
+    loaderSize: "small",
+  },
+  large: {
+    button: styles.largeButton,
+    text: styles.largeText,
+    iconSize: 24,
+    loaderSize: "large",
+  },
+};
+
+// Fonctions séparées pour chaque variant
+const getOutlinedStyles = (baseColor, disabled) => ({
+  button: {
+    backgroundColor: "transparent",
+    borderWidth: 1,
+    borderColor: disabled ? DISABLED_COLORS.border : baseColor,
+  },
+  text: {
+    color: disabled ? DISABLED_COLORS.text : baseColor,
+  },
+  icon: disabled ? DISABLED_COLORS.icon : baseColor,
+  pressed: {
+    backgroundColor: `${baseColor}10`,
+  },
+});
+
+const getTextStyles = (baseColor, disabled) => ({
+  button: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    paddingHorizontal: 12,
+  },
+  text: {
+    color: disabled ? DISABLED_COLORS.text : baseColor,
+  },
+  icon: disabled ? DISABLED_COLORS.icon : baseColor,
+  pressed: {
+    backgroundColor: `${baseColor}10`,
+  },
+});
+
+const getTonalStyles = (baseColor, disabled) => ({
+  button: {
+    backgroundColor: disabled ? DISABLED_COLORS.background : `${baseColor}15`,
+    borderWidth: 0,
+  },
+  text: {
+    color: disabled ? DISABLED_COLORS.text : baseColor,
+  },
+  icon: disabled ? DISABLED_COLORS.icon : baseColor,
+  pressed: {
+    backgroundColor: `${baseColor}25`,
+  },
+});
+
+const getIconStyles = (iconSize, disabled, colorName) => ({
+  button: {
+    backgroundColor: disabled ? DISABLED_COLORS.background : "transparent",
+    borderWidth: 0,
+    padding: 0,
+    minWidth: 0,
+    minHeight: 0,
+  },
+  icon: {
+    fontSize: iconSize,
+    color: disabled ? "#A1A1AA" : colorName,
+  },
+});
+
+const getFilledStyles = (baseColor, disabled) => ({
+  button: {
+    backgroundColor: disabled ? "#E5E7EB" : baseColor,
+    borderWidth: 0,
+  },
+  text: {
+    color: "white",
+  },
+  icon: "white",
+  pressed: {
+    backgroundColor: disabled ? "#E5E7EB" : `${baseColor}DD`,
+  },
+});
+
 const getSizeStyles = (buttonSize) => {
-  switch (buttonSize) {
-    case "small":
-      return {
-        button: styles.smallButton,
-        text: styles.smallText,
-        iconSize: 16,
-        loaderSize: "small",
-      };
-    case "large":
-      return {
-        button: styles.largeButton,
-        text: styles.largeText,
-        iconSize: 24,
-        loaderSize: "large",
-      };
-    case "medium":
-    default:
-      return {
-        button: styles.mediumButton,
-        text: styles.mediumText,
-        iconSize: 20,
-        loaderSize: "small",
-      };
-  }
+  return SIZE_CONFIGS[buttonSize] || SIZE_CONFIGS.medium;
 };
 
 const getVariantStyles = ({ variant, disabled, baseColor, sizeStyles, colorName }) => {
-  switch (variant) {
-    case "outlined":
-      return {
-        button: {
-          backgroundColor: "transparent",
-          borderWidth: 1,
-          borderColor: disabled ? "#D1D5DB" : baseColor,
-        },
-        text: {
-          color: disabled ? "#9CA3AF" : baseColor,
-        },
-        icon: disabled ? "#9CA3AF" : baseColor,
-        pressed: {
-          backgroundColor: `${baseColor}10`,
-        },
-      };
-    case "text":
-      return {
-        button: {
-          backgroundColor: "transparent",
-          borderWidth: 0,
-          paddingHorizontal: 12,
-        },
-        text: {
-          color: disabled ? "#9CA3AF" : baseColor,
-        },
-        icon: disabled ? "#9CA3AF" : baseColor,
-        pressed: {
-          backgroundColor: `${baseColor}10`,
-        },
-      };
-    case "tonal":
-      return {
-        button: {
-          backgroundColor: disabled ? "#F3F4F6" : `${baseColor}15`,
-          borderWidth: 0,
-        },
-        text: {
-          color: disabled ? "#9CA3AF" : baseColor,
-        },
-        icon: disabled ? "#9CA3AF" : baseColor,
-        pressed: {
-          backgroundColor: `${baseColor}25`,
-        },
-      };
-    case "icon": {
-      const iconSizeValue = sizeStyles?.iconSize || 24;
-      return {
-        button: {
-          backgroundColor: disabled ? "#F3F4F6" : "transparent",
-          borderWidth: 0,
-          padding: 0,
-          minWidth: 0,
-          minHeight: 0,
-        },
-        icon: {
-          fontSize: iconSizeValue,
-          // Conserver le comportement existant: pour variant icon, la couleur utilisait le nom brut
-          color: disabled ? "#A1A1AA" : colorName,
-        },
-      };
-    }
-    case "filled":
-    default:
-      return {
-        button: {
-          backgroundColor: disabled ? "#E5E7EB" : baseColor,
-          borderWidth: 0,
-        },
-        text: {
-          color: "white",
-        },
-        icon: "white",
-        pressed: {
-          backgroundColor: disabled ? "#E5E7EB" : `${baseColor}DD`,
-        },
-      };
-  }
+  const variantMap = {
+    outlined: () => getOutlinedStyles(baseColor, disabled),
+    text: () => getTextStyles(baseColor, disabled),
+    tonal: () => getTonalStyles(baseColor, disabled),
+    icon: () => getIconStyles(sizeStyles?.iconSize || 24, disabled, colorName),
+    filled: () => getFilledStyles(baseColor, disabled),
+  };
+
+  return variantMap[variant]?.() || variantMap.filled();
 };
 
 export default function useButtonStyles({

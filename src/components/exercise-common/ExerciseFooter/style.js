@@ -1,5 +1,5 @@
 
-// src/components/exercise-common/ExerciseFooter/styles.js
+// src/components/exercise-common/ExerciseFooter/style.js
 import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({

@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import useGameAnimation from './useGameAnimation';
+import { shuffleArray } from '../../../../utils/arrayUtils';
 
 /**
  * 🎯 Hook unifié pour Word Games
@@ -122,9 +123,9 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
 
     if (game.type === "matching") {
       const allItems = game.pairs.flatMap((pair) => [pair.word, pair.match]);
-      optionsToShuffle = allItems.sort(() => Math.random() - 0.5);
+      optionsToShuffle = shuffleArray(allItems);
     } else if (game.type === "categorization") {
-      optionsToShuffle = [...game.words].sort(() => Math.random() - 0.5);
+      optionsToShuffle = shuffleArray([...game.words]);
     }
 
     setShuffledOptions(optionsToShuffle);

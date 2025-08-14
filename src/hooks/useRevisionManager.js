@@ -2,6 +2,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { shuffleArray } from '../utils/arrayUtils';
+
 const REVISION_CONFIG = {
   TRIGGER_INTERVAL: 50,    // Tous les 50 mots
   QUESTIONS_COUNT: 10,     // Toujours 10 questions
@@ -181,12 +183,9 @@ const useRevisionManager = () => {
     
     const oldWords = sortedByAge.slice(0, oldCount);
     const remainingWords = sortedByAge.slice(oldCount);
-    const randomWords = remainingWords
-      .sort(() => Math.random() - 0.5)
-      .slice(0, randomCount);
+    const randomWords = shuffleArray(remainingWords).slice(0, randomCount);
 
-    const selectedWords = [...oldWords, ...randomWords]
-      .sort(() => Math.random() - 0.5); // Mélanger le résultat final
+    const selectedWords = shuffleArray([...oldWords, ...randomWords]); // Mélanger le résultat final
 
     return selectedWords.slice(0, count);
   }, [lastRevisionWords, getAllLearnedWords]);

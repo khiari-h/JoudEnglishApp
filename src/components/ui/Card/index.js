@@ -1,4 +1,4 @@
-// src/components/ui/Card/index.js - Enhanced pour mobile badges
+// src/components/ui/Card/index.js - REFACTORISÉ pour réduire la complexité cognitive
 import { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -6,6 +6,206 @@ import PropTypes from "prop-types";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import ProgressBar from "../ProgressBar";
 import styles from "./style";
+
+// Composant CardBadge extrait
+const CardBadge = ({ badge, iconColor, badgeStyle, badgeTextStyle }) => {
+  if (!badge) return null;
+  return (
+    <View style={[
+      styles.cardBadge,
+      { backgroundColor: `${iconColor}15` },
+      badgeStyle,
+    ]}>
+      <Text style={[styles.badgeText, { color: iconColor }, badgeTextStyle]}>
+        {badge}
+      </Text>
+    </View>
+  );
+};
+
+// Composant CardContent extrait
+const CardContent = ({
+  children,
+  padding,
+  compactMode,
+  contentStyle,
+  showProgressBar,
+  progress,
+  fillColor,
+  progressHeight,
+  showPercentage,
+  percentageFormatter,
+  progressStyle
+}) => (
+  <View style={[
+    styles.content,
+    padding && styles.contentPadding,
+    compactMode && styles.contentCompact,
+    contentStyle
+  ]}>
+    {children}
+    {showProgressBar && (
+      <ProgressBar
+        progress={progress}
+        fillColor={fillColor}
+        height={progressHeight}
+        backgroundColor={`${fillColor}15`}
+        borderRadius={Math.floor(progressHeight / 2)}
+        showPercentage={showPercentage}
+        percentageFormatter={percentageFormatter}
+        style={[
+          { marginTop: compactMode ? 8 : 12, marginBottom: compactMode ? 4 : 8 },
+          progressStyle
+        ]}
+      />
+    )}
+  </View>
+);
+
+// Composant CardFooter extrait
+const CardFooter = ({ footer, footerStyle }) => {
+  if (!footer) return null;
+  return <View style={[styles.footer, footerStyle]}>{footer}</View>;
+};
+
+// Composant CardOverlay extrait
+const CardOverlay = ({ showOverlay, overlayContent, overlayStyle }) => {
+  if (!showOverlay) return null;
+  return <View style={[styles.overlay, overlayStyle]}>{overlayContent}</View>;
+};
+
+// Composant HeaderIcon extrait
+const HeaderIcon = ({ headerIcon, iconColor, headerIconBackground, compactMode }) => {
+  if (!headerIcon) return null;
+  
+  if (headerIconBackground) {
+    return (
+      <View style={[
+        styles.headerIconContainer,
+        { backgroundColor: `${iconColor}15` },
+        compactMode && styles.headerIconContainerCompact
+      ]}>
+        <Ionicons name={headerIcon} size={compactMode ? 18 : 20} color={iconColor} />
+      </View>
+    );
+  }
+  
+  return (
+    <Ionicons
+      name={headerIcon}
+      size={compactMode ? 18 : 20}
+      color={iconColor}
+      style={styles.headerIcon}
+    />
+  );
+};
+
+// Composant TitleWithBadge extrait
+const TitleWithBadge = ({ title, titleBadge, badgeColor, compactMode, titleStyle, titleBadgeStyle, badgeTextStyle }) => {
+  if (!title) return null;
+  
+  return (
+    <View style={styles.titleWithBadgeContainer}>
+      <Text style={[
+        styles.title,
+        { color: titleStyle?.color || "#1F2937" },
+        compactMode && styles.titleCompact,
+        titleStyle
+      ]}>
+        {title}
+      </Text>
+      
+      {titleBadge && (
+        <View style={[
+          styles.titleBadge,
+          { backgroundColor: badgeColor },
+          compactMode && styles.titleBadgeCompact,
+          titleBadgeStyle
+        ]}>
+          <Text style={[
+            styles.titleBadgeText,
+            compactMode && styles.titleBadgeTextCompact,
+            badgeTextStyle
+          ]}>
+            {titleBadge}
+          </Text>
+        </View>
+      )}
+    </View>
+  );
+};
+
+// Composant HeaderRight extrait
+const HeaderRight = ({ rightIcon, headerRight, compactMode, rightIconStyle }) => (
+  <View style={styles.headerRight}>
+    {rightIcon && (
+      <Text style={[
+        styles.rightIconText,
+        compactMode && styles.rightIconTextCompact,
+        rightIconStyle
+      ]}>
+        {rightIcon}
+      </Text>
+    )}
+    {headerRight}
+  </View>
+);
+
+// Fonction renderMobileHeader simplifiée
+const renderMobileHeader = (props) => {
+  const { showHeader, titleLayout, compactMode, headerIcon, iconColor, headerIconBackground, title, titleBadge, badgeColor, titleStyle, titleBadgeStyle, badgeTextStyle, subtitle, subtitleStyle, rightIcon, rightIconStyle, headerRight } = props;
+  
+  if (!showHeader) return null;
+
+  return (
+    <View style={[
+      styles.header,
+      titleLayout === "column" && styles.headerColumn,
+      compactMode && styles.headerCompact
+    ]}>
+      <View style={[
+        styles.headerLeft,
+        titleLayout === "column" && styles.headerLeftColumn
+      ]}>
+        <HeaderIcon 
+          headerIcon={headerIcon} 
+          iconColor={iconColor} 
+          headerIconBackground={headerIconBackground} 
+          compactMode={compactMode} 
+        />
+        
+        <View style={styles.headerTextContainer}>
+          <TitleWithBadge 
+            title={title}
+            titleBadge={titleBadge}
+            badgeColor={badgeColor}
+            compactMode={compactMode}
+            titleStyle={titleStyle}
+            titleBadgeStyle={titleBadgeStyle}
+            badgeTextStyle={badgeTextStyle}
+          />
+          
+          {subtitle && (
+            <Text style={[
+              styles.subtitle,
+              compactMode && styles.subtitleCompact,
+              subtitleStyle
+            ]}>
+              {subtitle}
+            </Text>
+          )}
+        </View>
+      </View>
+
+      <HeaderRight 
+        rightIcon={rightIcon}
+        headerRight={headerRight}
+        compactMode={compactMode}
+        rightIconStyle={rightIconStyle}
+      />
+    </View>
+  );
+};
 
 /**
  * Composant Card réutilisable avec support amélioré pour badges mobiles
@@ -90,208 +290,25 @@ const Card = ({
   // Déterminer si une barre de progression doit être affichée
   const showProgressBar = progress !== null;
 
-  // =================== RENDER HEADER MOBILE ===================
-  const renderMobileHeader = () => {
-    if (!showHeader) return null;
-
-    return (
-      <View style={[
-        styles.header,
-        titleLayout === "column" && styles.headerColumn,
-        compactMode && styles.headerCompact
-      ]}>
-        <View style={[
-          styles.headerLeft,
-          titleLayout === "column" && styles.headerLeftColumn
-        ]}>
-          {/* Icône header (si présente) */}
-          {headerIcon && (
-            headerIconBackground ? (
-              <View style={[
-                styles.headerIconContainer,
-                { backgroundColor: `${iconColor}15` },
-                compactMode && styles.headerIconContainerCompact
-              ]}>
-                <Ionicons name={headerIcon} size={compactMode ? 18 : 20} color={iconColor} />
-              </View>
-            ) : (
-              <Ionicons
-                name={headerIcon}
-                size={compactMode ? 18 : 20}
-                color={iconColor}
-                style={styles.headerIcon}
-              />
-            )
-          )}
-          
-          {/* Conteneur de texte avec badge */}
-          <View style={styles.headerTextContainer}>
-            {/* Titre avec badge inline */}
-            {title && (
-              <View style={styles.titleWithBadgeContainer}>
-                <Text style={[
-                  styles.title,
-                  { color: titleStyle?.color || "#1F2937" },
-                  compactMode && styles.titleCompact,
-                  titleStyle
-                ]}>
-                  {title}
-                </Text>
-                
-                {/* Badge dans le titre */}
-                {titleBadge && (
-                  <View style={[
-                    styles.titleBadge,
-                    { backgroundColor: badgeColor },
-                    compactMode && styles.titleBadgeCompact,
-                    titleBadgeStyle
-                  ]}>
-                    <Text style={[
-                      styles.titleBadgeText,
-                      compactMode && styles.titleBadgeTextCompact,
-                      badgeTextStyle
-                    ]}>
-                      {titleBadge}
-                    </Text>
-                  </View>
-                )}
-              </View>
-            )}
-            
-            {/* Sous-titre */}
-            {subtitle && (
-              <Text style={[
-                styles.subtitle,
-                compactMode && styles.subtitleCompact,
-                subtitleStyle
-              ]}>
-                {subtitle}
-              </Text>
-            )}
-          </View>
-        </View>
-
-        {/* Partie droite du header */}
-        <View style={styles.headerRight}>
-          {/* Icône à droite (ex: emoji) */}
-          {rightIcon && (
-            <Text style={[
-              styles.rightIconText,
-              compactMode && styles.rightIconTextCompact,
-              rightIconStyle
-            ]}>
-              {rightIcon}
-            </Text>
-          )}
-          
-          {/* Composant header right */}
-          {headerRight}
-        </View>
-      </View>
-    );
-  };
-
-  // Sous-composant pour le badge
-  const CardBadge = ({ badge: cardBadge, iconColor: cardIconColor, badgeStyle: cardBadgeStyle, badgeTextStyle: cardBadgeTextStyle }) => {
-    if (!cardBadge) return null;
-    return (
-      <View style={[
-        styles.cardBadge,
-        { backgroundColor: `${cardIconColor}15` },
-        cardBadgeStyle,
-      ]}>
-        <Text style={[styles.badgeText, { color: cardIconColor }, cardBadgeTextStyle]}>
-          {cardBadge}
-        </Text>
-      </View>
-    );
-  };
-
-  // PropTypes pour CardBadge
-  CardBadge.propTypes = {
-    badge: PropTypes.string,
-    iconColor: PropTypes.string.isRequired,
-    badgeStyle: PropTypes.object,
-    badgeTextStyle: PropTypes.object,
-  };
-
-  // Sous-composant pour le contenu principal (inclut la progress bar)
-  const CardContent = ({
-    children: cardChildren,
-    padding: cardPadding,
-    compactMode: cardCompactMode,
-    contentStyle: cardContentStyle,
-    showProgressBar: cardShowProgressBar,
-    progress: cardProgress,
-    fillColor: cardFillColor,
-    progressHeight: cardProgressHeight,
-    showPercentage: cardShowPercentage,
-    percentageFormatter: cardPercentageFormatter,
-    progressStyle: cardProgressStyle
-  }) => (
-    <View style={[
-      styles.content,
-      cardPadding && styles.contentPadding,
-      cardCompactMode && styles.contentCompact,
-      cardContentStyle
-    ]}>
-      {cardChildren}
-      {cardShowProgressBar && (
-        <ProgressBar
-          progress={cardProgress}
-          fillColor={cardFillColor}
-          height={cardProgressHeight}
-          backgroundColor={`${cardFillColor}15`}
-          borderRadius={Math.floor(cardProgressHeight / 2)}
-          showPercentage={cardShowPercentage}
-          percentageFormatter={cardPercentageFormatter}
-          style={[
-            { marginTop: cardCompactMode ? 8 : 12, marginBottom: cardCompactMode ? 4 : 8 },
-            cardProgressStyle
-          ]}
-        />
-      )}
-    </View>
-  );
-
-  // PropTypes pour CardContent
-  CardContent.propTypes = {
-    children: PropTypes.node,
-    padding: PropTypes.bool,
-    compactMode: PropTypes.bool,
-    contentStyle: PropTypes.object,
-    showProgressBar: PropTypes.bool,
-    progress: PropTypes.number,
-    fillColor: PropTypes.string,
-    progressHeight: PropTypes.number,
-    showPercentage: PropTypes.bool,
-    percentageFormatter: PropTypes.func,
-    progressStyle: PropTypes.object,
-  };
-
-  // Sous-composant pour le footer
-  const CardFooter = ({ footer: localFooter, footerStyle: localFooterStyle }) => {
-    if (!localFooter) return null;
-    return <View style={[styles.footer, localFooterStyle]}>{localFooter}</View>;
-  };
-
-  // PropTypes pour CardFooter
-  CardFooter.propTypes = {
-    footer: PropTypes.node,
-    footerStyle: PropTypes.object,
-  };
-
-  // Sous-composant pour l'overlay
-  const CardOverlay = ({ showOverlay: localShowOverlay, overlayContent: localOverlayContent, overlayStyle: localOverlayStyle }) => {
-    if (!localShowOverlay) return null;
-    return <View style={[styles.overlay, localOverlayStyle]}>{localOverlayContent}</View>;
-  };
-
-  // PropTypes pour CardOverlay
-  CardOverlay.propTypes = {
-    showOverlay: PropTypes.bool,
-    overlayContent: PropTypes.node,
-    overlayStyle: PropTypes.object,
+  // Props pour renderMobileHeader
+  const headerProps = {
+    showHeader,
+    titleLayout,
+    compactMode,
+    headerIcon,
+    iconColor,
+    headerIconBackground,
+    title,
+    titleBadge,
+    badgeColor,
+    titleStyle,
+    titleBadgeStyle,
+    badgeTextStyle,
+    subtitle,
+    subtitleStyle,
+    rightIcon,
+    rightIconStyle,
+    headerRight
   };
 
   return (
@@ -312,7 +329,7 @@ const Card = ({
       {...wrapperProps}
     >
       <CardBadge badge={badge} iconColor={iconColor} badgeStyle={badgeStyle} badgeTextStyle={badgeTextStyle} />
-      {renderMobileHeader()}
+      {renderMobileHeader(headerProps)}
       <CardContent
         padding={padding}
         compactMode={compactMode}
@@ -331,6 +348,39 @@ const Card = ({
       <CardOverlay showOverlay={showOverlay} overlayContent={overlayContent} overlayStyle={overlayStyle} />
     </WrapperComponent>
   );
+};
+
+// PropTypes pour les composants extraits
+CardBadge.propTypes = {
+  badge: PropTypes.string,
+  iconColor: PropTypes.string.isRequired,
+  badgeStyle: PropTypes.object,
+  badgeTextStyle: PropTypes.object,
+};
+
+CardContent.propTypes = {
+  children: PropTypes.node,
+  padding: PropTypes.bool,
+  compactMode: PropTypes.bool,
+  contentStyle: PropTypes.object,
+  showProgressBar: PropTypes.bool,
+  progress: PropTypes.number,
+  fillColor: PropTypes.string,
+  progressHeight: PropTypes.number,
+  showPercentage: PropTypes.bool,
+  percentageFormatter: PropTypes.func,
+  progressStyle: PropTypes.object,
+};
+
+CardFooter.propTypes = {
+  footer: PropTypes.node,
+  footerStyle: PropTypes.object,
+};
+
+CardOverlay.propTypes = {
+  showOverlay: PropTypes.bool,
+  overlayContent: PropTypes.node,
+  overlayStyle: PropTypes.object,
 };
 
 // PropTypes pour Card

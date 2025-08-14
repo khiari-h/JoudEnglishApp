@@ -1,5 +1,5 @@
-// src/hooks/useRouteActivityTracker.js - VERSION CORRIGÉE SANS BOUCLE
-import { useEffect, useRef } from 'react';
+// src/hooks/useRouteActivityTracker.js - REFACTORISÉ pour réduire la complexité cognitive
+import { useEffect, useRef, useCallback } from 'react';
 import { useSegments, usePathname } from 'expo-router';
 import useActivityMetrics from './useActivityMetrics';
 
@@ -8,83 +8,109 @@ const useRouteActivityTracker = () => {
   const pathname = usePathname();
   const { startSession, endSession, updateStreak } = useActivityMetrics();
   
-  // ✅ CORRECTION : Refs pour éviter les appels en boucle
+  // Refs pour éviter les appels en boucle
   const currentSessionRef = useRef(null);
   const isTrackingRef = useRef(false);
   const lastPathnameRef = useRef(null);
 
-  useEffect(() => {
-    // ✅ CORRECTION : Eviter les re-déclenchements inutiles
-    if (lastPathnameRef.current === pathname) {
-      return;
+  // Fonction utilitaire pour exécuter des fonctions de manière sécurisée
+  const safeExecute = (fn, errorMessage) => {
+    try {
+      return fn();
+    } catch (error) {
+      console.warn(errorMessage, error);
+      return false;
     }
-    lastPathnameRef.current = pathname;
+  };
 
-    // Vérifier si c'est un exercice
-    const isExercise = segments.some(segment => 
+  // Fonction pour détecter si on est sur un exercice
+  const detectExercise = (segments) => {
+    return segments.some(segment => 
       segment.includes('Exercise') ||
       segment.includes('exercise') ||
       segment.includes('Assessment') ||
       segment.includes('assessment')
     );
+  };
 
-    if (isExercise) {
-      // Récupérer le type d'exercice (dernier segment)
-      const exerciseType = segments[segments.length - 1];
-      
-      // ✅ CORRECTION : Logique directe sans callbacks
-      if (!isTrackingRef.current || currentSessionRef.current !== exerciseType) {
-        // Arrêter la session précédente si elle existe
-        if (isTrackingRef.current) {
-          try {
-            endSession();
-            updateStreak();
-          } catch (error) {
-            console.warn('Erreur lors de la fin de session:', error);
-          }
-        }
-        
-        // Démarrer la nouvelle session
-        try {
-          isTrackingRef.current = true;
-          currentSessionRef.current = exerciseType;
-          startSession(exerciseType);
-        } catch (error) {
-          console.warn('Erreur lors du démarrage de session:', error);
-          isTrackingRef.current = false;
-          currentSessionRef.current = null;
-        }
-      }
-    } else {
-      // Si on n'est plus sur un exercice, arrêter la session
-      if (isTrackingRef.current) {
-        try {
-          isTrackingRef.current = false;
-          currentSessionRef.current = null;
-          endSession();
-          updateStreak();
-        } catch (error) {
-          console.warn('Erreur lors de la fin de session:', error);
-        }
-      }
+  // Fonction pour gérer le démarrage d'un exercice
+  const handleExerciseStart = (exerciseType) => {
+    if (isTrackingRef.current && currentSessionRef.current === exerciseType) {
+      return; // Déjà en cours de tracking
     }
 
-    // ✅ CORRECTION : Cleanup unique et stable
-    return () => {
-      if (isTrackingRef.current) {
-        try {
-          isTrackingRef.current = false;
-          currentSessionRef.current = null;
-          endSession();
-        } catch (error) {
-          console.warn('Erreur lors du cleanup:', error);
-        }
-      }
-      // Suppression du return null (aucun return attendu)
-    };
-  }, [segments, pathname]); // ✅ CORRIGÉ : Seulement les vraies dépendances
+    // Arrêter la session précédente si elle existe
+    if (isTrackingRef.current) {
+      safeExecute(() => {
+        endSession();
+        updateStreak();
+      }, 'Erreur lors de la fin de session:');
+    }
+    
+    // Démarrer la nouvelle session
+    const success = safeExecute(() => {
+      startSession(exerciseType);
+    }, 'Erreur lors du démarrage de session:');
 
-  // ✅ CORRECTION : Cleanup final seulement au démontage
+    if (success) {
+      isTrackingRef.current = true;
+      currentSessionRef.current = exerciseType;
+    } else {
+      isTrackingRef.current = false;
+      currentSessionRef.current = null;
+    }
+  };
+
+  // Fonction pour gérer la fin d'un exercice
+  const handleExerciseEnd = () => {
+    if (!isTrackingRef.current) {
+      return;
+    }
+
+    safeExecute(() => {
+      endSession();
+      updateStreak();
+    }, 'Erreur lors de la fin de session:');
+
+    isTrackingRef.current = false;
+    currentSessionRef.current = null;
+  };
+
+  // Fonction pour nettoyer l'état - simplifiée pour éviter les problèmes
+  const cleanup = () => {
+    if (isTrackingRef.current) {
+      try {
+        endSession();
+      } catch (error) {
+        console.warn('Erreur lors du cleanup:', error);
+      }
+      
+      isTrackingRef.current = false;
+      currentSessionRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    // Éviter les re-déclenchements inutiles
+    if (lastPathnameRef.current === pathname) {
+      return;
+    }
+    lastPathnameRef.current = pathname;
+
+    const isExercise = detectExercise(segments);
+
+    if (isExercise) {
+      const exerciseType = segments[segments.length - 1];
+      handleExerciseStart(exerciseType);
+    } else {
+      handleExerciseEnd();
+    }
+
+    // Cleanup quand les segments/pathname changent
+    return cleanup;
+  }, [segments, pathname, startSession, endSession, updateStreak]);
+
+  // Cleanup final au démontage - simplifié et direct
   useEffect(() => {
     return () => {
       if (isTrackingRef.current) {
@@ -93,9 +119,11 @@ const useRouteActivityTracker = () => {
         } catch (error) {
           console.warn('Erreur lors du cleanup final:', error);
         }
+        isTrackingRef.current = false;
+        currentSessionRef.current = null;
       }
     };
-  }, []); // ✅ CORRIGÉ : Aucune dépendance = seulement au démontage
+  }, []); // Aucune dépendance = seulement au démontage
 
   // Pas de rendu
 };
