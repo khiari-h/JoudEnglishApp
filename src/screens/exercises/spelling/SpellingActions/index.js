@@ -1,8 +1,11 @@
-// SpellingActions/index.js - VERSION PROPRE
+// src/screens/exercises/spelling/SpellingActions/index.js - AVEC PROPTYPES ET GESTION D'ERREURS
 
-import { View, useCallback } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
+import { useCallback } from "react";
+import PropTypes from 'prop-types';
+import { Ionicons } from "@expo/vector-icons";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
-import styles from "./style";
+import createStyles from "./style";
 
 const SpellingActions = ({
   showFeedback,
@@ -10,11 +13,12 @@ const SpellingActions = ({
   userInput,
   isLastExercise,
   exerciseType,
-  levelColor,
+  levelColor = "#3b82f6",
   onCheck,
   onNext,
-  onRetry
+  onRetry,
 }) => {
+  const styles = createStyles(levelColor);
 
   const canCheckAnswer = useCallback(() => {
     if (exerciseType === "homophones") {
@@ -27,7 +31,8 @@ const SpellingActions = ({
     try {
       onCheck();
     } catch (error) {
-      // Silently fail
+      console.warn("Erreur lors de la vérification de la réponse:", error);
+      // On peut ajouter une notification utilisateur ici si nécessaire
     }
   }, [onCheck]);
 
@@ -35,7 +40,8 @@ const SpellingActions = ({
     try {
       onNext();
     } catch (error) {
-      // Silently fail
+      console.warn("Erreur lors du passage à l'exercice suivant:", error);
+      // On peut ajouter une notification utilisateur ici si nécessaire
     }
   }, [onNext]);
 
@@ -43,7 +49,8 @@ const SpellingActions = ({
     try {
       onRetry();
     } catch (error) {
-      // Silently fail
+      console.warn("Erreur lors de la nouvelle tentative:", error);
+      // On peut ajouter une notification utilisateur ici si nécessaire
     }
   }, [onRetry]);
 
@@ -110,6 +117,19 @@ const SpellingActions = ({
       />
     </View>
   );
+};
+
+// PropTypes pour le composant SpellingActions
+SpellingActions.propTypes = {
+  showFeedback: PropTypes.bool.isRequired,
+  isCorrect: PropTypes.bool.isRequired,
+  userInput: PropTypes.string.isRequired,
+  isLastExercise: PropTypes.bool.isRequired,
+  exerciseType: PropTypes.string.isRequired,
+  levelColor: PropTypes.string,
+  onCheck: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  onRetry: PropTypes.func.isRequired,
 };
 
 export default SpellingActions;

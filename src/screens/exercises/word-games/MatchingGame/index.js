@@ -1,8 +1,9 @@
-// src/screens/exercises/wordGames/games/MatchingGame/index.js
-import { View, Text, TouchableOpacity } from "react-native";
-import { useCallback } from "react";
-import GameInstructions from "../GameInstructions";
-import styles from "./style";
+// src/screens/exercises/word-games/MatchingGame/index.js - AVEC PROPTYPES
+
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import PropTypes from 'prop-types';
+import { Ionicons } from "@expo/vector-icons";
+import createStyles from "./style";
 
 /**
  * Composant pour le jeu d'association de paires
@@ -21,7 +22,7 @@ const MatchingGame = ({
   matchedItems,
   shuffledOptions,
   showFeedback,
-  levelColor,
+  levelColor = "#3b82f6",
   onSelectItem,
 }) => {
   // Handler stable pour la sélection d'un item
@@ -82,6 +83,24 @@ const MatchingGame = ({
       )}
     </View>
   );
+};
+
+// PropTypes pour le composant MatchingGame
+MatchingGame.propTypes = {
+  game: PropTypes.shape({
+    instructions: PropTypes.string.isRequired,
+    hint: PropTypes.string,
+  }).isRequired,
+  selectedItems: PropTypes.arrayOf(PropTypes.number).isRequired,
+  matchedItems: PropTypes.arrayOf(PropTypes.number).isRequired,
+  shuffledOptions: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  })).isRequired,
+  showFeedback: PropTypes.bool.isRequired,
+  levelColor: PropTypes.string,
+  onSelectItem: PropTypes.func.isRequired,
 };
 
 export default MatchingGame;

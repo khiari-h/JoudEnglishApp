@@ -1,10 +1,12 @@
-// IdentifyErrorsMode/index.js - VERSION REFACTORISÉE (HeroCard + ContentSection)
+// src/screens/exercises/errorCorrection/modes/IdentifyErrorsMode/index.js - AVEC PROPTYPES
 
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Animated } from "react-native";
+import { useCallback, useEffect, useRef, useState } from "react";
+import PropTypes from 'prop-types';
+import { Ionicons } from "@expo/vector-icons";
 import HeroCard from "../../../../../components/ui/HeroCard";
 import ContentSection from "../../../../../components/ui/ContentSection";
 import createStyles from "./style";
-import { useCallback } from "react";
 
 /**
  * 🔍 IdentifyErrorsMode - Version Refactorisée avec composants génériques
@@ -18,22 +20,28 @@ import { useCallback } from "react";
  */
 const IdentifyErrorsMode = ({
   exercise,
-  selectedErrorIndices = [],
+  selectedErrorIndices,
   onToggleErrorIndex,
-  showFeedback = false,
-  levelColor = "#5E60CE",
+  showFeedback,
+  levelColor = "#3b82f6",
 }) => {
   const styles = createStyles(levelColor);
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(50)).current;
 
-  if (!exercise) return null;
+  // Hook AVANT tout return conditionnel ✅
+  const handleToggleErrorIndex = useCallback(
+    (index) => () => {
+      onToggleErrorIndex(index);
+    },
+    [onToggleErrorIndex]
+  );
+
+  if (!exercise || !exercise.text) return null;
 
   // Diviser le texte en mots
   const words = exercise.text.split(" ");
   const expectedErrors = exercise.errorPositions?.length || 0;
-
-  const handleWordPress = useCallback((index) => () => {
-    if (!showFeedback) onToggleErrorIndex(index);
-  }, [onToggleErrorIndex, showFeedback]);
 
   return (
     <View style={styles.container}>
@@ -63,7 +71,7 @@ const IdentifyErrorsMode = ({
             return (
               <TouchableOpacity
                 key={`${word}-${index}`} // eslint-disable-next-line react/no-array-index-key
-                onPress={handleWordPress(index)}
+                onPress={handleToggleErrorIndex(index)}
                 disabled={showFeedback}
                 style={[
                   styles.word,
@@ -119,6 +127,19 @@ const IdentifyErrorsMode = ({
       )}
     </View>
   );
+};
+
+// PropTypes pour le composant IdentifyErrorsMode
+IdentifyErrorsMode.propTypes = {
+  exercise: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    errorPositions: PropTypes.arrayOf(PropTypes.number).isRequired,
+    explanation: PropTypes.string,
+  }).isRequired,
+  selectedErrorIndices: PropTypes.arrayOf(PropTypes.number).isRequired,
+  onToggleErrorIndex: PropTypes.func.isRequired,
+  showFeedback: PropTypes.bool.isRequired,
+  levelColor: PropTypes.string,
 };
 
 export default IdentifyErrorsMode;

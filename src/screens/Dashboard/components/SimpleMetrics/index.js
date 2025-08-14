@@ -2,6 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
+import PropTypes from 'prop-types';
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import useActivityMetrics from "../../../../hooks/useActivityMetrics";
 import useDailyWords from "../../../../hooks/useDailyWords";
@@ -184,6 +185,28 @@ const MetricCard = ({ metric, colors }) => {
       </Text>
     </View>
   );
+};
+
+// PropTypes pour MetricCard
+MetricCard.propTypes = {
+  metric: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    trend: PropTypes.string,
+  }).isRequired,
+  colors: PropTypes.shape({
+    surface: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    textSecondary: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+// PropTypes pour le composant principal SimpleMetrics
+SimpleMetrics.propTypes = {
+  accentColor: PropTypes.string,
+  refreshKey: PropTypes.number,
 };
 
 export default SimpleMetrics;
