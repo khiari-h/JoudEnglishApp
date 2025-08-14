@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Modal, Animated } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../../../contexts/ThemeContext';
 import styles from './style';
 
@@ -188,6 +189,37 @@ const RevisionPopup = ({
       </View>
     </Modal>
   );
+};
+
+// PropTypes pour PopupHeader
+PopupHeader.propTypes = {
+  colors: PropTypes.object.isRequired,
+  totalWordsLearned: PropTypes.number.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour UniformChoice
+UniformChoice.propTypes = {
+  choice: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    iconName: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    color: PropTypes.string.isRequired,
+    isPrimary: PropTypes.bool,
+  }).isRequired,
+  onPress: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+  isPrimary: PropTypes.bool,
+};
+
+// PropTypes pour le composant principal RevisionPopup
+RevisionPopup.propTypes = {
+  visible: PropTypes.bool,
+  totalWordsLearned: PropTypes.number,
+  questionsCount: PropTypes.number,
+  onChoice: PropTypes.func,
+  onDismiss: PropTypes.func,
 };
 
 export default RevisionPopup;

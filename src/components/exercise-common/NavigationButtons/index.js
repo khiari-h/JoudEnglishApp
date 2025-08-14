@@ -4,6 +4,7 @@ import { useRef, useCallback } from "react";
 import { View, TouchableOpacity, Text, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import PropTypes from 'prop-types';
 import createStyles from "./style";
 
 /**
@@ -160,5 +161,41 @@ const NextButton = ({ disableNext, nextScale, handleNextPress, isLast, buttonLab
     </TouchableOpacity>
   </Animated.View>
 );
+
+// PropTypes pour PreviousButton
+PreviousButton.propTypes = {
+  disablePrevious: PropTypes.bool.isRequired,
+  prevScale: PropTypes.object.isRequired,
+  handlePrevPress: PropTypes.func.isRequired,
+  buttonLabels: PropTypes.object.isRequired,
+  primaryColor: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour NextButton
+NextButton.propTypes = {
+  disableNext: PropTypes.bool.isRequired,
+  nextScale: PropTypes.object.isRequired,
+  handleNextPress: PropTypes.func.isRequired,
+  isLast: PropTypes.bool.isRequired,
+  buttonLabels: PropTypes.object.isRequired,
+  primaryColor: PropTypes.string.isRequired,
+  styles: PropTypes.object.isRequired,
+};
+
+// PropTypes pour le composant principal NavigationButtons
+NavigationButtons.propTypes = {
+  onNext: PropTypes.func.isRequired,
+  onPrevious: PropTypes.func.isRequired,
+  disablePrevious: PropTypes.bool,
+  disableNext: PropTypes.bool,
+  primaryColor: PropTypes.string,
+  buttonLabels: PropTypes.shape({
+    previous: PropTypes.string,
+    next: PropTypes.string,
+    finish: PropTypes.string,
+  }),
+  isLast: PropTypes.bool,
+};
 
 export default NavigationButtons;
