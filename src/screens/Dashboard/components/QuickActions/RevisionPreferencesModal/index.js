@@ -8,6 +8,7 @@ import {
   ScrollView
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
@@ -103,6 +104,13 @@ const RevisionPreferencesModal = ({
   );
 };
 
+// PropTypes pour RevisionPreferencesModal
+RevisionPreferencesModal.propTypes = {
+  visible: PropTypes.bool,
+  onChoice: PropTypes.func,
+  onSkip: PropTypes.func,
+};
+
 // Sous-composant ModalHeader
 const ModalHeader = ({ onSkip, localStyles }) => (
   <LinearGradient
@@ -125,6 +133,12 @@ const ModalHeader = ({ onSkip, localStyles }) => (
     </Text>
   </LinearGradient>
 );
+
+// PropTypes pour ModalHeader
+ModalHeader.propTypes = {
+  onSkip: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
 
 // Sous-composant ModalButtons
 const ModalButtons = ({ revisionStyles, selectedStyle, handleConfirm, handleSkip, localStyles }) => (
@@ -152,6 +166,15 @@ const ModalButtons = ({ revisionStyles, selectedStyle, handleConfirm, handleSkip
     </TouchableOpacity>
   </>
 );
+
+// PropTypes pour ModalButtons
+ModalButtons.propTypes = {
+  revisionStyles: PropTypes.array.isRequired,
+  selectedStyle: PropTypes.string.isRequired,
+  handleConfirm: PropTypes.func.isRequired,
+  handleSkip: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
 
 const RevisionStylesList = ({ revisionStyles, selectedStyle, handleStylePress, localStyles }) => (
   <View style={localStyles.stylesContainer}>
@@ -190,6 +213,14 @@ const RevisionStylesList = ({ revisionStyles, selectedStyle, handleStylePress, l
     ))}
   </View>
 );
+
+// PropTypes pour RevisionStylesList
+RevisionStylesList.propTypes = {
+  revisionStyles: PropTypes.array.isRequired,
+  selectedStyle: PropTypes.string.isRequired,
+  handleStylePress: PropTypes.func.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
 
 const SummarySection = ({ selectedStyle, revisionStyles, localStyles }) => (
   selectedStyle !== 'none' ? (
@@ -232,6 +263,13 @@ const SummarySection = ({ selectedStyle, revisionStyles, localStyles }) => (
   )
 );
 
+// PropTypes pour SummarySection
+SummarySection.propTypes = {
+  selectedStyle: PropTypes.string.isRequired,
+  revisionStyles: PropTypes.array.isRequired,
+  localStyles: PropTypes.object.isRequired,
+};
+
 // Sous-composant pour le contenu du modal (ScrollView)
 const ModalContentSection = ({ localStyles, revisionStyles, selectedStyle, handleStylePress, handleConfirm, handleSkip }) => (
   <ScrollView 
@@ -265,5 +303,15 @@ const ModalContentSection = ({ localStyles, revisionStyles, selectedStyle, handl
     />
   </ScrollView>
 );
+
+// PropTypes pour ModalContentSection
+ModalContentSection.propTypes = {
+  localStyles: PropTypes.object.isRequired,
+  revisionStyles: PropTypes.array.isRequired,
+  selectedStyle: PropTypes.string.isRequired,
+  handleStylePress: PropTypes.func.isRequired,
+  handleConfirm: PropTypes.func.isRequired,
+  handleSkip: PropTypes.func.isRequired,
+};
 
 export default RevisionPreferencesModal;

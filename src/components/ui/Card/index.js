@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import PropTypes from "prop-types";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import ProgressBar from "../ProgressBar";
 import styles from "./style";
@@ -206,6 +207,14 @@ const Card = ({
     );
   };
 
+  // PropTypes pour CardBadge
+  CardBadge.propTypes = {
+    badge: PropTypes.string,
+    iconColor: PropTypes.string.isRequired,
+    badgeStyle: PropTypes.object,
+    badgeTextStyle: PropTypes.object,
+  };
+
   // Sous-composant pour le contenu principal (inclut la progress bar)
   const CardContent = ({
     children: cardChildren,
@@ -245,16 +254,44 @@ const Card = ({
     </View>
   );
 
+  // PropTypes pour CardContent
+  CardContent.propTypes = {
+    children: PropTypes.node,
+    padding: PropTypes.bool,
+    compactMode: PropTypes.bool,
+    contentStyle: PropTypes.object,
+    showProgressBar: PropTypes.bool,
+    progress: PropTypes.number,
+    fillColor: PropTypes.string,
+    progressHeight: PropTypes.number,
+    showPercentage: PropTypes.bool,
+    percentageFormatter: PropTypes.func,
+    progressStyle: PropTypes.object,
+  };
+
   // Sous-composant pour le footer
   const CardFooter = ({ footer: localFooter, footerStyle: localFooterStyle }) => {
     if (!localFooter) return null;
     return <View style={[styles.footer, localFooterStyle]}>{localFooter}</View>;
   };
 
+  // PropTypes pour CardFooter
+  CardFooter.propTypes = {
+    footer: PropTypes.node,
+    footerStyle: PropTypes.object,
+  };
+
   // Sous-composant pour l'overlay
   const CardOverlay = ({ showOverlay: localShowOverlay, overlayContent: localOverlayContent, overlayStyle: localOverlayStyle }) => {
     if (!localShowOverlay) return null;
     return <View style={[styles.overlay, localOverlayStyle]}>{localOverlayContent}</View>;
+  };
+
+  // PropTypes pour CardOverlay
+  CardOverlay.propTypes = {
+    showOverlay: PropTypes.bool,
+    overlayContent: PropTypes.node,
+    overlayStyle: PropTypes.object,
   };
 
   return (
@@ -294,6 +331,53 @@ const Card = ({
       <CardOverlay showOverlay={showOverlay} overlayContent={overlayContent} overlayStyle={overlayStyle} />
     </WrapperComponent>
   );
+};
+
+// PropTypes pour Card
+Card.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  headerRight: PropTypes.node,
+  headerIcon: PropTypes.string,
+  headerIconColor: PropTypes.string,
+  headerIconBackground: PropTypes.bool,
+  onPress: PropTypes.func,
+  footer: PropTypes.node,
+  footerStyle: PropTypes.object,
+  style: PropTypes.object,
+  titleStyle: PropTypes.object,
+  subtitleStyle: PropTypes.object,
+  contentStyle: PropTypes.object,
+  withShadow: PropTypes.bool,
+  bordered: PropTypes.bool,
+  withSideBorder: PropTypes.bool,
+  elevated: PropTypes.bool,
+  padding: PropTypes.bool,
+  margin: PropTypes.bool,
+  badge: PropTypes.string,
+  badgeStyle: PropTypes.object,
+  badgeTextStyle: PropTypes.object,
+  isActive: PropTypes.bool,
+  backgroundColor: PropTypes.string,
+  borderRadius: PropTypes.number,
+  testID: PropTypes.string,
+  progress: PropTypes.number,
+  progressColor: PropTypes.string,
+  progressHeight: PropTypes.number,
+  progressStyle: PropTypes.object,
+  showPercentage: PropTypes.bool,
+  percentageFormatter: PropTypes.func,
+  titleBadge: PropTypes.string,
+  titleBadgeColor: PropTypes.string,
+  titleBadgeStyle: PropTypes.object,
+  titleLayout: PropTypes.oneOf(['row', 'column']),
+  rightIcon: PropTypes.string,
+  rightIconStyle: PropTypes.object,
+  compactMode: PropTypes.bool,
+  showOverlay: PropTypes.bool,
+  overlayContent: PropTypes.node,
+  overlayStyle: PropTypes.object,
 };
 
 export default Card;
