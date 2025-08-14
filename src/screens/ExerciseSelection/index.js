@@ -19,7 +19,7 @@ import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Contain
 import Header from "../../components/layout/Header";
 
 // Constantes
-import { LANGUAGE_LEVELS } from "../../utils/constants";
+// LANGUAGE_LEVELS supprimé car non utilisé
 
 // Styles
 import styles, { getBackgroundGradient } from "./style";
@@ -111,10 +111,7 @@ const ExerciseListSection = ({ colors, localStyles, exercises, renderExerciseCar
 );
 
 const ExerciseSelection = ({ level }) => {
-  if (!level) {
-    return null;
-  }
-
+  // ✅ CORRECT : Tous les hooks AVANT tout return conditionnel
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
 
@@ -135,8 +132,6 @@ const ExerciseSelection = ({ level }) => {
 
   const levelColor = levelInfo.color;
   const backgroundGradient = getBackgroundGradient(levelColor, colors.background);
-
-  // exercises préparés par le hook
 
   // Navigation
   const handleExerciseSelect = useCallback((exercise) => {
@@ -164,6 +159,11 @@ const ExerciseSelection = ({ level }) => {
       refresh();
     }, [refresh])
   );
+
+  // ✅ MAINTENANT on peut faire le return conditionnel
+  if (!level) {
+    return null;
+  }
 
   // ========== RENDU - TON DESIGN ORIGINAL ==========
   const renderHeader = () => (

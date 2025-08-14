@@ -1,6 +1,10 @@
-// AssessmentResults/index.js - VERSION REFACTORISÉE avec composants génériques
+// src/screens/exercises/level-assessment/AssessmentResults/index.js - AVEC PROPTYPES
 
-import { View, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import PropTypes from 'prop-types';
+import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
@@ -185,6 +189,19 @@ const AssessmentResults = ({
       </View>
     </ScrollView>
   );
+};
+
+// PropTypes pour le composant AssessmentResults
+AssessmentResults.propTypes = {
+  level: PropTypes.string.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  userScore: PropTypes.shape({
+    percentage: PropTypes.number.isRequired,
+    totalQuestions: PropTypes.number.isRequired,
+    correctAnswers: PropTypes.number.isRequired,
+  }).isRequired,
+  onContinue: PropTypes.func.isRequired,
+  onRetry: PropTypes.func.isRequired,
 };
 
 export default AssessmentResults;

@@ -1,6 +1,7 @@
 // src/components/exercise-common/ExerciseFooter/index.js
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
@@ -70,3 +71,19 @@ const ExerciseFooter = ({
 };
 
 export default ExerciseFooter;
+
+// PropTypes pour le composant ExerciseFooter
+ExerciseFooter.propTypes = {
+  primaryLabel: PropTypes.string,
+  secondaryLabel: PropTypes.string,
+  onPrimaryPress: PropTypes.func.isRequired,
+  onSecondaryPress: PropTypes.func,
+  showSecondary: PropTypes.bool,
+  showCheck: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  color: PropTypes.string,
+  isLastQuestion: PropTypes.bool,
+  hideSkip: PropTypes.bool,
+  onSkip: PropTypes.func,
+  skipLabel: PropTypes.string,
+};
