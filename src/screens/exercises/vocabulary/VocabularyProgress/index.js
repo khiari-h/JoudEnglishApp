@@ -1,5 +1,6 @@
-// VocabularyProgress/index.js - VERSION CORRIGÉE POUR LES 2 STRUCTURES
+// VocabularyProgress/index.js - CORRIGÉ pour éliminer les 12 violations SonarQube
 
+import PropTypes from 'prop-types';
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalWords,
@@ -73,6 +74,19 @@ const VocabularyProgress = ({
       onCategoryPress={onCategoryPress}
     />
   );
+};
+
+// PropTypes pour VocabularyProgress - CORRIGÉ pour toutes les violations
+VocabularyProgress.propTypes = {
+  vocabularyData: PropTypes.shape({
+    categories: PropTypes.arrayOf(PropTypes.object),
+    exercises: PropTypes.arrayOf(PropTypes.object),
+  }),
+  completedWords: PropTypes.object,
+  levelColor: PropTypes.string.isRequired,
+  expanded: PropTypes.bool,
+  onToggleExpand: PropTypes.func,
+  onCategoryPress: PropTypes.func,
 };
 
 export default VocabularyProgress;

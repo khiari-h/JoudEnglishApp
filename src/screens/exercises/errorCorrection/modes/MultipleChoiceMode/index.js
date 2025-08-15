@@ -5,12 +5,12 @@ import HeroCard from "../../../../../components/ui/HeroCard";
 import ContentSection from "../../../../../components/ui/ContentSection";
 import createStyles from "./style";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 
 /**
  * ✅ MultipleChoiceMode - Version Refactorisée avec composants génériques
  * Remplace Card par HeroCard + ContentSection + choix simplifiés
- * 
- * @param {Object} exercise - Exercice actuel
+ * * @param {Object} exercise - Exercice actuel
  * @param {number} selectedChoiceIndex - Index du choix sélectionné
  * @param {function} onSelectChoice - Callback pour sélectionner un choix
  * @param {boolean} showFeedback - Afficher le feedback
@@ -63,7 +63,7 @@ const MultipleChoiceMode = ({
 
           return (
             <TouchableOpacity
-              key={choice}
+              key={index} // Utilisez l'index si la clé n'est pas unique
               style={[
                 styles.choiceOption,
                 isSelected && !showFeedback && {
@@ -119,6 +119,25 @@ const MultipleChoiceMode = ({
       )}
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour valider les props
+MultipleChoiceMode.propTypes = {
+  // 'exercise' est manquant dans la validation, ainsi que ses sous-propriétés
+  exercise: PropTypes.shape({
+    text: PropTypes.string,
+    choices: PropTypes.arrayOf(PropTypes.string).isRequired,
+    correctChoiceIndex: PropTypes.number.isRequired,
+    explanation: PropTypes.string,
+  }).isRequired,
+  // 'selectedChoiceIndex' est manquant
+  selectedChoiceIndex: PropTypes.number,
+  // 'onSelectChoice' est manquant
+  onSelectChoice: PropTypes.func.isRequired,
+  // 'showFeedback' est manquant
+  showFeedback: PropTypes.bool,
+  // 'levelColor' est manquant
+  levelColor: PropTypes.string,
 };
 
 export default MultipleChoiceMode;

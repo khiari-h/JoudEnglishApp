@@ -1,8 +1,9 @@
 // src/components/layout/Container/index.js
+
 import { View, StatusBar, ScrollView } from "react-native";
-// ✅ CHANGEMENT : Utiliser SafeAreaView moderne au lieu du basique
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./style";
+import PropTypes from 'prop-types'; // ✅ Ajout de l'import de PropTypes
 
 /**
  * Conteneur principal pour les écrans de l'application
@@ -19,14 +20,11 @@ const Container = ({
   withPadding = true,
   backgroundColor = "#F9FAFB",
   scrollViewProps = {},
-  // ✅ NOUVEAUX PROPS pour plus de contrôle SafeArea
-  safeAreaEdges = ['top', 'left', 'right'], // Par défaut pas de bottom pour garder navigation
+  safeAreaEdges = ['top', 'left', 'right'],
   ...props
 }) => {
-  // Déterminer le composant wrapper principal
   const WrapperComponent = safeArea ? SafeAreaView : View;
 
-  // Déterminer les styles principaux du conteneur
   const containerStyle = [
     styles.container,
     { backgroundColor },
@@ -34,16 +32,13 @@ const Container = ({
     style,
   ];
 
-  // Props spécifiques pour SafeAreaView moderne
   const safeAreaProps = safeArea ? {
     edges: safeAreaEdges,
     ...props
   } : {};
 
-  // Contenu à rendre
   const content = (
     <>
-      {/* StatusBar conditionnelle */}
       {withStatusBar && (
         <StatusBar backgroundColor={statusBarColor} barStyle={statusBarStyle} />
       )}
@@ -53,7 +48,6 @@ const Container = ({
           style={styles.scrollView}
           contentContainerStyle={[
             styles.scrollViewContent,
-            // ✅ Padding bottom pour home indicator
             { paddingBottom: safeArea ? 34 : 0 }
           ]}
           showsVerticalScrollIndicator={false}
@@ -77,13 +71,39 @@ const Container = ({
   );
 };
 
-export default Container;
+// ✅ Ajout de la validation des props
+Container.propTypes = {
+  // 'children' est manquant dans la validation
+  children: PropTypes.node,
+  // 'style' est manquant
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  // 'withScrollView' est manquant
+  withScrollView: PropTypes.bool,
+  // 'safeArea' est manquant
+  safeArea: PropTypes.bool,
+  // 'statusBarColor' est manquant
+  statusBarColor: PropTypes.string,
+  // 'statusBarStyle' est manquant
+  statusBarStyle: PropTypes.oneOf(['default', 'light-content', 'dark-content']),
+  // 'withStatusBar' est manquant
+  withStatusBar: PropTypes.bool,
+  // 'withPadding' est manquant
+  withPadding: PropTypes.bool,
+  // 'backgroundColor' est manquant
+  backgroundColor: PropTypes.string,
+  // 'scrollViewProps' est manquant
+  scrollViewProps: PropTypes.object,
+  // 'safeAreaEdges' est manquant
+  safeAreaEdges: PropTypes.arrayOf(PropTypes.oneOf(['top', 'bottom', 'left', 'right'])),
+};
 
 // ✅ Export des edges prédéfinis pour flexibilité
 export const CONTAINER_SAFE_EDGES = {
   ALL: ['top', 'bottom', 'left', 'right'],
-  NO_BOTTOM: ['top', 'left', 'right'], // Pour garder navigation
-  NO_TOP: ['bottom', 'left', 'right'],  // Pour modals avec header custom
-  HORIZONTAL: ['left', 'right'],        // Juste les côtés
-  NONE: []                              // Aucune SafeArea
+  NO_BOTTOM: ['top', 'left', 'right'],
+  NO_TOP: ['bottom', 'left', 'right'],
+  HORIZONTAL: ['left', 'right'],
+  NONE: []
 };
+
+export default Container;

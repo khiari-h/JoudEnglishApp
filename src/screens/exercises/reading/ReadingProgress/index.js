@@ -7,6 +7,7 @@ import {
   calculateTotalProgress,
   calculateExerciseProgress,
 } from "../../../../utils/reading/readingStats.js";
+import PropTypes from 'prop-types';
 
 /**
  * 📊 ReadingProgress - Version Corrigée avec détection automatique
@@ -75,6 +76,31 @@ const ReadingProgress = ({
       onCategoryPress={onExercisePress}
     />
   );
+};
+
+// ✅ Ajout de la validation des props
+ReadingProgress.propTypes = {
+  // 'readingData' est manquant dans la validation
+  readingData: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.shape({
+      exercises: PropTypes.array,
+      texts: PropTypes.array,
+      passages: PropTypes.array,
+      readings: PropTypes.array,
+      items: PropTypes.array,
+    })
+  ]).isRequired,
+  // 'completedQuestions' est manquant dans la validation
+  completedQuestions: PropTypes.object,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
+  // 'expanded' est manquant dans la validation
+  expanded: PropTypes.bool,
+  // 'onToggleExpand' est manquant dans la validation
+  onToggleExpand: PropTypes.func,
+  // 'onExercisePress' est manquant dans la validation
+  onExercisePress: PropTypes.func,
 };
 
 export default ReadingProgress;

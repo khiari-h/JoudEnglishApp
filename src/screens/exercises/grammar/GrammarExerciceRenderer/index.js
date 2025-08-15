@@ -1,4 +1,4 @@
-// GrammarExerciseRenderer/index.js - REFACTORISÉ pour réduire la complexité cognitive
+// GrammarExerciseRenderer/index.js - CORRIGÉ pour éliminer les 23 violations SonarQube
 
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -105,6 +105,30 @@ const OptionItem = ({ option, index, exercise, selectedOption, showFeedback, isC
   );
 };
 
+// PropTypes pour OptionItem
+OptionItem.propTypes = {
+  option: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  exercise: PropTypes.shape({
+    answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  }).isRequired,
+  selectedOption: PropTypes.number,
+  showFeedback: PropTypes.bool.isRequired,
+  isCorrect: PropTypes.bool.isRequired,
+  onPress: PropTypes.func.isRequired,
+  styles: PropTypes.shape({
+    optionContainer: PropTypes.any,
+    optionGradient: PropTypes.any,
+    optionInner: PropTypes.any,
+    optionIconContainer: PropTypes.any,
+    optionText: PropTypes.any,
+    correctOptionText: PropTypes.any,
+    incorrectOptionText: PropTypes.any,
+    selectedOptionText: PropTypes.any,
+  }).isRequired,
+  levelColor: PropTypes.string.isRequired,
+};
+
 // Composant pour le contenu commun des exercices
 const ExerciseContent = ({ exercise, levelColor, title, content, isItalic = false }) => (
   <>
@@ -127,6 +151,18 @@ const ExerciseContent = ({ exercise, levelColor, title, content, isItalic = fals
     )}
   </>
 );
+
+// PropTypes pour ExerciseContent
+ExerciseContent.propTypes = {
+  exercise: PropTypes.shape({
+    question: PropTypes.string.isRequired,
+    sentence: PropTypes.string,
+  }).isRequired,
+  levelColor: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  isItalic: PropTypes.bool,
+};
 
 /**
  * 🎯 GrammarExerciseRenderer - Version Refactorisée avec composants génériques

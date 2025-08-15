@@ -2,6 +2,7 @@
 import { View } from "react-native";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * 🎯 GrammarNavigation - Version Simple avec NavigationButtons
@@ -25,7 +26,7 @@ const GrammarNavigation = ({
 }) => {
 
   // 🎯 LOGIQUE SIMPLIFIÉE - 3 modes clairs
-  
+
   // Mode 1: Pas encore vérifié → Check Answer
   if (!showFeedback) {
     return (
@@ -97,6 +98,32 @@ const GrammarNavigation = ({
       />
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour valider les props
+GrammarNavigation.propTypes = {
+  // 'showFeedback' est manquant dans la validation
+  showFeedback: PropTypes.bool,
+  // 'isCorrect' est manquant dans la validation
+  isCorrect: PropTypes.bool,
+  // 'canCheckAnswer' est manquant dans la validation
+  canCheckAnswer: PropTypes.bool,
+  // 'onCheckAnswer' est manquant dans la validation
+  onCheckAnswer: PropTypes.func.isRequired,
+  // 'onPreviousExercise' est manquant dans la validation
+  onPreviousExercise: PropTypes.func.isRequired,
+  // 'onNextExercise' est manquant dans la validation
+  onNextExercise: PropTypes.func.isRequired,
+  // 'onRetryExercise' est manquant dans la validation
+  onRetryExercise: PropTypes.func.isRequired,
+  // 'onSkipExercise' est manquant dans la validation
+  onSkipExercise: PropTypes.func.isRequired,
+  // 'isFirstExercise' est manquant dans la validation
+  isFirstExercise: PropTypes.bool,
+  // 'isLastExercise' est manquant dans la validation
+  isLastExercise: PropTypes.bool,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default GrammarNavigation;

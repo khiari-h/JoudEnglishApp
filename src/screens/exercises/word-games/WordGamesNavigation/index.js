@@ -1,6 +1,7 @@
 // WordGamesNavigation/index.js - VERSION REFACTORISÉE avec NavigationButtons
 
 import { View, TouchableOpacity, Text } from "react-native";
+import PropTypes from 'prop-types';
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import createStyles from "./style";
 
@@ -88,6 +89,27 @@ const WordGamesNavigation = ({
       />
     </View>
   );
+};
+
+// PropTypes pour la validation des props
+WordGamesNavigation.propTypes = {
+  currentGame: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+  }).isRequired,
+  showFeedback: PropTypes.bool.isRequired,
+  selectedItems: PropTypes.array,
+  isLastGame: PropTypes.bool.isRequired,
+  canGoPrevious: PropTypes.bool.isRequired,
+  levelColor: PropTypes.string,
+  onCheckAnswer: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  onPrevious: PropTypes.func.isRequired,
+};
+
+// Valeurs par défaut
+WordGamesNavigation.defaultProps = {
+  selectedItems: [],
+  levelColor: "#3b82f6",
 };
 
 export default WordGamesNavigation;

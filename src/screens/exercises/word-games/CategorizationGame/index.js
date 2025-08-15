@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useCallback } from "react";
 import GameInstructions from "../GameInstructions";
 import styles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * Composant pour le jeu de catégorisation
@@ -82,5 +83,25 @@ const CategorizationGame = ({
   );
 };
 
-export default CategorizationGame;
+// ✅ Définition de PropTypes pour valider les props
+CategorizationGame.propTypes = {
+  // 'game' est manquant dans la validation
+  game: PropTypes.shape({
+    instructions: PropTypes.string,
+    currentCategory: PropTypes.string,
+  }).isRequired,
+  // 'selectedItems' est manquant
+  selectedItems: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+  })).isRequired,
+  // 'shuffledOptions' est manquant
+  shuffledOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // 'showFeedback' est manquant
+  showFeedback: PropTypes.bool.isRequired,
+  // 'levelColor' est manquant
+  levelColor: PropTypes.string,
+  // 'onSelectItem' est manquant
+  onSelectItem: PropTypes.func.isRequired,
+};
 
+export default CategorizationGame;

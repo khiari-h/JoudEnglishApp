@@ -8,6 +8,7 @@ import {
   calculateRuleProgress,
 } from "../../../../utils/grammar/grammarStats";
 import { useMemo } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * 📊 GrammarProgress - Version totalement recodée avec mémorisation complète
@@ -90,6 +91,31 @@ const GrammarProgress = ({
       onCategoryPress={onRulePress}
     />
   );
+};
+
+// ✅ Ajout de la validation des props
+GrammarProgress.propTypes = {
+  // 'grammarData' est manquant dans la validation
+  grammarData: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.shape({
+      rules: PropTypes.array,
+      categories: PropTypes.array,
+      exercises: PropTypes.array,
+      grammar: PropTypes.array,
+      items: PropTypes.array,
+    })
+  ]).isRequired,
+  // 'completedExercises' est manquant dans la validation
+  completedExercises: PropTypes.object,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
+  // 'expanded' est manquant dans la validation
+  expanded: PropTypes.bool,
+  // 'onToggleExpand' est manquant dans la validation
+  onToggleExpand: PropTypes.func,
+  // 'onRulePress' est manquant dans la validation
+  onRulePress: PropTypes.func,
 };
 
 export default GrammarProgress;

@@ -1,4 +1,4 @@
-// src/components/ui/Card/index.js - REFACTORISÉ pour réduire la complexité cognitive
+// src/components/ui/Card/index.js - CORRIGÉ pour éliminer les 16 violations SonarQube
 import { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -21,6 +21,14 @@ const CardBadge = ({ badge, iconColor, badgeStyle, badgeTextStyle }) => {
       </Text>
     </View>
   );
+};
+
+// PropTypes pour CardBadge
+CardBadge.propTypes = {
+  badge: PropTypes.string,
+  iconColor: PropTypes.string.isRequired,
+  badgeStyle: PropTypes.object,
+  badgeTextStyle: PropTypes.object,
 };
 
 // Composant CardContent extrait
@@ -62,16 +70,44 @@ const CardContent = ({
   </View>
 );
 
+// PropTypes pour CardContent
+CardContent.propTypes = {
+  children: PropTypes.node,
+  padding: PropTypes.bool,
+  compactMode: PropTypes.bool,
+  contentStyle: PropTypes.object,
+  showProgressBar: PropTypes.bool,
+  progress: PropTypes.number,
+  fillColor: PropTypes.string,
+  progressHeight: PropTypes.number,
+  showPercentage: PropTypes.bool,
+  percentageFormatter: PropTypes.func,
+  progressStyle: PropTypes.object,
+};
+
 // Composant CardFooter extrait
 const CardFooter = ({ footer, footerStyle }) => {
   if (!footer) return null;
   return <View style={[styles.footer, footerStyle]}>{footer}</View>;
 };
 
+// PropTypes pour CardFooter
+CardFooter.propTypes = {
+  footer: PropTypes.node,
+  footerStyle: PropTypes.object,
+};
+
 // Composant CardOverlay extrait
 const CardOverlay = ({ showOverlay, overlayContent, overlayStyle }) => {
   if (!showOverlay) return null;
   return <View style={[styles.overlay, overlayStyle]}>{overlayContent}</View>;
+};
+
+// PropTypes pour CardOverlay
+CardOverlay.propTypes = {
+  showOverlay: PropTypes.bool,
+  overlayContent: PropTypes.node,
+  overlayStyle: PropTypes.object,
 };
 
 // Composant HeaderIcon extrait
@@ -98,6 +134,14 @@ const HeaderIcon = ({ headerIcon, iconColor, headerIconBackground, compactMode }
       style={styles.headerIcon}
     />
   );
+};
+
+// PropTypes pour HeaderIcon
+HeaderIcon.propTypes = {
+  headerIcon: PropTypes.string,
+  iconColor: PropTypes.string.isRequired,
+  headerIconBackground: PropTypes.bool,
+  compactMode: PropTypes.bool,
 };
 
 // Composant TitleWithBadge extrait
@@ -135,6 +179,19 @@ const TitleWithBadge = ({ title, titleBadge, badgeColor, compactMode, titleStyle
   );
 };
 
+// PropTypes pour TitleWithBadge
+TitleWithBadge.propTypes = {
+  title: PropTypes.string,
+  titleBadge: PropTypes.string,
+  badgeColor: PropTypes.string,
+  compactMode: PropTypes.bool,
+  titleStyle: PropTypes.shape({
+    color: PropTypes.string,
+  }),
+  titleBadgeStyle: PropTypes.object,
+  badgeTextStyle: PropTypes.object,
+};
+
 // Composant HeaderRight extrait
 const HeaderRight = ({ rightIcon, headerRight, compactMode, rightIconStyle }) => (
   <View style={styles.headerRight}>
@@ -150,6 +207,14 @@ const HeaderRight = ({ rightIcon, headerRight, compactMode, rightIconStyle }) =>
     {headerRight}
   </View>
 );
+
+// PropTypes pour HeaderRight
+HeaderRight.propTypes = {
+  rightIcon: PropTypes.string,
+  headerRight: PropTypes.node,
+  compactMode: PropTypes.bool,
+  rightIconStyle: PropTypes.object,
+};
 
 // Fonction renderMobileHeader simplifiée
 const renderMobileHeader = (props) => {
@@ -348,39 +413,6 @@ const Card = ({
       <CardOverlay showOverlay={showOverlay} overlayContent={overlayContent} overlayStyle={overlayStyle} />
     </WrapperComponent>
   );
-};
-
-// PropTypes pour les composants extraits
-CardBadge.propTypes = {
-  badge: PropTypes.string,
-  iconColor: PropTypes.string.isRequired,
-  badgeStyle: PropTypes.object,
-  badgeTextStyle: PropTypes.object,
-};
-
-CardContent.propTypes = {
-  children: PropTypes.node,
-  padding: PropTypes.bool,
-  compactMode: PropTypes.bool,
-  contentStyle: PropTypes.object,
-  showProgressBar: PropTypes.bool,
-  progress: PropTypes.number,
-  fillColor: PropTypes.string,
-  progressHeight: PropTypes.number,
-  showPercentage: PropTypes.bool,
-  percentageFormatter: PropTypes.func,
-  progressStyle: PropTypes.object,
-};
-
-CardFooter.propTypes = {
-  footer: PropTypes.node,
-  footerStyle: PropTypes.object,
-};
-
-CardOverlay.propTypes = {
-  showOverlay: PropTypes.bool,
-  overlayContent: PropTypes.node,
-  overlayStyle: PropTypes.object,
 };
 
 // PropTypes pour Card

@@ -3,6 +3,7 @@ import { View } from "react-native";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 
 /**
  * Composant de navigation pour l'exercice de lecture
@@ -59,7 +60,7 @@ const ReadingNavigation = ({
         />
       </View>
     );
-  } 
+  }
   // Réponse correcte
   else if (isCorrect) {
     return (
@@ -81,7 +82,7 @@ const ReadingNavigation = ({
         />
       </View>
     );
-  } 
+  }
   // Réponse incorrecte
   else {
     return (
@@ -104,6 +105,20 @@ const ReadingNavigation = ({
       </View>
     );
   }
+};
+
+// ✅ Définition de PropTypes pour valider les props
+ReadingNavigation.propTypes = {
+  showFeedback: PropTypes.bool.isRequired,
+  isCorrect: PropTypes.bool,
+  selectedAnswer: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
+  currentQuestionIndex: PropTypes.number.isRequired,
+  totalQuestions: PropTypes.number.isRequired,
+  attempts: PropTypes.number,
+  levelColor: PropTypes.string,
+  onNext: PropTypes.func.isRequired,
+  onPrevious: PropTypes.func.isRequired,
+  onRetry: PropTypes.func.isRequired,
 };
 
 export default ReadingNavigation;
