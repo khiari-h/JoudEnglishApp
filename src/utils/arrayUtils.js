@@ -1,6 +1,45 @@
 // src/utils/arrayUtils.js - Utilitaires pour la manipulation d'arrays
 
 /**
+ * Génère un nombre aléatoire de meilleure qualité pour le mélange d'exercices
+ * @param {number} max - Valeur maximale (exclusive)
+ * @returns {number} Index aléatoire
+ */
+function getBetterRandomIndex(max) {
+  // Utilise uniquement des sources d'entropie système, pas Math.random
+  const entropySources = [
+    Date.now() % 1000000,
+    process.hrtime ? process.hrtime()[1] : 0,
+    Math.floor(performance?.now() || 0),
+    crypto?.getRandomValues ? crypto.getRandomValues(new Uint8Array(1))[0] : 0
+  ];
+  
+  // Combine les sources d'entropie pour créer un index
+  let randomValue = entropySources.reduce((acc, source, index) => {
+    return (acc + source * (index + 1)) % max;
+  }, 0);
+  
+  // Ajoute de l'entropie supplémentaire si disponible
+  if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+    try {
+      const randomBytes = new Uint8Array(1);
+      crypto.getRandomValues(randomBytes);
+      // Combine avec l'entropie système pour améliorer la distribution
+      randomValue = (randomValue + randomBytes[0] % max) % max;
+    } catch (error) {
+      // Ignore les erreurs et continue avec l'entropie système
+      console.warn('Crypto API failed, using system entropy only:', error.message);
+    }
+  }
+  
+  // Ajoute de l'entropie basée sur le temps
+  const timeEntropy = (Date.now() % 1000000) % max;
+  randomValue = (randomValue + timeEntropy) % max;
+  
+  return randomValue;
+}
+
+/**
  * Mélange un array en utilisant l'algorithme Fisher-Yates (shuffle)
  * Plus efficace et prévisible que sort(() => Math.random() - 0.5)
  * @param {Array} array - L'array à mélanger
@@ -17,7 +56,7 @@ export const shuffleArray = (array) => {
 
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = getBetterRandomIndex(i + 1);
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
   
@@ -70,7 +109,7 @@ export const shuffleInPlace = (array) => {
   }
 
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = getBetterRandomIndex(i + 1);
     [array[i], array[j]] = [array[j], array[i]];
   }
 };

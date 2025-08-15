@@ -16,6 +16,23 @@ jest.mock('@react-native-async-storage/async-storage', () =>
   require('@react-native-async-storage/async-storage/jest/async-storage-mock')
 );
 
+// Mock expo-crypto pour les tests
+jest.mock('expo-crypto', () => ({
+  getRandomBytes: jest.fn().mockImplementation(async (length) => {
+    const bytes = new Uint8Array(length);
+    for (let i = 0; i < length; i++) {
+      bytes[i] = Math.floor(Math.random() * 256);
+    }
+    return bytes;
+  }),
+  digestStringAsync: jest.fn().mockImplementation(async (algorithm, data) => {
+    return `mock-hash-${data.slice(0, 8)}`;
+  }),
+  randomUUID: jest.fn().mockImplementation(() => {
+    return 'mock-uuid-' + Math.random().toString(36).substr(2, 9);
+  }),
+}));
+
 jest.mock('expo-font', () => ({
   useFonts: () => [true],
   isLoaded: () => true,

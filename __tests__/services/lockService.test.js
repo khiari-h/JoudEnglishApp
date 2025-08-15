@@ -66,7 +66,7 @@ describe('lockService', () => {
       if (key === lockStorageKeys.RECOVERY_HASH) return null;
       return null;
     });
-    const code = generateRecoveryCode();
+    const code = await generateRecoveryCode();
     expect(code).toHaveLength(16);
     await setRecoveryCode(code);
     // stub verify: reading back will use mocked getItem -> null, so adjust:

@@ -161,22 +161,15 @@ export const getAvailableLevels = () => {
 export const getPhrasesStats = (level) => {
   const data = getPhrasesData(level);
   
-  if (!data || !data.phrases) {
-    return { 
-      totalPhrases: 0, 
-      totalCategories: 0,
-      averagePhrasesPerCategory: 0
-    };
-  }
-
-  const totalPhrases = data.phrases.length;
-  const totalCategories = data.categories?.length || 0;
+  // Remplacement du if par une logique plus concise
+  const totalPhrases = data?.phrases?.length ?? 0;
+  const totalCategories = data?.categories?.length ?? 0;
 
   return {
     totalPhrases,
     totalCategories,
     averagePhrasesPerCategory: totalCategories > 0 ? Math.round(totalPhrases / totalCategories) : 0,
-    difficulty: data.difficulty ?? level,
+    difficulty: data?.difficulty ?? level,
   };
 };
 
@@ -187,7 +180,7 @@ export const getPhrasesStats = (level) => {
  */
 export const getPhrasesCategories = (level) => {
   const data = getPhrasesData(level);
-  return data.categories || [];
+  return data?.categories ?? [];
 };
 
 /**
@@ -198,9 +191,8 @@ export const getPhrasesCategories = (level) => {
  */
 export const getPhrasesByCategory = (level, categoryId) => {
   const data = getPhrasesData(level);
-  if (!data.phrases) return [];
-  
-  return data.phrases.filter(phrase => phrase.categoryId === categoryId);
+  // Remplacement du if par une logique plus concise
+  return data?.phrases?.filter(phrase => phrase.categoryId === categoryId) ?? [];
 };
 
 /**
@@ -211,11 +203,11 @@ export const getPhrasesByCategory = (level, categoryId) => {
 export const getPhrasesMetadata = (level) => {
   const data = getPhrasesData(level);
   return {
-    difficulty: data.difficulty || level,
-    categoryDescriptions: data.categoryDescriptions || {},
-    usageNotes: data.usageNotes || {},
-    levelInfo: data.levelInfo || {},
-    contentStats: data.contentStats || {},
-    learningSequence: data.learningSequence || [],
+    difficulty: data?.difficulty ?? level,
+    categoryDescriptions: data?.categoryDescriptions ?? {},
+    usageNotes: data?.usageNotes ?? {},
+    levelInfo: data?.levelInfo ?? {},
+    contentStats: data?.contentStats ?? {},
+    learningSequence: data?.learningSequence ?? [],
   };
 };

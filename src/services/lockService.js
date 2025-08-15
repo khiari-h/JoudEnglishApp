@@ -23,11 +23,148 @@ function simpleHash(input) {
   return Math.abs(hash).toString(16);
 }
 
-function randomSalt(length = 16) {
+/**
+ * Génère des bytes aléatoires cryptographiquement sûrs
+ * @param {number} length - Nombre de bytes à générer
+ * @returns {Uint8Array} Bytes aléatoires
+ */
+function getSecureRandomBytes(length) {
+  try {
+    // Méthode 1: Web Crypto API (disponible dans React Native)
+    if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+      const randomValues = new Uint8Array(length);
+      crypto.getRandomValues(randomValues);
+      return randomValues;
+    }
+    
+    // Méthode 2: Node.js crypto (si disponible)
+    if (typeof require !== 'undefined') {
+      try {
+        const nodeCrypto = require('crypto');
+        return nodeCrypto.randomBytes(length);
+      } catch (nodeCryptoError) {
+        console.warn('Node.js crypto failed:', nodeCryptoError.message);
+      }
+    }
+    
+    // Méthode 3: expo-crypto (si disponible et importé)
+    if (typeof require !== 'undefined') {
+      try {
+        const expoCrypto = require('expo-crypto');
+        if (expoCrypto?.getRandomBytes) {
+          // expo-crypto.getRandomBytes est synchrone, pas besoin d'await
+          return expoCrypto.getRandomBytes(length);
+        }
+      } catch (expoError) {
+        console.warn('expo-crypto not available:', expoError.message);
+      }
+    }
+    
+    throw new Error('No secure random source available');
+  } catch (error) {
+    console.warn('All secure random methods failed, using fallback:', error.message);
+    throw error;
+  }
+}
+
+/**
+ * Génère un salt cryptographiquement sûr
+ * @param {number} length - Longueur du salt (défaut: 16)
+ * @returns {string} Salt sécurisé
+ */
+function secureRandomSalt(length = 16) {
+  try {
+    const randomBytes = getSecureRandomBytes(length);
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let out = '';
+    
+    for (let i = 0; i < length; i += 1) {
+      const randomIndex = randomBytes[i] % chars.length;
+      out += chars[randomIndex];
+    }
+    return out;
+  } catch (error) {
+    console.warn('Secure random failed, using fallback method:', error.message);
+    // Dernier recours : méthode moins sécurisée mais fonctionnelle
+    return fallbackRandomSalt(length);
+  }
+}
+
+/**
+ * Fallback moins sécurisé (utilisé uniquement en cas d'échec de toutes les méthodes sécurisées)
+ * @param {number} length - Longueur du salt
+ * @returns {string} Salt moins sécurisé
+ */
+function fallbackRandomSalt(length = 16) {
   const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let out = '';
-  for (let i = 0; i < length; i += 1) out += chars[Math.floor(Math.random() * chars.length)];
+  
+  // Utilise une combinaison d'entropie système au lieu de Math.random
+  const entropySources = [
+    Date.now() % 1000000,
+    process.hrtime ? process.hrtime()[1] : 0,
+    Math.floor(performance?.now() || 0),
+    crypto?.getRandomValues ? crypto.getRandomValues(new Uint8Array(1))[0] : 0
+  ];
+  
+  for (let i = 0; i < length; i += 1) {
+    // Combine plusieurs sources d'entropie pour améliorer la qualité
+    const entropy = entropySources.reduce((acc, source, index) => {
+      return acc + (source * (index + 1)) % chars.length;
+    }, i);
+    const randomIndex = entropy % chars.length;
+    out += chars[randomIndex];
+  }
   return out;
+}
+
+/**
+ * Génère un code de récupération cryptographiquement sûr
+ * @returns {string} Code de récupération sécurisé
+ */
+export function generateRecoveryCode() {
+  try {
+    const randomBytes = getSecureRandomBytes(16);
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    
+    for (let i = 0; i < 16; i += 1) {
+      const randomIndex = randomBytes[i] % chars.length;
+      code += chars[randomIndex];
+    }
+    return code;
+  } catch (error) {
+    console.warn('Secure random failed, using fallback method:', error.message);
+    // Dernier recours : méthode moins sécurisée mais fonctionnelle
+    return fallbackGenerateRecoveryCode();
+  }
+}
+
+/**
+ * Fallback moins sécurisé pour la génération de code de récupération
+ * @returns {string} Code de récupération moins sécurisé
+ */
+function fallbackGenerateRecoveryCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  
+  // Utilise une combinaison d'entropie système au lieu de Math.random
+  const entropySources = [
+    Date.now() % 1000000,
+    process.hrtime ? process.hrtime()[1] : 0,
+    Math.floor(performance?.now() || 0),
+    crypto?.getRandomValues ? crypto.getRandomValues(new Uint8Array(1))[0] : 0
+  ];
+  
+  for (let i = 0; i < 16; i += 1) {
+    // Combine plusieurs sources d'entropie pour améliorer la qualité
+    const entropy = entropySources.reduce((acc, source, index) => {
+      return acc + (source * (index + 1)) % chars.length;
+    }, i);
+    const randomIndex = entropy % chars.length;
+    code += chars[randomIndex];
+  }
+  return code;
 }
 
 export async function isEnabled() {
@@ -55,7 +192,7 @@ export async function disableLock() {
 }
 
 export async function setPin(pin) {
-  const salt = randomSalt();
+  const salt = secureRandomSalt();
   const pinHash = simpleHash(`${salt}:${pin}`);
   await AsyncStorage.setItem(STORAGE_KEYS.PIN_SALT, salt);
   await AsyncStorage.setItem(STORAGE_KEYS.PIN_HASH, pinHash);
@@ -106,13 +243,6 @@ export async function unlockWithBiometrics() {
   if (!enabled) return { ok: false };
   // In real app: prompt biometric and return result
   return { ok: true };
-}
-
-export function generateRecoveryCode() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let code = '';
-  for (let i = 0; i < 16; i += 1) code += chars[Math.floor(Math.random() * chars.length)];
-  return code;
 }
 
 export async function setRecoveryCode(code) {

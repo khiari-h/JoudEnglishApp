@@ -1,4 +1,5 @@
 // src/components/ui/ProgressBar/useProgressAnimation.js
+
 import { useEffect, useRef } from "react";
 import { Animated } from "react-native";
 
@@ -10,30 +11,28 @@ export default function useProgressAnimation({
   const clamped = Math.min(Math.max(progress, 0), 100);
   const animatedValue = useRef(new Animated.Value(0)).current;
 
-  // Sépare la logique d'animation dans une fonction dédiée
-  const handleAnimatedUpdate = (value) => {
-    Animated.timing(animatedValue, {
-      toValue: value,
-      duration,
-      useNativeDriver: false,
-    }).start();
+  // On stocke les méthodes de mise à jour dans un objet.
+  const updateMethods = {
+    animated: (value) => {
+      Animated.timing(animatedValue, {
+        toValue: value,
+        duration,
+        useNativeDriver: false,
+      }).start();
+    },
+    instant: (value) => {
+      animatedValue.setValue(value);
+    },
   };
 
-  // Sépare la logique de mise à jour instantanée dans une autre fonction
-  const handleInstantUpdate = (value) => {
-    animatedValue.setValue(value);
-  };
-
-  // Le hook gère les deux cas en appelant la fonction appropriée
   useEffect(() => {
-    if (animated) {
-      handleAnimatedUpdate(clamped);
-    } else {
-      handleInstantUpdate(clamped);
-    }
+    // On choisit la méthode à exécuter en dehors du 'if'.
+    const updateMethod = animated ? updateMethods.animated : updateMethods.instant;
+    
+    // On l'exécute, le 'if' a disparu du hook.
+    updateMethod(clamped);
   }, [clamped, animated, duration, animatedValue]);
 
-  // Interpolation de la valeur animée en pourcentage de largeur
   const width = animatedValue.interpolate({
     inputRange: [0, 100],
     outputRange: ["0%", "100%"],

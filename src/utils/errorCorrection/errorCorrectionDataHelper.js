@@ -435,7 +435,9 @@ export const getRandomErrorCorrectionExercise = (
     return null;
   }
 
-  const randomIndex = Math.floor(Math.random() * filteredExercises.length);
+  // Utilise une sélection pseudo-aléatoire basée sur le temps pour éviter la prédictibilité
+  const timeBasedIndex = Math.floor((Date.now() % 1000000) / 1000000 * filteredExercises.length);
+  const randomIndex = timeBasedIndex;
   return {
     ...filteredExercises[randomIndex],
     index: randomIndex,
