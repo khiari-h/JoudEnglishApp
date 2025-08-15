@@ -1,5 +1,6 @@
 // PhrasesProgress/index.js - VERSION CORRIGÉE AVEC PHRASESTATS
 
+import PropTypes from 'prop-types';
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalPhrases,
@@ -25,12 +26,12 @@ import {
  * @param {function} onCategoryPress - Fonction appelée lors du clic sur catégorie
  */
 const PhrasesProgress = ({
-  levelColor = "#5E60CE",
-  phrasesData = null,
-  completedPhrases = {},
-  expanded = false,
-  onToggleExpand = () => { /* intentionally empty: default no-op to avoid errors if not provided */ },
-  onCategoryPress = () => { /* intentionally empty: default no-op to avoid errors if not provided */ },
+  levelColor,
+  phrasesData,
+  completedPhrases,
+  expanded,
+  onToggleExpand,
+  onCategoryPress,
 }) => {
   
   // ✅ CORRECTION : Utilise les vraies fonctions de calcul
@@ -66,5 +67,29 @@ const PhrasesProgress = ({
     />
   );
 };
+
+// ✅ Ajout des validations PropTypes
+PhrasesProgress.propTypes = {
+  levelColor: PropTypes.string,
+  phrasesData: PropTypes.shape({
+    categories: PropTypes.array,
+    phrases: PropTypes.array,
+  }),
+  completedPhrases: PropTypes.object,
+  expanded: PropTypes.bool,
+  onToggleExpand: PropTypes.func,
+  onCategoryPress: PropTypes.func,
+};
+
+// ✅ Ajout des valeurs par défaut pour la robustesse
+PhrasesProgress.defaultProps = {
+  levelColor: '#5E60CE',
+  phrasesData: { categories: [], phrases: [] },
+  completedPhrases: {},
+  expanded: false,
+  onToggleExpand: () => {},
+  onCategoryPress: () => {},
+};
+
 
 export default PhrasesProgress;
