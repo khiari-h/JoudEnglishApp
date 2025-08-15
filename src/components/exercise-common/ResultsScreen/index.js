@@ -174,7 +174,9 @@ const ResultsScreen = ({
         title: "Mes résultats d'apprentissage",
       });
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      console.warn('Error sharing results:', error);
+      // Fallback: continuer même si le partage échoue
     }
   }, [correctAnswers, totalQuestions, successPercentage, exerciseType, level]);
 

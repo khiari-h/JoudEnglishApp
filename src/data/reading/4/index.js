@@ -49,9 +49,18 @@ const b2Metadata = {
   totalTexts: readingTextsB2.length,
   totalQuestions: readingQuestionsB2.reduce((sum, q) => sum + q.questions.length, 0),
   averageWordCount: Math.round(readingTextsB2.reduce((sum, text) => sum + text.wordCount, 0) / readingTextsB2.length),
-  difficulties: [...new Set(readingTextsB2.map(text => text.difficulty))].sort((a, b) => a.localeCompare(b)),
-  topics: [...new Set(readingTextsB2.flatMap(text => text.topics))].sort((a, b) => a.localeCompare(b)),
-  description: "Upper-intermediate level reading comprehension exercises focusing on complex arguments, detailed analysis, and sophisticated vocabulary in academic and professional contexts."
+  
+  // ✅ BEST PRACTICE : Tri numérique pour les difficultés (niveaux ordonnés)
+  difficulties: [...new Set(readingTextsB2.map(text => text.difficulty))]
+    .filter(difficulty => typeof difficulty === 'number')
+    .sort((a, b) => a - b),
+  
+  // ✅ BEST PRACTICE : Tri alphabétique pour les topics (strings)
+  topics: [...new Set(readingTextsB2.flatMap(text => text.topics))]
+    .filter(topic => typeof topic === 'string' && topic.trim())
+    .sort((a, b) => a.localeCompare(b)),
+    
+  description: "Upper-intermediate level reading comprehension exercises focusing on complex topics, abstract ideas, and detailed analysis."
 };
 
 // Export par défaut avec structure complète

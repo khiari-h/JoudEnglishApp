@@ -49,9 +49,18 @@ const c2Metadata = {
   totalTexts: readingTextsC2.length,
   totalQuestions: readingQuestionsC2.reduce((sum, q) => sum + q.questions.length, 0),
   averageWordCount: Math.round(readingTextsC2.reduce((sum, text) => sum + text.wordCount, 0) / readingTextsC2.length),
-  difficulties: [...new Set(readingTextsC2.map(text => text.difficulty))].sort((a, b) => a.localeCompare(b)),
-  topics: [...new Set(readingTextsC2.flatMap(text => text.topics))].sort((a, b) => a.localeCompare(b)),
-  description: "Mastery level reading comprehension exercises featuring highly sophisticated philosophical, academic, and literary texts with complex argumentation, extensive vocabulary, and nuanced interpretive challenges."
+  
+  // ✅ BEST PRACTICE : Tri numérique pour les difficultés (niveaux ordonnés)
+  difficulties: [...new Set(readingTextsC2.map(text => text.difficulty))]
+    .filter(difficulty => typeof difficulty === 'number')
+    .sort((a, b) => a - b),
+  
+  // ✅ BEST PRACTICE : Tri alphabétique pour les topics (strings)
+  topics: [...new Set(readingTextsC2.flatMap(text => text.topics))]
+    .filter(topic => typeof topic === 'string' && topic.trim())
+    .sort((a, b) => a.localeCompare(b)),
+    
+  description: "Mastery level reading comprehension exercises focusing on highly sophisticated texts, nuanced language, and complex cultural contexts."
 };
 
 // Export par défaut avec structure complète

@@ -1,4 +1,4 @@
-// src/hooks/useDailyWords.js - SANS TREND
+// src/hooks/useDailyWords.js - VERSION CORRIGÉE
 
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,6 +15,11 @@ const useDailyWords = () => {
 
   // =================== DATES HELPER ===================
   const getTodayString = () => new Date().toDateString();
+
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, level = 'unknown') => {
+    console.warn(`Storage error in ${operation} for level ${level}:`, error);
+  };
 
   // =================== CALCUL DES MOTS QUOTIDIENS ===================
   const calculateDailyWords = useCallback(async () => {
@@ -50,6 +55,8 @@ const useDailyWords = () => {
             }, 0);
           }
         } catch (error) {
+          // ✅ Gestion d'erreur appropriée
+          handleStorageError(error, 'calculateDailyWords', level);
           // Continue avec les autres niveaux si erreur
         }
       }
@@ -57,6 +64,8 @@ const useDailyWords = () => {
       setWordsToday(todayCount);
 
     } catch (error) {
+      // ✅ Gestion d'erreur appropriée
+      console.error('Error calculating daily words:', error);
       setWordsToday(0);
     } finally {
       setIsLoading(false);

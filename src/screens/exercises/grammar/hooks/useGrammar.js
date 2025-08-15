@@ -1,4 +1,5 @@
-// hooks/useGrammar.js - VERSION FINALE SANS BOUCLE INFINIE
+// src/screens/exercises/grammar/hooks/useGrammar.js - VERSION CORRIGÉE
+
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -11,7 +12,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  */
 const useGrammar = (grammarData = [], level = "A1") => {
   
-  // =================== CORE STATE ===================
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, fallback = null) => {
+    console.warn(`Grammar storage error in ${operation}:`, error);
+    return fallback;
+  };
+
+  // =================== STORAGE KEY ===================
+  const STORAGE_KEY = `grammar_${level}`;
+
+  // =================== STATE ===================
   const [ruleIndex, setRuleIndex] = useState(0);
   const [exerciseIndex, setExerciseIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -23,25 +33,31 @@ const useGrammar = (grammarData = [], level = "A1") => {
   const [loaded, setLoaded] = useState(false);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
-  // =================== REFS ===================
+  const isInitialized = useRef(false);
   const saveDataTimeoutRef = useRef(null);
-  const STORAGE_KEY = `grammar_${level}`;
+
+  // =================== COMPUTED VALUES ===================
+  const rules = grammarData?.rules || [];
+  const currentRule = rules[ruleIndex];
+  const currentExercises = currentRule?.exercises || [];
+  const currentExercise = currentExercises[exerciseIndex];
+  const totalRules = rules.length;
+  const totalExercisesInRule = currentExercises.length;
+  const hasValidData = rules.length > 0 && currentExercises.length > 0;
 
   // =================== COMPUTED VALUES MEMOIZED ===================
-  const currentRule = useMemo(() => {
+  const currentRuleMemo = useMemo(() => {
     return grammarData[ruleIndex] || { title: "", explanation: "", examples: [], exercises: [] };
   }, [grammarData, ruleIndex]);
 
-  const currentExercise = useMemo(() => {
-    return currentRule.exercises?.[exerciseIndex] || null;
-  }, [currentRule.exercises, exerciseIndex]);
+  const currentExerciseMemo = useMemo(() => {
+    return currentRuleMemo.exercises?.[exerciseIndex] || null;
+  }, [currentRuleMemo.exercises, exerciseIndex]);
 
-  const totalRules = useMemo(() => grammarData.length, [grammarData.length]);
-  const totalExercises = useMemo(() => currentRule.exercises?.length || 0, [currentRule.exercises?.length]);
+  const totalRulesMemo = useMemo(() => grammarData.length, [grammarData.length]);
+  const totalExercisesMemo = useMemo(() => currentRuleMemo.exercises?.length || 0, [currentRuleMemo.exercises?.length]);
   
-  // =================== PERSISTENCE SIMPLIFIÉE ===================
-  
-  // Load data from storage (une seule fois)
+  // =================== DATA LOADING ===================
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -55,7 +71,9 @@ const useGrammar = (grammarData = [], level = "A1") => {
           }
         }
       } catch (error) {
-        // Ignored on purpose
+        // ✅ Gestion d'erreur appropriée
+        handleStorageError(error, 'loadData');
+        // Fallback: utiliser les valeurs par défaut
       } finally {
         setLoaded(true);
       }
@@ -68,7 +86,9 @@ const useGrammar = (grammarData = [], level = "A1") => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'saveDataToStorage');
+      // Fallback: continuer sans sauvegarde
     }
   }, [STORAGE_KEY]);
 
@@ -208,8 +228,8 @@ const useGrammar = (grammarData = [], level = "A1") => {
   }, [currentExercise, selectedOption, inputText, ruleIndex, exerciseIndex, checkAnswer]);
 
   const nextExercise = useCallback(() => {
-    const isLastExercise = exerciseIndex === totalExercises - 1;
-    const isLastRule = ruleIndex === totalRules - 1;
+    const isLastExercise = exerciseIndex === totalExercisesMemo - 1;
+    const isLastRule = ruleIndex === totalRulesMemo - 1;
 
     if (isLastExercise && isLastRule) {
       Alert.alert(
@@ -228,7 +248,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
     }
     
     return true;
-  }, [exerciseIndex, totalExercises, ruleIndex, totalRules, changeRule, resetExerciseState]);
+  }, [exerciseIndex, totalExercisesMemo, ruleIndex, totalRulesMemo, changeRule, resetExerciseState]);
 
   const previousExercise = useCallback(() => {
     if (exerciseIndex > 0) {
@@ -250,7 +270,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
   // =================== COMPUTED PROGRESS MEMOIZED ===================
   const progress = useMemo(() => {
     const completedInCurrentRule = completedExercises[ruleIndex]?.length || 0;
-    const progressPercent = totalExercises > 0 ? (completedInCurrentRule / totalExercises) * 100 : 0;
+    const progressPercent = totalExercisesMemo > 0 ? (completedInCurrentRule / totalExercisesMemo) * 100 : 0;
     
     const totalExercisesAllRules = grammarData.reduce((sum, rule) => sum + (rule.exercises?.length || 0), 0);
     const totalCompletedExercises = Object.values(completedExercises).reduce((sum, completed) => sum + (completed?.length || 0), 0);
@@ -260,11 +280,11 @@ const useGrammar = (grammarData = [], level = "A1") => {
       currentRule: progressPercent,
       overall: overallProgress,
       completedInCurrent: completedInCurrentRule,
-      totalInCurrent: totalExercises,
+      totalInCurrent: totalExercisesMemo,
       completedOverall: totalCompletedExercises,
       totalOverall: totalExercisesAllRules
     };
-  }, [completedExercises, ruleIndex, totalExercises, grammarData]);
+  }, [completedExercises, ruleIndex, totalExercisesMemo, grammarData]);
 
   // =================== VALIDATION MEMOIZED ===================
   const canCheckAnswer = useMemo(() => {
@@ -278,7 +298,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
   }, [currentExercise, selectedOption, inputText]);
 
   const isFirstExercise = exerciseIndex === 0;
-  const isLastExercise = exerciseIndex === totalExercises - 1;
+  const isLastExercise = exerciseIndex === totalExercisesMemo - 1;
   const isExerciseCompleted = useMemo(() => {
     return completedExercises[ruleIndex]?.includes(exerciseIndex) || false;
   }, [completedExercises, ruleIndex, exerciseIndex]);

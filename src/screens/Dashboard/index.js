@@ -1,7 +1,7 @@
 // src/screens/Dashboard/index.js - VERSION CORRIGÉE - RAFRAÎCHISSEMENT COMPLET
 
 import { useContext, useCallback } from "react";
-import { RefreshControl, Text, ScrollView, View } from "react-native";
+import { RefreshControl, ScrollView, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useFocusEffect } from "expo-router";
 
@@ -32,7 +32,6 @@ import LearningProgress from "./components/LearningProgress";
 import RevisionOrchestrator from "../VocabularyRevision/RevisionOrchestrator";
 
 // Constantes
-import { LANGUAGE_LEVELS } from "../../utils/constants";
 import styles from "./style";
 import useDashboardRefresh from "./hooks/useDashboardRefresh";
 import useDashboardNavigation from "./hooks/useDashboardNavigation";

@@ -1,7 +1,8 @@
-// hooks/useAssessment.js - HOOK UNIFIÉ SIMPLE
-import { useState, useEffect, useCallback, useRef } from 'react';
+// src/screens/exercises/level-assessment/hooks/useAssessment.js - VERSION CORRIGÉE
+
+import { useState, useEffect, useRef, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getAssessmentData, getAssessmentSections } from '../../../../utils/assessment/assessmentDataHelper';
+import { getAssessmentData } from '../../../../utils/assessment/assessmentDataHelper';
 
 /**
  * 🎯 Hook unifié pour Level Assessment
@@ -10,7 +11,19 @@ import { getAssessmentData, getAssessmentSections } from '../../../../utils/asse
  */
 const useAssessment = (level = "A1") => {
   
-  // =================== CORE STATE ===================
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, fallback = null) => {
+    console.warn(`Assessment storage error in ${operation}:`, error);
+    return fallback;
+  };
+
+  // =================== STORAGE KEYS ===================
+  const STORAGE_KEY = `assessment_${level}_position`;
+  const ANSWERS_KEY = `assessment_${level}_answers`;
+  const RESULTS_KEY = `assessment_${level}_results`;
+
+  // =================== STATE ===================
+  const [sections, setSections] = useState([]);
   const [currentSection, setCurrentSection] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -18,53 +31,59 @@ const useAssessment = (level = "A1") => {
   const [testCompleted, setTestCompleted] = useState(false);
   const [userAnswers, setUserAnswers] = useState({});
   const [assessmentResults, setAssessmentResults] = useState({});
-  const [lastPosition, setLastPosition] = useState({ sectionIndex: 0, questionIndex: 0 });
+  const [lastPosition, setLastPosition] = useState(null);
   const [loaded, setLoaded] = useState(false);
+  const [assessmentData, setAssessmentData] = useState({});
 
-  // =================== REFS ===================
   const isInitialized = useRef(false);
 
-  // =================== COMPUTED VALUES ===================
-  const assessmentData = getAssessmentData(level);
-  const sections = getAssessmentSections();
-  const currentSectionData = assessmentData[currentSection] || { title: "", questions: [] };
-  const currentQuestion = currentSectionData.questions?.[currentQuestionIndex] || { text: "", options: [], correctAnswer: 0 };
-  const totalSections = sections.length;
-  const totalQuestionsInSection = currentSectionData.questions?.length || 0;
-  
-  // =================== PERSISTENCE ===================
-  const STORAGE_KEY = `assessment_${level}`;
-  const RESULTS_KEY = `assessment_results_${level}`;
-  const ANSWERS_KEY = `assessment_answers_${level}`;
-
-  // Load data from storage
+  // =================== DATA LOADING ===================
   useEffect(() => {
     const loadData = async () => {
       try {
-        // Charger position
-        const savedPosition = await AsyncStorage.getItem(STORAGE_KEY);
-        if (savedPosition) {
-          const { sectionIndex, questionIndex } = JSON.parse(savedPosition);
-          setLastPosition({ sectionIndex, questionIndex });
-        }
+        // Charger données d'évaluation
+        const data = getAssessmentData(level);
+        setAssessmentData(data);
+        setSections(Object.keys(data));
 
-        // Charger réponses
-        const savedAnswers = await AsyncStorage.getItem(ANSWERS_KEY);
-        if (savedAnswers) {
-          setUserAnswers(JSON.parse(savedAnswers));
-        }
-
-        // Charger résultats
-        const savedResults = await AsyncStorage.getItem(RESULTS_KEY);
-        if (savedResults) {
-          const results = JSON.parse(savedResults);
-          setAssessmentResults(results);
-          if (results.completedAt) {
-            setTestCompleted(true);
+        // Charger position sauvegardée
+        try {
+          const savedPosition = await AsyncStorage.getItem(STORAGE_KEY);
+          if (savedPosition) {
+            const position = JSON.parse(savedPosition);
+            setLastPosition(position);
           }
+        } catch (positionError) {
+          handleStorageError(positionError, 'load position');
+        }
+
+        // Charger réponses sauvegardées
+        try {
+          const savedAnswers = await AsyncStorage.getItem(ANSWERS_KEY);
+          if (savedAnswers) {
+            const answers = JSON.parse(savedAnswers);
+            setUserAnswers(answers);
+          }
+        } catch (answersError) {
+          handleStorageError(answersError, 'load answers');
+        }
+
+        // Charger résultats sauvegardés
+        try {
+          const savedResults = await AsyncStorage.getItem(RESULTS_KEY);
+          if (savedResults) {
+            const results = JSON.parse(savedResults);
+            setAssessmentResults(results);
+            if (results.completedAt) {
+              setTestCompleted(true);
+            }
+          }
+        } catch (resultsError) {
+          handleStorageError(resultsError, 'load results');
         }
       } catch (error) {
-        // Ignored on purpose
+        // ✅ Gestion d'erreur appropriée
+        console.error('Error loading assessment data:', error);
       } finally {
         setLoaded(true);
       }
@@ -86,7 +105,9 @@ const useAssessment = (level = "A1") => {
       // Sauvegarder réponses
       await AsyncStorage.setItem(ANSWERS_KEY, JSON.stringify(userAnswers));
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'saveData');
+      // Fallback: continuer sans sauvegarde
     }
   }, [currentSection, currentQuestionIndex, userAnswers, sections, STORAGE_KEY, ANSWERS_KEY]);
 
@@ -216,13 +237,14 @@ const useAssessment = (level = "A1") => {
     try {
       const resultsWithTimestamp = {
         ...results,
-        completedAt: new Date().toISOString(),
         timestamp: Date.now(),
       };
       setAssessmentResults(resultsWithTimestamp);
       await AsyncStorage.setItem(RESULTS_KEY, JSON.stringify(resultsWithTimestamp));
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'saveAssessmentResults');
+      // Fallback: garder les résultats en mémoire même si la sauvegarde échoue
     }
   }, [RESULTS_KEY]);
 
@@ -238,7 +260,17 @@ const useAssessment = (level = "A1") => {
       setAssessmentResults({});
       setLastPosition({ sectionIndex: 0, questionIndex: 0 });
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'resetAssessment');
+      // Fallback: réinitialiser l'état local même si la suppression échoue
+      setCurrentSection(sections[0]);
+      setCurrentQuestionIndex(0);
+      setSelectedAnswer(null);
+      setShowFeedback(false);
+      setTestCompleted(false);
+      setUserAnswers({});
+      setAssessmentResults({});
+      setLastPosition({ sectionIndex: 0, questionIndex: 0 });
     }
   }, [STORAGE_KEY, RESULTS_KEY, ANSWERS_KEY, sections]);
 

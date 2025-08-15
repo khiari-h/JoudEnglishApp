@@ -1,10 +1,7 @@
 // src/screens/exercises/level-assessment/AssessmentResults/index.js - AVEC PROPTYPES
 
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import PropTypes from 'prop-types';
-import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
 import HeroCard from "../../../../components/ui/HeroCard";
 import ContentSection from "../../../../components/ui/ContentSection";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";

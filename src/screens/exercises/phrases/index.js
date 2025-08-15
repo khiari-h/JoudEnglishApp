@@ -1,5 +1,5 @@
 // PhrasesExercise/index.js - VERSION AVEC SAUVEGARDE ACTIVITÉ
-import { useMemo, useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";

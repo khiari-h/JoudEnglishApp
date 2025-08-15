@@ -41,7 +41,10 @@ export const loadGrammarData = async (level) => {
     const load = loaders[level] || loaders.A1;
     const mod = await load();
     return mod.default || mod;
-  } catch (e) {
+  } catch (error) {
+    // ✅ Gestion d'erreur appropriée
+    console.warn(`Error loading grammar data for level ${level}:`, error);
+    // Fallback: retourner les données A1 par défaut
     return getGrammarData("A1");
   }
 };

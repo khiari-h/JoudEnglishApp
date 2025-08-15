@@ -1,4 +1,5 @@
-// src/hooks/useRealTimeProgress.js - CORRIGÉ - Juste les vraies données
+// src/hooks/useRealTimeProgress.js - VERSION CORRIGÉE AVEC GESTION D'ERREUR
+
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getVocabularyData } from '../utils/vocabulary/vocabularyDataHelper';
@@ -7,6 +8,12 @@ const useRealTimeProgress = () => {
   const [levelProgress, setLevelProgress] = useState({});
   const [exerciseProgress, setExerciseProgress] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  // =================== ERROR HANDLING HELPER ===================
+  const handleProgressError = (error, operation, level, fallback = 0) => {
+    console.warn(`Progress calculation error in ${operation} for level ${level}:`, error);
+    return fallback;
+  };
 
   // =================== VOCABULAIRE - CORRECTION PRINCIPALE ===================
   
@@ -42,7 +49,8 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      // ✅ Gestion d'erreur appropriée
+      return handleProgressError(error, 'calculateVocabularyProgress', level, 0);
     }
   };
 
@@ -76,7 +84,8 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      // ✅ Gestion d'erreur appropriée
+      return handleProgressError(error, 'calculateVocabularyFastProgress', level, 0);
     }
   };
 
@@ -104,7 +113,8 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      // ✅ Gestion d'erreur appropriée
+      return handleProgressError(error, 'calculateGrammarProgress', level, 0);
     }
   };
 
@@ -131,7 +141,8 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      // ✅ Gestion d'erreur appropriée
+      return handleProgressError(error, 'calculateReadingProgress', level, 0);
     }
   };
 
@@ -151,7 +162,7 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      return handleProgressError(error, 'calculateSpellingProgress', level, 0);
     }
   };
 
@@ -178,7 +189,7 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      return handleProgressError(error, 'calculatePhrasesProgress', level, 0);
     }
   };
 
@@ -202,7 +213,7 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      return handleProgressError(error, 'calculateConversationsProgress', level, 0);
     }
   };
 
@@ -229,7 +240,7 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      return handleProgressError(error, 'calculateErrorCorrectionProgress', level, 0);
     }
   };
 
@@ -252,7 +263,7 @@ const useRealTimeProgress = () => {
       return Math.min(Math.round(percentage), 100);
       
     } catch (error) {
-      return 0;
+      return handleProgressError(error, 'calculateWordGamesProgress', level, 0);
     }
   };
 
@@ -268,7 +279,7 @@ const useRealTimeProgress = () => {
       return data.completedAt ? 100 : 0;
       
     } catch (error) {
-      return 0;
+      return handleProgressError(error, 'calculateAssessmentProgress', level, 0);
     }
   };
 

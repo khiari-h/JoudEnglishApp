@@ -23,23 +23,31 @@ const QuickActions = ({ currentLevel = "1" }) => {
   const countWordsLearned = async () => {
     try {
       let total = 0;
-      const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
-      const modes = ['classic', 'fast'];
-
+      const levels = ['1', '2', '3', '4', '5', '6'];
+      
       for (const level of levels) {
-        for (const mode of modes) {
-          const stored = await AsyncStorage.getItem(`vocabulary_${level}_${mode}`);
-          if (stored) {
-            const data = JSON.parse(stored);
+        try {
+          const storageKey = `vocabulary_${level}_classic`;
+          const savedData = await AsyncStorage.getItem(storageKey);
+          
+          if (savedData) {
+            const data = JSON.parse(savedData);
             const completedWords = data.completedWords || {};
+            
             total += Object.values(completedWords).reduce((sum, words) => {
               return sum + (Array.isArray(words) ? words.length : 0);
             }, 0);
           }
+        } catch (levelError) {
+          // ✅ Gestion d'erreur appropriée pour chaque niveau
+          console.warn(`Error counting words for level ${level}:`, levelError);
+          // Continue avec les autres niveaux
         }
       }
       return total;
     } catch (error) {
+      // ✅ Gestion d'erreur appropriée
+      console.error('Error counting total words learned:', error);
       return 0;
     }
   };

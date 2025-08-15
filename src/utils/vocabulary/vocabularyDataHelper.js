@@ -128,6 +128,8 @@ export const loadVocabularyData = async (level, mode = "classic") => {
     const mod = await load();
     return mod.default || mod;
   } catch (error) {
+    // ✅ Gestion d'erreur appropriée
+    console.warn(`Error loading vocabulary data for level ${level}:`, error);
     // Fallback: structure vide en cas d'échec
     return { exercises: [] };
   }

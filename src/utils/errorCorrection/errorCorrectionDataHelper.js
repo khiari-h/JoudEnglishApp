@@ -182,7 +182,9 @@ export const getErrorCorrectionStats = (level) => {
         .reduce((total, ex) => total + ex.errorPositions.length, 0);
     }
   } catch (error) {
-    // Ignored on purpose
+    // ✅ Gestion d'erreur appropriée
+    console.warn(`Error calculating stats for level ${level}:`, error);
+    // Fallback: retourner des stats de base
   }
 
   return stats;

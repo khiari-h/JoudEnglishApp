@@ -19,8 +19,6 @@ import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Contain
 import Header from "../../components/layout/Header";
 
 // Constantes
-import { LANGUAGE_LEVELS } from "../../utils/constants";
-
 // Styles
 import styles, { getBackgroundGradient } from "./style";
 import useLevelListData from "./hooks/useLevelListData";

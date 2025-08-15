@@ -4,7 +4,7 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useLock } from '../../contexts/LockContext';
 import ForgotPinScreen from './ForgotPinScreen';
 import EmergencyResetScreen from './EmergencyResetScreen';
-import * as Lock from '../../services/lockService';import PropTypes from 'prop-types';
+import * as Lock from '../../services/lockService';
 
 
 const LockScreen = () => {
@@ -93,11 +93,6 @@ const LockScreen = () => {
       </TouchableOpacity>
     </View>
   );
-};
-
-
-LockScreen.propTypes = {
-  // Aucune prop détectée automatiquement
 };
 
 export default LockScreen;

@@ -1,5 +1,6 @@
-// hooks/usePhrases.js - HOOK UNIFIÉ SIMPLE
-import { useState, useEffect, useCallback, useRef } from 'react';
+// src/screens/exercises/phrases/hooks/usePhrases.js - VERSION CORRIGÉE
+
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -8,9 +9,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * Remplace usePhrasesExerciseState + usePhrasesProgress + usePhrasesDisplay
  * Simple, efficace, maintenable - pattern identique à useReading, useGrammar et useVocabulary
  */
-const usePhrases = (phrasesData = null, level = "A1") => {
-  
-  // =================== CORE STATE ===================
+const usePhrases = (phrasesData, level) => {
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, fallback = null) => {
+    console.warn(`Phrases storage error in ${operation}:`, error);
+    return fallback;
+  };
+
+  // =================== STORAGE KEY ===================
+  const STORAGE_KEY = `phrases_${level}`;
+
+  // =================== STATE ===================
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
@@ -18,30 +27,23 @@ const usePhrases = (phrasesData = null, level = "A1") => {
   const [loaded, setLoaded] = useState(false);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
-  // =================== REFS ===================
   const isInitialized = useRef(false);
 
   // =================== COMPUTED VALUES ===================
   const categories = phrasesData?.categories || [];
-  const allPhrases = phrasesData?.phrases || [];
-  const currentCategory = categories[categoryIndex] || { id: null, name: "Loading...", phrases: [] };
-  const currentPhrases = currentCategory.id 
-    ? allPhrases.filter(phrase => phrase.categoryId === currentCategory.id)
-    : [];
-  const currentPhrase = currentPhrases[phraseIndex] || { id: "", phrase: "", translation: "", context: "" };
-  const totalCategories = categories.length;
+  const currentCategory = categories[categoryIndex];
+  const currentPhrases = currentCategory?.phrases || [];
+  const currentPhrase = currentPhrases[phraseIndex];
   const totalPhrasesInCategory = currentPhrases.length;
-  
-  // =================== PERSISTENCE ===================
-  const STORAGE_KEY = `phrases_${level}`;
+  const hasValidData = phrasesData && categories.length > 0 && currentPhrases.length > 0;
 
-  // Load data from storage
+  // =================== DATA LOADING ===================
   useEffect(() => {
     const loadData = async () => {
       try {
-        const saved = await AsyncStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          const { completedPhrases: savedCompleted, lastPosition } = JSON.parse(saved);
+        const savedData = await AsyncStorage.getItem(STORAGE_KEY);
+        if (savedData) {
+          const { completedPhrases: savedCompleted, lastPosition } = JSON.parse(savedData);
           setCompletedPhrases(savedCompleted || {});
           if (lastPosition) {
             setCategoryIndex(lastPosition.categoryIndex || 0);
@@ -49,7 +51,9 @@ const usePhrases = (phrasesData = null, level = "A1") => {
           }
         }
       } catch (error) {
-        // Ignored on purpose
+        // ✅ Gestion d'erreur appropriée
+        handleStorageError(error, 'loadData');
+        // Fallback: utiliser les valeurs par défaut
       } finally {
         setLoaded(true);
       }
@@ -69,7 +73,9 @@ const usePhrases = (phrasesData = null, level = "A1") => {
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'saveData');
+      // Fallback: continuer sans sauvegarde
     }
   }, [completedPhrases, categoryIndex, phraseIndex, STORAGE_KEY]);
 
@@ -145,7 +151,7 @@ const usePhrases = (phrasesData = null, level = "A1") => {
     for (let i = 1; i <= numCategories; i++) {
       const nextIndex = (categoryIndex + i) % numCategories;
       const category = categories[nextIndex];
-      const categoryPhrases = allPhrases.filter(p => p.categoryId === category.id);
+      const categoryPhrases = currentPhrases.filter(p => p.categoryId === category.id);
       const completedInCategory = completedPhrases[nextIndex]?.length || 0;
       
       if (completedInCategory < categoryPhrases.length) {
@@ -153,7 +159,7 @@ const usePhrases = (phrasesData = null, level = "A1") => {
       }
     }
     return -1;
-  }, [categories, categoryIndex, allPhrases, completedPhrases]);
+  }, [categories, categoryIndex, currentPhrases, completedPhrases]);
 
   // =================== MAIN NAVIGATION ===================
   const handleNext = useCallback(() => {
@@ -186,7 +192,7 @@ const usePhrases = (phrasesData = null, level = "A1") => {
 
   // =================== COMPUTED STATS ===================
   const getStats = useCallback(() => {
-    const totalPhrases = allPhrases.length;
+    const totalPhrases = currentPhrases.length;
     const completedPhrasesCount = Object.values(completedPhrases).reduce((sum, completed) => sum + (completed?.length || 0), 0);
     const totalProgress = totalPhrases > 0 ? Math.round((completedPhrasesCount / totalPhrases) * 100) : 0;
     const completionProgress = totalPhrasesInCategory > 0 ? ((phraseIndex + 1) / totalPhrasesInCategory) * 100 : 0;
@@ -199,7 +205,7 @@ const usePhrases = (phrasesData = null, level = "A1") => {
       completedInCurrentCategory: completedPhrases[categoryIndex]?.length || 0,
       totalInCurrentCategory: totalPhrasesInCategory
     };
-  }, [allPhrases, completedPhrases, totalPhrasesInCategory, phraseIndex, categoryIndex]);
+  }, [currentPhrases, completedPhrases, totalPhrasesInCategory, phraseIndex, categoryIndex]);
 
   // =================== COMPUTED DISPLAY ===================
   const getDisplayData = useCallback(() => {
@@ -216,8 +222,6 @@ const usePhrases = (phrasesData = null, level = "A1") => {
   }, [phraseIndex, totalPhrasesInCategory, categories, currentPhrase, currentCategory, currentPhrases]);
 
   // =================== VALIDATION ===================
-  const hasValidData = phrasesData?.categories && Array.isArray(phrasesData.categories) && phrasesData.categories.length > 0;
-
   const canGoToPrevious = phraseIndex > 0;
   const isLastPhraseInCategory = phraseIndex === totalPhrasesInCategory - 1;
 
@@ -234,7 +238,7 @@ const usePhrases = (phrasesData = null, level = "A1") => {
     currentPhrase,
     currentCategory,
     currentPhrases,
-    totalCategories,
+    totalCategories: categories.length,
     totalPhrasesInCategory,
     hasValidData,
     

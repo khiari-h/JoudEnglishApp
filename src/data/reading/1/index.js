@@ -49,8 +49,17 @@ const a1Metadata = {
   totalTexts: readingTextsA1.length,
   totalQuestions: readingQuestionsA1.reduce((sum, q) => sum + q.questions.length, 0),
   averageWordCount: Math.round(readingTextsA1.reduce((sum, text) => sum + text.wordCount, 0) / readingTextsA1.length),
-  difficulties: [...new Set(readingTextsA1.map(text => text.difficulty))].sort((a, b) => a.localeCompare(b)),
-  topics: [...new Set(readingTextsA1.flatMap(text => text.topics))].sort((a, b) => a.localeCompare(b)),
+  
+  // ✅ BEST PRACTICE : Tri numérique pour les difficultés (niveaux ordonnés)
+  difficulties: [...new Set(readingTextsA1.map(text => text.difficulty))]
+    .filter(difficulty => typeof difficulty === 'number')
+    .sort((a, b) => a - b),
+  
+  // ✅ BEST PRACTICE : Tri alphabétique pour les topics (strings)
+  topics: [...new Set(readingTextsA1.flatMap(text => text.topics))]
+    .filter(topic => typeof topic === 'string' && topic.trim())
+    .sort((a, b) => a.localeCompare(b)),
+    
   description: "Beginner level reading comprehension exercises focusing on everyday situations and basic vocabulary."
 };
 

@@ -1,4 +1,5 @@
-// hooks/useErrorCorrection.js - HOOK UNIFIÉ SIMPLE
+// src/screens/exercises/errorCorrection/hooks/useErrorCorrection.js - VERSION CORRIGÉE
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -8,9 +9,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * Remplace useErrorCorrectionExerciseState + useErrorCorrectionProgress
  * Simple, efficace, maintenable - pattern identique à useVocabulary
  */
-const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
-  
-  // =================== CORE STATE ===================
+const useErrorCorrection = (errorCorrectionData, level) => {
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, fallback = null) => {
+    console.warn(`Error correction storage error in ${operation}:`, error);
+    return fallback;
+  };
+
+  // =================== STORAGE KEY ===================
+  const STORAGE_KEY = `errorCorrection_${level}`;
+
+  // =================== STATE ===================
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [correctionMode, setCorrectionMode] = useState('full'); // 'full', 'identify', 'multiple_choice'
@@ -34,16 +43,14 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
 
   // =================== COMPUTED VALUES ===================
   const categories = errorCorrectionData?.categories || [];
-  const exercises = errorCorrectionData?.exercises?.filter(
-    ex => ex.categoryId === selectedCategory
-  ) || [];
-  const currentCategory = categories.find(cat => cat.id === selectedCategory) || { name: "", id: null };
-  const currentExercise = exercises[currentExerciseIndex] || { text: "", correctedText: "", errorPositions: [], choices: [] };
+  const exercises = errorCorrectionData?.exercises || [];
+  const currentExercises = exercises.filter(ex => ex.categoryId === selectedCategory);
+  const currentExercise = currentExercises[currentExerciseIndex];
   const totalCategories = categories.length;
-  const totalExercisesInCategory = exercises.length;
+  const totalExercisesInCategory = currentExercises.length;
   
   // =================== PERSISTENCE ===================
-  const STORAGE_KEY = `error_correction_${level}`;
+  const lastPosition = useRef(null);
 
   // Load data from storage
   useEffect(() => {
@@ -59,7 +66,9 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
           }
         }
       } catch (error) {
-        // Ignored on purpose
+        // ✅ Gestion d'erreur appropriée
+        handleStorageError(error, 'loadData');
+        // Fallback: utiliser les valeurs par défaut
       } finally {
         setLoaded(true);
       }
@@ -79,7 +88,9 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'saveData');
+      // Fallback: continuer sans sauvegarde
     }
   }, [completedExercises, selectedCategory, currentExerciseIndex, STORAGE_KEY]);
 
@@ -131,8 +142,8 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
     setScore(0);
 
     // Initialize based on mode
-    if (exercises.length > 0) {
-      const firstExercise = exercises[0];
+    if (currentExercises.length > 0) {
+      const firstExercise = currentExercises[0];
       switch(mode) {
         case 'full':
           setUserCorrection(firstExercise.text || '');
@@ -148,7 +159,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
           break;
       }
     }
-  }, [exercises, resetExerciseState]);
+  }, [currentExercises, resetExerciseState]);
 
   const toggleDetailedProgress = useCallback(() => {
     setShowDetailedProgress(prev => !prev);
@@ -252,7 +263,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
       resetExerciseState();
 
       // Initialize next exercise based on mode
-      const nextExercise = exercises[nextIndex];
+      const nextExercise = currentExercises[nextIndex];
       switch(correctionMode) {
         case 'full':
           setUserCorrection(nextExercise.text || '');
@@ -282,7 +293,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
     }
     return { completed: false };
   }, [selectedCategory, currentExerciseIndex, totalExercisesInCategory, markExerciseAsCompleted, 
-      resetExerciseState, exercises, correctionMode, findNextUncompletedCategory, changeCategory, level]);
+      resetExerciseState, currentExercises, correctionMode, findNextUncompletedCategory, changeCategory, level]);
 
   const handlePrevious = useCallback(() => {
     // Case 1: Not first exercise in category
@@ -292,7 +303,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
       resetExerciseState();
 
       // Initialize previous exercise based on mode
-      const prevExercise = exercises[prevIndex];
+      const prevExercise = currentExercises[prevIndex];
       switch(correctionMode) {
         case 'full':
           setUserCorrection(prevExercise.text || '');
@@ -322,7 +333,7 @@ const useErrorCorrection = (errorCorrectionData = null, level = "A1") => {
       changeCategory(previousCategory.id);
       setCurrentExerciseIndex(lastExerciseIndex);
     }
-  }, [currentExerciseIndex, exercises, correctionMode, resetExerciseState, 
+  }, [currentExerciseIndex, currentExercises, correctionMode, resetExerciseState, 
       categories, selectedCategory, errorCorrectionData, changeCategory]);
 
   // =================== COMPUTED STATS ===================

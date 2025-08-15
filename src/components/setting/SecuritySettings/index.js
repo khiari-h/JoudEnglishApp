@@ -1,5 +1,5 @@
 // src/components/setting/SecuritySettings/index.js
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { View, Text, Switch, TouchableOpacity, TextInput, Modal } from 'react-native';
 import * as Lock from '../../../services/lockService';
 import styles from './style';

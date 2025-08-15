@@ -1,7 +1,8 @@
-// hooks/useWordGames.js - HOOK UNIFIÉ SIMPLE
-import { useState, useEffect, useCallback, useRef } from 'react';
+// src/screens/exercises/word-games/hooks/useWordGames.js - VERSION CORRIGÉE
+
+import { useState, useEffect, useRef, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import useGameAnimation from './useGameAnimation';
+import { Animated } from 'react-native';
 import { shuffleArray } from '../../../../utils/arrayUtils';
 
 /**
@@ -11,7 +12,18 @@ import { shuffleArray } from '../../../../utils/arrayUtils';
  */
 const useWordGames = (wordGamesData = null, level = "A1") => {
   
-  // =================== CORE STATE ===================
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, fallback = null) => {
+    console.warn(`Word games storage error in ${operation}:`, error);
+    return fallback;
+  };
+
+  // =================== STORAGE KEYS ===================
+  const STORAGE_KEY = `wordGames_${level}_position`;
+  const COMPLETED_KEY = `wordGames_${level}_completed`;
+  const SCORES_KEY = `wordGames_${level}_scores`;
+
+  // =================== STATE ===================
   const [currentGameIndex, setCurrentGameIndex] = useState(0);
   const [selectedItems, setSelectedItems] = useState([]);
   const [matchedItems, setMatchedItems] = useState([]);
@@ -21,45 +33,64 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   const [score, setScore] = useState(0);
   const [gameResults, setGameResults] = useState([]);
   const [shuffledOptions, setShuffledOptions] = useState([]);
-  const [completedGames, setCompletedGames] = useState({});
-  const [lastPosition, setLastPosition] = useState({ gameIndex: 0 });
   const [loaded, setLoaded] = useState(false);
+  const [completedGames, setCompletedGames] = useState({});
+  const [lastPosition, setLastPosition] = useState(null);
 
-  // =================== REFS ===================
   const isInitialized = useRef(false);
-
-  // =================== ANIMATIONS ===================
-  const { fadeAnim, bounceAnim } = useGameAnimation();
 
   // =================== COMPUTED VALUES ===================
   const games = wordGamesData?.games || [];
-  const currentGame = games[currentGameIndex] || null;
   const totalGames = games.length;
-  
-  // =================== PERSISTENCE ===================
-  const STORAGE_KEY = `word_games_${level}`;
-  const COMPLETED_KEY = `word_games_completed_${level}`;
-  const SCORES_KEY = `word_games_scores_${level}`;
+  const currentGame = games[currentGameIndex];
 
-  // Load data from storage
+  // =================== ANIMATIONS ===================
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const bounceAnim = useRef(new Animated.Value(1)).current;
+
+  // =================== DATA LOADING ===================
   useEffect(() => {
     const loadData = async () => {
       try {
-        // Charger position
-        const savedPosition = await AsyncStorage.getItem(STORAGE_KEY);
-        if (savedPosition) {
-          const { gameIndex } = JSON.parse(savedPosition);
-          setLastPosition({ gameIndex });
+        // Charger position sauvegardée
+        try {
+          const savedPosition = await AsyncStorage.getItem(STORAGE_KEY);
+          if (savedPosition) {
+            const position = JSON.parse(savedPosition);
+            setLastPosition(position);
+          }
+        } catch (positionError) {
+          handleStorageError(positionError, 'load position');
         }
 
         // Charger jeux complétés
-        const savedCompleted = await AsyncStorage.getItem(COMPLETED_KEY);
-        if (savedCompleted) {
-          setCompletedGames(JSON.parse(savedCompleted));
+        try {
+          const savedCompleted = await AsyncStorage.getItem(COMPLETED_KEY);
+          if (savedCompleted) {
+            const completed = JSON.parse(savedCompleted);
+            setCompletedGames(completed);
+          }
+        } catch (completedError) {
+          handleStorageError(completedError, 'load completed games');
         }
 
-        // Initialiser gameResults selon le nombre de jeux
-        if (games.length > 0) {
+        // Charger scores
+        try {
+          const savedScores = await AsyncStorage.getItem(SCORES_KEY);
+          if (savedScores) {
+            const scores = JSON.parse(savedScores);
+            setGameResults(scores);
+          } else {
+            // Initialiser avec des scores par défaut
+            setGameResults(Array(games.length).fill({
+              score: 0,
+              maxScore: 0,
+              completed: false,
+            }));
+          }
+        } catch (scoresError) {
+          handleStorageError(scoresError, 'load scores');
+          // Fallback: initialiser avec des scores par défaut
           setGameResults(Array(games.length).fill({
             score: 0,
             maxScore: 0,
@@ -67,7 +98,8 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
           }));
         }
       } catch (error) {
-        // Ignored on purpose
+        // ✅ Gestion d'erreur appropriée
+        console.error('Error loading word games data:', error);
       } finally {
         setLoaded(true);
       }
@@ -88,7 +120,9 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
       // Sauvegarder jeux complétés
       await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(completedGames));
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'saveData');
+      // Fallback: continuer sans sauvegarde
     }
   }, [currentGameIndex, completedGames, STORAGE_KEY, COMPLETED_KEY]);
 
@@ -174,7 +208,6 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   const resetGames = useCallback(async () => {
     try {
       await AsyncStorage.multiRemove([STORAGE_KEY, COMPLETED_KEY, SCORES_KEY]);
-      
       setCurrentGameIndex(0);
       setSelectedItems([]);
       setMatchedItems([]);
@@ -194,7 +227,27 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
         shuffleGameOptions(games[0]);
       }
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'resetGames');
+      // Fallback: réinitialiser l'état local même si la suppression échoue
+      setCurrentGameIndex(0);
+      setSelectedItems([]);
+      setMatchedItems([]);
+      setShowFeedback(false);
+      setIsCorrect(false);
+      setShowResults(false);
+      setScore(0);
+      setCompletedGames({});
+      setLastPosition({ gameIndex: 0 });
+      
+      if (games.length > 0) {
+        setGameResults(Array(games.length).fill({
+          score: 0,
+          maxScore: 0,
+          completed: false,
+        }));
+        shuffleGameOptions(games[0]);
+      }
     }
   }, [STORAGE_KEY, COMPLETED_KEY, SCORES_KEY, games]);
 

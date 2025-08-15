@@ -32,6 +32,8 @@ const SpellingExercise = ({ route }) => {
     try {
       return getSpellingData(level, exerciseType);
     } catch (error) {
+      // ✅ Gestion d'erreur appropriée
+      console.warn(`Error getting spelling data for level ${level}, type ${exerciseType}:`, error);
       return null;
     }
   }, [level, exerciseType]);

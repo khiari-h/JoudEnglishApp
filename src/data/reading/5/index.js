@@ -49,9 +49,18 @@ const c1Metadata = {
   totalTexts: readingTextsC1.length,
   totalQuestions: readingQuestionsC1.reduce((sum, q) => sum + q.questions.length, 0),
   averageWordCount: Math.round(readingTextsC1.reduce((sum, text) => sum + text.wordCount, 0) / readingTextsC1.length),
-  difficulties: [...new Set(readingTextsC1.map(text => text.difficulty))].sort((a, b) => a.localeCompare(b)),
-  topics: [...new Set(readingTextsC1.flatMap(text => text.topics))].sort((a, b) => a.localeCompare(b)),
-  description: "Advanced level reading comprehension exercises featuring complex philosophical, scientific, and cultural texts with sophisticated vocabulary and nuanced argumentation."
+  
+  // ✅ BEST PRACTICE : Tri numérique pour les difficultés (niveaux ordonnés)
+  difficulties: [...new Set(readingTextsC1.map(text => text.difficulty))]
+    .filter(difficulty => typeof difficulty === 'number')
+    .sort((a, b) => a - b),
+  
+  // ✅ BEST PRACTICE : Tri alphabétique pour les topics (strings)
+  topics: [...new Set(readingTextsC1.flatMap(text => text.topics))]
+    .filter(topic => typeof topic === 'string' && topic.trim())
+    .sort((a, b) => a.localeCompare(b)),
+    
+  description: "Advanced level reading comprehension exercises focusing on sophisticated topics, complex arguments, and academic content."
 };
 
 // Export par défaut avec structure complète

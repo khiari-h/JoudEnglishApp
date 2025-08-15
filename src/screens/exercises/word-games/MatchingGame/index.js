@@ -1,9 +1,7 @@
 // src/screens/exercises/word-games/MatchingGame/index.js - AVEC PROPTYPES
 
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import PropTypes from 'prop-types';
-import { Ionicons } from "@expo/vector-icons";
-import createStyles from "./style";
 
 /**
  * Composant pour le jeu d'association de paires

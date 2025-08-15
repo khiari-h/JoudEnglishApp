@@ -1,9 +1,8 @@
 // src/screens/exercises/spelling/SpellingActions/index.js - AVEC PROPTYPES ET GESTION D'ERREURS
 
-import { View, Text, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import { useCallback } from "react";
 import PropTypes from 'prop-types';
-import { Ionicons } from "@expo/vector-icons";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import createStyles from "./style";
 

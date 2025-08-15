@@ -3,12 +3,8 @@ import React, { useCallback } from "react";
 import {
   Modal as RNModal,
   View,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
   Animated,
   Dimensions,
-  ScrollView,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";

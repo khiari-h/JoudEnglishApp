@@ -1,9 +1,8 @@
 // src/screens/exercises/errorCorrection/modes/IdentifyErrorsMode/index.js - AVEC PROPTYPES
 
 import { View, Text, TouchableOpacity, Animated } from "react-native";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import PropTypes from 'prop-types';
-import { Ionicons } from "@expo/vector-icons";
 import HeroCard from "../../../../../components/ui/HeroCard";
 import ContentSection from "../../../../../components/ui/ContentSection";
 import createStyles from "./style";

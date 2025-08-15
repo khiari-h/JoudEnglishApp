@@ -1,5 +1,5 @@
 // src/screens/VocabularyRevision/index.js - VERSION REFACTORISÉE
-import { useState, useContext, useCallback, useRef } from 'react';
+import { useContext, useCallback, useRef } from 'react';
 import { View, Animated, StatusBar, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types'; // Import de PropTypes

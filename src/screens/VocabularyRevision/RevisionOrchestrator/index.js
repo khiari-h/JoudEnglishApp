@@ -46,6 +46,8 @@ const RevisionOrchestrator = ({ currentLevel = "mixed" }) => {
       setTotalWords(total);
       return total;
     } catch (error) {
+      // ✅ Gestion d'erreur appropriée
+      console.warn('Error counting words for revision:', error);
       return 0;
     }
   };

@@ -1,7 +1,6 @@
 // hooks/useVocabulary.js - AVEC TIMESTAMPS POUR COMPTAGE QUOTIDIEN
 
 import { useState, useRef } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import useVocabularySelectors from './internal/useVocabularySelectors';
 import useVocabularyNavigation from './internal/useVocabularyNavigation';
 import useVocabularyStorage from './internal/useVocabularyStorage';

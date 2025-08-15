@@ -19,7 +19,7 @@ import useReading from "./hooks/useReading";
 import useLastActivity from "../../../hooks/useLastActivity";
 import { getReadingData, loadReadingData, getLevelColor } from "../../../utils/reading/readingDataHelper";
 import createStyles from "./style";
-import { useEffect, useMemo, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 
 const ReadingExercise = ({ route }) => {
   const { level = "A1" } = route?.params || {};

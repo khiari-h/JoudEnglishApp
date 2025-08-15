@@ -115,7 +115,9 @@ const LevelAssessment = ({ route }) => {
     try {
       await resetAssessment();
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      console.warn('Error resetting assessment:', error);
+      // Fallback: continuer même si la réinitialisation échoue
     }
   }, [resetAssessment]);
 

@@ -30,7 +30,9 @@ export const SettingsProvider = ({ children }) => {
           setSettings(DEFAULT_SETTINGS);
         }
       } catch (error) {
-        // Ignored on purpose
+        // ✅ Gestion d'erreur appropriée
+        console.warn('Error loading settings, using defaults:', error);
+        setSettings(DEFAULT_SETTINGS);
       } finally {
         setIsLoading(false);
       }

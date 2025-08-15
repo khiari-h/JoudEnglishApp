@@ -11,6 +11,12 @@ const useActivityMetrics = () => {
   // =================== DATES HELPER ===================
   const getTodayString = () => new Date().toDateString();
 
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, fallback) => {
+    console.warn(`Storage error in ${operation}:`, error);
+    return fallback;
+  };
+
   // =================== CHARGEMENT INITIAL ===================
   useEffect(() => {
     loadMetrics();
@@ -35,11 +41,18 @@ const useActivityMetrics = () => {
       } else {
         // Nouveau jour = reset
         setTodayMinutes(0);
-        await AsyncStorage.setItem('today_minutes', '0');
-        await AsyncStorage.setItem('last_time_date', today);
+        try {
+          await AsyncStorage.setItem('today_minutes', '0');
+          await AsyncStorage.setItem('last_time_date', today);
+        } catch (storageError) {
+          handleStorageError(storageError, 'reset daily metrics', null);
+        }
       }
     } catch (error) {
-      // Silently fail
+      handleStorageError(error, 'loadMetrics', null);
+      // Fallback: utiliser les valeurs par défaut
+      setCurrentStreak(0);
+      setTodayMinutes(0);
     }
   };
 
@@ -60,15 +73,22 @@ const useActivityMetrics = () => {
         setTodayMinutes(newTodayTotal);
         
         const today = getTodayString();
-        await Promise.all([
-          AsyncStorage.setItem('today_minutes', newTodayTotal.toString()),
-          AsyncStorage.setItem('last_time_date', today)
-        ]);
+        try {
+          await Promise.all([
+            AsyncStorage.setItem('today_minutes', newTodayTotal.toString()),
+            AsyncStorage.setItem('last_time_date', today)
+          ]);
+        } catch (storageError) {
+          handleStorageError(storageError, 'save session data', null);
+          // Fallback: garder les données en mémoire même si la sauvegarde échoue
+        }
       }
 
       setSessionStart(null);
     } catch (error) {
-      // Silently fail
+      handleStorageError(error, 'endSession', null);
+      // Fallback: réinitialiser la session même en cas d'erreur
+      setSessionStart(null);
     }
   }, [sessionStart, todayMinutes]);
 
@@ -91,13 +111,19 @@ const useActivityMetrics = () => {
         }
         
         setCurrentStreak(newStreak);
-        await Promise.all([
-          AsyncStorage.setItem('current_streak', newStreak.toString()),
-          AsyncStorage.setItem('last_activity_date', today)
-        ]);
+        try {
+          await Promise.all([
+            AsyncStorage.setItem('current_streak', newStreak.toString()),
+            AsyncStorage.setItem('last_activity_date', today)
+          ]);
+        } catch (storageError) {
+          handleStorageError(storageError, 'save streak data', null);
+          // Fallback: garder le streak en mémoire même si la sauvegarde échoue
+        }
       }
     } catch (error) {
-      // Silently fail
+      handleStorageError(error, 'updateStreak', null);
+      // Fallback: ne pas mettre à jour le streak en cas d'erreur
     }
   }, [currentStreak]);
 

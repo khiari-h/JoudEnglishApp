@@ -45,7 +45,10 @@ export const loadReadingData = async (level) => {
     const load = loaders[level] || loaders["1"];
     const mod = await load();
     return mod.default || mod;
-  } catch (e) {
+  } catch (error) {
+    // ✅ Gestion d'erreur appropriée
+    console.warn(`Error loading reading data for level ${level}:`, error);
+    // Fallback: retourner les données du niveau 1 par défaut
     return getReadingData("1");
   }
 };
@@ -236,7 +239,11 @@ export const getAvailableTopics = (level) => {
   if (!data.exercises) return [];
   
   const allTopics = data.exercises.flatMap(exercise => exercise.topics || []);
-  return [...new Set(allTopics)].sort((a, b) => a.localeCompare(b));
+  
+  // ✅ BEST PRACTICE : Validation des types et tri alphabétique
+  return [...new Set(allTopics)]
+    .filter(topic => typeof topic === 'string' && topic.trim())
+    .sort((a, b) => a.localeCompare(b));
 };
 
 /**

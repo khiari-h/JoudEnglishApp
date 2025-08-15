@@ -1,5 +1,5 @@
 // src/hooks/useRouteActivityTracker.js - REFACTORISÉ pour réduire la complexité cognitive
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSegments, usePathname } from 'expo-router';
 import useActivityMetrics from './useActivityMetrics';
 

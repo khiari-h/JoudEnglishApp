@@ -1,41 +1,43 @@
-// hooks/useSpelling.js - BOUCLES INFINIES CORRIGÉES
+// src/screens/exercises/spelling/hooks/useSpelling.js - VERSION CORRIGÉE
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const useSpelling = (spellingData = null, level = "1", exerciseType = "correction") => {
+const useSpelling = (spellingData, level, exerciseType) => {
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, fallback = null) => {
+    console.warn(`Spelling storage error in ${operation}:`, error);
+    return fallback;
+  };
 
+  // =================== STORAGE KEY ===================
+  const STORAGE_KEY = `spelling_${level}_${exerciseType}`;
+
+  // =================== STATE ===================
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [userInput, setUserInput] = useState('');
   const [showHint, setShowHint] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [completedExercises, setCompletedExercises] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
-  const [loaded, setLoaded] = useState(false);
 
   const isInitialized = useRef(false);
 
+  // =================== COMPUTED VALUES ===================
   const exercises = spellingData?.exercises || [];
   const totalExercises = exercises.length;
-  
-  const hasValidData = Boolean(spellingData?.exercises && 
-    Array.isArray(spellingData.exercises) && 
-    spellingData.exercises.length > 0);
+  const currentExercise = exercises[currentExerciseIndex];
+  const hasValidData = exercises.length > 0;
 
-  const currentExercise = exercises[currentExerciseIndex] || null;
-  
-  // ✅ STORAGE_KEY STABLE
-  const STORAGE_KEY = `spelling_${level}_${exerciseType}`;
-
-  // ✅ FONCTION STABLE avec useCallback et dépendances fixes
+  // =================== DATA LOADING ===================
   const loadStoredData = useCallback(async () => {
     try {
       const saved = await AsyncStorage.getItem(STORAGE_KEY);
       if (saved) {
         const data = JSON.parse(saved);
-        
         setCompletedExercises(data.completedExercises || []);
         setUserAnswers(data.userAnswers || []);
         
@@ -46,11 +48,13 @@ const useSpelling = (spellingData = null, level = "1", exerciseType = "correctio
         }
       }
     } catch (error) {
-      // Silently fail
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'loadStoredData');
+      // Fallback: utiliser les valeurs par défaut
     } finally {
       setLoaded(true);
     }
-  }, [STORAGE_KEY]); // ✅ SEULEMENT STORAGE_KEY
+  }, [STORAGE_KEY, totalExercises]);
 
   // ✅ EFFET SIMPLIFIÉ - une seule fois
   useEffect(() => {
@@ -65,7 +69,9 @@ const useSpelling = (spellingData = null, level = "1", exerciseType = "correctio
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      // Silently fail
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'saveToStorage');
+      // Fallback: continuer sans sauvegarde
     }
   }, [STORAGE_KEY]);
 
@@ -108,6 +114,8 @@ const useSpelling = (spellingData = null, level = "1", exerciseType = "correctio
       return correct;
 
     } catch (error) {
+      // ✅ Gestion d'erreur appropriée
+      console.warn('Error checking spelling answer:', error);
       setIsCorrect(false);
       setShowFeedback(true);
       return false;

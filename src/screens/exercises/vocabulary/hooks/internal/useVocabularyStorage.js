@@ -1,4 +1,5 @@
-// src/screens/exercises/vocabulary/hooks/internal/useVocabularyStorage.js
+// src/screens/exercises/vocabulary/hooks/internal/useVocabularyStorage.js - VERSION CORRIGÉE
+
 import { useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -14,6 +15,12 @@ export default function useVocabularyStorage({
   exercises,
   isInitialized,
 }) {
+  // =================== ERROR HANDLING HELPER ===================
+  const handleStorageError = (error, operation, fallback = null) => {
+    console.warn(`Vocabulary storage error in ${operation}:`, error);
+    return fallback;
+  };
+
   // Load data from storage
   useEffect(() => {
     const loadData = async () => {
@@ -28,7 +35,9 @@ export default function useVocabularyStorage({
           }
         }
       } catch (error) {
-        // Silently fail
+        // ✅ Gestion d'erreur appropriée
+        handleStorageError(error, 'loadData');
+        // Fallback: utiliser les valeurs par défaut
       } finally {
         setLoaded(true);
       }
@@ -45,7 +54,9 @@ export default function useVocabularyStorage({
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
-      // Silently fail
+      // ✅ Gestion d'erreur appropriée
+      handleStorageError(error, 'saveData');
+      // Fallback: continuer sans sauvegarde
     }
   }, [completedWords, STORAGE_KEY]);
 

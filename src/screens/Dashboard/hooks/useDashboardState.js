@@ -1,4 +1,5 @@
-// src/screens/Dashboard/hooks/useDashboardState.js
+// src/screens/Dashboard/hooks/useDashboardState.js - VERSION CORRIGÉE
+
 import { useState, useCallback } from "react";
 
 export const useDashboardState = (loadLastActivities) => {
@@ -12,7 +13,9 @@ export const useDashboardState = (loadLastActivities) => {
     try {
       await loadLastActivities();
     } catch (error) {
-      // Ignored on purpose
+      // ✅ Gestion d'erreur appropriée
+      console.warn('Error refreshing dashboard activities:', error);
+      // Fallback: continuer même si le refresh échoue
     } finally {
       setRefreshing(false);
     }

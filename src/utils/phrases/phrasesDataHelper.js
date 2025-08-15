@@ -45,7 +45,10 @@ export const loadPhrasesData = async (level) => {
     const load = loaders[level] || loaders["1"];
     const mod = await load();
     return mod.default || mod;
-  } catch (e) {
+  } catch (error) {
+    // ✅ Gestion d'erreur appropriée
+    console.warn(`Error loading phrases data for level ${level}:`, error);
+    // Fallback: retourner les données du niveau 1 par défaut
     return getPhrasesData("1");
   }
 };

@@ -2,7 +2,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getVocabularyData } from '../utils/vocabulary/vocabularyDataHelper';
-import { shuffleArray, shuffleAndTake, shuffleWithFallback } from '../utils/arrayUtils';
+import { shuffleArray, shuffleAndTake } from '../utils/arrayUtils';
 
 // Fonction utilitaire pour traiter les différents formats de wordRef
 const processWordRef = (wordRef, category) => {
