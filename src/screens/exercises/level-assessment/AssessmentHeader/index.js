@@ -1,4 +1,5 @@
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+import PropTypes from 'prop-types';
 
 const AssessmentHeader = ({ level, onBackPress }) => {
   return (
@@ -10,6 +11,12 @@ const AssessmentHeader = ({ level, onBackPress }) => {
       backIcon="arrow-back"
     />
   );
+};
+
+// ✅ Ajout de la validation des props
+AssessmentHeader.propTypes = {
+  level: PropTypes.string.isRequired,
+  onBackPress: PropTypes.func.isRequired,
 };
 
 export default AssessmentHeader;

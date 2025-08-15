@@ -3,6 +3,7 @@ import { useMemo, useEffect, useCallback } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
+import PropTypes from 'prop-types';
 
 // Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
@@ -220,3 +221,12 @@ const LevelAssessment = ({ route }) => {
 };
 
 export default LevelAssessment;
+
+// ✅ Ajout de la validation des props
+LevelAssessment.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+    }),
+  }).isRequired,
+};

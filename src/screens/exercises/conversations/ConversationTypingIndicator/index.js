@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { View, Animated } from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
@@ -65,3 +66,8 @@ const ConversationTypingIndicator = ({ levelColor }) => {
 };
 
 export default ConversationTypingIndicator;
+
+// ✅ Ajout de la validation des props
+ConversationTypingIndicator.propTypes = {
+  levelColor: PropTypes.string.isRequired,
+};

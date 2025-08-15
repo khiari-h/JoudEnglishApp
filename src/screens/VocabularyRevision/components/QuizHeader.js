@@ -45,9 +45,10 @@ const QuizHeader = ({
 QuizHeader.propTypes = {
   onGoBack: PropTypes.func.isRequired,
   currentIndex: PropTypes.number,
-  totalQuestions: PropTypes.func,
+  totalQuestions: PropTypes.number,
   score: PropTypes.number,
-  colors: PropTypes.any,
+  colors: PropTypes.object,
+  localStyles: PropTypes.object,
 };
 
 export default QuizHeader;

@@ -3,6 +3,7 @@
 import { useMemo, useEffect, useCallback } from "react";
 import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import PropTypes from 'prop-types';
 
 import Container from "../../../components/layout/Container";
 import SpellingHeader from "./SpellingHeader";
@@ -148,3 +149,13 @@ const SpellingExercise = ({ route }) => {
 };
 
 export default SpellingExercise;
+
+// ✅ Ajout de la validation des props
+SpellingExercise.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+      exerciseType: PropTypes.string,
+    }),
+  }).isRequired,
+};

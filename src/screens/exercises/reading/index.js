@@ -2,6 +2,7 @@
 
 import { View, ActivityIndicator } from "react-native";
 import { router } from "expo-router";
+import PropTypes from 'prop-types';
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import ReadingHeader from "./ReadingHeader";
@@ -246,3 +247,12 @@ const ReadingExercise = ({ route }) => {
 };
 
 export default ReadingExercise;
+
+// ✅ Ajout de la validation des props
+ReadingExercise.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+    }),
+  }).isRequired,
+};

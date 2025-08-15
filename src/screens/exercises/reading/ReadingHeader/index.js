@@ -1,5 +1,6 @@
 // ReadingHeader/index.js - VERSION CORRIGÉE
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+import PropTypes from 'prop-types';
 
 /**
  * 🏆 ReadingHeader - Version corrigée avec exerciseType reading
@@ -15,6 +16,12 @@ const ReadingHeader = ({ level, onBackPress }) => {
       backIcon="arrow-back"
     />
   );
+};
+
+// ✅ Ajout de la validation des props
+ReadingHeader.propTypes = {
+  level: PropTypes.string,
+  onBackPress: PropTypes.func.isRequired,
 };
 
 export default ReadingHeader;

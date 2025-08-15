@@ -4,6 +4,7 @@ import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 import { useEffect, useCallback, useState } from "react";
+import PropTypes from 'prop-types';
 
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import VocabularyHeader from "./VocabularyHeader";
@@ -224,3 +225,13 @@ const VocabularyExercise = ({ route }) => {
 };
 
 export default VocabularyExercise;
+
+// ✅ Ajout de la validation des props
+VocabularyExercise.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+      mode: PropTypes.string,
+    }),
+  }).isRequired,
+};

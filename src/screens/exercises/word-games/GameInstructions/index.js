@@ -1,5 +1,6 @@
 // src/screens/exercises/wordGames/components/GameInstructions/index.js
 import { Text } from "react-native";
+import PropTypes from 'prop-types';
 import styles from "./style";
 
 /**
@@ -13,6 +14,11 @@ const GameInstructions = ({ instructions }) => {
       {instructions}
     </Text>
   );
+};
+
+// ✅ Ajout de la validation des props
+GameInstructions.propTypes = {
+  instructions: PropTypes.string.isRequired,
 };
 
 export default GameInstructions;

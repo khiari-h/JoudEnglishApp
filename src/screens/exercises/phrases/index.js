@@ -3,6 +3,7 @@ import { useMemo, useEffect, useCallback, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
+import PropTypes from 'prop-types';
 
 // Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
@@ -215,3 +216,12 @@ const PhrasesExercise = ({ route }) => {
 };
 
 export default PhrasesExercise;
+
+// ✅ Ajout de la validation des props
+PhrasesExercise.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+    }),
+  }).isRequired,
+};
