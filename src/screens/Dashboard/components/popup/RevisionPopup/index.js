@@ -94,26 +94,36 @@ const RevisionPopup = ({
   const scaleAnim = useRef(new Animated.Value(0.95)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
 
+  // Méthode pour animer l'entrée du popup
+  const animateIn = useCallback(() => {
+    Animated.parallel([
+      Animated.spring(scaleAnim, {
+        toValue: 1,
+        friction: 7,
+        tension: 40,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacityAnim, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [scaleAnim, opacityAnim]);
+
+  // Méthode pour animer la sortie du popup
+  const animateOut = useCallback(() => {
+    scaleAnim.setValue(0.95);
+    opacityAnim.setValue(0);
+  }, [scaleAnim, opacityAnim]);
+
   useEffect(() => {
     if (visible) {
-      Animated.parallel([
-        Animated.spring(scaleAnim, {
-          toValue: 1,
-          friction: 7,
-          tension: 40,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacityAnim, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-      ]).start();
+      animateIn();
     } else {
-      scaleAnim.setValue(0.95);
-      opacityAnim.setValue(0);
+      animateOut();
     }
-  }, [visible, scaleAnim, opacityAnim]);
+  }, [visible, animateIn, animateOut]);
 
   // Liste des choix hors du useEffect !
   const allChoices = [

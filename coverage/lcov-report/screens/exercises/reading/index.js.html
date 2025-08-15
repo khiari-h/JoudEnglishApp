@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.24% </span>
+                <span class="strong">92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>37/41</span>
+                <span class='fraction'>46/50</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.89% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>34/37</span>
+                <span class='fraction'>42/45</span>
             </div>
         
             
@@ -310,7 +310,25 @@
 <a name='L245'></a><a href='#L245'>245</a>
 <a name='L246'></a><a href='#L246'>246</a>
 <a name='L247'></a><a href='#L247'>247</a>
-<a name='L248'></a><a href='#L248'>248</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -395,6 +413,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -411,6 +430,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -434,6 +456,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -554,6 +585,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -561,6 +595,7 @@
 &nbsp;
 import { View, ActivityIndicator } from "react-native";
 import { router } from "expo-router";
+import PropTypes from 'prop-types';
 &nbsp;
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import ReadingHeader from "./ReadingHeader";
@@ -577,7 +612,7 @@ import useReading from "./hooks/useReading";
 import useLastActivity from "../../../hooks/useLastActivity";
 import { getReadingData, loadReadingData, getLevelColor } from "../../../utils/reading/readingDataHelper";
 import createStyles from "./style";
-import { useEffect, useMemo, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 &nbsp;
 const ReadingExercise = ({ route }) =&gt; {
   const { level = "A1" } = route?.params || {};
@@ -640,24 +675,28 @@ const ReadingExercise = ({ route }) =&gt; {
   useEffect(() =&gt; {
     if (!loaded || exercises.length === 0 || !currentExercise || !currentQuestion) return;
 &nbsp;
-    try {
-      saveActivity({
-        title: "Lecture",
-        level,
-        type: "reading",
-        metadata: {
-          word: selectedExerciseIndex, // ✅ Pour cohérence avec autres exercices
-          totalWords: exercises.length, // ✅ Pour cohérence
-          exercise: selectedExerciseIndex,
-          question: currentQuestionIndex,
-          totalQuestions,
-          exerciseTitle: currentExercise.title || <span class="branch-1 cbranch-no" title="branch not covered" >`Texte ${selectedExerciseIndex + 1}`,</span>
-          totalExercises: exercises.length
-        }
-      });
-    } catch (error) {
-<span class="cstat-no" title="statement not covered" >      console.error('Error saving activity:', error);</span>
-    }
+    const saveActivityAsync = async () =&gt; {
+      try {
+        await saveActivity({
+          title: "Lecture",
+          level,
+          type: "reading",
+          metadata: {
+            word: selectedExerciseIndex, // ✅ Pour cohérence avec autres exercices
+            totalWords: exercises.length, // ✅ Pour cohérence
+            exercise: selectedExerciseIndex,
+            question: currentQuestionIndex,
+            totalQuestions,
+            exerciseTitle: currentExercise.title || <span class="branch-1 cbranch-no" title="branch not covered" >`Texte ${selectedExerciseIndex + 1}`,</span>
+            totalExercises: exercises.length
+          }
+        });
+      } catch (error) {
+<span class="cstat-no" title="statement not covered" >        console.error('Error saving activity:', error);</span>
+      }
+    };
+&nbsp;
+    saveActivityAsync();
   }, [selectedExerciseIndex, currentQuestionIndex]); // ✅ SEULEMENT ces 2 dépendances !
 &nbsp;
   // Handlers
@@ -683,6 +722,15 @@ const ReadingExercise = ({ route }) =&gt; {
   const handleToggleProgressDetails = useCallback(() =&gt; {
     toggleDetailedProgress();
   }, [toggleDetailedProgress]);
+&nbsp;
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  const getExplanationMessage = () =&gt; {
+    if (isCorrect) return currentQuestion.explanation;
+    if (attempts &gt; 1) {
+      return `💡 The correct answer is: ${currentQuestion.options[currentQuestion.correctAnswer]}`;
+    }
+    return "💪 Try again!";
+  };
 &nbsp;
   // =================== LOADING STATE ===================
   if (!loaded || !exercises.length) {
@@ -769,13 +817,7 @@ const ReadingExercise = ({ route }) =&gt; {
         &lt;ExerciseFeedback
           type={isCorrect ? "success" : "error"}
           message={isCorrect ? "🎉 Perfect!" : "🤔 Not quite..."}
-          explanation={
-            isCorrect
-              ? currentQuestion.explanation
-              : attempts &gt; 1
-              ? `💡 The correct answer is: ${currentQuestion.options[currentQuestion.correctAnswer]}`
-              : "💪 Try again!"
-          }
+          explanation={getExplanationMessage()}
           showDismissButton={false}
         /&gt;
       )}
@@ -804,14 +846,23 @@ const ReadingExercise = ({ route }) =&gt; {
   );
 };
 &nbsp;
-export default ReadingExercise;</pre></td></tr></table></pre>
+export default ReadingExercise;
+&nbsp;
+// ✅ Ajout de la validation des props
+ReadingExercise.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+    }),
+  }).isRequired,
+};</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-15T00:50:51.431Z
+                at 2025-08-15T10:15:06.163Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

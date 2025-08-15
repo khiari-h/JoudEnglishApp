@@ -171,10 +171,11 @@ const useRevisionManager = () => {
     // 2. Mélanger les niveaux et modes
     // 3. Éviter trop de mots du même niveau d'affilée
 
+    // Trier par âge (plus ancien en premier)
     const sortedByAge = poolWords.sort((a, b) => {
       const aTime = a.timestamp ? new Date(a.timestamp).getTime() : 0;
       const bTime = b.timestamp ? new Date(b.timestamp).getTime() : 0;
-      return aTime - bTime; // Plus ancien en premier
+      return aTime - bTime;
     });
 
     // Prendre une mix : 60% des plus anciens + 40% aléatoire

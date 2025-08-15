@@ -1,5 +1,5 @@
 // src/contexts/LockContext.js
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import * as Lock from '../services/lockService';
 
@@ -48,7 +48,8 @@ export function LockProvider({ children }) {
     setIsLocked(true);
   }, []);
 
-  const value = {
+  // Mémorise la valeur du contexte pour éviter les re-rendus inutiles
+  const value = useMemo(() => ({
     isEnabled,
     isLocked,
     isLoading,
@@ -56,7 +57,7 @@ export function LockProvider({ children }) {
     unlockWithPin,
     enable,
     disable,
-  };
+  }), [isEnabled, isLocked, isLoading, lockNow, unlockWithPin, enable, disable]);
 
   return (
     <LockContext.Provider value={value}>{children}</LockContext.Provider>

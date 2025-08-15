@@ -144,7 +144,7 @@ export const getErrorCorrectionStats = (level) => {
     if (data?.exercises) {
       stats.exerciseCount = data.exercises.length;
       stats.totalQuestions = data.exercises.length; // Chaque exercice = 1 question
-      stats.categoryCount = data.categories ? data.categories.length : 0;
+      stats.categoryCount = data.categories?.length || 0;
 
       // Distribution par type
       if (data.statistics) {
@@ -182,9 +182,7 @@ export const getErrorCorrectionStats = (level) => {
         .reduce((total, ex) => total + ex.errorPositions.length, 0);
     }
   } catch (error) {
-    // ✅ Gestion d'erreur appropriée
     console.warn(`Error calculating stats for level ${level}:`, error);
-    // Fallback: retourner des stats de base
   }
 
   return stats;
@@ -245,9 +243,11 @@ export const getGlobalErrorCorrectionStats = () => {
  */
 export const getExercisesByCategory = (level, categoryId) => {
   const data = getErrorsData(level);
+  
   if (data?.getExercisesByCategory) {
     return data.getExercisesByCategory(categoryId);
   }
+  
   return data?.exercises?.filter((ex) => ex.categoryId === categoryId) || [];
 };
 
@@ -259,9 +259,11 @@ export const getExercisesByCategory = (level, categoryId) => {
  */
 export const getExercisesByType = (level, type) => {
   const data = getErrorsData(level);
+  
   if (data?.getExercisesByType) {
     return data.getExercisesByType(type);
   }
+  
   return data?.exercises?.filter((ex) => ex.type === type) || [];
 };
 
@@ -274,9 +276,11 @@ export const getExercisesByType = (level, type) => {
  */
 export const getExercisesByCategoryAndType = (level, categoryId, type) => {
   const data = getErrorsData(level);
+  
   if (data?.getExercisesByCategoryAndType) {
     return data.getExercisesByCategoryAndType(categoryId, type);
   }
+  
   return (
     data?.exercises?.filter(
       (ex) => ex.categoryId === categoryId && ex.type === type
@@ -306,7 +310,6 @@ export const validateErrorCorrectionExercise = (exercise) => {
 
   for (const field of requiredFields) {
     if (!exercise[field]) {
-
       return false;
     }
   }
@@ -314,7 +317,6 @@ export const validateErrorCorrectionExercise = (exercise) => {
   // Validation des types autorisés
   const validTypes = ["full", "identify", "multiple_choice"];
   if (!validTypes.includes(exercise.type)) {
-
     return false;
   }
 
@@ -325,7 +327,6 @@ export const validateErrorCorrectionExercise = (exercise) => {
       !Array.isArray(exercise.choices) ||
       exercise.choices.length < 2
     ) {
-
       return false;
     }
 
@@ -334,15 +335,11 @@ export const validateErrorCorrectionExercise = (exercise) => {
       exercise.correctChoiceIndex < 0 ||
       exercise.correctChoiceIndex >= exercise.choices.length
     ) {
-
       return false;
     }
-  } else {
+  } else if (!exercise.errorPositions || !Array.isArray(exercise.errorPositions)) {
     // Pour "full" et "identify", errorPositions est requis
-    if (!exercise.errorPositions || !Array.isArray(exercise.errorPositions)) {
-
-      return false;
-    }
+    return false;
   }
 
   return true;
@@ -356,7 +353,7 @@ export const validateErrorCorrectionExercise = (exercise) => {
 export const validateErrorCorrectionData = (level) => {
   const data = getErrorsData(level);
 
-  if (!data || !data.exercises) {
+  if (!data?.exercises) {
     return {
       valid: false,
       error: "No error correction data found",
@@ -387,11 +384,9 @@ export const validateErrorCorrectionData = (level) => {
           exercise.categoryId ?? "unknown"
         }) is invalid`
       );
-    } else {
+    } else if (results.typeDistribution.hasOwnProperty(exercise.type)) {
       // Comptage par type
-      if (Object.prototype.hasOwnProperty.call(results.typeDistribution, exercise.type)) {
-        results.typeDistribution[exercise.type]++;
-      }
+      results.typeDistribution[exercise.type]++;
     }
   });
 
@@ -418,7 +413,7 @@ export const getRandomErrorCorrectionExercise = (
 ) => {
   const data = getErrorsData(level);
 
-  if (!data || !data.exercises || data.exercises.length === 0) {
+  if (!data?.exercises?.length) {
     return null;
   }
 
@@ -496,7 +491,7 @@ export const getRecommendedExercises = (
 ) => {
   const data = getErrorsData(level);
 
-  if (!data || !data.exercises) {
+  if (!data?.exercises) {
     return [];
   }
 
@@ -560,4 +555,3 @@ export const getAvailableLevels = () => {
     },
   ];
 };
-

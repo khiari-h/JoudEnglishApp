@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useMemo } from "react";
 import PropTypes from 'prop-types';
 
 // Crée le contexte
@@ -8,8 +8,14 @@ const CurrentLevelContext = createContext();
 export function CurrentLevelProvider({ children, initialLevel = "1" }) {
   const [currentLevel, setCurrentLevel] = useState(initialLevel);
 
+  // Mémorise la valeur du contexte pour éviter les re-rendus inutiles
+  const contextValue = useMemo(() => ({
+    currentLevel,
+    setCurrentLevel
+  }), [currentLevel]);
+
   return (
-    <CurrentLevelContext.Provider value={{ currentLevel, setCurrentLevel }}>
+    <CurrentLevelContext.Provider value={contextValue}>
       {children}
     </CurrentLevelContext.Provider>
   );

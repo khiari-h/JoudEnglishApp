@@ -49,12 +49,12 @@ const InstructionBox = ({
   const getVariantStyle = () => {
     switch (variant) {
       case "compact":
-        return styles.compactContainer;
+        return [styles.compactContainer];
       case "highlighted":
         return [styles.highlightedContainer, { borderColor: primaryColor }];
       case "standard":
       default:
-        return styles.standardContainer;
+        return [styles.standardContainer];
     }
   };
 

@@ -35,7 +35,7 @@ import { vocab as fastVocabBonus } from "../../data/fastVocabulary/bonus";
  * @returns {Object} Structure convertie pour l'app
  */
 const convertFastVocabToExercises = (fastVocab) => {
-  if (!fastVocab || !fastVocab.words) {
+  if (!fastVocab?.words) {
     return { exercises: [] };
   }
 
@@ -234,7 +234,7 @@ export const isBonusLevel = (level) => {
 export const getVocabularyStats = (level, mode = "classic") => {
   const data = getVocabularyData(level, mode);
   
-  if (!data || !data.exercises) {
+  if (!data?.exercises) {
     return { totalWords: 0, totalExercises: 0 };
   }
 

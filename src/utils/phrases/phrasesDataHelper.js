@@ -170,7 +170,7 @@ export const getPhrasesStats = (level) => {
   }
 
   const totalPhrases = data.phrases.length;
-  const totalCategories = data.categories?.length ?? 0;
+  const totalCategories = data.categories?.length || 0;
 
   return {
     totalPhrases,

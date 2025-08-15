@@ -26,7 +26,6 @@ import styles from "./style";
  * 🎯 ConversationExercise - VERSION CORRIGÉE
  */
 const ConversationExercise = ({ route }) => {
-  // const navigation = useNavigation(); // supprimé car inutilisé
   const { level = "A1" } = route?.params || {};
 
   // Hook pour sauvegarder l'activité

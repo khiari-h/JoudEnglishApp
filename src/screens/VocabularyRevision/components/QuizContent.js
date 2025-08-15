@@ -63,7 +63,7 @@ const QuizContent = ({
 
             return (
               <TouchableOpacity
-                key={index}
+                key={`choice-${choice}-${index}`}
                 style={buttonStyle}
                 onPress={() => handleAnswer(choice)}
                 disabled={showResult}

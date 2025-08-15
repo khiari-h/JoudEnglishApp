@@ -141,7 +141,10 @@ const useActivityMetrics = () => {
     } else {
       const hours = Math.floor(todayMinutes / 60);
       const mins = todayMinutes % 60;
-      return `${hours}h${mins > 0 ? `${mins}min` : ''}`;
+      
+      // Évite les template literals imbriqués en utilisant des variables intermédiaires
+      const minsPart = mins > 0 ? `${mins}min` : '';
+      return `${hours}h${minsPart}`;
     }
   }, [todayMinutes]);
 

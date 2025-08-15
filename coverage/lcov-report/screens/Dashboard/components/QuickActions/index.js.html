@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95% </span>
+                <span class="strong">90.69% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>38/40</span>
+                <span class='fraction'>39/43</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95% </span>
+                <span class="strong">90.69% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>38/40</span>
+                <span class='fraction'>39/43</span>
             </div>
         
             
@@ -235,7 +235,22 @@
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
 <a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -260,23 +275,31 @@
 <span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">205x</span>
-<span class="cline-any cline-yes">408x</span>
-<span class="cline-any cline-yes">407x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">94x</span>
+<span class="cline-any cline-yes">186x</span>
+<span class="cline-any cline-yes">186x</span>
+<span class="cline-any cline-yes">186x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">180x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">45x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -407,11 +430,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/screens/Dashboard/components/QuickActions/index.js - VERSION RÉPARÉE
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/screens/Dashboard/components/QuickActions/index.js - VERSION CORRIGÉE
 import { useContext, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { router } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import PropTypes from 'prop-types'; // ✅ Import de PropTypes
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import { EXERCISES } from "../../../../utils/constants";
 import styles from "./style";
@@ -431,24 +460,32 @@ const QuickActions = ({ currentLevel = "1" }) =&gt; {
   const countWordsLearned = async () =&gt; {
     try {
       let total = 0;
-      const levels = ['1', '2', '3', '4', '5', '6', 'bonus'];
-      const modes = ['classic', 'fast'];
-&nbsp;
+      const levels = ['1', '2', '3', '4', '5', '6'];
+      
       for (const level of levels) {
-        for (const mode of modes) {
-          const stored = await AsyncStorage.getItem(`vocabulary_${level}_${mode}`);
-          if (stored) {
-            const data = JSON.parse(stored);
+        try {
+          const storageKey = `vocabulary_${level}_classic`;
+          const savedData = await AsyncStorage.getItem(storageKey);
+          
+          if (savedData) {
+            const data = JSON.parse(savedData);
             const completedWords = data.completedWords || <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
+            
             total += Object.values(completedWords).reduce((sum, words) =&gt; {
               return sum + (Array.isArray(words) ? words.length : <span class="branch-1 cbranch-no" title="branch not covered" >0)</span>;
             }, 0);
           }
+        } catch (levelError) {
+          // ✅ Gestion d'erreur appropriée pour chaque niveau
+          console.warn(`Error counting words for level ${level}:`, levelError);
+          // Continue avec les autres niveaux
         }
       }
       return total;
     } catch (error) {
-      return 0;
+      // ✅ Gestion d'erreur appropriée
+<span class="cstat-no" title="statement not covered" >      console.error('Error counting total words learned:', error);</span>
+<span class="cstat-no" title="statement not covered" >      return 0;</span>
     }
   };
 &nbsp;
@@ -579,6 +616,11 @@ const QuickActions = ({ currentLevel = "1" }) =&gt; {
   );
 };
 &nbsp;
+// ✅ Ajout de la validation des props
+QuickActions.propTypes = {
+  currentLevel: PropTypes.string.isRequired,
+};
+&nbsp;
 export default QuickActions;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -586,7 +628,7 @@ export default QuickActions;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-15T00:50:51.431Z
+                at 2025-08-15T10:15:06.163Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

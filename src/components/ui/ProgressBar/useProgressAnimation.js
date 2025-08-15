@@ -10,15 +10,25 @@ export default function useProgressAnimation({
   const clamped = Math.min(Math.max(progress, 0), 100);
   const animatedValue = useRef(new Animated.Value(0)).current;
 
+  // Méthode pour animer la progression
+  const animateProgress = () => {
+    Animated.timing(animatedValue, {
+      toValue: clamped,
+      duration,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  // Méthode pour définir la valeur directement
+  const setProgressDirectly = () => {
+    animatedValue.setValue(clamped);
+  };
+
   useEffect(() => {
     if (animated) {
-      Animated.timing(animatedValue, {
-        toValue: clamped,
-        duration,
-        useNativeDriver: false,
-      }).start();
+      animateProgress();
     } else {
-      animatedValue.setValue(clamped);
+      setProgressDirectly();
     }
   }, [clamped, animated, duration, animatedValue]);
 

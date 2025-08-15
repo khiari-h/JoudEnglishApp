@@ -325,7 +325,7 @@ const useAssessment = (level = "A1") => {
   // =================== VALIDATION ===================
   const canGoToPrevious = useCallback(() => {
     if (currentQuestionIndex > 0) return true;
-    return sections.indexOf(currentSection) > 0;
+    return sections.includes(currentSection) && sections.indexOf(currentSection) > 0;
   }, [currentQuestionIndex, sections, currentSection]);
 
   const isLastQuestionInSection = currentQuestionIndex === totalQuestionsInSection - 1;

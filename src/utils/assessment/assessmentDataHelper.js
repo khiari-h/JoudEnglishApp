@@ -63,5 +63,5 @@ export const isLastQuestionInSection = (
   assessmentData
 ) => {
   if (!assessmentData || !assessmentData[section]) return false;
-  return questionIndex === (assessmentData[section]?.questions?.length ?? 0) - 1;
+  return questionIndex === (assessmentData[section]?.questions?.length || 0) - 1;
 };

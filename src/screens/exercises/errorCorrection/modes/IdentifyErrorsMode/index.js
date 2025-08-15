@@ -39,7 +39,7 @@ const IdentifyErrorsMode = ({
 
   // Diviser le texte en mots
   const words = exercise.text.split(" ");
-  const expectedErrors = exercise.errorPositions?.length ?? 0;
+  const expectedErrors = exercise.errorPositions?.length || 0;
 
   return (
     <View style={styles.container}>

@@ -20,6 +20,7 @@ import { useCallback } from 'react';
 const AssessmentQuestion = ({ question, selectedAnswer, showFeedback, levelColor, onSelectAnswer }) => {
   // ✅ CORRECTION : Déplacer le useCallback AVANT le return conditionnel
   const handlePress = useCallback((idx) => () => onSelectAnswer(idx), [onSelectAnswer]);
+  const styles = createStyles();
 
   if (!question || !question.options) {
     return null;

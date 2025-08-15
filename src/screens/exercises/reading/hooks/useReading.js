@@ -135,15 +135,17 @@ const useReading = (exercises = [], level = "A1") => {
   const nextQuestion = useCallback(() => {
     if (currentQuestionIndex < totalQuestions - 1) {
       changeQuestion(currentQuestionIndex + 1);
-    } else {
-      // Si c'est la dernière question de l'exercice actuel, passer à l'exercice suivant
-      if (selectedExerciseIndex < totalExercises - 1) {
-        changeExercise(selectedExerciseIndex + 1);
-      } else {
-        // Optionnel: Gérer la fin de tous les exercices de lecture
-        Alert.alert("Exercice terminé", "Vous avez terminé tous les exercices de lecture pour ce niveau !");
-      }
+      return;
     }
+    
+    // Si c'est la dernière question de l'exercice actuel, passer à l'exercice suivant
+    if (selectedExerciseIndex < totalExercises - 1) {
+      changeExercise(selectedExerciseIndex + 1);
+      return;
+    }
+    
+    // Optionnel: Gérer la fin de tous les exercices de lecture
+    Alert.alert("Exercice terminé", "Vous avez terminé tous les exercices de lecture pour ce niveau !");
   }, [currentQuestionIndex, totalQuestions, changeQuestion, selectedExerciseIndex, totalExercises, changeExercise]);
 
   const previousQuestion = useCallback(() => {
