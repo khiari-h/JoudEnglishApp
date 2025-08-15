@@ -2,6 +2,8 @@
 import { useState, useContext, useCallback, useRef } from 'react';
 import { View, Animated, StatusBar, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import PropTypes from 'prop-types'; // Import de PropTypes
+
 import { ThemeContext } from '../../contexts/ThemeContext';
 import useRevisionManager from '../../hooks/useRevisionManager';
 import useRevisionData from '../../hooks/useRevisionData';
@@ -173,7 +175,7 @@ const VocabularyRevision = ({ route }) => {
       );
     }
 
-        return (
+    return (
       <QuizScreen
         quizEngine={quizEngine}
         onGoBack={handleGoBack}
@@ -193,6 +195,17 @@ const VocabularyRevision = ({ route }) => {
       {renderContent()}
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+VocabularyRevision.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+      questionsCount: PropTypes.number,
+      source: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default VocabularyRevision;

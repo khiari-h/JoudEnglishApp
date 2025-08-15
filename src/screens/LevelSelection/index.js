@@ -28,7 +28,7 @@ import useLevelListData from "./hooks/useLevelListData";
 const DEFAULT_THEME = {
   colors: {
     background: "#F8F9FA",
-    primary: "#5E60CE", 
+    primary: "#5E60CE",
     text: "#1F2937",
     textSecondary: "#6B7280",
     surface: "#FFFFFF",
@@ -209,6 +209,7 @@ ModernCardHeader.propTypes = {
     title: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     progress: PropTypes.number.isRequired,
+    icon: PropTypes.string.isRequired, // ✅ Ajouté
   }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
@@ -218,6 +219,7 @@ ModernProgress.propTypes = {
   level: PropTypes.shape({
     hasProgress: PropTypes.bool,
     progress: PropTypes.number,
+    color: PropTypes.string.isRequired, // ✅ Ajouté
   }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
@@ -234,7 +236,15 @@ ModernCardButton.propTypes = {
 };
 
 LevelCardContent.propTypes = {
-  level: PropTypes.object.isRequired,
+  level: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    progress: PropTypes.number.isRequired,
+    icon: PropTypes.string.isRequired,
+    hasProgress: PropTypes.bool,
+    hasStarted: PropTypes.bool,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
   handleLevelPress: PropTypes.func.isRequired,

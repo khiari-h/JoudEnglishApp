@@ -246,6 +246,7 @@ CardHeader.propTypes = {
     color: PropTypes.string.isRequired,
     progress: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired, // ✅ Ajouté
   }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
@@ -255,6 +256,7 @@ Progression.propTypes = {
   exercise: PropTypes.shape({
     hasProgress: PropTypes.bool,
     progress: PropTypes.number,
+    color: PropTypes.string.isRequired, // ✅ Ajouté
   }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
@@ -271,7 +273,14 @@ CardButton.propTypes = {
 };
 
 ExerciseCardContent.propTypes = {
-  exercise: PropTypes.object.isRequired,
+  exercise: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    progress: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    hasProgress: PropTypes.bool.isRequired,
+  }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
   handleExercisePress: PropTypes.func.isRequired,

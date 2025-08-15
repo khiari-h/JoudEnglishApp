@@ -3,6 +3,7 @@
 import { useMemo, useState, useEffect, useCallback } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { router } from "expo-router";
+import PropTypes from 'prop-types'; // Import de PropTypes
 
 // Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
@@ -288,6 +289,15 @@ const handleExitExercise = useCallback(() => {
       )}
     </Container>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+ErrorCorrectionExercise.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default ErrorCorrectionExercise;

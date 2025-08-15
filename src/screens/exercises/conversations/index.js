@@ -2,6 +2,7 @@
 import { useMemo, useEffect, useCallback } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { router } from "expo-router";
+import PropTypes from 'prop-types';
 
 // Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
@@ -128,7 +129,7 @@ const ConversationExercise = ({ route }) => {
 
   return (
     <Container
-     testID="conversation-container" 
+      testID="conversation-container" 
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
       backgroundColor="#FAFBFC"
@@ -204,6 +205,15 @@ const ConversationExercise = ({ route }) => {
       </KeyboardAvoidingView>
     </Container>
   );
+};
+
+// ✅ Ajout de la validation des props
+ConversationExercise.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default ConversationExercise;
