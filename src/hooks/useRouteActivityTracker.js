@@ -114,18 +114,15 @@ const useRouteActivityTracker = () => {
   useEffect(() => {
     return () => {
       if (isTrackingRef.current) {
-        try {
-          // Utiliser une IIFE async pour gérer la Promise
-          (async () => {
-            try {
-              await endSession();
-            } catch (error) {
-              console.warn('Erreur lors du cleanup final:', error);
-            }
-          })();
-        } catch (error) {
-          console.warn('Erreur lors du cleanup final:', error);
-        }
+        // Utiliser une IIFE async pour gérer la Promise
+        (async () => {
+          try {
+            await endSession();
+          } catch (error) {
+            console.warn('Erreur lors du cleanup final:', error);
+          }
+        })();
+        
         isTrackingRef.current = false;
         currentSessionRef.current = null;
       }

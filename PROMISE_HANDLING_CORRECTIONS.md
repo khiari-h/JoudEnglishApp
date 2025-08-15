@@ -22,8 +22,8 @@ SonarQube a identifié **4 problèmes** liés à l'utilisation incorrecte de `tr
 - **Solution** : Rendu la fonction `cleanup` async et ajouté `await`
 
 - **Ligne 117** : `try/catch` avec `endSession()` (Promise) dans useEffect cleanup
-- **Problème** : Fonction async non attendue dans try/catch de cleanup
-- **Solution** : Utilisé une IIFE (Immediately Invoked Function Expression) async
+- **Problème** : try/catch externe inutile avec IIFE async
+- **Solution** : Supprimé le try/catch externe, gardé seulement l'IIFE async
 
 ### 2. `src/screens/exercises/reading/index.js`
 - **Ligne 85** : `try/catch` avec `saveActivity()` (Promise)

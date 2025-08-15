@@ -321,8 +321,13 @@ export const storageService = {
 
   // Vérifier si un exercice a été complété
   isExerciseCompleted: async (exerciseId) => {
-    const completedExercises = await getData(storageService.keys.COMPLETED_EXERCISES) || {};
-    return Boolean(completedExercises[exerciseId]);
+    try {
+      const completedExercises = await getData(storageService.keys.COMPLETED_EXERCISES) || {};
+      return Boolean(completedExercises[exerciseId]);
+    } catch (error) {
+      console.error('Error checking if exercise completed:', error);
+      return false;
+    }
   },
 
   // Mettre à jour la streak
@@ -366,12 +371,22 @@ export const storageService = {
   },
 
   // Récupérer les données de streak
-  getStreak: () => {
-    return getData(storageService.keys.STREAK_DATA) || {
-      currentStreak: 0,
-      lastLoginDate: null,
-      maxStreak: 0,
-    };
+  getStreak: async () => {
+    try {
+      const streakData = await getData(storageService.keys.STREAK_DATA) || {
+        currentStreak: 0,
+        lastLoginDate: null,
+        maxStreak: 0,
+      };
+      return streakData;
+    } catch (error) {
+      console.error('Error getting streak data:', error);
+      return {
+        currentStreak: 0,
+        lastLoginDate: null,
+        maxStreak: 0,
+      };
+    }
   },
 
   // Réinitialiser toutes les données

@@ -203,6 +203,45 @@ describe('storageUtils', () => {
 
         expect(result).toBe(false);
       });
+
+      // ✅ NOUVEAUX TESTS : Gestion d'erreur robuste
+      it('devrait gérer les erreurs de getData et retourner false', async () => {
+        AsyncStorage.getItem.mockRejectedValue(new Error('Database error'));
+
+        const result = await storageService.isExerciseCompleted('vocab-1');
+
+        expect(result).toBe(false);
+      });
+
+      it('devrait logger les erreurs lors de la vérification d\'exercice complété', async () => {
+        const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+        AsyncStorage.getItem.mockRejectedValue(new Error('Storage connection failed'));
+
+        await storageService.isExerciseCompleted('vocab-1');
+
+        expect(consoleSpy).toHaveBeenCalledWith(
+          'Error checking if exercise completed:',
+          expect.any(Error)
+        );
+        consoleSpy.mockRestore();
+      });
+
+      it('devrait toujours retourner un booléen même en cas d\'erreur', async () => {
+        AsyncStorage.getItem.mockRejectedValue(new Error('Any error'));
+
+        const result = await storageService.isExerciseCompleted('vocab-1');
+
+        expect(typeof result).toBe('boolean');
+        expect(result).toBe(false);
+      });
+
+      it('devrait gérer les erreurs de parsing JSON et retourner false', async () => {
+        AsyncStorage.getItem.mockResolvedValue('invalid-json');
+
+        const result = await storageService.isExerciseCompleted('vocab-1');
+
+        expect(result).toBe(false);
+      });
     });
 
     describe('getStreak', () => {

@@ -100,7 +100,7 @@ const WordGamesResults = ({
       />
 
       {/* 📊 STATISTIQUES DÉTAILLÉES */}
-      {games.length > 0 && (
+      {Boolean(games.length > 0) && (
         <ContentSection
           title="Games Review"
           content={games.map((game, index) => {
@@ -115,7 +115,7 @@ const WordGamesResults = ({
       )}
 
       {/* 📈 ANALYSE PAR TYPE DE JEU */}
-      {gameTypeStats.length > 1 && (
+      {Boolean(gameTypeStats.length > 1) && (
         <ContentSection
           title="Performance by Game Type"
           content={gameTypeStats.map(stat => 
@@ -128,7 +128,7 @@ const WordGamesResults = ({
       )}
 
       {/* 💡 FEEDBACK PERSONNALISÉ */}
-      {feedbackMessage && (
+      {Boolean(feedbackMessage) && (
         <ContentSection
           title="Feedback"
           content={feedbackMessage}
@@ -140,7 +140,7 @@ const WordGamesResults = ({
       {/* 🚀 NAVIGATION - Boutons d'action */}
       <View style={styles.navigationContainer}>
         {/* Bouton Play Again conditionnel */}
-        {onPlayAgain && finalScore.percentage < 80 && (
+        {Boolean(onPlayAgain) && finalScore.percentage < 80 && (
           <View style={styles.playAgainContainer}>
             <NavigationButtons
               onNext={onPlayAgain}
