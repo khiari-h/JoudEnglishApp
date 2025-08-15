@@ -1,0 +1,244 @@
+9ecad6f20cf60b6b934b29420f55e747
+function cov_34ucg9g8k() {
+  var path = "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\screens\\exercises\\spelling\\SpellingHeader\\index.js";
+  var hash = "5634165b610d4ee8cf16508cb44e83514fe9f86b";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\screens\\exercises\\spelling\\SpellingHeader\\index.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 4,
+          column: 23
+        },
+        end: {
+          line: 26,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 6,
+          column: 27
+        },
+        end: {
+          line: 15,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 7,
+          column: 4
+        },
+        end: {
+          line: 14,
+          column: 5
+        }
+      },
+      "3": {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 42
+        }
+      },
+      "4": {
+        start: {
+          line: 11,
+          column: 8
+        },
+        end: {
+          line: 11,
+          column: 38
+        }
+      },
+      "5": {
+        start: {
+          line: 13,
+          column: 8
+        },
+        end: {
+          line: 13,
+          column: 29
+        }
+      },
+      "6": {
+        start: {
+          line: 17,
+          column: 2
+        },
+        end: {
+          line: 25,
+          column: 4
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 4,
+            column: 23
+          },
+          end: {
+            line: 4,
+            column: 24
+          }
+        },
+        loc: {
+          start: {
+            line: 4,
+            column: 65
+          },
+          end: {
+            line: 26,
+            column: 1
+          }
+        },
+        line: 4
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 6,
+            column: 27
+          },
+          end: {
+            line: 6,
+            column: 28
+          }
+        },
+        loc: {
+          start: {
+            line: 6,
+            column: 37
+          },
+          end: {
+            line: 15,
+            column: 3
+          }
+        },
+        line: 6
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 7,
+            column: 4
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        type: "switch",
+        locations: [{
+          start: {
+            line: 8,
+            column: 6
+          },
+          end: {
+            line: 9,
+            column: 42
+          }
+        }, {
+          start: {
+            line: 10,
+            column: 6
+          },
+          end: {
+            line: 11,
+            column: 38
+          }
+        }, {
+          start: {
+            line: 12,
+            column: 6
+          },
+          end: {
+            line: 13,
+            column: 29
+          }
+        }],
+        line: 7
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0, 0, 0]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "5634165b610d4ee8cf16508cb44e83514fe9f86b"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_34ucg9g8k = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_34ucg9g8k();
+import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+import { jsx as _jsx } from "react/jsx-runtime";
+cov_34ucg9g8k().s[0]++;
+var SpellingHeader = function SpellingHeader(_ref) {
+  var level = _ref.level,
+    exerciseType = _ref.exerciseType,
+    onBackPress = _ref.onBackPress;
+  cov_34ucg9g8k().f[0]++;
+  cov_34ucg9g8k().s[1]++;
+  var getExerciseTitle = function getExerciseTitle(type) {
+    cov_34ucg9g8k().f[1]++;
+    cov_34ucg9g8k().s[2]++;
+    switch (type) {
+      case "correction":
+        cov_34ucg9g8k().b[0][0]++;
+        cov_34ucg9g8k().s[3]++;
+        return "Orthographe - Correction";
+      case "rules":
+        cov_34ucg9g8k().b[0][1]++;
+        cov_34ucg9g8k().s[4]++;
+        return "Orthographe - Règles";
+      default:
+        cov_34ucg9g8k().b[0][2]++;
+        cov_34ucg9g8k().s[5]++;
+        return "Orthographe";
+    }
+  };
+  cov_34ucg9g8k().s[6]++;
+  return _jsx(ExerciseHeader, {
+    title: getExerciseTitle(exerciseType),
+    level: level,
+    exerciseType: "spelling",
+    onClose: onBackPress,
+    backIcon: "arrow-back"
+  });
+};
+export default SpellingHeader;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJFeGVyY2lzZUhlYWRlciIsImpzeCIsIl9qc3giLCJjb3ZfMzR1Y2c5ZzhrIiwicyIsIlNwZWxsaW5nSGVhZGVyIiwiX3JlZiIsImxldmVsIiwiZXhlcmNpc2VUeXBlIiwib25CYWNrUHJlc3MiLCJmIiwiZ2V0RXhlcmNpc2VUaXRsZSIsInR5cGUiLCJiIiwidGl0bGUiLCJvbkNsb3NlIiwiYmFja0ljb24iXSwic291cmNlcyI6WyJpbmRleC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyA4LiBTcGVsbGluZ0hlYWRlciAtIE1JUyDDgCBKT1VSXHJcbmltcG9ydCBFeGVyY2lzZUhlYWRlciBmcm9tIFwiLi4vLi4vLi4vLi4vY29tcG9uZW50cy9leGVyY2lzZS1jb21tb24vRXhlcmNpc2VIZWFkZXJcIjtcclxuXHJcbmNvbnN0IFNwZWxsaW5nSGVhZGVyID0gKHsgbGV2ZWwsIGV4ZXJjaXNlVHlwZSwgb25CYWNrUHJlc3MgfSkgPT4ge1xyXG4gIC8vIEZvcm1hdGFnZSBkdSB0aXRyZSBlbiBmb25jdGlvbiBkdSB0eXBlIGQnZXhlcmNpY2VcclxuICBjb25zdCBnZXRFeGVyY2lzZVRpdGxlID0gKHR5cGUpID0+IHtcclxuICAgIHN3aXRjaCAodHlwZSkge1xyXG4gICAgICBjYXNlIFwiY29ycmVjdGlvblwiOlxyXG4gICAgICAgIHJldHVybiBcIk9ydGhvZ3JhcGhlIC0gQ29ycmVjdGlvblwiO1xyXG4gICAgICBjYXNlIFwicnVsZXNcIjpcclxuICAgICAgICByZXR1cm4gXCJPcnRob2dyYXBoZSAtIFLDqGdsZXNcIjtcclxuICAgICAgZGVmYXVsdDpcclxuICAgICAgICByZXR1cm4gXCJPcnRob2dyYXBoZVwiO1xyXG4gICAgfVxyXG4gIH07XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8RXhlcmNpc2VIZWFkZXJcclxuICAgICAgdGl0bGU9e2dldEV4ZXJjaXNlVGl0bGUoZXhlcmNpc2VUeXBlKX1cclxuICAgICAgbGV2ZWw9e2xldmVsfVxyXG4gICAgICBleGVyY2lzZVR5cGU9XCJzcGVsbGluZ1wiIC8vIOKchSBOT1VWRUFVXHJcbiAgICAgIG9uQ2xvc2U9e29uQmFja1ByZXNzfVxyXG4gICAgICBiYWNrSWNvbj1cImFycm93LWJhY2tcIlxyXG4gICAgLz5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgU3BlbGxpbmdIZWFkZXI7XHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUNBLE9BQU9BLGNBQWMsTUFBTSx1REFBdUQ7QUFBQyxTQUFBQyxHQUFBLElBQUFDLElBQUE7QUFBQUMsYUFBQSxHQUFBQyxDQUFBO0FBRW5GLElBQU1DLGNBQWMsR0FBRyxTQUFqQkEsY0FBY0EsQ0FBQUMsSUFBQSxFQUE2QztFQUFBLElBQXZDQyxLQUFLLEdBQUFELElBQUEsQ0FBTEMsS0FBSztJQUFFQyxZQUFZLEdBQUFGLElBQUEsQ0FBWkUsWUFBWTtJQUFFQyxXQUFXLEdBQUFILElBQUEsQ0FBWEcsV0FBVztFQUFBTixhQUFBLEdBQUFPLENBQUE7RUFBQVAsYUFBQSxHQUFBQyxDQUFBO0VBRXhELElBQU1PLGdCQUFnQixHQUFHLFNBQW5CQSxnQkFBZ0JBLENBQUlDLElBQUksRUFBSztJQUFBVCxhQUFBLEdBQUFPLENBQUE7SUFBQVAsYUFBQSxHQUFBQyxDQUFBO0lBQ2pDLFFBQVFRLElBQUk7TUFDVixLQUFLLFlBQVk7UUFBQVQsYUFBQSxHQUFBVSxDQUFBO1FBQUFWLGFBQUEsR0FBQUMsQ0FBQTtRQUNmLE9BQU8sMEJBQTBCO01BQ25DLEtBQUssT0FBTztRQUFBRCxhQUFBLEdBQUFVLENBQUE7UUFBQVYsYUFBQSxHQUFBQyxDQUFBO1FBQ1YsT0FBTyxzQkFBc0I7TUFDL0I7UUFBQUQsYUFBQSxHQUFBVSxDQUFBO1FBQUFWLGFBQUEsR0FBQUMsQ0FBQTtRQUNFLE9BQU8sYUFBYTtJQUN4QjtFQUNGLENBQUM7RUFBQ0QsYUFBQSxHQUFBQyxDQUFBO0VBRUYsT0FDRUYsSUFBQSxDQUFDRixjQUFjO0lBQ2JjLEtBQUssRUFBRUgsZ0JBQWdCLENBQUNILFlBQVksQ0FBRTtJQUN0Q0QsS0FBSyxFQUFFQSxLQUFNO0lBQ2JDLFlBQVksRUFBQyxVQUFVO0lBQ3ZCTyxPQUFPLEVBQUVOLFdBQVk7SUFDckJPLFFBQVEsRUFBQztFQUFZLENBQ3RCLENBQUM7QUFFTixDQUFDO0FBRUQsZUFBZVgsY0FBYyIsImlnbm9yZUxpc3QiOltdfQ==

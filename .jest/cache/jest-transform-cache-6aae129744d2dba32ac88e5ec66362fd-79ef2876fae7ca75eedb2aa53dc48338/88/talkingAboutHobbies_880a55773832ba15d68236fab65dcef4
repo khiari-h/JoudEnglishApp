@@ -1,0 +1,158 @@
+2b8fefd12c1d4469321a681268267a8d
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function cov_1bs7pavohy() {
+  var path = "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A2\\scenarios\\talkingAboutHobbies.js";
+  var hash = "e688af94f03eb4328947aefff8b0ea688c256639";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A2\\scenarios\\talkingAboutHobbies.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 28
+        },
+        end: {
+          line: 173,
+          column: 3
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "e688af94f03eb4328947aefff8b0ea688c256639"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_1bs7pavohy = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1bs7pavohy();
+var talkingAboutHobbies = (cov_1bs7pavohy().s[0]++, {
+  id: 8,
+  title: "Talking About Hobbies",
+  level: "A2",
+  description: "Learn how to discuss hobbies and leisure activities with details.",
+  estimatedTime: "15-20 minutes",
+  vocabulary: ["loisirs", "passion", "passe-temps", "pratiquer", "fréquence", "équipement", "club", "compétition", "débutant", "expérience"],
+  steps: [{
+    id: 1,
+    botMessage: "Salut ! Ça fait plaisir de te rencontrer. Qu'est-ce que tu aimes faire pendant ton temps libre ?",
+    inputMode: "suggestions",
+    suggestions: ["J'adore faire du sport, surtout du tennis et de la natation.", "J'aime beaucoup lire et regarder des films.", "Je suis passionné(e) de photographie et de voyages."],
+    hints: "Mentionnez vos activités ou hobbies préférés.",
+    expectedKeywords: ["aime", "adore", "passion", "sport", "tennis", "natation", "lire", "films", "photographie", "voyages"],
+    feedback: {
+      correct: "C'est intéressant ! Depuis combien de temps pratiques-tu ces activités ?",
+      incorrect: "Parle-moi de ce que tu aimes faire pendant ton temps libre."
+    }
+  }, {
+    id: 2,
+    botMessage: "Depuis combien de temps pratiques-tu cette activité ?",
+    inputMode: "hybrid",
+    suggestions: ["Je fais ça depuis environ 5 ans.", "J'ai commencé quand j'étais enfant, donc ça fait longtemps !", "C'est assez récent, j'ai débuté il y a seulement 6 mois."],
+    hints: "Indiquez depuis quand vous pratiquez cette activité.",
+    expectedKeywords: ["depuis", "ans", "commencé", "enfant", "longtemps", "récent", "débuté", "mois", "pratique"],
+    acceptablePhrases: ["je fais ça depuis", "j'ai commencé", "ça fait", "j'ai débuté"],
+    feedback: {
+      correct: "Je vois. À quelle fréquence pratiques-tu cette activité ?",
+      partial: "Tu as beaucoup d'expérience alors !",
+      incorrect: "Dis-moi depuis combien de temps tu pratiques cette activité."
+    }
+  }, {
+    id: 3,
+    botMessage: "À quelle fréquence pratiques-tu cette activité ?",
+    inputMode: "freeText",
+    suggestions: ["J'essaie de le faire au moins deux fois par semaine.", "Presque tous les jours, c'est vraiment ma passion !", "Quand j'ai le temps, environ une fois par mois."],
+    hints: "Précisez la fréquence à laquelle vous pratiquez cette activité.",
+    expectedKeywords: ["fois", "semaine", "jours", "mois", "régulièrement", "week-end", "temps", "souvent", "rarement"],
+    feedback: {
+      correct: "C'est bien de trouver du temps pour ses passions. Est-ce que tu pratiques seul(e) ou en groupe ?",
+      partial: "Tu arrives à concilier cette activité avec tes autres obligations ?",
+      incorrect: "Indique à quelle fréquence tu pratiques cette activité."
+    }
+  }, {
+    id: 4,
+    botMessage: "Tu pratiques cette activité seul(e) ou avec d'autres personnes ?",
+    inputMode: "suggestions",
+    suggestions: ["Je préfère pratiquer seul(e), c'est plus relaxant.", "Je fais partie d'un club, donc c'est toujours en groupe.", "Parfois seul(e), parfois avec des amis, ça dépend de mon humeur."],
+    hints: "Précisez si vous pratiquez votre hobby seul ou avec d'autres personnes.",
+    expectedKeywords: ["seul", "groupe", "club", "amis", "équipe", "préfère", "relaxant", "ensemble", "humeur"],
+    feedback: {
+      correct: "Je comprends. As-tu besoin d'équipements spécifiques pour cette activité ?",
+      incorrect: "Dis-moi si tu pratiques cette activité seul(e) ou avec d'autres personnes."
+    }
+  }, {
+    id: 5,
+    botMessage: "As-tu besoin d'équipements particuliers pour pratiquer cette activité ?",
+    inputMode: "hybrid",
+    suggestions: ["Oui, j'ai dû investir dans pas mal de matériel, comme...", "Pas vraiment, juste des vêtements confortables.", "Au début non, mais maintenant j'ai acheté quelques accessoires pour améliorer mon expérience."],
+    hints: "Décrivez l'équipement nécessaire pour votre activité.",
+    expectedKeywords: ["équipement", "matériel", "investir", "acheté", "accessoires", "vêtements", "confortables", "besoin", "expérience"],
+    feedback: {
+      correct: "C'est intéressant. Est-ce que tu participes à des compétitions ou des événements liés à cette activité ?",
+      partial: "Ce matériel est-il coûteux ?",
+      incorrect: "Parle-moi de l'équipement nécessaire pour ton activité."
+    }
+  }, {
+    id: 6,
+    botMessage: "Est-ce que tu participes à des compétitions ou des événements spéciaux liés à cette activité ?",
+    inputMode: "freeText",
+    suggestions: ["Oui, je participe à des tournois locaux deux ou trois fois par an.", "Non, je pratique uniquement pour le plaisir, pas pour la compétition.", "Pas encore, mais j'aimerais essayer quand je serai plus à l'aise."],
+    hints: "Indiquez si vous participez à des compétitions ou événements.",
+    expectedKeywords: ["compétitions", "tournois", "événements", "participe", "plaisir", "essayer", "l'aise", "locaux", "encore"],
+    acceptablePhrases: ["je participe à", "pas encore", "pour le plaisir", "j'aimerais essayer"],
+    feedback: {
+      correct: "Intéressant ! Qu'est-ce qui te plaît le plus dans cette activité ?",
+      partial: "La compétition peut ajouter un niveau d'excitation supplémentaire à un hobby.",
+      incorrect: "Dis-moi si tu participes à des compétitions ou événements liés à ton activité."
+    }
+  }, {
+    id: 7,
+    botMessage: "Qu'est-ce qui te plaît le plus dans cette activité ?",
+    inputMode: "suggestions",
+    suggestions: ["J'aime la sensation de liberté et le fait de me dépasser.", "C'est relaxant et ça me permet d'oublier le stress quotidien.", "J'apprécie de rencontrer des personnes qui partagent la même passion."],
+    hints: "Expliquez ce que vous aimez particulièrement dans cette activité.",
+    expectedKeywords: ["aime", "plaît", "liberté", "dépasser", "relaxant", "stress", "rencontrer", "passion", "personnes"],
+    feedback: {
+      correct: "Je comprends ce sentiment. Recommanderais-tu cette activité à d'autres personnes ?",
+      incorrect: "Dis-moi ce que tu aimes particulièrement dans cette activité."
+    }
+  }, {
+    id: 8,
+    botMessage: "Est-ce que tu recommanderais cette activité à d'autres personnes ? Pourquoi ?",
+    inputMode: "hybrid",
+    suggestions: ["Absolument ! C'est accessible à tous et très enrichissant.", "Oui, mais il faut être prêt à y consacrer du temps et de l'énergie.", "Ça dépend des goûts de chacun, mais personnellement, ça m'apporte beaucoup."],
+    hints: "Dites si vous recommanderiez cette activité et pourquoi.",
+    expectedKeywords: ["recommander", "accessible", "enrichissant", "temps", "énergie", "goûts", "apporte", "personnellement", "absolument"],
+    feedback: {
+      correct: "Merci pour ton partage ! C'est toujours intéressant de découvrir les passions des autres.",
+      partial: "C'est une bonne façon de voir les choses.",
+      incorrect: "Dis-moi si tu recommanderais cette activité à d'autres personnes."
+    }
+  }],
+  completionMessage: "Félicitations ! Vous avez réussi à parler en détail de vos loisirs et activités en français.",
+  learningObjectives: ["Décrire ses activités de loisirs", "Parler de la fréquence et durée d'une pratique", "Discuter d'équipements spécifiques", "Exprimer ses préférences et motivations", "Partager son expérience personnelle"],
+  grammar: {
+    points: ["Verbes d'opinion au présent", "Expressions de temps et de fréquence", "Adjectifs pour exprimer des sentiments", "Questions directes et indirectes"]
+  }
+});
+var _default = exports.default = talkingAboutHobbies;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ0YWxraW5nQWJvdXRIb2JiaWVzIiwiY292XzFiczdwYXZvaHkiLCJzIiwiaWQiLCJ0aXRsZSIsImxldmVsIiwiZGVzY3JpcHRpb24iLCJlc3RpbWF0ZWRUaW1lIiwidm9jYWJ1bGFyeSIsInN0ZXBzIiwiYm90TWVzc2FnZSIsImlucHV0TW9kZSIsInN1Z2dlc3Rpb25zIiwiaGludHMiLCJleHBlY3RlZEtleXdvcmRzIiwiZmVlZGJhY2siLCJjb3JyZWN0IiwiaW5jb3JyZWN0IiwiYWNjZXB0YWJsZVBocmFzZXMiLCJwYXJ0aWFsIiwiY29tcGxldGlvbk1lc3NhZ2UiLCJsZWFybmluZ09iamVjdGl2ZXMiLCJncmFtbWFyIiwicG9pbnRzIiwiX2RlZmF1bHQiLCJleHBvcnRzIiwiZGVmYXVsdCJdLCJzb3VyY2VzIjpbInRhbGtpbmdBYm91dEhvYmJpZXMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gY2hhdGJvdC9BMi9zY2VuYXJpb3MvdGFsa2luZ0Fib3V0SG9iYmllcy5qc1xuXG5jb25zdCB0YWxraW5nQWJvdXRIb2JiaWVzID0ge1xuICAgIGlkOiA4LFxuICAgIHRpdGxlOiBcIlRhbGtpbmcgQWJvdXQgSG9iYmllc1wiLFxuICAgIGxldmVsOiBcIkEyXCIsXG4gICAgZGVzY3JpcHRpb246IFwiTGVhcm4gaG93IHRvIGRpc2N1c3MgaG9iYmllcyBhbmQgbGVpc3VyZSBhY3Rpdml0aWVzIHdpdGggZGV0YWlscy5cIixcbiAgICBlc3RpbWF0ZWRUaW1lOiBcIjE1LTIwIG1pbnV0ZXNcIixcbiAgICB2b2NhYnVsYXJ5OiBbXCJsb2lzaXJzXCIsIFwicGFzc2lvblwiLCBcInBhc3NlLXRlbXBzXCIsIFwicHJhdGlxdWVyXCIsIFwiZnLDqXF1ZW5jZVwiLCBcIsOpcXVpcGVtZW50XCIsIFwiY2x1YlwiLCBcImNvbXDDqXRpdGlvblwiLCBcImTDqWJ1dGFudFwiLCBcImV4cMOpcmllbmNlXCJdLFxuICAgIHN0ZXBzOiBbXG4gICAgICB7XG4gICAgICAgIGlkOiAxLFxuICAgICAgICBib3RNZXNzYWdlOiBcIlNhbHV0ICEgw4dhIGZhaXQgcGxhaXNpciBkZSB0ZSByZW5jb250cmVyLiBRdSdlc3QtY2UgcXVlIHR1IGFpbWVzIGZhaXJlIHBlbmRhbnQgdG9uIHRlbXBzIGxpYnJlID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcInN1Z2dlc3Rpb25zXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJKJ2Fkb3JlIGZhaXJlIGR1IHNwb3J0LCBzdXJ0b3V0IGR1IHRlbm5pcyBldCBkZSBsYSBuYXRhdGlvbi5cIixcbiAgICAgICAgICBcIkonYWltZSBiZWF1Y291cCBsaXJlIGV0IHJlZ2FyZGVyIGRlcyBmaWxtcy5cIixcbiAgICAgICAgICBcIkplIHN1aXMgcGFzc2lvbm7DqShlKSBkZSBwaG90b2dyYXBoaWUgZXQgZGUgdm95YWdlcy5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJNZW50aW9ubmV6IHZvcyBhY3Rpdml0w6lzIG91IGhvYmJpZXMgcHLDqWbDqXLDqXMuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcImFpbWVcIiwgXCJhZG9yZVwiLCBcInBhc3Npb25cIiwgXCJzcG9ydFwiLCBcInRlbm5pc1wiLCBcIm5hdGF0aW9uXCIsIFwibGlyZVwiLCBcImZpbG1zXCIsIFwicGhvdG9ncmFwaGllXCIsIFwidm95YWdlc1wiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIkMnZXN0IGludMOpcmVzc2FudCAhIERlcHVpcyBjb21iaWVuIGRlIHRlbXBzIHByYXRpcXVlcy10dSBjZXMgYWN0aXZpdMOpcyA/XCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlBhcmxlLW1vaSBkZSBjZSBxdWUgdHUgYWltZXMgZmFpcmUgcGVuZGFudCB0b24gdGVtcHMgbGlicmUuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDIsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiRGVwdWlzIGNvbWJpZW4gZGUgdGVtcHMgcHJhdGlxdWVzLXR1IGNldHRlIGFjdGl2aXTDqSA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJoeWJyaWRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkplIGZhaXMgw6dhIGRlcHVpcyBlbnZpcm9uIDUgYW5zLlwiLFxuICAgICAgICAgIFwiSidhaSBjb21tZW5jw6kgcXVhbmQgaifDqXRhaXMgZW5mYW50LCBkb25jIMOnYSBmYWl0IGxvbmd0ZW1wcyAhXCIsXG4gICAgICAgICAgXCJDJ2VzdCBhc3NleiByw6ljZW50LCBqJ2FpIGTDqWJ1dMOpIGlsIHkgYSBzZXVsZW1lbnQgNiBtb2lzLlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkluZGlxdWV6IGRlcHVpcyBxdWFuZCB2b3VzIHByYXRpcXVleiBjZXR0ZSBhY3Rpdml0w6kuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcImRlcHVpc1wiLCBcImFuc1wiLCBcImNvbW1lbmPDqVwiLCBcImVuZmFudFwiLCBcImxvbmd0ZW1wc1wiLCBcInLDqWNlbnRcIiwgXCJkw6lidXTDqVwiLCBcIm1vaXNcIiwgXCJwcmF0aXF1ZVwiXSxcbiAgICAgICAgYWNjZXB0YWJsZVBocmFzZXM6IFtcbiAgICAgICAgICBcImplIGZhaXMgw6dhIGRlcHVpc1wiLFxuICAgICAgICAgIFwiaidhaSBjb21tZW5jw6lcIixcbiAgICAgICAgICBcIsOnYSBmYWl0XCIsXG4gICAgICAgICAgXCJqJ2FpIGTDqWJ1dMOpXCJcbiAgICAgICAgXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIkplIHZvaXMuIMOAIHF1ZWxsZSBmcsOpcXVlbmNlIHByYXRpcXVlcy10dSBjZXR0ZSBhY3Rpdml0w6kgP1wiLFxuICAgICAgICAgIHBhcnRpYWw6IFwiVHUgYXMgYmVhdWNvdXAgZCdleHDDqXJpZW5jZSBhbG9ycyAhXCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIkRpcy1tb2kgZGVwdWlzIGNvbWJpZW4gZGUgdGVtcHMgdHUgcHJhdGlxdWVzIGNldHRlIGFjdGl2aXTDqS5cIlxuICAgICAgICB9XG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogMyxcbiAgICAgICAgYm90TWVzc2FnZTogXCLDgCBxdWVsbGUgZnLDqXF1ZW5jZSBwcmF0aXF1ZXMtdHUgY2V0dGUgYWN0aXZpdMOpID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcImZyZWVUZXh0XCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJKJ2Vzc2FpZSBkZSBsZSBmYWlyZSBhdSBtb2lucyBkZXV4IGZvaXMgcGFyIHNlbWFpbmUuXCIsXG4gICAgICAgICAgXCJQcmVzcXVlIHRvdXMgbGVzIGpvdXJzLCBjJ2VzdCB2cmFpbWVudCBtYSBwYXNzaW9uICFcIixcbiAgICAgICAgICBcIlF1YW5kIGonYWkgbGUgdGVtcHMsIGVudmlyb24gdW5lIGZvaXMgcGFyIG1vaXMuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiUHLDqWNpc2V6IGxhIGZyw6lxdWVuY2Ugw6AgbGFxdWVsbGUgdm91cyBwcmF0aXF1ZXogY2V0dGUgYWN0aXZpdMOpLlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJmb2lzXCIsIFwic2VtYWluZVwiLCBcImpvdXJzXCIsIFwibW9pc1wiLCBcInLDqWd1bGnDqHJlbWVudFwiLCBcIndlZWstZW5kXCIsIFwidGVtcHNcIiwgXCJzb3V2ZW50XCIsIFwicmFyZW1lbnRcIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJDJ2VzdCBiaWVuIGRlIHRyb3V2ZXIgZHUgdGVtcHMgcG91ciBzZXMgcGFzc2lvbnMuIEVzdC1jZSBxdWUgdHUgcHJhdGlxdWVzIHNldWwoZSkgb3UgZW4gZ3JvdXBlID9cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIlR1IGFycml2ZXMgw6AgY29uY2lsaWVyIGNldHRlIGFjdGl2aXTDqSBhdmVjIHRlcyBhdXRyZXMgb2JsaWdhdGlvbnMgP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJJbmRpcXVlIMOgIHF1ZWxsZSBmcsOpcXVlbmNlIHR1IHByYXRpcXVlcyBjZXR0ZSBhY3Rpdml0w6kuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDQsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiVHUgcHJhdGlxdWVzIGNldHRlIGFjdGl2aXTDqSBzZXVsKGUpIG91IGF2ZWMgZCdhdXRyZXMgcGVyc29ubmVzID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcInN1Z2dlc3Rpb25zXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJKZSBwcsOpZsOocmUgcHJhdGlxdWVyIHNldWwoZSksIGMnZXN0IHBsdXMgcmVsYXhhbnQuXCIsXG4gICAgICAgICAgXCJKZSBmYWlzIHBhcnRpZSBkJ3VuIGNsdWIsIGRvbmMgYydlc3QgdG91am91cnMgZW4gZ3JvdXBlLlwiLFxuICAgICAgICAgIFwiUGFyZm9pcyBzZXVsKGUpLCBwYXJmb2lzIGF2ZWMgZGVzIGFtaXMsIMOnYSBkw6lwZW5kIGRlIG1vbiBodW1ldXIuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiUHLDqWNpc2V6IHNpIHZvdXMgcHJhdGlxdWV6IHZvdHJlIGhvYmJ5IHNldWwgb3UgYXZlYyBkJ2F1dHJlcyBwZXJzb25uZXMuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcInNldWxcIiwgXCJncm91cGVcIiwgXCJjbHViXCIsIFwiYW1pc1wiLCBcIsOpcXVpcGVcIiwgXCJwcsOpZsOocmVcIiwgXCJyZWxheGFudFwiLCBcImVuc2VtYmxlXCIsIFwiaHVtZXVyXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiSmUgY29tcHJlbmRzLiBBcy10dSBiZXNvaW4gZCfDqXF1aXBlbWVudHMgc3DDqWNpZmlxdWVzIHBvdXIgY2V0dGUgYWN0aXZpdMOpID9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiRGlzLW1vaSBzaSB0dSBwcmF0aXF1ZXMgY2V0dGUgYWN0aXZpdMOpIHNldWwoZSkgb3UgYXZlYyBkJ2F1dHJlcyBwZXJzb25uZXMuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDUsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiQXMtdHUgYmVzb2luIGQnw6lxdWlwZW1lbnRzIHBhcnRpY3VsaWVycyBwb3VyIHByYXRpcXVlciBjZXR0ZSBhY3Rpdml0w6kgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiaHlicmlkXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJPdWksIGonYWkgZMO7IGludmVzdGlyIGRhbnMgcGFzIG1hbCBkZSBtYXTDqXJpZWwsIGNvbW1lLi4uXCIsXG4gICAgICAgICAgXCJQYXMgdnJhaW1lbnQsIGp1c3RlIGRlcyB2w6p0ZW1lbnRzIGNvbmZvcnRhYmxlcy5cIixcbiAgICAgICAgICBcIkF1IGTDqWJ1dCBub24sIG1haXMgbWFpbnRlbmFudCBqJ2FpIGFjaGV0w6kgcXVlbHF1ZXMgYWNjZXNzb2lyZXMgcG91ciBhbcOpbGlvcmVyIG1vbiBleHDDqXJpZW5jZS5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJEw6ljcml2ZXogbCfDqXF1aXBlbWVudCBuw6ljZXNzYWlyZSBwb3VyIHZvdHJlIGFjdGl2aXTDqS5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiw6lxdWlwZW1lbnRcIiwgXCJtYXTDqXJpZWxcIiwgXCJpbnZlc3RpclwiLCBcImFjaGV0w6lcIiwgXCJhY2Nlc3NvaXJlc1wiLCBcInbDqnRlbWVudHNcIiwgXCJjb25mb3J0YWJsZXNcIiwgXCJiZXNvaW5cIiwgXCJleHDDqXJpZW5jZVwiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIkMnZXN0IGludMOpcmVzc2FudC4gRXN0LWNlIHF1ZSB0dSBwYXJ0aWNpcGVzIMOgIGRlcyBjb21ww6l0aXRpb25zIG91IGRlcyDDqXbDqW5lbWVudHMgbGnDqXMgw6AgY2V0dGUgYWN0aXZpdMOpID9cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIkNlIG1hdMOpcmllbCBlc3QtaWwgY2/Du3RldXggP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJQYXJsZS1tb2kgZGUgbCfDqXF1aXBlbWVudCBuw6ljZXNzYWlyZSBwb3VyIHRvbiBhY3Rpdml0w6kuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDYsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiRXN0LWNlIHF1ZSB0dSBwYXJ0aWNpcGVzIMOgIGRlcyBjb21ww6l0aXRpb25zIG91IGRlcyDDqXbDqW5lbWVudHMgc3DDqWNpYXV4IGxpw6lzIMOgIGNldHRlIGFjdGl2aXTDqSA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJmcmVlVGV4dFwiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiT3VpLCBqZSBwYXJ0aWNpcGUgw6AgZGVzIHRvdXJub2lzIGxvY2F1eCBkZXV4IG91IHRyb2lzIGZvaXMgcGFyIGFuLlwiLFxuICAgICAgICAgIFwiTm9uLCBqZSBwcmF0aXF1ZSB1bmlxdWVtZW50IHBvdXIgbGUgcGxhaXNpciwgcGFzIHBvdXIgbGEgY29tcMOpdGl0aW9uLlwiLFxuICAgICAgICAgIFwiUGFzIGVuY29yZSwgbWFpcyBqJ2FpbWVyYWlzIGVzc2F5ZXIgcXVhbmQgamUgc2VyYWkgcGx1cyDDoCBsJ2Fpc2UuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiSW5kaXF1ZXogc2kgdm91cyBwYXJ0aWNpcGV6IMOgIGRlcyBjb21ww6l0aXRpb25zIG91IMOpdsOpbmVtZW50cy5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiY29tcMOpdGl0aW9uc1wiLCBcInRvdXJub2lzXCIsIFwiw6l2w6luZW1lbnRzXCIsIFwicGFydGljaXBlXCIsIFwicGxhaXNpclwiLCBcImVzc2F5ZXJcIiwgXCJsJ2Fpc2VcIiwgXCJsb2NhdXhcIiwgXCJlbmNvcmVcIl0sXG4gICAgICAgIGFjY2VwdGFibGVQaHJhc2VzOiBbXG4gICAgICAgICAgXCJqZSBwYXJ0aWNpcGUgw6BcIixcbiAgICAgICAgICBcInBhcyBlbmNvcmVcIixcbiAgICAgICAgICBcInBvdXIgbGUgcGxhaXNpclwiLFxuICAgICAgICAgIFwiaidhaW1lcmFpcyBlc3NheWVyXCJcbiAgICAgICAgXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIkludMOpcmVzc2FudCAhIFF1J2VzdC1jZSBxdWkgdGUgcGxhw650IGxlIHBsdXMgZGFucyBjZXR0ZSBhY3Rpdml0w6kgP1wiLFxuICAgICAgICAgIHBhcnRpYWw6IFwiTGEgY29tcMOpdGl0aW9uIHBldXQgYWpvdXRlciB1biBuaXZlYXUgZCdleGNpdGF0aW9uIHN1cHBsw6ltZW50YWlyZSDDoCB1biBob2JieS5cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiRGlzLW1vaSBzaSB0dSBwYXJ0aWNpcGVzIMOgIGRlcyBjb21ww6l0aXRpb25zIG91IMOpdsOpbmVtZW50cyBsacOpcyDDoCB0b24gYWN0aXZpdMOpLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA3LFxuICAgICAgICBib3RNZXNzYWdlOiBcIlF1J2VzdC1jZSBxdWkgdGUgcGxhw650IGxlIHBsdXMgZGFucyBjZXR0ZSBhY3Rpdml0w6kgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwic3VnZ2VzdGlvbnNcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkonYWltZSBsYSBzZW5zYXRpb24gZGUgbGliZXJ0w6kgZXQgbGUgZmFpdCBkZSBtZSBkw6lwYXNzZXIuXCIsXG4gICAgICAgICAgXCJDJ2VzdCByZWxheGFudCBldCDDp2EgbWUgcGVybWV0IGQnb3VibGllciBsZSBzdHJlc3MgcXVvdGlkaWVuLlwiLFxuICAgICAgICAgIFwiSidhcHByw6ljaWUgZGUgcmVuY29udHJlciBkZXMgcGVyc29ubmVzIHF1aSBwYXJ0YWdlbnQgbGEgbcOqbWUgcGFzc2lvbi5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJFeHBsaXF1ZXogY2UgcXVlIHZvdXMgYWltZXogcGFydGljdWxpw6hyZW1lbnQgZGFucyBjZXR0ZSBhY3Rpdml0w6kuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcImFpbWVcIiwgXCJwbGHDrnRcIiwgXCJsaWJlcnTDqVwiLCBcImTDqXBhc3NlclwiLCBcInJlbGF4YW50XCIsIFwic3RyZXNzXCIsIFwicmVuY29udHJlclwiLCBcInBhc3Npb25cIiwgXCJwZXJzb25uZXNcIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJKZSBjb21wcmVuZHMgY2Ugc2VudGltZW50LiBSZWNvbW1hbmRlcmFpcy10dSBjZXR0ZSBhY3Rpdml0w6kgw6AgZCdhdXRyZXMgcGVyc29ubmVzID9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiRGlzLW1vaSBjZSBxdWUgdHUgYWltZXMgcGFydGljdWxpw6hyZW1lbnQgZGFucyBjZXR0ZSBhY3Rpdml0w6kuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDgsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiRXN0LWNlIHF1ZSB0dSByZWNvbW1hbmRlcmFpcyBjZXR0ZSBhY3Rpdml0w6kgw6AgZCdhdXRyZXMgcGVyc29ubmVzID8gUG91cnF1b2kgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiaHlicmlkXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJBYnNvbHVtZW50ICEgQydlc3QgYWNjZXNzaWJsZSDDoCB0b3VzIGV0IHRyw6hzIGVucmljaGlzc2FudC5cIixcbiAgICAgICAgICBcIk91aSwgbWFpcyBpbCBmYXV0IMOqdHJlIHByw6p0IMOgIHkgY29uc2FjcmVyIGR1IHRlbXBzIGV0IGRlIGwnw6luZXJnaWUuXCIsXG4gICAgICAgICAgXCLDh2EgZMOpcGVuZCBkZXMgZ2/Du3RzIGRlIGNoYWN1biwgbWFpcyBwZXJzb25uZWxsZW1lbnQsIMOnYSBtJ2FwcG9ydGUgYmVhdWNvdXAuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiRGl0ZXMgc2kgdm91cyByZWNvbW1hbmRlcmlleiBjZXR0ZSBhY3Rpdml0w6kgZXQgcG91cnF1b2kuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcInJlY29tbWFuZGVyXCIsIFwiYWNjZXNzaWJsZVwiLCBcImVucmljaGlzc2FudFwiLCBcInRlbXBzXCIsIFwiw6luZXJnaWVcIiwgXCJnb8O7dHNcIiwgXCJhcHBvcnRlXCIsIFwicGVyc29ubmVsbGVtZW50XCIsIFwiYWJzb2x1bWVudFwiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIk1lcmNpIHBvdXIgdG9uIHBhcnRhZ2UgISBDJ2VzdCB0b3Vqb3VycyBpbnTDqXJlc3NhbnQgZGUgZMOpY291dnJpciBsZXMgcGFzc2lvbnMgZGVzIGF1dHJlcy5cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIkMnZXN0IHVuZSBib25uZSBmYcOnb24gZGUgdm9pciBsZXMgY2hvc2VzLlwiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJEaXMtbW9pIHNpIHR1IHJlY29tbWFuZGVyYWlzIGNldHRlIGFjdGl2aXTDqSDDoCBkJ2F1dHJlcyBwZXJzb25uZXMuXCJcbiAgICAgICAgfVxuICAgICAgfVxuICAgIF0sXG4gICAgY29tcGxldGlvbk1lc3NhZ2U6IFwiRsOpbGljaXRhdGlvbnMgISBWb3VzIGF2ZXogcsOpdXNzaSDDoCBwYXJsZXIgZW4gZMOpdGFpbCBkZSB2b3MgbG9pc2lycyBldCBhY3Rpdml0w6lzIGVuIGZyYW7Dp2Fpcy5cIixcbiAgICBsZWFybmluZ09iamVjdGl2ZXM6IFtcbiAgICAgIFwiRMOpY3JpcmUgc2VzIGFjdGl2aXTDqXMgZGUgbG9pc2lyc1wiLFxuICAgICAgXCJQYXJsZXIgZGUgbGEgZnLDqXF1ZW5jZSBldCBkdXLDqWUgZCd1bmUgcHJhdGlxdWVcIixcbiAgICAgIFwiRGlzY3V0ZXIgZCfDqXF1aXBlbWVudHMgc3DDqWNpZmlxdWVzXCIsXG4gICAgICBcIkV4cHJpbWVyIHNlcyBwcsOpZsOpcmVuY2VzIGV0IG1vdGl2YXRpb25zXCIsXG4gICAgICBcIlBhcnRhZ2VyIHNvbiBleHDDqXJpZW5jZSBwZXJzb25uZWxsZVwiXG4gICAgXSxcbiAgICBncmFtbWFyOiB7XG4gICAgICBwb2ludHM6IFtcbiAgICAgICAgXCJWZXJiZXMgZCdvcGluaW9uIGF1IHByw6lzZW50XCIsXG4gICAgICAgIFwiRXhwcmVzc2lvbnMgZGUgdGVtcHMgZXQgZGUgZnLDqXF1ZW5jZVwiLFxuICAgICAgICBcIkFkamVjdGlmcyBwb3VyIGV4cHJpbWVyIGRlcyBzZW50aW1lbnRzXCIsXG4gICAgICAgIFwiUXVlc3Rpb25zIGRpcmVjdGVzIGV0IGluZGlyZWN0ZXNcIlxuICAgICAgXVxuICAgIH1cbiAgfTtcblxuICBleHBvcnQgZGVmYXVsdCB0YWxraW5nQWJvdXRIb2JiaWVzO1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBRUEsSUFBTUEsbUJBQW1CLElBQUFDLGNBQUEsR0FBQUMsQ0FBQSxPQUFHO0VBQ3hCQyxFQUFFLEVBQUUsQ0FBQztFQUNMQyxLQUFLLEVBQUUsdUJBQXVCO0VBQzlCQyxLQUFLLEVBQUUsSUFBSTtFQUNYQyxXQUFXLEVBQUUsbUVBQW1FO0VBQ2hGQyxhQUFhLEVBQUUsZUFBZTtFQUM5QkMsVUFBVSxFQUFFLENBQUMsU0FBUyxFQUFFLFNBQVMsRUFBRSxhQUFhLEVBQUUsV0FBVyxFQUFFLFdBQVcsRUFBRSxZQUFZLEVBQUUsTUFBTSxFQUFFLGFBQWEsRUFBRSxVQUFVLEVBQUUsWUFBWSxDQUFDO0VBQzFJQyxLQUFLLEVBQUUs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

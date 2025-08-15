@@ -1,0 +1,643 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/6/categories/poetic-figurative-language.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/6/categories</a> poetic-figurative-language.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/c2/categories/poetic-figurative-language.js
+&nbsp;
+const poeticFigurativeLanguage = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    categoryId: 60,
+    english: "The twilight hours of... cast long shadows across the landscape of..., where memories gather like autumn leaves—some golden with preserved beauty, others brittle with the weight of time, all dancing in the wind of... before settling into the quiet earth of...",
+    translation: "Les heures crépusculaires de... jettent de longues ombres à travers le paysage de..., où les souvenirs se rassemblent comme des feuilles d'automne—certains dorés de beauté préservée, d'autres fragiles sous le poids du temps, tous dansant dans le vent de... avant de se poser dans la terre silencieuse de...",
+    context: "Métaphore étendue utilisant l'imagerie du crépuscule et des saisons pour évoquer la nostalgie",
+    examples: [
+      {
+        english: "The twilight hours of her academic career cast long shadows across the landscape of institutional memory, where decades of scholarly contributions gather like autumn leaves—some golden with preserved insights that continue to illuminate future research, others brittle with the weight of obsolete methodologies, all dancing in the wind of disciplinary transformation before settling into the quiet earth of archived knowledge that nourishes new growth.",
+        translation: "Les heures crépusculaires de sa carrière académique jettent de longues ombres à travers le paysage de la mémoire institutionnelle, où des décennies de contributions savantes se rassemblent comme des feuilles d'automne—certaines dorées d'insights préservés qui continuent d'illuminer la recherche future, d'autres fragiles sous le poids de méthodologies obsolètes, toutes dansant dans le vent de transformation disciplinaire avant de se poser dans la terre silencieuse de la connaissance archivée qui nourrit une nouvelle croissance.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "Like a river carving its way through resistant stone, the persistence of... slowly sculpts new channels in the bedrock of..., transforming what once seemed immutable into a flowing geography of... where each drop of... eventually reshapes the entire landscape.",
+    translation: "Comme une rivière se frayant un chemin à travers la pierre résistante, la persistance de... sculpte lentement de nouveaux canaux dans le substratum rocheux de..., transformant ce qui semblait autrefois immuable en une géographie fluide de... où chaque goutte de... remodèle finalement tout le paysage.",
+    context: "Métaphore géologique pour décrire la transformation graduelle mais inexorable",
+    examples: [
+      {
+        english: "Like a river carving its way through resistant stone, the persistence of grassroots organizing slowly sculpts new channels in the bedrock of political consciousness, transforming what once seemed like immutable voter apathy into a flowing geography of civic engagement where each act of community participation eventually reshapes the entire landscape of democratic possibility and institutional responsiveness.",
+        translation: "Comme une rivière se frayant un chemin à travers la pierre résistante, la persistance de l'organisation populaire sculpte lentement de nouveaux canaux dans le substratum rocheux de la conscience politique, transformant ce qui semblait autrefois comme apathie électorale immuable en une géographie fluide d'engagement civique où chaque acte de participation communautaire remodèle finalement tout le paysage de possibilité démocratique et de réactivité institutionnelle.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "In the cathedral silence of..., where even whispers echo with the weight of..., the fragile architecture of... rises like morning mist from the sacred ground of..., ethereal yet substantial, ephemeral yet enduring in its capacity to transform...",
+    translation: "Dans le silence de cathédrale de..., où même les chuchotements résonnent du poids de..., l'architecture fragile de... s'élève comme brume matinale du sol sacré de..., éthérée mais substantielle, éphémère mais durable dans sa capacité à transformer...",
+    context: "Imagerie architecturale et spirituelle pour évoquer des expériences transcendantes",
+    examples: [
+      {
+        english: "In the cathedral silence of intensive care units, where even whispers echo with the weight of mortality and hope, the fragile architecture of medical miracles rises like morning mist from the sacred ground of human resilience, ethereal yet substantial in its technological precision, ephemeral yet enduring in its capacity to transform suffering into healing through the alchemy of compassionate expertise.",
+        translation: "Dans le silence de cathédrale des unités de soins intensifs, où même les chuchotements résonnent du poids de mortalité et d'espoir, l'architecture fragile des miracles médicaux s'élève comme brume matinale du sol sacré de la résilience humaine, éthérée mais substantielle dans sa précision technologique, éphémère mais durable dans sa capacité à transformer la souffrance en guérison par l'alchimie de l'expertise compatissante.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "The symphony of... orchestrates a complex movement where... plays the haunting melody while... provides the deep bass notes that anchor the composition, and... dances through the arrangement like scattered grace notes that illuminate the underlying harmony of...",
+    translation: "La symphonie de... orchestre un mouvement complexe où... joue la mélodie hantante tandis que... fournit les notes de basse profondes qui ancrent la composition, et... danse à travers l'arrangement comme notes d'agrément éparpillées qui illuminent l'harmonie sous-jacente de...",
+    context: "Métaphore musicale pour décrire l'interaction complexe d'éléments multiples",
+    examples: [
+      {
+        english: "The symphony of urban renewal orchestrates a complex movement where gentrification plays the haunting melody of progress and displacement while economic necessity provides the deep bass notes that anchor the composition, and community resistance dances through the arrangement like scattered grace notes that illuminate the underlying harmony of human dignity struggling to maintain its voice amid the powerful crescendo of capital accumulation.",
+        translation: "La symphonie de renouveau urbain orchestre un mouvement complexe où la gentrification joue la mélodie hantante de progrès et déplacement tandis que la nécessité économique fournit les notes de basse profondes qui ancrent la composition, et la résistance communautaire danse à travers l'arrangement comme notes d'agrément éparpillées qui illuminent l'harmonie sous-jacente de dignité humaine luttant pour maintenir sa voix au milieu du crescendo puissant d'accumulation de capital.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "Threading through the labyrinth of..., where each turn reveals new chambers of... and every passage echoes with the footsteps of..., the silver thread of... guides seekers toward the center where... awaits like a sphinx with riddles that dissolve only in the presence of...",
+    translation: "S'enfilant à travers le labyrinthe de..., où chaque tournant révèle de nouvelles chambres de... et chaque passage résonne des pas de..., le fil d'argent de... guide les chercheurs vers le centre où... attend comme un sphinx avec des énigmes qui ne se dissolvent qu'en présence de...",
+    context: "Métaphore mythologique du labyrinthe pour représenter la quête de connaissance",
+    examples: [
+      {
+        english: "Threading through the labyrinth of psychological healing, where each therapeutic session reveals new chambers of suppressed memory and every emotional breakthrough echoes with the footsteps of ancestral trauma, the silver thread of therapeutic alliance guides seekers toward the center where authentic selfhood awaits like a sphinx with riddles that dissolve only in the presence of unconditional acceptance and witnessed vulnerability.",
+        translation: "S'enfilant à travers le labyrinthe de guérison psychologique, où chaque session thérapeutique révèle de nouvelles chambres de mémoire supprimée et chaque percée émotionnelle résonne des pas de trauma ancestral, le fil d'argent de l'alliance thérapeutique guide les chercheurs vers le centre où l'individualité authentique attend comme un sphinx avec des énigmes qui ne se dissolvent qu'en présence d'acceptation inconditionnelle et de vulnérabilité témoin.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "The alchemical transformation of... turns base metals of... into the gold of..., where the crucible of... burns away impurities while the careful temperature of... ensures that essential elements are preserved, creating an elixir that transmutes... into...",
+    translation: "La transformation alchimique de... transforme les métaux vils de... en l'or de..., où le creuset de... brûle les impuretés tandis que la température soigneuse de... assure que les éléments essentiels sont préservés, créant un élixir qui transmute... en...",
+    context: "Métaphore alchimique pour décrire la transformation qualitative profonde",
+    examples: [
+      {
+        english: "The alchemical transformation of grief counseling turns base metals of raw emotional pain into the gold of integrated wisdom, where the crucible of therapeutic process burns away the dross of denial and rage while the careful temperature of professional boundaries ensures that essential memories and love are preserved, creating an elixir that transmutes loss into a deeper capacity for compassion and presence.",
+        translation: "La transformation alchimique du conseil de deuil transforme les métaux vils de douleur émotionnelle brute en l'or de sagesse intégrée, où le creuset du processus thérapeutique brûle les scories de déni et rage tandis que la température soigneuse des frontières professionnelles assure que les souvenirs essentiels et l'amour sont préservés, créant un élixir qui transmute la perte en une capacité plus profonde pour la compassion et la présence.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "Like seedlings breaking through the concrete of..., the tender shoots of... push upward with an inexorable green force that finds the smallest cracks in... and gradually widens them until the entire foundation of... buckles beneath the gentle but persistent pressure of...",
+    translation: "Comme des semis perçant le béton de..., les pousses tendres de... poussent vers le haut avec une force verte inexorable qui trouve les plus petites fissures dans... et les élargit graduellement jusqu'à ce que toute la fondation de... se déforme sous la pression douce mais persistante de...",
+    context: "Métaphore botanique pour illustrer la force transformatrice de la croissance naturelle",
+    examples: [
+      {
+        english: "Like seedlings breaking through the concrete of institutional inertia, the tender shoots of student activism push upward with an inexorable moral force that finds the smallest cracks in administrative complacency and gradually widens them until the entire foundation of educational hierarchy buckles beneath the gentle but persistent pressure of democratic participation and ethical accountability.",
+        translation: "Comme des semis perçant le béton d'inertie institutionnelle, les pousses tendres de l'activisme étudiant poussent vers le haut avec une force morale inexorable qui trouve les plus petites fissures dans la complaisance administrative et les élargit graduellement jusqu'à ce que toute la fondation de hiérarchie éducative se déforme sous la pression douce mais persistante de participation démocratique et responsabilité éthique.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "In the vast ocean of..., where currents of... carry vessels of... across uncharted waters toward distant shores of..., the lighthouse of... pierces the fog of... with its steady beam, warning of hidden reefs while illuminating safe passage through...",
+    translation: "Dans le vaste océan de..., où les courants de... portent les vaisseaux de... à travers des eaux inexplorées vers des rives lointaines de..., le phare de... perce le brouillard de... de son faisceau stable, avertissant des récifs cachés tout en illuminant un passage sûr à travers...",
+    context: "Métaphore maritime pour la navigation dans l'incertitude avec des guides fiables",
+    examples: [
+      {
+        english: "In the vast ocean of technological innovation, where currents of market disruption carry vessels of entrepreneurial dreams across uncharted digital waters toward distant shores of revolutionary change, the lighthouse of ethical frameworks pierces the fog of unintended consequences with its steady moral beam, warning of hidden reefs of social harm while illuminating safe passage through the treacherous straits of progress.",
+        translation: "Dans le vaste océan d'innovation technologique, où les courants de disruption de marché portent les vaisseaux de rêves entrepreneuriaux à travers des eaux numériques inexplorées vers des rives lointaines de changement révolutionnaire, le phare de cadres éthiques perce le brouillard de conséquences non intentionnelles de son faisceau moral stable, avertissant des récifs cachés de mal social tout en illuminant un passage sûr à travers les détroits traîtres du progrès.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "The tapestry of... weaves together golden threads of... with silver strands of... and deep purple fibers of..., creating a complex pattern where... emerges only when viewed from sufficient distance to appreciate how individual elements contribute to the magnificent whole of...",
+    translation: "La tapisserie de... tisse ensemble des fils dorés de... avec des brins d'argent de... et des fibres pourpres profondes de..., créant un motif complexe où... émerge seulement quand vue d'une distance suffisante pour apprécier comment les éléments individuels contribuent au tout magnifique de...",
+    context: "Métaphore textile pour illustrer l'intégration complexe d'éléments divers",
+    examples: [
+      {
+        english: "The tapestry of multicultural education weaves together golden threads of diverse wisdom traditions with silver strands of shared human values and deep purple fibers of critical consciousness, creating a complex pedagogical pattern where transformative learning emerges only when viewed from sufficient historical distance to appreciate how individual cultural contributions form the magnificent whole of inclusive human understanding.",
+        translation: "La tapisserie d'éducation multiculturelle tisse ensemble des fils dorés de traditions de sagesse diverses avec des brins d'argent de valeurs humaines partagées et des fibres pourpres profondes de conscience critique, créant un motif pédagogique complexe où l'apprentissage transformateur émerge seulement quand vue d'une distance historique suffisante pour apprécier comment les contributions culturelles individuelles forment le tout magnifique de compréhension humaine inclusive.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "The phoenix of... rises from the ashes of..., its wings catching fire from the flames of... yet soaring higher with each conflagration, carrying in its talons the precious seeds of... that will scatter across the barren landscape to bloom where... once seemed impossible.",
+    translation: "Le phénix de... s'élève des cendres de..., ses ailes prenant feu des flammes de... pourtant s'élevant plus haut à chaque conflagration, portant dans ses serres les graines précieuses de... qui se disperseront à travers le paysage stérile pour fleurir où... semblait autrefois impossible.",
+    context: "Métaphore mythologique du phénix pour la renaissance et la transformation par l'adversité",
+    examples: [
+      {
+        english: "The phoenix of democratic resilience rises from the ashes of institutional failure, its wings catching fire from the flames of social unrest yet soaring higher with each crisis of legitimacy, carrying in its talons the precious seeds of participatory governance that will scatter across the barren landscape of political disillusionment to bloom where authentic representation once seemed impossible.",
+        translation: "Le phénix de résilience démocratique s'élève des cendres d'échec institutionnel, ses ailes prenant feu des flammes d'agitation sociale pourtant s'élevant plus haut à chaque crise de légitimité, portant dans ses serres les graines précieuses de gouvernance participative qui se disperseront à travers le paysage stérile de désillusion politique pour fleurir où la représentation authentique semblait autrefois impossible.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "Like a master jeweler cutting facets in raw stone, the patient craft of... reveals hidden brilliance within the rough surface of..., each careful incision releasing new rays of... that dance across the prism of... and cast rainbows of... into previously shadowed corners.",
+    translation: "Comme un maître joaillier taillant des facettes dans la pierre brute, l'artisanat patient de... révèle l'éclat caché dans la surface rugueuse de..., chaque incision soigneuse libérant de nouveaux rayons de... qui dansent à travers le prisme de... et projettent des arcs-en-ciel de... dans des coins précédemment ombrés.",
+    context: "Métaphore de la lapidaire pour la révélation de beauté cachée par l'artisanat méticuleux",
+    examples: [
+      {
+        english: "Like a master jeweler cutting facets in raw stone, the patient craft of psychoanalytic therapy reveals hidden brilliance within the rough surface of unconscious resistance, each careful interpretation releasing new rays of self-awareness that dance across the prism of transference and cast rainbows of emotional insight into previously shadowed corners of the psyche where trauma had crystallized into protective armor.",
+        translation: "Comme un maître joaillier taillant des facettes dans la pierre brute, l'artisanat patient de la thérapie psychanalytique révèle l'éclat caché dans la surface rugueuse de résistance inconsciente, chaque interprétation soigneuse libérant de nouveaux rayons de conscience de soi qui dansent à travers le prisme de transfert et projettent des arcs-en-ciel d'insight émotionnel dans des coins précédemment ombrés de la psyché où le trauma s'était cristallisé en armure protectrice.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "The constellation of... maps a celestial geography where each star of... burns with its own distinctive light, yet together they trace the ancient story of..., guiding travelers through the dark night of... toward the dawn of... that breaks eternal on the horizon of...",
+    translation: "La constellation de... cartographie une géographie céleste où chaque étoile de... brûle de sa propre lumière distinctive, pourtant ensemble elles tracent l'histoire ancienne de..., guidant les voyageurs à travers la nuit sombre de... vers l'aube de... qui se lève éternelle à l'horizon de...",
+    context: "Métaphore astronomique pour l'orientation et la guidance par des principes éternels",
+    examples: [
+      {
+        english: "The constellation of human rights maps a celestial geography where each principle of dignity burns with its own distinctive moral light, yet together they trace the ancient story of humanity's struggle for justice, guiding societies through the dark night of oppression toward the dawn of universal liberation that breaks eternal on the horizon of global consciousness and interconnected responsibility.",
+        translation: "La constellation des droits humains cartographie une géographie céleste où chaque principe de dignité brûle de sa propre lumière morale distinctive, pourtant ensemble ils tracent l'histoire ancienne de la lutte de l'humanité pour la justice, guidant les sociétés à travers la nuit sombre d'oppression vers l'aube de libération universelle qui se lève éternelle à l'horizon de conscience globale et responsabilité interconnectée.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "In the sacred grove of..., where ancient trees of... stretch their gnarled branches toward the infinite sky, the wind carries whispers of... through leaves that rustle with the accumulated wisdom of... while roots drink deep from the underground springs of...",
+    translation: "Dans le bosquet sacré de..., où les arbres anciens de... étendent leurs branches noueuses vers le ciel infini, le vent porte des chuchotements de... à travers des feuilles qui bruissent de la sagesse accumulée de... tandis que les racines boivent profondément des sources souterraines de...",
+    context: "Métaphore de la forêt sacrée pour la sagesse traditionnelle et la connexion spirituelle",
+    examples: [
+      {
+        english: "In the sacred grove of contemplative practice, where ancient trees of meditation traditions stretch their gnarled branches toward the infinite sky of consciousness, the wind carries whispers of transcendent insight through leaves that rustle with the accumulated wisdom of countless practitioners while roots drink deep from the underground springs of universal compassion that nourish all authentic spiritual growth.",
+        translation: "Dans le bosquet sacré de pratique contemplative, où les arbres anciens de traditions de méditation étendent leurs branches noueuses vers le ciel infini de conscience, le vent porte des chuchotements d'insight transcendant à travers des feuilles qui bruissent de la sagesse accumulée d'innombrables pratiquants tandis que les racines boivent profondément des sources souterraines de compassion universelle qui nourrissent toute croissance spirituelle authentique.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "The aurora borealis of... paints the dark sky of... with shimmering curtains of... that dance and pulse with magnetic energy, creating ethereal beauty from the collision between... and..., transforming the vast emptiness of... into a cathedral of light that speaks in colors beyond ordinary language.",
+    translation: "L'aurore boréale de... peint le ciel sombre de... avec des rideaux scintillants de... qui dansent et pulsent avec une énergie magnétique, créant une beauté éthérée de la collision entre... et..., transformant le vide immense de... en une cathédrale de lumière qui parle en couleurs au-delà du langage ordinaire.",
+    context: "Métaphore de l'aurore boréale pour la beauté transcendante née de forces invisibles",
+    examples: [
+      {
+        english: "The aurora borealis of artistic inspiration paints the dark sky of creative struggle with shimmering curtains of possibility that dance and pulse with imaginative energy, creating ethereal beauty from the collision between conscious intention and unconscious revelation, transforming the vast emptiness of the blank canvas into a cathedral of meaning that speaks in colors beyond ordinary verbal expression.",
+        translation: "L'aurore boréale d'inspiration artistique peint le ciel sombre de lutte créative avec des rideaux scintillants de possibilité qui dansent et pulsent avec une énergie imaginative, créant une beauté éthérée de la collision entre intention consciente et révélation inconsciente, transformant le vide immense de la toile vierge en une cathédrale de sens qui parle en couleurs au-delà de l'expression verbale ordinaire.",
+      }
+    ],
+  },
+  {
+    categoryId: 60,
+    english: "The metamorphosis of... mirrors the butterfly's journey from the cocoon of... where the dissolution of... appears as death but reveals itself as the necessary prelude to..., as new wings of... unfold to carry... toward previously unimaginable realms of...",
+    translation: "La métamorphose de... reflète le voyage du papillon du cocon de... où la dissolution de... apparaît comme mort mais se révèle comme le prélude nécessaire à..., alors que de nouvelles ailes de... se déploient pour porter... vers des royaumes précédemment inimaginables de...",
+    context: "Métaphore de la métamorphose pour la transformation radicale et la renaissance",
+    examples: [
+      {
+        english: "The metamorphosis of personal trauma mirrors the butterfly's journey from the cocoon of protective numbness where the dissolution of familiar identity appears as psychological death but reveals itself as the necessary prelude to authentic healing, as new wings of emotional integration unfold to carry the survivor toward previously unimaginable realms of post-traumatic growth and renewed capacity for intimacy.",
+        translation: "La métamorphose du trauma personnel reflète le voyage du papillon du cocon d'engourdissement protecteur où la dissolution d'identité familière apparaît comme mort psychologique mais se révèle comme le prélude nécessaire à la guérison authentique, alors que de nouvelles ailes d'intégration émotionnelle se déploient pour porter le survivant vers des royaumes précédemment inimaginables de croissance post-traumatique et capacité renouvelée pour l'intimité.",
+      }
+    ],
+  }
+];
+&nbsp;
+export default poeticFigurativeLanguage;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-15T00:50:51.431Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

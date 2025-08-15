@@ -1,0 +1,643 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/6/categories/wordplay-double-meaning.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/6/categories</a> wordplay-double-meaning.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/c2/categories/wordplay-double-meaning.js
+&nbsp;
+const wordplayDoubleMeaning = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    categoryId: 50,
+    english: "The gravity of the situation became apparent when the physicist's career took a decidedly downward trajectory, proving that even those who study attraction can find themselves repelled by...",
+    translation: "La gravité de la situation devint apparente quand la carrière du physicien prit une trajectoire résolument descendante, prouvant que même ceux qui étudient l'attraction peuvent se retrouver repoussés par...",
+    context: "Jeu de mots sur 'gravity' (gravité physique vs sérieux de la situation) et les concepts physiques",
+    examples: [
+      {
+        english: "The gravity of the situation became apparent when the renowned physicist's career took a decidedly downward trajectory after his controversial theories were debunked, proving that even those who study universal attraction can find themselves professionally repelled by the very community they once hoped to enlighten.",
+        translation: "La gravité de la situation devint apparente quand la carrière du physicien renommé prit une trajectoire résolument descendante après que ses théories controversées furent démystifiées, prouvant que même ceux qui étudient l'attraction universelle peuvent se retrouver professionnellement repoussés par la communauté même qu'ils espéraient autrefois éclairer.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "His argument had no legs to stand on, which was particularly ironic given that his expertise in prosthetics had earned him a reputation for helping others find their footing in...",
+    translation: "Son argument n'avait aucune jambe sur laquelle se tenir, ce qui était particulièrement ironique étant donné que son expertise en prothèses lui avait valu une réputation d'aider les autres à trouver leur équilibre dans...",
+    context: "Jeu de mots entre 'avoir des jambes pour se tenir' (argument solide) et les jambes littérales/prothèses",
+    examples: [
+      {
+        english: "The orthopedic surgeon's argument against universal healthcare had no legs to stand on, which was particularly ironic given that his expertise in prosthetics had earned him a reputation for helping amputee veterans find their footing in civilian life while simultaneously opposing the very system that could make such care accessible to all.",
+        translation: "L'argument du chirurgien orthopédique contre les soins de santé universels n'avait aucune jambe sur laquelle se tenir, ce qui était particulièrement ironique étant donné que son expertise en prothèses lui avait valu une réputation d'aider les vétérans amputés à trouver leur équilibre dans la vie civile tout en s'opposant simultanément au système même qui pourrait rendre de tels soins accessibles à tous.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The banker's interest in compound growth was clearly more than academic, as his personal investments reflected a principal understanding that money, like relationships, requires careful cultivation to...",
+    translation: "L'intérêt du banquier pour la croissance composée était clairement plus qu'académique, car ses investissements personnels reflétaient une compréhension principale que l'argent, comme les relations, nécessite une cultivation soigneuse pour...",
+    context: "Jeu de mots sur 'interest' (intérêt financier vs curiosité) et 'principal' (capital vs fondamental)",
+    examples: [
+      {
+        english: "The investment banker's interest in compound growth was clearly more than academic, as his personal portfolio reflected a principal understanding that money, like relationships, requires careful cultivation to flourish, though his obsession with financial gains often left his actual relationships bankrupt of genuine emotional investment.",
+        translation: "L'intérêt du banquier d'investissement pour la croissance composée était clairement plus qu'académique, car son portefeuille personnel reflétait une compréhension principale que l'argent, comme les relations, nécessite une cultivation soigneuse pour prospérer, bien que son obsession pour les gains financiers laissait souvent ses vraies relations en faillite d'investissement émotionnel authentique.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The chef's seasoned approach to business proved that he knew how to make dough, though his recipe for success involved more than just the right ingredients—it required timing that was...",
+    translation: "L'approche expérimentée du chef en affaires prouva qu'il savait comment faire de la pâte, bien que sa recette du succès impliquait plus que juste les bons ingrédients—elle nécessitait un timing qui était...",
+    context: "Jeu de mots sur 'seasoned' (expérimenté vs assaisonné), 'dough' (pâte vs argent), et métaphores culinaires",
+    examples: [
+      {
+        english: "The celebrity chef's seasoned approach to expanding his restaurant empire proved that he knew how to make dough in more ways than one, though his recipe for financial success involved more than just the right culinary ingredients—it required timing that was absolutely critical and partnerships that could withstand the heat of intense competition.",
+        translation: "L'approche expérimentée du chef célèbre pour étendre son empire de restaurants prouva qu'il savait comment faire de la pâte de plus d'une façon, bien que sa recette du succès financier impliquait plus que juste les bons ingrédients culinaires—elle nécessitait un timing qui était absolument critique et des partenariats qui pouvaient résister à la chaleur d'une compétition intense.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The musician's composition was noteworthy for its sharp observations about society, though critics argued that his flat delivery failed to strike the right chord with audiences who found his message...",
+    translation: "La composition du musicien était remarquable pour ses observations pointues sur la société, bien que les critiques arguaient que sa livraison plate échouait à frapper la bonne corde avec les audiences qui trouvaient son message...",
+    context: "Jeu de mots multiples sur le vocabulaire musical appliqué à la critique sociale",
+    examples: [
+      {
+        english: "The protest singer's latest composition was noteworthy for its sharp observations about social inequality, though critics argued that his increasingly flat delivery failed to strike the right chord with younger audiences who found his message too heavy-handed and his melodic approach to political commentary somewhat off-key.",
+        translation: "La dernière composition du chanteur protestataire était remarquable pour ses observations pointues sur l'inégalité sociale, bien que les critiques arguaient que sa livraison de plus en plus plate échouait à frapper la bonne corde avec les jeunes audiences qui trouvaient son message trop lourd et son approche mélodique du commentaire politique quelque peu fausse.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The architect's blueprint for reform was structurally sound, but his foundation arguments cracked under pressure when opponents discovered that his own building practices had failed to meet the standards he was...",
+    translation: "Le plan de réforme de l'architecte était structurellement solide, mais ses arguments fondamentaux se fissurèrent sous la pression quand les opposants découvrirent que ses propres pratiques de construction avaient échoué à rencontrer les standards qu'il était...",
+    context: "Métaphores architecturales appliquées à la réforme politique et à l'hypocrisie",
+    examples: [
+      {
+        english: "The urban planner's blueprint for housing reform was structurally sound in theory, but his foundation arguments cracked under pressure when investigative journalists discovered that his own development company's building practices had failed to meet the very safety standards he was advocating for low-income communities.",
+        translation: "Le plan de réforme du logement de l'urbaniste était structurellement solide en théorie, mais ses arguments fondamentaux se fissurèrent sous la pression quand des journalistes d'investigation découvrirent que les pratiques de construction de sa propre compagnie de développement avaient échoué à rencontrer les standards de sécurité mêmes qu'il prônait pour les communautés à faible revenu.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The tailor's approach to customer service was perfectly suited to his clientele, though his tendency to hem and haw when asked direct questions often left customers feeling that his responses were somewhat...",
+    translation: "L'approche du tailleur au service client était parfaitement adaptée à sa clientèle, bien que sa tendance à hésiter et tergiverser quand on lui posait des questions directes laissait souvent les clients avec l'impression que ses réponses étaient quelque peu...",
+    context: "Jeu de mots sur 'suited' (adapté vs costume), 'hem and haw' (hésiter vs ourlet), et le vocabulaire de la couture",
+    examples: [
+      {
+        english: "The bespoke tailor's approach to customer service was perfectly suited to his upscale clientele, though his tendency to hem and haw when asked direct questions about pricing often left customers feeling that his responses were somewhat threadbare and that he was simply trying to needle them into accepting higher costs.",
+        translation: "L'approche du tailleur sur mesure au service client était parfaitement adaptée à sa clientèle haut de gamme, bien que sa tendance à hésiter et tergiverser quand on lui posait des questions directes sur les prix laissait souvent les clients avec l'impression que ses réponses étaient quelque peu élimées et qu'il essayait simplement de les piquer pour qu'ils acceptent des coûts plus élevés.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The gardener's organic philosophy really grew on people, though some found his lectures about soil composition a bit dry, particularly when he would go off on tangents about the root causes of...",
+    translation: "La philosophie organique du jardinier prit vraiment racine chez les gens, bien que certains trouvaient ses conférences sur la composition du sol un peu sèches, particulièrement quand il partait en tangentes sur les causes profondes de...",
+    context: "Jeux de mots botaniques et jardiniers appliqués à la philosophie et à l'enseignement",
+    examples: [
+      {
+        english: "The permaculture expert's organic philosophy really grew on people over time, though some found his lectures about soil composition and sustainable farming practices a bit dry, particularly when he would go off on tangents about the root causes of industrial agriculture's environmental damage while his audience was already planted in their seats for hours.",
+        translation: "La philosophie organique de l'expert en permaculture prit vraiment racine chez les gens avec le temps, bien que certains trouvaient ses conférences sur la composition du sol et les pratiques agricoles durables un peu sèches, particulièrement quand il partait en tangentes sur les causes profondes des dommages environnementaux de l'agriculture industrielle alors que son audience était déjà plantée dans ses sièges depuis des heures.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The librarian's novel approach to cataloging was truly a page-turner for information science, though some colleagues felt his methods were overdue for revision and that his chapters on digital organization read like...",
+    translation: "L'approche romanesque de la bibliothécaire au catalogage était vraiment un page-turner pour la science de l'information, bien que certains collègues sentaient que ses méthodes étaient en retard pour révision et que ses chapitres sur l'organisation numérique se lisaient comme...",
+    context: "Jeu de mots sur le vocabulaire des livres et de la bibliothéconomie",
+    examples: [
+      {
+        english: "The head librarian's novel approach to digital cataloging was truly a page-turner for information science professionals, though some colleagues felt his innovative methods were overdue for peer review and that his published chapters on artificial intelligence in library systems read like science fiction rather than practical guidance.",
+        translation: "L'approche romanesque du bibliothécaire en chef au catalogage numérique était vraiment un page-turner pour les professionnels de la science de l'information, bien que certains collègues sentaient que ses méthodes innovantes étaient en retard pour l'évaluation par les pairs et que ses chapitres publiés sur l'intelligence artificielle dans les systèmes de bibliothèque se lisaient comme de la science-fiction plutôt que des conseils pratiques.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The meteorologist's forecast for change was cloudy at best, and his stormy relationship with accuracy had left many viewers feeling that his predictions were often full of hot air, especially when he would...",
+    translation: "Les prévisions de changement du météorologue étaient nuageuses au mieux, et sa relation orageuse avec la précision avait laissé beaucoup de téléspectateurs avec l'impression que ses prédictions étaient souvent pleines de vent chaud, spécialement quand il...",
+    context: "Métaphores météorologiques appliquées à la fiabilité professionnelle",
+    examples: [
+      {
+        english: "The television meteorologist's forecast for climate change discussion was cloudy at best, and his stormy relationship with scientific accuracy had left many viewers feeling that his predictions were often full of hot air, especially when he would downplay severe weather warnings to avoid appearing alarmist to his conservative audience.",
+        translation: "Les prévisions de discussion sur le changement climatique du météorologue de télévision étaient nuageuses au mieux, et sa relation orageuse avec la précision scientifique avait laissé beaucoup de téléspectateurs avec l'impression que ses prédictions étaient souvent pleines de vent chaud, spécialement quand il minimiserait les avertissements météorologiques sévères pour éviter de paraître alarmiste à son audience conservatrice.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The optometrist's vision for healthcare reform was crystal clear, though critics argued that his perspective was myopic and that he failed to see the big picture when it came to the focus required for...",
+    translation: "La vision de l'optométriste pour la réforme des soins de santé était claire comme le cristal, bien que les critiques arguaient que sa perspective était myope et qu'il échouait à voir la grande image quand il s'agissait de la mise au point requise pour...",
+    context: "Jeu de mots sur le vocabulaire optique appliqué à la vision politique et sociale",
+    examples: [
+      {
+        english: "The ophthalmologist's vision for healthcare reform was crystal clear in his own mind, though critics argued that his perspective was myopic and that he failed to see the big picture when it came to the focus required for implementing universal access to vision care for underserved populations.",
+        translation: "La vision de l'ophtalmologue pour la réforme des soins de santé était claire comme le cristal dans son propre esprit, bien que les critiques arguaient que sa perspective était myope et qu'il échouait à voir la grande image quand il s'agissait de la mise au point requise pour implémenter l'accès universel aux soins de la vision pour les populations mal desservies.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The electrician's current approach to energy policy was truly shocking, though his resistance to change and his tendency to short-circuit meaningful debate left many wondering if he was properly grounded in...",
+    translation: "L'approche actuelle de l'électricien à la politique énergétique était vraiment choquante, bien que sa résistance au changement et sa tendance à court-circuiter le débat significatif laissaient beaucoup se demander s'il était proprement mis à la terre dans...",
+    context: "Vocabulaire électrique appliqué à la politique énergétique et au comportement débat",
+    examples: [
+      {
+        english: "The master electrician's current approach to renewable energy policy was truly shocking to environmental advocates, though his resistance to solar initiatives and his tendency to short-circuit meaningful debate about grid modernization left many wondering if he was properly grounded in contemporary energy science or simply protecting his traditional business interests.",
+        translation: "L'approche actuelle du maître électricien à la politique d'énergie renouvelable était vraiment choquante pour les défenseurs de l'environnement, bien que sa résistance aux initiatives solaires et sa tendance à court-circuiter le débat significatif sur la modernisation du réseau laissaient beaucoup se demander s'il était proprement mis à la terre dans la science énergétique contemporaine ou simplement protégeait ses intérêts commerciaux traditionnels.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The surgeon's cutting remarks about healthcare administration were sharp and to the point, though his colleagues felt his bedside manner needed suturing and that his approach to criticism was rather...",
+    translation: "Les remarques tranchantes du chirurgien sur l'administration des soins de santé étaient pointues et au point, bien que ses collègues sentaient que sa manière au chevet nécessitait des sutures et que son approche de la critique était plutôt...",
+    context: "Vocabulaire chirurgical appliqué à la critique et aux relations professionnelles",
+    examples: [
+      {
+        english: "The cardiac surgeon's cutting remarks about hospital administration inefficiencies were sharp and precisely to the point, though his colleagues felt his bedside manner with both patients and staff needed serious suturing and that his approach to constructive criticism was rather invasive for collaborative work environments.",
+        translation: "Les remarques tranchantes du chirurgien cardiaque sur les inefficacités de l'administration hospitalière étaient pointues et précisément au point, bien que ses collègues sentaient que sa manière au chevet avec les patients et le personnel nécessitait des sutures sérieuses et que son approche de la critique constructive était plutôt invasive pour les environnements de travail collaboratifs.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The clockmaker's timing in entering the smartwatch market was impeccable, though his mechanical approach to digital innovation proved that not all who work with gears can successfully shift into...",
+    translation: "Le timing de l'horloger en entrant sur le marché des montres intelligentes était impeccable, bien que son approche mécanique de l'innovation numérique prouva que tous ceux qui travaillent avec des engrenages ne peuvent pas réussir à passer en...",
+    context: "Vocabulaire horloger et mécanique appliqué à l'innovation technologique",
+    examples: [
+      {
+        english: "The traditional clockmaker's timing in entering the smartwatch market was impeccable from a business perspective, though his rigidly mechanical approach to digital innovation proved that not all artisans who work with precision gears can successfully shift into the fluid world of software development and user interface design.",
+        translation: "Le timing de l'horloger traditionnel en entrant sur le marché des montres intelligentes était impeccable d'une perspective commerciale, bien que son approche rigidement mécanique de l'innovation numérique prouva que tous les artisans qui travaillent avec des engrenages de précision ne peuvent pas réussir à passer dans le monde fluide du développement logiciel et de la conception d'interface utilisateur.",
+      }
+    ],
+  },
+  {
+    categoryId: 50,
+    english: "The mathematician's solution to the budget crisis was elegantly calculated, though her formula for success divided opinion among colleagues who found her approach to problem-solving rather too theoretical and not sufficiently...",
+    translation: "La solution de la mathématicienne à la crise budgétaire était élégamment calculée, bien que sa formule du succès divisait l'opinion parmi les collègues qui trouvaient son approche de résolution de problèmes plutôt trop théorique et pas suffisamment...",
+    context: "Vocabulaire mathématique appliqué à la résolution de problèmes économiques et organisationnels",
+    examples: [
+      {
+        english: "The applied mathematician's solution to the university's budget crisis was elegantly calculated and theoretically sound, though her algorithmic formula for cost reduction divided opinion among faculty colleagues who found her data-driven approach to academic problem-solving rather too abstract and not sufficiently grounded in the human realities of educational institutions.",
+        translation: "La solution de la mathématicienne appliquée à la crise budgétaire de l'université était élégamment calculée et théoriquement solide, bien que sa formule algorithmique pour la réduction des coûts divisait l'opinion parmi les collègues de la faculté qui trouvaient son approche basée sur les données de résolution de problèmes académiques plutôt trop abstraite et pas suffisamment ancrée dans les réalités humaines des institutions éducatives.",
+      }
+    ],
+  }
+];
+&nbsp;
+export default wordplayDoubleMeaning;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-15T00:50:51.431Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

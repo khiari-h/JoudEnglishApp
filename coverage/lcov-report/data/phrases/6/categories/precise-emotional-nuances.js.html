@@ -1,0 +1,643 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/6/categories/precise-emotional-nuances.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/6/categories</a> precise-emotional-nuances.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/c2/categories/precise-emotional-nuances.js
+&nbsp;
+const preciseEmotionalNuances = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    categoryId: 57,
+    english: "The bittersweet melancholy that accompanies... carries within it the peculiar ache of recognizing beauty precisely at the moment of its passing, creating a complex emotional resonance that transcends simple sadness to encompass gratitude, acceptance, and the profound awareness of...",
+    translation: "La mélancolie douce-amère qui accompagne... porte en elle la douleur particulière de reconnaître la beauté précisément au moment de son passage, créant une résonance émotionnelle complexe qui transcende la simple tristesse pour englober la gratitude, l'acceptation, et la conscience profonde de...",
+    context: "Expression de l'émotion complexe liée à la beauté éphémère et au passage du temps",
+    examples: [
+      {
+        english: "The bittersweet melancholy that accompanies watching one's children achieve independence carries within it the peculiar ache of recognizing their beautiful growth precisely at the moment of their departure, creating a complex emotional resonance that transcends simple sadness to encompass gratitude for shared memories, acceptance of natural progression, and the profound awareness of love's capacity to celebrate loss as transformation.",
+        translation: "La mélancolie douce-amère qui accompagne le fait de voir ses enfants atteindre l'indépendance porte en elle la douleur particulière de reconnaître leur belle croissance précisément au moment de leur départ, créant une résonance émotionnelle complexe qui transcende la simple tristesse pour englober la gratitude pour les souvenirs partagés, l'acceptation de la progression naturelle, et la conscience profonde de la capacité de l'amour à célébrer la perte comme transformation.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "There exists a peculiar form of loneliness that emerges not from isolation but from the profound sense of being fundamentally misunderstood even in the presence of... creating an emotional chasm that feels simultaneously intimate and insurmountable, as if one's inner landscape remains perpetually foreign to...",
+    translation: "Il existe une forme particulière de solitude qui émerge non de l'isolement mais du sentiment profond d'être fondamentalement incompris même en présence de... créant un gouffre émotionnel qui semble simultanément intime et insurmontable, comme si son paysage intérieur restait perpétuellement étranger à...",
+    context: "Description de la solitude existentielle au sein des relations",
+    examples: [
+      {
+        english: "There exists a peculiar form of loneliness that emerges not from social isolation but from the profound sense of being fundamentally misunderstood even in the presence of loving family members, creating an emotional chasm that feels simultaneously intimate and insurmountable, as if one's authentic inner landscape remains perpetually foreign to those who care most deeply yet cannot bridge the gap between intention and comprehension.",
+        translation: "Il existe une forme particulière de solitude qui émerge non de l'isolement social mais du sentiment profond d'être fondamentalement incompris même en présence de membres de famille aimants, créant un gouffre émotionnel qui semble simultanément intime et insurmontable, comme si son paysage intérieur authentique restait perpétuellement étranger à ceux qui se soucient le plus profondément mais ne peuvent combler l'écart entre intention et compréhension.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The exquisite vulnerability that accompanies... reveals itself as a trembling openness where hope and terror intertwine so completely that distinguishing between anticipation and dread becomes impossible, leaving one suspended in a state of emotional transparency that feels both...",
+    translation: "La vulnérabilité exquise qui accompagne... se révèle comme une ouverture tremblante où l'espoir et la terreur s'entremêlent si complètement que distinguer entre anticipation et appréhension devient impossible, laissant une personne suspendue dans un état de transparence émotionnelle qui semble à la fois...",
+    context: "Exploration de la vulnérabilité comme état émotionnel complexe",
+    examples: [
+      {
+        english: "The exquisite vulnerability that accompanies falling deeply in love reveals itself as a trembling openness where hope and terror intertwine so completely that distinguishing between joyful anticipation and existential dread becomes impossible, leaving one suspended in a state of emotional transparency that feels both magnificently alive and terrifyingly fragile, as if one's entire being has become permeable to another's potential acceptance or rejection.",
+        translation: "La vulnérabilité exquise qui accompagne le fait de tomber profondément amoureux se révèle comme une ouverture tremblante où l'espoir et la terreur s'entremêlent si complètement que distinguer entre anticipation joyeuse et appréhension existentielle devient impossible, laissant une personne suspendue dans un état de transparence émotionnelle qui semble à la fois magnifiquement vivant et terriblement fragile, comme si tout son être était devenu perméable à l'acceptation ou au rejet potentiel d'autrui.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The peculiar grief associated with... differs fundamentally from conventional mourning in that it involves grieving not what was lost but what was never truly possessed, creating a hollow ache for... that exists more as absence than presence, more as possibility than actuality.",
+    translation: "Le deuil particulier associé à... diffère fondamentalement du deuil conventionnel en ce qu'il implique de pleurer non ce qui fut perdu mais ce qui ne fut jamais vraiment possédé, créant une douleur creuse pour... qui existe plus comme absence que présence, plus comme possibilité que actualité.",
+    context: "Distinction entre différents types de deuil et de perte",
+    examples: [
+      {
+        english: "The peculiar grief associated with estrangement from one's adult child differs fundamentally from conventional bereavement in that it involves grieving not the relationship that was lost but the connection that was never truly established, creating a hollow ache for conversations that never happened, understanding that never developed, and intimacy that exists more as haunting absence than cherished memory, more as unfulfilled possibility than lived actuality.",
+        translation: "Le deuil particulier associé à l'éloignement de son enfant adulte diffère fondamentalement du deuil conventionnel en ce qu'il implique de pleurer non la relation qui fut perdue mais la connexion qui ne fut jamais vraiment établie, créant une douleur creuse pour des conversations qui n'eurent jamais lieu, une compréhension qui ne se développa jamais, et une intimité qui existe plus comme absence hantante que souvenir chéri, plus comme possibilité non réalisée que actualité vécue.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The sophisticated shame that accompanies... operates on multiple levels simultaneously, combining acute self-awareness with social consciousness in ways that create a recursive spiral where... becomes both the source of shame and the lens through which that shame is magnified, intensified, and made increasingly...",
+    translation: "La honte sophistiquée qui accompagne... opère sur plusieurs niveaux simultanément, combinant conscience aiguë de soi avec conscience sociale de manières qui créent une spirale récursive où... devient à la fois la source de honte et la lentille à travers laquelle cette honte est magnifiée, intensifiée, et rendue de plus en plus...",
+    context: "Analyse de la honte comme émotion auto-réflexive complexe",
+    examples: [
+      {
+        english: "The sophisticated shame that accompanies recognizing one's own privilege operates on multiple levels simultaneously, combining acute self-awareness with social justice consciousness in ways that create a recursive spiral where privileged status becomes both the source of shame and the lens through which that shame is magnified, intensified, and made increasingly paralyzing as one recognizes that even the shame itself can become a form of self-centered performance rather than genuine solidarity.",
+        translation: "La honte sophistiquée qui accompagne la reconnaissance de son propre privilège opère sur plusieurs niveaux simultanément, combinant conscience aiguë de soi avec conscience de justice sociale de manières qui créent une spirale récursive où le statut privilégié devient à la fois la source de honte et la lentille à travers laquelle cette honte est magnifiée, intensifiée, et rendue de plus en plus paralysante alors qu'on reconnaît que même la honte elle-même peut devenir une forme de performance égocentrique plutôt qu'une solidarité authentique.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The tenderness that emerges in the aftermath of... possesses a quality of hard-won gentleness that differs markedly from naive innocence, carrying within it the accumulated wisdom of... and the precious fragility of something beautiful that has survived...",
+    translation: "La tendresse qui émerge au lendemain de... possède une qualité de douceur durement gagnée qui diffère nettement de l'innocence naïve, portant en elle la sagesse accumulée de... et la fragilité précieuse de quelque chose de beau qui a survécu...",
+    context: "Distinction entre tendresse innocente et tendresse acquise par l'expérience",
+    examples: [
+      {
+        english: "The tenderness that emerges in the aftermath of surviving addiction possesses a quality of hard-won gentleness that differs markedly from naive innocence, carrying within it the accumulated wisdom of acknowledged vulnerability and the precious fragility of something beautiful that has survived its own destruction, creating a form of compassion that is simultaneously more cautious and more genuine than untested kindness.",
+        translation: "La tendresse qui émerge au lendemain de la survie à l'addiction possède une qualité de douceur durement gagnée qui diffère nettement de l'innocence naïve, portant en elle la sagesse accumulée de vulnérabilité reconnue et la fragilité précieuse de quelque chose de beau qui a survécu à sa propre destruction, créant une forme de compassion qui est simultanément plus prudente et plus authentique que la gentillesse non testée.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The anxiety specific to... manifests not as generalized worry but as a hypervigilant awareness of... combined with the exhausting mental rehearsal of... creating a state of perpetual readiness for... that ultimately becomes more draining than the feared event itself.",
+    translation: "L'anxiété spécifique à... se manifeste non comme inquiétude généralisée mais comme conscience hypervigilante de... combinée avec la répétition mentale épuisante de... créant un état de préparation perpétuelle pour... qui devient ultimement plus épuisant que l'événement redouté lui-même.",
+    context: "Caractérisation précise de types spécifiques d'anxiété",
+    examples: [
+      {
+        english: "The anxiety specific to public speaking manifests not as generalized social worry but as a hypervigilant awareness of bodily sensations and audience judgment combined with the exhausting mental rehearsal of potential failures and embarrassing scenarios, creating a state of perpetual readiness for humiliation that ultimately becomes more draining than the actual presentation itself, often producing the very symptoms of nervousness that were feared.",
+        translation: "L'anxiété spécifique à la prise de parole en public se manifeste non comme inquiétude sociale généralisée mais comme conscience hypervigilante des sensations corporelles et du jugement de l'audience combinée avec la répétition mentale épuisante d'échecs potentiels et de scénarios embarrassants, créant un état de préparation perpétuelle pour l'humiliation qui devient ultimement plus épuisant que la présentation elle-même, produisant souvent les symptômes mêmes de nervosité qui étaient redoutés.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The profound disappointment that follows... carries within it not merely the sting of unmet expectations but the deeper disillusionment that comes from recognizing how thoroughly one's... had been shaped by... requiring a fundamental recalibration of... that feels both liberating and devastating.",
+    translation: "La déception profonde qui suit... porte en elle non seulement la piqûre d'attentes non satisfaites mais la désillusion plus profonde qui vient de reconnaître à quel point ses... avaient été façonnées par... nécessitant une recalibration fondamentale de... qui semble à la fois libératrice et dévastatrice.",
+    context: "Analyse de la déception comme révélation sur ses propres illusions",
+    examples: [
+      {
+        english: "The profound disappointment that follows discovering a mentor's ethical failures carries within it not merely the sting of unmet expectations but the deeper disillusionment that comes from recognizing how thoroughly one's professional aspirations had been shaped by idealized projections, requiring a fundamental recalibration of career values and personal integrity that feels both liberating from false heroes and devastating to carefully constructed identity narratives.",
+        translation: "La déception profonde qui suit la découverte des échecs éthiques d'un mentor porte en elle non seulement la piqûre d'attentes non satisfaites mais la désillusion plus profonde qui vient de reconnaître à quel point ses aspirations professionnelles avaient été façonnées par des projections idéalisées, nécessitant une recalibration fondamentale des valeurs de carrière et de l'intégrité personnelle qui semble à la fois libératrice de faux héros et dévastatrice pour les narratifs d'identité soigneusement construits.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The gratitude that emerges from... transcends simple appreciation to become a form of reverent astonishment at... creating an emotional state where thankfulness merges with humility and wonder, leaving one simultaneously more grounded in... and more open to...",
+    translation: "La gratitude qui émerge de... transcende l'appréciation simple pour devenir une forme d'étonnement révérencieux à... créant un état émotionnel où la reconnaissance se fusionne avec l'humilité et l'émerveillement, laissant une personne simultanément plus ancrée dans... et plus ouverte à...",
+    context: "Exploration de la gratitude profonde comme état transcendant",
+    examples: [
+      {
+        english: "The gratitude that emerges from surviving life-threatening illness transcends simple relief to become a form of reverent astonishment at the intricate miracle of healthy bodily function, creating an emotional state where thankfulness merges with humility and daily wonder, leaving one simultaneously more grounded in present-moment awareness and more open to accepting uncertainty as an integral aspect of existence rather than a threat to be controlled.",
+        translation: "La gratitude qui émerge de la survie à une maladie menaçant la vie transcende le soulagement simple pour devenir une forme d'étonnement révérencieux au miracle complexe du fonctionnement corporel sain, créant un état émotionnel où la reconnaissance se fusionne avec l'humilité et l'émerveillement quotidien, laissant une personne simultanément plus ancrée dans la conscience du moment présent et plus ouverte à accepter l'incertitude comme aspect intégral de l'existence plutôt qu'une menace à contrôler.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The envy that accompanies witnessing...'s success reveals itself as a complex amalgamation of admiration, self-doubt, and fierce longing that exposes... while simultaneously inspiring... creating an internal tension between celebrating... and confronting one's own sense of...",
+    translation: "L'envie qui accompagne le fait d'être témoin du succès de... se révèle comme un amalgame complexe d'admiration, de doute de soi et de désir intense qui expose... tout en inspirant simultanément... créant une tension interne entre célébrer... et confronter son propre sens de...",
+    context: "Analyse de l'envie comme émotion révélatrice de ses propres aspirations",
+    examples: [
+      {
+        english: "The envy that accompanies witnessing a peer's creative breakthrough reveals itself as a complex amalgamation of genuine admiration, crushing self-doubt, and fierce longing that exposes one's own artistic insecurities while simultaneously inspiring renewed dedication to craft, creating an internal tension between celebrating another's achievement and confronting one's own sense of creative inadequacy and wasted potential.",
+        translation: "L'envie qui accompagne le fait d'être témoin de la percée créative d'un pair se révèle comme un amalgame complexe d'admiration authentique, de doute de soi écrasant et de désir intense qui expose ses propres insécurités artistiques tout en inspirant simultanément un dévouement renouvelé à l'artisanat, créant une tension interne entre célébrer l'accomplissement d'autrui et confronter son propre sens d'inadéquation créative et de potentiel gaspillé.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The compassion that develops through... possesses a quality of fierce clarity that refuses to... while maintaining unwavering commitment to... demonstrating how authentic empathy often requires... rather than... creating space for both accountability and mercy to coexist without compromising either.",
+    translation: "La compassion qui se développe à travers... possède une qualité de clarté féroce qui refuse de... tout en maintenant un engagement inébranlable à... démontrant comment l'empathie authentique exige souvent... plutôt que... créant un espace pour que responsabilité et miséricorde coexistent sans compromettre l'une ou l'autre.",
+    context: "Distinction entre compassion authentique et complaisance émotionnelle",
+    examples: [
+      {
+        english: "The compassion that develops through supporting someone's recovery from addiction possesses a quality of fierce clarity that refuses to enable destructive behavior while maintaining unwavering commitment to the person's inherent worth, demonstrating how authentic empathy often requires difficult boundary-setting rather than permissive enablement, creating space for both personal accountability and unconditional love to coexist without compromising either healing or relationship integrity.",
+        translation: "La compassion qui se développe à travers le soutien de la récupération de quelqu'un de l'addiction possède une qualité de clarté féroce qui refuse de permettre un comportement destructeur tout en maintenant un engagement inébranlable à la valeur inhérente de la personne, démontrant comment l'empathie authentique exige souvent l'établissement de limites difficiles plutôt que la permission permissive, créant un espace pour que responsabilité personnelle et amour inconditionnel coexistent sans compromettre l'intégrité de la guérison ou de la relation.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The nostalgia specific to... differs from mere sentimentality by incorporating a mature understanding of... while still allowing oneself to feel the full emotional weight of... creating a complex temporal experience where past, present, and future intermingle in ways that both honor... and acknowledge...",
+    translation: "La nostalgie spécifique à... diffère de la simple sentimentalité en incorporant une compréhension mature de... tout en se permettant encore de ressentir le poids émotionnel complet de... créant une expérience temporelle complexe où passé, présent et futur s'entremêlent de manières qui à la fois honorent... et reconnaissent...",
+    context: "Distinction entre nostalgie mature et sentimentalité superficielle",
+    examples: [
+      {
+        english: "The nostalgia specific to remembering one's childhood home differs from mere sentimentality by incorporating a mature understanding of family dysfunction and social limitations while still allowing oneself to feel the full emotional weight of lost security and innocence, creating a complex temporal experience where past belonging, present wisdom, and future possibility intermingle in ways that both honor genuine love and acknowledge necessary growth beyond comfortable illusions.",
+        translation: "La nostalgie spécifique au souvenir de sa maison d'enfance diffère de la simple sentimentalité en incorporant une compréhension mature du dysfonctionnement familial et des limitations sociales tout en se permettant encore de ressentir le poids émotionnel complet de la sécurité et innocence perdues, créant une expérience temporelle complexe où appartenance passée, sagesse présente et possibilité future s'entremêlent de manières qui à la fois honorent l'amour authentique et reconnaissent la croissance nécessaire au-delà des illusions confortables.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The profound peace that settles over... emerges not from the absence of conflict but from the deep acceptance of... creating an inner stillness that can accommodate... without being destabilized, representing a form of emotional maturity where... no longer threatens one's fundamental sense of...",
+    translation: "La paix profonde qui s'installe sur... émerge non de l'absence de conflit mais de l'acceptation profonde de... créant une immobilité intérieure qui peut accommoder... sans être déstabilisée, représentant une forme de maturité émotionnelle où... ne menace plus son sens fondamental de...",
+    context: "Caractérisation de la paix intérieure comme acceptation mature plutôt qu'évitement",
+    examples: [
+      {
+        english: "The profound peace that settles over those who have worked through prolonged grief emerges not from the absence of sorrow but from the deep acceptance of love's capacity to transcend physical presence, creating an inner stillness that can accommodate waves of sadness without being destabilized, representing a form of emotional maturity where loss no longer threatens one's fundamental sense of connection to what remains eternally meaningful in human experience.",
+        translation: "La paix profonde qui s'installe sur ceux qui ont travaillé à travers un deuil prolongé émerge non de l'absence de chagrin mais de l'acceptation profonde de la capacité de l'amour à transcender la présence physique, créant une immobilité intérieure qui peut accommoder des vagues de tristesse sans être déstabilisée, représentant une forme de maturité émotionnelle où la perte ne menace plus son sens fondamental de connexion à ce qui reste éternellement significatif dans l'expérience humaine.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The exhilaration that accompanies... reveals itself as more than simple excitement, embodying a sense of... that seems to expand one's very capacity for... while simultaneously grounding one more deeply in... creating an paradoxical experience where increased... leads to greater...",
+    translation: "L'exaltation qui accompagne... se révèle comme plus que simple excitation, incarnant un sens de... qui semble étendre sa capacité même pour... tout en ancrant simultanément plus profondément dans... créant une expérience paradoxale où... accru mène à... plus grand.",
+    context: "Exploration de l'exaltation comme expansion de la capacité émotionnelle",
+    examples: [
+      {
+        english: "The exhilaration that accompanies mastering a long-feared challenge reveals itself as more than simple accomplishment, embodying a sense of personal transformation that seems to expand one's very capacity for courage while simultaneously grounding one more deeply in authentic self-knowledge, creating a paradoxical experience where increased confidence leads to greater humility regarding the vast territories of growth that remain unexplored.",
+        translation: "L'exaltation qui accompagne la maîtrise d'un défi longtemps redouté se révèle comme plus qu'un simple accomplissement, incarnant un sens de transformation personnelle qui semble étendre sa capacité même pour le courage tout en ancrant simultanément plus profondément dans la connaissance de soi authentique, créant une expérience paradoxale où confiance accrue mène à une plus grande humilité concernant les vastes territoires de croissance qui restent inexplorés.",
+      }
+    ],
+  },
+  {
+    categoryId: 57,
+    english: "The delicate hope that emerges after... requires constant tending like a fragile flame that could be extinguished by... yet possesses an unexpected resilience that allows it to survive... demonstrating how... can coexist with... without diminishing either the realism of... or the power of...",
+    translation: "L'espoir délicat qui émerge après... nécessite un soin constant comme une flamme fragile qui pourrait être éteinte par... pourtant possède une résilience inattendue qui lui permet de survivre... démontrant comment... peut coexister avec... sans diminuer ni le réalisme de... ni le pouvoir de...",
+    context: "Caractérisation de l'espoir vulnérable mais persistant",
+    examples: [
+      {
+        english: "The delicate hope that emerges after repeated relationship disappointments requires constant tending like a fragile flame that could be extinguished by cynicism or betrayal, yet possesses an unexpected resilience that allows it to survive careful vulnerability, demonstrating how cautious optimism can coexist with hard-earned wisdom without diminishing either the realism of protective boundaries or the power of authentic emotional availability when genuine connection presents itself.",
+        translation: "L'espoir délicat qui émerge après des déceptions relationnelles répétées nécessite un soin constant comme une flamme fragile qui pourrait être éteinte par le cynisme ou la trahison, pourtant possède une résilience inattendue qui lui permet de survivre la vulnérabilité prudente, démontrant comment l'optimisme prudent peut coexister avec la sagesse durement gagnée sans diminuer ni le réalisme des frontières protectrices ni le pouvoir de la disponibilité émotionnelle authentique quand la connexion authentique se présente.",
+      }
+    ],
+  }
+];
+&nbsp;
+export default preciseEmotionalNuances;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-15T00:50:51.431Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

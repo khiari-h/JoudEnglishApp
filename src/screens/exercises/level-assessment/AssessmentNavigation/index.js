@@ -1,6 +1,7 @@
 // AssessmentNavigation/index.js - VERSION REFACTORISÉE avec NavigationButtons
 
 import { View, TouchableOpacity, Text } from "react-native";
+import PropTypes from "prop-types";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import createStyles from "./style";
 
@@ -9,7 +10,7 @@ import createStyles from "./style";
  * Utilise NavigationButtons pour la navigation + bouton Check Answer custom
  * 
  * @param {boolean} showFeedback - Afficher le feedback ou non
- * @param {number} selectedAnswer - Index de la réponse sélectionnée
+ * @param {number|null} selectedAnswer - Index de la réponse sélectionnée ou null
  * @param {boolean} isLastQuestionInSection - Dernière question de la section
  * @param {boolean} canGoPrevious - Peut aller en arrière
  * @param {string} levelColor - Couleur du niveau
@@ -85,6 +86,29 @@ const AssessmentNavigation = ({
       </View>
     </View>
   );
+};
+
+// PropTypes pour la validation des props
+AssessmentNavigation.propTypes = {
+  showFeedback: PropTypes.bool.isRequired,
+  selectedAnswer: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf([null])
+  ]),
+  isLastQuestionInSection: PropTypes.bool.isRequired,
+  canGoPrevious: PropTypes.bool.isRequired,
+  levelColor: PropTypes.string,
+  onValidateAnswer: PropTypes.func.isRequired,
+  onTryAgain: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  onPrevious: PropTypes.func,
+};
+
+// Valeurs par défaut
+AssessmentNavigation.defaultProps = {
+  selectedAnswer: null,
+  levelColor: "#3b82f6",
+  onPrevious: null,
 };
 
 export default AssessmentNavigation;

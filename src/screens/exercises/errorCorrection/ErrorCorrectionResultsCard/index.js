@@ -1,11 +1,22 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionResultsCard/index.js
 import { View } from "react-native";
+import PropTypes from "prop-types";
 import ResultsScreen from "../../../../components/exercise-common/ResultsScreen";
 import styles from "./style";
 
 /**
  * Carte de résultats pour les exercices de correction d'erreurs
  * Réutilise le composant ResultsScreen générique
+ * 
+ * @param {number} score - Score obtenu (0-100)
+ * @param {number} totalExercises - Nombre total d'exercices
+ * @param {Array} userAttempts - Tentatives de l'utilisateur avec isCorrect et attempted
+ * @param {Array} exercises - Liste des exercices avec text et correctedText
+ * @param {string} level - Niveau actuel (ex: "Débutant", "Intermédiaire")
+ * @param {string} levelColor - Couleur principale du niveau
+ * @param {function} onRetry - Callback pour recommencer les exercices
+ * @param {function} onContinue - Callback pour continuer vers le niveau suivant
+ * @param {function} onExit - Callback pour sortir des exercices
  */
 const ErrorCorrectionResultsCard = ({
   score,
@@ -74,5 +85,35 @@ const ErrorCorrectionResultsCard = ({
   );
 };
 
-export default ErrorCorrectionResultsCard;
+// PropTypes pour la validation des props
+ErrorCorrectionResultsCard.propTypes = {
+  score: PropTypes.number.isRequired,
+  totalExercises: PropTypes.number.isRequired,
+  userAttempts: PropTypes.arrayOf(
+    PropTypes.shape({
+      isCorrect: PropTypes.bool,
+      attempted: PropTypes.bool,
+      correction: PropTypes.string,
+    })
+  ),
+  exercises: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      correctedText: PropTypes.string.isRequired,
+    })
+  ),
+  level: PropTypes.string.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  onRetry: PropTypes.func.isRequired,
+  onContinue: PropTypes.func,
+  onExit: PropTypes.func.isRequired,
+};
 
+// Valeurs par défaut
+ErrorCorrectionResultsCard.defaultProps = {
+  userAttempts: [],
+  exercises: [],
+  onContinue: null,
+};
+
+export default ErrorCorrectionResultsCard;

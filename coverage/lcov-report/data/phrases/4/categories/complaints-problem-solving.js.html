@@ -1,0 +1,859 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/4/categories/complaints-problem-solving.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/4/categories</a> complaints-problem-solving.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/b2/categories/complaints-problem-solving.js
+&nbsp;
+const complaintsProblemSolving = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    categoryId: 40,
+    english: "I'm writing to express my dissatisfaction with the service I received...",
+    translation: "Je vous écris pour exprimer mon mécontentement concernant le service que j'ai reçu...",
+    context: "Introduire une réclamation écrite formelle",
+    examples: [
+      {
+        english: "I'm writing to express my dissatisfaction with the service I received at your downtown branch on May 15th, when I was repeatedly given incorrect information about your mortgage products despite having made an appointment specifically to discuss these options.",
+        translation: "Je vous écris pour exprimer mon mécontentement concernant le service que j'ai reçu à votre agence du centre-ville le 15 mai, lorsqu'on m'a donné à plusieurs reprises des informations incorrectes sur vos produits hypothécaires, bien que j'aie pris rendez-vous spécifiquement pour discuter de ces options.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "I regret to inform you that the product/service has not met our expectations in terms of...",
+    translation: "Je regrette de vous informer que le produit/service n'a pas répondu à nos attentes en termes de...",
+    context: "Exprimer une déception professionnelle concernant un produit ou service",
+    examples: [
+      {
+        english: "I regret to inform you that the enterprise software solution has not met our expectations in terms of reliability and processing speed, with our team experiencing frequent system crashes and unacceptable lag times during peak operational hours, severely impacting our customer service capabilities.",
+        translation: "Je regrette de vous informer que la solution logicielle d'entreprise n'a pas répondu à nos attentes en termes de fiabilité et de vitesse de traitement, notre équipe connaissant de fréquents plantages du système et des temps de latence inacceptables pendant les heures de pointe opérationnelles, ce qui a gravement affecté nos capacités de service client.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "There appears to be a significant discrepancy between what was promised and what was delivered...",
+    translation: "Il semble y avoir un écart significatif entre ce qui a été promis et ce qui a été livré...",
+    context: "Souligner une non-conformité entre promesse et réalité",
+    examples: [
+      {
+        english: "There appears to be a significant discrepancy between what was promised during our pre-contract discussions and what was delivered in the final implementation, particularly regarding the customization capabilities and integration options with our existing systems, which were specifically highlighted as key features during the sales process.",
+        translation: "Il semble y avoir un écart significatif entre ce qui a été promis lors de nos discussions pré-contractuelles et ce qui a été livré dans l'implémentation finale, particulièrement concernant les capacités de personnalisation et les options d'intégration avec nos systèmes existants, qui ont été spécifiquement mises en avant comme des fonctionnalités clés pendant le processus de vente.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "I'd like to propose the following solution to resolve this issue...",
+    translation: "J'aimerais proposer la solution suivante pour résoudre ce problème...",
+    context: "Suggérer une solution constructive à un problème",
+    examples: [
+      {
+        english: "I'd like to propose the following solution to resolve this issue: a comprehensive review of the project timeline and deliverables by an independent consultant, followed by a joint workshop to realign expectations, establish clearer success metrics, and develop a revised implementation plan with built-in review milestones to prevent similar misunderstandings in the future.",
+        translation: "J'aimerais proposer la solution suivante pour résoudre ce problème : une revue complète du calendrier du projet et des livrables par un consultant indépendant, suivie d'un atelier conjoint pour réaligner les attentes, établir des métriques de succès plus claires, et développer un plan de mise en œuvre révisé avec des jalons de révision intégrés pour éviter des malentendus similaires à l'avenir.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "In order to address this recurring problem, we need to consider implementing...",
+    translation: "Afin de traiter ce problème récurrent, nous devons envisager de mettre en œuvre...",
+    context: "Proposer une solution pour un problème systémique",
+    examples: [
+      {
+        english: "In order to address this recurring problem with inventory management, we need to consider implementing an automated replenishment system that uses predictive analytics to anticipate stock requirements based on historical data, seasonal trends, and real-time sales information, reducing our reliance on manual processes that have repeatedly proven vulnerable to human error.",
+        translation: "Afin de traiter ce problème récurrent de gestion des stocks, nous devons envisager de mettre en œuvre un système de réapprovisionnement automatisé qui utilise l'analyse prédictive pour anticiper les besoins en stocks basés sur les données historiques, les tendances saisonnières et les informations de vente en temps réel, réduisant notre dépendance aux processus manuels qui se sont à plusieurs reprises avérés vulnérables à l'erreur humaine.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "The root cause of the issue appears to be... and we suggest the following corrective measures...",
+    translation: "La cause profonde du problème semble être... et nous suggérons les mesures correctives suivantes...",
+    context: "Identifier l'origine d'un problème et proposer des solutions",
+    examples: [
+      {
+        english: "The root cause of the issue appears to be insufficient cross-departmental communication during the product development phase, and we suggest the following corrective measures: implementing regular cross-functional stand-up meetings, creating a centralized project documentation hub accessible to all team members, and establishing clear escalation protocols for addressing interdependencies and potential conflicts between workstreams.",
+        translation: "La cause profonde du problème semble être une communication interdépartementale insuffisante pendant la phase de développement du produit, et nous suggérons les mesures correctives suivantes : mise en place de réunions debout interfonctionnelles régulières, création d'un hub central de documentation de projet accessible à tous les membres de l'équipe, et établissement de protocoles d'escalade clairs pour traiter les interdépendances et les conflits potentiels entre les flux de travail.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "We understand your frustration regarding... and would like to assure you that we are taking steps to...",
+    translation: "Nous comprenons votre frustration concernant... et nous tenons à vous assurer que nous prenons des mesures pour...",
+    context: "Répondre à une plainte client avec empathie",
+    examples: [
+      {
+        english: "We understand your frustration regarding the delays in processing your insurance claim, and would like to assure you that we are taking steps to expedite your case, including assigning a dedicated claims specialist who will personally oversee your file and provide you with regular updates until this matter is fully resolved to your satisfaction.",
+        translation: "Nous comprenons votre frustration concernant les retards dans le traitement de votre demande d'indemnisation, et nous tenons à vous assurer que nous prenons des mesures pour accélérer votre dossier, notamment en assignant un spécialiste des réclamations dédié qui supervisera personnellement votre dossier et vous fournira des mises à jour régulières jusqu'à ce que cette affaire soit entièrement résolue à votre satisfaction.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "I believe there has been a misunderstanding regarding... Allow me to clarify...",
+    translation: "Je pense qu'il y a eu un malentendu concernant... Permettez-moi de clarifier...",
+    context: "Rectifier un malentendu dans une communication professionnelle",
+    examples: [
+      {
+        english: "I believe there has been a misunderstanding regarding the scope of our consultancy services. Allow me to clarify that our agreement specifically covers strategic recommendations and implementation guidance, but does not include the actual execution of the marketing campaigns or content creation, which would require a separate service agreement with different resource allocations and pricing structure.",
+        translation: "Je pense qu'il y a eu un malentendu concernant l'étendue de nos services de conseil. Permettez-moi de clarifier que notre accord couvre spécifiquement les recommandations stratégiques et les conseils de mise en œuvre, mais n'inclut pas l'exécution réelle des campagnes marketing ou la création de contenu, ce qui nécessiterait un accord de service distinct avec différentes allocations de ressources et structure tarifaire.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "As a gesture of goodwill and to address your concerns, we are prepared to offer...",
+    translation: "En gage de bonne volonté et pour répondre à vos préoccupations, nous sommes prêts à offrir...",
+    context: "Proposer une compensation ou solution à une plainte cliente",
+    examples: [
+      {
+        english: "As a gesture of goodwill and to address your concerns about the performance issues you've experienced with our software platform, we are prepared to offer three months of service at no cost, along with priority access to our technical support team and a comprehensive review of your system configuration by one of our senior engineers to ensure optimal performance moving forward.",
+        translation: "En gage de bonne volonté et pour répondre à vos préoccupations concernant les problèmes de performance que vous avez rencontrés avec notre plateforme logicielle, nous sommes prêts à offrir trois mois de service sans frais, ainsi qu'un accès prioritaire à notre équipe de support technique et une revue complète de la configuration de votre système par l'un de nos ingénieurs seniors pour assurer une performance optimale à l'avenir.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "Let me walk you through our troubleshooting process to identify what might be causing...",
+    translation: "Permettez-moi de vous guider à travers notre processus de dépannage pour identifier ce qui pourrait causer...",
+    context: "Guider quelqu'un dans la résolution d'un problème technique",
+    examples: [
+      {
+        english: "Let me walk you through our troubleshooting process to identify what might be causing the integration failures between your CRM and our analytics platform. First, we'll examine the API connection logs to check for authentication errors, then verify the data mapping configurations, and finally test the data flow with a controlled sample to pinpoint exactly where the transmission is breaking down.",
+        translation: "Permettez-moi de vous guider à travers notre processus de dépannage pour identifier ce qui pourrait causer les échecs d'intégration entre votre CRM et notre plateforme d'analyse. D'abord, nous examinerons les journaux de connexion API pour vérifier les erreurs d'authentification, puis nous vérifierons les configurations de mappage de données, et enfin nous testerons le flux de données avec un échantillon contrôlé pour déterminer exactement où la transmission échoue.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "We've identified several potential solutions to the issue, each with its own advantages and limitations...",
+    translation: "Nous avons identifié plusieurs solutions potentielles au problème, chacune avec ses propres avantages et limites...",
+    context: "Présenter différentes options pour résoudre un problème",
+    examples: [
+      {
+        english: "We've identified several potential solutions to the issue with the supply chain disruption, each with its own advantages and limitations. Option A involves diversifying our supplier base, which reduces dependency but may increase complexity and costs. Option B involves increasing inventory buffer, which provides more security but ties up capital. Option C involves redesigning the product to use more readily available components, which offers long-term resilience but requires significant engineering resources.",
+        translation: "Nous avons identifié plusieurs solutions potentielles au problème de perturbation de la chaîne d'approvisionnement, chacune avec ses propres avantages et limites. L'option A implique de diversifier notre base de fournisseurs, ce qui réduit la dépendance mais peut augmenter la complexité et les coûts. L'option B implique d'augmenter le tampon d'inventaire, ce qui fournit plus de sécurité mais immobilise du capital. L'option C implique de reconcevoir le produit pour utiliser des composants plus facilement disponibles, ce qui offre une résilience à long terme mais nécessite des ressources d'ingénierie importantes.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "In response to your complaint, we've conducted a thorough investigation and found that...",
+    translation: "En réponse à votre réclamation, nous avons mené une enquête approfondie et avons constaté que...",
+    context: "Communiquer les résultats d'une enquête suite à une plainte",
+    examples: [
+      {
+        english: "In response to your complaint about unexpected charges on your account, we've conducted a thorough investigation and found that the additional fees were indeed applied in error due to a misconfiguration in our billing system following our recent software upgrade. We sincerely apologize for this mistake and have not only refunded the full amount with interest, but have also implemented additional verification steps in our billing process to prevent similar issues in the future.",
+        translation: "En réponse à votre réclamation concernant des frais inattendus sur votre compte, nous avons mené une enquête approfondie et avons constaté que les frais supplémentaires ont effectivement été appliqués par erreur en raison d'une mauvaise configuration de notre système de facturation suite à notre récente mise à niveau logicielle. Nous nous excusons sincèrement pour cette erreur et avons non seulement remboursé le montant intégral avec intérêts, mais avons également mis en place des étapes de vérification supplémentaires dans notre processus de facturation pour éviter des problèmes similaires à l'avenir.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "I'd like to escalate this matter to... as it requires more specialized attention than I'm able to provide.",
+    translation: "J'aimerais transmettre cette affaire à... car elle nécessite une attention plus spécialisée que ce que je suis en mesure de fournir.",
+    context: "Transférer un problème à une autorité supérieure ou plus spécialisée",
+    examples: [
+      {
+        english: "I'd like to escalate this matter to our legal compliance team as it requires more specialized attention than I'm able to provide, particularly regarding the regulatory implications of the proposed contract amendments and the potential impact on our data protection obligations across different jurisdictions.",
+        translation: "J'aimerais transmettre cette affaire à notre équipe de conformité juridique car elle nécessite une attention plus spécialisée que ce que je suis en mesure de fournir, particulièrement concernant les implications réglementaires des amendements contractuels proposés et l'impact potentiel sur nos obligations de protection des données à travers différentes juridictions.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "Based on the feedback we've received, we've implemented the following improvements to our service...",
+    translation: "Sur la base des commentaires que nous avons reçus, nous avons mis en œuvre les améliorations suivantes à notre service...",
+    context: "Communiquer des changements en réponse à des retours clients",
+    examples: [
+      {
+        english: "Based on the feedback we've received from our quarterly customer satisfaction survey, we've implemented the following improvements to our service: streamlined the account verification process to reduce wait times by 40%, expanded our online knowledge base with step-by-step tutorials addressing the most common issues, and extended our customer support hours to provide assistance across all major time zones.",
+        translation: "Sur la base des commentaires que nous avons reçus de notre enquête trimestrielle de satisfaction client, nous avons mis en œuvre les améliorations suivantes à notre service : simplification du processus de vérification de compte pour réduire les temps d'attente de 40%, expansion de notre base de connaissances en ligne avec des tutoriels étape par étape abordant les problèmes les plus courants, et extension de nos heures de support client pour fournir une assistance dans tous les principaux fuseaux horaires.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "We acknowledge that there have been shortcomings in our... and we are committed to addressing them by...",
+    translation: "Nous reconnaissons qu'il y a eu des lacunes dans notre... et nous nous engageons à y remédier en...",
+    context: "Admettre des faiblesses et s'engager à les corriger",
+    examples: [
+      {
+        english: "We acknowledge that there have been shortcomings in our project management process, particularly regarding timeline communications and resource allocation, and we are committed to addressing them by implementing a more transparent tracking system, conducting weekly status updates with all stakeholders, and bringing in additional specialized resources to ensure we meet the revised delivery targets without compromising on quality.",
+        translation: "Nous reconnaissons qu'il y a eu des lacunes dans notre processus de gestion de projet, particulièrement concernant les communications sur les délais et l'allocation des ressources, et nous nous engageons à y remédier en mettant en œuvre un système de suivi plus transparent, en organisant des mises à jour hebdomadaires de statut avec toutes les parties prenantes, et en apportant des ressources spécialisées supplémentaires pour garantir que nous atteignions les objectifs de livraison révisés sans compromettre la qualité.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "I understand this has caused you considerable inconvenience, and I want to personally assure you that...",
+    translation: "Je comprends que cela vous a causé un inconvénient considérable, et je tiens à vous assurer personnellement que...",
+    context: "Faire preuve d'empathie et assurer une action personnelle",
+    examples: [
+      {
+        english: "I understand this service disruption has caused you considerable inconvenience during a critical business period, and I want to personally assure you that this situation has my full attention. I've assembled a dedicated technical team that is working around the clock to restore full functionality, and I will be your direct point of contact until this issue is completely resolved and we've put safeguards in place to prevent any recurrence.",
+        translation: "Je comprends que cette interruption de service vous a causé un inconvénient considérable pendant une période commerciale critique, et je tiens à vous assurer personnellement que cette situation a toute mon attention. J'ai rassemblé une équipe technique dédiée qui travaille jour et nuit pour restaurer toutes les fonctionnalités, et je serai votre point de contact direct jusqu'à ce que ce problème soit complètement résolu et que nous ayons mis en place des garanties pour éviter toute récurrence.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "Let's break down this complex issue into manageable components so we can address each aspect systematically...",
+    translation: "Décomposons ce problème complexe en éléments gérables afin que nous puissions aborder chaque aspect de manière systématique...",
+    context: "Structurer une approche pour résoudre un problème complexe",
+    examples: [
+      {
+        english: "Let's break down this complex issue with the enterprise system integration into manageable components so we can address each aspect systematically. First, we'll tackle the data synchronization errors between the legacy systems and the new platform. Next, we'll focus on the authentication and security protocols that are causing access issues. Finally, we'll address the performance bottlenecks that emerge during peak usage periods.",
+        translation: "Décomposons ce problème complexe d'intégration du système d'entreprise en éléments gérables afin que nous puissions aborder chaque aspect de manière systématique. D'abord, nous nous attaquerons aux erreurs de synchronisation des données entre les systèmes existants et la nouvelle plateforme. Ensuite, nous nous concentrerons sur les protocoles d'authentification et de sécurité qui causent des problèmes d'accès. Enfin, nous aborderons les goulots d'étranglement de performance qui émergent pendant les périodes d'utilisation intensive.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "After careful analysis, we believe the most effective approach would be to...",
+    translation: "Après une analyse minutieuse, nous pensons que l'approche la plus efficace serait de...",
+    context: "Recommander une solution après analyse",
+    examples: [
+      {
+        english: "After careful analysis of the recurring network stability issues affecting your regional offices, we believe the most effective approach would be to implement a dual-provider redundancy solution with automatic failover capabilities, combined with a comprehensive review and upgrade of your aging router infrastructure to support the increased bandwidth demands of your expanding remote workforce.",
+        translation: "Après une analyse minutieuse des problèmes récurrents de stabilité réseau affectant vos bureaux régionaux, nous pensons que l'approche la plus efficace serait de mettre en œuvre une solution de redondance à double fournisseur avec des capacités de basculement automatique, combinée à une révision complète et une mise à niveau de votre infrastructure de routeur vieillissante pour soutenir les demandes accrues de bande passante de votre main-d'œuvre à distance en expansion.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "To prevent this issue from recurring in the future, we recommend implementing the following preventative measures...",
+    translation: "Pour éviter que ce problème ne se reproduise à l'avenir, nous recommandons de mettre en œuvre les mesures préventives suivantes...",
+    context: "Proposer des actions pour empêcher un problème de se répéter",
+    examples: [
+      {
+        english: "To prevent this issue from recurring in the future, we recommend implementing the following preventative measures: establishing a formal quality assurance checkpoint before any code deployment to the production environment, creating automated testing scripts to verify critical system functionality, implementing real-time monitoring alerts for unusual system behavior, and conducting monthly security vulnerability assessments with immediate remediation protocols.",
+        translation: "Pour éviter que ce problème ne se reproduise à l'avenir, nous recommandons de mettre en œuvre les mesures préventives suivantes : établir un point de contrôle formel d'assurance qualité avant tout déploiement de code dans l'environnement de production, créer des scripts de test automatisés pour vérifier les fonctionnalités critiques du système, mettre en place des alertes de surveillance en temps réel pour les comportements système inhabituels, et mener des évaluations mensuelles de vulnérabilité de sécurité avec des protocoles de correction immédiats.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "While I understand your preference for..., our policy dictates that... However, we could potentially...",
+    translation: "Bien que je comprenne votre préférence pour..., notre politique stipule que... Cependant, nous pourrions potentiellement...",
+    context: "Expliquer des contraintes tout en proposant un compromis",
+    examples: [
+      {
+        english: "While I understand your preference for a full refund on the customized software module, our policy dictates that products developed to specific client requirements are non-refundable once delivered and accepted. However, we could potentially offer you a significant discount on future development work, or alternatively, provide additional customization hours at no cost to modify the existing module to better align with your current needs.",
+        translation: "Bien que je comprenne votre préférence pour un remboursement complet du module logiciel personnalisé, notre politique stipule que les produits développés selon les exigences spécifiques du client ne sont pas remboursables une fois livrés et acceptés. Cependant, nous pourrions potentiellement vous offrir une remise significative sur les travaux de développement futurs, ou alternativement, fournir des heures de personnalisation supplémentaires sans frais pour modifier le module existant afin qu'il corresponde mieux à vos besoins actuels.",
+      }
+    ],
+  },
+  {
+    categoryId: 40,
+    english: "I'd like to propose an alternative solution that might better address your underlying concerns...",
+    translation: "J'aimerais proposer une solution alternative qui pourrait mieux répondre à vos préoccupations sous-jacentes...",
+    context: "Suggérer une approche différente qui répond aux besoins réels",
+    examples: [
+      {
+        english: "I'd like to propose an alternative solution that might better address your underlying concerns about staff productivity. Rather than implementing the comprehensive monitoring system you initially requested, which may create trust issues, we could develop a results-based performance framework with clear individual and team objectives, regular check-ins, and a dashboard highlighting progress toward key deliverables, fostering accountability while maintaining a positive workplace culture.",
+        translation: "J'aimerais proposer une solution alternative qui pourrait mieux répondre à vos préoccupations sous-jacentes concernant la productivité du personnel. Plutôt que de mettre en œuvre le système de surveillance complet que vous avez initialement demandé, qui pourrait créer des problèmes de confiance, nous pourrions développer un cadre de performance basé sur les résultats avec des objectifs individuels et d'équipe clairs, des suivis réguliers, et un tableau de bord mettant en évidence les progrès vers les livrables clés, favorisant la responsabilisation tout en maintenant une culture de travail positive.",
+      }
+    ],
+  },
+];
+&nbsp;
+export default complaintsProblemSolving;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-15T00:50:51.431Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

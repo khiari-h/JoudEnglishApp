@@ -1,6 +1,7 @@
 // src/components/ui/HeroCard/index.js - VERSION MOBILE-FRIENDLY
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import PropTypes from "prop-types";
 import createStyles from "./style";
 
 /**
@@ -17,6 +18,7 @@ import createStyles from "./style";
  * @param {string} textAlign - Alignement du texte
  * @param {boolean} showUnderline - Afficher la ligne décorative
  * @param {object} containerStyle - Style personnalisé pour le container
+ * @param {React.ReactNode} children - Éléments enfants à rendre
  */
 const HeroCard = ({
   content,
@@ -75,6 +77,30 @@ const HeroCard = ({
       </LinearGradient>
     </View>
   );
+};
+
+// PropTypes pour la validation des props
+HeroCard.propTypes = {
+  content: PropTypes.string,
+  fontSize: PropTypes.number,
+  levelColor: PropTypes.string,
+  lineHeight: PropTypes.number,
+  textAlign: PropTypes.oneOf(['left', 'center', 'right', 'justify']),
+  showUnderline: PropTypes.bool,
+  containerStyle: PropTypes.object,
+  children: PropTypes.node,
+};
+
+// Valeurs par défaut
+HeroCard.defaultProps = {
+  content: null,
+  fontSize: 32,
+  levelColor: "#5E60CE",
+  lineHeight: null,
+  textAlign: "center",
+  showUnderline: true,
+  containerStyle: {},
+  children: null,
 };
 
 export default HeroCard;

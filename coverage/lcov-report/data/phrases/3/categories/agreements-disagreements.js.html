@@ -1,0 +1,1039 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/3/categories/agreements-disagreements.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/3/categories</a> agreements-disagreements.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a>
+<a name='L304'></a><a href='#L304'>304</a>
+<a name='L305'></a><a href='#L305'>305</a>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a>
+<a name='L316'></a><a href='#L316'>316</a>
+<a name='L317'></a><a href='#L317'>317</a>
+<a name='L318'></a><a href='#L318'>318</a>
+<a name='L319'></a><a href='#L319'>319</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/b1/categories/agreements-disagreements.js
+&nbsp;
+const agreementsDisagreements = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    categoryId: 29,
+    english: "I completely agree with your point about..., especially when you consider...",
+    translation: "Je suis tout à fait d'accord avec votre point concernant..., surtout si l'on considère...",
+    context: "Exprimer un accord total en ajoutant un argument supplémentaire",
+    examples: [
+      {
+        english: "I completely agree with your point about reducing plastic waste, especially when you consider the devastating impact it has on marine ecosystems.",
+        translation: "Je suis tout à fait d'accord avec votre point concernant la réduction des déchets plastiques, surtout si l'on considère l'impact dévastateur qu'ils ont sur les écosystèmes marins.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "While I see where you're coming from, I'm not entirely convinced that...",
+    translation: "Bien que je comprenne votre point de vue, je ne suis pas entièrement convaincu(e) que...",
+    context: "Exprimer un désaccord poli en reconnaissant d'abord le point de vue de l'autre",
+    examples: [
+      {
+        english: "While I see where you're coming from, I'm not entirely convinced that extending shopping hours will significantly increase sales, as it also increases operational costs.",
+        translation: "Bien que je comprenne votre point de vue, je ne suis pas entièrement convaincu(e) que prolonger les heures d'ouverture des magasins augmentera significativement les ventes, car cela augmente également les coûts opérationnels.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I agree with you to some extent, but I also think that...",
+    translation: "Je suis d'accord avec vous dans une certaine mesure, mais je pense aussi que...",
+    context: "Exprimer un accord partiel suivi d'une opinion complémentaire ou divergente",
+    examples: [
+      {
+        english: "I agree with you to some extent about the benefits of the new policy, but I also think that we need to consider its potential impact on smaller businesses.",
+        translation: "Je suis d'accord avec vous dans une certaine mesure concernant les avantages de la nouvelle politique, mais je pense aussi que nous devons considérer son impact potentiel sur les petites entreprises.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I couldn't agree more with what you said about...",
+    translation: "Je ne pourrais pas être plus d'accord avec ce que vous avez dit à propos de...",
+    context: "Exprimer un accord enthousiaste avec une idée",
+    examples: [
+      {
+        english: "I couldn't agree more with what you said about the importance of early education in shaping a child's future. It truly is the foundation for lifelong learning.",
+        translation: "Je ne pourrais pas être plus d'accord avec ce que vous avez dit à propos de l'importance de l'éducation précoce dans la formation de l'avenir d'un enfant. C'est vraiment la base de l'apprentissage tout au long de la vie.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I'm afraid I have to disagree with you on this issue because...",
+    translation: "Je crains de devoir être en désaccord avec vous sur cette question parce que...",
+    context: "Exprimer poliment un désaccord en donnant une explication",
+    examples: [
+      {
+        english: "I'm afraid I have to disagree with you on this issue because the data clearly shows that renewable energy sources are becoming increasingly cost-effective compared to fossil fuels.",
+        translation: "Je crains de devoir être en désaccord avec vous sur cette question parce que les données montrent clairement que les sources d'énergie renouvelable deviennent de plus en plus rentables par rapport aux combustibles fossiles.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "That's an interesting perspective, but I tend to think that...",
+    translation: "C'est une perspective intéressante, mais j'ai tendance à penser que...",
+    context: "Reconnaître une opinion avant d'exprimer un point de vue différent",
+    examples: [
+      {
+        english: "That's an interesting perspective on urban development, but I tend to think that preserving green spaces should be a higher priority than building more shopping centers.",
+        translation: "C'est une perspective intéressante sur le développement urbain, mais j'ai tendance à penser que la préservation des espaces verts devrait être une priorité plus élevée que la construction de centres commerciaux supplémentaires.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I take your point about..., however I believe that...",
+    translation: "Je comprends votre argument concernant..., cependant je crois que...",
+    context: "Reconnaître un argument avant d'introduire un contre-argument",
+    examples: [
+      {
+        english: "I take your point about the cost implications, however I believe that investing in quality equipment now will save us money in the long run through increased efficiency and fewer repairs.",
+        translation: "Je comprends votre argument concernant les implications financières, cependant je crois qu'investir dans un équipement de qualité maintenant nous fera économiser de l'argent à long terme grâce à une efficacité accrue et moins de réparations.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "We seem to be on the same page regarding...",
+    translation: "Nous semblons être sur la même longueur d'onde concernant...",
+    context: "Souligner un point d'accord dans une discussion",
+    examples: [
+      {
+        english: "We seem to be on the same page regarding the need for better communication between departments, which is a good starting point for implementing changes.",
+        translation: "Nous semblons être sur la même longueur d'onde concernant la nécessité d'une meilleure communication entre les départements, ce qui est un bon point de départ pour mettre en œuvre des changements.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I respectfully disagree with your assessment of..., as my experience suggests that...",
+    translation: "Je suis respectueusement en désaccord avec votre évaluation de..., car mon expérience suggère que...",
+    context: "Exprimer un désaccord basé sur son expérience personnelle",
+    examples: [
+      {
+        english: "I respectfully disagree with your assessment of the software's user-friendliness, as my experience suggests that many new users struggle with the navigation and often require significant training.",
+        translation: "Je suis respectueusement en désaccord avec votre évaluation de la convivialité du logiciel, car mon expérience suggère que de nombreux nouveaux utilisateurs ont du mal avec la navigation et nécessitent souvent une formation importante.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "You make a valid point regarding..., and I also think...",
+    translation: "Vous soulevez un point valable concernant..., et je pense aussi...",
+    context: "Valider un argument et ajouter une idée complémentaire",
+    examples: [
+      {
+        english: "You make a valid point regarding the need for more parking spaces, and I also think we should consider improving public transportation options to reduce overall congestion.",
+        translation: "Vous soulevez un point valable concernant le besoin de plus d'espaces de stationnement, et je pense aussi que nous devrions envisager d'améliorer les options de transport en commun pour réduire la congestion globale.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I'm not sure I can agree with your conclusion that..., especially considering...",
+    translation: "Je ne suis pas sûr(e) de pouvoir être d'accord avec votre conclusion selon laquelle..., surtout si l'on considère...",
+    context: "Exprimer des doutes sur une conclusion en se basant sur certains faits",
+    examples: [
+      {
+        english: "I'm not sure I can agree with your conclusion that the campaign was unsuccessful, especially considering the significant increase in brand awareness and website traffic it generated.",
+        translation: "Je ne suis pas sûr(e) de pouvoir être d'accord avec votre conclusion selon laquelle la campagne a été un échec, surtout si l'on considère l'augmentation significative de la notoriété de la marque et du trafic sur le site web qu'elle a générée.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "Your argument about... certainly has merit, although I would add that...",
+    translation: "Votre argument concernant... a certainement du mérite, bien que j'ajouterais que...",
+    context: "Reconnaître la validité d'un argument tout en le complétant",
+    examples: [
+      {
+        english: "Your argument about reducing class sizes to improve education quality certainly has merit, although I would add that teacher training and resources are equally important factors to consider.",
+        translation: "Votre argument concernant la réduction de la taille des classes pour améliorer la qualité de l'éducation a certainement du mérite, bien que j'ajouterais que la formation des enseignants et les ressources sont des facteurs tout aussi importants à considérer.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I think we have different perspectives on this issue. From my point of view...",
+    translation: "Je pense que nous avons des perspectives différentes sur cette question. De mon point de vue...",
+    context: "Reconnaître des différences d'opinions avant d'expliquer son propre point de vue",
+    examples: [
+      {
+        english: "I think we have different perspectives on this issue. From my point of view, remote work offers more benefits than drawbacks for both employees and companies when implemented with the right support systems.",
+        translation: "Je pense que nous avons des perspectives différentes sur cette question. De mon point de vue, le télétravail offre plus d'avantages que d'inconvénients tant pour les employés que pour les entreprises lorsqu'il est mis en œuvre avec les bons systèmes de soutien.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I find myself in complete agreement with your view on...",
+    translation: "Je me trouve en parfait accord avec votre point de vue sur...",
+    context: "Exprimer un accord total avec une opinion",
+    examples: [
+      {
+        english: "I find myself in complete agreement with your view on the importance of digital literacy in today's educational curriculum. It's become as essential as reading and writing.",
+        translation: "Je me trouve en parfait accord avec votre point de vue sur l'importance de la littératie numérique dans le programme éducatif d'aujourd'hui. C'est devenu aussi essentiel que la lecture et l'écriture.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I'm not convinced by the argument that..., primarily because...",
+    translation: "Je ne suis pas convaincu(e) par l'argument selon lequel..., principalement parce que...",
+    context: "Exprimer un scepticisme face à un argument en expliquant pourquoi",
+    examples: [
+      {
+        english: "I'm not convinced by the argument that increasing minimum wage necessarily leads to job losses, primarily because several studies have shown that modest increases have negligible effects on employment rates.",
+        translation: "Je ne suis pas convaincu(e) par l'argument selon lequel l'augmentation du salaire minimum entraîne nécessairement des pertes d'emplois, principalement parce que plusieurs études ont montré que des augmentations modestes ont des effets négligeables sur les taux d'emploi.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I see the logic in what you're saying about..., but I wonder if we're overlooking...",
+    translation: "Je comprends la logique de ce que vous dites à propos de..., mais je me demande si nous ne négligeons pas...",
+    context: "Reconnaître la logique d'un argument tout en suggérant un aspect négligé",
+    examples: [
+      {
+        english: "I see the logic in what you're saying about streamlining the process for efficiency, but I wonder if we're overlooking the potential impact on quality control.",
+        translation: "Je comprends la logique de ce que vous dites à propos de la rationalisation du processus pour plus d'efficacité, mais je me demande si nous ne négligeons pas l'impact potentiel sur le contrôle de la qualité.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I broadly agree with your stance, although I might phrase it slightly differently...",
+    translation: "Je suis globalement d'accord avec votre position, bien que je la formulerais peut-être légèrement différemment...",
+    context: "Exprimer un accord général avec des nuances dans la formulation",
+    examples: [
+      {
+        english: "I broadly agree with your stance on environmental protection, although I might phrase it slightly differently to emphasize the economic opportunities in sustainable development rather than just the restrictions.",
+        translation: "Je suis globalement d'accord avec votre position sur la protection de l'environnement, bien que je la formulerais peut-être légèrement différemment pour mettre l'accent sur les opportunités économiques du développement durable plutôt que seulement sur les restrictions.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I appreciate your perspective, but I have a different take on this matter...",
+    translation: "J'apprécie votre perspective, mais j'ai une vision différente sur cette question...",
+    context: "Reconnaître poliment une opinion avant d'exprimer un point de vue alternatif",
+    examples: [
+      {
+        english: "I appreciate your perspective on traditional marketing approaches, but I have a different take on this matter. I believe that in today's digital landscape, content marketing offers a better return on investment for small businesses.",
+        translation: "J'apprécie votre perspective sur les approches marketing traditionnelles, mais j'ai une vision différente sur cette question. Je crois que dans le paysage numérique actuel, le marketing de contenu offre un meilleur retour sur investissement pour les petites entreprises.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I'm in two minds about what you've suggested regarding...",
+    translation: "J'ai des sentiments partagés concernant ce que vous avez suggéré à propos de...",
+    context: "Exprimer une ambivalence face à une suggestion",
+    examples: [
+      {
+        english: "I'm in two minds about what you've suggested regarding moving to a completely open office layout. While it might improve collaboration, it could also lead to more distractions and less privacy for employees.",
+        translation: "J'ai des sentiments partagés concernant ce que vous avez suggéré à propos du passage à un aménagement de bureau complètement ouvert. Bien que cela puisse améliorer la collaboration, cela pourrait également entraîner plus de distractions et moins d'intimité pour les employés.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I think we're approaching this from different angles, but we might actually be saying similar things...",
+    translation: "Je pense que nous abordons cela sous des angles différents, mais nous disons peut-être en fait des choses similaires...",
+    context: "Identifier des similitudes sous-jacentes malgré des approches différentes",
+    examples: [
+      {
+        english: "I think we're approaching this from different angles, but we might actually be saying similar things about the need for better work-life balance, just emphasizing different aspects of the solution.",
+        translation: "Je pense que nous abordons cela sous des angles différents, mais nous disons peut-être en fait des choses similaires sur la nécessité d'un meilleur équilibre travail-vie personnelle, en mettant simplement l'accent sur différents aspects de la solution.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I have some reservations about..., though I generally support the idea of...",
+    translation: "J'ai quelques réserves concernant..., bien que je soutienne généralement l'idée de...",
+    context: "Exprimer des réserves spécifiques tout en montrant un soutien général",
+    examples: [
+      {
+        english: "I have some reservations about the implementation timeline being proposed, though I generally support the idea of upgrading our IT infrastructure.",
+        translation: "J'ai quelques réserves concernant le calendrier de mise en œuvre proposé, bien que je soutienne généralement l'idée de moderniser notre infrastructure informatique.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "From my understanding, the situation is actually quite different from what you've described...",
+    translation: "D'après ma compréhension, la situation est en fait assez différente de ce que vous avez décrit...",
+    context: "Contester poliment une description ou une interprétation",
+    examples: [
+      {
+        english: "From my understanding, the situation is actually quite different from what you've described. The decline in sales seems to be more related to changing consumer preferences than increased competition.",
+        translation: "D'après ma compréhension, la situation est en fait assez différente de ce que vous avez décrit. Le déclin des ventes semble être davantage lié à l'évolution des préférences des consommateurs qu'à une concurrence accrue.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I think we're essentially in agreement about..., though we may differ on...",
+    translation: "Je pense que nous sommes essentiellement d'accord sur..., bien que nous puissions différer sur...",
+    context: "Souligner un accord fondamental tout en reconnaissant des différences secondaires",
+    examples: [
+      {
+        english: "I think we're essentially in agreement about the need to improve customer service, though we may differ on whether hiring more staff or investing in better training for existing employees is the priority.",
+        translation: "Je pense que nous sommes essentiellement d'accord sur la nécessité d'améliorer le service client, bien que nous puissions différer sur la question de savoir si l'embauche de plus de personnel ou l'investissement dans une meilleure formation pour les employés existants est la priorité.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I'd like to offer a different interpretation of the data you've presented...",
+    translation: "J'aimerais proposer une interprétation différente des données que vous avez présentées...",
+    context: "Contester l'interprétation de données ou de faits",
+    examples: [
+      {
+        english: "I'd like to offer a different interpretation of the data you've presented. While there is indeed a correlation between these two factors, it doesn't necessarily imply a causal relationship.",
+        translation: "J'aimerais proposer une interprétation différente des données que vous avez présentées. Bien qu'il existe effectivement une corrélation entre ces deux facteurs, cela n'implique pas nécessairement une relation de cause à effet.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "I find myself unable to agree with that perspective, as it seems to overlook...",
+    translation: "Je me trouve dans l'incapacité d'être d'accord avec cette perspective, car elle semble négliger...",
+    context: "Exprimer un désaccord en identifiant ce qui est négligé",
+    examples: [
+      {
+        english: "I find myself unable to agree with that perspective, as it seems to overlook the significant impact of socioeconomic factors on educational outcomes.",
+        translation: "Je me trouve dans l'incapacité d'être d'accord avec cette perspective, car elle semble négliger l'impact significatif des facteurs socio-économiques sur les résultats éducatifs.",
+      }
+    ],
+  },
+  {
+    categoryId: 29,
+    english: "Our views align perfectly when it comes to...",
+    translation: "Nos points de vue s'alignent parfaitement en ce qui concerne...",
+    context: "Identifier un point d'accord total sur un aspect spécifique",
+    examples: [
+      {
+        english: "Our views align perfectly when it comes to the importance of diversity and inclusion in building a strong organizational culture.",
+        translation: "Nos points de vue s'alignent parfaitement en ce qui concerne l'importance de la diversité et de l'inclusion dans la construction d'une culture organisationnelle forte.",
+      }
+    ],
+  },
+];
+&nbsp;
+export default agreementsDisagreements;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-15T00:50:51.431Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

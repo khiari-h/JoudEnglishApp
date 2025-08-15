@@ -1,0 +1,643 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/6/categories/irony-sarcasm-humor.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/6/categories</a> irony-sarcasm-humor.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/c2/categories/irony-sarcasm-humor.js
+&nbsp;
+const ironySarcasmHumor = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    categoryId: 51,
+    english: "How refreshingly candid of... to acknowledge their limitations—a display of humility so rare in... that one might almost mistake it for genuine self-awareness rather than strategic positioning for...",
+    translation: "Comme il est rafraîchissant de la part de... de reconnaître leurs limitations—un étalage d'humilité si rare dans... qu'on pourrait presque le confondre avec une véritable conscience de soi plutôt qu'un positionnement stratégique pour...",
+    context: "Sarcasme sophistiqué suggérant que l'humilité apparente cache des motivations calculées",
+    examples: [
+      {
+        english: "How refreshingly candid of the pharmaceutical executive to acknowledge their company's past pricing errors during the congressional hearing—a display of corporate humility so rare in Big Pharma that one might almost mistake it for genuine contrition rather than strategic positioning for the inevitable class-action settlements and regulatory negotiations ahead.",
+        translation: "Comme il est rafraîchissant de la part du dirigeant pharmaceutique de reconnaître les erreurs de tarification passées de leur compagnie pendant l'audience du Congrès—un étalage d'humilité corporative si rare dans Big Pharma qu'on pourrait presque le confondre avec une contrition authentique plutôt qu'un positionnement stratégique pour les règlements de recours collectifs inévitables et les négociations réglementaires à venir.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "One can only marvel at the exquisite timing of... in choosing to advocate for... precisely when their own... makes such advocacy both deliciously ironic and strategically transparent to anyone with...",
+    translation: "On ne peut que s'émerveiller du timing exquis de... en choisissant de plaider pour... précisément quand leur propre... rend un tel plaidoyer à la fois délicieusement ironique et stratégiquement transparent pour quiconque avec...",
+    context: "Ironie fine soulignant l'hypocrisie temporelle d'une position publique",
+    examples: [
+      {
+        english: "One can only marvel at the exquisite timing of the oil executive in choosing to advocate for renewable energy initiatives precisely when their own company's quarterly profits from fossil fuel extraction make such environmental advocacy both deliciously ironic and strategically transparent to anyone with basic knowledge of corporate greenwashing techniques.",
+        translation: "On ne peut que s'émerveiller du timing exquis du dirigeant pétrolier en choisissant de plaider pour les initiatives d'énergie renouvelable précisément quand les profits trimestriels de leur propre compagnie provenant de l'extraction de combustibles fossiles rendent un tel plaidoyer environnemental à la fois délicieusement ironique et stratégiquement transparent pour quiconque avec une connaissance de base des techniques d'écoblanchiment corporatif.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "The sheer audacity of... in presenting themselves as champions of... would be admirable if it weren't so transparently calculated to distract from their own... which makes their sudden conversion to... rather convenient timing indeed.",
+    translation: "L'audace pure de... en se présentant comme champions de... serait admirable si ce n'était si transparemment calculé pour distraire de leur propre... ce qui rend leur conversion soudaine à... un timing plutôt commode en effet.",
+    context: "Sarcasme exposant l'opportunisme derrière une conversion apparente à une cause",
+    examples: [
+      {
+        english: "The sheer audacity of the tech billionaire in presenting himself as a champion of data privacy rights would be admirable if it weren't so transparently calculated to distract from his own company's massive surveillance operations, which makes his sudden conversion to digital rights advocacy rather convenient timing indeed, coinciding perfectly with his congressional testimony next month.",
+        translation: "L'audace pure du milliardaire technologique en se présentant comme champion des droits à la confidentialité des données serait admirable si ce n'était si transparemment calculé pour distraire des opérations de surveillance massives de sa propre compagnie, ce qui rend sa conversion soudaine au plaidoyer pour les droits numériques un timing plutôt commode en effet, coïncidant parfaitement avec son témoignage au Congrès le mois prochain.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "What a stroke of genius it was for... to discover their principles precisely at the moment when maintaining them became... one can only applaud such impeccable moral timing, particularly given their previous...",
+    translation: "Quel coup de génie ce fut pour... de découvrir leurs principes précisément au moment où les maintenir devenait... on ne peut qu'applaudir un tel timing moral impeccable, particulièrement étant donné leur... précédent.",
+    context: "Ironie acerbe sur la découverte opportune de principes moraux quand c'est avantageux",
+    examples: [
+      {
+        english: "What a stroke of genius it was for the senator to discover her environmental principles precisely at the moment when maintaining them became politically advantageous in her swing district—one can only applaud such impeccable moral timing, particularly given her previous two decades of consistently voting against every major climate protection bill that crossed her desk.",
+        translation: "Quel coup de génie ce fut pour la sénatrice de découvrir ses principes environnementaux précisément au moment où les maintenir devenait politiquement avantageux dans sa circonscription oscillante—on ne peut qu'applaudir un tel timing moral impeccable, particulièrement étant donné ses deux décennies précédentes de vote consistant contre chaque projet de loi majeur de protection climatique qui traversait son bureau.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "How utterly charming that... has finally embraced... after years of... it's almost as if witnessing... suddenly clarified their moral vision with all the subtlety of a Damascus road experience, albeit significantly more...",
+    translation: "Comme il est absolument charmant que... ait finalement embrassé... après des années de... c'est presque comme si être témoin de... avait soudainement clarifié leur vision morale avec toute la subtilité d'une expérience du chemin de Damas, bien que significativement plus...",
+    context: "Ironie utilisant la référence biblique de la conversion de Saint Paul pour moquer une conversion opportuniste",
+    examples: [
+      {
+        english: "How utterly charming that the media mogul has finally embraced journalistic integrity after years of tabloid sensationalism—it's almost as if witnessing his competitors' Pulitzer Prize wins suddenly clarified his moral vision with all the subtlety of a Damascus road experience, albeit significantly more profitable and conveniently timed with his upcoming acquisition of a respected newspaper chain.",
+        translation: "Comme il est absolument charmant que le magnat des médias ait finalement embrassé l'intégrité journalistique après des années de sensationnalisme de tabloïd—c'est presque comme si être témoin des victoires de prix Pulitzer de ses concurrents avait soudainement clarifié sa vision morale avec toute la subtilité d'une expérience du chemin de Damas, bien que significativement plus profitable et commodément synchronisé avec son acquisition prochaine d'une chaîne de journaux respectés.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "One must commend... for their remarkable consistency in... which demonstrates an unwavering commitment to... that would be inspiring if it weren't so predictably aligned with their financial interests in...",
+    translation: "On doit féliciter... pour leur remarquable consistance dans... qui démontre un engagement inébranlable à... qui serait inspirant si ce n'était si prévisiblement aligné avec leurs intérêts financiers dans...",
+    context: "Fausse louange soulignant sarcastiquement l'alignement entre principes déclarés et profits",
+    examples: [
+      {
+        english: "One must commend the pharmaceutical lobby for their remarkable consistency in advocating for drug patent extensions, which demonstrates an unwavering commitment to 'innovation incentives' that would be inspiring if it weren't so predictably aligned with their financial interests in maintaining monopolistic pricing structures that maximize shareholder returns at patients' expense.",
+        translation: "On doit féliciter le lobby pharmaceutique pour leur remarquable consistance dans le plaidoyer pour les extensions de brevets de médicaments, qui démontre un engagement inébranlable aux 'incitations à l'innovation' qui serait inspirant si ce n'était si prévisiblement aligné avec leurs intérêts financiers dans le maintien de structures de prix monopolistiques qui maximisent les retours aux actionnaires aux dépens des patients.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "The delicious irony of... lecturing others about... while simultaneously... is lost on no one except, apparently, themselves—a blindness so complete it almost deserves its own psychological classification.",
+    translation: "L'ironie délicieuse de... faisant la leçon aux autres sur... tout en simultanément... n'échappe à personne sauf, apparemment, à eux-mêmes—un aveuglement si complet qu'il mérite presque sa propre classification psychologique.",
+    context: "Ironie soulignant l'aveuglement total d'une personne à sa propre hypocrisie",
+    examples: [
+      {
+        english: "The delicious irony of the social media executive lecturing Congress about protecting children's mental health while simultaneously deploying algorithms specifically designed to maximize addictive engagement among teenagers is lost on no one except, apparently, himself—a blindness so complete it almost deserves its own psychological classification in the next edition of diagnostic manuals.",
+        translation: "L'ironie délicieuse du dirigeant de médias sociaux faisant la leçon au Congrès sur la protection de la santé mentale des enfants tout en déployant simultanément des algorithmes spécifiquement conçus pour maximiser l'engagement addictif parmi les adolescents n'échappe à personne sauf, apparemment, à lui-même—un aveuglement si complet qu'il mérite presque sa propre classification psychologique dans la prochaine édition des manuels diagnostiques.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "How wonderfully convenient that... discovered their passion for... just as... became profitable—such serendipitous timing surely proves that virtue and venture capital can indeed walk hand in hand toward...",
+    translation: "Comme il est merveilleusement commode que... ait découvert leur passion pour... juste au moment où... devint profitable—un timing si fortuit prouve sûrement que la vertu et le capital-risque peuvent en effet marcher main dans la main vers...",
+    context: "Sarcasme sur la coïncidence suspecte entre passion nouvellement découverte et opportunité financière",
+    examples: [
+      {
+        english: "How wonderfully convenient that the venture capitalist discovered his passion for sustainable agriculture just as vertical farming technology became exponentially profitable—such serendipitous timing surely proves that environmental virtue and speculative venture capital can indeed walk hand in hand toward a greener, more lucrative future for everyone involved in the investment ecosystem.",
+        translation: "Comme il est merveilleusement commode que le capitaliste-risqueur ait découvert sa passion pour l'agriculture durable juste au moment où la technologie de l'agriculture verticale devint exponentiellement profitable—un timing si fortuit prouve sûrement que la vertu environnementale et le capital-risque spéculatif peuvent en effet marcher main dans la main vers un futur plus vert et plus lucratif pour tous ceux impliqués dans l'écosystème d'investissement.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "The breathtaking speed with which... pivoted from... to... would be impressive if it weren't so transparently motivated by... giving new meaning to the phrase 'principled leadership' in the age of...",
+    translation: "La vitesse à couper le souffle avec laquelle... pivota de... à... serait impressionnante si ce n'était si transparemment motivé par... donnant un nouveau sens à l'expression 'leadership de principe' à l'ère de...",
+    context: "Ironie sur la rapidité d'un changement de position motivé par l'opportunisme",
+    examples: [
+      {
+        english: "The breathtaking speed with which the cryptocurrency evangelist pivoted from promoting 'decentralized freedom' to embracing 'regulatory compliance partnerships' would be impressive if it weren't so transparently motivated by his recent SEC investigation, giving new meaning to the phrase 'principled leadership' in the age of blockchain regulation and federal scrutiny.",
+        translation: "La vitesse à couper le souffle avec laquelle l'évangéliste de la cryptomonnaie pivota de la promotion de la 'liberté décentralisée' à l'embrassement des 'partenariats de conformité réglementaire' serait impressionnante si ce n'était si transparemment motivé par son enquête SEC récente, donnant un nouveau sens à l'expression 'leadership de principe' à l'ère de la réglementation blockchain et de l'examen fédéral.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "What a testament to... that they can maintain such... in the face of overwhelming evidence to the contrary—a feat of cognitive gymnastics that deserves recognition in... if not actual...",
+    translation: "Quel témoignage à... qu'ils puissent maintenir un tel... face à des preuves accablantes du contraire—un exploit de gymnastique cognitive qui mérite une reconnaissance dans... sinon un véritable...",
+    context: "Sarcasme admiratif feint pour une capacité d'auto-déception impressionnante",
+    examples: [
+      {
+        english: "What a testament to the climate denier's intellectual flexibility that he can maintain such unwavering certainty in the face of overwhelming scientific consensus to the contrary—a feat of cognitive gymnastics that deserves recognition in some parallel universe where alternative facts constitute legitimate research methodology, if not actual Nobel consideration for creative data interpretation.",
+        translation: "Quel témoignage à la flexibilité intellectuelle du négationniste climatique qu'il puisse maintenir une telle certitude inébranlable face au consensus scientifique accablant du contraire—un exploit de gymnastique cognitive qui mérite une reconnaissance dans quelque univers parallèle où les faits alternatifs constituent une méthodologie de recherche légitime, sinon une véritable considération Nobel pour l'interprétation créative des données.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "How reassuring it must be for... to inhabit a moral universe where... and... can coexist so harmoniously, untroubled by the contradictions that might perplex those of us still bound by conventional logic and...",
+    translation: "Comme il doit être rassurant pour... d'habiter un univers moral où... et... peuvent coexister si harmonieusement, non troublés par les contradictions qui pourraient perplexer ceux d'entre nous encore liés par la logique conventionnelle et...",
+    context: "Ironie sophistiquée sur la capacité à vivre avec des contradictions morales flagrantes",
+    examples: [
+      {
+        english: "How reassuring it must be for the defense contractor to inhabit a moral universe where passionate peace advocacy and lucrative weapons manufacturing can coexist so harmoniously, untroubled by the contradictions that might perplex those of us still bound by conventional logic and elementary principles of ethical consistency in public discourse.",
+        translation: "Comme il doit être rassurant pour le contractant de défense d'habiter un univers moral où le plaidoyer passionné pour la paix et la fabrication lucrative d'armes peuvent coexister si harmonieusement, non troublés par les contradictions qui pourraient perplexer ceux d'entre nous encore liés par la logique conventionnelle et les principes élémentaires de cohérence éthique dans le discours public.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "The exquisite timing of...'s sudden concern for... coinciding so perfectly with... demonstrates either remarkable prescience or the kind of political opportunism that would make Machiavelli himself... with...",
+    translation: "Le timing exquis de la préoccupation soudaine de... pour... coïncidant si parfaitement avec... démontre soit une prescience remarquable soit le genre d'opportunisme politique qui ferait que Machiavel lui-même... avec...",
+    context: "Ironie utilisant la référence à Machiavel pour critiquer l'opportunisme politique cynique",
+    examples: [
+      {
+        english: "The exquisite timing of the politician's sudden concern for working-class issues coinciding so perfectly with his reelection campaign in a blue-collar district demonstrates either remarkable prescience or the kind of calculated political opportunism that would make Machiavelli himself blush with admiration for such transparent manipulation of populist sentiment.",
+        translation: "Le timing exquis de la préoccupation soudaine du politicien pour les questions de la classe ouvrière coïncidant si parfaitement avec sa campagne de réélection dans un district de cols bleus démontre soit une prescience remarquable soit le genre d'opportunisme politique calculé qui ferait que Machiavel lui-même rougirait d'admiration pour une telle manipulation transparente du sentiment populiste.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "One can only admire the artistic beauty of...'s ability to... while maintaining... with such grace that observers might mistake their performance for genuine... rather than the carefully choreographed...",
+    translation: "On ne peut qu'admirer la beauté artistique de la capacité de... à... tout en maintenant... avec tant de grâce que les observateurs pourraient confondre leur performance avec un véritable... plutôt que le... soigneusement chorégraphié.",
+    context: "Sarcasme esthétique transformant l'hypocrisie en performance artistique",
+    examples: [
+      {
+        english: "One can only admire the artistic beauty of the corporate executive's ability to express heartfelt concern for income inequality while simultaneously lobbying against minimum wage increases with such grace that observers might mistake their performance for genuine social consciousness rather than the carefully choreographed theater of corporate social responsibility designed to deflect criticism without sacrificing profit margins.",
+        translation: "On ne peut qu'admirer la beauté artistique de la capacité du dirigeant corporatif à exprimer une préoccupation sincère pour l'inégalité des revenus tout en faisant simultanément du lobbying contre les augmentations de salaire minimum avec tant de grâce que les observateurs pourraient confondre leur performance avec une véritable conscience sociale plutôt que le théâtre soigneusement chorégraphié de la responsabilité sociale corporative conçu pour détourner les critiques sans sacrifier les marges de profit.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "How delightfully refreshing to witness... demonstrating that in the modern era,... and... need not be mutually exclusive—a lesson in cognitive flexibility that surely deserves study in advanced courses on...",
+    translation: "Comme il est délicieusement rafraîchissant d'être témoin de... démontrant qu'à l'ère moderne,... et... n'ont pas besoin d'être mutuellement exclusifs—une leçon de flexibilité cognitive qui mérite sûrement d'être étudiée dans des cours avancés sur...",
+    context: "Fausse admiration pour la capacité à maintenir des positions contradictoires",
+    examples: [
+      {
+        english: "How delightfully refreshing to witness the pharmaceutical CEO demonstrating that in the modern era, maximizing shareholder profits and serving public health interests need not be mutually exclusive—a lesson in cognitive flexibility that surely deserves study in advanced courses on corporate ethics and the remarkable plasticity of moral reasoning under financial pressure.",
+        translation: "Comme il est délicieusement rafraîchissant d'être témoin du PDG pharmaceutique démontrant qu'à l'ère moderne, maximiser les profits des actionnaires et servir les intérêts de santé publique n'ont pas besoin d'être mutuellement exclusifs—une leçon de flexibilité cognitive qui mérite sûrement d'être étudiée dans des cours avancés sur l'éthique corporative et la plasticité remarquable du raisonnement moral sous pression financière.",
+      }
+    ],
+  },
+  {
+    categoryId: 51,
+    english: "The sheer elegance with which... manages to... while simultaneously... represents a masterclass in... that future generations will surely study as a textbook example of how to... without ever having to...",
+    translation: "L'élégance pure avec laquelle... parvient à... tout en simultanément... représente une masterclass dans... que les générations futures étudieront sûrement comme un exemple de manuel sur comment... sans jamais avoir à...",
+    context: "Ironie érudite présentant l'hypocrisie comme un art digne d'étude académique",
+    examples: [
+      {
+        english: "The sheer elegance with which the energy executive manages to champion environmental sustainability while simultaneously expanding fossil fuel extraction operations represents a masterclass in corporate doublethink that future business school students will surely study as a textbook example of how to appear progressive without ever having to sacrifice quarterly profit projections or disappoint shareholders.",
+        translation: "L'élégance pure avec laquelle le dirigeant énergétique parvient à championner la durabilité environnementale tout en étendant simultanément les opérations d'extraction de combustibles fossiles représente une masterclass en double-pensée corporative que les futurs étudiants d'école de commerce étudieront sûrement comme un exemple de manuel sur comment paraître progressiste sans jamais avoir à sacrifier les projections de profit trimestrielles ou décevoir les actionnaires.",
+      }
+    ],
+  }
+];
+&nbsp;
+export default ironySarcasmHumor;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-15T00:50:51.431Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

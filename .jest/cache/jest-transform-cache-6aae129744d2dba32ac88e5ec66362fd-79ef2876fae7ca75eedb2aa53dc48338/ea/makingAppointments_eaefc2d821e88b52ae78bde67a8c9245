@@ -1,0 +1,158 @@
+420e12d0dde4d8e97c8d797a47f7012f
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function cov_2bwks593xu() {
+  var path = "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A2\\scenarios\\makingAppointments.js";
+  var hash = "648fd606ee781bc68b97580bc838e41a0b4c5f2b";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\data\\conversation\\A2\\scenarios\\makingAppointments.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 27
+        },
+        end: {
+          line: 173,
+          column: 3
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "648fd606ee781bc68b97580bc838e41a0b4c5f2b"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_2bwks593xu = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2bwks593xu();
+var makingAppointments = (cov_2bwks593xu().s[0]++, {
+  id: 7,
+  title: "Making Appointments",
+  level: "A2",
+  description: "Learn how to make different types of appointments by phone.",
+  estimatedTime: "15-20 minutes",
+  vocabulary: ["rendez-vous", "disponibilité", "horaire", "reporter", "annuler", "confirmer", "secrétaire", "agenda", "prendre rendez-vous", "préférence"],
+  steps: [{
+    id: 1,
+    botMessage: "Cabinet médical du Dr Martin, bonjour. Que puis-je faire pour vous ?",
+    inputMode: "suggestions",
+    suggestions: ["Bonjour, je voudrais prendre rendez-vous avec le Dr Martin, s'il vous plaît.", "Bonjour, je suis patient(e) du Dr Martin et j'ai besoin d'un rendez-vous urgent.", "Bonjour, je souhaite reporter mon rendez-vous prévu demain."],
+    hints: "Saluez et expliquez pourquoi vous appelez.",
+    expectedKeywords: ["bonjour", "rendez-vous", "prendre", "reporter", "urgent", "patient", "besoin", "souhaite"],
+    feedback: {
+      correct: "Bien sûr, je peux vous aider avec cela.",
+      incorrect: "Pourriez-vous préciser si vous souhaitez prendre, reporter ou annuler un rendez-vous ?"
+    }
+  }, {
+    id: 2,
+    botMessage: "C'est pour quel type de consultation ?",
+    inputMode: "hybrid",
+    suggestions: ["C'est pour un contrôle annuel.", "J'ai de la fièvre et mal à la gorge depuis deux jours.", "J'ai besoin de renouveler mon ordonnance pour mes médicaments."],
+    hints: "Expliquez la raison de votre consultation.",
+    expectedKeywords: ["contrôle", "annuel", "fièvre", "gorge", "ordonnance", "renouveler", "médicaments", "besoin"],
+    acceptablePhrases: ["c'est pour", "j'ai besoin", "je dois", "j'ai mal à"],
+    feedback: {
+      correct: "Je comprends. Avez-vous une préférence pour le jour et l'heure du rendez-vous ?",
+      partial: "Est-ce que c'est urgent ou pouvez-vous attendre quelques jours ?",
+      incorrect: "Pouvez-vous me préciser la raison de votre consultation ?"
+    }
+  }, {
+    id: 3,
+    botMessage: "Quand seriez-vous disponible ? Avez-vous une préférence pour le jour et l'heure ?",
+    inputMode: "freeText",
+    suggestions: ["Je préférerais en début de semaine prochaine, lundi ou mardi matin si possible.", "Je suis disponible tous les après-midi après 14h.", "Le plus tôt possible, c'est assez urgent."],
+    hints: "Indiquez vos disponibilités ou préférences de jour et d'heure.",
+    expectedKeywords: ["disponible", "préférerais", "semaine", "matin", "après-midi", "lundi", "mardi", "urgent", "possible"],
+    feedback: {
+      correct: "Laissez-moi vérifier les disponibilités du docteur...",
+      partial: "À quelle heure seriez-vous disponible ce jour-là ?",
+      incorrect: "Veuillez indiquer quand vous seriez disponible pour ce rendez-vous."
+    }
+  }, {
+    id: 4,
+    botMessage: "Je peux vous proposer mardi prochain à 10h ou jeudi à 15h30. Quelle option vous conviendrait le mieux ?",
+    inputMode: "suggestions",
+    suggestions: ["Mardi à 10h me conviendrait parfaitement.", "Je préfère jeudi à 15h30, s'il vous plaît.", "Est-ce qu'il y a une possibilité plus tôt que mardi ?"],
+    hints: "Choisissez une des options proposées ou demandez d'autres possibilités.",
+    expectedKeywords: ["mardi", "jeudi", "10h", "15h30", "conviendrait", "préfère", "possibilité", "plus tôt", "option"],
+    feedback: {
+      correct: "Très bien, c'est noté.",
+      incorrect: "Pourriez-vous choisir entre mardi 10h et jeudi 15h30 ?"
+    }
+  }, {
+    id: 5,
+    botMessage: "Puis-je avoir votre nom et prénom, s'il vous plaît ?",
+    inputMode: "hybrid",
+    suggestions: ["Je m'appelle Marie Dubois.", "C'est au nom de Pierre Martin.", "Mon nom est Sophie Lambert."],
+    hints: "Donnez votre nom et prénom.",
+    expectedKeywords: ["appelle", "nom", "prénom", "marie", "pierre", "sophie", "dubois", "martin", "lambert"],
+    feedback: {
+      correct: "Merci. Avez-vous déjà consulté le Dr Martin ou est-ce votre première visite ?",
+      partial: "Pourriez-vous épeler votre nom de famille, s'il vous plaît ?",
+      incorrect: "J'ai besoin de votre nom et prénom pour le rendez-vous."
+    }
+  }, {
+    id: 6,
+    botMessage: "Est-ce votre première consultation chez le Dr Martin ou êtes-vous déjà patient(e) ?",
+    inputMode: "freeText",
+    suggestions: ["Je suis déjà patient(e) du Dr Martin.", "C'est ma première consultation.", "J'ai déjà consulté il y a deux ans, mais pas récemment."],
+    hints: "Précisez si vous êtes un nouveau patient ou non.",
+    expectedKeywords: ["déjà", "patient", "première", "consultation", "consulté", "récemment", "ans", "nouveau"],
+    acceptablePhrases: ["je suis déjà", "c'est ma première", "j'ai déjà consulté", "je suis un nouveau"],
+    feedback: {
+      correct: "Très bien, j'ai noté l'information. Avez-vous un numéro de téléphone où l'on peut vous joindre ?",
+      partial: "Depuis combien de temps êtes-vous suivi(e) par le Dr Martin ?",
+      incorrect: "Merci de préciser si vous avez déjà consulté le Dr Martin ou si c'est votre première visite."
+    }
+  }, {
+    id: 7,
+    botMessage: "Quel est votre numéro de téléphone, s'il vous plaît ?",
+    inputMode: "suggestions",
+    suggestions: ["Mon numéro est le 06 12 34 56 78.", "Vous pouvez me joindre au 01 23 45 67 89.", "C'est le 07 98 76 54 32."],
+    hints: "Donnez votre numéro de téléphone.",
+    expectedKeywords: ["numéro", "téléphone", "joindre", "06", "01", "07", "portable", "fixe"],
+    feedback: {
+      correct: "Parfait, j'ai noté votre numéro.",
+      incorrect: "J'ai besoin de votre numéro de téléphone pour confirmer le rendez-vous."
+    }
+  }, {
+    id: 8,
+    botMessage: "Très bien, votre rendez-vous est confirmé pour [jour] à [heure]. N'oubliez pas d'apporter votre carte vitale et une pièce d'identité. Souhaitez-vous que je vous envoie un SMS de rappel la veille ?",
+    inputMode: "hybrid",
+    suggestions: ["Oui, s'il vous plaît, ce serait gentil.", "Non merci, ce n'est pas nécessaire.", "Je préférerais un rappel par email, si possible."],
+    hints: "Indiquez si vous souhaitez un rappel pour le rendez-vous.",
+    expectedKeywords: ["oui", "non", "rappel", "SMS", "email", "nécessaire", "gentil", "préférerais", "merci"],
+    feedback: {
+      correct: "C'est noté. Nous vous verrons donc [jour] à [heure]. Passez une bonne journée !",
+      partial: "À quelle adresse email puis-je vous envoyer le rappel ?",
+      incorrect: "Souhaitez-vous recevoir un rappel pour votre rendez-vous ?"
+    }
+  }],
+  completionMessage: "Félicitations ! Vous avez réussi à prendre un rendez-vous médical par téléphone en français.",
+  learningObjectives: ["Prendre un rendez-vous par téléphone", "Expliquer la raison d'une consultation", "Indiquer ses disponibilités", "Donner ses coordonnées personnelles", "Comprendre les informations pratiques"],
+  grammar: {
+    points: ["Conditionnel de politesse", "Questions avec inversion", "Expressions de temps et d'horaire", "Verbes au futur proche"]
+  }
+});
+var _default = exports.default = makingAppointments;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtYWtpbmdBcHBvaW50bWVudHMiLCJjb3ZfMmJ3a3M1OTN4dSIsInMiLCJpZCIsInRpdGxlIiwibGV2ZWwiLCJkZXNjcmlwdGlvbiIsImVzdGltYXRlZFRpbWUiLCJ2b2NhYnVsYXJ5Iiwic3RlcHMiLCJib3RNZXNzYWdlIiwiaW5wdXRNb2RlIiwic3VnZ2VzdGlvbnMiLCJoaW50cyIsImV4cGVjdGVkS2V5d29yZHMiLCJmZWVkYmFjayIsImNvcnJlY3QiLCJpbmNvcnJlY3QiLCJhY2NlcHRhYmxlUGhyYXNlcyIsInBhcnRpYWwiLCJjb21wbGV0aW9uTWVzc2FnZSIsImxlYXJuaW5nT2JqZWN0aXZlcyIsImdyYW1tYXIiLCJwb2ludHMiLCJfZGVmYXVsdCIsImV4cG9ydHMiLCJkZWZhdWx0Il0sInNvdXJjZXMiOlsibWFraW5nQXBwb2ludG1lbnRzLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGNoYXRib3QvQTIvc2NlbmFyaW9zL21ha2luZ0FwcG9pbnRtZW50cy5qc1xuXG5jb25zdCBtYWtpbmdBcHBvaW50bWVudHMgPSB7XG4gICAgaWQ6IDcsXG4gICAgdGl0bGU6IFwiTWFraW5nIEFwcG9pbnRtZW50c1wiLFxuICAgIGxldmVsOiBcIkEyXCIsXG4gICAgZGVzY3JpcHRpb246IFwiTGVhcm4gaG93IHRvIG1ha2UgZGlmZmVyZW50IHR5cGVzIG9mIGFwcG9pbnRtZW50cyBieSBwaG9uZS5cIixcbiAgICBlc3RpbWF0ZWRUaW1lOiBcIjE1LTIwIG1pbnV0ZXNcIixcbiAgICB2b2NhYnVsYXJ5OiBbXCJyZW5kZXotdm91c1wiLCBcImRpc3BvbmliaWxpdMOpXCIsIFwiaG9yYWlyZVwiLCBcInJlcG9ydGVyXCIsIFwiYW5udWxlclwiLCBcImNvbmZpcm1lclwiLCBcInNlY3LDqXRhaXJlXCIsIFwiYWdlbmRhXCIsIFwicHJlbmRyZSByZW5kZXotdm91c1wiLCBcInByw6lmw6lyZW5jZVwiXSxcbiAgICBzdGVwczogW1xuICAgICAge1xuICAgICAgICBpZDogMSxcbiAgICAgICAgYm90TWVzc2FnZTogXCJDYWJpbmV0IG3DqWRpY2FsIGR1IERyIE1hcnRpbiwgYm9uam91ci4gUXVlIHB1aXMtamUgZmFpcmUgcG91ciB2b3VzID9cIixcbiAgICAgICAgaW5wdXRNb2RlOiBcInN1Z2dlc3Rpb25zXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJCb25qb3VyLCBqZSB2b3VkcmFpcyBwcmVuZHJlIHJlbmRlei12b3VzIGF2ZWMgbGUgRHIgTWFydGluLCBzJ2lsIHZvdXMgcGxhw650LlwiLFxuICAgICAgICAgIFwiQm9uam91ciwgamUgc3VpcyBwYXRpZW50KGUpIGR1IERyIE1hcnRpbiBldCBqJ2FpIGJlc29pbiBkJ3VuIHJlbmRlei12b3VzIHVyZ2VudC5cIixcbiAgICAgICAgICBcIkJvbmpvdXIsIGplIHNvdWhhaXRlIHJlcG9ydGVyIG1vbiByZW5kZXotdm91cyBwcsOpdnUgZGVtYWluLlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIlNhbHVleiBldCBleHBsaXF1ZXogcG91cnF1b2kgdm91cyBhcHBlbGV6LlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJib25qb3VyXCIsIFwicmVuZGV6LXZvdXNcIiwgXCJwcmVuZHJlXCIsIFwicmVwb3J0ZXJcIiwgXCJ1cmdlbnRcIiwgXCJwYXRpZW50XCIsIFwiYmVzb2luXCIsIFwic291aGFpdGVcIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJCaWVuIHPDu3IsIGplIHBldXggdm91cyBhaWRlciBhdmVjIGNlbGEuXCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlBvdXJyaWV6LXZvdXMgcHLDqWNpc2VyIHNpIHZvdXMgc291aGFpdGV6IHByZW5kcmUsIHJlcG9ydGVyIG91IGFubnVsZXIgdW4gcmVuZGV6LXZvdXMgP1wiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiAyLFxuICAgICAgICBib3RNZXNzYWdlOiBcIkMnZXN0IHBvdXIgcXVlbCB0eXBlIGRlIGNvbnN1bHRhdGlvbiA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJoeWJyaWRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkMnZXN0IHBvdXIgdW4gY29udHLDtGxlIGFubnVlbC5cIixcbiAgICAgICAgICBcIkonYWkgZGUgbGEgZmnDqHZyZSBldCBtYWwgw6AgbGEgZ29yZ2UgZGVwdWlzIGRldXggam91cnMuXCIsXG4gICAgICAgICAgXCJKJ2FpIGJlc29pbiBkZSByZW5vdXZlbGVyIG1vbiBvcmRvbm5hbmNlIHBvdXIgbWVzIG3DqWRpY2FtZW50cy5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJFeHBsaXF1ZXogbGEgcmFpc29uIGRlIHZvdHJlIGNvbnN1bHRhdGlvbi5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiY29udHLDtGxlXCIsIFwiYW5udWVsXCIsIFwiZmnDqHZyZVwiLCBcImdvcmdlXCIsIFwib3Jkb25uYW5jZVwiLCBcInJlbm91dmVsZXJcIiwgXCJtw6lkaWNhbWVudHNcIiwgXCJiZXNvaW5cIl0sXG4gICAgICAgIGFjY2VwdGFibGVQaHJhc2VzOiBbXG4gICAgICAgICAgXCJjJ2VzdCBwb3VyXCIsXG4gICAgICAgICAgXCJqJ2FpIGJlc29pblwiLFxuICAgICAgICAgIFwiamUgZG9pc1wiLFxuICAgICAgICAgIFwiaidhaSBtYWwgw6BcIlxuICAgICAgICBdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiSmUgY29tcHJlbmRzLiBBdmV6LXZvdXMgdW5lIHByw6lmw6lyZW5jZSBwb3VyIGxlIGpvdXIgZXQgbCdoZXVyZSBkdSByZW5kZXotdm91cyA/XCIsXG4gICAgICAgICAgcGFydGlhbDogXCJFc3QtY2UgcXVlIGMnZXN0IHVyZ2VudCBvdSBwb3V2ZXotdm91cyBhdHRlbmRyZSBxdWVscXVlcyBqb3VycyA/XCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlBvdXZlei12b3VzIG1lIHByw6ljaXNlciBsYSByYWlzb24gZGUgdm90cmUgY29uc3VsdGF0aW9uID9cIlxuICAgICAgICB9XG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogMyxcbiAgICAgICAgYm90TWVzc2FnZTogXCJRdWFuZCBzZXJpZXotdm91cyBkaXNwb25pYmxlID8gQXZlei12b3VzIHVuZSBwcsOpZsOpcmVuY2UgcG91ciBsZSBqb3VyIGV0IGwnaGV1cmUgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiZnJlZVRleHRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkplIHByw6lmw6lyZXJhaXMgZW4gZMOpYnV0IGRlIHNlbWFpbmUgcHJvY2hhaW5lLCBsdW5kaSBvdSBtYXJkaSBtYXRpbiBzaSBwb3NzaWJsZS5cIixcbiAgICAgICAgICBcIkplIHN1aXMgZGlzcG9uaWJsZSB0b3VzIGxlcyBhcHLDqHMtbWlkaSBhcHLDqHMgMTRoLlwiLFxuICAgICAgICAgIFwiTGUgcGx1cyB0w7R0IHBvc3NpYmxlLCBjJ2VzdCBhc3NleiB1cmdlbnQuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiSW5kaXF1ZXogdm9zIGRpc3BvbmliaWxpdMOpcyBvdSBwcsOpZsOpcmVuY2VzIGRlIGpvdXIgZXQgZCdoZXVyZS5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiZGlzcG9uaWJsZVwiLCBcInByw6lmw6lyZXJhaXNcIiwgXCJzZW1haW5lXCIsIFwibWF0aW5cIiwgXCJhcHLDqHMtbWlkaVwiLCBcImx1bmRpXCIsIFwibWFyZGlcIiwgXCJ1cmdlbnRcIiwgXCJwb3NzaWJsZVwiXSxcbiAgICAgICAgZmVlZGJhY2s6IHtcbiAgICAgICAgICBjb3JyZWN0OiBcIkxhaXNzZXotbW9pIHbDqXJpZmllciBsZXMgZGlzcG9uaWJpbGl0w6lzIGR1IGRvY3RldXIuLi5cIixcbiAgICAgICAgICBwYXJ0aWFsOiBcIsOAIHF1ZWxsZSBoZXVyZSBzZXJpZXotdm91cyBkaXNwb25pYmxlIGNlIGpvdXItbMOgID9cIixcbiAgICAgICAgICBpbmNvcnJlY3Q6IFwiVmV1aWxsZXogaW5kaXF1ZXIgcXVhbmQgdm91cyBzZXJpZXogZGlzcG9uaWJsZSBwb3VyIGNlIHJlbmRlei12b3VzLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA0LFxuICAgICAgICBib3RNZXNzYWdlOiBcIkplIHBldXggdm91cyBwcm9wb3NlciBtYXJkaSBwcm9jaGFpbiDDoCAxMGggb3UgamV1ZGkgw6AgMTVoMzAuIFF1ZWxsZSBvcHRpb24gdm91cyBjb252aWVuZHJhaXQgbGUgbWlldXggP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwic3VnZ2VzdGlvbnNcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIk1hcmRpIMOgIDEwaCBtZSBjb252aWVuZHJhaXQgcGFyZmFpdGVtZW50LlwiLFxuICAgICAgICAgIFwiSmUgcHLDqWbDqHJlIGpldWRpIMOgIDE1aDMwLCBzJ2lsIHZvdXMgcGxhw650LlwiLFxuICAgICAgICAgIFwiRXN0LWNlIHF1J2lsIHkgYSB1bmUgcG9zc2liaWxpdMOpIHBsdXMgdMO0dCBxdWUgbWFyZGkgP1wiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkNob2lzaXNzZXogdW5lIGRlcyBvcHRpb25zIHByb3Bvc8OpZXMgb3UgZGVtYW5kZXogZCdhdXRyZXMgcG9zc2liaWxpdMOpcy5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wibWFyZGlcIiwgXCJqZXVkaVwiLCBcIjEwaFwiLCBcIjE1aDMwXCIsIFwiY29udmllbmRyYWl0XCIsIFwicHLDqWbDqHJlXCIsIFwicG9zc2liaWxpdMOpXCIsIFwicGx1cyB0w7R0XCIsIFwib3B0aW9uXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiVHLDqHMgYmllbiwgYydlc3Qgbm90w6kuXCIsXG4gICAgICAgICAgaW5jb3JyZWN0OiBcIlBvdXJyaWV6LXZvdXMgY2hvaXNpciBlbnRyZSBtYXJkaSAxMGggZXQgamV1ZGkgMTVoMzAgP1wiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA1LFxuICAgICAgICBib3RNZXNzYWdlOiBcIlB1aXMtamUgYXZvaXIgdm90cmUgbm9tIGV0IHByw6lub20sIHMnaWwgdm91cyBwbGHDrnQgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiaHlicmlkXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJKZSBtJ2FwcGVsbGUgTWFyaWUgRHVib2lzLlwiLFxuICAgICAgICAgIFwiQydlc3QgYXUgbm9tIGRlIFBpZXJyZSBNYXJ0aW4uXCIsXG4gICAgICAgICAgXCJNb24gbm9tIGVzdCBTb3BoaWUgTGFtYmVydC5cIlxuICAgICAgICBdLFxuICAgICAgICBoaW50czogXCJEb25uZXogdm90cmUgbm9tIGV0IHByw6lub20uXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcImFwcGVsbGVcIiwgXCJub21cIiwgXCJwcsOpbm9tXCIsIFwibWFyaWVcIiwgXCJwaWVycmVcIiwgXCJzb3BoaWVcIiwgXCJkdWJvaXNcIiwgXCJtYXJ0aW5cIiwgXCJsYW1iZXJ0XCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiTWVyY2kuIEF2ZXotdm91cyBkw6lqw6AgY29uc3VsdMOpIGxlIERyIE1hcnRpbiBvdSBlc3QtY2Ugdm90cmUgcHJlbWnDqHJlIHZpc2l0ZSA/XCIsXG4gICAgICAgICAgcGFydGlhbDogXCJQb3Vycmllei12b3VzIMOpcGVsZXIgdm90cmUgbm9tIGRlIGZhbWlsbGUsIHMnaWwgdm91cyBwbGHDrnQgP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJKJ2FpIGJlc29pbiBkZSB2b3RyZSBub20gZXQgcHLDqW5vbSBwb3VyIGxlIHJlbmRlei12b3VzLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA2LFxuICAgICAgICBib3RNZXNzYWdlOiBcIkVzdC1jZSB2b3RyZSBwcmVtacOocmUgY29uc3VsdGF0aW9uIGNoZXogbGUgRHIgTWFydGluIG91IMOqdGVzLXZvdXMgZMOpasOgIHBhdGllbnQoZSkgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiZnJlZVRleHRcIixcbiAgICAgICAgc3VnZ2VzdGlvbnM6IFtcbiAgICAgICAgICBcIkplIHN1aXMgZMOpasOgIHBhdGllbnQoZSkgZHUgRHIgTWFydGluLlwiLFxuICAgICAgICAgIFwiQydlc3QgbWEgcHJlbWnDqHJlIGNvbnN1bHRhdGlvbi5cIixcbiAgICAgICAgICBcIkonYWkgZMOpasOgIGNvbnN1bHTDqSBpbCB5IGEgZGV1eCBhbnMsIG1haXMgcGFzIHLDqWNlbW1lbnQuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiUHLDqWNpc2V6IHNpIHZvdXMgw6p0ZXMgdW4gbm91dmVhdSBwYXRpZW50IG91IG5vbi5cIixcbiAgICAgICAgZXhwZWN0ZWRLZXl3b3JkczogW1wiZMOpasOgXCIsIFwicGF0aWVudFwiLCBcInByZW1pw6hyZVwiLCBcImNvbnN1bHRhdGlvblwiLCBcImNvbnN1bHTDqVwiLCBcInLDqWNlbW1lbnRcIiwgXCJhbnNcIiwgXCJub3V2ZWF1XCJdLFxuICAgICAgICBhY2NlcHRhYmxlUGhyYXNlczogW1xuICAgICAgICAgIFwiamUgc3VpcyBkw6lqw6BcIixcbiAgICAgICAgICBcImMnZXN0IG1hIHByZW1pw6hyZVwiLFxuICAgICAgICAgIFwiaidhaSBkw6lqw6AgY29uc3VsdMOpXCIsXG4gICAgICAgICAgXCJqZSBzdWlzIHVuIG5vdXZlYXVcIlxuICAgICAgICBdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiVHLDqHMgYmllbiwgaidhaSBub3TDqSBsJ2luZm9ybWF0aW9uLiBBdmV6LXZvdXMgdW4gbnVtw6lybyBkZSB0w6lsw6lwaG9uZSBvw7kgbCdvbiBwZXV0IHZvdXMgam9pbmRyZSA/XCIsXG4gICAgICAgICAgcGFydGlhbDogXCJEZXB1aXMgY29tYmllbiBkZSB0ZW1wcyDDqnRlcy12b3VzIHN1aXZpKGUpIHBhciBsZSBEciBNYXJ0aW4gP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJNZXJjaSBkZSBwcsOpY2lzZXIgc2kgdm91cyBhdmV6IGTDqWrDoCBjb25zdWx0w6kgbGUgRHIgTWFydGluIG91IHNpIGMnZXN0IHZvdHJlIHByZW1pw6hyZSB2aXNpdGUuXCJcbiAgICAgICAgfVxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDcsXG4gICAgICAgIGJvdE1lc3NhZ2U6IFwiUXVlbCBlc3Qgdm90cmUgbnVtw6lybyBkZSB0w6lsw6lwaG9uZSwgcydpbCB2b3VzIHBsYcOudCA/XCIsXG4gICAgICAgIGlucHV0TW9kZTogXCJzdWdnZXN0aW9uc1wiLFxuICAgICAgICBzdWdnZXN0aW9uczogW1xuICAgICAgICAgIFwiTW9uIG51bcOpcm8gZXN0IGxlIDA2IDEyIDM0IDU2IDc4LlwiLFxuICAgICAgICAgIFwiVm91cyBwb3V2ZXogbWUgam9pbmRyZSBhdSAwMSAyMyA0NSA2NyA4OS5cIixcbiAgICAgICAgICBcIkMnZXN0IGxlIDA3IDk4IDc2IDU0IDMyLlwiXG4gICAgICAgIF0sXG4gICAgICAgIGhpbnRzOiBcIkRvbm5leiB2b3RyZSBudW3DqXJvIGRlIHTDqWzDqXBob25lLlwiLFxuICAgICAgICBleHBlY3RlZEtleXdvcmRzOiBbXCJudW3DqXJvXCIsIFwidMOpbMOpcGhvbmVcIiwgXCJqb2luZHJlXCIsIFwiMDZcIiwgXCIwMVwiLCBcIjA3XCIsIFwicG9ydGFibGVcIiwgXCJmaXhlXCJdLFxuICAgICAgICBmZWVkYmFjazoge1xuICAgICAgICAgIGNvcnJlY3Q6IFwiUGFyZmFpdCwgaidhaSBub3TDqSB2b3RyZSBudW3DqXJvLlwiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJKJ2FpIGJlc29pbiBkZSB2b3RyZSBudW3DqXJvIGRlIHTDqWzDqXBob25lIHBvdXIgY29uZmlybWVyIGxlIHJlbmRlei12b3VzLlwiXG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiA4LFxuICAgICAgICBib3RNZXNzYWdlOiBcIlRyw6hzIGJpZW4sIHZvdHJlIHJlbmRlei12b3VzIGVzdCBjb25maXJtw6kgcG91ciBbam91cl0gw6AgW2hldXJlXS4gTidvdWJsaWV6IHBhcyBkJ2FwcG9ydGVyIHZvdHJlIGNhcnRlIHZpdGFsZSBldCB1bmUgcGnDqGNlIGQnaWRlbnRpdMOpLiBTb3VoYWl0ZXotdm91cyBxdWUgamUgdm91cyBlbnZvaWUgdW4gU01TIGRlIHJhcHBlbCBsYSB2ZWlsbGUgP1wiLFxuICAgICAgICBpbnB1dE1vZGU6IFwiaHlicmlkXCIsXG4gICAgICAgIHN1Z2dlc3Rpb25zOiBbXG4gICAgICAgICAgXCJPdWksIHMnaWwgdm91cyBwbGHDrnQsIGNlIHNlcmFpdCBnZW50aWwuXCIsXG4gICAgICAgICAgXCJOb24gbWVyY2ksIGNlIG4nZXN0IHBhcyBuw6ljZXNzYWlyZS5cIixcbiAgICAgICAgICBcIkplIHByw6lmw6lyZXJhaXMgdW4gcmFwcGVsIHBhciBlbWFpbCwgc2kgcG9zc2libGUuXCJcbiAgICAgICAgXSxcbiAgICAgICAgaGludHM6IFwiSW5kaXF1ZXogc2kgdm91cyBzb3VoYWl0ZXogdW4gcmFwcGVsIHBvdXIgbGUgcmVuZGV6LXZvdXMuXCIsXG4gICAgICAgIGV4cGVjdGVkS2V5d29yZHM6IFtcIm91aVwiLCBcIm5vblwiLCBcInJhcHBlbFwiLCBcIlNNU1wiLCBcImVtYWlsXCIsIFwibsOpY2Vzc2FpcmVcIiwgXCJnZW50aWxcIiwgXCJwcsOpZsOpcmVyYWlzXCIsIFwibWVyY2lcIl0sXG4gICAgICAgIGZlZWRiYWNrOiB7XG4gICAgICAgICAgY29ycmVjdDogXCJDJ2VzdCBub3TDqS4gTm91cyB2b3VzIHZlcnJvbnMgZG9uYyBbam91cl0gw6AgW2hldXJlXS4gUGFzc2V6IHVuZSBib25uZSBqb3VybsOpZSAhXCIsXG4gICAgICAgICAgcGFydGlhbDogXCLDgCBxdWVsbGUgYWRyZXNzZSBlbWFpbCBwdWlzLWplIHZvdXMgZW52b3llciBsZSByYXBwZWwgP1wiLFxuICAgICAgICAgIGluY29ycmVjdDogXCJTb3VoYWl0ZXotdm91cyByZWNldm9pciB1biByYXBwZWwgcG91ciB2b3RyZSByZW5kZXotdm91cyA/XCJcbiAgICAgICAgfVxuICAgICAgfVxuICAgIF0sXG4gICAgY29tcGxldGlvbk1lc3NhZ2U6IFwiRsOpbGljaXRhdGlvbnMgISBWb3VzIGF2ZXogcsOpdXNzaSDDoCBwcmVuZHJlIHVuIHJlbmRlei12b3VzIG3DqWRpY2FsIHBhciB0w6lsw6lwaG9uZSBlbiBmcmFuw6dhaXMuXCIsXG4gICAgbGVhcm5pbmdPYmplY3RpdmVzOiBbXG4gICAgICBcIlByZW5kcmUgdW4gcmVuZGV6LXZvdXMgcGFyIHTDqWzDqXBob25lXCIsXG4gICAgICBcIkV4cGxpcXVlciBsYSByYWlzb24gZCd1bmUgY29uc3VsdGF0aW9uXCIsXG4gICAgICBcIkluZGlxdWVyIHNlcyBkaXNwb25pYmlsaXTDqXNcIixcbiAgICAgIFwiRG9ubmVyIHNlcyBjb29yZG9ubsOpZXMgcGVyc29ubmVsbGVzXCIsXG4gICAgICBcIkNvbXByZW5kcmUgbGVzIGluZm9ybWF0aW9ucyBwcmF0aXF1ZXNcIlxuICAgIF0sXG4gICAgZ3JhbW1hcjoge1xuICAgICAgcG9pbnRzOiBbXG4gICAgICAgIFwiQ29uZGl0aW9ubmVsIGRlIHBvbGl0ZXNzZVwiLFxuICAgICAgICBcIlF1ZXN0aW9ucyBhdmVjIGludmVyc2lvblwiLFxuICAgICAgICBcIkV4cHJlc3Npb25zIGRlIHRlbXBzIGV0IGQnaG9yYWlyZVwiLFxuICAgICAgICBcIlZlcmJlcyBhdSBmdXR1ciBwcm9jaGVcIlxuICAgICAgXVxuICAgIH1cbiAgfTtcblxuICBleHBvcnQgZGVmYXVsdCBtYWtpbmdBcHBvaW50bWVudHM7XG4iXSwibWFw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

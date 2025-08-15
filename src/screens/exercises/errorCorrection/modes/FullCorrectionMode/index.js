@@ -1,6 +1,7 @@
 // FullCorrectionMode/index.js - VERSION REFACTORISÉE (HeroCard + ContentSection)
 
 import { View, TextInput } from "react-native";
+import PropTypes from "prop-types";
 import HeroCard from "../../../../../components/ui/HeroCard";
 import ContentSection from "../../../../../components/ui/ContentSection";
 import createStyles from "./style";
@@ -9,7 +10,7 @@ import createStyles from "./style";
  * 🔧 FullCorrectionMode - Version Refactorisée avec composants génériques
  * Remplace Card par HeroCard + ContentSection
  * 
- * @param {Object} exercise - Exercice actuel
+ * @param {Object} exercise - Exercice actuel avec text, explanation, correctedText
  * @param {string} userCorrection - Texte corrigé par l'utilisateur
  * @param {function} onChangeUserCorrection - Callback pour changer le texte
  * @param {boolean} showFeedback - Afficher le feedback
@@ -76,6 +77,27 @@ const FullCorrectionMode = ({
       )}
     </View>
   );
+};
+
+// PropTypes pour la validation des props
+FullCorrectionMode.propTypes = {
+  exercise: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    explanation: PropTypes.string,
+    correctedText: PropTypes.string,
+  }).isRequired,
+  userCorrection: PropTypes.string.isRequired,
+  onChangeUserCorrection: PropTypes.func.isRequired,
+  showFeedback: PropTypes.bool,
+  isCorrect: PropTypes.bool,
+  levelColor: PropTypes.string,
+};
+
+// Valeurs par défaut
+FullCorrectionMode.defaultProps = {
+  showFeedback: false,
+  isCorrect: false,
+  levelColor: "#5E60CE",
 };
 
 export default FullCorrectionMode;

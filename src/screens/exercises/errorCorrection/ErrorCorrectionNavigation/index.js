@@ -1,11 +1,22 @@
 // src/components/screens/exercises/errorCorrection/ErrorCorrectionNavigation/index.js
 import { View } from "react-native";
+import PropTypes from "prop-types";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import styles from "./style";
 
 /**
  * Composant de navigation pour les exercices de correction d'erreurs
  * Réutilise le composant NavigationButtons générique
+ * 
+ * @param {function} onNext - Callback pour passer à l'exercice suivant ou vérifier
+ * @param {function} onPrevious - Callback pour revenir à l'exercice précédent
+ * @param {function} onExit - Callback pour sortir/passer l'exercice
+ * @param {number} currentIndex - Index actuel de l'exercice (0-based)
+ * @param {number} totalCount - Nombre total d'exercices
+ * @param {boolean} disableNext - Désactiver le bouton suivant
+ * @param {boolean} isLastExercise - Indique si c'est le dernier exercice
+ * @param {boolean} showFeedback - Indique si on affiche le feedback après vérification
+ * @param {string} levelColor - Couleur principale du niveau
  */
 const ErrorCorrectionNavigation = ({
   onNext,
@@ -50,5 +61,24 @@ const ErrorCorrectionNavigation = ({
   );
 };
 
-export default ErrorCorrectionNavigation;
+// PropTypes pour la validation des props
+ErrorCorrectionNavigation.propTypes = {
+  onNext: PropTypes.func.isRequired,
+  onPrevious: PropTypes.func.isRequired,
+  onExit: PropTypes.func.isRequired,
+  currentIndex: PropTypes.number.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  disableNext: PropTypes.bool,
+  isLastExercise: PropTypes.bool,
+  showFeedback: PropTypes.bool,
+  levelColor: PropTypes.string.isRequired,
+};
 
+// Valeurs par défaut
+ErrorCorrectionNavigation.defaultProps = {
+  disableNext: false,
+  isLastExercise: false,
+  showFeedback: false,
+};
+
+export default ErrorCorrectionNavigation;

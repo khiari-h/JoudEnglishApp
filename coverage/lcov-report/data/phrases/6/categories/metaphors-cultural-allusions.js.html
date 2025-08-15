@@ -1,0 +1,643 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/6/categories/metaphors-cultural-allusions.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/6/categories</a> metaphors-cultural-allusions.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/c2/categories/metaphors-cultural-allusions.js
+&nbsp;
+const metaphorsCulturalAllusions = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    categoryId: 52,
+    english: "This delicate balance of power resembles a Westphalian chess game where... must navigate between competing spheres of influence, knowing that a single miscalculated move could trigger a cascade of...",
+    translation: "Cet équilibre délicat du pouvoir ressemble à un jeu d'échecs westphalien où... doit naviguer entre des sphères d'influence concurrentes, sachant qu'un seul mouvement mal calculé pourrait déclencher une cascade de...",
+    context: "Référence au système westphalien et à la métaphore des échecs pour la stratégie géopolitique",
+    examples: [
+      {
+        english: "This delicate balance of power in the South China Sea resembles a Westphalian chess game where regional powers must navigate between competing spheres of influence, knowing that a single miscalculated move in territorial claims could trigger a cascade of military responses that would fundamentally alter the strategic architecture of the entire Indo-Pacific region.",
+        translation: "Cet équilibre délicat du pouvoir en mer de Chine méridionale ressemble à un jeu d'échecs westphalien où les puissances régionales doivent naviguer entre des sphères d'influence concurrentes, sachant qu'un seul mouvement mal calculé dans les revendications territoriales pourrait déclencher une cascade de réponses militaires qui altéreraient fondamentalement l'architecture stratégique de toute la région Indo-Pacifique.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "Like Clausewitz's fog of war descending upon..., the opacity surrounding... makes strategic calculations increasingly unreliable, forcing decision-makers to operate on incomplete intelligence while the stakes of...",
+    translation: "Comme le brouillard de guerre de Clausewitz descendant sur..., l'opacité entourant... rend les calculs stratégiques de plus en plus peu fiables, forçant les décideurs à opérer sur des renseignements incomplets tandis que les enjeux de...",
+    context: "Allusion à Clausewitz et au concept de 'brouillard de guerre' pour l'incertitude géopolitique",
+    examples: [
+      {
+        english: "Like Clausewitz's fog of war descending upon modern cyber warfare, the opacity surrounding state-sponsored digital operations makes strategic calculations increasingly unreliable, forcing national security decision-makers to operate on incomplete intelligence while the stakes of misattribution could lead to diplomatic crises or unintended escalation between nuclear powers.",
+        translation: "Comme le brouillard de guerre de Clausewitz descendant sur la guerre cybernétique moderne, l'opacité entourant les opérations numériques parrainées par l'État rend les calculs stratégiques de plus en plus peu fiables, forçant les décideurs de sécurité nationale à opérer sur des renseignements incomplets tandis que les enjeux d'attribution erronée pourraient mener à des crises diplomatiques ou une escalade non intentionnelle entre puissances nucléaires.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "The current alliance structure evokes the Concert of Europe, where... requires constant diplomatic choreography to maintain harmony among... whose interests align only when faced with the greater threat of...",
+    translation: "La structure d'alliance actuelle évoque le Concert de l'Europe, où... nécessite une chorégraphie diplomatique constante pour maintenir l'harmonie parmi... dont les intérêts ne s'alignent que face à la menace plus grande de...",
+    context: "Référence historique au Concert de l'Europe pour décrire les alliances géopolitiques modernes",
+    examples: [
+      {
+        english: "The current NATO alliance structure evokes the Concert of Europe, where maintaining collective security requires constant diplomatic choreography to harmonize relations among member states whose national interests align only when faced with the greater threat of authoritarian expansion, while internal divisions over burden-sharing and strategic priorities threaten organizational cohesion.",
+        translation: "La structure d'alliance OTAN actuelle évoque le Concert de l'Europe, où maintenir la sécurité collective nécessite une chorégraphie diplomatique constante pour harmoniser les relations parmi les États membres dont les intérêts nationaux ne s'alignent que face à la menace plus grande de l'expansion autoritaire, tandis que les divisions internes sur le partage du fardeau et les priorités stratégiques menacent la cohésion organisationnelle.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "This Thucydides Trap scenario suggests that... is inexorably drawn toward confrontation with..., as history demonstrates that the rise of... inevitably challenges the established order dominated by...",
+    translation: "Ce scénario de piège de Thucydide suggère que... est inexorablement attiré vers la confrontation avec..., car l'histoire démontre que la montée de... défie inévitablement l'ordre établi dominé par...",
+    context: "Référence au piège de Thucydide pour analyser les tensions entre puissances émergentes et établies",
+    examples: [
+      {
+        english: "This Thucydides Trap scenario suggests that China is inexorably drawn toward confrontation with the United States, as history demonstrates that the rise of emerging superpowers inevitably challenges the established international order dominated by existing hegemons, creating structural tensions that require extraordinary statesmanship to resolve peacefully.",
+        translation: "Ce scénario de piège de Thucydide suggère que la Chine est inexorablement attirée vers la confrontation avec les États-Unis, car l'histoire démontre que la montée de superpuissances émergentes défie inévitablement l'ordre international établi dominé par les hégémons existants, créant des tensions structurelles qui nécessitent une diplomatie d'État extraordinaire pour se résoudre pacifiquement.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "The geopolitical landscape mirrors Metternich's European system, where... serves as the indispensable mediator between... ensuring that no single power accumulates sufficient influence to upset the carefully calibrated equilibrium that prevents...",
+    translation: "Le paysage géopolitique reflète le système européen de Metternich, où... sert de médiateur indispensable entre... s'assurant qu'aucune puissance unique n'accumule suffisamment d'influence pour bouleverser l'équilibre soigneusement calibré qui empêche...",
+    context: "Référence au système de Metternich pour analyser l'équilibre des pouvoirs moderne",
+    examples: [
+      {
+        english: "The Middle Eastern geopolitical landscape mirrors Metternich's European balance-of-power system, where regional powers like Turkey serve as indispensable mediators between competing blocs, ensuring that no single alliance accumulates sufficient influence to upset the carefully calibrated equilibrium that prevents either Iranian hegemony or complete Western dominance in the region.",
+        translation: "Le paysage géopolitique du Moyen-Orient reflète le système d'équilibre des pouvoirs européen de Metternich, où des puissances régionales comme la Turquie servent de médiateurs indispensables entre des blocs concurrents, s'assurant qu'aucune alliance unique n'accumule suffisamment d'influence pour bouleverser l'équilibre soigneusement calibré qui empêche soit l'hégémonie iranienne soit la domination occidentale complète dans la région.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "Like Bismarck's diplomatic revolution, the emerging... represents a fundamental realignment where traditional adversaries discover common cause against... forcing a complete recalibration of alliance structures that seemed immutable since...",
+    translation: "Comme la révolution diplomatique de Bismarck, l'émergent... représente un réalignement fondamental où des adversaires traditionnels découvrent une cause commune contre... forçant une recalibration complète des structures d'alliance qui semblaient immuables depuis...",
+    context: "Référence à la diplomatie de Bismarck pour décrire les changements d'alliance géopolitiques",
+    examples: [
+      {
+        english: "Like Bismarck's diplomatic revolution that isolated France, the emerging Sino-Russian partnership represents a fundamental realignment where traditional rivals discover common cause against Western influence, forcing a complete recalibration of global alliance structures that seemed immutable since the end of the Cold War and fundamentally challenging the liberal international order.",
+        translation: "Comme la révolution diplomatique de Bismarck qui isola la France, le partenariat sino-russe émergent représente un réalignement fondamental où des rivaux traditionnels découvrent une cause commune contre l'influence occidentale, forçant une recalibration complète des structures d'alliance globales qui semblaient immuables depuis la fin de la Guerre froide et défiant fondamentalement l'ordre international libéral.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "This Melian dialogue dynamic reveals the brutal realities of... where appeals to justice and international law become meaningless when... faces the overwhelming power of... and must choose between submission and destruction.",
+    translation: "Cette dynamique de dialogue mélien révèle les réalités brutales de... où les appels à la justice et au droit international deviennent sans signification quand... fait face au pouvoir écrasant de... et doit choisir entre la soumission et la destruction.",
+    context: "Référence au dialogue des Méliens de Thucydide sur la loi du plus fort en relations internationales",
+    examples: [
+      {
+        english: "This Melian dialogue dynamic reveals the brutal realities of contemporary international relations, where smaller nations' appeals to sovereignty and international law become meaningless when they face the overwhelming economic or military pressure of major powers and must choose between strategic submission and potential economic or political destruction.",
+        translation: "Cette dynamique de dialogue mélien révèle les réalités brutales des relations internationales contemporaines, où les appels des petites nations à la souveraineté et au droit international deviennent sans signification quand elles font face à la pression économique ou militaire écrasante des grandes puissances et doivent choisir entre la soumission stratégique et la destruction économique ou politique potentielle.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "The strategy resembles Napoleon's Continental System, where... attempts to achieve through economic warfare what... cannot accomplish through conventional means, yet such blockades historically prove vulnerable to...",
+    translation: "La stratégie ressemble au Système continental de Napoléon, où... tente d'accomplir par la guerre économique ce que... ne peut accomplir par des moyens conventionnels, pourtant de tels blocus s'avèrent historiquement vulnérables à...",
+    context: "Référence au Système continental de Napoléon pour analyser la guerre économique moderne",
+    examples: [
+      {
+        english: "The strategy resembles Napoleon's Continental System, where major powers attempt to achieve through comprehensive economic sanctions what they cannot accomplish through conventional diplomatic pressure, yet such modern blockades historically prove vulnerable to third-party circumvention and often strengthen the resolve of targeted nations while imposing costs on the sanctioning coalition.",
+        translation: "La stratégie ressemble au Système continental de Napoléon, où les grandes puissances tentent d'accomplir par des sanctions économiques complètes ce qu'elles ne peuvent accomplir par la pression diplomatique conventionnelle, pourtant de tels blocus modernes s'avèrent historiquement vulnérables au contournement par des tiers et renforcent souvent la résolution des nations ciblées tout en imposant des coûts à la coalition sanctionnatrice.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "This Great Game rivalry echoes the nineteenth-century competition between... as contemporary powers vie for influence over... using proxies and economic leverage rather than direct territorial occupation to secure strategic advantages in...",
+    translation: "Cette rivalité du Grand Jeu fait écho à la compétition du dix-neuvième siècle entre... alors que les puissances contemporaines rivalisent pour l'influence sur... utilisant des proxies et un levier économique plutôt que l'occupation territoriale directe pour sécuriser des avantages stratégiques dans...",
+    context: "Référence au Grand Jeu anglo-russe pour analyser les rivalités géopolitiques modernes",
+    examples: [
+      {
+        english: "This Great Game rivalry echoes the nineteenth-century competition between Britain and Russia, as contemporary superpowers vie for influence over Central Asian energy resources, using economic partnerships and security guarantees rather than direct territorial occupation to secure strategic advantages in this crucial corridor between Europe, Asia, and the Middle East.",
+        translation: "Cette rivalité du Grand Jeu fait écho à la compétition du dix-neuvième siècle entre la Grande-Bretagne et la Russie, alors que les superpuissances contemporaines rivalisent pour l'influence sur les ressources énergétiques d'Asie centrale, utilisant des partenariats économiques et des garanties de sécurité plutôt que l'occupation territoriale directe pour sécuriser des avantages stratégiques dans ce corridor crucial entre l'Europe, l'Asie et le Moyen-Orient.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "Like Cassandra cursed to speak prophecies that none would believe, geopolitical analysts warning about... find their accurate predictions dismissed as alarmism until the very scenarios they described begin to unfold with devastating precision, vindicating their foresight while...",
+    translation: "Comme Cassandre maudite de dire des prophéties que personne ne croirait, les analystes géopolitiques avertissant à propos de... trouvent leurs prédictions exactes rejetées comme de l'alarmisme jusqu'à ce que les scénarios mêmes qu'ils décrivaient commencent à se dérouler avec une précision dévastatrice, justifiant leur clairvoyance tandis que...",
+    context: "Allusion mythologique à Cassandre pour décrire les avertissements géopolitiques ignorés",
+    examples: [
+      {
+        english: "Like Cassandra cursed to speak prophecies that none would believe, geopolitical analysts warning about escalating regional tensions find their accurate predictions dismissed as alarmism by diplomatic circles until the very conflicts they described begin to unfold with devastating precision, vindicating their strategic foresight while demonstrating the tragic costs of ignoring expert analysis in favor of wishful thinking.",
+        translation: "Comme Cassandre maudite de dire des prophéties que personne ne croirait, les analystes géopolitiques avertissant des tensions régionales croissantes trouvent leurs prédictions exactes rejetées comme de l'alarmisme par les cercles diplomatiques jusqu'à ce que les conflits mêmes qu'ils décrivaient commencent à se dérouler avec une précision dévastatrice, justifiant leur clairvoyance stratégique tout en démontrant les coûts tragiques d'ignorer l'analyse experte en faveur de la pensée magique.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "The situation exemplifies Mackinder's Heartland Theory, where control over... becomes the fulcrum for projecting power across..., as whoever dominates these strategic territories can effectively dictate the terms of engagement for...",
+    translation: "La situation exemplifie la Théorie du Heartland de Mackinder, où le contrôle sur... devient le point d'appui pour projeter le pouvoir à travers..., car celui qui domine ces territoires stratégiques peut effectivement dicter les termes d'engagement pour...",
+    context: "Référence à la théorie géopolitique de Mackinder sur l'importance du contrôle territorial",
+    examples: [
+      {
+        english: "The situation exemplifies Mackinder's Heartland Theory, where control over Central Asian energy corridors becomes the fulcrum for projecting economic and military power across Eurasia, as whoever dominates these strategic pipeline routes can effectively dictate the terms of energy security for both European consumers and Asian manufacturers dependent on reliable supply chains.",
+        translation: "La situation exemplifie la Théorie du Heartland de Mackinder, où le contrôle sur les corridors énergétiques d'Asie centrale devient le point d'appui pour projeter le pouvoir économique et militaire à travers l'Eurasie, car celui qui domine ces routes de pipeline stratégiques peut effectivement dicter les termes de sécurité énergétique pour les consommateurs européens et les manufacturiers asiatiques dépendants de chaînes d'approvisionnement fiables.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "This spheres of influence arrangement recalls the Congress of Vienna, where... seeks to establish a new concert of powers that can manage regional conflicts without triggering the kind of systemic war that characterized...",
+    translation: "Cet arrangement de sphères d'influence rappelle le Congrès de Vienne, où... cherche à établir un nouveau concert des puissances qui peut gérer les conflits régionaux sans déclencher le type de guerre systémique qui caractérisait...",
+    context: "Référence au Congrès de Vienne pour analyser les tentatives modernes d'organisation internationale",
+    examples: [
+      {
+        english: "This spheres of influence arrangement recalls the Congress of Vienna, where major powers seek to establish a new concert of nations that can manage regional conflicts and territorial disputes without triggering the kind of systemic great power war that characterized the twentieth century, though critics question whether such managed competition can remain stable in an era of rapid technological change.",
+        translation: "Cet arrangement de sphères d'influence rappelle le Congrès de Vienne, où les grandes puissances cherchent à établir un nouveau concert des nations qui peut gérer les conflits régionaux et les disputes territoriales sans déclencher le type de guerre systémique entre grandes puissances qui caractérisait le vingtième siècle, bien que les critiques questionnent si une telle compétition gérée peut rester stable dans une ère de changement technologique rapide.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "The emerging multipolar order resembles the complex alliance system preceding 1914, where... creates a web of overlapping commitments that increases the risk of... transforming local conflicts into broader conflagrations through automatic escalation mechanisms.",
+    translation: "L'ordre multipolaire émergent ressemble au système d'alliance complexe précédant 1914, où... crée une toile d'engagements qui se chevauchent qui augmente le risque de... transformant les conflits locaux en conflagrations plus larges par des mécanismes d'escalade automatique.",
+    context: "Référence au système d'alliances pré-1914 pour avertir des risques d'escalade moderne",
+    examples: [
+      {
+        english: "The emerging multipolar order resembles the complex alliance system preceding 1914, where mutual defense treaties and strategic partnerships create a web of overlapping commitments that increases the risk of inadvertent escalation, potentially transforming local conflicts into broader regional conflagrations through automatic escalation mechanisms that decision-makers struggle to control once activated.",
+        translation: "L'ordre multipolaire émergent ressemble au système d'alliance complexe précédant 1914, où les traités de défense mutuelle et les partenariats stratégiques créent une toile d'engagements qui se chevauchent qui augmente le risque d'escalade inadvertante, transformant potentiellement les conflits locaux en conflagrations régionales plus larges par des mécanismes d'escalade automatique que les décideurs luttent à contrôler une fois activés.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "This balance of terror doctrine echoes Cold War mutual assured destruction, where... maintains stability through the paradoxical logic that... can only be preserved by demonstrating the credible capacity for...",
+    translation: "Cette doctrine d'équilibre de la terreur fait écho à la destruction mutuelle assurée de la Guerre froide, où... maintient la stabilité par la logique paradoxale que... ne peut être préservée qu'en démontrant la capacité crédible de...",
+    context: "Référence à la doctrine MAD pour analyser les équilibres de dissuasion contemporains",
+    examples: [
+      {
+        english: "This balance of terror doctrine echoes Cold War mutual assured destruction, where regional nuclear powers maintain strategic stability through the paradoxical logic that peace can only be preserved by demonstrating the credible capacity for unacceptable retaliation, though this deterrence equilibrium becomes increasingly fragile as more actors acquire advanced weapons systems.",
+        translation: "Cette doctrine d'équilibre de la terreur fait écho à la destruction mutuelle assurée de la Guerre froide, où les puissances nucléaires régionales maintiennent la stabilité stratégique par la logique paradoxale que la paix ne peut être préservée qu'en démontrant la capacité crédible de représailles inacceptables, bien que cet équilibre de dissuasion devienne de plus en plus fragile alors que plus d'acteurs acquièrent des systèmes d'armes avancés.",
+      }
+    ],
+  },
+  {
+    categoryId: 52,
+    english: "The strategy mirrors Sun Tzu's supreme excellence, where... achieves its objectives through... without resorting to open warfare, demonstrating that the highest form of statecraft involves... rather than...",
+    translation: "La stratégie reflète l'excellence suprême de Sun Tzu, où... atteint ses objectifs par... sans recourir à la guerre ouverte, démontrant que la forme la plus élevée de l'art d'État implique... plutôt que...",
+    context: "Référence à Sun Tzu pour analyser la stratégie géopolitique indirecte",
+    examples: [
+      {
+        english: "The strategy mirrors Sun Tzu's supreme excellence of winning without fighting, where emerging powers achieve their geopolitical objectives through economic leverage and diplomatic isolation rather than military confrontation, demonstrating that the highest form of modern statecraft involves reshaping the international system through patient accumulation of influence rather than dramatic displays of force.",
+        translation: "La stratégie reflète l'excellence suprême de Sun Tzu de gagner sans combattre, où les puissances émergentes atteignent leurs objectifs géopolitiques par le levier économique et l'isolement diplomatique plutôt que la confrontation militaire, démontrant que la forme la plus élevée de l'art d'État moderne implique de remodeler le système international par l'accumulation patiente d'influence plutôt que des démonstrations dramatiques de force.",
+      }
+    ],
+  }
+];
+&nbsp;
+export default metaphorsCulturalAllusions;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-15T00:50:51.431Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    

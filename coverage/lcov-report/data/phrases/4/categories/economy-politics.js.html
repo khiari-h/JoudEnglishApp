@@ -1,0 +1,859 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for data/phrases/4/categories/economy-politics.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">data/phrases/4/categories</a> economy-politics.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/data/exercises/phrases/b2/categories/economy-politics.js
+&nbsp;
+const economyPolitics = <span class="cstat-no" title="statement not covered" >[</span>
+  {
+    categoryId: 44,
+    english: "Recent economic indicators suggest that the economy is headed toward... despite concerns about...",
+    translation: "Les indicateurs économiques récents suggèrent que l'économie se dirige vers... malgré les préoccupations concernant...",
+    context: "Analyser les tendances économiques actuelles",
+    examples: [
+      {
+        english: "Recent economic indicators suggest that the economy is headed toward modest but sustainable growth despite concerns about persistent inflation in the housing and healthcare sectors, with employment figures showing steady improvement and consumer confidence reaching its highest level in eighteen months.",
+        translation: "Les indicateurs économiques récents suggèrent que l'économie se dirige vers une croissance modeste mais durable malgré les préoccupations concernant l'inflation persistante dans les secteurs du logement et des soins de santé, avec des chiffres d'emploi montrant une amélioration constante et la confiance des consommateurs atteignant son plus haut niveau depuis dix-huit mois.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The government's fiscal policy aims to address... while simultaneously attempting to...",
+    translation: "La politique fiscale du gouvernement vise à résoudre... tout en tentant simultanément de...",
+    context: "Expliquer les objectifs d'une politique fiscale",
+    examples: [
+      {
+        english: "The government's fiscal policy aims to address the growing budget deficit while simultaneously attempting to stimulate investment in renewable energy infrastructure through targeted tax incentives and public-private partnership initiatives that are designed to create long-term sustainable employment in economically disadvantaged regions.",
+        translation: "La politique fiscale du gouvernement vise à résoudre le déficit budgétaire croissant tout en tentant simultanément de stimuler l'investissement dans les infrastructures d'énergie renouvelable grâce à des incitations fiscales ciblées et des initiatives de partenariat public-privé qui sont conçues pour créer des emplois durables à long terme dans les régions économiquement défavorisées.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The central bank's decision to... signals a shift in monetary policy that could potentially impact...",
+    translation: "La décision de la banque centrale de... signale un changement dans la politique monétaire qui pourrait potentiellement affecter...",
+    context: "Discuter les implications d'une décision de politique monétaire",
+    examples: [
+      {
+        english: "The central bank's decision to raise interest rates by 50 basis points signals a shift in monetary policy that could potentially impact the real estate market, with higher borrowing costs likely to moderate the rapid price appreciation we've witnessed over the past two years and possibly lead to a more balanced market with greater negotiating power for buyers.",
+        translation: "La décision de la banque centrale d'augmenter les taux d'intérêt de 50 points de base signale un changement dans la politique monétaire qui pourrait potentiellement affecter le marché immobilier, avec des coûts d'emprunt plus élevés susceptibles de modérer l'appréciation rapide des prix que nous avons observée au cours des deux dernières années et possiblement conduire à un marché plus équilibré avec un plus grand pouvoir de négociation pour les acheteurs.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "Analysis of the latest employment figures reveals a complex picture, with growth in... offset by contraction in...",
+    translation: "L'analyse des derniers chiffres de l'emploi révèle une image complexe, avec une croissance dans... compensée par une contraction dans...",
+    context: "Présenter une analyse nuancée des données d'emploi",
+    examples: [
+      {
+        english: "Analysis of the latest employment figures reveals a complex picture, with growth in technology, healthcare, and professional services offset by contraction in manufacturing, retail, and hospitality sectors, suggesting that the economic recovery remains uneven and highlighting the need for targeted policies to address structural changes in the labor market and support workers affected by industry-specific downturns.",
+        translation: "L'analyse des derniers chiffres de l'emploi révèle une image complexe, avec une croissance dans les secteurs de la technologie, des soins de santé et des services professionnels compensée par une contraction dans les secteurs de la fabrication, du commerce de détail et de l'hôtellerie, suggérant que la reprise économique reste inégale et soulignant la nécessité de politiques ciblées pour aborder les changements structurels sur le marché du travail et soutenir les travailleurs affectés par des ralentissements spécifiques à certaines industries.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The trade agreement is expected to boost... while critics argue that it could lead to...",
+    translation: "L'accord commercial devrait stimuler... tandis que les critiques soutiennent qu'il pourrait conduire à...",
+    context: "Présenter différentes perspectives sur un accord commercial",
+    examples: [
+      {
+        english: "The trade agreement is expected to boost exports in the agricultural and technology sectors while critics argue that it could lead to significant job losses in manufacturing and weaken environmental and labor regulations, as companies might relocate production to regions with less stringent standards in order to reduce costs and maximize profits.",
+        translation: "L'accord commercial devrait stimuler les exportations dans les secteurs agricole et technologique tandis que les critiques soutiennent qu'il pourrait conduire à des pertes d'emplois significatives dans la fabrication et affaiblir les réglementations environnementales et du travail, car les entreprises pourraient délocaliser la production vers des régions avec des normes moins strictes afin de réduire les coûts et maximiser les profits.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "Political analysts attribute the election outcome to a combination of factors, including...",
+    translation: "Les analystes politiques attribuent le résultat de l'élection à une combinaison de facteurs, notamment...",
+    context: "Analyser les facteurs qui ont influencé un résultat électoral",
+    examples: [
+      {
+        english: "Political analysts attribute the election outcome to a combination of factors, including widespread economic dissatisfaction following the pandemic-induced recession, demographic shifts in key suburban districts, the incumbent's declining approval ratings on issues of public safety, and an exceptionally well-organized grassroots campaign by the opposition that successfully mobilized previously disengaged voters through targeted digital outreach strategies.",
+        translation: "Les analystes politiques attribuent le résultat de l'élection à une combinaison de facteurs, notamment une insatisfaction économique généralisée suite à la récession induite par la pandémie, des changements démographiques dans des districts suburbains clés, la baisse des taux d'approbation du titulaire sur les questions de sécurité publique, et une campagne exceptionnellement bien organisée par l'opposition au niveau local qui a réussi à mobiliser des électeurs auparavant désengagés grâce à des stratégies de sensibilisation numérique ciblées.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The proposed legislation aims to reform... by introducing measures such as...",
+    translation: "La législation proposée vise à réformer... en introduisant des mesures telles que...",
+    context: "Décrire les objectifs et mesures d'une proposition législative",
+    examples: [
+      {
+        english: "The proposed legislation aims to reform the healthcare system by introducing measures such as expanding coverage to previously uninsured populations, implementing price transparency requirements for hospitals and pharmaceutical companies, establishing an independent review board to evaluate medical procedure costs, and creating financial incentives for preventative care practices that could reduce long-term healthcare expenditures.",
+        translation: "La législation proposée vise à réformer le système de santé en introduisant des mesures telles que l'extension de la couverture aux populations auparavant non assurées, la mise en œuvre d'exigences de transparence des prix pour les hôpitaux et les sociétés pharmaceutiques, l'établissement d'un comité d'examen indépendant pour évaluer les coûts des procédures médicales, et la création d'incitations financières pour les pratiques de soins préventifs qui pourraient réduire les dépenses de santé à long terme.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The financial markets reacted strongly to the announcement, with... experiencing significant volatility due to...",
+    translation: "Les marchés financiers ont réagi fortement à l'annonce, avec... connaissant une volatilité significative en raison de...",
+    context: "Décrire la réaction des marchés financiers à un événement",
+    examples: [
+      {
+        english: "The financial markets reacted strongly to the announcement of unexpected regulatory changes in the technology sector, with major tech stocks experiencing significant volatility due to investor uncertainty about compliance costs and potential impacts on business models, while simultaneously driving capital toward more traditional value stocks and defensive assets as portfolio managers rapidly adjusted their risk exposures.",
+        translation: "Les marchés financiers ont réagi fortement à l'annonce de changements réglementaires inattendus dans le secteur technologique, avec les principales actions technologiques connaissant une volatilité significative en raison de l'incertitude des investisseurs concernant les coûts de conformité et les impacts potentiels sur les modèles d'affaires, tout en dirigeant simultanément le capital vers des actions de valeur plus traditionnelles et des actifs défensifs alors que les gestionnaires de portefeuille ajustaient rapidement leurs expositions au risque.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The economic disparity between... and... continues to widen, raising concerns about...",
+    translation: "La disparité économique entre... et... continue de s'élargir, suscitant des inquiétudes concernant...",
+    context: "Aborder les questions d'inégalité économique",
+    examples: [
+      {
+        english: "The economic disparity between urban centers and rural communities continues to widen, raising concerns about political polarization, unequal access to essential services like healthcare and education, and the long-term sustainability of smaller communities that are experiencing population decline as younger residents migrate to cities in search of greater economic opportunities and career advancement possibilities.",
+        translation: "La disparité économique entre les centres urbains et les communautés rurales continue de s'élargir, suscitant des inquiétudes concernant la polarisation politique, l'accès inégal aux services essentiels comme les soins de santé et l'éducation, et la durabilité à long terme des petites communautés qui connaissent un déclin démographique alors que les résidents plus jeunes migrent vers les villes à la recherche de plus grandes opportunités économiques et possibilités d'avancement de carrière.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The government's budget allocates significant resources to... while critics argue that insufficient attention is being paid to...",
+    translation: "Le budget du gouvernement alloue des ressources importantes à... tandis que les critiques soutiennent qu'une attention insuffisante est accordée à...",
+    context: "Discuter les priorités budgétaires d'un gouvernement",
+    examples: [
+      {
+        english: "The government's budget allocates significant resources to defense and infrastructure development while critics argue that insufficient attention is being paid to addressing the growing affordability crisis in housing, healthcare, and education that is placing increasing financial pressure on middle and lower-income households and potentially limiting social mobility for future generations.",
+        translation: "Le budget du gouvernement alloue des ressources importantes à la défense et au développement des infrastructures tandis que les critiques soutiennent qu'une attention insuffisante est accordée à la résolution de la crise croissante d'accessibilité financière dans le logement, les soins de santé et l'éducation qui exerce une pression financière croissante sur les ménages à revenus moyens et faibles et limite potentiellement la mobilité sociale pour les générations futures.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The survey indicates shifting public attitudes toward..., with a majority now supporting... compared to...",
+    translation: "L'enquête indique une évolution des attitudes du public envers..., avec une majorité soutenant désormais... comparé à...",
+    context: "Présenter l'évolution de l'opinion publique sur une question politique",
+    examples: [
+      {
+        english: "The survey indicates shifting public attitudes toward environmental policy, with a majority now supporting stricter regulations on carbon emissions and increased investment in renewable energy infrastructure compared to just five years ago when economic concerns consistently outranked environmental priorities—a change that analysts attribute to the increasing visibility of climate change impacts and declining costs of green technologies.",
+        translation: "L'enquête indique une évolution des attitudes du public envers la politique environnementale, avec une majorité soutenant désormais des réglementations plus strictes sur les émissions de carbone et un investissement accru dans les infrastructures d'énergie renouvelable comparé à il y a seulement cinq ans, lorsque les préoccupations économiques surpassaient constamment les priorités environnementales—un changement que les analystes attribuent à la visibilité croissante des impacts du changement climatique et à la baisse des coûts des technologies vertes.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The new tax policy is designed to incentivize... while discouraging...",
+    translation: "La nouvelle politique fiscale est conçue pour encourager... tout en décourageant...",
+    context: "Expliquer les objectifs d'une politique fiscale",
+    examples: [
+      {
+        english: "The new tax policy is designed to incentivize long-term investment in domestic manufacturing and research development while discouraging corporate tax avoidance through offshore profit shifting, featuring graduated rate reductions for companies that create high-paying jobs in economically disadvantaged regions and expanded deductions for investments in worker training programs that develop advanced technical skills.",
+        translation: "La nouvelle politique fiscale est conçue pour encourager l'investissement à long terme dans la fabrication nationale et le développement de la recherche tout en décourageant l'évasion fiscale des entreprises par le biais du transfert de bénéfices à l'étranger, comportant des réductions graduées de taux pour les entreprises qui créent des emplois bien rémunérés dans les régions économiquement défavorisées et des déductions élargies pour les investissements dans des programmes de formation des travailleurs qui développent des compétences techniques avancées.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "Political polarization has intensified around issues such as..., making bipartisan cooperation increasingly difficult on even...",
+    translation: "La polarisation politique s'est intensifiée autour de questions telles que..., rendant la coopération bipartite de plus en plus difficile même sur...",
+    context: "Analyser les défis de la polarisation politique",
+    examples: [
+      {
+        english: "Political polarization has intensified around issues such as immigration policy, healthcare reform, and environmental regulations, making bipartisan cooperation increasingly difficult on even traditionally consensus areas like infrastructure development and disaster relief funding, as each party's base increasingly views compromise as betrayal and social media algorithms reinforce exposure to ideologically aligned content that deepens existing divisions.",
+        translation: "La polarisation politique s'est intensifiée autour de questions telles que la politique d'immigration, la réforme des soins de santé et les réglementations environnementales, rendant la coopération bipartite de plus en plus difficile même sur des domaines traditionnellement consensuels comme le développement des infrastructures et le financement des secours en cas de catastrophe, car la base de chaque parti considère de plus en plus le compromis comme une trahison et les algorithmes des médias sociaux renforcent l'exposition à du contenu idéologiquement aligné qui approfondit les divisions existantes.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The report highlights concerning trends in..., attributing them primarily to...",
+    translation: "Le rapport souligne des tendances préoccupantes dans..., les attribuant principalement à...",
+    context: "Présenter les conclusions d'un rapport sur un problème économique ou social",
+    examples: [
+      {
+        english: "The report highlights concerning trends in income inequality and reduced economic mobility, attributing them primarily to structural factors such as the automation of middle-skill jobs, declining union membership, the rising premium on advanced education, and tax policies that have disproportionately benefited capital over labor income—trends that could potentially undermine social cohesion and democratic institutions if left unaddressed.",
+        translation: "Le rapport souligne des tendances préoccupantes dans l'inégalité des revenus et la réduction de la mobilité économique, les attribuant principalement à des facteurs structurels tels que l'automatisation des emplois à compétences moyennes, la diminution de l'adhésion aux syndicats, la prime croissante sur l'éducation avancée, et les politiques fiscales qui ont disproportionnellement bénéficié au capital par rapport aux revenus du travail—des tendances qui pourraient potentiellement miner la cohésion sociale et les institutions démocratiques si elles ne sont pas traitées.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "Economists are divided on the potential impact of..., with some arguing that... while others contend that...",
+    translation: "Les économistes sont divisés sur l'impact potentiel de..., certains soutenant que... tandis que d'autres affirment que...",
+    context: "Présenter des opinions économiques divergentes",
+    examples: [
+      {
+        english: "Economists are divided on the potential impact of the proposed minimum wage increase, with some arguing that it would stimulate consumer spending and reduce reliance on public assistance programs while others contend that it could lead to job losses in certain sectors and accelerate automation trends, particularly affecting small businesses with thin profit margins operating in economically disadvantaged regions.",
+        translation: "Les économistes sont divisés sur l'impact potentiel de l'augmentation proposée du salaire minimum, certains soutenant qu'elle stimulerait les dépenses de consommation et réduirait la dépendance aux programmes d'assistance publique tandis que d'autres affirment qu'elle pourrait entraîner des pertes d'emplois dans certains secteurs et accélérer les tendances d'automatisation, affectant particulièrement les petites entreprises avec des marges bénéficiaires étroites opérant dans des régions économiquement défavorisées.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The diplomatic tensions between... and... have escalated following..., raising concerns about potential implications for...",
+    translation: "Les tensions diplomatiques entre... et... se sont intensifiées suite à..., suscitant des inquiétudes quant aux implications potentielles pour...",
+    context: "Décrire l'évolution d'une situation diplomatique tendue",
+    examples: [
+      {
+        english: "The diplomatic tensions between the two neighboring countries have escalated following the disputed maritime border incident last month, raising concerns about potential implications for regional stability, international shipping routes, and ongoing multilateral trade negotiations that had been making significant progress after years of stalemate.",
+        translation: "Les tensions diplomatiques entre les deux pays voisins se sont intensifiées suite à l'incident contesté à la frontière maritime le mois dernier, suscitant des inquiétudes quant aux implications potentielles pour la stabilité régionale, les routes maritimes internationales, et les négociations commerciales multilatérales en cours qui avaient réalisé des progrès significatifs après des années d'impasse.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The sector has experienced significant growth driven by... despite challenges such as...",
+    translation: "Le secteur a connu une croissance significative stimulée par... malgré des défis tels que...",
+    context: "Analyser les facteurs de croissance et les défis d'un secteur économique",
+    examples: [
+      {
+        english: "The renewable energy sector has experienced significant growth driven by technological advances that have dramatically reduced production costs, favorable regulatory changes in key markets, and increasing corporate commitments to sustainability goals, despite challenges such as intermittent supply issues, grid integration complexities, and political resistance in regions historically dependent on fossil fuel industries.",
+        translation: "Le secteur des énergies renouvelables a connu une croissance significative stimulée par des avancées technologiques qui ont considérablement réduit les coûts de production, des changements réglementaires favorables sur les marchés clés, et des engagements croissants des entreprises envers des objectifs de durabilité, malgré des défis tels que des problèmes d'approvisionnement intermittent, des complexités d'intégration au réseau, et une résistance politique dans les régions historiquement dépendantes des industries de combustibles fossiles.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The summit concluded with participating nations agreeing to..., though significant disagreements remain regarding...",
+    translation: "Le sommet s'est conclu avec les nations participantes s'accordant à..., bien que des désaccords significatifs subsistent concernant...",
+    context: "Résumer les résultats d'un sommet international",
+    examples: [
+      {
+        english: "The climate summit concluded with participating nations agreeing to strengthen emissions reduction targets and increase financial support for developing countries' green transitions, though significant disagreements remain regarding implementation timelines, verification mechanisms, and how to fairly distribute the economic burden between historically high-emitting nations and rapidly industrializing economies currently experiencing their own development transitions.",
+        translation: "Le sommet sur le climat s'est conclu avec les nations participantes s'accordant à renforcer les objectifs de réduction des émissions et à augmenter le soutien financier pour les transitions vertes des pays en développement, bien que des désaccords significatifs subsistent concernant les calendriers de mise en œuvre, les mécanismes de vérification, et comment distribuer équitablement le fardeau économique entre les nations historiquement fortes émettrices et les économies en rapide industrialisation qui connaissent actuellement leurs propres transitions de développement.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The implementation of... has produced mixed results, with some regions experiencing... while others have seen...",
+    translation: "La mise en œuvre de... a produit des résultats mitigés, certaines régions connaissant... tandis que d'autres ont vu...",
+    context: "Évaluer les résultats variables d'une politique",
+    examples: [
+      {
+        english: "The implementation of the decentralized healthcare funding model has produced mixed results, with some regions experiencing improved service delivery, innovation in preventative care, and greater responsiveness to local needs, while others have seen widening disparities in healthcare quality, administrative inefficiencies due to duplication of efforts, and difficulties recruiting specialists to less affluent areas without the additional incentives that a coordinated national approach could provide.",
+        translation: "La mise en œuvre du modèle de financement décentralisé des soins de santé a produit des résultats mitigés, certaines régions connaissant une amélioration de la prestation de services, de l'innovation dans les soins préventifs, et une plus grande réactivité aux besoins locaux, tandis que d'autres ont vu un élargissement des disparités dans la qualité des soins de santé, des inefficacités administratives dues à la duplication des efforts, et des difficultés à recruter des spécialistes dans des zones moins aisées sans les incitations supplémentaires qu'une approche nationale coordonnée pourrait fournir.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "Demographic trends indicate significant challenges ahead for... as...",
+    translation: "Les tendances démographiques indiquent des défis significatifs à venir pour... car...",
+    context: "Discuter l'impact des tendances démographiques sur l'économie ou la société",
+    examples: [
+      {
+        english: "Demographic trends indicate significant challenges ahead for pension systems and healthcare infrastructure as the population continues to age, with projections showing that by 2040, there will be fewer than two working-age adults for every retiree, potentially necessitating fundamental reforms in retirement age policies, immigration approaches, and how essential services are funded and delivered to ensure sustainability without placing excessive burden on younger generations.",
+        translation: "Les tendances démographiques indiquent des défis significatifs à venir pour les systèmes de retraite et les infrastructures de soins de santé car la population continue de vieillir, les projections montrant que d'ici 2040, il y aura moins de deux adultes en âge de travailler pour chaque retraité, nécessitant potentiellement des réformes fondamentales dans les politiques d'âge de la retraite, les approches d'immigration, et la façon dont les services essentiels sont financés et fournis pour assurer la durabilité sans placer un fardeau excessif sur les générations plus jeunes.",
+      }
+    ],
+  },
+  {
+    categoryId: 44,
+    english: "The new administration has signaled a shift in policy priorities, emphasizing... over...",
+    translation: "La nouvelle administration a signalé un changement dans les priorités politiques, mettant l'accent sur... plutôt que...",
+    context: "Décrire un changement d'orientation politique suite à un changement de gouvernement",
+    examples: [
+      {
+        english: "The new administration has signaled a shift in policy priorities, emphasizing multilateral diplomatic engagement and climate change initiatives over the unilateral approach and fossil fuel development focus that characterized its predecessor, appointing cabinet members with extensive international cooperation experience and already beginning the process of rejoining several international agreements from which the country had previously withdrawn.",
+        translation: "La nouvelle administration a signalé un changement dans les priorités politiques, mettant l'accent sur l'engagement diplomatique multilatéral et les initiatives sur le changement climatique plutôt que l'approche unilatérale et l'accent sur le développement des combustibles fossiles qui caractérisaient son prédécesseur, nommant des membres du cabinet avec une vaste expérience de coopération internationale et commençant déjà le processus de rejoindre plusieurs accords internationaux desquels le pays s'était précédemment retiré.",
+      }
+    ],
+  },
+];
+&nbsp;
+export default economyPolitics;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-08-15T00:50:51.431Z
+            </div>
+        <script src="../../../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
+    </body>
+</html>
+    
