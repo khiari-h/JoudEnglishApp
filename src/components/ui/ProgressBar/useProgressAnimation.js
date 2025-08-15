@@ -10,28 +10,30 @@ export default function useProgressAnimation({
   const clamped = Math.min(Math.max(progress, 0), 100);
   const animatedValue = useRef(new Animated.Value(0)).current;
 
-  // Méthode pour animer la progression
-  const animateProgress = () => {
+  // Sépare la logique d'animation dans une fonction dédiée
+  const handleAnimatedUpdate = (value) => {
     Animated.timing(animatedValue, {
-      toValue: clamped,
+      toValue: value,
       duration,
       useNativeDriver: false,
     }).start();
   };
 
-  // Méthode pour définir la valeur directement
-  const setProgressDirectly = () => {
-    animatedValue.setValue(clamped);
+  // Sépare la logique de mise à jour instantanée dans une autre fonction
+  const handleInstantUpdate = (value) => {
+    animatedValue.setValue(value);
   };
 
+  // Le hook gère les deux cas en appelant la fonction appropriée
   useEffect(() => {
     if (animated) {
-      animateProgress();
+      handleAnimatedUpdate(clamped);
     } else {
-      setProgressDirectly();
+      handleInstantUpdate(clamped);
     }
   }, [clamped, animated, duration, animatedValue]);
 
+  // Interpolation de la valeur animée en pourcentage de largeur
   const width = animatedValue.interpolate({
     inputRange: [0, 100],
     outputRange: ["0%", "100%"],
@@ -39,5 +41,3 @@ export default function useProgressAnimation({
 
   return { width };
 }
-
-

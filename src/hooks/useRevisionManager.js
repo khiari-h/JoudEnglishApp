@@ -172,7 +172,7 @@ const useRevisionManager = () => {
     // 3. Éviter trop de mots du même niveau d'affilée
 
     // Trier par âge (plus ancien en premier)
-    const sortedByAge = poolWords.sort((a, b) => {
+    const sortedByAge = poolWords.toSorted((a, b) => {
       const aTime = a.timestamp ? new Date(a.timestamp).getTime() : 0;
       const bTime = b.timestamp ? new Date(b.timestamp).getTime() : 0;
       return aTime - bTime;

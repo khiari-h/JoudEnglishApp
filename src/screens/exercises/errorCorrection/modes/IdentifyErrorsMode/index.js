@@ -1,7 +1,7 @@
 // src/screens/exercises/errorCorrection/modes/IdentifyErrorsMode/index.js - AVEC PROPTYPES
 
-import { View, Text, TouchableOpacity, Animated } from "react-native";
-import { useCallback, useRef } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { useCallback } from "react";
 import PropTypes from 'prop-types';
 import HeroCard from "../../../../../components/ui/HeroCard";
 import ContentSection from "../../../../../components/ui/ContentSection";
@@ -25,7 +25,6 @@ const IdentifyErrorsMode = ({
   levelColor = "#3b82f6",
 }) => {
   const styles = createStyles(levelColor);
-  // ✅ Variables d'animation supprimées car inutilisées
 
   // Hook AVANT tout return conditionnel ✅
   const handleToggleErrorIndex = useCallback(

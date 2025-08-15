@@ -50,7 +50,7 @@ const SpellingInput = ({
         editable={!disabled}
         selectTextOnFocus={!disabled}
         returnKeyType="done"
-        blurOnSubmit
+        onSubmitEditing={() => {}}
         accessible
         accessibilityLabel="Zone de saisie pour votre réponse"
         accessibilityHint="Tapez votre réponse à l'exercice d'orthographe"

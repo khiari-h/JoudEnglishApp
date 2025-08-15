@@ -117,13 +117,19 @@ const RevisionPopup = ({
     opacityAnim.setValue(0);
   }, [scaleAnim, opacityAnim]);
 
+  // Effet pour l'animation d'entrée
   useEffect(() => {
     if (visible) {
       animateIn();
-    } else {
+    }
+  }, [visible, animateIn]);
+
+  // Effet pour l'animation de sortie
+  useEffect(() => {
+    if (!visible) {
       animateOut();
     }
-  }, [visible, animateIn, animateOut]);
+  }, [visible, animateOut]);
 
   // Liste des choix hors du useEffect !
   const allChoices = [
