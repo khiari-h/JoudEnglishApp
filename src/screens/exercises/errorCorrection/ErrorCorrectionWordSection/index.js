@@ -1,4 +1,4 @@
-// ErrorCorrectionWordSection/index.js - WRAPPER INTELLIGENT (pattern VocabularyWordSection)
+// ErrorCorrectionWordSection/index.js - WRAPPER INTELLIGENT avec PropTypes complets
 
 import { memo } from "react";
 import { View, Text } from "react-native";
@@ -112,8 +112,7 @@ ErrorCorrectionWordSection.propTypes = {
 
 ErrorCorrectionWordSection.displayName = "ErrorCorrectionWordSection";
 
-export default ErrorCorrectionWordSection;
-
+// ✅ COMPOSANT CounterSection avec PropTypes
 const CounterSection = ({ exerciseCounter, levelColor, styles }) => (
   <View style={styles.counterSection}>
     <LinearGradient
@@ -131,3 +130,17 @@ const CounterSection = ({ exerciseCounter, levelColor, styles }) => (
     </LinearGradient>
   </View>
 );
+
+// ✅ PropTypes pour CounterSection - Corrige toutes les erreurs
+CounterSection.propTypes = {
+  exerciseCounter: PropTypes.string.isRequired,
+  levelColor: PropTypes.string.isRequired,
+  styles: PropTypes.shape({
+    counterSection: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    counterGradient: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    counterBadge: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    counterText: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+  }).isRequired,
+};
+
+export default ErrorCorrectionWordSection;

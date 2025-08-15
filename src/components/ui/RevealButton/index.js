@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, Animated } from "react-native";
+import PropTypes from "prop-types";
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "../Card";
 import createStyles from "./style";
@@ -12,6 +13,14 @@ import createStyles from "./style";
  * - Cohérent avec NavigationButtons  
  * - Pas de délire shimmer/étoiles
  * - Juste propre et moderne
+ * 
+ * @param {boolean} isRevealed - État du bouton (révélé ou non)
+ * @param {function} onToggle - Callback appelé lors du toggle
+ * @param {string} revealText - Texte du bouton avant révélation
+ * @param {string} hideText - Texte du bouton après révélation
+ * @param {string} revealedContent - Contenu à afficher une fois révélé
+ * @param {string} levelColor - Couleur principale du composant
+ * @param {object} contentStyle - Style personnalisé pour le contenu révélé
  */
 const RevealButton = ({
   isRevealed = false,
@@ -141,6 +150,27 @@ const RevealButton = ({
       )}
     </Card>
   );
+};
+
+// PropTypes pour la validation des props
+RevealButton.propTypes = {
+  isRevealed: PropTypes.bool,
+  onToggle: PropTypes.func.isRequired,
+  revealText: PropTypes.string,
+  hideText: PropTypes.string,
+  revealedContent: PropTypes.string,
+  levelColor: PropTypes.string,
+  contentStyle: PropTypes.object,
+};
+
+// Valeurs par défaut
+RevealButton.defaultProps = {
+  isRevealed: false,
+  revealText: "Reveal Translation",
+  hideText: "Hide Translation",
+  revealedContent: "",
+  levelColor: "#5E60CE",
+  contentStyle: {},
 };
 
 export default RevealButton;

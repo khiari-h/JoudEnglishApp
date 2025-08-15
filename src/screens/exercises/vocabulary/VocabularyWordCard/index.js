@@ -1,6 +1,7 @@
-// VocabularyWordCard/index.js - VERSION REFACTORISÉE (280 → 50 lignes)
+// VocabularyWordCard/index.js - VERSION REFACTORISÉE avec PropTypes (280 → 50 lignes)
 
 import { View } from "react-native";
+import PropTypes from 'prop-types';
 import HeroCard from "../../../../components/ui/HeroCard";
 import RevealButton from "../../../../components/ui/RevealButton";
 import ContentSection from "../../../../components/ui/ContentSection";
@@ -72,6 +73,24 @@ const VocabularyWordCard = ({
       )}
     </View>
   );
+};
+
+// ✅ PropTypes - Corrige toutes les erreurs de validation
+VocabularyWordCard.propTypes = {
+  word: PropTypes.string.isRequired,
+  translation: PropTypes.string.isRequired,
+  definition: PropTypes.string,
+  example: PropTypes.string,
+  showTranslation: PropTypes.bool.isRequired,
+  onToggleTranslation: PropTypes.func.isRequired,
+  levelColor: PropTypes.string,
+};
+
+// ✅ Valeurs par défaut
+VocabularyWordCard.defaultProps = {
+  definition: null,
+  example: null,
+  levelColor: "#5E60CE",
 };
 
 export default VocabularyWordCard;

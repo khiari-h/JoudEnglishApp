@@ -1,5 +1,6 @@
-// GrammarFeedback/index.js - VERSION REFACTORISÉE avec ContentSection (75 → 15 lignes)
+// GrammarFeedback/index.js - VERSION REFACTORISÉE avec ContentSection et PropTypes
 
+import PropTypes from 'prop-types';
 import ContentSection from "../../../../components/ui/ContentSection";
 
 /**
@@ -71,6 +72,24 @@ const GrammarFeedback = ({
       isItalic={false}
     />
   );
+};
+
+// ✅ PropTypes - Corrige toutes les erreurs de validation
+GrammarFeedback.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  isCorrect: PropTypes.bool.isRequired,
+  explanation: PropTypes.string,
+  correctAnswer: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  attempts: PropTypes.number.isRequired,
+};
+
+// ✅ Valeurs par défaut
+GrammarFeedback.defaultProps = {
+  explanation: null,
+  correctAnswer: null,
 };
 
 export default GrammarFeedback;

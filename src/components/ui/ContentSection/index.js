@@ -1,5 +1,6 @@
 // src/components/ui/ContentSection/index.js
 import { View, Text } from "react-native";
+import PropTypes from "prop-types";
 import Card from "../Card";
 import createStyles from "./style";
 
@@ -14,6 +15,7 @@ import createStyles from "./style";
  * @param {boolean} isItalic - Mettre le contenu en italique
  * @param {boolean} showIcon - Afficher l'icône/dot coloré
  * @param {object} containerStyle - Style personnalisé pour le container
+ * @param {React.ReactNode} children - Éléments enfants à rendre
  */
 const ContentSection = ({
   title = "Content",
@@ -55,6 +57,30 @@ const ContentSection = ({
       {children}
     </Card>
   );
+};
+
+// PropTypes pour la validation des props
+ContentSection.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.string,
+  levelColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  isItalic: PropTypes.bool,
+  showIcon: PropTypes.bool,
+  containerStyle: PropTypes.object,
+  children: PropTypes.node,
+};
+
+// Valeurs par défaut
+ContentSection.defaultProps = {
+  title: "Content",
+  content: null,
+  levelColor: "#5E60CE",
+  backgroundColor: null,
+  isItalic: false,
+  showIcon: true,
+  containerStyle: {},
+  children: null,
 };
 
 export default ContentSection;

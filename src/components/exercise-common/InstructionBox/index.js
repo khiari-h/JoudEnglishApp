@@ -1,12 +1,21 @@
 // src/components/exercise-common/InstructionBox/index.js
 import { useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, Animated } from "react-native";
+import PropTypes from "prop-types";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
 
 /**
  * Boîte d'instructions pour les exercices avec possibilité
  * de les minimiser/maximiser
+ * 
+ * @param {string} title - Titre de la boîte d'instructions
+ * @param {string} instructions - Texte principal des instructions
+ * @param {Array<string>} examples - Liste d'exemples à afficher
+ * @param {Array<string>} tips - Liste d'astuces à afficher
+ * @param {boolean} initiallyExpanded - État initial (ouvert/fermé)
+ * @param {string} variant - Variante de style ('standard', 'compact', 'highlighted')
+ * @param {string} primaryColor - Couleur principale pour les icônes et bordures
  */
 const InstructionBox = ({
   title = "Instructions",
@@ -122,5 +131,26 @@ const InstructionBox = ({
   );
 };
 
-export default InstructionBox;
+// PropTypes pour la validation des props
+InstructionBox.propTypes = {
+  title: PropTypes.string,
+  instructions: PropTypes.string,
+  examples: PropTypes.arrayOf(PropTypes.string),
+  tips: PropTypes.arrayOf(PropTypes.string),
+  initiallyExpanded: PropTypes.bool,
+  variant: PropTypes.oneOf(['standard', 'compact', 'highlighted']),
+  primaryColor: PropTypes.string,
+};
 
+// Valeurs par défaut
+InstructionBox.defaultProps = {
+  title: "Instructions",
+  instructions: null,
+  examples: [],
+  tips: [],
+  initiallyExpanded: true,
+  variant: "standard",
+  primaryColor: "#5E60CE",
+};
+
+export default InstructionBox;

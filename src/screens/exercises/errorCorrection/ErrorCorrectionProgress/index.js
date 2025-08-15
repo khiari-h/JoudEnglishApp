@@ -1,5 +1,7 @@
-// ErrorCorrectionProgress/index.js - VERSION CORRIGÉE AVEC useMemo
+// ErrorCorrectionProgress/index.js - VERSION CORRIGÉE AVEC useMemo ET PropTypes
 
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalExercises,
@@ -7,12 +9,12 @@ import {
   calculateTotalProgress,
   calculateCategoryProgress,
 } from "../../../../utils/errorCorrection/errorCorrectionStats";
-import { useMemo } from 'react';
 
 /**
- * 📊 ErrorCorrectionProgress - Version corrigée avec mémorisation
+ * 📊 ErrorCorrectionProgress - Version corrigée avec mémorisation et PropTypes
  * ✅ Évite les boucles infinies avec useMemo
  * ✅ Détecte automatiquement la structure des données
+ * ✅ Validation des props avec PropTypes
  */
 const ErrorCorrectionProgress = ({
   categories = [],
@@ -90,8 +92,6 @@ const ErrorCorrectionProgress = ({
     }));
   }, [statsData.categoryProgressData]);
 
-  // ✅ CORRECTION FINALE : Pas de log dans le render !
-
   return (
     <ProgressCard
       title="Progression"
@@ -107,6 +107,41 @@ const ErrorCorrectionProgress = ({
       onCategoryPress={onCategoryPress}
     />
   );
+};
+
+// ✅ VALIDATION DES PROPS - Corrige toutes les erreurs PropTypes
+ErrorCorrectionProgress.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      name: PropTypes.string,
+      exercises: PropTypes.array,
+    })
+  ),
+  exercises: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      categoryId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      category: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      categoryName: PropTypes.string,
+    })
+  ),
+  completedExercises: PropTypes.object,
+  levelColor: PropTypes.string,
+  expanded: PropTypes.bool,
+  onToggleExpand: PropTypes.func,
+  onCategoryPress: PropTypes.func,
+};
+
+// ✅ VALEURS PAR DÉFAUT (optionnel, déjà définies dans la destructuration)
+ErrorCorrectionProgress.defaultProps = {
+  categories: [],
+  exercises: [],
+  completedExercises: {},
+  levelColor: undefined,
+  expanded: false,
+  onToggleExpand: undefined,
+  onCategoryPress: undefined,
 };
 
 export default ErrorCorrectionProgress;

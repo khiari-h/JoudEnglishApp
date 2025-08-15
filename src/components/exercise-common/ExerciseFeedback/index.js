@@ -1,12 +1,21 @@
 // src/components/exercise-common/ExerciseFeedback/index.js
 import React, { useCallback } from "react";
 import { View, Text, TouchableOpacity, Animated } from "react-native";
+import PropTypes from "prop-types";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./style";
 
 /**
  * Composant pour afficher un feedback après une réponse
  * (correct, incorrect ou information supplémentaire)
+ * 
+ * @param {string} type - Type de feedback ('success', 'error', 'info')
+ * @param {string} message - Message principal du feedback
+ * @param {string} explanation - Explication détaillée (optionnelle)
+ * @param {function} onDismiss - Callback appelé lors de la fermeture
+ * @param {boolean} autoHide - Masquage automatique après un délai
+ * @param {number} autoHideDuration - Durée avant masquage automatique (ms)
+ * @param {boolean} showDismissButton - Afficher le bouton de fermeture
  */
 const ExerciseFeedback = ({
   type = "success", // 'success', 'error', 'info'
@@ -117,5 +126,25 @@ const ExerciseFeedback = ({
   );
 };
 
-export default ExerciseFeedback;
+// PropTypes pour la validation des props
+ExerciseFeedback.propTypes = {
+  type: PropTypes.oneOf(['success', 'error', 'info']),
+  message: PropTypes.string.isRequired,
+  explanation: PropTypes.string,
+  onDismiss: PropTypes.func,
+  autoHide: PropTypes.bool,
+  autoHideDuration: PropTypes.number,
+  showDismissButton: PropTypes.bool,
+};
 
+// Valeurs par défaut
+ExerciseFeedback.defaultProps = {
+  type: "success",
+  explanation: null,
+  onDismiss: null,
+  autoHide: false,
+  autoHideDuration: 3000,
+  showDismissButton: true,
+};
+
+export default ExerciseFeedback;

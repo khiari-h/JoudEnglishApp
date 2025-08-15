@@ -1,10 +1,19 @@
 // src/components/exercise-common/ExerciseCard/index.js
 import { memo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import PropTypes from "prop-types";
 import styles from "./style";
 
 /**
  * Carte représentant un type d'exercice dans la sélection des exercices
+ * 
+ * @param {string} title - Titre de l'exercice
+ * @param {string} description - Description courte de l'exercice
+ * @param {string} icon - Icône ou emoji représentant l'exercice
+ * @param {number} progress - Pourcentage de progression (0-100)
+ * @param {string} color - Couleur principale de la carte
+ * @param {function} onPress - Callback appelé au clic sur la carte
+ * @param {boolean} isNew - Indique si l'exercice est nouveau (badge "Nouveau")
  */
 const ExerciseCard = ({
   title,
@@ -62,6 +71,23 @@ const ExerciseCard = ({
       </View>
     </TouchableOpacity>
   );
+};
+
+// PropTypes pour la validation des props
+ExerciseCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  progress: PropTypes.number.isRequired,
+  color: PropTypes.string,
+  onPress: PropTypes.func.isRequired,
+  isNew: PropTypes.bool,
+};
+
+// Valeurs par défaut
+ExerciseCard.defaultProps = {
+  color: "#5E60CE",
+  isNew: false,
 };
 
 export default memo(ExerciseCard);

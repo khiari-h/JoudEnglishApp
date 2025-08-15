@@ -1,6 +1,7 @@
 // ConversationProgress/index.js - VERSION CORRIGÉE AVEC useMemo
 
 import { useMemo } from "react";
+import PropTypes from "prop-types";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalScenarios,
@@ -14,6 +15,14 @@ import {
  * ✅ Évite les boucles infinies avec useMemo
  * ✅ Performance optimisée
  * ✅ Détecte automatiquement la structure des données
+ * 
+ * @param {string} levelColor - Couleur principale du composant
+ * @param {Array} conversationData - Données des scénarios de conversation
+ * @param {Object} completedScenarios - Scénarios complétés par l'utilisateur
+ * @param {Object} conversationHistory - Historique des conversations par scénario
+ * @param {boolean} expanded - État d'expansion du composant
+ * @param {function} onToggleExpand - Callback pour toggle l'expansion
+ * @param {function} onScenarioPress - Callback appelé lors du clic sur un scénario
  */
 const ConversationProgress = ({
   levelColor = "#5E60CE",
@@ -75,6 +84,34 @@ const ConversationProgress = ({
       onCategoryPress={onScenarioPress}
     />
   );
+};
+
+// PropTypes pour la validation des props
+ConversationProgress.propTypes = {
+  levelColor: PropTypes.string,
+  conversationData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      title: PropTypes.string,
+      steps: PropTypes.array,
+    })
+  ),
+  completedScenarios: PropTypes.object,
+  conversationHistory: PropTypes.object,
+  expanded: PropTypes.bool,
+  onToggleExpand: PropTypes.func,
+  onScenarioPress: PropTypes.func,
+};
+
+// Valeurs par défaut
+ConversationProgress.defaultProps = {
+  levelColor: "#5E60CE",
+  conversationData: [],
+  completedScenarios: {},
+  conversationHistory: {},
+  expanded: false,
+  onToggleExpand: null,
+  onScenarioPress: null,
 };
 
 export default ConversationProgress;
