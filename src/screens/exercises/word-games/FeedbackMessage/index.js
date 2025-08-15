@@ -1,11 +1,11 @@
 // src/screens/exercises/wordGames/components/FeedbackMessage/index.js
 import { View, Text } from "react-native";
 import styles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * Composant pour afficher le feedback après une réponse
- * 
- * @param {boolean} isCorrect - Indique si la réponse est correcte
+ * * @param {boolean} isCorrect - Indique si la réponse est correcte
  * @param {string} successMessage - Message à afficher en cas de succès
  * @param {string} failureMessage - Message à afficher en cas d'échec
  * @param {string} correctAnswer - Réponse correcte à afficher en cas d'échec
@@ -42,6 +42,20 @@ const FeedbackMessage = ({
       )}
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+FeedbackMessage.propTypes = {
+  // 'isCorrect' est manquant dans la validation
+  isCorrect: PropTypes.bool.isRequired,
+  // 'successMessage' est manquant dans la validation
+  successMessage: PropTypes.string,
+  // 'failureMessage' est manquant dans la validation
+  failureMessage: PropTypes.string,
+  // 'correctAnswer' est manquant dans la validation
+  correctAnswer: PropTypes.string,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default FeedbackMessage;

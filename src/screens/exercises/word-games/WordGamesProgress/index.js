@@ -2,6 +2,7 @@
 
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import { useMemo } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * 📊 WordGamesProgress - Version corrigée avec mémorisation
@@ -14,8 +15,6 @@ const WordGamesProgress = ({
   gameTitle = "",
   completedGames = 0,
   levelColor = "#3b82f6",
-  // gameResults = [], // supprimé car inutilisé
-  // level = "A1", // supprimé car inutilisé
 }) => {
   
   // ✅ MÉMORISER le calcul de progression globale
@@ -24,29 +23,6 @@ const WordGamesProgress = ({
       ? Math.round((completedGames / totalGames) * 100)
       : 0;
   }, [completedGames, totalGames]);
-
-  // ✅ MÉMORISER les données Word Games
-  // const wordGamesData = useMemo(() => {
-  //   return getWordGamesData(level);
-  // }, [level]);
-
-  // ✅ MÉMORISER les données de debug (seulement en dev)
-  // const debugData = useMemo(() => {
-  //   if (process.env.NODE_ENV !== 'development') return null;
-  //   
-  //   return {
-  //     currentGame,
-  //     totalGames,
-  //     completedGames,
-  //     globalProgress,
-  //     gameResultsLength: gameResults.length,
-  //     hasWordGamesData: !!wordGamesData,
-  //     wordGamesDataKeys: wordGamesData && typeof wordGamesData === 'object' ? Object.keys(wordGamesData) : "not object or null",
-  //     gameTitle
-  //   };
-  // }, [currentGame, totalGames, completedGames, globalProgress, gameResults.length, wordGamesData, gameTitle]);
-
-  // ✅ CORRECTION FINALE : Pas de log dans le render !
 
   return (
     <ProgressCard
@@ -64,6 +40,20 @@ const WordGamesProgress = ({
       onCategoryPress={undefined}
     />
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+WordGamesProgress.propTypes = {
+  // 'currentGame' est manquant dans la validation
+  currentGame: PropTypes.number,
+  // 'totalGames' est manquant dans la validation
+  totalGames: PropTypes.number,
+  // 'gameTitle' est manquant dans la validation
+  gameTitle: PropTypes.string,
+  // 'completedGames' est manquant dans la validation
+  completedGames: PropTypes.number,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default WordGamesProgress;

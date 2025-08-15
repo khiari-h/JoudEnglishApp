@@ -1,11 +1,11 @@
 import { ScrollView, TouchableOpacity, Text } from 'react-native';
 import styles from './style';
 import { useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Composant qui affiche les suggestions de messages que l'utilisateur peut envoyer
- * 
- * @param {Array} suggestions - Liste des suggestions à afficher
+ * * @param {Array} suggestions - Liste des suggestions à afficher
  * @param {Function} onPressSuggestion - Fonction à appeler quand une suggestion est choisie
  * @param {string} levelColor - Couleur associée au niveau courant
  */
@@ -37,6 +37,16 @@ const ConversationSuggestions = ({ suggestions, onPressSuggestion, levelColor })
       ))}
     </ScrollView>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+ConversationSuggestions.propTypes = {
+  // 'suggestions' est manquant dans la validation
+  suggestions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // 'onPressSuggestion' est manquant dans la validation
+  onPressSuggestion: PropTypes.func.isRequired,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default ConversationSuggestions;

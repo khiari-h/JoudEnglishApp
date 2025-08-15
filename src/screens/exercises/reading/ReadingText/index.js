@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import HeroCard from "../../../../components/ui/HeroCard";
 import RevealButton from "../../../../components/ui/RevealButton";
 import createStyles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * 📖 ReadingText - Version Simple & Efficace
@@ -70,6 +71,21 @@ const ReadingText = ({
       />
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour valider les props
+ReadingText.propTypes = {
+  // 'exercise' est manquant dans la validation
+  exercise: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }).isRequired,
+  // 'textExpanded' est manquant dans la validation
+  textExpanded: PropTypes.bool.isRequired,
+  // 'onToggleExpand' est manquant dans la validation
+  onToggleExpand: PropTypes.func.isRequired,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default ReadingText;

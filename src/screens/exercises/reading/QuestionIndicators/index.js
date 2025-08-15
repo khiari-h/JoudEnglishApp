@@ -2,6 +2,7 @@
 import { View, TouchableOpacity } from "react-native";
 import { useCallback } from "react";
 import styles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * Indicateurs visuels pour naviguer entre les questions
@@ -47,6 +48,20 @@ const QuestionIndicators = ({
       ))}
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+QuestionIndicators.propTypes = {
+  // 'totalQuestions' est manquant dans la validation
+  totalQuestions: PropTypes.number.isRequired,
+  // 'currentQuestionIndex' est manquant dans la validation
+  currentQuestionIndex: PropTypes.number.isRequired,
+  // 'completedQuestions' est manquant dans la validation
+  completedQuestions: PropTypes.arrayOf(PropTypes.number),
+  // 'onSelectQuestion' est manquant dans la validation
+  onSelectQuestion: PropTypes.func.isRequired,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default QuestionIndicators;

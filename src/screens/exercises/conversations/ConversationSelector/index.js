@@ -2,6 +2,7 @@
 import { View } from "react-native";
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 import styles from "./style";
+import PropTypes from 'prop-types';
 
 const ConversationSelector = ({
   scenarios,
@@ -27,5 +28,20 @@ const ConversationSelector = ({
   );
 };
 
-export default ConversationSelector;
+// ✅ Ajout de la validation des props
+ConversationSelector.propTypes = {
+  // 'scenarios' est manquant dans la validation
+  scenarios: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  // 'selectedIndex' est manquant dans la validation
+  selectedIndex: PropTypes.number,
+  // 'onSelectScenario' est manquant dans la validation
+  onSelectScenario: PropTypes.func.isRequired,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
+};
 
+export default ConversationSelector;

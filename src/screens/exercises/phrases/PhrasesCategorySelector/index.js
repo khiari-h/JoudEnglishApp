@@ -1,6 +1,7 @@
 // src/screens/exercises/phrases/PhrasesCategorySelector/index.js - VERSION FIXÉE
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 
 const PhrasesCategorySelector = ({
   categories,
@@ -28,6 +29,18 @@ const PhrasesCategorySelector = ({
       primaryColor={levelColor}
     />
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+PhrasesCategorySelector.propTypes = {
+  // 'categories' est manquant dans la validation
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // 'selectedIndex' est manquant dans la validation
+  selectedIndex: PropTypes.number.isRequired,
+  // 'onSelectCategory' est manquant dans la validation
+  onSelectCategory: PropTypes.func.isRequired,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default PhrasesCategorySelector;

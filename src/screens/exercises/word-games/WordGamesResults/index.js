@@ -6,13 +6,13 @@ import ContentSection from "../../../../components/ui/ContentSection";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import { getPerformanceLevel, generateFeedbackMessage, calculateGameTypeStats } from "../../../../utils/wordGames/wordGamesStats";
 import createStyles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * 🏆 WordGamesResults - Version Refactorisée avec composants génériques
  * 150+ lignes → 70 lignes (-53% de code)
  * Utilise HeroCard + ContentSection + NavigationButtons
- * 
- * @param {array} games - Liste des jeux joués
+ * * @param {array} games - Liste des jeux joués
  * @param {array} gameResults - Résultats de chaque jeu
  * @param {object} finalScore - Score final {score, percentage, totalMaxScore}
  * @param {string} levelColor - Couleur du niveau
@@ -170,6 +170,26 @@ const WordGamesResults = ({
       </View>
     </ScrollView>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+WordGamesResults.propTypes = {
+  // 'games' est manquant dans la validation
+  games: PropTypes.array,
+  // 'gameResults' est manquant dans la validation
+  gameResults: PropTypes.array,
+  // 'finalScore' est manquant dans la validation
+  finalScore: PropTypes.shape({
+    score: PropTypes.number,
+    percentage: PropTypes.number,
+    totalMaxScore: PropTypes.number,
+  }),
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
+  // 'onPlayAgain' est manquant dans la validation
+  onPlayAgain: PropTypes.func,
+  // 'onContinue' est manquant dans la validation
+  onContinue: PropTypes.func.isRequired,
 };
 
 export default WordGamesResults;

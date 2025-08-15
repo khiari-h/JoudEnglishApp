@@ -4,12 +4,12 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useCallback } from "react";
 import HeroCard from "../../../../components/ui/HeroCard";
 import createStyles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * 👂 HomophoneChoices - Version Nettoyée
  * Logique simplifiée + design cohérent
- * 
- * @param {string} sentence - La phrase avec le blanc à compléter
+ * * @param {string} sentence - La phrase avec le blanc à compléter
  * @param {Array} choices - Les choix possibles
  * @param {string} selectedChoice - Le choix actuellement sélectionné
  * @param {function} onSelectChoice - Fonction appelée lors de la sélection
@@ -97,6 +97,22 @@ const HomophoneChoices = ({
       </View>
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+HomophoneChoices.propTypes = {
+  // 'sentence' est manquant dans la validation
+  sentence: PropTypes.string.isRequired,
+  // 'choices' est manquant dans la validation
+  choices: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // 'selectedChoice' est manquant dans la validation
+  selectedChoice: PropTypes.string,
+  // 'onSelectChoice' est manquant dans la validation
+  onSelectChoice: PropTypes.func.isRequired,
+  // 'disabled' est manquant dans la validation
+  disabled: PropTypes.bool,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default HomophoneChoices;

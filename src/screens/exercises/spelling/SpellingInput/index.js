@@ -3,6 +3,7 @@
 import { View, TextInput, Text } from "react-native";
 import { useCallback } from "react";
 import createStyles from "./style";
+import PropTypes from 'prop-types';
 
 const SpellingInput = ({ 
   value = "", 
@@ -55,6 +56,22 @@ const SpellingInput = ({
       />
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+SpellingInput.propTypes = {
+  // 'value' est manquant dans la validation
+  value: PropTypes.string,
+  // 'onChangeText' est manquant dans la validation
+  onChangeText: PropTypes.func.isRequired,
+  // 'disabled' est manquant dans la validation
+  disabled: PropTypes.bool,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
+  // 'placeholder' est manquant dans la validation
+  placeholder: PropTypes.string,
+  // 'testID' est manquant dans la validation
+  testID: PropTypes.string,
 };
 
 export default SpellingInput;
