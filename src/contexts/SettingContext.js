@@ -1,5 +1,5 @@
 // src/contexts/SettingsContext.js
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { storeData, getData } from '../utils/storageUtils';
 import { DEFAULT_SETTINGS } from '../utils/constants';
 import PropTypes from 'prop-types';
@@ -47,9 +47,8 @@ export const SettingsProvider = ({ children }) => {
   }, [settings, isLoading]);
 
   // Mettre à jour un paramètre spécifique
-  const updateSetting = (key, value) => {
+  const updateSetting = useCallback((key, value) => {
     if (settings[key] === undefined) {
-
       return;
     }
 
@@ -57,38 +56,38 @@ export const SettingsProvider = ({ children }) => {
       ...prevSettings,
       [key]: value
     }));
-  };
+  }, [settings]);
 
   // Mettre à jour plusieurs paramètres à la fois
-  const updateSettings = (newSettings) => {
+  const updateSettings = useCallback((newSettings) => {
     setSettings(prevSettings => ({
       ...prevSettings,
       ...newSettings
     }));
-  };
+  }, []);
 
   // Réinitialiser tous les paramètres
-  const resetSettings = () => {
+  const resetSettings = useCallback(() => {
     setSettings(DEFAULT_SETTINGS);
-  };
+  }, []);
 
   // Vérifier si les notifications sont activées
-  const areNotificationsEnabled = () => {
+  const areNotificationsEnabled = useMemo(() => {
     return settings.notifications;
-  };
+  }, [settings.notifications]);
 
   // Obtenir le délai journalier
-  const getDailyGoal = () => {
+  const getDailyGoal = useMemo(() => {
     return settings.dailyGoal;
-  };
+  }, [settings.dailyGoal]);
 
   // Définir le délai journalier
-  const setDailyGoal = (minutes) => {
+  const setDailyGoal = useCallback((minutes) => {
     updateSetting('dailyGoal', Math.max(1, Math.min(120, minutes))); // Entre 1 et 120 minutes
-  };
+  }, [updateSetting]);
 
   // Valeur fournie par le contexte
-  const contextValue = {
+  const contextValue = useMemo(() => ({
     settings,
     updateSetting,
     updateSettings,
@@ -97,7 +96,16 @@ export const SettingsProvider = ({ children }) => {
     getDailyGoal,
     setDailyGoal,
     isLoading,
-  };
+  }), [
+    settings,
+    updateSetting,
+    updateSettings,
+    resetSettings,
+    areNotificationsEnabled,
+    getDailyGoal,
+    setDailyGoal,
+    isLoading,
+  ]);
 
   return (
     <SettingsContext.Provider value={contextValue}>
@@ -106,9 +114,7 @@ export const SettingsProvider = ({ children }) => {
   );
 };
 
-
-SettingsContext.propTypes = {
-  children: PropTypes.any.isRequired,
+// ✅ Définition de PropTypes pour le fournisseur de contexte
+SettingsProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
-
-export default SettingsContext;

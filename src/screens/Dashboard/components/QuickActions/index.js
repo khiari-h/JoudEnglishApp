@@ -1,8 +1,9 @@
-// src/screens/Dashboard/components/QuickActions/index.js - VERSION RÉPARÉE
+// src/screens/Dashboard/components/QuickActions/index.js - VERSION CORRIGÉE
 import { useContext, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { router } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import PropTypes from 'prop-types'; // ✅ Import de PropTypes
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import { EXERCISES } from "../../../../utils/constants";
 import styles from "./style";
@@ -168,6 +169,11 @@ const QuickActions = ({ currentLevel = "1" }) => {
       </View>
     </View>
   );
+};
+
+// ✅ Ajout de la validation des props
+QuickActions.propTypes = {
+  currentLevel: PropTypes.string.isRequired,
 };
 
 export default QuickActions;

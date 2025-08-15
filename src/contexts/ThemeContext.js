@@ -13,7 +13,7 @@ export const ThemeContext = createContext();
  */
 export const ThemeProvider = ({ children }) => {
   // États
-    const [theme, setTheme] = useState('system'); // 'light', 'dark', 'system'
+  const [theme, setTheme] = useState('system'); // 'light', 'dark', 'system'
   const systemColorScheme = useColorScheme();
   const [loaded, setLoaded] = useState(false);
 
@@ -262,8 +262,7 @@ export const ThemeProvider = ({ children }) => {
 };
 
 
-ThemeContext.propTypes = {
-  children: PropTypes.any.isRequired,
+// ✅ Définition de PropTypes pour le fournisseur de contexte
+ThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
-
-export default ThemeContext;

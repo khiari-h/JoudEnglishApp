@@ -4,6 +4,7 @@ import { useMemo, useCallback, useEffect, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
+import PropTypes from 'prop-types'; // ✅ Import de PropTypes
 
 // Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
@@ -34,28 +35,6 @@ const GrammarExercise = ({ route }) => {
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
 
-  // Hook pour sauvegarder l'activité
-  // const { saveActivity } = useLastActivity(); // supprimé car inutilisé
-
-  // ✅ MÉMORISER les données principales
-  const levelColor = useMemo(() => getLevelColor(level), [level]);
-  const [grammarData, setGrammarData] = useState([]);
-
-  useEffect(() => {
-    let isMounted = true;
-    const load = async () => {
-      if (process.env.JEST_WORKER_ID) {
-        const data = getGrammarData(level);
-        if (isMounted) setGrammarData(data);
-        return;
-      }
-      const data = await loadGrammarData(level);
-      if (isMounted) setGrammarData(data);
-    };
-    load();
-    return () => { isMounted = false; };
-  }, [level]);
-
   // Hook unifié
   const {
     ruleIndex,
@@ -83,23 +62,37 @@ const GrammarExercise = ({ route }) => {
     toggleDetailedProgress,
   } = useGrammar(grammarData, level);
 
-  // ✅ CORRECTION FINALE : Suppression de la double sauvegarde
-  // Le hook useGrammar gère déjà la sauvegarde, pas besoin de doublon
-  // Si on veut vraiment sauvegarder l'activité, on peut le faire à des moments spécifiques
-  // comme quand on change de règle ou termine un exercice
+  // ✅ MÉMORISER les données principales
+  const levelColor = useMemo(() => getLevelColor(level), [level]);
+  const [grammarData, setGrammarData] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      if (process.env.JEST_WORKER_ID) {
+        const data = getGrammarData(level);
+        if (isMounted) setGrammarData(data);
+        return;
+      }
+      const data = await loadGrammarData(level);
+      if (isMounted) setGrammarData(data);
+    };
+    load();
+    return () => { isMounted = false; };
+  }, [level]);
 
   // ✅ TOUS LES HANDLERS MÉMORISÉS pour éviter les re-renders
-const handleBackPress = useCallback(() => {
-  router.push({
-    pathname: "/tabs/exerciseSelection",
-    params: { level }
-  });
-}, [level]);
-  
+  const handleBackPress = useCallback(() => {
+    router.push({
+      pathname: "/tabs/exerciseSelection",
+      params: { level }
+    });
+  }, [level]);
+
   const handleCheckAnswer = useCallback(() => {
     submitAnswer();
   }, [submitAnswer]);
-  
+
   const handleNextExercise = useCallback(() => {
     if (!nextExercise()) {
       // All exercises completed
@@ -239,6 +232,15 @@ const handleBackPress = useCallback(() => {
       />
     </Container>
   );
+};
+
+// ✅ Ajout de la validation des props
+GrammarExercise.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      level: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };
 
 export default GrammarExercise;

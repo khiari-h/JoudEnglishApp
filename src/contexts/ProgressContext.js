@@ -269,9 +269,6 @@ export const useProgressWrite = () => {
   return context;
 };
 
-
-ProgressContext.propTypes = {
-  children: PropTypes.any.isRequired,
+ProgressProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
-
-export default ProgressContext;
