@@ -2,6 +2,7 @@
 
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 
 /**
  * 🎨 ReadingTextSelector - Version Refactorisée avec CategorySelector générique
@@ -45,6 +46,20 @@ const ReadingTextSelector = ({
       showAllOption={false} // Pas besoin de "Tous" pour les exercices
     />
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+ReadingTextSelector.propTypes = {
+  // 'exercises' est manquant dans la validation
+  exercises: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+  })).isRequired,
+  // 'selectedIndex' est manquant dans la validation
+  selectedIndex: PropTypes.number,
+  // 'onSelectExercise' est manquant dans la validation
+  onSelectExercise: PropTypes.func.isRequired,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default ReadingTextSelector;

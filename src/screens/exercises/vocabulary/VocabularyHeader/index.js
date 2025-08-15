@@ -1,5 +1,6 @@
 // VocabularyHeader - Version épurée mobile-first
 import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeader";
+import PropTypes from 'prop-types';
 
 /**
  * 🎯 VocabularyHeader - Version Mobile-First Épurée
@@ -24,6 +25,16 @@ const VocabularyHeader = ({ level, mode, onBackPress }) => {
       backIcon="arrow-back"
     />
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+VocabularyHeader.propTypes = {
+  // 'mode' est manquant dans la validation
+  mode: PropTypes.oneOf(['fast', 'classic']).isRequired,
+  // 'onBackPress' est manquant dans la validation
+  onBackPress: PropTypes.func.isRequired,
+  // 'level' est manquant dans la validation
+  level: PropTypes.string.isRequired,
 };
 
 export default VocabularyHeader;

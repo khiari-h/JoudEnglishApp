@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import createStyles from "./style";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 
 /**
  * 🎯 ErrorCorrectionModeSelector - Version Ultra-Simplifiée
@@ -70,6 +71,16 @@ const ErrorCorrectionModeSelector = ({
       ))}
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+ErrorCorrectionModeSelector.propTypes = {
+  // 'onSelectMode' est manquant dans la validation
+  onSelectMode: PropTypes.func.isRequired,
+  // 'disabled' est manquant dans la validation
+  disabled: PropTypes.bool,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default ErrorCorrectionModeSelector;

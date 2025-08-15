@@ -1,6 +1,7 @@
 // VocabularyExercise/VocabularyCategorySelector.js
 import CategorySelector from "../../../../components/exercise-common/CategorySelector";
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 
 /**
  * Adaptateur pour le sélecteur de catégories de vocabulaire
@@ -39,5 +40,16 @@ const VocabularyCategorySelector = ({
   );
 };
 
-export default VocabularyCategorySelector;
+// ✅ Définition de PropTypes pour la validation des props
+VocabularyCategorySelector.propTypes = {
+  // 'categories' est manquant dans la validation
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // 'selectedIndex' est manquant dans la validation
+  selectedIndex: PropTypes.number,
+  // 'onSelectCategory' est manquant dans la validation
+  onSelectCategory: PropTypes.func.isRequired,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
+};
 
+export default VocabularyCategorySelector;

@@ -157,6 +157,21 @@ const CategorySelector = ({
   );
 };
 
+// ✅ Définition de PropTypes pour la validation des props
+CategorySelector.propTypes = {
+  // 'categories' est manquant dans la validation
+  categories: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  // 'selectedCategory' est manquant dans la validation
+  selectedCategory: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  // 'onSelectCategory' est manquant dans la validation
+  onSelectCategory: PropTypes.func.isRequired,
+  // 'primaryColor' est manquant dans la validation
+  primaryColor: PropTypes.string,
+};
+
 function areEqual(prevProps, nextProps) {
   return (
     prevProps.selectedCategory === nextProps.selectedCategory &&

@@ -3,13 +3,13 @@
 import { View, Text, useMemo } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import createStyles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * 📊 SpellingProgress - VERSION ULTRA-SIMPLE
  * ✅ Juste une progress bar basique
  * ❌ Enlevé : expandable, détails par type, complexité
- * 
- * AFFICHE :
+ * * AFFICHE :
  * - Progress bar visuelle
  * - "X / Y exercices"
  * - Pourcentage
@@ -79,6 +79,18 @@ const SpellingProgress = ({
       </LinearGradient>
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+SpellingProgress.propTypes = {
+  // 'exercises' est manquant dans la validation
+  exercises: PropTypes.arrayOf(PropTypes.shape({
+    // On peut définir la structure des exercices si nécessaire
+  })),
+  // 'completedExercises' est manquant dans la validation
+  completedExercises: PropTypes.arrayOf(PropTypes.number),
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default SpellingProgress;

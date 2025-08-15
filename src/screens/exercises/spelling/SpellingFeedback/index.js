@@ -3,12 +3,12 @@
 import { View } from "react-native";
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
+import PropTypes from 'prop-types';
 
 /**
  * 💬 SpellingFeedback - Version Refactorisée avec ContentSection
  * Remplace le feedback custom par ContentSection avec couleurs dynamiques
- * 
- * @param {boolean} isCorrect - Indique si la réponse est correcte
+ * * @param {boolean} isCorrect - Indique si la réponse est correcte
  * @param {string} correctAnswer - La réponse correcte
  * @param {string} explanation - Explication supplémentaire
  * @param {string} levelColor - Couleur associée au niveau
@@ -49,6 +49,18 @@ const SpellingFeedback = ({
       />
     </View>
   );
+};
+
+// ✅ Définition de PropTypes pour la validation des props
+SpellingFeedback.propTypes = {
+  // 'isCorrect' est manquant dans la validation
+  isCorrect: PropTypes.bool.isRequired,
+  // 'correctAnswer' est manquant dans la validation
+  correctAnswer: PropTypes.string,
+  // 'explanation' est manquant dans la validation
+  explanation: PropTypes.string,
+  // 'levelColor' est manquant dans la validation
+  levelColor: PropTypes.string,
 };
 
 export default SpellingFeedback;
