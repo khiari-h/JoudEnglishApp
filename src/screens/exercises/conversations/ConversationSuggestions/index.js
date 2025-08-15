@@ -10,12 +10,13 @@ import PropTypes from 'prop-types';
  * @param {string} levelColor - Couleur associée au niveau courant
  */
 const ConversationSuggestions = ({ suggestions, onPressSuggestion, levelColor }) => {
+  // ✅ Déplacer le useCallback AVANT le return conditionnel
+  const handleSuggestionPress = useCallback((suggestion) => () => onPressSuggestion(suggestion), [onPressSuggestion]);
+
   // S'il n'y a pas de suggestions, ne rien afficher
   if (!suggestions || suggestions.length === 0) {
     return null;
   }
-
-  const handleSuggestionPress = useCallback((suggestion) => () => onPressSuggestion(suggestion), [onPressSuggestion]);
 
   return (
     <ScrollView

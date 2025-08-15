@@ -25,14 +25,15 @@ const MultipleChoiceMode = ({
 }) => {
   const styles = createStyles(levelColor);
 
+  // ✅ CORRECTION : Déplacer le useCallback AVANT le return conditionnel
+  const handleChoicePress = useCallback((index) => () => {
+    if (!showFeedback) onSelectChoice(index);
+  }, [onSelectChoice, showFeedback]);
+
   if (!exercise) return null;
 
   const choices = exercise.choices || [];
   const correctChoiceIndex = exercise.correctChoiceIndex;
-
-  const handleChoicePress = useCallback((index) => () => {
-    if (!showFeedback) onSelectChoice(index);
-  }, [onSelectChoice, showFeedback]);
 
   return (
     <View style={styles.container}>

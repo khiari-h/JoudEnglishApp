@@ -14,6 +14,21 @@ const QuestionIndicators = ({
   onSelectQuestion,
   levelColor,
 }) => {
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  
+
+  // Déterminer la couleur de l'indicateur
+  const getIndicatorColor = (index) => {
+    if (currentQuestionIndex === index) return levelColor;
+    if (completedQuestions.includes(index)) return `${levelColor}50`;
+    return "#e5e7eb";
+  };
+  
+  // Déterminer la taille de l'indicateur
+  const getIndicatorSize = (index) => {
+    return currentQuestionIndex === index ? 12 : 8;
+  };
+
   // Handler stable pour la sélection d'une question
   const handleSelectQuestion = useCallback(
     (index) => () => {
@@ -33,14 +48,9 @@ const QuestionIndicators = ({
             style={[
               styles.indicator,
               {
-                backgroundColor:
-                  currentQuestionIndex === index
-                    ? levelColor
-                    : completedQuestions.includes(index)
-                    ? `${levelColor}50`
-                    : "#e5e7eb",
-                width: currentQuestionIndex === index ? 12 : 8,
-                height: currentQuestionIndex === index ? 12 : 8,
+                backgroundColor: getIndicatorColor(index),
+                width: getIndicatorSize(index),
+                height: getIndicatorSize(index),
               },
             ]}
           />

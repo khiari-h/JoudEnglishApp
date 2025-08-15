@@ -56,13 +56,13 @@ const Header = ({
     }
   }, [onBackPress, navigation]);
 
-  // Rendu du contenu standard du header
-  const renderStandardContent = () => (
-    <View style={styles.standardContainer}>
-      {/* Composant gauche ou bouton retour */}
-      {leftComponent ? (
-        leftComponent
-      ) : showBackButton ? (
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  
+  // Fonction pour déterminer le composant gauche
+  const renderLeftComponent = () => {
+    if (leftComponent) return leftComponent;
+    if (showBackButton) {
+      return (
         <TouchableOpacity
           onPress={handleBackPress}
           style={styles.backButton}
@@ -72,9 +72,51 @@ const Header = ({
         >
           <Ionicons name="chevron-back" size={24} color={textColor} />
         </TouchableOpacity>
-      ) : (
-        <View style={styles.placeholderButton} />
-      )}
+      );
+    }
+    return <View style={styles.placeholderButton} />;
+  };
+  
+  // Fonction pour déterminer le composant droit
+  const renderRightComponent = () => {
+    if (rightComponent) return rightComponent;
+    if (rightIcon) {
+      return (
+        <TouchableOpacity
+          onPress={onRightPress}
+          style={styles.rightButton}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
+          <Ionicons name={rightIcon} size={24} color={textColor} />
+        </TouchableOpacity>
+      );
+    }
+    return <View style={styles.placeholderButton} />;
+  };
+  
+  // Fonction pour déterminer le composant droit en mode titre large
+  const renderLargeTitleRightComponent = () => {
+    if (rightComponent) {
+      return <View style={styles.rightComponentContainer}>{rightComponent}</View>;
+    }
+    if (rightIcon) {
+      return (
+        <TouchableOpacity
+          onPress={onRightPress}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
+          <Ionicons name={rightIcon} size={24} color={textColor} />
+        </TouchableOpacity>
+      );
+    }
+    return null;
+  };
+
+  // Rendu du contenu standard du header
+  const renderStandardContent = () => (
+    <View style={styles.standardContainer}>
+      {/* Composant gauche ou bouton retour */}
+      {renderLeftComponent()}
 
       {/* Titre */}
       <Text
@@ -90,19 +132,7 @@ const Header = ({
       </Text>
 
       {/* Composant droite ou icône */}
-      {rightComponent ? (
-        rightComponent
-      ) : rightIcon ? (
-        <TouchableOpacity
-          onPress={onRightPress}
-          style={styles.rightButton}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        >
-          <Ionicons name={rightIcon} size={24} color={textColor} />
-        </TouchableOpacity>
-      ) : (
-        <View style={styles.placeholderButton} />
-      )}
+      {renderRightComponent()}
     </View>
   );
 
@@ -111,31 +141,10 @@ const Header = ({
     <View style={styles.largeTitleWrapper}>
       {/* Ligne supérieure avec bouton retour et éventuel composant à droite */}
       <View style={styles.topRow}>
-        {leftComponent ? (
-          leftComponent
-        ) : showBackButton ? (
-          <TouchableOpacity
-            onPress={handleBackPress}
-            style={styles.backButton}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
-            <Ionicons name="chevron-back" size={24} color={textColor} />
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.placeholderButton} />
-        )}
+        {renderLeftComponent()}
 
         {/* Composant de droite (ou icône) */}
-        {rightComponent ? (
-          <View style={styles.rightComponentContainer}>{rightComponent}</View>
-        ) : rightIcon ? (
-          <TouchableOpacity
-            onPress={onRightPress}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
-            <Ionicons name={rightIcon} size={24} color={textColor} />
-          </TouchableOpacity>
-        ) : null}
+        {renderLargeTitleRightComponent()}
       </View>
 
       {/* Conteneur de titre avec style personnalisable */}
@@ -153,6 +162,17 @@ const Header = ({
       )}
     </View>
   );
+
+  // ✅ Fonction pour déterminer le contenu principal
+  const renderMainContent = () => {
+    if (children) {
+      return <View style={styles.childrenContainer}>{children}</View>;
+    }
+    if (largeTitleMode) {
+      return renderLargeTitleContent();
+    }
+    return renderStandardContent();
+  };
 
   return (
     <View
@@ -172,13 +192,7 @@ const Header = ({
       )}
 
       {/* Contenu personnalisé ou contenu standard */}
-      {children ? (
-        <View style={styles.childrenContainer}>{children}</View>
-      ) : largeTitleMode ? (
-        renderLargeTitleContent()
-      ) : (
-        renderStandardContent()
-      )}
+      {renderMainContent()}
     </View>
   );
 };

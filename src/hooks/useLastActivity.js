@@ -20,7 +20,8 @@ const useLastActivity = () => {
         const now = Date.now();
         const diffInMinutes = Math.floor((now - activity.timestamp) / (1000 * 60));
         
-        let timeElapsed = "À l'instant";
+        // ✅ Calcul direct sans variable inutile
+        let timeElapsed;
         if (diffInMinutes < 60) {
           timeElapsed = diffInMinutes === 0 ? "À l'instant" : `Il y a ${diffInMinutes} min`;
         } else if (diffInMinutes < 1440) {

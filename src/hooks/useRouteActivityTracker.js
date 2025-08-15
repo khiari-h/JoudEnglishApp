@@ -77,10 +77,10 @@ const useRouteActivityTracker = () => {
   };
 
   // Fonction pour nettoyer l'état - simplifiée pour éviter les problèmes
-  const cleanup = () => {
+  const cleanup = async () => {
     if (isTrackingRef.current) {
       try {
-        endSession();
+        await endSession();
       } catch (error) {
         console.warn('Erreur lors du cleanup:', error);
       }
@@ -115,7 +115,14 @@ const useRouteActivityTracker = () => {
     return () => {
       if (isTrackingRef.current) {
         try {
-          endSession();
+          // Utiliser une IIFE async pour gérer la Promise
+          (async () => {
+            try {
+              await endSession();
+            } catch (error) {
+              console.warn('Erreur lors du cleanup final:', error);
+            }
+          })();
         } catch (error) {
           console.warn('Erreur lors du cleanup final:', error);
         }

@@ -160,6 +160,24 @@ const ExerciseSelection = ({ level }) => {
     }, [refresh])
   );
 
+  // ✅ Déplacer renderExerciseCard AVANT le return conditionnel
+  const renderExerciseCard = useCallback((exercise) => {
+    return (
+      <TouchableOpacity
+        key={exercise.id}
+        testID={`${exercise.id}-exercise`}
+        style={styles.levelCard}
+        onPress={handleExercisePress(exercise)}
+        activeOpacity={0.8}
+        accessibilityRole="button"
+        accessibilityLabel={`${exercise.title}`}
+        accessibilityValue={{ min: 0, max: 100, now: exercise.progress ?? 0 }}
+      >
+        <ExerciseCardContent exercise={exercise} colors={colors} localStyles={styles} handleExercisePress={handleExercisePress} />
+      </TouchableOpacity>
+    );
+  }, [handleExercisePress, colors.text, styles]);
+
   // ✅ MAINTENANT on peut faire le return conditionnel
   if (!level) {
     return null;
@@ -196,23 +214,6 @@ const ExerciseSelection = ({ level }) => {
       </LinearGradient>
     </View>
   );
-
-  const renderExerciseCard = useCallback((exercise) => {
-    return (
-      <TouchableOpacity
-        key={exercise.id}
-        testID={`${exercise.id}-exercise`}
-        style={styles.levelCard}
-        onPress={handleExercisePress(exercise)}
-        activeOpacity={0.8}
-        accessibilityRole="button"
-        accessibilityLabel={`${exercise.title}`}
-        accessibilityValue={{ min: 0, max: 100, now: exercise.progress ?? 0 }}
-      >
-        <ExerciseCardContent exercise={exercise} colors={colors} localStyles={styles} handleExercisePress={handleExercisePress} />
-      </TouchableOpacity>
-    );
-  }, [handleExercisePress, colors.text, styles]);
 
   return (
     <Container

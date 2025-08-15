@@ -222,7 +222,7 @@ const useConversation = (conversationData = null, level = "A1") => {
     }
   }, [currentScenarioIndex, scenarios.length]);
 
-  const useSuggestion = useCallback((suggestion) => {
+  const handleSuggestion = useCallback((suggestion) => {
     setMessage(suggestion);
   }, []);
 
@@ -294,7 +294,7 @@ const useConversation = (conversationData = null, level = "A1") => {
     // Actions
     changeScenario,
     sendMessage,
-    useSuggestion,
+    handleSuggestion,
     toggleHelp,
     toggleDetailedProgress,
     startConversation,

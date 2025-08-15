@@ -50,7 +50,7 @@ const useErrorCorrection = (errorCorrectionData, level) => {
   const totalExercisesInCategory = currentExercises.length;
   
   // =================== PERSISTENCE ===================
-  const lastPosition = useRef(null);
+  // ✅ Variable lastPosition supprimée car inutilisée
 
   // Load data from storage
   useEffect(() => {

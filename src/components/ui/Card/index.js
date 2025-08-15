@@ -62,7 +62,10 @@ const CardContent = ({
         showPercentage={showPercentage}
         percentageFormatter={percentageFormatter}
         style={[
-          { marginTop: compactMode ? 8 : 12, marginBottom: compactMode ? 4 : 8 },
+          { 
+            marginTop: compactMode ? 8 : 12, 
+            marginBottom: compactMode ? 4 : 8 
+          },
           progressStyle
         ]}
       />

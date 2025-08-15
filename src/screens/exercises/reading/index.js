@@ -82,24 +82,28 @@ const ReadingExercise = ({ route }) => {
   useEffect(() => {
     if (!loaded || exercises.length === 0 || !currentExercise || !currentQuestion) return;
 
-    try {
-      saveActivity({
-        title: "Lecture",
-        level,
-        type: "reading",
-        metadata: {
-          word: selectedExerciseIndex, // ✅ Pour cohérence avec autres exercices
-          totalWords: exercises.length, // ✅ Pour cohérence
-          exercise: selectedExerciseIndex,
-          question: currentQuestionIndex,
-          totalQuestions,
-          exerciseTitle: currentExercise.title || `Texte ${selectedExerciseIndex + 1}`,
-          totalExercises: exercises.length
-        }
-      });
-    } catch (error) {
-      console.error('Error saving activity:', error);
-    }
+    const saveActivityAsync = async () => {
+      try {
+        await saveActivity({
+          title: "Lecture",
+          level,
+          type: "reading",
+          metadata: {
+            word: selectedExerciseIndex, // ✅ Pour cohérence avec autres exercices
+            totalWords: exercises.length, // ✅ Pour cohérence
+            exercise: selectedExerciseIndex,
+            question: currentQuestionIndex,
+            totalQuestions,
+            exerciseTitle: currentExercise.title || `Texte ${selectedExerciseIndex + 1}`,
+            totalExercises: exercises.length
+          }
+        });
+      } catch (error) {
+        console.error('Error saving activity:', error);
+      }
+    };
+
+    saveActivityAsync();
   }, [selectedExerciseIndex, currentQuestionIndex]); // ✅ SEULEMENT ces 2 dépendances !
 
   // Handlers
@@ -125,6 +129,15 @@ const ReadingExercise = ({ route }) => {
   const handleToggleProgressDetails = useCallback(() => {
     toggleDetailedProgress();
   }, [toggleDetailedProgress]);
+
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  const getExplanationMessage = () => {
+    if (isCorrect) return currentQuestion.explanation;
+    if (attempts > 1) {
+      return `💡 The correct answer is: ${currentQuestion.options[currentQuestion.correctAnswer]}`;
+    }
+    return "💪 Try again!";
+  };
 
   // =================== LOADING STATE ===================
   if (!loaded || !exercises.length) {
@@ -211,13 +224,7 @@ const ReadingExercise = ({ route }) => {
         <ExerciseFeedback
           type={isCorrect ? "success" : "error"}
           message={isCorrect ? "🎉 Perfect!" : "🤔 Not quite..."}
-          explanation={
-            isCorrect
-              ? currentQuestion.explanation
-              : attempts > 1
-              ? `💡 The correct answer is: ${currentQuestion.options[currentQuestion.correctAnswer]}`
-              : "💪 Try again!"
-          }
+          explanation={getExplanationMessage()}
           showDismissButton={false}
         />
       )}

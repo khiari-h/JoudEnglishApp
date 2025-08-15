@@ -25,8 +25,7 @@ const IdentifyErrorsMode = ({
   levelColor = "#3b82f6",
 }) => {
   const styles = createStyles(levelColor);
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const slideAnim = useRef(new Animated.Value(50)).current;
+  // ✅ Variables d'animation supprimées car inutilisées
 
   // Hook AVANT tout return conditionnel ✅
   const handleToggleErrorIndex = useCallback(
@@ -40,7 +39,7 @@ const IdentifyErrorsMode = ({
 
   // Diviser le texte en mots
   const words = exercise.text.split(" ");
-  const expectedErrors = exercise.errorPositions?.length || 0;
+  const expectedErrors = exercise.errorPositions?.length ?? 0;
 
   return (
     <View style={styles.container}>
@@ -63,7 +62,7 @@ const IdentifyErrorsMode = ({
         <View style={styles.wordsContainer}>
           {words.map((word, index) => {
             const isSelected = selectedErrorIndices.includes(index);
-            const isError = showFeedback && (exercise.errorPositions || []).includes(index);
+            const isError = showFeedback && (exercise.errorPositions ?? []).includes(index);
             const isCorrectSelection = showFeedback && isSelected && isError;
             const isIncorrectSelection = showFeedback && isSelected && !isError;
 

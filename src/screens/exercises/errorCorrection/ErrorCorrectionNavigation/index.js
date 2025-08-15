@@ -29,15 +29,20 @@ const ErrorCorrectionNavigation = ({
   showFeedback = false,
   levelColor,
 }) => {
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  
+  // Déterminer le label du bouton suivant
+  const getNextButtonLabel = () => {
+    if (!showFeedback) return "Vérifier";
+    if (isLastExercise) return "Voir les résultats";
+    return "Exercice suivant";
+  };
+
   // Si on est en mode feedback (après vérification de réponse)
   // ou si on est au dernier exercice, adapter les labels
   const buttonLabels = {
     previous: "Précédent",
-    next: showFeedback
-      ? isLastExercise
-        ? "Voir les résultats"
-        : "Exercice suivant"
-      : "Vérifier",
+    next: getNextButtonLabel(),
     skip: "Passer",
     finish: "Terminer",
   };

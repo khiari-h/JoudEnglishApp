@@ -15,6 +15,11 @@ const SpellingInput = ({
 }) => {
   const styles = createStyles(levelColor);
 
+  // ✅ CORRECTION : Déplacer le useCallback AVANT le return conditionnel
+  const handleChangeText = useCallback((text) => {
+    onChangeText(text);
+  }, [onChangeText]);
+
   if (!onChangeText) {
     return (
       <View style={styles.container}>
@@ -24,10 +29,6 @@ const SpellingInput = ({
       </View>
     );
   }
-
-  const handleChangeText = useCallback((text) => {
-    onChangeText(text);
-  }, [onChangeText]);
 
   return (
     <View style={styles.container}>

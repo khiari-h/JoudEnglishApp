@@ -17,20 +17,13 @@ import { useCallback } from 'react';
  * @param {string} levelColor - Couleur du niveau
  * @param {function} onSelectAnswer - Callback sélection réponse
  */
-const AssessmentQuestion = ({
-  question,
-  selectedAnswer,
-  showFeedback,
-  levelColor = "#3b82f6",
-  onSelectAnswer,
-}) => {
-  const styles = createStyles(levelColor);
+const AssessmentQuestion = ({ question, selectedAnswer, showFeedback, levelColor, onSelectAnswer }) => {
+  // ✅ CORRECTION : Déplacer le useCallback AVANT le return conditionnel
+  const handlePress = useCallback((idx) => () => onSelectAnswer(idx), [onSelectAnswer]);
 
   if (!question || !question.options) {
     return null;
   }
-
-  const handlePress = useCallback((idx) => () => onSelectAnswer(idx), [onSelectAnswer]);
 
   // Déterminer le feedback à afficher
   const isCorrect = selectedAnswer === question.correctAnswer;

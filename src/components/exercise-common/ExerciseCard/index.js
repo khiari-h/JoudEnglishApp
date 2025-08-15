@@ -24,6 +24,42 @@ const ExerciseCard = ({
   onPress,
   isNew = false,
 }) => {
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  const shouldShowProgress = progress > 0;
+  const shouldShowNewBadge = !shouldShowProgress && isNew;
+  
+  // ✅ Détermination du contenu à afficher
+  const renderBottomContent = () => {
+    if (shouldShowProgress) {
+      return (
+        <View style={styles.progressSection}>
+          <View style={styles.progressContainer}>
+            <View style={styles.progressBar}>
+              {/* testID utile pour vérifier la largeur dynamique de la barre de progression dans les tests unitaires */}
+              <View
+                style={[styles.progressFill, { width: `${Math.round(Number(progress) || 0)}%`, backgroundColor: color }]}
+                testID="progress-fill"
+              />
+            </View>
+            <Text style={[styles.progressText, { color }]}>{progress}%</Text>
+          </View>
+        </View>
+      );
+    }
+    
+    if (shouldShowNewBadge) {
+      return (
+        <View style={styles.badgeContainer}>
+          <View style={[styles.badge, { backgroundColor: `${color}15` }]}>
+            <Text style={[styles.badgeText, { color }]}>Nouveau</Text>
+          </View>
+        </View>
+      );
+    }
+    
+    return null;
+  };
+
   return (
     <TouchableOpacity
       style={[styles.card, { borderLeftColor: color, borderLeftWidth: 4 }]}
@@ -40,26 +76,8 @@ const ExerciseCard = ({
         </View>
       </View>
 
-      {progress > 0 ? (
-        <View style={styles.progressSection}>
-          <View style={styles.progressContainer}>
-            <View style={styles.progressBar}>
-              {/* testID utile pour vérifier la largeur dynamique de la barre de progression dans les tests unitaires */}
-              <View
-                style={[styles.progressFill, { width: `${Math.round(Number(progress) || 0)}%`, backgroundColor: color }]}
-                testID="progress-fill"
-              />
-            </View>
-            <Text style={[styles.progressText, { color }]}>{progress}%</Text>
-          </View>
-        </View>
-      ) : isNew ? (
-        <View style={styles.badgeContainer}>
-          <View style={[styles.badge, { backgroundColor: `${color}15` }]}>
-            <Text style={[styles.badgeText, { color }]}>Nouveau</Text>
-          </View>
-        </View>
-      ) : null}
+      {/* ✅ Contenu conditionnel extrait dans une fonction */}
+      {renderBottomContent()}
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity

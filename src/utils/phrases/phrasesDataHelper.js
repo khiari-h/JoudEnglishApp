@@ -170,13 +170,13 @@ export const getPhrasesStats = (level) => {
   }
 
   const totalPhrases = data.phrases.length;
-  const totalCategories = data.categories ? data.categories.length : 0;
+  const totalCategories = data.categories?.length ?? 0;
 
   return {
     totalPhrases,
     totalCategories,
     averagePhrasesPerCategory: totalCategories > 0 ? Math.round(totalPhrases / totalCategories) : 0,
-    difficulty: data.difficulty || level,
+    difficulty: data.difficulty ?? level,
   };
 };
 

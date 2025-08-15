@@ -24,9 +24,15 @@ const SpellingExercise = ({ route }) => {
 
   const levelColor = getLevelColor(level);
 
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  const getExerciseTypeName = () => {
+    if (exerciseType === "correction") return "Correction";
+    if (exerciseType === "rules") return "Règles";
+    return "Homophones";
+  };
+  
   // Définir exerciseTypeName pour tout le composant
-  const exerciseTypeName = exerciseType === "correction" ? "Correction" : 
-                          exerciseType === "rules" ? "Règles" : "Homophones";
+  const exerciseTypeName = getExerciseTypeName();
   
   const spellingData = useMemo(() => {
     try {
@@ -58,21 +64,25 @@ const SpellingExercise = ({ route }) => {
 
   useEffect(() => {
     if (loaded && hasValidData && currentExercise) {
-      try {
-        saveActivity({
-          title: `Orthographe ${exerciseTypeName}`,
-          level,
-          type: "spelling",
-          metadata: {
-            word: currentExerciseIndex,           // ✅ Index actuel (pour progression)
-            totalWords: totalExercises,           // ✅ Total (pour progression)
-            exerciseType,
-            content: currentExercise.wordToCorrect || `Exercice ${currentExerciseIndex + 1}` // ✅ Contenu de l'exercice
-          }
-        });
-      } catch (error) {
-        console.error("Error saving activity:", error);
-      }
+      const saveActivityAsync = async () => {
+        try {
+          await saveActivity({
+            title: `Orthographe ${exerciseTypeName}`,
+            level,
+            type: "spelling",
+            metadata: {
+              word: currentExerciseIndex,           // ✅ Index actuel (pour progression)
+              totalWords: totalExercises,           // ✅ Total (pour progression)
+              exerciseType,
+              content: currentExercise.wordToCorrect || `Exercice ${currentExerciseIndex + 1}` // ✅ Contenu de l'exercice
+            }
+          });
+        } catch (error) {
+          console.error("Error saving activity:", error);
+        }
+      };
+
+      saveActivityAsync();
     }
   }, [loaded, hasValidData, currentExercise, level, exerciseType, currentExerciseIndex, totalExercises, saveActivity]);
 

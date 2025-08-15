@@ -10,6 +10,14 @@ const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, lo
   const currentWord = (lastActivity.metadata?.word || 0) + 1;
   const totalWords = lastActivity.metadata?.totalWords || 15;
   const percentage = Math.min(Math.round((currentWord / totalWords) * 100), 100);
+
+  const getCategoryText = () => {
+    if (typeof lastActivity.metadata?.categoryIndex === 'number') {
+      return ` • Catégorie ${lastActivity.metadata.categoryIndex + 1}`;
+    }
+    return '';
+  };
+
   return (
     <View style={localStyles.content}>
       <View style={localStyles.header}>
@@ -19,7 +27,7 @@ const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, lo
       <Text style={[localStyles.title, { color: colors.text }]}>{lastActivity.title}</Text>
       <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}> 
         Niv {lastActivity.level || 1}
-        {typeof lastActivity.metadata?.categoryIndex === 'number' ? ` • Catégorie ${lastActivity.metadata.categoryIndex + 1}` : ''}
+        {getCategoryText()}
         • Mot {currentWord}/{totalWords}
       </Text>
       <View style={localStyles.progressContainer}>

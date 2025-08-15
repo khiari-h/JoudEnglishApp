@@ -20,8 +20,6 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
   const [expanded, setExpanded] = useState(false);
   const [expandAnim] = useState(new Animated.Value(0));
 
-  if (!rule) return null;
-
   // Animation d'expansion (garde la logique custom)
   const toggleExpanded = useCallback(() => {
     const toValue = expanded ? 0 : 1;
@@ -45,6 +43,9 @@ const GrammarRuleContent = ({ rule, levelColor = "#3b82f6" }) => {
     inputRange: [0, 1],
     outputRange: ['0deg', '180deg'],
   });
+
+  // ✅ MAINTENANT on peut faire le return conditionnel
+  if (!rule) return null;
 
   return (
     <View style={styles.container}>

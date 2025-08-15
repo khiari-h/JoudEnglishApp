@@ -54,7 +54,7 @@ const ConversationExercise = ({ route }) => {
     hasValidData,
     changeScenario,
     sendMessage,
-    useSuggestion,
+    handleSuggestion,
     toggleHelp,
     toggleDetailedProgress,
     isConversationStarted,
@@ -88,6 +88,7 @@ const ConversationExercise = ({ route }) => {
     handleSaveActivity();
   }, [handleSaveActivity]);
 
+  // ✅ CORRECTION : Déplacer TOUS les useCallback AVANT le return conditionnel
   // Handlers
   const handleBackPress = useCallback(() => {
     router.push({
@@ -100,7 +101,7 @@ const ConversationExercise = ({ route }) => {
 
   const handleSendMessage = useCallback(() => sendMessage(), [sendMessage]);
 
-  const handleUseSuggestion = useCallback((suggestion) => useSuggestion(suggestion), [useSuggestion]);
+  const handleUseSuggestion = useCallback((suggestion) => handleSuggestion(suggestion), [handleSuggestion]);
 
   const handleToggleHelp = useCallback(() => toggleHelp(), [toggleHelp]);
 

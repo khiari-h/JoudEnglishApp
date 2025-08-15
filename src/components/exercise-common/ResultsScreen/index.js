@@ -292,8 +292,36 @@ StatsSection.propTypes = {
   localStyles: PropTypes.object.isRequired,
 };
 
-const DetailedResultsSection = ({ showDetailedResults, detailedResults, localStyles }) => (
-  showDetailedResults && detailedResults.length > 0 && (
+const DetailedResultsSection = ({ showDetailedResults, detailedResults, localStyles }) => {
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  
+  const getIconName = (result) => {
+    if (result.isCorrect) return "checkmark-circle";
+    if (result.isSkipped) return "play-skip-forward";
+    return "close-circle";
+  };
+  
+  const getIconColor = (result) => {
+    if (result.isCorrect) return "#10B981";
+    if (result.isSkipped) return "#6B7280";
+    return "#EF4444";
+  };
+  
+  const getAnswerStyle = (result) => {
+    if (result.isCorrect) return localStyles.correctAnswer;
+    if (result.isSkipped) return localStyles.skippedAnswer;
+    return localStyles.incorrectAnswer;
+  };
+  
+  const getAnswerText = (result) => {
+    return result.isSkipped ? "Passée" : result.userAnswer;
+  };
+
+  if (!showDetailedResults || detailedResults.length === 0) {
+    return null;
+  }
+
+  return (
     <View style={localStyles.detailedResultsContainer}>
       <Text style={localStyles.detailedResultsTitle}>Détail des réponses</Text>
 
@@ -304,21 +332,9 @@ const DetailedResultsSection = ({ showDetailedResults, detailedResults, localSty
               Question {index + 1}
             </Text>
             <Ionicons
-              name={
-                result.isCorrect
-                  ? "checkmark-circle"
-                  : result.isSkipped
-                  ? "play-skip-forward"
-                  : "close-circle"
-              }
+              name={getIconName(result)}
               size={20}
-              color={
-                result.isCorrect
-                  ? "#10B981"
-                  : result.isSkipped
-                  ? "#6B7280"
-                  : "#EF4444"
-              }
+              color={getIconColor(result)}
             />
           </View>
 
@@ -330,14 +346,10 @@ const DetailedResultsSection = ({ showDetailedResults, detailedResults, localSty
               <Text
                 style={[
                   localStyles.answerValue,
-                  result.isCorrect
-                    ? localStyles.correctAnswer
-                    : result.isSkipped
-                    ? localStyles.skippedAnswer
-                    : localStyles.incorrectAnswer,
+                  getAnswerStyle(result),
                 ]}
               >
-                {result.isSkipped ? "Passée" : result.userAnswer}
+                {getAnswerText(result)}
               </Text>
             </View>
 
@@ -353,8 +365,8 @@ const DetailedResultsSection = ({ showDetailedResults, detailedResults, localSty
         </View>
       ))}
     </View>
-  )
-);
+  );
+};
 
 // PropTypes pour DetailedResultsSection
 DetailedResultsSection.propTypes = {

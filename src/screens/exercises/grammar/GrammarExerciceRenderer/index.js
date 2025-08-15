@@ -181,8 +181,7 @@ const GrammarExerciseRenderer = ({
   exerciseIndex,
   attempts,
 }) => {
-  if (!exercise) return null;
-
+  // ✅ CORRECTION : Déplacer TOUS les useCallback AVANT le return conditionnel
   const styles = createStyles();
   const levelColor = "#3b82f6"; // Couleur Grammar
 
@@ -204,6 +203,9 @@ const GrammarExerciseRenderer = ({
     (index) => () => handleOptionPress(index),
     [handleOptionPress]
   );
+
+  // ✅ MAINTENANT on peut faire le return conditionnel
+  if (!exercise) return null;
 
   // Render pour un exercice à choix multiples
   const renderMultipleChoiceExercise = () => (

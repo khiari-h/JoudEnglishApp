@@ -106,7 +106,7 @@ const LevelSelection = () => {
   
   // 🚀 PROGRESSION TEMPS RÉEL + Préparation des données d'affichage
   const { getLevelProgress, hasProgress, refresh } = useRealTimeProgress();
-  const { currentUserLevel, currentLevelData, levels } = useLevelListData({ getLevelProgress, hasProgress });
+  const { currentLevelData, levels } = useLevelListData({ getLevelProgress, hasProgress });
 
   // Background
   const backgroundGradient = getBackgroundGradient(
@@ -129,6 +129,10 @@ const LevelSelection = () => {
     [handleLevelSelect]
   );
 
+  const onBackPress = useCallback(() => {
+    router.push("/tabs/dashboard");
+  }, []);
+
   useFocusEffect(
     useCallback(() => {
       refresh();
@@ -139,7 +143,7 @@ const LevelSelection = () => {
   const renderHeader = useCallback(() => (
     <View style={styles.headerContainer}>
       <LinearGradient
-        colors={["#6366F1", "#8B5CF6"]}
+        colors={[colors.primary, `${colors.primary}DD`]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.headerGradient}
@@ -147,7 +151,7 @@ const LevelSelection = () => {
         <Header
           title="Niveaux"
           showBackButton
-          onBackPress={useCallback(() => router.push("/tabs/dashboard"), [])}
+          onBackPress={onBackPress}
           backgroundColor="transparent"
           textColor="white"
           withStatusBar={false}
@@ -157,7 +161,7 @@ const LevelSelection = () => {
         />
       </LinearGradient>
     </View>
-  ), []);
+  ), [colors.primary, onBackPress]);
 
   const renderLevelCard = useCallback((level) => {
     return (

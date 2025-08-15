@@ -42,10 +42,6 @@ const useVocabulary = (vocabularyData = null, level = "1", mode = "classic") => 
   // Navigation & actions
   const {
     changeCategory,
-    goToNextWord,
-    goToPreviousWord,
-    markWordAsCompleted,
-    findNextUncompletedCategory,
     handleNext,
     handlePrevious,
   } = useVocabularyNavigation({

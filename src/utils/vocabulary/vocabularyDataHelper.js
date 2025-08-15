@@ -42,7 +42,7 @@ const convertFastVocabToExercises = (fastVocab) => {
   return {
     exercises: [
       {
-        title: fastVocab.title || "Vocabulaire Fast",
+        title: fastVocab.title ?? "Vocabulaire Fast",
         words: fastVocab.words,
       },
     ],
@@ -67,7 +67,7 @@ export const getVocabularyData = (level, mode = "classic") => {
       "bonus": convertFastVocabToExercises(fastVocabBonus),
     };
 
-    return fastDataMap[level] || convertFastVocabToExercises(fastVocab1);
+    return fastDataMap[level] ?? convertFastVocabToExercises(fastVocab1);
   }
 
   // Mode classic (6 niveaux standards + bonus)
@@ -159,7 +159,7 @@ export const getLevelColor = (level) => {
     "6": "#6366f1", // Indigo - Niveau 6
     "bonus": "#9333EA", // Violet premium - Bonus
   };
-  return colors[level] || "#5E60CE"; // Couleur par défaut
+  return colors[level] ?? "#5E60CE"; // Couleur par défaut
 };
 
 /**
@@ -240,7 +240,7 @@ export const getVocabularyStats = (level, mode = "classic") => {
 
   const totalExercises = data.exercises.length;
   const totalWords = data.exercises.reduce((sum, exercise) => {
-    return sum + (exercise.words ? exercise.words.length : 0);
+    return sum + (exercise.words?.length ?? 0);
   }, 0);
 
   return {

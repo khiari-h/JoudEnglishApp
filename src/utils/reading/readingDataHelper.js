@@ -172,11 +172,11 @@ export const getReadingStats = (level) => {
 
   const totalTexts = data.exercises.length;
   const totalQuestions = data.exercises.reduce((sum, exercise) => {
-    return sum + (exercise.questions ? exercise.questions.length : 0);
+    return sum + (exercise.questions?.length ?? 0);
   }, 0);
   
   const totalWords = data.exercises.reduce((sum, exercise) => {
-    return sum + (exercise.wordCount || 0);
+    return sum + (exercise.wordCount ?? 0);
   }, 0);
 
   return {

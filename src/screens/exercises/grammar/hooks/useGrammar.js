@@ -33,7 +33,6 @@ const useGrammar = (grammarData = [], level = "A1") => {
   const [loaded, setLoaded] = useState(false);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
 
-  const isInitialized = useRef(false);
   const saveDataTimeoutRef = useRef(null);
 
   // =================== COMPUTED VALUES ===================
@@ -42,17 +41,14 @@ const useGrammar = (grammarData = [], level = "A1") => {
   const currentExercises = currentRule?.exercises || [];
   const currentExercise = currentExercises[exerciseIndex];
   const totalRules = rules.length;
-  const totalExercisesInRule = currentExercises.length;
-  const hasValidData = rules.length > 0 && currentExercises.length > 0;
+  // ✅ Variables inutiles supprimées
 
   // =================== COMPUTED VALUES MEMOIZED ===================
   const currentRuleMemo = useMemo(() => {
     return grammarData[ruleIndex] || { title: "", explanation: "", examples: [], exercises: [] };
   }, [grammarData, ruleIndex]);
 
-  const currentExerciseMemo = useMemo(() => {
-    return currentRuleMemo.exercises?.[exerciseIndex] || null;
-  }, [currentRuleMemo.exercises, exerciseIndex]);
+  // ✅ Variable currentExerciseMemo supprimée car inutilisée
 
   const totalRulesMemo = useMemo(() => grammarData.length, [grammarData.length]);
   const totalExercisesMemo = useMemo(() => currentRuleMemo.exercises?.length || 0, [currentRuleMemo.exercises?.length]);

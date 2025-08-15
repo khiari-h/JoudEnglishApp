@@ -369,7 +369,7 @@ export const validateErrorCorrectionData = (level) => {
     exerciseCount: data.exercises.length,
     invalidExercises: [],
     errors: [],
-    categoryCount: data.categories ? data.categories.length : 0,
+    categoryCount: data.categories?.length ?? 0,
     typeDistribution: {
       full: 0,
       identify: 0,
@@ -384,7 +384,7 @@ export const validateErrorCorrectionData = (level) => {
       results.invalidExercises.push(index);
       results.errors.push(
         `Exercise ${index + 1} (category ${
-          exercise.categoryId || "unknown"
+          exercise.categoryId ?? "unknown"
         }) is invalid`
       );
     } else {
@@ -479,7 +479,7 @@ export const getModeInfo = (mode) => {
     },
   };
 
-  return modes[mode] || modes.full;
+  return modes[mode] ?? modes.full;
 };
 
 /**
@@ -506,7 +506,7 @@ export const getRecommendedExercises = (
   );
 
   // Si pas de données de performance, retourner des exercices variés
-  if (!performance.weakCategories) {
+  if (!performance?.weakCategories) {
     return availableExercises.slice(0, 5);
   }
 

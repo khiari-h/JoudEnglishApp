@@ -237,6 +237,11 @@ export const getStorageInfo = async () => {
     return { available: false };
   }
   
+  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
+  const getLastModified = (data) => {
+    return data?.lastModified ? new Date(data.lastModified) : null;
+  };
+  
   try {
     const data = await readFromStorage();
     const backupData = await AsyncStorage.getItem(STORAGE_CONFIG.BACKUP_KEY);
@@ -248,7 +253,7 @@ export const getStorageInfo = async () => {
       hasData: Boolean(data),
       hasBackup,
       version: data?.version || 'unknown',
-      lastModified: data?.lastModified ? new Date(data.lastModified) : null,
+      lastModified: getLastModified(data),
       dataSize: mainData?.length || 0
     };
   } catch (error) {

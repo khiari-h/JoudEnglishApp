@@ -12,7 +12,7 @@ export const getAssessmentData = (level) => {
   const dataMap = {
     A1: levelA1AssessmentData,
   };
-  return dataMap[level] || levelA1AssessmentData;
+  return dataMap[level] ?? levelA1AssessmentData;
 };
 
 /**
@@ -63,5 +63,5 @@ export const isLastQuestionInSection = (
   assessmentData
 ) => {
   if (!assessmentData || !assessmentData[section]) return false;
-  return questionIndex === assessmentData[section].questions.length - 1;
+  return questionIndex === (assessmentData[section]?.questions?.length ?? 0) - 1;
 };
