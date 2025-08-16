@@ -43,7 +43,7 @@ describe('WordGamesResults', () => {
   const defaultProps = {
     games: [
       { type: 'vocabulary', id: 'vocab-1' },
-      { type: 'spelling', id: 'spell-1' }
+
     ],
     gameResults: [
       { score: 8, maxScore: 10 },
@@ -63,7 +63,7 @@ describe('WordGamesResults', () => {
     },
     gameTypeStats: [
       { type: 'vocabulary', percentage: 80, completedCount: 8, gamesCount: 10 },
-      { type: 'spelling', percentage: 70, completedCount: 7, gamesCount: 10 }
+
     ],
     feedbackMessage: 'Keep practicing to improve!'
   };

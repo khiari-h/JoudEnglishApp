@@ -28,7 +28,7 @@ export const RECOMMENDATION_CONFIG = {
     reading: 'conversations',
     conversations: 'assessment',
     assessment: 'vocabulary',
-    spelling: 'vocabulary',
+
     errorCorrection: 'reading',
     wordGames: 'vocabulary',
   }
@@ -41,7 +41,7 @@ export const EXERCISE_TYPES = {
   GRAMMAR: 'grammar',
   READING: 'reading',
   CONVERSATIONS: 'conversations',
-  SPELLING: 'spelling',
+
   ERROR_CORRECTION: 'errorCorrection',
   WORD_GAMES: 'wordGames',
   ASSESSMENT: 'assessment'
@@ -91,12 +91,7 @@ export const RECOMMENDATION_MESSAGES = {
     message: 'Tu as validé tes acquis ! Prêt à découvrir du nouveau vocabulaire ?',
     button: 'Nouveau vocabulaire'
   },
-  'spelling->vocabulary': {
-    icon: '✨',
-    title: 'Orthographe au top !',
-    message: 'Tu écris mieux ! Que dirais-tu d\'apprendre de nouveaux mots ?',
-    button: 'Enrichir le vocabulaire'
-  },
+
   'errorCorrection->reading': {
     icon: '🔍',
     title: 'Précision améliorée !',

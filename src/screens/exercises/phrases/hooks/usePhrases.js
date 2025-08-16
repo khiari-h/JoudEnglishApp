@@ -66,7 +66,7 @@ const usePhrases = (phrasesData, level) => {
       try {
         const savedData = await AsyncStorage.getItem(STORAGE_KEY);
         if (savedData) {
-          const { completedPhrases: savedCompleted, lastPosition } = JSON.parse(savedData);
+          const { completedPhrases: savedCompleted } = JSON.parse(savedData);
           setCompletedPhrases(savedCompleted || {});
           // ✅ SUPPRIMÉ : Initialisation des indices ici car phrasesData n'est pas encore disponible
         }

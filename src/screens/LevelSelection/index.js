@@ -1,6 +1,6 @@
 // src/screens/LevelSelection/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
 import { useContext, useCallback } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router, useFocusEffect } from "expo-router";
 import PropTypes from 'prop-types';

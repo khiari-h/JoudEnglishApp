@@ -146,25 +146,7 @@ const useRealTimeProgress = () => {
     }
   };
 
-  // SPELLING
-  const calculateSpellingProgress = async (level) => {
-    try {
-      const storageKey = `spelling_${level}_correction`;
-      const savedData = await AsyncStorage.getItem(storageKey);
-      
-      if (!savedData) return 0;
-      
-      const data = JSON.parse(savedData);
-      const completedExercises = data.completedExercises || [];
-      
-      const EXERCISES_PER_LEVEL = 25;
-      const percentage = (completedExercises.length / EXERCISES_PER_LEVEL) * 100;
-      return Math.min(Math.round(percentage), 100);
-      
-    } catch (error) {
-      return handleProgressError(error, 'calculateSpellingProgress', level, 0);
-    }
-  };
+
 
   // PHRASES
   const calculatePhrasesProgress = async (level) => {
@@ -298,7 +280,7 @@ const useRealTimeProgress = () => {
         vocabulary_fast: calculateVocabularyFastProgress,
         grammar: calculateGrammarProgress,
         reading: calculateReadingProgress,
-        spelling: calculateSpellingProgress,
+
         phrases: calculatePhrasesProgress,
         conversations: calculateConversationsProgress,
         errorCorrection: calculateErrorCorrectionProgress,

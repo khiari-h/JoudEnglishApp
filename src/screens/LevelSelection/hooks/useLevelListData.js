@@ -24,7 +24,7 @@ export default function useLevelListData({ getLevelProgress, hasProgress }) {
         hasProgress("phrases", levelKey) ||
         hasProgress("grammar", levelKey) ||
         hasProgress("reading", levelKey) ||
-        hasProgress("spelling", levelKey) ||
+
         hasProgress("conversations", levelKey) ||
         hasProgress("errorCorrection", levelKey) ||
         hasProgress("wordGames", levelKey) ||

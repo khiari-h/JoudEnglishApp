@@ -10,6 +10,18 @@ const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, lo
   const currentWord = (lastActivity.metadata?.word || 0) + 1;
   const totalWords = lastActivity.metadata?.totalWords || 15;
   const percentage = Math.min(Math.round((currentWord / totalWords) * 100), 100);
+  
+  // ✅ AJOUTÉ : Détecter si c'est un jeu ou un mot
+  const isGame = lastActivity.metadata?.isGame || false;
+  const isScenario = lastActivity.metadata?.isScenario || false;
+  
+  // ✅ AJOUTÉ : Déterminer l'unité appropriée
+  let unitText = "Mot";
+  if (isGame) {
+    unitText = "Jeu";
+  } else if (isScenario) {
+    unitText = "Scénario";
+  }
 
   const getCategoryText = () => {
     if (typeof lastActivity.metadata?.categoryIndex === 'number') {
@@ -28,7 +40,7 @@ const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, lo
       <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}> 
         Niv {lastActivity.level || 1}
         {getCategoryText()}
-        • Mot {currentWord}/{totalWords}
+        • {unitText} {currentWord}/{totalWords}
       </Text>
       <View style={localStyles.progressContainer}>
         <View style={[localStyles.progressTrack, { backgroundColor: `${accentColor}15` }]}> 
@@ -145,6 +157,8 @@ HeroCardContent.propTypes = {
       word: PropTypes.number,
       totalWords: PropTypes.number,
       categoryIndex: PropTypes.number,
+      isGame: PropTypes.bool,
+      isScenario: PropTypes.bool,
     }),
   }).isRequired,
   accentColor: PropTypes.string.isRequired,
@@ -170,6 +184,8 @@ HeroContinueSection.propTypes = {
       word: PropTypes.number,
       totalWords: PropTypes.number,
       categoryIndex: PropTypes.number,
+      isGame: PropTypes.bool,
+      isScenario: PropTypes.bool,
     }),
   }),
   onPress: PropTypes.func,

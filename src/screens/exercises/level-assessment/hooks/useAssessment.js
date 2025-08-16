@@ -1,15 +1,14 @@
-// src/screens/exercises/level-assessment/hooks/useAssessment.js - VERSION CORRIGÉE
+// src/screens/exercises/level-assessment/hooks/useAssessment.js - VERSION COMPLÈTE RESTAURÉE
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAssessmentData } from '../../../../utils/assessment/assessmentDataHelper';
 
 /**
- * 🎯 Hook unifié pour Level Assessment
- * Remplace useAssessmentState + useAssessmentProgress
- * Simple, efficace, maintenable - pattern identique à useVocabulary
+ * 🎯 Hook unifié pour Level Assessment - VERSION COMPLÈTE
+ * Toutes les fonctionnalités avancées restaurées : sauvegarde, restauration, gestion d'erreurs
  */
-const useAssessment = (level = "A1") => {
+const useAssessment = (level = "1") => {
   
   // =================== ERROR HANDLING HELPER ===================
   const handleStorageError = (error, operation, fallback = null) => {
@@ -37,20 +36,54 @@ const useAssessment = (level = "A1") => {
 
   const isInitialized = useRef(false);
 
-  // =================== DATA LOADING ===================
+  // =================== DATA LOADING COMPLET ===================
   useEffect(() => {
     const loadData = async () => {
       try {
+        console.log('🔄 DEBUG: Loading assessment data for level:', level);
+        
         // Charger données d'évaluation
         const data = getAssessmentData(level);
+        console.log('📊 DEBUG: Assessment data loaded:', {
+          hasData: !!data,
+          dataKeys: data ? Object.keys(data) : [],
+          level
+        });
+        
+        if (!data || Object.keys(data).length === 0) {
+          console.error('❌ DEBUG: No assessment data found for level:', level);
+          setLoaded(true);
+          return;
+        }
+        
+        // Filtrer les sections d'évaluation (exclure les métadonnées)
+        const validSections = Object.keys(data).filter(key => {
+          const section = data[key];
+          return section && 
+                 typeof section === 'object' && 
+                 section.questions && 
+                 Array.isArray(section.questions) &&
+                 section.title;
+        });
+        
+        console.log('🔍 DEBUG: Valid sections found:', validSections);
+        
+        if (validSections.length === 0) {
+          console.error('❌ DEBUG: No valid sections found in data');
+          setLoaded(true);
+          return;
+        }
+        
+        // Initialiser les données
         setAssessmentData(data);
-        setSections(Object.keys(data));
+        setSections(validSections);
 
         // Charger position sauvegardée
         try {
           const savedPosition = await AsyncStorage.getItem(STORAGE_KEY);
           if (savedPosition) {
             const position = JSON.parse(savedPosition);
+            console.log('💾 DEBUG: Position restored:', position);
             setLastPosition(position);
           }
         } catch (positionError) {
@@ -62,6 +95,7 @@ const useAssessment = (level = "A1") => {
           const savedAnswers = await AsyncStorage.getItem(ANSWERS_KEY);
           if (savedAnswers) {
             const answers = JSON.parse(savedAnswers);
+            console.log('💾 DEBUG: Answers restored:', Object.keys(answers));
             setUserAnswers(answers);
           }
         } catch (answersError) {
@@ -73,6 +107,7 @@ const useAssessment = (level = "A1") => {
           const savedResults = await AsyncStorage.getItem(RESULTS_KEY);
           if (savedResults) {
             const results = JSON.parse(savedResults);
+            console.log('💾 DEBUG: Results restored:', results);
             setAssessmentResults(results);
             if (results.completedAt) {
               setTestCompleted(true);
@@ -81,55 +116,89 @@ const useAssessment = (level = "A1") => {
         } catch (resultsError) {
           handleStorageError(resultsError, 'load results');
         }
+        
+        console.log('✅ DEBUG: Data loading completed successfully');
+        
       } catch (error) {
-        // ✅ Gestion d'erreur appropriée
-        console.error('Error loading assessment data:', error);
+        console.error('❌ DEBUG: Error loading assessment data:', error);
       } finally {
         setLoaded(true);
       }
     };
+    
     loadData();
   }, [level]);
 
-  // Save data to storage
-  const saveData = useCallback(async () => {
+  // =================== COMPUTED VALUES ===================
+  const currentSectionData = assessmentData[currentSection] || {};
+  const currentQuestion = currentSectionData.questions?.[currentQuestionIndex] || null;
+  const totalSections = sections.length;
+  const totalQuestionsInSection = currentSectionData.questions?.length || 0;
+
+  // =================== STORAGE FUNCTIONS ===================
+  const savePosition = useCallback(async () => {
     try {
-      // Sauvegarder position
       const dataToSave = {
         sectionIndex: sections.indexOf(currentSection),
         questionIndex: currentQuestionIndex,
         timestamp: Date.now()
       };
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
-
-      // Sauvegarder réponses
-      await AsyncStorage.setItem(ANSWERS_KEY, JSON.stringify(userAnswers));
+      console.log('💾 DEBUG: Position saved:', dataToSave);
     } catch (error) {
-      // ✅ Gestion d'erreur appropriée
-      handleStorageError(error, 'saveData');
-      // Fallback: continuer sans sauvegarde
+      handleStorageError(error, 'savePosition');
     }
-  }, [currentSection, currentQuestionIndex, userAnswers, sections, STORAGE_KEY, ANSWERS_KEY]);
+  }, [currentSection, currentQuestionIndex, sections, STORAGE_KEY]);
 
-  // Auto-save when data changes
+  const saveAnswers = useCallback(async () => {
+    try {
+      await AsyncStorage.setItem(ANSWERS_KEY, JSON.stringify(userAnswers));
+      console.log('💾 DEBUG: Answers saved');
+    } catch (error) {
+      handleStorageError(error, 'saveAnswers');
+    }
+  }, [userAnswers, ANSWERS_KEY]);
+
+  // =================== AUTO-SAVE EFFECTS ===================
   useEffect(() => {
-    if (loaded && currentSection) saveData();
-  }, [saveData, loaded, currentSection]);
+    if (loaded && currentSection && isInitialized.current) {
+      savePosition();
+    }
+  }, [loaded, currentSection, savePosition]);
 
-  // Initialize first section
+  useEffect(() => {
+    if (loaded && currentSection && Object.keys(userAnswers).length > 0 && isInitialized.current) {
+      const timeoutId = setTimeout(() => {
+        saveAnswers();
+      }, 1000); // Délai de 1 seconde
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [loaded, currentSection, userAnswers, saveAnswers]);
+
+  // =================== INITIALIZATION EFFECT ===================
   useEffect(() => {
     if (loaded && !currentSection && sections.length > 0 && !isInitialized.current) {
+      console.log('🚀 DEBUG: Initializing first section');
+      
       // Restaurer position ou commencer au début
-      if (lastPosition && sections[lastPosition.sectionIndex]) {
+      if (lastPosition && 
+          lastPosition.sectionIndex >= 0 && 
+          lastPosition.sectionIndex < sections.length &&
+          sections[lastPosition.sectionIndex]) {
+        console.log('🔄 DEBUG: Restoring saved position:', lastPosition);
         setCurrentSection(sections[lastPosition.sectionIndex]);
-        setCurrentQuestionIndex(lastPosition.questionIndex);
+        setCurrentQuestionIndex(lastPosition.questionIndex || 0);
       } else {
+        console.log('🆕 DEBUG: Starting from first section');
         setCurrentSection(sections[0]);
         setCurrentQuestionIndex(0);
       }
+      
       isInitialized.current = true;
+      console.log('✅ DEBUG: First section initialized successfully');
     }
-  }, [loaded, currentSection, sections, lastPosition]);
+  }, [loaded, sections, lastPosition]);
 
   // =================== NAVIGATION ACTIONS ===================
   const changeSection = useCallback((sectionKey) => {
@@ -160,7 +229,7 @@ const useAssessment = (level = "A1") => {
       setShowFeedback(true);
       
       // Sauvegarder la réponse
-      const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+      const isCorrect = selectedAnswer === currentQuestion?.correctAnswer;
       setUserAnswers(prev => ({
         ...prev,
         [currentSection]: {
@@ -241,8 +310,8 @@ const useAssessment = (level = "A1") => {
       };
       setAssessmentResults(resultsWithTimestamp);
       await AsyncStorage.setItem(RESULTS_KEY, JSON.stringify(resultsWithTimestamp));
+      console.log('💾 DEBUG: Assessment results saved');
     } catch (error) {
-      // ✅ Gestion d'erreur appropriée
       handleStorageError(error, 'saveAssessmentResults');
       // Fallback: garder les résultats en mémoire même si la sauvegarde échoue
     }
@@ -259,8 +328,9 @@ const useAssessment = (level = "A1") => {
       setUserAnswers({});
       setAssessmentResults({});
       setLastPosition({ sectionIndex: 0, questionIndex: 0 });
+      isInitialized.current = false;
+      console.log('🔄 DEBUG: Assessment reset successfully');
     } catch (error) {
-      // ✅ Gestion d'erreur appropriée
       handleStorageError(error, 'resetAssessment');
       // Fallback: réinitialiser l'état local même si la suppression échoue
       setCurrentSection(sections[0]);
@@ -271,6 +341,7 @@ const useAssessment = (level = "A1") => {
       setUserAnswers({});
       setAssessmentResults({});
       setLastPosition({ sectionIndex: 0, questionIndex: 0 });
+      isInitialized.current = false;
     }
   }, [STORAGE_KEY, RESULTS_KEY, ANSWERS_KEY, sections]);
 

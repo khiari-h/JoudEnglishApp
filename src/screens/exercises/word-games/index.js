@@ -1,5 +1,6 @@
-// src/screens/exercises/wordGames/index.js - VERSION CORRIGÉE
-import { useMemo, useEffect, useCallback } from "react";
+// src/screens/exercises/word-games/index.js - VERSION CORRIGÉE AVEC ProgressCard
+
+import { useMemo, useEffect, useCallback, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -22,12 +23,15 @@ import { getWordGamesData, getLevelColor } from "../../../utils/wordGames/wordGa
 import createStyles from "./style";
 
 /**
- * 🎯 WordGamesExercise - VERSION CORRIGÉE
+ * 🎯 WordGamesExercise - VERSION CORRIGÉE AVEC ProgressCard
  */
 const WordGamesExercise = ({ route }) => {
   const navigation = useNavigation();
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
+
+  // ✅ AJOUTÉ : État pour l'expansion de la barre de progression
+  const [progressExpanded, setProgressExpanded] = useState(false);
 
   // Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();
@@ -38,45 +42,61 @@ const WordGamesExercise = ({ route }) => {
 
   // Hook unifié
   const {
+    games,
+    currentGame,
     currentGameIndex,
+    totalGames,
     selectedItems,
     matchedItems,
     showFeedback,
-    isCorrect,
     showResults,
     gameResults,
-    shuffledOptions,
+    completedGames,
     loaded,
-    games,
-    currentGame,
-    totalGames,
-    fadeAnim,
-    bounceAnim,
     handleSelectItem,
     checkAnswer,
     handleNext,
     handlePrevious,
     resetGames,
-    canGoToPrevious,
-    isLastGame,
-    stats,
-    display,
+    showPairFeedback,
+    pairFeedbackMessage,
+    canShowCheckButton,
   } = useWordGames(wordGamesData, level);
 
-  // ✅ CORRECTION : Mémoriser les métadonnées
-  const activityMetadata = useMemo(() => ({
-    game: currentGameIndex,
+  // ✅ CORRIGÉ : Calculer les valeurs manquantes
+  const canGoToPrevious = currentGameIndex > 0;
+  const isLastGame = currentGameIndex === totalGames - 1;
+  
+  const stats = {
+    score: gameResults.reduce((sum, result) => sum + (result?.score || 0), 0),
+    totalMaxScore: gameResults.reduce((sum, result) => sum + (result?.maxScore || 0), 0),
+    completedGamesCount: Object.keys(completedGames).length,
+    percentage: totalGames > 0 ? Math.round((Object.keys(completedGames).length / totalGames) * 100) : 0,
+  };
+
+  const display = {
+    currentGameIndex: currentGameIndex + 1,
     totalGames,
+  };
+
+  // ✅ CORRIGÉ : Mémoriser les métadonnées compatibles avec le dashboard
+  const activityMetadata = useMemo(() => ({
+    word: currentGameIndex,        // ✅ Position actuelle (0-based)
+    totalWords: totalGames,        // ✅ Total des jeux
     gameType: currentGame?.type || "matching",
     gameTitle: currentGame?.title || `Jeu ${currentGameIndex + 1}`,
-    score: stats?.score || 0
-  }), [currentGameIndex, totalGames, currentGame?.type, currentGame?.title, stats?.score]);
+    score: stats?.score || 0,
+    // ✅ AJOUTÉ : Indicateur que c'est un jeu, pas un mot
+    isGame: true,
+    // ✅ AJOUTÉ : Nombre de jeux complétés
+    completedGames: Object.keys(completedGames).length
+  }), [currentGameIndex, totalGames, currentGame?.type, currentGame?.title, stats?.score, completedGames]);
 
-  // ✅ CORRECTION : Callback mémorisé pour saveActivity
+  // ✅ CORRIGÉ : Callback mémorisé pour saveActivity
   const handleSaveActivity = useCallback(() => {
     if (loaded && games.length > 0 && currentGame && !showResults) {
       saveActivity({
-        title: "Jeux de mots",
+        title: `Jeux de mots - ${currentGame.type === 'matching' ? 'Association' : 'Catégorisation'}`, // ✅ CORRIGÉ : Titre plus descriptif
         level,
         type: "wordGames",
         metadata: activityMetadata
@@ -84,7 +104,7 @@ const WordGamesExercise = ({ route }) => {
     }
   }, [loaded, games.length, currentGame, showResults, level, saveActivity, activityMetadata]);
 
-  // ✅ CORRECTION : useEffect optimisé
+  // ✅ CORRIGÉ : useEffect optimisé
   useEffect(() => {
     handleSaveActivity();
   }, [handleSaveActivity]);
@@ -100,51 +120,26 @@ const WordGamesExercise = ({ route }) => {
     wordGamesData: !!wordGamesData
   });
 
-  // Handlers
+  // ✅ CORRIGÉ : Navigation de retour
   const handleBackPress = useCallback(() => {
-    router.push({
-      pathname: "/tabs/exerciseSelection",
-      params: { level }
-    });
-  }, [level]);
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      router.back();
+    }
+  }, [navigation]);
 
-  const handleCheckAnswer = useCallback(() => checkAnswer(), [checkAnswer]);
-
-  const handleNextGame = useCallback(() => {
-    handleNext();
-    // Navigation automatique quand tous les jeux sont terminés
-  }, [handleNext]);
-
-  const handlePreviousGame = useCallback(() => handlePrevious(), [handlePrevious]);
-
-  const handleResetGames = useCallback(() => resetGames(), [resetGames]);
-
-  const handleContinue = useCallback(() => navigation.goBack(), [navigation]);
+  // ✅ CORRIGÉ : Gestion de la continuation
+  const handleContinue = useCallback(() => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      router.back();
+    }
+  }, [navigation]);
 
   // Loading state
-  if (!loaded || !currentGame) {
-    console.log('🔍 DEBUG: Affichage loading state (loaded:', loaded, 'currentGame:', !!currentGame, ')');
-    return (
-      <Container
-        safeArea
-        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
-        statusBarStyle="dark-content"
-      >
-        <WordGamesHeader
-          level={level}
-          onBackPress={handleBackPress}
-        />
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator testID="activity-indicator" size="large" color={levelColor} />
-        </View>
-      </Container>
-    );
-  }
-
-  // Empty games state
-  if (games.length === 0) {
-    console.log('🔍 DEBUG: Affichage empty state (games.length:', games.length, ')');
+  if (!loaded || !wordGamesData || games.length === 0) {
     return (
       <Container
         safeArea
@@ -177,7 +172,7 @@ const WordGamesExercise = ({ route }) => {
           gameResults={gameResults}
           finalScore={stats}
           levelColor={levelColor}
-          onPlayAgain={handleResetGames}
+          onPlayAgain={resetGames}
           onContinue={handleContinue}
         />
       </Container>
@@ -202,8 +197,16 @@ const WordGamesExercise = ({ route }) => {
       <WordGamesProgress
         currentGame={display.currentGameIndex}
         totalGames={totalGames}
-        completedGames={stats.completedGamesCount}
+        completedGames={completedGames}
         levelColor={levelColor}
+        expanded={progressExpanded}
+        onToggleExpand={() => setProgressExpanded(!progressExpanded)}
+        onGameTypePress={(index) => {
+          // ✅ AJOUTÉ : Gestion du clic sur un type de jeu
+          console.log('Game type clicked:', index);
+        }}
+        // ✅ AJOUTÉ : Données des jeux pour calculer la progression par type
+        games={games}
       />
 
       {/* Game Card */}
@@ -218,6 +221,8 @@ const WordGamesExercise = ({ route }) => {
         fadeAnim={fadeAnim}
         bounceAnim={bounceAnim}
         onSelectItem={handleSelectItem}
+        showPairFeedback={showPairFeedback}
+        pairFeedbackMessage={pairFeedbackMessage}
       />
 
       {/* Navigation */}
@@ -228,9 +233,10 @@ const WordGamesExercise = ({ route }) => {
         isLastGame={isLastGame}
         canGoPrevious={canGoToPrevious}
         levelColor={levelColor}
-        onCheckAnswer={handleCheckAnswer}
-        onNext={handleNextGame}
-        onPrevious={handlePreviousGame}
+        onCheckAnswer={checkAnswer}
+        onNext={handleNext}
+        onPrevious={handlePrevious}
+        canShowCheckButton={canShowCheckButton}
       />
     </Container>
   );

@@ -336,43 +336,7 @@ export default {
     ],
   },
 
-  spelling: {
-    title: "Orthographe",
-    description: "Testez vos compétences en orthographe",
-    icon: "🔤",
-    questions: [
-      {
-        text: "Which word is spelled correctly?",
-        options: ["freind", "friend", "frend", "friende"],
-        correctAnswer: 1,
-        explanation: "The correct spelling is 'friend' - remember 'i before e'.",
-      },
-      {
-        text: "Choose the correct spelling:",
-        options: ["hapy", "happie", "happy", "happey"],
-        correctAnswer: 2,
-        explanation: "The correct spelling is 'happy' with a double 'p' and 'y' at the end.",
-      },
-      {
-        text: "Choose the correct spelling:",
-        options: ["becuase", "because", "becaus", "becose"],
-        correctAnswer: 1,
-        explanation: "The correct spelling is 'because' - remember 'cause' at the end.",
-      },
-      {
-        text: "Choose the correct spelling:",
-        options: ["whant", "want", "wante", "waunt"],
-        correctAnswer: 1,
-        explanation: "The correct spelling is 'want' - simple and short.",
-      },
-      {
-        text: "Choose the correct spelling:",
-        options: ["recieve", "receve", "receive", "reciave"],
-        correctAnswer: 2,
-        explanation: "The correct spelling is 'receive' - 'ei' after 'c' (exception to i before e rule).",
-      },
-    ],
-  },
+
 
   reading_comprehension: {
     title: "Compréhension Écrite",
@@ -411,46 +375,5 @@ export default {
       },
     ],
   },
-  spelling_rules: {
-    title: "Règles d'Orthographe",
-    description: "Testez votre connaissance des règles d'orthographe de base",
-    icon: "📏",
-    questions: [
-      {
-        text: "What is the plural of 'cat'?",
-        options: ["cats", "cates", "cat's", "caties"],
-        correctAnswer: 0,
-        explanation: "For most words, we add -s to make the plural: cat → cats.",
-      },
-      {
-        text: "What is the plural of 'box'?",
-        options: ["boxs", "boxes", "box's", "boxies"],
-        correctAnswer: 1,
-        explanation: "Words ending in -x add -es for the plural: box → boxes.",
-      },
-      {
-        text: "Which sentence uses capital letters correctly?",
-        options: [
-          "i live in london.",
-          "I live in London.",
-          "i Live In london.",
-          "I Live in london."
-        ],
-        correctAnswer: 1,
-        explanation: "We use capital letters for 'I' and proper nouns like 'London'.",
-      },
-      {
-        text: "What is the contraction for 'I am'?",
-        options: ["Im", "I'm", "Iam", "I-am"],
-        correctAnswer: 1,
-        explanation: "The contraction for 'I am' is 'I'm' with an apostrophe.",
-      },
-      {
-        text: "What is the plural of 'class'?",
-        options: ["classs", "classes", "class's", "clasies"],
-        correctAnswer: 1,
-        explanation: "Words ending in -ss add -es for the plural: class → classes.",
-      },
-    ],
-  },
+
 };

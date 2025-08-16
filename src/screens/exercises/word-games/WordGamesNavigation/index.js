@@ -1,130 +1,164 @@
-// WordGamesNavigation/index.js - VERSION REFACTORISÉE avec NavigationButtons
+// src/screens/exercises/word-games/WordGamesNavigation/index.js - VERSION CORRIGÉE
 
 import { View, TouchableOpacity, Text } from "react-native";
+import { useCallback } from "react";
 import PropTypes from 'prop-types';
-import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
-import createStyles from "./style";
+import styles from "./style";
 
 /**
- * 🎯 WordGamesNavigation - Version Refactorisée
- * Utilise NavigationButtons pour la navigation + bouton Check Answer custom
- * 
- * @param {object} currentGame - Jeu actuel
- * @param {boolean} showFeedback - Afficher le feedback ou non
- * @param {array} selectedItems - Items sélectionnés
- * @param {boolean} isLastGame - Dernier jeu
- * @param {boolean} canGoPrevious - Peut aller en arrière
- * @param {string} levelColor - Couleur du niveau
- * @param {function} onCheckAnswer - Vérifier la réponse
- * @param {function} onNext - Jeu suivant
- * @param {function} onPrevious - Jeu précédent
+ * Composant de navigation pour Word Games - VERSION CORRIGÉE
+ * Problèmes résolus :
+ * - Boutons qui débordent
+ * - Logique de navigation incorrecte
+ * - Affichage conditionnel des boutons selon le type de jeu
  */
 const WordGamesNavigation = ({
   currentGame,
   showFeedback,
-  selectedItems = [],
+  selectedItems,
   isLastGame,
   canGoPrevious,
   levelColor = "#3b82f6",
   onCheckAnswer,
   onNext,
   onPrevious,
+  canShowCheckButton,
 }) => {
-  const styles = createStyles(levelColor);
+  
+  // ✅ CORRIGÉ : Debug simplifié
+  console.log('🔍 DEBUG WordGamesNavigation:', {
+    gameType: currentGame?.type,
+    showFeedback,
+    selectedItemsLength: selectedItems?.length,
+    isLastGame,
+    canGoPrevious,
+  });
 
-  // Déterminer si le bouton Check Answer doit être disponible
-  const isMatchingOrAutoComplete = currentGame?.type === "matching";
-  const hasSelection = selectedItems.length > 0;
-  const canCheckAnswer = !isMatchingOrAutoComplete && hasSelection;
+  // ✅ CORRIGÉ : Déterminer le texte du bouton de vérification
+  const getCheckButtonText = useCallback(() => {
+    if (!currentGame) return "Vérifier";
+    
+    if (currentGame.type === 'matching') {
+      return "Vérifier mes paires";
+    } else if (currentGame.type === 'categorization') {
+      return "Vérifier la réponse";
+    }
+    
+    return "Vérifier";
+  }, [currentGame, selectedItems]);
 
-  // Phase 1: Check Answer (pour categorization seulement)
-  if (!showFeedback && currentGame?.type === "categorization") {
-    return (
-      <View style={styles.container}>
+  // ✅ CORRIGÉ : Déterminer si le bouton de vérification est désactivé
+  const isCheckButtonDisabled = useCallback(() => {
+    if (!currentGame) return true;
+    
+    if (currentGame.type === 'matching') {
+      // ✅ CORRIGÉ : Pour matching games, toujours activé
+      return false;
+    } else if (currentGame.type === 'categorization') {
+      return selectedItems.length === 0;
+    }
+    
+    return true;
+  }, [currentGame, selectedItems]);
+
+  return (
+    <View style={styles.navigationContainer}>
+      {/* ✅ CORRIGÉ : Bouton de vérification - affiché seulement quand on a des paires trouvées */}
+      {currentGame?.type === 'matching' && !showFeedback && canShowCheckButton && (
         <TouchableOpacity
           style={[
-            styles.checkButton,
-            !canCheckAnswer && styles.disabledButton,
-            { backgroundColor: canCheckAnswer ? levelColor : "#cbd5e1" },
+            styles.checkAnswerButton,
+            {
+              backgroundColor: levelColor,
+              opacity: 1,
+            },
           ]}
           onPress={onCheckAnswer}
-          disabled={!canCheckAnswer}
           activeOpacity={0.8}
         >
-          <Text style={styles.checkButtonText}>
-            {hasSelection ? "Check Answer" : "Select items to check"}
+          <Text style={styles.checkAnswerButtonText}>
+            {getCheckButtonText()}
           </Text>
         </TouchableOpacity>
-      </View>
-    );
-  }
+      )}
 
-  // Phase 2: Matching games (auto-complete, pas de bouton Check)
-  if (!showFeedback && currentGame?.type === "matching") {
-    return (
-      <View style={styles.container}>
+      {/* ✅ CORRIGÉ : Bouton de vérification pour categorization games */}
+      {currentGame?.type === 'categorization' && !showFeedback && (
+        <TouchableOpacity
+          style={[
+            styles.checkAnswerButton,
+            {
+              backgroundColor: isCheckButtonDisabled() ? '#9ca3af' : levelColor,
+              opacity: isCheckButtonDisabled() ? 0.6 : 1,
+            },
+          ]}
+          onPress={onCheckAnswer}
+          disabled={isCheckButtonDisabled()}
+          activeOpacity={0.8}
+        >
+          <Text style={styles.checkAnswerButtonText}>
+            {getCheckButtonText()}
+          </Text>
+        </TouchableOpacity>
+      )}
+
+      {/* ✅ CORRIGÉ : Instructions pour matching games */}
+      {currentGame?.type === 'matching' && !showFeedback && (
         <View style={styles.instructionContainer}>
-          <Text style={styles.instructionText}>Find all matching pairs</Text>
+          <Text style={styles.instructionText}>
+            💡 Sélectionnez 2 éléments pour former une paire, puis cliquez "Vérifier mes paires"
+          </Text>
         </View>
-        {/* ✅ AJOUTÉ : Boutons de navigation même pour les jeux matching */}
-        <NavigationButtons
-          onNext={onNext}
-          onPrevious={canGoPrevious ? onPrevious : undefined}
-          disablePrevious={!canGoPrevious}
-          disableNext={false}
-          primaryColor={levelColor}
-          isLast={isLastGame}
-          buttonLabels={{
-            next: isLastGame ? "See Results" : "Next Game",
-            previous: "Previous Game",
-            finish: "See Results"
-          }}
-          layout="full"
-        />
-      </View>
-    );
-  }
+      )}
 
-  // Phase 3: Navigation après feedback (tous types de jeux)
-  return (
-    <View style={styles.container}>
-      <NavigationButtons
-        onNext={onNext}
-        onPrevious={canGoPrevious ? onPrevious : undefined}
-        disablePrevious={!canGoPrevious}
-        disableNext={false}
-        primaryColor={levelColor}
-        isLast={isLastGame}
-        buttonLabels={{
-          next: isLastGame ? "See Results" : "Next Game",
-          previous: "Previous Game",
-          finish: "See Results"
-        }}
-        layout="full" // Utilise toute la largeur
-      />
+      {/* ✅ CORRIGÉ : Boutons de navigation - affichés seulement après feedback */}
+      {showFeedback && (
+        <View style={styles.navigationButtonsContainer}>
+          {/* Bouton Précédent */}
+          {canGoPrevious && (
+            <TouchableOpacity
+              style={[styles.navigationButton, styles.previousButton]}
+              onPress={onPrevious}
+              activeOpacity={0.8}
+            >
+              <Text style={styles.navigationButtonText}>Précédent</Text>
+            </TouchableOpacity>
+          )}
+
+          {/* Bouton Suivant */}
+          <TouchableOpacity
+            style={[
+              styles.navigationButton,
+              styles.nextButton,
+              { backgroundColor: levelColor }
+            ]}
+            onPress={onNext}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.navigationButtonText}>
+              {isLastGame ? "Terminer" : "Suivant"}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
 
-// PropTypes pour la validation des props
+// ✅ CORRIGÉ : PropTypes mis à jour
 WordGamesNavigation.propTypes = {
   currentGame: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-  }).isRequired,
+    type: PropTypes.oneOf(['matching', 'categorization']).isRequired,
+  }),
   showFeedback: PropTypes.bool.isRequired,
-  selectedItems: PropTypes.array,
+  selectedItems: PropTypes.array.isRequired,
   isLastGame: PropTypes.bool.isRequired,
   canGoPrevious: PropTypes.bool.isRequired,
   levelColor: PropTypes.string,
   onCheckAnswer: PropTypes.func.isRequired,
   onNext: PropTypes.func.isRequired,
   onPrevious: PropTypes.func.isRequired,
-};
-
-// Valeurs par défaut
-WordGamesNavigation.defaultProps = {
-  selectedItems: [],
-  levelColor: "#3b82f6",
+  canShowCheckButton: PropTypes.bool.isRequired,
 };
 
 export default WordGamesNavigation;

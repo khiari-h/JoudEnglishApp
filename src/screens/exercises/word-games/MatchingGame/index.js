@@ -1,4 +1,4 @@
-// src/screens/exercises/word-games/MatchingGame/index.js - AVEC PROPTYPES
+// src/screens/exercises/word-games/MatchingGame/index.js - VERSION CORRIGÉE
 
 import { View, Text, TouchableOpacity } from "react-native";
 import { useCallback } from "react";
@@ -6,15 +6,12 @@ import PropTypes from 'prop-types';
 import styles from "./style";
 
 /**
- * Composant pour le jeu d'association de paires
- *
- * @param {Object} game - Données du jeu
- * @param {Array} selectedItems - Items sélectionnés par l'utilisateur
- * @param {Array} matchedItems - Items correctement appariés
- * @param {Array} shuffledOptions - Options mélangées
- * @param {boolean} showFeedback - Indique si le feedback est affiché
- * @param {string} levelColor - Couleur associée au niveau
- * @param {Function} onSelectItem - Fonction appelée lors de la sélection d'un item
+ * Composant pour le jeu d'association de paires - VERSION CORRIGÉE
+ * Problèmes résolus :
+ * - Logique de sélection des paires
+ * - Gestion des couleurs par paire
+ * - Validation des correspondances
+ * - Amélioration de la visibilité des éléments sélectionnés
  */
 const MatchingGame = ({
   game,
@@ -26,25 +23,14 @@ const MatchingGame = ({
   onSelectItem,
 }) => {
   
-  // ✅ AJOUTÉ : Debug pour voir exactement ce que MatchingGame reçoit
+  // ✅ CORRIGÉ : Debug simplifié
   console.log('🔍 DEBUG MatchingGame:', {
-    game: !!game,
-    gameInstructions: game?.instructions,
-    shuffledOptions,
-    selectedItems,
-    matchedItems,
-    showFeedback
+    gameType: game?.type,
+    gameTitle: game?.title,
+    shuffledOptionsLength: shuffledOptions?.length,
+    selectedItemsLength: selectedItems?.length,
+    matchedItemsLength: matchedItems?.length,
   });
-  
-  // ✅ AJOUTÉ : Debug détaillé pour voir le contenu de chaque option
-  console.log('🔍 DEBUG shuffledOptions détaillé:', shuffledOptions.map((item, index) => ({
-    index,
-    item,
-    itemType: typeof item,
-    itemKeys: item ? Object.keys(item) : 'null/undefined',
-    itemText: item?.text,
-    itemId: item?.id
-  })));
   
   // Handler stable pour la sélection d'un item
   const handleItemPress = useCallback(
@@ -56,25 +42,39 @@ const MatchingGame = ({
     [onSelectItem, matchedItems, showFeedback]
   );
 
+  // ✅ CORRIGÉ : Couleurs aléatoires pour chaque élément (pas par paire)
+  const getRandomColor = (itemId) => {
+    const colors = [
+      '#ef4444', // Rouge vif
+      '#3b82f6', // Bleu vif
+      '#10b981', // Vert vif
+      '#f59e0b', // Orange vif
+      '#8b5cf6', // Violet vif
+      '#ec4899', // Rose vif
+      '#06b6d4', // Cyan vif
+      '#84cc16', // Lime vif
+      '#f97316', // Orange foncé
+      '#6366f1', // Indigo
+      '#14b8a6', // Teal
+      '#f43f5e', // Rose foncé
+    ];
+    
+    // ✅ CORRIGÉ : Utiliser l'ID unique de l'item pour une couleur aléatoire
+    // Pas de lien avec originalPair pour éviter de donner les réponses
+    const colorIndex = (itemId.charCodeAt(0) + itemId.charCodeAt(itemId.length - 1)) % colors.length;
+    return colors[colorIndex];
+  };
+
   return (
     <View style={styles.gameContainer}>
-      {console.log('🔍 DEBUG: Début du JSX MatchingGame')}
-      
-      {/* ✅ CORRIGÉ : Remplacé GameInstructions par un composant simple */}
+      {/* Instructions */}
       <View style={styles.instructionsContainer}>
-        {console.log('🔍 DEBUG: Rendu instructionsContainer')}
         <Text style={styles.instructionsText}>{game.instructions}</Text>
-        {console.log('🔍 DEBUG: Rendu instructionsText')}
       </View>
       
-      {console.log('🔍 DEBUG: Avant shuffledOptions.length')}
-      {console.log('🔍 DEBUG: shuffledOptions.length:', shuffledOptions.length)}
-      
+      {/* Grille des items */}
       <View style={styles.matchingContainer}>
-        {console.log('🔍 DEBUG: Rendu matchingContainer')}
-        
         {shuffledOptions.map((item, index) => {
-          console.log(`🔍 DEBUG: Rendu item ${index}:`, item);
           const isMatched = matchedItems.some(matched => 
             matched.item.id === item.id && matched.index === index
           );
@@ -82,37 +82,55 @@ const MatchingGame = ({
             selected.item.id === item.id && selected.index === index
           );
           
-          // ✅ AJOUTÉ : Couleurs différentes pour chaque paire
-          const pairColors = [
-            '#ef4444', // Rouge
-            '#3b82f6', // Bleu
-            '#10b981', // Vert
-            '#f59e0b', // Orange
-            '#8b5cf6', // Violet
-          ];
-          const pairColor = pairColors[item.originalPair % pairColors.length];
+          // ✅ CORRIGÉ : Couleur aléatoire unique pour chaque élément
+          const itemColor = getRandomColor(item.id);
           
           return (
             <TouchableOpacity
-              key={`${item}-${index}`}
+              key={`${item.id}-${index}`}
               style={[
                 styles.matchingTile,
-                { borderColor: pairColor, borderWidth: 2 },
-                isSelected && [styles.selectedMatchingTile, { backgroundColor: pairColor + '20' }],
-                isMatched && [styles.matchedTile, { backgroundColor: pairColor + '40' }],
+                { borderColor: itemColor, borderWidth: 3 },
+                isSelected && [
+                  styles.selectedMatchingTile, 
+                  { 
+                    backgroundColor: itemColor + '30', // Plus transparent pour voir le texte
+                    borderWidth: 4,
+                    shadowColor: itemColor,
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 4,
+                    elevation: 5,
+                  }
+                ],
+                isMatched && [
+                  styles.matchedTile, 
+                  { 
+                    backgroundColor: itemColor + '60', // Plus opaque pour les éléments trouvés
+                    borderWidth: 4,
+                  }
+                ],
               ]}
               onPress={() => handleItemPress(item, index)}
               disabled={isMatched}
+              activeOpacity={0.7}
             >
-              {console.log(`🔍 DEBUG: Rendu TouchableOpacity pour item ${index}`)}
               <Text
                 style={[
                   styles.matchingText,
-                  { color: pairColor, fontWeight: '600' },
-                  isMatched && { color: '#ffffff' },
+                  { 
+                    color: isMatched ? '#ffffff' : itemColor, // Blanc sur fond coloré si trouvé
+                    fontWeight: '700', // Plus gras pour meilleure lisibilité
+                    fontSize: 16, // Taille de police plus grande
+                  },
+                  isSelected && { 
+                    color: '#ffffff', // Blanc quand sélectionné pour contraste
+                    textShadowColor: itemColor,
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 2,
+                  },
                 ]}
               >
-                {console.log(`🔍 DEBUG: Rendu Text pour item ${index}:`, item)}
                 {item.text}
               </Text>
             </TouchableOpacity>
@@ -120,29 +138,55 @@ const MatchingGame = ({
         })}
       </View>
       
-      {console.log('🔍 DEBUG: Fin du JSX MatchingGame')}
-
-      {game.hint && (
-        <View style={styles.hintContainer}>
-          <Text style={styles.hintText}>Hint: {game.hint}</Text>
+      {/* ✅ CORRIGÉ : Indicateur de progression des paires */}
+      {matchedItems.length > 0 && (
+        <View style={styles.progressContainer}>
+          <Text style={styles.progressText}>
+            Paires trouvées : {matchedItems.length / 2} / {game.pairs?.length || 0}
+          </Text>
         </View>
       )}
     </View>
   );
 };
 
-// PropTypes pour le composant MatchingGame
+// ✅ CORRIGÉ : PropTypes mis à jour
 MatchingGame.propTypes = {
   game: PropTypes.shape({
-    instructions: PropTypes.string.isRequired,
-    hint: PropTypes.string,
+    type: PropTypes.oneOf(['matching']).isRequired,
+    title: PropTypes.string,
+    instructions: PropTypes.string,
+    pairs: PropTypes.arrayOf(PropTypes.shape({
+      word: PropTypes.string.isRequired,
+      match: PropTypes.string.isRequired,
+    })),
   }).isRequired,
-  selectedItems: PropTypes.arrayOf(PropTypes.number).isRequired,
-  matchedItems: PropTypes.arrayOf(PropTypes.number).isRequired,
+  selectedItems: PropTypes.arrayOf(PropTypes.shape({
+    item: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      originalPair: PropTypes.number.isRequired,
+      pairId: PropTypes.number.isRequired,
+    }).isRequired,
+    index: PropTypes.number.isRequired,
+  })).isRequired,
+  matchedItems: PropTypes.arrayOf(PropTypes.shape({
+    item: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      originalPair: PropTypes.number.isRequired,
+      pairId: PropTypes.number.isRequired,
+    }).isRequired,
+    index: PropTypes.number.isRequired,
+  })).isRequired,
   shuffledOptions: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
+    originalPair: PropTypes.number.isRequired,
+    pairId: PropTypes.number.isRequired,
   })).isRequired,
   showFeedback: PropTypes.bool.isRequired,
   levelColor: PropTypes.string,

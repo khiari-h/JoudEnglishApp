@@ -61,14 +61,19 @@ const ConversationExercise = ({ route }) => {
     display,
   } = useConversation(conversationData, level);
 
-  // ✅ CORRECTION : Mémoriser les métadonnées
+  // ✅ CORRIGÉ : Mémoriser les métadonnées compatibles avec le dashboard
   const activityMetadata = useMemo(() => ({
-    scenario: currentScenarioIndex,
-    step: stats.currentStep || 0,
-    totalSteps: stats.totalSteps || 1,
+    word: currentScenarioIndex,                    // ✅ CORRIGÉ : Utiliser 'word' pour la compatibilité dashboard
+    totalWords: totalScenarios,                    // ✅ CORRIGÉ : Utiliser 'totalWords' pour la compatibilité dashboard
+    scenario: currentScenarioIndex,                // Garder pour compatibilité interne
+    step: stats.currentStep || 0,                  // Garder pour compatibilité interne
+    totalSteps: stats.totalSteps || 1,             // Garder pour compatibilité interne
     scenarioName: currentScenario?.title || `Scénario ${currentScenarioIndex + 1}`,
-    totalScenarios
-  }), [currentScenarioIndex, stats.currentStep, stats.totalSteps, currentScenario?.title, totalScenarios]);
+    // ✅ AJOUTÉ : Indicateur que c'est un scénario, pas un mot
+    isScenario: true,
+    // ✅ AJOUTÉ : Nombre de scénarios complétés
+    completedScenarios: Object.keys(completedScenarios).length
+  }), [currentScenarioIndex, stats.currentStep, stats.totalSteps, currentScenario?.title, totalScenarios, completedScenarios]);
 
   // ✅ CORRECTION : Callback mémorisé pour saveActivity
   const handleSaveActivity = useCallback(() => {

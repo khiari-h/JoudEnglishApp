@@ -71,11 +71,10 @@ const ConversationProgress = ({
   return (
     <ProgressCard
       title="Progression"
-      subtitle={`${statsData.completedScenariosCount}/${statsData.totalScenarios} scénarios • ${statsData.completedStepsCount}/${statsData.totalStepsCount} étapes`}
       progress={statsData.completionProgress}
-      completed={statsData.completedStepsCount}
-      total={statsData.totalStepsCount}
-      unit="étapes"
+      completed={statsData.completedScenariosCount}
+      total={statsData.totalScenarios}
+      unit="scénarios"
       levelColor={levelColor}
       expandable
       expanded={expanded}

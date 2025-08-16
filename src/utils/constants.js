@@ -41,13 +41,7 @@ export const EXERCISES = {
     color: "#f59e0b",
     route: "/tabs/grammarExercise"
   },
-  spelling: { 
-    id: "spelling", 
-    title: "Orthographe", 
-    icon: "🔤", 
-    color: "#8b5cf6",
-    route: "/tabs/spellingExercise"
-  },
+
   reading: { 
     id: "reading", 
     title: "Lecture", 

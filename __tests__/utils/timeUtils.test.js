@@ -41,7 +41,7 @@ describe('timeUtils', () => {
         reading: 240,
         phrases: 60,
         conversations: 300,
-        spelling: 90,
+        
         errorCorrection: 150,
         wordGames: 75,
         assessment: 200
@@ -59,7 +59,7 @@ describe('timeUtils', () => {
         reading: NaN,
         phrases: Infinity,
         conversations: 150.7,
-        spelling: null,
+        
         errorCorrection: undefined,
         wordGames: 86401, // > 24h
         assessment: 100
@@ -72,7 +72,7 @@ describe('timeUtils', () => {
       expect(result.reading).toBe(0);
       expect(result.phrases).toBe(0);
       expect(result.conversations).toBe(150); // Arrondi
-      expect(result.spelling).toBe(0);
+      
       expect(result.errorCorrection).toBe(0);
       expect(result.wordGames).toBe(0);
       expect(result.assessment).toBe(100);
@@ -194,7 +194,7 @@ describe('timeUtils', () => {
         reading: 240,
         phrases: 60,
         conversations: 300,
-        spelling: 90,
+        
         errorCorrection: 150,
         wordGames: 75,
         assessment: 200
@@ -220,7 +220,7 @@ describe('timeUtils', () => {
         reading: 240,
         phrases: 60,
         conversations: 300,
-        spelling: 90,
+        
         errorCorrection: 150,
         wordGames: 75,
         assessment: 200
@@ -245,7 +245,7 @@ describe('timeUtils', () => {
         reading: 60,
         phrases: 180,
         conversations: 240,
-        spelling: 90,
+        
         errorCorrection: 150,
         wordGames: 75,
         assessment: 200
@@ -272,7 +272,7 @@ describe('timeUtils', () => {
       reading: 30,     // 0.5 minutes
       phrases: 60,     // 1 minute
       conversations: 300,
-      spelling: 90,
+      
       errorCorrection: 150,
       wordGames: 75,
       assessment: 200

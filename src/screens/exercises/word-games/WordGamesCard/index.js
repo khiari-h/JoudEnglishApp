@@ -1,9 +1,9 @@
 // src/screens/exercises/wordGames/WordGamesCard/index.js
 import { View, Text, ScrollView, Animated } from "react-native";
 import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
 import MatchingGame from "../MatchingGame";
 import CategorizationGame from "../CategorizationGame";
-import FeedbackMessage from "../FeedbackMessage";
 import styles from "./style";
 
 /**
@@ -28,34 +28,48 @@ const WordGamesCard = ({
   shuffledOptions,
   showFeedback,
   isCorrect,
-  levelColor,
+  levelColor = "#3b82f6",
   fadeAnim,
   bounceAnim,
   onSelectItem,
+  showPairFeedback,
+  pairFeedbackMessage,
 }) => {
   
-  // ✅ AJOUTÉ : Debug pour voir pourquoi le jeu ne s'affiche pas
+  // ✅ AJOUTÉ : Animation pour l'info-bulle des paires
+  const pairFeedbackAnim = useRef(new Animated.Value(0)).current;
+  
+  // ✅ AJOUTÉ : Animation d'apparition/disparition de l'info-bulle
+  useEffect(() => {
+    if (showPairFeedback) {
+      // Animation d'apparition avec rebond
+      Animated.spring(pairFeedbackAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        tension: 100,
+        friction: 8,
+      }).start();
+    } else {
+      // Animation de disparition
+      Animated.timing(pairFeedbackAnim, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [showPairFeedback, pairFeedbackAnim]);
+  
+  // ✅ SIMPLIFIÉ : Debug essentiel seulement
   console.log('🔍 DEBUG WordGamesCard:', {
     currentGame: !!currentGame,
-    currentGameType: currentGame?.type,
-    currentGameTitle: currentGame?.title,
-    shuffledOptionsLength: shuffledOptions?.length,
-    selectedItemsLength: selectedItems?.length,
-    matchedItemsLength: matchedItems?.length,
     showFeedback,
     isCorrect
   });
   
   // Rendu en fonction du type de jeu (seulement matching et categorization)
   const renderGameByType = () => {
-    console.log('🔍 DEBUG renderGameByType:', {
-      currentGameType: currentGame?.type,
-      currentGameTitle: currentGame?.title
-    });
-    
     switch (currentGame.type) {
       case "matching":
-        console.log('🔍 DEBUG: Rendu MatchingGame');
         return (
           <MatchingGame
             game={currentGame}
@@ -68,7 +82,6 @@ const WordGamesCard = ({
           />
         );
       case "categorization":
-        console.log('🔍 DEBUG: Rendu CategorizationGame');
         return (
           <CategorizationGame
             game={currentGame}
@@ -80,7 +93,6 @@ const WordGamesCard = ({
           />
         );
       default:
-        console.log('🔍 DEBUG: Type de jeu non supporté:', currentGame.type);
         return (
           <View style={styles.errorContainer}>
             <Text style={styles.errorText}>
@@ -116,14 +128,45 @@ const WordGamesCard = ({
         {/* Rendu du jeu actuel */}
         {renderGameByType()}
 
+        {/* ✅ AJOUTÉ : Info-bulle de feedback des paires (affichée pendant le jeu) */}
+        {showPairFeedback && (
+          <Animated.View
+            style={[
+              styles.pairFeedbackContainer,
+              styles.successPairFeedback,
+              {
+                opacity: pairFeedbackAnim,
+                transform: [{ scale: pairFeedbackAnim }],
+              },
+            ]}
+          >
+            <Text style={styles.pairFeedbackText}>
+              {pairFeedbackMessage}
+            </Text>
+          </Animated.View>
+        )}
+
         {/* Feedback après vérification */}
         {showFeedback && (
-          <FeedbackMessage
-            isCorrect={isCorrect}
-            successMessage={currentGame.successMessage}
-            failureMessage={currentGame.failureMessage}
-            levelColor={levelColor}
-          />
+          <View style={styles.feedbackContainer}>
+            {isCorrect ? (
+              <View style={[styles.feedbackMessage, styles.successMessage]}>
+                <Text style={styles.feedbackIcon}>🎉</Text>
+                <Text style={styles.feedbackTitle}>Good job !</Text>
+                <Text style={styles.feedbackText}>
+                  Toutes vos paires sont correctes !
+                </Text>
+              </View>
+            ) : (
+              <View style={[styles.feedbackMessage, styles.errorMessage]}>
+                <Text style={styles.feedbackIcon}>❌</Text>
+                <Text style={styles.feedbackTitle}>Try again !</Text>
+                <Text style={styles.feedbackText}>
+                  Certaines paires sont incorrectes. Le jeu va se remélanger...
+                </Text>
+              </View>
+            )}
+          </View>
         )}
       </Animated.View>
     </ScrollView>
@@ -135,18 +178,19 @@ WordGamesCard.propTypes = {
   currentGame: PropTypes.shape({
     type: PropTypes.oneOf(['matching', 'categorization']).isRequired,
     title: PropTypes.string,
-    successMessage: PropTypes.string,
-    failureMessage: PropTypes.string,
-  }).isRequired,
+  }),
   selectedItems: PropTypes.array.isRequired,
   matchedItems: PropTypes.array.isRequired,
   shuffledOptions: PropTypes.array.isRequired,
   showFeedback: PropTypes.bool.isRequired,
   isCorrect: PropTypes.bool.isRequired,
-  levelColor: PropTypes.string.isRequired,
-  fadeAnim: PropTypes.object.isRequired,
-  bounceAnim: PropTypes.object.isRequired,
+  levelColor: PropTypes.string,
+  fadeAnim: PropTypes.object,
+  bounceAnim: PropTypes.object,
   onSelectItem: PropTypes.func.isRequired,
+  // ✅ AJOUTÉ : Props pour le feedback des paires
+  showPairFeedback: PropTypes.bool.isRequired,
+  pairFeedbackMessage: PropTypes.string.isRequired,
 };
 
 export default WordGamesCard;

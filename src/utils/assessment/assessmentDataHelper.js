@@ -1,35 +1,55 @@
-// src/utils/assessment/assessmentDataHelper.js
+// src/utils/assessment/assessmentDataHelper.js - VERSION MISE À JOUR
 
 // Import des données d'évaluation par niveau
-import levelA1AssessmentData from "../../data/assessment/assessmentsA1";
+import level1AssessmentData from "../../data/assessment/assessmentsA1";
+import level2AssessmentData from "../../data/assessment/assessmentsA2";
+import level3AssessmentData from "../../data/assessment/assessmentsB1";
+import level4AssessmentData from "../../data/assessment/assessmentsB2";
+import level5AssessmentData from "../../data/assessment/assessmentsC1";
+import level6AssessmentData from "../../data/assessment/assessmentsC2";
 
 /**
  * Récupère les données d'évaluation en fonction du niveau
- * @param {string} level - Le niveau de langue (A1, A2, B1, B2, C1, C2)
+ * @param {string|number} level - Le niveau de langue (1, 2, 3, 4, 5, 6)
  * @returns {Object} Les données d'évaluation pour le niveau spécifié
  */
 export const getAssessmentData = (level) => {
+  // Convertir le niveau en string pour la correspondance
+  const levelStr = String(level);
+  
   const dataMap = {
-    A1: levelA1AssessmentData,
+    "1": level1AssessmentData,  // Ancien A1
+    "2": level2AssessmentData,  // Ancien A2
+    "3": level3AssessmentData,  // Ancien B1
+    "4": level4AssessmentData,  // Ancien B2
+    "5": level5AssessmentData,  // Ancien C1
+    "6": level6AssessmentData,  // Ancien C2
   };
-  return dataMap[level] ?? levelA1AssessmentData;
+  
+  console.log('🔍 DEBUG getAssessmentData:', { level, levelStr, hasData: !!dataMap[levelStr] });
+  
+  return dataMap[levelStr] ?? level1AssessmentData; // Fallback vers niveau 1
 };
 
 /**
  * Récupère la couleur associée à un niveau de langue
- * @param {string} level - Le niveau de langue (A1, A2, B1, B2, C1, C2)
+ * @param {string|number} level - Le niveau de langue (1, 2, 3, 4, 5, 6)
  * @returns {string} Code couleur hexadécimal pour le niveau
  */
 export const getLevelColor = (level) => {
+  // Convertir le niveau en string pour la correspondance
+  const levelStr = String(level);
+  
   const colors = {
-    A1: "#3b82f6", // Bleu
-    A2: "#8b5cf6", // Violet
-    B1: "#10b981", // Vert
-    B2: "#f59e0b", // Orange
-    C1: "#ef4444", // Rouge
-    C2: "#6366f1", // Indigo
+    "1": "#3b82f6", // Bleu (ancien A1)
+    "2": "#8b5cf6", // Violet (ancien A2)
+    "3": "#10b981", // Vert (ancien B1)
+    "4": "#f59e0b", // Orange (ancien B2)
+    "5": "#ef4444", // Rouge (ancien C1)
+    "6": "#6366f1", // Indigo (ancien C2)
   };
-  return colors[level] || "#4361EE"; // Couleur par défaut
+  
+  return colors[levelStr] || "#4361EE"; // Couleur par défaut
 };
 
 /**
@@ -45,8 +65,7 @@ export const getAssessmentSections = () => [
   "prepositions",       // ← AJOUTÉ
   "demonstratives",     // ← AJOUTÉ
   "error_correction",
-  "spelling",
-  "spelling_rules",
+
   "reading_comprehension",
 ];
 

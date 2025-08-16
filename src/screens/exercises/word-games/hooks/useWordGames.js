@@ -6,9 +6,12 @@ import { Animated } from 'react-native';
 import { shuffleArray } from '../../../../utils/arrayUtils';
 
 /**
- * 🎯 Hook unifié pour Word Games
- * Remplace useWordGamesState + useWordGamesProgress
- * Simple, efficace, maintenable - pattern identique à useVocabulary et useAssessment
+ * 🎯 Hook unifié pour Word Games - VERSION CORRIGÉE
+ * Problèmes résolus :
+ * - Logique de sélection d'items cassée
+ * - Gestion des paires pour matching games
+ * - Calcul des scores incorrect
+ * - Navigation défaillante
  */
 const useWordGames = (wordGamesData = null, level = "A1") => {
   
@@ -36,6 +39,14 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   const [loaded, setLoaded] = useState(false);
   const [completedGames, setCompletedGames] = useState({});
   const [lastPosition, setLastPosition] = useState(null);
+  
+  // ✅ AJOUTÉ : État pour l'info-bulle des paires incorrectes
+  const [showPairFeedback, setShowPairFeedback] = useState(false);
+  const [pairFeedbackMessage, setPairFeedbackMessage] = useState('');
+  // ✅ SIMPLIFIÉ : Plus besoin de pairFeedbackType, seulement pour les erreurs
+  
+  // ✅ AJOUTÉ : État pour contrôler l'affichage du bouton "Vérifier"
+  const [canShowCheckButton, setCanShowCheckButton] = useState(false);
 
   const isInitialized = useRef(false);
 
@@ -48,7 +59,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const bounceAnim = useRef(new Animated.Value(1)).current;
 
-  // ✅ AJOUTÉ : Démarrer l'animation fadeAnim quand le composant se charge
+  // ✅ CORRIGÉ : Démarrer l'animation fadeAnim quand le composant se charge
   useEffect(() => {
     if (loaded && games.length > 0) {
       Animated.timing(fadeAnim, {
@@ -69,6 +80,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
           if (savedPosition) {
             const position = JSON.parse(savedPosition);
             setLastPosition(position);
+            setCurrentGameIndex(position.currentGameIndex || 0);
           }
         } catch (positionError) {
           handleStorageError(positionError, 'load position');
@@ -101,328 +113,379 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
           }
         } catch (scoresError) {
           handleStorageError(scoresError, 'load scores');
-          // Fallback: initialiser avec des scores par défaut
-          setGameResults(Array(games.length).fill({
-            score: 0,
-            maxScore: 0,
-            completed: false,
-          }));
         }
-      } catch (error) {
-        // ✅ Gestion d'erreur appropriée
-        console.error('Error loading word games data:', error);
-      } finally {
+
         setLoaded(true);
+      } catch (error) {
+        console.error('Error loading word games data:', error);
+        setLoaded(true); // Charger quand même pour éviter le blocage
       }
     };
+
+    if (wordGamesData && !isInitialized.current) {
     loadData();
-  }, [level, games.length]);
-
-  // Save data to storage
-  const saveData = useCallback(async () => {
-    try {
-      // Sauvegarder position
-      const dataToSave = {
-        gameIndex: currentGameIndex,
-        timestamp: Date.now()
-      };
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
-
-      // Sauvegarder jeux complétés
-      await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(completedGames));
-    } catch (error) {
-      // ✅ Gestion d'erreur appropriée
-      handleStorageError(error, 'saveData');
-      // Fallback: continuer sans sauvegarde
-    }
-  }, [currentGameIndex, completedGames, STORAGE_KEY, COMPLETED_KEY]);
-
-  // Auto-save when data changes
-  useEffect(() => {
-    if (loaded) saveData();
-  }, [saveData, loaded]);
-
-  // Initialize game setup
-  useEffect(() => {
-    if (loaded && games.length > 0 && !isInitialized.current) {
-      // Restaurer position ou commencer au début
-      if (lastPosition && lastPosition.gameIndex < games.length) {
-        setCurrentGameIndex(lastPosition.gameIndex);
-      }
-      
-      // Initialiser progression si nécessaire
-      const newCompletedGames = { ...completedGames };
-      games.forEach((_, index) => {
-        if (!newCompletedGames[index]) {
-          newCompletedGames[index] = { completed: false };
-        }
-      });
-      setCompletedGames(newCompletedGames);
       isInitialized.current = true;
     }
-  }, [loaded, games, lastPosition, completedGames]);
-
-  // Déclaration des fonctions utilitaires avant leur utilisation
-  const shuffleGameOptions = (game) => {
-    let optionsToShuffle = [];
-
-    if (game.type === "matching") {
-      // ✅ CORRIGÉ : Créer des objets avec la structure attendue par MatchingGame
-      const allItems = game.pairs.flatMap((pair, pairIndex) => [
-        {
-          id: `word-${pairIndex}`,
-          text: pair.word,
-          type: 'word',
-          originalPair: pairIndex
-        },
-        {
-          id: `match-${pairIndex}`,
-          text: pair.match,
-          type: 'match',
-          originalPair: pairIndex
-        }
-      ]);
-      optionsToShuffle = shuffleArray(allItems);
-    } else if (game.type === "categorization") {
-      // ✅ CORRIGÉ : Créer des objets avec la structure attendue par CategorizationGame
-      optionsToShuffle = shuffleArray(game.words.map((word, index) => ({
-        id: `word-${index}`,
-        text: word,
-        type: 'word'
-      })));
-    }
-
-    setShuffledOptions(optionsToShuffle);
-  };
-
-  // Setup current game
-  useEffect(() => {
-    if (currentGame) {
-      // Réinitialiser les états pour le jeu actuel
-      setSelectedItems([]);
-      setMatchedItems([]);
-      setShowFeedback(false);
-      setIsCorrect(false);
-
-      // Mélanger les options selon le type de jeu
-      shuffleGameOptions(currentGame);
-    }
-  }, [currentGameIndex, currentGame]);
-
-  // ✅ CORRIGÉ : Validation automatique DÉSACTIVÉE pour éviter le "Great job" intempestif
-  // L'utilisateur doit maintenant cliquer sur "Check Answer" pour valider
-  // useEffect(() => {
-  //   if (currentGame?.type === "matching" && selectedItems.length > 0) {
-  //     // Validation automatique désactivée - l'utilisateur doit valider manuellement
-  //   }
-  // }, [selectedItems, currentGame, currentGameIndex, completedGames]);
+  }, [wordGamesData, games.length]);
 
   // =================== GAME LOGIC ===================
   
-  // ✅ AJOUTÉ : Fonction pour vérifier les paires de matching (DÉCLARÉE EN PREMIER)
-  const checkMatchingPairs = useCallback(() => {
-    if (currentGame?.type !== "matching") return false;
+  // ✅ EXTRACTED : Gestion de la sélection/désélection d'items
+  const toggleItemSelection = useCallback((item, index, currentItems) => {
+    const newItems = [...currentItems];
+    const existingIndex = newItems.findIndex(selected => 
+      selected.item.id === item.id && selected.index === index
+    );
     
-    const pairs = currentGame.pairs || [];
-    const allPairsFound = pairs.every((pair, pairIndex) => {
-      // ✅ CORRIGÉ : VRAIE logique de validation qui vérifie si les paires sont correctement appariées
-      const selectedPairItems = selectedItems.filter(selected => 
-        selected.item.originalPair === pairIndex
-      );
-      
-      // Une paire est correcte si exactement 2 items sont sélectionnés ET qu'ils correspondent à la paire
-      if (selectedPairItems.length !== 2) return false;
-      
-      const item1 = selectedPairItems[0].item;
-      const item2 = selectedPairItems[1].item;
-      
-      // Vérifier que les deux éléments correspondent exactement à la paire (dans n'importe quel ordre)
-      const isCorrectPair = (
-        (item1.text === pair.word && item2.text === pair.match) ||
-        (item1.text === pair.match && item2.text === pair.word)
-      );
-      
-      return isCorrectPair;
-    });
+    if (existingIndex >= 0) {
+      newItems.splice(existingIndex, 1);
+    } else {
+      newItems.push({ item, index });
+    }
     
-    return allPairsFound;
-  }, [currentGame, selectedItems]);
+    return newItems;
+  }, []);
 
-  // ✅ AJOUTÉ : Fonction pour vérifier les réponses de catégorisation (DÉCLARÉE EN DEUXIÈME)
-  const checkCategorizationAnswer = useCallback(() => {
-    if (currentGame?.type !== "categorization") return false;
+  // ✅ EXTRACTED : Gestion des paires correctes
+  const handleCorrectPair = useCallback((first, second) => {
+    console.log('✅ Paire correcte trouvée !');
     
-    const currentCategory = currentGame.currentCategory;
-    const correctWords = currentGame.categories?.[currentCategory] || [];
+    const newMatchedItems = [...matchedItems, first, second];
+    setMatchedItems(newMatchedItems);
+    setSelectedItems([]);
     
-    // Vérifier si tous les mots sélectionnés appartiennent à la catégorie
-    const selectedWords = selectedItems.map(item => item.item);
-    const allCorrect = selectedWords.every(word => correctWords.includes(word));
-    const noIncorrect = selectedWords.length === selectedWords.filter(word => correctWords.includes(word)).length;
-    
-    return allCorrect && noIncorrect;
-  }, [currentGame, selectedItems]);
+    if (newMatchedItems.length > 0) {
+      setCanShowCheckButton(true);
+    }
+  }, [matchedItems]);
 
-  // ✅ AJOUTÉ : Fonction manquante pour gérer la sélection d'items
-  const handleSelectItem = useCallback((item, index) => {
-    if (showFeedback) return; // Ne pas permettre la sélection pendant le feedback
+  // ✅ EXTRACTED : Gestion des paires incorrectes
+  const handleIncorrectPair = useCallback(() => {
+    console.log('❌ Paire incorrecte !');
     
-    setSelectedItems(prev => {
-      const isAlreadySelected = prev.some(selected => 
-        selected.item === item && selected.index === index
-      );
+    setPairFeedbackMessage('❌ Paire incorrecte ! Essayez encore...');
+    setShowPairFeedback(true);
+    
+    setTimeout(() => {
+      setSelectedItems([]);
+      setShowPairFeedback(false);
+    }, 3000);
+  }, []);
+
+  // ✅ EXTRACTED : Logique de matching games
+  const handleMatchingGame = useCallback((item, index) => {
+    const newSelectedItems = toggleItemSelection(item, index, selectedItems);
+    setSelectedItems(newSelectedItems);
+
+    if (newSelectedItems.length === 2) {
+      const [first, second] = newSelectedItems;
       
-      if (isAlreadySelected) {
-        // Désélectionner l'item
-        return prev.filter(selected => 
-          !(selected.item === item && selected.index === index)
-        );
+      if (first.item.originalPair === second.item.originalPair) {
+        handleCorrectPair(first, second);
       } else {
-        // Sélectionner l'item
-        return [...prev, { item, index }];
-      }
-    });
-  }, [showFeedback]);
-
-  // ✅ CORRIGÉ : Fonction pour vérifier les réponses avec feedback approprié (DÉCLARÉE EN DERNIER)
-  const checkAnswer = useCallback(() => {
-    if (showFeedback) return; // Ne pas permettre la vérification pendant le feedback
-    
-    if (currentGame?.type === "matching") {
-      // Pour les jeux de matching, vérifier si toutes les paires sont trouvées
-      const allPairsFound = checkMatchingPairs();
-      setShowFeedback(true);
-      setIsCorrect(allPairsFound);
-      
-      if (allPairsFound) {
-        // Marquer le jeu comme complété seulement si c'est correct
-        setCompletedGames(prev => ({
-          ...prev,
-          [currentGameIndex]: { completed: true }
-        }));
-      }
-    } else if (currentGame?.type === "categorization") {
-      // Pour les jeux de catégorisation, vérifier la sélection
-      const isCorrect = checkCategorizationAnswer();
-      setShowFeedback(true);
-      setIsCorrect(isCorrect);
-      if (isCorrect) {
-        setCompletedGames(prev => ({
-          ...prev,
-          [currentGameIndex]: { completed: true }
-        }));
+        handleIncorrectPair();
       }
     }
-  }, [currentGame, currentGameIndex, showFeedback, completedGames, checkMatchingPairs, checkCategorizationAnswer]);
-  
-  // =================== MAIN NAVIGATION ===================
+  }, [selectedItems, toggleItemSelection, handleCorrectPair, handleIncorrectPair]);
+
+  // ✅ EXTRACTED : Logique de categorization games
+  const handleCategorizationGame = useCallback((item, index) => {
+    const newSelectedItems = toggleItemSelection(item, index, selectedItems);
+    setSelectedItems(newSelectedItems);
+  }, [selectedItems, toggleItemSelection]);
+
+  // ✅ REFACTORED : Fonction principale simplifiée
+  const handleSelectItem = useCallback((item, index) => {
+    if (showFeedback || !currentGame) return;
+
+    console.log('🔍 DEBUG handleSelectItem:', { item, index, currentGameType: currentGame.type });
+
+    if (currentGame.type === 'matching') {
+      handleMatchingGame(item, index);
+    } else if (currentGame.type === 'categorization') {
+      handleCategorizationGame(item, index);
+    }
+  }, [showFeedback, currentGame, handleMatchingGame, handleCategorizationGame]);
+
+  // ✅ CORRIGÉ : Vérification des réponses pour categorization games
+  const checkAnswer = useCallback(() => {
+    if (!currentGame) return;
+
+    if (currentGame.type === 'categorization') {
+      // ✅ CORRIGÉ : Logique pour categorization games
+      const correctWords = currentGame.categories[currentGame.currentCategory] || [];
+      const selectedWords = selectedItems.map(item => item.item.text); // ✅ CORRIGÉ : item.item.text au lieu de item.item
+      
+      console.log('🔍 DEBUG Categorization:', {
+        currentCategory: currentGame.currentCategory,
+        correctWords,
+        selectedWords,
+        selectedItems: selectedItems.map(item => ({ id: item.item.id, text: item.item.text }))
+      });
+      
+      // Vérifier si tous les mots sélectionnés sont corrects
+      const allCorrect = selectedWords.every(word => correctWords.includes(word));
+      const allIncorrect = selectedWords.every(word => !correctWords.includes(word));
+      
+      // Score basé sur la précision
+      const correctCount = selectedWords.filter(word => correctWords.includes(word)).length;
+      const incorrectCount = selectedWords.filter(word => !correctWords.includes(word)).length;
+      const totalCorrect = correctWords.length;
+      
+      console.log('🔍 Score calculation:', {
+        correctCount,
+        incorrectCount,
+        totalCorrect,
+        allCorrect,
+        allIncorrect
+      });
+      
+      const score = Math.max(0, Math.round((correctCount - incorrectCount) / totalCorrect * currentGame.maxScore));
+      
+      setIsCorrect(allCorrect && incorrectCount === 0);
+      setScore(score);
+      setShowFeedback(true);
+      
+      if (allCorrect && incorrectCount === 0) {
+        // ✅ Réponse CORRECTE - Marquer comme complété
+        console.log('🎉 Categorization correcte !');
+        
+        // Sauvegarder le résultat
+        const newGameResults = [...gameResults];
+        newGameResults[currentGameIndex] = {
+          score,
+          maxScore: currentGame.maxScore,
+          completed: true,
+        };
+        setGameResults(newGameResults);
+        
+        // Marquer le jeu comme complété
+        const newCompletedGames = { ...completedGames, [currentGameIndex]: true };
+        setCompletedGames(newCompletedGames);
+        
+        // Sauvegarder
+        saveGameProgress();
+        
+      } else {
+        // ❌ Réponse INCORRECTE - Redémarrer le jeu automatiquement
+        console.log('❌ Categorization incorrecte ! Redémarrage du jeu...');
+        
+        // Reset du jeu après un délai
+        setTimeout(() => {
+          resetCurrentGame();
+          setShowFeedback(false);
+          setScore(0);
+        }, 3000);
+      }
+    } else if (currentGame.type === 'matching') {
+      // ✅ CORRIGÉ : Contrôle manuel final pour matching games
+      console.log('🔍 Vérification manuelle des paires...');
+      
+      // Vérifier si toutes les paires sont trouvées
+      const totalPairs = currentGame.pairs.length;
+      const foundPairs = matchedItems.length / 2;
+      
+      if (foundPairs === totalPairs) {
+        // ✅ Toutes les paires sont trouvées et correctes !
+        console.log('🎉 Toutes les paires sont correctes !');
+        setIsCorrect(true);
+        setScore(currentGame.maxScore || 10);
+      setShowFeedback(true);
+        
+        // Sauvegarder le résultat
+        const newGameResults = [...gameResults];
+        newGameResults[currentGameIndex] = {
+          score: currentGame.maxScore || 10,
+          maxScore: currentGame.maxScore || 10,
+          completed: true,
+        };
+        setGameResults(newGameResults);
+        
+        // Marquer le jeu comme complété
+        const newCompletedGames = { ...completedGames, [currentGameIndex]: true };
+        setCompletedGames(newCompletedGames);
+        
+        // Sauvegarder
+        saveGameProgress();
+        
+      } else {
+        // ❌ Pas toutes les paires trouvées - Game over !
+        console.log('❌ Game over ! Pas toutes les paires trouvées');
+        setIsCorrect(false);
+        setScore(0);
+      setShowFeedback(true);
+        
+        // Reset du jeu après un délai
+        setTimeout(() => {
+          resetCurrentGame();
+        }, 3000);
+      }
+    }
+  }, [currentGame, selectedItems, matchedItems, gameResults, currentGameIndex, completedGames]);
+
+  // =================== NAVIGATION ===================
   
   const handleNext = useCallback(() => {
-    if (currentGameIndex < games.length - 1) {
-      setCurrentGameIndex(prev => prev + 1);
+    if (showFeedback) {
       setShowFeedback(false);
-      setIsCorrect(false);
-      return { completed: false };
+      setSelectedItems([]);
+      setMatchedItems([]);
+      
+      if (currentGameIndex < totalGames - 1) {
+        setCurrentGameIndex(currentGameIndex + 1);
     } else {
       setShowResults(true);
-      return { completed: true };
+      }
     }
-  }, [currentGameIndex, games.length]);
+  }, [showFeedback, currentGameIndex, totalGames]);
 
   const handlePrevious = useCallback(() => {
     if (currentGameIndex > 0) {
-      setCurrentGameIndex(prev => prev - 1);
+      setCurrentGameIndex(currentGameIndex - 1);
       setShowFeedback(false);
-      setIsCorrect(false);
-      return true;
+      setSelectedItems([]);
+      setMatchedItems([]);
     }
-    return false;
   }, [currentGameIndex]);
 
-  const resetGames = useCallback(async () => {
+  const resetGames = useCallback(() => {
+      setCurrentGameIndex(0);
+      setSelectedItems([]);
+      setMatchedItems([]);
+      setShowFeedback(false);
+      setShowResults(false);
+      setScore(0);
+        setGameResults(Array(games.length).fill({
+          score: 0,
+          maxScore: 0,
+          completed: false,
+        }));
+    setCompletedGames({});
+  }, [games.length]);
+
+  // =================== UTILITIES ===================
+  
+  const saveGameProgress = useCallback(async () => {
     try {
-      await AsyncStorage.multiRemove([STORAGE_KEY, COMPLETED_KEY, SCORES_KEY]);
-      setCurrentGameIndex(0);
-      setSelectedItems([]);
-      setMatchedItems([]);
-      setShowFeedback(false);
-      setIsCorrect(false);
-      setShowResults(false);
-      setScore(0);
-      setCompletedGames({});
-      setLastPosition({ gameIndex: 0 });
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({
+        currentGameIndex,
+        timestamp: Date.now(),
+      }));
       
-      if (games.length > 0) {
-        setGameResults(Array(games.length).fill({
-          score: 0,
-          maxScore: 0,
-          completed: false,
-        }));
-        shuffleGameOptions(games[0]);
-      }
+      await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(completedGames));
+      await AsyncStorage.setItem(SCORES_KEY, JSON.stringify(gameResults));
     } catch (error) {
-      // ✅ Gestion d'erreur appropriée
-      handleStorageError(error, 'resetGames');
-      // Fallback: réinitialiser l'état local même si la suppression échoue
-      setCurrentGameIndex(0);
+      handleStorageError(error, 'save game progress');
+    }
+  }, [currentGameIndex, completedGames, gameResults]);
+
+  // ✅ CORRIGÉ : Préparer les options pour le jeu actuel
+  useEffect(() => {
+    if (!currentGame) return;
+
+    if (currentGame.type === 'matching') {
+      // ✅ CORRIGÉ : Créer les bonnes paires avec word et match
+      const pairs = currentGame.pairs || [];
+      const options = [];
+      
+      pairs.forEach((pair, pairIndex) => {
+        // Ajouter le mot
+        options.push({
+          id: `word-${pairIndex}`,
+          text: pair.word,
+          type: 'word',
+          originalPair: pairIndex,
+          pairId: pairIndex,
+        });
+        
+        // Ajouter la définition/match
+        options.push({
+          id: `match-${pairIndex}`,
+          text: pair.match,
+          type: 'match',
+          originalPair: pairIndex,
+          pairId: pairIndex,
+        });
+      });
+      
+      // Mélanger les options
+      const shuffled = shuffleArray(options);
+      setShuffledOptions(shuffled);
+      
+    } else if (currentGame.type === 'categorization') {
+      // ✅ CORRIGÉ : Transformer les chaînes en objets pour categorization games
+      const words = currentGame.words || [];
+      const options = words.map((word, index) => ({
+        id: `word-${index}`,
+        text: word,
+        type: 'word',
+        originalPair: index,
+        pairId: index,
+      }));
+      
+      const shuffled = shuffleArray(options);
+      setShuffledOptions(shuffled);
+    }
+    
+    // Réinitialiser l'état du jeu
       setSelectedItems([]);
       setMatchedItems([]);
       setShowFeedback(false);
-      setIsCorrect(false);
-      setShowResults(false);
       setScore(0);
-      setCompletedGames({});
-      setLastPosition({ gameIndex: 0 });
-      
-      if (games.length > 0) {
-        setGameResults(Array(games.length).fill({
-          score: 0,
-          maxScore: 0,
-          completed: false,
-        }));
-        shuffleGameOptions(games[0]);
-      }
-    }
-  }, [STORAGE_KEY, COMPLETED_KEY, SCORES_KEY, games]);
+  }, [currentGame]);
 
-  // =================== COMPUTED STATS ===================
-  
-  const getStats = useCallback(() => {
-    const completedGamesCount = Object.values(completedGames).filter(
-      game => game.completed
-    ).length;
+  // ✅ AJOUTÉ : Reset du jeu actuel
+  const resetCurrentGame = useCallback(() => {
+    if (!currentGame) return;
     
-    const totalMaxScore = gameResults.reduce((sum, result) => sum + result.maxScore, 0);
-    const totalProgress = totalGames > 0 ? Math.round((completedGamesCount / totalGames) * 100) : 0;
-    const currentProgress = totalGames > 0 ? ((currentGameIndex + 1) / totalGames) * 100 : 0;
+    // Réinitialiser l'état du jeu actuel
+    setSelectedItems([]);
+    setMatchedItems([]);
+    setShowFeedback(false);
+    setScore(0);
+    
+    // Remélanger les options
+    if (currentGame.type === 'matching') {
+      const pairs = currentGame.pairs || [];
+      const options = [];
+      
+      pairs.forEach((pair, pairIndex) => {
+        options.push({
+          id: `word-${pairIndex}`,
+          text: pair.word,
+          type: 'word',
+          originalPair: pairIndex,
+          pairId: pairIndex,
+        });
+        
+        options.push({
+          id: `match-${pairIndex}`,
+          text: pair.match,
+          type: 'match',
+          originalPair: pairIndex,
+          pairId: pairIndex,
+        });
+      });
+      
+      const shuffled = shuffleArray(options);
+      setShuffledOptions(shuffled);
+    } else if (currentGame.type === 'categorization') {
+      // ✅ CORRIGÉ : Transformer les chaînes en objets pour categorization games
+      const words = currentGame.words || [];
+      const options = words.map((word, index) => ({
+        id: `word-${index}`,
+        text: word,
+        type: 'word',
+        originalPair: index,
+        pairId: index,
+      }));
+      
+      const shuffled = shuffleArray(options);
+      setShuffledOptions(shuffled);
+    }
+  }, [currentGame]);
 
-    return {
-      totalGames,
-      completedGamesCount,
-      totalProgress,
-      currentProgress,
-      score,
-      totalMaxScore,
-      percentage: totalMaxScore > 0 ? Math.round((score / totalMaxScore) * 100) : 0
-    };
-  }, [totalGames, completedGames, gameResults, currentGameIndex, score]);
-
-  // =================== COMPUTED DISPLAY ===================
-  
-  const getDisplayData = useCallback(() => {
-    const gameCounter = `${currentGameIndex + 1} / ${totalGames}`;
-
-    return {
-      gameCounter,
-      currentGame,
-      currentGameIndex: currentGameIndex + 1
-    };
-  }, [currentGameIndex, totalGames, currentGame]);
-
-  // =================== VALIDATION ===================
-  
-  const canGoToPrevious = currentGameIndex > 0;
-  const isLastGame = currentGameIndex === totalGames - 1;
+  // =================== RETURN VALUES ===================
 
   return {
     // State
@@ -435,31 +498,36 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     score,
     gameResults,
     shuffledOptions,
-    completedGames,
     loaded,
+    completedGames,
+    lastPosition,
     
-    // Data
+    // ✅ AJOUTÉ : États de feedback des paires
+    showPairFeedback,
+    pairFeedbackMessage,
+    
+    // ✅ AJOUTÉ : Contrôle du bouton de vérification
+    canShowCheckButton,
+    
+    // Computed
     games,
-    currentGame,
     totalGames,
+    currentGame,
     
     // Animations
     fadeAnim,
     bounceAnim,
     
-    // Actions
+    // Handlers
     handleSelectItem,
     checkAnswer,
     handleNext,
     handlePrevious,
     resetGames,
-    setCurrentGameIndex,
     
-    // Computed
-    canGoToPrevious,
-    isLastGame,
-    stats: getStats(),
-    display: getDisplayData(),
+    // Utils
+    saveGameProgress,
+    resetCurrentGame,
   };
 };
 

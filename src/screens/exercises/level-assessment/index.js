@@ -60,6 +60,15 @@ const LevelAssessment = ({ route }) => {
     display,
   } = useAssessment(level);
 
+  // ✅ DEBUG: Ajouter des logs pour identifier le problème
+  console.log('🔍 DEBUG LevelAssessment render:', {
+    loaded,
+    currentSection,
+    currentQuestion,
+    totalSections,
+    sections: display?.currentSectionIndex
+  });
+
   // ✅ CORRECTION : Mémoriser les métadonnées
   const activityMetadata = useMemo(() => ({
     section: display?.currentSectionIndex || 0,
@@ -81,7 +90,7 @@ const LevelAssessment = ({ route }) => {
     }
   }, [loaded, currentSection, currentQuestion, testCompleted, level, saveActivity, activityMetadata]);
 
-  // ✅ CORRECTION : useEffect optimisé
+  // ✅ CORRECTION : useEffect optimisé pour sauvegarder l'activité
   useEffect(() => {
     handleSaveActivity();
   }, [handleSaveActivity]);
@@ -98,7 +107,7 @@ const LevelAssessment = ({ route }) => {
 
   const handleNextQuestion = useCallback(() => {
     const result = handleNext();
-    if (result.completed) {
+    if (result?.completed) {
       const finalResults = {
         level,
         userScore: stats,
@@ -114,8 +123,8 @@ const LevelAssessment = ({ route }) => {
   const handleRetry = useCallback(async () => {
     try {
       await resetAssessment();
+      console.log('🔄 Assessment reset successfully');
     } catch (error) {
-      // ✅ Gestion d'erreur appropriée
       console.warn('Error resetting assessment:', error);
       // Fallback: continuer même si la réinitialisation échoue
     }
