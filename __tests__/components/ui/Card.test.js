@@ -272,6 +272,42 @@ describe('Card', () => {
     expect(getByText('NEW')).toBeTruthy();
   });
 
+
+it('devrait utiliser la couleur de titre par défaut si titleStyle est fourni sans couleur', () => {
+  const { getByText } = render(
+    <ThemeContext.Provider value={mockThemeContext}>
+      <Card 
+        title="Titre de test" 
+        titleStyle={{ fontWeight: 'bold' }} // On passe un style SANS la couleur
+      />
+    </ThemeContext.Provider>
+  );
+
+  const titleTextComponent = getByText('Titre de test');
+
+  // L'assertion va vérifier que la couleur par défaut est bien appliquée
+  // Note : on accède aux styles sous forme de tableau.
+  const styleArray = titleTextComponent.props.style;
+  const colorStyle = styleArray.find(style => style && typeof style.color !== 'undefined');
+  
+  expect(colorStyle.color).toBe('#1F2937'); // Vérifiez la couleur par défaut
+});
+
+it('devrait utiliser la couleur de titre par défaut si titleStyle est manquant', () => {
+    const { getByText } = render(
+      <ThemeContext.Provider value={mockThemeContext}>
+        <Card title="Titre sans style" />
+      </ThemeContext.Provider>
+    );
+
+    const titleTextComponent = getByText('Titre sans style');
+    const styleArray = titleTextComponent.props.style;
+    const colorStyle = styleArray.find(style => style && typeof style.color !== 'undefined');
+
+    expect(colorStyle.color).toBe('#1F2937');
+  });
+
+
   it('should handle missing theme context gracefully', () => {
     const { getByText } = render(
       <Card title="Card without Theme">

@@ -1,16 +1,18 @@
-
 // __tests__/components/exercise-common/NavigationButtons.test.js
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react-native';
+import { Platform } from 'react-native';
+import createStyles from '../../../src/components/exercise-common/NavigationButtons/style';
 import NavigationButtons from '../../../src/components/exercise-common/NavigationButtons';
 
-// Mock des dépendances
+// Mock dependencies
 jest.mock('expo-linear-gradient', () => {
   const { View } = require('react-native');
   return {
     LinearGradient: (props) => <View {...props} />,
   };
 });
+
 jest.mock('@expo/vector-icons', () => {
   const { Text } = require('react-native');
   return {
@@ -19,6 +21,9 @@ jest.mock('@expo/vector-icons', () => {
 });
 
 describe('NavigationButtons', () => {
+  const onNextMock = jest.fn();
+  const onPreviousMock = jest.fn();
+
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -27,15 +32,17 @@ describe('NavigationButtons', () => {
     jest.useRealTimers();
   });
 
-  const onNextMock = jest.fn();
-  const onPreviousMock = jest.fn();
-
   afterEach(() => {
     jest.clearAllMocks();
   });
 
+  // ------------------------
+  // Rendering & functionality
+  // ------------------------
   it('renders both previous and next buttons by default', () => {
-    const { getByText } = render(<NavigationButtons />);
+    const { getByText } = render(
+      <NavigationButtons onNext={onNextMock} onPrevious={onPreviousMock} />
+    );
     expect(getByText('Précédent')).toBeTruthy();
     expect(getByText('Suivant')).toBeTruthy();
   });
@@ -46,9 +53,11 @@ describe('NavigationButtons', () => {
   });
 
   it('calls onPrevious when the previous button is pressed', () => {
-    const { getByText } = render(<NavigationButtons onPrevious={onPreviousMock} />);
+    const { getByText } = render(
+      <NavigationButtons onPrevious={onPreviousMock} />
+    );
     fireEvent.press(getByText('Précédent'));
-    act(() => jest.runAllTimers()); // Pour le setTimeout de 60ms
+    act(() => jest.runAllTimers());
     expect(onPreviousMock).toHaveBeenCalledTimes(1);
   });
 
@@ -60,7 +69,9 @@ describe('NavigationButtons', () => {
   });
 
   it('does not call onNext when the next button is disabled', () => {
-    const { getByText } = render(<NavigationButtons onNext={onNextMock} disableNext={true} />);
+    const { getByText } = render(
+      <NavigationButtons onNext={onNextMock} disableNext={true} />
+    );
     fireEvent.press(getByText('Suivant'));
     expect(onNextMock).not.toHaveBeenCalled();
   });
@@ -69,5 +80,31 @@ describe('NavigationButtons', () => {
     const { getByText, getByTestId } = render(<NavigationButtons isLast={true} />);
     expect(getByText('Terminer')).toBeTruthy();
     expect(getByTestId('icon-checkmark')).toBeTruthy();
+  });
+
+  // ------------------------
+  // Styles platform-specific
+  // ------------------------
+  it('applies iOS styles correctly', () => {
+    // Force Platform.select to return iOS branch
+    jest.spyOn(Platform, 'select').mockImplementation((obj) => obj.ios);
+    Platform.OS = 'ios';
+
+    const styles = createStyles('#5E60CE');
+
+    expect(styles.previousButton.shadowColor).toBe('#000');
+    expect(styles.previousButton.shadowOpacity).toBe(0.08);
+    expect(styles.previousButton).not.toHaveProperty('elevation');
+  });
+
+  it('applies Android styles correctly', () => {
+    // Force Platform.select to return Android branch
+    jest.spyOn(Platform, 'select').mockImplementation((obj) => obj.android);
+    Platform.OS = 'android';
+
+    const styles = createStyles('#5E60CE');
+
+    expect(styles.previousButton.elevation).toBe(3);
+    expect(styles.previousButton).not.toHaveProperty('shadowOpacity');
   });
 });

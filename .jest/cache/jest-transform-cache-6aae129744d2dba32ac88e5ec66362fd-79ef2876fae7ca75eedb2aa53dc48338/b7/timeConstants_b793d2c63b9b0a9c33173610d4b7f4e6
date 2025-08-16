@@ -1,0 +1,243 @@
+1bfaa354fc0b7cc082bd088017b86bae
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TIMER_CONFIG = exports.STORAGE_CONFIG = exports.RECOMMENDATION_MESSAGES = exports.RECOMMENDATION_CONFIG = exports.EXERCISE_TYPES = exports.DEFAULT_STATS = void 0;
+function cov_a537djvo5() {
+  var path = "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\utils\\timeConstants.js";
+  var hash = "79c41b87391aedda4b1fb0179b7eb2692ba20bc2";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\khi_h\\Desktop\\Projets\\JoudEnglishApp\\src\\utils\\timeConstants.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 7,
+          column: 28
+        },
+        end: {
+          line: 11,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 14,
+          column: 30
+        },
+        end: {
+          line: 18,
+          column: 1
+        }
+      },
+      "2": {
+        start: {
+          line: 21,
+          column: 37
+        },
+        end: {
+          line: 35,
+          column: 1
+        }
+      },
+      "3": {
+        start: {
+          line: 38,
+          column: 30
+        },
+        end: {
+          line: 48,
+          column: 1
+        }
+      },
+      "4": {
+        start: {
+          line: 51,
+          column: 29
+        },
+        end: {
+          line: 54,
+          column: 6
+        }
+      },
+      "5": {
+        start: {
+          line: 52,
+          column: 2
+        },
+        end: {
+          line: 52,
+          column: 16
+        }
+      },
+      "6": {
+        start: {
+          line: 53,
+          column: 2
+        },
+        end: {
+          line: 53,
+          column: 13
+        }
+      },
+      "7": {
+        start: {
+          line: 57,
+          column: 39
+        },
+        end: {
+          line: 107,
+          column: 1
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 51,
+            column: 66
+          },
+          end: {
+            line: 51,
+            column: 67
+          }
+        },
+        loc: {
+          start: {
+            line: 51,
+            column: 81
+          },
+          end: {
+            line: 54,
+            column: 1
+          }
+        },
+        line: 51
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "79c41b87391aedda4b1fb0179b7eb2692ba20bc2"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_a537djvo5 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_a537djvo5();
+var TIMER_CONFIG = exports.TIMER_CONFIG = (cov_a537djvo5().s[0]++, {
+  INTERVAL_MS: 1000,
+  MIN_SESSION_SECONDS: 5,
+  AUTO_SAVE_INTERVAL_MS: 30000
+});
+var STORAGE_CONFIG = exports.STORAGE_CONFIG = (cov_a537djvo5().s[1]++, {
+  KEY: 'exercise_time_stats',
+  VERSION: '2.0',
+  BACKUP_KEY: 'exercise_time_stats_backup'
+});
+var RECOMMENDATION_CONFIG = exports.RECOMMENDATION_CONFIG = (cov_a537djvo5().s[2]++, {
+  THRESHOLD_MINUTES: 3,
+  MAX_IDLE_MINUTES: 30,
+  LEARNING_PATH: {
+    vocabulary: 'phrases',
+    phrases: 'grammar',
+    grammar: 'reading',
+    reading: 'conversations',
+    conversations: 'assessment',
+    assessment: 'vocabulary',
+    errorCorrection: 'reading',
+    wordGames: 'vocabulary'
+  }
+});
+var EXERCISE_TYPES = exports.EXERCISE_TYPES = (cov_a537djvo5().s[3]++, {
+  VOCABULARY: 'vocabulary',
+  PHRASES: 'phrases',
+  GRAMMAR: 'grammar',
+  READING: 'reading',
+  CONVERSATIONS: 'conversations',
+  ERROR_CORRECTION: 'errorCorrection',
+  WORD_GAMES: 'wordGames',
+  ASSESSMENT: 'assessment'
+});
+var DEFAULT_STATS = exports.DEFAULT_STATS = (cov_a537djvo5().s[4]++, Object.values(EXERCISE_TYPES).reduce(function (acc, type) {
+  cov_a537djvo5().f[0]++;
+  cov_a537djvo5().s[5]++;
+  acc[type] = 0;
+  cov_a537djvo5().s[6]++;
+  return acc;
+}, {}));
+var RECOMMENDATION_MESSAGES = exports.RECOMMENDATION_MESSAGES = (cov_a537djvo5().s[7]++, {
+  'vocabulary->phrases': {
+    icon: '🎉',
+    title: 'Belle progression !',
+    message: 'Tu as bien enrichi ton vocabulaire ! Que dirais-tu de mettre ces mots en pratique avec des expressions ?',
+    button: 'Pratiquer les expressions'
+  },
+  'phrases->grammar': {
+    icon: '💪',
+    title: 'Bien joué !',
+    message: 'Tu progresses bien avec les expressions ! Pour être encore plus précis, on travaille la grammaire ?',
+    button: 'Renforcer la grammaire'
+  },
+  'grammar->reading': {
+    icon: '🎯',
+    title: 'Tu avances bien !',
+    message: 'Tu progresses en grammaire ! Pour voir tout en action, que dirais-tu de lire des textes complets ?',
+    button: 'Passer à la lecture'
+  },
+  'reading->conversations': {
+    icon: '🗣️',
+    title: 'Super entraînement !',
+    message: 'Tu progresses bien en lecture ! Prêt à compléter avec de la pratique orale ?',
+    button: 'Essayer les dialogues'
+  },
+  'conversations->assessment': {
+    icon: '🏆',
+    title: 'Excellent parcours !',
+    message: 'Tu as bien travaillé les dialogues ! Que dirais-tu de tester tes progrès globaux ?',
+    button: 'Faire le bilan'
+  },
+  'assessment->vocabulary': {
+    icon: '🚀',
+    title: 'Bravo pour ce niveau !',
+    message: 'Tu as validé tes acquis ! Prêt à découvrir du nouveau vocabulaire ?',
+    button: 'Nouveau vocabulaire'
+  },
+  'errorCorrection->reading': {
+    icon: '🔍',
+    title: 'Précision améliorée !',
+    message: 'Tu corriges bien les erreurs ! Prêt à lire des textes complets ?',
+    button: 'Reprendre la lecture'
+  },
+  'wordGames->vocabulary': {
+    icon: '🎮',
+    title: 'Bien révisé !',
+    message: 'Tu t\'es bien amusé ! Que dirais-tu d\'apprendre de nouveaux mots ?',
+    button: 'Nouveau vocabulaire'
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJUSU1FUl9DT05GSUciLCJleHBvcnRzIiwiY292X2E1MzdkanZvNSIsInMiLCJJTlRFUlZBTF9NUyIsIk1JTl9TRVNTSU9OX1NFQ09ORFMiLCJBVVRPX1NBVkVfSU5URVJWQUxfTVMiLCJTVE9SQUdFX0NPTkZJRyIsIktFWSIsIlZFUlNJT04iLCJCQUNLVVBfS0VZIiwiUkVDT01NRU5EQVRJT05fQ09ORklHIiwiVEhSRVNIT0xEX01JTlVURVMiLCJNQVhfSURMRV9NSU5VVEVTIiwiTEVBUk5JTkdfUEFUSCIsInZvY2FidWxhcnkiLCJwaHJhc2VzIiwiZ3JhbW1hciIsInJlYWRpbmciLCJjb252ZXJzYXRpb25zIiwiYXNzZXNzbWVudCIsImVycm9yQ29ycmVjdGlvbiIsIndvcmRHYW1lcyIsIkVYRVJDSVNFX1RZUEVTIiwiVk9DQUJVTEFSWSIsIlBIUkFTRVMiLCJHUkFNTUFSIiwiUkVBRElORyIsIkNPTlZFUlNBVElPTlMiLCJFUlJPUl9DT1JSRUNUSU9OIiwiV09SRF9HQU1FUyIsIkFTU0VTU01FTlQiLCJERUZBVUxUX1NUQVRTIiwiT2JqZWN0IiwidmFsdWVzIiwicmVkdWNlIiwiYWNjIiwidHlwZSIsImYiLCJSRUNPTU1FTkRBVElPTl9NRVNTQUdFUyIsImljb24iLCJ0aXRsZSIsIm1lc3NhZ2UiLCJidXR0b24iXSwic291cmNlcyI6WyJ0aW1lQ29uc3RhbnRzLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIHV0aWxzL3RpbWVDb25zdGFudHMuanNcbi8qKlxuICogQ29uZmlndXJhdGlvbiBjZW50cmFsaXPDqWUgcG91ciBsZSBzeXN0w6htZSBkZSB0cmFja2luZyBkZXMgdGVtcHNcbiAqL1xuXG4vLyDij7HvuI8gQ29uZmlndXJhdGlvbiBkdSB0aW1lclxuZXhwb3J0IGNvbnN0IFRJTUVSX0NPTkZJRyA9IHtcbiAgSU5URVJWQUxfTVM6IDEwMDAsICAgICAgICAgICAvLyBNaXNlIMOgIGpvdXIgdG91dGVzIGxlcyBzZWNvbmRlc1xuICBNSU5fU0VTU0lPTl9TRUNPTkRTOiA1LCAgICAgIC8vIE1pbmltdW0gNXMgcG91ciBzYXV2ZWdhcmRlciB1bmUgc2Vzc2lvblxuICBBVVRPX1NBVkVfSU5URVJWQUxfTVM6IDMwMDAwIC8vIEF1dG8tc2F2ZSB0b3V0ZXMgbGVzIDMwc1xufTtcblxuLy8g8J+SviBDb25maWd1cmF0aW9uIGR1IHN0b2NrYWdlXG5leHBvcnQgY29uc3QgU1RPUkFHRV9DT05GSUcgPSB7XG4gIEtFWTogJ2V4ZXJjaXNlX3RpbWVfc3RhdHMnLFxuICBWRVJTSU9OOiAnMi4wJywgLy8gUG91ciBnw6lyZXIgbGVzIG1pZ3JhdGlvbnNcbiAgQkFDS1VQX0tFWTogJ2V4ZXJjaXNlX3RpbWVfc3RhdHNfYmFja3VwJ1xufTtcblxuLy8g8J+OryBDb25maWd1cmF0aW9uIGRlcyByZWNvbW1hbmRhdGlvbnNcbmV4cG9ydCBjb25zdCBSRUNPTU1FTkRBVElPTl9DT05GSUcgPSB7XG4gIFRIUkVTSE9MRF9NSU5VVEVTOiAzLCAgICAgICAgLy8gU2V1aWwgcG91ciBkw6ljbGVuY2hlciB1bmUgcmVjb21tYW5kYXRpb25cbiAgTUFYX0lETEVfTUlOVVRFUzogMzAsICAgICAgICAvLyBUZW1wcyBtYXggc2FucyBhY3Rpdml0w6kgYXZhbnQgcmVzZXRcbiAgTEVBUk5JTkdfUEFUSDoge1xuICAgIHZvY2FidWxhcnk6ICdwaHJhc2VzJyxcbiAgICBwaHJhc2VzOiAnZ3JhbW1hcicsIFxuICAgIGdyYW1tYXI6ICdyZWFkaW5nJyxcbiAgICByZWFkaW5nOiAnY29udmVyc2F0aW9ucycsXG4gICAgY29udmVyc2F0aW9uczogJ2Fzc2Vzc21lbnQnLFxuICAgIGFzc2Vzc21lbnQ6ICd2b2NhYnVsYXJ5JyxcblxuICAgIGVycm9yQ29ycmVjdGlvbjogJ3JlYWRpbmcnLFxuICAgIHdvcmRHYW1lczogJ3ZvY2FidWxhcnknLFxuICB9XG59O1xuXG4vLyDwn5OKIFR5cGVzIGQnZXhlcmNpY2VzIHN1cHBvcnTDqXNcbmV4cG9ydCBjb25zdCBFWEVSQ0lTRV9UWVBFUyA9IHtcbiAgVk9DQUJVTEFSWTogJ3ZvY2FidWxhcnknLFxuICBQSFJBU0VTOiAncGhyYXNlcycsXG4gIEdSQU1NQVI6ICdncmFtbWFyJyxcbiAgUkVBRElORzogJ3JlYWRpbmcnLFxuICBDT05WRVJTQVRJT05TOiAnY29udmVyc2F0aW9ucycsXG5cbiAgRVJST1JfQ09SUkVDVElPTjogJ2Vycm9yQ29ycmVjdGlvbicsXG4gIFdPUkRfR0FNRVM6ICd3b3JkR2FtZXMnLFxuICBBU1NFU1NNRU5UOiAnYXNzZXNzbWVudCdcbn07XG5cbi8vIPCflKcgVmFsZXVycyBwYXIgZMOpZmF1dFxuZXhwb3J0IGNvbnN0IERFRkFVTFRfU1RBVFMgPSBPYmplY3QudmFsdWVzKEVYRVJDSVNFX1RZUEVTKS5yZWR1Y2UoKGFjYywgdHlwZSkgPT4ge1xuICBhY2NbdHlwZV0gPSAwO1xuICByZXR1cm4gYWNjO1xufSwge30pO1xuXG4vLyDwn46oIE1lc3NhZ2VzIGRlIHJlY29tbWFuZGF0aW9uXG5leHBvcnQgY29uc3QgUkVDT01NRU5EQVRJT05fTUVTU0FHRVMgPSB7XG4gICd2b2NhYnVsYXJ5LT5waHJhc2VzJzoge1xuICAgIGljb246ICfwn46JJyxcbiAgICB0aXRsZTogJ0JlbGxlIHByb2dyZXNzaW9uICEnLFxuICAgIG1lc3NhZ2U6ICdUdSBhcyBiaWVuIGVucmljaGkgdG9uIHZvY2FidWxhaXJlICEgUXVlIGRpcmFpcy10dSBkZSBtZXR0cmUgY2VzIG1vdHMgZW4gcHJhdGlxdWUgYXZlYyBkZXMgZXhwcmVzc2lvbnMgPycsXG4gICAgYnV0dG9uOiAnUHJhdGlxdWVyIGxlcyBleHByZXNzaW9ucydcbiAgfSxcbiAgJ3BocmFzZXMtPmdyYW1tYXInOiB7XG4gICAgaWNvbjogJ/CfkqonLCBcbiAgICB0aXRsZTogJ0JpZW4gam91w6kgIScsXG4gICAgbWVzc2FnZTogJ1R1IHByb2dyZXNzZXMgYmllbiBhdmVjIGxlcyBleHByZXNzaW9ucyAhIFBvdXIgw6p0cmUgZW5jb3JlIHBsdXMgcHLDqWNpcywgb24gdHJhdmFpbGxlIGxhIGdyYW1tYWlyZSA/JyxcbiAgICBidXR0b246ICdSZW5mb3JjZXIgbGEgZ3JhbW1haXJlJ1xuICB9LFxuICAnZ3JhbW1hci0+cmVhZGluZyc6IHtcbiAgICBpY29uOiAn8J+OrycsXG4gICAgdGl0bGU6ICdUdSBhdmFuY2VzIGJpZW4gIScsIFxuICAgIG1lc3NhZ2U6ICdUdSBwcm9ncmVzc2VzIGVuIGdyYW1tYWlyZSAhIFBvdXIgdm9pciB0b3V0IGVuIGFjdGlvbiwgcXVlIGRpcmFpcy10dSBkZSBsaXJlIGRlcyB0ZXh0ZXMgY29tcGxldHMgPycsXG4gICAgYnV0dG9uOiAnUGFzc2VyIMOgIGxhIGxlY3R1cmUnXG4gIH0sXG4gICdyZWFkaW5nLT5jb252ZXJzYXRpb25zJzoge1xuICAgIGljb246ICfwn5ej77iPJyxcbiAgICB0aXRsZTogJ1N1cGVyIGVudHJhw65uZW1lbnQgIScsXG4gICAgbWVzc2FnZTogJ1R1IHByb2dyZXNzZXMgYmllbiBlbiBsZWN0dXJlICEgUHLDqnQgw6AgY29tcGzDqXRlciBhdmVjIGRlIGxhIHByYXRpcXVlIG9yYWxlID8nLFxuICAgIGJ1dHRvbjogJ0Vzc2F5ZXIgbGVzIGRpYWxvZ3VlcydcbiAgfSxcbiAgJ2NvbnZlcnNhdGlvbnMtPmFzc2Vzc21lbnQnOiB7XG4gICAgaWNvbjogJ/Cfj4YnLFxuICAgIHRpdGxlOiAnRXhjZWxsZW50IHBhcmNvdXJzICEnLFxuICAgIG1lc3NhZ2U6ICdUdSBhcyBiaWVuIHRyYXZhaWxsw6kgbGVzIGRpYWxvZ3VlcyAhIFF1ZSBkaXJhaXMtdHUgZGUgdGVzdGVyIHRlcyBwcm9ncsOocyBnbG9iYXV4ID8nLFxuICAgIGJ1dHRvbjogJ0ZhaXJlIGxlIGJpbGFuJ1xuICB9LFxuICAnYXNzZXNzbWVudC0+dm9jYWJ1bGFyeSc6IHtcbiAgICBpY29uOiAn8J+agCcsXG4gICAgdGl0bGU6ICdCcmF2byBwb3VyIGNlIG5pdmVhdSAhJyxcbiAgICBtZXNzYWdlOiAnVHUgYXMgdmFsaWTDqSB0ZXMgYWNxdWlzICEgUHLDqnQgw6AgZMOpY291dnJpciBkdSBub3V2ZWF1IHZvY2FidWxhaXJlID8nLFxuICAgIGJ1dHRvbjogJ05vdXZlYXUgdm9jYWJ1bGFpcmUnXG4gIH0sXG5cbiAgJ2Vycm9yQ29ycmVjdGlvbi0+cmVhZGluZyc6IHtcbiAgICBpY29uOiAn8J+UjScsXG4gICAgdGl0bGU6ICdQcsOpY2lzaW9uIGFtw6lsaW9yw6llICEnLFxuICAgIG1lc3NhZ2U6ICdUdSBjb3JyaWdlcyBiaWVuIGxlcyBlcnJldXJzICEgUHLDqnQgw6AgbGlyZSBkZXMgdGV4dGVzIGNvbXBsZXRzID8nLFxuICAgIGJ1dHRvbjogJ1JlcHJlbmRyZSBsYSBsZWN0dXJlJ1xuICB9LFxuICAnd29yZEdhbWVzLT52b2NhYnVsYXJ5Jzoge1xuICAgIGljb246ICfwn46uJyxcbiAgICB0aXRsZTogJ0JpZW4gcsOpdmlzw6kgIScsXG4gICAgbWVzc2FnZTogJ1R1IHRcXCdlcyBiaWVuIGFtdXPDqSAhIFF1ZSBkaXJhaXMtdHUgZFxcJ2FwcHJlbmRyZSBkZSBub3V2ZWF1eCBtb3RzID8nLFxuICAgIGJ1dHRvbjogJ05vdXZlYXUgdm9jYWJ1bGFpcmUnXG4gIH1cbn07Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFNTyxJQUFNQSxZQUFZLEdBQUFDLE9BQUEsQ0FBQUQsWUFBQSxJQUFBRSxhQUFBLEdBQUFDLENBQUEsT0FBRztFQUMxQkMsV0FBVyxFQUFFLElBQUk7RUFDakJDLG1CQUFtQixFQUFFLENBQUM7RUFDdEJDLHFCQUFxQixFQUFFO0FBQ3pCLENBQUM7QUFHTSxJQUFNQyxjQUFjLEdBQUFOLE9BQUEsQ0FBQU0sY0FBQSxJQUFBTCxhQUFBLEdBQUFDLENBQUEsT0FBRztFQUM1QkssR0FBRyxFQUFFLHFCQUFxQjtFQUMx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
