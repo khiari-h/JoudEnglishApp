@@ -1,7 +1,9 @@
 // src/screens/exercises/word-games/MatchingGame/index.js - AVEC PROPTYPES
 
 import { View, Text, TouchableOpacity } from "react-native";
+import { useCallback } from "react";
 import PropTypes from 'prop-types';
+import styles from "./style";
 
 /**
  * Composant pour le jeu d'association de paires
@@ -23,56 +25,102 @@ const MatchingGame = ({
   levelColor = "#3b82f6",
   onSelectItem,
 }) => {
+  
+  // ✅ AJOUTÉ : Debug pour voir exactement ce que MatchingGame reçoit
+  console.log('🔍 DEBUG MatchingGame:', {
+    game: !!game,
+    gameInstructions: game?.instructions,
+    shuffledOptions,
+    selectedItems,
+    matchedItems,
+    showFeedback
+  });
+  
+  // ✅ AJOUTÉ : Debug détaillé pour voir le contenu de chaque option
+  console.log('🔍 DEBUG shuffledOptions détaillé:', shuffledOptions.map((item, index) => ({
+    index,
+    item,
+    itemType: typeof item,
+    itemKeys: item ? Object.keys(item) : 'null/undefined',
+    itemText: item?.text,
+    itemId: item?.id
+  })));
+  
   // Handler stable pour la sélection d'un item
-  const handleSelectItem = useCallback(
-    (item, index, isMatched, feedbackVisible) => () => {
-      if (!isMatched && !feedbackVisible) {
+  const handleItemPress = useCallback(
+    (item, index) => {
+      if (!matchedItems.some(matched => matched.item.id === item.id && matched.index === index) && !showFeedback) {
         onSelectItem(item, index);
       }
     },
-    [onSelectItem]
+    [onSelectItem, matchedItems, showFeedback]
   );
 
   return (
     <View style={styles.gameContainer}>
-      <GameInstructions instructions={game.instructions} />
-
+      {console.log('🔍 DEBUG: Début du JSX MatchingGame')}
+      
+      {/* ✅ CORRIGÉ : Remplacé GameInstructions par un composant simple */}
+      <View style={styles.instructionsContainer}>
+        {console.log('🔍 DEBUG: Rendu instructionsContainer')}
+        <Text style={styles.instructionsText}>{game.instructions}</Text>
+        {console.log('🔍 DEBUG: Rendu instructionsText')}
+      </View>
+      
+      {console.log('🔍 DEBUG: Avant shuffledOptions.length')}
+      {console.log('🔍 DEBUG: shuffledOptions.length:', shuffledOptions.length)}
+      
       <View style={styles.matchingContainer}>
+        {console.log('🔍 DEBUG: Rendu matchingContainer')}
+        
         {shuffledOptions.map((item, index) => {
-          const isMatched = matchedItems.includes(item);
-          const isSelected = selectedItems.some(
-            (selected) => selected.index === index
+          console.log(`🔍 DEBUG: Rendu item ${index}:`, item);
+          const isMatched = matchedItems.some(matched => 
+            matched.item.id === item.id && matched.index === index
           );
-
+          const isSelected = selectedItems.some(selected => 
+            selected.item.id === item.id && selected.index === index
+          );
+          
+          // ✅ AJOUTÉ : Couleurs différentes pour chaque paire
+          const pairColors = [
+            '#ef4444', // Rouge
+            '#3b82f6', // Bleu
+            '#10b981', // Vert
+            '#f59e0b', // Orange
+            '#8b5cf6', // Violet
+          ];
+          const pairColor = pairColors[item.originalPair % pairColors.length];
+          
           return (
             <TouchableOpacity
-              key={item}
+              key={`${item}-${index}`}
               style={[
                 styles.matchingTile,
-                isSelected && [
-                  styles.selectedMatchingTile,
-                  { borderColor: levelColor },
-                ],
-                isMatched && [
-                  styles.matchedTile,
-                  { backgroundColor: `${levelColor}20` },
-                ],
+                { borderColor: pairColor, borderWidth: 2 },
+                isSelected && [styles.selectedMatchingTile, { backgroundColor: pairColor + '20' }],
+                isMatched && [styles.matchedTile, { backgroundColor: pairColor + '40' }],
               ]}
-              onPress={handleSelectItem(item, index, isMatched, showFeedback)}
-              disabled={isMatched || showFeedback}
+              onPress={() => handleItemPress(item, index)}
+              disabled={isMatched}
             >
+              {console.log(`🔍 DEBUG: Rendu TouchableOpacity pour item ${index}`)}
               <Text
                 style={[
                   styles.matchingText,
-                  isMatched && { color: levelColor },
+                  { color: pairColor, fontWeight: '600' },
+                  isMatched && { color: '#ffffff' },
                 ]}
               >
-                {item}
+                {console.log(`🔍 DEBUG: Rendu Text pour item ${index}:`, item)}
+                {item.text}
               </Text>
             </TouchableOpacity>
           );
         })}
       </View>
+      
+      {console.log('🔍 DEBUG: Fin du JSX MatchingGame')}
 
       {game.hint && (
         <View style={styles.hintContainer}>

@@ -1,96 +1,117 @@
-// SpellingProgress/index.js - VERSION ULTRA-SIMPLE
+// SpellingProgress/index.js - VERSION RESTRUCTURÉE POUR LA VRAIE STRUCTURE SPELLING
 
-import { View, Text, useMemo } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import createStyles from "./style";
+import ProgressCard from "../../../../components/ui/ProgressCard";
+import {
+  calculateTotalExercises,
+  calculateCompletedExercisesCount,
+  calculateTotalProgress,
+} from "../../../../utils/spelling/spellingStats";
+import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * 📊 SpellingProgress - VERSION ULTRA-SIMPLE
- * ✅ Juste une progress bar basique
- * ❌ Enlevé : expandable, détails par type, complexité
- * * AFFICHE :
- * - Progress bar visuelle
- * - "X / Y exercices"
- * - Pourcentage
+ * 📊 SpellingProgress - Version restructurée pour la vraie structure Spelling
+ * ✅ Gère les 3 types séparés : correction, rules, homophones
+ * ✅ Même logique que VocabularyProgress
+ * ✅ Cohérent avec les autres modules
  */
 const SpellingProgress = ({
   exercises = [],
   completedExercises = [],
   levelColor = "#3b82f6",
+  expanded = false,
+  onToggleExpand,
+  onCategoryPress,
 }) => {
-  const styles = createStyles(levelColor);
-
-  // =================== CALCULS SIMPLES ===================
   
-  const progressData = useMemo(() => {
-    const totalExercises = exercises.length;
-    const completedCount = completedExercises.length;
-    const progress = totalExercises > 0 ? Math.round((completedCount / totalExercises) * 100) : 0;
+  // ✅ MÉMORISER tous les calculs statistiques
+  const statsData = useMemo(() => {
+    const totalExercisesCount = calculateTotalExercises(exercises);
+    const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+    const totalProgress = calculateTotalProgress(exercises, completedExercises);
+
+    // ✅ CORRIGÉ : Calcul de la progression par type d'exercice
+    // Spelling a déjà des exercices groupés par type, pas besoin de regrouper
+    const typeProgressData = [
+      {
+        title: "Correction",
+        totalExercises: exercises.filter(ex => ex.type === 'correction').length,
+        completedExercises: exercises.filter((ex, index) => 
+          ex.type === 'correction' && completedExercises.includes(index)
+        ).length,
+        progress: 0
+      },
+      {
+        title: "Règles", 
+        totalExercises: exercises.filter(ex => ex.type === 'rules').length,
+        completedExercises: exercises.filter((ex, index) => 
+          ex.type === 'rules' && completedExercises.includes(index)
+        ).length,
+        progress: 0
+      },
+      {
+        title: "Homophones",
+        totalExercises: exercises.filter(ex => ex.type === 'homophones').length,
+        completedExercises: exercises.filter((ex, index) => 
+          ex.type === 'homophones' && completedExercises.includes(index)
+        ).length,
+        progress: 0
+      }
+    ];
+
+    // Calculer les pourcentages pour chaque type
+    typeProgressData.forEach(typeData => {
+      typeData.progress = typeData.totalExercises > 0 
+        ? Math.round((typeData.completedExercises / typeData.totalExercises) * 100)
+        : 0;
+    });
 
     return {
-      totalExercises,
-      completedCount,
-      progress
+      totalExercisesCount,
+      completedExercisesCount,
+      totalProgress,
+      typeProgressData
     };
   }, [exercises, completedExercises]);
 
-  const { totalExercises, completedCount, progress } = progressData;
+  // ✅ Transformation des données pour ProgressCard
+  const formattedTypeData = useMemo(() => {
+    return statsData.typeProgressData.map((typeData) => ({
+      title: typeData.title,
+      completed: typeData.completedExercises,
+      total: typeData.totalExercises,
+      progress: typeData.progress,
+    }));
+  }, [statsData.typeProgressData]);
 
-  // =================== RENDER ===================
-  
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={styles.gradient}
-      >
-        
-        {/* Header avec titre et stats */}
-        <View style={styles.header}>
-          <Text style={styles.title}>Progression</Text>
-          <Text style={[styles.stats, { color: levelColor }]}>
-            {completedCount}/{totalExercises} exercices
-          </Text>
-        </View>
-
-        {/* Progress bar */}
-        <View style={styles.progressBarContainer}>
-          <View style={[styles.progressBarTrack, { backgroundColor: `${levelColor}20` }]}>
-            <View 
-              style={[
-                styles.progressBarFill,
-                { 
-                  backgroundColor: levelColor,
-                  width: `${progress}%`
-                }
-              ]}
-            />
-          </View>
-          
-          {/* Pourcentage */}
-          <Text style={[styles.percentage, { color: levelColor }]}>
-            {progress}%
-          </Text>
-        </View>
-
-      </LinearGradient>
-    </View>
+    <ProgressCard
+      title="Progression"
+      progress={statsData.totalProgress}
+      completed={statsData.completedExercisesCount}
+      total={statsData.totalExercisesCount}
+      unit="exercices"
+      levelColor={levelColor}
+      expandable
+      expanded={expanded}
+      onToggleExpand={onToggleExpand}
+      categoryData={formattedTypeData}
+      onCategoryPress={onCategoryPress}
+    />
   );
 };
 
 // ✅ Définition de PropTypes pour la validation des props
 SpellingProgress.propTypes = {
-  // 'exercises' est manquant dans la validation
   exercises: PropTypes.arrayOf(PropTypes.shape({
-    // On peut définir la structure des exercices si nécessaire
+    type: PropTypes.string,
+    // Structure des exercices d'orthographe
   })),
-  // 'completedExercises' est manquant dans la validation
   completedExercises: PropTypes.arrayOf(PropTypes.number),
-  // 'levelColor' est manquant dans la validation
   levelColor: PropTypes.string,
+  expanded: PropTypes.bool,
+  onToggleExpand: PropTypes.func,
+  onCategoryPress: PropTypes.func,
 };
 
 export default SpellingProgress;

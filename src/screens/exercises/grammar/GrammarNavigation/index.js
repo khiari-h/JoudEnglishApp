@@ -100,29 +100,18 @@ const GrammarNavigation = ({
   );
 };
 
-// ✅ Définition de PropTypes pour valider les props
+// ✅ Ajout de la validation des props
 GrammarNavigation.propTypes = {
-  // 'showFeedback' est manquant dans la validation
-  showFeedback: PropTypes.bool,
-  // 'isCorrect' est manquant dans la validation
-  isCorrect: PropTypes.bool,
-  // 'canCheckAnswer' est manquant dans la validation
-  canCheckAnswer: PropTypes.bool,
-  // 'onCheckAnswer' est manquant dans la validation
+  showFeedback: PropTypes.bool.isRequired,
+  isCorrect: PropTypes.bool.isRequired,
+  canCheckAnswer: PropTypes.bool.isRequired,
   onCheckAnswer: PropTypes.func.isRequired,
-  // 'onPreviousExercise' est manquant dans la validation
   onPreviousExercise: PropTypes.func.isRequired,
-  // 'onNextExercise' est manquant dans la validation
   onNextExercise: PropTypes.func.isRequired,
-  // 'onRetryExercise' est manquant dans la validation
   onRetryExercise: PropTypes.func.isRequired,
-  // 'onSkipExercise' est manquant dans la validation
   onSkipExercise: PropTypes.func.isRequired,
-  // 'isFirstExercise' est manquant dans la validation
-  isFirstExercise: PropTypes.bool,
-  // 'isLastExercise' est manquant dans la validation
-  isLastExercise: PropTypes.bool,
-  // 'levelColor' est manquant dans la validation
+  isFirstExercise: PropTypes.bool.isRequired,
+  isLastExercise: PropTypes.bool.isRequired,
   levelColor: PropTypes.string,
 };
 

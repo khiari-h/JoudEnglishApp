@@ -1,6 +1,6 @@
 // src/screens/exercises/phrases/hooks/usePhrases.js - VERSION CORRIGÉE
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -31,11 +31,34 @@ const usePhrases = (phrasesData, level) => {
 
   // =================== COMPUTED VALUES ===================
   const categories = phrasesData?.categories || [];
+  // ✅ CORRIGÉ : Les phrases sont dans phrasesData.phrases, pas dans les catégories
+  const allPhrases = phrasesData?.phrases || [];
   const currentCategory = categories[categoryIndex];
-  const currentPhrases = currentCategory?.phrases || [];
+  
+  // ✅ CORRIGÉ : Filtrer les phrases par catégorie actuelle
+  const currentPhrases = allPhrases.filter(phrase => phrase.categoryId === currentCategory?.id) || [];
   const currentPhrase = currentPhrases[phraseIndex];
   const totalPhrasesInCategory = currentPhrases.length;
-  const hasValidData = phrasesData && categories.length > 0 && currentPhrases.length > 0;
+  
+  // ✅ CORRIGÉ : hasValidData vérifie que nous avons des données et des catégories avec des phrases
+  const hasValidData = phrasesData && categories.length > 0 && allPhrases.length > 0;
+
+  // ✅ AJOUTÉ : Debug pour comprendre pourquoi hasValidData est false
+  console.log('🔍 DEBUG usePhrases:', {
+    categoryIndex,
+    phraseIndex,
+    categoriesLength: categories.length,
+    currentCategory: !!currentCategory,
+    currentCategoryName: currentCategory?.name,
+    currentPhrasesLength: currentPhrases.length,
+    allPhrasesLength: allPhrases.length,
+    hasValidData,
+    phrasesData: !!phrasesData,
+    // ✅ AJOUTÉ : Vérifier la structure des données
+    categoriesWithPhrases: categories.filter(cat => 
+      allPhrases.some(phrase => phrase.categoryId === cat.id)
+    ).length
+  });
 
   // =================== DATA LOADING ===================
   useEffect(() => {
@@ -45,10 +68,7 @@ const usePhrases = (phrasesData, level) => {
         if (savedData) {
           const { completedPhrases: savedCompleted, lastPosition } = JSON.parse(savedData);
           setCompletedPhrases(savedCompleted || {});
-          if (lastPosition) {
-            setCategoryIndex(lastPosition.categoryIndex || 0);
-            setPhraseIndex(lastPosition.phraseIndex || 0);
-          }
+          // ✅ SUPPRIMÉ : Initialisation des indices ici car phrasesData n'est pas encore disponible
         }
       } catch (error) {
         // ✅ Gestion d'erreur appropriée
@@ -59,7 +79,28 @@ const usePhrases = (phrasesData, level) => {
       }
     };
     loadData();
-  }, [level]);
+  }, [level]); // ✅ CORRIGÉ : Supprimé phrasesData des dépendances
+
+  // ✅ AJOUTÉ : Initialisation des indices quand phrasesData est disponible
+  useEffect(() => {
+    if (loaded && phrasesData && categories.length > 0 && !isInitialized.current) {
+      // Initialiser les indices avec des valeurs valides
+      const validCategoryIndex = 0; // Commencer par la première catégorie
+      const validPhraseIndex = 0;   // Commencer par la première phrase
+      
+      setCategoryIndex(validCategoryIndex);
+      setPhraseIndex(validPhraseIndex);
+      
+      // ✅ CORRIGÉ : Initialiser les phrases complétées avec un objet vide
+      const newCompletedPhrases = {};
+      categories.forEach((_, index) => {
+        newCompletedPhrases[index] = [];
+      });
+      setCompletedPhrases(newCompletedPhrases);
+      
+      isInitialized.current = true;
+    }
+  }, [loaded, phrasesData, categories.length]); // ✅ CORRIGÉ : Dépendances simplifiées
 
   // Save data to storage
   const saveData = useCallback(async () => {
@@ -81,47 +122,33 @@ const usePhrases = (phrasesData, level) => {
 
   // Auto-save when data changes
   useEffect(() => {
-    if (loaded) saveData();
-  }, [saveData, loaded]);
-
-  // Initialize progress for new categories
-  useEffect(() => {
-    if (loaded && phrasesData && !isInitialized.current) {
-      const newCompletedPhrases = { ...completedPhrases };
-      categories.forEach((_, index) => {
-        if (!newCompletedPhrases[index]) {
-          newCompletedPhrases[index] = [];
-        }
-      });
-      setCompletedPhrases(newCompletedPhrases);
-      isInitialized.current = true;
-    }
-  }, [loaded, phrasesData, categories, completedPhrases]);
+    if (loaded && isInitialized.current) saveData();
+  }, [loaded, isInitialized.current]); // ✅ CORRIGÉ : Ajouté isInitialized.current
 
   // =================== NAVIGATION ACTIONS ===================
   const changeCategory = useCallback((newCategoryIndex) => {
-    if (newCategoryIndex !== categoryIndex && newCategoryIndex >= 0 && newCategoryIndex < categories.length) {
+    if (newCategoryIndex !== categoryIndex && newCategoryIndex >= 0 && newCategoryIndex < categories.length && isInitialized.current) {
       setCategoryIndex(newCategoryIndex);
       setPhraseIndex(0);
       setShowTranslation(false);
     }
-  }, [categoryIndex, categories.length]);
+  }, [categoryIndex, categories.length, isInitialized.current]);
 
   const goToNextPhrase = useCallback(() => {
-    if (phraseIndex < totalPhrasesInCategory - 1) {
+    if (phraseIndex < totalPhrasesInCategory - 1 && isInitialized.current) {
       setPhraseIndex(prev => prev + 1);
       setShowTranslation(false);
     }
-  }, [phraseIndex, totalPhrasesInCategory]);
+  }, [phraseIndex, totalPhrasesInCategory, isInitialized.current]);
 
   const goToPreviousPhrase = useCallback(() => {
-    if (phraseIndex > 0) {
-      setPhraseIndex(prev => prev - 1);
+    if (phraseIndex > 0 && isInitialized.current) {
+      setPhraseIndex(prev => prev - 1); // ✅ CORRIGÉ : prev - 1, pas prev + 1
       setShowTranslation(false);
       return true;
     }
     return false;
-  }, [phraseIndex]);
+  }, [phraseIndex, isInitialized.current]);
 
   const toggleTranslation = useCallback(() => {
     setShowTranslation(prev => !prev);
@@ -133,6 +160,8 @@ const usePhrases = (phrasesData, level) => {
 
   // =================== COMPLETION LOGIC ===================
   const markPhraseAsCompleted = useCallback((catIndex, pIndex) => {
+    if (!isInitialized.current) return; // ✅ AJOUTÉ : Protection contre l'accès avant initialisation
+    
     setCompletedPhrases(prev => {
       const categoryCompleted = prev[catIndex] || [];
       if (!categoryCompleted.includes(pIndex)) {
@@ -143,7 +172,7 @@ const usePhrases = (phrasesData, level) => {
       }
       return prev;
     });
-  }, []);
+  }, [isInitialized.current]);
 
   // Find next uncompleted category
   const findNextUncompletedCategory = useCallback(() => {
@@ -151,7 +180,8 @@ const usePhrases = (phrasesData, level) => {
     for (let i = 1; i <= numCategories; i++) {
       const nextIndex = (categoryIndex + i) % numCategories;
       const category = categories[nextIndex];
-      const categoryPhrases = currentPhrases.filter(p => p.categoryId === category.id);
+      // ✅ CORRIGÉ : Utiliser allPhrases au lieu de currentPhrases
+      const categoryPhrases = allPhrases.filter(p => p.categoryId === category.id);
       const completedInCategory = completedPhrases[nextIndex]?.length || 0;
       
       if (completedInCategory < categoryPhrases.length) {
@@ -159,10 +189,12 @@ const usePhrases = (phrasesData, level) => {
       }
     }
     return -1;
-  }, [categories, categoryIndex, currentPhrases, completedPhrases]);
+  }, [categories, categoryIndex, allPhrases, completedPhrases]);
 
   // =================== MAIN NAVIGATION ===================
   const handleNext = useCallback(() => {
+    if (!isInitialized.current) return { completed: false }; // ✅ AJOUTÉ : Protection contre l'accès avant initialisation
+    
     // Mark current phrase as completed
     markPhraseAsCompleted(categoryIndex, phraseIndex);
 
@@ -184,14 +216,26 @@ const usePhrases = (phrasesData, level) => {
       }
     }
     return { completed: false };
-  }, [categoryIndex, phraseIndex, totalPhrasesInCategory, markPhraseAsCompleted, goToNextPhrase, findNextUncompletedCategory, changeCategory]);
+  }, [categoryIndex, phraseIndex, totalPhrasesInCategory, markPhraseAsCompleted, goToNextPhrase, findNextUncompletedCategory, changeCategory, isInitialized.current]);
 
   const handlePrevious = useCallback(() => {
+    if (!isInitialized.current) return; // ✅ AJOUTÉ : Protection contre l'accès avant initialisation
     goToPreviousPhrase();
-  }, [goToPreviousPhrase]);
+  }, [goToPreviousPhrase, isInitialized.current]);
 
   // =================== COMPUTED STATS ===================
-  const getStats = useCallback(() => {
+  const stats = useMemo(() => {
+    if (!isInitialized.current) { // ✅ AJOUTÉ : Protection contre le calcul avant initialisation
+      return {
+        totalPhrases: 0,
+        completedPhrasesCount: 0,
+        totalProgress: 0,
+        completionProgress: 0,
+        completedInCurrentCategory: 0,
+        totalInCurrentCategory: 0
+      };
+    }
+    
     const totalPhrases = currentPhrases.length;
     const completedPhrasesCount = Object.values(completedPhrases).reduce((sum, completed) => sum + (completed?.length || 0), 0);
     const totalProgress = totalPhrases > 0 ? Math.round((completedPhrasesCount / totalPhrases) * 100) : 0;
@@ -205,10 +249,20 @@ const usePhrases = (phrasesData, level) => {
       completedInCurrentCategory: completedPhrases[categoryIndex]?.length || 0,
       totalInCurrentCategory: totalPhrasesInCategory
     };
-  }, [currentPhrases, completedPhrases, totalPhrasesInCategory, phraseIndex, categoryIndex]);
+  }, [currentPhrases, completedPhrases, totalPhrasesInCategory, phraseIndex, categoryIndex, isInitialized.current]);
 
   // =================== COMPUTED DISPLAY ===================
-  const getDisplayData = useCallback(() => {
+  const display = useMemo(() => {
+    if (!isInitialized.current) { // ✅ AJOUTÉ : Protection contre le calcul avant initialisation
+      return {
+        phraseCounter: "0 / 0",
+        categories: [],
+        currentPhrase: null,
+        currentCategory: null,
+        currentPhrases: []
+      };
+    }
+    
     const phraseCounter = `${phraseIndex + 1} / ${totalPhrasesInCategory || 0}`;
     const categoriesNames = categories.map(cat => cat.name);
     
@@ -219,7 +273,7 @@ const usePhrases = (phrasesData, level) => {
       currentCategory,
       currentPhrases
     };
-  }, [phraseIndex, totalPhrasesInCategory, categories, currentPhrase, currentCategory, currentPhrases]);
+  }, [phraseIndex, totalPhrasesInCategory, categories, currentPhrase, currentCategory, currentPhrases, isInitialized.current]);
 
   // =================== VALIDATION ===================
   const canGoToPrevious = phraseIndex > 0;
@@ -252,8 +306,8 @@ const usePhrases = (phrasesData, level) => {
     // Computed
     canGoToPrevious,
     isLastPhraseInCategory,
-    stats: getStats(),
-    display: getDisplayData(),
+    stats, // ✅ OPTIMISÉ : Objet mémorisé
+    display, // ✅ OPTIMISÉ : Objet mémorisé
   };
 };
 

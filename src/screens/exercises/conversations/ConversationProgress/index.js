@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import ProgressCard from "../../../../components/ui/ProgressCard";
 import {
   calculateTotalScenarios,
-  calculateCompletedScenarios,
+  calculateCompletedScenariosCount,
   calculateTotalSteps,
   calculateCompletedSteps,
 } from "../../../../utils/conversation/conversationStats";
@@ -37,7 +37,7 @@ const ConversationProgress = ({
   // ✅ MÉMORISER les statistiques calculées
   const statsData = useMemo(() => {
     const totalScenarios = calculateTotalScenarios(conversationData);
-    const completedScenariosCount = calculateCompletedScenarios(completedScenarios);
+    const completedScenariosCount = calculateCompletedScenariosCount(completedScenarios);
     const totalStepsCount = calculateTotalSteps(conversationData);
     const completedStepsCount = calculateCompletedSteps(conversationHistory);
     

@@ -35,17 +35,32 @@ const PhrasesExercise = ({ route }) => {
   // Data
   const levelColor = getLevelColor(level);
   const [phrasesData, setPhrasesData] = useState(null);
+  const [isDataLoading, setIsDataLoading] = useState(true); // ✅ AJOUTÉ : État de chargement des données
 
   useEffect(() => {
     let isMounted = true;
     const load = async () => {
-      if (process.env.JEST_WORKER_ID) {
-        const data = getPhrasesData(level);
-        if (isMounted) setPhrasesData(data);
-        return;
+      setIsDataLoading(true); // ✅ AJOUTÉ : Démarrer le chargement
+      try {
+        if (process.env.JEST_WORKER_ID) {
+          const data = getPhrasesData(level);
+          if (isMounted) {
+            setPhrasesData(data);
+            setIsDataLoading(false); // ✅ AJOUTÉ : Fin du chargement
+          }
+          return;
+        }
+        const data = await loadPhrasesData(level);
+        if (isMounted) {
+          setPhrasesData(data);
+          setIsDataLoading(false); // ✅ AJOUTÉ : Fin du chargement
+        }
+      } catch (error) {
+        console.error('Erreur chargement données phrases:', error);
+        if (isMounted) {
+          setIsDataLoading(false); // ✅ AJOUTÉ : Fin du chargement même en cas d'erreur
+        }
       }
-      const data = await loadPhrasesData(level);
-      if (isMounted) setPhrasesData(data);
     };
     load();
     return () => { isMounted = false; };
@@ -94,7 +109,7 @@ const PhrasesExercise = ({ route }) => {
 
       saveActivity(activityData);
     }
-  }, [loaded, hasValidData, currentPhrase, currentPhrases.length, phraseIndex, totalPhrasesInCategory, categoryIndex, level, phrasesData]);
+  }, [loaded, hasValidData, currentPhrase, currentPhrases.length, phraseIndex, totalPhrasesInCategory, categoryIndex, level]); // ✅ CORRIGÉ : Supprimé phrasesData des dépendances
 
   // Handlers
   const handleBackPress = useCallback(() => {
@@ -118,7 +133,15 @@ const PhrasesExercise = ({ route }) => {
   const handlePreviousPhrase = useCallback(() => handlePrevious(), [handlePrevious]);
 
   // Loading state
-  if (!loaded || !hasValidData) {
+  console.log('🔍 DEBUG Phrases:', { 
+    isDataLoading, 
+    loaded, 
+    hasValidData, 
+    phrasesData: !!phrasesData,
+    phrasesDataLength: phrasesData?.categories?.length || 0
+  });
+  
+  if (isDataLoading || !loaded || !hasValidData) {
     return (
       <Container
         safeArea

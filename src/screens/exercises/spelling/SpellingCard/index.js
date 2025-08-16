@@ -23,6 +23,16 @@ const SpellingCard = ({
   levelColor,
 }) => {
   
+  // ✅ AJOUTÉ : Debug pour voir ce que SpellingCard reçoit
+  console.log('🔍 DEBUG SpellingCard:', {
+    exercise: !!exercise,
+    exerciseType: exercise?.type,
+    exerciseContent: exercise?.wordToCorrect || exercise?.instruction,
+    userInput,
+    showHint,
+    showFeedback
+  });
+  
   if (!exercise) {
     return (
       <View style={styles.card}>

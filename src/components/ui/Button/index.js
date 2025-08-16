@@ -9,14 +9,40 @@ import { LeftIcon, RightIcon, IconOnly } from "./ButtonIcon";
 import useButtonStyles from "./useButtonStyles";
 
 /**
+ * 🎨 Fonction pour mapper les couleurs hexadécimales vers les couleurs prédéfinies du Button
+ * @param {string} color - Couleur (hexadécimale ou prédéfinie)
+ * @returns {string} Couleur prédéfinie valide
+ */
+const mapHexToButtonColor = (color) => {
+  // Si c'est déjà une couleur prédéfinie, la retourner
+  if (['primary', 'secondary', 'success', 'warning', 'danger', 'info'].includes(color)) {
+    return color;
+  }
+  
+  // Mapping des couleurs hexadécimales vers les couleurs prédéfinies
+  const colorMap = {
+    '#3b82f6': 'primary',    // Bleu
+    '#8b5cf6': 'secondary',  // Violet
+    '#10b981': 'success',    // Vert
+    '#f59e0b': 'warning',    // Orange
+    '#ef4444': 'danger',     // Rouge
+    '#6366f1': 'info',       // Indigo
+    '#9333EA': 'secondary',  // Violet premium (bonus)
+  };
+  
+  return colorMap[color] || 'primary'; // Fallback vers primary
+};
+
+/**
  * Composant Button modernisé utilisant Pressable avec feedback visuel amélioré
+ * ✅ ACCEPTE MAINTENANT LES COULEURS HEXADÉCIMALES AUTOMATIQUEMENT
  */
 const Button = ({
   title,
   onPress,
   variant = "filled", // 'filled', 'outlined', 'text', 'icon', 'tonal'
   size = "medium", // 'small', 'medium', 'large'
-  color = "primary", // 'primary', 'secondary', 'success', 'warning', 'danger', 'info'
+  color = "primary", // 'primary', 'secondary', 'success', 'warning', 'danger', 'info' OU couleur hexadécimale
   fullWidth = false,
   disabled = false,
   loading = false,
@@ -31,8 +57,11 @@ const Button = ({
   rounded = false, // Option pour des coins plus arrondis
   ...props
 }) => {
+  // ✅ MAPPING AUTOMATIQUE : Convertir la couleur hexadécimale en couleur prédéfinie
+  const mappedColor = mapHexToButtonColor(color);
+  
   const { baseColor, sizeStyles, variantStyles, elevationStyle, radiusStyle, fullWidthStyle } =
-    useButtonStyles({ variant, size, color, disabled, elevation, rounded, fullWidth });
+    useButtonStyles({ variant, size, color: mappedColor, disabled, elevation, rounded, fullWidth });
   const iconSize = sizeStyles.iconSize;
 
   // Rendu du bouton
@@ -92,7 +121,10 @@ Button.propTypes = {
   onPress: PropTypes.func.isRequired,
   variant: PropTypes.oneOf(['filled', 'outlined', 'text', 'icon', 'tonal']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'info']),
+  color: PropTypes.oneOfType([
+    PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'info']),
+    PropTypes.string // ✅ AJOUTÉ : Accepte maintenant les couleurs hexadécimales
+  ]),
   fullWidth: PropTypes.bool,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,

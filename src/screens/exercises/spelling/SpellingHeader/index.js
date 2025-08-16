@@ -3,23 +3,11 @@ import ExerciseHeader from "../../../../components/exercise-common/ExerciseHeade
 import PropTypes from 'prop-types';
 
 const SpellingHeader = ({ level, exerciseType, onBackPress }) => {
-  // Formatage du titre en fonction du type d'exercice
-  const getExerciseTitle = (type) => {
-    switch (type) {
-      case "correction":
-        return "Orthographe - Correction";
-      case "rules":
-        return "Orthographe - Règles";
-      default:
-        return "Orthographe";
-    }
-  };
-
   return (
     <ExerciseHeader
-      title={getExerciseTitle(exerciseType)}
+      title="Orthographe"
       level={level}
-      exerciseType="spelling" // ✅ NOUVEAU
+      exerciseType="spelling"
       onClose={onBackPress}
       backIcon="arrow-back"
     />
@@ -28,11 +16,7 @@ const SpellingHeader = ({ level, exerciseType, onBackPress }) => {
 
 // ✅ Définition de PropTypes pour la validation des props
 SpellingHeader.propTypes = {
-  // 'level' est manquant dans la validation
   level: PropTypes.string.isRequired,
-  // 'exerciseType' est manquant dans la validation
-  exerciseType: PropTypes.oneOf(['correction', 'rules']).isRequired,
-  // 'onBackPress' est manquant dans la validation
   onBackPress: PropTypes.func.isRequired,
 };
 

@@ -33,6 +33,8 @@ const DEFAULT_THEME = {
   },
 };
 
+// ✅ SUPPRIMÉ : Fonction mapHexToButtonColor plus nécessaire car le composant Button gère automatiquement les couleurs hexadécimales
+
 // Sous-composant ModernCardHeader
 const ModernCardHeader = ({ level, colors, localStyles }) => (
   <View style={localStyles.modernCardHeader}>
@@ -68,7 +70,7 @@ const ModernCardButton = ({ level, handleLevelPress, localStyles }) => (
   <Button
     title={level.hasStarted ? "Continuer" : "Commencer"}
     variant="filled"
-    color={level.color}
+    color={level.color} // ✅ CORRIGÉ : Mapping des couleurs hexadécimales
     fullWidth
     onPress={handleLevelPress(level)}
     style={localStyles.modernButton}
@@ -165,18 +167,16 @@ const LevelSelection = () => {
 
   const renderLevelCard = useCallback((level) => {
     return (
-      <TouchableOpacity
+      <View
         key={level.id}
         testID={`level-${level.id}`}
         style={styles.modernCard}
-        onPress={handleLevelPress(level)}
-        activeOpacity={0.8}
         accessibilityRole="button"
         accessibilityLabel={`Niveau ${level.id}`}
         accessibilityValue={{ min: 0, max: 100, now: level.progress }}
       >
         <LevelCardContent level={level} colors={colors} localStyles={styles} handleLevelPress={handleLevelPress} />
-      </TouchableOpacity>
+      </View>
     );
   }, [handleLevelPress, colors.text, styles]);
 

@@ -48,6 +48,17 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const bounceAnim = useRef(new Animated.Value(1)).current;
 
+  // ✅ AJOUTÉ : Démarrer l'animation fadeAnim quand le composant se charge
+  useEffect(() => {
+    if (loaded && games.length > 0) {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [loaded, games.length, fadeAnim]);
+
   // =================== DATA LOADING ===================
   useEffect(() => {
     const loadData = async () => {
@@ -156,10 +167,29 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     let optionsToShuffle = [];
 
     if (game.type === "matching") {
-      const allItems = game.pairs.flatMap((pair) => [pair.word, pair.match]);
+      // ✅ CORRIGÉ : Créer des objets avec la structure attendue par MatchingGame
+      const allItems = game.pairs.flatMap((pair, pairIndex) => [
+        {
+          id: `word-${pairIndex}`,
+          text: pair.word,
+          type: 'word',
+          originalPair: pairIndex
+        },
+        {
+          id: `match-${pairIndex}`,
+          text: pair.match,
+          type: 'match',
+          originalPair: pairIndex
+        }
+      ]);
       optionsToShuffle = shuffleArray(allItems);
     } else if (game.type === "categorization") {
-      optionsToShuffle = shuffleArray([...game.words]);
+      // ✅ CORRIGÉ : Créer des objets avec la structure attendue par CategorizationGame
+      optionsToShuffle = shuffleArray(game.words.map((word, index) => ({
+        id: `word-${index}`,
+        text: word,
+        type: 'word'
+      })));
     }
 
     setShuffledOptions(optionsToShuffle);
@@ -179,7 +209,111 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     }
   }, [currentGameIndex, currentGame]);
 
+  // ✅ CORRIGÉ : Validation automatique DÉSACTIVÉE pour éviter le "Great job" intempestif
+  // L'utilisateur doit maintenant cliquer sur "Check Answer" pour valider
+  // useEffect(() => {
+  //   if (currentGame?.type === "matching" && selectedItems.length > 0) {
+  //     // Validation automatique désactivée - l'utilisateur doit valider manuellement
+  //   }
+  // }, [selectedItems, currentGame, currentGameIndex, completedGames]);
+
   // =================== GAME LOGIC ===================
+  
+  // ✅ AJOUTÉ : Fonction pour vérifier les paires de matching (DÉCLARÉE EN PREMIER)
+  const checkMatchingPairs = useCallback(() => {
+    if (currentGame?.type !== "matching") return false;
+    
+    const pairs = currentGame.pairs || [];
+    const allPairsFound = pairs.every((pair, pairIndex) => {
+      // ✅ CORRIGÉ : VRAIE logique de validation qui vérifie si les paires sont correctement appariées
+      const selectedPairItems = selectedItems.filter(selected => 
+        selected.item.originalPair === pairIndex
+      );
+      
+      // Une paire est correcte si exactement 2 items sont sélectionnés ET qu'ils correspondent à la paire
+      if (selectedPairItems.length !== 2) return false;
+      
+      const item1 = selectedPairItems[0].item;
+      const item2 = selectedPairItems[1].item;
+      
+      // Vérifier que les deux éléments correspondent exactement à la paire (dans n'importe quel ordre)
+      const isCorrectPair = (
+        (item1.text === pair.word && item2.text === pair.match) ||
+        (item1.text === pair.match && item2.text === pair.word)
+      );
+      
+      return isCorrectPair;
+    });
+    
+    return allPairsFound;
+  }, [currentGame, selectedItems]);
+
+  // ✅ AJOUTÉ : Fonction pour vérifier les réponses de catégorisation (DÉCLARÉE EN DEUXIÈME)
+  const checkCategorizationAnswer = useCallback(() => {
+    if (currentGame?.type !== "categorization") return false;
+    
+    const currentCategory = currentGame.currentCategory;
+    const correctWords = currentGame.categories?.[currentCategory] || [];
+    
+    // Vérifier si tous les mots sélectionnés appartiennent à la catégorie
+    const selectedWords = selectedItems.map(item => item.item);
+    const allCorrect = selectedWords.every(word => correctWords.includes(word));
+    const noIncorrect = selectedWords.length === selectedWords.filter(word => correctWords.includes(word)).length;
+    
+    return allCorrect && noIncorrect;
+  }, [currentGame, selectedItems]);
+
+  // ✅ AJOUTÉ : Fonction manquante pour gérer la sélection d'items
+  const handleSelectItem = useCallback((item, index) => {
+    if (showFeedback) return; // Ne pas permettre la sélection pendant le feedback
+    
+    setSelectedItems(prev => {
+      const isAlreadySelected = prev.some(selected => 
+        selected.item === item && selected.index === index
+      );
+      
+      if (isAlreadySelected) {
+        // Désélectionner l'item
+        return prev.filter(selected => 
+          !(selected.item === item && selected.index === index)
+        );
+      } else {
+        // Sélectionner l'item
+        return [...prev, { item, index }];
+      }
+    });
+  }, [showFeedback]);
+
+  // ✅ CORRIGÉ : Fonction pour vérifier les réponses avec feedback approprié (DÉCLARÉE EN DERNIER)
+  const checkAnswer = useCallback(() => {
+    if (showFeedback) return; // Ne pas permettre la vérification pendant le feedback
+    
+    if (currentGame?.type === "matching") {
+      // Pour les jeux de matching, vérifier si toutes les paires sont trouvées
+      const allPairsFound = checkMatchingPairs();
+      setShowFeedback(true);
+      setIsCorrect(allPairsFound);
+      
+      if (allPairsFound) {
+        // Marquer le jeu comme complété seulement si c'est correct
+        setCompletedGames(prev => ({
+          ...prev,
+          [currentGameIndex]: { completed: true }
+        }));
+      }
+    } else if (currentGame?.type === "categorization") {
+      // Pour les jeux de catégorisation, vérifier la sélection
+      const isCorrect = checkCategorizationAnswer();
+      setShowFeedback(true);
+      setIsCorrect(isCorrect);
+      if (isCorrect) {
+        setCompletedGames(prev => ({
+          ...prev,
+          [currentGameIndex]: { completed: true }
+        }));
+      }
+    }
+  }, [currentGame, currentGameIndex, showFeedback, completedGames, checkMatchingPairs, checkCategorizationAnswer]);
   
   // =================== MAIN NAVIGATION ===================
   
@@ -277,11 +411,9 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
   
   const getDisplayData = useCallback(() => {
     const gameCounter = `${currentGameIndex + 1} / ${totalGames}`;
-    const gameTitle = currentGame?.title || `Game ${currentGameIndex + 1}`;
 
     return {
       gameCounter,
-      gameTitle,
       currentGame,
       currentGameIndex: currentGameIndex + 1
     };
@@ -316,6 +448,8 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     bounceAnim,
     
     // Actions
+    handleSelectItem,
+    checkAnswer,
     handleNext,
     handlePrevious,
     resetGames,

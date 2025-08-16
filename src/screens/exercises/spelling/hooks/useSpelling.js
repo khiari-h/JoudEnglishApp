@@ -32,6 +32,17 @@ const useSpelling = (spellingData, level, exerciseType) => {
   const currentExercise = exercises[currentExerciseIndex];
   const hasValidData = exercises.length > 0;
 
+  // ✅ AJOUTÉ : Debug pour comprendre pourquoi hasValidData est false
+  console.log('🔍 DEBUG useSpelling:', {
+    spellingData: !!spellingData,
+    exercisesLength: exercises.length,
+    totalExercises,
+    currentExercise: !!currentExercise,
+    hasValidData,
+    level,
+    exerciseType
+  });
+
   // =================== DATA LOADING ===================
   const loadStoredData = useCallback(async () => {
     try {

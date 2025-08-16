@@ -1,20 +1,24 @@
-// SpellingExercise/style.js - VERSION CORRIGÉE AVEC GESTION D'ERREUR
+// SpellingExercise/style.js - VERSION MODERNISÉE (cohérent avec PhrasesExercise et GrammarExercise)
 
 import { StyleSheet } from "react-native";
 
 /**
- * 🎯 Styles corrigés pour SpellingExercise
- * ✅ Ajout des styles d'erreur manquants
- * ✅ Amélioration de l'état de chargement
+ * 🎯 Styles modernisés pour SpellingExercise
+ * Ancien : Style détaillé avec errorContainer, errorTitle, etc.
+ * Nouveau : Style ultra-simplifié, cohérent avec les autres modules
+ * 
+ * 🧹 SUPPRIMÉ :
+ * - errorContainer, errorTitle, errorMessage, errorHint (gérés par les composants)
+ * - Styles redondants et personnalisés
+ * 
+ * ✅ GARDÉ :
+ * - loadingContainer (loading state)
+ * - scrollContent (scroll props si nécessaire)
+ * 
+ * 🎨 APPROCHE : Les composants internes gèrent leurs propres styles
  */
 const createStyles = () =>
   StyleSheet.create({
-    // =================== CONTAINER ===================
-    container: {
-      flex: 1,
-      backgroundColor: "white",
-    },
-
     // =================== LOADING STATE ===================
     loadingContainer: {
       flex: 1,
@@ -23,44 +27,14 @@ const createStyles = () =>
       paddingHorizontal: 20,
     },
 
-    loadingText: {
-      fontSize: 16,
-      color: '#64748b',
-      marginTop: 16,
-      fontWeight: '500',
+    // =================== SCROLL CONTENT ===================
+    scrollContent: {
+      paddingBottom: 120, // Espace en bas pour navigation
+      minHeight: '100%',  // Contenu prend toute la hauteur
     },
 
-    // =================== ERROR STATE ===================
-    errorContainer: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      paddingHorizontal: 32,
-    },
-
-    errorTitle: {
-      fontSize: 24,
-      fontWeight: '700',
-      color: '#ef4444',
-      marginBottom: 16,
-      textAlign: 'center',
-    },
-
-    errorMessage: {
-      fontSize: 16,
-      color: '#475569',
-      textAlign: 'center',
-      lineHeight: 24,
-      marginBottom: 12,
-    },
-
-    errorHint: {
-      fontSize: 14,
-      color: '#64748b',
-      textAlign: 'center',
-      fontStyle: 'italic',
-      lineHeight: 20,
-    },
+    // 🧹 SUPPRIMÉ : errorContainer, errorTitle, errorMessage, errorHint
+    // Les composants internes gèrent maintenant leurs propres styles d'erreur
   });
 
 export default createStyles;

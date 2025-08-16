@@ -33,10 +33,29 @@ const WordGamesCard = ({
   bounceAnim,
   onSelectItem,
 }) => {
+  
+  // ✅ AJOUTÉ : Debug pour voir pourquoi le jeu ne s'affiche pas
+  console.log('🔍 DEBUG WordGamesCard:', {
+    currentGame: !!currentGame,
+    currentGameType: currentGame?.type,
+    currentGameTitle: currentGame?.title,
+    shuffledOptionsLength: shuffledOptions?.length,
+    selectedItemsLength: selectedItems?.length,
+    matchedItemsLength: matchedItems?.length,
+    showFeedback,
+    isCorrect
+  });
+  
   // Rendu en fonction du type de jeu (seulement matching et categorization)
   const renderGameByType = () => {
+    console.log('🔍 DEBUG renderGameByType:', {
+      currentGameType: currentGame?.type,
+      currentGameTitle: currentGame?.title
+    });
+    
     switch (currentGame.type) {
       case "matching":
+        console.log('🔍 DEBUG: Rendu MatchingGame');
         return (
           <MatchingGame
             game={currentGame}
@@ -49,6 +68,7 @@ const WordGamesCard = ({
           />
         );
       case "categorization":
+        console.log('🔍 DEBUG: Rendu CategorizationGame');
         return (
           <CategorizationGame
             game={currentGame}
@@ -60,6 +80,7 @@ const WordGamesCard = ({
           />
         );
       default:
+        console.log('🔍 DEBUG: Type de jeu non supporté:', currentGame.type);
         return (
           <View style={styles.errorContainer}>
             <Text style={styles.errorText}>

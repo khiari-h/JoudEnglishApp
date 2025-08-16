@@ -5,6 +5,21 @@ const styles = StyleSheet.create({
   gameContainer: {
     width: "100%",
   },
+  // ✅ AJOUTÉ : Styles pour les instructions
+  instructionsContainer: {
+    backgroundColor: "#f8fafc",
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderLeftWidth: 4,
+    borderLeftColor: "#3b82f6",
+  },
+  instructionsText: {
+    fontSize: 16,
+    color: "#334155",
+    textAlign: "center",
+    fontWeight: "500",
+  },
   matchingContainer: {
     flexDirection: "row",
     flexWrap: "wrap",

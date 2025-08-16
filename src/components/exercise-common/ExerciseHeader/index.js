@@ -29,8 +29,16 @@ const ExerciseHeader = ({
   const exerciseColor = exerciseInfo.color;
   const exerciseIcon = exerciseInfo.icon;
 
+  // ✅ MAPPING INVERSE : Convertir niveau CECR (A1, A2, etc.) en niveau numérique (1, 2, etc.)
+  // car LANGUAGE_LEVELS contient des niveaux numériques mais on reçoit des niveaux CECR
+  const mapCECRToNumeric = (cecrLevel) => {
+    const mapping = { A1: "1", A2: "2", B1: "3", B2: "4", C1: "5", C2: "6" };
+    return mapping[cecrLevel] || "1"; // Fallback vers "1" si niveau non reconnu
+  };
+
   // Récupérer la couleur du niveau
-  const levelInfo = LANGUAGE_LEVELS[level] || LANGUAGE_LEVELS["1"];
+  const numericLevel = mapCECRToNumeric(level);
+  const levelInfo = LANGUAGE_LEVELS[numericLevel] || LANGUAGE_LEVELS["1"];
   const levelColor = levelInfo.color;
 
   // Affichage du niveau

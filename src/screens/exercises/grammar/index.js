@@ -35,6 +35,9 @@ const GrammarExercise = ({ route }) => {
   const { level = "A1" } = route?.params || {};
   const styles = createStyles();
 
+  // ✅ CORRIGÉ : Déclarer grammarData AVANT d'appeler useGrammar
+  const [grammarData, setGrammarData] = useState([]);
+
   // Hook unifié
   const {
     ruleIndex,
@@ -64,7 +67,6 @@ const GrammarExercise = ({ route }) => {
 
   // ✅ MÉMORISER les données principales
   const levelColor = useMemo(() => getLevelColor(level), [level]);
-  const [grammarData, setGrammarData] = useState([]);
 
   useEffect(() => {
     let isMounted = true;

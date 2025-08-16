@@ -66,6 +66,21 @@ const WordGamesNavigation = ({
         <View style={styles.instructionContainer}>
           <Text style={styles.instructionText}>Find all matching pairs</Text>
         </View>
+        {/* ✅ AJOUTÉ : Boutons de navigation même pour les jeux matching */}
+        <NavigationButtons
+          onNext={onNext}
+          onPrevious={canGoPrevious ? onPrevious : undefined}
+          disablePrevious={!canGoPrevious}
+          disableNext={false}
+          primaryColor={levelColor}
+          isLast={isLastGame}
+          buttonLabels={{
+            next: isLastGame ? "See Results" : "Next Game",
+            previous: "Previous Game",
+            finish: "See Results"
+          }}
+          layout="full"
+        />
       </View>
     );
   }

@@ -89,6 +89,17 @@ const WordGamesExercise = ({ route }) => {
     handleSaveActivity();
   }, [handleSaveActivity]);
 
+  // ✅ AJOUTÉ : Debug pour voir pourquoi le composant affiche un écran blanc
+  console.log('🔍 DEBUG WordGamesExercise:', {
+    loaded,
+    currentGame: !!currentGame,
+    gamesLength: games.length,
+    currentGameIndex,
+    totalGames,
+    showResults,
+    wordGamesData: !!wordGamesData
+  });
+
   // Handlers
   const handleBackPress = useCallback(() => {
     router.push({
@@ -112,6 +123,7 @@ const WordGamesExercise = ({ route }) => {
 
   // Loading state
   if (!loaded || !currentGame) {
+    console.log('🔍 DEBUG: Affichage loading state (loaded:', loaded, 'currentGame:', !!currentGame, ')');
     return (
       <Container
         safeArea
@@ -132,6 +144,7 @@ const WordGamesExercise = ({ route }) => {
 
   // Empty games state
   if (games.length === 0) {
+    console.log('🔍 DEBUG: Affichage empty state (games.length:', games.length, ')');
     return (
       <Container
         safeArea
@@ -189,11 +202,8 @@ const WordGamesExercise = ({ route }) => {
       <WordGamesProgress
         currentGame={display.currentGameIndex}
         totalGames={totalGames}
-        gameTitle={display.gameTitle}
         completedGames={stats.completedGamesCount}
         levelColor={levelColor}
-        gameResults={gameResults}
-        level={level}
       />
 
       {/* Game Card */}

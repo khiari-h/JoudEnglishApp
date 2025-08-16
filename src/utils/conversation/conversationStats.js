@@ -27,6 +27,22 @@ export const calculateTotalSteps = (conversationData) => {
 };
 
 /**
+ * Calculer le nombre d'étapes complétées
+ * @param {Object} conversationHistory - Historique des conversations par scénario
+ * @returns {number} Nombre d'étapes complétées
+ */
+export const calculateCompletedSteps = (conversationHistory) => {
+  return Object.values(conversationHistory).reduce((total, history) => {
+    if (history?.conversation) {
+      // Compter les messages du bot pour déterminer la progression
+      const botMessages = history.conversation.filter(msg => msg.sender === "bot");
+      return total + botMessages.length;
+    }
+    return total;
+  }, 0);
+};
+
+/**
  * Calculer le nombre de scénarios complétés
  * @param {Object} completedScenarios - Scénarios complétés {0: {...}, 1: {...}}
  * @returns {number} Nombre de scénarios complétés

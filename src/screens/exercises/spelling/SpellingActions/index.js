@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { useCallback } from "react";
 import PropTypes from 'prop-types';
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
-import createStyles from "./style";
+import styles from "./style";
 
 const SpellingActions = ({
   showFeedback,
@@ -17,7 +17,21 @@ const SpellingActions = ({
   onNext,
   onRetry,
 }) => {
-  const styles = createStyles(levelColor);
+  
+  // ✅ AJOUTÉ : Debug pour voir ce que SpellingActions reçoit
+  console.log('🔍 DEBUG SpellingActions:', {
+    showFeedback,
+    isCorrect,
+    userInput,
+    isLastExercise,
+    exerciseType,
+    levelColor,
+    onCheck: !!onCheck,
+    onNext: !!onNext,
+    onRetry: !!onRetry
+  });
+  
+  // ✅ CORRIGÉ : Utiliser directement styles au lieu de createStyles(levelColor)
 
   const canCheckAnswer = useCallback(() => {
     if (exerciseType === "homophones") {

@@ -36,7 +36,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
   const saveDataTimeoutRef = useRef(null);
 
   // =================== COMPUTED VALUES ===================
-  const rules = grammarData?.rules || [];
+  const rules = grammarData || []; // ✅ CORRIGÉ : grammarData est directement le tableau des règles
   const currentRule = rules[ruleIndex];
   const currentExercises = currentRule?.exercises || [];
   const currentExercise = currentExercises[exerciseIndex];
@@ -318,7 +318,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
     currentRule,
     currentExercise,
     totalRules,
-    totalExercises,
+    totalExercises: totalExercisesMemo, // ✅ CORRIGÉ : totalExercises n'était pas défini
     
     // Actions
     changeRule,

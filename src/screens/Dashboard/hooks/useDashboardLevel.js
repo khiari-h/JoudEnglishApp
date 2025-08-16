@@ -4,14 +4,14 @@ import { LANGUAGE_LEVELS } from "../../../utils/constants";
 
 const ACTIVE_LEVEL_KEY = "user_active_level";
 
-// Fonction de mapping des anciens niveaux (peut être sortie du hook si non dynamique)
+// ✅ RÉTABLI : Mapping nécessaire pour faire le pont entre niveaux CECR et numériques
 const mapOldToNewLevel = (level) => {
   const mapping = { A1: "1", A2: "2", B1: "3", B2: "4", C1: "5", C2: "6" };
   return mapping[level] || level;
 };
 
 export const useDashboardLevel = ({ progress: progressData }) => {
-  const [currentLevel, setCurrentLevel] = useState("1");
+  const [currentLevel, setCurrentLevel] = useState("1"); // ✅ RÉTABLI : Niveau numérique par défaut
   const [isLoaded, setIsLoaded] = useState(false);
   
   // État pour savoir si une valeur a été chargée depuis le stockage.
@@ -25,7 +25,7 @@ export const useDashboardLevel = ({ progress: progressData }) => {
       try {
         const savedLevel = await AsyncStorage.getItem(ACTIVE_LEVEL_KEY);
         if (savedLevel && LANGUAGE_LEVELS[savedLevel]) {
-          setCurrentLevel(mapOldToNewLevel(savedLevel));
+          setCurrentLevel(mapOldToNewLevel(savedLevel)); // ✅ RÉTABLI : Mapping nécessaire
           setLevelFoundInStorage(true);
         } else {
           setLevelFoundInStorage(false);
@@ -48,7 +48,7 @@ export const useDashboardLevel = ({ progress: progressData }) => {
     if (isLoaded && !levelFoundInStorage) {
       const levelFromProgress = progressData?.currentLevel;
       if (levelFromProgress) {
-        const mappedLevel = mapOldToNewLevel(levelFromProgress);
+        const mappedLevel = mapOldToNewLevel(levelFromProgress); // ✅ RÉTABLI : Mapping nécessaire
         if (LANGUAGE_LEVELS[mappedLevel]) {
           setCurrentLevel(mappedLevel);
         }

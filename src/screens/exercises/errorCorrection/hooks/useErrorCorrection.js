@@ -49,6 +49,9 @@ const useErrorCorrection = (errorCorrectionData, level) => {
   const totalCategories = categories.length;
   const totalExercisesInCategory = currentExercises.length;
   
+  // ✅ AJOUTÉ : Définition manquante de currentCategory
+  const currentCategory = categories.find(cat => cat.id === selectedCategory);
+  
   // =================== PERSISTENCE ===================
   // ✅ Variable lastPosition supprimée car inutilisée
 

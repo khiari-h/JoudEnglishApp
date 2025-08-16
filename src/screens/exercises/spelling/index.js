@@ -1,11 +1,11 @@
 // SpellingExercise/index.js - VERSION PROPRE
 
-import { useMemo, useEffect, useCallback } from "react";
+import { useMemo, useEffect, useCallback, useState } from "react";
 import { View, ActivityIndicator, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import PropTypes from 'prop-types';
 
-import Container from "../../../components/layout/Container";
+import Container, { CONTAINER_SAFE_EDGES } from "../../../components/layout/Container";
 import SpellingHeader from "./SpellingHeader";
 import SpellingProgress from "./SpellingProgress";
 import SpellingCard from "./SpellingCard";
@@ -24,16 +24,6 @@ const SpellingExercise = ({ route }) => {
 
   const levelColor = getLevelColor(level);
 
-  // ✅ Extraction de la logique conditionnelle pour améliorer la lisibilité
-  const getExerciseTypeName = () => {
-    if (exerciseType === "correction") return "Correction";
-    if (exerciseType === "rules") return "Règles";
-    return "Homophones";
-  };
-  
-  // Définir exerciseTypeName pour tout le composant
-  const exerciseTypeName = getExerciseTypeName();
-  
   const spellingData = useMemo(() => {
     try {
       return getSpellingData(level, exerciseType);
@@ -53,6 +43,8 @@ const SpellingExercise = ({ route }) => {
     loaded,
     currentExercise,
     totalExercises,
+    exercises,
+    completedExercises,
     setUserInput,
     toggleHint,
     checkAnswer,
@@ -62,12 +54,27 @@ const SpellingExercise = ({ route }) => {
     hasValidData,
   } = useSpelling(spellingData, level, exerciseType);
 
+  // ✅ AJOUTÉ : État pour l'expansion de la progress bar
+  const [showDetailedProgress, setShowDetailedProgress] = useState(false);
+
+  // ✅ AJOUTÉ : Debug pour voir ce que le composant reçoit du hook
+  console.log('🔍 DEBUG SpellingExercise Component:', {
+    loaded,
+    hasValidData,
+    currentExercise: !!currentExercise,
+    currentExerciseIndex,
+    totalExercises,
+    spellingData: !!spellingData,
+    level,
+    exerciseType
+  });
+
   useEffect(() => {
     if (loaded && hasValidData && currentExercise) {
       const saveActivityAsync = async () => {
         try {
           await saveActivity({
-            title: `Orthographe ${exerciseTypeName}`,
+            title: "Orthographe",
             level,
             type: "spelling",
             metadata: {
@@ -88,18 +95,33 @@ const SpellingExercise = ({ route }) => {
 
   const handleBack = useCallback(() => navigation.goBack(), [navigation]);
 
+  // ✅ AJOUTÉ : Handler pour toggle l'expansion de la progress bar
+  const handleToggleProgressDetails = useCallback(() => {
+    setShowDetailedProgress(prev => !prev);
+  }, []);
+
+  // ✅ AJOUTÉ : Handler pour la navigation par catégorie
+  const handleCategoryPress = useCallback((index) => {
+    // Pour l'instant, on peut juste afficher un message
+    // Plus tard, on pourra naviguer vers des exercices spécifiques par type
+    console.log('Category pressed:', index);
+  }, []);
+
   if (!loaded) {
     return (
-      <Container>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#f8fafc"
+        statusBarStyle="dark-content"
+      >
         <SpellingHeader
-          title={`Orthographe ${exerciseTypeName}`}
           level={level}
-          levelColor={levelColor}
-          onBack={handleBack}
+          onBackPress={handleBack}
         />
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={levelColor} testID="activity-indicator" />
-          <Text style={styles.loadingText}>Chargement des exercices...</Text>
+          {/* ✅ MODERNISÉ : Supprimé le texte de chargement pour être cohérent avec les autres modules */}
         </View>
       </Container>
     );
@@ -107,42 +129,59 @@ const SpellingExercise = ({ route }) => {
 
   if (!hasValidData) {
     return (
-      <Container>
+      <Container
+        safeArea
+        safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+        backgroundColor="#f8fafc"
+        statusBarStyle="dark-content"
+      >
         <SpellingHeader
-          title={`Orthographe ${exerciseTypeName}`}
           level={level}
-          levelColor={levelColor}
-          onBack={handleBack}
+          onBackPress={handleBack}
         />
-        <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>Aucune donnée trouvée pour ce niveau.</Text>
-          <Text style={styles.errorText}>Veuillez réessayer plus tard.</Text>
+        {/* ✅ MODERNISÉ : Utilise un message simple au lieu de styles d'erreur personnalisés */}
+        <View style={styles.loadingContainer}>
+          <Text style={{ fontSize: 16, color: '#64748b', textAlign: 'center' }}>
+            Aucune donnée trouvée pour ce niveau.
+          </Text>
         </View>
       </Container>
     );
   }
 
   return (
-    <Container>
+    <Container
+      safeArea
+      safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
+      withScrollView
+      backgroundColor="#f8fafc"
+      statusBarStyle="dark-content"
+      withPadding={false}
+      scrollViewProps={{
+        showsVerticalScrollIndicator: false,
+        contentContainerStyle: styles.scrollContent,
+      }}
+    >
       <SpellingHeader
-        title={`Orthographe ${exerciseTypeName}`}
         level={level}
-        levelColor={levelColor}
-        onBack={handleBack}
+        onBackPress={handleBack}
       />
       <SpellingProgress
-        currentExerciseIndex={currentExerciseIndex + 1}
-        totalExercises={totalExercises}
+        exercises={exercises}
+        completedExercises={completedExercises}
         levelColor={levelColor}
+        expanded={showDetailedProgress}
+        onToggleExpand={handleToggleProgressDetails}
+        onCategoryPress={handleCategoryPress}
       />
       <SpellingCard
-        currentExercise={currentExercise}
+        exercise={currentExercise}
         userInput={userInput}
         showHint={showHint}
         showFeedback={showFeedback}
         isCorrect={isCorrect}
-        onUserInputChange={setUserInput}
-        onHintToggle={toggleHint}
+        onChangeText={setUserInput}
+        onToggleHint={toggleHint}
         onCheckAnswer={checkAnswer}
         onNext={handleNext}
         onRetry={retryExercise}
@@ -150,11 +189,15 @@ const SpellingExercise = ({ route }) => {
         levelColor={levelColor}
       />
       <SpellingActions
+        showFeedback={showFeedback}
         isCorrect={isCorrect}
+        userInput={userInput}
+        isLastExercise={isLastExercise}
+        exerciseType={exerciseType}
+        levelColor={levelColor}
+        onCheck={checkAnswer}
         onNext={handleNext}
         onRetry={retryExercise}
-        isLastExercise={isLastExercise}
-        levelColor={levelColor}
       />
     </Container>
   );
