@@ -6,7 +6,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import PropTypes from 'prop-types';
 import FullCorrectionMode from "../modes/FullCorrectionMode";
 import IdentifyErrorsMode from "../modes/IdentifyErrorsMode";
-import MultipleChoiceMode from "../modes/MultipleChoiceMode";
 import createStyles from "./style";
 
 /**
@@ -15,7 +14,7 @@ import createStyles from "./style";
  * Pattern identique à VocabularyWordSection
  * 
  * @param {Object} currentExercise - Exercice actuel avec ses propriétés
- * @param {string} exerciseCounter - Compteur stylé (ex: "5 / 20")
+ * @param {string} categoryName - Nom de la catégorie (ex: "Articles", "Verb to Be")
  * @param {string} correctionMode - Mode de correction (full/identify/multiple_choice)
  * @param {string} levelColor - Couleur du niveau
  * @param {boolean} showFeedback - État d'affichage du feedback
@@ -26,10 +25,11 @@ import createStyles from "./style";
  * @param {function} onChangeUserCorrection - Callback mode full
  * @param {function} onToggleErrorIndex - Callback mode identify
  * @param {function} onSelectChoice - Callback mode multiple_choice
+ * @param {Component} MultipleChoiceMode - Composant pour le mode multiple choice
  */
 const ErrorCorrectionWordSection = memo(({
   currentExercise,
-  exerciseCounter,
+  categoryName,
   correctionMode,
   levelColor,
   showFeedback,
@@ -41,13 +41,14 @@ const ErrorCorrectionWordSection = memo(({
   onChangeUserCorrection,
   onToggleErrorIndex,
   onSelectChoice,
+  MultipleChoiceMode,
 }) => {
   const styles = createStyles();
   
   return (
     <View style={styles.container}>
-      {/* 🎯 COMPTEUR STYLÉ - Garde la logique existante */}
-      <CounterSection exerciseCounter={exerciseCounter} levelColor={levelColor} styles={styles} />
+      {/* 🎯 NOM DE CATÉGORIE - Remplacé le compteur par le nom de catégorie */}
+      <CategorySection categoryName={categoryName} levelColor={levelColor} styles={styles} />
 
       {/* 🎨 MODE SWITCHING - Affiche le bon composant selon le mode */}
       {correctionMode === 'full' && (
@@ -96,7 +97,7 @@ const ErrorCorrectionWordSection = memo(({
 // PropTypes pour le composant principal ErrorCorrectionWordSection
 ErrorCorrectionWordSection.propTypes = {
   currentExercise: PropTypes.object.isRequired,
-  exerciseCounter: PropTypes.string.isRequired,
+  categoryName: PropTypes.string.isRequired,
   correctionMode: PropTypes.oneOf(['full', 'identify', 'multiple_choice']).isRequired,
   levelColor: PropTypes.string.isRequired,
   showFeedback: PropTypes.bool.isRequired,
@@ -108,12 +109,13 @@ ErrorCorrectionWordSection.propTypes = {
   onChangeUserCorrection: PropTypes.func,
   onToggleErrorIndex: PropTypes.func,
   onSelectChoice: PropTypes.func,
+  MultipleChoiceMode: PropTypes.elementType, // PropTypes for the MultipleChoiceMode component
 };
 
 ErrorCorrectionWordSection.displayName = "ErrorCorrectionWordSection";
 
-// ✅ COMPOSANT CounterSection avec PropTypes
-const CounterSection = ({ exerciseCounter, levelColor, styles }) => (
+// ✅ COMPOSANT CategorySection - Affiche le nom de la catégorie
+const CategorySection = ({ categoryName, levelColor, styles }) => (
   <View style={styles.counterSection}>
     <LinearGradient
       colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
@@ -121,19 +123,19 @@ const CounterSection = ({ exerciseCounter, levelColor, styles }) => (
       end={{ x: 1, y: 1 }}
       style={styles.counterGradient}
     >
-      {/* Compteur principal */}
+      {/* Nom de la catégorie */}
       <View style={[styles.counterBadge, { borderColor: `${levelColor}20` }]}> 
         <Text style={[styles.counterText, { color: levelColor }]}> 
-          {exerciseCounter}
+          {categoryName}
         </Text>
       </View>
     </LinearGradient>
   </View>
 );
 
-// ✅ PropTypes pour CounterSection - Corrige toutes les erreurs
-CounterSection.propTypes = {
-  exerciseCounter: PropTypes.string.isRequired,
+// ✅ PropTypes pour CategorySection
+CategorySection.propTypes = {
+  categoryName: PropTypes.string.isRequired,
   levelColor: PropTypes.string.isRequired,
   styles: PropTypes.shape({
     counterSection: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),

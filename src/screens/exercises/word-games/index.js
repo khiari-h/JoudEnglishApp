@@ -42,25 +42,37 @@ const WordGamesExercise = ({ route }) => {
 
   // Hook unifié
   const {
-    games,
-    currentGame,
+    // State
     currentGameIndex,
-    totalGames,
+    currentGame,
     selectedItems,
     matchedItems,
     showFeedback,
+    isCorrect,
     showResults,
-    gameResults,
-    completedGames,
+    score,
+    showPairFeedback,
+    pairFeedbackMessage,
+    canShowCheckButton,
     loaded,
+    
+    // Data
+    games,
+    totalGames,
+    completedGames,
+    gameResults,
+    shuffledOptions,
+    
+    // Actions
     handleSelectItem,
     checkAnswer,
     handleNext,
     handlePrevious,
     resetGames,
-    showPairFeedback,
-    pairFeedbackMessage,
-    canShowCheckButton,
+    
+    // Animations
+    fadeAnim,
+    bounceAnim,
   } = useWordGames(wordGamesData, level);
 
   // ✅ CORRIGÉ : Calculer les valeurs manquantes

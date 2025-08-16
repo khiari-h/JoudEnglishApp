@@ -24,6 +24,7 @@ const ErrorCorrectionProgress = ({
   expanded = false,
   onToggleExpand,
   onCategoryPress,
+  currentCategoryId, // ✅ AJOUTÉ : ID de la catégorie actuelle
 }) => {
   
   // ✅ MÉMORISER la validation des catégories
@@ -69,9 +70,32 @@ const ErrorCorrectionProgress = ({
   
   // ✅ MÉMORISER tous les calculs
   const statsData = useMemo(() => {
-    const totalExercisesCount = calculateTotalExercises(validCategories, validExercises);
-    const completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
-    const totalProgress = calculateTotalProgress(validCategories, validExercises, completedExercises);
+    // ✅ MODIFIÉ : Calculer la progression de la catégorie actuelle
+    let totalExercisesCount, completedExercisesCount, totalProgress;
+    
+    if (currentCategoryId) {
+      // Progression de la catégorie actuelle
+      const currentCategory = validCategories.find(cat => cat.id === currentCategoryId);
+      if (currentCategory) {
+        const exercisesInCategory = validExercises.filter(ex => 
+          (ex.categoryId || ex.category || 'general') === currentCategoryId
+        );
+        totalExercisesCount = exercisesInCategory.length;
+        completedExercisesCount = completedExercises[currentCategoryId]?.length || 0;
+        totalProgress = totalExercisesCount > 0 ? Math.round((completedExercisesCount / totalExercisesCount) * 100) : 0;
+      } else {
+        // Fallback au total global
+        totalExercisesCount = calculateTotalExercises(validCategories, validExercises);
+        completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+        totalProgress = calculateTotalProgress(validCategories, validExercises, completedExercises);
+      }
+    } else {
+      // Progression globale
+      totalExercisesCount = calculateTotalExercises(validCategories, validExercises);
+      completedExercisesCount = calculateCompletedExercisesCount(completedExercises);
+      totalProgress = calculateTotalProgress(validCategories, validExercises, completedExercises);
+    }
+    
     const categoryProgressData = calculateCategoryProgress(validCategories, validExercises, completedExercises);
 
     return {
@@ -80,7 +104,7 @@ const ErrorCorrectionProgress = ({
       totalProgress,
       categoryProgressData
     };
-  }, [validCategories, validExercises, completedExercises]);
+  }, [validCategories, validExercises, completedExercises, currentCategoryId]);
 
   // ✅ MÉMORISER la transformation des données
   const formattedCategoryData = useMemo(() => {
@@ -131,6 +155,7 @@ ErrorCorrectionProgress.propTypes = {
   expanded: PropTypes.bool,
   onToggleExpand: PropTypes.func,
   onCategoryPress: PropTypes.func,
+  currentCategoryId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 // ✅ VALEURS PAR DÉFAUT (optionnel, déjà définies dans la destructuration)
@@ -142,6 +167,7 @@ ErrorCorrectionProgress.defaultProps = {
   expanded: false,
   onToggleExpand: undefined,
   onCategoryPress: undefined,
+  currentCategoryId: undefined,
 };
 
 export default ErrorCorrectionProgress;

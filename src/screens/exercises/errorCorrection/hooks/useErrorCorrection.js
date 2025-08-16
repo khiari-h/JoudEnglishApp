@@ -20,16 +20,19 @@ const useErrorCorrection = (errorCorrectionData, level) => {
   const STORAGE_KEY = `errorCorrection_${level}`;
 
   // =================== STATE ===================
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(1);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [correctionMode, setCorrectionMode] = useState('full'); // 'full', 'identify', 'multiple_choice'
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showResults, setShowResults] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
-  const [completedExercises, setCompletedExercises] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [showDetailedProgress, setShowDetailedProgress] = useState(false);
+  
+  // ✅ AJOUTÉ : Exercices filtrés par type pour la navigation
+  const [filteredExercises, setFilteredExercises] = useState([]);
+  const [isFinished, setIsFinished] = useState(false);
+  const [completedExercises, setCompletedExercises] = useState({});
 
   // =================== MODE-SPECIFIC STATE ===================
   const [userCorrection, setUserCorrection] = useState('');
@@ -136,6 +139,8 @@ const useErrorCorrection = (errorCorrectionData, level) => {
     setSelectedCategory(newCategoryId);
     setCurrentExerciseIndex(0);
     resetExerciseState();
+    // ✅ CORRECTION : Réinitialiser les exercices filtrés quand on change de catégorie
+    setFilteredExercises([]);
   }, [resetExerciseState]);
 
   const startExercise = useCallback((mode = 'full') => {
@@ -144,9 +149,24 @@ const useErrorCorrection = (errorCorrectionData, level) => {
     setShowResults(false);
     setScore(0);
 
-    // Initialize based on mode
+    // ✅ CORRECTION : Filtrer les exercices par type
     if (currentExercises.length > 0) {
-      const firstExercise = currentExercises[0];
+      // Filtrer les exercices du type demandé
+      const exercisesOfType = currentExercises.filter(ex => ex.type === mode);
+      
+      if (exercisesOfType.length === 0) {
+        console.error(`❌ Aucun exercice de type '${mode}' trouvé dans la catégorie ${selectedCategory}`);
+        return;
+      }
+      
+      // ✅ CORRECTION : Créer une liste d'exercices filtrés pour ce mode
+      setFilteredExercises(exercisesOfType);
+      
+      // Prendre le premier exercice du bon type
+      const firstExercise = exercisesOfType[0];
+      setCurrentExerciseIndex(0); // Commencer à l'index 0 de la liste filtrée
+      
+      // Initialize based on mode
       switch(mode) {
         case 'full':
           setUserCorrection(firstExercise.text || '');
@@ -162,7 +182,7 @@ const useErrorCorrection = (errorCorrectionData, level) => {
           break;
       }
     }
-  }, [currentExercises, resetExerciseState]);
+  }, [currentExercises, selectedCategory, resetExerciseState]);
 
   const toggleDetailedProgress = useCallback(() => {
     setShowDetailedProgress(prev => !prev);
@@ -254,19 +274,44 @@ const useErrorCorrection = (errorCorrectionData, level) => {
     return answerCorrect;
   }, [showFeedback, correctionMode, userCorrection, selectedErrorIndices, selectedChoiceIndex, currentExercise]);
 
+  // ✅ AJOUTÉ : Fonction pour réessayer l'exercice
+  const tryAgain = useCallback(() => {
+    setShowFeedback(false);
+    setIsCorrect(false);
+    setShowHint(false);
+    
+    // Réinitialiser selon le mode
+    switch(correctionMode) {
+      case 'full':
+        setUserCorrection(currentExercise.text || '');
+        break;
+      case 'identify':
+        setSelectedErrorIndices([]);
+        break;
+      case 'multiple_choice':
+        setSelectedChoiceIndex(null);
+        break;
+      default:
+        break;
+    }
+  }, [correctionMode, currentExercise]);
+
   // =================== MAIN NAVIGATION ===================
   const handleNext = useCallback(() => {
     // Mark current exercise as completed
     markExerciseAsCompleted(selectedCategory, currentExerciseIndex);
 
+    // ✅ CORRECTION : Utiliser filteredExercises pour la navigation
+    const exercisesToUse = filteredExercises.length > 0 ? filteredExercises : currentExercises;
+    
     // Check if there are more exercises in current category
-    if (currentExerciseIndex < totalExercisesInCategory - 1) {
+    if (currentExerciseIndex < exercisesToUse.length - 1) {
       const nextIndex = currentExerciseIndex + 1;
       setCurrentExerciseIndex(nextIndex);
       resetExerciseState();
 
       // Initialize next exercise based on mode
-      const nextExercise = currentExercises[nextIndex];
+      const nextExercise = exercisesToUse[nextIndex];
       switch(correctionMode) {
         case 'full':
           setUserCorrection(nextExercise.text || '');
@@ -295,10 +340,13 @@ const useErrorCorrection = (errorCorrectionData, level) => {
       }
     }
     return { completed: false };
-  }, [selectedCategory, currentExerciseIndex, totalExercisesInCategory, markExerciseAsCompleted, 
+  }, [selectedCategory, currentExerciseIndex, filteredExercises, markExerciseAsCompleted, 
       resetExerciseState, currentExercises, correctionMode, findNextUncompletedCategory, changeCategory, level]);
 
   const handlePrevious = useCallback(() => {
+    // ✅ CORRECTION : Utiliser filteredExercises pour la navigation
+    const exercisesToUse = filteredExercises.length > 0 ? filteredExercises : currentExercises;
+    
     // Case 1: Not first exercise in category
     if (currentExerciseIndex > 0) {
       const prevIndex = currentExerciseIndex - 1;
@@ -306,7 +354,7 @@ const useErrorCorrection = (errorCorrectionData, level) => {
       resetExerciseState();
 
       // Initialize previous exercise based on mode
-      const prevExercise = currentExercises[prevIndex];
+      const prevExercise = exercisesToUse[prevIndex];
       switch(correctionMode) {
         case 'full':
           setUserCorrection(prevExercise.text || '');
@@ -336,7 +384,7 @@ const useErrorCorrection = (errorCorrectionData, level) => {
       changeCategory(previousCategory.id);
       setCurrentExerciseIndex(lastExerciseIndex);
     }
-  }, [currentExerciseIndex, currentExercises, correctionMode, resetExerciseState, 
+  }, [currentExerciseIndex, filteredExercises, currentExercises, correctionMode, resetExerciseState, 
       categories, selectedCategory, errorCorrectionData, changeCategory]);
 
   // =================== COMPUTED STATS ===================
@@ -426,6 +474,7 @@ const useErrorCorrection = (errorCorrectionData, level) => {
     totalCategories,
     totalExercisesInCategory,
     exercises,
+    filteredExercises, // ✅ AJOUTÉ : Exercices filtrés par type
     
     // Actions
     changeCategory,
@@ -440,6 +489,7 @@ const useErrorCorrection = (errorCorrectionData, level) => {
     setUserCorrection,
     setShowHint,
     setShowResults,
+    tryAgain,
     
     // Computed
     canGoToPrevious: canGoToPrevious(),

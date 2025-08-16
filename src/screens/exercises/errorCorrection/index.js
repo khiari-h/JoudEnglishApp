@@ -16,6 +16,7 @@ import ErrorCorrectionProgress from "./ErrorCorrectionProgress";
 import ErrorCorrectionWordSection from "./ErrorCorrectionWordSection";
 import ErrorCorrectionNavigation from "./ErrorCorrectionNavigation";
 import ErrorCorrectionResultsCard from "./ErrorCorrectionResultsCard";
+import MultipleChoiceMode from "./modes/MultipleChoiceMode";
 
 // Hook unifié & Utils
 import useErrorCorrection from "./hooks/useErrorCorrection";
@@ -52,7 +53,6 @@ const ErrorCorrectionExercise = ({ route }) => {
     selectedErrorIndices,
     selectedChoiceIndex,
     // Data
-    currentExercise,
     exercises,
     // Actions
     changeCategory,
@@ -65,15 +65,25 @@ const ErrorCorrectionExercise = ({ route }) => {
     handleChoiceSelect,
     setUserCorrection,
     setShowResults,
+    tryAgain,
     // Computed
     isLastExerciseInCategory,
     hasValidData,
     stats,
     display,
+    filteredExercises,
   } = useErrorCorrection(errorCorrectionData, level);
 
   // États locaux
   const [viewMode, setViewMode] = useState("browse"); // "browse", "exercise", "results"
+
+  // ✅ CORRECTION : Utiliser l'exercice filtré quand on est en mode exercice
+  const currentExercise = useMemo(() => {
+    if (viewMode === "exercise" && filteredExercises && filteredExercises.length > 0) {
+      return filteredExercises[currentExerciseIndex] || null;
+    }
+    return null;
+  }, [viewMode, filteredExercises, currentExerciseIndex]);
 
   // ✅ CORRECTION : Mémoriser le nom de catégorie
   const currentCategoryName = useMemo(() => {
@@ -205,12 +215,14 @@ const handleExitExercise = useCallback(() => {
       {viewMode === "exercise" && !showResults && (
         <ErrorCorrectionProgress
           categories={errorCorrectionData.categories || []}
-          exercises={errorCorrectionData.exercises || []}
+          exercises={exercises}
           completedExercises={stats.completedExercises || {}}
           levelColor={levelColor}
           expanded={showDetailedProgress}
           onToggleExpand={handleToggleProgressDetails}
           onCategoryPress={handleCategoryProgressPress}
+          // ✅ AJOUTÉ : Passer la catégorie actuelle pour une progression plus claire
+          currentCategoryId={selectedCategory}
         />
       )}
 
@@ -239,7 +251,7 @@ const handleExitExercise = useCallback(() => {
           {/* Word Section */}
           <ErrorCorrectionWordSection
             currentExercise={currentExercise}
-            exerciseCounter={display.exerciseCounter}
+            categoryName={currentCategoryName}
             correctionMode={correctionMode}
             level={level}
             levelColor={levelColor}
@@ -252,6 +264,7 @@ const handleExitExercise = useCallback(() => {
             onChangeUserCorrection={setUserCorrection}
             onToggleErrorIndex={handleWordPress}
             onSelectChoice={handleChoiceSelect}
+            MultipleChoiceMode={MultipleChoiceMode}
           />
         </>
       )}
@@ -274,6 +287,7 @@ const handleExitExercise = useCallback(() => {
           onNext={handleNextAction}
           onPrevious={handlePreviousAction}
           onExit={handleExitExercise}
+          onTryAgain={tryAgain}
           currentIndex={currentExerciseIndex}
           totalCount={exercises.length}
           disableNext={
@@ -283,6 +297,7 @@ const handleExitExercise = useCallback(() => {
           }
           isLastExercise={isLastExerciseInCategory}
           showFeedback={showFeedback}
+          isCorrect={isCorrect}
           levelColor={levelColor}
         />
       )}

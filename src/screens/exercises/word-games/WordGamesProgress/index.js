@@ -30,13 +30,13 @@ const WordGamesProgress = ({
   
   // =================== CALCULS STANDARDS ===================
   
-  // ✅ CORRIGÉ : Calculer la progression basée sur les jeux VRAIMENT complétés
-  const totalProgress = totalGames > 0 ? Math.round((completedGamesCount / totalGames) * 100) : 0;
-  
   // Calculer les jeux complétés
   const completedGamesCount = typeof completedGames === 'object' && completedGames !== null
-    ? Object.values(completedGames).filter(game => game.completed).length
+    ? Object.values(completedGames).filter(completed => completed === true).length
     : 0;
+  
+  // ✅ CORRIGÉ : Calculer la progression basée sur les jeux VRAIMENT complétés
+  const totalProgress = totalGames > 0 ? Math.round((completedGamesCount / totalGames) * 100) : 0;
   
   // ✅ CORRIGÉ : Calculer les données par type de jeu pour l'expansion
   const gameTypeData = useMemo(() => {
@@ -47,12 +47,12 @@ const WordGamesProgress = ({
     const categorizationGames = games.filter(game => game.type === 'categorization');
     
     // Compter les jeux complétés par type
-    const matchingCompleted = matchingGames.filter(game => 
-      completedGames[games.indexOf(game)]?.completed
+    const matchingCompleted = matchingGames.filter((game, index) => 
+      completedGames[games.indexOf(game)] === true
     ).length;
     
-    const categorizationCompleted = categorizationGames.filter(game => 
-      completedGames[games.indexOf(game)]?.completed
+    const categorizationCompleted = categorizationGames.filter((game, index) => 
+      completedGames[games.indexOf(game)] === true
     ).length;
     
     return [
