@@ -1,4 +1,4 @@
-// src/screens/Dashboard/index.js - VERSION CORRIGÉE - RAFRAÎCHISSEMENT COMPLET
+// src/screens/Dashboard/index.js - VERSION FINALE AVEC BEST PRACTICE
 
 import { useContext, useCallback } from "react";
 import { RefreshControl, ScrollView, View } from "react-native";
@@ -7,10 +7,11 @@ import { useFocusEffect } from "expo-router";
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { useProgressRead } from "../../contexts/ProgressContext";
+// ✅ BEST PRACTICE : On déstructure toutes les propriétés nécessaires du contexte
+import { useProgressRead } from "../../contexts/ProgressContext"; 
 import { useCurrentLevel } from '../../contexts/CurrentLevelContext';
 
-// 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES CHIFFRES
+// 🚀 HOOK PROGRESSION TEMPS RÉEL
 import useRealTimeProgress from "../../hooks/useRealTimeProgress";
 
 // Hooks
@@ -38,13 +39,13 @@ import useDashboardNavigation from "./hooks/useDashboardNavigation";
 import useDashboardSelectors from "./hooks/useDashboardSelectors";
 
 const Dashboard = () => {
-  
+    
   // =================== ÉTAT LOCAL RAFRAÎCHISSEMENT ===================
   // Géré par useDashboardRefresh
-  
+    
   // =================== CONTEXTES ===================
   const themeContext = useContext(ThemeContext);
-  const progressData = useProgressRead();
+  const { progress, isLoading, calculateGlobalProgress, calculateLevelProgress } = useProgressRead();
 
   // 🚀 PROGRESSION TEMPS RÉEL
   const { getLevelProgress, refresh: refreshProgress } = useRealTimeProgress();
@@ -59,12 +60,12 @@ const Dashboard = () => {
 
   // =================== HOOKS DASHBOARD ===================
   const { currentLevel, handleChangeActiveLevel, levelColor } = useDashboardLevel({ 
-    progress: progressData.progress 
+    progress 
   });
   const { setCurrentLevel } = useCurrentLevel();
-  
+    
   const { lastActivity, isLoading: isActivityLoading, reload: reloadActivity } = useLastActivity();
-  
+    
   const { refreshing, onRefresh: originalOnRefresh } = useDashboardState(reloadActivity);
   const { refreshKey, onRefresh } = useDashboardRefresh({ originalOnRefresh, refreshProgress });
 
@@ -81,20 +82,22 @@ const Dashboard = () => {
   });
 
   // =================== NIVEAUX ===================
-  
-  const { allLevels, globalProgress } = useDashboardSelectors({ getLevelProgress, currentLevel });
+  const { allLevels, globalProgress } = useDashboardSelectors({
+    getLevelProgress,
+    currentLevel,
+    calculateLevelProgress,
+    calculateGlobalProgress
+  });
 
   // Note: on ne bloque plus l'affichage sur isLoading; les sections se rafraîchiront via refreshKey
 
   // =================== BACKGROUND ===================
-  
   const backgroundGradient = {
     colors: [`${levelColor}05`, colors.background, `${levelColor}08`],
     locations: [0, 0.6, 1],
   };
 
   // =================== RENDER ===================
-  
   return (
     <Container
       safeArea
@@ -146,7 +149,8 @@ const Dashboard = () => {
           <QuickActions
             key={`actions-${refreshKey}`} // 🔥 Force le re-render
             currentLevel={currentLevel}
-            progressContext={progressData}
+            // ✅ CORRIGÉ : On passe les props déstructurées
+            progressContext={{ progress, isLoading, calculateGlobalProgress, calculateLevelProgress }} 
             accentColor={levelColor}
           />
 

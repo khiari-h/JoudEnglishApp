@@ -1,14 +1,15 @@
-// src/screens/ExerciseSelection/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
+// src/screens/ExerciseSelection/index.js - VERSION FINALE CORRIGÉE
+
 import { useContext, useMemo, useCallback } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { router, useFocusEffect } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router"; // ✅ AJOUT DE useLocalSearchParams
 import PropTypes from 'prop-types';
 
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
 
-// 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES CHIFFRES
+// 🚀 HOOK PROGRESSION TEMPS RÉEL
 import useRealTimeProgress from "../../hooks/useRealTimeProgress";
 
 // Composants UI
@@ -17,9 +18,6 @@ import Button from "../../components/ui/Button";
 // Composants Layout
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
-
-// Constantes
-// LANGUAGE_LEVELS supprimé car non utilisé
 
 // Styles
 import styles, { getBackgroundGradient } from "./style";
@@ -35,7 +33,8 @@ const DEFAULT_THEME = {
   },
 };
 
-// Sous-composant CardHeader
+// ... Les sous-composants restent inchangés ...
+
 const CardHeader = ({ exercise, colors, localStyles }) => (
   <View style={localStyles.cardHeader}>
     <View style={localStyles.levelTitleContainer}>
@@ -53,7 +52,6 @@ const CardHeader = ({ exercise, colors, localStyles }) => (
   </View>
 );
 
-// Sous-composant Progression
 const Progression = ({ exercise, colors, localStyles }) => (
   exercise.hasProgress && (
     <View style={localStyles.progressContainer}>
@@ -70,7 +68,6 @@ const Progression = ({ exercise, colors, localStyles }) => (
   )
 );
 
-// Sous-composant CardButton
 const CardButton = ({ exercise, handleExercisePress, localStyles }) => (
   <Button
     title={exercise.hasProgress ? "Continuer" : "Commencer"}
@@ -84,7 +81,6 @@ const CardButton = ({ exercise, handleExercisePress, localStyles }) => (
   />
 );
 
-// Refactor ExerciseCardContent pour utiliser les sous-composants
 const ExerciseCardContent = ({ exercise, colors, localStyles, handleExercisePress }) => (
   <View style={localStyles.cardContentStyle}>
     <CardHeader exercise={exercise} colors={colors} localStyles={localStyles} />
@@ -93,7 +89,6 @@ const ExerciseCardContent = ({ exercise, colors, localStyles, handleExercisePres
   </View>
 );
 
-// Sous-composant pour la section liste d'exercices
 const ExerciseListSection = ({ colors, localStyles, exercises, renderExerciseCard }) => (
   <ScrollView
     testID="exercises-scroll"
@@ -110,16 +105,17 @@ const ExerciseListSection = ({ colors, localStyles, exercises, renderExerciseCar
   </ScrollView>
 );
 
-const ExerciseSelection = ({ level }) => {
-  // ✅ CORRECT : Tous les hooks AVANT tout return conditionnel
+// ✅ CORRIGÉ : Retire la prop "level" de la signature du composant
+const ExerciseSelection = () => {
+  // ✅ CORRIGÉ : Récupère le paramètre "level" avec le hook useLocalSearchParams
+  const { level } = useLocalSearchParams();
+
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
 
-  // 🚀 JUSTE POUR RÉCUPÉRER LES VRAIS CHIFFRES
   const { getExerciseProgress, hasProgress, refresh } = useRealTimeProgress();
   const { levelInfo: computedLevelInfo, exercises } = useExerciseListData({ level, getExerciseProgress, hasProgress });
 
-  // Infos du niveau
   const levelInfo = useMemo(() => {
     return (
       computedLevelInfo || {
@@ -133,7 +129,6 @@ const ExerciseSelection = ({ level }) => {
   const levelColor = levelInfo.color;
   const backgroundGradient = getBackgroundGradient(levelColor, colors.background);
 
-  // Navigation
   const handleExerciseSelect = useCallback((exercise) => {
     const params = { level };
     
@@ -160,7 +155,6 @@ const ExerciseSelection = ({ level }) => {
     }, [refresh])
   );
 
-  // ✅ Déplacer renderExerciseCard AVANT le return conditionnel
   const renderExerciseCard = useCallback((exercise) => {
     return (
       <TouchableOpacity
@@ -176,14 +170,12 @@ const ExerciseSelection = ({ level }) => {
         <ExerciseCardContent exercise={exercise} colors={colors} localStyles={styles} handleExercisePress={handleExercisePress} />
       </TouchableOpacity>
     );
-  }, [handleExercisePress, colors.text, styles]);
+  }, [handleExercisePress, colors, styles]);
 
-  // ✅ MAINTENANT on peut faire le return conditionnel
   if (!level) {
     return null;
   }
 
-  // ========== RENDU - TON DESIGN ORIGINAL ==========
   const renderHeader = () => (
     <View style={styles.headerContainer}>
       <LinearGradient
@@ -240,14 +232,14 @@ const ExerciseSelection = ({ level }) => {
   );
 };
 
-// PropTypes pour tous les sous-composants
+// ... PropTypes et export restent inchangés ...
 CardHeader.propTypes = {
   exercise: PropTypes.shape({
     title: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     progress: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired, // ✅ Ajouté
+    icon: PropTypes.string.isRequired,
   }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
@@ -257,7 +249,7 @@ Progression.propTypes = {
   exercise: PropTypes.shape({
     hasProgress: PropTypes.bool,
     progress: PropTypes.number,
-    color: PropTypes.string.isRequired, // ✅ Ajouté
+    color: PropTypes.string.isRequired,
   }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
@@ -295,8 +287,9 @@ ExerciseListSection.propTypes = {
 };
 
 // PropTypes pour le composant principal
-ExerciseSelection.propTypes = {
-  level: PropTypes.string,
-};
+// ✅ CORRIGÉ : Retirer le PropTypes pour "level" car il n'est plus une prop
+// ExerciseSelection.propTypes = {
+//   level: PropTypes.string,
+// };
 
 export default ExerciseSelection;

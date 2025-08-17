@@ -1,6 +1,7 @@
-// src/screens/LevelSelection/index.js - VERSION SIMPLE QUI GARDE TON DESIGN
+// src/screens/LevelSelection/index.js - VERSION FINALE CORRIGÉE
+
 import { useContext, useCallback } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router, useFocusEffect } from "expo-router";
 import PropTypes from 'prop-types';
@@ -18,11 +19,11 @@ import Button from "../../components/ui/Button";
 import Container, { CONTAINER_SAFE_EDGES } from "../../components/layout/Container";
 import Header from "../../components/layout/Header";
 
-// Constantes
-// Styles
+// Styles et Hooks
 import styles, { getBackgroundGradient } from "./style";
 import useLevelListData from "./hooks/useLevelListData";
 
+// Thème par défaut
 const DEFAULT_THEME = {
   colors: {
     background: "#F8F9FA",
@@ -33,9 +34,7 @@ const DEFAULT_THEME = {
   },
 };
 
-// ✅ SUPPRIMÉ : Fonction mapHexToButtonColor plus nécessaire car le composant Button gère automatiquement les couleurs hexadécimales
-
-// Sous-composant ModernCardHeader
+// Sous-composants réutilisables
 const ModernCardHeader = ({ level, colors, localStyles }) => (
   <View style={localStyles.modernCardHeader}>
     <View style={localStyles.modernTitleContainer}>
@@ -48,7 +47,6 @@ const ModernCardHeader = ({ level, colors, localStyles }) => (
   </View>
 );
 
-// Sous-composant ModernProgress
 const ModernProgress = ({ level, colors, localStyles }) => (
   level.hasProgress && (
     <View style={localStyles.modernProgressContainer}>
@@ -65,12 +63,11 @@ const ModernProgress = ({ level, colors, localStyles }) => (
   )
 );
 
-// Sous-composant ModernCardButton
 const ModernCardButton = ({ level, handleLevelPress, localStyles }) => (
   <Button
     title={level.hasStarted ? "Continuer" : "Commencer"}
     variant="filled"
-    color={level.color} // ✅ CORRIGÉ : Mapping des couleurs hexadécimales
+    color={level.color}
     fullWidth
     onPress={handleLevelPress(level)}
     style={localStyles.modernButton}
@@ -79,7 +76,6 @@ const ModernCardButton = ({ level, handleLevelPress, localStyles }) => (
   />
 );
 
-// Refactor LevelCardContent pour utiliser les sous-composants
 const LevelCardContent = ({ level, colors, localStyles, handleLevelPress }) => (
   <View style={localStyles.modernCardContent}>
     <ModernCardHeader level={level} colors={colors} localStyles={localStyles} />
@@ -88,7 +84,6 @@ const LevelCardContent = ({ level, colors, localStyles, handleLevelPress }) => (
   </View>
 );
 
-// Sous-composant pour la section liste de niveaux
 const LevelListSection = ({ colors, localStyles, levels, renderLevelCard }) => (
   <ScrollView
     testID="level-selection-scroll"
@@ -102,23 +97,19 @@ const LevelListSection = ({ colors, localStyles, levels, renderLevelCard }) => (
   </ScrollView>
 );
 
+// Composant principal
 const LevelSelection = () => {
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
   
-  // 🚀 PROGRESSION TEMPS RÉEL + Préparation des données d'affichage
   const { getLevelProgress, hasProgress, refresh } = useRealTimeProgress();
-  const { currentLevelData, levels } = useLevelListData({ getLevelProgress, hasProgress });
+  const { levels } = useLevelListData({ getLevelProgress, hasProgress });
 
-  // Background
   const backgroundGradient = getBackgroundGradient(
-    currentLevelData.color, 
+    colors.primary, 
     colors.background
   );
 
-  // levels déjà préparés par le hook
-
-  // Navigation
   const handleLevelSelect = useCallback((level) => {
     router.push({
       pathname: "/tabs/exerciseSelection",
@@ -141,7 +132,6 @@ const LevelSelection = () => {
     }, [refresh])
   );
 
-  // ========== RENDU - TON DESIGN ORIGINAL ==========
   const renderHeader = useCallback(() => (
     <View style={styles.headerContainer}>
       <LinearGradient
@@ -167,18 +157,20 @@ const LevelSelection = () => {
 
   const renderLevelCard = useCallback((level) => {
     return (
-      <View
+      <TouchableOpacity
         key={level.id}
         testID={`level-${level.id}`}
         style={styles.modernCard}
+        onPress={handleLevelPress(level)}
+        activeOpacity={0.8}
         accessibilityRole="button"
         accessibilityLabel={`Niveau ${level.id}`}
-        accessibilityValue={{ min: 0, max: 100, now: level.progress }}
+        accessibilityValue={{ min: 0, max: 100, now: level.progress ?? 0 }}
       >
         <LevelCardContent level={level} colors={colors} localStyles={styles} handleLevelPress={handleLevelPress} />
-      </View>
+      </TouchableOpacity>
     );
-  }, [handleLevelPress, colors.text, styles]);
+  }, [handleLevelPress, colors, styles]);
 
   return (
     <Container
@@ -211,7 +203,7 @@ ModernCardHeader.propTypes = {
     title: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     progress: PropTypes.number.isRequired,
-    icon: PropTypes.string.isRequired, // ✅ Ajouté
+    icon: PropTypes.string.isRequired,
   }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,
@@ -221,7 +213,7 @@ ModernProgress.propTypes = {
   level: PropTypes.shape({
     hasProgress: PropTypes.bool,
     progress: PropTypes.number,
-    color: PropTypes.string.isRequired, // ✅ Ajouté
+    color: PropTypes.string.isRequired,
   }).isRequired,
   colors: PropTypes.object.isRequired,
   localStyles: PropTypes.object.isRequired,

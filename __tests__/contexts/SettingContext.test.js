@@ -31,8 +31,8 @@ const TestConsumer = () => {
     updateSetting,
     updateSettings,
     resetSettings,
-    areNotificationsEnabled,
-    getDailyGoal,
+    areNotificationsEnabled, // ✅ est une valeur, pas une fonction
+    getDailyGoal, // ✅ est une valeur, pas une fonction
     setDailyGoal,
   } = React.useContext(SettingsContext);
 
@@ -45,9 +45,10 @@ const TestConsumer = () => {
       <Text testID="notifications-status">Notifications: {settings.notifications ? 'On' : 'Off'}</Text>
       <Text testID="daily-goal-status">Daily Goal: {settings.dailyGoal}</Text>
       <Text testID="theme-status">Theme: {settings.theme}</Text>
-      
-      <Text testID="are-notifications-enabled">Are Notifs Enabled: {areNotificationsEnabled() ? 'Yes' : 'No'}</Text>
-      <Text testID="get-daily-goal">Get Daily Goal: {getDailyGoal()}</Text>
+
+      {/* ✅ CORRECTION : on utilise les variables directement sans les parenthèses () */}
+      <Text testID="are-notifications-enabled">Are Notifs Enabled: {areNotificationsEnabled ? 'Yes' : 'No'}</Text>
+      <Text testID="get-daily-goal">Get Daily Goal: {getDailyGoal}</Text>
 
       <Button title="Toggle Notifications" onPress={() => updateSetting('notifications', !settings.notifications)} />
       <Button title="Set Goal to 90" onPress={() => setDailyGoal(90)} />
@@ -80,9 +81,7 @@ describe('SettingsContext', () => {
 
   it('should load default settings when no data is in storage', async () => {
     renderWithProvider(<TestConsumer />);
-
-    // Attendre la fin du chargement
-    await act(async () => {});
+    await act(async () => {}); // Attendre la fin du chargement
 
     expect(screen.queryByTestId('loading-status')).toBeNull();
     expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: On');
@@ -178,6 +177,7 @@ describe('SettingsContext', () => {
     renderWithProvider(<TestConsumer />);
     await act(async () => {});
 
+    // ✅ CORRECTION : on utilise les variables directement, sans les parenthèses ()
     expect(screen.getByTestId('are-notifications-enabled')).toHaveTextContent('Are Notifs Enabled: Yes');
     expect(screen.getByTestId('get-daily-goal')).toHaveTextContent('Get Daily Goal: 30');
 
@@ -186,6 +186,7 @@ describe('SettingsContext', () => {
       fireEvent.press(screen.getByText('Set Goal to 90'));
     });
 
+    // ✅ CORRECTION : on utilise les variables directement, sans les parenthèses ()
     expect(screen.getByTestId('are-notifications-enabled')).toHaveTextContent('Are Notifs Enabled: No');
     expect(screen.getByTestId('get-daily-goal')).toHaveTextContent('Get Daily Goal: 90');
   });
@@ -227,4 +228,20 @@ describe('SettingsContext', () => {
     // S'assurer qu'aucune sauvegarde supplémentaire n'a eu lieu
     expect(storeData).toHaveBeenCalledTimes(1);
   });
+  it('should handle errors when loading settings and use defaults', async () => {
+  // Simuler une erreur lors de l'appel à getData
+  getData.mockRejectedValueOnce(new Error('AsyncStorage error'));
+
+  // Rendre le composant
+  renderWithProvider(<TestConsumer />);
+  await act(async () => {});
+
+  // Vérifier que le composant n'est plus en état de chargement
+  expect(screen.queryByTestId('loading-status')).toBeNull();
+
+  // S'assurer que les paramètres par défaut sont utilisés
+  expect(screen.getByTestId('notifications-status')).toHaveTextContent('Notifications: On');
+  expect(screen.getByTestId('daily-goal-status')).toHaveTextContent('Daily Goal: 30');
+  expect(screen.getByTestId('theme-status')).toHaveTextContent('Theme: light');
+});
 });
