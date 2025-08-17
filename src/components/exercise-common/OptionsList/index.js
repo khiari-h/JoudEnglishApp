@@ -72,10 +72,11 @@ const OptionsList = ({
 
   // Rendu pour la mise en page verticale
   const renderVerticalOptions = () => (
-    <View style={styles.verticalContainer}>
+    <View style={styles.verticalContainer} testID="vertical-container">
       {options.map((option) => (
         <TouchableOpacity
           key={option.id}
+          testID={`option-item-${option.id}`} // ✅ C'est le bon endroit pour l'item
           style={[styles.optionItem, getOptionStyle(option.id)]}
           onPress={handleOptionPress(option.id)}
           disabled={disabled}
@@ -100,6 +101,7 @@ const OptionsList = ({
 
           {selectedOptionId === option.id && !showCorrectAnswer && (
             <View
+              testID={`selected-indicator-${option.id}`} // ✅ C'est le bon endroit pour l'indicateur
               style={[
                 styles.selectedIndicator,
                 { backgroundColor: primaryColor },
@@ -113,10 +115,11 @@ const OptionsList = ({
 
   // Rendu pour la mise en page en grille
   const renderGridOptions = () => (
-    <View style={styles.gridContainer}>
+    <View style={styles.gridContainer} testID="grid-container">
       {options.map((option) => (
         <TouchableOpacity
           key={option.id}
+          testID={`grid-option-item-${option.id}`} // ✅ C'est le bon endroit pour l'item
           style={[
             styles.gridOptionItem,
             getOptionStyle(option.id),
@@ -163,4 +166,3 @@ function areEqual(prevProps, nextProps) {
 }
 
 export default memo(OptionsList, areEqual);
-

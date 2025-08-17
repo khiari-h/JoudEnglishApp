@@ -5,9 +5,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import PropTypes from 'prop-types';
 import createStyles from "./style";
 
-// Réfrence pour les mesures de layout du ScrollView
-const itemLayouts = {};
-
 /**
  * 🏆 CategorySelector - Design Niveau LDC (Paris Saint-Germain)
  * - Pills modernes avec glassmorphism
@@ -15,6 +12,7 @@ const itemLayouts = {};
  * - Gradients dynamiques
  * - Micro-interactions premium
  * - Typography élégante
+ * - Performance optimisée avec refs
  */
 const CategorySelector = ({
   categories = [],
@@ -25,87 +23,77 @@ const CategorySelector = ({
   const styles = createStyles(primaryColor);
   const scrollViewRef = useRef(null);
   
-  // 🔥 Correction 1 : Gérer les animations de manière dynamique
+  // 🔥 Gestion unifiée des animations avec refs uniquement
   const animationsRef = useRef({});
-  const [localAnimations, setLocalAnimations] = useState({});
-
-  useEffect(() => {
-    // Synchroniser les animations avec les catégories
-    const newAnimations = {};
-    let shouldUpdate = false;
-
-    for (const category of categories) {
-      if (!animationsRef.current[category.id]) {
-        newAnimations[category.id] = new Animated.Value(0);
-        shouldUpdate = true;
-      } else {
-        newAnimations[category.id] = animationsRef.current[category.id];
-      }
-    }
-    
-    // Animer la nouvelle sélection si elle est différente de la dernière connue
-    if (selectedCategory && newAnimations[selectedCategory]) {
-      newAnimations[selectedCategory].setValue(1);
-    }
-
-    animationsRef.current = newAnimations;
-    setLocalAnimations(newAnimations);
-  }, [categories, selectedCategory]);
-
-  // Référence pour éviter les doubles animations
+  const pressAnimationsRef = useRef({});
+  const itemLayoutsRef = useRef({});
   const isAnimatingRef = useRef(false);
   const [prevSelectedCategory, setPrevSelectedCategory] = useState(selectedCategory);
 
-  // 🚀 Nouveauté : Animation au toucher pour feedback immédiat
-  const pressAnimationsRef = useRef({});
+  // 🚀 Initialisation/mise à jour des animations dans un useEffect
+  useEffect(() => {
+    const newAnimations = {};
+    const newPressAnimations = {};
+    const newItemLayouts = {};
 
-  const getPressAnimation = useCallback((categoryId) => {
-    if (!pressAnimationsRef.current[categoryId]) {
-      pressAnimationsRef.current[categoryId] = new Animated.Value(1);
+    categories.forEach(category => {
+      // Réutiliser les instances si elles existent, sinon les créer
+      newAnimations[category.id] = animationsRef.current[category.id] || new Animated.Value(
+        selectedCategory === category.id ? 1 : 0
+      );
+      newPressAnimations[category.id] = pressAnimationsRef.current[category.id] || new Animated.Value(1);
+      newItemLayouts[category.id] = itemLayoutsRef.current[category.id] || null;
+    });
+
+    // Mettre à jour les refs
+    animationsRef.current = newAnimations;
+    pressAnimationsRef.current = newPressAnimations;
+    itemLayoutsRef.current = newItemLayouts;
+
+  }, [categories, selectedCategory]);
+
+  // 🎯 Animations de press optimisées
+  const handlePressIn = useCallback((categoryId) => {
+    const pressAnimation = pressAnimationsRef.current[categoryId];
+    if (pressAnimation) {
+      Animated.timing(pressAnimation, {
+        toValue: 0.95,
+        duration: 150,
+        useNativeDriver: true,
+      }).start();
     }
-    return pressAnimationsRef.current[categoryId];
   }, []);
 
-  const handlePressIn = useCallback((categoryId) => {
-    Animated.timing(getPressAnimation(categoryId), {
-      toValue: 0.95,
-      duration: 150,
-      useNativeDriver: true,
-    }).start();
-  }, [getPressAnimation]);
-
   const handlePressOut = useCallback((categoryId) => {
-    Animated.timing(getPressAnimation(categoryId), {
-      toValue: 1,
-      duration: 150,
-      useNativeDriver: true,
-    }).start();
-  }, [getPressAnimation]);
+    const pressAnimation = pressAnimationsRef.current[categoryId];
+    if (pressAnimation) {
+      Animated.timing(pressAnimation, {
+        toValue: 1,
+        duration: 150,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, []);
 
-  // 🔥 Animation centralisée pour éviter la duplication
+  // 🔥 Animation centralisée de sélection
   const triggerAnimation = useCallback((fromCategory, toCategory) => {
     if (isAnimatingRef.current) return;
     
     isAnimatingRef.current = true;
     const animationsArray = [];
+    const fromAnim = animationsRef.current[fromCategory];
+    const toAnim = animationsRef.current[toCategory];
 
-    if (fromCategory !== undefined && animationsRef.current[fromCategory]) {
+    // Désélection
+    if (fromAnim) {
       animationsArray.push(
-        Animated.timing(animationsRef.current[fromCategory], {
-          toValue: 0,
-          duration: 200,
-          useNativeDriver: false,
-        })
+        Animated.timing(fromAnim, { toValue: 0, duration: 200, useNativeDriver: false })
       );
     }
-
-    if (toCategory !== undefined && animationsRef.current[toCategory]) {
+    // Sélection
+    if (toAnim) {
       animationsArray.push(
-        Animated.timing(animationsRef.current[toCategory], {
-          toValue: 1,
-          duration: 300,
-          useNativeDriver: false,
-        })
+        Animated.timing(toAnim, { toValue: 1, duration: 300, useNativeDriver: false })
       );
     }
 
@@ -118,7 +106,7 @@ const CategorySelector = ({
     }
   }, []);
 
-  // Suivre les changements de selectedCategory depuis le parent
+  // Suivre les changements de sélection
   useEffect(() => {
     if (prevSelectedCategory !== selectedCategory) {
       triggerAnimation(prevSelectedCategory, selectedCategory);
@@ -126,61 +114,61 @@ const CategorySelector = ({
     }
   }, [selectedCategory, prevSelectedCategory, triggerAnimation]);
 
-  // 🚀 Nouveauté : Scroll automatique vers la catégorie sélectionnée
+  // 🚀 Auto-scroll vers la sélection
   useEffect(() => {
-    if (scrollViewRef.current && selectedCategory) {
-      const layout = itemLayouts[selectedCategory];
-      if (layout) {
-        scrollViewRef.current.scrollTo({
-          x: layout.x - (layout.width / 2),
-          y: 0,
-          animated: true,
-        });
-      }
+    if (scrollViewRef.current && selectedCategory && itemLayoutsRef.current[selectedCategory]) {
+      const layout = itemLayoutsRef.current[selectedCategory];
+      scrollViewRef.current.scrollTo({
+        x: Math.max(0, layout.x - layout.width / 2),
+        y: 0,
+        animated: true,
+      });
     }
-  }, [selectedCategory, localAnimations]);
+  }, [selectedCategory]);
 
-  // Handler pour les clics utilisateur
+  // Handler pour les clics
   const handleCategoryPress = useCallback((categoryId) => {
     if (categoryId !== selectedCategory && !isAnimatingRef.current) {
       onSelectCategory(categoryId);
     }
   }, [selectedCategory, onSelectCategory]);
 
-  const createPressHandler = useCallback((categoryId) => () => handleCategoryPress(categoryId), [handleCategoryPress]);
-
-  // Rendu d'une pill de catégorie
+  // 🎨 Rendu optimisé d'une pill
   const renderCategoryPill = useCallback((category) => {
     const isSelected = selectedCategory === category.id;
-    const animation = localAnimations[category.id] || new Animated.Value(0);
-    const pressAnimation = getPressAnimation(category.id);
+    const animation = animationsRef.current[category.id];
+    const pressAnimation = pressAnimationsRef.current[category.id];
 
-    // Interpolations pour les animations
-    const scale = animation.interpolate({
+    // Interpolations
+    const scale = animation?.interpolate({
       inputRange: [0, 1],
       outputRange: [1, 1.05],
-    });
+      extrapolate: 'clamp',
+    }) || 1;
 
-    const pressScale = pressAnimation.interpolate({
+    const pressScale = pressAnimation?.interpolate({
       inputRange: [0.95, 1],
       outputRange: [0.95, 1],
-    });
+      extrapolate: 'clamp',
+    }) || 1;
 
-    const shadowOpacity = animation.interpolate({
+    const shadowOpacity = animation?.interpolate({
       inputRange: [0, 1],
       outputRange: [0.1, 0.25],
-    });
+      extrapolate: 'clamp',
+    }) || 0.1;
 
-    const borderWidth = animation.interpolate({
+    const borderWidth = animation?.interpolate({
       inputRange: [0, 1],
       outputRange: [1, 2],
-    });
+      extrapolate: 'clamp',
+    }) || 1;
 
     return (
       <Animated.View
         key={category.id}
         onLayout={(event) => {
-          itemLayouts[category.id] = event.nativeEvent.layout;
+          itemLayoutsRef.current[category.id] = event.nativeEvent.layout;
         }}
         style={[
           styles.categoryItemWrapper,
@@ -191,7 +179,7 @@ const CategorySelector = ({
       >
         <TouchableOpacity
           style={styles.categoryTouchable}
-          onPress={createPressHandler(category.id)}
+          onPress={() => handleCategoryPress(category.id)}
           onPressIn={() => handlePressIn(category.id)}
           onPressOut={() => handlePressOut(category.id)}
           activeOpacity={0.8}
@@ -200,7 +188,6 @@ const CategorySelector = ({
           accessibilityState={{ selected: isSelected }}
         >
           {isSelected ? (
-            // État sélectionné - Gradient premium
             <LinearGradient
               colors={[primaryColor, `${primaryColor}E6`, `${primaryColor}CC`]}
               start={{ x: 0, y: 0 }}
@@ -217,7 +204,6 @@ const CategorySelector = ({
               </View>
             </LinearGradient>
           ) : (
-            // État non sélectionné - Glassmorphism subtil
             <Animated.View
               style={[
                 styles.categoryItem,
@@ -240,12 +226,11 @@ const CategorySelector = ({
     );
   }, [
     selectedCategory,
-    localAnimations,
     primaryColor,
-    createPressHandler,
+    styles,
+    handleCategoryPress,
     handlePressIn,
     handlePressOut,
-    getPressAnimation,
   ]);
 
   return (
@@ -270,7 +255,6 @@ const CategorySelector = ({
   );
 };
 
-// ✅ PropTypes
 CategorySelector.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -281,17 +265,27 @@ CategorySelector.propTypes = {
   primaryColor: PropTypes.string,
 };
 
-// 🔧 Correction 2 : Comparaison profonde pour les tableaux
+// 🔧 Comparaison optimisée
 export function areEqual(prevProps, nextProps) {
-  const categoriesEqual = prevProps.categories === nextProps.categories ||
-    (prevProps.categories.length === nextProps.categories.length &&
-      prevProps.categories.every((cat, index) => cat.id === nextProps.categories[index].id));
+  // Vérifications rapides d'abord
+  if (
+    prevProps.selectedCategory !== nextProps.selectedCategory ||
+    prevProps.primaryColor !== nextProps.primaryColor ||
+    prevProps.categories.length !== nextProps.categories.length
+  ) {
+    return false;
+  }
 
-  return (
-    prevProps.selectedCategory === nextProps.selectedCategory &&
-    prevProps.primaryColor === nextProps.primaryColor &&
-    categoriesEqual
-  );
+  // Vérification de référence (cas le plus courant)
+  if (prevProps.categories === nextProps.categories) {
+    return true;
+  }
+
+  // Vérification profonde uniquement si nécessaire
+  return prevProps.categories.every((cat, index) => {
+    const nextCat = nextProps.categories[index];
+    return nextCat && cat.id === nextCat.id && cat.name === nextCat.name;
+  });
 }
 
 export default memo(CategorySelector, areEqual);
