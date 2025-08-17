@@ -5,15 +5,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import PropTypes from 'prop-types';
 import createStyles from "./style";
 
-/**
- * 🏆 CategorySelector - Design Niveau LDC (Paris Saint-Germain)
- * - Pills modernes avec glassmorphism
- * - Animations fluides de sélection
- * - Gradients dynamiques
- * - Micro-interactions premium
- * - Typography élégante
- * - Performance optimisée avec refs
- */
 const CategorySelector = ({
   categories = [],
   selectedCategory,
@@ -23,21 +14,22 @@ const CategorySelector = ({
   const styles = createStyles(primaryColor);
   const scrollViewRef = useRef(null);
   
-  // 🔥 Gestion unifiée des animations avec refs uniquement
   const animationsRef = useRef({});
   const pressAnimationsRef = useRef({});
   const itemLayoutsRef = useRef({});
+  
+  // ✅ Correction 1: Utilisation d'une ref pour gérer l'état d'animation de manière fiable.
+  // C'est le "garde-fou" qui va bloquer les clics rapides.
   const isAnimatingRef = useRef(false);
-  const [prevSelectedCategory, setPrevSelectedCategory] = useState(selectedCategory);
 
-  // 🚀 Initialisation/mise à jour des animations dans un useEffect
+  const prevSelectedCategoryRef = useRef(selectedCategory);
+
   useEffect(() => {
     const newAnimations = {};
     const newPressAnimations = {};
     const newItemLayouts = {};
 
     categories.forEach(category => {
-      // Réutiliser les instances si elles existent, sinon les créer
       newAnimations[category.id] = animationsRef.current[category.id] || new Animated.Value(
         selectedCategory === category.id ? 1 : 0
       );
@@ -45,14 +37,12 @@ const CategorySelector = ({
       newItemLayouts[category.id] = itemLayoutsRef.current[category.id] || null;
     });
 
-    // Mettre à jour les refs
     animationsRef.current = newAnimations;
     pressAnimationsRef.current = newPressAnimations;
     itemLayoutsRef.current = newItemLayouts;
 
   }, [categories, selectedCategory]);
 
-  // 🎯 Animations de press optimisées
   const handlePressIn = useCallback((categoryId) => {
     const pressAnimation = pressAnimationsRef.current[categoryId];
     if (pressAnimation) {
@@ -75,22 +65,26 @@ const CategorySelector = ({
     }
   }, []);
 
-  // 🔥 Animation centralisée de sélection
-  const triggerAnimation = useCallback((fromCategory, toCategory) => {
-    if (isAnimatingRef.current) return;
+  const triggerAnimation = useCallback(() => {
+    const fromCategory = prevSelectedCategoryRef.current;
+    const toCategory = selectedCategory;
+
+    if (fromCategory === toCategory) {
+      return;
+    }
     
+    // ✅ Correction 2: Le garde-fou est activé au début de l'animation.
     isAnimatingRef.current = true;
     const animationsArray = [];
     const fromAnim = animationsRef.current[fromCategory];
     const toAnim = animationsRef.current[toCategory];
 
-    // Désélection
     if (fromAnim) {
       animationsArray.push(
         Animated.timing(fromAnim, { toValue: 0, duration: 200, useNativeDriver: false })
       );
     }
-    // Sélection
+
     if (toAnim) {
       animationsArray.push(
         Animated.timing(toAnim, { toValue: 1, duration: 300, useNativeDriver: false })
@@ -99,22 +93,19 @@ const CategorySelector = ({
 
     if (animationsArray.length > 0) {
       Animated.parallel(animationsArray).start(() => {
+        // ✅ Correction 3: La ref est réinitialisée seulement à la fin de l'animation.
         isAnimatingRef.current = false;
       });
     } else {
       isAnimatingRef.current = false;
     }
-  }, []);
+  }, [selectedCategory]);
 
-  // Suivre les changements de sélection
   useEffect(() => {
-    if (prevSelectedCategory !== selectedCategory) {
-      triggerAnimation(prevSelectedCategory, selectedCategory);
-      setPrevSelectedCategory(selectedCategory);
-    }
-  }, [selectedCategory, prevSelectedCategory, triggerAnimation]);
+    triggerAnimation();
+    prevSelectedCategoryRef.current = selectedCategory;
+  }, [selectedCategory, triggerAnimation]);
 
-  // 🚀 Auto-scroll vers la sélection
   useEffect(() => {
     if (scrollViewRef.current && selectedCategory && itemLayoutsRef.current[selectedCategory]) {
       const layout = itemLayoutsRef.current[selectedCategory];
@@ -126,20 +117,18 @@ const CategorySelector = ({
     }
   }, [selectedCategory]);
 
-  // Handler pour les clics
   const handleCategoryPress = useCallback((categoryId) => {
+    // ✅ Correction 4: Le contrôle de l'animation en cours se fait ici, de manière préventive.
     if (categoryId !== selectedCategory && !isAnimatingRef.current) {
-      onSelectCategory(categoryId);
+      onSelectCategory?.(categoryId);
     }
   }, [selectedCategory, onSelectCategory]);
 
-  // 🎨 Rendu optimisé d'une pill
   const renderCategoryPill = useCallback((category) => {
     const isSelected = selectedCategory === category.id;
     const animation = animationsRef.current[category.id];
     const pressAnimation = pressAnimationsRef.current[category.id];
 
-    // Interpolations
     const scale = animation?.interpolate({
       inputRange: [0, 1],
       outputRange: [1, 1.05],
@@ -261,13 +250,11 @@ CategorySelector.propTypes = {
     name: PropTypes.string.isRequired,
   })).isRequired,
   selectedCategory: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onSelectCategory: PropTypes.func.isRequired,
+  onSelectCategory: PropTypes.func, // ✅ Modifié pour ne plus être `isRequired`
   primaryColor: PropTypes.string,
 };
 
-// 🔧 Comparaison optimisée
 export function areEqual(prevProps, nextProps) {
-  // Vérifications rapides d'abord
   if (
     prevProps.selectedCategory !== nextProps.selectedCategory ||
     prevProps.primaryColor !== nextProps.primaryColor ||
@@ -276,12 +263,10 @@ export function areEqual(prevProps, nextProps) {
     return false;
   }
 
-  // Vérification de référence (cas le plus courant)
   if (prevProps.categories === nextProps.categories) {
     return true;
   }
 
-  // Vérification profonde uniquement si nécessaire
   return prevProps.categories.every((cat, index) => {
     const nextCat = nextProps.categories[index];
     return nextCat && cat.id === nextCat.id && cat.name === nextCat.name;

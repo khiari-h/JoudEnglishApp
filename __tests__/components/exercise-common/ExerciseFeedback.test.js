@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react-native';
+import { Animated } from 'react-native';
 import ExerciseFeedback from '../../../src/components/exercise-common/ExerciseFeedback';
 
 // Mock des icônes pour l'environnement de test
@@ -10,30 +11,10 @@ jest.mock('@expo/vector-icons', () => {
   };
 });
 
-// Mock de Animated.timing pour simuler les animations
-const mockTiming = jest.fn(() => ({
-  start: (callback) => {
-    // Dans les tests, on simule la fin de l'animation pour déclencher le callback
-    if (callback) {
-      callback({ finished: true });
-    }
-  },
-}));
-
-// On remplace la vraie implémentation par notre mock
-jest.mock('react-native', () => {
-  const RN = jest.requireActual('react-native');
-  return {
-    ...RN,
-    Animated: {
-      ...RN.Animated,
-      timing: mockTiming,
-    },
-  };
-});
-
 describe('ExerciseFeedback', () => {
   const onDismissMock = jest.fn();
+  let animatedTimingSpy;
+  let animatedValueSpy;
 
   // Utilisation des fake timers pour contrôler setTimeout
   beforeAll(() => {
@@ -44,8 +25,32 @@ describe('ExerciseFeedback', () => {
     jest.useRealTimers();
   });
 
+  beforeEach(() => {
+    // Spy sur Animated.timing pour éviter les vraies animations
+    animatedTimingSpy = jest.spyOn(Animated, 'timing').mockImplementation(() => ({
+      start: jest.fn((callback) => {
+        if (callback) {
+          callback({ finished: true });
+        }
+      }),
+    }));
+
+    // Spy sur Animated.Value pour éviter les erreurs
+    animatedValueSpy = jest.spyOn(Animated, 'Value').mockImplementation(() => ({
+      setValue: jest.fn(),
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      removeAllListeners: jest.fn(),
+      stopAnimation: jest.fn(),
+      resetAnimation: jest.fn(),
+      _value: 0,
+    }));
+  });
+
   afterEach(() => {
     onDismissMock.mockClear();
+    animatedTimingSpy.mockRestore();
+    animatedValueSpy.mockRestore();
     jest.clearAllMocks();
   });
 
