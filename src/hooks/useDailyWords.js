@@ -1,5 +1,3 @@
-// src/hooks/useDailyWords.js - VERSION CORRIGÉE
-
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -62,7 +60,6 @@ const useDailyWords = () => {
       }
 
       setWordsToday(todayCount);
-
     } catch (error) {
       // ✅ Gestion d'erreur appropriée
       console.error('Error calculating daily words:', error);
@@ -79,6 +76,7 @@ const useDailyWords = () => {
 
   // =================== AUTO-REFRESH À MINUIT ===================
   useEffect(() => {
+    let dailyInterval;
     const now = new Date();
     const tomorrow = new Date(now);
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -91,12 +89,16 @@ const useDailyWords = () => {
       calculateDailyWords(); // Reset automatique
       
       // Ensuite refresh chaque 24h
-      const dailyInterval = setInterval(calculateDailyWords, 24 * 60 * 60 * 1000);
-      
-      return () => clearInterval(dailyInterval);
+      dailyInterval = setInterval(calculateDailyWords, 24 * 60 * 60 * 1000);
     }, timeUntilMidnight);
 
-    return () => clearTimeout(midnightTimer);
+    // ✅ Nettoyage des DEUX minuteries à la désinitialisation du hook
+    return () => {
+      clearTimeout(midnightTimer);
+      if (dailyInterval) {
+        clearInterval(dailyInterval);
+      }
+    };
   }, [calculateDailyWords]);
 
   // =================== REFRESH MANUEL ===================
@@ -105,7 +107,7 @@ const useDailyWords = () => {
   }, [calculateDailyWords]);
 
   return {
-    wordsToday: wordsToday || 0,     // ✅ Juste le nombre
+    wordsToday: wordsToday || 0, // ✅ Juste le nombre
     isLoading,
     refresh,
     // ✅ SUPPRIMÉ : wordsYesterday, trend, getTrend()

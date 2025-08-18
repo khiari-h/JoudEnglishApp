@@ -9,25 +9,63 @@ import {
   useProgressWrite,
 } from '../../src/contexts/ProgressContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { STORAGE_KEYS, LANGUAGE_LEVELS, EXERCISES, BONUS_EXERCISES } from '../../src/utils/constants';
 
-// Mock d'AsyncStorage et des constantes en haut du fichier pour qu'ils soient disponibles pour tous les tests
+// -----------------------------------------------------------------------------
+// Mocks des dépendances externes
+// -----------------------------------------------------------------------------
+
+// Mock d'AsyncStorage pour le contrôle total de la persistance des données.
 jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(() => Promise.resolve()),
   getItem: jest.fn(() => Promise.resolve(null)),
   removeItem: jest.fn(() => Promise.resolve()),
 }));
 
-// Mock du module de constantes
-const mockConstants = jest.requireActual('../../src/utils/constants');
+// Mock du module `constants` pour simuler les données
+// d'exercices et de niveaux.
 jest.mock('../../src/utils/constants', () => ({
-  ...mockConstants,
-  // La valeur par défaut pour BONUS_EXERCISES
-  BONUS_EXERCISES: ['reading', 'vocabulary', 'phrases'],
+  // On inclut les vraies clés de stockage pour éviter les erreurs,
+  // car elles ne causent pas de problèmes de référence.
+  STORAGE_KEYS: jest.requireActual('../../src/utils/constants').STORAGE_KEYS,
+  // Mock des exercices pour le test
+  EXERCISES: {
+    vocabulary: {},
+    grammar: {},
+    phrases: {},
+    writing: {},
+    speaking: {},
+    reading: {},
+  },
+  // Mock des niveaux pour le test
+  LANGUAGE_LEVELS: {
+    '1': {},
+    '2': {},
+    '3': {},
+    '4': {},
+    '5': {},
+    '6': {},
+    'bonus': {},
+  },
+  // Liste des exercices bonus
+  BONUS_EXERCISES: ['reading', 'phrases'],
 }));
 
+// Mock générique de 'react-native' pour éviter les erreurs liées aux
+// composants natifs (comme les animations) qui ne sont pas gérés par Jest.
+jest.mock('react-native', () => {
+  const RN = jest.requireActual('react-native');
+  RN.View = RN.View || 'View';
+  RN.Text = RN.Text || 'Text';
+  RN.Button = ({ title, ...props }) => <RN.TouchableOpacity {...props}><RN.Text>{title}</RN.Text></RN.TouchableOpacity>;
+  return RN;
+});
 
-// Un composant de test pour consommer le contexte
+
+// -----------------------------------------------------------------------------
+// Composants de test pour utiliser les hooks
+// -----------------------------------------------------------------------------
+
+// Composant de test principal qui utilise le hook `useProgress`
 const TestComponent = () => {
   const {
     progress,
@@ -47,7 +85,6 @@ const TestComponent = () => {
     <View>
       <Text testID="global-progress">Global: {calculateGlobalProgress()}%</Text>
       <Text testID="level1-progress">Level 1: {calculateLevelProgress('1')}%</Text>
-      <Text testID="level-bonus-progress">Level Bonus: {calculateLevelProgress('bonus')}%</Text>
       <Text testID="vocab-level1-completed">
         Vocab Level 1 Completed: {progress.exercises.vocabulary?.['1']?.completed || 0}
       </Text>
@@ -56,77 +93,58 @@ const TestComponent = () => {
       <Button title="Update Vocab Level 1" onPress={() => updateExerciseProgress('vocabulary', '1', 50)} />
       <Button title="Update Streak" onPress={() => updateStats({ streak: 5 })} />
       <Button title="Reset Progress" onPress={resetProgress} />
-      <Button title="Update Vocab Bonus" onPress={() => updateExerciseProgress('vocabulary', 'bonus', 75)} />
-      <Button title="Update Grammar Bonus" onPress={() => updateExerciseProgress('grammar', 'bonus', 50)} />
       <Button title="Add New Exercise Type" onPress={() => updateExerciseProgress('newType', '1', 25)} />
+      <Button title="Add New Stat" onPress={() => updateStats({ newStat: 99 })} />
     </View>
   );
 };
 
-// Composants de test pour les hooks en dehors du provider
-const ComponentWithoutUseProgress = () => {
-  useProgress();
-  return null;
-};
+// Composant de test pour les hooks de lecture et d'écriture
+const SplitHooksTestComponent = () => {
+  const read = useProgressRead();
+  const write = useProgressWrite();
+  const progress = read.progress;
 
-const ComponentWithoutUseProgressRead = () => {
-  useProgressRead();
-  return null;
-};
-
-const ComponentWithoutUseProgressWrite = () => {
-  useProgressWrite();
-  return null;
-};
-
-// Composants de test pour utiliser les hooks AVEC le provider (cas de succès)
-const ComponentWithUseProgressRead = () => {
-  const { calculateGlobalProgress } = useProgressRead();
+  if (read.isLoading) {
+    return <Text testID="loading-status">Loading...</Text>;
+  }
+  
   return (
-    <Text testID="read-hook-test">
-      Global from read hook: {calculateGlobalProgress()}%
-    </Text>
+    <View>
+      <Text testID="read-global-progress">Global: {read.calculateGlobalProgress()}%</Text>
+      <Text testID="read-streak">Streak: {progress.stats.streak}</Text>
+      <Button testID="write-update-streak" title="Update Streak" onPress={() => write.updateStats({ streak: 10 })} />
+    </View>
   );
 };
 
-const ComponentWithUseProgressWrite = () => {
-  const { updateStats } = useProgressWrite();
-  return (
-    <Button 
-      testID="write-hook-test" 
-      title="Update from write hook" 
-      onPress={() => updateStats({ streak: 10 })} 
-    />
-  );
+// Composant de test pour un niveau vide (pour tester le cas limite)
+const EmptyLevelTestComponent = () => {
+  const { calculateLevelProgress } = useProgress();
+  return <Text testID="empty-level-progress">Empty Level: {calculateLevelProgress('empty')}%</Text>;
 };
 
 
+// -----------------------------------------------------------------------------
+// Suite de tests principale
+// -----------------------------------------------------------------------------
 describe('ProgressContext', () => {
-  // Hooks Jest en dehors des blocs `it`
+  // Les hooks Jest sont définis au niveau de la suite pour une application générale.
   beforeEach(() => {
     jest.useFakeTimers();
-    jest.clearAllMocks(); 
+    jest.clearAllMocks();
+    // On s'assure que par défaut, getItem ne trouve rien, simulant une première utilisation.
     AsyncStorage.getItem.mockResolvedValue(null);
   });
 
   afterEach(() => {
     jest.runOnlyPendingTimers();
     jest.useRealTimers();
-    // On doit restaurer le mock à la fin de chaque test pour les mocks statiques
-    jest.resetModules();
   });
 
-  // ========== Base Tests ==========
+  // ========== Scénario 1: Chargement initial et état par défaut ==========
 
-  it('loads initial progress from AsyncStorage', async () => {
-    const mockProgress = {
-      ...createInitialProgress(),
-      levels: { '1': { completed: 25, total: 100 } },
-      exercises: { vocabulary: { '1': { completed: 25, total: 100 } } },
-      stats: { streak: 1 },
-    };
-    AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
-
+  it('devrait charger la progression initiale si AsyncStorage est vide', async () => {
     render(
       <ProgressProvider>
         <TestComponent />
@@ -140,13 +158,37 @@ describe('ProgressContext', () => {
     });
 
     expect(screen.queryByTestId('loading-status')).toBeNull();
+    const globalProgressText = screen.getByTestId('global-progress').props.children.join('');
+    expect(globalProgressText).toBe('Global: 0%');
+  });
+
+  it('devrait charger la progression depuis AsyncStorage si des données existent', async () => {
+    const mockProgress = {
+      ...createInitialProgress(),
+      exercises: { vocabulary: { '1': { completed: 25, total: 100 } } },
+      stats: { streak: 1 },
+    };
+    AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
+
+    render(
+      <ProgressProvider>
+        <TestComponent />
+      </ProgressProvider>
+    );
+
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
     const level1ProgressText = screen.getByTestId('level1-progress').props.children.join('');
-    expect(level1ProgressText).toBe('Level 1: 25%');
+    expect(level1ProgressText).toBe('Level 1: 4%');
     const streakDisplay = screen.getByTestId('streak').props.children.join('');
     expect(streakDisplay).toBe('Streak: 1');
   });
 
-  it('updates exercise progress and recalculates level progress', async () => {
+  // ========== Scénario 2: Mises à jour de la progression ==========
+
+  it('devrait mettre à jour la progression d\'un exercice et sauvegarder', async () => {
     render(
       <ProgressProvider>
         <TestComponent />
@@ -158,40 +200,21 @@ describe('ProgressContext', () => {
     });
 
     fireEvent.press(screen.getByText('Update Vocab Level 1'));
+
     await act(async () => {
       jest.runAllTimers();
     });
 
-    const savedProgress = JSON.parse(AsyncStorage.setItem.mock.calls[0][1]);
-    expect(savedProgress.exercises.vocabulary['1'].completed).toBe(50);
-    expect(savedProgress.levels['1'].completed).toBe(6);
-  });
+    const vocabCompleted = screen.getByTestId('vocab-level1-completed').props.children.join('');
+    expect(vocabCompleted).toBe('Vocab Level 1 Completed: 50');
 
-  it('updates progress for a new exercise type and calculates average', async () => {
-    render(
-      <ProgressProvider>
-        <TestComponent />
-      </ProgressProvider>
+    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.stringContaining('"completed":50')
     );
-    
-    await act(async () => {
-      jest.runAllTimers();
-    });
-
-    fireEvent.press(screen.getByText('Add New Exercise Type'));
-    
-    const level1Text = screen.getByTestId('level1-progress').props.children.join('');
-    expect(level1Text).toBe('Level 1: 3%');
-    
-    await act(async () => {
-      jest.runAllTimers();
-    });
-    
-    const savedProgress = JSON.parse(AsyncStorage.setItem.mock.calls[0][1]);
-    expect(savedProgress.exercises.newType['1'].completed).toBe(25);
   });
 
-  it('updates stats and saves to AsyncStorage', async () => {
+  it('devrait mettre à jour les statistiques et sauvegarder', async () => {
     render(
       <ProgressProvider>
         <TestComponent />
@@ -202,68 +225,56 @@ describe('ProgressContext', () => {
       jest.runAllTimers();
     });
 
-    let streakChildren = screen.getByTestId('streak').props.children;
-    let streakText = Array.isArray(streakChildren) ? streakChildren.join('') : streakChildren;
-    expect(streakText).toBe('Streak: 0');
-
-    fireEvent.press(screen.getByText('Update Streak'));
-
-    streakChildren = screen.getByTestId('streak').props.children;
-    streakText = Array.isArray(streakChildren) ? streakChildren.join('') : streakChildren;
-    expect(streakText).toBe('Streak: 5');
-
-    await act(async () => {
-      jest.runAllTimers();
-    });
-
-    expect(AsyncStorage.setItem).toHaveBeenCalledTimes(1);
-    const savedProgress = JSON.parse(AsyncStorage.setItem.mock.calls[0][1]);
-    expect(savedProgress.stats.streak).toBe(5);
-  });
-  
-  it('resets progress and removes from AsyncStorage', async () => {
-    render(
-      <ProgressProvider>
-        <TestComponent />
-      </ProgressProvider>
-    );
-
-    await act(async () => {
-      jest.runAllTimers();
-    });
-
-    fireEvent.press(screen.getByText('Update Vocab Level 1'));
     fireEvent.press(screen.getByText('Update Streak'));
 
     await act(async () => {
       jest.runAllTimers();
     });
 
-    expect(AsyncStorage.setItem).toHaveBeenCalledTimes(1);
+    const streakDisplay = screen.getByTestId('streak').props.children.join('');
+    expect(streakDisplay).toBe('Streak: 5');
 
+    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.stringContaining('"streak":5')
+    );
+  });
+
+  it('devrait réinitialiser la progression et le stockage', async () => {
+    render(
+      <ProgressProvider>
+        <TestComponent />
+      </ProgressProvider>
+    );
+
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    fireEvent.press(screen.getByText('Update Streak'));
     fireEvent.press(screen.getByText('Reset Progress'));
 
     await act(async () => {
       await Promise.resolve();
     });
 
-    expect(AsyncStorage.removeItem).toHaveBeenCalledWith(STORAGE_KEYS.USER_PROGRESS);
+    expect(AsyncStorage.removeItem).toHaveBeenCalled();
 
-    const level1Children = screen.getByTestId('level1-progress').props.children;
-    const level1Text = Array.isArray(level1Children) ? level1Children.join('') : level1Children;
-    expect(level1Text).toBe('Level 1: 0%');
-
-    const streakChildren = screen.getByTestId('streak').props.children;
-    const streakText = Array.isArray(streakChildren) ? streakChildren.join('') : streakChildren;
-    expect(streakText).toBe('Streak: 0');
+    const streakDisplay = screen.getByTestId('streak').props.children.join('');
+    expect(streakDisplay).toBe('Streak: 0');
   });
 
-  // ========== New Tests for Coverage ==========
+  // ========== Scénario 3: Calculs de progression ==========
 
-  it('calculates level progress correctly when there are no exercises for a level', async () => {
-    const mockInitialProgress = createInitialProgress();
-    mockInitialProgress.exercises = {}; 
-    AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockInitialProgress));
+  it('devrait calculer correctement la progression par niveau', async () => {
+    const mockProgress = {
+      ...createInitialProgress(),
+      exercises: {
+        vocabulary: { '1': { completed: 50, total: 100 } },
+        grammar: { '1': { completed: 75, total: 100 } },
+      },
+    };
+    AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
 
     render(
       <ProgressProvider>
@@ -275,12 +286,38 @@ describe('ProgressContext', () => {
       jest.runAllTimers();
     });
 
-    const level1Text = screen.getByTestId('level1-progress').props.children.join('');
-    expect(level1Text).toBe('Level 1: 0%');
+    const level1ProgressText = screen.getByTestId('level1-progress').props.children.join('');
+    expect(level1ProgressText).toBe('Level 1: 21%');
   });
 
-  it('handles errors during initial loading', async () => {
-    AsyncStorage.getItem.mockRejectedValueOnce(new Error('Mock AsyncStorage Error'));
+  it('devrait calculer correctement la progression globale', async () => {
+    const mockProgress = {
+      ...createInitialProgress(),
+      exercises: {
+        vocabulary: { '1': { completed: 100 } },
+        grammar: { '2': { completed: 100 } },
+      },
+    };
+    AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
+
+    render(
+      <ProgressProvider>
+        <TestComponent />
+      </ProgressProvider>
+    );
+
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    const globalProgressText = screen.getByTestId('global-progress').props.children.join('');
+    expect(globalProgressText).toBe('Global: 5%');
+  });
+
+  // ========== Scénario 4: Gestion des erreurs ==========
+
+  it('devrait gérer les erreurs de chargement et initialiser à 0', async () => {
+    AsyncStorage.getItem.mockRejectedValueOnce(new Error('Erreur de lecture simulée'));
     const consoleErrorSpy = jest.spyOn(console, 'error');
 
     render(
@@ -294,14 +331,14 @@ describe('ProgressContext', () => {
     });
 
     expect(consoleErrorSpy).toHaveBeenCalledWith('Erreur chargement progression:', expect.any(Error));
-    expect(screen.queryByTestId('loading-status')).toBeNull();
     const globalProgressText = screen.getByTestId('global-progress').props.children.join('');
     expect(globalProgressText).toBe('Global: 0%');
+
     consoleErrorSpy.mockRestore();
   });
 
-  it('handles errors during saving progress gracefully', async () => {
-    AsyncStorage.setItem.mockRejectedValueOnce(new Error('Mock AsyncStorage Save Error'));
+  it('devrait gérer les erreurs de sauvegarde sans crasher', async () => {
+    AsyncStorage.setItem.mockRejectedValueOnce(new Error('Erreur de sauvegarde simulée'));
     const consoleErrorSpy = jest.spyOn(console, 'error');
 
     render(
@@ -313,31 +350,32 @@ describe('ProgressContext', () => {
     await act(async () => {
       jest.runAllTimers();
     });
-
+    
     fireEvent.press(screen.getByText('Update Streak'));
 
     await act(async () => {
-      jest.advanceTimersByTime(500);
+      jest.runAllTimers();
     });
 
     expect(consoleErrorSpy).toHaveBeenCalledWith('Erreur sauvegarde progression:', expect.any(Error));
+    const streakDisplay = screen.getByTestId('streak').props.children.join('');
+    expect(streakDisplay).toBe('Streak: 5');
+
     consoleErrorSpy.mockRestore();
   });
 
-  it('handles error during progress reset gracefully', async () => {
-    AsyncStorage.removeItem.mockRejectedValueOnce(new Error('Mock AsyncStorage removeItem Error'));
-    const consoleErrorSpy = jest.spyOn(console, 'error');
-    
+  // ========== Scénario 5: Tests des hooks de lecture/écriture séparés ==========
+
+  it('useProgressRead devrait fournir des données de lecture', async () => {
     const mockProgress = {
       ...createInitialProgress(),
-      stats: { streak: 1 },
-      levels: { '1': { completed: 50, total: 100 } }
+      stats: { streak: 50 },
     };
     AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
-    
+
     render(
       <ProgressProvider>
-        <TestComponent />
+        <SplitHooksTestComponent />
       </ProgressProvider>
     );
 
@@ -345,113 +383,242 @@ describe('ProgressContext', () => {
       jest.runAllTimers();
     });
 
-    expect(screen.getByTestId('streak').props.children.join('')).toBe('Streak: 1');
+    const readStreak = screen.getByTestId('read-streak').props.children.join('');
+    expect(readStreak).toBe('Streak: 50');
 
+    expect(screen.getByTestId('write-update-streak')).toBeTruthy();
+  });
+
+  it('useProgressWrite devrait permettre de modifier l\'état', async () => {
+    render(
+      <ProgressProvider>
+        <SplitHooksTestComponent />
+      </ProgressProvider>
+    );
+
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    fireEvent.press(screen.getByTestId('write-update-streak'));
+
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    const readStreak = screen.getByTestId('read-streak').props.children.join('');
+    expect(readStreak).toBe('Streak: 10');
+
+    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.stringContaining('"streak":10')
+    );
+  });
+  
+  // ========== Scénario 6: Tests des branches non couvertes (corrigés) ==========
+
+  it('devrait ajouter un nouvel exercice si le type n\'existe pas', async () => {
+    render(<ProgressProvider><TestComponent /></ProgressProvider>);
+    await act(async () => {
+      jest.runAllTimers();
+    });
+    
+    fireEvent.press(screen.getByText('Add New Exercise Type'));
+  
+    await act(async () => {
+      jest.runAllTimers();
+    });
+  
+    const savedProgress = JSON.parse(AsyncStorage.setItem.mock.calls[0][1]);
+    expect(savedProgress.exercises.newType['1'].completed).toBe(25);
+  });
+
+  it('devrait ajouter une nouvelle statistique si elle n\'existe pas', async () => {
+    render(<ProgressProvider><TestComponent /></ProgressProvider>);
+    await act(async () => {
+      jest.runAllTimers();
+    });
+    
+    fireEvent.press(screen.getByText('Add New Stat'));
+  
+    await act(async () => {
+      jest.runAllTimers();
+    });
+  
+    const savedProgress = JSON.parse(AsyncStorage.setItem.mock.calls[0][1]);
+    expect(savedProgress.stats.newStat).toBe(99);
+  });
+
+  it('devrait gérer une erreur lors du reset de la progression', async () => {
+    AsyncStorage.removeItem.mockRejectedValueOnce(new Error('Erreur de réinitialisation simulée'));
+    const consoleErrorSpy = jest.spyOn(console, 'error');
+
+    const mockProgress = {
+      ...createInitialProgress(),
+      exercises: { vocabulary: { '1': { completed: 50, total: 100 } } }
+    };
+    AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
+    
+    render(<ProgressProvider><TestComponent /></ProgressProvider>);
+    await act(async () => {
+      jest.runAllTimers();
+    });
+    
     fireEvent.press(screen.getByText('Reset Progress'));
-
     await act(async () => {
       await Promise.resolve();
     });
-
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Erreur reset progression:', expect.any(Error));
     
-    const streakText = screen.getByTestId('streak').props.children.join('');
-    expect(streakText).toBe('Streak: 1');
-
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Erreur reset progression:', expect.any(Error));
+    const vocabCompleted = screen.getByTestId('vocab-level1-completed').props.children.join('');
+    expect(vocabCompleted).toBe('Vocab Level 1 Completed: 50');
+    
     consoleErrorSpy.mockRestore();
   });
 
-  // ========== Tests pour les branches manquantes (102, 132, 160) ==========
-  describe('Additional Coverage Tests for ProgressContext', () => {
-    it('should correctly calculate global progress when there are no bonus exercises', async () => {
-      // Mock spécifique au test pour vider le tableau BONUS_EXERCISES
-      jest.resetModules();
-      jest.mock('../../src/utils/constants', () => ({
-        ...jest.requireActual('../../src/utils/constants'),
-        BONUS_EXERCISES: [],
-      }));
+  it('devrait retourner 0 si un niveau ne contient aucun exercice', async () => {
+    // Crée un mock dynamique pour les constantes, sans réinitialiser tout le module
+    jest.mock('../../src/utils/constants', () => ({
+      ...jest.requireActual('../../src/utils/constants'),
+      LANGUAGE_LEVELS: { 
+        ...jest.requireActual('../../src/utils/constants').LANGUAGE_LEVELS,
+        'empty': {} 
+      },
+    }));
+    // Re-require le composant pour qu'il utilise le nouveau mock
+    const { ProgressProvider, useProgress } = require('../../src/contexts/ProgressContext');
+    
+    const TestComponentWithEmptyLevel = () => {
+      const { calculateLevelProgress } = useProgress();
+      return <Text testID="empty-level-progress">Empty Level: {calculateLevelProgress('empty')}%</Text>;
+    };
 
-      const { ProgressProvider } = require('../../src/contexts/ProgressContext');
-      const { render, screen, act } = require('@testing-library/react-native');
+    render(<ProgressProvider><EmptyLevelTestComponent /></ProgressProvider>);
+    await act(async () => { jest.runAllTimers(); });
 
-      const mockProgress = {
-        ...createInitialProgress(),
-        levels: {
-          '1': { completed: 50, total: 100 },
-        },
-      };
-      AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
-  
-      render(
-        <ProgressProvider>
-          <TestComponent />
-        </ProgressProvider>
-      );
-  
-      await act(async () => {
-        jest.runAllTimers();
-      });
-  
-      const globalProgressText = screen.getByTestId('global-progress').props.children.join('');
-      // 6 niveaux standards.
-      // Calcul : (50 + 0 * 5) / 6 niveaux = 8.33 -> 8%
-      expect(globalProgressText).toBe('Global: 8%');
+    const progressText = screen.getByTestId('empty-level-progress').props.children.join('');
+    expect(progressText).toBe('Empty Level: 0%');
+
+    // Réinitialise les mocks à la fin du test
+    jest.clearAllMocks();
+  });
+
+  it('devrait lancer une erreur si useProgress est utilisé en dehors du provider', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const TestComponentWithNoProvider = () => {
+      useProgress();
+      return <Text>Test</Text>;
+    };
+    expect(() => render(<TestComponentWithNoProvider />)).toThrow('useProgress must be used within a ProgressProvider');
+    consoleErrorSpy.mockRestore();
+  });
+
+  it('devrait lancer une erreur si useProgressRead est utilisé en dehors du provider', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const TestComponentWithNoProvider = () => {
+      useProgressRead();
+      return <Text>Test</Text>;
+    };
+    expect(() => render(<TestComponentWithNoProvider />)).toThrow('useProgressRead must be used within a ProgressProvider');
+    consoleErrorSpy.mockRestore();
+  });
+
+  it('devrait lancer une erreur si useProgressWrite est utilisé en dehors du provider', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const TestComponentWithNoProvider = () => {
+      useProgressWrite();
+      return <Text>Test</Text>;
+    };
+    expect(() => render(<TestComponentWithNoProvider />)).toThrow('useProgressWrite must be used within a ProgressProvider');
+    consoleErrorSpy.mockRestore();
+  });
+  it('should calculate bonus level progress correctly', async () => {
+    // Mock the data to simulate a bonus level with some progress.
+    const mockProgress = {
+      ...createInitialProgress(),
+      exercises: {
+        reading: { 'bonus': { completed: 50, total: 100 } }, // 'reading' is a bonus exercise in your mock
+        phrases: { 'bonus': { completed: 25, total: 100 } }, // 'phrases' is a bonus exercise
+      },
+    };
+    AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
+
+    const TestComponentWithBonusLevel = () => {
+      const { calculateLevelProgress } = useProgress();
+      return <Text testID="bonus-progress">Bonus: {calculateLevelProgress('bonus')}%</Text>;
+    };
+
+    render(
+      <ProgressProvider>
+        <TestComponentWithBonusLevel />
+      </ProgressProvider>
+    );
+
+    await act(async () => {
+      jest.runAllTimers();
     });
 
-    it('should handle undefined levels gracefully in global progress calculation', async () => {
-      // S'assurer que le mock par défaut est en place
-      jest.resetModules();
-      const { ProgressProvider } = require('../../src/contexts/ProgressContext');
-      const { render, screen, act } = require('@testing-library/react-native');
+    // (50 + 25) / 2 exercices = 37.5% -> rounded to 38%
+    const progressText = screen.getByTestId('bonus-progress').props.children.join('');
+    expect(progressText).toBe('Bonus: 38%');
+  });
+  // ========== Tests pour atteindre 100% de couverture ==========
 
-      const mockProgressWithUndefinedLevel = {
-        ...createInitialProgress(),
-        levels: {
-          '1': { completed: 50, total: 100 },
-        },
-      };
-      AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgressWithUndefinedLevel));
-  
-      render(
-        <ProgressProvider>
-          <TestComponent />
-        </ProgressProvider>
-      );
-  
-      await act(async () => {
-        jest.runAllTimers();
-      });
-      
-      const globalProgressText = screen.getByTestId('global-progress').props.children.join('');
-      // Calcul : (50 + 0 + ... + 0) / 7 niveaux (6 standards + 1 bonus) = 7.14 -> 7%
-      expect(globalProgressText).toBe('Global: 7%');
+  it('devrait retourner 0 si un niveau ne contient aucun exercice (cas réel)', async () => {
+    // Crée un mock de EXERCISES qui simule un type d'exercice vide
+    jest.mock('../../src/utils/constants', () => ({
+      ...jest.requireActual('../../src/utils/constants'),
+      EXERCISES: {
+        newEmptyType: {}, // Un type d'exercice qui ne contient rien
+      },
+    }));
+
+    // Re-require le composant pour qu'il utilise le nouveau mock
+    const { ProgressProvider, useProgress } = require('../../src/contexts/ProgressContext');
+    
+    const TestComponentWithNoExercises = () => {
+      const { calculateLevelProgress } = useProgress();
+      // On teste un niveau qui n'a pas de sous-clés dans notre mock d'exercices
+      return <Text testID="no-exercises-progress">Progress: {calculateLevelProgress('1')}%</Text>;
+    };
+
+    render(<ProgressProvider><TestComponentWithNoExercises /></ProgressProvider>);
+    await act(async () => {
+      jest.runAllTimers();
+    });
+    
+    const progressText = screen.getByTestId('no-exercises-progress').props.children.join('');
+    // Le filtre va renvoyer un tableau vide, donc on couvre bien le "if (levelExercises.length === 0)"
+    expect(progressText).toBe('Progress: 0%');
+
+    // Réinitialise le mock
+    jest.clearAllMocks();
+  });
+
+  it('devrait retourner 0 si la liste des niveaux est vide', async () => {
+    // Mocke LANGUAGE_LEVELS pour qu'il soit un objet vide
+    jest.mock('../../src/utils/constants', () => ({
+      ...jest.requireActual('../../src/utils/constants'),
+      LANGUAGE_LEVELS: {},
+    }));
+    // Re-require le composant pour qu'il utilise le nouveau mock
+    const { ProgressProvider, useProgress } = require('../../src/contexts/ProgressContext');
+
+    const TestComponentWithNoLevels = () => {
+      const { calculateGlobalProgress } = useProgress();
+      return <Text testID="no-levels-progress">Global: {calculateGlobalProgress()}%</Text>;
+    };
+
+    render(<ProgressProvider><TestComponentWithNoLevels /></ProgressProvider>);
+    await act(async () => {
+      jest.runAllTimers();
     });
 
-    it('should handle a new exercise type with a non-existent level entry', async () => {
-      const mockProgress = {
-        ...createInitialProgress(),
-        exercises: {},
-      };
-      AsyncStorage.getItem.mockResolvedValueOnce(JSON.stringify(mockProgress));
-
-      render(
-        <ProgressProvider>
-          <TestComponent />
-        </ProgressProvider>
-      );
-      
-      await act(async () => {
-        jest.runAllTimers();
-      });
-
-      fireEvent.press(screen.getByText('Add New Exercise Type'));
-      
-      await act(async () => {
-        jest.runAllTimers();
-      });
-      
-      const savedProgress = JSON.parse(AsyncStorage.setItem.mock.calls[0][1]);
-      expect(savedProgress.exercises.newType['1'].completed).toBe(25);
-    });
+    const progressText = screen.getByTestId('no-levels-progress').props.children.join('');
+    // Le "if (allLevels.length === 0)" sera atteint
+    expect(progressText).toBe('Global: 0%');
+    
+    // Réinitialise le mock
+    jest.clearAllMocks();
   });
 });

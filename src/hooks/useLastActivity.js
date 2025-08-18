@@ -1,7 +1,7 @@
-// src/hooks/useLastActivity.js - VERSION CORRIGÉE AVEC useCallback
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS } from '../utils/constants';
+import eventBus from '../utils/eventBus';
 
 const useLastActivity = () => {
   const [lastActivity, setLastActivity] = useState(null);
@@ -16,11 +16,9 @@ const useLastActivity = () => {
       if (stored) {
         const activity = JSON.parse(stored);
         
-        // Calculer temps écoulé simple
         const now = Date.now();
         const diffInMinutes = Math.floor((now - activity.timestamp) / (1000 * 60));
         
-        // ✅ Calcul direct sans variable inutile
         let timeElapsed;
         if (diffInMinutes < 60) {
           timeElapsed = diffInMinutes === 0 ? "À l'instant" : `Il y a ${diffInMinutes} min`;
@@ -45,9 +43,9 @@ const useLastActivity = () => {
     } finally {
       setIsLoading(false);
     }
-  }, []); // ✅ Aucune dépendance - stable
+  }, []);
 
-  // ========== SAUVEGARDE MÉMORISÉE ==========
+  // ========== SAUVEGARDE ==========
   const saveActivity = useCallback(async (activityData) => {
     try {
       const activity = {
@@ -57,14 +55,13 @@ const useLastActivity = () => {
       
       await AsyncStorage.setItem(STORAGE_KEYS.LAST_ACTIVITY, JSON.stringify(activity));
       
-      // Event bus : notifier la progression
+      // La ligne qui a été corrigée !
       try { 
-        require('../utils/eventBus').emit('progress-updated', activity); 
+        eventBus.emit('progress-updated', activity); 
       } catch(eventBusError) { 
-        // ✅ Gestion d'erreur appropriée
         console.warn('Event bus error (non-critical):', eventBusError);
       }
-      // Mettre à jour l'état local avec temps écoulé
+      
       setLastActivity({
         ...activity,
         timeElapsed: "À l'instant"
@@ -72,9 +69,9 @@ const useLastActivity = () => {
     } catch (error) {
       console.error('Erreur sauvegarde activité:', error);
     }
-  }, []); // ✅ CRUCIAL : Aucune dépendance - fonction stable
+  }, []);
 
-  // ========== SUPPRESSION MÉMORISÉE ==========
+  // ========== SUPPRESSION ==========
   const clearActivity = useCallback(async () => {
     try {
       await AsyncStorage.removeItem(STORAGE_KEYS.LAST_ACTIVITY);
@@ -82,7 +79,7 @@ const useLastActivity = () => {
     } catch (error) {
       console.error('Erreur suppression activité:', error);
     }
-  }, []); // ✅ Fonction stable
+  }, []);
 
   // ========== CHARGEMENT INITIAL ==========
   useEffect(() => {
@@ -92,9 +89,9 @@ const useLastActivity = () => {
   return {
     lastActivity,
     isLoading,
-    saveActivity, // ✅ Maintenant stable entre les renders
-    clearActivity, // ✅ Maintenant stable
-    reload: loadLastActivity // ✅ Maintenant stable
+    saveActivity,
+    clearActivity,
+    reload: loadLastActivity
   };
 };
 

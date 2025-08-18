@@ -2,6 +2,7 @@
 import { useState, useMemo, useCallback } from 'react';
 
 const useQuizEngine = (questions) => {
+  // États internes
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedChoice, setSelectedChoice] = useState(null);
@@ -9,50 +10,65 @@ const useQuizEngine = (questions) => {
   const [isFinished, setIsFinished] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
 
+  // Calcul du nombre total de questions
   const totalQuestions = useMemo(() => {
-    if (!Array.isArray(questions)) return 0;
-    return questions.length;
+    return Array.isArray(questions) ? questions.length : 0;
   }, [questions]);
+
+  // Récupération de la question actuelle
   const currentQuestion = useMemo(() => {
-    if (!questions || totalQuestions === 0 || currentQuestionIndex >= totalQuestions) {
+    if (!Array.isArray(questions) || questions.length === 0 || currentQuestionIndex >= totalQuestions) {
       return null;
     }
     return questions[currentQuestionIndex];
   }, [questions, currentQuestionIndex, totalQuestions]);
 
+  // Calcul de la progression en pourcentage
   const progress = useMemo(() => {
     if (totalQuestions === 0) return 0;
-    // On calcule le pourcentage de progression
-    return ((currentQuestionIndex) / totalQuestions) * 100;
+    return (currentQuestionIndex / totalQuestions) * 100;
   }, [currentQuestionIndex, totalQuestions]);
 
+  // Gestion des réponses
   const handleAnswer = useCallback((choice) => {
-    if (showResult) return false; // Empêche de répondre à nouveau
-
-    if (!currentQuestion) return false; // Prevent handling answers when no current question
+    // Bloque les réponses si le résultat est déjà affiché ou s'il n'y a pas de question
+    if (showResult || !currentQuestion) {
+      return false;
+    }
 
     const isCorrect = choice === currentQuestion.correctAnswer;
     if (isCorrect) {
-      setScore(prevScore => prevScore + 1);
+      setScore(prev => prev + 1);
     }
 
+    // Met à jour les états uniquement si la réponse est autorisée
     setSelectedChoice(choice);
-    setUserAnswers(prev => [...prev, { question: currentQuestion.word, choice, isCorrect }]);
-    setShowResult(true); // Affiche le résultat et attend que l'utilisateur clique sur "Continuer"
+    setUserAnswers(prev => [...prev, {
+      question: currentQuestion.word,
+      choice,
+      isCorrect
+    }]);
+    setShowResult(true);
 
     return isCorrect;
   }, [currentQuestion, showResult]);
-  const goToNextQuestion = useCallback(() => {
-    const nextIndex = currentQuestionIndex + 1;
-    if (nextIndex < totalQuestions) {
-      setCurrentQuestionIndex(nextIndex);
-      setSelectedChoice(null); // Réinitialise le choix pour la nouvelle question
-      setShowResult(false);   // Cache le résultat pour la nouvelle question
-    } else {
-      setIsFinished(true); // Fin du quiz
-    }
-  }, [currentQuestionIndex, totalQuestions]);
 
+  // Passage à la question suivante
+const goToNextQuestion = useCallback(() => {
+  const nextIndex = currentQuestionIndex + 1;
+  if (nextIndex < totalQuestions) {
+    setCurrentQuestionIndex(nextIndex);
+    setSelectedChoice(null);
+    setShowResult(false);
+  } else {
+    // Le quiz est terminé
+    setIsFinished(true);
+    // met à jour currentQuestionIndex pour que currentQuestion devienne null
+    setCurrentQuestionIndex(nextIndex); 
+  }
+}, [currentQuestionIndex, totalQuestions]);
+
+  // Redémarrage du quiz
   const handleRestart = useCallback(() => {
     setCurrentQuestionIndex(0);
     setScore(0);
@@ -63,9 +79,18 @@ const useQuizEngine = (questions) => {
   }, []);
 
   return {
-    currentQuestionIndex, totalQuestions, score, progress,
-    currentQuestion, selectedChoice, showResult, isFinished,
-    userAnswers, handleAnswer, goToNextQuestion, handleRestart,
+    currentQuestionIndex,
+    totalQuestions,
+    score,
+    progress,
+    currentQuestion,
+    selectedChoice,
+    showResult,
+    isFinished,
+    userAnswers,
+    handleAnswer,
+    goToNextQuestion,
+    handleRestart,
   };
 };
 
