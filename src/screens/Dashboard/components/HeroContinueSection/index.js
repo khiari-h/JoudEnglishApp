@@ -7,55 +7,31 @@ import { ThemeContext } from "../../../../contexts/ThemeContext";
 import styles from "./style";
 
 const HeroCardContent = ({ lastActivity, accentColor, colors, handleContinue, localStyles }) => {
-  const currentWord = (lastActivity.metadata?.word || 0) + 1;
-  const totalWords = lastActivity.metadata?.totalWords || 15;
-  const percentage = Math.min(Math.round((currentWord / totalWords) * 100), 100);
-  
-  // ✅ AJOUTÉ : Détecter si c'est un jeu ou un mot
-  const isGame = lastActivity.metadata?.isGame || false;
-  const isScenario = lastActivity.metadata?.isScenario || false;
-  
-  // ✅ AJOUTÉ : Déterminer l'unité appropriée
-  let unitText = "Mot";
-  if (isGame) {
-    unitText = "Jeu";
-  } else if (isScenario) {
-    unitText = "Scénario";
-  }
-
-  const getCategoryText = () => {
-    if (typeof lastActivity.metadata?.categoryIndex === 'number') {
-      return ` • Catégorie ${lastActivity.metadata.categoryIndex + 1}`;
+  // ✅ SIMPLIFIÉ : Plus de logique complexe, juste affichage simple
+  const getModuleName = () => {
+    switch (lastActivity.type) {
+      case 'vocabulary': return 'Vocabulaire';
+      case 'phrases': return 'Expressions';
+      case 'grammar': return 'Grammaire';
+      case 'reading': return 'Lecture';
+      case 'conversations': return 'Conversations';
+      case 'wordGames': return 'Jeux de mots';
+      default: return 'Exercice';
     }
-    return '';
   };
 
   return (
     <View style={localStyles.content}>
       <View style={localStyles.header}>
         <Text style={localStyles.emoji}>📚</Text>
-        <Text style={[localStyles.label, { color: colors.textSecondary }]}>Reprendre</Text>
+        <Text style={[localStyles.label, { color: colors.textSecondary }]}>Dernière activité</Text>
       </View>
-      <Text style={[localStyles.title, { color: colors.text }]}>{lastActivity.title}</Text>
-      <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}> 
-        Niv {lastActivity.level || 1}
-        {getCategoryText()}
-        • {unitText} {currentWord}/{totalWords}
+      <Text style={[localStyles.title, { color: colors.text }]}>
+        {getModuleName()} Niveau {lastActivity.level || 1}
       </Text>
-      <View style={localStyles.progressContainer}>
-        <View style={[localStyles.progressTrack, { backgroundColor: `${accentColor}15` }]}> 
-          <View 
-            style={[
-              localStyles.progressFill,
-              { 
-                width: `${percentage}%`,
-                backgroundColor: accentColor
-              }
-            ]} 
-          />
-        </View>
-        <Text style={[localStyles.progressText, { color: accentColor }]}>{percentage}%</Text>
-      </View>
+      <Text style={[localStyles.subtitle, { color: colors.textSecondary }]}> 
+        Continuez votre apprentissage
+      </Text>
       <TouchableOpacity
         testID="continue-activity-button"
         style={[localStyles.button, { backgroundColor: accentColor }]}
@@ -151,15 +127,8 @@ const HeroContinueSection = ({
 // PropTypes pour HeroCardContent
 HeroCardContent.propTypes = {
   lastActivity: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     level: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    metadata: PropTypes.shape({
-      word: PropTypes.number,
-      totalWords: PropTypes.number,
-      categoryIndex: PropTypes.number,
-      isGame: PropTypes.bool,
-      isScenario: PropTypes.bool,
-    }),
   }).isRequired,
   accentColor: PropTypes.string.isRequired,
   colors: PropTypes.object.isRequired,
@@ -178,15 +147,8 @@ HeroEmptyCardContent.propTypes = {
 // PropTypes pour le composant principal HeroContinueSection
 HeroContinueSection.propTypes = {
   lastActivity: PropTypes.shape({
-    title: PropTypes.string,
+    type: PropTypes.string,
     level: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    metadata: PropTypes.shape({
-      word: PropTypes.number,
-      totalWords: PropTypes.number,
-      categoryIndex: PropTypes.number,
-      isGame: PropTypes.bool,
-      isScenario: PropTypes.bool,
-    }),
   }),
   onPress: PropTypes.func,
   accentColor: PropTypes.string,
