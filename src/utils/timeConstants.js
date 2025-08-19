@@ -29,7 +29,7 @@ export const RECOMMENDATION_CONFIG = {
     conversations: 'assessment',
     assessment: 'vocabulary',
 
-    errorCorrection: 'reading',
+
     wordGames: 'vocabulary',
   }
 };
@@ -42,7 +42,7 @@ export const EXERCISE_TYPES = {
   READING: 'reading',
   CONVERSATIONS: 'conversations',
 
-  ERROR_CORRECTION: 'errorCorrection',
+
   WORD_GAMES: 'wordGames',
   ASSESSMENT: 'assessment'
 };

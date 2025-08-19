@@ -19,7 +19,7 @@ const useAssessment = (level = "1") => {
   // =================== STORAGE KEYS ===================
   const STORAGE_KEY = `assessment_${level}_position`;
   const ANSWERS_KEY = `assessment_${level}_answers`;
-  const RESULTS_KEY = `assessment_${level}_results`;
+  const RESULTS_KEY = `assessment_results_${level}`;
 
   // =================== STATE ===================
   const [sections, setSections] = useState([]);
@@ -259,31 +259,79 @@ const useAssessment = (level = "1") => {
     if (isLastSection && isLastQuestion) {
       // Calculer et sauvegarder résultats finaux
       setTestCompleted(true);
+      
+      // ✅ AJOUTÉ : Sauvegarder immédiatement la progression
+      const dataToSave = {
+        completedAt: new Date().toISOString(),
+        timestamp: Date.now(),
+        level,
+        sections: sections.length,
+        totalQuestions: Object.values(assessmentData).reduce((sum, section) => 
+          sum + (section.questions?.length || 0), 0
+        )
+      };
+      
+      // Sauvegarder en arrière-plan (non-bloquant)
+      AsyncStorage.setItem(RESULTS_KEY, JSON.stringify(dataToSave))
+        .catch(error => console.warn('Erreur sauvegarde assessment:', error));
+      
       return { completed: true };
     }
 
     // Navigation normale
     if (currentQuestionIndex < totalQuestionsInSection - 1) {
       // Question suivante dans la section
-      setCurrentQuestionIndex(prev => prev + 1);
+      const newQuestionIndex = currentQuestionIndex + 1;
+      setCurrentQuestionIndex(newQuestionIndex);
+      
+      // ✅ AJOUTÉ : Sauvegarder la position après navigation
+      const dataToSave = {
+        sectionIndex: currentSectionIndex,
+        questionIndex: newQuestionIndex,
+        timestamp: Date.now()
+      };
+      
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+        .catch(error => console.warn('Erreur sauvegarde assessment handleNext:', error));
     } else {
       // Section suivante
       const nextSectionIndex = currentSectionIndex + 1;
       if (nextSectionIndex < sections.length) {
         setCurrentSection(sections[nextSectionIndex]);
         setCurrentQuestionIndex(0);
+        
+        // ✅ AJOUTÉ : Sauvegarder la position après changement de section
+        const dataToSave = {
+          sectionIndex: nextSectionIndex,
+          questionIndex: 0,
+          timestamp: Date.now()
+        };
+        
+        AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+          .catch(error => console.warn('Erreur sauvegarde assessment changeSection:', error));
       }
     }
     
     setSelectedAnswer(null);
     setShowFeedback(false);
     return { completed: false };
-  }, [sections, currentSection, currentQuestionIndex, totalQuestionsInSection]);
+  }, [sections, currentSection, currentQuestionIndex, totalQuestionsInSection, STORAGE_KEY, assessmentData, RESULTS_KEY]);
 
   const handlePrevious = useCallback(() => {
     if (currentQuestionIndex > 0) {
       // Question précédente dans la section
-      setCurrentQuestionIndex(prev => prev - 1);
+      const newQuestionIndex = currentQuestionIndex - 1;
+      setCurrentQuestionIndex(newQuestionIndex);
+      
+      // ✅ AJOUTÉ : Sauvegarder la position après navigation
+      const dataToSave = {
+        sectionIndex: sections.indexOf(currentSection),
+        questionIndex: newQuestionIndex,
+        timestamp: Date.now()
+      };
+      
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+        .catch(error => console.warn('Erreur sauvegarde assessment handlePrevious:', error));
     } else {
       // Section précédente
       const currentSectionIndex = sections.indexOf(currentSection);
@@ -294,12 +342,22 @@ const useAssessment = (level = "1") => {
         
         setCurrentSection(prevSection);
         setCurrentQuestionIndex(lastQuestionIndex);
+        
+        // ✅ AJOUTÉ : Sauvegarder la position après changement de section
+        const dataToSave = {
+          sectionIndex: currentSectionIndex - 1,
+          questionIndex: lastQuestionIndex,
+          timestamp: Date.now()
+        };
+        
+        AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+          .catch(error => console.warn('Erreur sauvegarde assessment changeSection:', error));
       }
     }
     
     setSelectedAnswer(null);
     setShowFeedback(false);
-  }, [currentQuestionIndex, sections, currentSection, assessmentData]);
+  }, [currentQuestionIndex, sections, currentSection, assessmentData, STORAGE_KEY]);
 
   // =================== COMPLETION LOGIC ===================
   const saveAssessmentResults = useCallback(async (results) => {

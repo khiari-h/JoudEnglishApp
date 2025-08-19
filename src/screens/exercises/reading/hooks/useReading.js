@@ -59,6 +59,19 @@ const useReading = (exercises = [], level = "A1") => {
     loadProgress();
   }, [loadProgress]);
 
+  // ✅ AJOUTÉ : Reset quand niveau change
+  useEffect(() => {
+    console.log(`🔄 DEBUG useReading - Level changed to: ${level}`);
+    console.log(`   - Resetting completedQuestions and positions for new level`);
+    
+    // Reset de l'état au changement de niveau
+    setCompletedQuestions({});
+    setSelectedExerciseIndex(0);
+    setCurrentQuestionIndex(0);
+    setLoaded(false);
+    isInitialized.current = false;
+  }, [level]);
+
   useEffect(() => {
     if (loaded) {
       saveProgress();
@@ -89,14 +102,38 @@ const useReading = (exercises = [], level = "A1") => {
     if (index >= 0 && index < totalExercises) {
       setSelectedExerciseIndex(index);
       setCurrentQuestionIndex(0); // Toujours revenir à la première question
+      
+      // ✅ AJOUTÉ : Sauvegarder la position après changement d'exercice
+      const dataToSave = {
+        completedQuestions,
+        lastPosition: {
+          selectedExerciseIndex: index,
+          currentQuestionIndex: 0
+        }
+      };
+      
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+        .catch(error => console.warn('Erreur sauvegarde reading changeExercise:', error));
     }
-  }, [totalExercises]);
+  }, [totalExercises, completedQuestions, STORAGE_KEY]);
 
   const changeQuestion = useCallback((index) => {
     if (index >= 0 && index < totalQuestions) {
       setCurrentQuestionIndex(index);
+      
+      // ✅ AJOUTÉ : Sauvegarder la position après changement de question
+      const dataToSave = {
+        completedQuestions,
+        lastPosition: {
+          selectedExerciseIndex,
+          currentQuestionIndex: index
+        }
+      };
+      
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+        .catch(error => console.warn('Erreur sauvegarde reading changeQuestion:', error));
     }
-  }, [totalQuestions]);
+  }, [totalQuestions, completedQuestions, selectedExerciseIndex, STORAGE_KEY]);
 
   const selectAnswer = useCallback((answer) => {
     if (!showFeedback) {
@@ -124,13 +161,27 @@ const useReading = (exercises = [], level = "A1") => {
         if (!newCompleted[selectedExerciseIndex].includes(currentQuestionIndex)) {
           newCompleted[selectedExerciseIndex].push(currentQuestionIndex);
         }
+        
+        // ✅ AJOUTÉ : Sauvegarder immédiatement la progression
+        const dataToSave = {
+          completedQuestions: newCompleted,
+          lastPosition: {
+            selectedExerciseIndex,
+            currentQuestionIndex
+          }
+        };
+        
+        // Sauvegarder en arrière-plan (non-bloquant)
+        AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+          .catch(error => console.warn('Erreur sauvegarde reading:', error));
+        
         return newCompleted;
       });
     } else {
       // Optionnel: Réinitialiser selectedAnswer si incorrect pour permettre une nouvelle tentative
       // setSelectedAnswer(null);
     }
-  }, [currentQuestion, selectedAnswer, selectedExerciseIndex, currentQuestionIndex]);
+  }, [currentQuestion, selectedAnswer, selectedExerciseIndex, currentQuestionIndex, STORAGE_KEY]);
 
   const nextQuestion = useCallback(() => {
     if (currentQuestionIndex < totalQuestions - 1) {

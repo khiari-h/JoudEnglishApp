@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
 
-// 🚀 HOOK PROGRESSION TEMPS RÉEL
-import useRealTimeProgress from "../../hooks/useRealTimeProgress";
+// 🚀 CONTEXTE DE PROGRESSION
+import { useProgressRead } from "../../contexts/ProgressContext";
 
 // Composants UI
 import Button from "../../components/ui/Button";
@@ -39,9 +39,12 @@ const CardHeader = ({ exercise, colors, localStyles }) => (
   <View style={localStyles.cardHeader}>
     <View style={localStyles.levelTitleContainer}>
       <Text style={[localStyles.levelMainTitle, { color: colors.text }]}>{exercise.title}</Text>
-      <View style={[localStyles.levelBadge, { backgroundColor: exercise.color }]}>
-        <Text style={localStyles.levelBadgeText}>{exercise.progress}%</Text>
-      </View>
+      {/* ✅ MODIFIÉ : Pas de progression pour Assessment et Fast Vocabulary */}
+      {exercise.id !== "assessment" && exercise.id !== "vocabulary_fast" && (
+        <View style={[localStyles.levelBadge, { backgroundColor: exercise.color }]}>
+          <Text style={localStyles.levelBadgeText}>{exercise.progress}%</Text>
+        </View>
+      )}
       {exercise.id === "vocabulary_fast" && (
         <View style={[localStyles.levelBadge, localStyles.fastBadge]}>
           <Text style={[localStyles.levelBadgeText, localStyles.fastBadgeText]}>FAST</Text>
@@ -53,30 +56,39 @@ const CardHeader = ({ exercise, colors, localStyles }) => (
 );
 
 const Progression = ({ exercise, colors, localStyles }) => (
-  exercise.hasProgress && (
-    <View style={localStyles.progressContainer}>
-      <View style={localStyles.progressBar}>
-        <View 
-          style={[
-            localStyles.progressFill,
-            { width: `${exercise.progress}%`, backgroundColor: exercise.color }
-          ]} 
-        />
+  <View style={localStyles.progressContainer}>
+    {/* ✅ MODIFIÉ : Pas de progression pour Assessment et Fast Vocabulary */}
+    {exercise.id !== "assessment" && exercise.id !== "vocabulary_fast" ? (
+      <>
+        <View style={localStyles.progressBar}>
+          <View 
+            style={[
+              localStyles.progressFill,
+              { width: `${exercise.progress}%`, backgroundColor: exercise.color }
+            ]} 
+          />
+        </View>
+        <Text style={[localStyles.progressText, { color: colors.textSecondary }]}>{exercise.progress}%</Text>
+      </>
+    ) : (
+      <View style={localStyles.progressContainer}>
+        <Text style={[localStyles.progressText, { color: colors.textSecondary, fontStyle: 'italic' }]}>
+          {exercise.id === "assessment" ? "Évaluation disponible" : "Mode rapide disponible"}
+        </Text>
       </View>
-      <Text style={[localStyles.progressText, { color: colors.textSecondary }]}>{exercise.progress}%</Text>
-    </View>
-  )
+    )}
+  </View>
 );
 
 const CardButton = ({ exercise, handleExercisePress, localStyles }) => (
   <Button
-    title={exercise.hasProgress ? "Continuer" : "Commencer"}
+    title={exercise.progress > 0 ? "Continuer" : "Commencer"}
     variant="filled"
     color={exercise.color}
     fullWidth
     onPress={handleExercisePress(exercise)}
     style={localStyles.startButton}
-    rightIcon={exercise.hasProgress ? "play-outline" : "rocket-outline"}
+    rightIcon={exercise.progress > 0 ? "play-outline" : "rocket-outline"}
     testID={`${exercise.id}-button`}
   />
 );
@@ -84,7 +96,16 @@ const CardButton = ({ exercise, handleExercisePress, localStyles }) => (
 const ExerciseCardContent = ({ exercise, colors, localStyles, handleExercisePress }) => (
   <View style={localStyles.cardContentStyle}>
     <CardHeader exercise={exercise} colors={colors} localStyles={localStyles} />
-    <Progression exercise={exercise} colors={colors} localStyles={localStyles} />
+    {/* ✅ MODIFIÉ : Pas de composant Progression pour Assessment et Fast Vocabulary */}
+    {exercise.id !== "assessment" && exercise.id !== "vocabulary_fast" ? (
+      <Progression exercise={exercise} colors={colors} localStyles={localStyles} />
+    ) : (
+      <View style={localStyles.progressContainer}>
+        <Text style={[localStyles.progressText, { color: colors.textSecondary, fontStyle: 'italic' }]}>
+          {exercise.id === "assessment" ? "Évaluation disponible" : "Mode rapide disponible"}
+        </Text>
+      </View>
+    )}
     <CardButton exercise={exercise} handleExercisePress={handleExercisePress} localStyles={localStyles} />
   </View>
 );
@@ -113,8 +134,12 @@ const ExerciseSelection = () => {
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
 
-  const { getExerciseProgress, hasProgress, refresh } = useRealTimeProgress();
-  const { levelInfo: computedLevelInfo, exercises } = useExerciseListData({ level, getExerciseProgress, hasProgress });
+  const { getExerciseProgress, hasProgress, refreshProgress } = useProgressRead();
+  const { levelInfo: computedLevelInfo, exercises } = useExerciseListData({ 
+    level, 
+    getExerciseProgress, 
+    hasProgress 
+  });
 
   const levelInfo = useMemo(() => {
     return (
@@ -151,8 +176,8 @@ const ExerciseSelection = () => {
 
   useFocusEffect(
     useCallback(() => {
-      refresh();
-    }, [refresh])
+      refreshProgress();
+    }, [refreshProgress])
   );
 
   const renderExerciseCard = useCallback((exercise) => {

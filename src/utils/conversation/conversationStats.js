@@ -29,14 +29,23 @@ export const calculateTotalSteps = (conversationData) => {
 /**
  * Calculer le nombre d'étapes complétées
  * @param {Object} conversationHistory - Historique des conversations par scénario
+ * @param {Object} completedScenarios - Scénarios complétés par l'utilisateur
  * @returns {number} Nombre d'étapes complétées
  */
-export const calculateCompletedSteps = (conversationHistory) => {
-  return Object.values(conversationHistory).reduce((total, history) => {
+export const calculateCompletedSteps = (conversationHistory, completedScenarios = {}) => {
+  return Object.entries(conversationHistory).reduce((total, [scenarioIndex, history]) => {
     if (history?.conversation) {
-      // Compter les messages du bot pour déterminer la progression
-      const botMessages = history.conversation.filter(msg => msg.sender === "bot");
-      return total + botMessages.length;
+      // ✅ CORRIGÉ : Ne compter les étapes que si le scénario est complètement terminé
+      const isScenarioCompleted = Boolean(completedScenarios[scenarioIndex]);
+      
+      if (isScenarioCompleted) {
+        // Si le scénario est terminé, compter toutes ses étapes
+        const botMessages = history.conversation.filter(msg => msg.sender === "bot");
+        return total + botMessages.length;
+      } else {
+        // Si le scénario n'est pas terminé, ne pas compter ses étapes
+        return total;
+      }
     }
     return total;
   }, 0);
@@ -77,15 +86,17 @@ export const calculateScenarioProgress = (conversationData, completedScenarios, 
     const isCompleted = Boolean(completedScenarios[index]);
     
     let completedSteps = 0;
-    if (isCompleted) {
-      completedSteps = totalSteps;
-    } else if (conversationHistory[index]?.conversation) {
-      // Count bot messages to determine progress
-      const botMessages = conversationHistory[index].conversation.filter(msg => msg.sender === "bot");
-      completedSteps = Math.min(botMessages.length, totalSteps);
-    }
+    let progress = 0;
     
-    const progress = totalSteps > 0 ? (completedSteps / totalSteps) * 100 : 0;
+    if (isCompleted) {
+      // ✅ CORRIGÉ : Si le scénario est terminé, montrer 100% de progression
+      completedSteps = totalSteps;
+      progress = 100;
+    } else {
+      // ✅ CORRIGÉ : Si le scénario n'est pas terminé, montrer 0% de progression
+      completedSteps = 0;
+      progress = 0;
+    }
     
     return {
       title: scenario.title || `Scenario ${index + 1}`,
@@ -111,17 +122,25 @@ export const calculateScenarioStats = (scenario, completedScenarios, conversatio
   
   let currentStep = 0;
   let messageCount = 0;
+  let progress = 0;
   
-  if (conversationHistory[scenarioIndex]?.conversation) {
-    const conversation = conversationHistory[scenarioIndex].conversation;
-    messageCount = conversation.length;
+  if (isCompleted) {
+    // ✅ CORRIGÉ : Si le scénario est terminé, montrer 100% de progression
+    currentStep = totalSteps;
+    progress = 100;
     
-    // Calculate current step based on bot messages
-    const botMessages = conversation.filter(msg => msg.sender === "bot");
-    currentStep = Math.min(botMessages.length, totalSteps);
+    if (conversationHistory[scenarioIndex]?.conversation) {
+      messageCount = conversationHistory[scenarioIndex].conversation.length;
+    }
+  } else {
+    // ✅ CORRIGÉ : Si le scénario n'est pas terminé, montrer 0% de progression
+    currentStep = 0;
+    progress = 0;
+    
+    if (conversationHistory[scenarioIndex]?.conversation) {
+      messageCount = conversationHistory[scenarioIndex].conversation.length;
+    }
   }
-  
-  const progress = totalSteps > 0 ? (currentStep / totalSteps) * 100 : 0;
   
   return {
     totalSteps,

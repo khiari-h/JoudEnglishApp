@@ -58,6 +58,20 @@ const useConversation = (conversationData = null, level = "A1") => {
     loadData();
   }, [level]);
 
+  // ✅ AJOUTÉ : Reset quand niveau change
+  useEffect(() => {
+    console.log(`🔄 DEBUG useConversation - Level changed to: ${level}`);
+    console.log(`   - Resetting completedScenarios and positions for new level`);
+    
+    // Reset de l'état au changement de niveau
+    setCompletedScenarios({});
+    setConversationHistory({});
+    setCurrentScenarioIndex(0);
+    setCurrentStep(0);
+    setLoaded(false);
+    isInitialized.current = false;
+  }, [level]);
+
   // Save data to storage
   const saveData = useCallback(async () => {
     try {
@@ -194,14 +208,32 @@ const useConversation = (conversationData = null, level = "A1") => {
 
         // Mark as completed if last step
         if (nextStepIndex === currentScenario.steps.length - 1) {
-          setCompletedScenarios(prev => ({
-            ...prev,
-            [currentScenarioIndex]: {
-              completedAt: new Date().toISOString(),
-              timestamp: Date.now(),
-              messageCount: conversationWithBot.length,
-            }
-          }));
+          setCompletedScenarios(prev => {
+            const newCompletedScenarios = {
+              ...prev,
+              [currentScenarioIndex]: {
+                completedAt: new Date().toISOString(),
+                timestamp: Date.now(),
+                messageCount: conversationWithBot.length,
+              }
+            };
+            
+            // ✅ AJOUTÉ : Sauvegarder immédiatement la progression
+            const dataToSave = {
+              completedScenarios: newCompletedScenarios,
+              conversationHistory,
+              lastPosition: {
+                scenarioIndex: currentScenarioIndex,
+                stepIndex: nextStepIndex
+              }
+            };
+            
+            // Sauvegarder en arrière-plan (non-bloquant)
+            AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+              .catch(error => console.warn('Erreur sauvegarde conversations:', error));
+            
+            return newCompletedScenarios;
+          });
         }
       }
 
@@ -219,8 +251,21 @@ const useConversation = (conversationData = null, level = "A1") => {
       setMessage("");
       setShowHelp(false);
       conversationChanged.current = false;
+      
+      // ✅ AJOUTÉ : Sauvegarder la position après changement de scénario
+      const dataToSave = {
+        completedScenarios,
+        conversationHistory,
+        lastPosition: {
+          scenarioIndex: newIndex,
+          stepIndex: 0
+        }
+      };
+      
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+        .catch(error => console.warn('Erreur sauvegarde conversations changeScenario:', error));
     }
-  }, [currentScenarioIndex, scenarios.length]);
+  }, [currentScenarioIndex, scenarios.length, completedScenarios, conversationHistory, STORAGE_KEY]);
 
   const handleSuggestion = useCallback((suggestion) => {
     setMessage(suggestion);

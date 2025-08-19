@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useContext, useCallback, useRef, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS, LANGUAGE_LEVELS, EXERCISES, BONUS_EXERCISES } from '../utils/constants';
+import { calculateAllProgress, getLevelProgress, getExerciseProgress, hasProgress } from '../utils/progress/calculateProgress';
 import PropTypes from 'prop-types';
 
 // Créer les contextes pour une meilleure séparation
@@ -57,13 +58,32 @@ export const ProgressProvider = ({ children }) => {
   useEffect(() => {
     const loadProgress = async () => {
       try {
-        const stored = await AsyncStorage.getItem(STORAGE_KEYS.USER_PROGRESS);
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          setProgress(parsed);
-        }
+        // Utiliser nos utils pour calculer la progression réelle
+        const { levelProgress, exerciseProgress } = await calculateAllProgress();
+        
+        // Créer la structure de données compatible
+        const newProgress = {
+          exercises: exerciseProgress,
+          stats: {
+            streak: 0,
+            totalTimeSpent: 0,
+            correctAnswers: 0,
+            totalAnswers: 0,
+            exercisesCompleted: 0,
+            lastLogin: null,
+          },
+          lastActivity: {
+            type: null,
+            level: null,
+            timestamp: null,
+          },
+        };
+        
+        setProgress(newProgress);
       } catch (error) {
         console.error('Erreur chargement progression:', error);
+        // Fallback vers la structure initiale
+        setProgress(createInitialProgress());
       } finally {
         setIsLoading(false);
         isInitialLoad.current = false;
@@ -136,25 +156,39 @@ export const ProgressProvider = ({ children }) => {
     }
   }, []);
 
-  // ========== FONCTIONS DE CALCUL (calculées à la volée) ==========
+  // ========== FONCTIONS COMPATIBLES AVEC useRealTimeProgress ==========
+  
+  const refreshProgress = useCallback(async () => {
+    try {
+      const { levelProgress, exerciseProgress } = await calculateAllProgress();
+      setProgress(prev => ({
+        ...prev,
+        exercises: exerciseProgress,
+        levelProgress
+      }));
+    } catch (error) {
+      console.error('Erreur rafraîchissement progression:', error);
+    }
+  }, []);
+
+  // Getters compatibles avec useRealTimeProgress
+  const getLevelProgressFromContext = useCallback((level) => {
+    return getLevelProgress(progress.levelProgress || {}, level);
+  }, [progress.levelProgress]);
+
+  const getExerciseProgressFromContext = useCallback((exerciseType, level) => {
+    return getExerciseProgress(progress.exercises || {}, exerciseType, level);
+  }, [progress.exercises]);
+
+  const hasProgressFromContext = useCallback((exerciseType, level) => {
+    return hasProgress(progress.exercises || {}, exerciseType, level);
+  }, [progress.exercises]);
+
+  // ========== FONCTIONS DE CALCUL (utilisent nos utils) ==========
 
   const calculateLevelProgress = useCallback((level) => {
-    const levelExercises = Object.keys(EXERCISES).filter(type => {
-      if (level === 'bonus') {
-        return BONUS_EXERCISES.includes(type);
-      }
-      return true;
-    }).map(type => 
-      progress.exercises[type]?.[level]?.completed || 0
-    );
-
-    if (levelExercises.length === 0) {
-      return 0;
-    }
-    
-    const averageProgress = levelExercises.reduce((sum, val) => sum + val, 0) / levelExercises.length;
-    return Math.round(averageProgress);
-  }, [progress.exercises]);
+    return getLevelProgress(progress.levelProgress || {}, level);
+  }, [progress.levelProgress]);
 
   const calculateGlobalProgress = useCallback(() => {
     const allLevels = Object.keys(LANGUAGE_LEVELS);
@@ -180,6 +214,11 @@ export const ProgressProvider = ({ children }) => {
     calculateGlobalProgress,
     calculateLevelProgress,
     resetProgress,
+    // Fonctions compatibles avec useRealTimeProgress
+    refreshProgress,
+    getLevelProgress: getLevelProgressFromContext,
+    getExerciseProgress: getExerciseProgressFromContext,
+    hasProgress: hasProgressFromContext,
   }), [
     progress, 
     isLoading, 
@@ -187,7 +226,11 @@ export const ProgressProvider = ({ children }) => {
     updateStats, 
     calculateGlobalProgress, 
     calculateLevelProgress, 
-    resetProgress
+    resetProgress,
+    refreshProgress,
+    getLevelProgressFromContext,
+    getExerciseProgressFromContext,
+    hasProgressFromContext
   ]);
 
   const readValue = useMemo(() => ({
@@ -195,7 +238,21 @@ export const ProgressProvider = ({ children }) => {
     isLoading,
     calculateGlobalProgress,
     calculateLevelProgress,
-  }), [progress, isLoading, calculateGlobalProgress, calculateLevelProgress]);
+    // Fonctions compatibles avec useRealTimeProgress
+    refreshProgress,
+    getLevelProgress: getLevelProgressFromContext,
+    getExerciseProgress: getExerciseProgressFromContext,
+    hasProgress: hasProgressFromContext,
+  }), [
+    progress, 
+    isLoading, 
+    calculateGlobalProgress, 
+    calculateLevelProgress,
+    refreshProgress,
+    getLevelProgressFromContext,
+    getExerciseProgressFromContext,
+    hasProgressFromContext
+  ]);
 
   const writeValue = useMemo(() => ({
     updateExerciseProgress,

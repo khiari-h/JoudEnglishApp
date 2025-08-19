@@ -39,7 +39,7 @@ const ConversationProgress = ({
     const totalScenarios = calculateTotalScenarios(conversationData);
     const completedScenariosCount = calculateCompletedScenariosCount(completedScenarios);
     const totalStepsCount = calculateTotalSteps(conversationData);
-    const completedStepsCount = calculateCompletedSteps(conversationHistory);
+    const completedStepsCount = calculateCompletedSteps(conversationHistory, completedScenarios);
     
     return {
       totalScenarios,
@@ -47,14 +47,16 @@ const ConversationProgress = ({
       totalStepsCount,
       completedStepsCount,
       completionProgress: totalStepsCount > 0 ? Math.round((completedStepsCount / totalStepsCount) * 100) : 0,
-      scenarioProgressData: conversationData.map((scenario, index) => ({
-        title: scenario.title || `Scénario ${index + 1}`,
-        completedSteps: conversationHistory[scenario.id]?.length || 0,
-        totalSteps: scenario.steps?.length || 1,
-        progress: scenario.steps?.length > 0 
-          ? Math.round(((conversationHistory[scenario.id]?.length || 0) / scenario.steps.length) * 100)
-          : 0
-      }))
+      scenarioProgressData: conversationData.map((scenario, index) => {
+        const isCompleted = Boolean(completedScenarios[index]);
+        
+        return {
+          title: scenario.title || `Scénario ${index + 1}`,
+          completedSteps: isCompleted ? (scenario.steps?.length || 1) : 0,
+          totalSteps: scenario.steps?.length || 1,
+          progress: isCompleted ? 100 : 0
+        };
+      })
     };
   }, [conversationData, completedScenarios, conversationHistory]);
 

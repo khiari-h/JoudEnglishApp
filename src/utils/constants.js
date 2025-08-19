@@ -49,13 +49,7 @@ export const EXERCISES = {
     color: "#ef4444",
     route: "/tabs/readingExercise"
   },
-  errorCorrection: { 
-    id: "errorCorrection", 
-    title: "Correction d'erreurs", 
-    icon: "✏️", 
-    color: "#6366f1",
-    route: "/tabs/errorCorrectionExercise"
-  },
+
   conversations: { 
     id: "conversations", 
     title: "Conversations", 
@@ -88,7 +82,7 @@ export const LEVELS = LEVELS_LIST;
 export const EXERCISE_TYPES = EXERCISES;
 
 // =================== CONFIGS ===================
-export const BONUS_EXERCISES = ["reading", "vocabulary", "phrases"];
+export const BONUS_EXERCISES = ["reading", "vocabulary", "vocabulary_fast", "phrases"];
 
 export const COLORS = {
   background: '#F9FAFB',
@@ -111,6 +105,15 @@ export const STORAGE_KEYS = {
   USER_PROGRESS: "user_progress", 
   USER_SETTINGS: "user_settings",
   STREAK_DATA: "user_streak_data",
+  // ✅ CORRIGÉ : Clés pour chaque type d'exercice avec niveaux
+  VOCABULARY_PROGRESS: "vocabulary",              // Format: vocabulary_${level}_classic
+  VOCABULARY_FAST_PROGRESS: "vocabulary_fast",    // Format: vocabulary_${level}_fast
+  GRAMMAR_PROGRESS: "grammar",                    // Format: grammar_${level}
+  READING_PROGRESS: "reading_progress",           // Format: reading_progress_${level}
+  PHRASES_PROGRESS: "phrases",                    // Format: phrases_${level}
+  CONVERSATION_PROGRESS: "conversation",          // Format: conversations_${level}
+  WORD_GAMES_PROGRESS: "word_games_completed",    // Format: word_games_completed_${level}
+  ASSESSMENT_PROGRESS: "assessment_results",      // Format: assessment_results_${level}
 };
 
 // =================== PARAMÈTRES PAR DÉFAUT ===================

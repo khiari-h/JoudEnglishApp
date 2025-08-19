@@ -105,7 +105,7 @@ export const loadVocabularyData = async (level, mode = "classic") => {
       const fastModule = await loadFast();
       const fastVocab = fastModule.vocab || fastModule.default || {};
       return {
-        exercises: [
+        fastExercises: [  // ✅ STRUCTURE DIFFÉRENTE POUR FAST
           {
             title: fastVocab.title || "Vocabulaire Fast",
             words: fastVocab.words || [],

@@ -81,6 +81,19 @@ const usePhrases = (phrasesData, level) => {
     loadData();
   }, [level]); // ✅ CORRIGÉ : Supprimé phrasesData des dépendances
 
+  // ✅ AJOUTÉ : Reset quand niveau change
+  useEffect(() => {
+    console.log(`🔄 DEBUG usePhrases - Level changed to: ${level}`);
+    console.log(`   - Resetting completedPhrases and positions for new level`);
+    
+    // Reset de l'état au changement de niveau
+    setCompletedPhrases({});
+    setCategoryIndex(0);
+    setPhraseIndex(0);
+    setLoaded(false);
+    isInitialized.current = false;
+  }, [level]);
+
   // ✅ AJOUTÉ : Initialisation des indices quand phrasesData est disponible
   useEffect(() => {
     if (loaded && phrasesData && categories.length > 0 && !isInitialized.current) {
@@ -112,6 +125,15 @@ const usePhrases = (phrasesData, level) => {
           phraseIndex
         }
       };
+      
+      // ✅ AJOUTÉ : Log de debug pour voir ce qui est sauvegardé
+      console.log(`🔍 PHRASES - Sauvegarde:`, {
+        storageKey: STORAGE_KEY,
+        completedPhrases,
+        lastPosition: dataToSave.lastPosition,
+        totalCompleted: Object.values(completedPhrases).reduce((sum, arr) => sum + (arr?.length || 0), 0)
+      });
+      
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (error) {
       // ✅ Gestion d'erreur appropriée
@@ -131,24 +153,63 @@ const usePhrases = (phrasesData, level) => {
       setCategoryIndex(newCategoryIndex);
       setPhraseIndex(0);
       setShowTranslation(false);
+      
+      // ✅ AJOUTÉ : Sauvegarder la position après changement de catégorie
+      const dataToSave = {
+        completedPhrases,
+        lastPosition: {
+          categoryIndex: newCategoryIndex,
+          phraseIndex: 0
+        }
+      };
+      
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+        .catch(error => handleStorageError(error, 'changeCategory save'));
     }
-  }, [categoryIndex, categories.length, isInitialized.current]);
+  }, [categoryIndex, categories.length, isInitialized.current, completedPhrases, STORAGE_KEY]);
 
   const goToNextPhrase = useCallback(() => {
     if (phraseIndex < totalPhrasesInCategory - 1 && isInitialized.current) {
-      setPhraseIndex(prev => prev + 1);
+      const newPhraseIndex = phraseIndex + 1;
+      setPhraseIndex(newPhraseIndex);
       setShowTranslation(false);
+      
+      // ✅ AJOUTÉ : Sauvegarder la position après navigation
+      const dataToSave = {
+        completedPhrases,
+        lastPosition: {
+          categoryIndex,
+          phraseIndex: newPhraseIndex
+        }
+      };
+      
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+        .catch(error => handleStorageError(error, 'goToNextPhrase save'));
     }
-  }, [phraseIndex, totalPhrasesInCategory, isInitialized.current]);
+  }, [phraseIndex, totalPhrasesInCategory, isInitialized.current, completedPhrases, categoryIndex, STORAGE_KEY]);
 
   const goToPreviousPhrase = useCallback(() => {
     if (phraseIndex > 0 && isInitialized.current) {
-      setPhraseIndex(prev => prev - 1); // ✅ CORRIGÉ : prev - 1, pas prev + 1
+      const newPhraseIndex = phraseIndex - 1;
+      setPhraseIndex(newPhraseIndex);
       setShowTranslation(false);
+      
+      // ✅ AJOUTÉ : Sauvegarder la position après navigation
+      const dataToSave = {
+        completedPhrases,
+        lastPosition: {
+          categoryIndex,
+          phraseIndex: newPhraseIndex
+        }
+      };
+      
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+        .catch(error => handleStorageError(error, 'goToPreviousPhrase save'));
+      
       return true;
     }
     return false;
-  }, [phraseIndex, isInitialized.current]);
+  }, [phraseIndex, isInitialized.current, completedPhrases, categoryIndex, STORAGE_KEY]);
 
   const toggleTranslation = useCallback(() => {
     setShowTranslation(prev => !prev);
@@ -165,14 +226,36 @@ const usePhrases = (phrasesData, level) => {
     setCompletedPhrases(prev => {
       const categoryCompleted = prev[catIndex] || [];
       if (!categoryCompleted.includes(pIndex)) {
-        return {
+        const newCompletedPhrases = {
           ...prev,
           [catIndex]: [...categoryCompleted, pIndex]
         };
+        
+        // ✅ AJOUTÉ : Sauvegarder immédiatement la progression
+        const dataToSave = {
+          completedPhrases: newCompletedPhrases,
+          lastPosition: {
+            categoryIndex: catIndex,
+            phraseIndex: pIndex
+          }
+        };
+        
+        // ✅ AJOUTÉ : Log de debug pour voir la phrase marquée comme complétée
+        console.log(`🔍 PHRASES - Phrase marquée comme complétée:`, {
+          categoryIndex: catIndex,
+          phraseIndex: pIndex,
+          totalCompleted: Object.values(newCompletedPhrases).reduce((sum, arr) => sum + (arr?.length || 0), 0)
+        });
+        
+        // Sauvegarder en arrière-plan (non-bloquant)
+        AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
+          .catch(error => handleStorageError(error, 'markPhraseAsCompleted save'));
+        
+        return newCompletedPhrases;
       }
       return prev;
     });
-  }, [isInitialized.current]);
+  }, [isInitialized.current, STORAGE_KEY]);
 
   // Find next uncompleted category
   const findNextUncompletedCategory = useCallback(() => {

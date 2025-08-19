@@ -10,7 +10,7 @@ const hiddenScreens = [
   "readingExercise",
   "phrasesExercise",
 
-  "errorCorrectionExercise",
+
   "wordGamesExercise",
   "conversationsExercise", 
 ];

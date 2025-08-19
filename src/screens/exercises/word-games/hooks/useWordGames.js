@@ -23,7 +23,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
 
   // =================== STORAGE KEYS ===================
   const STORAGE_KEY = `wordGames_${level}_position`;
-  const COMPLETED_KEY = `wordGames_${level}_completed`;
+  const COMPLETED_KEY = `word_games_completed_${level}`;
   const SCORES_KEY = `wordGames_${level}_scores`;
 
   // =================== STATE ===================
@@ -114,19 +114,28 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
         } catch (scoresError) {
           handleStorageError(scoresError, 'load scores');
         }
-
-        setLoaded(true);
       } catch (error) {
-        console.error('Error loading word games data:', error);
-        setLoaded(true); // Charger quand même pour éviter le blocage
+        handleStorageError(error, 'loadData');
+      } finally {
+        setLoaded(true);
       }
     };
-
-    if (wordGamesData && !isInitialized.current) {
     loadData();
-      isInitialized.current = true;
-    }
-  }, [wordGamesData, games.length]);
+  }, [level]);
+
+  // ✅ AJOUTÉ : Reset quand niveau change
+  useEffect(() => {
+    console.log(`🔄 DEBUG useWordGames - Level changed to: ${level}`);
+    console.log(`   - Resetting completedGames and positions for new level`);
+    
+    // Reset de l'état au changement de niveau
+    setCompletedGames({});
+    setGameResults([]);
+    setCurrentGameIndex(0);
+    setLastPosition(null);
+    setLoaded(false);
+    isInitialized.current = false;
+  }, [level]);
 
   // =================== GAME LOGIC ===================
   
@@ -207,6 +216,23 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
     }
   }, [showFeedback, currentGame, handleMatchingGame, handleCategorizationGame]);
 
+  // ✅ AJOUTÉ : Helper pour sauvegarder la progression dans le bon format
+  const saveCompletedGamesProgress = useCallback(async (newCompletedGames) => {
+    try {
+      // Sauvegarder dans le format attendu par calculateProgress.js
+      const completedGamesData = {};
+      Object.keys(newCompletedGames).forEach(gameIndex => {
+        if (newCompletedGames[gameIndex]) {
+          completedGamesData[gameIndex] = { completed: true };
+        }
+      });
+      
+      await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(completedGamesData));
+    } catch (error) {
+      handleStorageError(error, 'save completed games progress');
+    }
+  }, [COMPLETED_KEY]);
+
   // ✅ CORRIGÉ : Vérification des réponses pour categorization games
   const checkAnswer = useCallback(() => {
     if (!currentGame) return;
@@ -263,7 +289,11 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
         const newCompletedGames = { ...completedGames, [currentGameIndex]: true };
         setCompletedGames(newCompletedGames);
         
-        // Sauvegarder
+        // ✅ AJOUTÉ : Sauvegarder immédiatement la progression
+        // Sauvegarder la progression dans le bon format
+        saveCompletedGamesProgress(newCompletedGames);
+        
+        // Sauvegarder aussi la position
         saveGameProgress();
         
       } else {
@@ -305,7 +335,11 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
         const newCompletedGames = { ...completedGames, [currentGameIndex]: true };
         setCompletedGames(newCompletedGames);
         
-        // Sauvegarder
+        // ✅ AJOUTÉ : Sauvegarder immédiatement la progression
+        // Sauvegarder la progression dans le bon format
+        saveCompletedGamesProgress(newCompletedGames);
+        
+        // Sauvegarder aussi la position
         saveGameProgress();
         
       } else {
@@ -321,7 +355,7 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
         }, 3000);
       }
     }
-  }, [currentGame, selectedItems, matchedItems, gameResults, currentGameIndex, completedGames]);
+  }, [currentGame, selectedItems, matchedItems, gameResults, currentGameIndex, completedGames, saveCompletedGamesProgress]);
 
   // =================== NAVIGATION ===================
   
@@ -332,21 +366,31 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
       setMatchedItems([]);
       
       if (currentGameIndex < totalGames - 1) {
-        setCurrentGameIndex(currentGameIndex + 1);
-    } else {
-      setShowResults(true);
+        const newGameIndex = currentGameIndex + 1;
+        setCurrentGameIndex(newGameIndex);
+        
+        // ✅ AJOUTÉ : Sauvegarder la position après navigation
+        // Sauvegarder la progression dans le bon format
+        saveCompletedGamesProgress(completedGames);
+      } else {
+        setShowResults(true);
       }
     }
-  }, [showFeedback, currentGameIndex, totalGames]);
+  }, [showFeedback, currentGameIndex, totalGames, completedGames, saveCompletedGamesProgress]);
 
   const handlePrevious = useCallback(() => {
     if (currentGameIndex > 0) {
-      setCurrentGameIndex(currentGameIndex - 1);
+      const newGameIndex = currentGameIndex - 1;
+      setCurrentGameIndex(newGameIndex);
       setShowFeedback(false);
       setSelectedItems([]);
       setMatchedItems([]);
+      
+              // ✅ AJOUTÉ : Sauvegarder la position après navigation
+        // Sauvegarder la progression dans le bon format
+        saveCompletedGamesProgress(completedGames);
     }
-  }, [currentGameIndex]);
+  }, [currentGameIndex, completedGames, saveCompletedGamesProgress]);
 
   const resetGames = useCallback(() => {
       setCurrentGameIndex(0);
@@ -372,12 +416,11 @@ const useWordGames = (wordGamesData = null, level = "A1") => {
         timestamp: Date.now(),
       }));
       
-      await AsyncStorage.setItem(COMPLETED_KEY, JSON.stringify(completedGames));
       await AsyncStorage.setItem(SCORES_KEY, JSON.stringify(gameResults));
     } catch (error) {
       handleStorageError(error, 'save game progress');
     }
-  }, [currentGameIndex, completedGames, gameResults]);
+  }, [currentGameIndex, gameResults, STORAGE_KEY, SCORES_KEY]);
 
   // ✅ CORRIGÉ : Préparer les options pour le jeu actuel
   useEffect(() => {

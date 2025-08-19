@@ -17,12 +17,15 @@ export default function useExerciseListData({ level, getExerciseProgress, hasPro
                 return; // Ignorer les exercices qui ne sont pas dans la liste des bonus
             }
 
-            // Calculer la progression pour tous les exercices
+            // ✅ CORRIGÉ : Les fonctions du contexte sont déjà configurées
+            // getExerciseProgress et hasProgress sont déjà "bound" avec progress.exercises
             const progress = getExerciseProgress(exercise.id, level);
             const has = hasProgress(exercise.id, level);
 
             // Ajouter l'exercice à la liste avec ses données de progression
             list.push({ ...exercise, progress, hasProgress: has, isFast: exercise.id === "vocabulary_fast" });
+            
+
         });
 
         // Retourner la liste complète des exercices pour le niveau donné

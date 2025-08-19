@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 // Contextes
 import { ThemeContext } from "../../contexts/ThemeContext";
 
-// 🚀 HOOK PROGRESSION TEMPS RÉEL - JUSTE POUR LES CHIFFRES
-import useRealTimeProgress from "../../hooks/useRealTimeProgress";
+// 🚀 CONTEXTE PROGRESSION - REMPLACE useRealTimeProgress
+import { useProgressRead } from "../../contexts/ProgressContext";
 
 // Composants UI
 import Button from "../../components/ui/Button";
@@ -39,16 +39,20 @@ const ModernCardHeader = ({ level, colors, localStyles }) => (
   <View style={localStyles.modernCardHeader}>
     <View style={localStyles.modernTitleContainer}>
       <Text style={[localStyles.modernTitle, { color: colors.text }]}>{level.title}</Text>
-      <View style={[localStyles.modernBadge, { backgroundColor: level.color }]}>
-        <Text style={localStyles.modernBadgeText}>{level.progress}%</Text>
-      </View>
+      {/* ✅ MODIFIÉ : Pas de progression pour le niveau bonus */}
+      {level.id !== "bonus" && (
+        <View style={[localStyles.modernBadge, { backgroundColor: level.color }]}>
+          <Text style={localStyles.modernBadgeText}>{level.progress}%</Text>
+        </View>
+      )}
     </View>
     <Text style={localStyles.modernIcon}>{level.icon}</Text>
   </View>
 );
 
 const ModernProgress = ({ level, colors, localStyles }) => (
-  level.hasProgress && (
+  /* ✅ MODIFIÉ : Pas de progression pour le niveau bonus */
+  level.hasProgress && level.id !== "bonus" && (
     <View style={localStyles.modernProgressContainer}>
       <View style={localStyles.modernProgressBar}>
         <View 
@@ -58,7 +62,7 @@ const ModernProgress = ({ level, colors, localStyles }) => (
           ]} 
         />
       </View>
-      <Text style={[localStyles.modernProgressText, { color: colors.textSecondary }]}> {level.progress}% </Text>
+      <Text style={[localStyles.modernProgressText, { color: colors.textSecondary }]}>{level.progress}%</Text>
     </View>
   )
 );
@@ -102,7 +106,7 @@ const LevelSelection = () => {
   const themeContext = useContext(ThemeContext) || DEFAULT_THEME;
   const { colors } = themeContext;
   
-  const { getLevelProgress, hasProgress, refresh } = useRealTimeProgress();
+  const { getLevelProgress, hasProgress, refreshProgress } = useProgressRead();
   const { levels } = useLevelListData({ getLevelProgress, hasProgress });
 
   const backgroundGradient = getBackgroundGradient(
@@ -128,8 +132,8 @@ const LevelSelection = () => {
 
   useFocusEffect(
     useCallback(() => {
-      refresh();
-    }, [refresh])
+      refreshProgress();
+    }, [refreshProgress])
   );
 
   const renderHeader = useCallback(() => (

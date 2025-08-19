@@ -77,6 +77,18 @@ const useGrammar = (grammarData = [], level = "A1") => {
     loadData();
   }, [STORAGE_KEY]); // ✅ CORRIGÉ : Seulement STORAGE_KEY
 
+  // ✅ AJOUTÉ : Reset quand niveau change
+  useEffect(() => {
+    console.log(`🔄 DEBUG useGrammar - Level changed to: ${level}`);
+    console.log(`   - Resetting completedExercises and positions for new level`);
+    
+    // Reset de l'état au changement de niveau
+    setCompletedExercises({});
+    setRuleIndex(0);
+    setExerciseIndex(0);
+    setLoaded(false);
+  }, [level]);
+
   // ✅ CORRECTION MAJEURE : Sauvegarde simplifiée sans boucle
   const saveDataToStorage = useCallback(async (dataToSave) => {
     try {

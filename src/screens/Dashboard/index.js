@@ -11,8 +11,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { useProgressRead } from "../../contexts/ProgressContext"; 
 import { useCurrentLevel } from '../../contexts/CurrentLevelContext';
 
-// 🚀 HOOK PROGRESSION TEMPS RÉEL
-import useRealTimeProgress from "../../hooks/useRealTimeProgress";
+// ✅ PROGRESSION VIA PROGRESSCONTEXT (remplace useRealTimeProgress)
 
 // Hooks
 import { useDashboardLevel } from "./hooks/useDashboardLevel";
@@ -47,8 +46,14 @@ const Dashboard = () => {
   const themeContext = useContext(ThemeContext);
   const { progress, isLoading, calculateGlobalProgress, calculateLevelProgress } = useProgressRead();
 
-  // 🚀 PROGRESSION TEMPS RÉEL
-  const { getLevelProgress, refresh: refreshProgress } = useRealTimeProgress();
+  // ✅ PROGRESSION VIA PROGRESSCONTEXT (remplace useRealTimeProgress)
+  const { getLevelProgress, refreshProgress } = useProgressRead();
+
+  // 🔍 DEBUG TEMPORAIRE - Vérifier les données
+  console.log("🔍 DEBUG Dashboard - ProgressContext:");
+  console.log("   - getLevelProgress:", getLevelProgress);
+  console.log("   - refreshProgress:", refreshProgress);
+  console.log("   - progress:", progress);
 
   const colors = themeContext?.colors || {
     background: "#F8FAFC",
@@ -65,6 +70,7 @@ const Dashboard = () => {
   const { setCurrentLevel } = useCurrentLevel();
     
   const { lastActivity, isLoading: isActivityLoading, reload: reloadActivity } = useLastActivity();
+  console.log('🔍 DEBUG Dashboard lastActivity:', lastActivity);
     
   const { refreshing, onRefresh: originalOnRefresh } = useDashboardState(reloadActivity);
   const { refreshKey, onRefresh } = useDashboardRefresh({ originalOnRefresh, refreshProgress });
