@@ -9,10 +9,9 @@ const hiddenScreens = [
   "grammarExercise",
   "readingExercise",
   "phrasesExercise",
-
-
   "wordGamesExercise",
   "conversationsExercise", 
+  "exerciseSelection", // ✅ AJOUTÉ : Masquer l'onglet Exercices
 ];
 
 export default function TabLayout() {
@@ -66,15 +65,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-  name="exerciseSelection"
-  options={{
-    title: "Exercices",
-    tabBarIcon: ({ color, size, focused }) => (
-      <Ionicons name={focused ? "list" : "list-outline"} color={color} size={size} />
-    ),
-  }}
-/>
+      {/* ✅ SUPPRIMÉ : Onglet Exercices qui bloquait sur le niveau 1 */}
       <Tabs.Screen
         name="settings"
         options={{
