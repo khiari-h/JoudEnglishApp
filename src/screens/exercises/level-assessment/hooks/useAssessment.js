@@ -17,6 +17,7 @@ const useAssessment = (level = "1") => {
   };
 
   // =================== STORAGE KEYS ===================
+  // ✅ CORRIGÉ : Clés dynamiques selon le niveau
   const STORAGE_KEY = `assessment_${level}_position`;
   const ANSWERS_KEY = `assessment_${level}_answers`;
   const RESULTS_KEY = `assessment_results_${level}`;
@@ -127,6 +128,31 @@ const useAssessment = (level = "1") => {
     };
     
     loadData();
+  }, [level]);
+
+  // ✅ AJOUTÉ : Reset quand niveau change (comme useGrammar/useVocabulary)
+  useEffect(() => {
+    console.log(`🔄 DEBUG useAssessment - Level changed to: ${level}`);
+    console.log(`   - Resetting state for new level`);
+    
+    // Reset de l'état au changement de niveau
+    setUserAnswers({});
+    setCurrentSection(null);
+    setCurrentQuestionIndex(0);
+    setSelectedAnswer(null);
+    setShowFeedback(false);
+    setTestCompleted(false);
+    setAssessmentResults({});
+    setLastPosition(null);
+    setLoaded(false);
+    isInitialized.current = false;
+    
+    // Reset des clés de stockage pour le nouveau niveau
+    const newStorageKey = `assessment_${level}_position`;
+    const newAnswersKey = `assessment_${level}_answers`;
+    const newResultsKey = `assessment_results_${level}`;
+    
+    console.log(`   - New storage keys: ${newStorageKey}, ${newAnswersKey}, ${newResultsKey}`);
   }, [level]);
 
   // =================== COMPUTED VALUES ===================
@@ -477,6 +503,8 @@ const useAssessment = (level = "1") => {
     currentSectionData,
     totalSections,
     totalQuestionsInSection,
+    sections, // ✅ AJOUTÉ pour AssessmentProgress
+    assessmentData, // ✅ AJOUTÉ pour AssessmentProgress
     
     // Actions
     changeSection,

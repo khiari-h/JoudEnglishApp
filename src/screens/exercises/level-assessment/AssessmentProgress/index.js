@@ -1,74 +1,101 @@
-// AssessmentProgress/index.js - VERSION CORRIGÉE AVEC useMemo et PropTypes
+// AssessmentProgress/index.js - VERSION SIMPLE AVEC UTILS
 
 import { useMemo } from "react";
 import PropTypes from 'prop-types';
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import {
+  calculateTotalQuestions,
+  calculateAnsweredQuestionsCount,
+  calculateTotalProgress,
+  calculateSectionProgressData,
+} from "../../../../utils/assessment/assessmentStats";
 
 /**
- * 📊 AssessmentProgress - Version corrigée avec mémorisation et PropTypes
- * ✅ Évite les boucles infinies avec useMemo
- * ✅ Performance optimisée
- * ✅ Validation des props complète
+ * 📊 AssessmentProgress - Version simple avec utils
+ * ✅ Utilise les fonctions d'assessmentStats.js comme les autres composants
+ * ✅ Utilise totalQuestions du fichier de données
+ * ✅ Code propre et cohérent
  * 
- * @param {number} currentSection - Section actuelle (1-based)
- * @param {number} totalSections - Nombre total de sections
- * @param {number} currentQuestion - Question actuelle dans la section (1-based)
- * @param {number} totalQuestions - Nombre total de questions dans la section
- * @param {number} answeredQuestionsInSection - Questions répondues dans la section
+ * @param {Array} sections - Liste des clés de sections
+ * @param {Object} assessmentData - Données complètes de l'évaluation
+ * @param {Object} userAnswers - Réponses de l'utilisateur par section
  * @param {string} levelColor - Couleur du niveau
+ * @param {boolean} expanded - État d'expansion
+ * @param {Function} onToggleExpand - Callback pour l'expansion
+ * @param {Function} onSectionPress - Callback pour cliquer sur une section
  */
 const AssessmentProgress = ({
-  currentSection = 1,
-  totalSections = 0,
-  currentQuestion = 1,
-  totalQuestions = 0,
-  answeredQuestionsInSection = 0,
+  sections = [],
+  assessmentData = {},
+  userAnswers = {},
   levelColor = "#3b82f6",
+  expanded = false,
+  onToggleExpand,
+  onSectionPress,
 }) => {
   
-  // ✅ MÉMORISER le calcul de progression de section
-  const sectionProgress = useMemo(() => {
-    return totalQuestions > 0 
-      ? Math.round((answeredQuestionsInSection / totalQuestions) * 100)
-      : 0;
-  }, [answeredQuestionsInSection, totalQuestions]);
+  // ✅ MÉMORISER les calculs avec les utils
+  const progressData = useMemo(() => {
+    // Utiliser les fonctions d'assessmentStats.js
+    const totalQuestions = calculateTotalQuestions(assessmentData, sections);
+    const answeredQuestions = calculateAnsweredQuestionsCount(userAnswers);
+    const totalProgress = calculateTotalProgress(assessmentData, sections, userAnswers);
+    const sectionData = calculateSectionProgressData(assessmentData, sections, userAnswers);
+    
+    // Transformer pour le format ProgressCard
+    const formattedSectionData = sectionData.map((section) => ({
+      title: section.title,
+      completed: section.answeredQuestions,
+      total: section.totalQuestions,
+      progress: section.progress,
+    }));
+    
+    return {
+      totalProgress,
+      sectionData: formattedSectionData,
+      totalQuestions,
+      answeredQuestions,
+    };
+  }, [sections, assessmentData, userAnswers]);
 
   return (
     <ProgressCard
-      title="Progression"
-      subtitle={`Section ${currentSection}/${totalSections} • Question ${currentQuestion}/${totalQuestions}`}
-      progress={sectionProgress}
-      completed={answeredQuestionsInSection}
-      total={totalQuestions}
+      title="Progression de l'évaluation"
+      subtitle={`${progressData.answeredQuestions} / ${progressData.totalQuestions} questions répondues`}
+      progress={progressData.totalProgress}
+      completed={progressData.answeredQuestions}
+      total={progressData.totalQuestions}
       unit="questions"
       levelColor={levelColor}
-      expandable={false}
-      expanded={false}
-      onToggleExpand={undefined}
-      categoryData={[]}
-      onCategoryPress={undefined}
+      expandable={true}
+      expanded={expanded}
+      onToggleExpand={onToggleExpand}
+      categoryData={progressData.sectionData}
+      onCategoryPress={onSectionPress}
     />
   );
 };
 
-// ✅ PropTypes - Corrige toutes les erreurs de validation
+// ✅ PropTypes cohérents avec les autres composants
 AssessmentProgress.propTypes = {
-  currentSection: PropTypes.number,
-  totalSections: PropTypes.number,
-  currentQuestion: PropTypes.number,
-  totalQuestions: PropTypes.number,
-  answeredQuestionsInSection: PropTypes.number,
+  sections: PropTypes.arrayOf(PropTypes.string),
+  assessmentData: PropTypes.object,
+  userAnswers: PropTypes.object,
   levelColor: PropTypes.string,
+  expanded: PropTypes.bool,
+  onToggleExpand: PropTypes.func,
+  onSectionPress: PropTypes.func,
 };
 
 // ✅ Valeurs par défaut
 AssessmentProgress.defaultProps = {
-  currentSection: 1,
-  totalSections: 0,
-  currentQuestion: 1,
-  totalQuestions: 0,
-  answeredQuestionsInSection: 0,
+  sections: [],
+  assessmentData: {},
+  userAnswers: {},
   levelColor: "#3b82f6",
+  expanded: false,
+  onToggleExpand: undefined,
+  onSectionPress: undefined,
 };
 
 export default AssessmentProgress;

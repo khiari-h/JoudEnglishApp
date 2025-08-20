@@ -58,6 +58,8 @@ const LevelAssessment = ({ route }) => {
     isLastQuestionInSection,
     stats,
     display,
+    sections,
+    assessmentData,
   } = useAssessment(level);
 
   // ✅ DEBUG: Ajouter des logs pour identifier le problème
@@ -195,15 +197,13 @@ const LevelAssessment = ({ route }) => {
 
       {/* Progress */}
       <AssessmentProgress
-        currentSection={display.currentSectionIndex}
-        totalSections={totalSections}
-        sectionTitle={display.sectionTitle}
-        currentQuestion={display.questionNumber}
-        totalQuestions={totalQuestionsInSection}
-        answeredQuestionsInSection={stats.answeredInCurrentSection}
-        levelColor={levelColor}
+        sections={sections}
+        assessmentData={assessmentData}
         userAnswers={userAnswers}
-        level={level}
+        levelColor={levelColor}
+        expanded={false}
+        onToggleExpand={() => {}}
+        onSectionPress={() => {}}
       />
 
       {/* Question */}

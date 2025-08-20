@@ -3,8 +3,8 @@
 export default {
   level: "C1",
   description: "Évaluez vos compétences d'utilisateur expérimenté en anglais niveau C1",
-  totalQuestions: 50,
-  timeLimit: 80, // minutes
+  totalQuestions: 45,
+  timeLimit: 75, // minutes
   passScore: 90, // pourcentage
 
   sophisticated_vocabulary: {
@@ -332,69 +332,6 @@ export default {
         options: ["Therefore", "For all that", "Consequently", "Thus"],
         correctAnswer: 1,
         explanation: "'For all that' means 'despite everything mentioned' - acknowledging criticism while finding merit.",
-      },
-    ],
-  },
-
-  error_correction_subtle: {
-    title: "Correction d'Erreurs Subtiles",
-    description: "Identifiez les erreurs dans l'usage le plus sophistiqué",
-    icon: "✏️",
-    questions: [
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "The data supports our hypothesis.",
-          "The data support our hypothesis.",
-          "The data is supporting our hypothesis.",
-          "The data has supported our hypothesis."
-        ],
-        correctAnswer: 1,
-        explanation: "In formal academic writing, 'data' is plural, so it takes 'support' not 'supports'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "He is one of those people who always gets what he wants.",
-          "He is one of those people who always get what they want.",
-          "He is one of those people who always get what he wants.",
-          "He is one of those people who always gets what they want."
-        ],
-        correctAnswer: 1,
-        explanation: "'One of those people who' takes plural verb (get) and pronoun (they) referring to 'people'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "Neither the professor nor his students was satisfied with the results.",
-          "Neither the professor nor his students were satisfied with the results.",
-          "Neither the professor nor his students are satisfied with the results.",
-          "Neither the professor nor his students is satisfied with the results."
-        ],
-        correctAnswer: 1,
-        explanation: "With 'neither...nor', the verb agrees with the closest subject ('students' = plural 'were').",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "I could care less about his opinion.",
-          "I couldn't care less about his opinion.",
-          "I could care fewer about his opinion.",
-          "I couldn't care fewer about his opinion."
-        ],
-        correctAnswer: 1,
-        explanation: "'I couldn't care less' is correct - meaning I care so little that I couldn't care any less.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "The committee decided to forego with their original plan.",
-          "The committee decided to forgo their original plan.",
-          "The committee decided to forgo with their original plan.",
-          "The committee decided to foregoe their original plan."
-        ],
-        correctAnswer: 1,
-        explanation: "'Forgo' (not 'forego') means to do without, and doesn't take 'with'.",
       },
     ],
   },

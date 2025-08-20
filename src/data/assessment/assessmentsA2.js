@@ -3,7 +3,7 @@
 export default {
   level: "A2",
   description: "Évaluez vos compétences intermédiaires en anglais niveau A2",
-  totalQuestions: 50,
+  totalQuestions: 45, // ← MIS À JOUR (9 sections × 5 questions)
   timeLimit: 50, // minutes
   passScore: 75, // pourcentage
 
@@ -311,69 +311,6 @@ export default {
     ],
   },
 
-  error_correction: {
-    title: "Correction d'Erreurs",
-    description: "Trouvez et corrigez les erreurs grammaticales",
-    icon: "✏️",
-    questions: [
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "I have went to London last year.",
-          "I went to London last year.",
-          "I have go to London last year.",
-          "I was go to London last year.",
-        ],
-        correctAnswer: 1,
-        explanation: "Use past simple 'went' for completed actions in the past with time markers like 'last year'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "She is more tall than me.",
-          "She is taller than me.",
-          "She is more taller than me.",
-          "She is tallest than me.",
-        ],
-        correctAnswer: 1,
-        explanation: "For short adjectives, add '-er' not 'more': tall → taller.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "I am living here since 2020.",
-          "I live here since 2020.",
-          "I have been living here since 2020.",
-          "I was living here since 2020.",
-        ],
-        correctAnswer: 2,
-        explanation: "Use present perfect continuous with 'since' for actions that started in the past and continue now.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "Could you to help me?",
-          "Could you help me?",
-          "Could you helping me?",
-          "Could you helps me?",
-        ],
-        correctAnswer: 1,
-        explanation: "After modal verbs like 'could', use the base form of the verb without 'to'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "If I will have time, I will call you.",
-          "If I have time, I will call you.",
-          "If I had time, I will call you.",
-          "If I having time, I will call you.",
-        ],
-        correctAnswer: 1,
-        explanation: "In first conditional, use present simple after 'if' and 'will' in the main clause.",
-      },
-    ],
-  },
-
   reading_comprehension: {
     title: "Compréhension Écrite",
     description: "Lisez les textes et répondez aux questions",
@@ -411,4 +348,5 @@ export default {
       },
     ],
   },
+
 };

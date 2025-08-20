@@ -3,7 +3,7 @@
 export default {
   level: "B2",
   description: "Évaluez vos compétences avancées en anglais niveau B2",
-  totalQuestions: 50,
+  totalQuestions: 45, // ← MIS À JOUR (9 sections × 5 questions)
   timeLimit: 70, // minutes
   passScore: 85, // pourcentage
 
@@ -311,69 +311,6 @@ export default {
     ],
   },
 
-  error_correction_advanced: {
-    title: "Correction d'Erreurs Sophistiquées",
-    description: "Identifiez les erreurs subtiles dans l'usage avancé",
-    icon: "✏️",
-    questions: [
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "The reason why I'm late is because of traffic.",
-          "The reason I'm late is that there was traffic.",
-          "The reason for I'm late is traffic.",
-          "The reason I'm late is because of traffic.",
-        ],
-        correctAnswer: 1,
-        explanation: "Use 'The reason... is that...' not 'The reason... is because...' (redundant).",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "I look forward to hear from you.",
-          "I look forward to hearing from you.",
-          "I look forward hearing from you.",
-          "I look forward that I hear from you.",
-        ],
-        correctAnswer: 1,
-        explanation: "'Look forward to' is followed by -ing form, not infinitive.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "Between you and I, this is confidential.",
-          "Between you and me, this is confidential.",
-          "Between you and myself, this is confidential.",
-          "Between I and you, this is confidential.",
-        ],
-        correctAnswer: 1,
-        explanation: "After prepositions like 'between', use object pronoun 'me', not subject 'I'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "Neither of them are coming to the party.",
-          "Neither of them is coming to the party.",
-          "Neither of them were coming to the party.",
-          "Neither of them have come to the party.",
-        ],
-        correctAnswer: 1,
-        explanation: "'Neither' is singular, so it takes 'is' not 'are', even with 'of them'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "I wish I would have studied harder.",
-          "I wish I had studied harder.",
-          "I wish I have studied harder.",
-          "I wish I will study harder.",
-        ],
-        correctAnswer: 1,
-        explanation: "'I wish' about the past uses past perfect: 'I wish I had studied'.",
-      },
-    ],
-  },
-
   reading_comprehension_critical: {
     title: "Compréhension Critique",
     description: "Analysez des textes complexes et des arguments nuancés",
@@ -411,4 +348,5 @@ export default {
       },
     ],
   },
+
 };

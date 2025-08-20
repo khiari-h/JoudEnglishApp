@@ -3,7 +3,7 @@
 export default {
   level: "B1",
   description: "Évaluez vos compétences intermédiaires-avancées en anglais niveau B1",
-  totalQuestions: 50,
+  totalQuestions: 45, // ← MIS À JOUR (9 sections × 5 questions)
   timeLimit: 60, // minutes
   passScore: 80, // pourcentage
 
@@ -311,69 +311,6 @@ export default {
     ],
   },
 
-  error_correction: {
-    title: "Correction d'Erreurs Avancées",
-    description: "Identifiez les erreurs dans des structures complexes",
-    icon: "✏️",
-    questions: [
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "If I would have known, I would have come.",
-          "If I had known, I would have come.",
-          "If I knew, I would have come.",
-          "If I know, I would have come.",
-        ],
-        correctAnswer: 1,
-        explanation: "Third conditional: 'If + past perfect, would have + past participle'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "The book was writing by Shakespeare.",
-          "The book was written by Shakespeare.",
-          "The book wrote by Shakespeare.",
-          "The book has writing by Shakespeare.",
-        ],
-        correctAnswer: 1,
-        explanation: "Passive voice uses 'was/were + past participle': was written.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "She said me that she was tired.",
-          "She told me that she was tired.",
-          "She spoke me that she was tired.",
-          "She talked me that she was tired.",
-        ],
-        correctAnswer: 1,
-        explanation: "Use 'told someone that...' not 'said someone that...' in reported speech.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "Despite of the rain, we went out.",
-          "Despite the rain, we went out.",
-          "Despite from the rain, we went out.",
-          "Despite to the rain, we went out.",
-        ],
-        correctAnswer: 1,
-        explanation: "'Despite' is followed directly by a noun, not by a preposition.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "I'm used to wake up early.",
-          "I'm used to waking up early.",
-          "I used to waking up early.",
-          "I use to wake up early.",
-        ],
-        correctAnswer: 1,
-        explanation: "'Be used to' means 'be accustomed to' and is followed by -ing form.",
-      },
-    ],
-  },
-
   reading_comprehension: {
     title: "Compréhension Écrite Complexe",
     description: "Analysez des textes nuancés et inférez le sens",
@@ -411,4 +348,5 @@ export default {
       },
     ],
   },
+
 };

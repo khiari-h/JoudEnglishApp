@@ -3,7 +3,7 @@
 export default {
   level: "A1",
   description: "Évaluez vos compétences de base en anglais niveau A1",
-  totalQuestions: 55, // ← MIS À JOUR (11 sections × 5 questions)
+  totalQuestions: 40, // ← MIS À JOUR (8 sections × 5 questions)
   timeLimit: 45, // minutes
   passScore: 70, // pourcentage
 
@@ -272,71 +272,6 @@ export default {
       },
     ],
   },
-
-  error_correction: {
-    title: "Correction d'Erreurs",
-    description: "Trouvez l'erreur dans ces phrases",
-    icon: "✏️",
-    questions: [
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "She have three brothers.",
-          "She has three brothers.",
-          "She having three brothers.",
-          "She haves three brothers.",
-        ],
-        correctAnswer: 1,
-        explanation: "The correct form is 'She has' - third person singular in present simple.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "I am student.",
-          "I am a student.",
-          "I a student.",
-          "I the student.",
-        ],
-        correctAnswer: 1,
-        explanation: "We need the indefinite article 'a' before singular countable nouns like 'student'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "They don't likes coffee.",
-          "They doesn't like coffee.",
-          "They don't like coffee.",
-          "They not like coffee.",
-        ],
-        correctAnswer: 2,
-        explanation: "For plural subjects (they), we use 'don't like' in the negative form.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "I can to swim.",
-          "I can swim.",
-          "I can swimming.",
-          "I can swims.",
-        ],
-        correctAnswer: 1,
-        explanation: "After 'can', we use the base form of the verb without 'to'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "There is five people in my family.",
-          "There are five people in my family.",
-          "There be five people in my family.",
-          "There five people in my family.",
-        ],
-        correctAnswer: 1,
-        explanation: "We use 'There are' with plural nouns like 'five people'.",
-      },
-    ],
-  },
-
-
 
   reading_comprehension: {
     title: "Compréhension Écrite",

@@ -3,8 +3,8 @@
 export default {
   level: "C2",
   description: "Évaluez votre maîtrise complète de l'anglais niveau C2 - Niveau de compétence native",
-  totalQuestions: 50,
-  timeLimit: 90, // minutes
+  totalQuestions: 45,
+  timeLimit: 85, // minutes
   passScore: 95, // pourcentage
 
   precision_vocabulary: {
@@ -332,69 +332,6 @@ export default {
         options: ["Linguistic precision", "Corporate jargon as face-saving", "Technical terminology", "Clear communication"],
         correctAnswer: 1,
         explanation: "'Downsizing' softens the harsh reality of job loss through abstract corporate language.",
-      },
-    ],
-  },
-
-  error_correction_native: {
-    title: "Erreurs de Niveau Natif",
-    description: "Identifiez les erreurs subtiles que font même les locuteurs natifs",
-    icon: "✏️",
-    questions: [
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "Hopefully, the weather will improve tomorrow.",
-          "It is hoped that the weather will improve tomorrow.",
-          "I hope the weather will improve tomorrow.",
-          "Both B and C are correct."
-        ],
-        correctAnswer: 3,
-        explanation: "Traditional grammar objects to 'hopefully' as a sentence adverb, preferring 'it is hoped' or 'I hope', though usage is evolving.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "The reason is because costs have increased.",
-          "The reason is that costs have increased.",
-          "The reason is due to increased costs.",
-          "Both B and C are correct."
-        ],
-        correctAnswer: 1,
-        explanation: "'The reason is because' is redundant (both words indicate causation). Use 'the reason is that' or 'this is because'.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "Between you and I, this is confidential.",
-          "Between you and myself, this is confidential.",
-          "Between you and me, this is confidential.",
-          "Between I and you, this is confidential."
-        ],
-        correctAnswer: 2,
-        explanation: "After prepositions, use object pronouns: 'between you and me' (not 'I' or 'myself').",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "The media are reporting conflicting stories.",
-          "The media is reporting conflicting stories.",
-          "Both are acceptable depending on context.",
-          "Neither is correct."
-        ],
-        correctAnswer: 2,
-        explanation: "'Media' is traditionally plural but increasingly treated as singular in modern usage, especially in journalism.",
-      },
-      {
-        text: "Which sentence is correct?",
-        options: [
-          "If I was you, I would reconsider.",
-          "If I were you, I would reconsider.",
-          "Both are equally correct.",
-          "Neither follows proper grammar."
-        ],
-        correctAnswer: 1,
-        explanation: "Subjunctive 'were' is correct in hypothetical conditionals, though 'was' is increasingly common in speech.",
       },
     ],
   },
