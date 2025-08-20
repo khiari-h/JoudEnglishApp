@@ -13,6 +13,8 @@ import { vocab as medias_internationaux_et_communication_globale } from "./categ
 import { vocab as arts_contemporains_et_pratiques_creatives } from "./categories/13_arts_contemporains_et_pratiques_creatives.js";
 import { vocab as relations_internationales } from "./categories/14_relations_internationales.js";
 import { vocab as sante_globale_et_enjeux_biomedical } from "./categories/15_sante_globale_et_enjeux_biomedical.js";
+import { vocab as gestion_des_risques_globaux } from "./categories/16_gestion_des_risques_globaux.js";
+import { vocab as innovation_et_transformation_numerique } from "./categories/17_innovation_et_transformation_numerique.js";
 
 export default {
   exercises: [
@@ -30,7 +32,9 @@ export default {
     medias_internationaux_et_communication_globale,
     arts_contemporains_et_pratiques_creatives,
     relations_internationales,
-    sante_globale_et_enjeux_biomedical
+    sante_globale_et_enjeux_biomedical,
+    gestion_des_risques_globaux,
+    innovation_et_transformation_numerique
   ],
 };
 

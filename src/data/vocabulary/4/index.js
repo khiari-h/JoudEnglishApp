@@ -13,6 +13,8 @@ import { vocab as medias_avances_et_communication_de_masse } from "./categories/
 import { vocab as debats_societaux_contemporains } from "./categories/13_debats_societaux_contemporains.js";
 import { vocab as economie_globale_et_finances } from "./categories/14_economie_globale_et_finances.js";
 import { vocab as sciences_et_applications_technologiques } from "./categories/15_sciences_et_applications_technologiques.js";
+import { vocab as enjeux_mondiaux_et_cooperation_internationale } from "./categories/16_enjeux_mondiaux_et_cooperation_internationale.js";
+import { vocab as entrepreneuriat_et_economie_pratique } from "./categories/17_entrepreneuriat_et_economie_pratique.js";
 
 export default {
   exercises: [
@@ -30,7 +32,9 @@ export default {
     medias_avances_et_communication_de_masse,
     debats_societaux_contemporains,
     economie_globale_et_finances,
-    sciences_et_applications_technologiques
+    sciences_et_applications_technologiques,
+    enjeux_mondiaux_et_cooperation_internationale,
+    entrepreneuriat_et_economie_pratique
   ],
 };
 

@@ -14,6 +14,7 @@ import formalInformalDiscourse from './categories/formal-informal-discourse.js';
 import euphemismsDiplomaticLanguage from './categories/euphemisms-diplomatic-language.js';
 import certitudeDoubtExpressions from './categories/certitude-doubt-expressions.js';
 import literaryExpressions from './categories/literary-expressions.js';
+import innovationEntrepreneurship from './categories/innovation-entrepreneurship.js';
 
 import advancedTechnologyScience from './categories/advanced-technology-science.js';
 import internationalRelations from './categories/international-relations.js';
@@ -54,6 +55,7 @@ const phrasesC1 = {
     ...euphemismsDiplomaticLanguage,
     ...certitudeDoubtExpressions,
     ...literaryExpressions,
+    ...innovationEntrepreneurship,
 
     ...advancedTechnologyScience,
     ...internationalRelations
@@ -77,6 +79,7 @@ export {
   euphemismsDiplomaticLanguage,
   certitudeDoubtExpressions,
   literaryExpressions,
+  innovationEntrepreneurship,
 
   advancedTechnologyScience,
   internationalRelations,
