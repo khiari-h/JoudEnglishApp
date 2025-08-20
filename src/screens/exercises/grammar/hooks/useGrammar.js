@@ -3,14 +3,20 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+// ✅ AJOUTÉ : Import de useLastActivity
+import useLastActivity from '../../../../hooks/useLastActivity';
 
 /**
  * 🎯 Hook unifié pour Grammar Exercise - VERSION FINALE CORRIGÉE
  * ✅ Suppression complète des boucles infinies
  * ✅ Sauvegarde simplifiée et optimisée
  * ✅ Performance maximale
+ * ✅ AJOUTÉ : Traçage de l'activité avec useLastActivity
  */
 const useGrammar = (grammarData = [], level = "A1") => {
+  
+  // ✅ AJOUTÉ : Hook pour tracer l'activité
+  const { saveActivity } = useLastActivity();
   
   // =================== ERROR HANDLING HELPER ===================
   const handleStorageError = (error, operation, fallback = null) => {
@@ -198,7 +204,8 @@ const useGrammar = (grammarData = [], level = "A1") => {
 
   const submitAnswer = useCallback(() => {
     if (!currentExercise) return false;
-
+    
+    // ✅ CORRIGÉ : Logique de vérification complète comme avant
     let userAnswer = "";
     let correctAnswer = "";
 
@@ -215,11 +222,18 @@ const useGrammar = (grammarData = [], level = "A1") => {
     const correct = checkAnswer(userAnswer, correctAnswer);
     
     setIsCorrect(correct);
-    setAttempts(prev => prev + 1);
     setShowFeedback(true);
+    setAttempts(prev => prev + 1);
 
     // Mark as completed if correct
     if (correct) {
+      // ✅ AJOUTÉ : Tracer l'activité grammaire
+      saveActivity({
+        type: 'grammar',
+        level: level,
+        title: `Grammaire - ${currentRule?.title || 'Règle'}`
+      });
+      
       setCompletedExercises(prev => {
         const ruleCompleted = prev[ruleIndex] || [];
         if (!ruleCompleted.includes(exerciseIndex)) {
@@ -233,7 +247,7 @@ const useGrammar = (grammarData = [], level = "A1") => {
     }
 
     return correct;
-  }, [currentExercise, selectedOption, inputText, ruleIndex, exerciseIndex, checkAnswer]);
+  }, [currentExercise, selectedOption, inputText, ruleIndex, exerciseIndex, checkAnswer, currentRule, level, saveActivity]);
 
   const nextExercise = useCallback(() => {
     const isLastExercise = exerciseIndex === totalExercisesMemo - 1;

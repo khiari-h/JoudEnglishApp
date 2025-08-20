@@ -100,6 +100,12 @@ const ReadingNavigation = ({
             skip: "Skip",
             finish: "Finish",
           }}
+          // ✅ AJOUTÉ : Icône refresh pour Try Again
+          buttonIcons={{
+            previous: "chevron-back",
+            next: attempts > 1 ? "chevron-forward" : "refresh", // 🔄 Pour Try Again
+            finish: "checkmark",
+          }}
           variant="standard"
         />
       </View>

@@ -1,6 +1,7 @@
 // AssessmentNavigation/index.js - VERSION REFACTORISÉE avec NavigationButtons
 
 import { View, TouchableOpacity, Text } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import createStyles from "./style";
@@ -55,34 +56,38 @@ const AssessmentNavigation = ({
   // Phase 2: Try Again + Next (après feedback)
   return (
     <View style={styles.container}>
-      <View style={styles.feedbackActionsRow}>
-        {/* Bouton Try Again */}
+      {/* ✅ MODIFIÉ : Layout vertical pour éviter le débordement */}
+      
+      {/* Ligne 1: Try Again centré */}
+      <View style={styles.tryAgainRow}>
         <TouchableOpacity
           style={[styles.tryAgainButton, { borderColor: levelColor }]}
           onPress={onTryAgain}
           activeOpacity={0.7}
         >
+          {/* ✅ AJOUTÉ : Icône refresh pour Try Again */}
+          <Ionicons name="refresh" size={18} color={levelColor} style={{ marginRight: 8 }} />
           <Text style={[styles.tryAgainButtonText, { color: levelColor }]}>
             Try Again
           </Text>
         </TouchableOpacity>
+      </View>
 
-        {/* Bouton Next (utilise NavigationButtons) */}
-        <View style={styles.nextButtonContainer}>
-          <NavigationButtons
-            onNext={onNext}
-            onPrevious={canGoPrevious ? onPrevious : undefined}
-            disablePrevious={!canGoPrevious}
-            disableNext={false}
-            primaryColor={levelColor}
-            isLast={false} // Assessment n'a pas de "finish"
-            buttonLabels={{
-              next: isLastQuestionInSection ? "Next Section" : "Next Question",
-              previous: "Previous"
-            }}
-            layout="minimal" // Nouveau prop pour layout réduit
-          />
-        </View>
+      {/* Ligne 2: Previous + Next centrés */}
+      <View style={styles.navigationRow}>
+        <NavigationButtons
+          onNext={onNext}
+          onPrevious={canGoPrevious ? onPrevious : undefined}
+          disablePrevious={!canGoPrevious}
+          disableNext={false}
+          primaryColor={levelColor}
+          isLast={false} // Assessment n'a pas de "finish"
+          buttonLabels={{
+            next: isLastQuestionInSection ? "Next Section" : "Next Question",
+            previous: "Previous"
+          }}
+          variant="standard" // Layout standard pour Previous + Next
+        />
       </View>
     </View>
   );

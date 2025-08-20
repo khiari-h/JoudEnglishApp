@@ -50,10 +50,16 @@ const createStyles = () =>
     },
 
     // =================== ACTIONS FEEDBACK ===================
-    feedbackActionsRow: {
-      flexDirection: 'row',
+    // ✅ SUPPRIMÉ : feedbackActionsRow n'est plus utilisé avec le layout vertical
+
+    // ✅ AJOUTÉ : Layout vertical pour éviter le débordement
+    tryAgainRow: {
       alignItems: 'center',
-      gap: 12,
+      marginBottom: 16, // Espace entre les 2 lignes
+    },
+
+    navigationRow: {
+      alignItems: 'center',
     },
 
     // =================== BOUTON TRY AGAIN ===================

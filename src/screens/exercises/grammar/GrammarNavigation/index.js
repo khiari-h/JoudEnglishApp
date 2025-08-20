@@ -94,6 +94,12 @@ const GrammarNavigation = ({
           skip: "",
           finish: "",
         }}
+        // ✅ AJOUTÉ : Icônes personnalisées pour Try Again
+        buttonIcons={{
+          previous: "refresh", // 🔄 Au lieu de chevron-back
+          next: "chevron-forward",
+          finish: "checkmark",
+        }}
         variant="standard" // Try Again à gauche, Skip à droite
       />
     </View>

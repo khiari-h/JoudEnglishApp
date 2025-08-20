@@ -16,6 +16,12 @@ const NavigationButtons = ({
         next: "Suivant",
         finish: "Terminer",
     },
+    // ✅ AJOUTÉ : Icônes personnalisées
+    buttonIcons = {
+        previous: "chevron-back",
+        next: "chevron-forward",
+        finish: "checkmark",
+    },
     isLast = false,
 }) => {
     const styles = createStyles(primaryColor);
@@ -62,7 +68,7 @@ const NavigationButtons = ({
                             accessibilityLabel={buttonLabels.previous}
                             accessibilityState={{ disabled: !!disablePrevious }}
                         >
-                            <Ionicons name="chevron-back" size={18} color={primaryColor} />
+                            <Ionicons name={buttonIcons.previous} size={18} color={primaryColor} />
                             <Text style={[styles.previousText, { color: primaryColor }]}>
                                 {buttonLabels.previous}
                             </Text>
@@ -97,7 +103,7 @@ const NavigationButtons = ({
                                     {isLast ? buttonLabels.finish : buttonLabels.next}
                                 </Text>
                                 <Ionicons
-                                    name={isLast ? "checkmark" : "chevron-forward"}
+                                    name={isLast ? buttonIcons.finish : buttonIcons.next}
                                     size={18}
                                     color="white"
                                     style={styles.nextIcon}
@@ -119,6 +125,12 @@ NavigationButtons.propTypes = {
     disableNext: PropTypes.bool,
     primaryColor: PropTypes.string,
     buttonLabels: PropTypes.shape({
+        previous: PropTypes.string,
+        next: PropTypes.string,
+        finish: PropTypes.string,
+    }),
+    // ✅ AJOUTÉ : PropTypes pour buttonIcons
+    buttonIcons: PropTypes.shape({
         previous: PropTypes.string,
         next: PropTypes.string,
         finish: PropTypes.string,
