@@ -1,8 +1,9 @@
-// ConversationProgress/index.js - VERSION CORRIGÉE AVEC useMemo
+// ConversationProgress/index.js - VERSION AVEC GAMIFICATION
 
 import { useMemo } from "react";
 import PropTypes from "prop-types";
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import useProgressGamification from "../../../../hooks/useProgressGamification";
 import {
   calculateTotalScenarios,
   calculateCompletedScenariosCount,
@@ -70,19 +71,32 @@ const ConversationProgress = ({
     }));
   }, [statsData.scenarioProgressData]);
 
+  // 🎭 GAMIFICATION : Utilise le hook pour transformer la progression
+  const gamification = useMemo(() => {
+    return useProgressGamification({
+      progress: statsData.completionProgress,
+      completed: statsData.completedScenariosCount,
+      total: statsData.totalScenarios,
+      type: "conversations"
+    });
+  }, [statsData.completionProgress, statsData.completedScenariosCount, statsData.totalScenarios]);
+
   return (
     <ProgressCard
-      title="Progression"
+      title={gamification.messages.main} // 🎭 Titre dynamique et motivant
+      subtitle={gamification.messages.subtitle} // 🎭 Sous-titre dynamique
       progress={statsData.completionProgress}
       completed={statsData.completedScenariosCount}
       total={statsData.totalScenarios}
       unit="scénarios"
-      levelColor={levelColor}
+      levelColor={gamification.colors.primary} // 🎭 Couleur dynamique selon la progression
       expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedScenarioData}
       onCategoryPress={onScenarioPress}
+      // 🎭 Props de gamification pour ProgressCard
+      gamificationData={gamification}
     />
   );
 };

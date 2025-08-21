@@ -1,7 +1,8 @@
-// WordGamesProgress/index.js - VERSION STANDARD AVEC ProgressCard
+// WordGamesProgress/index.js - VERSION AVEC GAMIFICATION
 
 import PropTypes from 'prop-types';
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import useProgressGamification from "../../../../hooks/useProgressGamification";
 import { useMemo } from 'react';
 
 /**
@@ -71,19 +72,30 @@ const WordGamesProgress = ({
     ];
   }, [games, completedGames]);
 
+  // 🎭 GAMIFICATION : Utilise le hook pour transformer la progression
+  const gamification = useProgressGamification({
+    progress: totalProgress,
+    completed: completedGamesCount,
+    total: totalGames,
+    type: "word-games"
+  });
+
   return (
     <ProgressCard
-      title="Progression"
+      title={gamification.messages.main} // 🎭 Titre dynamique et motivant
+      subtitle={gamification.messages.subtitle} // 🎭 Sous-titre dynamique
       progress={totalProgress}
       completed={completedGamesCount}
       total={totalGames}
       unit="jeux"
-      levelColor={levelColor}
+      levelColor={gamification.colors.primary} // 🎭 Couleur dynamique selon la progression
       expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={gameTypeData}
       onCategoryPress={onGameTypePress}
+      // 🎭 Props de gamification pour ProgressCard
+      gamificationData={gamification}
     />
   );
 };

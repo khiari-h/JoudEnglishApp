@@ -17,6 +17,7 @@ import InstructionBox from "../../../components/exercise-common/InstructionBox";
 
 import useReading from "./hooks/useReading";
 import useLastActivity from "../../../hooks/useLastActivity";
+import useExerciseBackground from "../../../hooks/useExerciseBackground";
 import { getReadingData, loadReadingData, getLevelColor } from "../../../utils/reading/readingDataHelper";
 import createStyles from "./style";
 import { useEffect, useCallback, useState } from 'react';
@@ -31,6 +32,9 @@ const ReadingExercise = ({ route }) => {
   const [readingData, setReadingData] = useState(
     process.env.JEST_WORKER_ID ? getReadingData(level) : null
   );
+  
+  // 🎨 BACKGROUND DYNAMIQUE : Utilise le hook pour un fond coloré
+  const { gradientColors } = useExerciseBackground("reading", levelColor);
   const exercises = readingData?.exercises || [];
 
   useEffect(() => {
@@ -145,7 +149,7 @@ const ReadingExercise = ({ route }) => {
       <Container
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
+        gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
         statusBarStyle="dark-content"
       >
         <View style={styles.loadingContainer}>
@@ -161,7 +165,7 @@ const ReadingExercise = ({ route }) => {
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
       withScrollView
-      backgroundColor="#f8fafc"
+      gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
       statusBarStyle="dark-content"
       withPadding={false}
       scrollViewProps={{

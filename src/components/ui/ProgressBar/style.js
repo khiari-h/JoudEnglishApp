@@ -26,12 +26,18 @@ const createStyles = (height = 8, borderRadius = 4) =>
       alignItems: 'center',
     },
 
-    // =================== BARRE SIMPLE ===================
+    // =================== BARRE AMÉLIORÉE ===================
     progressBarContainer: {
-      height,
-      borderRadius,
+      height: Math.max(height, 12), // Hauteur minimale de 12
+      borderRadius: Math.max(borderRadius, 6), // Border radius plus prononcé
       position: 'relative',
       overflow: 'hidden',
+      // Ombre subtile pour plus de profondeur
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 2,
     },
     progressTrack: {
       position: 'absolute',
@@ -39,12 +45,19 @@ const createStyles = (height = 8, borderRadius = 4) =>
       left: 0,
       right: 0,
       bottom: 0,
+      backgroundColor: '#F3F4F6', // Background plus doux
     },
     progressFill: {
       position: 'absolute',
       top: 0,
       left: 0,
       bottom: 0,
+      // Glow effect subtil
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.15,
+      shadowRadius: 2,
+      elevation: 1,
     },
 
     // =================== POURCENTAGE EN LIGNE ===================

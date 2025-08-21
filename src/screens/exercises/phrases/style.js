@@ -40,6 +40,8 @@ const createStyles = () =>
       alignItems: 'center',
       paddingHorizontal: 20,
     },
+
+
   });
 
 export default createStyles;

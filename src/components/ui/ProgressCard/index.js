@@ -25,8 +25,19 @@ const ProgressCard = ({
   onToggleExpand,
   categoryData = [],
   onCategoryPress,
+  gamificationData = null, // 🎭 NOUVEAU : Données de gamification
 }) => {
-  const styles = createStyles(levelColor);
+  // 🎭 GAMIFICATION : Utilise les données de gamification si disponibles
+  const isGamified = !!gamificationData;
+  const gamification = gamificationData || {
+    colors: { primary: levelColor, secondary: `${levelColor}15`, accent: levelColor },
+    messages: { main: title, subtitle },
+    badges: { current: null, next: null },
+    visualEffects: { glowIntensity: 0, shadowDepth: 0 },
+    celebration: null
+  };
+
+  const styles = createStyles(gamification.colors.primary);
 
   // Configuration LayoutAnimation pour smooth transition
   const configureLayoutAnimation = () => {
@@ -93,9 +104,9 @@ const ProgressCard = ({
         progress={mainProgress}
         showPercentage={false}
         fillColor={mainLevelColor}
-        height={6}
+        height={12} // Plus haute pour plus de visibilité
         backgroundColor={`${mainLevelColor}15`}
-        borderRadius={3}
+        borderRadius={6} // Plus arrondi
         animated
       />
     </View>
@@ -121,24 +132,29 @@ const ProgressCard = ({
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={[`${levelColor}06`, `${levelColor}03`, 'transparent']}
+        colors={[`${levelColor}15`, `${levelColor}08`, `${levelColor}03`, 'transparent']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.cardGradient}
       >
         <CardHeader
-          headerTitle={title}
-          headerSubtitle={subtitle}
+          headerTitle={gamification.messages.main}
+          headerSubtitle={gamification.messages.subtitle}
           headerCompleted={completed}
           headerTotal={total}
           headerProgress={progress}
-          headerLevelColor={levelColor}
+          headerLevelColor={gamification.colors.primary}
           headerExpandable={expandable}
           headerExpanded={expanded}
           headerToggleExpanded={toggleExpanded}
           headerStyles={styles}
         />
-        <MainProgressBar mainProgress={progress} mainLevelColor={levelColor} mainStyles={styles} />
+        
+        <MainProgressBar 
+          mainProgress={progress} 
+          mainLevelColor={gamification.colors.primary} 
+          mainStyles={styles} 
+        />
       </LinearGradient>
       <Expansion
         expandable={expandable}
@@ -216,6 +232,7 @@ ProgressCard.propTypes = {
     progress: PropTypes.number,
   })),
   onCategoryPress: PropTypes.func,
+  gamificationData: PropTypes.object, // 🎭 NOUVEAU : Données de gamification
 };
 
 // PropTypes pour CategoryList

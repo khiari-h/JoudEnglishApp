@@ -1,7 +1,8 @@
-// PhrasesProgress/index.js - VERSION CORRIGÉE AVEC PHRASESTATS
+// PhrasesProgress/index.js - VERSION AVEC GAMIFICATION INTÉGRÉE
 
 import PropTypes from 'prop-types';
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import useProgressGamification from "../../../../hooks/useProgressGamification";
 import {
   calculateTotalPhrases,
   calculateCompletedPhrasesCount,
@@ -43,7 +44,15 @@ const PhrasesProgress = ({
   const totalProgress = calculateTotalPhrasesProgress(categories, phrases, completedPhrases);
   const categoryProgressData = calculateCategoryPhrasesProgress(categories, phrases, completedPhrases);
 
-  // Transformation pour le format ProgressCard
+  // 🎭 GAMIFICATION : Utilise le hook pour transformer la progression
+  const gamification = useProgressGamification({
+    progress: totalProgress,
+    completed: completedPhrasesCount,
+    total: totalPhrasesCount,
+    type: "phrases"
+  });
+
+  // Transformation pour le format ProgressCard avec gamification
   const formattedCategoryData = categoryProgressData.map((category) => ({
     title: category.title,
     completed: category.completedPhrases,
@@ -53,17 +62,20 @@ const PhrasesProgress = ({
 
   return (
     <ProgressCard
-      title="Progression"
-      progress={totalProgress} // ✅ Utilise le calcul correct
-      completed={completedPhrasesCount} // ✅ Utilise le calcul correct
-      total={totalPhrasesCount} // ✅ Utilise le calcul correct
+      title={gamification.messages.main} // 🎭 Titre dynamique et motivant
+      subtitle={gamification.messages.subtitle} // 🎭 Sous-titre dynamique
+      progress={totalProgress}
+      completed={completedPhrasesCount}
+      total={totalPhrasesCount}
       unit="phrases"
-      levelColor={levelColor}
+      levelColor={gamification.colors.primary} // 🎭 Couleur dynamique selon la progression
       expandable={categoryProgressData.length > 0}
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedCategoryData}
       onCategoryPress={onCategoryPress}
+      // 🎭 Props de gamification pour ProgressCard
+      gamificationData={gamification}
     />
   );
 };

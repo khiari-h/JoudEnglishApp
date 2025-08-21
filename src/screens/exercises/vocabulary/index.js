@@ -15,6 +15,7 @@ import VocabularyNavigation from "./VocabularyNavigation";
 
 import useVocabulary from "./hooks/useVocabulary";
 import useLastActivity from "../../../hooks/useLastActivity";
+import useExerciseBackground from "../../../hooks/useExerciseBackground";
 import { isBonusLevel, getLevelColor, loadVocabularyData } from "../../../utils/vocabulary/vocabularyDataHelper";
 import createStyles from "./style";
 
@@ -28,6 +29,9 @@ const VocabularyExercise = ({ route }) => {
   const finalMode = mode || (isBonusLevel(level) ? "fast" : "classic");
   const levelColor = getLevelColor(level);
   const [vocabularyData, setVocabularyData] = useState(null);
+  
+  // 🎨 BACKGROUND DYNAMIQUE : Utilise le hook pour un fond coloré
+  const { gradientColors } = useExerciseBackground("vocabulary", levelColor);
 
   useEffect(() => {
     let isMounted = true;
@@ -158,7 +162,7 @@ const VocabularyExercise = ({ route }) => {
       <Container
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
+        gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
         statusBarStyle="dark-content"
       >
         <View style={styles.loadingContainer}>
@@ -173,7 +177,7 @@ const VocabularyExercise = ({ route }) => {
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
       withScrollView
-      backgroundColor="#f8fafc"
+      gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
       statusBarStyle="dark-content"
       withPadding={false}
       scrollViewProps={{

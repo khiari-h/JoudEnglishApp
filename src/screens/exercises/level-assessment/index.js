@@ -18,6 +18,7 @@ import AssessmentResults from "./AssessmentResults";
 // Hook & Utils
 import useAssessment from "./hooks/useAssessment";
 import useLastActivity from "../../../hooks/useLastActivity";
+import useExerciseBackground from "../../../hooks/useExerciseBackground";
 import { getLevelColor } from "../../../utils/assessment/assessmentDataHelper";
 import createStyles from "./style";
 
@@ -34,6 +35,9 @@ const LevelAssessment = ({ route }) => {
 
   // Data
   const levelColor = getLevelColor(level);
+  
+  // 🎨 BACKGROUND DYNAMIQUE : Utilise le hook pour un fond coloré
+  const { gradientColors } = useExerciseBackground("assessment", levelColor);
 
   // Hook unifié
   const {
@@ -162,7 +166,7 @@ const LevelAssessment = ({ route }) => {
       <Container
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
+        gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
         statusBarStyle="dark-content"
       >
         <AssessmentResults 
@@ -181,7 +185,7 @@ const LevelAssessment = ({ route }) => {
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
       withScrollView
-      backgroundColor="#f8fafc"
+      gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
       statusBarStyle="dark-content"
       withPadding={false}
       scrollViewProps={{

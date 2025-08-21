@@ -20,6 +20,7 @@ import GrammarNavigation from "./GrammarNavigation";
 
 // Hook & Utils
 import useGrammar from "./hooks/useGrammar";
+import useExerciseBackground from "../../../hooks/useExerciseBackground";
 import { getGrammarData, loadGrammarData, getLevelColor } from "../../../utils/grammar/grammarDataHelper";
 import createStyles from "./style";
 
@@ -67,6 +68,9 @@ const GrammarExercise = ({ route }) => {
 
   // ✅ MÉMORISER les données principales
   const levelColor = useMemo(() => getLevelColor(level), [level]);
+  
+  // 🎨 BACKGROUND DYNAMIQUE : Utilise le hook pour un fond coloré
+  const { gradientColors } = useExerciseBackground("grammar", levelColor);
 
   useEffect(() => {
     let isMounted = true;
@@ -152,7 +156,7 @@ const GrammarExercise = ({ route }) => {
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
       withScrollView
-      backgroundColor="#f8fafc"
+      gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
       statusBarStyle="dark-content"
       withPadding={false}
       scrollViewProps={{

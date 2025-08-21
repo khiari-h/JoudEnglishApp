@@ -15,9 +15,11 @@ import PhrasesProgress from "./PhrasesProgress";
 import PhraseCard from "./PhraseCard";
 import PhrasesNavigation from "./PhrasesNavigation";
 
+
 // Hook & Utils
 import usePhrases from "./hooks/usePhrases";
 import useLastActivity from "../../../hooks/useLastActivity"; // ✅ AJOUTÉ
+import useExerciseBackground from "../../../hooks/useExerciseBackground";
 import { getPhrasesData, loadPhrasesData, getLevelColor } from "../../../utils/phrases/phrasesDataHelper";
 import createStyles from "./style";
 
@@ -32,10 +34,15 @@ const PhrasesExercise = ({ route }) => {
   // ✅ AJOUTÉ : Hook pour sauvegarder l'activité
   const { saveActivity } = useLastActivity();
 
+
+
   // Data
   const levelColor = getLevelColor(level);
   const [phrasesData, setPhrasesData] = useState(null);
   const [isDataLoading, setIsDataLoading] = useState(true); // ✅ AJOUTÉ : État de chargement des données
+  
+  // 🎨 BACKGROUND DYNAMIQUE : Utilise le hook pour un fond coloré
+  const { gradientColors } = useExerciseBackground("phrases", levelColor);
 
   useEffect(() => {
     let isMounted = true;
@@ -162,7 +169,7 @@ const PhrasesExercise = ({ route }) => {
       <Container
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
+        gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
         statusBarStyle="dark-content"
       >
         <PhrasesHeader
@@ -181,7 +188,7 @@ const PhrasesExercise = ({ route }) => {
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
       withScrollView
-      backgroundColor="#f8fafc"
+      gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
       statusBarStyle="dark-content"
       withPadding={false}
       scrollViewProps={{
@@ -194,6 +201,8 @@ const PhrasesExercise = ({ route }) => {
         level={level}
         onBackPress={handleBackPress}
       />
+
+
 
       {/* Progress - MAINTENANT COLLÉ AU HEADER */}
       <PhrasesProgress

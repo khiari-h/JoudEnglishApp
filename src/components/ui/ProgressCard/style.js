@@ -17,21 +17,20 @@ const createStyles = (levelColor = "#5E60CE") =>
 
     // =================== CARD PRINCIPALE ===================
     cardGradient: {
-      borderRadius: 16,
+      borderRadius: 24, // Plus arrondi
       overflow: 'hidden',
       backgroundColor: 'white',
-      borderWidth: 1,
-      borderColor: '#F1F5F9',
-      // Ombre subtile
+      borderWidth: 0, // Pas de bordure
+      // Ombre plus marquée pour la profondeur
       ...Platform.select({
         ios: {
           shadowColor: '#000',
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.06,
-          shadowRadius: 8,
+          shadowOffset: { width: 0, height: 6 },
+          shadowOpacity: 0.12,
+          shadowRadius: 16,
         },
         android: {
-          elevation: 2,
+          elevation: 8,
         },
       }),
     },
@@ -41,8 +40,8 @@ const createStyles = (levelColor = "#5E60CE") =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: 16,
-      paddingBottom: 12,
+      padding: 20, // Plus d'espace
+      paddingBottom: 16,
     },
     headerLeft: {
       flex: 1,
@@ -68,25 +67,27 @@ const createStyles = (levelColor = "#5E60CE") =>
       marginTop: 2,
     },
 
-    // =================== STATS ÉPURÉES ===================
+    // =================== STATS STYLISÉES ===================
     statsContainer: {
       flexDirection: 'row',
       alignItems: 'baseline',
+      gap: 2,
     },
     statsCount: {
-      fontSize: 16,
-      fontWeight: '700',
-      letterSpacing: 0.3,
+      fontSize: 20, // Plus gros
+      fontWeight: '800', // Plus bold
+      letterSpacing: 0.5,
+      color: '#EF4444', // Rouge pour le chiffre complété
     },
     statsTotal: {
-      fontSize: 14,
+      fontSize: 18, // Plus gros
       color: '#6B7280',
-      fontWeight: '500',
+      fontWeight: '600',
     },
     statsPercentage: {
-      fontSize: 14,
-      fontWeight: '700',
-      letterSpacing: 0.3,
+      fontSize: 16, // Plus gros
+      fontWeight: '800', // Plus bold
+      letterSpacing: 0.5,
     },
 
     // =================== CHEVRON D'EXPANSION ===================
@@ -105,8 +106,8 @@ const createStyles = (levelColor = "#5E60CE") =>
 
     // =================== SECTION PROGRESSION ===================
     progressSection: {
-      paddingHorizontal: 16,
-      paddingBottom: 16,
+      paddingHorizontal: 20, // Plus d'espace
+      paddingBottom: 20, // Plus d'espace
     },
 
     // =================== EXPANSION ÉPURÉE ===================
@@ -194,6 +195,8 @@ const createStyles = (levelColor = "#5E60CE") =>
     categoryProgressContainer: {
       // Le ProgressBar gère ses propres styles
     },
+
+
   });
 
 export default createStyles;

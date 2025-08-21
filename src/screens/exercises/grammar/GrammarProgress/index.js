@@ -1,6 +1,7 @@
-// GrammarProgress/index.js - VERSION TOTALEMENT RECODÉE AVEC useMemo
+// GrammarProgress/index.js - VERSION AVEC GAMIFICATION
 
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import useProgressGamification from "../../../../hooks/useProgressGamification";
 import {
   calculateTotalExercises,
   calculateCompletedExercisesCount,
@@ -72,23 +73,32 @@ const GrammarProgress = ({
     }));
   }, [statsData.ruleProgressData]);
 
-  // ✅ CORRECTION FINALE : Pas de log dans le render !
-  // Le log était dans le render, il se déclenchait à chaque fois
-  // On peut l'ajouter dans un useEffect si vraiment nécessaire
+  // 🎭 GAMIFICATION : Utilise le hook pour transformer la progression
+  const gamification = useMemo(() => {
+    return useProgressGamification({
+      progress: statsData.totalProgress,
+      completed: statsData.completedExercisesCount,
+      total: statsData.totalExercisesCount,
+      type: "grammar"
+    });
+  }, [statsData.totalProgress, statsData.completedExercisesCount, statsData.totalExercisesCount]);
 
   return (
     <ProgressCard
-      title="Progression"
+      title={gamification.messages.main} // 🎭 Titre dynamique et motivant
+      subtitle={gamification.messages.subtitle} // 🎭 Sous-titre dynamique
       progress={statsData.totalProgress}
       completed={statsData.completedExercisesCount}
       total={statsData.totalExercisesCount}
       unit="exercices"
-      levelColor={levelColor}
+      levelColor={gamification.colors.primary} // 🎭 Couleur dynamique selon la progression
       expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedRuleData}
       onCategoryPress={onRulePress}
+      // 🎭 Props de gamification pour ProgressCard
+      gamificationData={gamification}
     />
   );
 };

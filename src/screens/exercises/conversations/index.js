@@ -19,6 +19,7 @@ import ConversationInput from "./ConversationInput";
 // Hook & Utils
 import useConversation from "./hooks/useConversation";
 import useLastActivity from "../../../hooks/useLastActivity";
+import useExerciseBackground from "../../../hooks/useExerciseBackground";
 import { getConversationData, getLevelColor } from "../../../utils/conversation/conversationDataHelper";
 import styles from "./style";
 
@@ -34,6 +35,9 @@ const ConversationExercise = ({ route }) => {
   // Data
   const levelColor = getLevelColor(level);
   const conversationData = useMemo(() => getConversationData(level), [level]);
+  
+  // 🎨 BACKGROUND DYNAMIQUE : Utilise le hook pour un fond coloré
+  const { gradientColors } = useExerciseBackground("conversations", levelColor);
 
   // Hook unifié
   const {
@@ -124,7 +128,7 @@ const ConversationExercise = ({ route }) => {
         testID="conversation-container"
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#FAFBFC"
+        gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
         statusBarStyle="dark-content"
       >
         {/* Loading content can be added here */}
@@ -137,7 +141,7 @@ const ConversationExercise = ({ route }) => {
       testID="conversation-container" 
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-      backgroundColor="#FAFBFC"
+      gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
       statusBarStyle="dark-content"
       withPadding={false}
       style={styles.safeArea}

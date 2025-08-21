@@ -72,6 +72,8 @@ const AssessmentProgress = ({
       onToggleExpand={onToggleExpand}
       categoryData={progressData.sectionData}
       onCategoryPress={onSectionPress}
+      // 🎨 PAS DE GAMIFICATION : Garde le design professionnel
+      gamificationData={null}
     />
   );
 };

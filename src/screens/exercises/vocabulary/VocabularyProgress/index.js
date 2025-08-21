@@ -1,6 +1,7 @@
-// VocabularyProgress/index.js - VERSION DEBUG
+// VocabularyProgress/index.js - VERSION AVEC GAMIFICATION
 import PropTypes from 'prop-types';
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import useProgressGamification from "../../../../hooks/useProgressGamification";
 import {
   calculateTotalWords,
   calculateCompletedWordsCount,
@@ -19,44 +20,34 @@ const VocabularyProgress = ({
   
   // ✅ CORRIGÉ : Détecte la vraie structure CLASSIC vs FAST
   const getDataArray = () => {
-    console.log(`🔍 DEBUG VocabularyProgress - Data structure:`, vocabularyData ? Object.keys(vocabularyData) : 'null');
-    
     if (vocabularyData?.categories && Array.isArray(vocabularyData.categories)) {
-      console.log(`   - Mode: CLASSIC (categories)`);
       return vocabularyData.categories;
     } else if (vocabularyData?.exercises && Array.isArray(vocabularyData.exercises)) {
-      console.log(`   - Mode: CLASSIC (exercises)`);
       return vocabularyData.exercises;
     } else if (vocabularyData?.fastExercises && Array.isArray(vocabularyData.fastExercises)) {
-      console.log(`   - Mode: FAST (fastExercises)`);
       return vocabularyData.fastExercises;
     }
-    console.log(`   - Mode: UNKNOWN - Retourne tableau vide`);
     return [];
   };
 
   const dataArray = getDataArray();
-  
-  // 🔧 DEBUG CRITIQUE - Vérifier les completedWords
-  console.log('🔧 DEBUG VocabularyProgress - DONNÉES REÇUES:');
-  console.log(`   - vocabularyData keys:`, vocabularyData ? Object.keys(vocabularyData) : 'null');
-  console.log(`   - completedWords:`, completedWords);
-  console.log(`   - dataArray length:`, dataArray.length);
   
   // ✅ CORRIGÉ : Utilise la vraie structure détectée
   const totalWordsCount = calculateTotalWords(dataArray);
   const completedWordsCount = calculateCompletedWordsCount(completedWords);
   const totalProgress = calculateTotalProgress(dataArray, completedWords);
   
-  // 🔧 DEBUG CRITIQUE - Vérifier les calculs
-  console.log('🔧 DEBUG VocabularyProgress - CALCULS:');
-  console.log(`   - totalWordsCount:`, totalWordsCount);
-  console.log(`   - completedWordsCount:`, completedWordsCount);
-  console.log(`   - totalProgress:`, totalProgress);
-  
   // Données des catégories pour l'expansion
   const categoryProgressData = calculateCategoryProgress(dataArray, completedWords);
   
+  // 🎭 GAMIFICATION : Utilise le hook pour transformer la progression
+  const gamification = useProgressGamification({
+    progress: totalProgress,
+    completed: completedWordsCount,
+    total: totalWordsCount,
+    type: "vocabulary"
+  });
+
   // Transformation pour le format ProgressCard
   const formattedCategoryData = categoryProgressData.map((category) => ({
     title: category.title,
@@ -67,17 +58,20 @@ const VocabularyProgress = ({
 
   return (
     <ProgressCard
-      title="Progression"
+      title={gamification.messages.main} // 🎭 Titre dynamique et motivant
+      subtitle={gamification.messages.subtitle} // 🎭 Sous-titre dynamique
       progress={totalProgress}
       completed={completedWordsCount}
       total={totalWordsCount}
       unit="mots"
-      levelColor={levelColor}
+      levelColor={gamification.colors.primary} // 🎭 Couleur dynamique selon la progression
       expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedCategoryData}
       onCategoryPress={onCategoryPress}
+      // 🎭 Props de gamification pour ProgressCard
+      gamificationData={gamification}
     />
   );
 };

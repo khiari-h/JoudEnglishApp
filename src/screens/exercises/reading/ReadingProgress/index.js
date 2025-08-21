@@ -1,6 +1,7 @@
-// ReadingProgress/index.js - VERSION CORRIGÉE AVEC DÉTECTION AUTO
+// ReadingProgress/index.js - VERSION AVEC GAMIFICATION
 
 import ProgressCard from "../../../../components/ui/ProgressCard";
+import useProgressGamification from "../../../../hooks/useProgressGamification";
 import {
   calculateTotalQuestions,
   calculateCompletedQuestionsCount,
@@ -53,6 +54,14 @@ const ReadingProgress = ({
   const totalProgress = calculateTotalProgress(dataArray, completedQuestions);
   const exerciseProgressData = calculateExerciseProgress(dataArray, completedQuestions);
 
+  // 🎭 GAMIFICATION : Utilise le hook pour transformer la progression
+  const gamification = useProgressGamification({
+    progress: totalProgress,
+    completed: completedQuestionsCount,
+    total: totalQuestionsCount,
+    type: "reading"
+  });
+
   // Transformation pour le format ProgressCard
   const formattedExerciseData = exerciseProgressData.map((exercise) => ({
     title: exercise.title,
@@ -63,17 +72,20 @@ const ReadingProgress = ({
 
   return (
     <ProgressCard
-      title="Progression" // ✅ Titre uniforme
+      title={gamification.messages.main} // 🎭 Titre dynamique et motivant
+      subtitle={gamification.messages.subtitle} // 🎭 Sous-titre dynamique
       progress={totalProgress}
       completed={completedQuestionsCount}
       total={totalQuestionsCount}
       unit="questions"
-      levelColor={levelColor}
+      levelColor={gamification.colors.primary} // 🎭 Couleur dynamique selon la progression
       expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}
       categoryData={formattedExerciseData}
       onCategoryPress={onExercisePress}
+      // 🎭 Props de gamification pour ProgressCard
+      gamificationData={gamification}
     />
   );
 };

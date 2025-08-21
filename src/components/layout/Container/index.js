@@ -2,6 +2,7 @@
 
 import { View, StatusBar, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { LinearGradient } from "expo-linear-gradient";
 import styles from "./style";
 import PropTypes from 'prop-types'; // ✅ Ajout de l'import de PropTypes
 
@@ -19,6 +20,7 @@ const Container = ({
   withStatusBar = true,
   withPadding = true,
   backgroundColor = "#F9FAFB",
+  gradientColors = null, // 🎨 NOUVEAU : Couleurs de gradient
   scrollViewProps = {},
   safeAreaEdges = ['top', 'left', 'right'],
   ...props
@@ -27,7 +29,7 @@ const Container = ({
 
   const containerStyle = [
     styles.container,
-    { backgroundColor },
+    !gradientColors && { backgroundColor }, // 🎨 Background normal si pas de gradient
     withPadding && styles.withPadding,
     style,
   ];
@@ -61,6 +63,25 @@ const Container = ({
     </>
   );
 
+  // 🎨 RENDRE AVEC GRADIENT OU BACKGROUND NORMAL
+  if (gradientColors) {
+    return (
+      <LinearGradient
+        colors={gradientColors}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={[styles.container, withPadding && styles.withPadding, style]}
+      >
+        <WrapperComponent 
+          style={[styles.container, { backgroundColor: 'transparent' }]}
+          {...safeAreaProps}
+        >
+          {content}
+        </WrapperComponent>
+      </LinearGradient>
+    );
+  }
+
   return (
     <WrapperComponent 
       style={containerStyle}
@@ -91,6 +112,8 @@ Container.propTypes = {
   withPadding: PropTypes.bool,
   // 'backgroundColor' est manquant
   backgroundColor: PropTypes.string,
+  // 'gradientColors' est manquant dans la validation
+  gradientColors: PropTypes.arrayOf(PropTypes.string),
   // 'scrollViewProps' est manquant
   scrollViewProps: PropTypes.object,
   // 'safeAreaEdges' est manquant

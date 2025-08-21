@@ -19,6 +19,7 @@ import WordGamesResults from "./WordGamesResults";
 // Hook & Utils
 import useWordGames from "./hooks/useWordGames";
 import useLastActivity from "../../../hooks/useLastActivity";
+import useExerciseBackground from "../../../hooks/useExerciseBackground";
 import { getWordGamesData, getLevelColor } from "../../../utils/wordGames/wordGamesDataHelper";
 import createStyles from "./style";
 
@@ -39,6 +40,9 @@ const WordGamesExercise = ({ route }) => {
   // Data
   const levelColor = getLevelColor(level);
   const wordGamesData = useMemo(() => getWordGamesData(level), [level]);
+  
+  // 🎨 BACKGROUND DYNAMIQUE : Utilise le hook pour un fond coloré
+  const { gradientColors } = useExerciseBackground("word-games", levelColor);
 
   // Hook unifié
   const {
@@ -176,7 +180,7 @@ const WordGamesExercise = ({ route }) => {
       <Container
         safeArea
         safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-        backgroundColor="#f8fafc"
+        gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
         statusBarStyle="dark-content"
       >
         <WordGamesResults
@@ -195,7 +199,7 @@ const WordGamesExercise = ({ route }) => {
     <Container
       safeArea
       safeAreaEdges={CONTAINER_SAFE_EDGES.ALL}
-      backgroundColor="#f8fafc"
+      gradientColors={gradientColors} // 🎨 BACKGROUND DYNAMIQUE
       statusBarStyle="dark-content"
       withPadding={false}
     >
