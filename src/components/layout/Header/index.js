@@ -78,21 +78,25 @@ const Header = ({
   };
   
   // Fonction pour déterminer le composant droit
-  const renderRightComponent = () => {
-    if (rightComponent) return rightComponent;
-    if (rightIcon) {
-      return (
-        <TouchableOpacity
-          onPress={onRightPress}
-          style={styles.rightButton}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        >
+// Dans renderRightComponent :
+const renderRightComponent = () => {
+  if (rightComponent) return rightComponent;
+  if (rightIcon) {
+    // Vérifier si c'est un emoji ou un nom d'icône
+    const isEmoji = rightIcon.length <= 2 && /\p{Emoji}/u.test(rightIcon);
+    
+    return (
+      <TouchableOpacity onPress={onRightPress} style={styles.rightButton}>
+        {isEmoji ? (
+          <Text style={styles.emojiIcon}>{rightIcon}</Text>
+        ) : (
           <Ionicons name={rightIcon} size={24} color={textColor} />
-        </TouchableOpacity>
-      );
-    }
-    return <View style={styles.placeholderButton} />;
-  };
+        )}
+      </TouchableOpacity>
+    );
+  }
+  return <View style={styles.placeholderButton} />;
+};
   
   // Fonction pour déterminer le composant droit en mode titre large
   const renderLargeTitleRightComponent = () => {

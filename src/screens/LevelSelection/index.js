@@ -146,6 +146,7 @@ const LevelSelection = () => {
       >
         <Header
           title="Niveaux"
+          rightIcon="🎓"
           showBackButton
           onBackPress={onBackPress}
           backgroundColor="transparent"
