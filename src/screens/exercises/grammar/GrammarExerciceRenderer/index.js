@@ -1,10 +1,10 @@
-// GrammarExerciseRenderer/index.js - CORRIGÉ pour éliminer les 23 violations SonarQube
+// GrammarExerciseRenderer/index.js - VERSION HARMONISÉE avec WordCard moderne 🎯
 
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import PropTypes from 'prop-types';
-import HeroCard from "../../../../components/ui/HeroCard";
+import WordCard from "../../../../components/ui/WordCard"; // ← NOUVELLE WordCard harmonisée
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
 import { useCallback } from 'react';
@@ -129,14 +129,21 @@ OptionItem.propTypes = {
   levelColor: PropTypes.string.isRequired,
 };
 
-// Composant pour le contenu commun des exercices
+// Composant pour le contenu commun des exercices - MAINTENANT AVEC WordCard
 const ExerciseContent = ({ exercise, levelColor, title, content, isItalic = false }) => (
   <>
-    <HeroCard 
+    {/* 🆕 NOUVELLE WORD CARD HARMONISÉE - Même design que vocabulaire/expressions */}
+    <WordCard
       content={exercise.question}
-      fontSize={24}
+      translation={exercise.answer || "Voir la réponse"}
+      counter=""
+      showTranslation={false}
+      onToggleTranslation={() => {}} // Pas de toggle pour grammaire
       levelColor={levelColor}
-      showUnderline
+      type="grammar"
+      showCounter={false} // Pas de compteur pour grammaire
+      revealText="Voir la réponse"
+      hideText="Masquer la réponse"
     />
     
     {exercise.sentence && (
@@ -157,6 +164,7 @@ ExerciseContent.propTypes = {
   exercise: PropTypes.shape({
     question: PropTypes.string.isRequired,
     sentence: PropTypes.string,
+    answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }).isRequired,
   levelColor: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -165,9 +173,9 @@ ExerciseContent.propTypes = {
 };
 
 /**
- * 🎯 GrammarExerciseRenderer - Version Refactorisée avec composants génériques
- * Utilise HeroCard pour la question principale
- * Design cohérent avec VocabularyWordCard et PhraseCard
+ * 🎯 GrammarExerciseRenderer - Version harmonisée avec WordCard moderne
+ * Utilise la même WordCard que vocabulaire/expressions pour une cohérence globale
+ * ✅ HARMONISÉ : Même design, même comportement, même qualité
  * Complexité cognitive réduite de 19 à 15
  */
 const GrammarExerciseRenderer = ({
@@ -181,10 +189,10 @@ const GrammarExerciseRenderer = ({
   exerciseIndex,
   attempts,
 }) => {
-  // ✅ CORRECTION : Déplacer TOUS les useCallback AVANT le return conditionnel
   const styles = createStyles();
   const levelColor = "#3b82f6"; // Couleur Grammar
 
+  // ✅ TOUS LES HOOKS ET FONCTIONS DOIVENT ÊTRE AVANT LE RETURN CONDITIONNEL
   // Remplace les fonctions fléchées inline par des callbacks mémorisés
   const handleChangeText1 = useCallback((text) => {
     if (!showFeedback) setInputText(text);
@@ -204,11 +212,9 @@ const GrammarExerciseRenderer = ({
     [handleOptionPress]
   );
 
-  // ✅ MAINTENANT on peut faire le return conditionnel
-  if (!exercise) return null;
-
+  // ✅ DÉFINIR TOUTES LES FONCTIONS DE RENDU AVANT LE RETURN
   // Render pour un exercice à choix multiples
-  const renderMultipleChoiceExercise = () => (
+  const renderMultipleChoiceExercise = useCallback(() => (
     <View style={styles.container}>
       <ExerciseContent 
         exercise={exercise}
@@ -234,10 +240,10 @@ const GrammarExerciseRenderer = ({
         ))}
       </View>
     </View>
-  );
+  ), [exercise, levelColor, selectedOption, showFeedback, isCorrect, getOptionPressHandler, styles]);
 
   // Render pour un exercice à remplir les blancs
-  const renderFillBlankExercise = () => (
+  const renderFillBlankExercise = useCallback(() => (
     <View style={styles.container}>
       <ExerciseContent 
         exercise={exercise}
@@ -259,10 +265,10 @@ const GrammarExerciseRenderer = ({
         />
       </View>
     </View>
-  );
+  ), [exercise, levelColor, exerciseIndex, attempts, showFeedback, inputText, isCorrect, styles, handleChangeText1]);
 
   // Render pour un exercice de transformation
-  const renderTransformationExercise = () => (
+  const renderTransformationExercise = useCallback(() => (
     <View style={styles.container}>
       <ExerciseContent 
         exercise={exercise}
@@ -286,7 +292,10 @@ const GrammarExerciseRenderer = ({
         />
       </View>
     </View>
-  );
+  ), [exercise, levelColor, exerciseIndex, attempts, showFeedback, inputText, isCorrect, styles, handleChangeText2]);
+
+  // ✅ MAINTENANT on peut faire le return conditionnel APRÈS tous les hooks et fonctions
+  if (!exercise) return null;
 
   // Déterminer quel type d'exercice afficher
   if (exercise.type === "fillInTheBlank" && exercise.options) {

@@ -73,15 +73,13 @@ const GrammarProgress = ({
     }));
   }, [statsData.ruleProgressData]);
 
-  // 🎭 GAMIFICATION : Utilise le hook pour transformer la progression
-  const gamification = useMemo(() => {
-    return useProgressGamification({
-      progress: statsData.totalProgress,
-      completed: statsData.completedExercisesCount,
-      total: statsData.totalExercisesCount,
-      type: "grammar"
-    });
-  }, [statsData.totalProgress, statsData.completedExercisesCount, statsData.totalExercisesCount]);
+  // 🎭 GAMIFICATION : Hook déplacé EN DEHORS du useMemo
+  const gamification = useProgressGamification({
+    progress: statsData.totalProgress,
+    completed: statsData.completedExercisesCount,
+    total: statsData.totalExercisesCount,
+    type: "grammar"
+  });
 
   return (
     <ProgressCard

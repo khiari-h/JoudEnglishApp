@@ -232,6 +232,7 @@ const PhrasesExercise = ({ route }) => {
         showTranslation={showTranslation}
         onToggleTranslation={toggleTranslation}
         levelColor={levelColor}
+        counter={`${phraseIndex + 1} / ${totalPhrasesInCategory}`}
       />
 
       {/* Navigation */}

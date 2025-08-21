@@ -1,16 +1,18 @@
-// VocabularyWordSection/index.js - VERSION AJUSTÉE (garde la logique, utilise le nouveau VocabularyWordCard)
+// VocabularyWordSection/index.js - VERSION MODERNISÉE avec WordCard
 
 import { memo } from "react";
 import { View, Text } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons";
 import PropTypes from 'prop-types';
-import VocabularyWordCard from "../VocabularyWordCard"; // ← Utilise la version refactorisée
+import WordCard from "../../../../components/ui/WordCard"; // ← NOUVELLE WordCard moderne
 import createStyles from "./style";
 
 /**
- * ⚡ VocabularyWordSection - Version ajustée
+ * ⚡ VocabularyWordSection - Version modernisée
  * Garde toute la logique métier (compteur, mode, etc.)
- * Utilise le nouveau VocabularyWordCard refactorisé
+ * Utilise la NOUVELLE WordCard moderne et réutilisable
+ * NOUVELLE ExampleCard moderne avec style indigo
+ * ❌ SUPPRIMÉ : CounterSection (maintenant intégré dans WordCard)
  * 
  * @param {object} currentWord - Mot actuel avec ses propriétés
  * @param {string} wordCounter - Compteur stylé (ex: "34 / 80")
@@ -30,45 +32,51 @@ const VocabularyWordSection = memo(({
   
   return (
     <View style={styles.container}>
-      {/* 🎯 COMPTEUR STYLÉ - Garde la logique existante */}
-      <CounterSection wordCounter={wordCounter} levelColor={levelColor} styles={styles} />
+      {/* ❌ SUPPRIMÉ : CounterSection (maintenant intégré dans WordCard) */}
+      {/* Le compteur est maintenant directement dans la WordCard */}
 
-      {/* 🎨 NOUVELLE CARTE DU MOT - Utilise la version refactorisée */}
-      <VocabularyWordCard
-        word={currentWord.word || ""}
+      {/* 🆕 NOUVELLE WORD CARD MODERNE - Remplace HeroCard + RevealButton */}
+      <WordCard
+        content={currentWord.word || ""}
         translation={currentWord.translation || ""}
-        definition={currentWord.definition || ""}
-        example={currentWord.example || ""}
+        counter={wordCounter}
         showTranslation={showTranslation}
         onToggleTranslation={onToggleTranslation}
         levelColor={levelColor}
+        type="word"
+        revealText="Révéler la traduction"
+        hideText="Masquer la traduction"
       />
+
+      {/* 🆕 NOUVELLE EXAMPLE CARD MODERNE - Style indigo avec icône Volume2 */}
+      {currentWord.example && (
+        <ExampleCard example={currentWord.example} styles={styles} />
+      )}
     </View>
   );
 });
 
-const CounterSection = ({ wordCounter, levelColor, styles }) => (
-  <View style={styles.counterSection}>
-    <LinearGradient
-      colors={[`${levelColor}08`, `${levelColor}04`, 'transparent']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.counterGradient}
-    >
-      {/* Compteur principal */}
-      <View style={[styles.counterBadge, { borderColor: `${levelColor}20` }]}> 
-        <Text style={[styles.counterText, { color: levelColor }]}> 
-          {wordCounter}
-        </Text>
+// 🆕 NOUVELLE EXAMPLE CARD MODERNE - Style indigo avec icône Volume2
+const ExampleCard = ({ example, styles }) => (
+  <View style={styles.exampleCard}>
+    <View style={styles.exampleContent}>
+      {/* Icône Volume2 dans un cercle indigo */}
+      <View style={styles.exampleIconContainer}>
+        <Ionicons name="volume-high" size={16} color="#6366F1" />
       </View>
-    </LinearGradient>
+      
+      {/* Contenu texte */}
+      <View style={styles.exampleTextContainer}>
+        <Text style={styles.exampleTitle}>Exemple</Text>
+        <Text style={styles.exampleText}>{example}</Text>
+      </View>
+    </View>
   </View>
 );
 
-// PropTypes pour CounterSection
-CounterSection.propTypes = {
-  wordCounter: PropTypes.string.isRequired,
-  levelColor: PropTypes.string.isRequired,
+// PropTypes pour ExampleCard
+ExampleCard.propTypes = {
+  example: PropTypes.string.isRequired,
   styles: PropTypes.object.isRequired,
 };
 

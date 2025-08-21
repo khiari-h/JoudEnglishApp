@@ -1,25 +1,30 @@
-// AssessmentQuestion/index.js - VERSION REFACTORISÉE avec composants génériques
+// src/screens/exercises/level-assessment/AssessmentQuestion/index.js - VERSION HARMONISÉE avec WordCard moderne 🎯
 
-import { View, TouchableOpacity, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
+import { useCallback } from "react";
 import PropTypes from 'prop-types';
-import HeroCard from "../../../../components/ui/HeroCard";
+import WordCard from "../../../../components/ui/WordCard"; // ← NOUVELLE WordCard harmonisée
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
-import { useCallback } from 'react';
 
 /**
- * 🎯 AssessmentQuestion - Version Refactorisée avec composants génériques
- * Utilise HeroCard pour la question + ContentSection pour le feedback
+ * ❓ AssessmentQuestion - Version harmonisée avec WordCard moderne
+ * Utilise la même WordCard que vocabulaire/expressions/grammaire/lecture/jeux pour une cohérence globale
+ * ✅ HARMONISÉ : Même design, même comportement, même qualité
  * 
- * @param {object} question - Question avec text, options, correctAnswer, explanation
- * @param {number} selectedAnswer - Index de la réponse sélectionnée
- * @param {boolean} showFeedback - Afficher le feedback ou non
+ * @param {object} question - Question à afficher
+ * @param {number} selectedAnswer - Réponse sélectionnée
+ * @param {boolean} showFeedback - Afficher le feedback
  * @param {string} levelColor - Couleur du niveau
- * @param {function} onSelectAnswer - Callback sélection réponse
+ * @param {function} onSelectAnswer - Fonction appelée lors de la sélection
  */
-const AssessmentQuestion = ({ question, selectedAnswer, showFeedback, levelColor, onSelectAnswer }) => {
-  // ✅ CORRECTION : Déplacer le useCallback AVANT le return conditionnel
-  const handlePress = useCallback((idx) => () => onSelectAnswer(idx), [onSelectAnswer]);
+const AssessmentQuestion = ({
+  question,
+  selectedAnswer,
+  showFeedback,
+  levelColor = "#3b82f6",
+  onSelectAnswer,
+}) => {
   const styles = createStyles();
 
   if (!question || !question.options) {
@@ -32,16 +37,29 @@ const AssessmentQuestion = ({ question, selectedAnswer, showFeedback, levelColor
     ? "✅ Correct! Great job." 
     : "❌ Oops! The correct answer is different.";
 
+  // Handler stable pour chaque option
+  const handlePress = useCallback(
+    (index) => () => {
+      if (!showFeedback) {
+        onSelectAnswer(index);
+      }
+    },
+    [onSelectAnswer, showFeedback]
+  );
+
   return (
     <View style={styles.container}>
-      {/* 🎯 QUESTION PRINCIPALE - HeroCard */}
-      <HeroCard 
+      {/* 🆕 NOUVELLE WORD CARD HARMONISÉE - Même design que vocabulaire/expressions/grammaire/lecture/jeux */}
+      <WordCard
         content={question.text}
-        fontSize={20}
+        translation=""
+        counter=""
+        showTranslation={false}
+        onToggleTranslation={() => {}} // Pas de toggle pour évaluation
         levelColor={levelColor}
-        showUnderline={false}
-        backgroundColor="white"
-        padding={24}
+        type="assessment"
+        showCounter={false} // Pas de compteur pour évaluation
+        showRevealButton={false} // Pas de bouton reveal pour évaluation
       />
       
       {/* 📝 OPTIONS DE RÉPONSE */}

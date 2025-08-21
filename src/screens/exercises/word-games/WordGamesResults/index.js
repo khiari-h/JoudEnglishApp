@@ -1,7 +1,7 @@
-// WordGamesResults/index.js - VERSION REFACTORISÉE avec composants génériques
+// WordGamesResults/index.js - VERSION HARMONISÉE avec WordCard moderne 🎯
 
 import { View, ScrollView } from "react-native";
-import HeroCard from "../../../../components/ui/HeroCard";
+import WordCard from "../../../../components/ui/WordCard"; // ← NOUVELLE WordCard harmonisée
 import ContentSection from "../../../../components/ui/ContentSection";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import { getPerformanceLevel, generateFeedbackMessage, calculateGameTypeStats } from "../../../../utils/wordGames/wordGamesStats";
@@ -9,10 +9,10 @@ import createStyles from "./style";
 import PropTypes from 'prop-types';
 
 /**
- * 🏆 WordGamesResults - Version Refactorisée avec composants génériques
- * 150+ lignes → 70 lignes (-53% de code)
- * Utilise HeroCard + ContentSection + NavigationButtons
- * * @param {array} games - Liste des jeux joués
+ * 🏆 WordGamesResults - Version harmonisée avec WordCard moderne
+ * Utilise la même WordCard que vocabulaire/expressions/grammaire/lecture pour une cohérence globale
+ * ✅ HARMONISÉ : Même design, même comportement, même qualité
+ * @param {array} games - Liste des jeux joués
  * @param {array} gameResults - Résultats de chaque jeu
  * @param {object} finalScore - Score final {score, percentage, totalMaxScore}
  * @param {string} levelColor - Couleur du niveau
@@ -33,13 +33,17 @@ const WordGamesResults = ({
   if (!finalScore || finalScore.totalMaxScore === 0) {
     return (
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-        {/* 🎯 HERO - Titre simple */}
-        <HeroCard 
+        {/* 🆕 NOUVELLE WORD CARD HARMONISÉE - Même design que vocabulaire/expressions/grammaire/lecture */}
+        <WordCard
           content="Games Complete!"
-          fontSize={24}
+          translation=""
+          counter=""
+          showTranslation={false}
+          onToggleTranslation={() => {}} // Pas de toggle pour jeux
           levelColor={levelColor}
-          showUnderline
-          backgroundColor="white"
+          type="game"
+          showCounter={false} // Pas de compteur pour jeux
+          showRevealButton={false} // Pas de bouton reveal pour jeux
         />
 
         {/* 📝 MESSAGE SIMPLE */}
@@ -79,14 +83,17 @@ const WordGamesResults = ({
       contentContainerStyle={styles.content}
       showsVerticalScrollIndicator={false}
     >
-      {/* 🎯 HERO - Score principal spectaculaire */}
-      <HeroCard 
+      {/* 🆕 NOUVELLE WORD CARD HARMONISÉE - Score principal spectaculaire */}
+      <WordCard
         content={`${Math.round(finalScore.percentage)}%`}
-        fontSize={56}
+        translation=""
+        counter=""
+        showTranslation={false}
+        onToggleTranslation={() => {}} // Pas de toggle pour jeux
         levelColor={performance.color}
-        showUnderline={false}
-        backgroundColor={`${performance.color}10`}
-        padding={32}
+        type="game"
+        showCounter={false} // Pas de compteur pour jeux
+        showRevealButton={false} // Pas de bouton reveal pour jeux
         subtitle={`${finalScore.score}/${finalScore.totalMaxScore} points`}
       />
 

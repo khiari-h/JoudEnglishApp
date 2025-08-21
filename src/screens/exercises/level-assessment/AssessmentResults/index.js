@@ -1,16 +1,16 @@
-// src/screens/exercises/level-assessment/AssessmentResults/index.js - AVEC PROPTYPES
+// src/screens/exercises/level-assessment/AssessmentResults/index.js - VERSION HARMONISÉE avec WordCard moderne 🎯
 
 import { View, ScrollView } from "react-native";
 import PropTypes from 'prop-types';
-import HeroCard from "../../../../components/ui/HeroCard";
+import WordCard from "../../../../components/ui/WordCard"; // ← NOUVELLE WordCard harmonisée
 import ContentSection from "../../../../components/ui/ContentSection";
 import NavigationButtons from "../../../../components/exercise-common/NavigationButtons";
 import createStyles from "./style";
 
 /**
- * 🏆 AssessmentResults - Version Refactorisée avec composants génériques
- * 200+ lignes → 60 lignes (-70% de code)
- * Utilise HeroCard + ContentSection + NavigationButtons
+ * 🏆 AssessmentResults - Version harmonisée avec WordCard moderne
+ * Utilise la même WordCard que vocabulaire/expressions/grammaire/lecture/jeux pour une cohérence globale
+ * ✅ HARMONISÉ : Même design, même comportement, même qualité
  * 
  * @param {string} level - Niveau de l'évaluation
  * @param {string} levelColor - Couleur du niveau
@@ -31,13 +31,17 @@ const AssessmentResults = ({
   if (!userScore) {
     return (
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-        {/* 🎯 HERO - Titre simple */}
-        <HeroCard 
+        {/* 🆕 NOUVELLE WORD CARD HARMONISÉE - Même design que vocabulaire/expressions/grammaire/lecture/jeux */}
+        <WordCard
           content="Évaluation Terminée"
-          fontSize={24}
+          translation=""
+          counter=""
+          showTranslation={false}
+          onToggleTranslation={() => {}} // Pas de toggle pour évaluation
           levelColor={levelColor}
-          showUnderline
-          backgroundColor="white"
+          type="assessment"
+          showCounter={false} // Pas de compteur pour évaluation
+          showRevealButton={false} // Pas de bouton reveal pour évaluation
         />
 
         {/* 📝 MESSAGE SIMPLE */}
@@ -115,14 +119,17 @@ const AssessmentResults = ({
       contentContainerStyle={styles.content}
       showsVerticalScrollIndicator={false}
     >
-      {/* 🎯 HERO - Score principal spectaculaire */}
-      <HeroCard 
+      {/* 🆕 NOUVELLE WORD CARD HARMONISÉE - Score principal spectaculaire */}
+      <WordCard
         content={`${scoreOutOf20}/20`}
-        fontSize={56}
+        translation=""
+        counter=""
+        showTranslation={false}
+        onToggleTranslation={() => {}} // Pas de toggle pour évaluation
         levelColor={performance.color}
-        showUnderline={false}
-        backgroundColor={performance.backgroundColor}
-        padding={32}
+        type="assessment"
+        showCounter={false} // Pas de compteur pour évaluation
+        showRevealButton={false} // Pas de bouton reveal pour évaluation
         subtitle={`${userScore.percentage.toFixed(1)}%`}
       />
 

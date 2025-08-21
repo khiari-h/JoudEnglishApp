@@ -138,12 +138,11 @@ const WordGamesExercise = ({ route }) => {
 
   // ✅ CORRIGÉ : Navigation de retour
   const handleBackPress = useCallback(() => {
-    if (navigation.canGoBack()) {
-      navigation.goBack();
-    } else {
-      router.back();
-    }
-  }, [navigation]);
+    router.push({
+      pathname: "/tabs/exerciseSelection",
+      params: { level }
+    });
+  }, [level]);
 
   // ✅ CORRIGÉ : Gestion de la continuation
   const handleContinue = useCallback(() => {

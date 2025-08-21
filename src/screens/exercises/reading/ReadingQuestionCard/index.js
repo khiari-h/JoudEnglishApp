@@ -1,14 +1,16 @@
-// ReadingQuestionCard/index.js - VERSION SIMPLE
+// ReadingQuestionCard/index.js - VERSION HARMONISÉE avec WordCard moderne 🎯
 import { View, Text, TouchableOpacity, Animated } from "react-native";
 import { useCallback } from "react";
 import PropTypes from 'prop-types';
 import { Ionicons } from "@expo/vector-icons";
-import HeroCard from "../../../../components/ui/HeroCard";
+import WordCard from "../../../../components/ui/WordCard"; // ← NOUVELLE WordCard harmonisée
 import ContentSection from "../../../../components/ui/ContentSection";
 import createStyles from "./style";
 
 /**
- * ❓ ReadingQuestionCard - Version Simple & Efficace
+ * ❓ ReadingQuestionCard - Version harmonisée avec WordCard moderne
+ * Utilise la même WordCard que vocabulaire/expressions/grammaire pour une cohérence globale
+ * ✅ HARMONISÉ : Même design, même comportement, même qualité
  * ❌ Confetti animations
  * ❌ Complex micro-interactions
  * ✅ Clean, functional, maintainable
@@ -64,16 +66,18 @@ const ReadingQuestionCard = ({
         },
       ]}
     >
-      {/* Question Header */}
-      <View style={styles.questionHeader}>
-        <HeroCard 
-          content={`Question ${questionIndex + 1}`}
-          fontSize={18}
-          levelColor={levelColor}
-          showUnderline={false}
-          backgroundColor="#F8F9FA"
-        />
-      </View>
+      {/* 🆕 NOUVELLE WORD CARD HARMONISÉE - Même design que vocabulaire/expressions/grammaire */}
+      <WordCard
+        content={`Question ${questionIndex + 1}`}
+        translation=""
+        counter=""
+        showTranslation={false}
+        onToggleTranslation={() => {}} // Pas de toggle pour lecture
+        levelColor={levelColor}
+        type="reading"
+        showCounter={false} // Pas de compteur pour lecture
+        showRevealButton={false} // Pas de bouton reveal pour lecture
+      />
       
       {/* Question Text */}
       <ContentSection

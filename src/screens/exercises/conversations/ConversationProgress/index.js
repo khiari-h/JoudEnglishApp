@@ -71,15 +71,13 @@ const ConversationProgress = ({
     }));
   }, [statsData.scenarioProgressData]);
 
-  // 🎭 GAMIFICATION : Utilise le hook pour transformer la progression
-  const gamification = useMemo(() => {
-    return useProgressGamification({
-      progress: statsData.completionProgress,
-      completed: statsData.completedScenariosCount,
-      total: statsData.totalScenarios,
-      type: "conversations"
-    });
-  }, [statsData.completionProgress, statsData.completedScenariosCount, statsData.totalScenarios]);
+  // 🎭 GAMIFICATION : Hook déplacé au niveau racine (comme dans VocabularyProgress)
+  const gamification = useProgressGamification({
+    progress: statsData.completionProgress,
+    completed: statsData.completedScenariosCount,
+    total: statsData.totalScenarios,
+    type: "conversations"
+  });
 
   return (
     <ProgressCard
