@@ -1,11 +1,11 @@
-// src/components/ui/ProgressCard/style.js - VERSION ÉPURÉE SANS DOTS
+// src/components/ui/ProgressCard/style.js - VERSION RÉORGANISÉE
 import { StyleSheet, Platform } from "react-native";
 
 /**
- * 📊 Styles Épurés pour ProgressCard
- * ✨ Design moderne et clean
- * 🚫 Suppression des categoryDot et éléments visuels superflus
- * 🎯 Focus sur la lisibilité et la simplicité
+ * 📊 Styles Réorganisés pour ProgressCard
+ * ✨ Header avec icônes et titre
+ * 🎯 Section principale avec message motivant et score
+ * 📈 Barre de progression en dessous
  */
 const createStyles = (levelColor = "#5E60CE") =>
   StyleSheet.create({
@@ -17,49 +17,80 @@ const createStyles = (levelColor = "#5E60CE") =>
 
     // =================== CARD PRINCIPALE ===================
     cardGradient: {
-      borderRadius: 24, // Plus arrondi
+      borderRadius: 16,
       overflow: 'hidden',
       backgroundColor: 'white',
-      borderWidth: 0, // Pas de bordure
+      borderWidth: 0,
       // Ombre plus marquée pour la profondeur
       ...Platform.select({
         ios: {
           shadowColor: '#000',
-          shadowOffset: { width: 0, height: 6 },
-          shadowOpacity: 0.12,
-          shadowRadius: 16,
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.1,
+          shadowRadius: 12,
         },
         android: {
-          elevation: 8,
+          elevation: 6,
         },
       }),
     },
 
-    // =================== HEADER ===================
+    // =================== HEADER AVEC ICÔNES ===================
     header: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: 20, // Plus d'espace
-      paddingBottom: 16,
+      padding: 16,
+      paddingBottom: 12,
     },
     headerLeft: {
-      flex: 1,
-    },
-    headerRight: {
       flexDirection: 'row',
       alignItems: 'center',
       gap: 12,
     },
 
-    // =================== TYPOGRAPHY ===================
+    // Bouton retour
+    backButton: {
+      width: 32,
+      height: 32,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 16,
+      backgroundColor: '#F3F4F6',
+    },
+
+    // Titre principal
     title: {
+      fontSize: 16,
+      fontWeight: '600',
+      color: levelColor,
+      letterSpacing: 0.2,
+    },
+
+    // =================== SECTION PRINCIPALE ===================
+    mainContent: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingHorizontal: 16,
+      paddingBottom: 16,
+    },
+    mainContentLeft: {
+      flex: 1,
+    },
+    mainContentRight: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 12,
+    },
+
+    // Message principal
+    mainTitle: {
       fontSize: 15,
       fontWeight: '600',
       color: '#1F2937',
       letterSpacing: 0.2,
     },
-    subtitle: {
+    mainSubtitle: {
       fontSize: 13,
       fontWeight: '500',
       color: '#6B7280',
@@ -67,50 +98,62 @@ const createStyles = (levelColor = "#5E60CE") =>
       marginTop: 2,
     },
 
-    // =================== STATS STYLISÉES ===================
-    statsContainer: {
+    // Container du score
+    scoreContainer: {
       flexDirection: 'row',
-      alignItems: 'baseline',
-      gap: 2,
+      alignItems: 'center',
+      gap: 6,
     },
-    statsCount: {
-      fontSize: 20, // Plus gros
-      fontWeight: '800', // Plus bold
-      letterSpacing: 0.5,
-      color: '#EF4444', // Rouge pour le chiffre complété
+    scoreDot: {
+      width: 8,
+      height: 8,
+      borderRadius: 4,
+      backgroundColor: '#EF4444',
     },
-    statsTotal: {
-      fontSize: 18, // Plus gros
-      color: '#6B7280',
-      fontWeight: '600',
-    },
-    statsPercentage: {
-      fontSize: 16, // Plus gros
-      fontWeight: '800', // Plus bold
+    scoreText: {
+      fontSize: 18,
+      fontWeight: '700',
+      color: '#EF4444',
       letterSpacing: 0.5,
     },
 
-    // =================== CHEVRON D'EXPANSION ===================
-    chevronContainer: {
+    // Bouton d'expansion
+    expandButton: {
       width: 24,
       height: 24,
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 12,
-      backgroundColor: `${levelColor}10`,
-      transform: [{ rotate: '0deg' }],
-    },
-    chevronExpanded: {
-      transform: [{ rotate: '180deg' }],
+      backgroundColor: '#FCE7F3',
     },
 
     // =================== SECTION PROGRESSION ===================
     progressSection: {
-      paddingHorizontal: 20, // Plus d'espace
-      paddingBottom: 20, // Plus d'espace
+      paddingHorizontal: 16,
+      paddingBottom: 16,
+    },
+    progressHeader: {
+      marginBottom: 8,
+    },
+    percentageText: {
+      fontSize: 14,
+      fontWeight: '600',
+      letterSpacing: 0.2,
+    },
+    
+    // Barre de progression simplifiée
+    simpleProgressBar: {
+      height: 12,
+      backgroundColor: '#F3F4F6',
+      borderRadius: 6,
+      overflow: 'hidden',
+    },
+    simpleProgressFill: {
+      height: '100%',
+      borderRadius: 6,
     },
 
-    // =================== EXPANSION ÉPURÉE ===================
+    // =================== EXPANSION ===================
     expansionWrapper: {
       marginTop: 8,
       backgroundColor: '#FAFBFC',
@@ -150,7 +193,7 @@ const createStyles = (levelColor = "#5E60CE") =>
       gap: 12,
     },
 
-    // =================== ITEM CATÉGORIE ÉPURÉ ===================
+    // =================== ITEM CATÉGORIE ===================
     categoryItem: {
       padding: 12,
       backgroundColor: 'white',
@@ -195,8 +238,6 @@ const createStyles = (levelColor = "#5E60CE") =>
     categoryProgressContainer: {
       // Le ProgressBar gère ses propres styles
     },
-
-
   });
 
 export default createStyles;

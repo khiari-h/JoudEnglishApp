@@ -1,4 +1,4 @@
-// components/exercise-common/ExerciseHeader/index.js - VERSION HUMAINE & ÉPURÉE
+// components/exercise-common/ExerciseHeader/index.js - VERSION MODESTE STYLE IPHONE
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -8,12 +8,11 @@ import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../../utils/constants";
 import styles from "./style";
 
 /**
- * 🕊️ ExerciseHeader - Version Humaine & Épurée
- * - Design "invisible" qui met en avant le contenu
- * - Blanc pur universel
- * - Simplicité et fonctionnalité
- * - Zéro superflu, zéro bling-bling
- * - Élégance dans la sobriété
+ * ✨ ExerciseHeader - Version Modeste Style iPhone
+ * - Blanc pur légèrement teinté
+ * - Design épuré et élégant
+ * - Effets subtils et propres
+ * - Style minimaliste et moderne
  */
 const ExerciseHeader = ({
   title,
@@ -27,7 +26,6 @@ const ExerciseHeader = ({
   // Récupérer les infos de l'exercice (seule la couleur nous intéresse)
   const exerciseInfo = EXERCISE_TYPES[exerciseType] || EXERCISE_TYPES.vocabulary;
   const exerciseColor = exerciseInfo.color;
-  const exerciseIcon = exerciseInfo.icon;
 
   // ✅ MAPPING INVERSE : Convertir niveau CECR (A1, A2, etc.) en niveau numérique (1, 2, etc.)
   // car LANGUAGE_LEVELS contient des niveaux numériques mais on reçoit des niveaux CECR
@@ -59,16 +57,17 @@ const ExerciseHeader = ({
         <HeaderLeftSection
           handleClose={handleClose}
           backIcon={backIcon}
-          exerciseIcon={exerciseIcon}
-          title={title}
-          exerciseColor={exerciseColor}
           localStyles={styles}
         />
 
-        {/* =================== BADGE NIVEAU - Minimal =================== */}
+        {/* =================== TITRE CENTRÉ =================== */}
+        <View style={styles.titleSection}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+
+        {/* =================== BADGE NIVEAU - AVEC TRANSPARENCE =================== */}
         <LevelBadge
           displayLevel={displayLevel}
-          levelColor={levelColor}
           localStyles={styles}
         />
       </View>
@@ -76,22 +75,20 @@ const ExerciseHeader = ({
   );
 };
 
-const HeaderLeftSection = ({ handleClose, backIcon, exerciseIcon, title, exerciseColor, localStyles }) => (
+const HeaderLeftSection = ({ handleClose, backIcon, localStyles }) => (
   <View style={localStyles.leftSection}>
     <TouchableOpacity
       testID="back-button"
       style={localStyles.backButton}
-      onPress={handleClose}
+      onPress={() => {
+        handleClose();
+      }}
       hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
       activeOpacity={0.6}
       accessibilityRole="button"
     >
-      <Ionicons name={backIcon} size={22} color="#64748b" />
+      <Ionicons name={backIcon} size={20} color="#475569" />
     </TouchableOpacity>
-    <View style={localStyles.titleSection}>
-      <Text style={localStyles.exerciseIcon}>{exerciseIcon}</Text>
-      <Text style={[localStyles.title, { color: exerciseColor }]}>{title}</Text>
-    </View>
   </View>
 );
 
@@ -99,14 +96,11 @@ const HeaderLeftSection = ({ handleClose, backIcon, exerciseIcon, title, exercis
 HeaderLeftSection.propTypes = {
   handleClose: PropTypes.func.isRequired,
   backIcon: PropTypes.string.isRequired,
-  exerciseIcon: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  exerciseColor: PropTypes.string.isRequired,
   localStyles: PropTypes.object.isRequired,
 };
 
-const LevelBadge = ({ displayLevel, levelColor, localStyles }) => (
-  <View style={[localStyles.levelBadge, { backgroundColor: levelColor }]}> 
+const LevelBadge = ({ displayLevel, localStyles }) => (
+  <View style={localStyles.levelBadge}> 
     <Text style={localStyles.levelText}>{displayLevel}</Text>
   </View>
 );
@@ -114,7 +108,6 @@ const LevelBadge = ({ displayLevel, levelColor, localStyles }) => (
 // PropTypes pour LevelBadge
 LevelBadge.propTypes = {
   displayLevel: PropTypes.string.isRequired,
-  levelColor: PropTypes.string.isRequired,
   localStyles: PropTypes.object.isRequired,
 };
 

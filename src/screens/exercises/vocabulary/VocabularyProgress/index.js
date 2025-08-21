@@ -58,13 +58,13 @@ const VocabularyProgress = ({
 
   return (
     <ProgressCard
-      title={gamification.messages.main} // 🎭 Titre dynamique et motivant
-      subtitle={gamification.messages.subtitle} // 🎭 Sous-titre dynamique
+      title="Vocabulaire" // Titre fixe comme dans la capture d'écran
+      subtitle={gamification.messages.subtitle} // Sous-titre dynamique
       progress={totalProgress}
       completed={completedWordsCount}
       total={totalWordsCount}
       unit="mots"
-      levelColor={gamification.colors.primary} // 🎭 Couleur dynamique selon la progression
+      levelColor={gamification.colors.primary}
       expandable
       expanded={expanded}
       onToggleExpand={onToggleExpand}

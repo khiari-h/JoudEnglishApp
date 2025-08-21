@@ -1,4 +1,4 @@
-// src/components/ui/ProgressCard/index.js - VERSION CORRIGÉE
+// src/components/ui/ProgressCard/index.js - VERSION RÉORGANISÉE
 import { View, Text, TouchableOpacity, LayoutAnimation, Platform } from "react-native";
 import { useCallback } from 'react';
 import { LinearGradient } from "expo-linear-gradient";
@@ -8,10 +8,10 @@ import ProgressBar from "../ProgressBar";
 import createStyles from "./style";
 
 /**
- * 📊 ProgressCard - Version Épurée Sans Dots
- * ✨ Design clean et moderne
- * 🚫 Suppression des categoryDot qui polluent l'interface
- * 🎯 Focus sur l'information, pas la décoration
+ * 📊 ProgressCard - Version Réorganisée selon le Design
+ * ✨ Header avec icônes et titre
+ * 🎯 Section principale avec message motivant et score
+ * 📈 Barre de progression en dessous
  */
 const ProgressCard = ({
   title = "Progression",
@@ -25,7 +25,11 @@ const ProgressCard = ({
   onToggleExpand,
   categoryData = [],
   onCategoryPress,
-  gamificationData = null, // 🎭 NOUVEAU : Données de gamification
+  gamificationData = null,
+  showBackButton = false,
+  onBackPress,
+  levelBadge = null,
+  showFlashcardIcon = true,
 }) => {
   // 🎭 GAMIFICATION : Utilise les données de gamification si disponibles
   const isGamified = !!gamificationData;
@@ -71,56 +75,77 @@ const ProgressCard = ({
 
   const handleCategoryPress = useCallback((idx) => () => onCategoryPress?.(idx), [onCategoryPress]);
 
-  // Sous-composant CardHeader
-  const CardHeader = ({ headerTitle, headerSubtitle, headerCompleted, headerTotal, headerProgress, headerLevelColor, headerExpandable, headerExpanded, headerToggleExpanded, headerStyles }) => (
-    <TouchableOpacity 
-      style={headerStyles.header}
-      onPress={headerToggleExpanded}
-      activeOpacity={headerExpandable ? 0.8 : 1}
-    >
+  // Sous-composant Header avec icônes et titre
+  const CardHeader = ({ headerShowBackButton, headerOnBackPress, headerStyles }) => (
+    <View style={headerStyles.header}>
       <View style={headerStyles.headerLeft}>
-        <Text style={headerStyles.title}>{headerTitle || 'Progression'}</Text>
-        {headerSubtitle && <Text style={headerStyles.subtitle}>{headerSubtitle}</Text>}
-      </View>
-      <View style={headerStyles.headerRight}>
-        <View style={headerStyles.statsContainer}>
-          <Text style={[headerStyles.statsCount, { color: headerLevelColor }]}>{headerCompleted || 0}</Text>
-          <Text style={headerStyles.statsTotal}>/{headerTotal || 0}</Text>
-        </View>
-        <Text style={[headerStyles.statsPercentage, { color: headerLevelColor }]}>{Math.round(headerProgress || 0)}%</Text>
-        {headerExpandable && (
-          <View style={[headerStyles.chevronContainer, headerExpanded && headerStyles.chevronExpanded]}>
-            <Ionicons name="chevron-down" size={16} color={headerLevelColor} />
-          </View>
+        {headerShowBackButton && (
+          <TouchableOpacity 
+            style={headerStyles.backButton} 
+            onPress={headerOnBackPress}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="arrow-back" size={20} color={headerStyles.title.color} />
+          </TouchableOpacity>
         )}
       </View>
-    </TouchableOpacity>
-  );
-
-  // Sous-composant MainProgressBar
-  const MainProgressBar = ({ mainProgress, mainLevelColor, mainStyles }) => (
-    <View style={mainStyles.progressSection}>
-      <ProgressBar
-        progress={mainProgress}
-        showPercentage={false}
-        fillColor={mainLevelColor}
-        height={12} // Plus haute pour plus de visibilité
-        backgroundColor={`${mainLevelColor}15`}
-        borderRadius={6} // Plus arrondi
-        animated
-      />
     </View>
   );
 
-  // Sous-composant Expansion - CORRIGÉ
-  const Expansion = ({ expandable: localExpandable, expanded: localExpanded, categoryData: localCategoryData, handleCategoryPress: localHandleCategoryPress, levelColor: localLevelColor, styles: localStyles }) => (
+  // Sous-composant Section principale avec message et score
+  const MainContent = ({ mainTitle, mainCompleted, mainLevelColor, mainStyles }) => (
+    <View style={mainStyles.mainContent}>
+      <View style={mainStyles.mainContentLeft}>
+        <Text style={mainStyles.mainTitle}>{mainTitle || 'Excellent début !'}</Text>
+      </View>
+      
+      <View style={mainStyles.mainContentRight}>
+        <View style={mainStyles.scoreContainer}>
+          <View style={mainStyles.scoreDot} />
+          <Text style={mainStyles.scoreText}>{mainCompleted || 0}</Text>
+        </View>
+        
+        {expandable && (
+          <TouchableOpacity 
+            style={mainStyles.expandButton}
+            onPress={toggleExpanded}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="chevron-down" size={16} color={mainLevelColor} />
+          </TouchableOpacity>
+        )}
+      </View>
+    </View>
+  );
+
+  // Sous-composant Barre de progression avec pourcentage
+  const MainProgressBar = ({ mainProgress, mainLevelColor, mainStyles }) => (
+    <View style={mainStyles.progressSection}>
+      <View style={mainStyles.progressHeader}>
+        <Text style={[mainStyles.percentageText, { color: mainLevelColor }]}>
+          {Math.round(mainProgress || 0)}%
+        </Text>
+      </View>
+      
+      {/* Version simplifiée pour tester */}
+      <View style={mainStyles.simpleProgressBar}>
+        <View style={[mainStyles.simpleProgressFill, { 
+          width: `${Math.max(mainProgress || 0, 0)}%`,
+          backgroundColor: mainLevelColor 
+        }]} />
+      </View>
+    </View>
+  );
+
+  // Sous-composant Expansion
+  const Expansion = ({ expandable: localExpandable, expanded: localExpanded, categoryData: localCategoryData, handleCategoryPress: localHandleCategoryPress, levelColor: localLevelColor, styles: localStyles, totalWords }) => (
     localExpandable && localExpanded && localCategoryData.length > 0 && (
       <View style={localStyles.expansionWrapper}>
         <View style={localStyles.expansionContainer}>
           <View style={localStyles.expansionHeader}>
             <Text style={localStyles.expansionTitle}>Par catégorie</Text>
             <Text style={localStyles.expansionSubtitle}>
-              {localCategoryData.length} {localCategoryData.length > 1 ? 'catégories' : 'catégorie'}
+              Total du module : {totalWords} mots
             </Text>
           </View>
           <CategoryList categoryData={localCategoryData} handleCategoryPress={localHandleCategoryPress} levelColor={localLevelColor} styles={localStyles} />
@@ -138,16 +163,16 @@ const ProgressCard = ({
         style={styles.cardGradient}
       >
         <CardHeader
-          headerTitle={gamification.messages.main}
-          headerSubtitle={gamification.messages.subtitle}
-          headerCompleted={completed}
-          headerTotal={total}
-          headerProgress={progress}
-          headerLevelColor={gamification.colors.primary}
-          headerExpandable={expandable}
-          headerExpanded={expanded}
-          headerToggleExpanded={toggleExpanded}
+          headerShowBackButton={showBackButton}
+          headerOnBackPress={onBackPress}
           headerStyles={styles}
+        />
+        
+        <MainContent
+          mainTitle={gamification.messages.main} // Message motivant rouge
+          mainCompleted={completed}
+          mainLevelColor={gamification.colors.primary}
+          mainStyles={styles}
         />
         
         <MainProgressBar 
@@ -156,6 +181,7 @@ const ProgressCard = ({
           mainStyles={styles} 
         />
       </LinearGradient>
+      
       <Expansion
         expandable={expandable}
         expanded={expanded}
@@ -163,6 +189,7 @@ const ProgressCard = ({
         handleCategoryPress={handleCategoryPress}
         levelColor={levelColor}
         styles={styles}
+        totalWords={total}
       />
     </View>
   );
@@ -233,6 +260,8 @@ ProgressCard.propTypes = {
   })),
   onCategoryPress: PropTypes.func,
   gamificationData: PropTypes.object, // 🎭 NOUVEAU : Données de gamification
+  showBackButton: PropTypes.bool,
+  onBackPress: PropTypes.func,
 };
 
 // PropTypes pour CategoryList
