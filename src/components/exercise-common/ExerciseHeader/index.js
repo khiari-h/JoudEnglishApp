@@ -1,4 +1,4 @@
-// components/exercise-common/ExerciseHeader/index.js - VERSION MODESTE STYLE IPHONE
+// components/exercise-common/ExerciseHeader/index.js - VERSION ULTRA-MODERNE 2025
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -8,11 +8,11 @@ import { EXERCISE_TYPES, LANGUAGE_LEVELS } from "../../../utils/constants";
 import styles from "./style";
 
 /**
- * ✨ ExerciseHeader - Version Modeste Style iPhone
- * - Blanc pur légèrement teinté
- * - Design épuré et élégant
- * - Effets subtils et propres
- * - Style minimaliste et moderne
+ * 🔥 ExerciseHeader - Version Ultra-Moderne 2025
+ * - Design ultra-clean inspiré des meilleures apps
+ * - Gradients modernes au lieu d'effets glossy
+ * - Typography moderne et lisible
+ * - Micro-interactions et animations subtiles
  */
 const ExerciseHeader = ({
   title,
@@ -20,27 +20,37 @@ const ExerciseHeader = ({
   exerciseType = "vocabulary",
   onClose,
   backIcon = "arrow-back",
+  mode = null, // Nouveau prop pour afficher le mode (fast, classic, etc.)
 }) => {
   const navigation = useNavigation();
 
-  // Récupérer les infos de l'exercice (seule la couleur nous intéresse)
+  // Récupérer les infos de l'exercice
   const exerciseInfo = EXERCISE_TYPES[exerciseType] || EXERCISE_TYPES.vocabulary;
-  const exerciseColor = exerciseInfo.color;
 
-  // ✅ MAPPING INVERSE : Convertir niveau CECR (A1, A2, etc.) en niveau numérique (1, 2, etc.)
-  // car LANGUAGE_LEVELS contient des niveaux numériques mais on reçoit des niveaux CECR
+  // ✅ MAPPING INVERSE : Convertir niveau CECR (A1, A2, etc.) en niveau numérique
   const mapCECRToNumeric = (cecrLevel) => {
     const mapping = { A1: "1", A2: "2", B1: "3", B2: "4", C1: "5", C2: "6" };
-    return mapping[cecrLevel] || "1"; // Fallback vers "1" si niveau non reconnu
+    return mapping[cecrLevel] || "1";
   };
 
-  // Récupérer la couleur du niveau
+  // Récupérer les infos du niveau
   const numericLevel = mapCECRToNumeric(level);
   const levelInfo = LANGUAGE_LEVELS[numericLevel] || LANGUAGE_LEVELS["1"];
-  const levelColor = levelInfo.color;
 
   // Affichage du niveau
   const displayLevel = level === "bonus" ? "B" : level;
+
+  // Récupérer l'icône de l'exercice
+  const getExerciseIcon = (type) => {
+    const iconMap = {
+      vocabulary: "book-outline",
+      grammar: "construct-outline", 
+      conjugation: "language-outline",
+      comprehension: "reader-outline",
+      listening: "headset-outline"
+    };
+    return iconMap[type] || "book-outline";
+  };
 
   const handleClose = useCallback(() => {
     if (onClose) {
@@ -53,71 +63,60 @@ const ExerciseHeader = ({
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        {/* =================== SECTION GAUCHE =================== */}
-        <HeaderLeftSection
-          handleClose={handleClose}
-          backIcon={backIcon}
-          localStyles={styles}
-        />
+        {/* =================== BOUTON RETOUR MODERNE =================== */}
+        <TouchableOpacity
+          testID="back-button"
+          style={styles.backButton}
+          onPress={handleClose}
+          hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+        >
+          <Ionicons name={backIcon} size={18} color="#374151" />
+        </TouchableOpacity>
 
-        {/* =================== TITRE CENTRÉ =================== */}
-        <View style={styles.titleSection}>
-          <Text style={styles.title}>{title}</Text>
+        {/* =================== SECTION CENTRE - TITRE + ICÔNE + MODE =================== */}
+        <View style={styles.centerSection}>
+          {/* Container titre + icône */}
+          <View style={styles.titleContainer}>
+            <Ionicons 
+              name={getExerciseIcon(exerciseType)} 
+              size={20} 
+              color="#6366F1" 
+              style={styles.titleIcon}
+            />
+            <Text style={styles.title}>{title}</Text>
+          </View>
+
+          {/* Mode indicator - Si fourni */}
+          {mode && (
+            <>
+              <View style={styles.separator} />
+              <View style={styles.modeContainer}>
+                <View style={styles.modeIndicator} />
+                <Text style={styles.modeText}>{mode}</Text>
+              </View>
+            </>
+          )}
         </View>
 
-        {/* =================== BADGE NIVEAU - AVEC TRANSPARENCE =================== */}
-        <LevelBadge
-          displayLevel={displayLevel}
-          localStyles={styles}
-        />
+        {/* =================== BADGE NIVEAU MODERNE =================== */}
+        <View style={styles.levelBadge}>
+          <Text style={styles.levelText}>{displayLevel}</Text>
+        </View>
       </View>
     </View>
   );
 };
 
-const HeaderLeftSection = ({ handleClose, backIcon, localStyles }) => (
-  <View style={localStyles.leftSection}>
-    <TouchableOpacity
-      testID="back-button"
-      style={localStyles.backButton}
-      onPress={() => {
-        handleClose();
-      }}
-      hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-      activeOpacity={0.6}
-      accessibilityRole="button"
-    >
-      <Ionicons name={backIcon} size={20} color="#475569" />
-    </TouchableOpacity>
-  </View>
-);
-
-// PropTypes pour HeaderLeftSection
-HeaderLeftSection.propTypes = {
-  handleClose: PropTypes.func.isRequired,
-  backIcon: PropTypes.string.isRequired,
-  localStyles: PropTypes.object.isRequired,
-};
-
-const LevelBadge = ({ displayLevel, localStyles }) => (
-  <View style={localStyles.levelBadge}> 
-    <Text style={localStyles.levelText}>{displayLevel}</Text>
-  </View>
-);
-
-// PropTypes pour LevelBadge
-LevelBadge.propTypes = {
-  displayLevel: PropTypes.string.isRequired,
-  localStyles: PropTypes.object.isRequired,
-};
-
-// PropTypes pour le composant principal ExerciseHeader
+// PropTypes
 ExerciseHeader.propTypes = {
   title: PropTypes.string.isRequired,
   level: PropTypes.string.isRequired,
   exerciseType: PropTypes.string,
   onClose: PropTypes.func,
   backIcon: PropTypes.string,
+  mode: PropTypes.string, // Nouveau prop pour le mode
 };
 
 export default ExerciseHeader;

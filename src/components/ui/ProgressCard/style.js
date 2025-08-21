@@ -98,22 +98,20 @@ const createStyles = (levelColor = "#5E60CE") =>
       marginTop: 2,
     },
 
-    // Container du score
+    // =================== SCORE ===================
     scoreContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: 6,
+      gap: 8,
     },
-    scoreDot: {
-      width: 8,
-      height: 8,
-      borderRadius: 4,
-      backgroundColor: '#EF4444',
+    scoreIcon: {
+      fontSize: 16,
+      lineHeight: 16,
     },
     scoreText: {
       fontSize: 18,
       fontWeight: '700',
-      color: '#EF4444',
+      color: '#EF4444', // Rouge vif pour le score
       letterSpacing: 0.5,
     },
 
@@ -139,18 +137,33 @@ const createStyles = (levelColor = "#5E60CE") =>
       fontSize: 14,
       fontWeight: '600',
       letterSpacing: 0.2,
+      color: '#3B82F6', // Bleu légèrement foncé au lieu du rouge agressif
     },
     
     // Barre de progression simplifiée
     simpleProgressBar: {
-      height: 12,
-      backgroundColor: '#F3F4F6',
-      borderRadius: 6,
+      height: 16, // Augmenté de 12 à 16 pour plus de visibilité
+      backgroundColor: '#F3F4F6', // Fond gris clair
+      borderRadius: 8, // Plus arrondi
       overflow: 'hidden',
+      // Ombre subtile pour la profondeur
+      ...Platform.select({
+        ios: {
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 4,
+        },
+        android: {
+          elevation: 2,
+        },
+      }),
     },
     simpleProgressFill: {
       height: '100%',
-      borderRadius: 6,
+      borderRadius: 8,
+      // Gradient bleu → violet
+      backgroundColor: '#3B82F6', // Bleu de base
     },
 
     // =================== EXPANSION ===================

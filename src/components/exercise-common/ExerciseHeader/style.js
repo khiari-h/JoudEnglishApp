@@ -1,31 +1,33 @@
-// components/exercise-common/ExerciseHeader/style.js - VERSION GLOSSY AVEC PEPS
+// components/exercise-common/ExerciseHeader/style.js - VERSION ULTRA-MODERNE 2025
 import { StyleSheet, Platform } from 'react-native';
 
 /**
- * ✨ Styles Glossy avec Peps pour ExerciseHeader
- * - Titre glossy et moderne
- * - Bordure dorée/argentée subtile
- * - Style engageant et peps
- * - Design moderne et attractif
+ * 🔥 Styles Ultra-Modernes 2025 pour ExerciseHeader
+ * - Design ultra-clean et épuré
+ * - Gradients modernes (indigo/purple)
+ * - Micro-interactions et shadows subtiles
+ * - Typography moderne et lisible
+ * - Inspiré des meilleures apps du moment
  */
 const styles = StyleSheet.create({
   // =================== CONTAINER PRINCIPAL ===================
   container: {
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 20,
-    paddingTop: Platform.OS === 'ios' ? 16 : 12,
-    paddingBottom: 16,
-    borderWidth: 1,
-    borderColor: '#FCD34D', // Bordure dorée subtile
+    paddingHorizontal: 24, // Plus d'espace
+    paddingTop: Platform.OS === 'ios' ? 20 : 16,
+    paddingBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F1F5F9', // Bordure ultra-subtile
+    // Shadow ultra-subtile
     ...Platform.select({
       ios: {
-        shadowColor: '#FCD34D',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.15,
-        shadowRadius: 8,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.05,
+        shadowRadius: 4,
       },
       android: {
-        elevation: 4,
+        elevation: 1,
       },
     }),
   },
@@ -35,100 +37,125 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    position: 'relative',
   },
 
-  // =================== SECTION GAUCHE ===================
-  leftSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: 80,
-    zIndex: 10, // Pour être au-dessus du titre en position absolute
-  },
-
-  // =================== BOUTON RETOUR ===================
+  // =================== BOUTON RETOUR MODERNE ===================
   backButton: {
-    width: 40,
-    height: 40,
+    width: 36,
+    height: 36,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
-    backgroundColor: '#FFFFFF', // Fond blanc pur
-    borderWidth: 2,
-    borderColor: '#E2E8F0', // Bordure plus visible
-    zIndex: 10, // Pour être au-dessus du titre en position absolute
+    borderRadius: 12, // Coins arrondis modernes
+    backgroundColor: '#F8FAFC',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    // Shadow subtile
     ...Platform.select({
       ios: {
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2,
-        shadowRadius: 6,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.08,
+        shadowRadius: 3,
       },
       android: {
-        elevation: 4,
+        elevation: 2,
       },
     }),
   },
 
-  // =================== SECTION TITRE - CENTRÉE ===================
-  titleSection: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
+  // =================== SECTION CENTRE ===================
+  centerSection: {
+    flexDirection: 'row',
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
   },
 
-  // =================== TITRE - GLOSSY ET MODERNE ===================
+  // =================== CONTAINER TITRE + ICÔNE ===================
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  // =================== ICÔNE TITRE ===================
+  titleIcon: {
+    marginRight: 8,
+  },
+
+  // =================== TITRE MODERNE ===================
   title: {
-    fontSize: 24,
-    fontWeight: '600', // Moins gras
-    color: '#1E293B',
-    letterSpacing: -0.3,
-    textAlign: 'center',
-    fontFamily: Platform.OS === 'ios' ? 'SF Pro Display' : 'Roboto', // Police moderne
-    // Effet glossy
-    textShadowColor: 'rgba(255, 255, 255, 0.8)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 2,
-    // Bordure subtile pour l'effet glossy
-    borderWidth: 0.5,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#1F2937',
+    letterSpacing: -0.2,
+    fontFamily: Platform.OS === 'ios' ? 'SF Pro Display' : 'Roboto',
+  },
+
+  // =================== SÉPARATEUR ===================
+  separator: {
+    width: 1,
+    height: 16,
+    backgroundColor: '#E5E7EB',
+    marginHorizontal: 12,
+  },
+
+  // =================== CONTAINER MODE ===================
+  modeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 8,
     paddingVertical: 4,
+    backgroundColor: '#EEF2FF',
     borderRadius: 8,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
   },
 
-  // =================== BADGE NIVEAU - DORÉ AVEC TRANSPARENCE ===================
+  // =================== INDICATEUR MODE (POINT ANIMÉ) ===================
+  modeIndicator: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#6366F1',
+    marginRight: 4,
+    // Animation sera ajoutée via Animated API si nécessaire
+  },
+
+  // =================== TEXTE MODE ===================
+  modeText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#6366F1',
+    textTransform: 'capitalize',
+  },
+
+  // =================== BADGE NIVEAU MODERNE ===================
   levelBadge: {
-    alignItems: 'center',
+    width: 28,
+    height: 28,
+    borderRadius: 8,
     justifyContent: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-    minWidth: 48,
-    backgroundColor: 'rgba(255, 215, 0, 0.9)', // Fond doré avec transparence
-    borderWidth: 2,
-    borderColor: 'rgba(255, 215, 0, 0.6)', // Bordure dorée
+    alignItems: 'center',
+    // Gradient indigo to purple
+    backgroundColor: '#6366F1',
+    // Shadow moderne
     ...Platform.select({
       ios: {
-        shadowColor: '#FFD700',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 8,
+        shadowColor: '#6366F1',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
       },
       android: {
-        elevation: 6,
+        elevation: 3,
       },
     }),
   },
 
+  // =================== TEXTE NIVEAU ===================
   levelText: {
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: '700',
-    color: '#B8860B', // Texte doré foncé
-    letterSpacing: 0.4,
+    color: '#FFFFFF',
+    letterSpacing: 0.2,
   },
 });
 

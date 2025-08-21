@@ -101,7 +101,7 @@ const ProgressCard = ({
       
       <View style={mainStyles.mainContentRight}>
         <View style={mainStyles.scoreContainer}>
-          <View style={mainStyles.scoreDot} />
+          <Text style={mainStyles.scoreIcon}>🚀</Text>
           <Text style={mainStyles.scoreText}>{mainCompleted || 0}</Text>
         </View>
         
@@ -122,7 +122,7 @@ const ProgressCard = ({
   const MainProgressBar = ({ mainProgress, mainLevelColor, mainStyles }) => (
     <View style={mainStyles.progressSection}>
       <View style={mainStyles.progressHeader}>
-        <Text style={[mainStyles.percentageText, { color: mainLevelColor }]}>
+        <Text style={mainStyles.percentageText}>
           {Math.round(mainProgress || 0)}%
         </Text>
       </View>
@@ -131,7 +131,6 @@ const ProgressCard = ({
       <View style={mainStyles.simpleProgressBar}>
         <View style={[mainStyles.simpleProgressFill, { 
           width: `${Math.max(mainProgress || 0, 0)}%`,
-          backgroundColor: mainLevelColor 
         }]} />
       </View>
     </View>
