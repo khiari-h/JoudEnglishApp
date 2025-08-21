@@ -1,14 +1,16 @@
-// NavigationButtons/style.js - PROPRE & EFFICACE 🎯
+// NavigationButtons/style.js - Version Épurée & Cohérente
 
 import { StyleSheet, Platform } from 'react-native';
 
 /**
- * 🎯 Styles Navigation - Simple mais léché
- * - Pas de délire glassmorphism 
- * - Juste propre et moderne
- * - Cohérent avec les cartes existantes
+ * 🎯 Styles NavigationButtons - Épurés et cohérents
+ * - Cohérent avec CategorySelector épuré
+ * - Couleurs douces et professionnelles
+ * - Pas de gradients excessifs
+ * - Hiérarchie visuelle claire
+ * - Focus sur l'utilisabilité
  */
-const createStyles = (primaryColor = "#5E60CE") =>
+const createStyles = (primaryColor = "#3B82F6") =>
   StyleSheet.create({
     
     // =================== CONTAINER SIMPLE ===================
@@ -22,56 +24,57 @@ const createStyles = (primaryColor = "#5E60CE") =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingHorizontal: 4, // Petit padding pour éviter les bords
+      paddingHorizontal: 4,
     },
 
-    // =================== BOUTON PRÉCÉDENT - GHOST PROPRE ===================
+    // =================== BOUTON PRÉCÉDENT - STYLE ÉPURÉ ===================
     previousButton: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingVertical: 14,
-      paddingHorizontal: 20,
-      backgroundColor: 'white',
-      borderRadius: 16,
-      borderWidth: 1.5,
-      borderColor: `${primaryColor}25`,
+      paddingVertical: 12,
+      paddingHorizontal: 16,
+      backgroundColor: '#F8FAFC', // Gris très doux
+      borderRadius: 12,
+      borderWidth: 1,
+      borderColor: '#E2E8F0', // Bordure subtile
       
-      // Ombre subtile mais présente
+      // Ombre discrète
       ...Platform.select({
         ios: {
           shadowColor: '#000',
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.08,
-          shadowRadius: 8,
+          shadowOffset: { width: 0, height: 1 },
+          shadowOpacity: 0.05,
+          shadowRadius: 4,
         },
         android: {
-          elevation: 3,
+          elevation: 1,
         },
       }),
     },
 
     previousText: {
-      fontSize: 15,
-      fontWeight: '600',
-      letterSpacing: 0.2,
-      marginLeft: 8,
+      fontSize: 14,
+      fontWeight: '500', // Moins gras
+      color: '#64748B',  // Gris moderne
+      letterSpacing: 0.1,
+      marginLeft: 6,
     },
 
-    // =================== BOUTON SUIVANT - GRADIENT PROPRE ===================
+    // =================== BOUTON SUIVANT - ÉPURÉ SANS GRADIENT ===================
     nextButtonContainer: {
-      borderRadius: 16,
+      borderRadius: 12,
       overflow: 'hidden',
       
-      // Ombre colorée pour le CTA
+      // Ombre subtile colorée
       ...Platform.select({
         ios: {
           shadowColor: primaryColor,
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.2,
-          shadowRadius: 12,
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1, // Réduit de 0.2 à 0.1
+          shadowRadius: 6,
         },
         android: {
-          elevation: 6,
+          elevation: 3,
         },
       }),
     },
@@ -80,25 +83,70 @@ const createStyles = (primaryColor = "#5E60CE") =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: 16,
-      paddingHorizontal: 28,
-      borderRadius: 16,
+      paddingVertical: 14,
+      paddingHorizontal: 24,
+      backgroundColor: primaryColor, // Couleur unie, pas de gradient
+      borderRadius: 12,
     },
 
     nextText: {
-      fontSize: 16,
-      fontWeight: '700',
+      fontSize: 15,
+      fontWeight: '600',
       color: 'white',
-      letterSpacing: 0.3,
+      letterSpacing: 0.2,
     },
 
     nextIcon: {
-      marginLeft: 8,
+      marginLeft: 6,
+    },
+
+    // =================== BOUTON TERMINER - MÊME STYLE QUE SUIVANT ===================
+    finishButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 14,
+      paddingHorizontal: 24,
+      backgroundColor: '#059669', // Vert uni, pas de gradient
+      borderRadius: 12,
+    },
+
+    finishButtonContainer: {
+      borderRadius: 12,
+      overflow: 'hidden',
+      
+      ...Platform.select({
+        ios: {
+          shadowColor: '#059669',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 6,
+        },
+        android: {
+          elevation: 3,
+        },
+      }),
     },
 
     // =================== ÉTATS DISABLED ===================
     disabled: {
-      opacity: 0.6,
+      opacity: 0.4, // Réduit de 0.6 à 0.4 pour plus de contraste
+    },
+
+    // =================== VARIANTS HOVER (pour web/desktop) ===================
+    previousButtonHover: {
+      backgroundColor: '#F1F5F9',
+      borderColor: '#CBD5E1',
+    },
+
+    nextButtonHover: {
+      backgroundColor: `${primaryColor}E6`, // Légèrement plus clair
+    },
+
+    // =================== ÉTATS DE FOCUS (accessibilité) ===================
+    focused: {
+      borderWidth: 2,
+      borderColor: primaryColor,
     },
   });
 

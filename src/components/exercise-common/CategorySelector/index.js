@@ -1,7 +1,6 @@
 // src/components/exercise-common/CategorySelector/index.js
 import { useState, useCallback, memo, useEffect, useRef } from "react";
 import { View, ScrollView, TouchableOpacity, Text, Animated } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import PropTypes from 'prop-types';
 import createStyles from "./style";
 
@@ -9,7 +8,7 @@ const CategorySelector = ({
   categories = [],
   selectedCategory,
   onSelectCategory,
-  primaryColor = "#5E60CE",
+  primaryColor = "#3B82F6", // Couleur épurée par défaut
 }) => {
   const styles = createStyles(primaryColor);
   const scrollViewRef = useRef(null);
@@ -143,13 +142,13 @@ const CategorySelector = ({
 
     const shadowOpacity = animation?.interpolate({
       inputRange: [0, 1],
-      outputRange: [0.1, 0.25],
+      outputRange: [0.05, 0.15], // Ombres plus subtiles
       extrapolate: 'clamp',
-    }) || 0.1;
+    }) || 0.05;
 
     const borderWidth = animation?.interpolate({
       inputRange: [0, 1],
-      outputRange: [1, 2],
+      outputRange: [1, 1], // Bordure constante
       extrapolate: 'clamp',
     }) || 1;
 
@@ -177,34 +176,27 @@ const CategorySelector = ({
           accessibilityState={{ selected: isSelected }}
         >
           {isSelected ? (
-            <LinearGradient
-              colors={[primaryColor, `${primaryColor}E6`, `${primaryColor}CC`]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.selectedCategoryItem}
-            >
+            // ✅ SUPPRIMÉ: LinearGradient remplacé par View simple
+            <View style={styles.selectedCategoryItem}>
               <View style={styles.selectedInner}>
                 <Text style={styles.selectedCategoryText}>
                   {category.name}
                 </Text>
-                <View style={styles.sparkleContainer}>
-                  <Text style={styles.sparkle}>✨</Text>
-                </View>
               </View>
-            </LinearGradient>
+            </View>
           ) : (
             <Animated.View
               style={[
                 styles.categoryItem,
                 {
                   borderWidth,
-                  borderColor: `${primaryColor}20`,
+                  borderColor: '#E2E8F0', // Couleur fixe au lieu de dynamique
                   shadowOpacity,
                 }
               ]}
             >
-              <View style={[styles.categoryInner, { backgroundColor: `${primaryColor}08` }]}>
-                <Text style={[styles.categoryText, { color: primaryColor }]}>
+              <View style={styles.categoryInner}>
+                <Text style={styles.categoryText}>
                   {category.name}
                 </Text>
               </View>
@@ -224,12 +216,8 @@ const CategorySelector = ({
 
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={[`${primaryColor}04`, 'transparent', `${primaryColor}02`]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={styles.backgroundGradient}
-      >
+      {/* ✅ SUPPRIMÉ: LinearGradient de fond remplacé par View simple */}
+      <View style={styles.backgroundGradient}>
         <ScrollView
           ref={scrollViewRef}
           horizontal
@@ -239,7 +227,7 @@ const CategorySelector = ({
         >
           {categories.map(renderCategoryPill)}
         </ScrollView>
-      </LinearGradient>
+      </View>
     </View>
   );
 };
@@ -250,7 +238,7 @@ CategorySelector.propTypes = {
     name: PropTypes.string.isRequired,
   })).isRequired,
   selectedCategory: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onSelectCategory: PropTypes.func, // ✅ Modifié pour ne plus être `isRequired`
+  onSelectCategory: PropTypes.func,
   primaryColor: PropTypes.string,
 };
 
