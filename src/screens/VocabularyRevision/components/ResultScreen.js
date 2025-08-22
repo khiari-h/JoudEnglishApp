@@ -10,21 +10,22 @@ const AnimatedScoreCard = ({ score, totalQuestions, percentage, resultConfig, co
   const [displayedScore, setDisplayedScore] = useState(0);
 
   useEffect(() => {
-    // Animate the progress bar and the score number simultaneously
-    Animated.parallel([
-      Animated.timing(progressAnim, {
-        toValue: percentage,
-        duration: 800,
-        delay: 300, // Start animation after a short delay for better effect
-        useNativeDriver: false, // 'width' is not supported by the native driver
-      }),
-      Animated.timing(scoreAnim, {
-        toValue: score,
-        duration: 800,
-        delay: 300,
-        useNativeDriver: true, // Safe for listeners
-      })
-    ]).start();
+    // ✅ CORRECTION: Séparer les animations pour éviter les conflits
+    // Animation de la barre de progression
+    Animated.timing(progressAnim, {
+      toValue: percentage,
+      duration: 800,
+      delay: 300,
+      useNativeDriver: false, // ✅ 'width' nécessite useNativeDriver: false
+    }).start();
+
+    // Animation du score séparément pour éviter les conflits
+    Animated.timing(scoreAnim, {
+      toValue: score,
+      duration: 800,
+      delay: 300,
+      useNativeDriver: true, // ✅ Safe pour les listeners
+    }).start();
 
     // Listener to update the score text as the animation runs
     const scoreListenerId = scoreAnim.addListener(({ value }) => {

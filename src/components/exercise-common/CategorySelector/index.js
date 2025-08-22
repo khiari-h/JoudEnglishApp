@@ -13,8 +13,9 @@ const CategorySelector = ({
   const styles = createStyles(primaryColor);
   const scrollViewRef = useRef(null);
   
-  const animationsRef = useRef({});
-  const pressAnimationsRef = useRef({});
+  // ✅ CORRECTION: Séparation des animations pour éviter les conflits
+  const selectionAnimationsRef = useRef({}); // Animations de sélection (scale, shadow)
+  const pressAnimationsRef = useRef({});     // Animations de pression (scale)
   const itemLayoutsRef = useRef({});
   
   // ✅ Correction 1: Utilisation d'une ref pour gérer l'état d'animation de manière fiable.
@@ -24,19 +25,20 @@ const CategorySelector = ({
   const prevSelectedCategoryRef = useRef(selectedCategory);
 
   useEffect(() => {
-    const newAnimations = {};
+    const newSelectionAnimations = {};
     const newPressAnimations = {};
     const newItemLayouts = {};
 
     categories.forEach(category => {
-      newAnimations[category.id] = animationsRef.current[category.id] || new Animated.Value(
+      // ✅ CORRECTION: Valeurs Animated séparées pour éviter les conflits
+      newSelectionAnimations[category.id] = selectionAnimationsRef.current[category.id] || new Animated.Value(
         selectedCategory === category.id ? 1 : 0
       );
       newPressAnimations[category.id] = pressAnimationsRef.current[category.id] || new Animated.Value(1);
       newItemLayouts[category.id] = itemLayoutsRef.current[category.id] || null;
     });
 
-    animationsRef.current = newAnimations;
+    selectionAnimationsRef.current = newSelectionAnimations;
     pressAnimationsRef.current = newPressAnimations;
     itemLayoutsRef.current = newItemLayouts;
 
@@ -48,7 +50,7 @@ const CategorySelector = ({
       Animated.timing(pressAnimation, {
         toValue: 0.95,
         duration: 150,
-        useNativeDriver: true,
+        useNativeDriver: true, // ✅ Toujours true pour la cohérence
       }).start();
     }
   }, []);
@@ -59,7 +61,7 @@ const CategorySelector = ({
       Animated.timing(pressAnimation, {
         toValue: 1,
         duration: 150,
-        useNativeDriver: true,
+        useNativeDriver: true, // ✅ Toujours true pour la cohérence
       }).start();
     }
   }, []);
@@ -75,18 +77,28 @@ const CategorySelector = ({
     // ✅ Correction 2: Le garde-fou est activé au début de l'animation.
     isAnimatingRef.current = true;
     const animationsArray = [];
-    const fromAnim = animationsRef.current[fromCategory];
-    const toAnim = animationsRef.current[toCategory];
+    
+    // ✅ CORRECTION: Utilisation des animations de sélection séparées
+    const fromAnim = selectionAnimationsRef.current[fromCategory];
+    const toAnim = selectionAnimationsRef.current[toCategory];
 
     if (fromAnim) {
       animationsArray.push(
-        Animated.timing(fromAnim, { toValue: 0, duration: 200, useNativeDriver: false })
+        Animated.timing(fromAnim, { 
+          toValue: 0, 
+          duration: 200, 
+          useNativeDriver: true // ✅ Changé à true pour éviter les conflits
+        })
       );
     }
 
     if (toAnim) {
       animationsArray.push(
-        Animated.timing(toAnim, { toValue: 1, duration: 300, useNativeDriver: false })
+        Animated.timing(toAnim, { 
+          toValue: 1, 
+          duration: 300, 
+          useNativeDriver: true // ✅ Changé à true pour éviter les conflits
+        })
       );
     }
 
@@ -125,10 +137,11 @@ const CategorySelector = ({
 
   const renderCategoryPill = useCallback((category) => {
     const isSelected = selectedCategory === category.id;
-    const animation = animationsRef.current[category.id];
+    // ✅ CORRECTION: Utilisation des animations de sélection séparées
+    const selectionAnimation = selectionAnimationsRef.current[category.id];
     const pressAnimation = pressAnimationsRef.current[category.id];
 
-    const scale = animation?.interpolate({
+    const scale = selectionAnimation?.interpolate({
       inputRange: [0, 1],
       outputRange: [1, 1.05],
       extrapolate: 'clamp',
@@ -140,13 +153,13 @@ const CategorySelector = ({
       extrapolate: 'clamp',
     }) || 1;
 
-    const shadowOpacity = animation?.interpolate({
+    const shadowOpacity = selectionAnimation?.interpolate({
       inputRange: [0, 1],
       outputRange: [0.05, 0.15], // Ombres plus subtiles
       extrapolate: 'clamp',
     }) || 0.05;
 
-    const borderWidth = animation?.interpolate({
+    const borderWidth = selectionAnimation?.interpolate({
       inputRange: [0, 1],
       outputRange: [1, 1], // Bordure constante
       extrapolate: 'clamp',

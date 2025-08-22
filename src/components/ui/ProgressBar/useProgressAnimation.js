@@ -17,7 +17,7 @@ export default function useProgressAnimation({
       Animated.timing(animatedValue, {
         toValue: value,
         duration,
-        useNativeDriver: false,
+        useNativeDriver: false, // ✅ 'width' nécessite useNativeDriver: false
       }).start();
     },
     instant: (value) => {
