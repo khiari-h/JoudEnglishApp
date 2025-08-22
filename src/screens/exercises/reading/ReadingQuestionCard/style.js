@@ -1,198 +1,147 @@
-// ReadingQuestionCard/style.js - VERSION HARMONISÉE avec Grammar 🎯
-import { StyleSheet, Platform } from "react-native";
+// ReadingQuestionCard/style.js - VERSION STYLE GRAMMAR avec design micro 🎯
+import { StyleSheet, Platform } from 'react-native';
 
-/**
- * 🎯 Styles harmonisés avec GrammarExerciseRenderer
- * Même design moderne pour les options/radio buttons
- * ✅ Cohérence visuelle globale
- * ✅ Design redesigné et moderne
- */
-const createStyles = (levelColor = "#3b82f6") =>
-  StyleSheet.create({
-    // =================== CONTAINER ===================
-    container: {
-      marginHorizontal: 16,
-      marginVertical: 8,
-    },
+const createStyles = (levelColor = '#3B82F6') => StyleSheet.create({
+  container: {
+    marginBottom: 24,
+  },
 
-    // =================== OPTIONS SECTION (RADIO BUTTONS) ===================
-    optionsContainer: {
-      marginTop: 20,
-      gap: 16, // Plus d'espace entre les options pour respirer
-    },
-    
-    optionsTitle: {
-      fontSize: 16,
-      fontWeight: "700",
-      marginBottom: 16,
-      paddingHorizontal: 4,
-      textAlign: 'center',
-      color: levelColor,
-    },
+  // Question Header
+  questionHeader: {
+    marginBottom: 16,
+  },
 
-    // =================== OPTION REDESIGNÉE (RADIO BUTTON) ===================
-    optionContainer: {
-      borderRadius: 20, // Plus arrondi pour un look moderne
-      overflow: 'hidden',
-      // Ombre plus subtile et élégante
-      ...Platform.select({
-        ios: {
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.08,
-          shadowRadius: 12,
-        },
-        android: {
-          elevation: 4,
-        },
-      }),
-    },
-    
-    optionGradient: {
-      borderRadius: 20,
-      overflow: 'hidden',
-    },
-    
-    optionInner: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingVertical: 18, // Plus de padding vertical
-      paddingHorizontal: 24, // Plus de padding horizontal
-      backgroundColor: 'white', // Background blanc propre
-      borderWidth: 2, // Bordure plus épaisse
-      borderColor: '#E2E8F0', // Couleur de bordure neutre
-      borderRadius: 20,
-      // Transition iOS simulée avec l'ombre qui change
-      ...Platform.select({
-        ios: {
-          shadowColor: '#3B82F6',
-          shadowOffset: { width: 0, height: 0 },
-          shadowOpacity: 0,
-          shadowRadius: 0,
-        },
-      }),
-    },
+  questionTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#374151',
+    textAlign: 'center',
+  },
 
-    // =================== RADIO BUTTON REDESIGNÉ ===================
-    optionIconContainer: {
-      marginRight: 16, // Plus d'espace après l'icône
-      width: 24,
-      height: 24,
-      borderRadius: 12,
-      borderWidth: 2,
-      borderColor: '#CBD5E1',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'transparent',
-    },
+  // Question Section avec style "micro"
+  questionSection: {
+    backgroundColor: '#FEF3C7',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 24,
+    borderLeftWidth: 4,
+    borderLeftColor: '#F59E0B',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+  },
 
-    // =================== TEXTE OPTION AMÉLIORÉ ===================
-    optionText: {
-      fontSize: 16,
-      fontWeight: '500',
-      color: '#374151',
-      flex: 1,
-      letterSpacing: 0.3,
-    },
-    
-    // États de texte avec couleurs cohérentes du prototype
-    selectedOptionText: {
-      color: 'white',
-      fontWeight: '600',
-    },
-    correctOptionText: {
-      color: 'white',
-      fontWeight: '600',
-    },
-    incorrectOptionText: {
-      color: 'white',
-      fontWeight: '600',
-    },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
 
-    // =================== LETTRE DE L'OPTION (A, B, C, D) ===================
-    optionLetterContainer: {
-      width: 36,
-      height: 36,
-      borderRadius: 18,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginRight: 16,
-      borderWidth: 1,
-      borderColor: 'rgba(0,0,0,0.05)',
-      backgroundColor: '#F8FAFC',
-    },
+  sectionIconContainer: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#F59E0B',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
 
-    optionLetter: {
-      fontSize: 16,
-      fontWeight: "800",
-      color: '#64748B',
-    },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#92400E',
+  },
 
-    // =================== ÉTATS DES OPTIONS AMÉLIORÉS ===================
-    optionSelected: {
-      backgroundColor: levelColor,
-      borderColor: levelColor,
-      transform: [{ scale: 1.02 }],
-      // Ombre plus prononcée pour la sélection
-      ...Platform.select({
-        ios: {
-          shadowColor: levelColor,
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.15,
-          shadowRadius: 12,
-        },
-        android: {
-          elevation: 4,
-        },
-      }),
-    },
+  questionText: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: '#374151',
+    lineHeight: 24,
+    letterSpacing: 0.2,
+  },
 
-    optionCorrect: {
-      backgroundColor: '#10B981', // Vert cohérent
-      borderColor: '#10B981',
-      borderWidth: 2,
-      // Ombre verte pour succès
-      ...Platform.select({
-        ios: {
-          shadowColor: '#10B981',
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.2,
-          shadowRadius: 12,
-        },
-        android: {
-          elevation: 6,
-        },
-      }),
-    },
+  // Options Container
+  optionsContainer: {
+    marginTop: 16,
+    gap: 12,
+  },
 
-    optionIncorrect: {
-      backgroundColor: '#EF4444', // Rouge cohérent
-      borderColor: '#EF4444',
-      borderWidth: 2,
-      // Ombre rouge pour erreur
-      ...Platform.select({
-        ios: {
-          shadowColor: '#EF4444',
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.2,
-          shadowRadius: 12,
-        },
-        android: {
-          elevation: 6,
-        },
-      }),
-    },
+  optionsTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
 
-    // =================== TEXTES DES ÉTATS ===================
-    optionCorrectText: {
-      color: 'white',
-      fontWeight: '600',
-    },
+  // =================== RADIO BUTTONS IDENTIQUES À GRAMMAR ===================
+  optionContainer: {
+    marginBottom: 8,
+  },
 
-    optionIncorrectText: {
-      color: 'white',
-      fontWeight: '600',
-    },
-  });
+  optionGradient: {
+    borderRadius: 20,
+    overflow: 'hidden',
+  },
+
+  optionInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 18,
+    paddingHorizontal: 24,
+    // backgroundColor: 'white', // SUPPRIMÉ pour que le gradient soit visible
+    borderWidth: 2,
+    borderColor: '#E2E8F0',
+    borderRadius: 20,
+    // Transition iOS simulée avec l'ombre qui change
+    ...Platform.select({
+      ios: {
+        shadowColor: '#3B82F6',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0,
+        shadowRadius: 0,
+      },
+    }),
+  },
+
+  optionIconContainer: {
+    marginRight: 16,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#CBD5E1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+
+  optionText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#1F2937', // Noir sur fond blanc (neutre)
+    flex: 1,
+    letterSpacing: 0.3,
+  },
+
+  // États de texte avec couleurs cohérentes du prototype
+  selectedOptionText: {
+    color: 'white', // Blanc sur fond bleu (sélectionné)
+    fontWeight: '600',
+  },
+
+  correctOptionText: {
+    color: 'white', // Blanc sur fond vert (correct)
+    fontWeight: '600',
+  },
+
+  incorrectOptionText: {
+    color: 'white', // Blanc sur fond rouge (incorrect)
+    fontWeight: '600',
+  },
+});
 
 export default createStyles;

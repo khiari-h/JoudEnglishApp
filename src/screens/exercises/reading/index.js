@@ -194,14 +194,6 @@ const ReadingExercise = ({ route }) => {
         levelColor={levelColor}
       />
 
-      <InstructionBox
-        title="📖 Reading Exercise"
-        instructions="Read the text carefully and answer the questions."
-        variant="compact"
-        primaryColor={levelColor}
-        initiallyExpanded={false}
-      />
-
       <ReadingText
         exercise={currentExercise}
         levelColor={levelColor}
@@ -209,13 +201,16 @@ const ReadingExercise = ({ route }) => {
 
       {currentQuestion && (
         <ReadingQuestionCard
-          question={currentQuestion}
-          questionIndex={currentQuestionIndex}
-          selectedAnswer={selectedAnswer}
-          onSelectAnswer={selectAnswer}
+          question={{
+            id: currentQuestionIndex + 1,
+            text: currentQuestion.text,
+            answer: currentQuestion.correctAnswer
+          }}
+          options={currentQuestion.options}
+          selectedOption={selectedAnswer}
+          onOptionSelect={selectAnswer}
           showFeedback={showFeedback}
-          fadeAnim={fadeAnim}
-          slideAnim={slideAnim}
+          isCorrect={isCorrect}
           levelColor={levelColor}
         />
       )}

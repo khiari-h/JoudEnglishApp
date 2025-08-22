@@ -49,7 +49,7 @@ const createStyles = () =>
       alignItems: 'center',
       paddingVertical: 18, // Plus de padding vertical
       paddingHorizontal: 24, // Plus de padding horizontal
-      backgroundColor: 'white', // Background blanc propre
+      // backgroundColor: 'white', // SUPPRIMÉ pour que le gradient soit visible
       borderWidth: 2, // Bordure plus épaisse
       borderColor: '#E2E8F0', // Couleur de bordure neutre
       borderRadius: 20,
