@@ -1,21 +1,19 @@
-// ReadingText/index.js - VERSION SIMPLIFIÉE
-import { View, Text } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import HeroCard from "../../../../components/ui/HeroCard";
-import RevealButton from "../../../../components/ui/RevealButton";
-import createStyles from "./style";
+// ReadingText/index.js - VERSION NETTOYÉE avec style moderne 🎯
+import { View } from "react-native";
 import PropTypes from 'prop-types';
+import WordCard from "../../../../components/ui/WordCard"; // ← NOUVELLE WordCard harmonisée
+import ContentSection from "../../../../components/ui/ContentSection";
+import createStyles from "./style";
 
 /**
- * 📖 ReadingText - Version Simple & Efficace
- * ✅ Fix bug "AA 88 words" 
- * ✅ Suppression "Reading Topics" redondant
- * ✅ Code simple, 60 lignes au lieu de 150+
+ * 📖 ReadingText - Version nettoyée et modernisée
+ * ✅ SUPPRIMÉ : Estimation de temps et compteur de mots (inutiles)
+ * ✅ SUPPRIMÉ : Props textExpanded et onToggleExpand (plus utilisées)
+ * ✅ HARMONISÉ : Même style que GrammarRuleContent moderne
+ * ✅ SIMPLIFIÉ : Structure épurée et efficace
  */
 const ReadingText = ({
   exercise,
-  textExpanded,
-  onToggleExpand,
   levelColor = "#3b82f6",
 }) => {
   const styles = createStyles(levelColor);
@@ -23,68 +21,46 @@ const ReadingText = ({
   if (!exercise) return null;
 
   const fullText = exercise.text || "";
-  const wordCount = fullText.split(' ').filter(word => word.length > 0).length;
-  const estimatedReadingTime = Math.ceil(wordCount / 200); // 200 mots/min
 
   return (
     <View style={styles.container}>
-      {/* 🎯 TITLE */}
-      <HeroCard 
+      {/* 🆕 NOUVELLE WORD CARD HARMONISÉE - Même design que vocabulaire/expressions/grammaire */}
+      <WordCard
         content={exercise.title || "Reading Text"}
-        fontSize={24}
+        translation=""
+        counter=""
+        showTranslation={false}
+        onToggleTranslation={() => {}} // Pas de toggle pour lecture
         levelColor={levelColor}
-        showUnderline={false}
-        icon="book-outline"
+        type="reading"
+        showCounter={false} // Pas de compteur pour lecture
+        showRevealButton={false} // Pas de bouton reveal pour lecture
       />
 
-      {/* 📊 READING INFO - VERSION CORRIGÉE */}
-      <View style={styles.infoContainer}>
-        <View style={styles.infoItem}>
-          <Ionicons name="time-outline" size={16} color={levelColor} />
-          <Text style={[styles.infoText, { color: levelColor }]}>
-            ~{estimatedReadingTime} min read
-          </Text>
-        </View>
-        
-        <View style={styles.infoItem}>
-          <Ionicons name="text-outline" size={16} color={levelColor} />
-          <Text style={[styles.infoText, { color: levelColor }]}>
-            {wordCount} words
-          </Text>
-        </View>
-      </View>
-
-      {/* 📖 TEXTE avec RevealButton */}
-      <RevealButton
-        isRevealed={textExpanded}
-        revealedContent={fullText}
-        revealText="📖 Read Full Text"
-        hideText="📖 Collapse Text"
-        onToggle={onToggleExpand}
+      {/* 📖 TEXTE avec ContentSection moderne */}
+      <ContentSection
+        title="📖 Reading Content"
+        content={fullText}
         levelColor={levelColor}
-        contentColor="#374151"
+        backgroundColor="#F8FAFC"
         contentStyle={{
           fontSize: 16,
           lineHeight: 24,
           textAlign: 'justify',
+          color: '#374151',
         }}
+        showIcon={false}
       />
     </View>
   );
 };
 
-// ✅ Définition de PropTypes pour valider les props
+// ✅ PropTypes simplifiés
 ReadingText.propTypes = {
-  // 'exercise' est manquant dans la validation
   exercise: PropTypes.shape({
     title: PropTypes.string,
     text: PropTypes.string,
   }).isRequired,
-  // 'textExpanded' est manquant dans la validation
-  textExpanded: PropTypes.bool.isRequired,
-  // 'onToggleExpand' est manquant dans la validation
-  onToggleExpand: PropTypes.func.isRequired,
-  // 'levelColor' est manquant dans la validation
   levelColor: PropTypes.string,
 };
 

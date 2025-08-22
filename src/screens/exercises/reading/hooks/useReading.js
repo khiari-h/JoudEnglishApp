@@ -10,7 +10,6 @@ const useReading = (exercises = [], level = "A1") => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [textExpanded, setTextExpanded] = useState(true);
   const [attempts, setAttempts] = useState(0);
   const [completedQuestions, setCompletedQuestions] = useState({});
   const [loaded, setLoaded] = useState(false);
@@ -83,7 +82,6 @@ const useReading = (exercises = [], level = "A1") => {
     setShowFeedback(false);
     setSelectedAnswer(null);
     setAttempts(0); // Réinitialiser les tentatives pour la nouvelle question
-    setTextExpanded(true); // Toujours démarrer avec le texte développé pour une nouvelle question
 
     if (currentQuestionIndex === 0 && selectedExerciseIndex === 0 && !isInitialized.current) {
       // Ne pas scroller au premier chargement initial
@@ -219,10 +217,6 @@ const useReading = (exercises = [], level = "A1") => {
     setAttempts(0);
   }, []);
 
-  const toggleTextExpansion = useCallback(() => {
-    setTextExpanded(prev => !prev);
-  }, []);
-
   const toggleDetailedProgress = useCallback(() => {
     setShowDetailedProgress(prev => !prev);
   }, []);
@@ -257,7 +251,6 @@ const useReading = (exercises = [], level = "A1") => {
     currentQuestionIndex,
     selectedAnswer,
     showFeedback,
-    textExpanded,
     attempts,
     completedQuestions,
     loaded,
@@ -273,7 +266,6 @@ const useReading = (exercises = [], level = "A1") => {
     nextQuestion,
     previousQuestion,
     retryQuestion,
-    toggleTextExpansion,
     toggleDetailedProgress,
     isCorrect,
     isQuestionCompleted,

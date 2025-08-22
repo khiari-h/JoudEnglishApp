@@ -1,27 +1,21 @@
-// ReadingExercise/style.js - VERSION DYNAMIQUE
+// ReadingExercise/style.js - VERSION MODERNISÉE avec style Grammar 🎯
 
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 /**
- * 🎯 Styles dynamiques pour ReadingExercise
- * Support pour animations, micro-interactions, UX premium
+ * 🎯 Styles modernisés pour ReadingExercise
+ * HARMONISÉ : Même style que GrammarRuleContent moderne
+ * ✅ Design redesigné et cohérent
+ * ✅ Suppression des styles inutiles
  */
 const createStyles = () =>
   StyleSheet.create({
-    // =================== LOADING STATE PREMIUM ===================
+    // =================== LOADING STATE MODERNE ===================
     loadingContainer: {
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
       paddingHorizontal: 20,
-    },
-    loadingText: {
-      marginTop: 20,
-      fontSize: 16,
-      fontWeight: "600",
-      textAlign: "center",
-      letterSpacing: 0.5,
-      lineHeight: 24,
     },
 
     // =================== SCROLL CONTENT OPTIMISÉ ===================
@@ -29,6 +23,32 @@ const createStyles = () =>
       paddingBottom: 140, // Plus d'espace pour les animations
       minHeight: '100%',
       paddingTop: 10, // Respiration en haut
+    },
+
+    // =================== STYLES POUR COMPOSANTS COMMUNS ===================
+    // Ces styles complètent ceux des composants communs pour le style moderne
+    
+    // Style pour les sections de contenu (cohérent avec Grammar)
+    contentSection: {
+      backgroundColor: 'white',
+      borderRadius: 16,
+      padding: 20,
+      borderWidth: 1,
+      borderColor: '#F1F5F9',
+      marginHorizontal: 16,
+      marginVertical: 8,
+      // Ombre moderne et subtile
+      ...Platform.select({
+        ios: {
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.06,
+          shadowRadius: 8,
+        },
+        android: {
+          elevation: 2,
+        },
+      }),
     },
 
     // =================== ANIMATIONS HELPER ===================

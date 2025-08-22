@@ -67,7 +67,7 @@ const ExampleCard = ({ example, styles }) => (
       
       {/* Contenu texte */}
       <View style={styles.exampleTextContainer}>
-        <Text style={styles.exampleTitle}>Exemple</Text>
+        <Text style={styles.exampleTitle}>Example</Text>
         <Text style={styles.exampleText}>{example}</Text>
       </View>
     </View>

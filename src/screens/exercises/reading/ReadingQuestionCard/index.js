@@ -95,7 +95,7 @@ const ReadingQuestionCard = ({
 
       {/* Options */}
       <View style={styles.optionsContainer}>
-        <Text style={[styles.optionsTitle, { color: levelColor }]}>
+        <Text style={styles.optionsTitle}>
           💡 Choose your answer:
         </Text>
         
@@ -105,34 +105,29 @@ const ReadingQuestionCard = ({
           return (
             <TouchableOpacity
               key={option}
-              style={[
-                styles.optionButton,
-                optionState === 'selected' && { 
-                  borderColor: levelColor,
-                  backgroundColor: `${levelColor}08`,
-                },
-                optionState === 'correct' && styles.optionCorrect,
-                optionState === 'incorrect' && styles.optionIncorrect,
-              ]}
+              style={styles.optionContainer}
               onPress={handleOptionPressCallback(index)}
               disabled={showFeedback}
               activeOpacity={0.8}
             >
-              <View style={styles.optionContent}>
+              <View style={[
+                styles.optionInner,
+                optionState === 'selected' && styles.optionSelected,
+                optionState === 'correct' && styles.optionCorrect,
+                optionState === 'incorrect' && styles.optionIncorrect,
+              ]}>
                 {/* Option Letter */}
                 <View 
                   style={[
                     styles.optionLetterContainer,
-                    { backgroundColor: `${levelColor}15` },
-                    optionState === 'correct' && { backgroundColor: '#10b98120' },
-                    optionState === 'incorrect' && { backgroundColor: '#ef444420' },
+                    optionState === 'correct' && { backgroundColor: '#10B981', borderColor: '#10B981' },
+                    optionState === 'incorrect' && { backgroundColor: '#EF4444', borderColor: '#EF4444' },
                   ]}
                 >
                   <Text style={[
                     styles.optionLetter, 
-                    { color: levelColor },
-                    optionState === 'correct' && { color: '#10b981' },
-                    optionState === 'incorrect' && { color: '#ef4444' },
+                    optionState === 'correct' && { color: 'white' },
+                    optionState === 'incorrect' && { color: 'white' },
                   ]}>
                     {String.fromCharCode(65 + index)}
                   </Text>
@@ -142,12 +137,9 @@ const ReadingQuestionCard = ({
                 <Text
                   style={[
                     styles.optionText,
-                    optionState === 'selected' && { 
-                      color: levelColor, 
-                      fontWeight: "600" 
-                    },
-                    optionState === 'correct' && styles.optionCorrectText,
-                    optionState === 'incorrect' && styles.optionIncorrectText,
+                    optionState === 'selected' && styles.selectedOptionText,
+                    optionState === 'correct' && styles.correctOptionText,
+                    optionState === 'incorrect' && styles.incorrectOptionText,
                   ]}
                 >
                   {option}
@@ -155,12 +147,12 @@ const ReadingQuestionCard = ({
                 
                 {/* Status Icon */}
                 {showFeedback && (
-                  <View>
+                  <View style={styles.optionIconContainer}>
                     {optionState === 'correct' && (
-                      <Ionicons name="checkmark-circle" size={24} color="#10b981" />
+                      <Ionicons name="checkmark-circle" size={20} color="white" />
                     )}
                     {optionState === 'incorrect' && (
-                      <Ionicons name="close-circle" size={24} color="#ef4444" />
+                      <Ionicons name="close-circle" size={20} color="white" />
                     )}
                   </View>
                 )}

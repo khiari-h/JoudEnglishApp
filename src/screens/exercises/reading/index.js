@@ -58,7 +58,6 @@ const ReadingExercise = ({ route }) => {
     currentQuestionIndex,
     selectedAnswer,
     showFeedback,
-    textExpanded,
     attempts,
     completedQuestions,
     loaded,
@@ -74,7 +73,6 @@ const ReadingExercise = ({ route }) => {
     nextQuestion,
     previousQuestion,
     retryQuestion,
-    toggleTextExpansion,
     toggleDetailedProgress,
     scrollViewRef,
     textsScrollViewRef,
@@ -206,8 +204,6 @@ const ReadingExercise = ({ route }) => {
 
       <ReadingText
         exercise={currentExercise}
-        textExpanded={textExpanded}
-        onToggleExpand={toggleTextExpansion}
         levelColor={levelColor}
       />
 
