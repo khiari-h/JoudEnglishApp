@@ -154,7 +154,7 @@ const AssessmentResults = ({
       {/* 🏷️ BADGE NIVEAU */}
       <ContentSection
         title={`Évaluation Niveau ${level}`}
-        content="Évaluation terminée avec succès !"
+        content="Évaluation terminée"
         levelColor={levelColor}
         backgroundColor="#f1f5f9"
         isItalic

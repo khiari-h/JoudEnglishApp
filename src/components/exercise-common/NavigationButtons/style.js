@@ -22,9 +22,10 @@ const createStyles = (primaryColor = "#3B82F6") =>
     // =================== ROW BOUTONS ===================
     buttonsRow: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      justifyContent: 'center', // Centré au lieu de space-between
       alignItems: 'center',
       paddingHorizontal: 4,
+      gap: 16, // Espacement entre les boutons
     },
 
     // =================== BOUTON PRÉCÉDENT - STYLE ÉPURÉ ===================

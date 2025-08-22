@@ -83,7 +83,7 @@ const AssessmentNavigation = ({
           primaryColor={levelColor}
           isLast={false} // Assessment n'a pas de "finish"
           buttonLabels={{
-            next: isLastQuestionInSection ? "Next Section" : "Next Question",
+            next: isLastQuestionInSection ? "Next Section" : "Next",
             previous: "Previous"
           }}
           variant="standard" // Layout standard pour Previous + Next
